@@ -1,0 +1,862 @@
+{
+ "createdAt": "2026-10-29T05:26:55.026Z",
+ "docs": [
+  {
+   "name": "DIEM_ChinhDinhQuanLyDiem(TT56)",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_ChinhDinhQuanLyDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_DinhNghia&InBangDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_DinhNghiaBangThanhTichHocTap",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_ImportDiemDangExcel",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_KiemDoDiemTaiManHinhNhapDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_PhanQuyenNhapDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_QuanLyHoSoDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_QuanLyMonModun",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DIEM_QuanLyNhapDiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Bảng qui đổi điểm/ Định nghĩa bảng qui đổi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa bảng qui đổi điểm (chọn mã, hệ điểm quy đổi, nhập các mức quy đổi)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 1",
+   "kind": "alt",
+   "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Bảng qui đổi điểm/ Định nghĩa bảng qui đổi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ sửa mã bảng qui đổi có sẵn nhưng chưa dùng đến hoặc thêm mã mới"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 2",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục đánh giá",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa danh mục đánh giá nhóm học lực và các thang xếp loại"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 2",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục xếp hạng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa danh mục xếp hạng theo mã đánh giá và nhập mức điểm quy ra xếp loại"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 2",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục xếp hạng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo xét hạ bậc tốt nghiệp theo mã xếp hạng (tab Hạ bậc tốt nghiệp)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_DIEMDACBIET (điểm đặc biệt)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_COSUDUNGHEDIEM (hệ điểm quản lý)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_HEDIEMNHAP (hệ điểm nhập, hệ xử lý, bảng qui đổi)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_LAMTRONDIEMTHANHPHAN (số lẻ điểm thành phần)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_LAMTRONDIEMTB (số lẻ điểm trung bình)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_CONGDIEMDENHK (năm học học kỳ cuối được cộng điểm)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_BOXEPHANG (bảng phân loại áp dụng cho đối tượng)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_CONGTCKHONGTINHDTBVAOTCDAT (tín chỉ môn không tính ĐTB vào tích lũy)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_SOSANHMH_CTDT (chính sách tính điểm trung bình)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến GD_MUCDIEMDATHEDIEM (điểm đạt môn học theo hệ điểm nhập)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 3",
+   "kind": "alt",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ check thừa kế để khai báo biến riêng cho đối tượng áp dụng"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Quản lý kế hoạch giảng dạy/ Danh mục quy chế",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa mã quy chế mới áp dụng Thông tư 08"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Quản lý kế hoạch giảng dạy/ Danh mục bậc hệ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa mã bậc hệ mới áp dụng Thông tư 08"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khối lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Gán mã bậc hệ mới cho các khối lớp áp dụng Thông tư 08"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Tín chỉ tối đa theo sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import tín chỉ tối đa theo sinh viên (Điều 7 khoản 4 mục b)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Bảng qui đổi điểm/ Định nghĩa bảng qui đổi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo bảng qui đổi 2 mức P (đạt), F (không đạt) cho môn không tính điểm trung bình theo quy chế mới (Điều 9 khoản 3)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Bảng qui đổi điểm/ Định nghĩa bảng qui đổi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo bảng qui đổi điểm 10 sang điểm chữ và điểm 4 cho quy chế mới"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Setting GD_HEDIEMNHAP cho quy chế mới (Nhập 10 – view 10 và 4 – Xử lý 4, chọn bảng qui đổi vừa khai báo)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Setting điểm đạt đặc biệt theo quy chế cho môn không tính điểm trung bình (GDQP, thể chất, kỹ năng...)"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Setting GD_SOSANHMH_CTDT theo quy chế mới (Điều 10 khoản 3): lọc mã quy chế, chọn CTĐT phù hợp"
+  },
+  {
+   "docRef": "DIEM_ChinhDinhQuanLyDiem, mục 4",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khối lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập số tín chỉ trung bình một năm học (M) cho từng khối lớp (Điều 10 khoản 6)"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý Điểm/ Bảng ghi điểm/ Định nghĩa mẫu bảng ghi điểm/ Danh sách mẫu bảng ghi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa mẫu in bảng ghi điểm mới theo loại bảng ghi điểm"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý Điểm/ Bảng ghi điểm/ Định nghĩa mẫu bảng ghi điểm/ Danh sách mẫu bảng ghi điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Mã phiên bản mẫu in tự động gán, tên phiên bản do user đặt"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ Theo nhóm môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bảng ghi điểm theo nhóm môn học (danh sách SV lấy từ SV đăng ký nhóm học)"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ Theo nhóm môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xuất tập tin excel bảng ghi điểm chuyển cán bộ phụ trách nhập điểm"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ Theo nhóm môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xuất danh sách excel theo định dạng màn hình hoặc cấu trúc"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.2",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ Theo toàn môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bảng ghi điểm theo toàn môn học (SV của tất cả các nhóm)"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ Theo lớp học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bảng ghi điểm theo lớp học (SV trong lớp học của sinh viên)"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.4",
+   "kind": "main",
+   "menu": "Quản lý điểm/Bảng ghi điểm/In bảng ghi điểm/Theo học lại & học vượt",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bảng ghi điểm theo môn học lại và học vượt"
+  },
+  {
+   "docRef": "DIEM_DinhNghia&InBangDiem, mục 2.5",
+   "kind": "main",
+   "menu": "Quản lý điểm/Bảng ghi điểm/In bảng ghi điểm/Theo nhóm thi",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bảng ghi điểm theo nhóm thi"
+  },
+  {
+   "docRef": "DIEM_DinhNghiaBangThanhTichHocTap, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản lý điểm trung bình/ Định nghĩa mẫu thành tích học tập/ Định nghĩa mẫu thành tích học tập",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa mẫu thành tích học tập (Bảng kết quả học tập)"
+  },
+  {
+   "docRef": "DIEM_DinhNghiaBangThanhTichHocTap, mục 2",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In mẫu thành tích học tập theo mẫu đã định nghĩa"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chọn thành phần điểm cần import khi mở chức năng"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xuất file cấu trúc import có đúng cột điểm của thành phần đã chọn"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 1",
+   "kind": "alt",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tùy chọn bỏ qua điểm rỗng không xử lý khi import"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 1",
+   "kind": "alt",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tùy chọn xóa điểm cũ nếu điểm trên file rỗng"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xuất file Excel mẫu bằng nút Xuất cấu trúc import"
+  },
+  {
+   "docRef": "DIEM_ImportDiemDangExcel, mục 2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng ngang",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import điểm từ file Excel đã chuẩn bị theo cấu trúc mẫu"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo lớp học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò nhập điểm từ danh sách lớp học: chọn môn của lớp, nhập điểm và lưu"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo lớp học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh thông số bản điểm trước khi nhập điểm theo lớp học"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo lớp học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định thông số kiểm dò điểm (đọc mã sinh viên, từ \"Sinh viên\", từ \"Điểm\", ký tự phân cách, từng cột điểm, tốc độ đọc) và lưu"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo lớp học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chạy chức năng đọc kiểm dò điểm theo kỳ thi đã chọn"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 1",
+   "kind": "alt",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo lớp học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạm dừng kiểm dò khi gặp điểm sai, nhập lại điểm và lưu"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo học lại & học vượt",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò nhập điểm từ danh sách học lại & học vượt"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo nhóm môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò nhập điểm từ danh sách nhóm môn học"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo nhóm thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò nhập điểm từ danh sách nhóm thi"
+  },
+  {
+   "docRef": "DIEM_KiemDoDiemTaiManHinhNhapDiem, mục 5",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Theo toàn môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò nhập điểm từ danh sách toàn môn học"
+  },
+  {
+   "docRef": "DIEM_PhanQuyenNhapDiem, mục 1",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân quyền nhập/in bảng ghi điểm theo nhóm môn học"
+  },
+  {
+   "docRef": "DIEM_PhanQuyenNhapDiem, mục 2",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo lớp học phần",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân quyền nhập/in bảng ghi điểm theo lớp học phần"
+  },
+  {
+   "docRef": "DIEM_PhanQuyenNhapDiem, mục 3",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân quyền nhập/in bảng ghi điểm theo nhóm/tổ học"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / Ghi đã nhận và kiểm dò bảng điểm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Ghi nhận ngày nhận bảng điểm và ngày kiểm dò"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / Ghi đã nhận và kiểm dò bảng điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập hàng loạt ngày nhận bằng Import hoặc Cập nhật theo file"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / In danh sách ký nhận hồ sơ điểm",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách ký nhận hồ sơ điểm"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / In danh sách ký nhận hồ sơ điểm",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bìa danh sách hồ sơ điểm"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / In hồ sơ điểm chưa nộp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In hồ sơ điểm chưa nộp theo Khoa/Bộ môn"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / In sổ giao nhận bảng điểm tổng hợp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In sổ giao nhận bảng điểm tổng hợp theo mẫu tổng hợp lớp và mẫu khoa tự ghi tay"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / In sổ giao nhận bảng điểm tổng hợp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In bìa sổ giao nhận bảng điểm"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 1.5",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Hồ sơ điểm / Thống kê giao nhận bảng điểm",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê giao nhận bảng điểm mẫu Toàn trường và Theo khoa"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.1",
+   "kind": "setup",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Kiểm dò điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định tốc độ đọc và số ký tự khi kiểm dò điểm bằng giọng nói"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Kiểm dò điểm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm dò điểm bằng giọng nói và lưu điểm sai"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Kiểm dò điểm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xác nhận Đã kiểm dò cho nhóm môn học"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Ghi nhận đã điều chỉnh điểm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Ghi nhận đã điều chỉnh điểm sai"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Thống kê sai điểm theo GV + lớp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê sai điểm theo GV + lớp"
+  },
+  {
+   "docRef": "DIEM_QuanLyHoSoDiem, mục 2.4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý hồ sơ điểm / Kiểm dò điểm / Thống kê sai điểm theo GV + lớp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê sai điểm theo GV"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.1",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục môn học cha và môn học con"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.1",
+   "kind": "alt",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Môn con không tính điểm tích lũy (check Không tính điểm hoặc tín chỉ tích lũy = 0), môn cha có tín chỉ tích lũy"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.1",
+   "kind": "alt",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập Số tín chỉ học phí cho môn con để tính học phí"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.2",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Định nghĩa môn học Mô - đun",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Khai báo môn mô đun: chọn môn cha và thêm các môn thành phần"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.2",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Định nghĩa môn học Mô - đun",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo cách tính điểm mô đun theo trọng số (nhập trọng số các môn con)"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 1.2",
+   "kind": "setup",
+   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Định nghĩa môn học Mô - đun",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo cách tính điểm mô đun theo trung bình cộng điểm tổng kết các môn con"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô - đun",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In DSSV học đủ mô đun nhưng chưa ĐK môn chính (SV đăng ký môn con nhưng chưa có điểm tổng kết)"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô - đun",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In DSSV đã học đủ môn con, có điểm tổng kết nhưng chưa chuyển điểm vào môn mô đun"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô - đun",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm theo SV và chọn sinh viên cần cộng điểm, chọn môn mô đun"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô - đun",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xem điểm các môn con của sinh viên và lưu chuyển điểm tổng kết vào điểm thi (T1) của môn mô đun"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.2",
+   "kind": "alt",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô - đun",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cộng điểm khi sinh viên thiếu điểm môn con: hệ thống hiện danh sách lỗi để kiểm tra"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Nhập điểm bảo lưu",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Kiểm tra điểm môn mô đun được lưu tại Nhập điểm bảo lưu, thuộc học kỳ thực hiện chuyển"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ DS môn Mô - đun đã tạo bảo lưu",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra dữ liệu điểm môn mô đun đã tạo tại DS môn Mô - đun đã tạo bảo lưu"
+  },
+  {
+   "docRef": "DIEM_QuanLyMonModun, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác/ Nhập điểm toàn khóa/sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra điểm môn mô đun tại Nhập điểm toàn khóa/sinh viên"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo lớp"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Kiểm dò điểm bằng giọng nói khi nhập điểm theo lớp"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ghi chú chi tiết sai điểm khi phát hiện điểm sai"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm học lại - học vượt",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm học lại - học vượt"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo nhóm học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo nhóm học"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo tổ thực hành",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo tổ thực hành"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.5",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo nhóm thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo nhóm thi"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.6",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo tổ thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo tổ thi"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 1.7",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm theo môn học"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 2.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức khác/ Nhập điểm từ bảng ghi điểm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm từ bảng ghi điểm theo mã bảng ghi điểm"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 2.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập hình thức Khác / Nhập điểm học kỳ 1 sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm học kỳ 1 sinh viên (1 môn học/sinh viên)"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 2.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập hình thức Khác / Nhập điểm toàn khóa/sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm toàn khóa theo sinh viên"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 3.1",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Nhập điểm từ danh sách/ Import điểm môn học/ Import từ file excel",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import điểm môn học theo file excel (xuất cấu trúc import)"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 3.2",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Nhập điểm từ danh sách/ Import điểm môn học/ Import từ file excel",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import nhiều file excel từ một thư mục"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 3.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Nhập điểm từ danh sách/ Import điểm môn học/ Từ phần mềm McScanner",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import điểm từ phần mềm McScanner (file txt)"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 3.4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Nhập điểm từ danh sách/ Import điểm môn học/ Import điểm nhiều học kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import điểm nhiều học kỳ"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 3.5",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Nhập điểm từ danh sách/ Import điểm môn học/ Import điểm + ĐKMH + Tạo nhóm học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import điểm + ĐKMH + Tạo nhóm học"
+  },
+  {
+   "docRef": "DIEM_QuanLyNhapDiem, mục 4",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm đặc biệt / Nhập điểm đặc biệt",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập điểm đặc biệt (Import, Thêm theo SV, Thêm theo lớp)"
+  }
+ ],
+ "module": "DIEM",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:26:55.026Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:26:55.026Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

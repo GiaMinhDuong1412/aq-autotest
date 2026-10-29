@@ -1,0 +1,138 @@
+{
+ "createdAt": "2026-10-29T05:32:22.514Z",
+ "docs": [
+  {
+   "name": "PVLD_ThongTinQuanLyHoTroLanhDao",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.1",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Hiển thị danh sách phân hệ khai thác báo biểu cho lãnh đạo"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.1",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ hiển thị các phân hệ tương ứng với gói hợp đồng nhà trường đầu tư"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.2",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem các mẫu in khai thác tương ứng của từng phân hệ"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.2",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chương trình chỉ hiển thị các mẫu in đặc thù (mẫu theo yêu cầu khác cần liên hệ bộ phận support)"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phân quyền lãnh đạo trên Netweb và đăng nhập tài khoản Netweb để xem thông tin"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem biểu đồ giới tính sinh viên theo học kỳ năm học (Phòng Quản lý đào tạo)"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem biểu đồ số lượng sinh viên từng lớp theo học kỳ năm học"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem biểu đồ giới tính sinh viên theo lớp theo học kỳ năm học"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem biểu đồ học vị của giảng viên"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem thông tin giảng viên dạy trong tuần"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem biểu đồ phân vùng sinh viên"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem danh sách sinh viên tạm dừng học"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem doanh thu các ngành (Phòng Tài chính - Kế toán)"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem số lượng sinh viên nợ học phí"
+  },
+  {
+   "docRef": "PVLD_ThongTinQuanLyHoTroLanhDao, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem tình hình thu học phí trong kỳ"
+  }
+ ],
+ "module": "PVLD",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:32:22.514Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:32:22.514Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

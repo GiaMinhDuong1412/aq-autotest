@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KHGD",
+ "idx": 98,
+ "menu": "NetWEB sinh viên: Xem chương trình đào tạo",
+ "menuRaw": "NetWEB sinh viên: Xem chương trình đào tạo",
+ "module": "KHGD",
+ "paren": false,
+ "product": "netweb",
+ "r1": {
+  "assignee": "Nam",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Minh",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 22,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

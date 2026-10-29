@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "LTHI",
+ "idx": 140,
+ "menu": "Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Khác biệt giữa ĐKMH và DS thi",
+ "menuRaw": "(Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Khác biệt giữa ĐKMH và DS thi)",
+ "module": "LTHI",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 24,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

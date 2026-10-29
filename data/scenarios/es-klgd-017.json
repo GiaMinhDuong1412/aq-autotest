@@ -1,0 +1,43 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Không chọn nhóm học nào trong danh sách",
+   "expected": "Chương trình báo chưa chọn nhóm học, không thay đổi dữ liệu.",
+   "name": "Gán đợt khi chưa chọn nhóm học",
+   "steps": [
+    "Chọn đợt TEST_D1 nhưng không check nhóm học nào.",
+    "Bấm Gán / Lưu."
+   ]
+  }
+ ],
+ "code": "KLGD-017",
+ "createdAt": "2026-10-28T17:05:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đợt TEST_D1 (KLGD-015); CBGD test (KLGD-012)",
+  "next": [
+   "KLGD-018",
+   "KLGD-022",
+   "KLGD-026"
+  ],
+  "out": "Các nhóm của CBGD test được gán đợt TEST_D1"
+ },
+ "expected": "• Đủ 5 chức năng gán/hủy như tài liệu.\n• Gán theo danh sách CBGD chỉ tác động nhóm của CBGD đã chọn, nhóm nhận đúng đợt TEST_D1.\n• Cần xác nhận: tài liệu không mô tả chi tiết thao tác của từng kiểu gán tự động.\n(Theo KLGD_QuanLyKhoiLuongGiangDay, mục III.4.3.)",
+ "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft (HVNG - Copy) và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ dùng để test); tài khoản có quyền quản trị phân hệ Khối lượng. Cần đợt TEST_D1 (KLGD-015).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học.",
+  "Kiểm tra có đủ các chức năng gán: Gán đợt theo tuần kết thúc tổ học, Gán đợt theo danh sách CBGD, Gán đợt theo bộ môn quản lý môn học, Gán đợt theo bộ môn CBGD, Hủy đợt tính đã gán.",
+  "Dùng Gán đợt theo danh sách CBGD: chọn đợt TEST_D1 và chỉ chọn CBGD của KLGD-012.",
+  "Kiểm tra các nhóm của CBGD đó đã nhận đợt TEST_D1; ghi lại số nhóm được gán."
+ ],
+ "title": "Gán đợt tính khối lượng cho nhóm học",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

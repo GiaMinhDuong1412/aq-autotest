@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DIEM",
+ "idx": 159,
+ "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Import điểm môn học / Import từ file excel",
+ "menuRaw": "(Quản lý nhập điểm / Quản lý nhập điểm / Import điểm môn học / Import từ file excel)",
+ "module": "DIEM",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 16,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

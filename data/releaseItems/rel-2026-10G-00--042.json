@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 42,
+ "menu": "NetWEB sinh viên: Cập nhật thông tin lý lịch",
+ "menuRaw": "NetWEB sinh viên: Cập nhật thông tin lý lịch",
+ "module": "QLSV",
+ "paren": false,
+ "product": "netweb",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 10,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

@@ -1,0 +1,42 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chọn MH_B làm tiên quyết của MH_B",
+   "expected": "Chương trình chặn quan hệ vòng.",
+   "name": "Môn tiên quyết là chính nó",
+   "steps": [
+    "Thêm MH_B vào danh sách tiên quyết của MH_B.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DKMH-003",
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục môn học; điểm của SV_A",
+  "next": [
+   "DKMH-005",
+   "DKMH-010"
+  ],
+  "out": "Ràng buộc tiên quyết MH_A → MH_B"
+ },
+ "expected": "Quan hệ tiên quyết MH_A → MH_B được lưu. (Theo DKMH_DangKyMonHocOFFLINE, mục III.1; chi tiết ở DKMH_DinhNghiaMonTienQuyet.)",
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, song hành, học trước",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ test); tài khoản có quyền trên phân hệ Đăng ký MH.",
+  "Mở menu Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, song hành, học trước.",
+  "Chọn môn MH_B (một môn mở trong học kỳ test, ghi lại mã) và thêm môn tiên quyết MH_A (môn mà SV_A chưa đạt).",
+  "Bấm Lưu.",
+  "Mở lại màn hình, kiểm tra MH_A là tiên quyết của MH_B."
+ ],
+ "title": "Định nghĩa môn tiên quyết, song hành, học trước",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

@@ -1,0 +1,31 @@
+{
+ "actual": "",
+ "code": "KLGD-016",
+ "createdAt": "2026-10-28T17:05:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm môn học (phân hệ Kế hoạch); CBGD test (KLGD-012)",
+  "next": [
+   "KLGD-018",
+   "KLGD-026"
+  ],
+  "out": "Nhóm có CBGD phân công bổ sung"
+ },
+ "expected": "• Nhập được mã CBGD bổ sung cho nhóm (trường hợp trợ giảng hoặc nhiều giảng viên dạy một nhóm) và lưu được.\n• Dữ liệu này dùng cho chức năng Chốt từ phân công bổ sung (KLGD-018).\n(Theo KLGD_QuanLyKhoiLuongGiangDay, mục III.4.2.)",
+ "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Phân công cán bộ giảng dạy/ Bổ sung cán bộ giảng dạy",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft (HVNG - Copy) và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ dùng để test); tài khoản có quyền quản trị phân hệ Khối lượng. Cần cán bộ đã có trong danh sách tính KLGD (KLGD-012).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Phân công cán bộ giảng dạy/ Bổ sung cán bộ giảng dạy.",
+  "Chọn một nhóm môn học (ghi lại mã nhóm); tại cột CBGD đã phân công bổ sung, nhập mã CBGD của KLGD-012.",
+  "Bấm Lưu.",
+  "Mở lại màn hình, kiểm tra nhóm có thêm CBGD bổ sung."
+ ],
+ "title": "Bổ sung cán bộ giảng dạy cho nhóm học",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

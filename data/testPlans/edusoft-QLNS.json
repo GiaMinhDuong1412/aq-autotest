@@ -1,0 +1,1200 @@
+{
+ "createdAt": "2026-10-29T04:31:24.023Z",
+ "docs": [
+  {
+   "name": "QLNS_CapNhatQuyetDinhVaoRaCBCNV",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_KhoiLuongGiangDay",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyCongTacPhep",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyDanhSachNghiThaiSan",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyDaoTaoVienChuc",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyDoanTheChucVu",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyHocHamHocVi",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyLyLichCBCNV",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyThongTinBaoHiem",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLNS_QuanLyThongTinYTe",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách viên chức (Print Preview, Save, In)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.2",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import danh sách viên chức từ tập tin Excel/PDF hoặc clipboard"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.2",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import có chọn \"Tập tin có sử dụng tiêu đề\" thì bỏ qua dòng đầu"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.2",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import không chọn \"Tập tin có sử dụng tiêu đề\" thì dòng đầu vẫn được import"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.3",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chức năng Import chỉ thêm mới, không cập nhật danh sách đã tồn tại"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.3",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật danh sách viên chức theo file"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.3",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cập nhật theo file chỉ cập nhật dữ liệu đang tồn tại, không thêm danh sách mới"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đổi mã viên chức"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.5",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đổi mã nhiều viên chức theo file (Excel/PDF)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.6",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Gộp mã viên chức vào mã đang tồn tại"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.7",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm viên chức vào danh sách và lưu"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.7",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy thao tác thêm viên chức"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.8",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Sửa thông tin viên chức và lưu"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.8",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy thao tác sửa thông tin viên chức"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.9",
+   "kind": "clean",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xóa thông tin viên chức (xác nhận Có)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 1.9",
+   "kind": "alt",
+   "menu": "Nhân sự / Danh sách viên chức / Danh mục viên chức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy xóa viên chức khi chọn Không ở hộp thoại xác nhận"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 2",
+   "kind": "setup",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Danh mục lý do quyết định",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục lý do quyết định"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 2",
+   "kind": "setup",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Danh sách người ký quyết định",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh sách người ký quyết định"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định vào mới",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định vào mới cho từng viên chức (Thêm, chọn viên chức, Lưu)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định vào mới",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định vào mới nhiều viên chức theo file Import (MaDVMoi, LyDoVRCT, MaNV)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.2",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định chuyển đơn vị",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định chuyển đơn vị cho một hay nhiều viên chức (chọn Mã đơn vị mới)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.3",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định nghỉ việc",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định nghỉ việc (chọn loại lý do phù hợp)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định tạm nghỉ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định tạm nghỉ (chọn loại lý do phù hợp)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.5",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định vào lại",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định vào lại (chọn loại lý do phù hợp)"
+  },
+  {
+   "docRef": "QLNS_CapNhatQuyetDinhVaoRaCBCNV, mục 3.6",
+   "kind": "main",
+   "menu": "Nhân sự / Danh sách viên chức / Quyết định vào/ra viên chức / Quyết định biệt phái",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Quyết định biệt phái (chọn loại lý do phù hợp)"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 1.1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Định nghĩa định mức/ Chuẩn định mức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa chuẩn định mức theo ngạch + học hàm học vị"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 1.2",
+   "kind": "setup",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Định nghĩa định mức/Phần trăm định mức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa phần trăm định mức theo chức vụ"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 1.2",
+   "kind": "setup",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Định nghĩa định mức/ Định mức năm đầu chức vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa phần trăm định mức chức vụ đặc biệt ở năm đầu"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập thủ công khối lượng giảng dạy học kỳ cho từng viên chức"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import khối lượng giảng dạy học kỳ từ file Excel (MaNV, EmailNV, SoGio)"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xuất cấu trúc file import tại màn hình import"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import: kiểm tra dữ liệu, liệt kê dữ liệu sai và hợp lệ, chỉ lưu dữ liệu hợp lệ"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import: dò MaNV không có thì dò theo EmailNV (điều kiện OR)"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import: viên chức đã có khối lượng trong cùng học kỳ thì ghi đè số giờ cũ"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng giảng dạy học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import khối lượng giảng dạy theo từng học kỳ được chọn ở màn hình chính"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng nghiên cứu khoa học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập thủ công khối lượng nghiên cứu khoa học trong năm"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng nghiên cứu khoa học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import khối lượng nghiên cứu khoa học từ file Excel (MaNV, EmailNV, SoDiem)"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.2",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng nghiên cứu khoa học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Dữ liệu NCKH gắn vào năm học tương ứng với học kỳ đang chọn, import một lần/năm"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Nhập khối lượng/ Khối lượng phục vụ học kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập khối lượng công tác phục vụ theo học kỳ"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/Kết quả khối lượng/ Tính khối lượng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tính định mức khối lượng trong năm cho viên chức"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/Kết quả khối lượng/ Tính khối lượng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tính định mức trừ số ngày nghỉ phép, nghỉ đi học, nghỉ thai sản"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/Kết quả khối lượng/ Tính khối lượng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tính lại khối lượng khi năm đã từng được tính, hiển thị thông tin người tính cuối cùng"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Kết quả khối lượng/ Kết quả khối lượng dạng danh sách",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem kết quả khối lượng dạng danh sách"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Kết quả khối lượng/ Kết quả khối lượng dạng chi tiết",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem kết quả khối lượng dạng chi tiết theo biến động và ngày hiệu lực"
+  },
+  {
+   "docRef": "QLNS_KhoiLuongGiangDay, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Khối lượng giảng dạy/ Kết quả khối lượng/ Nhật ký tính khối lượng",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem nhật ký tính khối lượng"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình công tác",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Mở màn hình quản lý quá trình công tác"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình công tác",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quyết định công tác (nhập chi tiết, thêm/xóa nhân viên trong danh sách, lưu)"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình công tác",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật quyết định công tác đã tạo (Sửa, Lưu)"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình công tác",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách các quyết định công tác được chọn"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình công tác",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In chi tiết quyết định phân công chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 1.5",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê chi phí công tác theo điều kiện và in biểu"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình nghỉ phép",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Mở màn hình quản lý quá trình nghỉ phép"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình nghỉ phép",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quyết định nghỉ phép (nhập chi tiết, lưu)"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Công tác - phép/ Quá trình nghỉ phép",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật quyết định nghỉ phép đã tạo (Sửa, Lưu)"
+  },
+  {
+   "docRef": "QLNS_QuanLyCongTacPhep, mục 2.4",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê nghỉ phép theo điều kiện lọc và in"
+  },
+  {
+   "docRef": "QLNS_QuanLyDanhSachNghiThaiSan, mục 1",
+   "kind": "main",
+   "menu": "Nhân sự/ Thai sản/ Danh sách nghỉ thai sản",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Mở màn hình quản lý danh sách nghỉ thai sản"
+  },
+  {
+   "docRef": "QLNS_QuanLyDanhSachNghiThaiSan, mục 2",
+   "kind": "main",
+   "menu": "Nhân sự/ Thai sản/ Danh sách nghỉ thai sản",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới thông tin nghỉ thai sản của nhân viên vào danh sách"
+  },
+  {
+   "docRef": "QLNS_QuanLyDanhSachNghiThaiSan, mục 3",
+   "kind": "main",
+   "menu": "Nhân sự/ Thai sản/ Danh sách nghỉ thai sản",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật thông tin nghỉ thai sản của nhân viên đã tạo"
+  },
+  {
+   "docRef": "QLNS_QuanLyDanhSachNghiThaiSan, mục 4",
+   "kind": "main",
+   "menu": "Nhân sự/ Thai sản/ In danh sách nghỉ thai sản",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách nghỉ thai sản theo định dạng của chương trình"
+  },
+  {
+   "docRef": "QLNS_QuanLyDanhSachNghiThaiSan, mục 4",
+   "kind": "main",
+   "menu": "Nhân sự/ Thai sản/ In danh sách theo mẫu C70A-HD",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách nghỉ thai sản theo mẫu C70A-HD"
+  },
+  {
+   "docRef": "QLNS_QuanLyDaoTaoVienChuc, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Đào tạo/ Yêu cầu đào tạo (thống kê)",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới yêu cầu đào tạo"
+  },
+  {
+   "docRef": "QLNS_QuanLyDaoTaoVienChuc, mục 1.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Đào tạo/ Yêu cầu đào tạo (thống kê)",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật yêu cầu đào tạo"
+  },
+  {
+   "docRef": "QLNS_QuanLyDaoTaoVienChuc, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Đào tạo/ Qúa trình đào tạo bồi dưỡng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới thông tin quá trình đào tạo bồi dưỡng"
+  },
+  {
+   "docRef": "QLNS_QuanLyDaoTaoVienChuc, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Đào tạo/ Qúa trình đào tạo bồi dưỡng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật quá trình đào tạo bồi dưỡng"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục loại công tác đoàn",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục loại công tác đoàn (Mã, Tên loại công tác đoàn)"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 1",
+   "kind": "main",
+   "menu": "Nhân sự/ Đoàn tham quan/ Quá trình công tác đoàn",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Lập quyết định quá trình công tác đoàn (danh sách nhân viên, người ngoài trường, trưởng đoàn, file đính kèm)"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Đoàn tham quan/ Quá trình công tác đoàn",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc chọn 1 trưởng đoàn trong danh sách nhân viên và danh sách người ngoài trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Danh mục chức vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh mục chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Danh mục chức vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã chức vụ, Tên chức vụ khi tạo danh mục chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định bổ nhiệm chức vụ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quyết định bổ nhiệm (phân công) chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.2",
+   "kind": "alt",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định bổ nhiệm chức vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã viên chức, Ngày quyết định, Chức vụ, Ngày hiệu lực khi lập quyết định bổ nhiệm"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định bổ nhiệm chức vụ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật (sửa) quyết định bổ nhiệm chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định bổ nhiệm chức vụ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách và in chi tiết quyết định bổ nhiệm chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định thôi chức vụ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quyết định bãi miễn (thôi) chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.3",
+   "kind": "alt",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định thôi chức vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã viên chức, Ngày quyết định, Ngày hiệu lực, Chức vụ bãi miễn khi lập quyết định bãi miễn"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định thôi chức vụ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật (sửa) quyết định bãi miễn chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyDoanTheChucVu, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Bổ nhiệm & thôi chức vụ/ Quyết định thôi chức vụ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách và in chi tiết quyết định bãi miễn chức vụ"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học hàm/ Danh mục học hàm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục học hàm"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học/ Danh mục phân loại học vị - bậc học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục phân loại học vị - bậc học"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học/ Danh mục học vị - bậc học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục học vị - bậc học"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 1",
+   "kind": "setup",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học/ Danh mục trường đào tạo",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục trường đào tạo"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học hàm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quyết định học hàm"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học hàm",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật quyết định học hàm"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới quá trình thay đổi học vị - bậc học"
+  },
+  {
+   "docRef": "QLNS_QuanLyHocHamHocVi, mục 3.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật quá trình thay đổi học vị - bậc học"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật thông tin lý lịch CBCNV theo 6 tab và lưu"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 1.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch viên chức theo file",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật lý lịch viên chức theo file (xuất cấu trúc Excel và import)"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 1.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Danh sách viên chức/ Import anhr CBCNV",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import ảnh CBCNV theo thư mục, tên file là mã CBCNV"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 1.3",
+   "kind": "alt",
+   "menu": "Nhân sự/ Danh sách viên chức/ Import anhr CBCNV",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import ảnh CBCNV với file ảnh vượt quá 200Kb"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Danh sách viên chức/ Nhập thông tin thư ký khoa",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập thông tin thư ký khoa (mã viên chức, loại thư ký) và lưu"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Khai thác báo biểu/ Lý lịch viên chức/ In lý nhân viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In lý lịch CBCNV (mẫu rút gọn, mẫu đầy đủ, mẫu mới)"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Khai thác báo biểu/ Lý lịch viên chức/ In kiểm tra hồ sơ nhân viên - theo CBNV",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In kiểm tra hồ sơ nhân viên theo CBNV"
+  },
+  {
+   "docRef": "QLNS_QuanLyLyLichCBCNV, mục 2.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Khai thác báo biểu/ Lý lịch viên chức/ In kiểm tra hồ sơ nhân viên - theo file",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In kiểm tra hồ sơ nhân viên theo file (xuất cấu trúc Excel và import)"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Viên chức chưa có sổ BH",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xem danh sách viên chức chưa có sổ BH"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Viên chức chưa có sổ BH",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách viên chức chưa có sổ BH"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Viên chức chưa có sổ BH",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chuyển viên chức chưa có sổ BH vào danh sách có sổ"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.2",
+   "kind": "setup",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động % mức đóng bảo hiểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo mới biến động % mức đóng bảo hiểm"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.2",
+   "kind": "setup",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động % mức đóng bảo hiểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cập nhật biến động % mức đóng bảo hiểm"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động tăng trong tháng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới biến động tăng bảo hiểm trong tháng"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.3",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động tăng trong tháng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật biến động tăng bảo hiểm trong tháng"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động giảm trong tháng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới biến động giảm bảo hiểm trong tháng"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.4",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động giảm trong tháng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật biến động giảm bảo hiểm trong tháng"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.5",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ In biến động bảo hiểm D02_TS",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In biến động bảo hiểm D02_TS theo đợt, tháng, năm"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.6",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Xuất file biến động tăng D02_TS",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xuất file biến động tăng D02_TS"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.7",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Xuất file biến động giảm D02_TS",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xuất file biến động giảm D02_TS"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.8",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Thay đổi thông tin người đóng BH",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới thay đổi thông tin cá nhân người đóng BH"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 1.8",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Thay đổi thông tin người đóng BH",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật thay đổi thông tin cá nhân người đóng BH"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm phúc lợi/ Bồi thường bảo hiểm viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới danh sách bồi thường bảo hiểm viên chức"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm phúc lợi/ Bồi thường bảo hiểm viên chức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật danh sách bồi thường bảo hiểm viên chức"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinBaoHiem, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự/ Bảo hiểm/ Bảo hiểm phúc lợi/ In danh sách bồi thường bảo hiểm",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách bồi thường bảo hiểm theo điều kiện lọc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.1",
+   "kind": "setup",
+   "menu": "Nhân sự / Phân loại giảng viên / Danh mục phân loại ưu đãi giáo viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh mục nhóm thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.1",
+   "kind": "alt",
+   "menu": "Nhân sự / Phân loại giảng viên / Danh mục phân loại ưu đãi giáo viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã nhóm thuốc, Tên nhóm thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.2",
+   "kind": "setup",
+   "menu": "Nhân sự / Quản lý y tế / Danh mục / Danh mục đơn vị tính",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh mục đơn vị tính"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.2",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Danh mục / Danh mục đơn vị tính",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã đơn vị tính, Tên đơn vị tính"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.3",
+   "kind": "setup",
+   "menu": "Nhân sự / Quản lý y tế / Danh mục / Danh mục thuốc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh mục thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 1.3",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Danh mục / Danh mục thuốc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã thuốc, Tên thuốc, Đơn vị tính"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Nhập thuốc / Nhập thuốc",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới phiếu nhập thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.1",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Nhập thuốc / Nhập thuốc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Số phiếu nhập thuốc, Ngày nhập thuốc, Danh sách thuốc và Số lượng nhập"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.1",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Nhập thuốc / Nhập thuốc",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật phiếu nhập thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Tồn kho / Xem/Tính tồn kho",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tính tồn kho theo tháng/năm khóa sổ"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.2",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Tồn kho / Khóa sổ thuốc",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Khóa sổ thuốc theo tháng"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.2",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Tồn kho / Khóa sổ thuốc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tháng đã khóa sổ không thể tính lại tồn kho và cập nhật phiếu nhập thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 2.2",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Tồn kho / Khóa sổ thuốc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Mở khóa sổ thuốc rồi tính lại tồn kho và cập nhật phiếu nhập"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe nhập học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới khám sức khỏe nhập học"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.1",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe nhập học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã SV, Ngày khám, Loại sức khỏe (nhập học)"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.1",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe nhập học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật khám sức khỏe nhập học"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.2",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách sức khỏe cần theo dõi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo danh sách sức khỏe cần theo dõi (chọn một hoặc nhiều kết quả khám)"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.3",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe định kỳ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Lọc danh sách khám sức khỏe định kỳ theo Từ ngày, Đến ngày và đối tượng khám"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.3",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe định kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới kết quả khám sức khỏe định kỳ"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.3",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe định kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Loại đối tượng y tế, Loại khám sức khỏe, Mã đối tượng, Phân loại S.khỏe"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.3",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe định kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật kết quả khám sức khỏe định kỳ"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới khám sức khỏe ra trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Mã SV, Ngày khám, Loại sức khỏe (ra trường)"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật khám sức khỏe ra trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách khám sức khỏe ra trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import danh sách khám sức khỏe ra trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.4",
+   "kind": "clean",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám sức khỏe ra trường",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xóa danh sách khám sức khỏe ra trường"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo mới phiếu khám bệnh kèm cấp phát thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "alt",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập lại thông tin thuốc cấp phát bằng nút X"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Sau khi lưu khám bệnh chuyển sang giao diện in đơn thuốc"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cập nhật sổ khám chữa bệnh"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "main",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách khám bệnh"
+  },
+  {
+   "docRef": "QLNS_QuanLyThongTinYTe, mục 3.5",
+   "kind": "clean",
+   "menu": "Nhân sự / Quản lý y tế / Khám sức khỏe / Danh sách khám bệnh",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xóa danh sách khám bệnh"
+  }
+ ],
+ "module": "QLNS",
+ "product": "edusoft",
+ "requestedAt": "2026-10-29T04:31:24.023Z",
+ "requestedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:02:30.087Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:02:30.087Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

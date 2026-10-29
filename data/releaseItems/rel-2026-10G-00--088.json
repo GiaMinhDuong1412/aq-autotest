@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KHGD",
+ "idx": 88,
+ "menu": "Kế hoạch / Thời khóa biểu / Import từ file / Import nhóm / tổ học & TKB",
+ "menuRaw": "(Kế hoạch / Thời khóa biểu / Import từ file/ Import nhóm/ tổ học & TKB)",
+ "module": "KHGD",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nam",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Minh",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 12,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

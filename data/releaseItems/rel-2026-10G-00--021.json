@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLTS",
+ "idx": 21,
+ "menu": "NetWEB: Đăng ký xét tuyển",
+ "menuRaw": "NetWEB: Đăng ký xét tuyển",
+ "module": "QLTS",
+ "paren": false,
+ "product": "netweb",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 11,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DKMH",
+ "idx": 110,
+ "menu": "Đăng ký MH / Hủy KQ ĐKMH / Hủy KQ ĐKMH - 1 nhóm học / một số SV",
+ "menuRaw": "(Đăng ký MH / Hủy KQ ĐKMH / Hủy KQ ĐKMH - 1 nhóm học/một số SV)",
+ "module": "DKMH",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 11,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

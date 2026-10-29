@@ -1,0 +1,73 @@
+AQ AUTOTEST – TEST ĐĂNG NHẬP EDUSOFT BẰNG SCRIPT (CHẾ ĐỘ TRÌNH DIỄN)
+=====================================================================
+
+Bộ này hiện chỉ có kịch bản CHUNG-001 – đăng nhập Edusoft:
+    Luồng chính – Bước 1 → 6 đúng như kịch bản trên console: mở Edusoft.NET.exe theo đường dẫn
+  trong config.json, chờ khung đăng nhập, nhập tài khoản, nhập mật khẩu, bấm Đăng nhập.
+  Sau đó các luồng thay thế theo thứ tự: A1 đường dẫn sai (không mở được), A2 sai mật khẩu và
+  A3 bỏ trống tên đăng nhập (mỗi luồng mở lại Edusoft, phải bị chặn, script tự đóng thông báo),
+  A4 khung đen lần mở đầu (chỉ ghi nhận nếu xảy ra). Xong thì đóng Edusoft đã mở.
+Các kịch bản nghiệp vụ sẽ bổ sung sau (tải lại bộ chạy mới từ console).
+
+Script thao tác trực tiếp trên cửa sổ Edusoft đang mở: chuột di chuyển và bấm thật,
+có khung đỏ quanh ô/nút sắp thao tác và dải chú thích bước đang chạy ở mép trên màn hình,
+để support quan sát. Mỗi bước chụp ảnh; có thể quay video bằng OBS.
+
+LẦN ĐẦU (và mỗi khi tải bộ test .zip mới)
+1. Giải nén, chạy cai-dat.bat (tự xin quyền admin):
+   - tự cài Python 3.12 nếu máy chưa có (qua winget), cài thư viện (pywinauto, openpyxl…);
+   - cài "AQ Autotest Agent" chạy nền cùng Windows: nhận lệnh "Chạy test đăng nhập" từ
+     AQ Autotest Console, tự cập nhật bộ test lên bản mới nhất rồi chạy.
+   Không tự cài được Python thì cài tay từ https://www.python.org/downloads/
+   (tick "Add python.exe to PATH") rồi chạy lại cai-dat.bat.
+2. Kiểm tra config.json: "exe" là đúng đường dẫn Edusoft.NET.exe cần test, "account" là tài khoản test.
+
+CHẠY
+- Trên console (trang Máy chạy thử) bấm "Chạy test đăng nhập" → xác nhận lưu file
+  aq-autotest-update-run.json vào thư mục Tải về → Agent tự cập nhật bộ test (mã script, kịch bản,
+  cấu hình) lên bản mới nhất rồi mở cửa sổ test sau vài giây.
+- Hoặc chạy chay-test.bat trực tiếp.
+- Lần đầu script hỏi mật khẩu Edusoft 2 lần (gõ không hiện chữ) và lưu trong Windows Credential Manager.
+  Mật khẩu đã lưu sai: chạy quen-mat-khau.bat để nhập lại. Nếu đăng nhập báo sai mật khẩu, script
+  cũng tự hỏi lại mật khẩu ngay trong lúc chạy.
+
+KỊCH BẢN HIỆN CÓ
+- CHUNG-001  Đăng nhập Edusoft (luồng chính + sai mật khẩu, bỏ trống tên, sai tên đăng nhập…).
+- QLSV-001   Thêm sinh viên tạm mới vào Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên:
+             tạo sinh viên AUTO<ngày giờ phút>, thử trùng mã, thử bỏ trống Tên, cuối cùng XÓA
+             sinh viên test (chỉ xác nhận xóa khi hộp thoại nêu đúng mã AUTO…; không thì để xóa tay).
+- Chạy riêng một kịch bản:  chay-test.bat QLSV-001
+- Kịch bản mới: lần chạy đầu có thể dừng ở bước giao diện chưa khớp; script ghi file ui-*.txt
+  (cây giao diện Edusoft lúc đó) vào thư mục lượt chạy để Claude chỉnh lại kịch bản.
+
+TẮT BỘ GÕ TIẾNG VIỆT (Unikey/EVKey) KHI CHẠY TEST: script gõ phím thật, bộ gõ Telex có thể đổi chữ
+(vd "dd" thành "đ").
+
+TRONG LÚC CHẠY
+- Script tìm đúng ô Tên đăng nhập / ô Mật khẩu theo giao diện Edusoft, đưa con trỏ vào ô rồi gõ phím thật;
+  ô Tên đăng nhập được đọc lại, nếu mật khẩu lỡ vào ô Tên đăng nhập thì dừng và báo lỗi.
+- Script tự làm toàn bộ, support chỉ quan sát: chuột di chuyển thật, khung đỏ quanh ô/nút
+  sắp thao tác, dải chú thích bước đang chạy ở mép trên màn hình chính.
+- Không chạm chuột/bàn phím trong lúc script chạy.
+- Lần mở đầu nếu khung đăng nhập hiện đen / không hiện sau 60 giây, script tự đóng và chạy lại.
+- Gặp hộp thoại lỗi hệ thống, script tự nhấn Ctrl+Shift+E (chi tiết lỗi) và
+  Ctrl+Shift+F (menu code), chụp ảnh và ghi lỗi EX.
+
+CẬP NHẬT BỘ TEST – TỰ ĐỘNG
+- Không cần làm gì: mỗi lần bấm "Chạy test đăng nhập", file lệnh mang theo bản mới nhất của
+  bộ test và cấu hình (đường dẫn, tài khoản…); Agent áp dụng trước khi chạy.
+- Chỉ tải lại .zip khi cài trên máy mới. Chạy chay-test.bat bằng tay cũng tự áp dụng file
+  lệnh còn trong thư mục Tải về.
+- File đã dùng được đổi tên thành ...da-xu-ly.json / ...da-ap-dung.json; nhật ký ở agent.log.
+
+SAU KHI CHẠY
+- Mỗi lượt chạy có ket-qua.xlsx (từng bước, kết quả, ảnh) trong thư mục lượt chạy;
+  results\tong-hop.xlsx cộng dồn mọi lượt chạy.
+- Kết quả nằm trong thư mục results\<mã lượt chạy>\ (result.json, ảnh từng bước, video nếu có).
+- Vào AQ Autotest Console → Máy chạy thử → "Nhập kết quả…" → chọn thư mục results.
+  Console tạo lượt chạy (kèm ảnh), cập nhật trạng thái kịch bản, ghi lỗi và X/O cho menu release.
+
+QUAY VIDEO (TÙY CHỌN)
+- Mở OBS → Tools → WebSocket Server Settings → bật "Enable WebSocket server" (cổng 4455).
+- Trong config.json đặt "obs": {"enabled": true}. Script tự bắt đầu/dừng quay cho mỗi kịch bản
+  và chép video vào thư mục kết quả.

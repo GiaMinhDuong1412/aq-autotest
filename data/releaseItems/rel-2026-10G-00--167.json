@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DIEM",
+ "idx": 167,
+ "menu": "NetWEB giảng viên: Xem điểm môn giảng dạy",
+ "menuRaw": "NetWEB giảng viên: Xem điểm môn giảng dạy",
+ "module": "DIEM",
+ "paren": false,
+ "product": "netweb",
+ "r1": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 24,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

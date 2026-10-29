@@ -1,0 +1,8 @@
+# dữ liệu riêng của từng máy (cấu hình, mật khẩu Netweb) – không đưa lên git
+local/
+__pycache__/
+*.pyc
+*.tmp
+*.json.tmp
+.DS_Store
+Thumbs.db

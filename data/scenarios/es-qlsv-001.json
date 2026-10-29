@@ -1,0 +1,129 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "after": [
+    "cancel"
+   ],
+   "auto": [
+    "click: Thêm",
+    "type: Mã SV|Mã sinh viên|MSSV = {MSSV}",
+    "type: Họ lót|Họ và chữ lót|Họ đệm = {HOLOT}",
+    "type: Tên|Tên SV|Tên sinh viên = Hai",
+    "date?: Ngày sinh = {NGAYSINH}",
+    "click: Lưu",
+    "expect_dialog: trùng|tồn tại|đã có"
+   ],
+   "condition": "Mã SV {MSSV} vừa thêm ở luồng chính đã có trong Danh mục sinh viên",
+   "expected": "Chương trình chặn lưu và báo mã sinh viên đã tồn tại; danh mục chỉ có một {MSSV}. (Cần xác nhận: tài liệu chưa nêu quy tắc chặn trùng.)",
+   "name": "Trùng mã sinh viên",
+   "needs": "main",
+   "steps": [
+    "Bấm Thêm, nhập lại Mã SV = {MSSV} với Tên khác.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "after": [
+    "cancel"
+   ],
+   "auto": [
+    "click: Thêm",
+    "type: Mã SV|Mã sinh viên|MSSV = {MSSV2}",
+    "type: Họ lót|Họ và chữ lót|Họ đệm = {HOLOT}",
+    "type: Tên|Tên SV|Tên sinh viên = ",
+    "date?: Ngày sinh = {NGAYSINH}",
+    "click: Lưu",
+    "expect_dialog: tên|bắt buộc|nhập|trống|thiếu"
+   ],
+   "condition": "Thêm sinh viên mới {MSSV2} nhưng không nhập Tên",
+   "expected": "Chương trình báo phải nhập Tên (dòng bắt buộc có dấu * đỏ), không lưu sinh viên {MSSV2}. (Theo mục 2.2: dòng có dấu sao đỏ là bắt buộc nhập.)",
+   "name": "Bỏ trống Tên (trường bắt buộc)",
+   "needs": "main",
+   "steps": [
+    "Bấm Thêm, nhập Mã SV = {MSSV2}, Họ lót, Ngày sinh; để trống Tên.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "always": true,
+   "auto": [
+    "delete_row?: {MSSV}",
+    "delete_row?: {MSSV2}"
+   ],
+   "condition": "Xóa sinh viên test đã tạo trong lần chạy này",
+   "expected": "Sinh viên test bị xóa khỏi Danh mục sinh viên; dữ liệu thật không bị ảnh hưởng. (Theo mục 2.2 – chức năng Xóa: chương trình truy vấn dữ liệu liên quan và yêu cầu xác nhận.)",
+   "name": "Dọn dữ liệu test",
+   "steps": [
+    "Chọn dòng {MSSV} trong Danh mục sinh viên, bấm Xóa.",
+    "Xác nhận xóa (chỉ khi hộp thoại nêu đúng mã {MSSV}); xóa cả {MSSV2} nếu luồng A2 lỡ lưu được."
+   ]
+  }
+ ],
+ "auto": [
+  [],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+   "expect: Thêm",
+   "dump: danh-muc-sinh-vien"
+  ],
+  [
+   "click: Thêm",
+   "wait: 1.5",
+   "dump: sau-khi-bam-them"
+  ],
+  [
+   "type: Mã SV|Mã sinh viên|MSSV = {MSSV}",
+   "type: Họ lót|Họ và chữ lót|Họ đệm = {HOLOT}",
+   "type: Tên|Tên SV|Tên sinh viên = {TEN}",
+   "date: Ngày sinh = {NGAYSINH}",
+   "select?: Phái|Giới tính = Nam",
+   "type?: Nơi sinh = {NOISINH}"
+  ],
+  [
+   "save: Lưu"
+  ],
+  [
+   "find_row: {MSSV}"
+  ]
+ ],
+ "code": "QLSV-001",
+ "createdAt": "2026-10-29T09:25:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phiên đăng nhập Edusoft bằng tài khoản test (CHUNG-001)",
+  "next": [],
+  "out": "Sinh viên tạm AUTO<ngày giờ phút> trong Danh mục sinh viên — bị xóa ở luồng Dọn dữ liệu test"
+ },
+ "expected": "Chương trình lưu sinh viên tạm mới vào Danh mục sinh viên (danh mục toàn trường, không theo học kỳ); sinh viên hiển thị trong danh sách với đúng Mã SV, Họ lót, Tên, Ngày sinh, Phái, Nơi sinh đã nhập. Dòng có dấu * đỏ là bắt buộc. (Theo QLSV_QuanLyDanhSachSinhVienHocKy, mục 2.2 Quản lý danh mục sinh viên – chức năng Thêm.)",
+ "menu": "Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": true,
+ "source": {
+  "docRef": "QLSV_QuanLyDanhSachSinhVienHocKy.pdf – mục 2.2 Quản lý danh mục sinh viên (Thêm, Xóa); QLSV.pdf (lưu đồ: Danh mục sinh viên)",
+  "plan": null
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001 (script tự đăng nhập bằng tài khoản test).",
+  "Mở menu Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên.",
+  "Bấm Thêm để nhập 1 sinh viên tạm mới; khung chi tiết bên phải sẵn sàng nhập.",
+  "Nhập dữ liệu cơ bản (dòng có dấu * đỏ là bắt buộc): Mã SV = {MSSV}, Họ lót = Kiem Thu, Tên = Mot, Ngày sinh = 01/01/2005, Phái = Nam, Nơi sinh = Ha Noi.",
+  "Bấm Lưu.",
+  "Kiểm tra sinh viên {MSSV} xuất hiện trong Danh mục sinh viên."
+ ],
+ "title": "Thêm sinh viên tạm mới vào Danh mục sinh viên",
+ "updatedAt": "2026-10-29T09:50:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "HOLOT": "Kiem Thu",
+  "MSSV": "AUTO{ddHHMM}",
+  "MSSV2": "AUTO{ddHHMM}B",
+  "NGAYSINH": "01/01/2005",
+  "NOISINH": "Ha Noi",
+  "TEN": "Mot"
+ },
+ "version": "v2026.101.00-HVNG"
+}

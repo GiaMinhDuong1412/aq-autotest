@@ -1,0 +1,30 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KLGD",
+ "idx": 193,
+ "menu": "Khối lượng / Tính khối lượng / Tính khối lượng / Tính khối lượng theo đợt",
+ "menuRaw": "(Khối lượng / Tính khối lượng / Tính khối lượng / Tính khối lượng theo đợt)",
+ "module": "KLGD",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [
+  "es-klgd-022"
+ ],
+ "stt": 8,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

@@ -1,0 +1,33 @@
+{
+ "actual": "",
+ "code": "KLGD-019",
+ "createdAt": "2026-10-28T17:05:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Dữ liệu đã chốt (KLGD-018)",
+  "next": [
+   "KLGD-022",
+   "KLGD-023",
+   "KLGD-026"
+  ],
+  "out": "Hiệu chỉnh nhóm; CBGD dạy thay 3 tiết"
+ },
+ "expected": "• Thêm và xóa được hiệu chỉnh trên danh sách nhóm - tổ KLGD.\n• Nhập được một hoặc nhiều CBGD dạy thay cho một nhóm tổ, kèm số tiết.\n(Theo KLGD_QuanLyKhoiLuongGiangDay, mục III.4.5, III.4.6.)",
+ "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft (HVNG - Copy) và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ dùng để test); tài khoản có quyền quản trị phân hệ Khối lượng. Cần dữ liệu đã chốt (KLGD-018).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy.",
+  "Ở Danh sách nhóm - tổ KLGD, chọn nhóm của KLGD-018, chọn hiệu chỉnh; nhập thông tin cần hiệu chỉnh (vd thời gian dạy ngoài giờ), bấm Lưu.",
+  "Mở .../ Hiệu chỉnh khối lượng giảng dạy/ CBGD thay thế (dạy dùm); chọn cùng nhóm, bấm Sửa.",
+  "Ở giao diện CBGD thay thế: bấm Thêm, chọn một CBGD dạy thay và nhập số tiết thay thế = 3, bấm Lưu.",
+  "Kiểm tra nhóm hiển thị CBGD dạy thay và số tiết."
+ ],
+ "title": "Hiệu chỉnh khối lượng giảng dạy và CBGD dạy thay",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 36,
+ "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định đổi lớp",
+ "menuRaw": "Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định đổi lớp",
+ "module": "QLSV",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 4,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

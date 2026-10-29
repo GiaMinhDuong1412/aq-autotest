@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 74,
+ "menu": "Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp",
+ "menuRaw": "(Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp)",
+ "module": "QLSV",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 42,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

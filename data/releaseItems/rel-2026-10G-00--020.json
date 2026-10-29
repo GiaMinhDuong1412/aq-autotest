@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLTS",
+ "idx": 20,
+ "menu": "Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh / Nhập hồ sơ đăng ký xét tuyển",
+ "menuRaw": "Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh  / Nhập hồ sơ đăng ký xét tuyển",
+ "module": "QLTS",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "64361",
+  "ex": true,
+  "note": "EX: 64361",
+  "res": "o"
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 10,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

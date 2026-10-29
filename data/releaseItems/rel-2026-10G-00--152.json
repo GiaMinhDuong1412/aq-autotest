@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DIEM",
+ "idx": 152,
+ "menu": "Quản lý điểm / Quản lý chứng chỉ / Chứng chỉ ngoài / Chứng chỉ ngoài của SV học kỳ",
+ "menuRaw": "(Quản lý điểm / Quản lý chứng chỉ / Chứng chỉ ngoài / Chứng chỉ ngoài của SV học kỳ)",
+ "module": "DIEM",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 9,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

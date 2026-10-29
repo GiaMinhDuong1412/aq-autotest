@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "TEST_TCMAX đã tồn tại",
+   "expected": "Chương trình báo trùng mã, không tạo bộ thứ hai.",
+   "name": "Trùng mã bộ tín chỉ",
+   "steps": [
+    "Thêm lại TEST_TCMAX với số tín chỉ khác.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "Nhập số tín chỉ âm hoặc chữ",
+   "expected": "Chương trình không nhận giá trị không hợp lệ.",
+   "name": "Số tín chỉ không hợp lệ",
+   "steps": [
+    "Nhập số tín chỉ tối đa = -1 (hoặc \"abc\").",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DKMH-002",
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "—",
+  "next": [
+   "DKMH-001",
+   "DKMH-005"
+  ],
+  "out": "Bộ tín chỉ tối đa TEST_TCMAX = 6 tín chỉ"
+ },
+ "expected": "Bộ TEST_TCMAX được lưu và chọn được khi gán cho đối tượng ở chỉnh định thông số học kỳ. (Theo DKMH_DangKyMonHocOFFLINE, mục III.1 Định nghĩa tín chỉ tối đa.)",
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa tín chỉ tối đa",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ test); tài khoản có quyền trên phân hệ Đăng ký MH.",
+  "Mở menu Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa tín chỉ tối đa.",
+  "Bấm Thêm, nhập mã bộ = TEST_TCMAX, số tín chỉ tối đa = 6.",
+  "Bấm Lưu.",
+  "Đóng và mở lại màn hình, kiểm tra TEST_TCMAX còn với giá trị 6.",
+  "Mở Chỉnh định thông số học kỳ, kiểm tra TEST_TCMAX chọn được làm giá trị của SM00_CAMMHMAX_DIEN (chỉ xem)."
+ ],
+ "title": "Định nghĩa bộ tín chỉ tối đa",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

@@ -1,0 +1,33 @@
+{
+ "actual": "",
+ "code": "KLGD-010",
+ "createdAt": "2026-10-28T17:05:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Loại hình TEST_LH (KLGD-003)",
+  "next": [
+   "KLGD-013",
+   "KLGD-022",
+   "KLGD-026"
+  ],
+  "out": "Loại hình học kỳ TEST_LHHK (30 tiết, đơn giá chung, các hệ số tham gia) gán cho đối tượng"
+ },
+ "expected": "• Định nghĩa được loại hình học kỳ từ danh mục loại hình.\n• Lưu được thông tin chi tiết loại hình, công thức đơn giá và các hệ số tham gia theo từng tab đối tượng CBGD.\n• Ô Số SV/nhóm chỉ cho nhập khi Đơn vị tính KLGD là theo sinh viên; Gộp khối lượng chỉ áp dụng khi đơn vị tính là bậc thang.\n(Theo KLGD_QuanLyKhoiLuongGiangDay, mục III.3.10.)",
+ "menu": "Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Định nghĩa loại hình học kỳ",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft (HVNG - Copy) và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ dùng để test); tài khoản có quyền quản trị phân hệ Khối lượng. Cần loại hình TEST_LH từ KLGD-003. Ghi lại giá trị cũ trước khi sửa để hoàn tác ở KLGD-026.",
+  "Mở Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Định nghĩa loại hình học kỳ; bấm Thêm, chọn TEST_LH, chọn loại cây phân cấp và cấp cuối cùng, bấm Lưu.",
+  "Mở .../ Loại hình theo đối tượng/ Danh sách loại hình học kỳ; bấm Thêm, chọn TEST_LH.",
+  "Ở Thông tin chi tiết loại hình: nhập mã và tên đại diện TEST_LHHK; Đơn vị tính khối lượng; Số tiết khối lượng = 30; Đơn giá KLGD; Gộp khối lượng = Không gộp.",
+  "Ở tab của một loại đối tượng CBGD: chọn công thức đơn giá \"Đơn giá chung\"; check các hệ số tham gia: Hệ số môn học, Hệ số theo đối tượng, Hệ số địa điểm; bấm Lưu.",
+  "Mở .../ Loại hình theo đối tượng/ Đối tượng và hệ số loại hình; chọn loại hình tại Mức hệ số, chọn mã đại diện TEST_LHHK cho một đối tượng, bấm Lưu."
+ ],
+ "title": "Khai báo loại hình theo đối tượng",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

@@ -1,0 +1,30 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DKMH",
+ "idx": 105,
+ "menu": "Đăng ký MH / Đăng ký môn học / Đăng ký tự động / Theo lớp",
+ "menuRaw": "(Đăng ký MH / Đăng ký môn học / Đăng ký tự động / Theo lớp)",
+ "module": "DKMH",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [
+  "es-dkmh-006"
+ ],
+ "stt": 6,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

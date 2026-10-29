@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 50,
+ "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Danh sách khối học bổng học kỳ",
+ "menuRaw": "(Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Danh sách khối học bổng học kỳ)",
+ "module": "QLSV",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 18,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

@@ -1,0 +1,538 @@
+{
+ "createdAt": "2026-10-29T05:31:00.515Z",
+ "docs": [
+  {
+   "name": "Hoạt động ngoại khóa-SAE",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "Hướng Dẫn Sử Dụng SAE",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT ",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.1.1",
+   "kind": "setup",
+   "menu": "Quản lý hệ thống/Quản lý tài khoản",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Quản lý tài khoản (thêm, nhập trường bắt buộc *, lưu)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.1.1",
+   "kind": "setup",
+   "menu": "Quản lý hệ thống/Quản lý tài khoản",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đồng bộ tài khoản từ Edusoft.Net (bắt đầu phiên mới, xem khác biệt, áp dụng Tất cả/Đã chọn)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.1.2",
+   "kind": "setup",
+   "menu": "Quản lý hệ thống/Quản lý nhóm tài khoản",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Quản lý nhóm tài khoản và thêm thành viên vào nhóm"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.1.3",
+   "kind": "setup",
+   "menu": "Quản lý hệ thống/Phân quyền cấp đơn vị",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phân quyền cấp đơn vị theo ma trận phân quyền"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.1.4",
+   "kind": "setup",
+   "menu": "Quản lý hệ thống/Phân quyền sử dụng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phân quyền sử dụng cho từng người dùng"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.1",
+   "kind": "setup",
+   "menu": "Quản lý khung điểm đánh giá/Khung điểm đánh giá",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo khung điểm đánh giá (mã nhóm, tên nhóm, điểm tối đa, ghi chú)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.1",
+   "kind": "alt",
+   "menu": "Quản lý khung điểm đánh giá/Khung điểm đánh giá",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Điểm rèn luyện sinh viên bị giới hạn ở điểm tối đa của khung điểm khi tổng điểm hoạt động vượt mức"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.2",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh mục năm học – học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo năm học"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.2",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh mục năm học – học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo học kỳ cho năm học"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.2",
+   "kind": "alt",
+   "menu": "Cấu hình hệ thống/Danh mục năm học – học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đánh dấu Học kỳ hiện hành chỉ hiển thị dữ liệu của học kỳ đó"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.3",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh mục đơn vị",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục đơn vị tổ chức"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.4",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh mục nhóm hoạt động",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục nhóm hoạt động"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.5",
+   "kind": "setup",
+   "menu": "Quản lý khung điểm đánh giá/ Danh mục hoạt động bắt buộc",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục hoạt động bắt buộc"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.6",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh sách sinh viên học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thêm sinh viên vào danh sách sinh viên học kỳ"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 1.2.6",
+   "kind": "setup",
+   "menu": "Cấu hình hệ thống/Danh sách sinh viên học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đồng bộ danh sách sinh viên học kỳ từ Edusoft.Net"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.1.1.1",
+   "kind": "main",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/Lập kế hoạch năm mới/Đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng ký kế hoạch tổ chức hoạt động ngoại khóa"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.1.1.1",
+   "kind": "alt",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/Lập kế hoạch năm mới/Đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hoạt động bắt buộc phải điền tên đơn vị vào cả Đơn vị tổ chức và Đơn vị công nhận"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.1.1.2",
+   "kind": "main",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/Lập kế hoạch năm mới/Duyệt đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Duyệt / không duyệt kế hoạch tổ chức hoạt động ngoại khóa"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.2.1",
+   "kind": "main",
+   "menu": "Ghi nhận điểm tham gia/Đơn vị tổ chức hoạt động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Ghi nhận điểm tham gia: thêm từng sinh viên và điểm"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.2.1",
+   "kind": "main",
+   "menu": "Ghi nhận điểm tham gia/Đơn vị tổ chức hoạt động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import danh sách sinh viên tham gia từ Excel (bổ sung dữ liệu)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.2.1",
+   "kind": "clean",
+   "menu": "Ghi nhận điểm tham gia/Đơn vị tổ chức hoạt động",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import Excel kiểu Xóa tất cả và Import dữ liệu mới"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.2.1",
+   "kind": "alt",
+   "menu": "Ghi nhận điểm tham gia/Đơn vị tổ chức hoạt động",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "File Import bắt buộc có hai cột Mã sinh viên và Điểm rèn luyện"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.3.1",
+   "kind": "main",
+   "menu": "Công nhận điểm tham gia/Đơn vị tổ chức hoạt động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Công nhận điểm tham gia: xem, bổ sung/xóa sinh viên, Duyệt và Lưu, điểm cập nhật vào bảng điểm rèn luyện"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.4.1.1",
+   "kind": "main",
+   "menu": "Tra cứu kết quả đánh giá rèn luyện/Kết quả đánh giá rèn luyện hiện tại",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Tra cứu kết quả đánh giá rèn luyện hiện tại và xem bảng điểm chi tiết sinh viên"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.4.2.1",
+   "kind": "main",
+   "menu": "Thống kê – Báo cáo/Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Khoa",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Khoa (in, xuất file, xác nhận điểm)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.4.2.2",
+   "kind": "main",
+   "menu": "Thống kê – Báo cáo/Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Trường",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Trường và Export theo học kỳ, loại hoạt động"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 2.4.2.2",
+   "kind": "main",
+   "menu": "Thống kê – Báo cáo/Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Trường",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ điểm ĐGRL từ Edusoft về SAE (bắt đầu phiên mới, xem khác biệt, áp dụng)"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 3.1",
+   "kind": "main",
+   "menu": "Bảng điểm/Bảng điểm hiện tại",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Sinh viên xác nhận điểm đánh giá rèn luyện trên Netweb"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 3.2",
+   "kind": "main",
+   "menu": "Bảng điểm/Bảng điểm tổng hợp",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Sinh viên xem bảng điểm rèn luyện tổng hợp"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 4.1",
+   "kind": "main",
+   "menu": "Thời khóa biểu dạng học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Giảng viên nhập lớp trưởng lớp tín chỉ trên Netweb"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 4.2",
+   "kind": "main",
+   "menu": "Xem DS sinh viên quản lý",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Giáo viên chủ nhiệm xem kết quả đánh giá rèn luyện của sinh viên trên Netweb"
+  },
+  {
+   "docRef": "Hoạt động ngoại khóa-SAE, mục 4.3",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ tổng điểm rèn luyện học kỳ từ SAE sang Edusoft"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 1.1.1",
+   "kind": "main",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/ Lập kế hoạch năm mới/ Đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng ký kế hoạch tổ chức hoạt động ngoại khóa (thêm hoạt động vào học kỳ diễn ra, điền các trường bắt buộc)"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 1.1.1",
+   "kind": "alt",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/ Lập kế hoạch năm mới/ Đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đăng ký hoạt động khi bỏ trống trường bắt buộc"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 1.1.1",
+   "kind": "setup",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/ Lập kế hoạch năm mới/ Đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo Đơn vị tổ chức và Đơn vị công nhận khi đăng ký hoạt động"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 1.1.2",
+   "kind": "main",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/ Lập kế hoạch năm mới/ Duyệt đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Duyệt đăng ký kế hoạch tổ chức hoạt động (đổi trạng thái thành Duyệt và Lưu)"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 1.1.2",
+   "kind": "alt",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/ Lập kế hoạch năm mới/ Duyệt đăng ký kế hoạch tổ chức hoạt động ngoại khóa",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đơn vị chỉ thêm danh sách sinh viên và công nhận điểm với hoạt động đã được duyệt"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "main",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm từng sinh viên vào hoạt động (mã sinh viên, điểm)"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "main",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import danh sách sinh viên từ file Excel cho hoạt động mới (chọn dòng tiêu đề, dòng dữ liệu bắt đầu, ánh xạ cột Mã sinh viên và Điểm, thực hiện import)"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "alt",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import bổ sung dữ liệu khi hoạt động đã có danh sách sinh viên"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "clean",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xóa tất cả và Import dữ liệu mới (thay thế toàn bộ danh sách, cập nhật lại điểm)"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "alt",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import khi file Excel thiếu mã sinh viên hoặc điểm"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 2",
+   "kind": "alt",
+   "menu": "Ghi nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tài khoản chỉ thêm danh sách sinh viên vào hoạt động thuộc đơn vị của mình"
+  },
+  {
+   "docRef": "Hướng Dẫn Sử Dụng SAE, mục 3",
+   "kind": "main",
+   "menu": "Công nhận điểm tham gia/ Phòng Công tác sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Công nhận điểm tham gia (Duyệt và Lưu thao tác); hoạt động được duyệt hiển thị trên bảng điểm sinh viên"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.1",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Danh sách nhóm câu hỏi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh sách nhóm câu hỏi theo các Điều đánh giá rèn luyện"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.1",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa loại quy đổi và ngưỡng điểm cho Sinh viên diện chính sách (cộng 2 điểm)"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.2",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa loại quy đổi và ngưỡng điểm cho Điểm trung bình học kỳ hệ 4"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.3",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo lý do kỷ luật có nhập Viết tắt"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.3",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa loại quy đổi Lý do kỷ luật sinh viên và ngưỡng điểm trừ, Tên quy đổi trùng Viết tắt"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.3",
+   "kind": "alt",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc nhập Viết tắt khi khai báo lý do kỷ luật"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.3",
+   "kind": "alt",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bắt buộc Tên quy đổi trùng khớp với Viết tắt của lý do kỷ luật"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.2.4",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần/ Danh mục qui đổi điểm rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa loại quy đổi và ngưỡng điểm cho Lớp trưởng lớp tín chỉ (cộng 4 điểm)"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.3",
+   "kind": "setup",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Danh sách câu hỏi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tạo danh sách câu hỏi gắn loại quy đổi và thứ tự đồng bộ SAE (mã hoạt động SAE)"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 1.3",
+   "kind": "setup",
+   "menu": "Xây dựng kế hoạch ngoại khóa & rèn luyện/Lập kế hoạch năm mới/Phòng công tác sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Lấy mã hoạt động từ SAE để nhập thứ tự đồng bộ"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Import điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cộng trừ điểm rèn luyện tự động từ Edusoft cho sinh viên được chọn"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.1",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Kết quả đánh giá rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra kết quả quy đổi điểm Sinh viên diện chính sách (học lực từ khá trở lên, cộng 2 điểm)"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.1",
+   "kind": "alt",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Kết quả đánh giá rèn luyện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ quy đổi điểm diện chính sách khi sinh viên có học lực từ khá trở lên"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.2",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Kết quả đánh giá rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra kết quả quy đổi điểm trung bình học kỳ hệ 4 theo cấu hình ngưỡng"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.3",
+   "kind": "main",
+   "menu": "Sinh viên / Khen thưởng và Kỷ luật / Quyết định kỷ luật",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Lập quyết định kỷ luật có thêm sinh viên"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.3",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Kết quả đánh giá rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra kết quả trừ điểm rèn luyện theo lý do kỷ luật"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.4",
+   "kind": "main",
+   "menu": "NetWeb: Thời khóa biểu dạng học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Kiểm tra sinh viên là lớp trưởng lớp tín chỉ trên danh sách thời khóa biểu"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 2.1.4",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện thành phần / Kết quả đánh giá rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra kết quả cộng 4 điểm cho lớp trưởng lớp tín chỉ"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 3",
+   "kind": "main",
+   "menu": "Thống kê – Báo cáo/Báo cáo tổng hợp kết quả đánh giá rèn luyện cấp Trường",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ điểm ĐGRL lên SAE: bắt đầu phiên mới, xem khác biệt, áp dụng tất cả"
+  },
+  {
+   "docRef": "Hướng Dẫn Tính Tự Động Điểm Rèn Luyện-DHNT , mục 3",
+   "kind": "main",
+   "menu": "Ghi nhận điểm tham gia/Phòng Công tác sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra kết quả đồng bộ trên SAE (số lượng sinh viên tham gia hoạt động)"
+  }
+ ],
+ "module": "SAE",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:31:00.515Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:31:00.515Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

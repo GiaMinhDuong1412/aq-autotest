@@ -1,0 +1,904 @@
+{
+ "createdAt": "2026-10-29T04:30:00.000Z",
+ "createdBy": null,
+ "docs": [
+  {
+   "name": "DKMH_DangKyMonHocOFFLINE",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_DinhNghiaMonTienQuyet",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_ChinhDinhThoiGianDangKyOnline",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_HuongDanDangKyMonHocOnline",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_RutMonHoc",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_DangKyMonHocTuFileSV-MH",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.1 Chỉnh định thông số học kỳ",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-001",
+   "title": "Chỉnh định thông số học kỳ cho đăng ký môn học"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-001",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-001",
+   "title": "Chỉnh định thông số học kỳ cho đăng ký môn học – Đối tượng không thuộc cây phân cấp"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.1 Định nghĩa tín chỉ tối đa",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa tín chỉ tối đa",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-002",
+   "title": "Định nghĩa bộ tín chỉ tối đa"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-002",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa tín chỉ tối đa",
+   "priority": "cao",
+   "scenarioCode": "DKMH-002",
+   "title": "Định nghĩa bộ tín chỉ tối đa – Trùng mã bộ tín chỉ"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-002",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa tín chỉ tối đa",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-002",
+   "title": "Định nghĩa bộ tín chỉ tối đa – Số tín chỉ không hợp lệ"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.1; chi tiết ở DKMH_DinhNghiaMonTienQuyet",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, song hành, học trước",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-003",
+   "title": "Định nghĩa môn tiên quyết, song hành, học trước"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-003",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, song hành, học trước",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-003",
+   "title": "Định nghĩa môn tiên quyết, song hành, học trước – Môn tiên quyết là chính nó"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.1",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Cấm SV đăng ký một số môn học",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-004",
+   "title": "Cấm sinh viên đăng ký một số môn học"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "cao",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "cao",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Trùng thời khóa biểu sinh viên"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Vi phạm môn tiên quyết"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Vượt số tín chỉ tối đa"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Môn bị cấm đăng ký"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Chưa đủ số tín chỉ tối thiểu"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Đăng ký cùng môn khác nhóm"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-005",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-005",
+   "title": "Đăng ký môn học từng sinh viên – Sinh viên ngoài DSSV học kỳ"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.1",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp",
+   "priority": "cao",
+   "scenarioCode": "DKMH-006",
+   "title": "Đăng ký tự động theo lớp"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-006",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-006",
+   "title": "Đăng ký tự động theo lớp – Lớp chưa mở nhóm môn học"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-006",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-006",
+   "title": "Đăng ký tự động theo lớp – Sinh viên bị trùng TKB khi đăng ký tự động"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.2",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Đăng ký môn học theo mã sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-007",
+   "title": "Đăng ký theo tập tin mã sinh viên"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-007",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Đăng ký môn học theo mã sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-007",
+   "title": "Đăng ký theo tập tin mã sinh viên – File sai cấu trúc"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-007",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Đăng ký môn học theo mã sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-007",
+   "title": "Đăng ký theo tập tin mã sinh viên – Mã sinh viên không tồn tại"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.2",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo tập tin sinh viên – môn học",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-008",
+   "title": "Đăng ký theo tập tin sinh viên – môn học"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-008",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo tập tin sinh viên – môn học",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-008",
+   "title": "Đăng ký theo tập tin sinh viên – môn học – Cặp SV – môn trùng TKB"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV rảnh",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-009",
+   "title": "Thống kê danh sách sinh viên rảnh / bận"
+  },
+  {
+   "docRef": "luồng thay thế của DKMH-009",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV rảnh",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-009",
+   "title": "Thống kê danh sách sinh viên rảnh / bận – Không nhập khung thời gian"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE",
+   "kind": "clean",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký môn học từng sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-010",
+   "title": "Dọn dữ liệu test của phân hệ Đăng ký môn học"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline",
+   "kind": "setup",
+   "menu": "Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Thời gian đăng ký theo lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chỉnh định thời gian đăng ký môn học online theo lớp"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline",
+   "kind": "setup",
+   "menu": "Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Chỉnh định chung",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc đăng ký online – chỉnh định chung"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline",
+   "kind": "main",
+   "menu": "NetWEB sinh viên: Đăng ký môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Sinh viên đăng ký môn học online trên Netweb"
+  },
+  {
+   "docRef": "NETWEB GiangVienDuyetKQDK",
+   "kind": "main",
+   "menu": "NetWEB giảng viên: Duyệt đăng ký môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Giảng viên duyệt kết quả đăng ký môn học trên Netweb"
+  },
+  {
+   "docRef": "Menu release 2026.10G.00 (cần bổ sung tài liệu)",
+   "kind": "setup",
+   "menu": "Đăng ký MH / Đăng ký nguyện vọng online / Thời gian đăng ký nguyện vọng",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thời gian đăng ký nguyện vọng online"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc",
+   "kind": "setup",
+   "menu": "Đăng ký MH / Rút môn học online / Thời gian rút môn học theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Rút môn học – thời gian rút môn theo lớp"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc",
+   "kind": "main",
+   "menu": "NetWEB sinh viên: Rút môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Sinh viên rút môn học trên Netweb"
+  },
+  {
+   "docRef": "Menu release 2026.10G.00 (cần bổ sung tài liệu)",
+   "kind": "main",
+   "menu": "Đăng ký MH / Hiệu chỉnh đăng ký / Hiệu chỉnh dữ liệu đăng ký / Chuyển KQĐK từ 1 nhóm đến 1 nhóm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chuyển kết quả đăng ký từ nhóm này sang nhóm khác"
+  },
+  {
+   "docRef": "Menu release 2026.10G.00 (cần bổ sung tài liệu)",
+   "kind": "main",
+   "menu": "Đăng ký MH / Hiệu chỉnh đăng ký / Tính chất học lại / Cập nhật tính chất học lại",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Cập nhật tính chất học lại"
+  },
+  {
+   "docRef": "Menu release 2026.10G.00 (cần bổ sung tài liệu)",
+   "kind": "main",
+   "menu": "Đăng ký MH / Hủy KQ ĐKMH",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy kết quả ĐKMH (1 nhóm học, theo sinh viên, theo tập tin) và phục hồi"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline, mục III - Bước 1",
+   "kind": "setup",
+   "menu": "Chỉnh định thông số học kỳ của phân hệ Đăng ký môn học",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-001",
+   "title": "Chỉnh định biến SM00_CAMDKTT_DIEN (Cấm đăng ký môn học online) thành Không"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline, mục III - Bước 2",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định biến SM00_TGCPDK (Có giới hạn thời gian đăng ký online) thành Có giới hạn"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline, mục III - Bước 3",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định khoảng thời gian cho phép ĐKMH trong ngày (GH_THOIGIANDKTRONGNGAYEDUWEB)"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline, mục III - Bước 4",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Chỉnh định thời gian đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chỉnh định thời gian đăng ký (từ ngày, đến ngày) theo đối tượng áp dụng"
+  },
+  {
+   "docRef": "DKMH_ChinhDinhThoiGianDangKyOnline, mục III - Bước 4 (Lưu ý)",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Restart IIS máy chủ Edusoft.Web để thông số chỉnh định có hiệu lực ngay"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 1",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chuẩn bị dữ liệu: mở lớp, xếp TKB và cải tiến TKB thành nhóm môn học"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 1",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ổn định danh sách sinh viên học kỳ"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 1",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Điều kiện đăng ký cải thiện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa điều kiện đăng ký môn học cải thiện"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 1",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Cấm SV đăng ký vì các lý do khác",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cấm sinh viên đăng ký vì các lý do khác"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 2.1",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp một số môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng ký tự động theo lớp một số môn học"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV rảnh",
+   "priority": "thấp",
+   "scenarioCode": "DKMH-009",
+   "title": "Thống kê danh sách sinh viên rảnh"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV bận",
+   "priority": "thấp",
+   "scenarioCode": "DKMH-009",
+   "title": "Thống kê danh sách sinh viên bận"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV rảnh theo tập tin",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê DSSV rảnh theo tập tin"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocOFFLINE, mục 3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Thống kê rảnh bận chung/ Thống kê DSSV bận theo tập tin",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê DSSV bận theo tập tin"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocTuFileSV-MH, mục III - Bước 1",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xuất cấu trúc file và chuẩn bị dữ liệu Sinh viên – Môn học"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocTuFileSV-MH, mục III - Bước 2",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Import dữ liệu từ file cấu trúc hoặc dán từ Clipboard"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocTuFileSV-MH, mục III - Bước 3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Map cột trong file với cột trên hệ thống"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocTuFileSV-MH, mục III - Bước 4",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra dữ liệu hợp lệ và không hợp lệ, chỉnh lại rồi Thực hiện đăng ký"
+  },
+  {
+   "docRef": "DKMH_DangKyMonHocTuFileSV-MH, mục III - Bước 5",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem kết quả đăng ký môn học tại màn hình thông báo"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.1",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định thông số hệ thống: Cấm đăng ký khi vi phạm tiên quyết, học trước, song hành"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-003",
+   "title": "Định nghĩa môn tiên quyết, học trước, song hành"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Để trống cột hệ, ngành, khối lớp: áp dụng chung cho mọi sinh viên"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ghi giá trị cụ thể hệ, ngành, khối lớp: chỉ áp dụng cho sinh viên thuộc giá trị đó"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo môn có 2 điều kiện tiên quyết (2 dòng)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo điều kiện tiên quyết xét OR (cùng ký hiệu cột OR)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo điều kiện tiên quyết theo nhánh (cùng ký tự nhánh tự ghép nhóm)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp một số môn học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra tiên quyết khi đăng ký tự động theo lớp một số môn học"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo môn học một số lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra tiên quyết khi đăng ký tự động theo môn học một số lớp"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Đăng ký từng sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra tiên quyết khi đăng ký tự động từng sinh viên"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo mã sinh viên",
+   "priority": "cao",
+   "scenarioCode": "DKMH-007",
+   "title": "Kiểm tra tiên quyết khi đăng ký theo tập tin mã sinh viên"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo sinh viên – môn học",
+   "priority": "cao",
+   "scenarioCode": "DKMH-008",
+   "title": "Kiểm tra tiên quyết khi đăng ký theo tập tin sinh viên – môn học"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên",
+   "priority": "cao",
+   "scenarioCode": "DKMH-005",
+   "title": "Kiểm tra tiên quyết khi đăng ký môn học từng sinh viên (báo lỗi vi phạm)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra tiên quyết khi sinh viên đăng ký online trên website (hiển thị thông báo)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.4",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Khai thác báo biểu/ KQĐK không hợp lệ/ KQĐK không hợp lệ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem kết quả đăng ký không hợp lệ (hậu kiểm tiên quyết, học trước, song hành)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.4",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Khai thác báo biểu/ KQĐK không hợp lệ/ Kiểm tra tiên quyết/ học trước/ song hành",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem báo cáo kiểm tra tiên quyết/ học trước/ song hành"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.5",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Quản trị phân hệ/ Tài khoản không ràng buộc ĐKMH",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cấp quyền user không kiểm tra tiên quyết (tích cột Không kiểm tra tiên quyết)"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.5",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Quản trị phân hệ/ Tài khoản không ràng buộc ĐKMH",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "User có quyền: được đồng ý hoặc không đồng ý khi hệ thống báo vi phạm tiên quyết"
+  },
+  {
+   "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.5",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Quản trị phân hệ/ Tài khoản không ràng buộc ĐKMH",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "User không có quyền: không thể bỏ qua vi phạm tiên quyết, hệ thống không lưu đăng ký hoặc hủy các môn vi phạm"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 1",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Setting Base URL NetWEB"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 2",
+   "kind": "setup",
+   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định năm học, học kỳ đăng ký"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thiết lập thời gian đăng ký theo lớp (Gán chung)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 2",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định giờ đăng ký trong ngày"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 2",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Giờ kết thúc đăng ký nguyên ngày nhập 23:59 (không nhập 24:00)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 3",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Nhóm tổ không đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo nhóm tổ không cho đăng ký online"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 3",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Lớp sinh viên không đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo lớp sinh viên không cho đăng ký"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 3",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Môn học dành cho khối đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo môn học dành cho khối đăng ký"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 3",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Môn học dành cho khối đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Môn học không cho đăng ký không hiển thị khi lọc"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 4",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Cấm SV đăng ký vì các lý do khác",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cấm sinh viên đăng ký tất cả môn học và hiển thị lý do cấm"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 5",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thiết lập thời gian đăng ký riêng cho sinh viên đặc biệt"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 5",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chia tải đăng ký theo giờ giữa các lớp trong cùng khoảng ngày"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 6",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Sinh viên không kiểm tra nợ học phí",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo sinh viên không kiểm tra nợ học phí"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chỉnh định chính sách đăng ký (xl_nghiep_vu_dang_ky)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ cho đăng ký mới: không đổi nhóm, không xóa KQĐK"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ cho xóa đăng ký: không đổi nhóm, không đăng ký mới"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm, xóa và đổi nhóm đăng ký"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Danh sách môn học gợi ý mặc định (vw_ds_mac_dinh_trang_dkmh)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định giao diện hiển thị trang đăng ký MH"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cho phép/không cho phép sinh viên trạng thái khác ĐANG HỌC đăng ký (xl_cho_sv_tam_dung_dk)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cho phép/không cho phép sinh viên nợ học phí đăng ký (xl_dk_neu_no_hp)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Giới hạn môn học được đăng ký theo CTĐT hoặc theo nhóm tổ mở cho lớp (xl_gioi_han_mon_duoc_dang_ky)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc đúng lộ trình học kỳ theo CTĐT (xl_rang_buoc_dung_lo_trinh)"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "DKMH-003",
+   "title": "Kiểm tra môn tiên quyết, song hành, học trước khi đăng ký"
+  },
+  {
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục 7",
+   "kind": "alt",
+   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung đăng ký online",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xem môn học kỳ liền trước như đạt khi xét tiên quyết (xl_xem_dat_mon_hk_lien_truoc)"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 1.1",
+   "kind": "setup",
+   "menu": "Đăng ký MH/ Rút môn học online/ Thời gian rút môn học theo lớp",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa thời gian rút môn học theo lớp (gán chung cho nhiều lớp, lưu)"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 1.2",
+   "kind": "main",
+   "menu": "Đăng ký MH/ Rút môn học online/ Xem kết quả Rút môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem kết quả rút môn học của từng sinh viên"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 1.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Nhập điểm đặc biệt",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Kiểm tra điểm rút môn học trong Nhập điểm đặc biệt"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 1.3",
+   "kind": "main",
+   "menu": "Quản lý nhập điểm/ Khai thác báo biểu/ Xem điểm/ Xem điểm toàn khóa 1 sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra điểm rút môn học trong Xem điểm toàn khóa 1 sinh viên"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 1.3",
+   "kind": "setup",
+   "menu": "Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa ký tự điểm đặc biệt của rút môn học (biến GD_DIEMDACBIET)"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 2.1",
+   "kind": "main",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Sinh viên đăng nhập cổng thông tin điện tử bằng mã sinh viên và mật khẩu"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 2.2",
+   "kind": "main",
+   "menu": "Rút môn học đã đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Sinh viên rút môn học đã đăng ký (chọn một hoặc nhiều môn, Hủy, Xác Nhận, trạng thái Đã rút)"
+  },
+  {
+   "docRef": "DKMH_RutMonHoc, mục 2.2",
+   "kind": "alt",
+   "menu": "Rút môn học đã đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Sinh viên nhấn Đóng để hủy bỏ tiến trình rút môn học"
+  }
+ ],
+ "module": "DKMH",
+ "objective": "Kiểm tra đăng ký môn học offline (từng SV, tự động theo lớp, theo tập tin), các ràng buộc đăng ký và thống kê rảnh/bận theo tài liệu; bổ sung đăng ký/rút môn online trên Netweb, hiệu chỉnh và hủy kết quả theo danh sách menu release.",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:20:09.601Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:20:09.601Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

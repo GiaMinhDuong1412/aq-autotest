@@ -1,0 +1,542 @@
+{
+ "createdAt": "2026-10-29T05:21:22.206Z",
+ "docs": [
+  {
+   "name": "LTHI_PhanCongCoiThi",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "LTHI_ToChucThi",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 1",
+   "kind": "setup",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chuẩn bị danh sách thi đã xếp lịch làm dữ liệu kế thừa cho hoạt động coi thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 2",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập danh sách cán bộ coi thi, gán Mã đợt thi và Cấp coi thi cho từng cán bộ"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 2",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Gán nhanh Mã đợt thi và Cấp coi thi cho nhóm cán bộ được chọn hoặc toàn bộ danh sách cùng đợt, cùng cấp"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 2",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thêm mới hoặc loại bỏ cán bộ khỏi danh sách coi thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 2",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc cấp coi thi: cấp 1 phân được cấp 1, 2, 3; cấp 2 phân được cấp 2, 3 và không phân được cấp 1; cấp 3 chỉ phân được cấp 3"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 3",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập SL cán bộ coi thi cho tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập số lượng cán bộ coi thi cho từng tổ thi theo đợt thi và lưu"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 3",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Nhập SL cán bộ coi thi cho tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập nhanh số lượng cán bộ coi thi chung cho một nhóm hoặc toàn bộ danh sách tổ thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân công coi thi thủ công cho 1, 2 hoặc 3 cán bộ mỗi tổ thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: không coi thi khác cơ sở trong cùng một buổi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: không coi thi liên tục giữa 2 buổi chiều và tối"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: không coi thi liên tục giữa 2 buổi sáng và chiều"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: không trùng lịch coi thi với lịch dạy"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: phải đúng cấp coi thi quy định của cán bộ"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: phòng thi phải có cán bộ nam và nữ khi tổ thi có hơn 2 cán bộ coi thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.a",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ràng buộc phân công: thời gian coi thi phải liên tục, không có tiết trống ở giữa"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.b",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân công coi thi tự động cho nhiều tổ thi theo các điều kiện ràng buộc được chọn"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.b",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phân công tự động: tổ thi không xếp được hiển thị lý do màu đỏ và chương trình tiếp tục xếp các tổ còn lại"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.b",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phân công tự động: thông báo số tổ thi đã và chưa được phân công sau khi xếp xong"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 4.b",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xếp lại các tổ thi chưa phân công sau khi bỏ chọn ràng buộc gây lỗi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 5.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ In danh sách coi thi/ Theo đợt thi",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách coi thi theo đợt thi, tổ thi, cán bộ coi thi, khoảng ngày thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 5.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hoạt động coi thi/ In thù lao cán bộ coi thi",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In thù lao cán bộ coi thi"
+  },
+  {
+   "docRef": "LTHI_PhanCongCoiThi, mục 5.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In kiểm tra dữ liệu coi thi: cán bộ không có trong đợt, vượt cấp, trùng lịch coi thi, giảng dạy môn thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 1",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉnh định thông số học kỳ liên quan tổ chức thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 2",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo đợt thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy danh sách dự thi theo đợt thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 2",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy danh sách dự thi theo môn học / nhóm thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 3.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý hoãn thi/ Sinh viên đăng ký hoãn thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập sinh viên đăng ký hoãn thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 3.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý thi cải thiện/ Sinh viên đăng ký thi cải thiện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập sinh viên đăng ký thi cải thiện"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 3.2",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Quản lý thi cải thiện/ Sinh viên đăng ký thi cải thiện",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ cho đăng ký thi cải thiện khi sinh viên đã có điểm môn học và thỏa điều kiện cho phép"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 4.1",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Danh mục tính chất thi môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo danh mục tính chất thi môn học"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 4.1",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Nhập tính chất thi môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập tính chất thi cho từng môn học"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 4.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ DS MH chưa gán tính chất thi",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra danh sách môn học chưa gán tính chất thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 5.1",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xem danh sách nhóm thi và gán mã ghép thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 5.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ danh sách nhóm thi để bổ sung nhóm thi còn thiếu"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 5.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin nhóm thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cập nhật thông tin nhóm thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 5.3",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý nhóm thi/ Đồng bộ sĩ số dự thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ sĩ số dự thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 6.1",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Định nghĩa đợt thi/ Định nghĩa đợt thi & gán nhóm thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Định nghĩa đợt thi và thêm nhóm thi vào đợt"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 6.2",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Định nghĩa đợt thi/ Gán đợt thi cho nhóm thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Gán đợt thi cho nhóm thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 6.3",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Định nghĩa đợt thi/ Nhập phòng sử dụng trong đợt",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Nhập danh sách phòng thi sử dụng trong đợt"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 7.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi tự động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Phân tổ thi tự động"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 7.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Ghép tổ thi tự động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Ghép tổ thi tự động theo giới hạn sĩ số"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 7.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Ghép tổ thi thủ công",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ghép tổ thi thủ công bằng ký hiệu ghép"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 7.3",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Tách tổ thi thủ công",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tách tổ thi thủ công theo số lượng nhóm"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 8",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Tài nguyên và ràng buộc/ Tài nguyên xếp lịch thi/ Ngày & tiết bắt đầu thi ưu tiên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo ngày và tiết bắt đầu thi ưu tiên"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 8",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Tài nguyên và ràng buộc/ Tài nguyên xếp lịch thi/ Phòng thi ưu tiên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo phòng thi ưu tiên"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 8",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Tài nguyên và ràng buộc/ Ràng buộc xếp lịch thi/ Nhóm thi thi chung thời gian",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo ràng buộc nhóm thi thi chung thời gian"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 8",
+   "kind": "setup",
+   "menu": "Tổ chức thi/ Tài nguyên và ràng buộc/ Ràng buộc xếp lịch thi/ Tổ thi thi chung phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo ràng buộc tổ thi thi chung phòng"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 9.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo đợt thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xếp lịch thi tự động theo đợt thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 9.1",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo đợt thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xếp lịch thi theo đợt với nhiệm ý không cần tìm phòng (không xếp phòng)"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 9.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo TKB",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xếp lịch thi theo thời khóa biểu"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 9.2",
+   "kind": "alt",
+   "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo TKB",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xếp lịch thi theo TKB với nhiệm ý sử dụng phòng học làm phòng thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 9.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo TKB - Không gán phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xếp lịch thi theo TKB không gán phòng và cập nhật phòng thi sau"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh lịch thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xem và hiệu chỉnh lịch thi đã xếp (ngày thi, tiết BĐ, phòng thi, phòng đợi bằng F1)"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo tổ thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm sinh viên vào tổ thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.2",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Xóa sinh viên khỏi tổ thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chuyển tổ thi cho sinh viên"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.2",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hiệu chỉnh sinh viên trong tổ thi theo sinh viên"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.3",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Import danh sách sinh viên vào tổ thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.3",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cập nhật thông tin danh sách sinh viên trong tổ thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 10.3",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đồng bộ DS cấm thi vì nợ học phí (mã số 7)"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 11.1",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hủy lịch thi/ Hủy theo đợt - môn học",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy lịch thi theo đợt - môn học"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 11.2",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hủy lịch thi/ Hủy theo đợt - nhóm thi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy lịch thi theo đợt - nhóm thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 11.3",
+   "kind": "clean",
+   "menu": "Tổ chức thi/ Hủy lịch thi/ Hủy theo sinh viên",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy lịch thi theo sinh viên"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 11.4",
+   "kind": "clean",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy tất cả lịch thi của kỳ thi đang chọn"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 12.1",
+   "kind": "main",
+   "menu": "Tổ chức thi/ Khai thác báo biểu/ In kiểm tra dữ liệu",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In kiểm tra dữ liệu trùng lịch thi"
+  },
+  {
+   "docRef": "LTHI_ToChucThi, mục 12.1",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In lịch thi đã xếp"
+  }
+ ],
+ "module": "LTHI",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:21:22.206Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:21:22.206Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

@@ -1,0 +1,30 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 43,
+ "menu": "Sinh viên / Hồ sơ và Văn bằng / Hồ sơ sinh viên / Cập nhật hồ sơ sinh viên",
+ "menuRaw": "Sinh viên / Hồ sơ và Văn bằng / Hồ sơ sinh viên / Cập nhật hồ sơ sinh viên",
+ "module": "QLSV",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Nghĩa",
+  "at": null,
+  "by": null,
+  "caseNo": "63527",
+  "ex": false,
+  "note": "63527",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 11,
+ "updatedAt": "2026-10-29T01:57:07.678Z"
+}

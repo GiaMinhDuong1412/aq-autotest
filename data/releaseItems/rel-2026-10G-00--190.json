@@ -1,0 +1,30 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KLGD",
+ "idx": 190,
+ "menu": "Khối lượng / Chuẩn bị dữ liệu / Hiệu chỉnh khối lượng giảng dạy / CBGD thay thế dạy dùm / Chọn 1 mẫu tin / Sửa",
+ "menuRaw": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ CBGD thay thế dạy dùm/ Chọn 1 mẫu tin / Sửa",
+ "module": "KLGD",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [
+  "es-klgd-019"
+ ],
+ "stt": 5,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

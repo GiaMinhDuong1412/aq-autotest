@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DIEM",
+ "idx": 148,
+ "menu": "Quản lý điểm / Quản lý điểm trung bình / In phiếu điểm sinh viên / In phiếu điểm sinh viên - Từng sinh viên",
+ "menuRaw": "(Quản lý điểm / Quản lý điểm trung bình / In phiếu điểm sinh viên / In phiếu điểm sinh viên - Từng sinh viên)",
+ "module": "DIEM",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Dương",
+  "caseNo": "63520",
+  "ex": true,
+  "note": "EX: 63520",
+  "res": "o"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 5,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

@@ -1,0 +1,56 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "createdBy": null,
+ "currentRound": 2,
+ "plan": [
+  {
+   "date": "",
+   "done": false,
+   "key": "merge",
+   "label": "Merge code",
+   "owner": "QThieu"
+  },
+  {
+   "date": "",
+   "done": false,
+   "key": "build",
+   "label": "Build bản release",
+   "owner": "Ktuyen"
+  },
+  {
+   "date": "",
+   "done": false,
+   "key": "r1",
+   "label": "Test menu lần 1",
+   "owner": "Support"
+  },
+  {
+   "date": "",
+   "done": false,
+   "key": "r2",
+   "label": "Test menu lần 2",
+   "owner": "Support"
+  },
+  {
+   "date": "",
+   "done": false,
+   "key": "release",
+   "label": "Release",
+   "owner": ""
+  }
+ ],
+ "sheetName": "Menu_NEW",
+ "sheetUrl": "https://aqtechltd-my.sharepoint.com/:x:/r/personal/support_aqtech_vn/_layouts/15/Doc.aspx?sourcedoc=%7BE35B1D6D-3EE5-4891-9F6A-45D49F075F8A%7D&file=Release(TestMenu).xlsx&action=default&mobileredirect=true",
+ "status": "testing",
+ "testers": [
+  "Minh",
+  "Dương",
+  "Nghĩa",
+  "Nam",
+  "Tiến",
+  "Vi",
+  "Linh"
+ ],
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "version": "2026.10G.00"
+}

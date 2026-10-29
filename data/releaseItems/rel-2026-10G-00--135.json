@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "LTHI",
+ "idx": 135,
+ "menu": "Tổ chức thi / Hoạt động coi thi / Phân công coi thi",
+ "menuRaw": "(Tổ chức thi / Hoạt động coi thi / Phân công coi thi)",
+ "module": "LTHI",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 19,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

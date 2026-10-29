@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "LTHI",
+ "idx": 131,
+ "menu": "Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh SV trong tổ thi - theo sinh viên",
+ "menuRaw": "(Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh SV trong tổ thi - theo sinh viên)",
+ "module": "LTHI",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nam",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 15,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

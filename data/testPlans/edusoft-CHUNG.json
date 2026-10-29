@@ -1,0 +1,55 @@
+{
+ "createdAt": "2026-10-29T04:30:00.000Z",
+ "createdBy": null,
+ "docs": [],
+ "items": [
+  {
+   "docRef": "Quy trình khởi động & đăng nhập (trang Máy chạy thử)",
+   "kind": "setup",
+   "menu": "Màn hình đăng nhập",
+   "priority": "cao",
+   "scenarioCode": "CHUNG-001",
+   "title": "Đăng nhập Edusoft.NET bản HVNG - Copy"
+  },
+  {
+   "docRef": "luồng thay thế của CHUNG-001",
+   "kind": "alt",
+   "menu": "Màn hình đăng nhập",
+   "priority": "trung bình",
+   "scenarioCode": "CHUNG-001",
+   "title": "Đăng nhập – Đường dẫn Edusoft không đúng"
+  },
+  {
+   "docRef": "luồng thay thế của CHUNG-001",
+   "kind": "alt",
+   "menu": "Màn hình đăng nhập",
+   "priority": "trung bình",
+   "scenarioCode": "CHUNG-001",
+   "title": "Đăng nhập – Sai mật khẩu"
+  },
+  {
+   "docRef": "luồng thay thế của CHUNG-001",
+   "kind": "alt",
+   "menu": "Màn hình đăng nhập",
+   "priority": "trung bình",
+   "scenarioCode": "CHUNG-001",
+   "title": "Đăng nhập – Bỏ trống tên đăng nhập"
+  },
+  {
+   "docRef": "luồng thay thế của CHUNG-001",
+   "kind": "alt",
+   "menu": "Màn hình đăng nhập",
+   "priority": "trung bình",
+   "scenarioCode": "CHUNG-001",
+   "title": "Đăng nhập – Khung đăng nhập hiện đen ở lần mở đầu"
+  }
+ ],
+ "module": "CHUNG",
+ "objective": "Bước nền của mọi kịch bản Edusoft: mở Edusoft theo đường dẫn của người chạy và đăng nhập tài khoản test.",
+ "product": "edusoft",
+ "requestedAt": "2026-10-29T04:29:13.334Z",
+ "requestedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "status": "requested",
+ "updatedAt": "2026-10-29T04:29:13.334Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

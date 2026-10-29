@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "DKMH",
+ "idx": 103,
+ "menu": "Đăng ký MH / Đăng ký nguyện vọng online / Thời gian đăng ký nguyện vọng",
+ "menuRaw": "(Đăng ký MH / Đăng ký nguyện vọng online / Thời gian đăng ký nguyện vọng)",
+ "module": "DKMH",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Tiến",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 4,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

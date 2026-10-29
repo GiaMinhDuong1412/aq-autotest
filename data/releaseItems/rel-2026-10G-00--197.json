@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KSDG",
+ "idx": 197,
+ "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá",
+ "menuRaw": "(Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá)",
+ "module": "KSDG",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 2,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

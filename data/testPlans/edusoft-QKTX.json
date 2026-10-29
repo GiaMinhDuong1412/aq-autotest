@@ -1,0 +1,858 @@
+{
+ "createdAt": "2026-10-29T05:17:47.508Z",
+ "docs": [
+  {
+   "name": "QKTX_ChiSoDienNuocTheoPhong",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_DangKyTrucTuyen_GiaHan",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_QuanLyPhongTang",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_ThanhToanKTX",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_ThongTinLuuTru",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_ThongTinVaoRa_CapTheKTX",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QKTX_XetDuyetHopDongKTX",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 1.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý đăng ký lưu trú/ Lập hợp đồng đơn đăng ký/ HĐ đơn đăng ký đã duyệt theo phòng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Lập hợp đồng cho sinh viên của Trường, chọn Đại diện phòng và tính phí phòng chia đều"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 1.2",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Quản lý đăng ký lưu trú/ Lập hợp đồng đơn đăng ký/ HĐ đơn đăng ký đã duyệt theo phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Lập hợp đồng cho sinh viên miễn giảm với nhiệm ý Đại diện phòng và Không tính giá phòng"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 2.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Chỉ số sử dụng dịch vụ/ tháng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập chỉ số điện/nước theo tháng cho các phòng còn hiệu lực hợp đồng"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 2.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Tính phí ký túc xá",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tính/tính lại phí điện/nước và chia đều cho sinh viên trong phòng"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 2.3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ In và khóa hóa đơn",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra các khoản phí điện/nước và phí phòng đã tính"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 2.4",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ In và khóa hóa đơn",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Khóa/Mở khóa các khoản phí đã tính theo tháng"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Ẩn hiện phiếu thu online theo tháng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Ẩn/hiện phiếu thu ký túc xá trên Cổng thông tin điện tử"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 4.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Khai thác báo biểu/ Thống kê theo loại phí/ Theo danh sách sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê các khoản phí đã đóng/chưa đóng theo thời hạn hợp đồng"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 4.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Khai thác báo biểu/ Thống kê theo loại phí/ Theo danh sách sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê các khoản phí đã đóng/chưa đóng theo chu kỳ hiện tại"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 4.3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Khai thác báo biểu/ Thống kê theo loại phí/ Theo danh sách sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê các khoản phí theo chu kỳ hiện tại bằng nút In"
+  },
+  {
+   "docRef": "QKTX_ChiSoDienNuocTheoPhong, mục 4.2",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Khai thác báo biểu/ Thống kê theo loại phí/ Theo danh sách sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Không thống kê được các khoản thu của chu kỳ trước khi thống kê theo chu kỳ hiện tại"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.1",
+   "kind": "main",
+   "menu": "NetWEB sinh viên: Đăng ký ký túc xá",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng nhập cổng thông tin bằng Mã sinh viên và Mật khẩu để đăng ký phòng"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.2",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chọn menu Đăng ký ký túc xá sau khi đăng nhập"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tìm và đăng ký phòng ký túc xá với đối tượng lưu trú là Sinh viên"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thời hạn hợp đồng (Từ ngày - Đến ngày) do Nhà trường quy định, sinh viên không thể hiệu chỉnh"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Đăng ký nguyên phòng: chỉ tải phòng trống chưa có SV đăng ký, SV khác không thể đăng ký phòng đã chọn"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Danh sách phòng chỉ hiển thị phòng còn chỗ; phòng đã có SV đăng ký phải trùng giới tính"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "clean",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy phòng đã đăng ký tại menu Xem phòng ký túc xá đã đăng ký"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Theo dõi trạng thái đơn: Đơn đã được duyệt, SV không thể đăng ký phòng khác nếu chưa liên hệ cán bộ quản lý"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Theo dõi trạng thái đơn: Đang xử lý, SV phải hủy đơn mới đăng ký được phòng khác"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Theo dõi trạng thái đơn: Đơn bị hủy, SV xem lý do và đăng ký lại phòng mới"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.3",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thanh lý hợp đồng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "SV đã được lập hợp đồng không thể đăng ký phòng, cần thanh lý hợp đồng trước"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 1.4",
+   "kind": "main",
+   "menu": "",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Kiểm tra các khoản phí ký túc xá tại menu Xem phòng ký túc xá đã đăng ký"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.1",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng nhập cổng thông tin để gia hạn ký túc xá"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.2",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Chọn menu Xem phòng ký túc xá đã đăng ký để gia hạn"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Hiển thị thông tin Gia hạn hợp đồng (Số hợp đồng, Phòng, Từ ngày - Đến ngày) trong thời gian cho phép gia hạn"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Gia hạn trường hợp 1: chọn Có và Lưu để gia hạn phòng hiện tại"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Gia hạn trường hợp 2: chọn Không, Lưu, rồi đăng ký phòng khác"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.3",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Gia hạn trường hợp 3: chọn Không và Lưu để kết thúc gia hạn"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.3",
+   "kind": "alt",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thay đổi lựa chọn gia hạn khi còn trong thời gian gia hạn"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.4",
+   "kind": "main",
+   "menu": "",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "SV chọn Có: cán bộ quản lý xử lý đơn gia hạn, SV không cần đăng ký lại phòng"
+  },
+  {
+   "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục 2.4",
+   "kind": "clean",
+   "menu": "",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy phòng đã gia hạn và đăng ký phòng mới"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.1",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khu/ cơ sở ký túc xá",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa khu/cơ sở ký túc xá"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.2",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục dãy/ tòa nhà",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa dãy/tòa nhà"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.3",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục loại chất lượng phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa loại chất lượng phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.4",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục mẫu hợp đồng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa mẫu hợp đồng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Định nghĩa danh mục phòng lưu trú"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ trống mã phòng/tên phòng khi lưu phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ trống mã dãy khi lưu phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ trống số lượng được ở khi lưu phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phòng không nhập phái được ở tự nhận giới tính theo sinh viên đăng ký đầu tiên"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phòng đánh dấu không đăng ký online không hiển thị đăng ký trên cổng thông tin"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 1.5",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Để trống đối tượng đăng ký thì mọi đối tượng đều đăng ký được phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.1",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Định nghĩa đơn giá phòng theo đối tượng lưu trú và ngày hiệu lực"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm tra tiền phòng tính theo (đơn giá phòng * số tháng đăng ký) / số lượng sinh viên ở thực tế"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa nhiều loại đơn giá cho một phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.2",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Danh mục dịch vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa danh mục dịch vụ và cách tính phí (theo đối tượng/theo phòng)"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.3",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Hạng mục dịch vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa hạng mục dịch vụ"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.3",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Hạng mục dịch vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Cho phép tồn tại nhiều hạng mục dịch vụ cùng loại (ví dụ phí internet)"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 2.4",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá hạng mục dịch vụ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Định nghĩa đơn giá hạng mục dịch vụ theo từng thời điểm"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 3.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký dịch vụ/ Dịch vụ theo đối tượng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Gán hạng mục dịch vụ cho từng đối tượng còn hiệu lực hợp đồng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 3.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký dịch vụ/ Dịch vụ theo phòng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Gán hạng mục dịch vụ (phí điện, phí nước) cho từng phòng"
+  },
+  {
+   "docRef": "QKTX_QuanLyPhongTang, mục 3.2",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký dịch vụ/ Dịch vụ theo phòng",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chưa gán dịch vụ theo phòng thì không tính được phí điện và phí nước"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.1",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Hóa đơn lưu trú/ Thời gian tự động tính",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo thời gian tự động tính phí lưu trú"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Hóa đơn lưu trú/ Tính phí ký túc xá",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tính phí ký túc xá cho sinh viên được chọn"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Hóa đơn lưu trú/ In và khóa hóa đơn",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Khóa hóa đơn lưu trú sau khi tính phí"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Hóa đơn lưu trú/ In và khóa hóa đơn",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Mở khóa hóa đơn lưu trú"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Hóa đơn lưu trú/ In và khóa hóa đơn",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In hóa đơn thu phí lưu trú"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Tạm ứng lưu trú",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập tạm ứng lưu trú và phân bổ cho hóa đơn"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Thu phí lưu trú",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thu phí lưu trú theo khoản thu chưa thu"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Thu phí lưu trú",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Lưu và in phiếu thu phí lưu trú"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Thu phí lưu trú",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Thu phí khi đối tượng chưa được tính phí lưu trú"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Danh sách phiếu thu",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In lại phiếu thu từ danh sách phiếu thu"
+  },
+  {
+   "docRef": "QKTX_ThanhToanKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Quản lý thanh toán/ Thu phí lưu trú/ Cân đối nợ lưu trú",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Cân đối nợ lưu trú chuyển tiền dư sang tháng sau"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ Quyết định vào KTX",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo quyết định vào KTX (nhập thông tin QĐ, thêm/Import danh sách sinh viên, gán phòng thủ công/tự động, lưu)"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ Danh sách thành viên lưu trú KTX",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem danh sách thành viên đang lưu trú và in danh sách"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ Tìm kiếm nhân sự đang ở ký túc xá",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Tìm kiếm thành viên đang lưu trú và in kết quả tìm kiếm"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ Quyết định chuyển phòng KTX",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo quyết định chuyển phòng KTX (chọn sinh viên đang lưu trú, gán phòng thủ công/tự động, lưu)"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ In thống kê biến động lưu trú KTX",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In thống kê biến động lưu trú theo khoảng thời gian hoặc tất cả"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ Quyết định ra KTX",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Tạo quyết định ra khỏi KTX (chọn sinh viên đang lưu trú, lưu)"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ In danh sách thành viên ký túc xá",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách chi tiết thành viên ký túc xá"
+  },
+  {
+   "docRef": "QKTX_ThongTinLuuTru, mục 3",
+   "kind": "main",
+   "menu": "Ký túc xá/ Lưu trú/ In thống kê số lượng thành viên ký túc xá",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In thống kê số lượng thành viên ký túc xá"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Đăng ký thẻ vào/ra ký túc xá",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng ký thẻ vào/ra ký túc xá bằng cách đưa thẻ trắng vào máy đọc thẻ (tự động điền mã thẻ)"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Đăng ký thẻ vào/ra ký túc xá",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Đăng ký thẻ vào/ra ký túc xá bằng cách nhập mã thẻ và nhấn nút Đăng ký"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Khóa thẻ vào/ra KTX",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Khóa thẻ vào/ra KTX theo mã đối tượng"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Mở khóa thẻ KTX",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Mở khóa thẻ KTX bằng cách quét thẻ và nhấn nút Mở khóa"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Tìm kiếm thông tin qua thẻ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Tìm kiếm thông tin chủ thẻ và thẻ bằng cách nhập hoặc quét mã thẻ"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Tìm và in nhật ký vào/ra ký túc xá",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Tìm và in nhật ký vào/ra theo khoảng thời gian và mã thẻ"
+  },
+  {
+   "docRef": "QKTX_ThongTinVaoRa_CapTheKTX, mục III.2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Nhật ký vào/ra/ Thống kê lượt vào/ra ký túc xá",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Thống kê và in lượt vào/ra ký túc xá theo khoảng thời gian"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm SV đã xếp lớp vào danh sách đơn đăng ký"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Chỉ nhập được SV đã có trong danh sách lớp (Nhập SV đã xếp lớp)"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm SV chưa xếp lớp vào danh sách đơn đăng ký"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Thêm đối tượng SV trường khác vào danh sách đơn đăng ký"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập thông tin cá nhân, phòng đăng ký, số chỗ ở thêm và lưu"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "setup",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đơn đăng ký",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Khai báo diện ưu tiên của đối tượng tại tab Diện ưu tiên"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Kiểm duyệt diện ưu tiên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Kiểm duyệt diện ưu tiên (check/bỏ check hợp lệ) và lưu"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Duyệt sơ bộ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Duyệt sơ bộ đơn đăng ký lưu trú"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Duyệt sơ bộ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy hồ sơ không hợp lệ tại màn hình Duyệt sơ bộ"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã duyệt sơ bộ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem danh sách đã duyệt sơ bộ"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã duyệt sơ bộ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ duyệt hồ sơ đã duyệt sơ bộ nhầm"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Duyệt chính thức",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Duyệt chính thức đơn đăng ký lưu trú"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Duyệt chính thức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Hủy hồ sơ không hợp lệ tại màn hình Duyệt chính thức"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã duyệt chính thức",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem danh sách đã duyệt chính thức"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã duyệt chính thức",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Bỏ duyệt hồ sơ đã duyệt chính thức nhầm"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã hủy",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "Xem danh sách hồ sơ đã hủy"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 1",
+   "kind": "alt",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách đã hủy",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "title": "Phục hồi hồ sơ bị hủy nhầm bằng chức năng Bỏ hủy"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách chuẩn bị lập hợp đồng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Hồ sơ đã duyệt chính thức chuyển sang Danh sách chuẩn bị lập hợp đồng"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách chuẩn bị lập hợp đồng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập thông tin hợp đồng (ngày hợp đồng, thời gian hợp đồng) và chọn"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách chuẩn bị lập hợp đồng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Nhập số hợp đồng và mã phòng ấn định xếp phòng"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách chuẩn bị lập hợp đồng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Xếp phòng tự động cho các hồ sơ đăng ký"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ Danh sách chuẩn bị lập hợp đồng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "title": "Lập hợp đồng cho các hồ sơ đã xếp phòng (đánh dấu *)"
+  },
+  {
+   "docRef": "QKTX_XetDuyetHopDongKTX, mục 2",
+   "kind": "main",
+   "menu": "Ký túc xá/ Đăng ký lưu trú/ In danh sách thành viên KTX",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "title": "In danh sách thành viên KTX"
+  }
+ ],
+ "module": "QKTX",
+ "product": "edusoft",
+ "status": "draft",
+ "syncedAt": "2026-10-29T05:17:47.508Z",
+ "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "updatedAt": "2026-10-29T05:17:47.508Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

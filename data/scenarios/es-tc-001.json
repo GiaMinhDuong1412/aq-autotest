@@ -1,0 +1,79 @@
+{
+ "actual": "Đăng nhập thành công. Màn hình chính EduSoft.NET [v2026.101.00-HVNG] hiển thị, vai trò Quản trị Đại học (DH), có nút Đăng xuất.\nGhi nhận thêm: lần mở đầu khung login hiện đen; ô nhập liệu không hỗ trợ Ctrl+A.",
+ "altFlows": [
+  {
+   "condition": "Đường dẫn trong config.json không tồn tại hoặc không phải Edusoft.NET.exe",
+   "expected": "Script báo không tìm thấy file ở Bước 2; lượt chạy Không đạt, không mở Edusoft.",
+   "name": "Đường dẫn Edusoft không đúng",
+   "steps": [
+    "Khai báo đường dẫn sai (thiếu file .exe hoặc sai thư mục).",
+    "Chạy chay-test.bat."
+   ]
+  },
+  {
+   "condition": "Nhập đúng tên đăng nhập nhưng sai mật khẩu",
+   "expected": "Edusoft báo sai tên đăng nhập hoặc mật khẩu, vẫn ở khung đăng nhập, không vào màn hình chính.",
+   "name": "Sai mật khẩu",
+   "steps": [
+    "Nhập admindh và một mật khẩu sai.",
+    "Bấm Đăng nhập."
+   ]
+  },
+  {
+   "condition": "Ô Tên đăng nhập để trống",
+   "expected": "Edusoft yêu cầu nhập tên đăng nhập, không đăng nhập.",
+   "name": "Bỏ trống tên đăng nhập",
+   "steps": [
+    "Xóa sạch ô Tên đăng nhập.",
+    "Bấm Đăng nhập."
+   ]
+  },
+  {
+   "condition": "Lần chạy đầu khung đăng nhập hiển thị đen, không thao tác được",
+   "expected": "Lần chạy lại khung đăng nhập hiển thị bình thường; ghi nhận hiện tượng vào Quá trình test.",
+   "name": "Khung đăng nhập hiện đen ở lần mở đầu",
+   "steps": [
+    "Đóng Edusoft.",
+    "Chạy lại Edusoft.NET.exe."
+   ]
+  },
+  {
+   "condition": "Tên đăng nhập không tồn tại (đổi khác tài khoản test), mật khẩu đúng",
+   "expected": "Edusoft báo đăng nhập không thành công, vẫn ở khung đăng nhập, không vào màn hình chính.",
+   "name": "Sai tên đăng nhập",
+   "steps": [
+    "Nhập tên đăng nhập không tồn tại (VD: admindh_khongtontai) và mật khẩu đúng của tài khoản test.",
+    "Bấm Đăng nhập."
+   ]
+  }
+ ],
+ "code": "CHUNG-001",
+ "createdAt": "2026-10-28T07:22:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đường dẫn Edusoft.NET.exe và tài khoản test của người chạy (trang Máy chạy thử)",
+  "next": [
+   "KLGD-001",
+   "DKMH-001"
+  ],
+  "out": "Phiên làm việc Edusoft đã đăng nhập, vai trò Quản trị Đại học (DH)"
+ },
+ "expected": "Đăng nhập thành công, vào màn hình chính EduSoft.NET HVNG đúng vai trò của tài khoản, không có thông báo lỗi. Bỏ trống tên đăng nhập, sai mật khẩu hoặc sai tên đăng nhập thì bị chặn, vẫn ở khung đăng nhập.",
+ "menu": "Màn hình đăng nhập",
+ "module": "CHUNG",
+ "process": "28/10/2026 14:10  Lần mở đầu: khung đăng nhập hiện khung đen (tải chậm), chưa thao tác được.\n28/10/2026 14:19  Chạy lại exe, khung DEMO HVNG hiển thị bình thường.\n28/10/2026 14:19  Ctrl+A và triple-click không chọn được toàn bộ nội dung ô; chữ nhập bị nối vào (admindhadmindh).\n28/10/2026 14:20  Xóa bằng End + Backspace, nhập lại admindh và mật khẩu (7 ký tự).\n28/10/2026 14:20  Bấm Đăng nhập: khung login đóng, không có thông báo lỗi.\n28/10/2026 14:22  Màn hình chính tải xong.",
+ "product": "edusoft",
+ "status": "pass",
+ "steps": [
+  "Lấy đường dẫn Edusoft.NET.exe đã khai báo ở trang Máy chạy thử (config.json của bộ test).",
+  "Chạy Edusoft.NET.exe theo đường dẫn đó.",
+  "Chờ khung đăng nhập hiển thị.",
+  "Xóa sạch ô Tên đăng nhập (End + Backspace) rồi nhập tài khoản test đã khai báo.",
+  "Xóa sạch ô Mật khẩu rồi nhập mật khẩu của tài khoản test.",
+  "Bấm Đăng nhập và chờ màn hình chính tải xong."
+ ],
+ "title": "Đăng nhập Edusoft.NET bản HVNG - Copy",
+ "updatedAt": "2026-10-29T08:40:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

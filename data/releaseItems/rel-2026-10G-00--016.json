@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLTS",
+ "idx": 16,
+ "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh",
+ "menuRaw": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh",
+ "module": "QLTS",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Dương",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 6,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

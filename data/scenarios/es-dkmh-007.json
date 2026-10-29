@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "File không có cột masv (vd. cột MSSV)",
+   "expected": "Chương trình báo sai cấu trúc file, không cho Import.",
+   "name": "File sai cấu trúc",
+   "steps": [
+    "Chọn file sai cấu trúc."
+   ]
+  },
+  {
+   "condition": "File có một mã SV không có trong hệ thống",
+   "expected": "Dòng mã sai bị báo lỗi; các dòng hợp lệ vẫn được xử lý hoặc chương trình yêu cầu sửa file.",
+   "name": "Mã sinh viên không tồn tại",
+   "steps": [
+    "Chọn file có mã sai.",
+    "Import."
+   ]
+  }
+ ],
+ "code": "DKMH-007",
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "File masv; nhóm MH mở cho lớp",
+  "next": [
+   "DKMH-010"
+  ],
+  "out": "Kết quả đăng ký của 2 SV trong file"
+ },
+ "expected": "File hợp lệ được kiểm tra không lỗi; import thành công; 2 SV có các nhóm MH mở cho lớp. (Theo DKMH_DangKyMonHocOFFLINE, mục III.2.2.)",
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Đăng ký môn học theo mã sinh viên",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn Năm học 2025-2026, Học kỳ 2 (học kỳ test); tài khoản có quyền trên phân hệ Đăng ký MH.",
+  "Chuẩn bị file Excel cột masv gồm MSSV của 2 SV thuộc lớp test.",
+  "Mở menu Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Đăng ký môn học theo mã sinh viên.",
+  "Chọn file đã chuẩn bị.",
+  "Đọc thông báo kiểm tra file của chương trình.",
+  "Bấm Import.",
+  "Kiểm tra 2 SV đã được đăng ký các nhóm MH mở cho lớp."
+ ],
+ "title": "Đăng ký theo tập tin mã sinh viên",
+ "updatedAt": "2026-10-29T02:00:00.000Z",
+ "updatedBy": null,
+ "version": "v2026.101.00-HVNG"
+}

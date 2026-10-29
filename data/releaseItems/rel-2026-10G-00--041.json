@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 41,
+ "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online",
+ "menuRaw": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online",
+ "module": "QLSV",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "r2": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": "x"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 9,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

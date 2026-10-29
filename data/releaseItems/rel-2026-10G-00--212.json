@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QKTX",
+ "idx": 212,
+ "menu": "NetWEB sinh viên: Đăng ký ký túc xá",
+ "menuRaw": "NetWEB sinh viên: Đăng ký ký túc xá",
+ "module": "QKTX",
+ "paren": false,
+ "product": "netweb",
+ "r1": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 9,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

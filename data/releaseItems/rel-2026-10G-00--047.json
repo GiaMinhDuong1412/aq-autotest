@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "QLSV",
+ "idx": 47,
+ "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét",
+ "menuRaw": "(Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét)",
+ "module": "QLSV",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 15,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}

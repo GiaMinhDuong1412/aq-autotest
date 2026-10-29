@@ -1,0 +1,28 @@
+{
+ "createdAt": "2026-10-29T02:00:00.000Z",
+ "group": "KSDG",
+ "idx": 201,
+ "menu": "Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form / Nhập trả lời từng đáp viên",
+ "menuRaw": "(Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form / Nhập trả lời từng đáp viên)",
+ "module": "KSDG",
+ "paren": true,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Nghĩa",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "r2": {
+  "assignee": "",
+  "caseNo": "",
+  "ex": false,
+  "note": "",
+  "res": null
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [],
+ "stt": 6,
+ "updatedAt": "2026-10-29T02:00:00.000Z"
+}
