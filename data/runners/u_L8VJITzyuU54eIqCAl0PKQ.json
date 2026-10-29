@@ -2,10 +2,14 @@
  "account": "admindh",
  "alias": "",
  "check": {
-  "at": "2026-10-29T06:47:00.000Z",
-  "message": "Mở được Edusoft.NET.exe bản EDUSOFT - HVNG - Copy, hiện khung đăng nhập DEMO HVNG, nhưng không nhập / bấm được: Edusoft đang chạy quyền admin nên Windows chặn chuột và bàn phím từ Claude. Cần chạy app Claude desktop bằng quyền admin (hoặc bỏ Run as administrator cho Edusoft) rồi kiểm tra lại. Đường dẫn đã thử: E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe",
-  "requestedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
-  "status": "none"
+  "account": "admindh",
+  "at": "2026-10-29T15:37:08.719406Z",
+  "kitVersion": "2026.10.29-10",
+  "message": "Mở và đăng nhập thành công (script)",
+  "runId": "sc-chung-001-20261029-223513",
+  "status": "ok",
+  "version": "v2026.10K.09",
+  "via": "script"
  },
  "env": "DEMO HVNG",
  "hasPw": {
@@ -13,9 +17,9 @@
   "gv": false,
   "sv": false
  },
- "kitComputer": "",
- "kitDir": "/tmp/kitx",
+ "kitComputer": "DESKTOP-I1S5SR8",
+ "kitDir": "A:\\AQ-Autotest-DangNhap-20261029\\AQ-Autotest",
  "machine": "",
- "path": "E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe",
- "updatedAt": "2026-10-29T14:30:54.085Z"
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "updatedAt": "2026-10-29T15:37:22.748Z"
 }
