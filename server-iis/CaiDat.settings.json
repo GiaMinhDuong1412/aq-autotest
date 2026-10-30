@@ -1,0 +1,11 @@
+{
+  "TargetPath": "C:\\Demo\\AQAUTOTEST",
+  "Mode": "app",
+  "SiteName": "AQ",
+  "AppPath": "/aqautotest",
+  "HostName": "",
+  "AppPool": "AQAutotest",
+  "Repo": "giaminhduong1412/aq-autotest",
+  "Branch": "main",
+  "PythonZip": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip"
+}

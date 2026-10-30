@@ -4095,7 +4095,7 @@ QUAY VIDEO (TÙY CHỌN)
   function myRunner(){return SC.me?SC.runners[SC.me]||null:null;}
   function runnerOk(p){var r=myRunner();if(!r)return false;var c=(p||SC.product)==='netweb'?(r.netweb&&r.netweb.check):r.check;return !!(c&&c.status==='ok');}
   function needsRunner(p){return p==='netweb';}
-  function imgUrl(id){return '/_blob/'+encodeURIComponent(id);}
+  function imgUrl(id){return '_blob/'+encodeURIComponent(id);}
   function thumbs(ids,rm,big){return (ids||[]).map(function(id,j){
     return '<span class="thumbw"><button type="button" class="thumb'+(big?' big':'')+'" data-img="'+esc(id)+'" aria-label="Xem ảnh"><img src="'+imgUrl(id)+'" alt="Ảnh chụp màn hình" loading="lazy"></button>'+
       (rm!=null?'<button type="button" class="thumb-x" data-unshot="'+rm+':'+j+'" aria-label="Bỏ ảnh khỏi bước">'+IC.x+'</button>':'')+'</span>';}).join('');}

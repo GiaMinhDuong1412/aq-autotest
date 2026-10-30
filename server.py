@@ -37,7 +37,7 @@ KIT_BLOCKS = {"kit-aqrun": "aqrun.py", "kit-agent": "aq-agent.py", "kit-caidat":
               "kit-quenmk": "quen-mat-khau.bat", "kit-huongdan": "HUONG-DAN.txt"}
 LOCK = threading.Lock()
 REV = {"n": 0}
-MODE = {"public": False, "https": False}
+MODE = {"public": False, "https": False, "base": ""}     # base: đường dẫn con khi chạy dưới IIS, vd /aqautotest
 CUR = threading.local()                         # người dùng của yêu cầu đang xử lý (chế độ --public)
 
 
@@ -148,7 +148,7 @@ def save_asset(body, ctype):
     if ext == ".jpe":
         ext = ".jpg"
     (ASSETS / (aid + ext)).write_bytes(body)
-    return {"id": aid, "url": "/_blob/" + aid, "sizeBytes": len(body), "contentType": ctype or "application/octet-stream"}
+    return {"id": aid, "url": "_blob/" + aid, "sizeBytes": len(body), "contentType": ctype or "application/octet-stream"}
 
 
 # ------------------------------------------------------------------ bộ test trên máy (thay cầu nối)
@@ -464,10 +464,10 @@ LOGIN_BODY = """<form id="f"><h1>AQ Autotest Console</h1><p>Đăng nhập để 
 <label for="p">Mật khẩu</label><input id="p" type="password" autocomplete="current-password" required>
 <button>Đăng nhập</button><div class="err" id="e"></div></form><script>
 document.getElementById('f').onsubmit=async function(ev){ev.preventDefault();var e=document.getElementById('e');e.textContent='';
-var r=await fetch('/login',{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify({login:l.value,password:p.value})});
-if(r.ok){location.href='/';return;}try{e.textContent=(await r.json()).error;}catch(x){e.textContent='Lỗi '+r.status;}};</script>"""
+var r=await fetch('login',{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify({login:l.value,password:p.value})});
+if(r.ok){location.href='./';return;}try{e.textContent=(await r.json()).error;}catch(x){e.textContent='Lỗi '+r.status;}};</script>"""
 
-ACCOUNT_BODY = """<div class="box"><h1>Tài khoản</h1><p><a href="/">← Về console</a> · <a href="#" id="out">Đăng xuất</a></p>
+ACCOUNT_BODY = """<div class="box"><h1>Tài khoản</h1><p><a href="./">← Về console</a> · <a href="#" id="out">Đăng xuất</a></p>
 <h2>Tên hiển thị</h2><div class="row"><div><input id="nm"></div><button class="ghost" id="nmb">Lưu</button></div>
 <h2>Đổi mật khẩu</h2><div class="row"><div><label for="o">Mật khẩu hiện tại</label><input id="o" type="password" autocomplete="current-password"></div>
 <div><label for="n">Mật khẩu mới (từ 8 ký tự)</label><input id="n" type="password" autocomplete="new-password"></div><button class="ghost" id="pwb">Đổi</button></div>
@@ -475,11 +475,11 @@ ACCOUNT_BODY = """<div class="box"><h1>Tài khoản</h1><p><a href="/">← Về 
 <div class="row"><div><label for="al">Tên đăng nhập</label><input id="al" placeholder="vd: thuy.nt"></div><div><label for="an">Tên hiển thị</label><input id="an"></div>
 <button class="ghost" id="ab">Thêm</button></div></div><div class="err" id="e"></div></div><script>
 var E=document.getElementById('e'),ME=null;function say(t){E.textContent=t||'';}
-async function call(a){var r=await fetch('/api/account',{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify(a)});
+async function call(a){var r=await fetch('api/account',{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify(a)});
 var j={};try{j=await r.json();}catch(x){}if(!r.ok)throw new Error(j.error||('Lỗi '+r.status));return j;}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-async function load(){ME=await (await fetch('/api/me')).json();nm.value=ME.name||'';if(!ME.admin)return;adm.hidden=false;
-var us=(await (await fetch('/api/users')).json()).users;t.innerHTML='<tr><th>Đăng nhập</th><th>Tên</th><th>Quyền</th><th></th></tr>'+us.map(function(u){
+async function load(){ME=await (await fetch('api/me')).json();nm.value=ME.name||'';if(!ME.admin)return;adm.hidden=false;
+var us=(await (await fetch('api/users')).json()).users;t.innerHTML='<tr><th>Đăng nhập</th><th>Tên</th><th>Quyền</th><th></th></tr>'+us.map(function(u){
 return '<tr><td>'+esc(u.login)+'</td><td>'+esc(u.name)+'</td><td>'+(u.admin?'Quản trị':'Thành viên')+'</td><td>'+(u.id===ME.id?'(bạn)':
 '<button class="ghost" data-a="reset" data-id="'+u.id+'">Đặt lại mật khẩu</button> <button class="ghost" data-a="admin" data-v="'+(u.admin?'':'1')+'" data-id="'+u.id+'">'+(u.admin?'Bỏ quản trị':'Cho quản trị')+'</button> <button class="ghost" data-a="delete" data-id="'+u.id+'">Xoá</button>')+'</td></tr>';}).join('');}
 function newPw(who,pw){say('');alert('Mật khẩu của '+who+': '+pw+'\\n\\nGửi riêng cho người đó; họ đổi lại ở trang Tài khoản sau khi đăng nhập.');}
@@ -488,7 +488,7 @@ if(a==='delete'&&!confirm('Xoá người dùng này?'))return;try{var j=await ca
 ab.onclick=async function(){try{var j=await call({action:'add',login:al.value,name:an.value});newPw(al.value,j.password);al.value=an.value='';load();}catch(x){say(x.message);}};
 nmb.onclick=async function(){try{await call({action:'name',name:nm.value});say('Đã lưu tên.');}catch(x){say(x.message);}};
 pwb.onclick=async function(){try{await call({action:'password',old:o.value,new:n.value});o.value=n.value='';say('Đã đổi mật khẩu.');}catch(x){say(x.message);}};
-out.onclick=async function(ev){ev.preventDefault();await fetch('/logout',{method:'POST',headers:{'X-AQ':'1'}});location.href='/login';};
+out.onclick=async function(ev){ev.preventDefault();await fetch('logout',{method:'POST',headers:{'X-AQ':'1'}});location.href='login';};
 load().catch(function(x){say(x.message);});</script>"""
 
 
@@ -516,7 +516,7 @@ def page_html():
     else:
         boot = "window.AQ_LOCAL={userId:%s,userName:%s};" % (js(CFG["userId"]), js(CFG.get("userName") or ""))
     head = ('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<script>%s</script><script src="/claude-shim.js"></script></head><body>' % boot)
+            '<script>%s</script><script src="claude-shim.js"></script></head><body>' % boot)
     return head + html + "</body></html>"
 
 
@@ -555,12 +555,20 @@ class H(BaseHTTPRequestHandler):
 
     def cookie(self, value, max_age):
         https = MODE["https"] or (self.headers.get("X-Forwarded-Proto") or "").lower() == "https"
-        return "%s=%s; Path=/; Max-Age=%d; HttpOnly; SameSite=Lax%s" % (COOKIE, value, max_age, "; Secure" if https else "")
+        return "%s=%s; Path=%s/; Max-Age=%d; HttpOnly; SameSite=Lax%s" % (COOKIE, value, MODE["base"], max_age, "; Secure" if https else "")
 
     def guard(self):
         """Localhost: chỉ nhận yêu cầu từ chính trang localhost. --public: bắt đăng nhập.
         Lệnh ghi phải có header X-AQ (trang web lạ không gửi được header này qua trình duyệt)."""
         CUR.uid = None
+        base = MODE["base"]
+        if base:                                       # dưới IIS: bỏ đường dẫn con, trang dùng URL tương đối
+            raw = urlparse(self.path).path
+            if raw == base:
+                self.send(301, "", "text/plain; charset=utf-8", {"Location": base + "/"})
+                return False
+            if raw.startswith(base + "/"):
+                self.path = self.path[len(base):]
         if self.command != "GET" and self.headers.get("X-AQ") != "1":
             self.send(403, {"error": "forbidden"})
             return False
@@ -579,7 +587,7 @@ class H(BaseHTTPRequestHandler):
         if CUR.uid or path in ("/login", "/logout", "/favicon.ico"):
             return True
         if self.command == "GET" and not path.startswith(("/api/", "/_blob/")):
-            self.send(302, "", "text/plain; charset=utf-8", {"Location": "/login"})
+            self.send(302, "", "text/plain; charset=utf-8", {"Location": MODE["base"] + "/login"})
         else:
             self.send(401, {"error": "Cần đăng nhập lại", "code": "login"})
         return False
@@ -594,7 +602,7 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, page_html(), "text/html; charset=utf-8")
             if MODE["public"] and u.path == "/login":
                 if CUR.uid:
-                    return self.send(302, "", "text/plain; charset=utf-8", {"Location": "/"})
+                    return self.send(302, "", "text/plain; charset=utf-8", {"Location": MODE["base"] + "/"})
                 return self.send(200, LOGIN_HTML % ("380px", LOGIN_BODY), "text/html; charset=utf-8")
             if MODE["public"] and u.path == "/quan-tri":
                 return self.send(200, LOGIN_HTML % ("760px", ACCOUNT_BODY), "text/html; charset=utf-8")
@@ -725,6 +733,7 @@ def main():
     ap.add_argument("--local", help="thư mục riêng của máy (mặc định local/)")
     ap.add_argument("--cert", help="file chứng chỉ HTTPS (.pem) – chạy https trực tiếp")
     ap.add_argument("--key", help="file khoá riêng của chứng chỉ (.pem)")
+    ap.add_argument("--base", default="", help="đường dẫn con khi chạy sau IIS, vd /aqautotest")
     a = ap.parse_args()
     if a.data:
         DATA = Path(a.data).resolve()
@@ -734,6 +743,7 @@ def main():
         CFG_FILE = LOCAL / "config.json"
         CFG = load_cfg()
     MODE["public"] = a.public
+    MODE["base"] = "/" + a.base.strip("/") if a.base.strip("/") else ""
     if not CFG_FILE.exists():
         save_cfg(CFG)
     if a.public:

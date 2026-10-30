@@ -44,6 +44,12 @@ Dữ liệu ở `aq-console/du-lieu` (không bị ghi đè khi cập nhật code
 Console trên server không nối trực tiếp máy chạy test: nút **Chạy** tải file lệnh về máy người bấm, Agent trên máy test nhận từ
 thư mục Tải về (mở console trên chính máy test); kết quả nhập bằng **Nhập kết quả…**.
 
+### Cài dưới IIS (cùng kiểu AQBuild – dùng chung domain/https của IIS)
+`python tools/dong_goi_iis.py` tạo `AQAutotest-IIS-cai-dat.zip`; giải nén trên server, sửa `CaiDat.settings.json`
+(thư mục con của site có sẵn như `demo.aqtech.vn/aqautotest/`, hoặc site riêng theo domain), chạy `CAI-DAT.cmd` một lần.
+IIS chạy `aq-console-server.py --iis` qua AspNetCoreModuleV2 (có sẵn khi đã cài .NET Hosting Bundle), Python nhúng nằm trong
+thư mục đích. Chi tiết: `server-iis/HUONG-DAN.md`.
+
 ## Đồng bộ laptop ↔ PC
 - Trước và sau mỗi buổi làm việc chạy **`dong-bo.bat`**: lưu thay đổi của máy này, lấy thay đổi của máy kia, đẩy lên GitHub.
   Console đang mở sẽ tự cập nhật sau vài giây khi dữ liệu đổi.
@@ -58,6 +64,7 @@ thư mục Tải về (mở console trên chính máy test); kết quả nhập 
 | `kit/` | bộ test cài trên máy chạy test (`aqrun.py`, `aq-agent.py`, `cai-dat.bat`…) |
 | `data/` | kịch bản, lượt chạy, lỗi, release, danh mục kế hoạch, ảnh |
 | `aq-console-server.py` | bản chạy trên server: tự tải code từ GitHub, tự cập nhật, bắt đăng nhập |
+| `server-iis/` | gói cài dưới IIS (`CAI-DAT.cmd`, `Cai-Dat.ps1`, `CaiDat.settings.json`, `HUONG-DAN.md`) |
 | `tools/embed_kit.py` | nhúng lại `kit/` vào `web/index.html` trước khi commit |
 
 ## Giới hạn so với bản trên claude.ai
