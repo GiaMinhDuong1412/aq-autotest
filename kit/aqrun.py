@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-8"
+KIT_VERSION = "2026.10.30-9"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -109,35 +109,37 @@ def alt_at(alt, n):
 
 
 class Caption:
-    """Dải chú thích luôn nổi ở mép trên màn hình chính (tkinter, chạy ở luồng chính)."""
+    """Popup tiến trình nổi ở góc phải dưới màn hình (tkinter, chạy ở luồng chính): kịch bản, menu đang test,
+    thao tác của bước đang chạy và danh sách bước kèm trạng thái. Người test trả lời ngay trên popup
+    (bước làm tay, bước gặp lỗi, ghi lỗi) – không phải gõ vào cửa sổ đen. Không có tkinter thì chạy không popup."""
+    C = dict(bg="#ffffff", line="#d5dce8", fg="#111726", dim="#4a5368", mute="#8a93a6", acc="#5b4cf0",
+             ok="#1f9d55", bad="#d64545", skip="#8a93a6", soft="#f3f5fa", badbg="#fdeeee", okbg="#e9f7ef")
+    W = 460
+    HOLD = 1.2            # dòng trạng thái giữ ít nhất 1,2 giây rồi mới đổi chữ
+    ROWS = 5
 
     def __init__(self):
         self.q = queue.Queue()
         self.root = None
+        self.st = dict(code="", title="", menu="", text="", steps=[], alts=[], srec=[], arec=[], cur=None, status="")
+        self.small = False
+        self.moved = None
+        self._pending = None
+        self._hold = 0.0
 
+    # ---------- luồng chạy test gọi
     def start(self, worker):
         try:
             import tkinter as tk
         except Exception:
             worker()
             return
-        self.root = tk.Tk()
-        r = self.root
+        self.tk = tk
+        r = self.root = tk.Tk()
         r.overrideredirect(True)
         r.attributes("-topmost", True)
-        try:
-            r.attributes("-alpha", 0.88)
-        except Exception:
-            pass
-        r.configure(bg="#14141f")
-        w, h = r.winfo_screenwidth(), r.winfo_screenheight()
-        cw = min(1100, w - 40)
-        # đặt ở mép DƯỚI (trên thanh trạng thái Edusoft) để không che thanh menu/ribbon
-        r.geometry("%dx58+%d+%d" % (cw, (w - cw) // 2, max(0, h - 58 - 110)))
-        self.lbl = tk.Label(r, text="AQ Autotest", fg="#ffffff", bg="#14141f", font=("Segoe UI", 13, "bold"), anchor="w", padx=14)
-        self.lbl.pack(fill="x")
-        self.sub = tk.Label(r, text="", fg="#b9b3ff", bg="#14141f", font=("Segoe UI", 10), anchor="w", padx=14)
-        self.sub.pack(fill="x")
+        r.configure(bg=self.C["line"])
+        self._build()
 
         def pump():
             try:
@@ -146,33 +148,34 @@ class Caption:
                     if a is None:
                         r.destroy()
                         return
-                    if a == "__step__":
-                        self._step_win(*b)
-                    elif a == "__bug__":
-                        self._bug_win(*b)
+                    if a == "__state__":
+                        self._render()
                     elif a == "__close__":
-                        self._close_win()
+                        self._act_clear()
+                    elif a in ("__hide__", "__unhide__"):
+                        r.attributes("-alpha", 0.0 if a == "__hide__" else 1.0)
+                    elif a in ("__step__", "__bug__", "__err__"):
+                        getattr(self, "_act" + a[1:-2])(*b)
                     else:
-                        self.lbl.config(text=a)
-                        self.sub.config(text=b or "")
+                        self._pending = (a, b)
             except queue.Empty:
                 pass
+            if self._pending and time.time() >= self._hold:
+                a, b = self._pending
+                self._pending = None
+                self._hold = time.time() + self.HOLD
+                self.st["status"] = (a + (": " + b if b else ""))[:150]
+                self._render()
             r.after(120, pump)
 
-        r.after(120, pump)
+        def tick():
+            self._render()
+            r.after(700, tick)
 
-        def click_through():
-            # chuột bấm xuyên qua dải chú thích, không giành focus của Edusoft
-            try:
-                import ctypes
-                hwnd = ctypes.windll.user32.GetParent(r.winfo_id()) or r.winfo_id()
-                ex = ctypes.windll.user32.GetWindowLongW(hwnd, -20)
-                ctypes.windll.user32.SetWindowLongW(hwnd, -20, ex | 0x80000 | 0x20 | 0x08000000 | 0x80)
-            except Exception:
-                pass
-        r.after(50, click_through)
-        t = threading.Thread(target=self._run, args=(worker,), daemon=True)
-        t.start()
+        r.after(120, pump)
+        r.after(700, tick)
+        r.after(60, lambda: self._style(False))
+        threading.Thread(target=self._run, args=(worker,), daemon=True).start()
         r.mainloop()
 
     def _run(self, worker):
@@ -185,147 +188,28 @@ class Caption:
         print("»", title, ("— " + sub) if sub else "")
         self.q.put((title, sub))
 
-    # --- hộp thoại nổi cho bước thao tác tay (bấm chuột được, không phải gõ vào cửa sổ đen)
-    win = None
+    def begin(self, sc, srec, arec, texts=None):
+        """Bắt đầu một kịch bản: popup hiện mã, tên, menu và danh sách bước (trạng thái đọc thẳng từ srec/arec)."""
+        steps = texts or [str(x) for x in (sc.get("steps") or [])]
+        self.st.update(code=sc.get("code", ""), title=sc.get("title", ""), menu=" › ".join(menu_segs(sc.get("menu", ""))),
+                       steps=steps, alts=[a.get("name", "") for a in (sc.get("altFlows") or [])], srec=srec, arec=arec, cur=None, text="")
+        self.q.put(("__state__", None))
 
-    def _close_win(self):
-        if self.win is not None:
-            try:
-                self.win.destroy()
-            except Exception:
-                pass
-            self.win = None
+    def at(self, kind, idx, text):
+        """Bước / luồng con bắt đầu chạy – chỉ gọi khi bước trước đã xong, nên chữ "Thao tác" không nhảy giữa chừng."""
+        self.st.update(cur=(kind, idx), text=str(text or ""), status="")
+        self._pending = None
+        self.q.put(("__state__", None))
 
-    def _hwnd(self, w):
-        import ctypes
-        return ctypes.windll.user32.GetParent(w.winfo_id()) or w.winfo_id()
+    def hidden(self, on):
+        """Ẩn popup trong lúc chụp ảnh màn hình để ảnh Edusoft không bị che."""
+        if self.root is not None:
+            self.q.put(("__hide__" if on else "__unhide__", None))
+            time.sleep(0.35 if on else 0)
 
-    def _no_activate(self, w):
-        """Hộp hỏi Đạt/Lỗi không giành focus của Edusoft – người test vẫn thao tác Edusoft bình thường."""
-        try:
-            import ctypes
-            h = self._hwnd(w)
-            ctypes.windll.user32.SetWindowLongW(h, -20, ctypes.windll.user32.GetWindowLongW(h, -20) | 0x08000000)
-        except Exception:
-            pass
-
-    def _force_focus(self, w, entry):
-        """Đưa form nhập lỗi lên trước và đặt con trỏ vào ô đầu (Windows chặn đổi cửa sổ trước nếu không gắn luồng nhập)."""
-        try:
-            import ctypes
-            u, k = ctypes.windll.user32, ctypes.windll.kernel32
-            h = self._hwnd(w)
-            fg = u.GetForegroundWindow()
-            t1, t2 = u.GetWindowThreadProcessId(fg, None), k.GetCurrentThreadId()
-            u.AttachThreadInput(t1, t2, True)
-            u.ShowWindow(h, 5)
-            u.BringWindowToTop(h)
-            u.SetForegroundWindow(h)
-            u.AttachThreadInput(t1, t2, False)
-        except Exception:
-            pass
-        try:
-            w.focus_force()
-            entry.focus_set()
-        except Exception:
-            pass
-
-    def _place(self, w, ww, hh):
-        sw, sh = w.winfo_screenwidth(), w.winfo_screenheight()
-        w.geometry("%dx%d+%d+%d" % (ww, hh, sw - ww - 24, max(0, sh - hh - 190)))
-
-    def _step_win(self, label, text, rq):
-        import tkinter as tk
-        try:
-            import ctypes
-            prev = ctypes.windll.user32.GetForegroundWindow()      # cửa sổ Edusoft đang dùng
-        except Exception:
-            prev = None
-        self._close_win()
-        w = self.win = tk.Toplevel(self.root)
-        w.title("AQ Autotest – " + label)
-        w.attributes("-topmost", True)
-        w.configure(bg="#1d1d2b")
-        w.protocol("WM_DELETE_WINDOW", lambda: None)
-        tk.Label(w, text=label + " · thao tác tay", fg="#ffffff", bg="#1d1d2b", font=("Segoe UI", 11, "bold"), anchor="w").pack(fill="x", padx=12, pady=(10, 2))
-        tk.Label(w, text=text[:600], fg="#d8d6f5", bg="#1d1d2b", font=("Segoe UI", 9), justify="left", anchor="w", wraplength=440).pack(fill="x", padx=12)
-        tk.Label(w, text="Làm bước này trên Edusoft rồi bấm kết quả (hoặc phím F8 / F9 / F10).", fg="#9a98b8", bg="#1d1d2b", font=("Segoe UI", 8), anchor="w").pack(fill="x", padx=12, pady=(6, 0))
-        f = tk.Frame(w, bg="#1d1d2b")
-        f.pack(fill="x", padx=12, pady=10)
-        for txt, val, bg in (("Đạt  (F8)", "ok", "#1f9d55"), ("Lỗi  (F9)", "bad", "#d64545"), ("Bỏ qua  (F10)", "skip", "#555570")):
-            tk.Button(f, text=txt, bg=bg, fg="#ffffff", activebackground=bg, relief="flat", font=("Segoe UI", 10, "bold"), padx=14, pady=4,
-                      command=lambda v=val: rq.put(v)).pack(side="left", padx=(0, 8))
-        w.update_idletasks()
-        self._place(w, 480, max(170, w.winfo_reqheight()))
-        self._no_activate(w)
-        if prev:                                                    # trả focus cho Edusoft để làm bước tay ngay
-            w.after(150, lambda: self._refocus(prev))
-
-    def _refocus(self, h):
-        try:
-            import ctypes
-            ctypes.windll.user32.SetForegroundWindow(h)
-        except Exception:
-            pass
-
-    def _bug_win(self, label, text, rq):
-        import tkinter as tk
-        self._close_win()
-        w = self.win = tk.Toplevel(self.root)
-        w.title("AQ Autotest – ghi lỗi " + label)
-        w.attributes("-topmost", True)
-        w.configure(bg="#1d1d2b")
-        fg, bg, sub = "#ffffff", "#1d1d2b", "#c9c7e6"
-        tk.Label(w, text=label + " bị lỗi – nhập thông tin cho support", fg=fg, bg=bg, font=("Segoe UI", 11, "bold"), anchor="w").pack(fill="x", padx=12, pady=(10, 4))
-        kind = tk.StringVar(value="func")
-        rf = tk.Frame(w, bg=bg)
-        rf.pack(fill="x", padx=12)
-        for t, v in (("Lỗi chức năng / dữ liệu", "func"), ("Lỗi EX – hệ thống", "ex")):
-            tk.Radiobutton(rf, text=t, value=v, variable=kind, fg=fg, bg=bg, selectcolor="#33334a", activebackground=bg, activeforeground=fg,
-                           font=("Segoe UI", 9), command=lambda: swap()).pack(side="left", padx=(0, 12))
-        body = tk.Frame(w, bg=bg)
-        body.pack(fill="both", expand=True, padx=12, pady=6)
-        ents = {}
-
-        def row(key, lab):
-            fr = tk.Frame(body, bg=bg)
-            tk.Label(fr, text=lab, fg=sub, bg=bg, font=("Segoe UI", 9), anchor="w").pack(fill="x")
-            e = tk.Entry(fr, font=("Segoe UI", 10))
-            e.pack(fill="x", pady=(0, 6))
-            ents[key] = (fr, e)
-
-        row("action", "Thao tác (Lưu / Thêm / Sửa / Xóa / Import / …)")
-        row("exp", "Dữ liệu mong đợi")
-        row("act", "Dữ liệu thực tế sau thao tác")
-        row("detail", "Chi tiết lỗi EX (Ctrl+Shift+E rồi dán)")
-        row("code", "Menu code (Ctrl+Shift+F)")
-
-        def swap():
-            ex = kind.get() == "ex"
-            for k, (fr, e) in ents.items():
-                fr.pack_forget()
-            for k in (("detail", "code") if ex else ("action", "exp", "act")):
-                ents[k][0].pack(fill="x")
-            ents["detail" if ex else "action"][1].focus_set()
-
-        def done(save):
-            out = dict(type=kind.get(), **{k: e.get().strip() for k, (fr, e) in ents.items()}) if save else None
-            rq.put(out)
-
-        bf = tk.Frame(w, bg=bg)
-        bf.pack(fill="x", padx=12, pady=(0, 10))
-        tk.Button(bf, text="Lưu lỗi", bg="#d64545", fg=fg, activebackground="#d64545", relief="flat", font=("Segoe UI", 10, "bold"), padx=14, pady=4,
-                  command=lambda: done(True)).pack(side="left")
-        tk.Button(bf, text="Bỏ qua, không ghi chi tiết", bg="#555570", fg=fg, activebackground="#555570", relief="flat", font=("Segoe UI", 9), padx=10, pady=4,
-                  command=lambda: done(False)).pack(side="left", padx=8)
-        w.protocol("WM_DELETE_WINDOW", lambda: done(False))
-        w.bind("<Return>", lambda e: done(True))
-        swap()
-        self._place(w, 520, 330)
-        w.after(80, lambda: self._force_focus(w, ents["action"][1]))
-
-    def ask(self, kind, label, text):
-        """Mở hộp thoại nổi (luồng giao diện) và chờ kết quả ở luồng chạy test. Không có tkinter → None."""
+    def ask(self, kind, label, payload):
+        """Hỏi người test trên popup và chờ trả lời. kind: __step__ (Đạt/Lỗi/Bỏ qua), __bug__ (ghi lỗi),
+        __err__ (bước gặp lỗi script chưa xác định). Không có popup → None."""
         if self.root is None:
             return None
         rq = queue.Queue()
@@ -336,7 +220,7 @@ class Caption:
                     hk.append(hotkeys.add_hotkey(key, lambda v=val: rq.put(v)))
                 except Exception:
                     pass
-        self.q.put((kind, (label, text, rq)))
+        self.q.put((kind, (label, payload, rq)))
         try:
             return rq.get()
         finally:
@@ -346,6 +230,270 @@ class Caption:
                 except Exception:
                     pass
             self.q.put(("__close__", None))
+
+    # ---------- giao diện (luồng tkinter)
+    def _lbl(self, parent, text="", size=9, color=None, bold=False, wrap=0, bg=None):
+        return self.tk.Label(parent, text=text, fg=color or self.C["fg"], bg=bg or self.C["bg"], anchor="w", justify="left",
+                             font=("Segoe UI", size, "bold" if bold else "normal"), wraplength=wrap)
+
+    def _btn(self, parent, text, cmd, color=None, solid=True):
+        c = color or self.C["acc"]
+        return self.tk.Button(parent, text=text, command=cmd, relief="flat", bd=0, cursor="hand2", padx=12, pady=4,
+                              font=("Segoe UI", 9, "bold"), bg=c if solid else self.C["soft"], fg="#ffffff" if solid else self.C["dim"],
+                              activebackground=c if solid else self.C["line"], activeforeground="#ffffff" if solid else self.C["fg"])
+
+    def _build(self):
+        tk, C, r = self.tk, self.C, self.root
+        box = self.box = tk.Frame(r, bg=C["bg"])
+        box.pack(fill="both", expand=True, padx=1, pady=1)
+        hd = tk.Frame(box, bg=C["bg"])
+        hd.pack(fill="x", padx=14, pady=(10, 0))
+        self.l_app = self._lbl(hd, "AQ AUTOTEST", 8, C["mute"], True)
+        self.l_app.pack(side="left")
+        self.b_small = tk.Label(hd, text="–", fg=C["mute"], bg=C["bg"], font=("Segoe UI", 11, "bold"), cursor="hand2")
+        self.b_small.pack(side="right")
+        self.b_small.bind("<Button-1>", lambda e: self._toggle())
+        self.l_count = self._lbl(hd, "", 9, C["acc"], True)
+        self.l_count.pack(side="right", padx=(0, 10))
+        for w in (hd, self.l_app):
+            w.bind("<ButtonPress-1>", self._drag_start)
+            w.bind("<B1-Motion>", self._drag)
+        self.l_title = self._lbl(box, "Đang chuẩn bị…", 11, C["fg"], True, self.W - 30)
+        self.l_title.pack(fill="x", padx=14, pady=(2, 6))
+        self.info = tk.Frame(box, bg=C["bg"])
+        self.info.pack(fill="x", padx=14)
+        self._lbl(self.info, "Menu", 8, C["mute"], True).grid(row=0, column=0, sticky="nw", padx=(0, 10))
+        self.l_menu = self._lbl(self.info, "—", 9, C["dim"], False, self.W - 100)
+        self.l_menu.grid(row=0, column=1, sticky="w")
+        self._lbl(self.info, "Thao tác", 8, C["mute"], True).grid(row=1, column=0, sticky="nw", padx=(0, 10), pady=(4, 0))
+        self.l_text = self._lbl(self.info, "—", 10, C["fg"], False, self.W - 100)
+        self.l_text.grid(row=1, column=1, sticky="w", pady=(4, 0))
+        self.l_status = self._lbl(box, "", 8, C["mute"], False, self.W - 30)
+        self.l_status.pack(fill="x", padx=14, pady=(6, 0))
+        self.lst = tk.Frame(box, bg=C["soft"])
+        self.lst.pack(fill="x", padx=14, pady=(8, 0))
+        self.rows = [self._lbl(self.lst, "", 9, C["dim"], bg=C["soft"]) for _ in range(self.ROWS)]
+        self.act = tk.Frame(box, bg=C["bg"])
+        tk.Frame(box, bg=C["bg"], height=12).pack(fill="x", side="bottom")
+        self._render()
+
+    def _items(self):
+        s = self.st
+        out = [("step", i, "Bước %d" % (i + 1), t, s["srec"][i] if i < len(s["srec"]) else {}) for i, t in enumerate(s["steps"])]
+        out += [("alt", j, "Luồng A%d" % (j + 1), n, s["arec"][j] if j < len(s["arec"]) else {}) for j, n in enumerate(s["alts"])]
+        return out
+
+    def _render(self):
+        if self.root is None:
+            return
+        C, s = self.C, self.st
+        items = self._items()
+        cur = s["cur"]
+        pos = next((k for k, it in enumerate(items) if cur and (it[0], it[1]) == cur), -1)
+        n = len(s["steps"])
+        self.l_count.config(text=("Bước %d/%d" % (cur[1] + 1, n)) if cur and cur[0] == "step" else ("Luồng con A%d" % (cur[1] + 1)) if cur else "")
+        self.l_title.config(text=("%s · %s" % (s["code"], s["title"])) if s["code"] else "Đang chuẩn bị…")
+        self.l_menu.config(text=s["menu"] or "—")
+        t = s["text"] or "—"
+        self.l_text.config(text=t if len(t) <= 260 else t[:257] + "…")
+        self.l_status.config(text=s["status"])
+        if self.small:
+            self.lst.pack_forget()
+        else:
+            if not self.lst.winfo_ismapped():
+                self.lst.pack(fill="x", padx=14, pady=(8, 0), before=self.act if self.act.winfo_ismapped() else None)
+            start = max(0, min(pos - 2, len(items) - self.ROWS)) if pos >= 0 else 0
+            vis = items[start:start + self.ROWS]
+            for k, row in enumerate(self.rows):
+                if k >= len(vis):
+                    row.pack_forget()
+                    continue
+                kind, idx, lab, txt, rec = vis[k]
+                res = (rec or {}).get("res")
+                now = (kind, idx) == cur and res is None
+                icon, color = ("●", C["acc"]) if now else {"ok": ("✓", C["ok"]), "bad": ("✗", C["bad"]), "skip": ("–", C["skip"])}.get(res, ("○", C["mute"]))
+                short = " ".join(str(txt).split())
+                short = short if len(short) <= 48 else short[:46] + "…"
+                row.config(text="%s  %s · %s" % (icon, lab, short), fg=color if (now or res) else C["dim"],
+                           font=("Segoe UI", 9, "bold" if now else "normal"))
+                if not row.winfo_ismapped():
+                    row.pack(fill="x", padx=8, pady=1)
+        self._place()
+
+    def _place(self):
+        r = self.root
+        r.update_idletasks()
+        h = self.box.winfo_reqheight() + 2
+        if self.moved:
+            x, y = self.moved
+        else:
+            x, y = r.winfo_screenwidth() - self.W - 18, max(0, r.winfo_screenheight() - h - 70)
+        r.geometry("%dx%d+%d+%d" % (self.W, h, x, y))
+
+    def _toggle(self):
+        self.small = not self.small
+        self.b_small.config(text="+" if self.small else "–")
+        self._render()
+
+    def _drag_start(self, e):
+        self._dx, self._dy = e.x_root - self.root.winfo_x(), e.y_root - self.root.winfo_y()
+
+    def _drag(self, e):
+        self.moved = (e.x_root - self._dx, e.y_root - self._dy)
+        self._place()
+
+    def _style(self, activate):
+        """Bình thường popup không giành focus của Edusoft (bấm nút vẫn được); khi cần gõ (ghi lỗi) thì cho nhận focus."""
+        try:
+            import ctypes
+            u = ctypes.windll.user32
+            h = u.GetParent(self.root.winfo_id()) or self.root.winfo_id()
+            ex = u.GetWindowLongW(h, -20) | 0x80                     # WS_EX_TOOLWINDOW: không hiện trên thanh tác vụ
+            ex = (ex & ~0x08000000) if activate else (ex | 0x08000000)
+            u.SetWindowLongW(h, -20, ex)
+        except Exception:
+            pass
+
+    def _focus(self, entry):
+        try:
+            import ctypes
+            u, k = ctypes.windll.user32, ctypes.windll.kernel32
+            h = u.GetParent(self.root.winfo_id()) or self.root.winfo_id()
+            self._prev = u.GetForegroundWindow()
+            t1, t2 = u.GetWindowThreadProcessId(self._prev, None), k.GetCurrentThreadId()
+            u.AttachThreadInput(t1, t2, True)
+            u.BringWindowToTop(h)
+            u.SetForegroundWindow(h)
+            u.AttachThreadInput(t1, t2, False)
+        except Exception:
+            pass
+        try:
+            self.root.focus_force()
+            entry.focus_set()
+        except Exception:
+            pass
+
+    def _unfocus(self):
+        self._style(False)
+        try:
+            import ctypes
+            if getattr(self, "_prev", None):
+                ctypes.windll.user32.SetForegroundWindow(self._prev)     # trả focus cho Edusoft
+        except Exception:
+            pass
+        self._prev = None
+
+    def _act_clear(self):
+        for w in self.act.winfo_children():
+            w.destroy()
+        self.act.pack_forget()
+        self._place()
+
+    def _act_new(self, bg=None):
+        self._act_clear()
+        if self.small:
+            self._toggle()
+        self.act.config(bg=bg or self.C["bg"])
+        self.act.pack(fill="x", padx=14, pady=(10, 0))
+        return self.act
+
+    def _act_step(self, label, text, rq):
+        C = self.C
+        a = self._act_new()
+        self._lbl(a, "Bước này làm tay trên Edusoft, xong thì chọn kết quả:", 9, C["dim"]).pack(fill="x")
+        f = self.tk.Frame(a, bg=C["bg"])
+        f.pack(fill="x", pady=(6, 0))
+        self._btn(f, "Đạt  F8", lambda: rq.put("ok"), C["ok"]).pack(side="left", padx=(0, 6))
+        self._btn(f, "Lỗi  F9", lambda: rq.put("bad"), C["bad"]).pack(side="left", padx=(0, 6))
+        self._btn(f, "Bỏ qua  F10", lambda: rq.put("skip"), solid=False).pack(side="left")
+        self._place()
+
+    def _act_err(self, label, payload, rq):
+        C = self.C
+        text, err = payload
+        a = self._act_new(C["badbg"])
+        self._lbl(a, "⚠  %s gặp lỗi – test đang tạm dừng" % label, 10, C["bad"], True, bg=C["badbg"]).pack(fill="x", padx=10, pady=(8, 2))
+        self._lbl(a, err[:300], 9, C["fg"], False, self.W - 60, bg=C["badbg"]).pack(fill="x", padx=10)
+        self._lbl(a, "Xem màn hình Edusoft rồi chọn. Luồng này sẽ dừng, các luồng khác vẫn test tiếp.", 8, C["dim"], False, self.W - 60,
+                  bg=C["badbg"]).pack(fill="x", padx=10, pady=(6, 0))
+        f = self.tk.Frame(a, bg=C["badbg"])
+        f.pack(fill="x", padx=10, pady=(8, 10))
+        self._btn(f, "Tạo lỗi", lambda: self._act_bug(label, dict(type="func", exp=text, act=err), rq, True), C["bad"]).pack(side="left", padx=(0, 6))
+        self._btn(f, "Không phải lỗi", lambda: self._act_done("Không ghi lỗi. Luồng này dừng lại.", rq, {}), solid=False).pack(side="left", padx=(0, 6))
+        self._btn(f, "Dừng test", lambda: rq.put({"stop": True}), solid=False).pack(side="left")
+        self._place()
+
+    def _act_bug(self, label, prefill, rq, cont=False):
+        tk, C = self.tk, self.C
+        prefill = prefill if isinstance(prefill, dict) else dict(type="func", exp=str(prefill or ""))
+        a = self._act_new()
+        self._lbl(a, "Ghi lỗi · %s" % label, 10, C["fg"], True).pack(fill="x")
+        kind = tk.StringVar(value=prefill.get("type", "func"))
+        rf = tk.Frame(a, bg=C["bg"])
+        rf.pack(fill="x", pady=(4, 2))
+        body = tk.Frame(a, bg=C["bg"])
+        body.pack(fill="x")
+        ents = {}
+
+        def row(key, lab):
+            fr = tk.Frame(body, bg=C["bg"])
+            self._lbl(fr, lab, 8, C["mute"], True).pack(fill="x")
+            e = tk.Entry(fr, font=("Segoe UI", 10), relief="solid", bd=1)
+            e.insert(0, str(prefill.get(key, ""))[:400])
+            e.pack(fill="x", pady=(1, 5), ipady=2)
+            ents[key] = (fr, e)
+
+        def swap():
+            ex = kind.get() == "ex"
+            for fr, e in ents.values():
+                fr.pack_forget()
+            for k in (("detail", "code") if ex else ("action", "exp", "act")):
+                ents[k][0].pack(fill="x")
+            self._place()
+            ents["detail" if ex else "action"][1].focus_set()
+
+        for t, v in (("Lỗi chức năng / dữ liệu", "func"), ("Lỗi EX – hệ thống", "ex")):
+            tk.Radiobutton(rf, text=t, value=v, variable=kind, command=swap, bg=C["bg"], fg=C["fg"], activebackground=C["bg"],
+                           selectcolor=C["bg"], font=("Segoe UI", 9)).pack(side="left", padx=(0, 10))
+        row("action", "Thao tác (Lưu / Thêm / Sửa / Xóa / Import / …)")
+        row("exp", "Dữ liệu mong đợi")
+        row("act", "Dữ liệu thực tế")
+        row("detail", "Chi tiết lỗi EX (Ctrl+Shift+E rồi dán)")
+        row("code", "Menu code (Ctrl+Shift+F)")
+
+        def save():
+            out = dict(type=kind.get(), **{k: e.get().strip() for k, (fr, e) in ents.items()})
+            self._unfocus()
+            if cont:
+                self._act_done("Đã ghi lỗi – lỗi vào menu Lỗi khi kết quả về console. Luồng này dừng lại.", rq, out)
+            else:
+                rq.put(out)
+
+        def back():
+            self._unfocus()
+            if cont:
+                self._act_err(label, (prefill.get("exp", ""), prefill.get("act", "")), rq)
+            else:
+                rq.put(None)
+
+        f = tk.Frame(a, bg=C["bg"])
+        f.pack(fill="x", pady=(4, 0))
+        self._btn(f, "Lưu lỗi", save, C["bad"]).pack(side="left", padx=(0, 6))
+        self._btn(f, "Quay lại" if cont else "Không ghi chi tiết", back, solid=False).pack(side="left")
+        for fr, e in ents.values():
+            e.bind("<Return>", lambda ev: save())
+        swap()
+        self._style(True)
+        self.root.after(80, lambda: self._focus(ents["action"][1] if kind.get() != "ex" else ents["detail"][1]))
+
+    def _act_done(self, msg, rq, result):
+        C = self.C
+        a = self._act_new(C["okbg"])
+        self._lbl(a, msg, 9, C["fg"], False, self.W - 60, bg=C["okbg"]).pack(fill="x", padx=10, pady=(8, 4))
+        f = self.tk.Frame(a, bg=C["okbg"])
+        f.pack(fill="x", padx=10, pady=(2, 10))
+        self._btn(f, "Tiếp tục  ▸", lambda: rq.put(result), C["acc"]).pack(side="left")
+        self._place()
 
 
 CAP = Caption()
@@ -1052,6 +1200,8 @@ class Run:
         self.alts = [dict(res=None, shots=[], at=None, note="") for _ in sc.get("altFlows", [])]
         self.bugs = []
         self.log = []
+        self.halt = False          # người test đã xử lý bước lỗi → dừng luồng đang chạy, test tiếp luồng khác
+        self.abort = False         # người test bấm "Dừng test"
         self.started = now_iso()
         self.video = None
         self.dumps = []
@@ -1090,7 +1240,11 @@ class Run:
                 r = target.rectangle()
                 pad = 0 if target is self.es.main else 220   # khung đăng nhập: chụp rộng ra để thấy cả thông báo
                 box = (r.left - pad, r.top - pad // 2, r.right + pad, r.bottom + pad)
-            img = ImageGrab.grab(bbox=box, all_screens=True)
+            CAP.hidden(True)
+            try:
+                img = ImageGrab.grab(bbox=box, all_screens=True)
+            finally:
+                CAP.hidden(False)
             import unicodedata
             slug = unicodedata.normalize("NFD", str(name).lower().replace("đ", "d"))
             slug = re.sub(r"[^a-z0-9-]+", "-", "".join(c for c in slug if unicodedata.category(c) != "Mn")).strip("-") or "anh"
@@ -1329,7 +1483,7 @@ class Run:
             self._pending_shots.append(f)
 
     def ask_manual(self, label, text):
-        CAP.show(label + " (thao tác tay)", text[:150] + "   ▸ F8 = Đạt · F9 = Lỗi · F10 = Bỏ qua")
+        print("» %s (thao tác tay) — F8 = Đạt · F9 = Lỗi · F10 = Bỏ qua" % label)
         res = CAP.ask("__step__", label, text)
         if res:
             time.sleep(STEP_DELAY * 0.5)
@@ -1349,16 +1503,8 @@ class Run:
                 return "skip"
 
     def ask_error(self, rec, label, kind, idx, text):
-        if CAP.root is not None:                     # form nổi, tự đưa con trỏ vào – không gõ nhầm sang Edusoft
-            f = CAP.ask("__bug__", label, text) or {}
-            if f.get("type") == "ex":
-                self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="ex", exDetail=f.get("detail", ""), menuCode=f.get("code", ""), shots=list(rec["shots"])))
-                rec["note"] = "Lỗi EX" + (" · menu code " + f["code"] if f.get("code") else "")
-            else:
-                action = f.get("action") or "Khác"
-                self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="func", action=action, expectedData=f.get("exp") or text,
-                                      actualData=f.get("act") or ("(người test chưa ghi chi tiết)" if not f else ""), shots=list(rec["shots"])))
-                rec["note"] = "Lỗi chức năng · " + action
+        if CAP.root is not None:                     # form trên popup, tự đưa con trỏ vào – không gõ nhầm sang Edusoft
+            self.add_bug(rec, kind, idx, text, CAP.ask("__bug__", label, self.expand(text)) or {})
             time.sleep(STEP_DELAY * 0.5)
             return
         try:                                          # không có tkinter: hỏi trong cửa sổ đen – đưa nó lên trước
@@ -1382,8 +1528,19 @@ class Run:
             self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="func", action=action, expectedData=exp, actualData=act, shots=list(rec["shots"])))
             rec["note"] = "Lỗi chức năng · " + action
 
+    def add_bug(self, rec, kind, idx, text, f):
+        """Ghi lỗi người test nhập trên popup (f trống = chưa ghi chi tiết) – về console thành lỗi trong menu Lỗi."""
+        if f.get("type") == "ex":
+            self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="ex", exDetail=f.get("detail", ""), menuCode=f.get("code", ""), shots=list(rec["shots"])))
+            rec["note"] = "Lỗi EX" + (" · menu code " + f["code"] if f.get("code") else "")
+        else:
+            action = f.get("action") or "Khác"
+            self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="func", action=action, expectedData=f.get("exp") or text,
+                                  actualData=f.get("act") or "(người test chưa ghi chi tiết)", shots=list(rec["shots"])))
+            rec["note"] = "Lỗi chức năng · " + action
+
     def run_block(self, kind, idx, label, text, actions, rec):
-        CAP.show("%s · %s" % (self.sc["code"], label), text[:160])
+        CAP.at(kind, idx, self.expand(text))      # popup đổi "Thao tác" khi bước trước đã xong
         time.sleep(STEP_DELAY)
         try:
             if text.lower().startswith("điều kiện đầu vào") and not actions:
@@ -1411,10 +1568,22 @@ class Run:
                 rec["shots"].append(s)
             self.dump("%s-loi" % label)
             if not self.check_ex(rec, label, kind, idx, text):
+                err = "Script không thực hiện được: %s" % e
                 rec["res"] = "bad"
                 rec["note"] = "Script dừng: %s" % e
-                self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="func", action="Khác",
-                                      expectedData=text, actualData="Script không thực hiện được: %s" % e, shots=list(rec["shots"])))
+                ans = CAP.ask("__err__", label, (self.expand(text), err))     # tạm dừng, hỏi người test
+                if ans is None:                                                # không có popup: ghi lỗi như cũ
+                    self.bugs.append(dict(kind=kind, stepIndex=idx, stepText=text, type="func", action="Khác",
+                                          expectedData=text, actualData=err, shots=list(rec["shots"])))
+                elif ans.get("stop"):
+                    rec["res"], rec["note"] = "skip", "Người test dừng test tại đây (%s)" % str(e)[:150]
+                    self.abort = True
+                elif ans.get("type"):
+                    self.add_bug(rec, kind, idx, text, ans)
+                    self.halt = True
+                else:
+                    rec["res"], rec["note"] = "skip", "Script không làm được (%s) – người test xác nhận không phải lỗi" % str(e)[:150]
+                    self.halt = True
         if rec["res"] == "ok" and not rec["shots"]:
             s = self.shot(label.lower().replace(" ", "-"))
             if s:
@@ -1441,6 +1610,7 @@ class Run:
     def execute(self):
         sc = self.sc
         self.say("Bắt đầu %s – %s (script, chế độ trình diễn)" % (sc["code"], sc.get("title", "")))
+        CAP.begin(sc, self.steps, self.alts, [self.expand(t) for t in sc.get("steps", [])])
         obs_start(self)
         try:
             first = (sc.get("auto") or [None])[0]
@@ -1458,12 +1628,12 @@ class Run:
                 acts = autos[i] if i < len(autos) and autos[i] else []
                 if isinstance(acts, str):
                     acts = [x for x in acts.split(";")]
-                if stop:
-                    self.steps[i]["res"] = "skip"
+                if stop or self.abort:
+                    self.steps[i].update(res="skip", note=self.steps[i]["note"] or ("Người test đã dừng test" if self.abort else "Bỏ qua – bước trước lỗi"))
                     continue
                 r = self.run_block("step", i, "Bước %d" % (i + 1), text, acts, self.steps[i])
-                if r == "bad" and CFG.get("stopOnError", True):
-                    stop = True
+                if (r == "bad" and CFG.get("stopOnError", True)) or self.halt:
+                    stop, self.halt = True, False
             main_ok = all(x["res"] == "ok" for x in self.steps)
             self.record_main(main_ok)              # ghi nhận luồng chính xong rồi mới test luồng con
             alt_defs = sc.get("altFlows", []) or []
@@ -1474,12 +1644,16 @@ class Run:
                 if isinstance(acts, str):
                     acts = acts.split(";")
                 text = "%s — %s (luồng con, rẽ từ bước %d)" % (alt.get("name", ""), alt.get("condition", ""), alt_at(alt, n_steps) + 1)
+                if self.abort:
+                    self.alts[j].update(res="skip", note="Người test đã dừng test", at=now_iso())
+                    continue
                 if alt.get("needs") == "main" and not main_ok:
                     self.alts[j].update(res="skip", note="Bỏ qua – luồng chính chưa đạt", at=now_iso())
                     self.say("Luồng A%d: BỎ QUA — luồng chính chưa đạt" % (j + 1))
                     continue
                 if alt.get("always") or acts or CFG.get("manualAlts"):
                     self.run_block("alt", j, "Luồng A%d" % (j + 1), text, acts, self.alts[j])
+                    self.halt = False
                     if alt.get("after"):
                         try:
                             self.do_actions(alt["after"], "Luồng A%d" % (j + 1))
@@ -1525,8 +1699,12 @@ def run_login_test(sc, es, account, password):
     n = len(steps)
     black = {"seen": False}
 
+    CAP.begin(sc, steps, alts)
+
     def cap(i, extra=""):
-        CAP.show("%s · Bước %d/%d" % (sc["code"], i + 1, n), (st_text[i] if i < len(st_text) else "") + (("   ▸ " + extra) if extra else ""))
+        CAP.at("step", i, st_text[i] if i < len(st_text) else "")
+        if extra:
+            CAP.show("Bước %d" % (i + 1), extra)
         time.sleep(STEP_DELAY)
 
     def ok(rec, note="", shot=None):
@@ -1557,7 +1735,7 @@ def run_login_test(sc, es, account, password):
 
     # ================= LUỒNG THAY THẾ: A1, A2, … =================
     def alt_cap(j, text):
-        CAP.show("%s · Luồng A%d · %s" % (sc["code"], j + 1, alt_def[j].get("name", "")), text)
+        CAP.at("alt", j, "%s — %s" % (alt_def[j].get("name", ""), text))
         time.sleep(STEP_DELAY)
 
     def do_alt(j, early=False):

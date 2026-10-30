@@ -12,7 +12,8 @@ Bộ này hiện chỉ có kịch bản CHUNG-001 – đăng nhập Edusoft:
 Các kịch bản nghiệp vụ sẽ bổ sung sau (tải lại bộ chạy mới từ console).
 
 Script thao tác trực tiếp trên cửa sổ Edusoft đang mở: chuột di chuyển và bấm thật,
-có khung đỏ quanh ô/nút sắp thao tác và dải chú thích bước đang chạy ở mép trên màn hình,
+có khung đỏ quanh ô/nút sắp thao tác và popup tiến trình ở góc phải dưới màn hình (kịch bản, menu đang test,
+thao tác của bước, danh sách bước),
 để support quan sát. Mỗi bước chụp ảnh; có thể quay video bằng OBS.
 
 LẦN ĐẦU (và mỗi khi tải bộ test .zip mới)
@@ -49,7 +50,10 @@ TRONG LÚC CHẠY
 - Script tìm đúng ô Tên đăng nhập / ô Mật khẩu theo giao diện Edusoft, đưa con trỏ vào ô rồi gõ phím thật;
   ô Tên đăng nhập được đọc lại, nếu mật khẩu lỡ vào ô Tên đăng nhập thì dừng và báo lỗi.
 - Script tự làm toàn bộ, support chỉ quan sát: chuột di chuyển thật, khung đỏ quanh ô/nút
-  sắp thao tác, dải chú thích bước đang chạy ở mép trên màn hình chính.
+  sắp thao tác, popup tiến trình ở góc phải dưới (kéo phần đầu để dời chỗ, nút – để thu gọn).
+- Bước chưa có lệnh tự động: làm tay trên Edusoft rồi bấm Đạt / Lỗi / Bỏ qua trên popup (hoặc F8 / F9 / F10).
+- Bước gặp lỗi script chưa xác định: test tạm dừng, popup hỏi Tạo lỗi / Không phải lỗi / Dừng test.
+  Tạo lỗi → ghi thông tin → Tiếp tục: luồng lỗi dừng lại, các luồng khác test tiếp; lỗi vào menu Lỗi trên console.
 - Không chạm chuột/bàn phím trong lúc script chạy.
 - Lần mở đầu nếu khung đăng nhập hiện đen / không hiện sau 60 giây, script tự đóng và chạy lại.
 - Gặp hộp thoại lỗi hệ thống, script tự nhấn Ctrl+Shift+E (chi tiết lỗi) và
