@@ -6115,7 +6115,7 @@ QUAY VIDEO (TÙY CHỌN)
   function readText(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result);};r.onerror=rej;r.readAsText(f,'utf-8');});}
   /* ---- cầu nối trực tiếp tới máy chạy test (MCP host server aq-autotest trong Claude app) ---- */
   var BRS='host:aq-autotest',BR={state:'unknown',info:null,code:'',busy:false,watch:null,seen:{}};
-  function brErr(e){var c=e&&e.code;return c==='server_not_connected'?'Chưa thấy cầu nối: mở console trong Claude app trên máy chạy test, cài bộ test bản mới (cai-dat.bat hoặc bấm Chạy một lần) rồi thoát hẳn và mở lại Claude app.':
+  function brErr(e){var c=e&&e.code;if(c==='server_not_connected'&&window.AQ_SERVER)return 'Console trên server không nối thẳng máy chạy test: bấm Chạy để tải file lệnh về máy chạy test (Agent nhận từ thư mục Tải về), chạy xong bấm Nhập kết quả…';return c==='server_not_connected'?'Chưa thấy cầu nối: mở console trong Claude app trên máy chạy test, cài bộ test bản mới (cai-dat.bat hoặc bấm Chạy một lần) rồi thoát hẳn và mở lại Claude app.':
     c==='not_in_manifest'||c==='not_granted'?'Bạn chưa cho phép console dùng cầu nối máy chạy test.':c==='cancelled'?'Bạn đã từ chối thao tác trên máy chạy test.':c==='approval_required'?'Cần bạn cho phép trong Claude app.':
     c==='tool_error'?('Máy chạy test báo lỗi: '+((e&&e.message)||'')):(c||'lỗi')+(e&&e.message?' — '+e.message:'');}
   async function brAuto(){if(!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return 'unavailable';}):'unavailable';if(st==='granted')brCheck(false);}catch(e){}}
