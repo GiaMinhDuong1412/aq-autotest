@@ -1,0 +1,80 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "auto": [
+  [],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+   "wait: 2",
+   "shot: ks-dm-sinh-vien",
+   "dump: ks-dm-sinh-vien"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
+   "wait: 2",
+   "shot: ks-ds-sv-hoc-ky",
+   "dump: ks-ds-sv-hoc-ky"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định",
+   "wait: 2",
+   "shot: ks-dm-ly-do-qd",
+   "dump: ks-dm-ly-do-qd"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh sách người ký quyết định",
+   "wait: 2",
+   "shot: ks-nguoi-ky-qd",
+   "dump: ks-nguoi-ky-qd"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+   "wait: 2",
+   "shot: ks-qd-vao-moi",
+   "dump: ks-qd-vao-moi"
+  ],
+  [
+   "click: Thêm|Thêm mới",
+   "wait: 2",
+   "shot: ks-qd-vao-moi-them",
+   "dump: ks-qd-vao-moi-them",
+   "cancel: Đóng|Hủy|Huỷ|Không lưu"
+  ]
+ ],
+ "code": "KS-QLSV-001",
+ "createdAt": "2026-10-30T19:20:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đăng nhập Edusoft (CHUNG-001)",
+  "next": [
+   "QLSV-001"
+  ],
+  "out": "Không tạo/sửa dữ liệu – chỉ ảnh chụp và cây giao diện"
+ },
+ "expected": "Mỗi màn hình mở được; có ảnh chụp và file ui-ks-*.txt cho từng màn hình để đối chiếu tên cột, ô tìm kiếm (dòng lọc), các nút ở đáy và khung nhập quyết định. Không có dữ liệu nào bị thay đổi.",
+ "lastRun": null,
+ "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": true,
+ "source": {
+  "docRef": "Skill giaodien-edusoft; QLSV_CapNhatQuyetDinhVaoRa (site aq, DOC/QLSV)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft HVNG - Copy và đăng nhập theo CHUNG-001. Kịch bản CHỈ XEM: không nhập, không lưu, không xóa dữ liệu.",
+  "Mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, chờ màn hình hiện đủ, chụp màn hình và ghi cây giao diện (tên cột, ô tìm kiếm, các nút ở đáy).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, chờ màn hình hiện đủ, chụp màn hình và ghi cây giao diện (tên cột, ô tìm kiếm, các nút ở đáy).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định, chờ màn hình hiện đủ, chụp màn hình và ghi cây giao diện (tên cột, ô tìm kiếm, các nút ở đáy).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh sách người ký quyết định, chờ màn hình hiện đủ, chụp màn hình và ghi cây giao diện (tên cột, ô tìm kiếm, các nút ở đáy).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, chờ màn hình hiện đủ, chụp màn hình và ghi cây giao diện (tên cột, ô tìm kiếm, các nút ở đáy).",
+  "Tại Quyết định vào mới bấm Thêm để xem khung nhập quyết định và danh sách sinh viên của quyết định; chụp và ghi cây giao diện; KHÔNG nhập gì, bấm Đóng/Hủy và chọn Không nếu được hỏi lưu."
+ ],
+ "title": "Khảo sát giao diện các màn hình của QLSV-001 (chỉ xem, không sửa dữ liệu)",
+ "updatedAt": "2026-10-30T19:20:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10L.00"
+}
