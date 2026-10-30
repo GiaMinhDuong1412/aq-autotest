@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-11"
+KIT_VERSION = "2026.10.30-12"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -76,6 +76,12 @@ def norm(s):
 def norm_label(s):
     """Chuẩn hoá nhãn giao diện: bỏ &, dấu * bắt buộc, dấu : cuối, khoảng trắng thừa."""
     return norm(str(s or "").replace("&", "").replace("*", "")).rstrip(":").strip()
+
+
+def split_col(arg):
+    """"giá trị @ Cột|Cột" → ("giá trị", "Cột|Cột"); không có @ thì cột rỗng."""
+    m = re.match(r"^(.*?)\s+@\s+(.+)$", str(arg or ""))
+    return (m.group(1).strip(), m.group(2).strip()) if m else (str(arg or "").strip(), "")
 
 
 def menu_segs(path):
@@ -1125,8 +1131,9 @@ class Edusoft:
             pkb.send_keys(esc_keys(value), with_spaces=True, pause=TYPE_PAUSE)
         time.sleep(0.3)
 
-    def element_with_text(self, value, roots=None):
-        """Ô trong LƯỚI DỮ LIỆU có giá trị đúng bằng `value` (không lấy ô nhập liệu của form)."""
+    def element_with_text(self, value, roots=None, below=None):
+        """Ô trong LƯỚI DỮ LIỆU có giá trị đúng bằng `value` (không lấy ô nhập liệu của form).
+        `below`: chỉ lấy ô nằm dưới toạ độ y này (bỏ qua dòng lọc vừa gõ giá trị)."""
         want = norm(value)
         for root in (roots or self.roots()):
             pools = []
@@ -1150,6 +1157,8 @@ class Edusoft:
                         except Exception:
                             pass
                         if any(want and want == norm(v) for v in vals if v) and el.is_visible():
+                            if below is not None and el.rectangle().top <= below:
+                                continue
                             return el
                     except Exception:
                         continue
@@ -1198,6 +1207,7 @@ class Run:
         self.dir.mkdir(parents=True, exist_ok=True)
         self.steps = [dict(res=None, shots=[], at=None, note="") for _ in sc.get("steps", [])]
         self.alts = [dict(res=None, shots=[], at=None, note="") for _ in sc.get("altFlows", [])]
+        self._filter = None                             # ô tìm kiếm của lưới đang gõ (để xoá sau)
         self.bugs = []
         self.log = []
         self.halt = False          # người test đã xử lý bước lỗi → dừng luồng đang chạy, test tiếp luồng khác
@@ -1297,15 +1307,16 @@ class Run:
           save: Lưu                      bấm Lưu và kiểm tra thông báo (lỗi → bước Lỗi)
           expect: chữ                    chờ chữ xuất hiện trên màn hình
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
-          find_row: giá trị              tìm dòng có giá trị trong lưới (thử Ctrl+F) và chọn dòng
-          delete_row: giá trị            xóa dòng; CHỈ xác nhận khi hộp thoại nêu đúng giá trị
+          find_row: giá trị @ Cột|Cột    tìm dòng: gõ giá trị vào Ô TÌM KIẾM của cột (dòng lọc có icon phễu ngay dưới
+                                         tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì thử Ctrl+F
+          delete_row: giá trị @ Cột      xóa dòng; CHỈ xác nhận khi hộp thoại nêu đúng giá trị
           cancel                         hủy thao tác đang nhập (không lưu)
           dump: tên                      ghi cây giao diện ra file ui-tên.txt
-          unique: BIẾN                   giá trị {BIẾN} không được có sẵn trong lưới đang mở – có thì tự đổi
+          unique: BIẾN @ Cột             giá trị {BIẾN} không được có sẵn trong lưới đang mở – có thì tự đổi
                                          giá trị test khác (mã: đổi số cuối · tên: lấy tên test khác) rồi tìm lại
           pick: BIẾN = lọc|lọc @ cột     đọc các dòng của lưới đang mở, giữ dòng có chữ "lọc", chọn NGẪU NHIÊN
                                          một dòng: {BIẾN} = ô của cột (không ghi cột = ô đầu), {BIẾN_DONG} = cả dòng
-          absent: giá trị                giá trị KHÔNG còn trong lưới (kiểm tra sau khi xóa)
+          absent: giá trị @ Cột          giá trị KHÔNG còn trong lưới (kiểm tra sau khi xóa)
           shot: tên                      chụp ảnh màn hình vào bước
           key / wait / ok / note         như cũ"""
         es = self.es
@@ -1390,11 +1401,13 @@ class Run:
                 self.shot_into(notes, "%s-thong-bao" % (label or "buoc").lower().replace(" ", "-"))
                 es.close_dialogs(6)
             elif verb == "find_row":
-                el = self.locate_row(arg)
+                arg, col = split_col(arg)
+                el = self.locate_row(arg, col)
                 es.click(el)
                 notes.append("Thấy dòng " + arg)
             elif verb == "delete_row":
-                el = self.locate_row(arg)
+                arg, col = split_col(arg)
+                el = self.locate_row(arg, col)
                 es.click(el)
                 es.snap = es.handles()
                 es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
@@ -1419,6 +1432,7 @@ class Run:
                 time.sleep(2.5)
                 es.close_dialogs(6)
                 notes.append("Đã xóa " + arg)
+                self.clear_filter()
             elif verb == "cancel":
                 es.snap = es.handles()
                 try:
@@ -1444,11 +1458,13 @@ class Run:
                     if el is not None:
                         es.press(el)
             elif verb == "unique":
-                notes.append(self.make_unique(arg.strip().strip("{}")))
+                arg, col = split_col(arg)
+                notes.append(self.make_unique(arg.strip().strip("{}"), col))
             elif verb == "pick":
                 notes.append(self.pick_row(arg))
             elif verb == "absent":
-                if self.row_exists(arg):
+                arg, col = split_col(arg)
+                if self.row_exists(arg, col):
                     raise RuntimeError("Vẫn còn \"%s\" trong danh sách" % arg)
                 notes.append("Không còn " + arg)
             elif verb == "shot":
@@ -1461,21 +1477,25 @@ class Run:
 
     SAFE_NAMES = ["Mot", "Hai", "Ba", "Bon", "Nam", "Sau", "Bay", "Tam", "Chin", "Muoi"]   # không dính tổ hợp Telex
 
-    def row_exists(self, value):
-        """Có dòng mang giá trị này trong lưới đang mở không (tìm cả bằng ô tìm Ctrl+F của lưới, rồi xoá ô tìm)."""
+    def row_exists(self, value, col=""):
+        """Có dòng mang giá trị này trong lưới đang mở không – tìm qua ô tìm kiếm của cột (có cột) hoặc Ctrl+F,
+        xong thì xoá ô tìm để lưới hiện lại đủ dòng."""
         try:
-            self.locate_row(value)
+            self.locate_row(value, col)
             found = True
-        except LookupError:
+        except LookupError:                             # không thấy CỘT thì là RuntimeError – không kết luận được
             found = False
-        try:
-            pkb.send_keys("{ESC}")
-            time.sleep(0.4)
-        except Exception:
-            pass
+        if col:
+            self.clear_filter()
+        else:
+            try:
+                pkb.send_keys("{ESC}")
+                time.sleep(0.4)
+            except Exception:
+                pass
         return found
 
-    def make_unique(self, var):
+    def make_unique(self, var, col=""):
         """Giá trị test {var} chưa có trong lưới đang mở; có rồi thì tự chọn giá trị khác (tối đa 8 lần)."""
         import random
         if var not in self.vars:
@@ -1483,7 +1503,7 @@ class Run:
         first = cur = str(self.vars[var])
         tried = [cur]
         for _ in range(8):
-            if not self.row_exists(cur):
+            if not self.row_exists(cur, col):
                 if cur != first:
                     self.say("%s = %s đã có sẵn → dùng %s" % (var, first, cur))
                     return "%s đã có, đổi thành %s" % (first, cur)
@@ -1562,10 +1582,97 @@ class Run:
         self.say("Chọn ngẫu nhiên %s = %s (trong %d dòng phù hợp)" % (var, val, len(hits)))
         return "%s = %s (%s)" % (var, val, self.vars[var + "_DONG"][:120])
 
-    def locate_row(self, value):
-        """Dòng trong lưới có ô đúng bằng `value`; không thấy (lưới chỉ hiện các dòng đang cuộn tới)
-        thì mở ô tìm của lưới (Ctrl+F), gõ giá trị, Enter rồi tìm lại."""
+    def column_header(self, col):
+        """Tiêu đề cột `col` (nhiều tên cách nhau |) của lưới trên màn hình đang mở; nhiều lưới thì lấy lưới trên cùng."""
+        wants = [norm_label(x) for x in alts_of(col)]
+        for root in self.es.roots():
+            grids = []
+            for g in ("Table", "DataGrid"):
+                try:
+                    grids += [x.rectangle() for x in root.descendants(control_type=g) if x.is_visible()]
+                except Exception:
+                    continue
+            best = None
+            for t in ("HeaderItem", "Header", "Custom", "Text"):
+                try:
+                    els = root.descendants(control_type=t)
+                except Exception:
+                    continue
+                for el in els:
+                    try:
+                        if norm_label(el.window_text()) not in wants or not el.is_visible():
+                            continue
+                        r = el.rectangle()
+                        cx, cy = (r.left + r.right) / 2, (r.top + r.bottom) / 2
+                        if not any(g.left <= cx <= g.right and g.top <= cy <= g.bottom for g in grids):
+                            continue                    # chữ trùng tên cột nhưng không nằm trong lưới
+                        if best is None or r.top < best.rectangle().top:
+                            best = el
+                    except Exception:
+                        continue
+                if best is not None:
+                    return best
+        return None
+
+    def filter_grid(self, hdr, value):
+        """Ô tìm kiếm của lưới Edusoft = dòng lọc (icon phễu) ngay dưới tiêu đề cột: bấm vào ô của cột, gõ giá trị, Enter."""
+        from pywinauto import mouse
+        if self._filter is not None:
+            try:
+                same = self._filter[0] == hdr
+            except Exception:
+                same = False
+            if not same:
+                self.clear_filter()                     # bỏ lọc cột khác trước, tránh lọc chồng
+        r = hdr.rectangle()
+        x = int((r.left + r.right) / 2)
+        y = int(r.bottom + max(9, r.height() / 2))
+        self.es.mark(hdr)
+        mouse.click(coords=(x, y))                      # bấm dưới tiêu đề – không bấm vào tiêu đề (sẽ sắp xếp cột)
+        time.sleep(0.5)
+        pkb.send_keys("{END}" + "{BACKSPACE}" * 40, pause=0.003)
+        if value:
+            pkb.send_keys(esc_keys(value), with_spaces=True, pause=TYPE_PAUSE)
+        time.sleep(0.4)
+        pkb.send_keys("{ENTER}")
+        time.sleep(1.8)
+        self._filter = (hdr, x, y, r.top)
+        return y
+
+    def clear_filter(self):
+        """Xoá chữ trong ô tìm kiếm đã gõ (chỉ khi cột đó vẫn đang hiện đúng chỗ cũ)."""
+        f, self._filter = self._filter, None
+        if f is None:
+            return
+        hdr, x, y, top = f
+        try:
+            if not hdr.is_visible() or hdr.rectangle().top != top:
+                return
+            from pywinauto import mouse
+            mouse.click(coords=(x, y))
+            time.sleep(0.4)
+            pkb.send_keys("{END}" + "{BACKSPACE}" * 40 + "{ENTER}", pause=0.003)
+            time.sleep(1.2)
+        except Exception:
+            pass
+
+    def locate_row(self, value, col=""):
+        """Dòng trong lưới có ô đúng bằng `value`. Có cột: gõ giá trị vào ô tìm kiếm (dòng lọc) của cột rồi tìm
+        trong các dòng còn lại. Không ghi cột: tìm trong các dòng đang hiện, không thấy thì thử Ctrl+F."""
         es = self.es
+        if col:
+            hdr = self.column_header(col)
+            if hdr is None:
+                raise RuntimeError("Không thấy cột \"%s\" (ô tìm kiếm) trong danh sách đang mở" % col)
+            y = self.filter_grid(hdr, value)
+            end = time.time() + 6
+            while True:
+                el = es.element_with_text(value, below=y + 3)
+                if el is not None:
+                    return el
+                if time.time() > end:
+                    raise LookupError("Không thấy dòng \"%s\" (cột %s) trong danh sách" % (value, col))
+                time.sleep(0.6)
         el = es.element_with_text(value)
         if el is not None:
             return el

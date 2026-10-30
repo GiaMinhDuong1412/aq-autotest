@@ -33,14 +33,14 @@
   [],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
-   "unique: MSSV",
-   "unique: TEN",
+   "unique: MSSV @ Mã sinh viên|Mã SV|MSSV",
+   "unique: TEN @ Tên",
    "shot: danh-muc-sinh-vien"
   ],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
-   "unique: MSSV",
-   "unique: TEN",
+   "unique: MSSV @ Mã sinh viên|Mã SV|MSSV",
+   "unique: TEN @ Tên",
    "pick: LOP = @ Mã lớp|Lớp",
    "shot: ds-sinh-vien-hoc-ky"
   ],
@@ -70,38 +70,38 @@
    "save: Lưu"
   ],
   [
-   "find_row: {SOQD}",
+   "find_row: {SOQD} @ Số quyết định|Số QĐ",
    "expect: {MSSV}",
    "shot: kiem-tra-them"
   ],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
-   "find_row: {MSSV}",
+   "find_row: {MSSV} @ Mã sinh viên|Mã SV|MSSV",
    "shot: dm-sinh-vien-co-sv",
    "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
-   "find_row: {MSSV}",
+   "find_row: {MSSV} @ Mã sinh viên|Mã SV|MSSV",
    "shot: ds-hoc-ky-co-sv"
   ],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
-   "find_row: {SOQD}",
+   "find_row: {SOQD} @ Số quyết định|Số QĐ",
    "click?: Sửa",
    "date: Ngày hiệu lực = {NGAYHL2}",
    "save: Lưu"
   ],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
-   "find_row: {SOQD}",
+   "find_row: {SOQD} @ Số quyết định|Số QĐ",
    "expect: {NGAYHL2}",
    "shot: kiem-tra-sua"
   ],
   [
-   "delete_row: {SOQD}"
+   "delete_row: {SOQD} @ Số quyết định|Số QĐ"
   ],
   [
-   "absent: {SOQD}",
+   "absent: {SOQD} @ Số quyết định|Số QĐ",
    "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
-   "absent: {MSSV}",
+   "absent: {MSSV} @ Mã sinh viên|Mã SV|MSSV",
    "shot: kiem-tra-xoa"
   ]
  ],
@@ -140,7 +140,7 @@
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới; sinh viên {MSSV} không còn trong Danh sách sinh viên học kỳ (ghi lại {MSSV} còn trong Danh mục sinh viên hay không – Cần xác nhận quy tắc)."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-10-30T18:07:59.000Z",
+ "updatedAt": "2026-10-30T18:39:29.000Z",
  "updatedBy": null,
  "vars": {
   "HOLOT": "Kiem Thu",
