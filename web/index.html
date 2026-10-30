@@ -1765,7 +1765,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-10"
+KIT_VERSION = "2026.10.30-11"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -3054,7 +3054,13 @@ class Run:
           delete_row: giá trị            xóa dòng; CHỈ xác nhận khi hộp thoại nêu đúng giá trị
           cancel                         hủy thao tác đang nhập (không lưu)
           dump: tên                      ghi cây giao diện ra file ui-tên.txt
-          key / wait / ok / shot / note  như cũ"""
+          unique: BIẾN                   giá trị {BIẾN} không được có sẵn trong lưới đang mở – có thì tự đổi
+                                         giá trị test khác (mã: đổi số cuối · tên: lấy tên test khác) rồi tìm lại
+          pick: BIẾN = lọc|lọc @ cột     đọc các dòng của lưới đang mở, giữ dòng có chữ "lọc", chọn NGẪU NHIÊN
+                                         một dòng: {BIẾN} = ô của cột (không ghi cột = ô đầu), {BIẾN_DONG} = cả dòng
+          absent: giá trị                giá trị KHÔNG còn trong lưới (kiểm tra sau khi xóa)
+          shot: tên                      chụp ảnh màn hình vào bước
+          key / wait / ok / note         như cũ"""
         es = self.es
         notes = []
         n = 0
@@ -3190,11 +3196,124 @@ class Run:
                     el = es.dialog_button(d, ("ok", "đóng", "close", "đồng ý"))
                     if el is not None:
                         es.press(el)
-            elif verb in ("shot", "note"):
-                pass
+            elif verb == "unique":
+                notes.append(self.make_unique(arg.strip().strip("{}")))
+            elif verb == "pick":
+                notes.append(self.pick_row(arg))
+            elif verb == "absent":
+                if self.row_exists(arg):
+                    raise RuntimeError("Vẫn còn \"%s\" trong danh sách" % arg)
+                notes.append("Không còn " + arg)
+            elif verb == "shot":
+                self.shot_into(notes, arg or (label or "anh").lower().replace(" ", "-"))
+            elif verb == "note":
+                notes.append(arg)
             else:
                 raise ValueError("Lệnh không hiểu: " + a)
         return notes
+
+    SAFE_NAMES = ["Mot", "Hai", "Ba", "Bon", "Nam", "Sau", "Bay", "Tam", "Chin", "Muoi"]   # không dính tổ hợp Telex
+
+    def row_exists(self, value):
+        """Có dòng mang giá trị này trong lưới đang mở không (tìm cả bằng ô tìm Ctrl+F của lưới, rồi xoá ô tìm)."""
+        try:
+            self.locate_row(value)
+            found = True
+        except LookupError:
+            found = False
+        try:
+            pkb.send_keys("{ESC}")
+            time.sleep(0.4)
+        except Exception:
+            pass
+        return found
+
+    def make_unique(self, var):
+        """Giá trị test {var} chưa có trong lưới đang mở; có rồi thì tự chọn giá trị khác (tối đa 8 lần)."""
+        import random
+        if var not in self.vars:
+            raise RuntimeError("Kịch bản chưa khai báo biến %s" % var)
+        first = cur = str(self.vars[var])
+        tried = [cur]
+        for _ in range(8):
+            if not self.row_exists(cur):
+                if cur != first:
+                    self.say("%s = %s đã có sẵn → dùng %s" % (var, first, cur))
+                    return "%s đã có, đổi thành %s" % (first, cur)
+                return "%s = %s chưa có" % (var, cur)
+            m = re.match(r"^(.*?)(\d+)$", cur)
+            if m:                                   # mã: đổi các số cuối, giữ độ dài
+                n = len(m.group(2))
+                cur = m.group(1) + str(random.randint(10 ** (n - 1) if n > 1 else 0, 10 ** n - 1))
+            else:                                   # tên: lấy tên test khác chưa thử
+                left = [x for x in self.SAFE_NAMES if x not in tried]
+                cur = left[0] if left else first + random.choice("BCDGHK")
+            tried.append(cur)
+            self.vars[var] = cur
+        raise RuntimeError("Không tìm được giá trị %s chưa có sẵn (đã thử %s)" % (var, ", ".join(tried)))
+
+    def grid_rows(self):
+        """Các dòng đang hiện trong lưới của màn hình: mỗi dòng là danh sách (tên ô, giá trị)."""
+        rows = []
+        for root in self.es.roots():
+            for g in ("Table", "DataGrid"):
+                try:
+                    grids = root.descendants(control_type=g)
+                except Exception:
+                    continue
+                for grid in grids:
+                    for row in grid.children():
+                        try:
+                            cells = row.children() or [row]
+                        except Exception:
+                            continue
+                        vals = []
+                        for c in cells:
+                            v = ""
+                            try:
+                                v = c.iface_value.CurrentValue or ""
+                            except Exception:
+                                pass
+                            v = str(v or c.window_text() or "").strip()
+                            try:
+                                name = c.element_info.name or ""
+                            except Exception:
+                                name = ""
+                            if v:
+                                vals.append((name, v))
+                        if vals:
+                            rows.append(vals)
+        return rows
+
+    def pick_row(self, arg):
+        """pick: BIẾN = lọc|lọc @ cột – chọn ngẫu nhiên một dòng phù hợp trong lưới đang mở và ghi nhớ."""
+        import random
+        import unicodedata
+
+        def fold(x):
+            x = unicodedata.normalize("NFD", str(x or "").lower().replace("đ", "d"))
+            return re.sub(r"\s+", " ", "".join(c for c in x if unicodedata.category(c) != "Mn")).strip()
+
+        var, _, rest = arg.partition("=")
+        var = var.strip().strip("{}")
+        flt, _, col = rest.partition("@")
+        alts = [fold(x) for x in flt.split("|") if x.strip()]
+        rows = self.grid_rows()
+        hits = [r for r in rows if not alts or any(a in fold(" ".join(v for _, v in r)) for a in alts)]
+        if not hits:
+            raise RuntimeError("Không có dòng nào khớp \"%s\" trong danh sách (%d dòng đang hiện)" % (flt.strip(), len(rows)))
+        row = random.choice(hits)
+        val = row[0][1]
+        if col.strip():
+            cols = [fold(x) for x in col.split("|") if x.strip()]
+            for name, v in row:
+                if any(c in fold(name) for c in cols):
+                    val = v
+                    break
+        self.vars[var] = val
+        self.vars[var + "_DONG"] = " · ".join(v for _, v in row)
+        self.say("Chọn ngẫu nhiên %s = %s (trong %d dòng phù hợp)" % (var, val, len(hits)))
+        return "%s = %s (%s)" % (var, val, self.vars[var + "_DONG"][:120])
 
     def locate_row(self, value):
         """Dòng trong lưới có ô đúng bằng `value`; không thấy (lưới chỉ hiện các dòng đang cuộn tới)
@@ -3366,9 +3485,9 @@ class Run:
         CAP.begin(sc, self.steps, self.alts, [self.expand(t) for t in sc.get("steps", [])])
         obs_start(self)
         try:
-            first = (sc.get("auto") or [None])[0]
-            first = ";".join(first) if isinstance(first, list) else str(first or "")
-            if sc.get("menu") and "menu:" not in first.lower():
+            # kịch bản tự mở menu ở từng bước thì KHÔNG mở menu chính trước bước 1 (để chạy đúng thứ tự bước)
+            has_menu = any("menu:" in (";".join(x) if isinstance(x, list) else str(x or "")).lower() for x in (sc.get("auto") or []))
+            if sc.get("menu") and not has_menu:
                 try:
                     CAP.show("%s · Mở menu" % sc["code"], sc["menu"])
                     self.es.open_menu(sc["menu"])
@@ -7012,7 +7131,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-10';
+  var KITVER='2026.10.30-11';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.5,typePause:0.06,actionDelay:1},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

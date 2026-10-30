@@ -51,8 +51,11 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - Kịch bản có `scriptReady: true` (và CHUNG-001) mới hiện ở mục "Kịch bản chạy bằng script" trên trang Máy chạy thử.
 - `vars` – biến dùng trong bước, vd `{"MSSV": "AUTO{ddHHMM}"}` (có sẵn `{ddHHMM}`, `{yymmdd}`, `{HHMMSS}`, `{ddmmyyyy}`).
 - `auto[i]` – danh sách lệnh cho bước i (xem docstring `Run.do_actions` trong `kit/aqrun.py`): `menu:`, `click:`, `type:`,
-  `select:`, `date:`, `save:`, `expect:`, `expect_dialog:`, `find_row:`, `delete_row:`, `cancel`, `dump:`, `key:`, `wait:`;
+  `select:`, `date:`, `save:`, `expect:`, `expect_dialog:`, `find_row:`, `delete_row:`, `cancel`, `dump:`, `key:`, `wait:`,
+  `unique:` (giá trị test có sẵn thì tự đổi), `pick:` (chọn ngẫu nhiên một dòng danh mục, ghi vào biến), `absent:`, `shot:`;
   thêm `?` sau tên lệnh (vd `select?:`) để bỏ qua khi không thấy phần tử. Nhiều tên thay thế cách nhau `|`.
+- Mỗi bước tự mở menu của nó (`menu:`) – có `menu:` trong `auto` thì không mở trước menu chính; quy trình chuẩn thêm–sửa–xóa
+  (kiểm tra trùng → thu thập danh mục → thêm → kiểm tra → sửa → xóa) ở skill `tailieu-edusoft`, mẫu QLSV-001.
 - Luồng thay thế: `auto`, `needs: "main"` (chỉ chạy khi luồng chính đạt), `always: true`, `after: [lệnh dọn]`.
 - Giao diện Edusoft HVNG: ribbon (TabItem "Sinh viên"…) → nút ribbon (vd "Sinh viên học kỳ") → cây "Danh mục chức năng"
   bên trái (TreeItem tên `NodeN`, chữ nằm ở Value) → màn hình mở trong tab MDI. Khi script dừng, nó ghi `ui-*.txt`
