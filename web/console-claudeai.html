@@ -2111,7 +2111,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-6"
+KIT_VERSION = "2026.10.30-7"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2174,6 +2174,14 @@ def norm(s):
 def norm_label(s):
     """Chuẩn hoá nhãn giao diện: bỏ &, dấu * bắt buộc, dấu : cuối, khoảng trắng thừa."""
     return norm(str(s or "").replace("&", "").replace("*", "")).rstrip(":").strip()
+
+
+def menu_segs(path):
+    """Tách đường dẫn menu "A/ B/ C". Tài liệu ngăn cấp bằng "/ " (có khoảng trắng) nên tên có "/" liền như
+    "QĐ vào/ra sinh viên" giữ nguyên; đường dẫn không có khoảng trắng quanh "/" thì tách ở mọi "/"."""
+    p = str(path or "")
+    parts = re.split(r"\s+/\s*|/\s+", p) if re.search(r"\s/|/\s", p) else p.split("/")
+    return [x.strip() for x in parts if x.strip()]
 
 
 def alts_of(text):
@@ -2717,7 +2725,7 @@ class Edusoft:
     def open_menu(self, path):
         """Mở menu theo đường dẫn tài liệu "A/ B/ C": mỗi cấp tìm trên mọi cửa sổ của Edusoft
         (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp."""
-        segs = [s.strip() for s in re.split(r"\s*/\s*", path or "") if s.strip()]
+        segs = menu_segs(path)
         if not segs:
             return
         for i, s in enumerate(segs):
@@ -2731,10 +2739,32 @@ class Edusoft:
                     el.select()                   # tab ribbon (Hệ thống, Sinh viên…)
                 except Exception:
                     el.click_input()
+            elif ct == "TreeItem" and not last:
+                self.expand_node(el)              # nhóm trên cây chức năng: mở nhóm để thấy mục con
             else:
                 self.click(el, double=(last and ct in ("TreeItem", "DataItem", "ListItem")))
             time.sleep(1.2)
         time.sleep(STEP_DELAY * 1.5)
+
+    def expand_node(self, el):
+        """Bấm chọn nhóm trên cây rồi mở nhóm (ExpandCollapse); không được thì bấm đúp – chỉ khi nhóm đang đóng,
+        vì bấm đúp nhóm đang mở sẽ đóng nó lại."""
+        self.click(el)
+        try:
+            st = el.iface_expand_collapse.CurrentExpandCollapseState     # 0 đóng · 1 mở · 2 mở một phần · 3 lá
+        except Exception:
+            st = None
+        if st in (1, 2, 3):
+            return
+        try:
+            el.iface_expand_collapse.Expand()
+            return
+        except Exception:
+            pass
+        if st == 0:
+            self.click(el, double=True)
+        else:
+            pkb.send_keys("{RIGHT}")             # cây DevExpress: phím phải mở nhóm đang chọn
 
     # --- hộp thoại / lỗi
     def dialogs(self):
@@ -3323,6 +3353,7 @@ class Run:
                     self.es.open_menu(sc["menu"])
                 except Exception as e:
                     self.say("Không tự mở được menu \"%s\": %s" % (sc["menu"], e))
+                    self.dump("menu-loi")         # ghi cây giao diện để sửa tên menu
             autos = sc.get("auto") or []
             stop = False
             for i, text in enumerate(sc.get("steps", [])):
@@ -5269,7 +5300,9 @@ QUAY VIDEO (TÙY CHỌN)
     renderMain();}
   function mpSync(){var n=$('#scMain .mp-n');if(n)n.textContent=mpLabel();}
   /* tab theo dõi: menu bị lỗi khi test, chờ dev sửa rồi test lại */
-  function fixRow(it){var x=failRec(it),f=it.fix||{},st=fixOf(it),parts=String(it.menu||'').split(/\s*\/\s*/),leaf=parts.pop();
+  /* tách đường dẫn menu "A/ B/ C" – giữ tên có "/" liền như "QĐ vào/ra sinh viên" (giống menu_segs của bộ test) */
+  function menuParts(m){m=String(m||'');return (/\s\/|\/\s/.test(m)?m.split(/\s+\/\s*|\/\s+/):m.split('/')).map(function(x){return x.trim();}).filter(Boolean);}
+  function fixRow(it){var x=failRec(it),f=it.fix||{},st=fixOf(it),parts=menuParts(it.menu),leaf=parts.pop();
     return '<div class="fix-row '+st+'"><div class="rl-main"><div class="rl-menu"><b>'+esc(leaf)+'</b>'+(parts.length?'<span class="mpath">'+esc(parts.join(' / '))+'</span>':'')+'</div>'+
       '<div class="rl-sub">'+(x.ex?'<span class="btype ex">EX</span>':'')+(x.note?'<span class="rl-note'+(x.ex?' ex':'')+'">'+esc(x.note)+'</span>':'')+(x.caseNo?caseA(x.caseNo,'casetag'):'')+
         (x.assignee?'<span class="bmeta">người test: '+esc(x.assignee)+'</span>':'')+(f.at?'<span class="bmeta">cập nhật '+fmt(f.at)+(f.by?' · <span data-uid="'+esc(f.by)+'">'+esc(nameOf(f.by))+'</span>':'')+'</span>':'')+'</div></div>'+
@@ -5969,7 +6002,7 @@ QUAY VIDEO (TÙY CHỌN)
   function itemRow(it){var x=rr(it),sc=linkedScen(it),open=RL.open===it.id,busy=RL.busyItem[it.id],can=SC.canWrite,tl=rlTesters();
     var by=(x.by||x.at)?' — '+(x.by?nameOf(x.by)+', ':'')+fmt(x.at):'';
     var resBtn=function(k){var on=x.res===k;return '<button type="button" class="rlres '+k+(on?' on':'')+'" data-rlres="'+esc(it.id)+':'+k+'"'+(can&&!busy?'':' disabled')+' aria-pressed="'+on+'" title="'+(k==='x'?'Đạt':'Lỗi')+(on?by:'')+'">'+k+'</button>';};
-    var parts=String(it.menu||'').split(/\s*\/\s*/),leaf=parts.pop(),path=parts.join(' / ');
+    var parts=menuParts(it.menu),leaf=parts.pop(),path=parts.join(' / ');
     var extra=(it.title?'<span class="bmeta">'+esc(it.title)+'</span>':'')+(x.note?'<span class="rl-note'+(x.ex?' ex':'')+'">'+esc(x.note)+'</span>':'')+(x.caseNo?caseA(x.caseNo,'casetag'):'');
     return '<div class="rl-row rl2'+(x.res==='o'?' bad':x.res==='x'?' ok':'')+(x.res==='o'&&x.ex?' ex':'')+'">'+
       '<span class="rl-stt mono">'+it.stt+'</span>'+
@@ -7020,7 +7053,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-6';
+  var KITVER='2026.10.30-7';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
