@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-12"
+KIT_VERSION = "2026.10.30-13"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -992,6 +992,19 @@ class Edusoft:
             pkb.send_keys("{RIGHT}")             # cây DevExpress: phím phải mở nhóm đang chọn
 
     # --- hộp thoại / lỗi
+    def keep_open(self):
+        """Có hộp "Thoát khỏi chương trình?" (do phím Esc ở cửa sổ chính) thì bấm Không – không để Edusoft bị đóng."""
+        for d in self.dialogs():
+            try:
+                if "thoát khỏi chương trình" in self.dialog_text(d).lower():
+                    no = self.dialog_button(d, ("không", "no"))
+                    if no is not None:
+                        self.press(no)
+                        time.sleep(0.8)
+                        print("   Đã bấm Không ở hộp \"Thoát khỏi chương trình?\"")
+            except Exception:
+                continue
+
     def dialogs(self):
         main = getattr(self.main, "handle", None)
         return [w for w in self.windows() if w.handle != main]
@@ -1308,7 +1321,7 @@ class Run:
           expect: chữ                    chờ chữ xuất hiện trên màn hình
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
           find_row: giá trị @ Cột|Cột    tìm dòng: gõ giá trị vào Ô TÌM KIẾM của cột (dòng lọc có icon phễu ngay dưới
-                                         tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì thử Ctrl+F
+                                         tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì chỉ xem các dòng đang hiện
           delete_row: giá trị @ Cột      xóa dòng; CHỈ xác nhận khi hộp thoại nêu đúng giá trị
           cancel                         hủy thao tác đang nhập (không lưu)
           dump: tên                      ghi cây giao diện ra file ui-tên.txt
@@ -1478,21 +1491,17 @@ class Run:
     SAFE_NAMES = ["Mot", "Hai", "Ba", "Bon", "Nam", "Sau", "Bay", "Tam", "Chin", "Muoi"]   # không dính tổ hợp Telex
 
     def row_exists(self, value, col=""):
-        """Có dòng mang giá trị này trong lưới đang mở không – tìm qua ô tìm kiếm của cột (có cột) hoặc Ctrl+F,
-        xong thì xoá ô tìm để lưới hiện lại đủ dòng."""
+        """Có dòng mang giá trị này trong lưới đang mở không – gõ vào ô tìm kiếm của cột rồi xoá ô tìm cho lưới hiện
+        lại đủ dòng. Bắt buộc ghi cột: chỉ nhìn các dòng đang hiện thì không kết luận được là "chưa có".
+        KHÔNG dùng phím Esc – Esc đóng màn hình chức năng, ở cửa sổ chính thì hỏi "Thoát khỏi chương trình?"."""
+        if not col:
+            raise RuntimeError("Lệnh kiểm tra \"%s\" thiếu cột – ghi thêm \"@ Tên cột\" để tìm bằng ô tìm kiếm của cột" % value)
         try:
             self.locate_row(value, col)
             found = True
         except LookupError:                             # không thấy CỘT thì là RuntimeError – không kết luận được
             found = False
-        if col:
-            self.clear_filter()
-        else:
-            try:
-                pkb.send_keys("{ESC}")
-                time.sleep(0.4)
-            except Exception:
-                pass
+        self.clear_filter()
         return found
 
     def make_unique(self, var, col=""):
@@ -1520,37 +1529,40 @@ class Run:
         raise RuntimeError("Không tìm được giá trị %s chưa có sẵn (đã thử %s)" % (var, ", ".join(tried)))
 
     def grid_rows(self):
-        """Các dòng đang hiện trong lưới của màn hình: mỗi dòng là danh sách (tên ô, giá trị)."""
-        rows = []
+        """Các dòng đang hiện trong lưới của màn hình: mỗi dòng là danh sách (tên cột, giá trị). Ô lưới DevExpress là
+        DataItem tên "<cột> row N", giá trị ở Value; gom các ô cùng hàng theo toạ độ."""
+        out = []
         for root in self.es.roots():
+            cells = []
             for g in ("Table", "DataGrid"):
                 try:
-                    grids = root.descendants(control_type=g)
+                    for grid in root.descendants(control_type=g):
+                        cells += grid.descendants(control_type="DataItem")
                 except Exception:
                     continue
-                for grid in grids:
-                    for row in grid.children():
-                        try:
-                            cells = row.children() or [row]
-                        except Exception:
-                            continue
-                        vals = []
-                        for c in cells:
-                            v = ""
-                            try:
-                                v = c.iface_value.CurrentValue or ""
-                            except Exception:
-                                pass
-                            v = str(v or c.window_text() or "").strip()
-                            try:
-                                name = c.element_info.name or ""
-                            except Exception:
-                                name = ""
-                            if v:
-                                vals.append((name, v))
-                        if vals:
-                            rows.append(vals)
-        return rows
+            byrow = {}
+            for c in cells:
+                try:
+                    if not c.is_visible():
+                        continue
+                    v = ""
+                    try:
+                        v = c.iface_value.CurrentValue or ""
+                    except Exception:
+                        pass
+                    v = str(v or c.window_text() or "").strip()
+                    name = re.sub(r"\s+row\s*\d+$", "", str(c.element_info.name or ""), flags=re.I).strip()
+                    if not v or re.search(r"filter|lọc", name, re.I):
+                        continue
+                    r = c.rectangle()
+                    byrow.setdefault((r.top // 6), []).append((r.left, name, v))
+                except Exception:
+                    continue
+            for k in sorted(byrow):
+                out.append([(n, v) for _, n, v in sorted(byrow[k])])
+            if out:
+                return out                              # hộp thoại/form con có lưới thì lấy lưới đó trước
+        return out
 
     def pick_row(self, arg):
         """pick: BIẾN = lọc|lọc @ cột – chọn ngẫu nhiên một dòng phù hợp trong lưới đang mở và ghi nhớ."""
@@ -1573,10 +1585,10 @@ class Run:
         val = row[0][1]
         if col.strip():
             cols = [fold(x) for x in col.split("|") if x.strip()]
-            for name, v in row:
-                if any(c in fold(name) for c in cols):
-                    val = v
-                    break
+            found = [v for c in cols for name, v in row if fold(name) == c]
+            found += [v for c in cols for name, v in row if c in fold(name)]
+            if found:
+                val = found[0]
         self.vars[var] = val
         self.vars[var + "_DONG"] = " · ".join(v for _, v in row)
         self.say("Chọn ngẫu nhiên %s = %s (trong %d dòng phù hợp)" % (var, val, len(hits)))
@@ -1586,12 +1598,17 @@ class Run:
         """Tiêu đề cột `col` (nhiều tên cách nhau |) của lưới trên màn hình đang mở; nhiều lưới thì lấy lưới trên cùng."""
         wants = [norm_label(x) for x in alts_of(col)]
         for root in self.es.roots():
-            grids = []
+            grids, trees = [], []
             for g in ("Table", "DataGrid"):
                 try:
                     grids += [x.rectangle() for x in root.descendants(control_type=g) if x.is_visible()]
                 except Exception:
                     continue
+            try:
+                trees = [x.rectangle() for x in root.descendants(control_type="Tree")
+                         if str(x.element_info.automation_id or "").lower().startswith("treechucnang")]
+            except Exception:
+                pass
             best = None
             for t in ("HeaderItem", "Header", "Custom", "Text"):
                 try:
@@ -1604,7 +1621,10 @@ class Run:
                             continue
                         r = el.rectangle()
                         cx, cy = (r.left + r.right) / 2, (r.top + r.bottom) / 2
-                        if not any(g.left <= cx <= g.right and g.top <= cy <= g.bottom for g in grids):
+                        inside = lambda rs: any(g.left <= cx <= g.right and g.top <= cy <= g.bottom for g in rs)
+                        if inside(trees):
+                            continue                    # cây "Danh mục chức năng" bên trái
+                        if t not in ("HeaderItem", "Header") and not inside(grids):
                             continue                    # chữ trùng tên cột nhưng không nằm trong lưới
                         if best is None or r.top < best.rectangle().top:
                             best = el
@@ -1658,7 +1678,7 @@ class Run:
 
     def locate_row(self, value, col=""):
         """Dòng trong lưới có ô đúng bằng `value`. Có cột: gõ giá trị vào ô tìm kiếm (dòng lọc) của cột rồi tìm
-        trong các dòng còn lại. Không ghi cột: tìm trong các dòng đang hiện, không thấy thì thử Ctrl+F."""
+        trong các dòng còn lại. Không ghi cột: chỉ tìm trong các dòng đang hiện."""
         es = self.es
         if col:
             hdr = self.column_header(col)
@@ -1673,30 +1693,9 @@ class Run:
                 if time.time() > end:
                     raise LookupError("Không thấy dòng \"%s\" (cột %s) trong danh sách" % (value, col))
                 time.sleep(0.6)
-        el = es.element_with_text(value)
-        if el is not None:
-            return el
-        grid = None
-        for t in ("Table", "DataGrid"):
-            try:
-                gs = es.main.descendants(control_type=t)
-                grid = gs[0] if gs else None
-            except Exception:
-                pass
-            if grid is not None:
-                break
-        try:
-            if grid is not None:
-                grid.set_focus()
-            pkb.send_keys("^f")
-            time.sleep(0.8)
-            pkb.send_keys("{END}" + "{BACKSPACE}" * 30 + esc_keys(value) + "{ENTER}", with_spaces=True, pause=TYPE_PAUSE)
-            time.sleep(2)
-        except Exception:
-            pass
-        el = es.element_with_text(value)
+        el = es.element_with_text(value)              # không ghi cột: chỉ tìm trong các dòng đang hiện
         if el is None:
-            raise LookupError("Không thấy dòng \"%s\" trong danh sách" % value)
+            raise LookupError("Không thấy dòng \"%s\" trong các dòng đang hiện (ghi \"@ Tên cột\" để tìm bằng ô tìm kiếm)" % value)
         return el
 
     def summary(self):
@@ -1768,6 +1767,7 @@ class Run:
     def run_block(self, kind, idx, label, text, actions, rec):
         CAP.at(kind, idx, self.expand(text))      # popup đổi "Thao tác" khi bước trước đã xong
         time.sleep(STEP_DELAY)
+        self.es.keep_open()
         try:
             if text.lower().startswith("điều kiện đầu vào") and not actions:
                 rec["res"] = "ok"
@@ -1789,6 +1789,7 @@ class Run:
                     self.ask_error(rec, label, kind, idx, text)
         except Exception as e:
             rec["shots"] += getattr(self, "_pending_shots", [])
+            self.es.keep_open()
             s = self.shot("%s-loi" % label.lower().replace(" ", "-"))
             if s:
                 rec["shots"].append(s)
@@ -1891,8 +1892,13 @@ class Run:
             obs_stop(self)
         res = [s["res"] for s in self.steps + self.alts]
         main_res = [s["res"] for s in self.steps]
-        status = "fail" if "bad" in res else ("pass" if "ok" in main_res else "blocked")
+        status = "fail" if "bad" in res else ("pass" if main_res and all(x == "ok" for x in main_res) else "blocked")
         lines = []
+        if status == "blocked":                        # dừng giữa chừng / bỏ qua bước: nêu bước đầu tiên chưa đạt
+            for i, st in enumerate(self.steps):
+                if st["res"] != "ok":
+                    lines.append("Dừng ở bước %d: %s" % (i + 1, st.get("note") or "chưa chạy"))
+                    break
         for b in self.bugs:
             lab = ("Bước %d" if b["kind"] == "step" else "Luồng A%d") % (b["stepIndex"] + 1)
             lines.append(lab + " — " + ("Lỗi EX" + (" (menu code %s)" % b.get("menuCode") if b.get("menuCode") else "") + ": " + (b.get("exDetail", "").split("\n")[0][:160]) if b["type"] == "ex" else "Lỗi chức năng: " + b.get("actualData", "")[:160]))

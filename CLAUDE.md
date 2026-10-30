@@ -65,6 +65,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   (cây UI Automation) vào thư mục lượt chạy – đọc file đó để sửa tên ô/nút trong `auto`.
 - Ô nhập DevExpress: phải gõ phím thật sau khi đặt focus bằng UIA (`set_field`); xóa bằng End + Backspace (Ctrl+A không chạy);
   không dùng Invoke cho nút mở hộp thoại; Edusoft chạy quyền admin nên bộ test phải chạy quyền admin (Agent lo việc này).
+- **Không gửi phím Esc** trên màn hình Edusoft: Esc đóng màn hình chức năng, ở cửa sổ chính hỏi "Thoát khỏi chương trình?"
+  (kit tự bấm Không). Tìm dòng bằng ô tìm kiếm của cột, không dùng Ctrl+F.
 
 ## Quy tắc an toàn (bắt buộc)
 - Tài khoản test `admindh` chỉ dùng cho môi trường demo/test. **Không** ghi mật khẩu vào `data/`, kịch bản, log hay commit;

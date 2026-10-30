@@ -1,5 +1,5 @@
 {
- "actual": "",
+ "actual": "Dừng ở bước 3: Người test dừng test tại đây (kit 2026.10.30-11 tìm bằng Ctrl+F/Esc: báo nhầm mã đã có, Esc đóng màn hình – đã sửa ở kit 2026.10.30-13).",
  "altFlows": [
   {
    "condition": "Thêm quyết định vào mới nhưng không nhập Số quyết định, hoặc không chọn Lớp cho sinh viên {MSSV2}",
@@ -114,16 +114,25 @@
   "out": "Quyết định {SOQD} và sinh viên {MSSV} ({HOLOT} {TEN}, lớp {LOP}) — được xóa ở bước 12, không để lại dữ liệu test"
  },
  "expected": "Trình tự: kiểm tra trùng mã/tên ở Danh mục sinh viên và Danh sách sinh viên học kỳ → thu thập lý do quyết định vào mới → thêm quyết định. Sinh viên mới vào hệ thống qua Quyết định vào mới (lưu đồ QLSV: DS trúng tuyển → Quyết định vào mới → Danh mục sinh viên → Danh sách sinh viên học kỳ), không thêm thẳng vào Danh mục sinh viên. Thêm: quyết định và sinh viên hiển thị ngay trên màn hình quyết định, Danh mục sinh viên và Danh sách sinh viên học kỳ. Sửa: mở lại thấy giá trị mới, không còn giá trị cũ. Xóa: quyết định không còn trên màn hình và sinh viên không còn trong Danh sách sinh viên học kỳ. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục 1 và 2.1–2.2; lưu đồ QLSV.pdf.) Cần xác nhận: tài liệu chỉ mô tả chi tiết quyết định học lại, đổi lớp, nghỉ học, tạm dừng, tốt nghiệp — giao diện Quyết định vào mới lấy theo cùng mẫu (Thêm → thông tin QĐ → thêm/Import sinh viên → Lưu); việc xóa quyết định có xóa sinh viên khỏi Danh mục sinh viên hay không.",
+ "lastRun": {
+  "at": "2026-10-30T18:15:04.161181Z",
+  "by": "u_L8VJITzyuU54eIqCAl0PKQ",
+  "hasEx": false,
+  "mode": "auto",
+  "runId": "sc-qlsv-001-20261031-011249",
+  "status": "blocked",
+  "version": "v2026.10L.00"
+ },
  "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
  "module": "QLSV",
- "process": "",
+ "process": "31/10/2026 01:12  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n31/10/2026 01:12  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n31/10/2026 01:13  MSSV = TEST310112 đã có sẵn → dùng TEST525516\n31/10/2026 01:13  Bước 2: ĐẠT · TEST310112 đã có, đổi thành TEST525516 · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n31/10/2026 01:14  MSSV = TEST525516 đã có sẵn → dùng TEST649891\n31/10/2026 01:14  Đã ghi cây giao diện (231 phần tử) vào ui-buoc-3-loi.txt\n31/10/2026 01:15  Bước 3: BỎ QUA · Người test dừng test tại đây (Không có dòng nào khớp \"\" trong danh sách (0 dòng đang hiện)) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n31/10/2026 01:15  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n31/10/2026 01:15  Kết thúc: Đạt",
  "product": "edusoft",
  "scriptReady": true,
  "source": {
   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 1, 2.1–2.2; QLSV.pdf (lưu đồ quản lý sinh viên); QLSV_CapNhatLyLichSinhVien, mục I",
   "plan": "edusoft-QLSV"
  },
- "status": "notrun",
+ "status": "blocked",
  "steps": [
   "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố TEST, không đụng sinh viên thật.",
   "Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định thêm → nếu đã có thì tự chọn mã / tên test khác chưa có trong danh mục.",
@@ -140,8 +149,8 @@
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới; sinh viên {MSSV} không còn trong Danh sách sinh viên học kỳ (ghi lại {MSSV} còn trong Danh mục sinh viên hay không – Cần xác nhận quy tắc)."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-10-30T18:39:29.000Z",
- "updatedBy": null,
+ "updatedAt": "2026-10-30T18:55:00.000Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",
   "LOP": "(lấy ở bước 3)",
@@ -155,5 +164,5 @@
   "TEN": "Mot",
   "TEN2": "Hai"
  },
- "version": "v2026.101.00-HVNG"
+ "version": "v2026.10L.00"
 }
