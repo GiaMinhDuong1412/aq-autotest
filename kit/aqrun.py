@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-6"
+KIT_VERSION = "2026.10.30-7"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -75,6 +75,14 @@ def norm(s):
 def norm_label(s):
     """Chuẩn hoá nhãn giao diện: bỏ &, dấu * bắt buộc, dấu : cuối, khoảng trắng thừa."""
     return norm(str(s or "").replace("&", "").replace("*", "")).rstrip(":").strip()
+
+
+def menu_segs(path):
+    """Tách đường dẫn menu "A/ B/ C". Tài liệu ngăn cấp bằng "/ " (có khoảng trắng) nên tên có "/" liền như
+    "QĐ vào/ra sinh viên" giữ nguyên; đường dẫn không có khoảng trắng quanh "/" thì tách ở mọi "/"."""
+    p = str(path or "")
+    parts = re.split(r"\s+/\s*|/\s+", p) if re.search(r"\s/|/\s", p) else p.split("/")
+    return [x.strip() for x in parts if x.strip()]
 
 
 def alts_of(text):
@@ -618,7 +626,7 @@ class Edusoft:
     def open_menu(self, path):
         """Mở menu theo đường dẫn tài liệu "A/ B/ C": mỗi cấp tìm trên mọi cửa sổ của Edusoft
         (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp."""
-        segs = [s.strip() for s in re.split(r"\s*/\s*", path or "") if s.strip()]
+        segs = menu_segs(path)
         if not segs:
             return
         for i, s in enumerate(segs):
@@ -632,10 +640,32 @@ class Edusoft:
                     el.select()                   # tab ribbon (Hệ thống, Sinh viên…)
                 except Exception:
                     el.click_input()
+            elif ct == "TreeItem" and not last:
+                self.expand_node(el)              # nhóm trên cây chức năng: mở nhóm để thấy mục con
             else:
                 self.click(el, double=(last and ct in ("TreeItem", "DataItem", "ListItem")))
             time.sleep(1.2)
         time.sleep(STEP_DELAY * 1.5)
+
+    def expand_node(self, el):
+        """Bấm chọn nhóm trên cây rồi mở nhóm (ExpandCollapse); không được thì bấm đúp – chỉ khi nhóm đang đóng,
+        vì bấm đúp nhóm đang mở sẽ đóng nó lại."""
+        self.click(el)
+        try:
+            st = el.iface_expand_collapse.CurrentExpandCollapseState     # 0 đóng · 1 mở · 2 mở một phần · 3 lá
+        except Exception:
+            st = None
+        if st in (1, 2, 3):
+            return
+        try:
+            el.iface_expand_collapse.Expand()
+            return
+        except Exception:
+            pass
+        if st == 0:
+            self.click(el, double=True)
+        else:
+            pkb.send_keys("{RIGHT}")             # cây DevExpress: phím phải mở nhóm đang chọn
 
     # --- hộp thoại / lỗi
     def dialogs(self):
@@ -1224,6 +1254,7 @@ class Run:
                     self.es.open_menu(sc["menu"])
                 except Exception as e:
                     self.say("Không tự mở được menu \"%s\": %s" % (sc["menu"], e))
+                    self.dump("menu-loi")         # ghi cây giao diện để sửa tên menu
             autos = sc.get("auto") or []
             stop = False
             for i, text in enumerate(sc.get("steps", [])):
