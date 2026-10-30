@@ -28,6 +28,13 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 
+## Đồng bộ sau mỗi thay đổi (người dùng yêu cầu)
+- Mỗi lần sửa: commit + push nhánh đang làm **và** cập nhật console trên claude.ai
+  (artifact https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG). Dữ liệu sửa tay cũng làm cả hai nơi: `data/` và DB của artifact (ArtifactData).
+- Bản claude.ai là biến thể của `web/index.html`: có cầu nối Claude app (khối `kit-mcp`, `aqrun.py` tự **đăng ký** cầu nối,
+  ảnh ở `/_blob/`), còn bản repo/localhost gỡ cầu nối. Bản claude.ai lưu ở `web/console-claudeai.html`; cập nhật bằng gộp ba chiều
+  `git merge-file web/console-claudeai.html <index.html cũ> web/index.html`, giữ phần cầu nối và `/_blob/`, rồi publish file đó lên artifact.
+
 ## Chạy & kiểm tra
 - Chạy console: `python server.py` (hoặc `chay-console.bat`) → http://localhost:8787. `--port`, `--no-browser`.
 - Kiểm tra cú pháp: `python -m py_compile server.py kit/aqrun.py kit/aq-agent.py`; JS: tách khối `<script>` cuối
