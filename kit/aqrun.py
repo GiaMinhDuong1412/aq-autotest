@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-13"
+KIT_VERSION = "2026.10.30-14"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1451,7 +1451,8 @@ class Run:
                 try:
                     es.click(es.find_any(arg or "Hủy|Huỷ|Không lưu|Bỏ qua", types=("Button", "MenuItem", "SplitButton"), timeout=2))
                 except Exception:
-                    pkb.send_keys("{ESC}")
+                    if es.dialogs():                    # Esc chỉ khi đang có cửa sổ con; ở cửa sổ chính Esc đóng màn hình
+                        pkb.send_keys("{ESC}")
                 time.sleep(1.2)
                 for d in es.new_windows(es.snap):
                     no = es.dialog_button(d, ("không", "no", "hủy", "cancel", "đóng"))

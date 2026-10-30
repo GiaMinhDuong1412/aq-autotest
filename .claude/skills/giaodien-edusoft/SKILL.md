@@ -1,6 +1,6 @@
 ---
 name: "giaodien-edusoft"
-description: "Nhận diện giao diện Edusoft.NET (HVNG): phân biệt phân hệ, menu, chức năng, ô tìm kiếm, button, lưới dữ liệu, popup, thanh học kỳ… theo cách người dùng dạy; dùng khi viết/sửa lệnh `auto` của kịch bản, đọc file ui-*.txt hay ảnh chụp màn hình Edusoft, hoặc khi người dùng dạy thêm về giao diện."
+description: "Nhận diện giao diện Edusoft.NET (HVNG): phân biệt phân hệ, menu, chức năng, ô tìm kiếm, button, lưới dữ liệu, popup, thanh học kỳ… theo cách người dùng dạy; dùng khi viết/sửa lệnh `auto` của kịch bản, đọc file ui-*.txt hay ảnh chụp màn hình Edusoft, hoặc khi người dùng dạy thêm về giao diện. Kiểu màn hình và thao tác theo tài liệu HDSD từng phân hệ ở thao-tac.md."
 ---
 
 # Giao diện Edusoft – cách nhận diện phần tử
@@ -172,6 +172,17 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   Lưới DevExpress dự kiến cùng kiểu: tiêu đề cột là `Header`, ô là `DataItem "<cột> row N"` – kit -13 gom ô theo hàng như vậy.
 - Áp dụng: kit `2026.10.30-13` – bỏ Ctrl+F/Esc khi tìm, `keep_open`, kết quả chỉ "Đạt" khi mọi bước luồng chính đạt
   (dừng giữa chừng → "Bị chặn", ghi "Dừng ở bước N").
+
+### #14 – Kiểu màn hình theo tài liệu HDSD (2026-10-30, người dùng gửi thư mục SharePoint site aq)
+- Nhận biết: mỗi chức năng thuộc một kiểu – **Danh mục** (lưới + khung chi tiết bên phải "detailright"), **Quyết định**
+  (đầu quyết định + view "Danh sách sinh viên quyết định" có nút Thêm/Import riêng), **Cập nhật theo mã SV** (gõ mã → tab),
+  **Chọn lớp → Tiếp tục**, **Nhập trên lưới**, **Import** (Xuất cấu trúc), **Đồng bộ/Thực hiện** (nhiệm ý), **Báo biểu**
+  (nhiệm ý → In → cửa sổ xem in), **Chỉnh định thông số** (GS_/SS_). Trường bắt buộc tô **đỏ**.
+- Thao tác đúng / lệnh auto: bảng ở `thao-tac.md` mục 1. Đồng bộ/Thực hiện/Chỉnh định thông số làm thay đổi dữ liệu hàng loạt
+  → hỏi người dùng trước khi đưa vào kịch bản; không bao giờ chọn nhiệm ý "Đồng bộ tất cả (xóa hết…)".
+- Chi tiết từng phân hệ + tiến độ đọc: `thao-tac.md` (đọc tiếp phân hệ chưa ✔ khi có token). Ảnh trong tài liệu không lấy
+  được qua connector → dùng kịch bản khảo sát chỉ-xem (`KS-QLSV-001`) để có ảnh + `ui-ks-*.txt` thật.
+- Áp dụng: kit `2026.10.30-14` – lệnh `cancel` chỉ gửi Esc khi đang có cửa sổ con (theo #13).
 
 ## 5. Quy trình khi được dạy
 
