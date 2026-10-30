@@ -5498,7 +5498,7 @@ QUAY VIDEO (TÙY CHỌN)
         (extra?'<div class="rl-sub">'+extra+'</div>':'')+'</div>'+
       '<div class="rl-sc">'+(sc.length?sc.map(function(s){return '<span class="scchip"><button type="button" class="fchip'+(exOpenFor(s.id)?' ex':'')+'" data-goto="'+esc(s.id)+'">'+esc(s.code)+'</button>'+
             '<button type="button" class="mini-run" data-drawer="'+esc(s.id)+':res" title="Kết quả test và lỗi">'+IC.eye+'</button>'+(can?'<button type="button" class="mini-run" data-rlrun="'+esc(it.id)+':'+esc(s.id)+'" title="Chạy thử kịch bản cho menu này"'+(canRun(s.product)?'':' disabled')+'>'+(canRun(s.product)?IC.play:IC.lock)+'</button>':'')+
-            (can&&s.product==='edusoft'?'<button type="button" class="mini-run" data-kitrun="'+esc(s.code)+'" title="'+(scriptReady(s)?'Chạy bằng máy chạy test (script) – kết quả ghi vào menu này':'Kịch bản chưa có lệnh tự động – chưa chạy bằng máy chạy test được')+'"'+(scriptReady(s)&&(DL||BR.state==='ok')&&!KIT.busy?'':' disabled')+'>'+IC.pc+'</button>':'')+'</span>';}).join('')
+            (can&&s.product==='edusoft'?'<button type="button" class="mini-run" data-kitrun="'+esc(s.code)+'" title="'+esc(kitRunTip(s))+'"'+((s.steps||[]).length&&(DL||BR.state==='ok')&&!KIT.busy?'':' disabled')+'>'+IC.pc+'</button>':'')+'</span>';}).join('')
           :(function(){var pm=planMatches(it),n=pm.list.length;return (n?'<button type="button" class="dmchip" data-dmb="'+pm.m+':'+pm.list.map(function(o){return o.i;}).join(',')+'" title="'+esc(n+' hạng mục trong danh mục khớp menu này, chưa có kịch bản: '+pm.list.map(function(o){return o.x.title;}).join('; '))+'"'+(can&&syncAvail()?'':' disabled')+'>'+IC.robot+n+' DM</button>':'')+
             (can?'<button type="button" class="mini-add" data-rlnew="'+esc(it.id)+'" title="Tự tạo kịch bản test cho menu này">'+IC.plus+'KB</button>':(n?'':'<span class="bmeta">—</span>'));})())+'</div>'+
       '<div class="rl-who">'+(can?'<select class="mini-sel plain" data-rlasg="'+esc(it.id)+'" aria-label="Phân công">'+['<option value="">— chưa phân công</option>'].concat(tl.map(function(n){return '<option'+(x.assignee===n?' selected':'')+'>'+esc(n)+'</option>';})).join('')+'</select>'
@@ -6531,9 +6531,10 @@ QUAY VIDEO (TÙY CHỌN)
         '<div class="kit-row-acts"><button type="button" class="btn sm" data-drawer="'+esc(it.id)+':res">'+IC.eye+'Kết quả</button>'+
         '<button type="button" class="btn sm primary" data-kitrun="'+esc(it.code)+'"'+(KIT.busy||(!DL&&BR.state!=='ok')?' disabled':'')+' title="Tự cập nhật bộ test lên bản mới nhất rồi chạy">'+IC.play+(it.code==='CHUNG-001'?'Chạy test đăng nhập':'Chạy')+'</button></div></div>';}).join('')+'</div>';}
   /* trang phân hệ: chạy bằng máy chạy test các kịch bản có lệnh tự động (ưu tiên kịch bản gắn menu release) + nhập kết quả .zip */
+  function kitRunTip(s){return scriptReady(s)?'Chạy bằng máy chạy test (tự động) – kết quả ghi vào menu này':'Chạy bằng máy chạy test (bán tự động): bộ test tự đăng nhập và mở menu; bước chưa có lệnh tự động thì hiện hộp hỏi Đạt/Lỗi để bạn làm tay, tự chụp ảnh từng bước';}
   function kitModBtns(p,m,mine){if(p!=='edusoft')return '';var ids={};relItems(p,m).forEach(function(it){linkedScen(it).forEach(function(s){ids[s.id]=1;});});
-    var rd=mine.filter(scriptReady),inr=rd.filter(function(s){return ids[s.id];}),list=inr.length?inr:rd,on=list.length&&(DL||BR.state==='ok')&&!KIT.busy;
-    return '<button type="button" class="btn sm" data-kitrun="'+esc(list.map(function(s){return s.code;}).join(','))+'"'+(on?'':' disabled')+' title="'+(list.length?'Gửi lệnh chạy '+list.map(function(s){return s.code;}).join(', ')+' tới máy chạy test':'Phân hệ chưa có kịch bản có lệnh tự động')+'">'+IC.pc+'Chạy bằng máy'+(list.length?' ('+list.length+')':'')+'</button>'+
+    var inr=mine.filter(function(s){return ids[s.id]&&(s.steps||[]).length;}),list=inr.length?inr:mine.filter(scriptReady),on=list.length&&(DL||BR.state==='ok')&&!KIT.busy;
+    return '<button type="button" class="btn sm" data-kitrun="'+esc(list.map(function(s){return s.code;}).join(','))+'"'+(on?'':' disabled')+' title="'+(list.length?'Gửi lệnh chạy '+list.map(function(s){return s.code;}).join(', ')+' tới máy chạy test':'Phân hệ chưa có kịch bản gắn menu phân công')+'">'+IC.pc+'Chạy bằng máy'+(list.length?' ('+list.length+')':'')+'</button>'+
       '<button type="button" class="btn sm" data-kit="imp"'+(KIT.busy?' disabled':'')+' title="Chọn file AQ-ket-qua-….zip bộ test tạo trong thư mục Tải về">'+IC.up+'Nhập kết quả</button>';}
   function kitRunBtn(it,cls){if(!scriptReady(it)||(!DL&&BR.state!=='ok'))return '';return '<button type="button" class="btn '+(cls||'sm')+'" data-kitrun="'+esc(it.code)+'"'+(KIT.busy?' disabled':'')+' title="Gửi lệnh cho Agent trên máy chạy test: tự cập nhật bộ test rồi chạy kịch bản này">'+IC.play+'Chạy bằng script</button>';}
   function autoCount(list){var a=0,t=0;list.forEach(function(x){var au=x.auto||[];(x.steps||[]).forEach(function(s,i){t++;if(au[i]&&String(au[i]).trim())a++;});});return {a:a,t:t};}
@@ -6544,7 +6545,8 @@ QUAY VIDEO (TÙY CHỌN)
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
-  function kitScenFiles(){var o={};kitScens().forEach(function(it){o['scenarios/'+it.code+'.json']=JSON.stringify({id:it.id,code:it.code,title:it.title||'',product:'edusoft',module:modOf(it),menu:it.menu||'',version:it.version||DEFAULT_VERSION,
+  /* gửi kèm kịch bản có lệnh tự động + các kịch bản được yêu cầu chạy (chưa có lệnh thì chạy bán tự động) */
+  function kitScenFiles(codes){var o={},l=kitScens();SC.items.forEach(function(x){if(x.product==='edusoft'&&codes&&codes.indexOf(x.code)>=0&&l.indexOf(x)<0)l.push(x);});l.forEach(function(it){o['scenarios/'+it.code+'.json']=JSON.stringify({id:it.id,code:it.code,title:it.title||'',product:'edusoft',module:modOf(it),menu:it.menu||'',version:it.version||DEFAULT_VERSION,
       steps:(it.steps||[]).slice(),auto:(it.auto||[]).slice(),expected:it.expected||'',vars:it.vars||{},
       altFlows:(it.altFlows||[]).map(function(a){var o={name:a.name||'',condition:a.condition||'',steps:a.steps||[],expected:a.expected||'',auto:a.auto||[]};['needs','always','after'].forEach(function(k){if(a[k]!==undefined)o[k]=a[k];});return o;}),release:kitRelFor(it)},null,1);});return o;}
   function kitCodeFiles(){return {'aqrun.py':kitText('kit-aqrun'),'aq-agent.py':kitText('kit-agent'),'cai-dat.bat':kitText('kit-caidat'),'chay-test.bat':kitText('kit-chaytest'),'quen-mat-khau.bat':kitText('kit-quenmk'),'HUONG-DAN.txt':kitText('kit-huongdan')};}
@@ -6552,7 +6554,7 @@ QUAY VIDEO (TÙY CHỌN)
     var r=myRunner()||{};if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
     if(!kitScens().length){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
     var cfg=kitCfg(r);delete cfg.generatedAt;var now=new Date().toISOString();
-    var body={format:'aq-autotest-update/1',kitVersion:KITVER,generatedAt:now,replaceScenarios:true,files:Object.assign({},kitCodeFiles(),kitScenFiles()),config:cfg,
+    var body={format:'aq-autotest-update/1',kitVersion:KITVER,generatedAt:now,replaceScenarios:true,files:Object.assign({},kitCodeFiles(),kitScenFiles(codes)),config:cfg,
       run:{codes:codes,requestedAt:now,requestedBy:SC.me||null}};
     if(BR.state==='ok'){KIT.busy=true;KIT.prog='Đang gửi lệnh tới máy chạy test…';renderRunner();
       try{var sr=(await MCP.callTool(BRS,'send',{payload:body},{cache:false})).payload||{};
