@@ -4719,6 +4719,7 @@ QUAY VIDEO (TÙY CHỌN)
       (can?'<div class="rl-acts"><button class="btn sm'+(empty?' primary':'')+'" type="button" data-rlpick="">'+IC.plus+'Thêm kịch bản</button>'+
         (prev?'<button class="btn sm" type="button" data-rlact="syncprev"'+(RL.saving?' disabled':'')+' title="Mang tất cả menu test, kịch bản gắn kèm và phân công của release '+esc(prev.version)+' sang kỳ này">'+IC.copy+'Đồng bộ menu test từ release trước</button>':'')+
         (items.length&&MB.list.length?'<button class="btn sm" type="button" data-rlact="autoasg"'+(RL.saving?' disabled':'')+' title="Menu chưa có người test (lần '+RL.round+') giao cho người phụ trách phân hệ trong Danh mục user">Giao theo Danh mục user</button>':'')+
+        '<button class="btn sm" type="button" data-kit="imp"'+(KIT.busy?' disabled':'')+' title="Chọn file AQ-ket-qua-….zip bộ test tạo trong thư mục Tải về – kết quả ghi vào kịch bản và menu phân công">'+IC.up+'Nhập kết quả máy chạy</button>'+
         '<button class="linkish" type="button" data-rlact="imp">Nhập phân công từ sheet</button>'+(rel.sheetUrl?'<a class="linkish" href="'+esc(rel.sheetUrl)+'" target="_blank" rel="noopener">Mở sheet</a>':'')+'</div>':'')+'</div>';}
   /* tìm không dấu: "quyet dinh" khớp "Quyết định" */
   function fold(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/\s+/g,' ').trim();}
@@ -4855,7 +4856,7 @@ QUAY VIDEO (TÙY CHỌN)
         '<button type="button" class="kpi kbtn" data-ctgo2="'+m.c+'" title="Mở danh mục kịch bản của phân hệ"><em>Danh mục</em><b>'+(cv.total?cv.n+'/'+cv.total:'—')+'</b>'+(cv.total?'có kịch bản':'chưa lập')+IC.arrow+'</button>'+
       '</div>'+(rel2&&rs.pc?'<div class="bigbar">'+relBar(rs)+'</div>':'')+flashHtml()+(RL.flash?'<div class="flash">'+esc(RL.flash)+'</div>':'')+'</div>'+
       (SC.canWrite?'<div class="sd-actions">'+(rel2?'<button class="btn sm primary" type="button" data-mpick>'+IC.plus+'Chọn menu & kịch bản</button>':'')+'<button class="btn sm" type="button" data-act="new">'+IC.plus+'Thêm kịch bản</button>'+
-        runBtn('data-runmod="'+m.c+'"','Chạy thử phân hệ',p,!mine.length)+'</div>':'')+'</div>';
+        runBtn('data-runmod="'+m.c+'"','Chạy thử phân hệ',p,!mine.length)+kitModBtns(p,m.c,mine)+'</div>':'')+'</div>';
     h+=mpHtml(p,m.c);
     h+='<div class="card mtab-card"><div class="mtabs" role="tablist" aria-label="Nội dung phân hệ">'+
       (rel2?'<button type="button" role="tab" class="mtab'+(tab==='rel'?' on':'')+'" aria-selected="'+(tab==='rel')+'" data-mtab="rel">Menu release <span>'+rl.length+'</span></button>':'')+
@@ -5496,7 +5497,8 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rl-main"><div class="rl-menu" title="'+esc(it.menu)+'">'+(it.product==='netweb'?'<span class="ptag netweb">Netweb</span>':'')+'<b>'+esc(leaf)+'</b>'+(path?'<span class="mpath">'+esc(path)+'</span>':'')+'</div>'+
         (extra?'<div class="rl-sub">'+extra+'</div>':'')+'</div>'+
       '<div class="rl-sc">'+(sc.length?sc.map(function(s){return '<span class="scchip"><button type="button" class="fchip'+(exOpenFor(s.id)?' ex':'')+'" data-goto="'+esc(s.id)+'">'+esc(s.code)+'</button>'+
-            '<button type="button" class="mini-run" data-drawer="'+esc(s.id)+':res" title="Kết quả test và lỗi">'+IC.eye+'</button>'+(can?'<button type="button" class="mini-run" data-rlrun="'+esc(it.id)+':'+esc(s.id)+'" title="Chạy thử kịch bản cho menu này"'+(canRun(s.product)?'':' disabled')+'>'+(canRun(s.product)?IC.play:IC.lock)+'</button>':'')+'</span>';}).join('')
+            '<button type="button" class="mini-run" data-drawer="'+esc(s.id)+':res" title="Kết quả test và lỗi">'+IC.eye+'</button>'+(can?'<button type="button" class="mini-run" data-rlrun="'+esc(it.id)+':'+esc(s.id)+'" title="Chạy thử kịch bản cho menu này"'+(canRun(s.product)?'':' disabled')+'>'+(canRun(s.product)?IC.play:IC.lock)+'</button>':'')+
+            (can&&s.product==='edusoft'?'<button type="button" class="mini-run" data-kitrun="'+esc(s.code)+'" title="'+(scriptReady(s)?'Chạy bằng máy chạy test (script) – kết quả ghi vào menu này':'Kịch bản chưa có lệnh tự động – chưa chạy bằng máy chạy test được')+'"'+(scriptReady(s)&&(DL||BR.state==='ok')&&!KIT.busy?'':' disabled')+'>'+IC.pc+'</button>':'')+'</span>';}).join('')
           :(function(){var pm=planMatches(it),n=pm.list.length;return (n?'<button type="button" class="dmchip" data-dmb="'+pm.m+':'+pm.list.map(function(o){return o.i;}).join(',')+'" title="'+esc(n+' hạng mục trong danh mục khớp menu này, chưa có kịch bản: '+pm.list.map(function(o){return o.x.title;}).join('; '))+'"'+(can&&syncAvail()?'':' disabled')+'>'+IC.robot+n+' DM</button>':'')+
             (can?'<button type="button" class="mini-add" data-rlnew="'+esc(it.id)+'" title="Tự tạo kịch bản test cho menu này">'+IC.plus+'KB</button>':(n?'':'<span class="bmeta">—</span>'));})())+'</div>'+
       '<div class="rl-who">'+(can?'<select class="mini-sel plain" data-rlasg="'+esc(it.id)+'" aria-label="Phân công">'+['<option value="">— chưa phân công</option>'].concat(tl.map(function(n){return '<option'+(x.assignee===n?' selected':'')+'>'+esc(n)+'</option>';})).join('')+'</select>'
@@ -6528,6 +6530,11 @@ QUAY VIDEO (TÙY CHỌN)
         '<span class="kit-row-s"><span class="spill '+st+'">'+ST[st]+'</span>'+(lr&&lr.at?'<span>chạy '+fmt(lr.at)+'</span>':'<span>chưa chạy</span>')+'</span></div>'+
         '<div class="kit-row-acts"><button type="button" class="btn sm" data-drawer="'+esc(it.id)+':res">'+IC.eye+'Kết quả</button>'+
         '<button type="button" class="btn sm primary" data-kitrun="'+esc(it.code)+'"'+(KIT.busy||(!DL&&BR.state!=='ok')?' disabled':'')+' title="Tự cập nhật bộ test lên bản mới nhất rồi chạy">'+IC.play+(it.code==='CHUNG-001'?'Chạy test đăng nhập':'Chạy')+'</button></div></div>';}).join('')+'</div>';}
+  /* trang phân hệ: chạy bằng máy chạy test các kịch bản có lệnh tự động (ưu tiên kịch bản gắn menu release) + nhập kết quả .zip */
+  function kitModBtns(p,m,mine){if(p!=='edusoft')return '';var ids={};relItems(p,m).forEach(function(it){linkedScen(it).forEach(function(s){ids[s.id]=1;});});
+    var rd=mine.filter(scriptReady),inr=rd.filter(function(s){return ids[s.id];}),list=inr.length?inr:rd,on=list.length&&(DL||BR.state==='ok')&&!KIT.busy;
+    return '<button type="button" class="btn sm" data-kitrun="'+esc(list.map(function(s){return s.code;}).join(','))+'"'+(on?'':' disabled')+' title="'+(list.length?'Gửi lệnh chạy '+list.map(function(s){return s.code;}).join(', ')+' tới máy chạy test':'Phân hệ chưa có kịch bản có lệnh tự động')+'">'+IC.pc+'Chạy bằng máy'+(list.length?' ('+list.length+')':'')+'</button>'+
+      '<button type="button" class="btn sm" data-kit="imp"'+(KIT.busy?' disabled':'')+' title="Chọn file AQ-ket-qua-….zip bộ test tạo trong thư mục Tải về">'+IC.up+'Nhập kết quả</button>';}
   function kitRunBtn(it,cls){if(!scriptReady(it)||(!DL&&BR.state!=='ok'))return '';return '<button type="button" class="btn '+(cls||'sm')+'" data-kitrun="'+esc(it.code)+'"'+(KIT.busy?' disabled':'')+' title="Gửi lệnh cho Agent trên máy chạy test: tự cập nhật bộ test rồi chạy kịch bản này">'+IC.play+'Chạy bằng script</button>';}
   function autoCount(list){var a=0,t=0;list.forEach(function(x){var au=x.auto||[];(x.steps||[]).forEach(function(s,i){t++;if(au[i]&&String(au[i]).trim())a++;});});return {a:a,t:t};}
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
@@ -6722,10 +6729,10 @@ QUAY VIDEO (TÙY CHỌN)
         return {r:'ok',bugs:bdocs.length,notes:notes};}
   async function kitImport(files){KIT.err='';KIT.msg='';
     if(!SC.canWrite){KIT.err='Bạn đang ở quyền chỉ xem.';renderRunner();return;}
-    try{files=await kitExpand(files);}catch(e){KIT.err=e&&e.code==='zip_load'?'Không tải được thư viện đọc .zip — kiểm tra mạng rồi thử lại.':'Không đọc được file .zip: '+errMsg(e);renderRunner();return;}
+    try{files=await kitExpand(files);}catch(e){KIT.err=e&&e.code==='zip_load'?'Không tải được thư viện đọc .zip — kiểm tra mạng rồi thử lại.':'Không đọc được file .zip: '+errMsg(e);RL.flash=KIT.err;renderRunner();renderRelease();return;}
     var byDir={};files.forEach(function(x){var p=x.p.split('/');var name=p.pop(),dir=p.join('/');(byDir[dir]=byDir[dir]||{})[name]=x.f;});
     var dirs=Object.keys(byDir).filter(function(d){return byDir[d]['result.json'];});
-    if(!dirs.length){KIT.err='Không thấy result.json nào — hãy chọn file AQ-ket-qua-….zip (trong Tải về) hoặc thư mục results.';renderRunner();return;}
+    if(!dirs.length){KIT.err='Không thấy result.json nào — hãy chọn file AQ-ket-qua-….zip (trong Tải về) hoặc thư mục results.';RL.flash=KIT.err;renderRunner();renderRelease();return;}
     KIT.busy=true;renderRunner();var ok=0,skip=0,bad=0,bugs=0,notes=[];
     for(var k=0;k<dirs.length;k++){var fs=byDir[dirs[k]];KIT.prog='Nhập '+(k+1)+'/'+dirs.length+': '+dirs[k].split('/').pop();renderRunner();
       try{var res=JSON.parse(await readText(fs['result.json']));
@@ -6737,7 +6744,7 @@ QUAY VIDEO (TÙY CHỌN)
       catch(e){bad++;notes.push(dirs[k].split('/').pop()+': '+errMsg(e));}}
     KIT.busy=false;KIT.prog='';
     KIT.msg='Đã nhập '+ok+' lượt chạy'+(bugs?' · '+bugs+' lỗi':'')+(skip?' · bỏ qua '+skip+' lượt đã nhập trước đó':'')+(bad?' · '+bad+' lượt không nhập được':'')+'.';
-    KIT.err=notes.slice(0,6).join(' · ');
+    KIT.err=notes.slice(0,6).join(' · ');RL.flash=KIT.msg+(KIT.err?' '+KIT.err:'');
     renderRunner();renderAll();renderBugs();renderRelease();}
 
   function kitCardHtml(){var S=esSetup(),r=S.r,c=S.c,dv=SC.rn.draft||r,can=SC.canWrite,lg=kitScens()[0],last=lg?runsFor(lg.id)[0]:null,cur=S.cur;
@@ -6792,7 +6799,7 @@ QUAY VIDEO (TÙY CHỌN)
     else if((t.id==='kitImport'||t.id==='kitImportZip')&&t.files&&t.files.length){kitImport(t.files);}});
   document.addEventListener('click',function(e){var k=e.target.closest('button[data-kitrun]');if(!k||k.disabled)return;var code=k.getAttribute('data-kitrun');
     var onRunner=!!k.closest('.kit-card');
-    kitRunReq([code]).then(function(){if(!onRunner){SC.flash=KIT.err||KIT.msg;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
+    kitRunReq(code.split(',')).then(function(){if(!onRunner){var m=KIT.err||KIT.msg;if(k.closest('.rl-row,.mod-head'))RL.flash=m;else SC.flash=m;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-kit],button[data-kitmod]');if(!b||b.disabled)return;
     var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='xls'){kitExcel();return;}if(a==='imp'||a==='impdir'){kitPick(a==='impdir');return;}
     var m=b.getAttribute('data-kitmod');if(m){KIT.scope=m;kitDownload(m).then(function(){SC.flash=KIT.err||KIT.msg;if(!busy())renderMain();});}});
