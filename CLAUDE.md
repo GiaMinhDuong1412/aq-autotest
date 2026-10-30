@@ -17,7 +17,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `aq-agent.py` (chạy nền quyền admin, nhận file lệnh `aq-autotest-update-run.json` trong thư mục bộ test),
   `cai-dat.bat`, `chay-test.bat`, `quen-mat-khau.bat`, `HUONG-DAN.txt`.
 - `data/` – dữ liệu dùng chung, đồng bộ qua git: `scenarios/`, `runs/`, `bugs/`, `runners/`, `releases/`, `releaseItems/`,
-  `testPlans/`, `settings/`, `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.
+  `testPlans/`, `settings/`, `members/` (Danh mục user: tên gọi = tên ở cột Phân công, `modules` = phân hệ phụ trách dạng
+  `edusoft:QLSV`, menu mới đưa vào phân công tự giao cho người phụ trách), `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.
 - `local/` – riêng từng máy, **gitignore**: `config.json` (`port`, `kitDir`, `userId`, `userName`), `users/<id>/secrets.json`.
 - `aq-console-server.py` – bản server một file: tải zip repo (nhánh `branch`, token chỉ-đọc) về `aq-console/app`, chạy
   `server.py --public` (bắt đăng nhập, tài khoản ở `<local>/auth.json`, trang `/login`, `/quan-tri`; tắt `/api/kit`),
