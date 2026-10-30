@@ -1,0 +1,411 @@
+{
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "docs": [
+  {
+   "name": "1_ChuanBiDuLieuTuyenSinh",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLTS_QuyTrinhXetTuyenVaTiepSinh",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "3_ChamSocThiSinhXetTuyenTrucTuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.1 Khởi tạo kỳ và đợt tuyển sinh",
+   "kind": "main",
+   "menu": "Tuyển sinh / Chuẩn bị / Danh sách kỳ tuyển sinh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Chọn đúng năm học học kỳ đang tuyển sinh.",
+    "Mở menu Tuyển sinh / Chuẩn bị / Danh sách kỳ tuyển sinh.",
+    "Thêm kỳ tuyển sinh TEST_ (Tên kỳ TS sẽ là tiêu đề form đăng ký xét tuyển trên Netweb) → Lưu.",
+    "KIỂM TRA: kỳ mới hiện trong danh sách.",
+    "Sửa Tên kỳ TS → Lưu → KIỂM TRA giá trị mới."
+   ],
+   "stt": 11,
+   "title": "Danh sách kỳ tuyển sinh"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Sheet ghi Count EX = 61 ở dòng này.",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.1 Khởi tạo kỳ và đợt tuyển sinh",
+   "kind": "main",
+   "menu": "Tuyển sinh / Chuẩn bị / Danh sách đợt tuyển sinh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: đã có kỳ tuyển sinh TEST_ (bước 1).",
+    "Mở menu Tuyển sinh / Chuẩn bị / Danh sách đợt tuyển sinh.",
+    "Thêm đợt: Tên đợt (tiêu đề trên form đăng ký), Từ ngày ĐKXT – Đến ngày ĐKXT (thời gian thí sinh được đăng ký) → Lưu.",
+    "KIỂM TRA: đợt mới hiện trong danh sách với đúng khoảng ngày."
+   ],
+   "stt": 12,
+   "title": "Danh sách đợt tuyển sinh"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Công thức ưu tiên khu vực (để tính sẵn kết quả mong đợi): điểm tổng ≥ ngưỡng thì Điểm ưu tiên = [(30 − Tổng điểm)/7,5] × Mức ưu tiên (THPT), [(1200 − Tổng)/300] × Mức (năng lực), [(10 − Tổng)/2] × Mức (HS giỏi).",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.2 Chỉnh định các biến setting (2.1–2.8)",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số toàn cục",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số toàn cục.",
+    "KIỂM TRA và ghi lại giá trị: ST_KYTUYENSINH (kỳ tuyển sinh hiện hành), ST_DOT_TSINH (đợt tuyển sinh), ST_NAMTNKVDT (năm học áp dụng ưu tiên khu vực), ST_DIEMTONGUTKV / ST_DIEMTONGNLUTKV / ST_DIEMTONGTTUTKV (ngưỡng điểm tính ưu tiên khu vực cho học bạ–THPT / năng lực / HS giỏi).",
+    "Mở Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số học kỳ: ghi lại ST_DIEMUUDT, ST_DIEMUUKV, ST_DIEMUUDTNL, ST_DIEMUUKVNL (mức chênh lệch điểm ưu tiên).",
+    "Mở Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số NETWEB (QLTS): ghi lại xl_cho_phep_dk_nhanh_pthuc, xl_sl_dk_nv_pthuc, xl_sl_max_nv.",
+    "Nếu phải đặt ST_KYTUYENSINH / ST_DOT_TSINH sang kỳ/đợt TEST_ thì ghi giá trị cũ để trả lại sau khi test."
+   ],
+   "stt": 13,
+   "title": "Chỉnh định thông số toàn cục"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2 Chuẩn bị dữ liệu danh mục (Danh mục ngành tuyển sinh)",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục ngành tuyển sinh",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục ngành tuyển sinh.",
+    "Bấm Thêm, nhập Mã ngành TEST_, Tên ngành, trường có tuyển sinh → Lưu.",
+    "KIỂM TRA: ngành mới hiện trong danh mục.",
+    "(Tài liệu cùng mục) Kiểm tra trước các danh mục địa bàn, dân tộc, trường phổ thông."
+   ],
+   "stt": 14,
+   "title": "Danh mục ngành tuyển sinh"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.2.9 Bộ đếm phiếu ĐKXT; III.3.3 Ẩn/Hiện phương thức tuyển sinh",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục phương thức xét tuyển",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: đã có bộ đếm phiếu đăng ký xét tuyển (Hệ thống / Quản trị hệ thống / Quản lý danh mục / Quản lý hệ thống / Danh mục bộ đếm, Loại đối tượng = Mã số thí sinh nộp hồ sơ).",
+    "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục phương thức xét tuyển.",
+    "Gán mã bộ đếm phiếu ĐKXT cho phương thức → Lưu.",
+    "Tick “Không hiển thị online” cho một phương thức → Lưu → KIỂM TRA phương thức không còn trên trang Đăng ký xét tuyển Netweb; bỏ tick → KIỂM TRA hiện lại.",
+    "(Liên quan) Tuyển sinh / Chuẩn bị / Định nghĩa phương thức ngành XT: gán ngành cho từng phương thức."
+   ],
+   "stt": 15,
+   "title": "Danh mục phương thức xét tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2 Chuẩn bị dữ liệu danh mục (Danh mục khối tuyển sinh)",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh.",
+    "Thêm khối TEST_ → Lưu.",
+    "KIỂM TRA: khối mới hiện trong danh mục."
+   ],
+   "stt": 16,
+   "title": "Danh mục khối tuyển sinh"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2 Chuẩn bị dữ liệu danh mục (Danh mục môn thi tuyển sinh, Nhập môn thi cho khối)",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục môn thi tuyển sinh",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục môn thi tuyển sinh.",
+    "Thêm môn thi TEST_ → Lưu → KIỂM TRA hiện trong danh mục.",
+    "Mở Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Nhập môn thi cho khối: gán môn thi TEST_ cho khối TEST_ → Lưu → KIỂM TRA."
+   ],
+   "stt": 17,
+   "title": "Danh mục môn thi tuyển sinh"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.3 Chuẩn bị dữ liệu kỳ tuyển sinh (Nhập ngành/khối tuyển sinh)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Chuẩn bị / Nhập ngành / khối tuyển sinh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: kỳ tuyển sinh đã có khối (Chuẩn bị / Danh sách khối tuyển sinh), ngành (Danh sách ngành tuyển sinh), môn thi (Danh sách môn thi tuyển sinh).",
+    "Mở menu Tuyển sinh / Chuẩn bị / Nhập ngành/khối tuyển sinh.",
+    "Chọn kỳ tuyển sinh TEST_, gán khối TEST_ cho ngành TEST_ → Lưu.",
+    "KIỂM TRA: ngành hiện với đúng khối đã gán."
+   ],
+   "stt": 18,
+   "title": "Nhập ngành/khối tuyển sinh"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu chỉ có một câu mô tả – chi tiết các cột của màn hình cần xác nhận.",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.5 Định nghĩa phương thức nhập điểm đăng ký xét tuyển",
+   "kind": "setup",
+   "menu": "Tuyển sinh / Chuẩn bị / Định nghĩa phương án nhập điểm",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Chuẩn bị / Định nghĩa phương án nhập điểm.",
+    "Định nghĩa phương án nhập điểm cho từng phương thức xét tuyển (vd học bạ, điểm thi THPT) → Lưu.",
+    "KIỂM TRA: khi nhập hồ sơ đăng ký xét tuyển theo phương thức đó, các ô điểm hiện đúng theo phương án đã định nghĩa."
+   ],
+   "stt": 19,
+   "title": "Định nghĩa phương án nhập điểm"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Bản trước menu này lỗi EX case 64361.",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.6 Nhập – kiểm tra thông tin (6.1, 6.4)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh / Nhập hồ sơ đăng ký xét tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh / Nhập hồ sơ đăng ký xét tuyển.",
+    "Xem đơn thí sinh đã đăng ký trên Netweb (bước NetWEB: Đăng ký xét tuyển) – hiệu chỉnh một thông tin → Lưu → KIỂM TRA.",
+    "Nhập thủ công một đơn đăng ký cho thí sinh TEST_ → Lưu → KIỂM TRA số phiếu theo bộ đếm (vd TS00001).",
+    "Duyệt hồ sơ (bắt buộc trước khi xét tuyển): tại Danh sách xét tuyển / Danh sách thí sinh/đợt xét tuyển tick cột Duyệt hồ sơ → Lưu."
+   ],
+   "stt": 20,
+   "title": "Nhập hồ sơ đăng ký xét tuyển"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu mô tả phần cấu hình form, không có hướng dẫn riêng thao tác của thí sinh – các bước nhập form cần xác nhận.",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh; 3_ChamSocThiSinhXetTuyenTrucTuyen, mục III.3 Chỉnh định giao diện Đăng ký xét tuyển và Template mail (1_ChuanBi…)",
+   "kind": "main",
+   "menu": "NetWEB: Đăng ký xét tuyển",
+   "priority": "cao",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: kỳ/đợt TS TEST_ đang trong thời gian Từ ngày – Đến ngày ĐKXT; form đã định nghĩa (Định nghĩa nhóm HSTS trên web, Chỉnh định thông tin tuyển sinh trên web); phương thức không bị “Không hiển thị online”; template mail “Thư thông báo ĐK xét tuyển thành công” đã có.",
+    "Mở trang Đăng ký xét tuyển trên Netweb test (tiêu đề = Tên kỳ TS / Tên đợt).",
+    "Nhập thông tin thí sinh TEST_ theo form: các trường Bắt buộc nhập phải chặn khi để trống; trường Không hiệu chỉnh không sửa được.",
+    "Chọn phương thức xét tuyển và ngành (số nguyện vọng ≤ xl_sl_dk_nv_pthuc; tổng ≤ xl_sl_max_nv; chọn nhiều phương thức chỉ khi xl_cho_phep_dk_nhanh_pthuc = Có) → Gửi.",
+    "KIỂM TRA: thông báo đăng ký thành công; nhận mail xác nhận với đúng biến @HOTEN, @NOIDUNGPT, @MATKHAU…; đơn hiện ở Edusoft Tuyển sinh / Nhập liệu hồ sơ / … / Nhập hồ sơ đăng ký xét tuyển."
+   ],
+   "stt": 21,
+   "title": "Đăng ký xét tuyển (Netweb)"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Cán bộ chăm sóc cần được admin bật “Quản trị chăm sóc” (Phân quyền admin phân hệ) và gán thí sinh (Phân quyền chăm sóc).",
+   "docRef": "3_ChamSocThiSinhXetTuyenTrucTuyen, mục III.3–4 (Gửi thông báo, trả lời ý kiến; Thí sinh hiệu chỉnh, upload hồ sơ)",
+   "kind": "main",
+   "menu": "NetWEB: Tra cứu thông tin xét tuyển",
+   "priority": "thấp",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở Netweb test → menu Tra cứu thông tin xét tuyển; tra cứu hồ sơ thí sinh TEST_ (thông tin + mật khẩu tra cứu trong mail).",
+    "KIỂM TRA: hiện đúng hồ sơ, nguyện vọng và trạng thái.",
+    "Gửi ý kiến cho nhà trường → KIỂM TRA (cán bộ chăm sóc, trang /admin → Quản trị chăm sóc → Ý kiến của thí sinh) thấy ý kiến; cán bộ Trả lời → KIỂM TRA thí sinh thấy câu trả lời ở Tra cứu.",
+    "Cán bộ gửi thông báo cho thí sinh (cột Thông báo → Lưu) → KIỂM TRA thí sinh thấy thông báo khi tra cứu.",
+    "Hiệu chỉnh: bấm Hiệu chỉnh → tab Đăng ký sửa thông tin → Lưu; tab Upload → Browse chọn file → Upload → KIỂM TRA (cán bộ) mở chi tiết hồ sơ thấy file, cột Hồ sơ đổi trạng thái đã xem; cập nhật Trạng thái hồ sơ → Cập nhật."
+   ],
+   "stt": 22,
+   "title": "Tra cứu thông tin xét tuyển (Netweb)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.4 Chuẩn bị dữ liệu điểm chuẩn cho các phương thức",
+   "kind": "main",
+   "menu": "Tuyển sinh / Điểm chuẩn / Nhập điểm chuẩn xét tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Điểm chuẩn / Nhập điểm chuẩn xét tuyển.",
+    "Nhập điểm chuẩn theo từng khối – ngành – phương thức (học bạ, điểm thi THPT) → Lưu.",
+    "KIỂM TRA: điểm chuẩn hiện đúng.",
+    "(Phương thức khác) Nhập điểm chuẩn năng lực (không tổ hợp); Nhập điểm chuẩn HS giỏi (không tổ hợp)."
+   ],
+   "stt": 23,
+   "title": "Nhập điểm chuẩn xét tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.6.4 Duyệt nhanh đơn; III.7 Cộng điểm tổng cho thí sinh",
+   "kind": "main",
+   "menu": "Tuyển sinh / Danh sách xét tuyển / Danh sách thí sinh / đợt xét tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Danh sách xét tuyển / Danh sách thí sinh/đợt xét tuyển.",
+    "KIỂM TRA: mỗi nguyện vọng của thí sinh là một dòng.",
+    "Tick cột Duyệt hồ sơ cho đơn TEST_ → Lưu.",
+    "Bấm “Cộng điểm” (học bạ / THPT) hoặc “Cộng điểm thi năng lực”.",
+    "KIỂM TRA: Điểm cộng XT = Điểm tổng các môn + Điểm ưu tiên (đối tượng + khu vực, theo ngưỡng ở chỉnh định)."
+   ],
+   "stt": 24,
+   "title": "Danh sách thí sinh/đợt xét tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.8 Xét tuyển cho thí sinh (8.1–8.3)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Xét tuyển / Xét tuyển theo đợt / Xét trúng tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Xét tuyển / Xét tuyển theo đợt / Xét trúng tuyển.",
+    "Chọn đợt, bấm Thực hiện (xét toàn bộ phương thức, lấy 1 nguyện vọng cao nhất theo STT).",
+    "KIỂM TRA: thí sinh TEST_ có Điểm cộng XT ≥ điểm chuẩn thì trúng nguyện vọng cao nhất đạt; thấp hơn thì không trúng.",
+    "(Luồng khác) Xét tuyển / Xét tuyển theo thí sinh – xét từng thí sinh; Xét tuyển / Hủy kết quả trúng tuyển theo đợt → “Hủy kết quả đã xét” → KIỂM TRA kết quả bị xóa."
+   ],
+   "stt": 25,
+   "title": "Xét trúng tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.9 Kiểm tra danh sách thí sinh trúng tuyển",
+   "kind": "main",
+   "menu": "Tuyển sinh / Hồ sơ nhập học / Danh sách trúng tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Hồ sơ nhập học / Danh sách trúng tuyển.",
+    "KIỂM TRA: thí sinh TEST_ trúng tuyển có trong danh sách đúng ngành/phương thức.",
+    "Cập nhật một thông tin của thí sinh → Lưu → KIỂM TRA."
+   ],
+   "stt": 26,
+   "title": "Danh sách trúng tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Tên lớp cho thí sinh trúng tuyển)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Hồ sơ nhập học / Tên lớp cho thì sinh trúng tuyển / Gán tên lớp cho thí sinh trúng tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở Tuyển sinh / Hồ sơ nhập học / Tên lớp cho thí sinh trúng tuyển / Phân bổ sĩ số các lớp trúng tuyển: chia sĩ số lớp.",
+    "Mở menu … / Gán tên lớp cho thí sinh trúng tuyển → Thực hiện cho ngành TEST_.",
+    "KIỂM TRA: thí sinh TEST_ có tên lớp.",
+    "(Luồng khác) … / Nhập tên lớp cho thí sinh trúng tuyển: gán tay; … / Hủy tên lớp cho thí sinh trúng tuyển: hủy để gán lại."
+   ],
+   "stt": 27,
+   "title": "Gán tên lớp cho thí sinh trúng tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Mã SV cho thí sinh trúng tuyển)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Hồ sơ nhập học / Mã SV cho thí sinh trúng tuyển / Gán mã cho sinh viên trúng tuyển",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở Tuyển sinh / Hồ sơ nhập học / Mã SV cho thí sinh trúng tuyển / Nhập mã số sinh viên theo đối tượng: nhập số bắt đầu.",
+    "Mở menu … / Gán mã cho sinh viên trúng tuyển → Thực hiện.",
+    "KIỂM TRA: thí sinh TEST_ có mã SV theo phương thức ST_TTGANSV / ST_CHIEUDAITT.",
+    "(Luồng khác) Nhập mã số cho thí sinh trúng tuyển (tay); Hủy mã số cho thí sinh trúng tuyển rồi gán lại.",
+    "Sau khi gán mã: Tuyển sinh / Hồ sơ nhập học / Gán số giấy báo trúng tuyển; In phiếu báo trúng tuyển."
+   ],
+   "stt": 28,
+   "title": "Gán mã cho  sinh viên trúng tuyển"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Xác nhận nhập học)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Hồ sơ nhập học / Xác nhận nhập học / Nhập thí sinh nhập học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Hồ sơ nhập học / Xác nhận nhập học / Nhập thí sinh nhập học.",
+    "Xác nhận nhập học cho thí sinh TEST_ → Lưu.",
+    "KIỂM TRA: thí sinh có trạng thái đã nhập học."
+   ],
+   "stt": 29,
+   "title": "Nhập thí sinh nhập học"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 Tiếp sinh và chuyển dữ liệu",
+   "kind": "main",
+   "menu": "Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập hồ sơ nhập học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Tiếp sinh / Bộ đếm số phiếu học phí; Chuẩn bị hồ sơ nhập học; Phân loại hồ sơ nhập học diện trúng tuyển đã khai báo.",
+    "Mở menu Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập hồ sơ nhập học.",
+    "Chọn thí sinh TEST_, đánh dấu các hồ sơ đã nộp → Lưu.",
+    "KIỂM TRA: hồ sơ của thí sinh được ghi nhận."
+   ],
+   "stt": 30,
+   "title": "Nhập hồ sơ nhập học"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 (Nhập học phí nhập học)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập học phí nhập học",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Tiếp sinh / Chuẩn bị khoản thu nhập học; Phân loại khoản thu theo đối tượng.",
+    "Mở menu Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập học phí nhập học.",
+    "Thu khoản nhập học cho thí sinh TEST_ → Lưu.",
+    "KIỂM TRA: phiếu thu có số theo bộ đếm, số tiền đúng khoản thu của đối tượng."
+   ],
+   "stt": 31,
+   "title": "Nhập học phí nhập học"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Dữ liệu chuyển sang QLSV – cần dọn sinh viên test sau khi kiểm tra.",
+   "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 (Chuyển danh sách trúng tuyển sang phân hệ QLSV)",
+   "kind": "main",
+   "menu": "Tuyển sinh / Tiếp sinh / Chuyển danh sách trúng tuyển sang phân hệ QLSV",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tuyển sinh / Tiếp sinh / Chuyển danh sách trúng tuyển sang phân hệ QLSV.",
+    "Chọn thí sinh TEST_ đã nhập học → Thực hiện.",
+    "KIỂM TRA: sinh viên có trong Sinh viên / Sinh viên học kỳ / Danh mục sinh viên với đúng mã SV, lớp."
+   ],
+   "stt": 32,
+   "title": "Chuyển danh sách trúng tuyển sang phân hệ QLSV"
+  }
+ ],
+ "module": "QLTS",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 22 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 20 khớp, 2 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
+ "product": "edusoft",
+ "status": "draft",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

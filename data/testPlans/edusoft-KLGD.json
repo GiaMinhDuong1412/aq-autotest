@@ -1,712 +1,201 @@
 {
- "createdAt": "2026-10-29T04:30:00.000Z",
- "createdBy": null,
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
    "name": "KLGD_QuanLyKhoiLuongGiangDay",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KLGD_menu.pdf (cây menu)",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.1",
+   "docCheck": "partial",
+   "docNote": "Tài liệu gọi là 'Hệ số lớp đông theo đối tượng', sheet ghi 'Hệ số lớp đông / Mức hệ số lớp đông' – cần xác nhận tên menu.",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.8 Hệ số lớp đông theo đối tượng (tương tự 3.7 bậc thang)",
    "kind": "setup",
-   "menu": "Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-001",
-   "title": "Chỉnh định thông số toàn cục của phân hệ Khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.1",
-   "kind": "setup",
-   "menu": "Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-002",
-   "title": "Chỉnh định thông số học kỳ của phân hệ Khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.2",
-   "kind": "main",
-   "menu": "Khối lượng/ Quản trị phân hệ/ Quản lý danh mục",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-003",
-   "title": "Kiểm tra các danh mục dùng cho tính khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.1",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo đối tượng/ Mức hệ số khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-004",
-   "title": "Khai báo hệ số khối lượng theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.2, III.3.3",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số công việc theo đối tượng/ Mức hệ số công việc",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-005",
-   "title": "Khai báo hệ số công việc và hệ số đi xa theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.4, III.3.5",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo môn học/ Mức hệ số khối lượng môn học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-006",
-   "title": "Khai báo hệ số khối lượng và hệ số độc hại theo môn học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.6",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số địa điểm theo cơ sở/ Tiết chuẩn đặc biệt theo địa điểm",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-007",
-   "title": "Khai báo hệ số địa điểm theo cơ sở"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.7",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số KL bậc thang theo ĐT/ Mức hệ số khối lượng bậc thang",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-008",
-   "title": "Khai báo hệ số khối lượng bậc thang theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.8, III.3.9",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số lớp đông theo đối tượng/ Mức hệ số lớp đông",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-009",
-   "title": "Khai báo hệ số lớp đông và hệ số ngoại ngữ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.10",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Định nghĩa loại hình học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-010",
-   "title": "Khai báo loại hình theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.11, III.3.12",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Chính sách học hàm/ Hệ số và đơn giá học hàm",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-011",
-   "title": "Khai báo chính sách học hàm và giờ nghĩa vụ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.13",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Danh sách CBGD tính KLGD học kỳ/ Thông tin khối lượng cho cán bộ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-012",
-   "title": "Lập danh sách CBGD tính khối lượng học kỳ"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-012",
-   "kind": "alt",
-   "menu": "Khối lượng/ Khai báo thông số/ Danh sách CBGD tính KLGD học kỳ/ Thông tin khối lượng cho cán bộ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-012",
-   "title": "Lập danh sách CBGD tính khối lượng học kỳ – Thêm trùng CBGD"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.14",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Danh sách môn học và loại hình/ Thông tin loại hình cho môn học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-013",
-   "title": "Gán loại hình cho môn học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.3.15",
-   "kind": "main",
-   "menu": "Khối lượng/ Khai báo thông số/ Công thức tính các hệ số/ Định nghĩa công thức các loại hệ số",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-014",
-   "title": "Định nghĩa công thức tính các hệ số"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.1 Định nghĩa đợt; liên quan mục 4.3 và 5.2",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt/ Định nghĩa đợt tính khối lượng",
-   "priority": "cao",
-   "scenarioCode": "KLGD-015",
-   "title": "Định nghĩa đợt tính khối lượng giảng dạy"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-015",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt/ Định nghĩa đợt tính khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-015",
-   "title": "Định nghĩa đợt tính khối lượng giảng dạy – Trùng mã đợt"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-015",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt/ Định nghĩa đợt tính khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-015",
-   "title": "Định nghĩa đợt tính khối lượng giảng dạy – Bỏ trống Mã đợt"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-015",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt/ Định nghĩa đợt tính khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-015",
-   "title": "Định nghĩa đợt tính khối lượng giảng dạy – Xóa đợt đã gán cho nhóm học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.4.2",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Phân công cán bộ giảng dạy/ Bổ sung cán bộ giảng dạy",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-016",
-   "title": "Bổ sung cán bộ giảng dạy cho nhóm học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.4.3",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học",
-   "priority": "cao",
-   "scenarioCode": "KLGD-017",
-   "title": "Gán đợt tính khối lượng cho nhóm học"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-017",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-017",
-   "title": "Gán đợt tính khối lượng cho nhóm học – Gán đợt khi chưa chọn nhóm học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.4.4",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Dữ liệu đã chốt từ kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "KLGD-018",
-   "title": "Chốt dữ liệu khối lượng từ kế hoạch"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.4.5, III.4.6",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-019",
-   "title": "Hiệu chỉnh khối lượng giảng dạy và CBGD dạy thay"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.4.7, III.4.8",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Khối lượng giảng dạy khác/ Nhập khối lượng giảng dạy khác",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-020",
-   "title": "Nhập khối lượng giảng dạy khác và khai báo không tính khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.5.1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Phân bổ nghĩa vụ & tạm ứng/ Theo khối lượng chi tiết",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-021",
-   "title": "Phân bổ nghĩa vụ và tạm ứng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.5.2",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Tính khối lượng giảng dạy",
-   "priority": "cao",
-   "scenarioCode": "KLGD-022",
-   "title": "Tính khối lượng giảng dạy theo đợt"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-022",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Tính khối lượng giảng dạy",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-022",
-   "title": "Tính khối lượng giảng dạy theo đợt – Tính khối lượng khi sổ đã khóa"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-022",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Tính khối lượng giảng dạy",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-022",
-   "title": "Tính khối lượng giảng dạy theo đợt – Tính khi chưa chốt dữ liệu"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.5.4 – III.5.7",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Xem khối lượng chi tiết",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-023",
-   "title": "Xem kết quả khối lượng và tạm ứng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.5.3",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo đợt",
-   "priority": "cao",
-   "scenarioCode": "KLGD-024",
-   "title": "Khóa sổ và mở khóa sổ dữ liệu khối lượng"
-  },
-  {
-   "docRef": "luồng thay thế của KLGD-024",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo đợt",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-024",
-   "title": "Khóa sổ và mở khóa sổ dữ liệu khối lượng – Sửa dữ liệu sau khi khóa sổ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục III.5.8 – III.5.11",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ In chi tiết thù lao CBGD/ Theo đợt/CBGD",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-025",
-   "title": "In thù lao giảng dạy"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay",
-   "kind": "clean",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-026",
-   "title": "Dọn dữ liệu test của phân hệ Khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 1",
-   "kind": "setup",
-   "menu": "Khối lượng/ Quản trị phân hệ/ Chỉnh định thống số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-001",
-   "title": "Chỉnh định thông số toàn cục"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 1",
-   "kind": "setup",
-   "menu": "Khối lượng/ Quản trị phân hệ/ Chỉnh định thống số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-002",
-   "title": "Chỉnh định thông số học kỳ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.1",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo đối tượng/ Mức hệ số khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-004",
-   "title": "Khai báo mức hệ số khối lượng theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.1",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo đối tượng/ Đối tượng và mức khối lượng",
+   "menu": "Khối lượng / Khai báo thông số / Hệ số lớp đông / Mức hệ số lớp đông",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Gán mức khối lượng cho đối tượng"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Khai báo thông số / Hệ số lớp đông → màn hình Mức hệ số lớp đông",
+    "Thêm mức hệ số lớp đông TEST_LD01: chọn kiểu công thức (c*(a*(sosv−b)+1) khi sosv>b, ngược lại = c; hoặc bậc thang; hoặc theo %), nhập a, b, c → Lưu",
+    "KIỂM TRA: mức TEST_LD01 hiện trong danh sách với đúng tham số",
+    "Mở Đối tượng và mức lớp đông: gán TEST_LD01 cho một đối tượng → Lưu",
+    "KIỂM TRA: đối tượng hiển thị đúng mức lớp đông",
+    "Chỉ xem (không sửa) tham số SG_DMLOAILD, ghi lại giá trị hiện tại",
+    "Dọn: bỏ gán đối tượng, xóa TEST_LD01 (hộp thoại xác nhận phải nêu TEST_LD01)"
+   ],
+   "stt": 186,
+   "title": "Mức hệ số lớp đông"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.2",
+   "docCheck": "partial",
+   "docNote": "Tài liệu: menu 'Định nghĩa loại hình học kỳ'; sheet: 'Công thức loại hình'.",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.10 Định nghĩa loại hình học kỳ",
    "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số công việc theo đối tượng/ Mức hệ số công việc",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-005",
-   "title": "Khai báo mức hệ số công việc theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.2",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số công việc theo đối tượng/ Đối tượng và mức công việc",
+   "menu": "Khối lượng / Khai báo thông số / Công thức loại hình / Danh sách loại hình học kỳ",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Gán mức công việc cho đối tượng"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Khai báo thông số / Công thức loại hình → Danh sách loại hình học kỳ",
+    "Chọn học kỳ test, Thêm loại hình TEST_LH01: đơn vị tính KL, số SV/nhóm, gộp khối lượng, hệ số thành phần, số tiết KL, đơn giá KLGD (số tiết/đơn giá bổ sung, không trừ tiết nghĩa vụ nếu cần)",
+    "Ở các tab theo loại CBGD: nhập công thức đơn giá và hệ số tham gia → Lưu",
+    "KIỂM TRA: TEST_LH01 hiện đúng thông số, mở lại vẫn giữ công thức",
+    "Mở Đối tượng và hệ số loại hình: gán hệ số cho TEST_LH01 → Lưu; KIỂM TRA hiển thị",
+    "Dọn: xóa TEST_LH01 (xác nhận nêu đúng mã)"
+   ],
+   "stt": 187,
+   "title": "Danh sách loại hình học kỳ"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.3",
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.13 Thông tin khối lượng cho cán bộ",
    "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số đi xa theo đối tượng/ Mức hệ số đi xa",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-005",
-   "title": "Khai báo mức hệ số đi xa theo đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.3",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số đi xa theo đối tượng/ Đối tượng và mức đi xa",
+   "menu": "Khối lượng / Khai báo thông số / Danh sách CBGD / Thông tin khối lượng cho cán bộ",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Gán mức đi xa cho đối tượng"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Khai báo thông số / Danh sách CBGD → Thông tin khối lượng cho cán bộ",
+    "Thêm → chọn cán bộ test → chọn loại CBGD, hệ số, % giờ nghĩa vụ → Lưu",
+    "KIỂM TRA: cán bộ hiện trong danh sách với đúng loại CBGD, hệ số, % nghĩa vụ",
+    "Dọn: xóa dòng vừa thêm (xác nhận nêu đúng cán bộ test)"
+   ],
+   "stt": 188,
+   "title": "Thông tin khối lượng cho cán bộ"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.4",
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.14 Nhập thông tin loại hình cho môn học",
    "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo môn học/ Mức hệ số khối lượng môn học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-006",
-   "title": "Khai báo mức hệ số khối lượng theo môn học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.4",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số khối lượng theo môn học/ Môn học và mức khối lượng",
+   "menu": "Khối lượng / Khai báo thông số / Danh sách môn học & loại hình / Nhập thông tin loại hình cho môn học",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Gán mức khối lượng cho môn học"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Khai báo thông số / Danh sách môn học & loại hình → Nhập thông tin loại hình cho môn học",
+    "Chọn học kỳ, chọn môn test → gán loại hình (hoặc dùng 'Gán theo loại hình' cho nhiều môn)",
+    "Gán số tiết KL theo tiết thành phần; với loại hình bậc thang nhập các mức → Lưu",
+    "KIỂM TRA: môn hiển thị đúng loại hình và số tiết KL",
+    "Dọn: trả loại hình của môn test về như cũ"
+   ],
+   "stt": 189,
+   "title": "Nhập thông tin loại hình cho môn học"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.5",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số độc hại theo môn học/ Mức độc hại của môn học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-006",
-   "title": "Khai báo mức độc hại của môn học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.5",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số độc hại theo môn học/ Môn học và mức độc hại",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Gán mức độc hại cho môn học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.6",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số địa điểm theo cơ sở/ Tiết chuẩn đặc biệt theo địa điểm",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-007",
-   "title": "Khai báo tiết chuẩn đặc biệt theo địa điểm"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.6",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Đơn giá đặc biệt theo địa điểm học lại",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo đơn giá đặc biệt theo địa điểm học lại"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.6",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số địa điểm theo cơ sở/ Cơ sở và mức địa điểm",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-007",
-   "title": "Gán mức địa điểm cho cơ sở"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.7",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số KL bậc thang theo ĐT/ Mức hệ số khối lượng bậc thang",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-008",
-   "title": "Khai báo mức hệ số khối lượng bậc thang và công thức"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.7",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số KL bậc thang theo ĐT/ Đối tượng và mức bậc thang",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-008",
-   "title": "Gán mức bậc thang cho đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.8",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số lớp đông theo đối tượng/ Mức hệ số lớp đông",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-009",
-   "title": "Khai báo mức hệ số lớp đông"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.8",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số lớp đông theo đối tượng/ Đối tượng và mức lớp đông",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-009",
-   "title": "Gán mức lớp đông cho đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.9",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số ngoại ngữ/ Mức hệ số ngoại ngữ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-009",
-   "title": "Khai báo mức hệ số ngoại ngữ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.9",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Hệ số ngoại ngữ/ Qui định mức ngoại ngữ cho tổ học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-009",
-   "title": "Quy định mức ngoại ngữ cho tổ học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.10",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Định nghĩa loại hình học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-010",
-   "title": "Định nghĩa loại hình học kỳ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.10",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Danh sách loại hình học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-010",
-   "title": "Khai báo danh sách loại hình học kỳ và thông số tính khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.10",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Loại hình theo đối tượng/ Đối tượng và hệ số loại hình",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-010",
-   "title": "Gán loại hình cho đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.11",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Chính sách học hàm/ Hệ số và đơn giá học hàm",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-011",
-   "title": "Khai báo hệ số và đơn giá học hàm"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.12",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Chính sách giờ nghĩa vụ/ Nhập số giờ nghĩa vụ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-011",
-   "title": "Nhập số giờ nghĩa vụ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.13",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Danh sách CBGD tính KLGD học kỳ/ Thông tin khối lượng cho cán bộ",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-012",
-   "title": "Lập danh sách CBGD tính KLGD học kỳ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.14",
-   "kind": "setup",
-   "menu": "Khối lượng/ Khai báo thông số/ Danh sách môn học và loại hình/ Thông tin loại hình cho môn học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-013",
-   "title": "Gán loại hình hàng loạt theo nút Gán theo loại hình"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.15",
-   "kind": "alt",
-   "menu": "Khối lượng/ Khai báo thông số/ Công thức tính các hệ số/ Định nghĩa công thức các loại hệ số",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ sửa giá trị hệ số khi đã bỏ check thừa kế ở giao diện đối tượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.3",
-   "kind": "clean",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Gán đợt cho nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-026",
-   "title": "Hủy đợt tính đã gán cho nhóm học"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.4",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Dữ liệu đã chốt từ kế hoạch",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Import dữ liệu chốt từ file Excel và kiểm tra hợp lệ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.4",
-   "kind": "clean",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Dữ liệu đã chốt từ kế hoạch",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa dữ liệu đã chốt từ kế hoạch"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.5",
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.6 CBGD thay thế (dạy dùm)",
    "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy",
-   "priority": "cao",
-   "scenarioCode": "KLGD-019",
-   "title": "Hiệu chỉnh khối lượng giảng dạy"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.5",
-   "kind": "clean",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa thông tin hiệu chỉnh khối lượng giảng dạy"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.6",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ CBGD thay thế (dạy dùm)",
-   "priority": "cao",
-   "scenarioCode": "KLGD-019",
-   "title": "Nhập CBGD thay thế (dạy dùm)"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.7",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Khối lượng giảng dạy khác/ Nhập khối lượng giảng dạy khác",
-   "priority": "cao",
-   "scenarioCode": "KLGD-020",
-   "title": "Nhập khối lượng giảng dạy khác"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.7",
-   "kind": "alt",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Khối lượng giảng dạy khác/ Nhập khối lượng giảng dạy khác",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập khối lượng giảng dạy khác thiếu thông tin bắt buộc"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.8",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Không tính khối lượng/ Đối tượng không tính khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-020",
-   "title": "Khai báo đối tượng không tính khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.8",
-   "kind": "main",
-   "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Không tính khối lượng/ Nhóm môn học không tính khối lượng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-020",
-   "title": "Khai báo nhóm môn học không tính khối lượng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Phân bổ nghĩa vụ & tạm ứng/ Theo khối lượng chi tiết",
-   "priority": "cao",
-   "scenarioCode": "KLGD-021",
-   "title": "Phân bố nghĩa vụ và tạm ứng theo khối lượng chi tiết"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Phân bổ nghĩa vụ & tạm ứng/ Theo khối lượng khác",
+   "menu": "Khối lượng / Chuẩn bị dữ liệu / Hiệu chỉnh khối lượng giảng dạy / CBGD thay thế dạy dùm / Chọn 1 mẫu tin / Sửa",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Phân bố nghĩa vụ và tạm ứng theo khối lượng khác"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Chuẩn bị dữ liệu / Hiệu chỉnh khối lượng giảng dạy → CBGD thay thế dạy dùm",
+    "Chọn 1 nhóm tổ (mẫu tin) → Sửa",
+    "Thêm CBGD thay thế, nhập số tiết dạy thay → Lưu",
+    "KIỂM TRA: nhóm tổ hiển thị CBGD thay thế và số tiết đúng",
+    "Dọn: xóa CBGD thay thế vừa thêm → Lưu"
+   ],
+   "stt": 190,
+   "title": "CBGD thay thế dạy dùm – Chọn 1 mẫu tin / Sửa"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.3",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo đợt",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-024",
-   "title": "Khóa sổ và mở khóa sổ dữ liệu theo đợt"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.3",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo khối lượng đã chốt và đã gán đợt",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khóa sổ và mở khóa sổ theo khối lượng đã chốt và đã gán đợt"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.3",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo khối lượng khác",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khóa sổ và mở khóa sổ theo khối lượng khác"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.4",
+   "docCheck": "ok",
+   "docNote": "Thao tác chốt ảnh hưởng dữ liệu học kỳ – chỉ chạy trên học kỳ/nhóm test, cần xác nhận phạm vi.",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.4 Chốt dữ liệu từ kế hoạch (cần 4.1 Định nghĩa đợt, 4.2 Bổ sung CBGD, 4.3 Gán đợt cho nhóm học)",
    "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Xem khối lượng chi tiết",
+   "menu": "Khối lượng / Chuẩn bị dữ liệu / Chốt dữ liệu từ kế hoạch / Dữ liệu đã chốt từ kế hoạch",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Chuẩn bị: 4.1 Định nghĩa đợt tính khối lượng TEST_DOT01 (mã đợt, thứ tự, tuần kết thúc, ngày thanh toán); 4.3 gán đợt cho nhóm học test",
+    "Mở menu Khối lượng / Chuẩn bị dữ liệu / Chốt dữ liệu từ kế hoạch → Dữ liệu đã chốt từ kế hoạch",
+    "Chọn cách chốt: tất cả từ KHGD / theo tuần kết thúc / từ phân công bổ sung / Import",
+    "KIỂM TRA: danh sách dữ liệu đã chốt có các nhóm học của đợt TEST_DOT01",
+    "Điều chỉnh hoặc xóa 1 dòng → Lưu; KIỂM TRA thay đổi được giữ",
+    "Dọn: xóa dữ liệu đã chốt của TEST_DOT01, bỏ gán đợt, xóa đợt TEST_DOT01"
+   ],
+   "stt": 191,
+   "title": "Dữ liệu đã chốt từ kế hoạch"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.7 Khối lượng giảng dạy khác",
+   "kind": "main",
+   "menu": "Khối lượng / Chuẩn bị dữ liệu / Khối lượng giảng dạy khác / Nhập dạng danh sách",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Chuẩn bị dữ liệu / Khối lượng giảng dạy khác → Nhập dạng danh sách",
+    "Thêm dòng: chọn viên chức test, nhập thời gian quy đổi, khối lượng quy đổi, nội dung TEST_KLK01 → Lưu (hoặc Import file mẫu)",
+    "KIỂM TRA: dòng TEST_KLK01 hiện đúng; bỏ trống trường bắt buộc thì báo lỗi",
+    "Dọn: xóa dòng TEST_KLK01"
+   ],
+   "stt": 192,
+   "title": "Nhập dạng danh sách"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu: menu 'Tính KLGD / Tính khối lượng giảng dạy'; sheet: 'Tính khối lượng / Tính khối lượng theo đợt'.",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.2 Tính khối lượng giảng dạy (trước: 5.1 Phân bổ nghĩa vụ & tạm ứng; sau: 5.3 Khóa sổ theo đợt)",
+   "kind": "main",
+   "menu": "Khối lượng / Tính khối lượng / Tính khối lượng / Tính khối lượng theo đợt",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Chỉ xem tham số SG_HinhThucPhanBoTietNghiaVu (không sửa)",
+    "Mở menu Khối lượng / Tính khối lượng / Tính khối lượng → Tính khối lượng theo đợt",
+    "Chọn đợt TEST_DOT01 → Thực hiện",
+    "KIỂM TRA: chương trình thông báo tính xong, lưu thời gian và người tính",
+    "Không khóa sổ (5.3) đợt test trừ khi người dùng đồng ý"
+   ],
+   "stt": 193,
+   "title": "Tính khối lượng theo đợt"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.4 Xem khối lượng chi tiết",
+   "kind": "main",
+   "menu": "Khối lượng / Tính khối lượng / Tính khối lượng / Xem khối lượng chi tiết đã tính",
    "priority": "thấp",
-   "scenarioCode": "KLGD-023",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Tính khối lượng / Tính khối lượng → Xem khối lượng chi tiết đã tính",
+    "Chọn đợt TEST_DOT01, lọc theo cán bộ test",
+    "KIỂM TRA: có dòng khối lượng của cán bộ, số tiết khớp dữ liệu đã chốt × hệ số"
+   ],
+   "stt": 194,
    "title": "Xem khối lượng chi tiết đã tính"
   },
   {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.5",
+   "docCheck": "ok",
+   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.8 In chi tiết thù lao CBGD",
    "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Xem khối lượng tổng hợp đợt",
+   "menu": "Khối lượng / Tính khối lượng / In chi tiết thù lao CBGD / Theo đợt / CBGD",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "Xem khối lượng tổng hợp đợt"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.6",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tình KLGD/ Xem khối lượng tổng hợp học kỳ",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem khối lượng tổng hợp học kỳ"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.7",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tạm ứng/ Xem/sửa phân bổ tạm ứng",
-   "priority": "trung bình",
-   "scenarioCode": "KLGD-023",
-   "title": "Xem/sửa phân bổ tạm ứng"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.8",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ In chi tiết thù lao CBGD/ Theo đợt/CBGD",
-   "priority": "thấp",
-   "scenarioCode": "KLGD-025",
-   "title": "In chi tiết thù lao CBGD"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.9",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ In tổng hợp thù lao theo bộ môn/ Theo đợt",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In tổng hợp thù lao theo bộ môn"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.10",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ In tổng hợp thù lao Khoa/ Theo đợt",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In tổng hợp thù lao Khoa"
-  },
-  {
-   "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.11",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ In tổng hợp thù lao trường/ Theo đợt",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In tổng hợp thù lao trường"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khối lượng / Tính khối lượng / In chi tiết thù lao CBGD → Theo đợt / CBGD",
+    "Chọn đợt TEST_DOT01 và cán bộ test → In/Xem",
+    "KIỂM TRA: báo cáo mở được, tên cán bộ, số tiết, thù lao khớp màn hình xem khối lượng chi tiết"
+   ],
+   "stt": 195,
+   "title": "In chi tiết thù lao CBGD – Theo đợt / CBGD"
   }
  ],
  "module": "KLGD",
- "objective": "Kiểm tra trọn quy trình tính khối lượng giảng dạy theo tài liệu: chỉnh định thông số → danh mục, hệ số → danh sách CBGD, loại hình → định nghĩa đợt, gán đợt, chốt dữ liệu → hiệu chỉnh → tính KLGD → xem, khóa sổ, in thù lao → dọn dữ liệu test. Dữ liệu test có tiền tố TEST_.",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 10 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 7 khớp, 3 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T05:07:26.995Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T05:07:26.995Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }
