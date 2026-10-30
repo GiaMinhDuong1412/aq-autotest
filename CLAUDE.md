@@ -32,6 +32,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   Dưới IIS: `server-iis/` (CAI-DAT.cmd), `--iis` lấy cổng `ASPNETCORE_PORT`, đường dẫn con `ASPNETCORE_APPL_PATH` → `server.py --base`;
   vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
+- `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;
+  đọc trước khi viết/sửa `auto`, ghi thêm mỗi khi người dùng dạy.
 
 ## Đồng bộ sau mỗi thay đổi (người dùng yêu cầu)
 - Mỗi lần sửa: commit + push nhánh đang làm **và** cập nhật console trên claude.ai
