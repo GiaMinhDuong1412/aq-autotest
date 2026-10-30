@@ -838,6 +838,12 @@ details.mgroup[open]>summary{border-bottom:1px solid var(--line)}
 .ct-t{font-size:.84rem;font-weight:500;line-height:1.4}
 .ct-s{margin-top:3px;font-size:.68rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ct-sc{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ct-row>.ct-x{grid-column:2/-1;margin-top:-6px;min-width:0}.ct-steps{margin-top:3px}.ct-steps>summary{cursor:pointer;font-size:.68rem;color:var(--accent-2);width:max-content;max-width:100%}
+.ct-steps ol{margin:6px 0 2px;padding-left:20px;font-size:.74rem;line-height:1.5}.ct-steps li{margin:1px 0}.ct-steps li.chk{color:var(--pass)}
+.ct-dnote{margin:5px 0 0;font-size:.7rem;color:var(--run)}
+.dchk{display:inline-block;padding:1px 6px;border-radius:6px;font-size:.6rem;font-family:var(--mono);vertical-align:1px;margin-left:4px}
+.dchk.ok{background:var(--pass-soft);color:var(--pass)}.dchk.partial{background:var(--run-soft);color:var(--run)}.dchk.none{background:var(--fail-soft);color:var(--fail)}
+.nwtag{display:inline-block;padding:1px 6px;border-radius:6px;font-size:.6rem;font-family:var(--mono);background:var(--accent-soft);color:var(--accent-2);vertical-align:1px;margin-left:4px}
 .ct-acts{display:flex;gap:4px;justify-content:flex-end}
 .ct-acts .mini-btn{width:28px;height:28px}
 .ct-edit{padding:4px 0}
@@ -1445,13 +1451,14 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
         <div class="run-head"><div>
           <span class="tag scen">☰ DANH MỤC KỊCH BẢN</span>
           <h2>Danh mục kịch bản test</h2>
-          <p>Kế hoạch test của từng phân hệ: các hạng mục cần kiểm tra theo tài liệu Edusoft, mỗi hạng mục gắn với một kịch bản. Bấm "Đọc lại tài liệu" để đọc mục lục từng tài liệu trên SharePoint và lập lại danh mục.</p>
+          <p>Kế hoạch test của từng phân hệ theo sheet release Menu_NEW: mỗi hạng mục là một menu, có các bước thao tác đã đối chiếu tài liệu Edusoft/Netweb (bấm "Thao tác … bước" để xem), gắn với một kịch bản. Phân hệ lập theo sheet thì khóa "Đọc lại tài liệu" để không ghi đè.</p>
         </div></div>
         <div class="sc-toolbar">
           <div class="seg" id="ctProd"><button type="button" class="on" data-v="edusoft">Edusoft</button><button type="button" data-v="netweb">Netweb</button></div>
           <select class="mini-sel mod-select" id="ctModSel" aria-label="Chọn phân hệ"></select>
           <select class="mini-sel" id="ctKind" aria-label="Lọc theo loại"><option value="all">Mọi loại hạng mục</option><option value="setup">Chuẩn bị / cấu hình</option><option value="main">Luồng chính</option><option value="alt">Luồng thay thế</option><option value="clean">Dọn dữ liệu</option></select>
           <select class="mini-sel" id="ctCov" aria-label="Lọc theo kịch bản"><option value="all">Có / chưa có kịch bản</option><option value="has">Đã có kịch bản</option><option value="none">Chưa dựng kịch bản</option></select>
+          <select class="mini-sel" id="ctDoc" aria-label="Lọc theo đối chiếu tài liệu"><option value="all">Mọi mức đối chiếu</option><option value="ok">Khớp tài liệu</option><option value="partial">Khớp một phần</option><option value="none">Chưa có tài liệu</option></select>
           <select class="mini-sel" id="ctTier" aria-label="Tốc độ đồng bộ"><option value="quick">Claude: nhanh</option><option value="default">Claude: kỹ (chậm hơn)</option></select>
           <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg><input id="ctSearch" placeholder="tìm hạng mục, menu, mục tài liệu, mã kịch bản…"></div>
         </div>
@@ -5848,12 +5855,13 @@ QUAY VIDEO (TÙY CHỌN)
   /* thêm hạng mục của Danh mục kịch bản vào release đang chọn: mỗi menu một dòng, gom kịch bản gắn kèm */
   async function rlAddFromPlan(p,m,idxs){var rel=rlCur();if(!rel){CT.err='Chưa có phiên bản release — tạo ở trang Phân công release.';renderCatalog();return;}
     var pl=tpOf(p,m),its=(pl&&pl.items)||[];
-    var docs=idxs.map(function(i){var x=its[i];if(!x)return null;var sc=x.scenarioCode?scenByCode(p,x.scenarioCode):null,menu=cleanMenu(x.menu||x.title).menu;
-      return {group:p==='netweb'?'NETWEB':m,product:p,module:m,menu:menu,menuRaw:x.menu||'',paren:false,title:x.menu?x.title||'':'',scenarioIds:sc?[sc.id]:[],source:{plan:tpId(p,m),idx:i},r1:{}};}).filter(Boolean);
+    var docs=idxs.map(function(i){var x=its[i];if(!x)return null;var xp=x.product==='netweb'?'netweb':p,sc=x.scenarioCode?scenByCode(xp,x.scenarioCode):null,menu=cleanMenu(x.menu||x.title).menu;
+      return {group:p==='netweb'?'NETWEB':m,product:xp,module:m,menu:menu,menuRaw:x.menu||'',paren:false,title:x.menu?x.title||'':'',scenarioIds:sc?[sc.id]:[],source:{plan:tpId(p,m),idx:i},r1:{}};}).filter(Boolean);
     CT.busy=true;renderCatalog();
     try{var r=await rlWriteNew(rel,docs,'Phân công '+rel.version);CT.flash=RL.flash;RL.pickSel={};}catch(e){RL.saving=false;CT.err=errMsg(e);}
     CT.busy=false;renderCatalog();}
-  function inRelease(p,m,x){if(!rlCur())return false;var k=normKey(cleanMenu(x.menu||x.title).menu);return RL.items.some(function(it){return normKey(it.menu)===k&&relModOf(it,p)===m;});}
+  function inRelease(p,m,x){if(!rlCur())return false;var k=normKey(cleanMenu(x.menu||x.title).menu),nw=p==='edusoft'&&x.product==='netweb';
+    return RL.items.some(function(it){return normKey(it.menu)===k&&(nw?it.product==='netweb':relModOf(it,p)===m);});}
   $('#rlTester').addEventListener('change',function(e){RL.f.tester=e.target.value;if(SC.view!=='module'&&!busy()){SC.view='module';}renderRelease();});
   $('#rlRes').addEventListener('change',function(e){RL.f.res=e.target.value;if(SC.view!=='module'&&!busy()){SC.view='module';}renderRelease();});
   $('#rlNew').addEventListener('click',function(){if(busy()){blockNav();return;}RL.newRel={version:'',sheetUrl:''};RL.err='';SC.view='module';SC.mod='ALL';renderAll();scrollMain();});
@@ -6057,11 +6065,15 @@ QUAY VIDEO (TÙY CHỌN)
   /* ================= DANH MỤC KỊCH BẢN TEST (KẾ HOẠCH THEO TÀI LIỆU) ================= */
   var TP={map:{},col:null,loaded:false,add:null,err:'',busy:false};
   var TPKIND={main:'Luồng chính',alt:'Luồng thay thế',setup:'Chuẩn bị / cấu hình',clean:'Dọn dữ liệu'};
+  var DOCCHK={ok:'Khớp tài liệu',partial:'Khớp một phần',none:'Chưa có tài liệu'};
+  /* Danh mục lập theo sheet release (basis:'sheet'): không cho "Đọc lại tài liệu" ghi đè */
+  function isSheetPlan(p,m){var pl=tpOf(p,m);return !!(pl&&pl.basis==='sheet');}
+  function itemProd(pl,x){return x.product==='netweb'?'netweb':pl.product;}
   var TPST={none:'Chưa có kế hoạch',requested:'Chờ Claude lập',draft:'Bản nháp',approved:'Đã duyệt'};
   function tpId(p,m){return p+'-'+m;}
   function tpOf(p,m){return TP.map[tpId(p,m)]||null;}
   function scenByCode(p,code){for(var i=0;i<SC.items.length;i++){var x=SC.items[i];if(x.product===p&&x.code===code)return x;}return null;}
-  function tpCov(pl){var it=(pl&&pl.items)||[],n=0;it.forEach(function(x){if(x.scenarioCode&&scenByCode(pl.product,x.scenarioCode))n++;});return {n:n,total:it.length};}
+  function tpCov(pl){var it=(pl&&pl.items)||[],n=0;it.forEach(function(x){if(x.scenarioCode&&scenByCode(itemProd(pl,x),x.scenarioCode))n++;});return {n:n,total:it.length};}
   /* ---------- trang Danh mục kịch bản ---------- */
   var DRIVE='b!iaQbxnpRT0SXpVqLO5GlLFFAMzDJfJpFlptKuWOfRPGHrbxW2p9BS5IdeX3dHprv';
   var DOCDIR={QLHT:'017YGNGYQVILLRYB7ZBJEYGBGCOPP3BKB3',QLNS:'017YGNGYUBT5D6TV7MDZFKSS7M6QU2PES4',KHGD:'017YGNGYS6JIT66SMRLJGIZJ4TDZR2WXBJ',KLGD:'017YGNGYRL4KM2YUU46RHIMG7DIBNLPFIZ',
@@ -6070,10 +6082,10 @@ QUAY VIDEO (TÙY CHỌN)
     KSDG:'017YGNGYQ2R33VS6ILH5B36JVJIOEKETEU',NCKH:'017YGNGYRFFNKVE5BFDVEK6GHKCKCSQF2Y',SAE:'017YGNGYS6RRJLPTYGSNF2BQ6H6ER5IJUS',DTNH:'017YGNGYT4WG32RENCSJEJLG6Y7LXPCMK4',PVLD:'017YGNGYXYDSGK7DZPHRC2SR63RGNSCOQE'};
   var NWDIR='017YGNGYSOX4YE7N5RLZF25JHS6LYR6UD4';
   var NWPICK={SV:/^(SinhVien|NhapLyLich|NhapDRL|QuanLyDonTu|XemKetQua|TaiLieuHuongDanSinhVien|HuongDanUpload)/i,GV:/^(GiangVien|DiemDanh|HuongDanDangKyNghiDay)/i,PH:/^PhuHuynh/i,KHACH:/^Guest_/i,QTRI:/^QuanTriChung/i,TS:/^ChamSocThiSinh/i,CHUNG:/QuenMatKhau/i};
-  var CT={product:'edusoft',mod:'ALL',f:{kind:'all',cov:'all',q:''},edit:null,err:''};
+  var CT={product:'edusoft',mod:'ALL',f:{kind:'all',cov:'all',doc:'all',q:''},edit:null,err:''};
   var SY={on:false,ac:null,steps:[],log:[],pct:0,result:null,title:'',err:'',all:false};
   function ctMods(p){return MODS[p];}
-  function itemHasScen(pl,x){return !!(x.scenarioCode&&scenByCode(pl.product,x.scenarioCode));}
+  function itemHasScen(pl,x){return !!(x.scenarioCode&&scenByCode(itemProd(pl,x),x.scenarioCode));}
   function ctRailHtml(){var p=CT.product;
     var tot=0,cov=0;ctMods(p).forEach(function(m){var c=tpCov(tpOf(p,m.c));tot+=c.total;cov+=c.n;});
     return '<h4>DANH MỤC · '+PROD[p].toUpperCase()+'</h4>'+
@@ -6084,21 +6096,22 @@ QUAY VIDEO (TÙY CHỌN)
           '<span class="mk">'+(c.total?c.n+'/'+c.total:'—')+'</span>'+(c.total?'<span class="mbar rel"><i class="p" style="width:'+pct(c.n,c.total)+'%"></i><i class="n" style="width:'+(100-pct(c.n,c.total))+'%"></i></span>':'')+
           (pl?'<span class="mrl"><span class="tpst '+st+'">'+TPST[st]+'</span></span>':'')+'</button>';}).join('');}
   function hasDocs(p,m){if(m!=='ALL'&&isSoon(p,m))return false;return m==='ALL'||(p==='netweb'?!!NWPICK[m]:!!DOCDIR[m]);}
-  function syncBtn(p,m,label){var ok=syncAvail(),hd=hasDocs(p,m);return '<button type="button" class="btn sm primary" data-ctsync="'+m+'"'+(ok&&hd&&SC.canWrite&&!syBusy()?'':' disabled')+' title="'+(!hd?'Phân hệ này chưa có thư mục tài liệu':ok?'Đọc mục lục từng tài liệu trên SharePoint (nhanh): mỗi mục của phần Quy trình chính là một hạng mục, rồi lấy dòng Menu trong tài liệu':'Cần mở trang trong claude.ai và cho phép dùng Microsoft 365')+'">'+IC.robot+(label||'Đọc lại tài liệu')+'</button>';}
+  function syncBtn(p,m,label){var ok=syncAvail(),hd=hasDocs(p,m),sh=m!=='ALL'&&isSheetPlan(p,m);return '<button type="button" class="btn sm primary" data-ctsync="'+m+'"'+(ok&&hd&&!sh&&SC.canWrite&&!syBusy()?'':' disabled')+' title="'+(sh?'Danh mục này lập theo sheet release Menu_NEW và đã đối chiếu tài liệu bằng tay — đọc lại tài liệu sẽ ghi đè nên bị khóa':!hd?'Phân hệ này chưa có thư mục tài liệu':ok?'Đọc mục lục từng tài liệu trên SharePoint (nhanh): mỗi mục của phần Quy trình chính là một hạng mục, rồi lấy dòng Menu trong tài liệu':'Cần mở trang trong claude.ai và cho phép dùng Microsoft 365')+'">'+IC.robot+(label||'Đọc lại tài liệu')+'</button>';}
   function ctOverviewHtml(){var p=CT.product;
     var rows=ctMods(p).map(function(m){var pl=tpOf(p,m.c),c=tpCov(pl),st=pl?(pl.status||'draft'):'none',sc=SC.items.filter(function(x){return x.product===p&&modOf(x)===m.c;}).length;
       if(m.soon)return '<tr class="soon-tr"><td><span class="mcode">'+m.c+'</span></td><td>'+esc(m.n)+'</td><td colspan="5">'+SOON+'</td></tr>';
       return '<tr><td><span class="mcode">'+m.c+'</span></td><td><button type="button" class="linkish" data-ctmod="'+m.c+'">'+esc(m.n)+'</button></td>'+
         '<td class="mono">'+(c.total||'—')+'</td><td>'+(c.total?'<div class="tbar"><i class="x" style="width:'+pct(c.n,c.total)+'%"></i></div><span class="subtext">'+c.n+'/'+c.total+' có kịch bản</span>':'<span class="subtext">—</span>')+'</td>'+
         '<td class="mono">'+sc+'</td><td><span class="tpst '+st+'">'+TPST[st]+'</span></td><td class="subtext">'+(pl&&pl.syncedAt?fmt(pl.syncedAt):'chưa đồng bộ')+(lsErrs(pl)?' · <span class="errc">'+lsErrs(pl)+' lỗi</span>':'')+'</td></tr>';}).join('');
-    return '<div class="card"><div class="list-head"><div><h3>Danh mục kịch bản test theo phân hệ</h3><p>Mỗi hạng mục là một mục trong phần Quy trình chính của tài liệu Edusoft, gắn với một kịch bản test.</p></div>'+
+    return '<div class="card"><div class="list-head"><div><h3>Danh mục kịch bản test theo phân hệ</h3><p>Mỗi hạng mục là một menu của sheet release Menu_NEW (đúng thứ tự sheet), kèm các bước thao tác đã đối chiếu với tài liệu Edusoft/Netweb, gắn với một kịch bản test.</p></div>'+
       (SC.canWrite?'<div class="sd-actions">'+syncBtn(p,'ALL','Đọc lại tất cả tài liệu')+'</div>':'')+'</div>'+(CT.flash?'<p class="flash ct-note">'+esc(CT.flash)+'</p>':'')+
       (p==='netweb'?'<p class="hint ct-note">Netweb: tài liệu lấy từ thư mục NETWEB, chia theo vai trò (SV, GV, phụ huynh, khách, quản trị, tuyển sinh).</p>':'')+
       '<div class="table-wrap"><table class="rn-table ct-table"><thead><tr><th>Mã</th><th>Phân hệ</th><th>Hạng mục</th><th>Độ phủ</th><th>Kịch bản</th><th>Trạng thái</th><th>Đồng bộ</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';}
   function ctPass(pl,x){var f=CT.f,q=f.q.trim().toLowerCase();
     if(f.kind!=='all'&&(x.kind||'main')!==f.kind)return false;
     if(f.cov==='has'&&!itemHasScen(pl,x))return false;if(f.cov==='none'&&itemHasScen(pl,x))return false;
-    if(q&&[x.title,x.menu,x.docRef,x.scenarioCode].join(' ').toLowerCase().indexOf(q)<0)return false;return true;}
+    if(f.doc!=='all'&&(x.docCheck||'')!==f.doc)return false;
+    if(q&&[x.title,x.menu,x.docRef,x.scenarioCode,x.docNote].concat(x.steps||[]).join(' ').toLowerCase().indexOf(q)<0)return false;return true;}
   function ctEditForm(a,idx){return '<div class="ct-edit form-grid">'+
     '<div class="fld full'+(CT.err?' bad':'')+'"><label for="tpTitle">HẠNG MỤC TEST <i>*</i></label><input id="tpTitle" value="'+esc(a.title||'')+'" placeholder="VD: Đăng ký môn học trùng thời khóa biểu"></div>'+
     '<div class="fld full"><label for="tpMenu">MENU</label><input id="tpMenu" list="dlMenu" value="'+esc(a.menu||'')+'"></div>'+
@@ -6106,6 +6119,9 @@ QUAY VIDEO (TÙY CHỌN)
     '<div class="fld"><label for="tpCode">MÃ KỊCH BẢN GẮN</label><input id="tpCode" class="mono" value="'+esc(a.scenarioCode||'')+'" placeholder="VD: DKMH-005"></div>'+
     '<div class="fld"><label for="tpKind">LOẠI</label><select id="tpKind">'+Object.keys(TPKIND).map(function(k){return '<option value="'+k+'"'+((a.kind||'main')===k?' selected':'')+'>'+TPKIND[k]+'</option>';}).join('')+'</select></div>'+
     '<div class="fld"><label for="tpPrio">ƯU TIÊN</label><select id="tpPrio">'+['cao','trung bình','thấp'].map(function(k){return '<option'+((a.priority||'trung bình')===k?' selected':'')+'>'+k+'</option>';}).join('')+'</select></div>'+
+    '<div class="fld"><label for="tpChk">ĐỐI CHIẾU TÀI LIỆU</label><select id="tpChk"><option value="">—</option>'+Object.keys(DOCCHK).map(function(k){return '<option value="'+k+'"'+(a.docCheck===k?' selected':'')+'>'+DOCCHK[k]+'</option>';}).join('')+'</select></div>'+
+    '<div class="fld full"><label for="tpSteps">CÁC BƯỚC THAO TÁC (mỗi dòng một bước)</label><textarea id="tpSteps" rows="6">'+esc((a.steps||[]).join('\n'))+'</textarea></div>'+
+    '<div class="fld full"><label for="tpNote">GHI CHÚ ĐỐI CHIẾU</label><input id="tpNote" value="'+esc(a.docNote||'')+'" placeholder="VD: tài liệu ghi menu khác sheet – cần xác nhận"></div>'+
     '<div class="form-actions full">'+(CT.err?'<span class="save-err">'+esc(CT.err)+'</span>':'')+'<button type="button" class="btn sm" data-ct="cancel">Hủy</button><button type="button" class="btn sm primary" data-ct="save" data-idx="'+idx+'">'+(idx<0?'Thêm hạng mục':'Lưu')+'</button></div></div>';}
   function lsErrs(pl){var ls=pl&&pl.lastSync;return ls?(ls.docs||[]).filter(function(x){return x.st==='err';}).length:0;}
   function lastSyncHtml(pl,m,can){var ls=pl&&pl.lastSync;if(!ls)return '';var d=ls.docs||[],c=function(k){return d.filter(function(x){return x.st===k;}).length;},er=c('err');
@@ -6129,16 +6145,18 @@ QUAY VIDEO (TÙY CHỌN)
     if(!items.length)return h+'<div class="card"><div class="sc-empty"><span class="big">'+IC.clip+'</span><strong>Chưa có hạng mục nào</strong><span>Bấm "Đọc lại tài liệu" để lập danh mục '+esc(m.c)+' từ mục lục tài liệu trên SharePoint, hoặc thêm hạng mục bằng tay.</span></div></div>';
     var rows=items.map(function(x,i){return {x:x,i:i};}).filter(function(o){return ctPass(pl,o.x);});
     h+='<div class="card ct-list"><div class="ct-hd"><span>#</span><span>Hạng mục</span><span>Loại</span><span>Kịch bản</span><span></span></div>';
-    h+=rows.length?rows.map(function(o){var x=o.x,i=o.i,sc=x.scenarioCode?scenByCode(p,x.scenarioCode):null;
+    h+=rows.length?rows.map(function(o){var x=o.x,i=o.i,sc=x.scenarioCode?scenByCode(itemProd(pl,x),x.scenarioCode):null;
       if(CT.edit&&CT.edit.idx===i)return '<div class="ct-row editing">'+ctEditForm(CT.edit,i)+'</div>';
-      return '<div class="ct-row'+(sc?' has':'')+'"><span class="rl-stt mono">'+(i+1)+'</span>'+
-        '<div class="ct-main"><div class="ct-t">'+esc(x.title||'')+(x.priority==='cao'?' <span class="prio">ưu tiên cao</span>':'')+'</div>'+((x.menu||x.docRef)?'<div class="ct-s" title="'+esc([x.menu,x.docRef].filter(Boolean).join(' · '))+'">'+esc([x.menu,x.docRef].filter(Boolean).join(' · '))+'</div>':'')+'</div>'+
+      return '<div class="ct-row'+(sc?' has':'')+'"><span class="rl-stt mono" title="'+(x.stt?'Thứ tự trong sheet Menu_NEW':'')+'">'+(x.stt||i+1)+'</span>'+
+        '<div class="ct-main"><div class="ct-t">'+esc(x.title||'')+(x.product==='netweb'?'<span class="nwtag">Netweb</span>':'')+(x.priority==='cao'?' <span class="prio">ưu tiên cao</span>':'')+(x.docCheck&&DOCCHK[x.docCheck]?'<span class="dchk '+x.docCheck+'">'+DOCCHK[x.docCheck]+'</span>':'')+'</div>'+((x.menu||x.docRef)?'<div class="ct-s" title="'+esc([x.menu,x.docRef].filter(Boolean).join(' · '))+'">'+esc([x.menu,x.docRef].filter(Boolean).join(' · '))+'</div>':'')+'</div>'+
         '<span><span class="tpkind '+(x.kind||'main')+'">'+(TPKIND[x.kind]||TPKIND.main)+'</span></span>'+
         '<span class="ct-sc">'+(sc?'<span class="scchip">'+chipFor(sc)+'<button type="button" class="mini-run" data-drawer="'+esc(sc.id)+':res" title="Kết quả & lỗi">'+IC.eye+'</button></span><span class="spill '+(ST[sc.status]?sc.status:'notrun')+'">'+ST[ST[sc.status]?sc.status:'notrun']+'</span>'
           :(can?'<button type="button" class="mini-add" data-ctbuild1="'+i+'"'+(syncAvail()?'':' disabled')+' title="Claude đọc tài liệu và viết kịch bản cho hạng mục này">'+IC.robot+'Claude dựng</button><button type="button" class="mini-add plain" data-ctnew="'+i+'" title="Tự viết kịch bản">'+IC.plus+'Tự dựng</button>':'<span class="bmeta">chưa dựng</span>'))+'</span>'+
-        '<span class="ct-acts">'+(rel?(inRelease(p,m.c,x)?'<span class="reltag ok" title="Đã có trong release '+esc(rel.version)+'">R</span>':(can?'<button type="button" class="mini-btn" data-ct2rel="'+i+'"'+(CT.busy?' disabled':'')+' title="Thêm vào release '+esc(rel.version)+'" aria-label="Thêm vào release">'+IC.plus+'</button>':'')):'')+(can?'<button type="button" class="mini-btn" data-ctedit="'+i+'" aria-label="Sửa hạng mục">'+IC.edit+'</button><button type="button" class="mini-btn" data-ctdel="'+i+'" aria-label="Xóa hạng mục">'+IC.x+'</button>':'')+'</span></div>';}).join('')
+        '<span class="ct-acts">'+(rel?(inRelease(p,m.c,x)?'<span class="reltag ok" title="Đã có trong release '+esc(rel.version)+'">R</span>':(can?'<button type="button" class="mini-btn" data-ct2rel="'+i+'"'+(CT.busy?' disabled':'')+' title="Thêm vào release '+esc(rel.version)+'" aria-label="Thêm vào release">'+IC.plus+'</button>':'')):'')+(can?'<button type="button" class="mini-btn" data-ctedit="'+i+'" aria-label="Sửa hạng mục">'+IC.edit+'</button><button type="button" class="mini-btn" data-ctdel="'+i+'" aria-label="Xóa hạng mục">'+IC.x+'</button>':'')+'</span>'+stepsHtml(x)+'</div>';}).join('')
       :'<div class="sc-empty">Không có hạng mục nào khớp bộ lọc.</div>';
     return h+'</div>';}
+  function stepsHtml(x){var st=x.steps||[];if(!st.length&&!x.docNote)return '';
+    return '<div class="ct-x">'+(x.docNote?'<p class="ct-dnote">'+esc(x.docNote)+'</p>':'')+(st.length?'<details class="ct-steps"><summary>Thao tác '+st.length+' bước'+(x.docRef?' · theo '+esc(x.docRef):'')+'</summary><ol>'+st.map(function(t){return '<li'+(/^KIỂM TRA/i.test(t)?' class="chk"':'')+'>'+esc(t)+'</li>';}).join('')+'</ol></details>':'')+'</div>';}
   function renderCatalog(){keepFocus(function(){var el=$('#ctMain');if(!el)return;
     $$('#ctProd button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')===CT.product);});
     $('#ctRail').innerHTML=ctRailHtml();
@@ -6151,13 +6169,15 @@ QUAY VIDEO (TÙY CHỌN)
     if(!TP.col){TP.map[id]=Object.assign({id:id},body);renderCatalog();if(!busy())renderMain();return Promise.resolve();}
     return withRetry(function(){return TP.col.doc(id).set(body);}).catch(function(e){CT.err=errMsg(e);renderCatalog();throw e;});}
   function ctCollect(){var g=function(id){var e=document.getElementById(id);return e?e.value:null;},a=CT.edit;if(!a)return;var v;
-    if((v=g('tpTitle'))!==null)a.title=v;if((v=g('tpMenu'))!==null)a.menu=v;if((v=g('tpDoc'))!==null)a.docRef=v;if((v=g('tpCode'))!==null)a.scenarioCode=v.trim().toUpperCase();if((v=g('tpKind'))!==null)a.kind=v;if((v=g('tpPrio'))!==null)a.priority=v;}
+    if((v=g('tpTitle'))!==null)a.title=v;if((v=g('tpMenu'))!==null)a.menu=v;if((v=g('tpDoc'))!==null)a.docRef=v;if((v=g('tpCode'))!==null)a.scenarioCode=v.trim().toUpperCase();if((v=g('tpKind'))!==null)a.kind=v;if((v=g('tpPrio'))!==null)a.priority=v;
+    if((v=g('tpChk'))!==null)a.docCheck=v;if((v=g('tpNote'))!==null)a.docNote=v;if((v=g('tpSteps'))!==null)a.steps=v.split('\n').map(function(t){return t.trim();}).filter(Boolean);}
   function ctGoMod(c){CT.mod=c;CT.edit=null;CT.err='';CT.flash='';renderCatalog();var m=$('#ctMain');if(m&&m.getBoundingClientRect().top<70)m.scrollIntoView({behavior:'smooth',block:'start'});}
   $('#ctRail').addEventListener('click',function(e){var b=e.target.closest('[data-ctmod]');if(b)ctGoMod(b.getAttribute('data-ctmod'));});
   $('#ctModSel').addEventListener('change',function(e){ctGoMod(e.target.value);});
   $('#ctProd').addEventListener('click',function(e){var b=e.target.closest('button[data-v]');if(!b)return;CT.product=b.getAttribute('data-v');CT.mod='ALL';CT.edit=null;renderCatalog();});
   $('#ctKind').addEventListener('change',function(e){CT.f.kind=e.target.value;renderCatalog();});
   $('#ctCov').addEventListener('change',function(e){CT.f.cov=e.target.value;renderCatalog();});
+  $('#ctDoc').addEventListener('change',function(e){CT.f.doc=e.target.value;renderCatalog();});
   $('#ctSearch').addEventListener('input',function(e){CT.f.q=e.target.value;renderCatalog();});
   $('#ctMain').addEventListener('input',function(e){if(CT.edit&&/^tp/.test(e.target.id))ctCollect();});
   $('#ctMain').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;
@@ -6179,7 +6199,8 @@ QUAY VIDEO (TÙY CHỌN)
     if(a==='cancel'){CT.edit=null;CT.err='';renderCatalog();return;}
     if(a==='approve'){tpWrite(p,m,{status:'approved',approvedBy:SC.me||null,approvedAt:new Date().toISOString()}).catch(function(){});return;}
     if(a==='save'){ctCollect();var ad=CT.edit;if(!(ad.title||'').trim()){CT.err='Nhập tên hạng mục.';renderCatalog();return;}
-      var it={title:ad.title.trim(),menu:(ad.menu||'').trim(),docRef:(ad.docRef||'').trim(),kind:ad.kind||'main',priority:ad.priority||'',scenarioCode:(ad.scenarioCode||'').trim()};
+      var it=Object.assign({},ad.idx<0?{}:items[ad.idx],{title:ad.title.trim(),menu:(ad.menu||'').trim(),docRef:(ad.docRef||'').trim(),kind:ad.kind||'main',priority:ad.priority||'',scenarioCode:(ad.scenarioCode||'').trim(),
+        steps:ad.steps||[],docCheck:ad.docCheck||'',docNote:(ad.docNote||'').trim()});if(!it.steps.length)delete it.steps;if(!it.docCheck)delete it.docCheck;if(!it.docNote)delete it.docNote;
       if(ad.idx<0)items.push(it);else items[ad.idx]=it;
       tpWrite(p,m,{items:items}).then(function(){CT.edit=null;CT.err='';renderCatalog();}).catch(function(){});return;}
   });
@@ -6459,8 +6480,8 @@ QUAY VIDEO (TÙY CHỌN)
     renderSync();renderCatalog();}
   function syFinishErr(fatal){SY.t1=Date.now();SY.steps.forEach(function(x){if(x.st==='run'){x.st='err';x.note='đã dừng';}else if(x.st==='wait')x.note='chưa chạy';});
     SY.err=fatal?mcpErr(fatal)+(fatal.code==='rate_limited'?'':' (phần đã xong vẫn được lưu)'):'Đã dừng — phần đã xong vẫn được lưu.';renderSync();renderCatalog();}
-  function syncModule(p,m,force){return runSync(p,[m],force);}
-  function syncAll(p,force){return runSync(p,ctMods(p).filter(function(m){return hasDocs(p,m.c);}).map(function(m){return m.c;}),force);}
+  function syncModule(p,m,force){if(isSheetPlan(p,m))return;return runSync(p,[m],force);}
+  function syncAll(p,force){var ms=ctMods(p).filter(function(m){return hasDocs(p,m.c)&&!isSheetPlan(p,m.c);}).map(function(m){return m.c;});if(!ms.length){CT.flash='Mọi phân hệ đều lập theo sheet release — không có danh mục nào cần đọc lại tài liệu.';renderCatalog();return;}return runSync(p,ms,force);}
 
   /* Claude dựng kịch bản từ hạng mục danh mục */
   function relMatch(p,m,menu){if(!menu)return false;var k=normKey(menu),leaf=k.split('/').pop();return relItems(p,m).some(function(it){var ik=normKey(it.menu);return ik===k||(leaf&&leaf.length>6&&ik.split('/').pop()===leaf);});}
@@ -6491,7 +6512,7 @@ QUAY VIDEO (TÙY CHỌN)
     await pool(chunks,2,async function(c){if(aborted(sig))return;
       try{var text='';if(c.doc){syLabel(c.step,'đang đọc tài liệu…');var rd=await readDoc(c.doc,sig);text=rd.text;}
         syLabel(c.step,'Claude đang viết kịch bản…');
-        var list=c.idx.map(function(i){var x=items[i];return '- '+code[i]+': '+x.title+' | menu: '+(x.menu||'?')+' | loại: '+(TPKIND[x.kind]||'')+' | '+(x.docRef||'');}).join('\n');
+        var list=c.idx.map(function(i){var x=items[i];return '- '+code[i]+': '+x.title+' | menu: '+(x.menu||'?')+' | loại: '+(TPKIND[x.kind]||'')+' | '+(x.docRef||'')+((x.steps||[]).length?'\n  Thao tác đã đối chiếu (giữ đúng thứ tự, chi tiết thêm theo tài liệu): '+x.steps.join(' → '):'')+(x.docNote?'\n  Ghi chú: '+x.docNote:'');}).join('\n');
         var prompt='Bạn là tester phần mềm Edusoft.NET (AQTech). Dựng KỊCH BẢN TEST chi tiết cho các hạng mục dưới đây (phân hệ '+m+' – '+modMeta(p,m).n+(p==='netweb'?', cổng Netweb':'')+')'+(text?', dựa trên tài liệu hướng dẫn bên dưới':' (chưa có tài liệu: viết theo menu, ghi "Cần xác nhận" ở kết quả mong muốn)')+'.\n'+
           'Quy tắc:\n- steps: mảng chuỗi. Bước 1 luôn là "Điều kiện đầu vào: đã mở '+(p==='netweb'?'Netweb':'Edusoft')+' và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; <dữ liệu / kịch bản cần có trước>". Mỗi bước sau là một thao tác kiểm chứng được, ghi đúng tên menu / nút / trường như tài liệu. Dữ liệu test có tiền tố TEST_. Thông số chỉnh định dùng chung chỉ kiểm tra & ghi nhận, không sửa.\n'+
           '- Nghĩ như tester và người dùng thật: đi đúng luồng nghiệp vụ của tài liệu và lưu đồ phân hệ, không đi tắt (vd sinh viên mới vào hệ thống qua Quyết định vào mới, KHÔNG thêm thẳng vào Danh mục sinh viên); kiểm tra màn hình / danh mục tiền đề trước khi thao tác.\n'+
