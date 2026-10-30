@@ -360,6 +360,10 @@ form label{display:block;margin:0 0 7px;font-size:.73rem;font-weight:600;color:v
 .stats{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:9px;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
 .stats b{color:var(--fg);font-weight:600}
 .flash{margin-top:12px;color:var(--pass);font-family:var(--mono);font-size:.72rem}
+.aq-toast{position:fixed;right:20px;bottom:20px;z-index:200;max-width:min(440px,calc(100vw - 32px));padding:12px 36px 12px 14px;border-radius:12px;background:var(--bg-2);color:var(--fg);border:1px solid var(--line-2);border-left:4px solid var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:.82rem;line-height:1.45}
+.aq-toast.ok{border-left-color:var(--pass)}.aq-toast.err{border-left-color:var(--fail)}.aq-toast.hidden{display:none}
+.aq-toast button{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--muted);font-size:1rem;cursor:pointer}
+@media (max-width:600px){.aq-toast{right:16px;left:16px;bottom:16px}}
 .mcode{margin-right:8px;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent-2);font-family:var(--mono);font-size:.66rem;vertical-align:2px}
 .sc-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:13px 18px;border-top:1px solid var(--line)}
 .sc-row:hover{background:var(--bg-3)}
@@ -1342,6 +1346,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
     <div id="lightbox" class="lightbox hidden" role="dialog" aria-label="Ảnh chụp"><button type="button" class="lb-close" id="lbClose" aria-label="Đóng ảnh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button><img id="lbImg" alt="Ảnh chụp bước test"></div>
     <div id="syncOv" class="sync-ov hidden"></div>
     <div id="rlConfirm" class="sync-ov hidden"><div class="sy-box fin-box" role="dialog" aria-modal="true" aria-label="Chốt phiên bản release"></div></div>
+    <div id="aqToast" class="aq-toast hidden" role="status" aria-live="polite"><span></span><button type="button" aria-label="Đóng">×</button></div>
     <div id="rnHelp" class="help-ov hidden"><aside class="help" role="dialog" aria-modal="true" aria-label="Hướng dẫn máy chạy thử">
       <div class="help-hd"><h3>Hướng dẫn máy chạy thử</h3><button type="button" class="dr-x" data-hclose aria-label="Đóng hướng dẫn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
       <div class="help-tabs" role="tablist"><button type="button" data-htab="es">Cài Edusoft Test</button><button type="button" data-htab="nw">Netweb</button><button type="button" data-htab="fix">Xử lý sự cố</button><button type="button" data-htab="sec">Bảo mật</button></div>
@@ -5747,7 +5752,7 @@ QUAY VIDEO (TÙY CHỌN)
         '<button type="button" class="kpi kbtn" data-ctgo2="'+m.c+'" title="Mở danh mục kịch bản của phân hệ"><em>Danh mục</em><b>'+(cv.total?cv.n+'/'+cv.total:'—')+'</b>'+(cv.total?'có kịch bản':'chưa lập')+IC.arrow+'</button>'+
       '</div>'+(rel2&&rs.pc?'<div class="bigbar">'+relBar(rs)+'</div>':'')+flashHtml()+(RL.flash?'<div class="flash">'+esc(RL.flash)+'</div>':'')+'</div>'+
       (SC.canWrite?'<div class="sd-actions">'+(rel2?'<button class="btn sm primary" type="button" data-mpick>'+IC.plus+'Chọn menu & kịch bản</button>':'')+'<button class="btn sm" type="button" data-act="new">'+IC.plus+'Thêm kịch bản</button>'+
-        runBtn('data-runmod="'+m.c+'"','Chạy thử phân hệ',p,!mine.length)+kitModBtns(p,m.c,mine)+'</div>':'')+'</div>';
+        kitModBtns(p,m.c,mine)+'</div>':'')+'</div>';
     h+=mpHtml(p,m.c);
     h+='<div class="card mtab-card"><div class="mtabs" role="tablist" aria-label="Nội dung phân hệ">'+
       (rel2?'<button type="button" role="tab" class="mtab'+(tab==='rel'?' on':'')+'" aria-selected="'+(tab==='rel')+'" data-mtab="rel">Menu release <span>'+rl.length+'</span></button>':'')+
@@ -6388,7 +6393,7 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rl-main"><div class="rl-menu" title="'+esc(it.menu)+'">'+(it.product==='netweb'?'<span class="ptag netweb">Netweb</span>':'')+'<b>'+esc(leaf)+'</b>'+(path?'<span class="mpath">'+esc(path)+'</span>':'')+'</div>'+
         (extra?'<div class="rl-sub">'+extra+'</div>':'')+'</div>'+
       '<div class="rl-sc">'+(sc.length?sc.map(function(s){return '<span class="scchip"><button type="button" class="fchip'+(exOpenFor(s.id)?' ex':'')+'" data-goto="'+esc(s.id)+'">'+esc(s.code)+'</button>'+
-            '<button type="button" class="mini-run" data-drawer="'+esc(s.id)+':res" title="Kết quả test và lỗi">'+IC.eye+'</button>'+(can?'<button type="button" class="mini-run" data-rlrun="'+esc(it.id)+':'+esc(s.id)+'" title="Chạy thử kịch bản cho menu này"'+(canRun(s.product)?'':' disabled')+'>'+(canRun(s.product)?IC.play:IC.lock)+'</button>':'')+
+            '<button type="button" class="mini-run" data-drawer="'+esc(s.id)+':res" title="Kết quả test và lỗi">'+IC.eye+'</button>'+
             (can&&s.product==='edusoft'?'<button type="button" class="mini-run" data-kitrun="'+esc(s.code)+'" title="'+esc(kitRunTip(s))+'"'+((s.steps||[]).length&&(DL||BR.state==='ok')&&!KIT.busy?'':' disabled')+'>'+IC.pc+'</button>':'')+'</span>';}).join('')
           :(function(){var pm=planMatches(it),n=pm.list.length;return (n?'<button type="button" class="dmchip" data-dmb="'+pm.m+':'+pm.list.map(function(o){return o.i;}).join(',')+'" title="'+esc(n+' hạng mục trong danh mục khớp menu này, chưa có kịch bản: '+pm.list.map(function(o){return o.x.title;}).join('; '))+'"'+(can&&syncAvail()?'':' disabled')+'>'+IC.robot+n+' DM</button>':'')+
             (can?'<button type="button" class="mini-add" data-rlnew="'+esc(it.id)+'" title="Tự tạo kịch bản test cho menu này">'+IC.plus+'KB</button>':(n?'':'<span class="bmeta">—</span>'));})())+'</div>'+
@@ -7441,6 +7446,12 @@ QUAY VIDEO (TÙY CHỌN)
       steps:(it.steps||[]).slice(),auto:(it.auto||[]).slice(),expected:it.expected||'',vars:it.vars||{},
       altFlows:(it.altFlows||[]).map(function(a){var o={name:a.name||'',condition:a.condition||'',steps:a.steps||[],expected:a.expected||'',auto:a.auto||[]};['needs','always','after'].forEach(function(k){if(a[k]!==undefined)o[k]=a[k];});return o;}),release:kitRelFor(it)},null,1);});return o;}
   function kitCodeFiles(){return {'aqrun.py':kitText('kit-aqrun'),'aq-agent.py':kitText('kit-agent'),'cai-dat.bat':kitText('kit-caidat'),'chay-test.bat':kitText('kit-chaytest'),'quen-mat-khau.bat':kitText('kit-quenmk'),'aq-mcp.py':kitText('kit-mcp'),'HUONG-DAN.txt':kitText('kit-huongdan')};}
+  var TOAST={t:null};
+  function toast(msg,kind,ms){var el=document.getElementById('aqToast');if(!el||!msg)return;el.querySelector('span').textContent=msg;el.className='aq-toast '+(kind||'');
+    clearTimeout(TOAST.t);if(ms!==0)TOAST.t=setTimeout(function(){el.classList.add('hidden');},ms||9000);}
+  document.addEventListener('click',function(e){if(e.target.closest('#aqToast button'))document.getElementById('aqToast').classList.add('hidden');});
+  /* trước khi gửi lệnh: cầu nối đã được cho phép mà chưa kiểm tra thì kiểm tra để gửi thẳng vào máy chạy test */
+  async function brTry(){if(BR.state==='ok'||!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return '';}):'';if(st==='granted')await brCheck(false);}catch(e){}}
   async function kitRunReq(codes){codes=codes&&codes.length?codes:['CHUNG-001'];KIT.err='';KIT.msg='';
     var r=myRunner()||{};if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
     if(!kitScens().length){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
@@ -7734,8 +7745,8 @@ QUAY VIDEO (TÙY CHỌN)
     if(t.id==='kitObs'){KIT.obs=t.checked;}
     else if((t.id==='kitImport'||t.id==='kitImportZip')&&t.files&&t.files.length){kitImport(t.files);}});
   document.addEventListener('click',function(e){var k=e.target.closest('button[data-kitrun]');if(!k||k.disabled)return;var code=k.getAttribute('data-kitrun');
-    var onRunner=!!k.closest('.kit-card');
-    kitRunReq(code.split(',')).then(function(){if(!onRunner){var m=KIT.err||KIT.msg;if(k.closest('.rl-row,.mod-head'))RL.flash=m;else SC.flash=m;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
+    var onRunner=!!k.closest('.kit-card');toast('Đang gửi lệnh chạy '+code.split(',').join(', ')+' tới máy chạy test…','',0);
+    brTry().then(function(){return kitRunReq(code.split(','));}).catch(function(e){KIT.busy=false;KIT.prog='';KIT.err='Không gửi được lệnh chạy: '+((e&&(e.message||e.code))||'lỗi');}).then(function(){toast(KIT.err||KIT.msg,KIT.err?'err':'ok',KIT.err?15000:12000);if(!onRunner){var m=KIT.err||KIT.msg;if(k.closest('.rl-row,.mod-head'))RL.flash=m;else SC.flash=m;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-kit],button[data-kitmod]');if(!b||b.disabled)return;
     var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='xls'){kitExcel();return;}if(a==='imp'||a==='impdir'){kitPick(a==='impdir');return;}
     var m=b.getAttribute('data-kitmod');if(m){KIT.scope=m;kitDownload(m).then(function(){SC.flash=KIT.err||KIT.msg;if(!busy())renderMain();});}});
