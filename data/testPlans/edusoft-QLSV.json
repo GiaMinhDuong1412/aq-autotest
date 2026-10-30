@@ -1,1090 +1,853 @@
 {
- "createdAt": "2026-10-29T16:22:42.753Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
-   "name": "CNTN_CẬP NHẬT ĐỊA CHỈ ĐỊA BÀN MỚI CHO SINH VIÊN_V1",
-   "size": 705553,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_BaoHiemSinhVien",
-   "size": 1135616,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "name": "QLSV_CapNhatQuyetDinhVaoRa",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
    "name": "QLSV_CapNhatLyLichSinhVien",
-   "size": 1695791,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "QLSV_CapNhatQuyetDinhVaoRa",
-   "size": 287106,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "name": "Netweb_TaiLieuHuongDanSinhVien",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV",
-   "size": 603648,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_CapVaInGiayChungNhan",
-   "size": 2990592,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_CoVanHocTap",
-   "size": 1780502,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_KhenThuongKyLuatSV",
-   "size": 13664256,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_MoHinhNganhHai",
-   "size": 1540096,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_QuanLyDiemRenLuyen",
-   "size": 7542784,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
-  },
-  {
-   "name": "QLSV_QuanLyDoanThe",
-   "size": 6065152,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "name": "NetWEB_NhapLyLichSVTrucTuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
    "name": "QLSV_QuanLyHoSoVanBangSinhVien",
-   "size": 414658,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "QLSV_QuanLyThongTinKhac",
-   "size": 1372130,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "name": "QLSV_KhenThuongKyLuatSV",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
    "name": "QLSV_TroCapXaHoi&MienGiamChinhSach",
-   "size": 2197655,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
    "name": "QLSV_XetHocBongKhuyenKhich",
-   "size": 2331521,
-   "syncedAt": "2026-10-29T16:23:20.952Z",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51",
-   "v": "toc1"
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_GiangVienDiemDanhSVTrucTuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_NhapDRLTrucTuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLSV_QuanLyDiemRenLuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_Guest_TraCuuLuanVan_VanBangChungChi",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NETWEB_QuanLyDonTuTrucTuyen",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLSV_CapVaInGiayChungNhan",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLSV_CoVanHocTap",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_GiangVienXemThongTinCaNhan",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "CNTN_CẬP NHẬT ĐỊA CHỈ ĐỊA BÀN MỚI CHO SINH VIÊN_V1, mục 1",
+   "docCheck": "partial",
+   "docNote": "Tài liệu không có mục riêng cho Quyết định vào mới (chỉ học lại / đổi lớp / nghỉ / tạm dừng / tốt nghiệp) – các bước theo mẫu mục 2.1–2.2 và kịch bản QLSV-001.",
+   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.1 Danh mục lý do, tên, người quyết định; III.2 (tương tự 2.1)",
    "kind": "main",
-   "menu": "",
+   "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định vào mới",
    "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cập nhật địa chỉ mới (2 cấp hành chính) và lấy thông tin cư trú qua VneID"
+   "scenarioCode": "QLSV-001",
+   "source": "sheet",
+   "steps": [
+    "Kiểm tra danh mục: Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Danh mục lý do quyết định, Danh mục tên quyết định, Danh sách người ký quyết định.",
+    "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định vào mới, bấm Thêm.",
+    "Nhập Số quyết định, Tên quyết định, Lý do, Ngày lập, Ngày hiệu lực, Người ký.",
+    "Thêm sinh viên TEST (Mã SV, Họ lót, Tên, Ngày sinh, Phái, Lớp – cột đỏ bắt buộc) hoặc Import theo file → Lưu.",
+    "KIỂM TRA: quyết định hiện trong danh sách; sinh viên hiện ở Danh mục sinh viên và Danh sách sinh viên học kỳ đúng lớp.",
+    "Sửa Ngày hiệu lực → KIỂM TRA; Xóa quyết định → KIỂM TRA sinh viên không còn trong học kỳ."
+   ],
+   "stt": 33,
+   "title": "Quyết định vào mới"
   },
   {
-   "docRef": "CNTN_CẬP NHẬT ĐỊA CHỈ ĐỊA BÀN MỚI CHO SINH VIÊN_V1, mục 1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không chọn được phường/xã khi chưa chọn tỉnh/thành phố"
-  },
-  {
-   "docRef": "QLSV_BaoHiemSinhVien, mục 1",
+   "docCheck": "none",
+   "docNote": "Chưa có tài liệu riêng cho Danh mục sinh viên. Sinh viên mới phải vào qua Quyết định vào mới, không thêm thẳng ở đây.",
+   "docRef": "",
    "kind": "setup",
-   "menu": "Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh mục công ty bảo hiểm",
+   "menu": "Sinh viên / Sinh viên học kỳ / Danh mục sinh viên",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Định nghĩa dữ liệu dùng chung"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Sinh viên học kỳ / Danh mục sinh viên.",
+    "Tìm sinh viên TEST vừa vào bằng Quyết định vào mới (bước 1).",
+    "KIỂM TRA: sinh viên có trong danh mục với đúng mã, họ tên, ngày sinh, lớp.",
+    "Sửa một thông tin không khóa (vd ghi chú) → Lưu → mở lại thấy giá trị mới."
+   ],
+   "stt": 34,
+   "title": "Danh mục sinh viên"
   },
   {
-   "docRef": "QLSV_BaoHiemSinhVien, mục 2",
+   "docCheck": "none",
+   "docNote": "Chưa có tài liệu riêng – cần xác nhận các cột/trạng thái.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh sách đợt bảo hiểm y tế",
+   "menu": "Sinh viên / Sinh viên học kỳ / Danh sách sinh viên học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Quản lý bảo hiểm y tế"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Sinh viên học kỳ / Danh sách sinh viên học kỳ.",
+    "Chọn học kỳ test, lọc theo lớp test.",
+    "KIỂM TRA: sinh viên TEST có trong danh sách học kỳ đúng lớp, đúng trạng thái."
+   ],
+   "stt": 35,
+   "title": "Danh sách sinh viên học kỳ"
   },
   {
-   "docRef": "QLSV_BaoHiemSinhVien, mục 4",
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.2 Quyết định đổi lớp",
    "kind": "main",
-   "menu": "Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách đợt bảo hiểm tai nạn",
+   "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định đổi lớp",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Quản lý bảo hiểm tai nạn"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 1.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin sinh viên/ Cập nhật lý lịch sinh viên . Tài liệu Hướng dẫn cập nhật lý lịch sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cập nhật thông tin sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 1.2",
-   "kind": "main",
-   "menu": "Menu: Sinh viên/ Thông tin sinh viên/ Cập nhật lý lịch SV từ file",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cập nhật lý lịch SV từ file"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 1.3",
-   "kind": "main",
-   "menu": "Menu: Sinh viên/ Thông tin sinh viên/ Import ảnh sinh viên. Tài liệu Hướng dẫn cập nhật lý lịch sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import ảnh sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 1.4",
-   "kind": "main",
-   "menu": "Menu: Sinh viên/ Thông tin sinh viên/ Cập nhật thông tin nội trú/ ngoại trú",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cập nhật thông tin nội trú/ ngoại trú"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 2.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin sinh viên/ In lý lịch sinh viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In lý lịch sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 2.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin sinh viên/ In thông tin ngoại trú sinh viên. Tài liệu Hướng dẫn cập nhật lý lịch sinh viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In thông tin ngoại trú sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapNhatLyLichSinhVien, mục 2.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin sinh viên/ In DSSV theo loại cư trú",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In DSSV theo loại cư trú"
-  },
-  {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 1",
-   "kind": "setup",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Danh mục lý do quyết định",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo danh mục lý do, tên và người quyết định"
-  },
-  {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 2.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định học lại",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Quyết định học lại"
-  },
-  {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 2.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định đổi lớp",
-   "priority": "cao",
-   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định đổi lớp.",
+    "Bấm Thêm, nhập Số quyết định, Lý do, Ngày lập, Ngày hiệu lực, Người ký.",
+    "Thêm (hoặc Import) sinh viên TEST vào danh sách, chọn Mã lớp mới (cột đỏ) → Lưu.",
+    "KIỂM TRA: Danh sách sinh viên học kỳ – sinh viên ở lớp mới, không còn ở lớp cũ.",
+    "Xóa quyết định → KIỂM TRA sinh viên về lớp cũ (cần xác nhận)."
+   ],
+   "stt": 36,
    "title": "Quyết định đổi lớp"
   },
   {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 2.3",
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.3 Quyết định nghỉ học",
    "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định nghỉ học",
+   "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định nghỉ học",
    "priority": "cao",
    "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định nghỉ học.",
+    "Làm như Quyết định học lại (mục 2.1): Thêm → chọn sinh viên TEST → chọn lý do nghỉ học phù hợp → Lưu (hoặc Import file Masv, MaLopMoi, MaLopCu).",
+    "KIỂM TRA: sinh viên có trạng thái nghỉ học, không còn trong danh sách đang học của học kỳ."
+   ],
+   "stt": 37,
    "title": "Quyết định nghỉ học"
   },
   {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 2.4",
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.4 Quyết định tạm dừng",
    "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định tạm dừng",
+   "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định tạm dừng",
    "priority": "cao",
    "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định tạm dừng.",
+    "Thêm → chọn sinh viên TEST → chọn lý do; nhập số học kỳ tạm dừng → Lưu.",
+    "KIỂM TRA: sinh viên có trạng thái tạm dừng đúng số học kỳ."
+   ],
+   "stt": 38,
    "title": "Quyết định tạm dừng"
   },
   {
-   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 2.5",
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.1 Quyết định học lại",
    "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định tốt nghiệp",
+   "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định học lại",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Quyết định tốt nghiệp"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: sinh viên TEST đang nghỉ học / tạm dừng (bước 5–6).",
+    "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định học lại.",
+    "Từng sinh viên: Thêm → chọn sinh viên nghỉ học → Lưu. Theo file: Import file có Masv, MaLopMoi, MaLopCu → Lưu.",
+    "KIỂM TRA: sinh viên trở lại Danh sách sinh viên học kỳ, đúng lớp mới."
+   ],
+   "stt": 39,
+   "title": "Quyết định học lại"
   },
   {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 1.1",
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatLyLichSinhVien, mục III.1.1 Cập nhật thông tin sinh viên",
    "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ Thông tin tốt nghiệp/ Đồng bộ danh sách tốt nghiệp",
+   "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Cập nhật lý lịch sinh viên",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Đồng bộ danh sách tốt nghiệp"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Cập nhật lý lịch sinh viên (tài liệu: Sinh viên / Thông tin sinh viên / Cập nhật lý lịch sinh viên).",
+    "Nhập mã sinh viên TEST.",
+    "Cập nhật thông tin ở các tab Lý lịch, Liên lạc, Thông tin vợ/chồng, Hồ sơ sinh viên → Lưu.",
+    "KIỂM TRA: đóng, mở lại sinh viên thấy giá trị mới; In lý lịch sinh viên (Sinh viên / Thông tin sinh viên / In lý lịch sinh viên) ra đúng thông tin.",
+    "(Liên quan) Cập nhật lý lịch SV từ file (Xuất cấu trúc → nhập file), Import ảnh sinh viên (tên file = mã SV, ≤ 200 KB)."
+   ],
+   "stt": 40,
+   "title": "Cập nhật lý lịch sinh viên"
   },
   {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 1.2",
+   "docCheck": "none",
+   "docNote": "Tài liệu Cập nhật lý lịch không có menu này – cần xác nhận (có thể ở NETWEB_NhapLyLichSVTrucTuyen).",
+   "docRef": "",
    "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ Thông tin tốt nghiệp/ Cập nhật thông tin tốt nghiệp",
+   "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Cập nhật thông tin tốt nghiệp"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online.",
+    "Thêm thời gian cho lớp test (từ ngày – đến ngày, đang trong hạn) → Lưu.",
+    "KIỂM TRA: sinh viên lớp test cập nhật được lý lịch trên Netweb (bước NetWEB sinh viên: Cập nhật thông tin lý lịch); đặt thời gian đã hết hạn → sinh viên bị chặn."
+   ],
+   "stt": 41,
+   "title": "Thời gian cập nhật thông tin SV theo lớp online"
   },
   {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 2.1",
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_NhapLyLichSVTrucTuyen, mục 18 Cập nhật thông tin lý lịch",
    "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận 1 sinh viên",
-   "priority": "thấp",
+   "menu": "NetWEB sinh viên: Cập nhật thông tin lý lịch",
+   "priority": "cao",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "In giấy chứng nh ận 1 sinh viên"
+   "source": "sheet",
+   "steps": [
+    "Chuẩn bị: đang trong thời gian cho phép cập nhật lý lịch (chỉ xem setting)",
+    "Đăng nhập Netweb bằng SV test → menu Cập nhật thông tin lý lịch",
+    "Sửa 1 trường không quan trọng (vd ghi chú/địa chỉ liên lạc thêm hậu tố TEST_) → Lưu",
+    "KIỂM TRA: thông báo lưu thành công; mở lại thấy giá trị mới; trên Edusoft lý lịch SV hiện thay đổi (hoặc chờ duyệt)",
+    "Dọn: trả trường về giá trị cũ"
+   ],
+   "stt": 42,
+   "title": "Cập nhật thông tin lý lịch (Netweb sinh viên)"
   },
   {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 2.2",
+   "docCheck": "ok",
+   "docNote": "Lần 2 bản trước lỗi case 63527.",
+   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục III.1.1–1.2 Danh mục hồ sơ, Cập nhật hồ sơ sinh viên",
    "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận 1 số SV trong lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In giấy chứng nhận 1 số SV trong lớp"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 2.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận theo lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In giấy chứng nhận theo lớp"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 2.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận t heo đợt",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In giấy chứng nhận theo đợt"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 2.5",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận theo file",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In giấy chứng nhận theo file"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằng tốt nghiêp nghiệp/ In bằng tốt nghiêp 1 sinh viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp 1 sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằng tốt nghiêp/ In bằng tốt nghiêp 1 số SV trong lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp 1 số SV trong lớp"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằng tốt nghiêp/ In bằng tốt nghiêp theo lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp theo lớp"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằng tốt nghiêp/ In bằng tốt nghiêp theo đợt",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp theo đợt"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.5",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằng tốt nghiệp/ In bằng tốt nghiệp từ danh sách",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp từ danh sách"
-  },
-  {
-   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục 3.6",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin tốt nghiệp/ In bằn g tốt nghiêp/ In bằng tốt nghiêp theo file",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bằng tốt nghiệp theo file"
-  },
-  {
-   "docRef": "QLSV_CapVaInGiayChungNhan, mục 1.1",
-   "kind": "setup",
-   "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh sách mẫu giấy chứng nhận Tại đây, người dùng nhấn Tiếp Tục để thấy được danh sách các mẫu giấy chứng nhận",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa phiên bản giấy chứng nhận"
-  },
-  {
-   "docRef": "QLSV_CapVaInGiayChungNhan, mục 1.2",
-   "kind": "setup",
-   "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Định nghĩa bộ đếm GCN sinh viên",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa bộ đếm giấy chứng nhận sinh viên"
-  },
-  {
-   "docRef": "QLSV_CapVaInGiayChungNhan, mục 2",
-   "kind": "setup",
-   "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh mục giấy chứng nhận Người dùng chọn Thêm để thêm một loại giấy chứng nhận mới cần cấp, hoặ c chỉnh sửa loại giấy chứng nhận hiện có, nhập thông tin mã GCN , tên giấy chứng nhận . Sau đó, người dùng",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh mục giấy chứng nhận"
-  },
-  {
-   "docRef": "QLSV_CapVaInGiayChungNhan, mục 3",
-   "kind": "main",
-   "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cấp và in giấy chứng nhận",
+   "menu": "Sinh viên / Hồ sơ và Văn bằng / Hồ sơ sinh viên / Cập nhật hồ sơ sinh viên",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Cấp và in giấy chứng nhận"
-  },
-  {
-   "docRef": "QLSV_CapVaInGiayChungNhan, mục 4",
-   "kind": "main",
-   "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ In thống kê cấp giấy chứng nhận Người dùng chọn nhiệm ý phù hợp, sau đó nhấn “ In ” thống kê kết quả cấp giấy chứng nhận",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Thống kê giấy chứng nhận"
-  },
-  {
-   "docRef": "QLSV_CoVanHocTap, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập cố vấn học tập cho sinh viên"
-  },
-  {
-   "docRef": "QLSV_CoVanHocTap, mục 2",
-   "kind": "main",
-   "menu": "",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Các biểu báo cáo, thống kê"
-  },
-  {
-   "docRef": "QLSV_CoVanHocTap, mục 3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chủ nhiệm lớp"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 1.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh mục cấp khen thưởng"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 1.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh mục lý do khen thưởng/ kỷ luật"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Qu yết định kỷ luật"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 2.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Quyết định cảnh báo học vụ"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 2.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Quyết định khen thưởng"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 2.4",
-   "kind": "main",
-   "menu": "(Đ ào t ạo ngắn hạn/ Đ ịnh nghĩa dữ liệu/ Danh mục vi ên ch ức ngo ài trư ờng)",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Danh sách giảng viên khóa học"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 2.5",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thư ởng v à k ỷ luật/ Xét khen thư ởng sinh viên/ Đ ịnh nghĩa ti êu chu ẩn xét",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Danh sách phòng trong khóa học"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 3.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa tiêu chuẩn xét"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 3.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thư ởng v à k ỷ luật/ Xét khen thư ởng sinh viên/ Xét khen thư ởng the o tiêu chu ẩn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xét khen thưởng theo tiêu chuẩn"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 3.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thư ởng v à k ỷ luật/ Xét khen thư ởng sinh viên/ Xem danh sách đ ạt ti êu chu ẩn",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem danh sách đạt tiêu chuẩn"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 3.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thư ởng v à k ỷ luật/ Xét khen thư ởng sinh viên/ In danh sách d ự kiến khen th ư ởng",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In Danh sách dự kiến khen thưởng"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 3.5",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Quyết định khen thưởng"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 4.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa tiêu chuẩn xét"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 4.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xét khen thưởng lớp theo tiêu chuẩn"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 4.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thưởng v à kỷluật/ Xét khen thưởng lớp sinh vi ên/ Xem danh sách đạt ti êu chuẩn Sau khi đ ã thực hiện xét khen th ưởng xong, ng ười d ùng có thểxem lại kết quảđ ã xét đạt bằng cách truy cập chức năng Xem danh sách xét",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem danh sách đạt tiêu chuẩn"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 4.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Khen thưởng v à kỷl uật/ Xét khen thưởng lớp s inh viên/ In danh sách dựkiến khen th ưởng",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In Danh sách dự kiến khen thưởng"
-  },
-  {
-   "docRef": "QLSV_KhenThuongKyLuatSV, mục 4.5",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập quyết định khen thưởng lớp được xét"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 1",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên ngành 2, để in kiểm tra sinh viên có thỏa mãn điều kiện học ngành 2 của trường hay không",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Kiểm tra điều kiện sinh viên học ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 2",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên ngành 2/ Quyết định vào mới",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập quyết định sinh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đăng ký môn học sinh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 4",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chính sách học phí sinh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 5",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xử lý học vụ s inh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 6",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xét tốt nghiệp sinh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_MoHinhNganhHai, mục 7",
-   "kind": "main",
-   "menu": "Quản lý điểm/ Quản lý điểm trung bình/ In phiếu điểm SV ngành 2/ In phiếu điểm ngành 2 – Từng sinh viên. Các thao tác chỉnh định thực hiện tương tự như chức năng in phiếu điểm sinh viên bình thường. Chương trình sẽ tự xử lý dữ liệu điểm theo chương trì",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In bảng điểm sinh viên ngành 2"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 1.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định hệ số trung bình rèn luyện năm học"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 1.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa Danh mục phân loại"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 2.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Đi ểm danh v à Đi ểm rèn luy ện/ Quản lý đi ểm r èn luy ện/ Danh sách nhóm câu hỏi Ngư ời d ùng nh ấn “Thêm” đ ể thực hiện th êm m ới nhóm câu hỏi bao gồm:  Mã nhóm câu h ỏi : Mã nhóm câu h ỏi",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Danh sách nhóm câu hỏi"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 2.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Đi ểm danh v à Đi ểm r èn luy ện/ Quản lý đi ểm r èn luy ện/ Danh sách câu hỏi Ngư ời dùng nh ấn “Thêm” đ ể thực hiện th êm m ới nhóm câu hỏi bao gồm:  Mã câu h ỏi DGRL: M ã câu h ỏi để đánh giá",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Danh sách câu hỏi"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 3.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa dữ liệu"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 3.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thời gian đánh giá online"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 3.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thời gian đánh giá SV online"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 4",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Kết quả đánh giá rèn luyện"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 5",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập điểm rèn luyện theo lớp"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 6",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import điểm rèn luyện theo file"
-  },
-  {
-   "docRef": "QLSV_QuanLyDiemRenLuyen, mục 7",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tổng kết điểm rèn luyện"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 1.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Ho ạt động đo àn th ể/ Đo àn th ể sinh vi ên/ Thông tin đoàn th ể",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thông tin cựu sinh viên"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 1.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Ho ạt động đo àn th ể/ Đo àn th ể sinh vi ên/ Thêm thông tin đoàn th ể b ằng file",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm thông tin đoàn thể bằng fi le"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 1.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Hoạt động đo àn thể/ Đo àn thểsi nh viên/ In DSSV theo đoàn thể",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In DSSV theo đoàn thể"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đồng bộ danh sách cựu sinh viên"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 2.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Ho ạt động đo àn th ể/ Cựu sinh vi ên/ Thông tin c ựu sinh vi ên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thông tin cựu sinh viên"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 2.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Ho ạt động đo àn th ể/ Cựu sinh vi ê n/ In danh sách thông tin c ựu sinh viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách thông tin cựu sinh viên"
-  },
-  {
-   "docRef": "QLSV_QuanLyDoanThe, mục 2.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Ho ạt động đo àn th ể/ Cựu sinh vi ên/ In các m ẫu thống k ê",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In các mẫu thống kê"
-  },
-  {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 1.1",
-   "kind": "setup",
-   "menu": "Sinh viên/ Hồ sơ và văn bằng/ Hồ sơ sinh viên/ Danh mục hồ sơ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh mục hồ sơ"
-  },
-  {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 1.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Hồ sơ và văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Sinh viên / Hồ sơ và văn bằng / Hồ sơ sinh viên / Danh mục hồ sơ có các loại hồ sơ (Thêm tại detailright hoặc Import).",
+    "Mở menu Sinh viên / Hồ sơ và Văn bằng / Hồ sơ sinh viên / Cập nhật hồ sơ sinh viên.",
+    "Nhập mã sinh viên TEST, chọn loại hồ sơ và thông tin kèm theo, bấm Thêm hồ sơ → Lưu.",
+    "KIỂM TRA: mở lại sinh viên thấy hồ sơ vừa nộp; In DSSV theo tình trạng hồ sơ / Thống kê tình trạng hồ sơ theo lớp phản ánh đúng.",
+    "Xóa hồ sơ test → KIỂM TRA không còn."
+   ],
+   "stt": 43,
    "title": "Cập nhật hồ sơ sinh viên"
   },
   {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 1.3",
+   "docCheck": "partial",
+   "docNote": "Tài liệu mục 2 ghi nhầm menu (Quyết định nghỉ học) và không có bước – cần bổ sung tài liệu.",
+   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục III.2 Văn bằng sinh viên",
    "kind": "main",
-   "menu": "Sinh viên/ Hồ sơ và văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ SV tư file",
+   "menu": "Sinh viên / Hồ sơ và Văn bằng / Văn bằng sinh viên / Cập nhật văn bằng sinh viên",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Cập nhật hồ sơ SV từ file"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Hồ sơ và Văn bằng / Văn bằng sinh viên / Cập nhật văn bằng sinh viên.",
+    "Nhập mã sinh viên TEST, thêm văn bằng (loại, số hiệu, ngày cấp) → Lưu.",
+    "KIỂM TRA: mở lại thấy văn bằng; sửa → KIỂM TRA; xóa → KIỂM TRA."
+   ],
+   "stt": 44,
+   "title": "Cập nhật văn bằng sinh viên"
   },
   {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 1.4",
-   "kind": "main",
-   "menu": "Sinh viên/ Hồ sơ và văn bằng/ Hồ sơ sinh viên/ In DSSV theo tình trạng hồ sơ",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In DSSV theo tình trạng hồ sơ"
-  },
-  {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 1.5",
-   "kind": "main",
-   "menu": "Sinh viên/ Hồ sơ và văn bằng/ Hồ sơ sinh viên/ Thống kê tình trạng hồ sơ theo lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Thống kê tình trạng hồ sơ theo lớp"
-  },
-  {
-   "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục 2",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ ra sinh viên/ Quyết định nghỉ học",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Văn bằng sinh viên"
-  },
-  {
-   "docRef": "QLSV_QuanLyThongTinKhac, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo danh sách sinh viên làm thêm"
-  },
-  {
-   "docRef": "QLSV_QuanLyThongTinKhac, mục 2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo danh sách sinh viên nghiện"
-  },
-  {
-   "docRef": "QLSV_QuanLyThongTinKhac, mục 3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xử lý sinh viên liên quan ma túy"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.1",
+   "docCheck": "ok",
+   "docRef": "QLSV_KhenThuongKyLuatSV, mục III.3.1 Định nghĩa tiêu chuẩn xét (khen thưởng sinh viên)",
    "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ Danh mục trợ cấp)",
+   "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Định nghĩa tiêu chuẩn xét",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Danh mục trợ cấp"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Quản lý điểm / Quản trị phân hệ / Quản lý danh mục / Danh mục đánh giá có bảng đánh giá nhóm “Khen thưởng” phù hợp (chỉ kiểm tra).",
+    "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Định nghĩa tiêu chuẩn xét.",
+    "Bấm Thêm: Mã tiêu chuẩn TEST_, Tên tiêu chuẩn, Loại (học kỳ / năm học), Bảng ĐG → Lưu.",
+    "Chọn tiêu chuẩn vừa tạo → nút Tiêu chí: chọn một bậc xếp loại → Thêm tiêu chí; chọn tiêu chí → Danh sách tiêu chí → Thêm một hoặc nhiều điều kiện → Lưu.",
+    "KIỂM TRA: mở lại tiêu chuẩn thấy đủ bậc, tiêu chí, điều kiện."
+   ],
+   "stt": 45,
+   "title": "Định nghĩa tiêu chuẩn xét"
   },
   {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.2",
+   "docCheck": "ok",
+   "docRef": "QLSV_KhenThuongKyLuatSV, mục III.3.2–3.5 Xét theo tiêu chuẩn, Xem DS đạt, In dự kiến, Quyết định khen thưởng",
    "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ Nhập tiền trợ cấp)",
+   "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Xét khen thưởng theo tiêu chuẩn",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Nhập tiền trợ cấp"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Xét khen thưởng theo tiêu chuẩn.",
+    "Chọn điều kiện: Xét tất cả (xét lại cả SV đã có kết quả) hoặc Chỉ xét đối tượng chưa xét; chọn Tiêu chuẩn TEST_, chọn khối lớp → Thực hiện.",
+    "KIỂM TRA: màn hình hiện danh sách kết quả; Xem danh sách đạt tiêu chuẩn (chọn loại tiêu chuẩn, khối → Tiếp tục) có sinh viên đạt đúng điều kiện.",
+    "In danh sách dự kiến khen thưởng → KIỂM TRA mẫu in.",
+    "Quyết định khen thưởng: Thêm → Số quyết định, lý do, ngày ký → thêm / Import sinh viên ở Danh sách sinh viên quyết định → Lưu → KIỂM TRA."
+   ],
+   "stt": 46,
+   "title": "Xét khen thưởng theo tiêu chuẩn"
   },
   {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.3",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên chung)",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Trợ cấp sinh viên chung"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.4",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên học kỳ)",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Trợ cấp sinh viên học kỳ"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.5",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ In DSSV hưởng trợ cấp)",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách sinh viên hưởng trợ cấp"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 1.6",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên trợ cấp/ In thống kê theo trợ cấp)",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In thống kê trợ cấp"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.1",
+   "docCheck": "ok",
+   "docRef": "QLSV_KhenThuongKyLuatSV, mục III.4.1 Định nghĩa tiêu chuẩn xét (khen thưởng lớp)",
    "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ Danh mục diện chính sách)",
+   "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Danh mục diện chính sách"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét.",
+    "Thêm: Mã tiêu chuẩn TEST_, Tên, Loại (học kỳ / năm học), Bảng ĐG → Lưu.",
+    "Nút Tiêu chí: chọn bậc xếp loại → Thêm tiêu chí → Danh sách tiêu chí → Thêm điều kiện → Lưu.",
+    "KIỂM TRA: mở lại thấy đủ tiêu chí."
+   ],
+   "stt": 47,
+   "title": "Định nghĩa tiêu chuẩn xét"
   },
   {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.2",
+   "docCheck": "ok",
+   "docRef": "QLSV_KhenThuongKyLuatSV, mục III.4.2–4.5 Xét lớp theo tiêu chuẩn … Nhập quyết định khen thưởng lớp",
    "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ Nhập phần trăm miễn giảm DCS)",
+   "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Xét khen thưởng lớp theo tiêu chuẩn",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Nhập Phần trăm miễn giảm DCS"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Xét khen thưởng lớp theo tiêu chuẩn.",
+    "Chọn Tiêu chuẩn TEST_, chọn khối lớp → Thực hiện.",
+    "KIỂM TRA: danh sách kết quả; Xem danh sách đạt tiêu chuẩn có lớp đạt.",
+    "In danh sách dự kiến khen thưởng; Nhập quyết định khen thưởng lớp được xét: Thêm → Số QĐ, lý do, ngày ký → thêm lớp → Lưu → KIỂM TRA."
+   ],
+   "stt": 48,
+   "title": "Xét khen thưởng lớp theo tiêu chuẩn"
   },
   {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.3",
-   "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên chung)",
-   "priority": "trung bình",
+   "docCheck": "ok",
+   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục III.2 Miễn giảm chính sách (2.1–2.6)",
+   "kind": "main",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Sinh viên diện chính sách / Diện chính sách sinh viên học kỳ",
+   "priority": "cao",
    "scenarioCode": "",
-   "title": "Diện chính sách sinh viên chung"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.4",
-   "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên học kỳ)",
-   "priority": "trung bình",
-   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Sinh viên diện chính sách / Danh mục diện chính sách (Thêm → Lưu) và Nhập phần trăm miễn giảm DCS (tỷ lệ % theo diện).",
+    "Sinh viên diện chính sách / Diện chính sách sinh viên chung: nhập sinh viên TEST, diện chính sách, NHHK áp dụng – NHHK kết thúc → Lưu.",
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Sinh viên diện chính sách / Diện chính sách sinh viên học kỳ.",
+    "Bấm Đồng bộ.",
+    "KIỂM TRA: sinh viên TEST có diện chính sách ở học kỳ nằm trong khoảng NHHK đã khai; In DSSV miễn giảm / In thống kê miễn giảm DCS có sinh viên."
+   ],
+   "stt": 49,
    "title": "Diện chính sách sinh viên học kỳ"
   },
   {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.5",
+   "docCheck": "ok",
+   "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.1–3 Thông số; Kiểm tra danh sách khối học bổng",
    "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ In DSSV miễm giảm)",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách sinh viên miễn giảm"
-  },
-  {
-   "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục 2.6",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Sinh viên diện chính sách/ In thống kê miễm giảm DCS)",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In Thống kê miễn giảm DCS"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 1",
-   "kind": "setup",
-   "menu": "(Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo các thông số hệ thống"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 2",
-   "kind": "setup",
-   "menu": "(Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị chung cho tất cả các khối xét học bổng đầu học kỳ"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 3",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ)",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Danh sách khối học bổng học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Kiểm tra danh sách khối học bổng cần xét"
+   "source": "sheet",
+   "steps": [
+    "Kiểm tra thông số ở Sinh viên / Quản trị phân hệ / Chỉnh định thông số học kỳ (chỉ ghi lại): SS_SOTINCHIHBMIN, GS_NguonDiemTBHB, SS_DIEMTBHB, SS_KHOIHB, SS_MUCDIEMRL, SS_NGUONGHB, SS_SOLUONGSVCAPHB, SS_TIENHB, SS_SOTHANGHUONGHBKK, SS_CUNGDIEMHBHETCHITIEU…",
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Danh sách khối học bổng học kỳ.",
+    "KIỂM TRA: có đủ khối cần xét; thiếu thì bấm Đồng bộ → KIỂM TRA khối xuất hiện."
+   ],
+   "stt": 50,
+   "title": "Danh sách khối học bổng học kỳ"
   },
   {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 4",
+   "docCheck": "ok",
+   "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.4 Định nghĩa khối học bổng học kỳ",
    "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ)",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Định nghĩa khối học bổng học kỳ",
    "priority": "trung bình",
    "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Định nghĩa khối học bổng học kỳ.",
+    "Thêm mã khối học bổng TEST_ (hoặc Sửa khối có sẵn) → Lưu.",
+    "KIỂM TRA: khối hiện trong danh sách; Danh sách khối học bổng học kỳ thấy khối mới."
+   ],
+   "stt": 51,
    "title": "Định nghĩa khối học bổng học kỳ"
   },
   {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 5",
-   "kind": "setup",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ Danh sách không xét học bổng)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo các sinh viên không xét học bổng và in kiểm tra số lượng xét học bổng"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 6",
+   "docCheck": "ok",
+   "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.5–7 Không xét học bổng; Kiểm tra SL; Xét học bổng",
    "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ Kiểm tra và in SL xét học bổng)",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Xét học bổng",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Kiểm tra số lượng sinh viên xét học bổng"
+   "source": "sheet",
+   "steps": [
+    "(Tùy chọn) Học bổng / Danh sách không xét học bổng: thêm sinh viên TEST + lý do.",
+    "Học bổng / Kiểm tra và in SL xét học bổng: chọn khối → Thực hiện → KIỂM TRA số lượng diện được xét.",
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Xét học bổng.",
+    "Chọn khối lớp test → Thực hiện.",
+    "KIỂM TRA: có kết quả xét; sinh viên trong Danh sách không xét không có học bổng; số SV ≤ SS_SOLUONGSVCAPHB; điểm ≥ SS_NGUONGHB và rèn luyện ≥ SS_MUCDIEMRL."
+   ],
+   "stt": 52,
+   "title": "Học bổng – Xét học bổng"
   },
   {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 7",
+   "docCheck": "ok",
+   "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.8 Kiểm tra và chỉnh sửa kết quả xét",
    "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ Xét học bổng)",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xét học bổng"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 8",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Kiểm tra và chỉnh sửa kết quả xét"
-  },
-  {
-   "docRef": "QLSV_XetHocBongKhuyenKhich, mục 9",
-   "kind": "main",
-   "menu": "(Sinh viên/ Miễn giảm họ c phí và Học bổng/ Học bổng/ In bảng tổng hợp xét học bổng)",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Xem / sửa danh sách xét học bổng",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "In kết quả xét học bổng"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Xem/sửa danh sách xét học bổng.",
+    "Chọn khối → KIỂM TRA danh sách sinh viên đạt và số tiền (theo SS_TIENHB × số tháng).",
+    "Sửa số tiền của một sinh viên TEST → Lưu → mở lại thấy giá trị mới."
+   ],
+   "stt": 53,
+   "title": "Xem/sửa danh sách xét học bổng"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.9 In kết quả xét học bổng",
+   "kind": "main",
+   "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / In bảng tổng hợp xét học bổng",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / In bảng tổng hợp xét học bổng.",
+    "Chọn khối → In.",
+    "KIỂM TRA: mẫu in liệt kê đúng sinh viên đạt học bổng và số tiền như ở bước Xem/sửa."
+   ],
+   "stt": 54,
+   "title": "In bảng tổng hợp xét học bổng"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Điểm danh QR cần điện thoại quét – khó tự động, chủ yếu test thủ công.",
+   "docRef": "NetWEB_GiangVienDiemDanhSVTrucTuyen, mục 1 Điểm danh QR CODE, 2 Điểm danh thủ công",
+   "kind": "main",
+   "menu": "NetWEB giảng viên: Điểm danh môn giảng dạy",
+   "priority": "cao",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng GV test → menu Điểm danh môn giảng dạy, tìm ngày theo lịch giảng dạy",
+    "Điểm danh thủ công: bấm biểu tượng ở cột Điểm danh → chọn trạng thái cho SV test, ghi chú → Lưu",
+    "KIỂM TRA: kết quả lưu, mở lại vẫn đúng; SV test thấy ở Xem kết quả điểm danh",
+    "(Tùy chọn) QR: bấm Link ở cột QRCODE → mã QR hiện, làm mới mỗi 30 giây; KIỂM TRA SV quét xong ghi 'Có mặt' và bị khóa sửa thủ công",
+    "Dọn: trả kết quả điểm danh thủ công về như cũ"
+   ],
+   "stt": 55,
+   "title": "Điểm danh môn giảng dạy (Netweb giảng viên)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 12 Xem kết quả điểm danh",
+   "kind": "main",
+   "menu": "NetWEB sinh viên: Xem kết quả điểm danh",
+   "priority": "thấp",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Xem kết quả điểm danh",
+    "Chọn học kỳ hiện tại (và 1 học kỳ trước)",
+    "KIỂM TRA: các buổi điểm danh hiện đúng kết quả GV đã nhập",
+    "Gửi feedback cho 1 buổi; KIỂM TRA feedback được ghi nhận"
+   ],
+   "stt": 56,
+   "title": "Xem kết quả điểm danh (Netweb sinh viên)"
+  },
+  {
+   "docCheck": "none",
+   "docNote": "Không tìm thấy tài liệu cho màn hình này – bước dựng theo tên menu, cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / In thống kê sinh viên vắng theo môn học",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh → In thống kê sinh viên vắng theo môn học",
+    "Chọn học kỳ, môn học có dữ liệu điểm danh test → In/Xem",
+    "KIỂM TRA: báo cáo mở được, số buổi vắng của SV test khớp kết quả điểm danh"
+   ],
+   "stt": 57,
+   "title": "In thống kê sinh viên vắng theo môn học"
+  },
+  {
+   "docCheck": "none",
+   "docNote": "Không tìm thấy tài liệu – cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / Nhập và tạo ngày điểm danh",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh → Nhập và tạo ngày điểm danh",
+    "Chọn học kỳ, nhóm học test → tạo ngày điểm danh mới → nhập kết quả cho SV test → Lưu",
+    "KIỂM TRA: ngày điểm danh và kết quả hiện lại khi mở; SV thấy trên Netweb Xem kết quả điểm danh",
+    "Dọn: xóa ngày điểm danh test"
+   ],
+   "stt": 58,
+   "title": "Nhập và tạo ngày điểm danh"
+  },
+  {
+   "docCheck": "none",
+   "docNote": "Không tìm thấy tài liệu; thao tác xóa hàng loạt – chỉ chạy trên nhóm test, cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / Xóa kết quả SV Đã Hủy DKMH",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Chuẩn bị: SV test có kết quả điểm danh ở nhóm học đã hủy ĐKMH",
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh → Xóa kết quả SV Đã Hủy DKMH",
+    "Chọn học kỳ/nhóm test → Thực hiện (xác nhận phải nêu đúng SV/nhóm test)",
+    "KIỂM TRA: kết quả điểm danh của SV đã hủy biến mất, SV còn đăng ký không bị ảnh hưởng"
+   ],
+   "stt": 59,
+   "title": "Xóa kết quả SV Đã Hủy DKMH"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu riêng NetWEB_NhapDRLTrucTuyen (≈20MB) chưa đọc chi tiết phần GV – bước phía GV cần xác nhận.",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_NhapDRLTrucTuyen, mục 15 Đánh giá điểm rèn luyện",
+   "kind": "main",
+   "menu": "NetWEB SV + GV: Đánh giá điểm rèn luyên",
+   "priority": "cao",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Chuẩn bị: đợt đánh giá rèn luyện đang mở cho học kỳ test (chỉ xem setting)",
+    "Đăng nhập Netweb bằng SV test → menu Đánh giá điểm rèn luyện → chọn học kỳ",
+    "Nhập điểm tự đánh giá theo từng tiêu chí → Lưu",
+    "KIỂM TRA: điểm tổng hiện đúng; mở lại vẫn giữ",
+    "Đăng nhập GV (cố vấn) test → đánh giá/duyệt điểm rèn luyện của SV test → Lưu; KIỂM TRA SV thấy điểm GV"
+   ],
+   "stt": 60,
+   "title": "Đánh giá điểm rèn luyên (Netweb SV + GV)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.5 Nhập điểm rèn luyện theo lớp",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện (mục 1–2): GS_HESOTBRLNH (Chỉnh định thông số toàn cục, nhóm Điểm rèn luyện), Danh mục phân loại, Danh sách nhóm câu hỏi, Danh sách câu hỏi đã khai báo (chỉ kiểm tra).",
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện.",
+    "Chọn lớp test, nhập điểm rèn luyện cho sinh viên TEST → Lưu.",
+    "KIỂM TRA: mở lại lớp thấy điểm đã nhập."
+   ],
+   "stt": 61,
+   "title": "Nhập điểm rèn luyện"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.6 Import điểm rèn luyện theo file",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Import điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Import điểm rèn luyện.",
+    "Bấm Xuất cấu trúc import; chuẩn bị file có MaSV, DiemRLHK cho sinh viên TEST.",
+    "Chọn tập tin → Tiếp tục → Xem chi tiết (kiểm tra dữ liệu) → Thực hiện.",
+    "KIỂM TRA: điểm rèn luyện của sinh viên TEST đúng như file (xem ở Nhập điểm rèn luyện)."
+   ],
+   "stt": 62,
+   "title": "Import điểm rèn luyện"
+  },
+  {
+   "docCheck": "none",
+   "docNote": "Tài liệu ĐRL không có mục riêng cho nhập 1 sinh viên – cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện 1 sinh viên",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện 1 sinh viên.",
+    "Nhập mã sinh viên TEST, nhập điểm rèn luyện học kỳ → Lưu.",
+    "KIỂM TRA: mở lại thấy điểm mới; Nhập điểm rèn luyện theo lớp cũng hiện điểm này."
+   ],
+   "stt": 63,
+   "title": "Nhập điểm rèn luyện 1 sinh viên"
+  },
+  {
+   "docCheck": "none",
+   "docNote": "Tài liệu ĐRL không có mục Hủy – cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Hủy điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Hủy điểm rèn luyện.",
+    "Chọn lớp test / sinh viên TEST → Thực hiện hủy (chỉ xác nhận khi hộp thoại nêu đúng đối tượng test).",
+    "KIỂM TRA: điểm rèn luyện của sinh viên TEST không còn."
+   ],
+   "stt": 64,
+   "title": "Hủy điểm rèn luyện"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Sheet ghi #REF! ở cột phân công dòng này.",
+   "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.7 Tổng kết điểm rèn luyện",
+   "kind": "main",
+   "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Tổng kết điểm rèn luyện",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: đã có điểm rèn luyện học kỳ (nhập / import / đánh giá online).",
+    "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Tổng kết điểm rèn luyện.",
+    "Chọn lớp test → Thực hiện.",
+    "KIỂM TRA: điểm tổng kết của sinh viên (điểm cuối cùng) đúng; toàn khóa R = Σ(rᵢ·nᵢ)/N với hệ số GS_HESOTBRLNH."
+   ],
+   "stt": 65,
+   "title": "Tổng kết điểm rèn luyện"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "NetWEB_Guest_TraCuuLuanVan_VanBangChungChi, mục 2 Kiểm tra văn bằng chứng chỉ trực tuyến",
+   "kind": "main",
+   "menu": "NetWEB: Tra cứu thông tin tốt nghiệp",
+   "priority": "thấp",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở Netweb (không cần đăng nhập) → menu Tra cứu thông tin tốt nghiệp",
+    "Nhập Số văn bằng của 1 SV test đã tốt nghiệp → Tìm",
+    "KIỂM TRA: hiện đúng họ tên, ngành, xếp loại, số hiệu văn bằng",
+    "Nhập số văn bằng không tồn tại → KIỂM TRA báo không tìm thấy"
+   ],
+   "stt": 66,
+   "title": "Tra cứu thông tin tốt nghiệp (Netweb)"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Không dùng “Đồng bộ tất cả (xóa hết thông tin cũ)” trên dữ liệu dùng chung.",
+   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.1 Đồng bộ danh sách tốt nghiệp",
+   "kind": "main",
+   "menu": "Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Đồng bộ thông tin tốt nghiệp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: sinh viên TEST đã được xét tốt nghiệp đạt (phân hệ Tốt nghiệp).",
+    "Mở menu Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Đồng bộ thông tin tốt nghiệp (tài liệu: Đồng bộ danh sách tốt nghiệp).",
+    "Chọn nhiệm ý “Đồng bộ sinh viên có thay đổi” (không ảnh hưởng danh sách hiện có), chọn bậc hệ / đợt → Thực hiện.",
+    "KIỂM TRA: sinh viên TEST có trong danh sách tốt nghiệp ở Cập nhật thông tin tốt nghiệp."
+   ],
+   "stt": 67,
+   "title": "Đồng bộ thông tin tốt nghiệp"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.2 Cập nhật thông tin tốt nghiệp",
+   "kind": "main",
+   "menu": "Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Cập nhật thông tin tốt nghiệp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Cập nhật thông tin tốt nghiệp.",
+    "Chọn dòng sinh viên TEST, nhập Số vào sổ, Ngày vào sổ, Ngày cấp, Ngày thanh toán → Lưu (hoặc “Cập nhật theo file”).",
+    "KIỂM TRA: mở lại thấy đúng giá trị đã nhập."
+   ],
+   "stt": 68,
+   "title": "Cập nhật thông tin tốt nghiệp"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.2.1 In giấy chứng nhận 1 sinh viên",
+   "kind": "main",
+   "menu": "Sinh viên / Thông tin tốt nghiệp / In chứng nhận tốt nghiệp / In giấy chứng nhận 1 sinh viên",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Thông tin tốt nghiệp / In chứng nhận tốt nghiệp / In giấy chứng nhận 1 sinh viên.",
+    "Chọn mã sinh viên TEST → In.",
+    "KIỂM TRA: giấy chứng nhận hiện đúng họ tên, ngành, xếp loại, số vào sổ / ngày cấp (bước 36).",
+    "(Biến thể) In 1 số SV trong lớp, theo lớp, theo đợt, theo file; In bằng tốt nghiệp (mục 3)."
+   ],
+   "stt": 69,
+   "title": "In giấy chứng nhận 1 sinh viên"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NETWEB_QuanLyDonTuTrucTuyen, mục 17 Hỗ trợ hành chính một cửa",
+   "kind": "main",
+   "menu": "NetWEB: Đăng ký cấp giấy chứng nhận / bảng điểm",
+   "priority": "cao",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Hỗ trợ hành chính một cửa",
+    "Chọn loại GCN/Bảng điểm, nhập thông tin (lý do ghi TEST_) → Gửi yêu cầu",
+    "KIỂM TRA: yêu cầu hiện ở danh sách với trạng thái/tiến độ 'chưa xử lý'; trên Edusoft cán bộ thấy đơn",
+    "Dọn: xóa yêu cầu khi chưa được xử lý; KIỂM TRA biến mất"
+   ],
+   "stt": 70,
+   "title": "Đăng ký cấp giấy chứng nhận / bảng điểm (Netweb)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CapVaInGiayChungNhan, mục III.1 Định nghĩa dữ liệu; III.2 Danh mục giấy chứng nhận",
+   "kind": "setup",
+   "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Danh mục giấy chứng nhận",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Danh sách mẫu giấy chứng nhận (Tiếp tục → có mẫu in, tab Thông số trang in) và Định nghĩa bộ đếm GCN sinh viên đã có.",
+    "Mở menu Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Danh mục giấy chứng nhận.",
+    "Thêm loại GCN TEST_: Mã GCN, Tên giấy chứng nhận, chọn Bộ đếm GCN và Mã mẫu in → Lưu.",
+    "KIỂM TRA: loại GCN hiện trong danh mục với đúng bộ đếm, mẫu in."
+   ],
+   "stt": 71,
+   "title": "Danh mục giấy chứng nhận"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CapVaInGiayChungNhan, mục III.3 Cấp và in giấy chứng nhận; III.4 Thống kê",
+   "kind": "main",
+   "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận.",
+    "Bấm Thêm, chọn mẫu chứng nhận (loại GCN TEST_), nhập sinh viên TEST → Lưu và In.",
+    "KIỂM TRA: giấy chứng nhận in ra đúng thông tin sinh viên, số GCN theo bộ đếm; dòng cấp GCN hiện trong danh sách.",
+    "In thống kê cấp giấy chứng nhận → KIỂM TRA có lượt cấp vừa tạo."
+   ],
+   "stt": 72,
+   "title": "Cấp và in giấy chứng nhận"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu chỉ mô tả cấp tại trường – thao tác duyệt yêu cầu online cần xác nhận.",
+   "docRef": "QLSV_CapVaInGiayChungNhan, mục (không có mục riêng cho bản online)",
+   "kind": "main",
+   "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận online",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: sinh viên TEST đã đăng ký cấp giấy chứng nhận trên Netweb (bước NetWEB: Đăng ký cấp giấy chứng nhận / bảng điểm).",
+    "Mở menu Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận online.",
+    "KIỂM TRA: thấy yêu cầu của sinh viên TEST; duyệt / cấp và in → KIỂM TRA trạng thái yêu cầu trên Netweb đổi tương ứng."
+   ],
+   "stt": 73,
+   "title": "Cấp và in giấy chứng nhận online"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CoVanHocTap, mục III.1 Nhập cố vấn học tập (Gán cố vấn học tập theo lớp)",
+   "kind": "main",
+   "menu": "Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp.",
+    "Chọn lớp test → Tiếp tục.",
+    "Chương trình tải danh sách sinh viên; chọn sinh viên TEST và chọn cố vấn phù hợp → Lưu.",
+    "KIỂM TRA: In DSSV theo cố vấn học tập có sinh viên TEST dưới đúng cố vấn.",
+    "(Biến thể) Gán mã cố vấn học tập cho toàn lớp: chọn lớp, chọn Mã CVHT → Lưu."
+   ],
+   "stt": 74,
+   "title": "Gán cố vấn học tập theo lớp"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "QLSV_CoVanHocTap, mục III.1 (Hủy mã cố vấn học tập cho toàn lớp)",
+   "kind": "main",
+   "menu": "Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Hủy mã cố vấn học tập cho toàn lớp",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: lớp test đã gán cố vấn (bước 42).",
+    "Mở menu Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Hủy mã cố vấn học tập cho toàn lớp.",
+    "Chọn lớp test → Lưu để hủy mã.",
+    "KIỂM TRA: sinh viên trong lớp không còn mã cố vấn (In DSSV theo cố vấn học tập không còn)."
+   ],
+   "stt": 75,
+   "title": "Hủy mã cố vấn học tập cho toàn lớp"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "NetWEB_GiangVienXemThongTinCaNhan, mục 8 Xem danh sách sinh viên quản lý (9 Xem kết quả học tập SV)",
+   "kind": "main",
+   "menu": "NetWEB giảng viên: Xem danh sách sinh viên quản lý",
+   "priority": "thấp",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng GV cố vấn test → menu Xem DS sinh viên quản lý",
+    "KIỂM TRA: danh sách đúng các SV lớp GV cố vấn",
+    "Đăng nhập vào 1 tài khoản SV từ danh sách → KIỂM TRA xem được điểm, học phí, TKB của SV đó",
+    "Menu Xem kết quả học tập sinh viên → KIỂM TRA có thông tin liên hệ và tiến độ học tập"
+   ],
+   "stt": 76,
+   "title": "Xem danh sách sinh viên quản lý (Netweb giảng viên)"
   }
  ],
- "lastSync": {
-  "added": 111,
-  "at": "2026-10-29T16:23:20.952Z",
-  "by": "u_L8VJITzyuU54eIqCAl0PKQ",
-  "docs": [
-   {
-    "items": 3,
-    "name": "QLSV_BaoHiemSinhVien",
-    "st": "ok"
-   },
-   {
-    "items": 6,
-    "name": "QLSV_CapNhatQuyetDinhVaoRa",
-    "st": "ok"
-   },
-   {
-    "items": 13,
-    "name": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV",
-    "st": "ok"
-   },
-   {
-    "items": 5,
-    "name": "QLSV_CapVaInGiayChungNhan",
-    "st": "ok"
-   },
-   {
-    "items": 2,
-    "name": "CNTN_CẬP NHẬT ĐỊA CHỈ ĐỊA BÀN MỚI CHO SINH VIÊN_V1",
-    "st": "ok"
-   },
-   {
-    "items": 3,
-    "name": "QLSV_CoVanHocTap",
-    "st": "ok"
-   },
-   {
-    "items": 7,
-    "name": "QLSV_CapNhatLyLichSinhVien",
-    "st": "ok"
-   },
-   {
-    "items": 17,
-    "name": "QLSV_KhenThuongKyLuatSV",
-    "st": "ok"
-   },
-   {
-    "items": 7,
-    "name": "QLSV_MoHinhNganhHai",
-    "st": "ok"
-   },
-   {
-    "items": 7,
-    "name": "QLSV_QuanLyDoanThe",
-    "st": "ok"
-   },
-   {
-    "items": 6,
-    "name": "QLSV_QuanLyHoSoVanBangSinhVien",
-    "st": "ok"
-   },
-   {
-    "items": 11,
-    "name": "QLSV_QuanLyDiemRenLuyen",
-    "st": "ok"
-   },
-   {
-    "items": 3,
-    "name": "QLSV_QuanLyThongTinKhac",
-    "st": "ok"
-   },
-   {
-    "items": 9,
-    "name": "QLSV_XetHocBongKhuyenKhich",
-    "st": "ok"
-   },
-   {
-    "items": 12,
-    "name": "QLSV_TroCapXaHoi&MienGiamChinhSach",
-    "st": "ok"
-   }
-  ],
-  "mode": "toc"
- },
  "module": "QLSV",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 44 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 32 khớp, 4 khớp một phần, 8 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T16:23:20.952Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T16:23:21.004Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

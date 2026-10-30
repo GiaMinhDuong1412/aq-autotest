@@ -1,16 +1,10 @@
 {
- "createdAt": "2026-10-29T05:23:32.175Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
    "name": "QLTV_KhaiBaoChinhSachThuHocPhi",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLTV_PhanBoHocPhiTuDinhNghia",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLTV_QuanLyCacKhoanThuTuDinhNghia",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
@@ -18,697 +12,231 @@
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
+   "name": "QLTV_QuanLyCacKhoanThuTuDinhNghia",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
    "name": "QLTV_ThuHocPhiTheoPhieuBao",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "Netweb_TaiLieuHuongDanSinhVien",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.7 Định nghĩa mức đơn giá học phí và tín chỉ học phí",
    "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+   "menu": "Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN mức đơn giá và số TCHP môn học",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Chỉnh định thông số toàn cục: GP_CoPhanQuyenCSHP (phân quyền user quản lý chính sách học phí)"
+   "source": "sheet",
+   "steps": [
+    "Kiểm tra (chỉ ghi lại) thông số: Chính sách HP / Quản trị phân hệ / Chỉnh định thông số toàn cục (GP_CoPhanQuyenCSHP, GP_NHHKTINHHPTUDONG) và Chỉnh định thông số học kỳ (SP_HinhThucTinhHocPhi, SP_CoDonGiaMonHoc, SP_ThuHocLai, SP_HeSoHocPhiHocLai, SP_PhanBietHLCT…).",
+    "Mở menu Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN mức đơn giá và số TCHP môn học.",
+    "Bấm “Gán mức đơn giá 0 cho môn mới” → KIỂM TRA môn mới (vd môn TEST_) được thêm với mức 0.",
+    "Sửa mức đơn giá / số tín chỉ học phí của môn TEST_ → Lưu → KIỂM TRA.",
+    "“Đồng bộ số TC lý thuyết”: chọn môn có TC lý thuyết ≠ TC học phí → gán lại → KIỂM TRA."
+   ],
+   "stt": 168,
+   "title": "ĐN mức đơn giá và số TCHP môn học"
   },
   {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.6.1 Khai báo đơn giá học phí (cây phân cấp)",
    "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Phân quyền nhập đơn giá học phí",
+   "menu": "Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN đơn giá học phí",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Phân quyền nhập đơn giá học phí theo tài khoản và đối tượng"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: DM loại hình thu học phí, ĐN nhóm công thức thu, ĐN hình thức thu theo đối tượng / lớp / SV đã có (mục 3–5).",
+    "Mở menu Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN đơn giá học phí.",
+    "Chọn loại thu, chọn đối tượng trên cây phân cấp (lớp / khối test), nhập đơn giá → Lưu.",
+    "KIỂM TRA: mở lại thấy đơn giá; (danh sách) ĐN đơn giá học phí (danh sách) hiện cùng giá trị.",
+    "(Liên quan) ĐN đơn giá đặc biệt nhóm học: Đơn giá = (Đơn giá nhóm × Số SV nhóm) / Min(Số SV nhóm, Số SV ĐK); đặc biệt môn học; sinh viên – môn học."
+   ],
+   "stt": 169,
+   "title": "ĐN đơn giá học phí"
   },
   {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định GP_NHHKTINHHPTUDONG (danh sách NHHK tính học phí tự động)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_XacDinhMonHocLai (cách xác định môn học lại niên chế)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_PhanBietHLCT (phân biệt học lại và cải thiện niên chế)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định GP_MauPhieuHPHeDT (mẫu phiếu thu chi học phí theo hệ đào tạo)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_HinhThucMienGiamHP (miễn giảm với môn không học lần đầu)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_CoDonGiaTheoSV (đơn giá theo sinh viên niên chế)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_CoDonGiaMonHoc (đơn giá theo môn học tín chỉ)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_ThuHocLai (thu học phí học lại)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_HinhThucTinhHocPhi (4 giá trị hình thức tính học phí)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định SP_HeSoHocPhiHocLai (hệ số nhân đơn giá học lại)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 3",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ DM loại hình thu học phí",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa loại hình thu học phí (chỉ sửa)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 3",
-   "kind": "alt",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ DM loại hình thu học phí",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không cho thêm loại thu mới ở danh mục loại hình thu học phí"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 4",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa nhóm công thức thu (phiếu thu học phí trong học kỳ)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 5.1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN hình thức thu theo đối tượng",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa hình thức thu học phí theo đối tượng (cây phân cấp)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 5.2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN hình thức thu theo lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa hình thức thu học phí theo lớp (danh sách)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 5.3",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN hình thức tính theo SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa hình thức tính học phí theo sinh viên"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 6.1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo đơn giá học phí theo loại thu và cây phân cấp đối tượng"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 6.2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí (danh sách)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo đơn giá học phí dạng danh sách"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 7",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN mức đơn giá và số TCHP môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa mức đơn giá và số tín chỉ học phí môn học"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 7",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN mức đơn giá và số TCHP môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Gán mức đơn giá 0 tự động cho môn học mới"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 7",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN mức đơn giá và số TCHP môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đồng bộ số TC lý thuyết bằng số TC học phí"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 8",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá đặc biệt nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa đơn giá đặc biệt theo nhóm học"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 8",
-   "kind": "alt",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá đặc biệt nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đơn giá nhóm học khi nhập Số SV nhóm: Đơn giá = (Đơn giá nhóm * Số SV nhóm) / Min(Số SV nhóm, Số SV ĐK)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 9",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá đặc biệt môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa đơn giá đặc biệt theo môn học"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 10",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá đặc biệt sinh viên - môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa đơn giá đặc biệt theo sinh viên - môn học"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 11.1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Miễn giảm học phí/ Diện chính sách sinh viên chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo diện chính sách sinh viên chung"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 11.2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Miễn giảm học phí/ Diện chính sách sinh viên học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đồng bộ diện chính sách sinh viên học kỳ từ danh sách chung"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 11.3",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Miễn giảm học phí/ Nhập phần trăm miễn giảm DCS",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập phần trăm miễn giảm cho từng loại diện chính sách"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 12",
-   "kind": "main",
-   "menu": "Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu theo sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phụ thu học phí theo sinh viên"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 12",
-   "kind": "alt",
-   "menu": "Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu theo sinh viên",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cho phép nhập tiền phụ thu số âm để hoàn tiền cho sinh viên"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 13",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khoản thu tự định nghĩa",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo danh mục khoản thu tự định nghĩa (loại thu khác)"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 14.1",
-   "kind": "main",
-   "menu": "Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính theo từng sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tính học phí theo từng sinh viên"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 14.2",
-   "kind": "main",
-   "menu": "Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính theo lớp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tính học phí theo lớp"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 14.3",
-   "kind": "main",
-   "menu": "Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính theo khối",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tính học phí theo khối"
-  },
-  {
-   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục 14.4",
-   "kind": "main",
-   "menu": "Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính toàn trường",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tính học phí toàn trường"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa nhóm thu (xem các nhóm thu đã định nghĩa, thêm nhóm thu mới khi trường có khoản thu mới)"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Kiểm tra mỗi nhóm thu có loại thu tương ứng"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chính sách phân bổ khi thu không xác định phiếu báo",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa thứ tự ưu tiên phân bổ khi thu không xác định phiếu báo (chọn ưu tiên chính theo nợ cũ hoặc theo nhóm thu)"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chính sách phân bổ khi thu không xác định phiếu báo",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn phân bổ nợ hiện tại trước hay nợ cũ trước theo học kỳ"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chính sách phân bổ khi thu không xác định phiếu báo",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập thứ tự phân bổ ưu tiên của các nhóm thu"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Quản trị phân hệ/ Chính sách phân bổ khi thu không xác định phiếu báo",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn ưu tiên phân bổ cho môn học đăng ký theo ngày đăng ký, số tiền phải đóng, mã MH"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "main",
-   "menu": "Thu / chi HP/ Hoạt động thu / chi/ Thu học phí/ Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân bổ tiền đóng tùy ý theo thứ tự ưu tiên nhóm thu đã định nghĩa"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "main",
-   "menu": "Thu / chi HP/ Hoạt động thu / chi/ Thu học phí/ Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cùng nhóm thu: phân bổ cho học kỳ hiện tại trước, sau đó mới đến nợ cũ"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục 2",
-   "kind": "main",
-   "menu": "Thu / chi HP/ Hoạt động thu / chi/ Thu học phí/ Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cùng học kỳ đóng không đủ: phân bổ môn học theo ngày đăng ký trước, rồi số tiền ít hơn, rồi mã MH tăng dần"
-  },
-  {
-   "docRef": "QLTV_PhanBoHocPhiTuDinhNghia, mục I",
-   "kind": "main",
-   "menu": "Thu / chi HP/ Hoạt động thu / chi/ Thu học phí/ Import phiếu thu",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Áp dụng thứ tự phân bổ khi Import phiếu thu từ Excel"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ DM loại hình thu học phí",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Kiểm tra danh mục mã loại hình thu học phí"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 1",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa nhóm công thức thu và chọn loại hình thức thu thuộc nhóm"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 2",
-   "kind": "setup",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Danh mục khoản thu khác",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa danh mục khoản thu khác (mã, mã loại thu, thứ tự danh mục)"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 2",
-   "kind": "alt",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Danh mục khoản thu khác",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mã loại thu của khoản thu khác phải thuộc mã loại hình thu đã qui hoạch"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 3",
-   "kind": "main",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập khoản thu khác theo lớp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập đơn giá khoản thu khác theo lớp"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 3",
-   "kind": "main",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập khoản thu khác theo lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập nhanh đơn giá theo lớp bằng tiện ích Nhập đơn giá chung hoặc Import"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 3",
-   "kind": "main",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập thu khác cho sinh viên đặc biệt",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập đơn giá khoản thu khác riêng cho sinh viên đặc biệt"
-  },
-  {
-   "docRef": "QLTV_QuanLyCacKhoanThuTuDinhNghia, mục 3",
-   "kind": "alt",
-   "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập thu khác cho sinh viên đặc biệt",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sinh viên được miễn giảm 100% khoản thu khác nhập số tiền thu bằng 0"
-  },
-  {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục III.1 Đồng bộ danh sách nợ; III.2 Các mẫu in kiểm tra nợ",
    "kind": "main",
    "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Đồng bộ danh sách nợ: tính đến học kỳ hiện tại"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ.",
+    "Chọn nhiệm ý (Tính đến học kỳ hiện tại / Tính đến học kỳ sau / Tính nợ tích lũy cuối cùng) → Thực hiện.",
+    "Mở Chính sách HP / Chính sách học phí / Nợ học phí / Danh sách SV tồn nợ HP.",
+    "KIỂM TRA: sinh viên TEST có nợ học kỳ hiện tại, nợ cũ, đã đóng, nợ cuối cùng đúng; xuất excel được.",
+    "In Thu/chi HP / Khai thác báo biểu / Tồn nợ học phí / In danh sách tồn nợ học phí → số dương là nợ, số âm là dư."
+   ],
+   "stt": 170,
+   "title": "Cập nhật tồn nợ"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 1",
+   "docCheck": "partial",
+   "docNote": "Bước nhập theo lớp lấy theo tên menu – cần xác nhận với tài liệu QLTV_QuanLyCacKhoanThuTuDinhNghia.",
+   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi; QLTV_QuanLyCacKhoanThuTuDinhNghia, mục III.13 Quản lý loại thu khác",
    "kind": "main",
-   "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ",
+   "menu": "Chính sách HP / Chính sách các khoản thu khác / Khoản thu khác / Nhập khoản thu khác theo lớp",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Đồng bộ danh sách nợ: tính đến học kỳ sau (lấy cả dữ liệu đã đóng của học kỳ sau)"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Chính sách HP / Quản trị phân hệ / Quản lý danh mục / Danh mục khoản thu tự định nghĩa có khoản TEST_ (vd phí khám sức khỏe), chọn Loại thu kèm.",
+    "Mở menu Chính sách HP / Chính sách các khoản thu khác / Khoản thu khác / Nhập khoản thu khác theo lớp.",
+    "Chọn lớp test, chọn khoản thu TEST_, nhập số tiền → Lưu.",
+    "KIỂM TRA: sinh viên lớp test có khoản thu khác; khi tính học phí (bước 5) tổng tiền gồm khoản này."
+   ],
+   "stt": 171,
+   "title": "Nhập khoản thu khác theo lớp"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.14.2 Tính học phí theo lớp",
    "kind": "main",
-   "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ",
+   "menu": "Chính sách HP / Tính và In học phí / Tính học phí / Tính theo lớp",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Đồng bộ danh sách nợ: tính nợ tích lũy cuối cùng (đến học kỳ phát sinh học phí cuối cùng)"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: đơn giá đã khai (bước 1–2), sinh viên TEST đã đăng ký môn.",
+    "Mở menu Chính sách HP / Tính và In học phí / Tính học phí / Tính theo lớp.",
+    "Chọn lớp test → Tính học phí.",
+    "KIỂM TRA: học phí sinh viên TEST = Σ(số TCHP môn × đơn giá) + khoản thu khác − miễn giảm DCS (%), có hệ số học lại nếu có.",
+    "(Biến thể) Tính theo từng sinh viên (nhập mã SV, chọn học kỳ); theo khối; toàn trường (không dùng trên dữ liệu chung)."
+   ],
+   "stt": 172,
+   "title": "Tính theo lớp"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.1 Chỉnh định thông số; III.2.1 Thu học phí theo phiếu báo",
    "kind": "main",
-   "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Danh sách SV tồn nợ HP",
+   "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Thu học phí 1 SV",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Kiểm tra danh sách sinh viên tồn nợ học phí theo nhiệm ý đồng bộ (nợ HK hiện tại, nợ cũ, đã đóng HK hiện tại, nợ cuối cùng)"
+   "source": "sheet",
+   "steps": [
+    "Kiểm tra (chỉ ghi lại) Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục: GH_NHHKTHUHPEDUWEB, GV_PhanBietNganHangThuHP, GV_NganHangMacDinh, SV_LOAIBODEMTHUHP, GV_SVDONGHPTRONGSSVHK, GV_COTHUNOHPHKH.",
+    "Mở menu Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV.",
+    "Nhập mã sinh viên TEST → Enter (chỉ tick “Có tính học phí khi thu” khi đăng ký môn có biến động).",
+    "Xem Phiếu chưa thu (tùy chọn Tính HP HK cũ) → Thêm → nhập Số tiền thu, Số chứng từ (tick Thu ngân hàng nếu có) → Lưu và in.",
+    "KIỂM TRA: phiếu thu có số theo bộ đếm, hiện trong Danh sách phiếu đã thu; thu dư → vào tiền chờ phân bổ; thu thiếu → cân bằng vào các môn.",
+    "Dọn: Danh sách phiếu đã thu → Hủy phiếu test → KIỂM TRA hiện khi tick Hiển thị phiếu thu đã hủy."
+   ],
+   "stt": 173,
+   "title": "Thu học phí 1 SV"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 1",
+   "docCheck": "none",
+   "docNote": "Chưa có tài liệu import phiếu thu; sheet có #REF! ở dòng này.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Danh sách SV tồn nợ HP",
-   "priority": "trung bình",
+   "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Import phiếu thu",
+   "priority": "cao",
    "scenarioCode": "",
-   "title": "Xuất danh sách sinh viên tồn nợ học phí ra Excel"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Thu/chi HP / Hoạt động thu/chi / Thu học phí / Import phiếu thu.",
+    "Xuất cấu trúc, chuẩn bị file phiếu thu cho sinh viên TEST → chọn file → Import.",
+    "KIỂM TRA: phiếu thu được tạo đúng số tiền, xuất hiện ở Danh sách phiếu thu học kỳ."
+   ],
+   "stt": 174,
+   "title": "Import phiếu thu"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 2",
+   "docCheck": "partial",
+   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1 (Danh sách phiếu đã thu)",
    "kind": "main",
-   "menu": "Thu/chi HP / Khai thác báo biểu / Tổng hợp học phí / Liệt Kê Học Phí Học Kỳ Theo Sinh Viên",
+   "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Danh sách phiếu thu học kỳ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Thu/chi HP / Hoạt động thu/chi / Thu học phí / Danh sách phiếu thu học kỳ.",
+    "Lọc sinh viên TEST.",
+    "KIỂM TRA: có phiếu đã thu ở bước 6 với đúng số phiếu, số tiền, ngày thu; phiếu đã hủy chỉ hiện khi chọn hiển thị phiếu hủy."
+   ],
+   "stt": 175,
+   "title": "Danh sách phiếu thu học kỳ"
+  },
+  {
+   "docCheck": "partial",
+   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1 (In chi tiết phiếu đã thu)",
+   "kind": "main",
+   "menu": "Thu / chi HP / Hoạt động thu / chi / In học phí / In chi tiết học phí 1 SV",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "In mẫu Liệt kê học phí học kỳ theo sinh viên"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Thu/chi HP / Hoạt động thu/chi / In học phí / In chi tiết học phí 1 SV.",
+    "Nhập mã sinh viên TEST → In.",
+    "KIỂM TRA: chi tiết học phí từng môn, đã đóng, còn nợ đúng với phiếu báo."
+   ],
+   "stt": 176,
+   "title": "In chi tiết học phí 1 SV"
   },
   {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 2",
+   "docCheck": "none",
+   "docNote": "Chưa có tài liệu thu vãng lai.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Thu/chi HP / Khai thác báo biểu / Tồn nợ học phí / In danh sách tồn nợ học phí",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách tồn nợ học phí"
-  },
-  {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 2",
-   "kind": "main",
-   "menu": "Thu/chi HP / Khai thác báo biểu / Tồn nợ học phí / In danh sách chi tiết nợ của sinh viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách chi tiết nợ của sinh viên"
-  },
-  {
-   "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục 2",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mẫu in kiểm tra nợ: số tiền dương là sinh viên còn nợ, số tiền âm là sinh viên dư học phí"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến GH_NHHKTHUHPEDUWEB (NHHK thu học phí online)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến GV_PhanBietNganHangThuHP (phân biệt ngân hàng thu học phí) và chọn ngân hàng từ danh mục khi thu"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Danh mục ngân hàng",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị danh mục ngân hàng"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến GV_NganHangMacDinh (ngân hàng mặc định khi thu phiếu mới)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến SV_LOAIBODEMTHUHP (bộ đếm số phiếu thu tự động)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Danh mục bộ đếm",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tạo bộ đếm (ký tự bắt đầu, ký tự kết thúc, chiều dài dãy số)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến GV_SVDONGHPTRONGSSVHK (sinh viên đóng học phí phải có trong danh sách sinh viên học kỳ)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 1",
-   "kind": "setup",
-   "menu": "Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến GV_COTHUNOHPHKH (có thu nợ học phí các học kỳ trước tại học kỳ hiện tại)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
+   "menu": "Thu / chi HP / Quản lý thu vãng lai / Thu vãng lai / Danh sách thu vãng lai học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Nhập mã sinh viên, Enter lấy thông tin sinh viên và danh sách phiếu báo"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Thu/chi HP / Quản lý thu vãng lai / Thu vãng lai / Danh sách thu vãng lai học kỳ.",
+    "Thêm phiếu thu vãng lai TEST_ (người nộp ngoài danh sách SV, khoản thu, số tiền) → Lưu.",
+    "KIỂM TRA: phiếu hiện trong danh sách và Bảng kê thu/chi; Hủy phiếu test → KIỂM TRA."
+   ],
+   "stt": 177,
+   "title": "Danh sách thu vãng lai học kỳ"
   },
   {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
+   "docCheck": "partial",
+   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.2 Bảng kê thu/chi học phí",
    "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tính lại học phí khi thu (checkbox Có tính học phí khi thu)"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách Phiếu chưa thu và Tính HP HK cũ để đưa học kỳ nợ vào danh sách"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thu học phí: Thêm, nhập số tiền thu, Lưu / Lưu và in"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
+   "menu": "Thu / chi HP / Khai thác báo biểu / Thu / Chi học phí / In bảng kê thu / chi học phí",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "In chi tiết phiếu đã thu"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập số chứng từ và số chứng từ tự tăng khi thu phiếu tiếp theo"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Phân loại phiếu thu bằng checkbox Thu ngân hàng trước khi Lưu"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "alt",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Số tiền thu nhiều hơn tiền phải thu: phần dư vào tiền chờ phân bổ"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "alt",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Số tiền thu ít hơn tiền phải thu: tự cân bằng vào các môn, tính lại học phí để tạo phiếu báo cho môn còn thiếu"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "main",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm phiếu hoàn với số tiền dư âm, Lưu / Lưu và in"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "clean",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy phiếu thu từ Danh sách phiếu đã thu và xem lại bằng Hiển thị phiếu thu đã hủy"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.1",
-   "kind": "clean",
-   "menu": "Thu/chi HP / Hoạt động thu/chi / Thu học phí / Thu học phí 1 SV",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa phiếu thu từ Danh sách phiếu đã thu: thông tin không còn hiển thị"
-  },
-  {
-   "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục 2.2",
-   "kind": "main",
-   "menu": "Thu chi/HP/Khai thác báo biểu/Bảng kê thu chi học phí",
-   "priority": "thấp",
-   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Thu/chi HP / Khai thác báo biểu / Thu/Chi học phí / In bảng kê thu/chi học phí.",
+    "Chọn khoảng ngày có phiếu test → In.",
+    "KIỂM TRA: bảng kê có phiếu thu của sinh viên TEST đúng số tiền; tổng thu khớp Danh sách phiếu thu học kỳ."
+   ],
+   "stt": 178,
    "title": "In bảng kê thu/chi học phí"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 7 Xem học phí",
+   "kind": "main",
+   "menu": "NetWEB sinh viên: Xem học phí",
+   "priority": "thấp",
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Xem học phí",
+    "KIỂM TRA: tổng hợp học phí, lệ phí các học kỳ và chi tiết từng học kỳ khớp công nợ trên Edusoft"
+   ],
+   "stt": 179,
+   "title": "Xem học phí (Netweb sinh viên)"
   }
  ],
  "module": "QLTV",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 12 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 6 khớp, 4 khớp một phần, 2 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T05:23:32.175Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T05:23:32.175Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

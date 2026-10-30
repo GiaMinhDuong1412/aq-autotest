@@ -1,314 +1,179 @@
 {
- "createdAt": "2026-10-29T05:28:57.893Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
    "name": "KSDG_QuyTrinhKhaoSat",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_SinhVienKhaoSatDanhGia",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_GiangVienXemKhaoSatDanhGia",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 4",
-   "kind": "setup",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm form đánh giá (phiếu khảo sát)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 4",
-   "kind": "alt",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mã form đánh giá phải duy nhất, không được trùng"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 4",
-   "kind": "alt",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bỏ trống trường bắt buộc (*) khi thêm form đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 4",
+   "docCheck": "ok",
+   "docNote": "Tài liệu ghi menu 'Chuẩn bị > Định nghĩa form và câu hỏi > Danh mục form đánh giá' – khớp sheet.",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.4 Tạo form đánh giá (phiếu khảo sát)",
    "kind": "setup",
    "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Soạn và lưu tiêu đề form đánh giá"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi → Danh mục form đánh giá",
+    "Thêm: Mã form TEST_FORM01, Tên form, Viết tắt, Thứ tự, chọn Loại đánh giá (bắt buộc các trường *)",
+    "Tiêu đề form: bấm Sửa → soạn tiêu đề trong trình soạn thảo → Lưu vào hệ thống",
+    "Lưu",
+    "KIỂM TRA: TEST_FORM01 hiện trong danh mục, đúng loại đánh giá; bỏ trống trường * thì báo lỗi",
+    "Dọn (cuối luồng): xóa TEST_FORM01 sau khi đã xóa câu hỏi/kỳ đánh giá của nó"
+   ],
+   "stt": 196,
+   "title": "Danh mục form đánh giá"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 3",
-   "kind": "alt",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không cho sửa Mã khi chỉnh sửa mẫu tin danh mục"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 5",
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.5 Tạo danh mục thang đo đánh giá",
    "kind": "setup",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo danh mục thang đo đánh giá và danh sách câu trả lời chi tiết (hệ số điểm)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 5",
-   "kind": "alt",
    "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Mã thang đo đánh giá phải duy nhất, không trùng"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi → Danh mục thang đo đánh giá",
+    "Thêm: Mã thang đo TEST_TD01, Tên thang đo (Thứ tự, Viết tắt tùy chọn)",
+    "Danh sách câu trả lời chi tiết: 'Click here to add a new row' → nhập Thứ tự, Câu trả lời, Viết tắt, Hệ số tính điểm cho từng bậc (vd 5 bậc 0–4)",
+    "Lưu",
+    "KIỂM TRA: TEST_TD01 có đủ số bậc, hệ số điểm đúng thứ tự",
+    "Dọn: xóa TEST_TD01 khi không còn câu hỏi dùng"
+   ],
+   "stt": 197,
+   "title": "Danh mục thang đo đánh giá"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 5",
-   "kind": "alt",
-   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bỏ trống trường bắt buộc (*) khi thêm thang đo đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 6",
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.6 Tạo nhóm câu hỏi, III.7 Tạo danh mục câu hỏi",
    "kind": "setup",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi",
+   "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh sách câu hỏi",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "(Chuẩn bị) Menu … / Định nghĩa form và câu hỏi / Nhóm câu hỏi: chọn form TEST_FORM01 → Thêm nhóm TEST_NHOM01, kiểu kiểm tra trả lời → Lưu",
+    "Mở menu Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi → Danh sách câu hỏi",
+    "Chọn form TEST_FORM01 → Thêm: Thứ tự ghi trên form, Nội dung câu hỏi, Nhóm câu hỏi TEST_NHOM01, Kiểu trả lời = thang đo → chọn thang đo TEST_TD01, Loại thống kê",
+    "Lưu; thêm 1 câu kiểu chuỗi (ý kiến khác)",
+    "KIỂM TRA: câu hỏi hiện trong form đúng nhóm, kiểu trả lời; thiếu trường * thì cảnh báo",
+    "(Tùy chọn) Đánh lại số thứ tự bằng kéo thả; KIỂM TRA thứ tự mới",
+    "Dọn: xóa câu hỏi và nhóm TEST_NHOM01"
+   ],
+   "stt": 198,
+   "title": "Danh sách câu hỏi"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.8 Tạo kỳ đánh giá",
+   "kind": "main",
+   "menu": "Khảo sát đánh giá / Đánh giá học kỳ / Form đánh giá học kỳ / Tạo kỳ đánh giá",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Tạo nhóm câu hỏi (mã, tên, nhóm cha, kiểm tra trả lời, số cột đáp án)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khảo sát đánh giá / Đánh giá học kỳ / Form đánh giá học kỳ → Tạo kỳ đánh giá",
+    "Thêm: Mã kỳ TEST_KDG01, chọn Mã form TEST_FORM01, Ngày bắt đầu, Ngày kết thúc, tick Trả lời hết các câu hỏi (Có kiểm tra học phí, Không xem thông tin tùy chọn) → Lưu",
+    "KIỂM TRA: TEST_KDG01 hiện đúng form và khoảng ngày",
+    "Dọn: xóa TEST_KDG01 sau khi xóa danh sách đáp viên/trả lời"
+   ],
+   "stt": 199,
+   "title": "Tạo kỳ đánh giá"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 6",
-   "kind": "alt",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mã nhóm câu hỏi phải duy nhất, không trùng"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 6",
-   "kind": "alt",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Kiểm tra trả lời hết: bắt buộc trả lời hết câu hỏi trong nhóm mới được lưu (nộp) phiếu"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 6",
-   "kind": "alt",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Kiểm tra trả lời 1 câu và Không kiểm tra trong nhóm câu hỏi"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.9.1 Danh sách được đánh giá, III.9.2 Danh sách đáp viên",
    "kind": "main",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
+   "menu": "Khảo sát đánh giá / Danh sách đánh giá / Tạo và cập nhật danh sách / Tạo và cập nhật danh sách đáp viên",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Thêm câu hỏi vào form đánh giá"
+   "source": "sheet",
+   "steps": [
+    "(Chuẩn bị) Tạo và cập nhật danh sách được đánh giá: chọn kỳ TEST_KDG01, chuyển đối tượng từ khung trái sang phải → Lưu",
+    "Mở menu Khảo sát đánh giá / Danh sách đánh giá / Tạo và cập nhật danh sách → Tạo và cập nhật danh sách đáp viên",
+    "Chọn kỳ TEST_KDG01; thêm 1–2 đáp viên test vào danh sách đã chọn (nút thêm một/thêm tất cả) → Lưu",
+    "KIỂM TRA: Xem danh sách đánh giá đã tạo (9.3) có đáp viên test; loại bỏ 1 đáp viên → KIỂM TRA biến mất",
+    "Dọn: loại bỏ toàn bộ đáp viên/đối tượng của TEST_KDG01"
+   ],
+   "stt": 200,
+   "title": "Tạo và cập nhật danh sách đáp viên"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
+   "docCheck": "ok",
+   "docNote": "Phần nhập trả lời mở trang web – bộ test pywinauto có thể không điều khiển được trình duyệt, cần xác nhận.",
+   "docRef": "KSDG_QuyTrinhKhaoSat, mục III.10 Thực hiện đánh giá",
    "kind": "main",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Câu hỏi kiểu thang đo: hiện thêm tùy chọn chọn thang đo đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
-   "kind": "alt",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cảnh báo khi chưa nhập đủ các ô bắt buộc của câu hỏi"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
-   "kind": "main",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Copy câu hỏi từ form khác"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
-   "kind": "main",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tạo nhánh câu hỏi theo đối tượng đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 7",
-   "kind": "main",
-   "menu": "Khảo sát/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đánh lại số thứ tự câu hỏi bằng kéo thả"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 8",
-   "kind": "main",
-   "menu": "Khảo sát/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá",
+   "menu": "Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form / Nhập trả lời từng đáp viên",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Tạo kỳ đánh giá (mã kỳ, form, ngày bắt đầu/kết thúc, tùy chọn)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form → Nhập trả lời từng đáp viên",
+    "Chọn kỳ TEST_KDG01, chọn 1 đáp viên test → Nhập trả lời (chương trình mở trang web bảng câu hỏi)",
+    "Chọn đáp án cho các câu, nhập ý kiến khác → Lưu/Gửi",
+    "KIỂM TRA: đáp viên được đánh dấu đã trả lời; nếu kỳ bắt buộc trả lời hết mà bỏ sót câu thì bị chặn",
+    "Dọn: xóa kết quả trả lời của đáp viên test"
+   ],
+   "stt": 201,
+   "title": "Nhập trả lời từng đáp viên"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 8",
-   "kind": "alt",
-   "menu": "Khảo sát/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mã kỳ đánh giá phải duy nhất, không trùng"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 8",
-   "kind": "alt",
-   "menu": "Khảo sát/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tùy chọn Trả lời hết các câu hỏi trong kỳ đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 8",
-   "kind": "alt",
-   "menu": "Khảo sát/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tùy chọn Có kiểm tra học phí trước khi sinh viên đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 9.1",
-   "kind": "main",
-   "menu": "Khảo sát/ Danh sách đánh giá/ Tạo và Cập nhật danh sách/ Tạo và cập nhật danh sách được đánh giá",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo và cập nhật danh sách được đánh giá (thêm/loại bỏ đối tượng)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 9.2",
-   "kind": "main",
-   "menu": "Khảo sát/ Danh sách đánh giá/ Tạo và Cập nhật danh sách/ Tạo và cập nhật danh sách đáp viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo và cập nhật danh sách đáp viên (thêm/loại bỏ)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 9.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem danh sách đánh giá đã tạo"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 10",
-   "kind": "main",
-   "menu": "Khảo sát/ Trả lời đánh giá/ Trả lời thủ công từ form/ Nhập trả lời từng đáp viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập trả lời thủ công cho từng đáp viên"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông số SY_CAMXEMDIEMEDUWEBCHUADANHGIA (ràng buộc xem điểm khi chưa đánh giá)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cấm xem điểm theo từng mức ràng buộc khi sinh viên chưa hoàn thành đánh giá"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông số GH_NHHKDG (học kỳ khảo sát online)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông số GH_HIENTHIMENUKQDG (công bố kết quả cho giảng viên)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông số GH_SLTOITHIEUXEMKQDG (số phiếu tối thiểu để giảng viên xem kết quả)"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 12",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Giảng viên chỉ xem kết quả khi số phiếu lớn hơn số phiếu tối thiểu"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 13",
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat; NetWEB_SinhVienKhaoSatDanhGia, mục III.13 Lấy ý kiến khảo sát trên netweb",
    "kind": "main",
    "menu": "NetWEB SV + GV + GUEST: Khảo sát đánh giá",
    "priority": "cao",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "Sinh viên/giảng viên đăng nhập NetWEB và thực hiện khảo sát trên web"
+   "source": "sheet",
+   "steps": [
+    "Chuẩn bị: kỳ đánh giá test còn hiệu lực, có SV/GV test trong danh sách đáp viên; chỉ xem setting GH_NHHKDG, SY_CAMXEMDIEMEDUWEBCHUADANHGIA (không sửa)",
+    "Đăng nhập Netweb bằng tài khoản SV test (phiếu vãng lai: không đăng nhập) → menu Khảo sát đánh giá",
+    "KIỂM TRA: danh sách liệt kê các phiếu/môn cần đánh giá",
+    "Chọn 1 môn → chọn mức độ cho từng câu, ghi ý kiến khác → bấm Lưu/Gửi",
+    "KIỂM TRA: hệ thống ghi nhận, dòng môn được đánh dấu đã đánh giá; trên Edusoft đáp viên hiện đã trả lời",
+    "Lặp lại với tài khoản GV test và khách (GUEST) nếu có phiếu tương ứng"
+   ],
+   "stt": 202,
+   "title": "Khảo sát đánh giá (Netweb SV + GV + GUEST)"
   },
   {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 13",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Phiếu dành cho đối tượng vãng lai: khảo sát không cần đăng nhập"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 14",
+   "docCheck": "ok",
+   "docRef": "KSDG_QuyTrinhKhaoSat; NetWEB_GiangVienXemKhaoSatDanhGia, mục III.14 Xem kết quả ykph online đối với giảng viên",
    "kind": "main",
    "menu": "NetWEB giảng viên: Kết quả khảo sát giảng viên",
-   "priority": "thấp",
+   "priority": "cao",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "Giảng viên xem kết quả khảo sát online theo học kỳ và mã đợt"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục 14",
-   "kind": "main",
-   "menu": "NetWEB giảng viên: Kết quả khảo sát giảng viên",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In thống kê biểu đồ và in thống kê tổng hợp kết quả khảo sát"
-  },
-  {
-   "docRef": "KSDG_QuyTrinhKhaoSat, mục IV",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Điều chỉnh form đã có đáp viên trả lời sẽ xóa toàn bộ kết quả đánh giá"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: GH_HIENTHIMENUKQDG đang công bố kết quả, GV test đạt GH_SLTOITHIEUXEMKQDG phiếu (chỉ xem, không sửa setting)",
+    "Đăng nhập Netweb bằng tài khoản GV test → menu Kết quả khảo sát giảng viên",
+    "Chọn học kỳ → chọn mã đợt đánh giá",
+    "In thống kê biểu đồ; In thống kê tổng hợp",
+    "KIỂM TRA: báo cáo hiển thị điểm trung bình từng câu và ý kiến khác, khớp kết quả trên Edusoft"
+   ],
+   "stt": 203,
+   "title": "Kết quả khảo sát giảng viên (Netweb giảng viên)"
   }
  ],
  "module": "KSDG",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 8 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 8 khớp, 0 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T05:28:57.893Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T05:28:57.893Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

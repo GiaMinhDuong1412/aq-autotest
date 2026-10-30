@@ -1,0 +1,38 @@
+{
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "docs": [
+  {
+   "name": "NETWEB-QuanTriChung",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docCheck": "ok",
+   "docRef": "NETWEB-QuanTriChung, mục III.1–2 Trang quản trị Admin, Tính năng và cài đặt (2.1–2.10), III.4.4 Gửi thông báo",
+   "kind": "main",
+   "menu": "NetWEB ADMIN: Quản trị chung (test các chức năng ẩn / hiện, đăng tin bài viết, thông báo chung,...)",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở trang quản trị: thêm /admin vào địa chỉ Netweb test (vd …/release.netweb/admin/#/), đăng nhập tài khoản admin.",
+    "2.1 Thiết lập chung: xem Tên trường, Logo, Theme; mục Ẩn/hiện nội dung trang chủ → tắt một khu vực → Lưu → KIỂM TRA trang chủ không còn khu vực đó; bật lại.",
+    "2.2 Header: Thêm menu (Thứ tự, Hiển thị, Icon, Tên menu, Liên kết) → Lưu → KIỂM TRA menu hiện trên trang chủ → Xóa menu test.",
+    "2.4 Đăng tin bài viết: Thêm bài loại Thông báo (Tiêu đề TEST_…, Mô tả ngắn, Nội dung, Hiển thị) → Lưu & thoát → KIỂM TRA bài hiện trên trang chủ → Chỉnh sửa tiêu đề → KIỂM TRA → Xóa → KIỂM TRA không còn.",
+    "4.4 Gửi thông báo: Thêm thông báo, chọn đối tượng là sinh viên test → KIỂM TRA sinh viên đó thấy thông báo.",
+    "Các mục Banner, Thư viện, Đối tác, Quảng cáo, Footer (2.3–2.8): thử Thêm → Ẩn/Hiện → Xóa tương tự."
+   ],
+   "stt": 213,
+   "title": "Quản trị chung (test các chức năng ẩn / hiện, đăng tin bài viết, thông báo chung,...) (Netweb ADMIN)"
+  }
+ ],
+ "module": "QTRI",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 1 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 1 khớp, 0 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
+ "product": "netweb",
+ "status": "draft",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

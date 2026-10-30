@@ -2,11 +2,13 @@ AQ AUTOTEST – TEST ĐĂNG NHẬP EDUSOFT BẰNG SCRIPT (CHẾ ĐỘ TRÌNH DI�
 =====================================================================
 
 Bộ này hiện chỉ có kịch bản CHUNG-001 – đăng nhập Edusoft:
-    Luồng chính – Bước 1 → 6 đúng như kịch bản trên console: mở Edusoft.NET.exe theo đường dẫn
-  trong config.json, chờ khung đăng nhập, nhập tài khoản, nhập mật khẩu, bấm Đăng nhập.
-  Sau đó các luồng thay thế theo thứ tự: A1 đường dẫn sai (không mở được), A2 sai mật khẩu và
-  A3 bỏ trống tên đăng nhập (mỗi luồng mở lại Edusoft, phải bị chặn, script tự đóng thông báo),
-  A4 khung đen lần mở đầu (chỉ ghi nhận nếu xảy ra). Xong thì đóng Edusoft đã mở.
+    Mở Edusoft MỘT lần. Luồng chính Bước 1 → 3: mở Edusoft.NET.exe theo đường dẫn trong config.json,
+  chờ khung đăng nhập. Tại khung đăng nhập thử luôn các luồng con: sai mật khẩu, bỏ trống tên, sai tên
+  đăng nhập (phải bị chặn, script tự đóng thông báo, KHÔNG mở lại Edusoft). Rồi Bước 4 → 6: nhập tài
+  khoản, mật khẩu đúng, bấm Đăng nhập. Sau đó luồng con đường dẫn sai (không mở được) và khung đen lần
+  mở đầu (chỉ ghi nhận nếu xảy ra). Xong thì đóng Edusoft đã mở.
+  Kịch bản khác: chạy hết luồng chính, ghi nhận kết quả (ket-qua-luong-chinh.json) rồi mới test từng
+  luồng con trên cùng phiên Edusoft.
 Các kịch bản nghiệp vụ sẽ bổ sung sau (tải lại bộ chạy mới từ console).
 
 Script thao tác trực tiếp trên cửa sổ Edusoft đang mở: chuột di chuyển và bấm thật,

@@ -1,438 +1,127 @@
 {
- "createdAt": "2026-10-29T05:28:06.429Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
    "name": "DIEM_QuanLyTotNghiep",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN",
+   "name": "NETWEB_XemKetQuaXetTotNghiep",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.1",
+   "docCheck": "ok",
+   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.1 Tiêu chuẩn (theo 2.1.1 Tiêu chuẩn xét thi)",
    "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN)",
+   "menu": "Tốt nghiệp / Xét tốt nghiệp / Tiêu chuẩn / Định nghĩa tiêu chuẩn (TN)",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Định nghĩa tiêu chuẩn xét tốt nghiệp (thêm/sửa/xóa tiêu chuẩn)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tốt nghiệp / Xét tốt nghiệp / Tiêu chuẩn / Định nghĩa tiêu chuẩn (TN).",
+    "Thêm tiêu chuẩn TEST_: mã, tên, khối xét, Chứng chỉ xét từ chương trình, Chứng chỉ ngoài bổ sung, Số tín chỉ chung, Điểm trung bình tích lũy, Tín chỉ cho nợ, Điểm min cho nợ, Số môn cho nợ → Lưu.",
+    "Môn bắt buộc: thêm môn (BB đạt; Import từ file / CTĐT khối / CTĐT lớp); Môn tự chọn: nhóm, nhánh, điều kiện đạt; (hoặc Đồng bộ / Copy từ tiêu chuẩn khác).",
+    "KIỂM TRA: mở lại thấy đủ điều kiện và môn.",
+    "(Liên quan) Tốt nghiệp / Xét tốt nghiệp / Môn tốt nghiệp / Xem sửa môn TN của lớp: cột tính ĐTBTL đánh “x” hay không quyết định cách tính điểm TB tốt nghiệp."
+   ],
+   "stt": 180,
+   "title": "Định nghĩa tiêu chuẩn (TN)"
   },
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.1",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo môn bắt buộc và môn tự chọn cho tiêu chuẩn"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.1",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Copy tiêu chuẩn và đồng bộ môn vào CTĐT lớp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.2",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp/ Xem sửa môn TN của lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem và sửa môn tốt nghiệp của lớp (thêm dòng, chọn mã bằng F1, lưu)"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.2",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp/ Xem sửa môn TN của lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Môn tốt nghiệp có đánh dấu x được tính vào ĐTB tích lũy"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.2",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp/ Xem sửa môn TN của lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Môn tốt nghiệp không đánh dấu x tính vào ĐTB các môn tốt nghiệp, ĐTB tốt nghiệp là trung bình cộng với ĐTB tích lũy"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tạo đợt xét tốt nghiệp và danh sách lớp xét (đồng bộ lớp, gán đợt chung, tiêu chuẩn chung)"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3",
+   "docCheck": "ok",
+   "docNote": "Sheet ghi #REF! ở cột mô tả dòng này.",
+   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3 Đợt và danh sách xét (theo 2.1.2)",
    "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét",
+   "menu": "Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách SV xét (TN)",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Tạo danh sách sinh viên xét từ thông tin gán cho lớp"
+   "source": "sheet",
+   "steps": [
+    "Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách đợt xét (TN): Thêm đợt TEST_ → Lưu.",
+    "… / Danh sách lớp xét (TN): Đồng bộ → chọn lớp test → Đợt chung, Tiêu chuẩn chung → Tạo DS xét (nhiệm ý: chỉ tạo SV chưa có / cập nhật lại / xóa và tạo lại).",
+    "Mở menu Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách SV xét (TN).",
+    "KIỂM TRA: sinh viên lớp test có trong danh sách với đúng đợt, tiêu chuẩn; sửa tiêu chuẩn của một SV → Lưu → KIỂM TRA."
+   ],
+   "stt": 181,
+   "title": "Danh sách SV xét (TN)"
   },
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tạo DS xét chỉ thêm sinh viên chưa có trong danh sách"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3",
+   "docCheck": "ok",
+   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.4 Xét tốt nghiệp (theo 2.1.3 Xét thi)",
    "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách SV xét (TN)",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh sửa danh sách sinh viên xét theo đợt và tiêu chuẩn"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3",
-   "kind": "clean",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa danh sách sinh viên của các lớp đã chọn và tạo lại"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo đợt và tiêu chuẩn (TN)",
+   "menu": "Tốt nghiệp / Xét tốt nghiệp / Xét tốt nghiệp / Xét theo đợt và tiêu chuẩn (TN)",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Xét tốt nghiệp theo đợt và tiêu chuẩn (chọn cộng lại điểm, tùy chọn xét, xem kết quả đạt/không đạt)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tốt nghiệp / Xét tốt nghiệp / Xét tốt nghiệp / Xét theo đợt và tiêu chuẩn (TN).",
+    "Chọn đợt TEST_ và tiêu chuẩn TEST_ → Xử lý.",
+    "Chọn nhiệm ý cộng lại điểm (tất cả / có thay đổi), nhiệm ý xét, đối tượng, có lưu kết quả → Chọn.",
+    "KIỂM TRA: cửa sổ chọn Đạt / Không đạt in kết quả; sinh viên TEST đạt / không đạt đúng điều kiện tiêu chuẩn."
+   ],
+   "stt": 182,
+   "title": "Xét theo đợt và tiêu chuẩn (TN)"
   },
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
+   "docCheck": "ok",
+   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5 Xem kết quả tốt nghiệp",
    "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
+   "menu": "Tốt nghiệp / Xét tốt nghiệp / Xem kết quả tốt nghiệp / Danh sách sinh viên không tốt nghiệp",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Xem danh sách sinh viên tốt nghiệp"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tốt nghiệp / Xét tốt nghiệp / Xem kết quả tốt nghiệp / Danh sách sinh viên không tốt nghiệp.",
+    "KIỂM TRA: sinh viên TEST không đạt có trong danh sách; Xem môn nợ hiển thị đúng môn còn nợ.",
+    "In danh sách / In bảng điểm → KIỂM TRA.",
+    "(Luồng khác) Xét đạt vớt cho sinh viên TEST → KIỂM TRA sinh viên chuyển sang Danh sách sinh viên tốt nghiệp."
+   ],
+   "stt": 183,
+   "title": "Danh sách sinh viên không tốt nghiệp"
   },
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
+   "docCheck": "partial",
+   "docNote": "Đã đọc tài liệu tới trang 25/38, chưa đọc phần mẫu in kèm quyết định – cần xác nhận.",
+   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.6–2.5.7 In kết quả, In danh sách tốt nghiệp",
    "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem môn nợ của sinh viên đã tốt nghiệp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Refresh danh sách sau khi xét lại kết quả"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Lọc trùng dữ liệu sinh viên"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "clean",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa sinh viên đã chọn khỏi danh sách đạt xét tốt nghiệp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp",
+   "menu": "Tốt nghiệp / Xét tốt nghiệp / In danh sách tốt nghiệp / In danh sách tốt nghiệp kèm quyết định",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "In danh sách, giấy chứng nhận tốt nghiệp tạm thời và bảng điểm từ danh sách sinh viên tốt nghiệp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên chưa tốt nghiệp, xem môn nợ, in danh sách và bảng điểm"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xét đạt vớt: bỏ qua điều kiện và lưu vào danh sách đạt xét tốt nghiệp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.6",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ In kết quả",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In kết quả tốt nghiệp (tổng hợp, mỗi sinh viên 1 kết quả, theo lớp, theo lớp có quyết định, cấp phát văn bằng theo khối, DSSV ký số, DSSV nợ chuẩn đầu ra)"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.7",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ In thống kê",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In thống kê tốt nghiệp (theo khóa học, phân loại theo khoa, theo hộ khẩu, sinh viên TN, tổng hợp)"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.8",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ In danh sách tốt nghiệp/ In danh sách tốt nghiệp kèm quyết định",
-   "priority": "thấp",
-   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Tốt nghiệp / Xét tốt nghiệp / In danh sách tốt nghiệp / In danh sách tốt nghiệp kèm quyết định.",
+    "Chọn đợt / lớp test, nhập thông tin quyết định → In.",
+    "KIỂM TRA: danh sách in có đúng sinh viên đạt tốt nghiệp ở bước 3, kèm số quyết định."
+   ],
+   "stt": 184,
    "title": "In danh sách tốt nghiệp kèm quyết định"
   },
   {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.9",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Định nghĩa mẫu văn bằng/ Định nghĩa mẫu văn bằng",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa mẫu văn bằng"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.10",
-   "kind": "clean",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Hủy kết quả tốt nghiệp/ Hủy tất cả",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy tất cả kết quả tốt nghiệp (có hỏi xác nhận lại)"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.10",
-   "kind": "clean",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Hủy kết quả tốt nghiệp/Hủy theo lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy kết quả tốt nghiệp theo lớp"
-  },
-  {
-   "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.10",
-   "kind": "clean",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Hủy kết quả tốt nghiệp/ Hủy theo đợt",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy kết quả tốt nghiệp theo đợt"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 1",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách đợt bảo vệ luận văn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tạo mới đợt bảo vệ luận văn và nhập khoảng thời gian của đợt"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 1",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách thành viên hội đồng trong đợt",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm thành viên hội đồng của đợt (từng dòng và Import)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 1",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách nhóm hội đồng bảo vệ luận văn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm hoặc Import nhóm hội đồng bảo vệ luận văn của đợt"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 2",
+   "docCheck": "ok",
+   "docRef": "NETWEB_XemKetQuaXetTotNghiep, mục 1 Mở công bố kết quả, 2 SV xem kết quả",
    "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Danh sách đăng ký đề tài",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Sinh viên đăng ký đề tài (thêm hoặc Import)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 2",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Danh sách đăng ký đề tài",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mỗi sinh viên chỉ được đăng ký một đề tài"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 2",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Danh sách đăng ký đề tài",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bắt buộc nhập môn học đăng ký đề tài để nhận điểm về bảng điểm"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 2",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Nhập điểm hướng dẫn đề tài",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập điểm hướng dẫn đề tài (nhập trực tiếp hoặc cập nhật theo file)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 3",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Hội đồng bảo vệ đề cương",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm hội đồng bảo vệ đề cương và gán nhóm cho hội đồng"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 3",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Gán hội đồng bảo vệ đề cương cho sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Gán hội đồng bảo vệ đề cương cho sinh viên (nhập mã hoặc cập nhật theo file)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 3",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Gán thời gian bảo vệ đề cương",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Gán thời gian bảo vệ đề cương (nhập trực tiếp hoặc gán tự động)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 3",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Nhập điểm và kết quả bảo vệ đề cương",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập điểm và kết quả Đạt đề cương (trực tiếp, đánh tích hoặc cập nhật theo file)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 3",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Chuyển SV đạt vào DS bảo vệ luận văn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chuyển sinh viên đạt đề cương vào danh sách bảo vệ luận văn"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "setup",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Hội đồng bảo vệ luận văn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm hội đồng bảo vệ luận văn và gán nhóm cho hội đồng"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Danh sách sinh viên bảo vệ luận văn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên bảo vệ luận văn chuyển từ bảo vệ đề cương (kết quả Đạt)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "alt",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Danh sách sinh viên bảo vệ luận văn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm hoặc Import sinh viên được phép làm luận văn ngoài điều kiện Đạt đề cương"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Gán hội đồng bảo vệ luận văn cho sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Gán hội đồng bảo vệ luận văn cho sinh viên (nhập mã hoặc cập nhật theo file)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Gán thời gian bảo vệ luận văn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Gán thời gian bảo vệ luận văn (nhập trực tiếp hoặc gán tự động)"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Điểm cộng luận văn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm hoặc Import điểm cộng luận văn cho buổi bảo vệ tốt"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Nhập điểm bảo vệ luận văn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập điểm bảo vệ luận văn và tính điểm BVLV rồi lưu"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 4",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Chuyển điểm luận văn vào môn học",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chuyển điểm luận văn của sinh viên đạt vào môn học tương ứng trong bảng điểm"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ In/ In danh sách SV bảo vệ",
+   "menu": "NetWEB sinh viên: Xem kết quả xét tốt nghiệp",
    "priority": "thấp",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "In danh sách SV bảo vệ"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ In/ In danh sách SV bảo vệ luận văn",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách SV bảo vệ luận văn"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ In/ In điểm bảo vệ đề cương",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In điểm bảo vệ đề cương"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ In/ In điểm bảo vệ luận văn",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In điểm bảo vệ luận văn"
-  },
-  {
-   "docRef": "QLTN_QuanLyQuaTrinhThucHienLuanVanTN, mục 5",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Bảo vệ luận văn/ In/ Thống kê Nhà khoa học tham gia hội đồng",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Thống kê nhà khoa học tham gia hội đồng theo đợt"
+   "source": "sheet",
+   "steps": [
+    "Chỉ xem (không sửa) trạng thái công bố ở Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách đợt xét (TN)",
+    "Đăng nhập Netweb bằng SV test → menu Xem kết quả xét tốt nghiệp",
+    "KIỂM TRA: chưa công bố/chưa xét → thông báo tương ứng; đã xét → hiện đạt/chưa đạt và điều kiện chưa đạt khớp Edusoft"
+   ],
+   "stt": 185,
+   "title": "Xem kết quả xét tốt nghiệp (Netweb sinh viên)"
   }
  ],
  "module": "QLTN",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 6 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 5 khớp, 1 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T05:28:06.429Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T05:28:06.429Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

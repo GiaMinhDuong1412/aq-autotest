@@ -1,15 +1,19 @@
 /* AQ Autotest – thay window.claude (của claude.ai) khi chạy console trên localhost.
  * Cung cấp đúng phần console dùng: db, user, assets, downloads, permissions, mcp (host:aq-autotest).
  * Dữ liệu đi qua server.py (lưu file JSON trong data/). Thay đổi từ máy khác (git pull) được
- * nhận nhờ thăm dò /api/rev mỗi 2 giây. */
+ * nhận nhờ thăm dò /api/rev mỗi 2 giây.
+ * Trên server (window.AQ_SERVER, server.py --public): người dùng là tài khoản đăng nhập, không có cầu nối
+ * tới máy chạy test (nút Chạy tải file lệnh về máy người bấm, Agent nhận từ thư mục Tải về). */
 (function () {
   'use strict';
-  var LOCAL = window.AQ_LOCAL || {};
+  var SERVER = !!window.AQ_SERVER;
+  var LOCAL = window.AQ_LOCAL || window.AQ_SERVER || {};
   var H = { 'Content-Type': 'application/json', 'X-AQ': '1' };
   function err(code, message) { var e = new Error(message || code); e.code = code; e.message = message || code; return e; }
   async function api(method, url, body, headers) {
     var r = await fetch(url, { method: method, headers: headers || H, body: body === undefined ? undefined : (body instanceof Blob ? body : JSON.stringify(body)) });
     var j = null; try { j = await r.json(); } catch (e) { j = null; }
+    if (r.status === 401 && SERVER) { location.href = 'login'; throw err('login', 'Cần đăng nhập lại'); }
     if (!r.ok) throw err(r.status === 404 ? 'not_found' : r.status === 422 ? 'tool_error' : 'bad_request', (j && j.error) || ('HTTP ' + r.status));
     return j;
   }
@@ -21,7 +25,7 @@
   var rev = null;
   function refreshAll() { listeners.slice().forEach(function (l) { l.run(); }); }
   async function poll() {
-    try { var r = await api('GET', '/api/rev'); if (rev !== null && r.rev !== rev) refreshAll(); rev = r.rev; } catch (e) { }
+    try { var r = await api('GET', 'api/rev'); if (rev !== null && r.rev !== rev) refreshAll(); rev = r.rev; } catch (e) { }
     setTimeout(poll, 2000);
   }
   setTimeout(poll, 2000);
@@ -29,10 +33,10 @@
 
   function docSnap(id, exists, data) { return { id: id, exists: exists, data: function () { return clone(data); } }; }
   function Ref(path, id) { this.path = path; this.id = id; }
-  Ref.prototype.get = async function () { var r = await api('GET', '/api/doc?' + q({ path: this.path, id: this.id })); return docSnap(this.id, r.exists, r.data); };
-  Ref.prototype.set = async function (data) { await api('PUT', '/api/doc?' + q({ path: this.path, id: this.id }), data); bump(); };
-  Ref.prototype.update = async function (data) { await api('PATCH', '/api/doc?' + q({ path: this.path, id: this.id }), data); bump(); };
-  Ref.prototype['delete'] = async function () { await api('DELETE', '/api/doc?' + q({ path: this.path, id: this.id })); bump(); };
+  Ref.prototype.get = async function () { var r = await api('GET', 'api/doc?' + q({ path: this.path, id: this.id })); return docSnap(this.id, r.exists, r.data); };
+  Ref.prototype.set = async function (data) { await api('PUT', 'api/doc?' + q({ path: this.path, id: this.id }), data); bump(); };
+  Ref.prototype.update = async function (data) { await api('PATCH', 'api/doc?' + q({ path: this.path, id: this.id }), data); bump(); };
+  Ref.prototype['delete'] = async function () { await api('DELETE', 'api/doc?' + q({ path: this.path, id: this.id })); bump(); };
   Ref.prototype.onSnapshot = function (next, error) {
     var self = this, alive = true, last = null;
     var l = { run: function () { if (!alive) return; self.get().then(function (s) { var sig = JSON.stringify([s.exists, s.data()]); if (sig === last) return; last = sig; next(s); }, function (e) { if (error) error(e); }); } };
@@ -46,7 +50,7 @@
   Query.prototype.orderBy = function (f, dir) { return this._with('order', [f, dir || 'asc']); };
   Query.prototype.limit = function (n) { return this._with('limit', n); };
   Query.prototype.where = function (f, op, v) { var w = (this.o.where || []).concat([[f, op, v]]); return this._with('where', w); };
-  Query.prototype.add = async function (data) { var r = await api('POST', '/api/db?' + q({ path: this.path }), data); bump(); return new Ref(this.path, r.id); };
+  Query.prototype.add = async function (data) { var r = await api('POST', 'api/db?' + q({ path: this.path }), data); bump(); return new Ref(this.path, r.id); };
   function test(d, w) {
     var a = d[w[0]], op = w[1], b = w[2];
     switch (op) {
@@ -56,7 +60,7 @@
     }
   }
   Query.prototype.get = async function () {
-    var r = await api('GET', '/api/db?' + q({ path: this.path })), docs = r.docs || [], o = this.o;
+    var r = await api('GET', 'api/db?' + q({ path: this.path })), docs = r.docs || [], o = this.o;
     (o.where || []).forEach(function (w) { docs = docs.filter(function (d) { return test(d.data, w); }); });
     if (o.order) { var f = o.order[0], s = o.order[1] === 'desc' ? -1 : 1; docs.sort(function (x, y) { var a = x.data[f], b = y.data[f]; return a === b ? 0 : (a === undefined || a === null) ? 1 : (b === undefined || b === null) ? -1 : (a < b ? -s : s); }); }
     if (o.limit) docs = docs.slice(0, o.limit);
@@ -75,7 +79,10 @@
   var user = {
     id: async function () { return LOCAL.userId || null; },
     me: async function () { return { id: LOCAL.userId, name: LOCAL.userName || '' }; },
-    profiles: async function (ids) { var o = {}; (ids || []).forEach(function (id) { o[id] = { id: id, name: id === LOCAL.userId ? (LOCAL.userName || '') : '' }; }); return o; },
+    profiles: async function (ids) {
+      var all = {}; try { ((await api('GET', 'api/users')).users || []).forEach(function (u) { all[u.id] = u; }); } catch (e) { }
+      var o = {}; (ids || []).forEach(function (id) { o[id] = { id: id, name: all[id] ? all[id].name : id === LOCAL.userId ? (LOCAL.userName || '') : '' }; }); return o;
+    },
     search: async function () { return []; },
     isOwner: function () { return true; }, canEdit: function () { return true; }, can: async function () { return true; }
   };
@@ -83,7 +90,7 @@
   /* ---------------- assets ---------------- */
   var assets = {
     upload: async function (blob) {
-      var r = await fetch('/api/assets', { method: 'POST', headers: { 'Content-Type': blob.type || 'application/octet-stream', 'X-AQ': '1' }, body: blob });
+      var r = await fetch('api/assets', { method: 'POST', headers: { 'Content-Type': blob.type || 'application/octet-stream', 'X-AQ': '1' }, body: blob });
       if (!r.ok) throw err('upload_failed', 'Không lưu được file'); return r.json();
     },
     list: async function () { return { assets: [], usage: {} }; },
@@ -102,15 +109,25 @@
   /* ---------------- mcp: chỉ host:aq-autotest (server.py làm trực tiếp) ---------------- */
   var mcp = {
     callTool: async function (server, tool, input) {
+      if (SERVER) throw err('server_not_connected', 'Console trên server không nối trực tiếp máy chạy test – nút Chạy tải file lệnh về máy này.');
       if (server !== 'host:aq-autotest') throw err('server_not_connected', 'Bản localhost không có kết nối ' + server);
-      var out = await api('POST', '/api/kit/' + encodeURIComponent(tool), input || {});
+      var out = await api('POST', 'api/kit/' + encodeURIComponent(tool), input || {});
       return { content: [{ type: 'text', text: JSON.stringify(out) }], structuredContent: out, payload: out };
     },
-    listTools: async function () { return { servers: [{ server: 'host:aq-autotest', authStatus: 'connected', tools: [] }] }; },
+    listTools: async function () { if (SERVER) return { servers: [] }; return { servers: [{ server: 'host:aq-autotest', authStatus: 'connected', tools: [] }] }; },
     server: async function (name) { return new Proxy({}, { get: function (_, t) { return function (input) { return mcp.callTool(name, t, input).then(function (r) { return r.payload; }); }; } }); }
   };
 
   var permissions = { state: async function () { return 'granted'; }, request: async function () { return {}; }, manage: async function () { } };
   var caps = { db: db, user: user, assets: assets, downloads: downloads, mcp: mcp, permissions: permissions };
+  if (SERVER) {          // menu tài khoản: "Hồ sơ" → trang Tài khoản, "Đăng xuất" → đăng xuất thật
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('#accountMenu .account-item');
+      if (!b || b.hasAttribute('data-page-go')) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.id === 'logoutBtn') fetch('logout', { method: 'POST', headers: { 'X-AQ': '1' } }).then(function () { location.href = 'login'; });
+      else location.href = 'quan-tri';
+    }, true);
+  }
   window.claude = { use: function (name) { return Promise.resolve(caps[name] || null); } };
 })();

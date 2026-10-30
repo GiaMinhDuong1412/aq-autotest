@@ -1,0 +1,35 @@
+{
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "docs": [
+  {
+   "name": "NetWEB_Guest_TraCuuLuanVan_VanBangChungChi",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docCheck": "ok",
+   "docRef": "NetWEB_Guest_TraCuuLuanVan_VanBangChungChi, mục 2 Kiểm tra văn bằng chứng chỉ trực tuyến (1 Tra cứu luận văn)",
+   "kind": "main",
+   "menu": "NetWEB GUEST: Tra cứu thông tin văn bằng chứng chỉ",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở Netweb không đăng nhập (GUEST) → menu Tra cứu thông tin tốt nghiệp",
+    "Nhập Số văn bằng test → Tìm; KIỂM TRA thông tin văn bằng đúng",
+    "Tra cứu luận văn: nhập một hoặc nhiều trường → KIỂM TRA kết quả hiển thị đúng"
+   ],
+   "stt": 219,
+   "title": "Tra cứu thông tin văn bằng chứng chỉ (Netweb GUEST)"
+  }
+ ],
+ "module": "KHACH",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 1 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 1 khớp, 0 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
+ "product": "netweb",
+ "status": "draft",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}

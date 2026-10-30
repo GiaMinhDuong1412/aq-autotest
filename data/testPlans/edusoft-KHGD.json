@@ -1,28 +1,10 @@
 {
- "createdAt": "2026-10-29T04:32:27.073Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
-   "name": "KHGD_CacBuocXepTKB",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KHGD_ChamCongGiangDay",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KHGD_DinhNghiaThoiGianDungTrongTKB",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KHGD_KhoaDuLieuCTDT",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "KHGD_PhanQuyenXepTKBTheoKhoa",
+   "name": "QLHT_ThaoTacDanhMuc",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
@@ -30,7 +12,7 @@
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "KHGD_QuanLyNghiDayVaDayBu",
+   "name": "KHGD_CacBuocXepTKB",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
@@ -38,1163 +20,437 @@
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "KHGD_QuanLySuDungPhongHocVaGiangDuong",
+   "name": "KHGD_DinhNghiaThoiGianDungTrongTKB",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "KHGD_QuanLyNghiDayVaDayBu",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "KHGD_SuDungPhongDotXuatVaTimKiemPhongRanh",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "Netweb_TaiLieuHuongDanSinhVien",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NetWEB_GiangVienXemThongTinCaNhan",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
+   "docCheck": "partial",
+   "docNote": "Bản trước lỗi EX case 64342 ở menu này. Chưa có tài liệu riêng cho danh mục khối lớp – theo hướng dẫn thao tác danh mục chung.",
+   "docRef": "QLHT_ThaoTacDanhMuc, mục (thao tác danh mục chung)",
    "kind": "setup",
-   "menu": "Hệ thống/ Thông tin học kỳ/ Danh mục năm học học kỳ",
+   "menu": "Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục khối lớp",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Khai báo số tuần/học kỳ"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục khối lớp.",
+    "Thêm khối lớp TEST_ (mã khối, tên, bậc hệ ngành, khóa) → Lưu.",
+    "KIỂM TRA: khối hiện trong danh mục; sửa tên → KIỂM TRA; xóa khối TEST_ → KIỂM TRA không còn (xóa khối đang có lớp phải bị chặn)."
+   ],
+   "stt": 77,
+   "title": "Danh mục khối lớp"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
+   "docCheck": "partial",
+   "docNote": "Theo hướng dẫn thao tác danh mục chung – cần xác nhận các trường bắt buộc.",
+   "docRef": "QLHT_ThaoTacDanhMuc; KHGD_QuanLyCTDT3Cap, mục (danh mục môn học dùng cho CTĐT)",
    "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
+   "menu": "Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục môn học",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Chuẩn bị từ điển phòng (sức chứa, tính chất phòng)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục môn học.",
+    "Thêm môn TEST_ (mã môn, tên, số tín chỉ, số tiết LT/TH) → Lưu.",
+    "KIỂM TRA: môn hiện trong danh mục và chọn được khi thêm môn vào CTĐT; sửa → KIỂM TRA; xóa môn chưa dùng → KIỂM TRA."
+   ],
+   "stt": 78,
+   "title": "Danh mục môn học"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ cho phép khai thác phòng khi sức chứa >= sĩ số nhóm môn học"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ cho phép khai thác phòng khi tính chất phòng trùng tính chất phòng của nhóm môn học"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Phòng lý thuyết có tính chất phòng để rỗng"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1",
-   "kind": "setup",
-   "menu": "Nhân sự/ Danh sách viên chức/ Danh mục nhân viên",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị từ điển cán bộ giảng dạy"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.1",
-   "kind": "setup",
-   "menu": "",
+   "docCheck": "ok",
+   "docRef": "KHGD_QuanLyCTDT3Cap, mục III.4 Chương trình đào tạo thực hiện (III.2–3 chuẩn, kế hoạch; III.5 kiểm tra khác biệt)",
+   "kind": "main",
+   "menu": "Kế hoạch / Chương trình đào tạo / Cập nhật chương trình đào tạo / CTĐT thực hiện",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Chỉnh định các thông số chung xếp TKB"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: CTĐT chuẩn (Kế hoạch / Chương trình đào tạo / Cập nhật chương trình đào tạo / Chương trình đào tạo chuẩn) và CTĐT kế hoạch của khối test đã có.",
+    "Mở menu Kế hoạch / Chương trình đào tạo / Cập nhật chương trình đào tạo / CTĐT thực hiện (Chương trình đào tạo thực hiện).",
+    "Chọn khối test → Đồng bộ (tạo CTĐT thực hiện từ CTĐT kế hoạch, chỉ cho học kỳ đang xét).",
+    "KIỂM TRA: danh sách môn học của học kỳ đúng như kế hoạch.",
+    "Thêm một môn (Thêm → Danh sách môn học → chọn môn → nhập học kỳ, năm học → Lưu) → KIỂM TRA; Xóa môn vừa thêm → KIỂM TRA.",
+    "Kiểm tra khác biệt: Kế hoạch / Khai thác báo biểu / Chương trình đào tạo / Khác biệt chuẩn với kế hoạch → chọn khối → KIỂM TRA kết quả."
+   ],
+   "stt": 79,
+   "title": "CTĐT thực hiện"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị chương trình đào tạo chuẩn"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị chương trình đào tạo kế hoạch"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuẩn bị chương trình đào tạo thực hiện"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập khối",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập biểu đồ kế hoạch học tập khối (gán tuần học chung, sửa tuần học)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập khối",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy biểu đồ kế hoạch học tập khối đã chọn"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
+   "docCheck": "none",
+   "docNote": "Chưa có tài liệu riêng.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập khối",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In biểu đồ kế hoạch học tập khối"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập biểu đồ kế hoạch học tập lớp (đồng bộ từ khối, gán tuần học chung, sửa tuần học)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy biểu đồ kế hoạch học tập lớp đã chọn"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In biểu đồ kế hoạch học tập lớp"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Qui hoạch nhóm học phần/ Xem sửa các lớp ghép",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem sửa các lớp ghép (nhập cùng ký hiệu để ghép xếp TKB)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ tín chỉ",
+   "menu": "Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách lớp học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Tạo file nhóm học phần tự động hệ tín chỉ (chọn đối tượng, ghép/tách nhóm)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách lớp học kỳ.",
+    "Chọn học kỳ test.",
+    "KIỂM TRA: lớp test có trong danh sách lớp học kỳ (sau Khởi tạo dữ liệu học kỳ); thêm / sửa sĩ số lớp test → Lưu → KIỂM TRA."
+   ],
+   "stt": 80,
+   "title": "Danh sách lớp học kỳ"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.2",
+   "docCheck": "partial",
+   "docNote": "Tài liệu chỉ nêu yêu cầu về danh mục phòng, không có bước cho Danh sách phòng học kỳ – cần xác nhận.",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.1 Chuẩn bị chung (tự điển phòng)",
    "kind": "main",
-   "menu": "Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ niên chế",
+   "menu": "Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách phòng học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Tạo file nhóm học phần tự động hệ niên chế"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục phòng học có phòng TEST_ (Sức chứa, Tính chất phòng; phòng lý thuyết để trống tính chất).",
+    "Mở menu Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách phòng học kỳ.",
+    "Đưa phòng TEST_ vào học kỳ test → Lưu.",
+    "KIỂM TRA: phòng hiện trong danh sách phòng của học kỳ; khi xếp TKB chỉ dùng phòng có Sức chứa ≥ sĩ số nhóm và đúng tính chất."
+   ],
+   "stt": 81,
+   "title": "Danh sách phòng học kỳ"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.3",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Thông tin nhóm môn học/ Danh sách nhóm tổ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem và chỉnh sửa nhóm tổ ở dạng chi tiết (thêm tổ học, tổ hợp, tổ thực hành, thêm lớp cho tổ học)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.3",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Thông tin nhóm môn học/ Danh sách nhóm tổ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem và chỉnh sửa nhóm tổ ở dạng danh sách, lưu hàng loạt"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.3",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Thông tin nhóm môn học/ Danh sách nhóm tổ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tạo nhóm tổ TKB song song"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.3",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Thông tin nhóm học phần/ Nhóm tổ không xét thời khóa biểu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cấu hình nhóm tổ không xét trùng TKB (lớp, phòng, cán bộ)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Phòng và buổi học ưu tiên lớp",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo phòng và buổi học ưu tiên cho lớp (dạng danh sách/dạng cây)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Phòng dự kiến nhóm học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xét phòng dự kiến nhóm học"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý tiết nghỉ chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản lý tiết nghỉ chung"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý ngày nghỉ chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản lý ngày nghỉ chung (nghỉ lễ, nghỉ cố định)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu cán bộ bận giờ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản lý dữ liệu cán bộ bận giờ"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu phòng bận giờ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản lý dữ liệu phòng bận giờ"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 1.4",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu lớp bận giờ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản lý dữ liệu lớp bận giờ"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.1",
+   "docCheck": "ok",
+   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.3 Danh sách viên chức học kỳ",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu/ Xếp thời khóa biểu thủ công",
+   "menu": "Kế hoạch / Thông tin viên chức / Danh sách viên chức học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Xếp TKB thủ công (lọc đối tượng, nhập tiết bắt đầu và phòng, xử lý)"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: viên chức test có trong Kế hoạch / Thông tin viên chức / Danh mục viên chức; đơn vị có trong Danh mục đơn vị.",
+    "Mở menu Kế hoạch / Thông tin viên chức / Danh sách viên chức học kỳ.",
+    "Bấm Thêm → chương trình tải các viên chức trong danh mục chưa có trong học kỳ; tick viên chức test, chọn Đơn vị → Lưu.",
+    "KIỂM TRA: viên chức test có trong danh sách học kỳ đúng đơn vị; chọn được khi xếp TKB / thay thế CBGD."
+   ],
+   "stt": 82,
+   "title": "Danh sách viên chức học kỳ"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.1",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu/ Xếp thời khóa biểu thủ công",
+   "docCheck": "ok",
+   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.1 Định nghĩa thời gian; III.2 Chỉnh định biến",
+   "kind": "setup",
+   "menu": "Kế hoạch / Định nghĩa thời gian / ĐN loại thời gian",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Xếp TKB thủ công thất bại hiển thị lý do không xếp được"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Định nghĩa thời gian / ĐN loại thời gian (tài liệu: Định nghĩa thời gian).",
+    "Bấm Thêm: mã loại thời gian TEST_, tên, số lượng đơn vị thời gian của buổi sáng, chiều, tối → Lưu.",
+    "Ở Chi tiết giờ/phút: chọn thứ tự thời gian và nhập giờ/phút cho từng đơn vị → Lưu.",
+    "KIỂM TRA: loại thời gian hiện với đủ chi tiết giờ/phút.",
+    "Kiểm tra (không sửa) các biến ở Kế hoạch / Quản trị phân hệ / Chỉnh định thông số học kỳ: SK_LOAITGDUNGTRONGSUDUNGPHONG, SK_LOAITGDUNGTRONGTKB, SK_LOAITGDUNGTRONGBANGIO, SK_LOAITGDUNGTRONGTIETNGHICHUNG.",
+    "Xóa loại thời gian TEST_ → KIỂM TRA không còn."
+   ],
+   "stt": 83,
+   "title": "ĐN loại thời gian"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.1",
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.1.2 Quy hoạch nhóm học phần (Biểu đồ kế hoạch học tập)",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu/ Xếp thời khóa biểu tự động",
+   "menu": "Kế hoạch / Biểu đồ kế hoạch học tập / Biểu đồ kế hoạch học tập lớp",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Xếp TKB tự động (lọc đối tượng, xử lý, xem số TKB thành công/thất bại)"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Biểu đồ kế hoạch học tập khối đã nhập (Kế hoạch / Biểu đồ kế hoạch học tập / Biểu đồ kế hoạch học tập khối).",
+    "Mở menu Kế hoạch / Biểu đồ kế hoạch học tập / Biểu đồ kế hoạch học tập lớp.",
+    "Chọn lớp test: Đồng bộ từ khối (chọn khối → gán giá trị cho các lớp thuộc khối) hoặc Gán tuần học chung; Sửa tuần học ở detailright → Lưu.",
+    "KIỂM TRA: lớp test có biểu đồ tuần học đúng; In BĐKH ra đúng.",
+    "(Nếu cần làm lại) Hủy BĐKH cho lớp test → KIỂM TRA giá trị bị xóa."
+   ],
+   "stt": 84,
+   "title": "Biểu đồ kế hoạch học tập lớp"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.1",
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.1.2 (Tạo file nhóm học phần tự động – Hệ tín chỉ)",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm / tổ học & TKB",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Import TKB từ file ngoài"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khóa biểu/ Thay thế CBGD",
+   "menu": "Kế hoạch / Qui hoạch nhóm học phần / Tạo file nhóm học phần tự động / Hệ tín chỉ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Thay thế cán bộ giảng dạy"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: CTĐT chuẩn / kế hoạch / thực hiện đã có; (tùy chọn) Xem sửa các lớp ghép.",
+    "Mở menu Kế hoạch / Qui hoạch nhóm học phần / Tạo file nhóm học phần tự động / Hệ tín chỉ.",
+    "Chọn đối tượng và nhiệm ý → chọn đối tượng cần tạo (lớp test) → Tiếp tục; chỉnh định ghép nhóm / tách nhóm.",
+    "KIỂM TRA: nhóm học phần của lớp test được tạo (xem ở Thông tin nhóm học phần / Danh sách nhóm tổ)."
+   ],
+   "stt": 85,
+   "title": "Tạo file nhóm học phần tự động – Hệ tín chỉ"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.1.3 Thông tin nhóm môn học",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khóa biểu/ Thay thế phòng",
+   "menu": "Kế hoạch / Thông tin nhóm học phần / Danh sách nhóm tổ",
    "priority": "cao",
    "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Thông tin nhóm học phần / Danh sách nhóm tổ.",
+    "Dạng chi tiết: chọn nhóm môn học test → chỉnh sửa tổ học, thêm lớp cho tổ học, bổ sung thông tin tổ hợp → Lưu.",
+    "Dạng danh sách: sửa trực tiếp thông tin nhiều nhóm tổ → Lưu một lần.",
+    "KIỂM TRA: mở lại thấy thông tin tổ học / tổ hợp đã sửa.",
+    "(Tùy chọn) Nhóm tổ TKB song song; Nhóm tổ không xét thời khóa biểu (bỏ qua trùng TKB lớp / phòng / cán bộ)."
+   ],
+   "stt": 86,
+   "title": "Danh sách nhóm tổ"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.1 Xếp thời khóa biểu (tự động); III.1.1 thông số; III.1.4 tài nguyên và ràng buộc",
+   "kind": "main",
+   "menu": "Kế hoạch / Thời khóa biểu / Xếp thời khoá biểu / Xếp thời khóa biểu tự động",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Kiểm tra thông số chung (chỉ ghi lại): SK1_STMAXNGAY_CB / _LOP, GK_KHONGXEPTKBVAOBUOITOI, SK1_SUDUNGTIETNGHICHUNG, SK1_sotietsang, SK1_SOTIETCHIEU, SK2_SOTIETTOI…",
+    "Kiểm tra tài nguyên/ràng buộc: Phòng và buổi học ưu tiên lớp, Phòng dự kiến nhóm học, Quản lý tiết nghỉ chung, Quản lý ngày nghỉ chung, cán bộ / phòng / lớp bận giờ.",
+    "Mở menu Kế hoạch / Thời khóa biểu / Xếp thời khoá biểu / Xếp thời khóa biểu tự động.",
+    "Chọn đối tượng (lớp test / môn / CBGD) → bấm xử lý.",
+    "KIỂM TRA: màn hình báo số TKB thành công / thất bại; xem lý do thất bại; Xem thời khóa biểu / Lý do không xếp được TKB.",
+    "(Luồng khác) Xếp thời khóa biểu thủ công: chọn tổ học, nhập thứ – tiết bắt đầu – phòng → xử lý; thành công thì tổ học rời danh sách bên trái, không thành công thì hiện lý do."
+   ],
+   "stt": 87,
+   "title": "Xếp thời khóa biểu tự động"
+  },
+  {
+   "docCheck": "partial",
+   "docNote": "Tài liệu xếp TKB chỉ nhắc có chức năng import, chi tiết ở tài liệu import riêng (QLHT_HuongDanImport) – cần xác nhận cấu trúc file.",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.1 (Import từ file – tài liệu chỉ tham chiếu “hướng dẫn import TKB”)",
+   "kind": "main",
+   "menu": "Kế hoạch / Thời khóa biểu / Import từ file / Import nhóm / tổ học & TKB",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Thời khóa biểu / Import từ file / Import nhóm/ tổ học & TKB.",
+    "Xuất cấu trúc, chuẩn bị file nhóm / tổ học & TKB cho lớp test.",
+    "Chọn file → kiểm tra dữ liệu → Thực hiện.",
+    "KIỂM TRA: nhóm/tổ học và TKB của lớp test có đúng như file (Xem thời khóa biểu dạng tuần)."
+   ],
+   "stt": 88,
+   "title": "Import nhóm – tổ học & TKB"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 Khai thác và hiệu chỉnh TKB (Thay thế CBGD)",
+   "kind": "main",
+   "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế CBGD",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: nhóm tổ test đã xếp TKB.",
+    "Mở menu Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế CBGD.",
+    "Chọn nhóm tổ đã xếp, chọn chi tiết mã viên chức, nhập viên chức thay thế ở cột Mã NV mới → Lưu.",
+    "KIỂM TRA: Xem thời khóa biểu dạng tuần thấy cán bộ mới, không còn cán bộ cũ; thay thế bị chặn nếu cán bộ mới trùng lịch (cần xác nhận)."
+   ],
+   "stt": 89,
+   "title": "Thay thế CBGD"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Thay thế phòng)",
+   "kind": "main",
+   "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế phòng",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế phòng.",
+    "Chọn nhóm tổ đã xếp, nhập phòng mới ở cột Mã PH mới → Lưu.",
+    "KIỂM TRA: TKB dạng tuần hiện phòng mới."
+   ],
+   "stt": 90,
    "title": "Thay thế phòng"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
+   "docCheck": "partial",
+   "docNote": "Tài liệu chỉ mô tả khai báo ngày nghỉ chung, không có bước cho menu xử lý trùng ngày nghỉ lễ – cần xác nhận.",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.1.4 (Quản lý ngày nghỉ chung)",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần",
+   "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Xử lý TKB trùng ngày nghỉ lễ",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: Kế hoạch / Tài nguyên và ràng buộc / Ràng bu ộc xếp TKB / Quản lý ngày nghỉ chung có ngày nghỉ lễ trùng với buổi học của lớp test.",
+    "Mở menu Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Xử lý TKB trùng ngày nghỉ lễ.",
+    "Chọn đối tượng → Thực hiện.",
+    "KIỂM TRA: buổi học trùng ngày nghỉ lễ được xử lý (không còn lịch vào ngày lễ)."
+   ],
+   "stt": 91,
+   "title": "Xử lý TKB trùng ngày nghỉ lễ"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Form dạng tuần phức tạp – tài liệu tham chiếu hướng dẫn riêng.",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Xem thời khóa biểu dạng tuần)",
+   "kind": "main",
+   "menu": "Kế hoạch / Thời khóa biểu / Xem thời khóa biểu / Dạng tuần",
    "priority": "thấp",
    "scenarioCode": "",
-   "title": "Xem TKB dạng tuần và hiệu chỉnh thông số từng nhóm tổ học"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Thời khóa biểu / Xem thời khóa biểu / Dạng tuần.",
+    "Chọn lớp / cán bộ / phòng test, chọn tuần.",
+    "KIỂM TRA: lịch hiển thị đúng thứ – tiết – phòng – cán bộ đã xếp; hiệu chỉnh thông số một nhóm tổ trên form → Lưu → KIỂM TRA."
+   ],
+   "stt": 92,
+   "title": "Xem thời khóa biểu – Dạng tuần"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
+   "docCheck": "ok",
+   "docNote": "Dữ liệu TKB quan trọng – thao tác xóa cẩn thận (Lời khuyên 2.3).",
+   "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Xóa thời khóa biểu)",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng học kỳ",
+   "menu": "Kế hoạch / Thời khóa biểu / Xóa thời khóa biểu",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Thời khóa biểu / Xóa thời khóa biểu.",
+    "Chọn theo đối tượng ở danh sách bên trái → chỉ chọn lớp/nhóm test (không chọn Xóa tất cả).",
+    "Thực hiện xóa; chỉ xác nhận khi hộp thoại nêu đúng đối tượng test.",
+    "KIỂM TRA: nhóm tổ test không còn TKB (Xem TKB dạng tuần trống); nhóm khác không bị ảnh hưởng."
+   ],
+   "stt": 93,
+   "title": "Xóa thời khóa biểu"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục III.1 Lịch nghỉ dạy và dạy bù; III.2 Báo biểu",
+   "kind": "main",
+   "menu": "Kế hoạch / Nghỉ dạy và dạy bù / Lịch nghỉ dạy và dạy bù",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Nghỉ dạy và dạy bù / Lịch nghỉ dạy và dạy bù.",
+    "Bấm Thêm (detailright): nhập mã giảng viên test, ngày nghỉ, tiết bắt đầu nghỉ, số tiết nghỉ → Lưu.",
+    "Nhập lịch dạy bù: nhập sĩ số, thời gian → Tìm → chọn phòng phù hợp → Lưu (hoặc Chọn lịch dạy bù từ SD phòng đột xuất).",
+    "KIỂM TRA: lịch nghỉ và dạy bù hiện trong danh sách; In nghỉ dạy và dạy bù, Thống kê chi tiết / tổng hợp có dòng vừa tạo.",
+    "Xóa lịch test → KIỂM TRA không còn."
+   ],
+   "stt": 94,
+   "title": "Lịch nghỉ dạy và dạy bù"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "KHGD_SuDungPhongDotXuatVaTimKiemPhongRanh, mục III.1 Nhập và lưu thông tin tìm kiếm phòng đột xuất; III.2 Tìm phòng rảnh",
+   "kind": "main",
+   "menu": "Kế hoạch / Quản lý sử dụng phòng / Sử dụng phòng đột xuất",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Kế hoạch / Quản lý sử dụng phòng / Sử dụng phòng đột xuất.",
+    "Bấm Thêm, nhập thông tin sử dụng phòng cần tìm (ngày, tiết, sĩ số…) → Tìm.",
+    "Chọn một phòng trong danh sách phòng thỏa điều kiện → Lưu.",
+    "KIỂM TRA: lượt sử dụng phòng được lưu; thời khóa biểu hiển thị phòng có sử dụng đột xuất; tìm lại cùng thời gian thì phòng đó không còn rảnh.",
+    "Xóa lượt sử dụng test → KIỂM TRA."
+   ],
+   "stt": 95,
+   "title": "Sử dụng phòng đột xuất"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_GiangVienXemThongTinCaNhan, mục SV 10 / GV 3 Thời khóa biểu dạng tuần",
+   "kind": "main",
+   "menu": "NetWEB SV + GV: Xem TKB dạng tuần",
    "priority": "thấp",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "Xem TKB dạng học kỳ"
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Thời khóa biểu dạng tuần",
+    "Xem TKB cá nhân, chuyển tuần; thử TKB lớp cá nhân, TKB lớp, TKB môn học, TKB khoa",
+    "KIỂM TRA: lịch (thứ, tiết bắt đầu, phòng) khớp TKB trên Edusoft cho nhóm học test",
+    "Đăng nhập GV test → Xem thời khóa biểu tuần; KIỂM TRA lịch giảng dạy đúng, mở được danh sách SV của học phần"
+   ],
+   "stt": 96,
+   "title": "Xem TKB dạng tuần (Netweb SV + GV)"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_GiangVienXemThongTinCaNhan, mục SV 11 / GV 4 Thời khóa biểu dạng học kỳ",
    "kind": "main",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Lý do không xếp được TKB",
+   "menu": "NetWEB SV + GV: Xem TKB dạng học kỳ",
    "priority": "thấp",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "Xem tổ hợp không xếp được TKB và lý do"
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Thời khóa biểu dạng học kỳ, chọn học kỳ hiện tại và 1 học kỳ cũ",
+    "KIỂM TRA: đủ các học phần đã đăng ký, thời gian khớp Edusoft",
+    "Đăng nhập GV test → Xem thời khóa biểu học kỳ; KIỂM TRA đủ học phần GV dạy, xem được danh sách SV lớp học phần"
+   ],
+   "stt": 97,
+   "title": "Xem TKB dạng học kỳ (Netweb SV + GV)"
   },
   {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Thời khóa biểu/ Xóa thời khóa biểu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa thời khóa biểu đã xếp (tất cả hoặc theo đối tượng)"
-  },
-  {
-   "docRef": "KHGD_CacBuocXepTKB, mục 2.2",
+   "docCheck": "none",
+   "docNote": "Tài liệu hướng dẫn SV không có mục này – cần xác nhận.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Kế hoạch/ Khai thác báo biểu/ In thời khóa biểu",
+   "menu": "NetWEB sinh viên: Xem chương trình đào tạo",
    "priority": "thấp",
+   "product": "netweb",
    "scenarioCode": "",
-   "title": "In các biểu in của thời khóa biểu"
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Xem chương trình đào tạo",
+    "KIỂM TRA: hiện đúng CTĐT của ngành/khóa SV, các học kỳ, số tín chỉ, môn bắt buộc/tự chọn khớp Edusoft"
+   ],
+   "stt": 98,
+   "title": "Xem chương trình đào tạo (Netweb sinh viên)"
   },
   {
-   "docRef": "KHGD_ChamCongGiangDay, mục 1",
+   "docCheck": "none",
+   "docNote": "Không có tài liệu – cần xác nhận.",
+   "docRef": "",
    "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công chưa xử lý",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm dữ liệu chấm công thủ công (chọn viên chức, ngày giờ vào, ngày giờ ra)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công chưa xử lý",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import dữ liệu chấm công theo ngày (mã viên chức, giờ vào, giờ ra)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công chưa xử lý",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import file chấm công (mã viên chức, ngày chấm công, giờ vào, giờ ra)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công đã xử lý",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa dữ liệu chấm công đã xử lý"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công đã xử lý",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không thể hiệu chỉnh, sửa đổi dữ liệu chấm công đã khóa"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Dữ liệu chấm công đã xử lý",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mở khóa dữ liệu chấm công để hiệu chỉnh lại"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Duyệt dữ liệu chấm công so với TKB",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đối soát chấm công với TKB - chỉ đồng bộ dữ liệu mới (TKB chưa chấm công)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Duyệt dữ liệu chấm công so với TKB",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đối soát chấm công với TKB - đồng bộ mới và cập nhật dữ liệu TKB đã chấm công"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 3",
-   "kind": "alt",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Duyệt dữ liệu chấm công so với TKB",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chế độ chỉ đồng bộ mới không cập nhật lại chấm công cũ đã hiệu chỉnh"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Duyệt dữ liệu chấm công so với TKB",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn thủ công dữ liệu chấm công trên kết quả đối soát"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 3",
-   "kind": "clean",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Duyệt dữ liệu chấm công so với TKB",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa dữ liệu đã đối soát"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Tổng hợp số giờ giảng dạy học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tổng hợp giờ giảng dạy học kỳ (tính số phút chấm công)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Báo cáo thống kê / Danh sách CBGD nghỉ dạy",
+   "menu": "NetWEB sinh viên: Xem môn tiên quyết",
    "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Báo cáo Danh sách CBGD nghỉ dạy (dạng danh sách và thống kê)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Báo cáo thống kê / Danh sách CBGD đi trễ",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Báo cáo Danh sách CBGD đi trễ (dạng danh sách và thống kê)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Báo cáo thống kê / Danh sách CBGD về sớm",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Báo cáo Danh sách CBGD về sớm (dạng danh sách và thống kê)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Báo cáo thống kê / Chấm công chưa được đồng bộ qua TKB",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Báo cáo Chấm công chưa được đồng bộ qua TKB (mẫu in)"
-  },
-  {
-   "docRef": "KHGD_ChamCongGiangDay, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch / Chấm công giảng dạy / Báo cáo thống kê / In điểm danh giảng viên học kỳ",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In điểm danh giảng viên học kỳ (mẫu in)"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Định nghĩa thời gian/Định nghĩa thời gian",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Định nghĩa loại thời gian (mã, tên, số lượng đơn vị thời gian sáng/chiều/tối)"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Định nghĩa thời gian/Định nghĩa thời gian",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khai báo chi tiết giờ/phút tương ứng từng thứ tự đơn vị thời gian của loại thời gian"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến SK_LOAITGDUNGTRONGSUDUNGPHONG (loại thời gian dùng trong quản lý và sử dụng phòng)"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến SK_LOAITGDUNGTRONGTKB theo từng đối tượng (loại thời gian dùng trong thời khóa biểu)"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến SK_LOAITGDUNGTRONGBANGIO (loại thời gian dùng trong bận giờ)"
-  },
-  {
-   "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/Quản trị phân hệ/ Chỉnh định thông số học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định biến SK_LOAITGDUNGTRONGTIETNGHICHUNG (loại thời gian dùng trong khai báo tiết nghỉ chung)"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định tự động duyệt đơn đăng ký nghỉ dạy (Có/Không)"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.1",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đơn nghỉ dạy tự động chuyển trạng thái Duyệt khi bật duyệt tự động"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.1",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đơn nghỉ dạy ở trạng thái chưa xử lý khi tắt duyệt tự động"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.2",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định phần trăm chênh lệch sĩ số khi đăng ký phòng dạy bù"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.2",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đơn dạy bù tự động duyệt khi chênh lệch sĩ số trong khoảng cho phép"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.2",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cảnh báo, vẫn cho đăng ký và để trạng thái Chưa duyệt khi chênh lệch ngoài khoảng cho phép"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 1.3",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Quản lý hệ thống/ Danh mục template gửi mail",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh sửa template gửi thông báo"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.1",
-   "kind": "main",
-   "menu": "NetWeb – Thời khóa biểu dạng tuần",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Giảng viên đăng ký nghỉ dạy trên NetWeb (Lưu, thông báo Xử lý thành công)"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.1",
-   "kind": "alt",
-   "menu": "NetWeb – Thời khóa biểu dạng tuần",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đăng ký nghỉ dạy khi bỏ trống minh chứng và lý do (không bắt buộc)"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.2",
-   "kind": "main",
-   "menu": "Netweb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Giảng viên kiểm tra thông tin lịch đăng ký nghỉ dạy"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.2",
-   "kind": "clean",
-   "menu": "Netweb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa lịch nghỉ dạy khi trạng thái Chưa duyệt hoặc Không duyệt"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.2",
-   "kind": "alt",
-   "menu": "Netweb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không cho xóa lịch nghỉ dạy đã ở trạng thái Duyệt"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.3",
-   "kind": "main",
-   "menu": "NetWeb – Lịch đăng ký nghỉ dạy",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Giảng viên đăng ký lịch dạy bù cho lịch nghỉ đã duyệt"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.3",
-   "kind": "alt",
-   "menu": "NetWeb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nút Đăng ký dạy bù chỉ hiển thị với lịch nghỉ đã duyệt"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.3",
-   "kind": "alt",
-   "menu": "NetWeb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh sách phòng dạy bù hiển thị theo sĩ số nhóm và tính chất phòng"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.3",
-   "kind": "alt",
-   "menu": "NetWeb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không cho đăng ký dạy bù khi trùng TKB phòng hoặc trùng TKB lớp"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 2.3",
-   "kind": "clean",
-   "menu": "NetWeb – Lịch đăng ký nghỉ dạy",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa lịch dạy bù ở trạng thái Chưa duyệt và đăng ký lại"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Duyệt nhiều đơn đăng ký nghỉ dạy bằng Gán trạng thái đơn"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Duyệt từng lịch nghỉ dạy (Trạng thái đơn = Duyệt), TKB ngày nghỉ bị ẩn"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.2",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không duyệt lịch nghỉ dạy: TKB không bị ẩn, giảng viên được xóa đăng ký"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Duyệt từng lịch dạy bù, lịch dạy bù hiển thị trên TKB và giảng viên không xóa được"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.3",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không duyệt lịch dạy bù: xóa lịch dạy bù đã đăng ký, cho phép đăng ký lại"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.4",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Gửi thông báo cho sinh viên tự động khi bật duyệt tự động"
-  },
-  {
-   "docRef": "KHGD_HuongDanDangKyNghiDayVaDayBuOnline, mục 3.4",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hỏi User có gửi thông báo cho sinh viên sau khi duyệt khi tắt duyệt tự động (Có/Không)"
-  },
-  {
-   "docRef": "KHGD_KhoaDuLieuCTDT, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cập nhật dữ liệu Chương trình đào tạo kế hoạch"
-  },
-  {
-   "docRef": "KHGD_KhoaDuLieuCTDT, mục 1",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT kế hoạch",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ cập nhật CTĐT được với môn học đã khai báo trong Danh mục môn học"
-  },
-  {
-   "docRef": "KHGD_KhoaDuLieuCTDT, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ An toàn dữ liệu/ Khóa chương trình đào tạo/ Khóa chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa dữ liệu Chương trình đào tạo theo khối"
-  },
-  {
-   "docRef": "KHGD_KhoaDuLieuCTDT, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ An toàn dữ liệu/ Khóa chương trình đào tạo/ Khóa chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Mở khóa dữ liệu Chương trình đào tạo theo khối"
-  },
-  {
-   "docRef": "KHGD_PhanQuyenXepTKBTheoKhoa, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo môn học thuộc bộ môn/khoa quản lý (Đơn vị quản lý môn học)"
-  },
-  {
-   "docRef": "KHGD_PhanQuyenXepTKBTheoKhoa, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền Khoa/bộ môn xếp thời khóa biểu theo cây đơn vị/môn học (bỏ check Thừa kế, nhập mã User ở cột Giá trị)"
-  },
-  {
-   "docRef": "KHGD_PhanQuyenXepTKBTheoKhoa, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Phân công nhiều User cho một khoa, các User cách nhau dấu phẩy"
-  },
-  {
-   "docRef": "KHGD_PhanQuyenXepTKBTheoKhoa, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "User được phân quyền chỉ xếp được các môn học thuộc khoa được phân công"
-  },
-  {
-   "docRef": "KHGD_PhanQuyenXepTKBTheoKhoa, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khi chưa nhập phân công trong học kỳ (add-in mở), màn hình xếp TKB không hiển thị môn học để xếp"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Danh mục phiên bản CTDT chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa mã phiên bản CTĐT chuẩn"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Danh mục phiên bản CTDT chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tra cứu CTĐT chuẩn cũ theo mã phiên bản đã định nghĩa"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm CTĐT chuẩn và chọn môn học, nhập học kỳ, năm học, lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import CTĐT chuẩn từ file"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Copy tạo phiên bản CTĐT chuẩn từ phiên bản đã có"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Sửa CTĐT chuẩn"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập điều kiện tín chỉ min/max cho nhóm/nhánh TC của CTĐT chuẩn"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo nhóm yêu cầu đạt tất cả tín chỉ môn học của nhóm"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 2",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo chuẩn",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa CTĐT chuẩn"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm CTĐT kế hoạch và chọn môn học, nhập học kỳ, năm học, lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import CTĐT kế hoạch từ file"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Copy tạo phiên bản CTĐT kế hoạch từ phiên bản đã có"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Sửa CTĐT kế hoạch"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đồng bộ CTĐT kế hoạch từ CTĐT chuẩn theo khối và bậc hệ ngành"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 3",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo kế hoạch",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa CTĐT kế hoạch"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm CTĐT thực hiện và chọn môn học, nhập học kỳ, năm học, lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import CTĐT thực hiện từ file"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Copy tạo phiên bản CTĐT thực hiện từ phiên bản đã có"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Sửa CTĐT thực hiện"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "main",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đồng bộ CTĐT thực hiện từ CTĐT kế hoạch theo khối"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 4",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Chương trình đào tạo thực hiện",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa CTĐT thực hiện"
-  },
-  {
-   "docRef": "KHGD_QuanLyCTDT3Cap, mục 5",
-   "kind": "main",
-   "menu": "Kế hoạch/ Khai thác báo biểu/ Chương trình đào tạo/ Khác biệt chuẩn với kế hoạch",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem báo biểu khác biệt CTĐT chuẩn với CTĐT kế hoạch theo khối"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập lịch nghỉ dạy cho giảng viên (mã GV, ngày nghỉ, tiết bắt đầu, số tiết nghỉ) và lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập lịch dạy bù: tìm phòng theo sĩ số và thời gian, chọn phòng và lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chọn lịch dạy bù từ dữ liệu sử dụng phòng đột xuất"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 2.1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ In nghỉ dạy và dạy bù",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In báo biểu nghỉ dạy và dạy bù"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 2.2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê chi tiết",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem thống kê chi tiết nghỉ dạy và dạy bù theo loại lý do đổi lớp"
-  },
-  {
-   "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục 2.3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê tổng hợp",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem thống kê tổng hợp nghỉ dạy và dạy bù theo loại lý do đổi lớp, có nhập số học kỳ tạm dừng"
-  },
-  {
-   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Quản lý hệ thống/ Danh mục đơn vị",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo danh mục đơn vị (Khoa, bộ môn, phòng ban...) bằng chức năng Thêm"
-  },
-  {
-   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Thông tin viên chức/ Danh mục viên chức",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cập nhật danh mục viên chức (thêm, sửa, import) với mã, họ lót, tên, hình ảnh, phái, ngày sinh"
-  },
-  {
-   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.3",
-   "kind": "main",
-   "menu": "Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm viên chức vào danh sách viên chức học kỳ: chọn viên chức, gán đơn vị và lưu"
-  },
-  {
-   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.3",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Danh sách chọn khi Thêm chỉ hiển thị viên chức có trong danh mục mà chưa có trong danh sách học kỳ"
-  },
-  {
-   "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.3",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa viên chức không dùng trong học kỳ khỏi danh sách viên chức học kỳ"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem và in danh mục phòng học"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Import thêm mới thông tin phòng học từ file cấu trúc"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cập nhật thông tin phòng học theo file"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xuất excel danh sách phòng học"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đổi mã phòng học (từng phòng và theo file)"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuyển mã phòng thường thành chữ in hoa"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm mới thông tin một phòng học"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sửa thông tin một phòng học"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 1",
-   "kind": "clean",
-   "menu": "Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa phòng học không còn sử dụng"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách phòng học kỳ hiện tại (đồng bộ từ Danh mục phòng học)"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 2",
-   "kind": "setup",
-   "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhập/cập nhật dữ liệu các cột thông tin của phòng học kỳ"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 2",
-   "kind": "main",
-   "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm phòng học vào học kỳ hiện tại"
-  },
-  {
-   "docRef": "KHGD_QuanLySuDungPhongHocVaGiangDuong, mục 2",
-   "kind": "alt",
-   "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cập nhật đầy đủ các cột, đặc biệt cột Tính chất phòng, để dùng cho xếp TKB và lịch thi"
+   "product": "netweb",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → menu Xem môn tiên quyết",
+    "KIỂM TRA: môn tiên quyết/học trước/song hành hiện đúng như khai báo trong Edusoft"
+   ],
+   "stt": 99,
+   "title": "Xem môn tiên quyết (Netweb sinh viên)"
   }
  ],
  "module": "KHGD",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 23 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 15 khớp, 5 khớp một phần, 3 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
- "requestedAt": "2026-10-29T04:32:27.073Z",
- "requestedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "status": "draft",
- "syncedAt": "2026-10-29T05:06:33.799Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T05:06:33.799Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

@@ -15,11 +15,29 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   Biến `window.AQ_LOCAL` có nghĩa đang chạy localhost.
 - `kit/` – bộ test cài trên máy chạy test: `aqrun.py` (chạy kịch bản, `KIT_VERSION` ở đầu file – **tăng mỗi lần sửa kit**),
   `aq-agent.py` (chạy nền quyền admin, nhận file lệnh `aq-autotest-update-run.json` trong thư mục bộ test),
-  `cai-dat.bat`, `chay-test.bat`, `quen-mat-khau.bat`, `HUONG-DAN.txt`.
+  `cai-dat.bat` (tự xin quyền admin nhưng giữ APPDATA/LOCALAPPDATA/USERPROFILE gốc qua `AQ_USER_*`; chép bộ test vào thư mục cài
+  cố định – `thu-muc-cai.txt` từ ô "Thư mục cài bộ test" trên console, trống = `%USERPROFILE%\AQ-Autotest`; cuối chạy
+  `aqrun.py --chan-doan` in bảng kiểm tra + `chan-doan.txt`, bản claude.ai hỏi rồi tự khởi động lại Claude app),
+  `chay-test.bat`, `quen-mat-khau.bat`, `HUONG-DAN.txt`. Chạy xong `aqrun.py` gói các lượt vừa chạy thành `AQ-ket-qua-<giờ>.zip`
+  trong Tải về – cách chạy không cần cầu nối: console tải file lệnh → Agent/`chay-test.bat` chạy → "Nhập kết quả…" chọn file .zip.
 - `data/` – dữ liệu dùng chung, đồng bộ qua git: `scenarios/`, `runs/`, `bugs/`, `runners/`, `releases/`, `releaseItems/`,
-  `testPlans/`, `settings/`, `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.
+  `testPlans/`, `settings/`, `members/` (Danh mục user: tên gọi = tên ở cột Phân công, `modules` = phân hệ phụ trách dạng
+  `edusoft:QLSV`, menu mới đưa vào phân công tự giao cho người phụ trách), `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.
 - `local/` – riêng từng máy, **gitignore**: `config.json` (`port`, `kitDir`, `userId`, `userName`), `users/<id>/secrets.json`.
+- `aq-console-server.py` – bản server một file: tải zip repo (nhánh `branch`, token chỉ-đọc) về `aq-console/app`, chạy
+  `server.py --public` (bắt đăng nhập, tài khoản ở `<local>/auth.json`, trang `/login`, `/quan-tri`; tắt `/api/kit`),
+  2 phút kiểm tra commit mới → tự thay, lỗi thì quay lại bản cũ. Code đẩy lên `main` là server tự cập nhật – **giữ `server.py`
+  chạy được bằng thư viện chuẩn và qua `py_compile`**. Dữ liệu server ở `aq-console/du-lieu`, không nằm trong git.
+  Dưới IIS: `server-iis/` (CAI-DAT.cmd), `--iis` lấy cổng `ASPNETCORE_PORT`, đường dẫn con `ASPNETCORE_APPL_PATH` → `server.py --base`;
+  vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
+
+## Đồng bộ sau mỗi thay đổi (người dùng yêu cầu)
+- Mỗi lần sửa: commit + push nhánh đang làm **và** cập nhật console trên claude.ai
+  (artifact https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG). Dữ liệu sửa tay cũng làm cả hai nơi: `data/` và DB của artifact (ArtifactData).
+- Bản claude.ai là biến thể của `web/index.html`: có cầu nối Claude app (khối `kit-mcp`, `aqrun.py` tự **đăng ký** cầu nối,
+  ảnh ở `/_blob/`), còn bản repo/localhost gỡ cầu nối. Bản claude.ai lưu ở `web/console-claudeai.html`; cập nhật bằng gộp ba chiều
+  `git merge-file web/console-claudeai.html <index.html cũ> web/index.html`, giữ phần cầu nối và `/_blob/`, rồi publish file đó lên artifact.
 
 ## Chạy & kiểm tra
 - Chạy console: `python server.py` (hoặc `chay-console.bat`) → http://localhost:8787. `--port`, `--no-browser`.

@@ -1,36 +1,10 @@
 {
- "createdAt": "2026-10-29T04:58:18.811Z",
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "docs": [
   {
-   "name": "NETWEB-QuanTriChung",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_ChinhDinhTienTrinhTuDong",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_HuongDanChinhDinhView",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_HuongDanImport",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_KhoaSoDuLieu",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_PhanQuyenQuanTriTrenWeb",
-   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
-  },
-  {
-   "name": "QLHT_SongNguAnh-VietTrenBaoBieu",
+   "name": "QLHT_ThongTinHocKy",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
@@ -38,1513 +12,205 @@
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   },
   {
-   "name": "QLHT_ThaoTacBieuIn",
+   "name": "NETWEB-QuanTriChung",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "QLHT_KhoaSoDuLieu",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "DKMH_HuongDanDangKyMonHocOnline",
    "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
   }
  ],
  "items": [
   {
-   "docRef": "NETWEB-QuanTriChung, mục 1",
+   "docCheck": "ok",
+   "docRef": "QLHT_ThongTinHocKy, mục III.1 Tạo danh mục năm học học kỳ",
+   "kind": "setup",
+   "menu": "Hệ thống / Thông tin học kỳ / Danh mục năm học học kỳ",
+   "priority": "trung bình",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Thông tin học kỳ / Danh mục năm học học kỳ.",
+    "Bấm Thêm để tạo năm học học kỳ tiếp theo.",
+    "Nhập đúng Ngày bắt đầu học kỳ, Tuần bắt đầu HK và Số tuần học kỳ.",
+    "Lưu.",
+    "KIỂM TRA: năm học học kỳ mới hiện trong danh sách với đúng ngày bắt đầu, tuần bắt đầu và số tuần đã nhập."
+   ],
+   "stt": 1,
+   "title": "Danh mục năm học học kỳ"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Thao tác ảnh hưởng toàn bộ dữ liệu học kỳ – chỉ chạy trên môi trường test.",
+   "docRef": "QLHT_ThongTinHocKy, mục III.2 Khởi tạo dữ liệu học kỳ",
    "kind": "main",
-   "menu": "",
+   "menu": "Hệ thống / Thông tin học kỳ / Khởi tạo dữ liệu học kỳ",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Truy cập trang quản trị Admin bằng tài khoản Admin"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: đã có năm học học kỳ mới (mục 1).",
+    "Mở menu Hệ thống / Thông tin học kỳ / Khởi tạo dữ liệu học kỳ.",
+    "Chọn học kỳ mới, bấm Thực hiện.",
+    "KIỂM TRA: chương trình báo kết quả khởi tạo; dữ liệu học kỳ trước được mang sang học kỳ mới.",
+    "(Liên quan, tài liệu mục 3) Hệ thống / Thông tin học kỳ / Bổ sung dữ liệu học kỳ → Thực hiện để mang tiếp dữ liệu chưa đem sang."
+   ],
+   "stt": 2,
+   "title": "Khởi tạo dữ liệu học kỳ"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 2.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thiết lập thông tin trường (tên, logo, khung logo, favicon, title, theme)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Ẩn/hiện và thiết lập nội dung, số lượng, thời gian các khu vực trang chủ"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa menu Header (thứ tự, hiển thị, icon, tên, liên kết)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.2",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa menu Header"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa Banner (thứ tự, hiển thị, hình, nội dung, liên kết)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.3",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa Banner"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.4",
+   "docCheck": "ok",
+   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.1 Thêm tài khoản và nhóm tài khoản",
    "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Lọc bài viết theo loại bài (Tin tức/Thông báo) và tiêu đề"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.4",
-   "kind": "main",
-   "menu": "",
+   "menu": "Hệ thống / Quản lý người dùng / Quản lý người dùng / Danh sách tài khoản & nhóm tài khoản",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa bài viết (Lưu, Lưu & Nhập mới, Lưu & thoát, Thoát)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản lý người dùng / Quản lý người dùng / Danh sách tài khoản & nhóm tài khoản.",
+    "Bấm Thêm nhóm: nhập UserName (tài khoản nhóm), Tên đầy đủ, Trạng thái (Đang hoạt động / Phải thay đổi mật khẩu / Khóa tài khoản), Mã khoa (để trống nếu quản lý tất cả) → Lưu.",
+    "KIỂM TRA: nhóm mới hiện trong danh sách.",
+    "Bấm Thêm tài khoản: nhập UserName, Tên đầy đủ, Password, Trạng thái, Mã khoa → Lưu.",
+    "Tab Thuộc nhóm người dùng: gán tài khoản vào nhóm vừa tạo → Lưu.",
+    "KIỂM TRA: tài khoản mới hiện trong danh sách, thuộc đúng nhóm; đăng nhập thử bằng tài khoản này (trạng thái Phải thay đổi mật khẩu thì bị yêu cầu đổi mật khẩu; Khóa tài khoản thì không đăng nhập được)."
+   ],
+   "stt": 3,
+   "title": "Danh sách tài khoản & nhóm tài khoản"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 2.4",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa bài viết"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.5",
+   "docCheck": "ok",
+   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.2 Phân quyền quản trị phân hệ",
    "kind": "setup",
-   "menu": "",
+   "menu": "Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền quản trị phân hệ",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa bài đăng Thư viện"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền quản trị phân hệ.",
+    "Chọn một phân hệ, bấm Sửa.",
+    "Ở màn hình bên phải bấm Thêm, chọn người dùng quản trị phân hệ → Lưu.",
+    "KIỂM TRA: người dùng hiện trong danh sách quản trị của phân hệ; đăng nhập bằng tài khoản đó thấy phân hệ."
+   ],
+   "stt": 4,
+   "title": "Phân quyền quản trị phân hệ"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 2.5",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa hình ảnh trong Thư viện (thứ tự, nội dung, đại diện, hiển thị)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.5",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa bài đăng Thư viện, xóa hình (tất cả hoặc từng ảnh)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.6",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa Đối tác (thứ tự, hình, nội dung, liên kết)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.6",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa Đối tác"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.7",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa Quảng cáo (thứ tự, tiêu đề, nội dung)"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.7",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa Quảng cáo"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.8",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm mới, chỉnh sửa, ẩn/hiện Footer và nội dung chi tiết Footer"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.8",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa bài viết Footer và xóa từng nội dung Footer"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.9",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm icon Font Awesome từ đường dẫn"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.9",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa icon Font Awesome"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.10",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm Quy chế/Quy định"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 2.10",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quy chế/Quy định chỉ xem được khi sinh viên đã đăng nhập"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 3.1",
+   "docCheck": "ok",
+   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.3 Phân quyền theo chức năng (mục 4: Phân quyền theo người dùng)",
    "kind": "main",
-   "menu": "",
+   "menu": "Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền theo chức năng",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Đồng bộ tài khoản User (SV, GV) từ Edusoft.NET lên Netweb theo đối tượng hoặc theo file"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền theo chức năng.",
+    "Bấm dấu + để mở cây phân hệ tới chức năng nhỏ nhất.",
+    "Chọn một chức năng, bấm Sửa.",
+    "Bên phải bấm Thêm để thêm tài khoản / nhóm tài khoản.",
+    "Tick tài khoản vừa thêm, bấm Sửa, tick [v] các quyền được phân → Lưu.",
+    "KIỂM TRA: đăng nhập bằng tài khoản đó, chỉ thấy / dùng được các nút đã cấp quyền."
+   ],
+   "stt": 5,
+   "title": "Phân quyền theo chức năng"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 3.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đặt lại mật khẩu User theo file hoặc theo mã User"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 3.3",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Đồng bộ thông tin người dùng",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Đồng bộ lại thông tin cá nhân, liên hệ (họ tên, email) lên Web"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 3.4",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền tương ứng cho từng user"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 4.1",
+   "docCheck": "ok",
+   "docNote": "Thông số dùng chung – chỉ kiểm tra, hoàn tác ngay nếu có sửa.",
+   "docRef": "NETWEB-QuanTriChung, mục III.8 Mật khẩu dùng chung; III.9 Cấu hình hộp mail tự động",
    "kind": "setup",
-   "menu": "",
+   "menu": "Hệ thống / Quản trị hệ thống / Chỉnh định thông số hệ thống",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa điện thoại hỗ trợ"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản trị hệ thống / Chỉnh định thông số hệ thống.",
+    "Tìm biến GH_MASTERPASSEDUWEB (mật khẩu dùng chung để admin vào tài khoản user trên Netweb) – chỉ KIỂM TRA biến có tồn tại, không ghi giá trị ra kết quả test.",
+    "Tìm biến GH_MAILSERVER (cấu hình server mail gửi góp ý, duyệt dữ liệu, phục hồi mật khẩu) – chỉ KIỂM TRA biến có cấu hình; KHÔNG đọc/hiển thị mật khẩu mail.",
+    "KIỂM TRA: màn hình mở được, sửa giá trị một biến không nhạy cảm rồi Lưu → mở lại thấy giá trị mới; trả lại giá trị cũ."
+   ],
+   "stt": 6,
+   "title": "Chỉnh định thông số hệ thống"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 4.1",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
+   "docCheck": "partial",
+   "docNote": "Tài liệu chỉ ghi menu, không mô tả chi tiết màn hình – các bước chọn học kỳ/phân hệ cần xác nhận. Các khóa sổ riêng (KLGD, thu HP, nhập điểm) ở mục 1–3 của tài liệu.",
+   "docRef": "QLHT_KhoaSoDuLieu, mục III.4 Khóa sổ toàn học kỳ",
+   "kind": "main",
+   "menu": "Hệ thống / An toàn dữ liệu / Khóa sổ phân hệ theo học kỳ",
+   "priority": "cao",
    "scenarioCode": "",
-   "title": "Xóa điện thoại hỗ trợ"
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: học kỳ test đã hoàn tất dữ liệu (chỉ khai thác).",
+    "Mở menu Hệ thống / An toàn dữ liệu / Khóa sổ phân hệ theo học kỳ.",
+    "Chọn học kỳ test và phân hệ cần khóa → Lưu.",
+    "KIỂM TRA: vào một màn hình nhập liệu của phân hệ đã khóa trong học kỳ đó – không cho thêm/sửa/xóa.",
+    "Mở khóa lại (bỏ chọn → Lưu) để trả về trạng thái cũ; KIỂM TRA nhập liệu được lại."
+   ],
+   "stt": 7,
+   "title": "Khóa sổ phân hệ theo học kỳ"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 4.2",
+   "docCheck": "ok",
+   "docRef": "NETWEB-QuanTriChung, mục III.7 Quản lý ẩn/hiện menu chức năng",
    "kind": "setup",
-   "menu": "",
+   "menu": "Hệ thống / Quản trị NetWEB / Chỉnh định menu",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Thêm, sửa danh sách phân loại ý kiến (phòng ban)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản trị NetWEB / Chỉnh định menu.",
+    "Chọn một mã chức năng (tương ứng menu trên Netweb), đánh dấu ở cột Ẩn menu → Lưu.",
+    "KIỂM TRA: đăng nhập Netweb (tài khoản test) – menu đó không còn hiện.",
+    "Bỏ đánh dấu Ẩn menu → Lưu; KIỂM TRA menu hiện lại trên Netweb."
+   ],
+   "stt": 8,
+   "title": "Chỉnh định menu"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 4.2",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa loại ý kiến"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 4.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chuyển ý kiến sinh viên về bộ phận liên quan bằng nút Gửi mail và trả lời sinh viên"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 4.3",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa ý kiến của sinh viên"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 4.4",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm thông báo và gửi đến từng sinh viên hoặc từng lớp"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 4.5",
+   "docCheck": "ok",
+   "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục III.1 Setting URL; III.2 Thời gian cho phép đăng ký môn học",
    "kind": "setup",
-   "menu": "",
+   "menu": "Hệ thống / Quản trị NetWEB / Chỉnh định chung",
    "priority": "trung bình",
    "scenarioCode": "",
-   "title": "Thêm, chỉnh sửa ứng dụng hỗ trợ chat (Facebook, Zalo)"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản trị NetWEB / Chỉnh định chung.",
+    "KIỂM TRA Base Url = địa chỉ Netweb test của trường (dùng để tự gọi API clear cache khi Edusoft đổi setting ĐKMH).",
+    "KIỂM TRA năm học học kỳ đăng ký (NHHK cho Netweb) = học kỳ test.",
+    "Chỉ ghi lại giá trị; không đổi Base Url của môi trường đang dùng chung."
+   ],
+   "stt": 9,
+   "title": "Chỉnh định chung"
   },
   {
-   "docRef": "NETWEB-QuanTriChung, mục 4.5",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa ứng dụng hỗ trợ chat"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 5.1",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa bộ nhớ đệm (Clear cache) ở mục cần xóa"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 5.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm Folder chứa file word, pdf và sử dụng ở Đăng tin bài viết"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 5.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Quản trị danh sách đối tác (tên đối tác và mật khẩu) truy xuất dữ liệu Edusoft qua API"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 5.3",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ đối tác có trong danh sách mới được truy xuất dữ liệu Edusoft qua API"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 6",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bật yêu cầu đăng nhập khi vào Web"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 6",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bật yêu cầu nhập Captcha trước màn hình đăng nhập"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 6",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cấm sinh viên ngoài thời gian đăng ký được đăng nhập"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 6",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Giới hạn số lượng sinh viên truy cập trong một thời điểm"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 6",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tự động logout khi user không tương tác quá số phút quy định"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 7",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định menu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Ẩn/hiện menu chức năng trên giao diện web tại cột ẩn menu"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 8",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Định nghĩa mật khẩu dùng chung (biến GH_MASTERPASSEDUWEB) để truy cập tài khoản user khác"
-  },
-  {
-   "docRef": "NETWEB-QuanTriChung, mục 9",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cấu hình server mail tự động (biến GH_MAILSERVER)"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
+   "docCheck": "none",
+   "docNote": "Chưa thấy tài liệu cho menu này – bước thao tác dựa theo tên menu, cần xác nhận.",
+   "docRef": "",
+   "kind": "main",
+   "menu": "Hệ thống / Quản trị NetWEB / Cấm SV xem vì nợ học phí",
    "priority": "cao",
    "scenarioCode": "",
-   "title": "Cài đặt tiến trình tự động tính điểm có thay đổi: chọn nhiệm ý (Không thực hiện/theo tuần/theo khoảng thời gian/theo ngày/theo tháng) và lưu"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhiệm ý \"Không thực hiện\" tắt tiến trình tự động tính điểm có thay đổi"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thiết lập thực hiện theo tuần: nhập Thời gian 1/2/3 và chọn các thứ trong tuần"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thiết lập thực hiện theo khoảng thời gian: nhập số phút lặp lại"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thiết lập thực hiện theo ngày: tối đa 3 lần mỗi ngày"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thiết lập thực hiện theo tháng: chọn ngày và giờ chỉ định"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhấn \"Gán giá trị mặc định\" trả chỉnh định thời gian tính điểm trung bình về mặc định"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.2",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính điểm trung bình",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cài đặt tiến trình tự động tính điểm cho tất cả (tab 2)"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.3",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính học phí",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cài đặt tiến trình tự động tính học phí có thay đổi (tab 1)"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 1.4",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động/ Tính học phí",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Cài đặt tiến trình tự động tính học phí tất cả (tab 2)"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 2.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mặc định loại tính có thay đổi: theo khoảng thời gian, mỗi 60 phút tính 1 lần"
-  },
-  {
-   "docRef": "QLHT_ChinhDinhTienTrinhTuDong, mục 2.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mặc định loại tính cho tất cả: theo ngày, lúc 0 giờ mỗi ngày làm việc trong tuần"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định view: thêm/bớt cột hiển thị và sắp xếp thứ tự cột"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sắp xếp dữ liệu danh sách theo nhiều thông tin ưu tiên"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định giao diện view (font chữ, màu chữ, cách trình bày) và lưu"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Trả về mặc định các chỉnh định view"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Sắp xếp cột tăng dần/giảm dần từ tiêu đề cột"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Nhóm dữ liệu theo cột đang chọn (nhiều cột theo thứ tự ưu tiên)"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hiển thị vùng nhóm và kéo thả cột để nhóm dữ liệu"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xóa (ẩn) cột đang chọn khỏi danh sách"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn cột: double click để hiện cột dữ liệu ra danh sách"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh độ rộng cột vừa đủ (một cột và tất cả các cột)"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Lọc dữ liệu nâng cao với điều kiện And/Or"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Tìm kiếm trên danh sách và đánh dấu dữ liệu trùng khớp"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Ẩn tự động lọc theo hàng (dòng lọc tự động)"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thuộc tính cột (bố cục, màu sắc, canh chỉnh) và lưu"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khóa vị trí cột từ cột đầu đến cột đang chọn"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sửa tên cột mặc định"
-  },
-  {
-   "docRef": "QLHT_HuongDanChinhDinhView, mục 2",
-   "kind": "setup",
-   "menu": "Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sửa nội dung tooltip mặc định của cột"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chọn tập tin hoặc dán dữ liệu từ clipboard vào tool Import"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Cấu hình vùng 1 của tool Import (chọn sheet, có tiêu đề, dòng tiêu đề, dữ liệu từ dòng, định dạng ngày, bảng mã)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuyển bảng mã sang Unicode và kiểm tra mã font dữ liệu"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xuất cấu trúc import (file Excel mẫu)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem dữ liệu, quay lại và đóng màn hình Import"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import file không theo cấu trúc: đưa dữ liệu vào tool Import (chọn tập tin/dán clipboard)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Map các trường dữ liệu chương trình với cột trong file import"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Kiểm tra dữ liệu và hiển thị thông báo dữ liệu hợp lệ / có thể thêm mới"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Báo lỗi sai format dữ liệu (ngày tháng, chuỗi vào cột số nguyên)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Báo lỗi dữ liệu quá độ dài cho phép"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Báo lỗi sai khóa ngoại (mã tham chiếu chưa có trong từ điển)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Báo lỗi trùng khóa trên file"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Báo lỗi đã tồn tại khóa trong database (không import dòng trùng)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem chi tiết dòng lỗi và lưu ra file Excel để chỉnh sửa, import lại"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thực hiện import dữ liệu hợp lệ vào chương trình"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xuất file cấu trúc import và chọn nơi lưu, mở file Excel"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập dữ liệu vào file cấu trúc (cột vàng bắt buộc, cột trắng tùy chọn, giữ nguyên dòng 1 và 2)"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Import file cấu trúc: tự động map cột khi bấm Tiếp tục"
-  },
-  {
-   "docRef": "QLHT_HuongDanImport, mục 2.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Kiểm tra lỗi dữ liệu và bấm Thực hiện để đưa dữ liệu vào chương trình"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Kiểm tra tài khoản phân quyền theo khoa (Mã khoa, Phân cấp user Cấp khoa/Giảng viên, nhóm PH - PHÁCH)"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.1",
-   "kind": "main",
-   "menu": "Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên thuộc khoa được phân quyền và dùng các chức năng In, In lý lịch, Xem khen thưởng - KL, Xuất excel, Xem QĐ vào - ra"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.2",
-   "kind": "main",
-   "menu": "Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem và cập nhật lý lịch sinh viên thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.3",
-   "kind": "main",
-   "menu": "Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem và cập nhật hồ sơ sinh viên thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.4",
-   "kind": "main",
-   "menu": "Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách phiếu thu học kỳ của sinh viên thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.5",
-   "kind": "main",
-   "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách môn theo loại tiên quyết, học trước, song hành thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.6",
-   "kind": "setup",
-   "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Xem và chỉnh sửa nội dung chỉnh định chung ràng buộc đăng ký online theo khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.7",
-   "kind": "main",
-   "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách đăng ký môn học tự động theo lớp thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.8",
-   "kind": "main",
-   "menu": "Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách hủy kết quả ĐKMH theo sinh viên thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.9",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên xét tốt nghiệp thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.10",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên không tốt nghiệp thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 2.11",
-   "kind": "main",
-   "menu": "Tốt nghiệp/ Xét tốt nghiệp/ In danh sách tốt nghiệp/ In danh sách tốt nghiệp kèm quyết định",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In danh sách tốt nghiệp kèm quyết định của sinh viên thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.1",
-   "kind": "main",
-   "menu": "Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách viên chức học kỳ thuộc khoa được phân quyền (khoa quản lý bộ môn - môn học)"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.2",
-   "kind": "main",
-   "menu": "Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách sinh viên đăng ký môn thay thế thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.3",
-   "kind": "main",
-   "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm TB - theo lớp",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách lớp và cộng điểm TB cho các lớp thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.4",
-   "kind": "main",
-   "menu": "Quản lý điểm/ Xử lý học vụ học kỳ/ Xét học kỳ/ Xét theo lớp (HK)",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách lớp và lọc theo tiêu chuẩn khi xét học kỳ theo lớp thuộc khoa được phân quyền"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.5",
-   "kind": "main",
-   "menu": "Quản lý điểm/ Khai thác báo biểu/ In bảng điểm tổng hợp/ In bảng điểm đã nhập - Theo nhóm MH",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem điểm sinh viên thuộc khoa, dùng chức năng In và Xuất danh sách bảng điểm đã nhập theo nhóm MH"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 3.6",
-   "kind": "main",
-   "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo nhóm học",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem điểm sinh viên các môn thuộc khoa, dùng chức năng Xuất Excel và Nhập điểm theo nhóm học"
-  },
-  {
-   "docRef": "QLHT_HuongDanNghiepVuPhanQuyenDuLieuTheoKhoa, mục 4",
-   "kind": "main",
-   "menu": "Nhân sự/ Danh sách viên chức/ Danh sách viên chức học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem danh sách viên chức học kỳ (giảng viên) thuộc khoa được phân quyền (khoa quản lý bộ môn - giảng viên)"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo đợt",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ khối lượng giảng dạy theo đợt"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 1",
-   "kind": "alt",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo đợt",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không thể tính lại khối lượng sau khi đã khóa sổ đợt"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo khối lượng đã chốt và đã gán đợt",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ khối lượng theo nhóm môn học đã chốt và đã gán đợt"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 1",
-   "kind": "main",
-   "menu": "Khối lượng/ Tính khối lượng/ Tính KLGD/ Khóa sổ/mở khóa sổ dữ liệu/ Theo khối lượng giảng dạy khác",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ theo khối lượng giảng dạy khác"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 2",
-   "kind": "main",
-   "menu": "Thu/ chi HP/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/ chi",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ nhập phiếu thu/chi theo loại công thức thu và đối tượng sinh viên"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 2",
-   "kind": "alt",
-   "menu": "Thu/ chi HP/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/ chi",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không thu/chi thêm khi đã khóa sổ học phí"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 2",
-   "kind": "main",
-   "menu": "Thu/ chi HP/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/ chi theo ngày",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ nhập phiếu thu/chi theo ngày cho loại thu"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 2",
-   "kind": "alt",
-   "menu": "Thu/ chi HP/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/ chi theo ngày",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mở khóa loại thu để hiệu chỉnh"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 3",
-   "kind": "main",
-   "menu": "Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa nhập điểm học kỳ theo phân cấp sinh viên",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa nhập điểm học kỳ theo phân cấp sinh viên"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 3",
-   "kind": "main",
-   "menu": "Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Theo cán bộ giảng dạy môn học",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa nhập điểm theo cán bộ giảng dạy môn học"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 4",
-   "kind": "main",
-   "menu": "Hệ thống/ An toàn dữ liệu/ Khóa sổ phân hệ theo học kỳ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Khóa sổ toàn phân hệ theo học kỳ"
-  },
-  {
-   "docRef": "QLHT_KhoaSoDuLieu, mục 4",
-   "kind": "alt",
-   "menu": "Hệ thống/ An toàn dữ liệu/ Khóa sổ phân hệ theo học kỳ",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không cho chỉnh sửa dữ liệu (chỉ khai thác) khi học kỳ đã khóa sổ toàn phân hệ"
-  },
-  {
-   "docRef": "QLHT_PhanQuyenQuanTriTrenWeb, mục III.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Truy cập trang NETWEB dành cho admin bằng cách thêm 'admin' vào URL và đăng nhập bằng tài khoản Admin được cấp lúc triển khai"
-  },
-  {
-   "docRef": "QLHT_PhanQuyenQuanTriTrenWeb, mục III.2",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền quản trị cho user liên quan: chọn menu Phân quyền admin Phân hệ, chọn user, tắt/mở chức năng menu được thao tác"
-  },
-  {
-   "docRef": "QLHT_SongNguAnh-VietTrenBaoBieu, mục III.1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chọn ngôn ngữ sử dụng khi đăng nhập EduSoft.Net và NetWeb"
-  },
-  {
-   "docRef": "QLHT_SongNguAnh-VietTrenBaoBieu, mục III.2",
-   "kind": "main",
-   "menu": "",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "In mẫu báo cáo song ngữ Anh – Việt (và Nhật – Việt)"
-  },
-  {
-   "docRef": "QLHT_SongNguAnh-VietTrenBaoBieu, mục III.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh sửa mẫu in (chọn mẫu, Chỉnh sửa report, sửa field, Lưu)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm nhóm tài khoản (UserName, Tên đầy đủ, Trạng thái, Mã khoa)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Thêm tài khoản người dùng (UserName, Tên đầy đủ, Password, Trạng thái, Mã khoa)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Gán người dùng vào nhóm tại tab Thuộc nhóm người dùng"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tài khoản ở trạng thái Khóa tài khoản không đăng nhập được hệ thống"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "alt",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tài khoản ở trạng thái Phải thay đổi mật khẩu bị bắt buộc đổi mật khẩu khi đăng nhập đầu tiên"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 1",
-   "kind": "setup",
-   "menu": "Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Khai báo Mã khoa để giới hạn phạm vi sinh viên người dùng quản lý (để trống nếu quản lý tất cả)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 2",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền quản trị phân hệ cho người dùng (Sửa/Thêm/Lưu)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 3",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo chức năng",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền theo chức năng cho tài khoản/nhóm tài khoản (check từng quyền)"
-  },
-  {
-   "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục 4",
-   "kind": "main",
-   "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo người dùng",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Phân quyền theo người dùng (chọn user/nhóm, chọn chức năng, check từng quyền)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Mở menu chỉnh định trên công cụ biểu in (chỉ hiển thị với quyền admin)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ hiển thị menu chỉnh định biểu in khi đăng nhập quyền admin"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.1",
-   "kind": "setup",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem/sửa khung mẫu in (logo, tiêu đề, chữ ký, ngày in...)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.1",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ di chuyển control trong khung chứa của nó"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Xem/sửa chi tiết mẫu in (group, details dữ liệu)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.2",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ đổi được kích thước control ở chi tiết mẫu in, không đổi vị trí sắp xếp và nhóm"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thay đổi vị trí control bằng chuột hoặc phím mũi tên"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thay đổi kích thước control"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thay đổi nội dung/format hiển thị của control"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thay đổi đường viền control (Border Report)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thêm control tự tạo theo khung đang chọn"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Ẩn/hiện control trên mẫu in (in/không in)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Thay đổi kích thước khung và tự động canh chỉnh chiều cao khung"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuyển control sang khung (band) khác"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ chuyển band được với một số control và một số khung giới hạn"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhóm và bỏ nhóm control"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Canh chỉnh biên lề các control đã chọn (Ctrl + chuột trái)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định in lặp giá trị của control"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1.3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Tự động canh chỉnh vị trí control theo chiều dọc/ngang band"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn sub-report và nguồn dữ liệu mẫu in"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Chỉnh định field in ở tab Detail"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định nhóm dữ liệu ở tab Group in"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định nhóm phân trang ở tab Group out"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chuyển field giữa hai danh sách bằng nút hoặc bấm đôi"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh số trang biểu in (đếm lại theo điều kiện)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Mặc định không check chỉnh số trang thì đếm toàn mẫu in"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Sắp xếp thứ tự ưu tiên dữ liệu"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Lưu mới chỉnh định thành phiên bản biểu in mới của user"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "main",
-   "menu": "",
-   "priority": "cao",
-   "scenarioCode": "",
-   "title": "Lưu giá trị đã chỉnh định (biểu in tùy biến chính thức)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục I",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉ quản trị phân hệ mới có quyền lưu biểu in tùy biến chính thức"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục I",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Không lưu thì tham số tùy biến chỉ có hiệu lực một lần in"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Hủy giá trị đã chỉnh sửa và đóng màn hình"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Đóng màn hình không lưu giá trị"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 2",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Trả về giá trị thừa kế (xóa thay đổi của user, về mặc định)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 1",
-   "kind": "clean",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Lấy lại mẫu in mặc định"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông tin giấy in (đầu trang, cuối trang, lề trái, dạng in)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chọn khổ giấy (A3, A4, Letter, A5) và tự hiển thị chiều rộng, chiều cao"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông tin thiết kế mẫu in (địa điểm ký, ngày ký, tổng số trang, mã người in)"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 3",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh số dòng sang trang của group và khoảng cách dữ liệu đến lề"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 3",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Dấu check mặc định lấy giá trị admin chỉnh định chung cho mọi biểu in"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 4",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định thông số hiển thị (format) cho nội dung control"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 4",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Bỏ dấu check mặc định để đặt setting riêng cho mẫu in đang chọn"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 4",
-   "kind": "main",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Nhập tiêu đề tiếng Việt trực tiếp hoặc qua nút \"…\" mở màn hình chỉnh định text"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 5",
-   "kind": "setup",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Chỉnh định nội dung control bằng DataSource, System Variable, Functions, Other variable"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục 5",
-   "kind": "alt",
-   "menu": "",
-   "priority": "trung bình",
-   "scenarioCode": "",
-   "title": "Giá trị biểu thức tự gõ phải nằm trong dấu {}"
-  },
-  {
-   "docRef": "QLHT_ThaoTacBieuIn, mục III",
-   "kind": "main",
-   "menu": "",
-   "priority": "thấp",
-   "scenarioCode": "",
-   "title": "Xem in thử biểu in sau khi chỉnh định"
+   "source": "sheet",
+   "steps": [
+    "Mở menu Hệ thống / Quản trị NetWEB / Cấm SV xem vì nợ học phí.",
+    "Thêm sinh viên test (có nợ học phí) vào danh sách cấm → Lưu.",
+    "KIỂM TRA: đăng nhập Netweb bằng sinh viên đó – bị chặn xem các chức năng theo cấu hình (điểm, kết quả…).",
+    "Xóa sinh viên test khỏi danh sách → KIỂM TRA xem lại được."
+   ],
+   "stt": 10,
+   "title": "Cấm SV xem vì nợ học phí"
   }
  ],
  "module": "QLHT",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 10 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 8 khớp, 1 khớp một phần, 1 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "syncedAt": "2026-10-29T04:58:18.811Z",
- "syncedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "updatedAt": "2026-10-29T04:58:18.811Z",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-1"
+KIT_VERSION = "2026.10.30-6"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -40,9 +40,10 @@ try:
     from pywinauto.timings import TimeoutError as PwTimeout
     from PIL import ImageGrab
 except Exception:  # pragma: no cover
-    print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
-    input("Nhấn Enter để thoát…")
-    sys.exit(1)
+    if "--chan-doan" not in sys.argv:      # kiểm tra cài đặt vẫn chạy được khi thiếu thư viện
+        print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
+        input("Nhấn Enter để thoát…")
+        sys.exit(1)
 
 try:
     import keyboard as hotkeys
@@ -85,6 +86,19 @@ OK_PAT = re.compile(r"thành công|đã lưu|hoàn tất|successful", re.I)
 
 
 # ---------------------------------------------------------------- chú thích trên màn hình
+def alt_at(alt, n):
+    """Bước của luồng chính nơi luồng con rẽ nhánh (tính từ 0): atStep, hoặc "bước N" trong điều kiện/tên, mặc định bước cuối."""
+    if not n:
+        return 0
+    k = alt.get("atStep") if isinstance(alt, dict) else None
+    if isinstance(k, int) and k >= 0:
+        return min(k, n - 1)
+    m = re.search(r"bước\s*(\d+)", "%s %s" % ((alt or {}).get("condition", ""), (alt or {}).get("name", "")), re.I)
+    if m and 0 < int(m.group(1)) <= n:
+        return int(m.group(1)) - 1
+    return n - 1
+
+
 class Caption:
     """Dải chú thích luôn nổi ở mép trên màn hình chính (tkinter, chạy ở luồng chính)."""
 
@@ -1182,6 +1196,21 @@ class Run:
         self.say("%s: %s%s — %s" % (label, {"ok": "ĐẠT", "bad": "LỖI", "skip": "BỎ QUA"}.get(rec["res"], "?"), (" · " + rec["note"]) if rec["note"] else "", text[:120]))
         return rec["res"]
 
+    def record_main(self, main_ok):
+        """Ghi nhận kết quả luồng chính (file + ảnh màn hình) trước khi test luồng con trên cùng phiên Edusoft."""
+        res = [x["res"] for x in self.steps]
+        st = "Đạt" if main_ok else ("Lỗi" if "bad" in res else "Chưa xong")
+        try:
+            (self.dir / "ket-qua-luong-chinh.json").write_text(json.dumps(dict(
+                scenarioCode=self.sc["code"], status=st, at=now_iso(), steps=self.steps), ensure_ascii=False, indent=1), "utf-8")
+        except Exception as e:
+            self.say("(Không ghi được kết quả luồng chính: %s)" % e)
+        n_alt = len(self.sc.get("altFlows") or [])
+        self.say("Đã ghi nhận luồng chính: %s%s" % (st, (" – tiếp theo %d luồng con, không mở lại Edusoft" % n_alt) if n_alt else ""))
+        if n_alt:
+            CAP.show("%s · Đã ghi nhận luồng chính: %s" % (self.sc["code"], st), "Tiếp theo: %d luồng con trên cùng phiên Edusoft" % n_alt)
+            time.sleep(STEP_DELAY)
+
     def execute(self):
         sc = self.sc
         self.say("Bắt đầu %s – %s (script, chế độ trình diễn)" % (sc["code"], sc.get("title", "")))
@@ -1208,11 +1237,15 @@ class Run:
                 if r == "bad" and CFG.get("stopOnError", True):
                     stop = True
             main_ok = all(x["res"] == "ok" for x in self.steps)
-            for j, alt in enumerate(sc.get("altFlows", [])):
+            self.record_main(main_ok)              # ghi nhận luồng chính xong rồi mới test luồng con
+            alt_defs = sc.get("altFlows", []) or []
+            n_steps = len(sc.get("steps", []))
+            for j in sorted(range(len(alt_defs)), key=lambda k: (alt_at(alt_defs[k], n_steps), k)):
+                alt = alt_defs[j]
                 acts = alt.get("auto") or []
                 if isinstance(acts, str):
                     acts = acts.split(";")
-                text = "%s — %s" % (alt.get("name", ""), alt.get("condition", ""))
+                text = "%s — %s (luồng con, rẽ từ bước %d)" % (alt.get("name", ""), alt.get("condition", ""), alt_at(alt, n_steps) + 1)
                 if alt.get("needs") == "main" and not main_ok:
                     self.alts[j].update(res="skip", note="Bỏ qua – luồng chính chưa đạt", at=now_iso())
                     self.say("Luồng A%d: BỎ QUA — luồng chính chưa đạt" % (j + 1))
@@ -1251,8 +1284,9 @@ class Run:
 
 # ---------------------------------------------------------------- test đăng nhập (CHUNG-001)
 def run_login_test(sc, es, account, password):
-    """Kịch bản CHUNG-001 chạy ĐÚNG THỨ TỰ KỊCH BẢN: Bước 1 → 6 (đăng nhập đúng),
-    sau đó lần lượt các luồng thay thế A1, A2, … (mỗi luồng mở lại Edusoft từ đầu nếu cần khung đăng nhập).
+    """Kịch bản CHUNG-001, mở Edusoft MỘT lần: Bước 1 → 3 (tới khung đăng nhập) → các luồng con ở khung đăng nhập
+    (sai mật khẩu, bỏ trống tên, sai tên – đóng thông báo, vẫn ở khung đăng nhập) → Bước 4 → 6 (đăng nhập đúng)
+    → luồng con còn lại (đường dẫn sai, khung đen). Chỉ mở lại Edusoft khi luồng con lỡ đăng nhập được.
     Dải chú thích hiển thị nguyên văn bước / luồng của kịch bản để support đối chiếu."""
     r = Run(sc, es)
     r.say("Bắt đầu %s – %s (script %s, chế độ trình diễn)" % (sc["code"], sc.get("title", ""), KIT_VERSION))
@@ -1293,6 +1327,138 @@ def run_login_test(sc, es, account, password):
             r.say("Khung đăng nhập chưa hiện sau 60 giây (khung đen) – đóng và chạy lại Edusoft")
             return es.restart_to_login()
 
+    # ================= LUỒNG THAY THẾ: A1, A2, … =================
+    def alt_cap(j, text):
+        CAP.show("%s · Luồng A%d · %s" % (sc["code"], j + 1, alt_def[j].get("name", "")), text)
+        time.sleep(STEP_DELAY)
+
+    def do_alt(j, early=False):
+        """early=True: đang ở khung đăng nhập của luồng chính – thử luồng con ngay đó, không mở lại Edusoft."""
+        a = alt_def[j]
+        name = norm(a.get("name", ""))
+        rec = alts[j]
+        a_steps = a.get("steps") or []
+        try:
+            if not CFG.get("loginNegatives", True):
+                raise LookupError("tắt")
+            if "đường dẫn" in name:
+                bad_path = str(Path(es.exe).with_name("KhongTonTai_Edusoft.NET.exe"))
+                alt_cap(j, (a_steps[0] if a_steps else "") + "   ▸ thử chạy " + bad_path)
+                started = False
+                try:
+                    if os.path.isfile(bad_path):
+                        started = True
+                    else:
+                        Application(backend="uia").start('"%s"' % bad_path, timeout=10)
+                        started = True
+                except Exception:
+                    started = False
+                if started:
+                    rec["res"], rec["note"] = "bad", "Vẫn chạy được với đường dẫn sai"
+                else:
+                    ok(rec, "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)")
+                    r.say("Luồng A%d: ĐẠT — đường dẫn sai thì không mở được Edusoft" % (j + 1))
+                return
+            wrong_user = "sai tên" in name or "sai tài khoản" in name
+            if "trống" in name or "sai mật khẩu" in name or wrong_user:
+                empty = "trống" in name
+                u = p = None
+                if early:
+                    try:
+                        es.close_dialogs(3)
+                        u, p = es.login_fields()
+                    except Exception:
+                        u = p = None
+                if u is None:                       # không còn ở khung đăng nhập: mới phải mở lại Edusoft
+                    alt_cap(j, "Mở lại Edusoft tới khung đăng nhập")
+                    es.kill()
+                    open_login()
+                    u, p = es.login_fields()
+                if empty:
+                    want_u = ""
+                    alt_cap(j, a_steps[0] if a_steps else "Xóa sạch ô Tên đăng nhập")
+                    es.set_field(u, "")
+                    es.set_field(p, password, secret=True)
+                elif wrong_user:
+                    want_u = account + "_khongtontai"
+                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tên đăng nhập không tồn tại, mật khẩu đúng") + "   ▸ " + want_u + " / mật khẩu đúng")
+                    es.set_field(u, want_u)
+                    es.set_field(p, password, secret=True)
+                else:
+                    want_u = account
+                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tài khoản và mật khẩu sai") + "   ▸ " + account + " / mật khẩu sai")
+                    es.set_field(u, account)
+                    es.set_field(p, password + "_sai", secret=True)
+                got_u = (es.field_value(u) or "").strip()
+                if got_u != want_u:
+                    raise RuntimeError("Ô Tên đăng nhập đang là \"%s\", không phải \"%s\" như luồng yêu cầu" % (got_u, want_u))
+                alt_cap(j, a_steps[1] if len(a_steps) > 1 else "Bấm Đăng nhập")
+                try:
+                    how = es.click_login()
+                except RuntimeError as e:
+                    if not empty or es.find_main() is not None:
+                        raise
+                    how = "không thấy phản hồi"          # bỏ trống tên: Edusoft có thể chỉ báo ngay trên khung, không mở hộp thoại
+                    r.say("Luồng A%d – %s" % (j + 1, e))
+                r.say("Luồng A%d – bấm Đăng nhập: %s" % (j + 1, how))
+                if how == "khóa":
+                    f = r.shot("luong-a%d" % (j + 1))
+                    if f:
+                        rec["shots"].append(f)
+                    rec["res"], rec["at"] = "ok", now_iso()
+                    rec["note"] = "Bị chặn – nút Đăng nhập bị khóa, vẫn ở khung đăng nhập"
+                    r.say("Luồng A%d: ĐẠT — nút Đăng nhập bị khóa" % (j + 1))
+                    return
+                ds = es.wait_dialog(10)
+                if not ds and es.wait_main(30):      # không có thông báo: chờ thêm để chắc chắn không lọt vào màn hình chính
+                    ds = []
+                f = r.shot("luong-a%d" % (j + 1))
+                if f:
+                    rec["shots"].append(f)
+                msg = " / ".join(es.dialog_text(d).replace("\n", " ")[:200] for d in ds)
+                if es.find_main() is not None:
+                    rec["res"], rec["note"], rec["at"] = "bad", "Vẫn vào được màn hình chính", now_iso()
+                    r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
+                                       expectedData=a.get("expected", "Bị chặn"), actualData="Đăng nhập được dù " + a.get("name", "").lower(), shots=list(rec["shots"])))
+                    r.say("Luồng A%d: LỖI — vẫn đăng nhập được" % (j + 1))
+                    if early:                       # đã lọt vào màn hình chính: buộc mở lại để chạy tiếp luồng chính
+                        es.kill()
+                        open_login()
+                        rec["note"] += " · đã mở lại Edusoft để chạy tiếp luồng chính"
+                    return
+                alt_cap(j, "Thông báo: " + (msg or "(không có thông báo)") + "   ▸ đóng thông báo")
+                closed = es.close_dialogs(10)
+                f2 = r.shot("luong-a%d-sau" % (j + 1))
+                if f2:
+                    rec["shots"].append(f2)
+                rec["res"], rec["at"] = "ok", now_iso()
+                rec["note"] = ("Bị chặn – " + msg if msg else "Bị chặn, vẫn ở khung đăng nhập") + ("" if closed else " · KHÔNG đóng được thông báo")
+                r.say("Luồng A%d: ĐẠT — bị chặn%s%s" % (j + 1, (" (" + msg[:120] + ")") if msg else "", "" if closed else " · không đóng được thông báo"))
+                return
+            if "đen" in name:
+                if black["seen"]:
+                    ok(rec, "Lần mở đầu khung đen / không hiện; chạy lại thì hiện bình thường")
+                else:
+                    rec["res"], rec["note"] = "skip", "Không xảy ra trong lần chạy này"
+                return
+            rec["res"], rec["note"] = "skip", "Chưa tự động – kiểm tra tay khi cần"
+        except LookupError:
+            rec["res"], rec["note"] = "skip", "Đã tắt kiểm tra luồng thay thế (config.json)"
+        except Exception as e:
+            f = r.shot("luong-a%d-loi" % (j + 1))
+            if f:
+                rec["shots"].append(f)
+            rec["res"], rec["note"], rec["at"] = "bad", "Script dừng: %s" % e, now_iso()
+            r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
+                               expectedData=a.get("expected", ""), actualData="Script không thực hiện được: %s" % e, shots=list(rec["shots"])))
+            r.say("Luồng A%d: LỖI — %s" % (j + 1, e))
+        finally:
+            if rec["res"] and not rec.get("at"):
+                rec["at"] = now_iso()
+
+    NEG = ("trống", "sai mật khẩu", "sai tên", "sai tài khoản")
+    done = set()
+
     # ================= LUỒNG CHÍNH: Bước 1 → 6 =================
     cur = 0
     try:
@@ -1319,6 +1485,16 @@ def run_login_test(sc, es, account, password):
             es.restart_to_login()
         ok(steps[2], "Khung đăng nhập hiển thị" + (" (sau khi chạy lại do khung đen)" if black["seen"] else ""), "buoc-3")
         r.say("Bước 3: ĐẠT — khung đăng nhập hiển thị")
+
+        # luồng con ở khung đăng nhập (sai mật khẩu, bỏ trống tên…): thử ngay tại đây rồi mới đăng nhập đúng – không mở lại Edusoft
+        early = [j for j, a in enumerate(alt_def) if any(k in norm(a.get("name", "")) for k in NEG)]
+        if early and CFG.get("loginNegatives", True):
+            r.say("Luồng con tại khung đăng nhập (trước khi đăng nhập đúng, cùng phiên Edusoft): " + ", ".join("A%d" % (j + 1) for j in early))
+            for j in early:
+                do_alt(j, early=True)
+                done.add(j)
+            es.close_dialogs(3)
+            CAP.show("%s · Tiếp luồng chính" % sc["code"], "Xong luồng con ở khung đăng nhập – đăng nhập đúng (bước 4 → 6)")
 
         u, p = es.login_fields()
         ru, rp = u.rectangle(), p.rectangle()
@@ -1386,120 +1562,11 @@ def run_login_test(sc, es, account, password):
             if steps[k]["res"] is None:
                 steps[k]["res"], steps[k]["note"] = "skip", "Không chạy do bước %d lỗi" % (cur + 1)
 
-    # ================= LUỒNG THAY THẾ: A1, A2, … =================
-    def alt_cap(j, text):
-        CAP.show("%s · Luồng A%d · %s" % (sc["code"], j + 1, alt_def[j].get("name", "")), text)
-        time.sleep(STEP_DELAY)
-
-    for j, a in enumerate(alt_def):
-        name = norm(a.get("name", ""))
-        rec = alts[j]
-        a_steps = a.get("steps") or []
-        try:
-            if not CFG.get("loginNegatives", True):
-                raise LookupError("tắt")
-            if "đường dẫn" in name:
-                bad_path = str(Path(es.exe).with_name("KhongTonTai_Edusoft.NET.exe"))
-                alt_cap(j, (a_steps[0] if a_steps else "") + "   ▸ thử chạy " + bad_path)
-                started = False
-                try:
-                    if os.path.isfile(bad_path):
-                        started = True
-                    else:
-                        Application(backend="uia").start('"%s"' % bad_path, timeout=10)
-                        started = True
-                except Exception:
-                    started = False
-                if started:
-                    rec["res"], rec["note"] = "bad", "Vẫn chạy được với đường dẫn sai"
-                else:
-                    ok(rec, "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)")
-                    r.say("Luồng A%d: ĐẠT — đường dẫn sai thì không mở được Edusoft" % (j + 1))
-                continue
-            wrong_user = "sai tên" in name or "sai tài khoản" in name
-            if "trống" in name or "sai mật khẩu" in name or wrong_user:
-                empty = "trống" in name
-                alt_cap(j, "Mở lại Edusoft tới khung đăng nhập")
-                es.kill()
-                open_login()
-                u, p = es.login_fields()
-                if empty:
-                    want_u = ""
-                    alt_cap(j, a_steps[0] if a_steps else "Xóa sạch ô Tên đăng nhập")
-                    es.set_field(u, "")
-                    es.set_field(p, password, secret=True)
-                elif wrong_user:
-                    want_u = account + "_khongtontai"
-                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tên đăng nhập không tồn tại, mật khẩu đúng") + "   ▸ " + want_u + " / mật khẩu đúng")
-                    es.set_field(u, want_u)
-                    es.set_field(p, password, secret=True)
-                else:
-                    want_u = account
-                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tài khoản và mật khẩu sai") + "   ▸ " + account + " / mật khẩu sai")
-                    es.set_field(u, account)
-                    es.set_field(p, password + "_sai", secret=True)
-                got_u = (es.field_value(u) or "").strip()
-                if got_u != want_u:
-                    raise RuntimeError("Ô Tên đăng nhập đang là \"%s\", không phải \"%s\" như luồng yêu cầu" % (got_u, want_u))
-                alt_cap(j, a_steps[1] if len(a_steps) > 1 else "Bấm Đăng nhập")
-                try:
-                    how = es.click_login()
-                except RuntimeError as e:
-                    if not empty or es.find_main() is not None:
-                        raise
-                    how = "không thấy phản hồi"          # bỏ trống tên: Edusoft có thể chỉ báo ngay trên khung, không mở hộp thoại
-                    r.say("Luồng A%d – %s" % (j + 1, e))
-                r.say("Luồng A%d – bấm Đăng nhập: %s" % (j + 1, how))
-                if how == "khóa":
-                    f = r.shot("luong-a%d" % (j + 1))
-                    if f:
-                        rec["shots"].append(f)
-                    rec["res"], rec["at"] = "ok", now_iso()
-                    rec["note"] = "Bị chặn – nút Đăng nhập bị khóa, vẫn ở khung đăng nhập"
-                    r.say("Luồng A%d: ĐẠT — nút Đăng nhập bị khóa" % (j + 1))
-                    continue
-                ds = es.wait_dialog(10)
-                if not ds and es.wait_main(30):      # không có thông báo: chờ thêm để chắc chắn không lọt vào màn hình chính
-                    ds = []
-                f = r.shot("luong-a%d" % (j + 1))
-                if f:
-                    rec["shots"].append(f)
-                msg = " / ".join(es.dialog_text(d).replace("\n", " ")[:200] for d in ds)
-                if es.find_main() is not None:
-                    rec["res"], rec["note"], rec["at"] = "bad", "Vẫn vào được màn hình chính", now_iso()
-                    r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
-                                       expectedData=a.get("expected", "Bị chặn"), actualData="Đăng nhập được dù " + a.get("name", "").lower(), shots=list(rec["shots"])))
-                    r.say("Luồng A%d: LỖI — vẫn đăng nhập được" % (j + 1))
-                    continue
-                alt_cap(j, "Thông báo: " + (msg or "(không có thông báo)") + "   ▸ đóng thông báo")
-                closed = es.close_dialogs(10)
-                f2 = r.shot("luong-a%d-sau" % (j + 1))
-                if f2:
-                    rec["shots"].append(f2)
-                rec["res"], rec["at"] = "ok", now_iso()
-                rec["note"] = ("Bị chặn – " + msg if msg else "Bị chặn, vẫn ở khung đăng nhập") + ("" if closed else " · KHÔNG đóng được thông báo")
-                r.say("Luồng A%d: ĐẠT — bị chặn%s%s" % (j + 1, (" (" + msg[:120] + ")") if msg else "", "" if closed else " · không đóng được thông báo"))
-                continue
-            if "đen" in name:
-                if black["seen"]:
-                    ok(rec, "Lần mở đầu khung đen / không hiện; chạy lại thì hiện bình thường")
-                else:
-                    rec["res"], rec["note"] = "skip", "Không xảy ra trong lần chạy này"
-                continue
-            rec["res"], rec["note"] = "skip", "Chưa tự động – kiểm tra tay khi cần"
-        except LookupError:
-            rec["res"], rec["note"] = "skip", "Đã tắt kiểm tra luồng thay thế (config.json)"
-        except Exception as e:
-            f = r.shot("luong-a%d-loi" % (j + 1))
-            if f:
-                rec["shots"].append(f)
-            rec["res"], rec["note"], rec["at"] = "bad", "Script dừng: %s" % e, now_iso()
-            r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
-                               expectedData=a.get("expected", ""), actualData="Script không thực hiện được: %s" % e, shots=list(rec["shots"])))
-            r.say("Luồng A%d: LỖI — %s" % (j + 1, e))
-        finally:
-            if rec["res"] and not rec.get("at"):
-                rec["at"] = now_iso()
+    # luồng con còn lại (đường dẫn sai, khung đen…) – sau khi luồng chính đã ghi nhận
+    for j in sorted(range(len(alt_def)), key=lambda k: (alt_at(alt_def[k], n), k)):
+        if j not in done:
+            do_alt(j)
+            done.add(j)
 
     obs_stop(r)
     if CFG.get("closeAfter", True):
@@ -1732,6 +1799,80 @@ def forget():
     print("Đã xóa mật khẩu đã lưu.")
 
 
+# ---------------------------------------------------------------- kiểm tra cài đặt
+def user_env(name):
+    """Biến môi trường của người đang dùng máy. cai-dat.bat xin quyền admin nên truyền APPDATA /
+    LOCALAPPDATA / USERPROFILE gốc qua AQ_USER_* (tài khoản admin khác có hồ sơ khác)."""
+    return os.environ.get("AQ_USER_" + name) or os.environ.get(name) or ""
+
+
+def claude_cfg_dirs():
+    """Thư mục cấu hình Claude app (bản cài thường và bản Microsoft Store) của người dùng."""
+    dirs = []
+    ad, la = user_env("APPDATA"), user_env("LOCALAPPDATA")
+    if ad and (Path(ad) / "Claude").is_dir():
+        dirs.append(Path(ad) / "Claude")
+    if la:
+        dirs += [d for d in (Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude") if d.is_dir()]
+    return dirs
+
+
+def ps(cmd, timeout=20):
+    import subprocess
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True, timeout=timeout)
+        return (r.stdout or "").strip()
+    except Exception:
+        return ""
+
+
+def agent_running():
+    try:
+        import ctypes
+        h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestAgentMutex")
+        if h:
+            ctypes.windll.kernel32.CloseHandle(h)
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def diagnose():
+    """In bảng kiểm tra cài đặt (cai-dat.bat gọi ở cuối; chạy tay: chay-test.bat --chan-doan) và lưu chan-doan.txt."""
+    import importlib.util
+    rows = []
+
+    def add(st, name, detail=""):
+        rows.append("%s %s%s" % ({"ok": "[ OK ]", "warn": "[ !! ]", "fail": "[LỖI]"}[st], name, (" – " + detail) if detail else ""))
+        print(rows[-1])
+
+    print()
+    print("=== Kiểm tra cài đặt AQ Autotest – bộ test %s – %s ===" % (KIT_VERSION, datetime.datetime.now().strftime("%d/%m/%Y %H:%M")))
+    base, tmp = str(BASE), (user_env("TEMP") or os.environ.get("TEMP") or "").lower()
+    if (tmp and base.lower().startswith(tmp)) or ".zip" in base.lower():
+        add("fail", "Thư mục bộ test", base + " là thư mục tạm / nằm trong file .zip – giải nén rồi chạy cai-dat.bat để cài vào thư mục cố định")
+    else:
+        add("ok", "Thư mục bộ test", base)
+    add("ok", "Python", sys.executable)
+    miss = [m for m in ("pywinauto", "PIL", "keyboard", "keyring", "openpyxl") if importlib.util.find_spec(m) is None]
+    add("fail" if miss else "ok", "Thư viện", ("thiếu " + ", ".join(miss) + " – chạy lại cai-dat.bat, kiểm tra mạng") if miss else "đủ")
+    exe = CFG.get("exe") or ""
+    add("ok" if exe and Path(exe).exists() else "fail", "Edusoft.NET.exe",
+        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi tải lại bộ cài")
+    add("ok" if agent_running() else "warn", "AQ Autotest Agent",
+        "đang chạy" if agent_running() else "chưa chạy – chạy lại cai-dat.bat (chọn Yes khi hỏi quyền admin)")
+    try:
+        bridge_diag(add)
+    except Exception as e:
+        add("warn", "Cầu nối Claude app", "không kiểm tra được: %s" % e)
+    try:
+        (BASE / "chan-doan.txt").write_text("\n".join(rows) + "\n", "utf-8")
+    except Exception:
+        pass
+    return rows
+
+
 # ---------------------------------------------------------------- dò giao diện
 def dump():
     from pywinauto import Desktop
@@ -1768,6 +1909,23 @@ def update_dirs():
     for d in ds:
         if d not in out and d.is_dir():
             out.append(d)
+    return out
+
+
+def pack_results(since):
+    """Gói các lượt vừa chạy thành một file .zip trong thư mục Tải về – dùng khi console không nối thẳng
+    máy chạy test: trên console bấm Nhập kết quả… và chọn file này."""
+    import zipfile
+    runs = [d for d in (BASE / "results").glob("*") if (d / "result.json").is_file() and (d / "result.json").stat().st_mtime >= since - 1]
+    if not runs:
+        return None
+    ds = [d for d in update_dirs() if d != BASE]
+    out = (ds[-1] if ds else BASE / "results") / ("AQ-ket-qua-%s.zip" % time.strftime("%y%m%d-%H%M%S"))
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        for d in runs:
+            for f in d.rglob("*"):
+                if f.is_file() and not (f.suffix.lower() in (".mp4", ".mkv") and f.stat().st_size > 20 * 1024 * 1024):
+                    z.write(f, d.name + "/" + f.relative_to(d).as_posix())
     return out
 
 
@@ -1837,12 +1995,7 @@ def unregister_claude_bridge():
     localhost, server.py làm việc này trực tiếp). Chỉ xoá đúng mục của mình, giữ nguyên cấu hình khác."""
     if os.name != "nt":
         return []
-    dirs = []
-    ad, la = os.environ.get("APPDATA"), os.environ.get("LOCALAPPDATA")
-    if ad:
-        dirs.append(Path(ad) / "Claude")
-    if la:
-        dirs += list((Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude"))
+    dirs = claude_cfg_dirs()
     done = []
     for d in dirs:
         f = d / "claude_desktop_config.json"
@@ -1858,6 +2011,10 @@ def unregister_claude_bridge():
         except Exception:
             continue
     return done
+
+
+def bridge_diag(add):
+    add("ok", "Cầu nối Claude app", "không cần – console chạy trên localhost (server.py nối thẳng thư mục bộ test)")
 
 
 # ---------------------------------------------------------------- main
@@ -1881,6 +2038,9 @@ def main():
         forget()
         ask_password("edusoft", CFG["account"], reask=True)
         input("Nhấn Enter để đóng…")
+        return
+    if "--chan-doan" in args:
+        diagnose()
         return
     try:
         unregister_claude_bridge()
@@ -1910,6 +2070,7 @@ def main():
     except Exception:
         pass
     summary = []
+    t0 = time.time()
 
     def worker():
         es = Edusoft()
@@ -1945,12 +2106,25 @@ def main():
     for c, s in summary:
         print("  %-10s %s" % (c, s))
     print("\nThư mục kết quả:", BASE / "results")
+    zp = None
+    try:
+        zp = pack_results(t0)
+    except Exception as e:
+        print("(Không gói được file kết quả: %s)" % e)
+    if zp:
+        print("File kết quả:", zp)
+        print("Console chưa nối thẳng máy này? Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn file trên.")
+    else:
+        print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn thư mục results.")
     if CFG.get("openResults", True):
         try:
-            os.startfile(str(BASE / "results"))
+            if zp:
+                import subprocess
+                subprocess.Popen(["explorer", "/select,", str(zp)])
+            else:
+                os.startfile(str(BASE / "results"))
         except Exception:
             pass
-    print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả chạy\" và chọn thư mục results.")
     input("Nhấn Enter để đóng…")
 
 

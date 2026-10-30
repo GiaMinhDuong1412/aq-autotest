@@ -1,0 +1,117 @@
+{
+ "basis": "sheet",
+ "createdAt": "2026-10-30T09:00:00.000Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "docs": [
+  {
+   "name": "NETWEB-QuanTriChung",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "Netweb_TaiLieuHuongDanSinhVien",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  },
+  {
+   "name": "NETWEB_SinhVienQuenMatKhau",
+   "url": "https://aqtechltd.sharepoint.com/:f:/s/sp/IgCVWy-N4j4TRZgKax9lIX2EAfCZWGr61gqVBiSBTMmPKXM?e=jIrm51"
+  }
+ ],
+ "items": [
+  {
+   "docCheck": "partial",
+   "docNote": "Phía sinh viên/giảng viên gửi góp ý không có trong tài liệu quản trị – bước gửi cần xác nhận theo tài liệu SV.",
+   "docRef": "NETWEB-QuanTriChung, mục III.4.2 DS phân loại ý kiến; III.4.3 Ý kiến người dùng",
+   "kind": "main",
+   "menu": "NetWEB SV +GV: Góp ý kiến",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Admin: trang quản trị → DS phân loại ý kiến → Thêm loại ý kiến TEST_ (phòng ban nhận) → Lưu.",
+    "Đăng nhập Netweb bằng sinh viên test → Góp ý kiến → chọn loại TEST_, nhập nội dung → Gửi.",
+    "KIỂM TRA (admin) Ý kiến người dùng: thấy ý kiến vừa gửi; nhập Trả lời → Lưu.",
+    "KIỂM TRA (sinh viên): thấy câu trả lời của admin.",
+    "Admin xóa ý kiến test và loại ý kiến TEST_."
+   ],
+   "stt": 214,
+   "title": "Góp ý kiến (Netweb SV +GV)"
+  },
+  {
+   "docCheck": "partial",
+   "docRef": "NETWEB-QuanTriChung, mục III.2.4 Đăng tin bài viết (loại Thông báo), III.4.4 Gửi thông báo",
+   "kind": "main",
+   "menu": "NetWEB SV + GV: Xem thông báo từ ban quản trị",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Điều kiện: admin đã đăng bài loại Thông báo hoặc gửi thông báo cho sinh viên test (mục NETWEB ADMIN).",
+    "Đăng nhập Netweb bằng sinh viên test (và giảng viên test).",
+    "KIỂM TRA: thấy thông báo ở trang chủ / mục thông báo, mở được nội dung đúng như admin đã đăng.",
+    "Admin ẩn bài → KIỂM TRA sinh viên không còn thấy."
+   ],
+   "stt": 215,
+   "title": "Xem thông báo từ ban quản trị (Netweb SV + GV)"
+  },
+  {
+   "docCheck": "ok",
+   "docNote": "Cần tài khoản SV test có email mà người test đọc được.",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien; NETWEB_SinhVienQuenMatKhau, mục 3 Quên mật khẩu",
+   "kind": "main",
+   "menu": "NetWEB SV +GV: Quên mật khẩu",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Màn hình đăng nhập Netweb → Quên mật khẩu",
+    "Nhập thông tin tài khoản SV test (email test nhận được thư)",
+    "KIỂM TRA: hệ thống gửi mã xác minh tới email",
+    "Nhập mã xác minh, nhập và xác nhận mật khẩu mới → KIỂM TRA đăng nhập được bằng mật khẩu mới",
+    "Không ghi mật khẩu vào kịch bản/log"
+   ],
+   "stt": 216,
+   "title": "Quên mật khẩu (Netweb SV +GV)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 2 Đổi mật khẩu",
+   "kind": "main",
+   "menu": "NetWEB SV +GV: Đổi mật khẩu",
+   "priority": "cao",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Đăng nhập Netweb bằng SV test → bấm avatar → Đổi mật khẩu",
+    "Nhập mật khẩu cũ, mật khẩu mới, xác nhận → Thay đổi mật khẩu",
+    "KIỂM TRA: đăng xuất, đăng nhập lại bằng mật khẩu mới được; mật khẩu cũ bị từ chối",
+    "Dọn: đổi lại mật khẩu cũ (lấy từ nơi lưu bí mật, không ghi vào kịch bản)",
+    "Lặp lại với GV test"
+   ],
+   "stt": 217,
+   "title": "Đổi mật khẩu (Netweb SV +GV)"
+  },
+  {
+   "docCheck": "ok",
+   "docRef": "NETWEB-QuanTriChung, mục III.2.10 Quy chế quy định",
+   "kind": "main",
+   "menu": "NetWEB: Xem Quy chế / Quy định",
+   "priority": "thấp",
+   "scenarioCode": "",
+   "source": "sheet",
+   "steps": [
+    "Admin: trang quản trị → Quy chế quy định → thêm một quy chế TEST_ → Lưu.",
+    "Mở Netweb khi chưa đăng nhập: KIỂM TRA không xem được quy chế (tài liệu: sinh viên phải đăng nhập mới xem được).",
+    "Đăng nhập bằng sinh viên test → Quy chế/Quy định → KIỂM TRA thấy và mở được quy chế TEST_.",
+    "Admin xóa quy chế TEST_."
+   ],
+   "stt": 218,
+   "title": "Xem Quy chế / Quy định (Netweb)"
+  }
+ ],
+ "module": "CHUNG",
+ "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 5 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 3 khớp, 2 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
+ "product": "netweb",
+ "status": "draft",
+ "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
+}
