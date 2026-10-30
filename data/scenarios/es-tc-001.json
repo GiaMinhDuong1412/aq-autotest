@@ -2,6 +2,7 @@
  "actual": "Đăng nhập thành công, vào màn hình chính v2026.10K.09.",
  "altFlows": [
   {
+   "atStep": 1,
    "condition": "Đường dẫn trong config.json không tồn tại hoặc không phải Edusoft.NET.exe",
    "expected": "Script báo không tìm thấy file ở Bước 2; lượt chạy Không đạt, không mở Edusoft.",
    "name": "Đường dẫn Edusoft không đúng",
@@ -11,6 +12,7 @@
    ]
   },
   {
+   "atStep": 4,
    "condition": "Nhập đúng tên đăng nhập nhưng sai mật khẩu",
    "expected": "Edusoft báo sai tên đăng nhập hoặc mật khẩu, vẫn ở khung đăng nhập, không vào màn hình chính.",
    "name": "Sai mật khẩu",
@@ -20,6 +22,7 @@
    ]
   },
   {
+   "atStep": 3,
    "condition": "Ô Tên đăng nhập để trống",
    "expected": "Edusoft yêu cầu nhập tên đăng nhập, không đăng nhập.",
    "name": "Bỏ trống tên đăng nhập",
@@ -29,6 +32,7 @@
    ]
   },
   {
+   "atStep": 2,
    "condition": "Lần chạy đầu khung đăng nhập hiển thị đen, không thao tác được",
    "expected": "Lần chạy lại khung đăng nhập hiển thị bình thường; ghi nhận hiện tượng vào Quá trình test.",
    "name": "Khung đăng nhập hiện đen ở lần mở đầu",
@@ -38,6 +42,7 @@
    ]
   },
   {
+   "atStep": 3,
    "condition": "Tên đăng nhập không tồn tại (đổi khác tài khoản test), mật khẩu đúng",
    "expected": "Edusoft báo đăng nhập không thành công, vẫn ở khung đăng nhập, không vào màn hình chính.",
    "name": "Sai tên đăng nhập",
@@ -82,7 +87,7 @@
   "Bấm Đăng nhập và chờ màn hình chính tải xong."
  ],
  "title": "Đăng nhập Edusoft.NET bản HVNG - Copy",
- "updatedAt": "2026-10-29T15:37:22.748Z",
+ "updatedAt": "2026-10-30T03:40:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "version": "v2026.10K.09"
 }

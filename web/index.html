@@ -597,6 +597,17 @@ details.proc .process{margin-top:8px}
 .altsteps{margin:8px 0 0;padding-left:20px;font-size:.78rem;line-height:1.6;color:var(--fg-dim)}
 .alt-list{display:flex;flex-direction:column;gap:10px}
 .alt-edit{padding:12px 14px;border:1px dashed var(--line-2);border-radius:11px}
+.alts.sub{margin-top:9px}
+.steps .alts.sub li{display:list-item;color:var(--fg-dim)}
+.steps .alts.sub li::before{content:none;counter-increment:none}
+.steps .alts.sub .altsteps{list-style:decimal}
+.alts.sub .alt{padding:10px 12px;border-left-color:var(--run)}
+.altsub{padding:1px 6px;border-radius:6px;background:var(--bg-3);color:var(--muted);font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.altat{margin:2px 0 6px;font-size:.7rem;color:var(--muted);font-family:var(--mono)}
+.alt-hint{margin-top:8px}
+.timeline.tsub{margin:10px 0 0;padding:10px 0 0 12px;border-left:2px solid var(--run)}
+.timeline.tsub .tstep{padding-bottom:10px}
+.alt-lock{opacity:.5;pointer-events:none}
 .alt-edit-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .rstep .altcond,.rstep .altexp,.rstep .altsteps{font-size:.76rem}
 /* máy chạy thử */
@@ -1128,6 +1139,18 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .pick-t b{font-size:.82rem;font-weight:500}
 .pick-t .bmeta{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pick-tags{display:flex;gap:6px;align-items:center}
+/* trang phân hệ: chọn menu & kịch bản */
+.mp-grp{border-top:1px solid var(--line)}.mp-grp:first-child{border-top:0}
+.mp-grp .pick-row{border-top:0}
+.mp-grp .pick-row.mp-sc{padding-top:5px;padding-bottom:5px;padding-left:46px}
+.mp-grp .pick-row.mp-sc:last-child{padding-bottom:10px}
+.mp-grp.done>.pick-row:first-child{cursor:default}
+.mp-grp.done>.pick-row:first-child b{color:var(--fg-dim)}
+.mp-sc .pick-t>span:first-child{font-size:.8rem}
+.mp-none{padding:0 18px 10px 48px;font-size:.74rem;color:var(--muted)}
+.mp-q{flex:1 1 220px;min-width:0;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:.8rem}
+.mod-rest{display:flex;flex-wrap:wrap;gap:8px;padding:12px 18px 16px}
+.mod-rest .pick-mod{flex:1 1 200px;max-width:280px}
 .fix-filter{flex-wrap:wrap;align-self:flex-start}
 .fix-filter b{margin-left:4px;font-weight:600}
 .fix-row{display:grid;grid-template-columns:minmax(0,1fr) 230px;align-items:center;gap:10px 14px;padding:10px 18px;border-top:1px solid var(--line)}
@@ -1667,7 +1690,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-1"
+KIT_VERSION = "2026.10.30-2"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1740,6 +1763,19 @@ OK_PAT = re.compile(r"thành công|đã lưu|hoàn tất|successful", re.I)
 
 
 # ---------------------------------------------------------------- chú thích trên màn hình
+def alt_at(alt, n):
+    """Bước của luồng chính nơi luồng con rẽ nhánh (tính từ 0): atStep, hoặc "bước N" trong điều kiện/tên, mặc định bước cuối."""
+    if not n:
+        return 0
+    k = alt.get("atStep") if isinstance(alt, dict) else None
+    if isinstance(k, int) and k >= 0:
+        return min(k, n - 1)
+    m = re.search(r"bước\s*(\d+)", "%s %s" % ((alt or {}).get("condition", ""), (alt or {}).get("name", "")), re.I)
+    if m and 0 < int(m.group(1)) <= n:
+        return int(m.group(1)) - 1
+    return n - 1
+
+
 class Caption:
     """Dải chú thích luôn nổi ở mép trên màn hình chính (tkinter, chạy ở luồng chính)."""
 
@@ -2837,6 +2873,21 @@ class Run:
         self.say("%s: %s%s — %s" % (label, {"ok": "ĐẠT", "bad": "LỖI", "skip": "BỎ QUA"}.get(rec["res"], "?"), (" · " + rec["note"]) if rec["note"] else "", text[:120]))
         return rec["res"]
 
+    def record_main(self, main_ok):
+        """Ghi nhận kết quả luồng chính (file + ảnh màn hình) trước khi test luồng con trên cùng phiên Edusoft."""
+        res = [x["res"] for x in self.steps]
+        st = "Đạt" if main_ok else ("Lỗi" if "bad" in res else "Chưa xong")
+        try:
+            (self.dir / "ket-qua-luong-chinh.json").write_text(json.dumps(dict(
+                scenarioCode=self.sc["code"], status=st, at=now_iso(), steps=self.steps), ensure_ascii=False, indent=1), "utf-8")
+        except Exception as e:
+            self.say("(Không ghi được kết quả luồng chính: %s)" % e)
+        n_alt = len(self.sc.get("altFlows") or [])
+        self.say("Đã ghi nhận luồng chính: %s%s" % (st, (" – tiếp theo %d luồng con, không mở lại Edusoft" % n_alt) if n_alt else ""))
+        if n_alt:
+            CAP.show("%s · Đã ghi nhận luồng chính: %s" % (self.sc["code"], st), "Tiếp theo: %d luồng con trên cùng phiên Edusoft" % n_alt)
+            time.sleep(STEP_DELAY)
+
     def execute(self):
         sc = self.sc
         self.say("Bắt đầu %s – %s (script, chế độ trình diễn)" % (sc["code"], sc.get("title", "")))
@@ -2863,11 +2914,15 @@ class Run:
                 if r == "bad" and CFG.get("stopOnError", True):
                     stop = True
             main_ok = all(x["res"] == "ok" for x in self.steps)
-            for j, alt in enumerate(sc.get("altFlows", [])):
+            self.record_main(main_ok)              # ghi nhận luồng chính xong rồi mới test luồng con
+            alt_defs = sc.get("altFlows", []) or []
+            n_steps = len(sc.get("steps", []))
+            for j in sorted(range(len(alt_defs)), key=lambda k: (alt_at(alt_defs[k], n_steps), k)):
+                alt = alt_defs[j]
                 acts = alt.get("auto") or []
                 if isinstance(acts, str):
                     acts = acts.split(";")
-                text = "%s — %s" % (alt.get("name", ""), alt.get("condition", ""))
+                text = "%s — %s (luồng con, rẽ từ bước %d)" % (alt.get("name", ""), alt.get("condition", ""), alt_at(alt, n_steps) + 1)
                 if alt.get("needs") == "main" and not main_ok:
                     self.alts[j].update(res="skip", note="Bỏ qua – luồng chính chưa đạt", at=now_iso())
                     self.say("Luồng A%d: BỎ QUA — luồng chính chưa đạt" % (j + 1))
@@ -2906,8 +2961,9 @@ class Run:
 
 # ---------------------------------------------------------------- test đăng nhập (CHUNG-001)
 def run_login_test(sc, es, account, password):
-    """Kịch bản CHUNG-001 chạy ĐÚNG THỨ TỰ KỊCH BẢN: Bước 1 → 6 (đăng nhập đúng),
-    sau đó lần lượt các luồng thay thế A1, A2, … (mỗi luồng mở lại Edusoft từ đầu nếu cần khung đăng nhập).
+    """Kịch bản CHUNG-001, mở Edusoft MỘT lần: Bước 1 → 3 (tới khung đăng nhập) → các luồng con ở khung đăng nhập
+    (sai mật khẩu, bỏ trống tên, sai tên – đóng thông báo, vẫn ở khung đăng nhập) → Bước 4 → 6 (đăng nhập đúng)
+    → luồng con còn lại (đường dẫn sai, khung đen). Chỉ mở lại Edusoft khi luồng con lỡ đăng nhập được.
     Dải chú thích hiển thị nguyên văn bước / luồng của kịch bản để support đối chiếu."""
     r = Run(sc, es)
     r.say("Bắt đầu %s – %s (script %s, chế độ trình diễn)" % (sc["code"], sc.get("title", ""), KIT_VERSION))
@@ -2948,6 +3004,138 @@ def run_login_test(sc, es, account, password):
             r.say("Khung đăng nhập chưa hiện sau 60 giây (khung đen) – đóng và chạy lại Edusoft")
             return es.restart_to_login()
 
+    # ================= LUỒNG THAY THẾ: A1, A2, … =================
+    def alt_cap(j, text):
+        CAP.show("%s · Luồng A%d · %s" % (sc["code"], j + 1, alt_def[j].get("name", "")), text)
+        time.sleep(STEP_DELAY)
+
+    def do_alt(j, early=False):
+        """early=True: đang ở khung đăng nhập của luồng chính – thử luồng con ngay đó, không mở lại Edusoft."""
+        a = alt_def[j]
+        name = norm(a.get("name", ""))
+        rec = alts[j]
+        a_steps = a.get("steps") or []
+        try:
+            if not CFG.get("loginNegatives", True):
+                raise LookupError("tắt")
+            if "đường dẫn" in name:
+                bad_path = str(Path(es.exe).with_name("KhongTonTai_Edusoft.NET.exe"))
+                alt_cap(j, (a_steps[0] if a_steps else "") + "   ▸ thử chạy " + bad_path)
+                started = False
+                try:
+                    if os.path.isfile(bad_path):
+                        started = True
+                    else:
+                        Application(backend="uia").start('"%s"' % bad_path, timeout=10)
+                        started = True
+                except Exception:
+                    started = False
+                if started:
+                    rec["res"], rec["note"] = "bad", "Vẫn chạy được với đường dẫn sai"
+                else:
+                    ok(rec, "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)")
+                    r.say("Luồng A%d: ĐẠT — đường dẫn sai thì không mở được Edusoft" % (j + 1))
+                return
+            wrong_user = "sai tên" in name or "sai tài khoản" in name
+            if "trống" in name or "sai mật khẩu" in name or wrong_user:
+                empty = "trống" in name
+                u = p = None
+                if early:
+                    try:
+                        es.close_dialogs(3)
+                        u, p = es.login_fields()
+                    except Exception:
+                        u = p = None
+                if u is None:                       # không còn ở khung đăng nhập: mới phải mở lại Edusoft
+                    alt_cap(j, "Mở lại Edusoft tới khung đăng nhập")
+                    es.kill()
+                    open_login()
+                    u, p = es.login_fields()
+                if empty:
+                    want_u = ""
+                    alt_cap(j, a_steps[0] if a_steps else "Xóa sạch ô Tên đăng nhập")
+                    es.set_field(u, "")
+                    es.set_field(p, password, secret=True)
+                elif wrong_user:
+                    want_u = account + "_khongtontai"
+                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tên đăng nhập không tồn tại, mật khẩu đúng") + "   ▸ " + want_u + " / mật khẩu đúng")
+                    es.set_field(u, want_u)
+                    es.set_field(p, password, secret=True)
+                else:
+                    want_u = account
+                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tài khoản và mật khẩu sai") + "   ▸ " + account + " / mật khẩu sai")
+                    es.set_field(u, account)
+                    es.set_field(p, password + "_sai", secret=True)
+                got_u = (es.field_value(u) or "").strip()
+                if got_u != want_u:
+                    raise RuntimeError("Ô Tên đăng nhập đang là \"%s\", không phải \"%s\" như luồng yêu cầu" % (got_u, want_u))
+                alt_cap(j, a_steps[1] if len(a_steps) > 1 else "Bấm Đăng nhập")
+                try:
+                    how = es.click_login()
+                except RuntimeError as e:
+                    if not empty or es.find_main() is not None:
+                        raise
+                    how = "không thấy phản hồi"          # bỏ trống tên: Edusoft có thể chỉ báo ngay trên khung, không mở hộp thoại
+                    r.say("Luồng A%d – %s" % (j + 1, e))
+                r.say("Luồng A%d – bấm Đăng nhập: %s" % (j + 1, how))
+                if how == "khóa":
+                    f = r.shot("luong-a%d" % (j + 1))
+                    if f:
+                        rec["shots"].append(f)
+                    rec["res"], rec["at"] = "ok", now_iso()
+                    rec["note"] = "Bị chặn – nút Đăng nhập bị khóa, vẫn ở khung đăng nhập"
+                    r.say("Luồng A%d: ĐẠT — nút Đăng nhập bị khóa" % (j + 1))
+                    return
+                ds = es.wait_dialog(10)
+                if not ds and es.wait_main(30):      # không có thông báo: chờ thêm để chắc chắn không lọt vào màn hình chính
+                    ds = []
+                f = r.shot("luong-a%d" % (j + 1))
+                if f:
+                    rec["shots"].append(f)
+                msg = " / ".join(es.dialog_text(d).replace("\n", " ")[:200] for d in ds)
+                if es.find_main() is not None:
+                    rec["res"], rec["note"], rec["at"] = "bad", "Vẫn vào được màn hình chính", now_iso()
+                    r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
+                                       expectedData=a.get("expected", "Bị chặn"), actualData="Đăng nhập được dù " + a.get("name", "").lower(), shots=list(rec["shots"])))
+                    r.say("Luồng A%d: LỖI — vẫn đăng nhập được" % (j + 1))
+                    if early:                       # đã lọt vào màn hình chính: buộc mở lại để chạy tiếp luồng chính
+                        es.kill()
+                        open_login()
+                        rec["note"] += " · đã mở lại Edusoft để chạy tiếp luồng chính"
+                    return
+                alt_cap(j, "Thông báo: " + (msg or "(không có thông báo)") + "   ▸ đóng thông báo")
+                closed = es.close_dialogs(10)
+                f2 = r.shot("luong-a%d-sau" % (j + 1))
+                if f2:
+                    rec["shots"].append(f2)
+                rec["res"], rec["at"] = "ok", now_iso()
+                rec["note"] = ("Bị chặn – " + msg if msg else "Bị chặn, vẫn ở khung đăng nhập") + ("" if closed else " · KHÔNG đóng được thông báo")
+                r.say("Luồng A%d: ĐẠT — bị chặn%s%s" % (j + 1, (" (" + msg[:120] + ")") if msg else "", "" if closed else " · không đóng được thông báo"))
+                return
+            if "đen" in name:
+                if black["seen"]:
+                    ok(rec, "Lần mở đầu khung đen / không hiện; chạy lại thì hiện bình thường")
+                else:
+                    rec["res"], rec["note"] = "skip", "Không xảy ra trong lần chạy này"
+                return
+            rec["res"], rec["note"] = "skip", "Chưa tự động – kiểm tra tay khi cần"
+        except LookupError:
+            rec["res"], rec["note"] = "skip", "Đã tắt kiểm tra luồng thay thế (config.json)"
+        except Exception as e:
+            f = r.shot("luong-a%d-loi" % (j + 1))
+            if f:
+                rec["shots"].append(f)
+            rec["res"], rec["note"], rec["at"] = "bad", "Script dừng: %s" % e, now_iso()
+            r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
+                               expectedData=a.get("expected", ""), actualData="Script không thực hiện được: %s" % e, shots=list(rec["shots"])))
+            r.say("Luồng A%d: LỖI — %s" % (j + 1, e))
+        finally:
+            if rec["res"] and not rec.get("at"):
+                rec["at"] = now_iso()
+
+    NEG = ("trống", "sai mật khẩu", "sai tên", "sai tài khoản")
+    done = set()
+
     # ================= LUỒNG CHÍNH: Bước 1 → 6 =================
     cur = 0
     try:
@@ -2974,6 +3162,16 @@ def run_login_test(sc, es, account, password):
             es.restart_to_login()
         ok(steps[2], "Khung đăng nhập hiển thị" + (" (sau khi chạy lại do khung đen)" if black["seen"] else ""), "buoc-3")
         r.say("Bước 3: ĐẠT — khung đăng nhập hiển thị")
+
+        # luồng con ở khung đăng nhập (sai mật khẩu, bỏ trống tên…): thử ngay tại đây rồi mới đăng nhập đúng – không mở lại Edusoft
+        early = [j for j, a in enumerate(alt_def) if any(k in norm(a.get("name", "")) for k in NEG)]
+        if early and CFG.get("loginNegatives", True):
+            r.say("Luồng con tại khung đăng nhập (trước khi đăng nhập đúng, cùng phiên Edusoft): " + ", ".join("A%d" % (j + 1) for j in early))
+            for j in early:
+                do_alt(j, early=True)
+                done.add(j)
+            es.close_dialogs(3)
+            CAP.show("%s · Tiếp luồng chính" % sc["code"], "Xong luồng con ở khung đăng nhập – đăng nhập đúng (bước 4 → 6)")
 
         u, p = es.login_fields()
         ru, rp = u.rectangle(), p.rectangle()
@@ -3041,120 +3239,11 @@ def run_login_test(sc, es, account, password):
             if steps[k]["res"] is None:
                 steps[k]["res"], steps[k]["note"] = "skip", "Không chạy do bước %d lỗi" % (cur + 1)
 
-    # ================= LUỒNG THAY THẾ: A1, A2, … =================
-    def alt_cap(j, text):
-        CAP.show("%s · Luồng A%d · %s" % (sc["code"], j + 1, alt_def[j].get("name", "")), text)
-        time.sleep(STEP_DELAY)
-
-    for j, a in enumerate(alt_def):
-        name = norm(a.get("name", ""))
-        rec = alts[j]
-        a_steps = a.get("steps") or []
-        try:
-            if not CFG.get("loginNegatives", True):
-                raise LookupError("tắt")
-            if "đường dẫn" in name:
-                bad_path = str(Path(es.exe).with_name("KhongTonTai_Edusoft.NET.exe"))
-                alt_cap(j, (a_steps[0] if a_steps else "") + "   ▸ thử chạy " + bad_path)
-                started = False
-                try:
-                    if os.path.isfile(bad_path):
-                        started = True
-                    else:
-                        Application(backend="uia").start('"%s"' % bad_path, timeout=10)
-                        started = True
-                except Exception:
-                    started = False
-                if started:
-                    rec["res"], rec["note"] = "bad", "Vẫn chạy được với đường dẫn sai"
-                else:
-                    ok(rec, "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)")
-                    r.say("Luồng A%d: ĐẠT — đường dẫn sai thì không mở được Edusoft" % (j + 1))
-                continue
-            wrong_user = "sai tên" in name or "sai tài khoản" in name
-            if "trống" in name or "sai mật khẩu" in name or wrong_user:
-                empty = "trống" in name
-                alt_cap(j, "Mở lại Edusoft tới khung đăng nhập")
-                es.kill()
-                open_login()
-                u, p = es.login_fields()
-                if empty:
-                    want_u = ""
-                    alt_cap(j, a_steps[0] if a_steps else "Xóa sạch ô Tên đăng nhập")
-                    es.set_field(u, "")
-                    es.set_field(p, password, secret=True)
-                elif wrong_user:
-                    want_u = account + "_khongtontai"
-                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tên đăng nhập không tồn tại, mật khẩu đúng") + "   ▸ " + want_u + " / mật khẩu đúng")
-                    es.set_field(u, want_u)
-                    es.set_field(p, password, secret=True)
-                else:
-                    want_u = account
-                    alt_cap(j, (a_steps[0] if a_steps else "Nhập tài khoản và mật khẩu sai") + "   ▸ " + account + " / mật khẩu sai")
-                    es.set_field(u, account)
-                    es.set_field(p, password + "_sai", secret=True)
-                got_u = (es.field_value(u) or "").strip()
-                if got_u != want_u:
-                    raise RuntimeError("Ô Tên đăng nhập đang là \"%s\", không phải \"%s\" như luồng yêu cầu" % (got_u, want_u))
-                alt_cap(j, a_steps[1] if len(a_steps) > 1 else "Bấm Đăng nhập")
-                try:
-                    how = es.click_login()
-                except RuntimeError as e:
-                    if not empty or es.find_main() is not None:
-                        raise
-                    how = "không thấy phản hồi"          # bỏ trống tên: Edusoft có thể chỉ báo ngay trên khung, không mở hộp thoại
-                    r.say("Luồng A%d – %s" % (j + 1, e))
-                r.say("Luồng A%d – bấm Đăng nhập: %s" % (j + 1, how))
-                if how == "khóa":
-                    f = r.shot("luong-a%d" % (j + 1))
-                    if f:
-                        rec["shots"].append(f)
-                    rec["res"], rec["at"] = "ok", now_iso()
-                    rec["note"] = "Bị chặn – nút Đăng nhập bị khóa, vẫn ở khung đăng nhập"
-                    r.say("Luồng A%d: ĐẠT — nút Đăng nhập bị khóa" % (j + 1))
-                    continue
-                ds = es.wait_dialog(10)
-                if not ds and es.wait_main(30):      # không có thông báo: chờ thêm để chắc chắn không lọt vào màn hình chính
-                    ds = []
-                f = r.shot("luong-a%d" % (j + 1))
-                if f:
-                    rec["shots"].append(f)
-                msg = " / ".join(es.dialog_text(d).replace("\n", " ")[:200] for d in ds)
-                if es.find_main() is not None:
-                    rec["res"], rec["note"], rec["at"] = "bad", "Vẫn vào được màn hình chính", now_iso()
-                    r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
-                                       expectedData=a.get("expected", "Bị chặn"), actualData="Đăng nhập được dù " + a.get("name", "").lower(), shots=list(rec["shots"])))
-                    r.say("Luồng A%d: LỖI — vẫn đăng nhập được" % (j + 1))
-                    continue
-                alt_cap(j, "Thông báo: " + (msg or "(không có thông báo)") + "   ▸ đóng thông báo")
-                closed = es.close_dialogs(10)
-                f2 = r.shot("luong-a%d-sau" % (j + 1))
-                if f2:
-                    rec["shots"].append(f2)
-                rec["res"], rec["at"] = "ok", now_iso()
-                rec["note"] = ("Bị chặn – " + msg if msg else "Bị chặn, vẫn ở khung đăng nhập") + ("" if closed else " · KHÔNG đóng được thông báo")
-                r.say("Luồng A%d: ĐẠT — bị chặn%s%s" % (j + 1, (" (" + msg[:120] + ")") if msg else "", "" if closed else " · không đóng được thông báo"))
-                continue
-            if "đen" in name:
-                if black["seen"]:
-                    ok(rec, "Lần mở đầu khung đen / không hiện; chạy lại thì hiện bình thường")
-                else:
-                    rec["res"], rec["note"] = "skip", "Không xảy ra trong lần chạy này"
-                continue
-            rec["res"], rec["note"] = "skip", "Chưa tự động – kiểm tra tay khi cần"
-        except LookupError:
-            rec["res"], rec["note"] = "skip", "Đã tắt kiểm tra luồng thay thế (config.json)"
-        except Exception as e:
-            f = r.shot("luong-a%d-loi" % (j + 1))
-            if f:
-                rec["shots"].append(f)
-            rec["res"], rec["note"], rec["at"] = "bad", "Script dừng: %s" % e, now_iso()
-            r.bugs.append(dict(kind="alt", stepIndex=j, stepText=a.get("name", ""), type="func", action="Đăng nhập",
-                               expectedData=a.get("expected", ""), actualData="Script không thực hiện được: %s" % e, shots=list(rec["shots"])))
-            r.say("Luồng A%d: LỖI — %s" % (j + 1, e))
-        finally:
-            if rec["res"] and not rec.get("at"):
-                rec["at"] = now_iso()
+    # luồng con còn lại (đường dẫn sai, khung đen…) – sau khi luồng chính đã ghi nhận
+    for j in sorted(range(len(alt_def)), key=lambda k: (alt_at(alt_def[k], n), k)):
+        if j not in done:
+            do_alt(j)
+            done.add(j)
 
     obs_stop(r)
     if CFG.get("closeAfter", True):
@@ -3746,11 +3835,13 @@ AQ AUTOTEST – TEST ĐĂNG NHẬP EDUSOFT BẰNG SCRIPT (CHẾ ĐỘ TRÌNH DI�
 =====================================================================
 
 Bộ này hiện chỉ có kịch bản CHUNG-001 – đăng nhập Edusoft:
-    Luồng chính – Bước 1 → 6 đúng như kịch bản trên console: mở Edusoft.NET.exe theo đường dẫn
-  trong config.json, chờ khung đăng nhập, nhập tài khoản, nhập mật khẩu, bấm Đăng nhập.
-  Sau đó các luồng thay thế theo thứ tự: A1 đường dẫn sai (không mở được), A2 sai mật khẩu và
-  A3 bỏ trống tên đăng nhập (mỗi luồng mở lại Edusoft, phải bị chặn, script tự đóng thông báo),
-  A4 khung đen lần mở đầu (chỉ ghi nhận nếu xảy ra). Xong thì đóng Edusoft đã mở.
+    Mở Edusoft MỘT lần. Luồng chính Bước 1 → 3: mở Edusoft.NET.exe theo đường dẫn trong config.json,
+  chờ khung đăng nhập. Tại khung đăng nhập thử luôn các luồng con: sai mật khẩu, bỏ trống tên, sai tên
+  đăng nhập (phải bị chặn, script tự đóng thông báo, KHÔNG mở lại Edusoft). Rồi Bước 4 → 6: nhập tài
+  khoản, mật khẩu đúng, bấm Đăng nhập. Sau đó luồng con đường dẫn sai (không mở được) và khung đen lần
+  mở đầu (chỉ ghi nhận nếu xảy ra). Xong thì đóng Edusoft đã mở.
+  Kịch bản khác: chạy hết luồng chính, ghi nhận kết quả (ket-qua-luong-chinh.json) rồi mới test từng
+  luồng con trên cùng phiên Edusoft.
 Các kịch bản nghiệp vụ sẽ bổ sung sau (tải lại bộ chạy mới từ console).
 
 Script thao tác trực tiếp trên cửa sổ Edusoft đang mở: chuột di chuyển và bấm thật,
@@ -4184,10 +4275,15 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="fnode next"><span class="fl">DÙNG TIẾP Ở</span>'+(next.length?'<div class="chips">'+next.map(function(c){return chipCode(c,it.product);}).join('')+'</div>':'<p>—</p>')+'</div>'+
     '</div>';
   }
-  function altsHtml(it,run){var a=it.altFlows||[];
-    if(!a.length)return '<p class="empty-txt">Chưa có luồng thay thế / ngoại lệ.</p>';
-    return '<div class="alts">'+a.map(function(x,i){var rr=run&&run.alts&&run.alts[i]||{};var res=RES[rr.res]?rr.res:null;
-      return '<div class="alt'+(res?' '+res:'')+'"><div class="alt-top"><span class="altno">A'+(i+1)+'</span><b>'+esc(x.name||'')+'</b>'+(res?'<span class="sres '+res+'">'+RES[res]+'</span>':'')+'</div>'+
+  /* luồng con (alternate) nằm trong luồng chính: atStep = bước rẽ nhánh (tính từ 0). Chưa khai báo thì lấy "bước N"
+     trong điều kiện/tên luồng, không có thì gắn vào bước cuối. Khi chạy: luồng chính xong và được ghi nhận rồi mới test luồng con. */
+  function altAt(x,n){if(!n)return 0;if(x&&typeof x.atStep==='number'&&x.atStep>=0)return Math.min(x.atStep,n-1);
+    var m=/bước\s*(\d+)/i.exec(((x&&x.condition)||'')+' '+((x&&x.name)||''));if(m){var k=+m[1]-1;if(k>=0&&k<n)return k;}return n-1;}
+  function altsAt(it){var n=(it.steps||[]).length,map={};(it.altFlows||[]).forEach(function(x,i){var k=altAt(x,n);(map[k]=map[k]||[]).push(i);});return map;}
+  function altsHtml(it,run,idxs){var a=it.altFlows||[];
+    if(!a.length)return '<p class="empty-txt">Chưa có luồng con (thay thế / ngoại lệ).</p>';
+    return '<div class="alts'+(idxs?' sub':'')+'">'+(idxs||a.map(function(x,i){return i;})).map(function(i){var x=a[i]||{},rr=run&&run.alts&&run.alts[i]||{};var res=RES[rr.res]?rr.res:null;
+      return '<div class="alt'+(res?' '+res:'')+'"><div class="alt-top"><span class="altno">A'+(i+1)+'</span><b>'+esc(x.name||'')+'</b><span class="altsub">luồng con</span>'+(res?'<span class="sres '+res+'">'+RES[res]+'</span>':'')+'</div>'+
         (x.condition?'<div class="altcond"><span>KHI</span>'+esc(x.condition)+'</div>':'')+
         ((x.steps||[]).length?'<ol class="altsteps">'+x.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol>':'')+
         (x.expected?'<div class="altexp"><span>MONG ĐỢI</span>'+esc(x.expected)+'</div>':'')+
@@ -4360,7 +4456,7 @@ QUAY VIDEO (TÙY CHỌN)
   function scRowHtml(it){var st=ST[it.status]?it.status:'notrun',n=(it.steps||[]).length,a=(it.altFlows||[]).length,ex=exOpenFor(it.id),nb=bugsFor(it.id).filter(activeBug).length,nball=bugsFor(it.id).length,lr=it.lastRun,rn=runningFor(it.id),nr=runsFor(it.id).length;
     return '<div class="sc-row sc2'+(ex?' ex':'')+'"><button type="button" class="sc-open" data-id="'+esc(it.id)+'">'+
       '<span class="r1"><span class="sc-code">'+esc(it.code||'—')+'</span><span class="sc-title">'+esc(it.title||'(chưa đặt tên)')+'</span></span>'+
-      '<span class="sc-sub">'+relTagFor(it)+'<span>'+n+' bước'+(a?' · '+a+' luồng thay thế':'')+'</span><span>'+(lr&&lr.at?'chạy '+fmt(lr.at)+(lr.mode==='auto'?' · máy':' · tay'):'chưa chạy')+'</span></span></button>'+
+      '<span class="sc-sub">'+relTagFor(it)+'<span>'+n+' bước'+(a?' · '+a+' luồng con':'')+'</span><span>'+(lr&&lr.at?'chạy '+fmt(lr.at)+(lr.mode==='auto'?' · máy':' · tay'):'chưa chạy')+'</span></span></button>'+
       '<span class="sc-tags">'+(rn?'<span class="runtag">ĐANG CHẠY</span>':'')+(ex?'<span class="btype ex">EX</span>':'')+'<span class="spill '+st+'">'+ST[st]+'</span></span>'+
       '<div class="acts"><button type="button" class="mini-btn" data-drawer="'+esc(it.id)+':res" title="Kết quả test'+(nr?' ('+nr+' lượt)':' – chưa có lượt chạy')+'" aria-label="Kết quả test">'+IC.eye+'</button>'+
         '<button type="button" class="mini-btn'+(nb?' bad':'')+'" data-drawer="'+esc(it.id)+':bug" title="Lỗi'+(nball?' ('+(nb?nb+' đang mở':nball)+')':'')+'" aria-label="Lỗi">'+IC.bug+(nb?'<span class="nbadge">'+nb+'</span>':'')+'</button>'+
@@ -4371,7 +4467,7 @@ QUAY VIDEO (TÙY CHỌN)
   function rlHead(){return '<div class="rl-hd"><span>#</span><span>Menu</span><span>Kịch bản</span><span>Phân công</span><span>Kết quả</span></div>';}
   function relListHtml(list){var rel=rlCur();if(!rel)return '';
     var vis=list.filter(rlPass);
-    if(!list.length)return '<div class="sc-empty">Phân hệ này không có menu trong release '+esc(rel.version)+'.</div>';
+    if(!list.length)return '<div class="sc-empty"><span>Phân hệ này chưa có menu trong release '+esc(rel.version)+'.</span>'+(SC.canWrite?'<button class="btn sm primary" type="button" data-mpick>'+IC.plus+'Chọn menu & kịch bản</button>':'')+'</div>';
     return vis.length?rlHead()+vis.map(itemRow).join(''):'<div class="sc-empty">Không có menu nào khớp bộ lọc.</div>';}
   function planMatches(it){var p=it.product==='netweb'?'netweb':'edusoft',m=relModOf(it,p),pl=tpOf(p,m);if(!pl||!it.menu)return {m:m,list:[]};var k=normKey(it.menu),leaf=k.split('/').pop();
     return {m:m,list:(pl.items||[]).map(function(x,i){return {x:x,i:i};}).filter(function(o){if(!o.x.menu||(o.x.scenarioCode&&scenByCode(p,o.x.scenarioCode)))return false;var xk=normKey(o.x.menu);return xk===k||(leaf.length>6&&xk.split('/').pop()===leaf);})};}
@@ -4402,7 +4498,7 @@ QUAY VIDEO (TÙY CHỌN)
         (empty?'<p class="bmeta">Chưa phân công menu nào</p>':'<div class="stats"><span><b>'+items.length+'</b> menu</span><span>đã test <b>'+(s.x+s.o)+'/'+s.pc+'</b></span><span>lỗi <b>'+fails.length+'</b></span><span>đã sửa <b>'+fixed+'</b></span>'+(s.ex?'<span class="exs">EX <b>'+s.ex+'</b></span>':'')+(items.length>s.pc?'<span>chưa phân công <b>'+(items.length-s.pc)+'</b></span>':'')+'</div>')+'</div>'+
         (can?'<select class="mini-sel plain" id="rlStatus" aria-label="Trạng thái release">'+Object.keys(RLST).map(function(k){return '<option value="'+k+'"'+(st===k?' selected':'')+'>'+RLST[k]+'</option>';}).join('')+'</select>':'<span class="rnst">'+RLST[st]+'</span>')+'</div>'+
       (s.pc?'<div class="bigbar">'+relBar(s)+'</div>':'')+
-      (empty?'<p class="rl-empty">Phân công '+PROD[SC.product]+' của kỳ này đang trống. Bấm <b>Thêm kịch bản</b>, chọn phân hệ để lấy hạng mục từ Danh mục kịch bản'+(prev?', hoặc đồng bộ toàn bộ menu từ release <b class="mono">'+esc(prev.version)+'</b>':'')+'.</p>':'')+
+      (empty?'<p class="rl-empty">Phân công '+PROD[SC.product]+' của kỳ này đang trống. Bấm vào phân hệ bên dưới rồi <b>Chọn menu & kịch bản</b>, hoặc <b>Thêm kịch bản</b> để lấy hạng mục từ Danh mục kịch bản'+(prev?', hoặc đồng bộ toàn bộ menu từ release <b class="mono">'+esc(prev.version)+'</b>':'')+'.</p>':'')+
       (RL.flash&&RL.pick==null?'<div class="flash">'+esc(RL.flash)+'</div>':'')+
       (can?'<div class="rl-acts"><button class="btn sm'+(empty?' primary':'')+'" type="button" data-rlpick="">'+IC.plus+'Thêm kịch bản</button>'+
         (prev?'<button class="btn sm" type="button" data-rlact="syncprev"'+(RL.saving?' disabled':'')+' title="Mang tất cả menu test, kịch bản gắn kèm và phân công của release '+esc(prev.version)+' sang kỳ này">'+IC.copy+'Đồng bộ menu test từ release trước</button>':'')+
@@ -4426,6 +4522,45 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rn-foot"><span class="grow">'+(RL.flash?'<span class="ok-msg">'+esc(RL.flash)+'</span>':'')+'</span><button type="button" class="btn sm primary" data-rlpadd>'+IC.plus+'<span class="pick-n">Thêm '+pickCount()+' vào phân công</span></button></div></div>';}
   function pickCount(){var p=SC.product,k=RL.pick,pl=tpOf(p,k),its=(pl&&pl.items)||[],sel=RL.pickSel||{};
     return Object.keys(sel).filter(function(i){return sel[i]&&its[i]&&!inRelease(p,k,its[i]);}).length;}
+  /* trang phân hệ (bấm Mở): chọn menu của phân hệ và kịch bản tương ứng → đưa vào phân công release */
+  function mpMenus(p,m){var map={},order=[],placed={},pl=tpOf(p,m);
+    var add=function(menu){var c=cleanMenu(menu).menu;if(!c)return null;var k=normKey(c);if(!map[k]){map[k]={k:k,menu:c,plan:0,scens:[],item:null};order.push(k);}return map[k];};
+    var put=function(g,sc){if(g&&sc&&!placed[sc.id]){placed[sc.id]=1;g.scens.push(sc);}};
+    ((pl&&pl.items)||[]).forEach(function(x){var g=add(x.menu||x.title);if(!g)return;g.plan++;put(g,x.scenarioCode?scenByCode(p,x.scenarioCode):null);});
+    byCode(ofMod(inProd(),m)).forEach(function(sc){if(!placed[sc.id])put(add(sc.menu||sc.title),sc);});
+    relItems(p,m).forEach(function(it){var g=map[normKey(cleanMenu(it.menu).menu)];if(g)g.item=it;});
+    return order.map(function(k){return map[k];});}
+  function mpVisible(list){var q=((RL.mp&&RL.mp.q)||'').trim().toLowerCase();if(!q)return list;
+    return list.filter(function(g){return (g.menu+' '+g.scens.map(function(s){return (s.code||'')+' '+(s.title||'');}).join(' ')).toLowerCase().indexOf(q)>=0;});}
+  function mpPicked(){var st=RL.mp,ks={},n=0;if(!st)return {keys:ks,scs:0};
+    Object.keys(st.sel).forEach(function(k){if(st.sel[k])ks[k]=ks[k]||[];});
+    Object.keys(st.scs).forEach(function(id){var k=st.scs[id];if(k){(ks[k]=ks[k]||[]).push(id);n++;}});return {keys:ks,scs:n};}
+  function mpLabel(){var r=mpPicked(),n=Object.keys(r.keys).length;return n?'Đưa '+n+' menu'+(r.scs?' · '+r.scs+' kịch bản':'')+' vào phân công':'Chọn menu hoặc kịch bản';}
+  function mpHtml(p,m){var st=RL.mp,rel=rlCur();if(!st||st.m!==m||!rel)return '';var list=mpMenus(p,m),vis=mpVisible(list);
+    var h='<div class="card rl-pick mp"><div class="list-head"><div><h3>Chọn menu & kịch bản · '+esc(m+' '+modMeta(p,m).n)+'</h3><p>Tick menu cần test trong release '+esc(rel.version)+' và kịch bản sẽ chạy cho menu đó. Menu đã phân công vẫn gắn thêm kịch bản được.</p></div>'+
+      '<button type="button" class="dr-x" data-mpx aria-label="Đóng">'+IC.x+'</button></div>';
+    if(!list.length)return h+'<div class="sc-empty"><span>Phân hệ chưa có menu nào – lập Danh mục kịch bản hoặc dựng kịch bản trước.</span><button class="btn sm" type="button" data-ctgo2="'+m+'">Mở Danh mục kịch bản '+IC.arrow+'</button></div></div>';
+    h+='<div class="pick-bar"><input class="mp-q" id="mpQ" placeholder="Tìm menu, mã kịch bản…" value="'+esc(st.q||'')+'" aria-label="Tìm menu hoặc kịch bản" autocomplete="off">'+
+      '<span class="bmeta">'+list.length+' menu · '+list.filter(function(g){return g.item;}).length+' đã phân công</span><span class="grow"></span>'+
+      '<button type="button" class="linkish" data-mpall="1">Chọn tất cả</button><button type="button" class="linkish" data-mpall="0">Bỏ chọn</button></div>';
+    h+='<div class="pick-list">'+(vis.length?vis.map(function(g){var have=g.item?(g.item.scenarioIds||[]):[],parts=g.menu.split(' / '),leaf=parts.pop();
+      return '<div class="mp-grp'+(g.item?' done':'')+'"><label class="pick-row"><input type="checkbox" data-mpm="'+esc(g.k)+'"'+(g.item?' checked disabled':(st.sel[g.k]?' checked':''))+'>'+
+        '<span class="pick-t"><b>'+esc(leaf)+'</b><span class="bmeta">'+esc(parts.join(' / ')||'—')+(g.plan?' · '+g.plan+' hạng mục danh mục':'')+'</span></span>'+
+        '<span class="pick-tags">'+(g.item?'<span class="reltag ok">đã phân công</span>':'')+'</span></label>'+
+        (g.scens.length?g.scens.map(function(sc){var on=have.indexOf(sc.id)>=0,a=(sc.altFlows||[]).length;
+          return '<label class="pick-row mp-sc"><input type="checkbox" data-mps="'+esc(sc.id)+'" data-mpk="'+esc(g.k)+'"'+(on?' checked disabled':(st.scs[sc.id]?' checked':''))+'>'+
+            '<span class="pick-t"><span><span class="fchip">'+esc(sc.code||'—')+'</span> '+esc(sc.title||'(chưa đặt tên)')+'</span><span class="bmeta">'+(sc.steps||[]).length+' bước'+(a?' · '+a+' luồng con':'')+(sc.scriptReady?' · chạy bằng script':'')+'</span></span>'+
+            '<span class="pick-tags">'+(on?'<span class="reltag ok">đã gắn</span>':'')+'</span></label>';}).join('')
+          :'<div class="mp-none">Chưa có kịch bản cho menu này.</div>')+'</div>';}).join(''):'<div class="sc-empty">Không có menu nào khớp.</div>')+'</div>';
+    return h+'<div class="rn-foot"><span class="grow"></span><button type="button" class="btn sm primary" data-mpadd'+(RL.saving?' disabled':'')+'>'+IC.plus+'<span class="mp-n">'+mpLabel()+'</span></button></div></div>';}
+  async function mpAdd(){var st=RL.mp,rel=rlCur();if(!st||!rel||RL.saving)return;var p=SC.product,m=st.m,r=mpPicked(),byK={};
+    mpMenus(p,m).forEach(function(g){byK[g.k]=g;});
+    var docs=Object.keys(r.keys).map(function(k){var g=byK[k];if(!g)return null;
+      return {group:p==='netweb'?'NETWEB':m,product:p,module:m,menu:g.menu,menuRaw:g.menu,paren:false,title:'',scenarioIds:r.keys[k],r1:{}};}).filter(Boolean);
+    if(!docs.length)return;
+    try{await rlWriteNew(rel,docs,'Phân công '+rel.version);st.sel={};st.scs={};}catch(e){RL.saving=false;RL.flash='';notice(errMsg(e));}
+    renderMain();}
+  function mpSync(){var n=$('#scMain .mp-n');if(n)n.textContent=mpLabel();}
   /* tab theo dõi: menu bị lỗi khi test, chờ dev sửa rồi test lại */
   function fixRow(it){var x=failRec(it),f=it.fix||{},st=fixOf(it),parts=String(it.menu||'').split(/\s*\/\s*/),leaf=parts.pop();
     return '<div class="fix-row '+st+'"><div class="rl-main"><div class="rl-menu"><b>'+esc(leaf)+'</b>'+(parts.length?'<span class="mpath">'+esc(parts.join(' / '))+'</span>':'')+'</div>'+
@@ -4477,6 +4612,9 @@ QUAY VIDEO (TÙY CHỌN)
         h+='<div class="grp-head"><h3>Phân hệ đang phân công</h3><span class="bmeta">'+used.length+' phân hệ · '+mine.length+' menu</span>'+
           '<span class="grp-acts"><button type="button" class="linkish" data-grpall="1">Mở tất cả</button><button type="button" class="linkish" data-grpall="0">Thu gọn</button></span></div>'+flashHtml();
         h+=groups.length?'<div class="grp-list">'+groups.join('')+'</div>':'<div class="card">'+emptyHtml('Không có menu nào khớp bộ lọc.','',false)+'</div>';}
+      if(rel&&RL.itemsLoaded&&!(rlFiltering()||filtering())){var rest=mods.filter(function(m){return !m.soon&&!relItems(p,m.c).length;});
+        if(rest.length)h+='<div class="card"><div class="list-head"><div><h3>'+(mine.length?'Phân hệ chưa phân công':'Chọn phân hệ để phân công')+'</h3><p>Bấm phân hệ → <b>Chọn menu & kịch bản</b> để đưa menu cần test và kịch bản sẽ chạy vào release '+esc(rel.version)+'.</p></div></div>'+
+          '<div class="mod-rest">'+rest.map(function(m){var n=ofMod(all,m.c).length;return '<button type="button" class="pick-mod" data-mod-open="'+m.c+'"><span class="mcode">'+m.c+'</span><b>'+esc(m.n)+'</b><span class="bmeta">'+(n?n+' kịch bản':'chưa có kịch bản')+'</span></button>';}).join('')+'</div></div>';}
       return h;
     }
     var m=modMeta(p,SC.mod),mine=ofMod(all,m.c),cc=counts(mine),rl=relItems(p,m.c),rs=rlStats(rl),rel2=rlCur(),pl=tpOf(p,m.c),cv=tpCov(pl),exn=exCount(mine);
@@ -4489,8 +4627,9 @@ QUAY VIDEO (TÙY CHỌN)
         '<span class="kpi"><em>Kịch bản</em><b>'+cc.total+'</b>'+(cc.pass?'<i class="ok">'+cc.pass+' đạt</i>':'')+(cc.fail?'<i class="bad">'+cc.fail+' không đạt</i>':'')+(exn?'<i class="bad">EX '+exn+'</i>':'')+(!cc.pass&&!cc.fail&&cc.total?'<i>chưa chạy</i>':'')+'</span>'+
         '<button type="button" class="kpi kbtn" data-ctgo2="'+m.c+'" title="Mở danh mục kịch bản của phân hệ"><em>Danh mục</em><b>'+(cv.total?cv.n+'/'+cv.total:'—')+'</b>'+(cv.total?'có kịch bản':'chưa lập')+IC.arrow+'</button>'+
       '</div>'+(rel2&&rs.pc?'<div class="bigbar">'+relBar(rs)+'</div>':'')+flashHtml()+(RL.flash?'<div class="flash">'+esc(RL.flash)+'</div>':'')+'</div>'+
-      (SC.canWrite?'<div class="sd-actions"><button class="btn sm" type="button" data-act="new">'+IC.plus+'Thêm kịch bản</button>'+
+      (SC.canWrite?'<div class="sd-actions">'+(rel2?'<button class="btn sm primary" type="button" data-mpick>'+IC.plus+'Chọn menu & kịch bản</button>':'')+'<button class="btn sm" type="button" data-act="new">'+IC.plus+'Thêm kịch bản</button>'+
         runBtn('data-runmod="'+m.c+'"','Chạy thử phân hệ',p,!mine.length)+'</div>':'')+'</div>';
+    h+=mpHtml(p,m.c);
     h+='<div class="card mtab-card"><div class="mtabs" role="tablist" aria-label="Nội dung phân hệ">'+
       (rel2?'<button type="button" role="tab" class="mtab'+(tab==='rel'?' on':'')+'" aria-selected="'+(tab==='rel')+'" data-mtab="rel">Menu release <span>'+rl.length+'</span></button>':'')+
       '<button type="button" role="tab" class="mtab'+(tab==='sc'?' on':'')+'" aria-selected="'+(tab==='sc')+'" data-mtab="sc">Kịch bản test <span>'+mine.length+'</span>'+(cv.total>cv.n?'<span class="ub">+'+(cv.total-cv.n)+' chưa dựng</span>':'')+'</button></div>'+
@@ -4505,13 +4644,13 @@ QUAY VIDEO (TÙY CHỌN)
     return '<div class="runlist">'+rs.map(function(r){return '<button type="button" class="runrow'+(r.id===sel?' on':'')+'" data-selrun="'+esc(r.id)+'">'+
       '<span class="rnst '+(r.status||'')+'">'+(RUNST[r.status]||r.status||'—')+'</span><span class="mono">'+fmt(r.startedAt)+'</span>'+
       '<span class="modetag">'+(r.mode==='auto'?IC.robot+'máy tự chạy':IC.hand+'chạy tay')+'</span><span class="rr-who">'+runnerOf(r)+'</span></button>';}).join('')+'</div>';}
-  function stepTimeline(labels,data,running,cur,kind){
-    return labels.map(function(s,i){var d=data[i]||{},res=RES[d.res]?d.res:null,isCur=running&&cur&&cur.k===kind&&cur.i===i;
+  function stepTimeline(labels,data,running,cur,kind,subs){
+    return labels.map(function(s,i){var d=data[i]||{},res=RES[d.res]?d.res:null,isCur=running&&cur&&cur.k===kind&&cur.i===i,sub=subs&&subs(i);
       return '<div class="tstep'+(res?' '+res:'')+(isCur?' cur':'')+(!res&&!isCur?' todo':'')+'"><span class="rnum">'+(kind==='a'?'A':'')+(i+1)+'</span><div class="rmain">'+
         '<div class="ts-top"><span class="txt">'+esc(s)+'</span>'+(res?'<span class="sres '+res+'">'+RES[res]+'</span>':isCur?'<span class="curtag">ĐANG CHẠY</span>':'<span class="todo-l">chưa chạy</span>')+
         (d.at?'<span class="bmeta">'+hm(d.at)+'</span>':'')+'</div>'+
         ((d.shots||[]).length?'<div class="shots lg">'+thumbs(d.shots,null,true)+'</div>':(res||isCur?'<div class="snote">Chưa có ảnh cho bước này.</div>':''))+
-        (d.note?'<div class="snote bad">'+esc(d.note)+'</div>':'')+'</div></div>';}).join('');}
+        (d.note?'<div class="snote bad">'+esc(d.note)+'</div>':'')+(sub?'<div class="timeline tsub">'+sub+'</div>':'')+'</div></div>';}).join('');}
   function runViewHtml(it){
     var rs=runsFor(it.id);if(!rs.length)return '<p class="empty-txt">Chưa có lượt chạy nào. Bấm Chạy thử để chạy tay, hoặc nhắn Claude để máy tự chạy — ảnh chụp từng bước sẽ hiện ở đây.</p>';
     var r=runById(SC.selRun)||rs[0];if(r.scenarioId!==it.id)r=rs[0];
@@ -4527,8 +4666,9 @@ QUAY VIDEO (TÙY CHỌN)
           '<span>'+fmt(r.startedAt)+(r.finishedAt?' → '+hm(r.finishedAt):'')+'</span></div>'+
         (r.path?'<div class="rc-path mono">'+esc(r.path)+'</div>':'')+
         (running?'<div class="live-line"><span class="live">ĐANG CHẠY</span> bước '+(cur?(cur.k==='a'?'A':'')+(cur.i+1):'—')+' · '+done+'/'+total+' đã xong<div class="run-prog"><i style="width:'+(total?done/total*100:0)+'%"></i></div></div>':'')+
-        '<div class="timeline">'+stepTimeline(steps,r.steps||[],running,cur,'s')+'</div>'+
-        (alts.length?'<div class="sec-label">LUỒNG THAY THẾ / NGOẠI LỆ</div><div class="timeline">'+stepTimeline(alts,r.alts||[],running,cur,'a')+'</div>':'')+
+        (steps.length?'<div class="timeline">'+stepTimeline(steps,r.steps||[],running,cur,'s',function(i){var am=altsAt(it)[i];if(!am)return '';
+            return am.map(function(j){return stepTimeline([alts[j]],[(r.alts||[])[j]],running,cur&&cur.k==='a'&&cur.i===j?{k:'a',i:0}:null,'a').replace('<span class="rnum">A1</span>','<span class="rnum">A'+(j+1)+'</span>');}).join('');})+'</div>'
+          :(alts.length?'<div class="timeline">'+stepTimeline(alts,r.alts||[],running,cur,'a')+'</div>':''))+
         (r.actual?'<div class="sec-label">KẾT QUẢ THỰC TẾ</div><div class="cmp actual '+(ST[r.status]?r.status:'')+'"><p>'+esc(r.actual)+'</p></div>':'')+
         (r.video?'<div class="sec-label">VIDEO THAO TÁC</div><video class="run-video" controls preload="metadata" src="'+imgUrl(r.video)+'"></video>':r.videoFile?'<div class="sec-label">VIDEO THAO TÁC</div><p class="hint">Video lưu trên máy chạy: '+esc(r.videoFile)+' (lớn hơn 20 MB nên không tải lên)</p>':'')+
         (r.process?'<details class="proc"><summary>Quá trình test (log)</summary><pre class="process">'+esc(r.process)+'</pre></details>':'')+
@@ -4550,9 +4690,10 @@ QUAY VIDEO (TÙY CHỌN)
         '<div class="kv"><span>PHIÊN BẢN ĐANG TEST</span><b class="mono">'+esc(it.version||'—')+'</b></div>'+
       '</div>'+
       '<div class="sec-label">LUỒNG DỮ LIỆU</div>'+flowHtml(it)+
-      '<div class="sec-label">CÁC BƯỚC TEST · '+steps.length+'</div>'+
-      (steps.length?'<ol class="steps">'+steps.map(function(s){return '<li><span>'+esc(s)+'</span></li>';}).join('')+'</ol>':'<p class="empty-txt">Chưa có bước nào.</p>')+
-      '<div class="sec-label">LUỒNG THAY THẾ / NGOẠI LỆ · '+(it.altFlows||[]).length+'</div>'+altsHtml(it,latest)+
+      '<div class="sec-label">LUỒNG CHÍNH · '+steps.length+' BƯỚC'+((it.altFlows||[]).length?' · '+(it.altFlows||[]).length+' LUỒNG CON':'')+'</div>'+
+      (steps.length?'<ol class="steps">'+steps.map(function(s,i){var am=altsAt(it)[i];return '<li><span>'+esc(s)+(am?altsHtml(it,latest,am):'')+'</span></li>';}).join('')+'</ol>'
+        :'<p class="empty-txt">Chưa có bước nào.</p>'+((it.altFlows||[]).length?altsHtml(it,latest):''))+
+      ((it.altFlows||[]).length?'<p class="hint alt-hint">Luồng con nằm dưới bước rẽ nhánh. Khi chạy: xong luồng chính và ghi nhận kết quả rồi mới test từng luồng con (không mở lại Edusoft).</p>':'')+
       '<div class="sec-label">KẾT QUẢ MONG MUỐN</div>'+
       '<div class="cmp"><p>'+(it.expected?esc(it.expected):'<span class="empty-txt">Chưa nhập.</span>')+'</p></div>'+
       '<div class="sec-label">LƯỢT CHẠY · '+rs.length+' · ẢNH TỪNG BƯỚC</div>'+runViewHtml(it)+
@@ -4580,6 +4721,8 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="form-grid">'+
         '<div class="fld"><label for="alt'+i+'name">TÊN LUỒNG</label><input id="alt'+i+'name" value="'+esc(a.name)+'" placeholder="VD: Trùng thời khóa biểu sinh viên"></div>'+
         '<div class="fld"><label for="alt'+i+'cond">KHI (ĐIỀU KIỆN)</label><input id="alt'+i+'cond" value="'+esc(a.condition)+'" placeholder="VD: Sinh viên đã đăng ký lớp trùng giờ"></div>'+
+        '<div class="fld"><label for="alt'+i+'at">RẼ NHÁNH TỪ BƯỚC (LUỒNG CHÍNH)</label><select id="alt'+i+'at"><option value="">Tự động – theo "bước N" trong điều kiện</option>'+
+          d.steps.map(function(x,k){return '<option value="'+k+'"'+(a.atStep===k?' selected':'')+'>Bước '+(k+1)+(x?' – '+esc(String(x).slice(0,60)):'')+'</option>';}).join('')+'</select></div>'+
         '<div class="fld"><label for="alt'+i+'steps">CÁC BƯỚC (MỖI DÒNG MỘT BƯỚC)</label><textarea id="alt'+i+'steps" rows="3">'+esc(a.stepsText)+'</textarea></div>'+
         '<div class="fld"><label for="alt'+i+'exp">KẾT QUẢ MONG ĐỢI</label><textarea id="alt'+i+'exp" rows="3">'+esc(a.expected)+'</textarea></div>'+
       '</div></div>';}).join('');
@@ -4606,8 +4749,8 @@ QUAY VIDEO (TÙY CHỌN)
         '</div></div>'+
         '<div class="fld full"><span class="lbl">CÁC BƯỚC TEST (LUỒNG CHÍNH)</span><span class="hint">Sau mỗi thao tác thêm một bước KIỂM TRA: Thêm → dữ liệu hiển thị trên màn hình · Sửa → mở lại thấy giá trị mới · Xóa → dữ liệu mất khỏi màn hình. Đi đúng luồng nghiệp vụ (vd thêm sinh viên qua Quyết định vào mới).</span><div class="step-edit">'+steps+
           '<button type="button" class="btn sm add-step" data-act="addstep">'+IC.plus+'Thêm bước</button></div></div>'+
-        '<div class="fld full"><span class="lbl">LUỒNG THAY THẾ / NGOẠI LỆ</span><div class="alt-list">'+alts+
-          '<button type="button" class="btn sm add-step" data-act="addalt">'+IC.branch+'Thêm luồng thay thế</button></div></div>'+
+        '<div class="fld full"><span class="lbl">LUỒNG CON (THAY THẾ / NGOẠI LỆ) – NẰM TRONG LUỒNG CHÍNH</span><span class="hint">Chọn bước của luồng chính nơi luồng con rẽ nhánh. Khi chạy: xong luồng chính, ghi nhận kết quả, rồi mới test từng luồng con trên cùng phiên Edusoft.</span><div class="alt-list">'+alts+
+          '<button type="button" class="btn sm add-step" data-act="addalt">'+IC.branch+'Thêm luồng con</button></div></div>'+
         '<div class="fld full"><label for="fExpected">KẾT QUẢ MONG MUỐN (LUỒNG CHÍNH)</label><textarea id="fExpected" rows="5" placeholder="Hệ thống phải…">'+esc(d.expected)+'</textarea></div>'+
       '</div>'+
       '<div class="form-actions">'+left+
@@ -4686,9 +4829,11 @@ QUAY VIDEO (TÙY CHỌN)
         (SC.assets?'<p class="hint">Dán ảnh chụp màn hình (Ctrl+V) sẽ gắn vào mục đang chọn — '+(r.focus?labelOf(r.focus.k,r.focus.i):'')+'.</p>'
           :'<p class="hint">Tài khoản này chưa có quyền lưu ảnh trên trang (cần quyền Editor); vẫn đánh dấu và ghi lỗi được nhưng không đính kèm ảnh.</p>')+
         (steps.length?steps.map(function(s,i){return runItemHtml('s',i,s,'',r.steps[i],cur,it.product);}).join(''):'<p class="empty-txt">Kịch bản chưa có bước nào.</p>')+
-        (alts.length?'<div class="sec-label">LUỒNG THAY THẾ / NGOẠI LỆ</div>'+alts.map(function(a,i){
-          var sub=(a.condition?'<div class="altcond"><span>KHI</span>'+esc(a.condition)+'</div>':'')+((a.steps||[]).length?'<ol class="altsteps">'+a.steps.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ol>':'')+(a.expected?'<div class="altexp"><span>MONG ĐỢI</span>'+esc(a.expected)+'</div>':'');
-          return runItemHtml('a',i,a.name||'',sub,r.alts[i],cur,it.product);}).join(''):'')+
+        (alts.length?'<div class="sec-label">LUỒNG CON · TEST SAU KHI ĐÃ GHI NHẬN LUỒNG CHÍNH</div>'+
+          (r.steps.some(function(x){return !x.res;})?'<p class="hint">Đánh dấu xong tất cả bước của luồng chính (ghi nhận kết quả) rồi mới test luồng con.</p>':'')+
+          '<div class="'+(r.steps.some(function(x){return !x.res;})?'alt-lock':'')+'">'+alts.map(function(a,i){
+          var sub='<div class="altat">rẽ nhánh từ bước '+(altAt(a,steps.length)+1)+'</div>'+(a.condition?'<div class="altcond"><span>KHI</span>'+esc(a.condition)+'</div>':'')+((a.steps||[]).length?'<ol class="altsteps">'+a.steps.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ol>':'')+(a.expected?'<div class="altexp"><span>MONG ĐỢI</span>'+esc(a.expected)+'</div>':'');
+          return runItemHtml('a',i,a.name||'',sub,r.alts[i],cur,it.product);}).join('')+'</div>':'')+
         '<div class="sec-label">KẾT QUẢ MONG MUỐN</div><div class="cmp"><p>'+(it.expected?esc(it.expected):'<span class="empty-txt">Chưa nhập.</span>')+'</p></div>'+
         '<div class="form-grid" style="margin-top:18px">'+
           '<div class="fld"><label for="rVersion">PHIÊN BẢN ĐANG TEST</label><input id="rVersion" class="mono" list="dlVersion" value="'+esc(r.version)+'"></div>'+
@@ -4817,10 +4962,10 @@ QUAY VIDEO (TÙY CHỌN)
     if(changed&&d.codeAuto)d.code=nextCode(d.product,d.module);
     ['title','menu','version','expected','flowIn','flowOut','flowNext'].forEach(function(k){var v=g('f'+k.charAt(0).toUpperCase()+k.slice(1));if(v!==null)d[k]=v;});
     $$('[data-step]',$('#scMain')).forEach(function(t){d.steps[+t.getAttribute('data-step')]=t.value;});
-    d.alts.forEach(function(a,i){var x;if((x=g('alt'+i+'name'))!==null)a.name=x;if((x=g('alt'+i+'cond'))!==null)a.condition=x;if((x=g('alt'+i+'steps'))!==null)a.stepsText=x;if((x=g('alt'+i+'exp'))!==null)a.expected=x;});
+    d.alts.forEach(function(a,i){var x;if((x=g('alt'+i+'name'))!==null)a.name=x;if((x=g('alt'+i+'cond'))!==null)a.condition=x;if((x=g('alt'+i+'steps'))!==null)a.stepsText=x;if((x=g('alt'+i+'exp'))!==null)a.expected=x;if((x=g('alt'+i+'at'))!==null)a.atStep=x===''?null:+x;});
   }
   function toDraft(it){var d=clone(it);var f=d.dataFlow||{};d.flowIn=f.in||'';d.flowOut=f.out||'';d.flowNext=(f.next||[]).join(', ');
-    d.alts=(d.altFlows||[]).map(function(a){return {name:a.name||'',condition:a.condition||'',stepsText:(a.steps||[]).join('\n'),expected:a.expected||''};});
+    d.alts=(d.altFlows||[]).map(function(a){return {name:a.name||'',condition:a.condition||'',stepsText:(a.steps||[]).join('\n'),expected:a.expected||'',atStep:typeof a.atStep==='number'?a.atStep:null};});
     if(!MODS[d.product])d.product='edusoft';if(!MODS[d.product].some(function(m){return m.c===d.module;}))d.module=MODS[d.product][0].c;
     if(!d.steps||!d.steps.length)d.steps=[''];['title','menu','version','expected'].forEach(function(k){if(d[k]==null)d[k]='';});
     if(!ST[d.status])d.status='notrun';return d;}
@@ -4848,7 +4993,7 @@ QUAY VIDEO (TÙY CHỌN)
     var now=new Date().toISOString();
     var body={product:d.product,module:d.module,code:(d.code||'').trim()||nextCode(d.product,d.module),title:t,menu:m,version:(d.version||'').trim(),
       steps:d.steps.map(function(s){return s.trim();}).filter(Boolean),expected:d.expected,status:d.status||'notrun',
-      altFlows:d.alts.filter(function(a){return (a.name||'').trim();}).map(function(a){return {name:a.name.trim(),condition:(a.condition||'').trim(),steps:(a.stepsText||'').split('\n').map(function(x){return x.trim();}).filter(Boolean),expected:(a.expected||'').trim()};}),
+      altFlows:d.alts.filter(function(a){return (a.name||'').trim();}).map(function(a){var o={name:a.name.trim(),condition:(a.condition||'').trim(),steps:(a.stepsText||'').split('\n').map(function(x){return x.trim();}).filter(Boolean),expected:(a.expected||'').trim()};if(typeof a.atStep==='number')o.atStep=a.atStep;return o;}),
       dataFlow:{in:(d.flowIn||'').trim(),out:(d.flowOut||'').trim(),next:(d.flowNext||'').split(/[\s,;]+/).map(function(x){return x.trim().toUpperCase();}).filter(Boolean)},
       process:d.process||'',actual:d.actual||'',
       createdAt:d.createdAt||now,createdBy:d.id?(d.createdBy||null):(SC.me||null),updatedAt:now,updatedBy:SC.me||null};
@@ -5254,6 +5399,12 @@ QUAY VIDEO (TÙY CHỌN)
     var ff=b.getAttribute('data-fixf');if(ff){RL.fixF=ff;renderMain();return;}
     var pk=b.getAttribute('data-rlpick');if(pk!==null){RL.pick=pk;RL.pickSel={};RL.flash='';renderMain();var pc=$('#scMain .rl-pick');if(pc)pc.scrollIntoView({behavior:'smooth',block:'start'});return;}
     if(b.hasAttribute('data-rlpickx')){RL.pick=null;RL.pickSel={};renderMain();return;}
+    if(b.hasAttribute('data-mpick')){RL.mp={m:SC.mod,sel:{},scs:{},q:''};RL.flash='';renderMain();var mc=$('#scMain .rl-pick.mp');if(mc)mc.scrollIntoView({behavior:'smooth',block:'start'});return;}
+    if(b.hasAttribute('data-mpx')){RL.mp=null;renderMain();return;}
+    var mpa=b.getAttribute('data-mpall');if(mpa!==null&&RL.mp){var st=RL.mp;st.sel={};st.scs={};
+      if(mpa==='1')mpVisible(mpMenus(SC.product,st.m)).forEach(function(g){var have=g.item?(g.item.scenarioIds||[]):[];if(!g.item)st.sel[g.k]=true;g.scens.forEach(function(sc){if(have.indexOf(sc.id)<0)st.scs[sc.id]=g.k;});});
+      renderMain();return;}
+    if(b.hasAttribute('data-mpadd')){mpAdd();return;}
     var pa=b.getAttribute('data-rlpall');if(pa!==null){var pl0=tpOf(SC.product,RL.pick),its0=(pl0&&pl0.items)||[];RL.pickSel={};if(pa==='1')its0.forEach(function(x,i){if(!inRelease(SC.product,RL.pick,x))RL.pickSel[i]=true;});renderMain();return;}
     if(b.hasAttribute('data-rlpadd')){var idx=Object.keys(RL.pickSel||{}).filter(function(i){return RL.pickSel[i];}).map(Number);if(!idx.length)return;rlAddFromPlan(SC.product,RL.pick,idx).then(function(){RL.pickSel={};renderMain();});return;}
     var ga=b.getAttribute('data-grpall');if(ga!==null){var p=SC.product;MODS[p].forEach(function(m){RL.grp[p+':'+m.c]=ga==='1';});saveUi();renderMain();return;}
@@ -5276,6 +5427,10 @@ QUAY VIDEO (TÙY CHỌN)
     if(a==='newgo')return rlCreate();
   });
   rlMain.addEventListener('change',function(e){var t=e.target;
+    var mpm=t.getAttribute('data-mpm');if(mpm!==null&&RL.mp){RL.mp.sel[mpm]=t.checked;
+      if(!t.checked)$$('#scMain [data-mpk]').forEach(function(x){if(x.getAttribute('data-mpk')===mpm&&!x.disabled){x.checked=false;RL.mp.scs[x.getAttribute('data-mps')]=false;}});mpSync();return;}
+    var mps=t.getAttribute('data-mps');if(mps!==null&&RL.mp){var k=t.getAttribute('data-mpk');RL.mp.scs[mps]=t.checked?k:false;
+      if(t.checked){$$('#scMain [data-mpm]').forEach(function(x){if(x.getAttribute('data-mpm')===k&&!x.disabled){x.checked=true;RL.mp.sel[k]=true;}});}mpSync();return;}
     var pi=t.getAttribute('data-rlpi');if(pi!==null){RL.pickSel=RL.pickSel||{};RL.pickSel[pi]=t.checked;var pn=$('#scMain .pick-n');if(pn)pn.textContent='Thêm '+pickCount()+' vào phân công';return;}
     var fx=t.getAttribute('data-fix');if(fx){rlSetFix(fx,t.value);return;}
     var asg=t.getAttribute('data-rlasg');if(asg){var it=RL.items.filter(function(x){return x.id===asg;})[0];if(it){var p={};p[rk()]={assignee:t.value};rlUpdateItem(it,p).catch(function(){});}return;}
@@ -5287,7 +5442,8 @@ QUAY VIDEO (TÙY CHỌN)
   rlMain.addEventListener('toggle',function(e){var d=e.target;if(!d.getAttribute)return;
     var g=d.getAttribute('data-grp');if(g){RL.grp[g]=d.open;saveUi();return;}
     var sc=d.getAttribute('data-sec');if(sc){RL.sec[sc]=d.open;saveUi();}},true);
-  rlMain.addEventListener('input',function(e){if(e.target.id==='rlImpText'&&RL.imp){RL.imp.text=e.target.value;}});
+  rlMain.addEventListener('input',function(e){if(e.target.id==='rlImpText'&&RL.imp){RL.imp.text=e.target.value;}
+    if(e.target.id==='mpQ'&&RL.mp){RL.mp.q=e.target.value;var pos=e.target.selectionStart;renderMain();var q=document.getElementById('mpQ');if(q){q.focus();try{q.setSelectionRange(pos,pos);}catch(x){}}}});
   $('#rlSel').addEventListener('change',function(e){if(blockNav()){renderRelToolbar();return;}RL.sel=e.target.value;var r=rlCur();if(r&&r.currentRound)RL.round=r.currentRound;RL.open=null;RL.imp=null;RL.flash='';rlSubItems();renderRelease();});
   $('#rlRound').addEventListener('click',function(e){if(e.target.closest('button[data-addround]')){rlAddRound();return;}
     var b=e.target.closest('button[data-v]');if(!b)return;RL.round=+b.getAttribute('data-v');RL.open=null;renderRelease();});
@@ -6023,7 +6179,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-1';
+  var KITVER='2026.10.30-2';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
