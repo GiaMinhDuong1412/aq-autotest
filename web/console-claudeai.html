@@ -1921,8 +1921,59 @@ from pathlib import Path
 MCP = __AQ_MCP__
 
 
+LOG = []
+
+
+class Tee:
+    def __init__(self, s):
+        self.s = s
+
+    def write(self, t):
+        LOG.append(t)
+        return self.s.write(t)
+
+    def flush(self):
+        self.s.flush()
+
+
 def say(st, msg):
     print({"ok": "[ OK ]", "warn": "[ !! ]", "fail": "[LỖI]"}[st], msg)
+
+
+def claude_log(dirs, since, wait=60):
+    """Đọc nhật ký cầu nối aq-autotest của Claude app (logs/mcp-server-aq-autotest.log) sau khi mở lại."""
+    files = [d / "logs" / "mcp-server-aq-autotest.log" for d in dirs] + [d / "logs" / "mcp.log" for d in dirs]
+    t0 = time.time()
+    print("Chờ Claude app khởi động và nạp cầu nối (tối đa %d giây)…" % wait)
+    while time.time() - t0 < wait:
+        fresh = [f for f in files[:len(dirs)] if f.exists() and f.stat().st_mtime > since]
+        if fresh:
+            time.sleep(4)
+            break
+        time.sleep(2)
+    for f in files:
+        if not f.exists() or f.stat().st_mtime < since - 5:
+            continue
+        try:
+            lines = f.read_text("utf-8", errors="replace").splitlines()
+        except Exception:
+            continue
+        if f.name == "mcp.log":
+            lines = [l for l in lines if "aq-autotest" in l]
+        tail = lines[-12:]
+        if not tail:
+            continue
+        print("--- %s (dòng cuối) ---" % f)
+        for l in tail:
+            print("   " + l[:220])
+        txt = "\n".join(tail).lower()
+        if "connected successfully" in txt or '"tools"' in txt or "tools/list" in txt:
+            say("ok", "Claude app đã chạy cầu nối aq-autotest")
+        elif "error" in txt or "exited" in txt or "failed" in txt or "disconnected" in txt:
+            say("fail", "Claude app chạy cầu nối bị lỗi – gửi file ket-noi-log.txt cho người hỗ trợ")
+        return
+    say("warn", "Chưa thấy nhật ký cầu nối của Claude app. Kiểm tra: Claude app → Settings → Developer → mục aq-autotest "
+                "(running / failed). Nếu không có mục này: Claude app đang dùng tài khoản Windows / bản cài khác.")
 
 
 def ps(cmd):
@@ -1946,6 +1997,7 @@ def cfg_dirs():
 
 
 def main():
+    sys.stdout = Tee(sys.stdout)
     base = Path(os.path.expandvars(sys.argv[1].strip().strip('"'))).expanduser()
     print("=== AQ Autotest – nối Claude app với thư mục bộ test ===")
     print("Thư mục:", base)
@@ -1983,11 +2035,11 @@ def main():
     if py.lower().endswith("pythonw.exe"):
         py = py[:-len("pythonw.exe")] + "python.exe"
     want = {"command": py, "args": [str(base / "aq-mcp.py")]}
-    n = 0
+    n, t_cfg = 0, time.time()
     for d in dirs:
         f = d / "claude_desktop_config.json"
         try:
-            txt = f.read_text("utf-8") if f.exists() else ""
+            txt = f.read_text("utf-8-sig") if f.exists() else ""
             cur = json.loads(txt) if txt.strip() else {}
         except Exception as e:
             say("fail", "Không đọc được %s (%s) – không sửa để tránh hỏng cấu hình Claude app" % (f, e))
@@ -2025,8 +2077,15 @@ def main():
         say("ok", "Đã mở lại Claude app")
     else:
         say("warn", "Không tự mở lại được Claude app – hãy mở bằng tay")
+    if n:
+        claude_log(dirs, t_cfg)
     print()
-    print("Xong. Trong Claude app: mở AQ Autotest Console → Máy chạy thử → bấm Kết nối (bấm Cho phép nếu được hỏi).")
+    print("Xong. Trong Claude app BẢN DESKTOP (không phải trình duyệt web): mở AQ Autotest Console → Máy chạy thử → Kết nối,")
+    print("bấm Cho phép nếu được hỏi. Nhật ký lưu ở " + str(base / "ket-noi-log.txt"))
+    try:
+        (base / "ket-noi-log.txt").write_text("".join(LOG), "utf-8")
+    except Exception:
+        pass
     return 0 if n else 1
 
 
@@ -2048,7 +2107,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-4"
+KIT_VERSION = "2026.10.30-5"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -4024,7 +4083,7 @@ def register_claude_bridge():
     for d in dirs:
         f = d / "claude_desktop_config.json"
         try:
-            cur = json.loads(f.read_text("utf-8")) if f.exists() and f.read_text("utf-8").strip() else {}
+            cur = json.loads(f.read_text("utf-8-sig")) if f.exists() and f.read_text("utf-8-sig").strip() else {}
         except Exception:
             print("(Không đọc được %s – bỏ qua để không làm hỏng cấu hình Claude)" % f)
             continue
@@ -4078,7 +4137,7 @@ def bridge_diag(add):
     for d in dirs:
         f = d / "claude_desktop_config.json"
         try:
-            ent = (json.loads(f.read_text("utf-8")).get("mcpServers") or {}).get("aq-autotest") or {}
+            ent = (json.loads(f.read_text("utf-8-sig")).get("mcpServers") or {}).get("aq-autotest") or {}
         except Exception:
             ent = {}
         cmd, arg = ent.get("command") or "", (ent.get("args") or [""])[0]
@@ -6918,7 +6977,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-4';
+  var KITVER='2026.10.30-5';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -7021,7 +7080,7 @@ QUAY VIDEO (TÙY CHỌN)
     BR.state='checking';renderRunner();
     try{var r=await MCP.callTool(BRS,'status',{},{cache:false});BR.info=r.payload||null;BR.state='ok';BR.code='';
       var me=myRunner();if(SC.rnCol&&SC.me&&BR.info&&BR.info.kitDir&&(!me||me.kitDir!==BR.info.kitDir)){SC.rnCol.doc(SC.me).update({kitDir:BR.info.kitDir,kitComputer:BR.info.computer||'',updatedAt:new Date().toISOString()}).catch(function(){});}}
-    catch(e){BR.state='off';BR.code=brErr(e);}
+    catch(e){BR.state='off';BR.code=brErr(e)+(e&&e.code?' [mã lỗi: '+e.code+']':'')+(!/Electron|Claude\//i.test(navigator.userAgent||'')?' — Có vẻ bạn đang mở console trên trình duyệt web: cầu nối chỉ dùng được trong Claude app bản desktop trên máy chạy test.':'');}
     renderRunner();if(BR.state==='ok')brSync(false);}
   function b64Blob(b64,type){var bin=atob(b64),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new Blob([u],{type:type||'application/octet-stream'});}
   async function brSync(manual){if(BR.state!=='ok'||BR.busy)return 0;BR.busy=true;var n=0,bugs=0,notes=[];
