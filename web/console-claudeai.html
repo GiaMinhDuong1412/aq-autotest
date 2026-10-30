@@ -840,6 +840,8 @@ details.mgroup[open]>summary{border-bottom:1px solid var(--line)}
 .ct-sc{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 .br-dir{margin-top:10px}.br-dir label{display:block;font-size:11px;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
 .br-dir-row{display:flex;gap:8px;flex-wrap:wrap}.br-dir-row input{flex:1;min-width:220px;padding:8px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:.78rem;outline:none}.br-dir-row input:focus{border-color:var(--accent)}
+  .br-alt{margin-top:10px;padding:10px 12px;border:1px dashed var(--line-2);border-radius:10px;font-size:.8rem;line-height:1.5}
+  .br-alt ol{margin:6px 0 0 18px;padding:0}.br-alt li{margin:3px 0}
 .ct-row>.ct-x{grid-column:2/-1;margin-top:-6px;min-width:0}.ct-steps{margin-top:3px}.ct-steps>summary{cursor:pointer;font-size:.68rem;color:var(--accent-2);width:max-content;max-width:100%}
 .ct-steps ol{margin:6px 0 2px;padding-left:20px;font-size:.74rem;line-height:1.5}.ct-steps li{margin:1px 0}.ct-steps li.chk{color:var(--pass)}
 .ct-dnote{margin:5px 0 0;font-size:.7rem;color:var(--run)}
@@ -1361,7 +1363,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
             <li><b>Đã cài sẵn bộ test?</b>Không cần cài lại: nhập đúng thư mục đã cài (nơi có <code>aqrun.py</code>) vào ô <b>Thư mục bộ test trên máy này</b>, bấm <b>Tải file kết nối</b>, bấm đúp <code>ket-noi-claude.bat</code> (không cần quyền admin). File tự tắt Claude app, nối với thư mục đó rồi mở lại Claude app.</li>
             <li><b>Kết nối</b>Trong Claude app (vừa được tự mở lại), mở console → <b>Máy chạy thử</b> → <b>Kết nối</b>. Bấm Cho phép khi Claude hỏi. Bước 2 chuyển sang dấu ✓ và hiện thư mục bộ test của máy này.</li>
             <li><b>Chạy test đăng nhập</b>Bấm <b>Chạy test đăng nhập</b>. Sau vài giây cửa sổ đen mở ra. Lần đầu, nhập mật khẩu Edusoft 2 lần (gõ không hiện chữ). Mật khẩu được lưu trong Windows Credential Manager nên lần sau không hỏi lại. Script mở Edusoft, đăng nhập, thử các luồng sai (sai mật khẩu, bỏ trống tên…) rồi đóng Edusoft.</li>
-            <li><b>Xem kết quả</b>Nếu đã kết nối, kết quả tự về console khi chạy xong (hoặc bấm <b>Lấy kết quả mới</b>). Nếu chưa kết nối, bấm <b>Nhập kết quả…</b> và chọn thư mục <code>results</code> trong thư mục bộ test. Đăng nhập đạt thì máy chuyển sang <b>Sẵn sàng</b>.</li>
+            <li><b>Xem kết quả</b>Nếu đã kết nối, kết quả tự về console khi chạy xong (hoặc bấm <b>Lấy kết quả mới</b>). Nếu chưa kết nối, bấm <b>Nhập kết quả…</b> và chọn file <code>AQ-ket-qua-….zip</code> bộ test tạo trong thư mục Tải về (hoặc thư mục <code>results</code> trong thư mục bộ test). Đăng nhập đạt thì máy chuyển sang <b>Sẵn sàng</b>.</li>
           </ol>
           <h4>Trong lúc script chạy</h4>
           <ul>
@@ -1395,7 +1397,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
             <dt>Chữ gõ vào bị sai dấu</dt><dd>Tắt bộ gõ tiếng Việt (Unikey/EVKey) rồi chạy lại.</dd>
             <dt>Claude điều khiển máy nhưng không bấm được vào Edusoft</dt><dd>Edusoft đang chạy quyền admin nên Windows chặn chuột và bàn phím từ Claude. Hãy chạy bằng script (script tự xin quyền admin), hoặc chạy Claude app bằng quyền admin.</dd>
             <dt>Bộ test trên máy là bản cũ</dt><dd>Tự cập nhật ở lần bấm Chạy tiếp theo.</dd>
-            <dt>Kết quả không về console</dt><dd>Bấm <b>Lấy kết quả mới</b>, hoặc <b>Nhập kết quả…</b> và chọn thư mục <code>results</code>.</dd>
+            <dt>Kết quả không về console</dt><dd>Bấm <b>Lấy kết quả mới</b>, hoặc <b>Nhập kết quả…</b> và chọn file <code>AQ-ket-qua-….zip</code> trong thư mục Tải về.</dd>
           </dl>
         </section>
         <section data-hp="sec" class="hidden">
@@ -1486,6 +1488,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
         </div><div class="head-actions"><button type="button" class="btn sm" data-help="es"><span class="qbtn" aria-hidden="true" style="width:20px;height:20px;font-size:.7rem">?</span>Hướng dẫn</button></div></div>
         <div id="rnMain" class="right-col rn-page"></div>
         <input type="file" id="kitImport" webkitdirectory directory multiple class="hidden" aria-label="Chọn thư mục kết quả chạy">
+        <input type="file" id="kitImportZip" accept=".zip" multiple class="hidden" aria-label="Chọn file kết quả chạy (.zip)">
       </section>
       <section class="page" id="page-bugs">
         <div class="run-head"><div>
@@ -2107,7 +2110,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-5"
+KIT_VERSION = "2026.10.30-6"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -4007,6 +4010,23 @@ def update_dirs():
     return out
 
 
+def pack_results(since):
+    """Gói các lượt vừa chạy thành một file .zip trong thư mục Tải về – dùng khi console không nối thẳng
+    máy chạy test: trên console bấm Nhập kết quả… và chọn file này."""
+    import zipfile
+    runs = [d for d in (BASE / "results").glob("*") if (d / "result.json").is_file() and (d / "result.json").stat().st_mtime >= since - 1]
+    if not runs:
+        return None
+    ds = [d for d in update_dirs() if d != BASE]
+    out = (ds[-1] if ds else BASE / "results") / ("AQ-ket-qua-%s.zip" % time.strftime("%y%m%d-%H%M%S"))
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        for d in runs:
+            for f in d.rglob("*"):
+                if f.is_file() and not (f.suffix.lower() in (".mp4", ".mkv") and f.stat().st_size > 20 * 1024 * 1024):
+                    z.write(f, d.name + "/" + f.relative_to(d).as_posix())
+    return out
+
+
 def apply_update():
     """Tìm file aq-autotest-update*.json (nút "Chạy test đăng nhập" trên console) trong thư mục bộ test
     hoặc thư mục Tải về; áp dụng bản mới nhất chưa áp dụng. Trả về True nếu đã cập nhật."""
@@ -4244,6 +4264,7 @@ def main():
     except Exception:
         pass
     summary = []
+    t0 = time.time()
 
     def worker():
         es = Edusoft()
@@ -4279,12 +4300,25 @@ def main():
     for c, s in summary:
         print("  %-10s %s" % (c, s))
     print("\nThư mục kết quả:", BASE / "results")
+    zp = None
+    try:
+        zp = pack_results(t0)
+    except Exception as e:
+        print("(Không gói được file kết quả: %s)" % e)
+    if zp:
+        print("File kết quả:", zp)
+        print("Console chưa nối thẳng máy này? Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn file trên.")
+    else:
+        print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn thư mục results.")
     if CFG.get("openResults", True):
         try:
-            os.startfile(str(BASE / "results"))
+            if zp:
+                import subprocess
+                subprocess.Popen(["explorer", "/select,", str(zp)])
+            else:
+                os.startfile(str(BASE / "results"))
         except Exception:
             pass
-    print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả chạy\" và chọn thư mục results.")
     input("Nhấn Enter để đóng…")
 
 
@@ -6977,7 +7011,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-5';
+  var KITVER='2026.10.30-6';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -7000,7 +7034,7 @@ QUAY VIDEO (TÙY CHỌN)
     if(!DL){KIT.err='Trang chưa được phép tải file trong lần xem này.';renderRunner();return;}
     KIT.busy=true;KIT.prog='Chờ bạn xác nhận lưu lệnh chạy…';renderRunner();
     try{await DL.save({filename:'aq-autotest-update-run.json',data:new Blob([JSON.stringify(body)],{type:'application/json'})});
-      KIT.msg='Đã gửi lệnh chạy '+codes.join(', ')+' kèm bộ test '+KITVER+'. Agent trên máy chạy test tự cập nhật rồi mở cửa sổ test sau vài giây. Chạy xong bấm "Nhập kết quả…" ở trang Máy chạy thử.';}
+      KIT.msg='Đã gửi lệnh chạy '+codes.join(', ')+' kèm bộ test '+KITVER+'. Agent trên máy chạy test tự cập nhật rồi mở cửa sổ test sau vài giây. Chưa có Agent thì chạy chay-test.bat. Chạy xong bấm "Nhập kết quả…" và chọn file AQ-ket-qua-….zip trong Tải về.';}
     catch(e){var c=e&&e.code;KIT.err=c==='declined'?'Bạn đã hủy lưu file lệnh.':'Không gửi được lệnh chạy: '+(c||(e&&e.message)||'lỗi');}
     KIT.busy=false;KIT.prog='';renderRunner();}
   function loadXlsx(){if(window.XLSX)return Promise.resolve(window.XLSX);
@@ -7068,11 +7102,19 @@ QUAY VIDEO (TÙY CHỌN)
     KIT.busy=false;KIT.prog='';renderRunner();}
 
   /* nhập kết quả: chọn thư mục results */
-  function kitPick(){var inp=document.getElementById('kitImport');if(inp){inp.value='';inp.click();}}
+  function kitPick(dir){var inp=document.getElementById(dir?'kitImport':'kitImportZip');if(inp){inp.value='';inp.click();}}
+  var MIME={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',gif:'image/gif',webp:'image/webp',mp4:'video/mp4',mkv:'video/x-matroska',json:'application/json',txt:'text/plain',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'};
+  /* file AQ-ket-qua-….zip do bộ test gói sau mỗi lần chạy → danh sách {p: đường dẫn, f: File} như khi chọn thư mục */
+  async function kitExpand(files){var out=[];
+    for(var i=0;i<files.length;i++){var f=files[i];if(!/\.zip$/i.test(f.name)){out.push({p:f.webkitRelativePath||f.name,f:f});continue;}
+      var z=await (await loadZip()).loadAsync(f),base=f.name.replace(/\.zip$/i,''),ents=[];z.forEach(function(p,e){if(!e.dir)ents.push(e);});
+      for(var k=0;k<ents.length;k++){var nm=ents[k].name.split('/').pop(),b=await ents[k].async('blob');
+        out.push({p:base+'/'+ents[k].name,f:new File([b],nm,{type:MIME[(nm.split('.').pop()||'').toLowerCase()]||'application/octet-stream'})});}}
+    return out;}
   function readText(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result);};r.onerror=rej;r.readAsText(f,'utf-8');});}
   /* ---- cầu nối trực tiếp tới máy chạy test (MCP host server aq-autotest trong Claude app) ---- */
   var BRS='host:aq-autotest',BR={state:'unknown',info:null,code:'',busy:false,watch:null,seen:{}};
-  function brErr(e){var c=e&&e.code;if(c==='server_not_connected'&&window.AQ_SERVER)return 'Console trên server không nối thẳng máy chạy test: bấm Chạy để tải file lệnh về máy chạy test (Agent nhận từ thư mục Tải về), chạy xong bấm Nhập kết quả…';return c==='server_not_connected'?'Chưa thấy cầu nối trên máy này. Console phải mở trong Claude app bản desktop trên chính máy chạy test. Nhập thư mục bộ test bên dưới → Tải file kết nối → chạy ket-noi-claude.bat (tự mở lại Claude app) → mở lại console và bấm Kết nối.':
+  function brErr(e){var c=e&&e.code;if(c==='server_not_connected'&&window.AQ_SERVER)return 'Console trên server không nối thẳng máy chạy test: bấm Chạy để tải file lệnh về máy chạy test (Agent nhận từ thư mục Tải về), chạy xong bấm Nhập kết quả…';return c==='server_not_connected'?'Chưa thấy cầu nối trên máy này. Console phải mở trong Claude app bản desktop trên chính máy chạy test. Nhập thư mục bộ test bên dưới → Tải file kết nối → chạy ket-noi-claude.bat (tự mở lại Claude app) → mở lại console và bấm Kết nối. Vẫn không được thì dùng cách chạy qua file bên dưới.':
     c==='not_in_manifest'||c==='not_granted'?'Bạn chưa cho phép console dùng cầu nối máy chạy test.':c==='cancelled'?'Bạn đã từ chối thao tác trên máy chạy test.':c==='approval_required'?'Cần bạn cho phép trong Claude app.':
     c==='tool_error'?('Máy chạy test báo lỗi: '+((e&&e.message)||'')):(c||'lỗi')+(e&&e.message?' — '+e.message:'');}
   async function brAuto(){if(!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return 'unavailable';}):'unavailable';if(st==='granted')brCheck(false);}catch(e){}}
@@ -7118,7 +7160,11 @@ QUAY VIDEO (TÙY CHỌN)
         '<button type="button" class="btn sm'+(ok?'':' primary')+'" data-br="kn" title="Tải AQ-Autotest-KetNoi.zip (trong có ket-noi-claude.bat): nối Claude app trên máy này với thư mục trên (tắt rồi mở lại Claude app). Không cần quyền admin.">'+IC.down+'Tải file kết nối</button></div>'+
         (KIT.kn?'<p class="rn-msg '+(KIT.kn.err?'warn':KIT.kn.ok?'ok':'')+'" style="margin-top:6px">'+esc(KIT.kn.t)+'</p>':'')+
         '<p class="hint" style="margin-top:6px">'+(ok?'Đang đọc trực tiếp thư mục này'+(i.kitVersion?' · bộ test '+esc(i.kitVersion)+(i.kitVersion!==KITVER?', tự lên '+KITVER+' ở lần Chạy tới':''):'')+'. Đổi thư mục: sửa ô trên, tải lại file kết nối.'
-          :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';}
+          :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>'+
+      (ok?'':'<div class="br-alt"><b>Không kết nối được? Vẫn chạy test được, không cần cầu nối:</b><ol>'+
+        '<li>Bấm <b>Chạy test đăng nhập</b> (hoặc Chạy ở kịch bản) → lưu file lệnh vào thư mục <b>Tải về</b> (Downloads).</li>'+
+        '<li>AQ Autotest Agent trên máy tự mở cửa sổ test sau vài giây. Chưa cài Agent: chạy <code>chay-test.bat</code> trong thư mục bộ test.</li>'+
+        '<li>Chạy xong, bộ test tạo file <code>AQ-ket-qua-….zip</code> trong Tải về → bấm <b>Nhập kết quả…</b> ở cuối thẻ này và chọn file đó.</li></ol></div>');}
   function b64utf8(str){var b=new TextEncoder().encode(str),bin='';for(var i=0;i<b.length;i+=8192)bin+=String.fromCharCode.apply(null,b.subarray(i,i+8192));return btoa(bin);}
   function knBat(dir){var py=kitText('kit-ketnoi').replace('__AQ_MCP__',function(){return JSON.stringify(kitText('kit-mcp'));});
     var b64=b64utf8(py).replace(/(.{64})/g,'$1\n');
@@ -7193,9 +7239,10 @@ QUAY VIDEO (TÙY CHỌN)
         return {r:'ok',bugs:bdocs.length,notes:notes};}
   async function kitImport(files){KIT.err='';KIT.msg='';
     if(!SC.canWrite){KIT.err='Bạn đang ở quyền chỉ xem.';renderRunner();return;}
-    var byDir={};Array.prototype.forEach.call(files,function(f){var p=(f.webkitRelativePath||f.name).split('/');var name=p.pop(),dir=p.join('/');(byDir[dir]=byDir[dir]||{})[name]=f;});
+    try{files=await kitExpand(files);}catch(e){KIT.err=e&&e.code==='zip_load'?'Không tải được thư viện đọc .zip — kiểm tra mạng rồi thử lại.':'Không đọc được file .zip: '+errMsg(e);renderRunner();return;}
+    var byDir={};files.forEach(function(x){var p=x.p.split('/');var name=p.pop(),dir=p.join('/');(byDir[dir]=byDir[dir]||{})[name]=x.f;});
     var dirs=Object.keys(byDir).filter(function(d){return byDir[d]['result.json'];});
-    if(!dirs.length){KIT.err='Không thấy result.json nào — hãy chọn thư mục results (hoặc một thư mục lượt chạy bên trong).';renderRunner();return;}
+    if(!dirs.length){KIT.err='Không thấy result.json nào — hãy chọn file AQ-ket-qua-….zip (trong Tải về) hoặc thư mục results.';renderRunner();return;}
     KIT.busy=true;renderRunner();var ok=0,skip=0,bad=0,bugs=0,notes=[];
     for(var k=0;k<dirs.length;k++){var fs=byDir[dirs[k]];KIT.prog='Nhập '+(k+1)+'/'+dirs.length+': '+dirs[k].split('/').pop();renderRunner();
       try{var res=JSON.parse(await readText(fs['result.json']));
@@ -7243,7 +7290,8 @@ QUAY VIDEO (TÙY CHỌN)
       (list.length?'<details class="rn-list" data-rnfold="list"'+(lo?' open':'')+'><summary>Kịch bản chạy bằng script ('+list.length+')</summary>'+kitListHtml()+'</details>':'')+
       '<div class="rn-foot"><span class="grow">'+(KIT.prog?'<span class="hint">'+esc(KIT.prog)+'</span>':KIT.err?'<span class="save-err">'+esc(KIT.err)+'</span>':KIT.msg?'<span class="ok-msg">'+esc(KIT.msg)+'</span>':'<span class="hint">Bộ test mới nhất '+KITVER+' · tự cập nhật mỗi lần Chạy</span>')+'</span>'+
         (BR.state==='ok'?'<button type="button" class="btn sm" data-br="sync"'+(BR.busy?' disabled':'')+'>'+IC.down+'Lấy kết quả mới</button>':'')+
-        (can?'<button type="button" class="btn sm" data-kit="imp"'+(KIT.busy?' disabled':'')+'>'+IC.up+'Nhập kết quả…</button>':'')+
+        (can?'<button type="button" class="btn sm" data-kit="imp"'+(KIT.busy?' disabled':'')+' title="Chọn file AQ-ket-qua-….zip bộ test tạo trong thư mục Tải về sau mỗi lần chạy">'+IC.up+'Nhập kết quả…</button>'+
+          '<button type="button" class="linkish" data-kit="impdir"'+(KIT.busy?' disabled':'')+' title="Chọn thư mục results trong thư mục bộ test">hoặc thư mục</button>':'')+
         '<button type="button" class="btn sm" data-kit="xls"'+(KIT.busy||!DL||!SC.runs.length?' disabled':'')+' title="Xuất mọi lượt chạy, từng bước và lỗi ra Excel">'+IC.ext+'Xuất Excel</button></div></div>';}
   var HELP={tab:'es'};
   function openHelp(t){HELP.tab=t||HELP.tab;var o=$('#rnHelp');
@@ -7258,12 +7306,12 @@ QUAY VIDEO (TÙY CHỌN)
   $('#rnMain').addEventListener('toggle',function(e){var d=e.target,k=d.getAttribute&&d.getAttribute('data-rnfold');if(k)SC.rn[k]=d.open;},true);
   document.addEventListener('change',function(e){var t=e.target;if(!t||!t.id)return;
     if(t.id==='kitObs'){KIT.obs=t.checked;}
-    else if(t.id==='kitImport'&&t.files&&t.files.length){kitImport(t.files);}});
+    else if((t.id==='kitImport'||t.id==='kitImportZip')&&t.files&&t.files.length){kitImport(t.files);}});
   document.addEventListener('click',function(e){var k=e.target.closest('button[data-kitrun]');if(!k||k.disabled)return;var code=k.getAttribute('data-kitrun');
     var onRunner=!!k.closest('.kit-card');
     kitRunReq([code]).then(function(){if(!onRunner){SC.flash=KIT.err||KIT.msg;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-kit],button[data-kitmod]');if(!b||b.disabled)return;
-    var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='xls'){kitExcel();return;}if(a==='imp'){kitPick();return;}
+    var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='xls'){kitExcel();return;}if(a==='imp'||a==='impdir'){kitPick(a==='impdir');return;}
     var m=b.getAttribute('data-kitmod');if(m){KIT.scope=m;kitDownload(m).then(function(){SC.flash=KIT.err||KIT.msg;if(!busy())renderMain();});}});
 
   function tpLink(link,code){var pl=TP.map[link.id];if(!pl)return;var its=clone(pl.items||[]);if(!its[link.idx])return;its[link.idx].scenarioCode=code;tpWrite(pl.product,pl.module,{items:its}).catch(function(){});}

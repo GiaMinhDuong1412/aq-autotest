@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-5"
+KIT_VERSION = "2026.10.30-6"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1912,6 +1912,23 @@ def update_dirs():
     return out
 
 
+def pack_results(since):
+    """Gói các lượt vừa chạy thành một file .zip trong thư mục Tải về – dùng khi console không nối thẳng
+    máy chạy test: trên console bấm Nhập kết quả… và chọn file này."""
+    import zipfile
+    runs = [d for d in (BASE / "results").glob("*") if (d / "result.json").is_file() and (d / "result.json").stat().st_mtime >= since - 1]
+    if not runs:
+        return None
+    ds = [d for d in update_dirs() if d != BASE]
+    out = (ds[-1] if ds else BASE / "results") / ("AQ-ket-qua-%s.zip" % time.strftime("%y%m%d-%H%M%S"))
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        for d in runs:
+            for f in d.rglob("*"):
+                if f.is_file() and not (f.suffix.lower() in (".mp4", ".mkv") and f.stat().st_size > 20 * 1024 * 1024):
+                    z.write(f, d.name + "/" + f.relative_to(d).as_posix())
+    return out
+
+
 def apply_update():
     """Tìm file aq-autotest-update*.json (nút "Chạy test đăng nhập" trên console) trong thư mục bộ test
     hoặc thư mục Tải về; áp dụng bản mới nhất chưa áp dụng. Trả về True nếu đã cập nhật."""
@@ -2053,6 +2070,7 @@ def main():
     except Exception:
         pass
     summary = []
+    t0 = time.time()
 
     def worker():
         es = Edusoft()
@@ -2088,12 +2106,25 @@ def main():
     for c, s in summary:
         print("  %-10s %s" % (c, s))
     print("\nThư mục kết quả:", BASE / "results")
+    zp = None
+    try:
+        zp = pack_results(t0)
+    except Exception as e:
+        print("(Không gói được file kết quả: %s)" % e)
+    if zp:
+        print("File kết quả:", zp)
+        print("Console chưa nối thẳng máy này? Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn file trên.")
+    else:
+        print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả…\" và chọn thư mục results.")
     if CFG.get("openResults", True):
         try:
-            os.startfile(str(BASE / "results"))
+            if zp:
+                import subprocess
+                subprocess.Popen(["explorer", "/select,", str(zp)])
+            else:
+                os.startfile(str(BASE / "results"))
         except Exception:
             pass
-    print("Vào AQ Autotest Console → Máy chạy thử → \"Nhập kết quả chạy\" và chọn thư mục results.")
     input("Nhấn Enter để đóng…")
 
 
