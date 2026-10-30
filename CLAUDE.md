@@ -14,7 +14,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   orderBy/where/limit/onSnapshot), user, assets, downloads, permissions, mcp (`host:aq-autotest` → `/api/kit`).
   Biến `window.AQ_LOCAL` có nghĩa đang chạy localhost.
 - `kit/` – bộ test cài trên máy chạy test: `aqrun.py` (chạy kịch bản, `KIT_VERSION` ở đầu file – **tăng mỗi lần sửa kit**),
-  `aq-agent.py` (chạy nền quyền admin, nhận file lệnh `aq-autotest-update-run.json` trong thư mục bộ test),
+  `aq-agent.py` (chạy nền quyền admin, nhận file lệnh `aq-autotest-update-run*.json` trong thư mục bộ test / Tải về:
+  chuyển ngay vào `lenh-da-xu-ly/` với tên kèm thời gian, xử lý lần lượt – đang chạy thì xếp hàng; không đổi sang tên cố định),
   `cai-dat.bat` (tự xin quyền admin nhưng giữ APPDATA/LOCALAPPDATA/USERPROFILE gốc qua `AQ_USER_*`; chép bộ test vào thư mục cài
   cố định – `thu-muc-cai.txt` từ ô "Thư mục cài bộ test" trên console, trống = `%USERPROFILE%\AQ-Autotest`; cuối chạy
   `aqrun.py --chan-doan` in bảng kiểm tra + `chan-doan.txt`, bản claude.ai hỏi rồi tự khởi động lại Claude app),

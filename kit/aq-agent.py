@@ -5,6 +5,8 @@ Nhận lệnh từ AQ Autotest Console qua file trong thư mục Tải về (Dow
   - aq-autotest-update-run*.json (nút "Chạy test đăng nhập") → cập nhật bộ test lên bản mới nhất RỒI chạy test
   - aq-autotest-update*.json      (bản cập nhật không kèm lệnh chạy) → chỉ cập nhật
   - aq-autotest-run*.json         (lệnh chạy kiểu cũ)                → chỉ chạy
+Mỗi file lệnh được nhận ngay (chuyển vào lenh-da-xu-ly/, tên kèm thời gian) rồi xử lý lần lượt: mỗi lần bấm Chạy
+là một lượt chạy; đang có lượt chạy thì lệnh mới xếp hàng.
 Nhật ký: agent.log trong thư mục bộ test.
 """
 import os, sys, time, json, subprocess, datetime, ctypes
@@ -61,73 +63,100 @@ def python_exe():
 
 
 RUNNING = {"p": None}
-SEEN = set()
+DONE = BASE / "lenh-da-xu-ly"          # file lệnh đã nhận, tên kèm thời gian nên không bao giờ trùng
+WAIT_F = BASE / "lenh-cho.json"        # hàng chờ, giữ lại khi Agent tự khởi động lại sau cập nhật
+PENDING = []                            # file lệnh đã nhận, chờ tới lượt (mỗi lần bấm Chạy là một lượt)
+BAD = {}                                # file chưa đọc được (đang ghi dở) → số lần thử
+
+
+def archive(f, tag):
+    """Chuyển file lệnh vào lenh-da-xu-ly/ với tên không trùng. Trước đây đổi sang tên cố định
+    (*.da-ap-dung.json / *.da-xu-ly.json): lần sau trùng tên → đổi tên lỗi → lệnh chạy bị bỏ, các lần sau kẹt."""
+    import shutil
+    DONE.mkdir(exist_ok=True)
+    dest = DONE / ("%s-%s-%s" % (datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f"), tag, f.name))
+    shutil.move(str(f), str(dest))      # Tải về và thư mục bộ test có thể khác ổ đĩa
+    try:
+        old = sorted(DONE.glob("*.json"), key=lambda x: x.stat().st_mtime)
+        for x in old[:-40]:
+            x.unlink()
+    except Exception:
+        pass
+    return dest
+
+
+def run_busy():
+    """Đang có lượt test chạy: do Agent này mở, hoặc aqrun.py đang giữ mutex (VD mở từ chay-test.bat)."""
+    p = RUNNING["p"]
+    if p is not None and p.poll() is None:
+        return True
+    try:
+        h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestRunMutex")
+        if h:
+            ctypes.windll.kernel32.CloseHandle(h)
+            return True
+    except Exception:
+        pass
+    return False
 
 
 def start_run(codes, why=""):
-    p = RUNNING["p"]
-    if p is not None and p.poll() is None:
-        log("Bỏ qua lệnh chạy – đang có lượt test chạy")
-        return
     codes = [str(c).upper() for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
-    RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE)
+    env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
+    RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
 
 
-def run_after_update(applied, data):
-    """File cập nhật có kèm lệnh chạy: chạy test rồi đánh dấu đã xử lý (để không chạy lại)."""
-    run = data.get("run") or {}
-    if not run:
-        return
+def process(g):
+    """Xử lý một file lệnh đã nhận: cập nhật bộ test theo đúng file đó rồi chạy test đi kèm."""
     try:
-        applied.rename(applied.with_name(applied.name.replace(".da-ap-dung.json", ".da-xu-ly.json")))
-    except Exception:
-        return
-    start_run(run.get("codes"), "(yêu cầu lúc %s, bộ test %s)" % (run.get("requestedAt", "?"), data.get("kitVersion", "?")))
-
-
-def pending_after_restart():
-    """Agent vừa được thay bản mới trong lúc cập nhật: chạy nốt lệnh chạy đi kèm bản cập nhật đó."""
-    for d in watch_dirs():
-        for f in d.glob("aq-autotest-update*.da-ap-dung.json"):
-            try:
-                if time.time() - f.stat().st_mtime > 300:
-                    continue
-                data = json.loads(f.read_text("utf-8"))
-            except Exception:
-                continue
-            run_after_update(f, data)
-
-
-def handle(f):
-    try:
-        if time.time() - f.stat().st_mtime > MAX_AGE:
-            return
-        data = json.loads(f.read_text("utf-8"))
-    except Exception:
+        data = json.loads(g.read_text("utf-8"))
+    except Exception as e:
+        log("Không đọc được %s: %s" % (g.name, e))
         return
     fmt = data.get("format", "")
     if fmt == "aq-autotest-update/1":
-        log("Nhận bản cập nhật %s từ %s" % (data.get("kitVersion", "?"), f))
-        r = subprocess.call([python_exe(), str(BASE / "aqrun.py"), "--cap-nhat"], cwd=str(BASE), creationflags=0x08000000)
+        log("Cập nhật bộ test %s từ %s" % (data.get("kitVersion", "?"), g.name))
+        r = subprocess.call([python_exe(), str(BASE / "aqrun.py"), "--cap-nhat", "--file", str(g)], cwd=str(BASE), creationflags=0x08000000)
         log("Cập nhật xong (mã %s)" % r)
-        applied = f.with_name(f.stem + ".da-ap-dung.json")
-        if applied.exists():
-            run_after_update(applied, data)
-        elif data.get("run") and f.exists():       # không áp dụng được (VD đã áp dụng trước đó) – vẫn chạy test
-            try:
-                f.rename(f.with_name(f.stem + ".da-xu-ly.json"))
-            except Exception:
-                return
-            start_run((data.get("run") or {}).get("codes"), "(không cần cập nhật)")
-        return
-    if fmt != "aq-autotest-run-request/1":
-        return
+        run = data.get("run") or {}
+        if run:
+            start_run(run.get("codes"), "(yêu cầu lúc %s, bộ test %s)" % (run.get("requestedAt", "?"), data.get("kitVersion", "?")))
+    elif fmt == "aq-autotest-run-request/1":
+        start_run(data.get("codes"), "(yêu cầu lúc %s)" % data.get("requestedAt", "?"))
+
+
+def receive(f):
+    """File lệnh mới trong thư mục bộ test / Tải về: nhận ngay (chuyển đi) rồi đưa vào hàng chờ."""
     try:
-        f.rename(f.with_name(f.stem + ".da-xu-ly.json"))
+        age = time.time() - f.stat().st_mtime
+        data = json.loads(f.read_text("utf-8"))
     except Exception:
+        BAD[str(f)] = BAD.get(str(f), 0) + 1          # có thể đang ghi dở – thử lại vòng sau
+        if BAD[str(f)] >= 15:
+            archive(f, "hong")
+            log("Bỏ file lệnh hỏng %s" % f.name)
         return
-    start_run(data.get("codes"), "(yêu cầu lúc %s)" % data.get("requestedAt", "?"))
+    BAD.pop(str(f), None)
+    if data.get("format") not in ("aq-autotest-update/1", "aq-autotest-run-request/1"):
+        return
+    if age > MAX_AGE:
+        archive(f, "qua-han")
+        log("Bỏ lệnh cũ hơn 30 phút: %s" % f.name)
+        return
+    g = archive(f, "nhan")
+    PENDING.append(g)
+    log("Nhận lệnh %s%s" % (f.name, " – đang có lượt test chạy, xếp hàng (%d)" % len(PENDING) if run_busy() else ""))
+
+
+def cleanup_old():
+    """Dọn file đánh dấu kiểu cũ (*.da-ap-dung.json, *.da-xu-ly.json) để không còn gây trùng tên."""
+    for d in watch_dirs():
+        for f in list(d.glob("aq-autotest-*.da-*.json")):
+            try:
+                archive(f, "cu")
+            except Exception:
+                pass
 
 
 def main():
@@ -138,24 +167,27 @@ def main():
     digest = lambda: hashlib.md5(me.read_bytes()).hexdigest()
     mtime, mine = me.stat().st_mtime, digest()
     log("Agent bắt đầu (%s) – theo dõi: %s" % (python_exe(), ", ".join(str(d) for d in watch_dirs())))
-    if "--restart" in sys.argv:
-        pending_after_restart()
+    cleanup_old()
+    try:
+        PENDING.extend(Path(x) for x in json.loads(WAIT_F.read_text("utf-8")) if Path(x).exists())
+        WAIT_F.unlink()
+    except Exception:
+        pass
     while True:
         try:
             for d in watch_dirs():
                 for pat in ("aq-autotest-update*.json", "aq-autotest-run*.json"):
                     for f in sorted(d.glob(pat), key=lambda x: x.stat().st_mtime):
-                        if ".da-" in f.name:
-                            continue
-                        key = (str(f), f.stat().st_mtime)
-                        if key in SEEN:
-                            continue
-                        SEEN.add(key)
-                        handle(f)
+                        if ".da-" not in f.name:
+                            receive(f)
+            if PENDING and not run_busy():
+                process(PENDING.pop(0))
             if me.stat().st_mtime != mtime and digest() == mine:   # chép lại y nguyên – không cần khởi động lại
                 mtime = me.stat().st_mtime
             elif me.stat().st_mtime != mtime:       # agent vừa được cập nhật → khởi động lại bản mới
                 log("Agent có bản mới – khởi động lại")
+                if PENDING:
+                    WAIT_F.write_text(json.dumps([str(x) for x in PENDING]), "utf-8")
                 subprocess.Popen([sys.executable, str(me), "--restart"], cwd=str(BASE))
                 return
         except Exception as e:
