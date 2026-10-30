@@ -116,7 +116,8 @@ Chạy **đúng thứ tự bước**, mỗi bước tự mở menu của chính 
 của bước sau. Trình tự:
 1. **Điều kiện đầu vào** – đã vào Edusoft (đăng nhập theo CHUNG-001), đúng năm học/học kỳ test.
 2. **Kiểm tra trùng dữ liệu định thêm** ở mọi màn hình chứa dữ liệu đó (vd sinh viên: `Danh mục sinh viên` rồi
-   `Danh sách sinh viên học kỳ`): tìm mã và tên test → **đã có thì tự chọn mã/tên test khác** (`unique: MSSV`, `unique: TEN`),
+   `Danh sách sinh viên học kỳ`): tìm mã và tên test **bằng ô tìm kiếm của cột** (dòng lọc có icon phễu – skill `giaodien-edusoft` #5) → **đã có thì tự chọn
+   mã/tên test khác** (`unique: MSSV @ Mã sinh viên|Mã SV`, `unique: TEN @ Tên`),
    không dừng test. Tên test chọn trong danh sách không dính tổ hợp Telex (Mot, Hai, Ba, Bon, Nam, Sau, Bay, Tam…).
 3. **Thu thập dữ liệu danh mục tiền đề** (chỉ xem, không sửa): mở danh mục, lấy các dòng đúng loại, **chọn ngẫu nhiên một
    dòng và ghi nhớ** vào biến (`pick: BIẾN = lọc @ cột`). Vd `Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định`

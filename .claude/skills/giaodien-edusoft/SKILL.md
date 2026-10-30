@@ -25,6 +25,9 @@ Thứ tự ưu tiên khi có mâu thuẫn: **Bài học người dùng dạy (m�
 │──────────────│   (lưới chi tiết bên dưới, nếu có)                                           │
 │ Thông tin    │   BUTTON ở đáy màn hình: Sửa(F2) · Thêm nhóm(F3) · … · Lưu(Ctrl+S) · Đóng   │
 │ đơn vị       │                                                                              │
+│──────────────│                                                                              │
+│ HỌC KỲ: Năm  │                                                                              │
+│ học · Học kỳ │                                                                              │
 ├──────────────┴────────────────────────────────────────────────────────────────────────────┤
 └ Thanh trạng thái (phải): user đăng nhập "Quản trị Đại học (DH)" · Đăng xuất                 ┘
 ```
@@ -39,11 +42,11 @@ Trạng thái: **✔ người dùng xác nhận** · **? suy đoán, chờ dạy
 | **Menu** | ✔ #2 | Nút lớn có icon + chữ 2 dòng trong thẻ phân hệ; nút **mờ** = chưa dùng được | `Button` | cấp 2 của `menu:` |
 | **Chức năng** | ✔ #3 | Mục trên cây "Danh mục chức năng" bên trái; dòng in đậm có nền = nhóm/đang chọn, mục con có đường kẻ, nhóm có dấu ⊟/⊞ | `TreeItem` (chữ ở Value) | cấp cuối của `menu:` (bấm đúp) |
 | **Màn hình chức năng** | ✔ #4 | Tab ở vùng giữa, tiêu đề = tên chức năng, có nút X | tab MDI | – |
-| **Ô tìm kiếm (search bar)** | ✔ #5 | **Dòng trống ngay dưới tiêu đề cột**, đầu dòng có **icon phễu**; mỗi cột một ô | ô của lưới (dòng lọc DevExpress) | `find_row:`, `unique:`, `absent:` – xem #5 |
+| **Ô tìm kiếm (search bar)** | ✔ #5 | **Dòng trống ngay dưới tiêu đề cột**, đầu dòng có **icon phễu**; mỗi cột một ô | ô của lưới (dòng lọc DevExpress) | `find_row: giá trị @ Cột`, `unique: BIẾN @ Cột`, `absent: giá trị @ Cột`, `delete_row: giá trị @ Cột` |
 | **Button** | ✔ #6 | Dãy nút **ở đáy** màn hình chức năng, có icon nhỏ, nhiều nút kèm **phím tắt trong ngoặc**; mỗi menu một bộ khác nhau | `Button` | `click:` / `save:` / `key:` |
 | **Lưới dữ liệu** | ✔ #7 | Bảng chính; **cột màu xám = sửa được**, **cột trắng = dữ liệu cứng** (chỉ đổi qua menu khác) | `Table`/`DataGrid`, ô `DataItem` | `find_row:`, `expect:`, `pick:` |
 | **Popup** | ✔ #8 | Cửa sổ con "EduSoft.NET" mở khi bấm một số button; có tiêu đề nhóm, ô nhập, lưới con, nút **Lưu / Đóng** ở đáy | `Window` | `type:`/`select:` rồi `save:` |
-| **Thanh học kỳ** | ✔ #9 | Ô chọn "Năm học" (vd 2026-2027), "Học kỳ" (vd 1) và "ĐVPC: Đại học" | `ComboBox` | – (không đổi khi test, trừ khi kịch bản yêu cầu) |
+| **Thanh học kỳ** | ✔ #9 | **Dưới cùng bên trái, dưới Thông tin đơn vị**: ô chọn "Năm học" (vd 2026-2027), "Học kỳ" (vd 1) và "ĐVPC: Đại học" | `Button` "Năm học" / "Học kỳ" trong `StatusBar` (đã thấy trong ui-*.txt) | – (không đổi khi test, trừ khi kịch bản yêu cầu) |
 | **Thông tin đơn vị** | ✔ #10 | Khung dưới cây chức năng: logo + tên trường (vd DEMO HVNG) | – | dùng xác nhận đúng môi trường |
 | **User / Đăng xuất** | ✔ #11 | Góc phải thanh trạng thái: tên user đăng nhập + nút Đăng xuất | `Button` | **không bấm Đăng xuất** khi đang test |
 | **Phiên bản** | ✔ #12 | Thanh tiêu đề: `EduSoft.NET [v<phiên bản>-<môi trường>] (<ngày build>)` | tiêu đề cửa sổ | ghi vào kết quả lượt chạy |
@@ -113,8 +116,14 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Nhận biết: **dòng trống ngay dưới hàng tiêu đề cột của lưới**, ô đầu dòng có **icon phễu** (▽). Mỗi cột có ô riêng – gõ vào ô của cột nào thì lọc theo cột đó. Ảnh `anh/06-o-tim-kiem.png` (khung đỏ).
 - Phân biệt với: dòng dữ liệu (có giá trị), ô nhập của popup. Không phải ô tìm Ctrl+F nổi phía trên lưới.
 - Thao tác đúng: bấm vào ô của cột cần lọc (vd cột "Mã MH") → gõ giá trị → lưới chỉ còn dòng khớp; xóa chữ trong ô để bỏ lọc.
-- Lệnh auto: `find_row:`, `unique:`, `absent:` cần tìm qua dòng này.
-- Áp dụng: **chưa** – `kit/aqrun.py` (`locate_row`/`row_exists`) đang thử Ctrl+F rồi Esc; cần chuyển sang gõ vào ô lọc của cột (chờ người dùng đồng ý và có `ui-*.txt` để biết tên ô lọc).
+- Lệnh auto: luôn ghi cột sau `@`: `find_row: {SOQD} @ Số quyết định|Số QĐ`, `unique: MSSV @ Mã sinh viên|Mã SV`,
+  `absent: {MSSV} @ Mã sinh viên`, `delete_row: {SOQD} @ Số quyết định`. Không ghi cột: `find_row` chỉ xem các dòng đang hiện, `unique`/`absent` báo lỗi thiếu cột.
+  **Không dùng Ctrl+F / Esc** (xem #13).
+- Áp dụng (người dùng đồng ý 2026-10-30, kit `2026.10.30-13`): `Run.column_header` tìm tiêu đề cột trong lưới (lưới trên cùng),
+  `Run.filter_grid` bấm **ngay dưới** tiêu đề (không bấm vào tiêu đề – sẽ sắp xếp cột), End + Backspace, gõ, Enter;
+  `locate_row` chỉ nhận ô nằm dưới dòng lọc; `row_exists`/`delete_row` xoá chữ trong ô lọc sau khi xong; lọc cột khác thì
+  xoá ô lọc cũ trước. QLSV-001 đã ghi cột cho mọi lệnh tìm. Toạ độ dòng lọc là ước lượng (đáy tiêu đề + nửa chiều cao) –
+  chạy thật mà bấm lệch thì đọc `ui-*.txt` để chỉnh.
 
 ### #6 – Button (2026-10-30)
 - Nhận biết: thanh nút **ở đáy màn hình chức năng**, icon nhỏ + chữ, nhiều nút có phím tắt trong ngoặc. Mỗi menu có bộ nút khác nhau. Ví dụ màn hình "Danh sách nhóm tổ": Sửa(F2), Thêm nhóm(F3), Thêm tổ TH(F4), Thêm tổ hợp(F5), Chuyển tổ hợp thành tổ TH(F10), Import, Xuất danh sách, Đồng bộ SS TKB(F6), Refresh SS ĐK(F7), Xóa(Ctrl+T), Refresh, Sửa SS TKB(F8), Lưu(Ctrl+S), Đóng. Ảnh `anh/07-button.png`.
@@ -134,7 +143,8 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Lệnh auto: `click: Thêm nhóm` → `type:`/`select:` các ô của popup → `save:`. Bộ test tìm hộp thoại trước cửa sổ chính (`Edusoft.roots`) nên đúng thứ tự.
 
 ### #9 – Thanh học kỳ đang dùng (2026-10-30)
-- Nhận biết: "Năm học [2026-2027 ▾]  Học kỳ [1 ▾]  ĐVPC: Đại học". Ảnh `anh/10-hoc-ky.png`.
+- Nhận biết: "Năm học [2026-2027 ▾]  Học kỳ [1 ▾]  ĐVPC: Đại học", nằm **dưới cùng phía bên trái, dưới khung Thông tin đơn vị**
+  (người dùng bổ sung). Ảnh `anh/10-hoc-ky.png`.
 - Thao tác đúng: dữ liệu các màn hình phụ thuộc học kỳ đang chọn. Không đổi khi test trừ khi kịch bản yêu cầu; ghi năm học/học kỳ vào kết quả để đối chiếu.
 
 ### #10 – Thông tin trường (2026-10-30)
@@ -148,6 +158,20 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 ### #12 – Thông tin phiên bản (2026-10-30)
 - Nhận biết: giữa thanh tiêu đề: `EduSoft.NET [v2026.10L.00-HVNG] (2026-10-30 08:25)` = phiên bản – môi trường (ngày build). Ảnh `anh/13-phien-ban.png`.
 - Thao tác đúng: đọc từ tiêu đề cửa sổ chính để ghi phiên bản vào lượt chạy / đối chiếu release.
+
+### #13 – Phím Esc và cấu trúc UIA thật (rút ra từ lượt chạy QLSV-001 ngày 2026-10-31 01:12, kit -11)
+- Hiện tượng: kit cũ tìm bằng Ctrl+F rồi Esc → báo nhầm "mã đã có" (ô tìm Ctrl+F nằm trong lưới, chứa đúng chữ vừa gõ),
+  **Esc đóng màn hình chức năng**, Esc ở cửa sổ chính bật hộp **"Thoát khỏi chương trình?" (Có / Không)**; bước sau không còn
+  lưới nên "0 dòng đang hiện"; người test bấm Dừng nhưng kết quả vẫn ghi "Đạt".
+- Thao tác đúng: **không gửi Esc** để bỏ tìm kiếm/đóng gì trên màn hình chính; tìm bằng ô tìm kiếm của cột (#5) rồi xoá chữ.
+  Gặp hộp "Thoát khỏi chương trình?" thì bấm **Không** (`Edusoft.keep_open`, chạy đầu mỗi bước và khi bước lỗi).
+- Cấu trúc UIA đã thấy (`ui-buoc-3-loi.txt`): cây chức năng `Tree` automationId `treeChucNangC3`, có `Header` (tên menu) và
+  cặp `TreeItem NodeN` + `DataItem "<cột> row N"` (chữ ở Value); vùng màn hình chức năng `Tab tabForm` → `Pane` lớp
+  `MDICLIENT`; ribbon `Pane "Sinh viên"` → `ToolBar "Quản lý sinh viên"` → các `Button`; thanh dưới `StatusBar`: `Button "Năm học"`,
+  `Button "Học kỳ"`, Text "ĐVPC:  Đại học", Text tên user, `Button "Đăng xuất"`; khung trường `Text lblTenTruong` ("DEMO HVNG").
+  Lưới DevExpress dự kiến cùng kiểu: tiêu đề cột là `Header`, ô là `DataItem "<cột> row N"` – kit -13 gom ô theo hàng như vậy.
+- Áp dụng: kit `2026.10.30-13` – bỏ Ctrl+F/Esc khi tìm, `keep_open`, kết quả chỉ "Đạt" khi mọi bước luồng chính đạt
+  (dừng giữa chừng → "Bị chặn", ghi "Dừng ở bước N").
 
 ## 5. Quy trình khi được dạy
 
