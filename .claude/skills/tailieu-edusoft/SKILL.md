@@ -111,6 +111,22 @@ Kịch bản **bắt buộc** thuộc một phân hệ (trường `module`). Ch�
 7. Nghĩ như tester **và** người dùng thật: đi đúng luồng nghiệp vụ của tài liệu và lưu đồ phân hệ (`QuiTrinhMotTrangViSio/<phân hệ>.pdf`), không đi tắt. Ví dụ: sinh viên mới vào hệ thống qua **Quyết định vào mới** (`Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới`), không thêm thẳng vào Danh mục sinh viên. Kiểm tra danh mục / màn hình tiền đề trước khi thao tác.
 8. Nghiệp vụ menu: sau **mỗi** thao tác ghi dữ liệu có một bước `KIỂM TRA …` riêng — Thêm → dữ liệu hiển thị trên màn hình (và màn hình nhận dữ liệu); Sửa → mở lại thấy giá trị mới, không còn giá trị cũ; Xóa → dữ liệu không còn trên màn hình. Kịch bản đi đủ Thêm → kiểm tra → Sửa → kiểm tra → Xóa → kiểm tra (mẫu: QLSV-001).
 
+### Quy trình chuẩn kịch bản thêm – sửa – xóa (bắt buộc, người dùng chốt; mẫu QLSV-001)
+Chạy **đúng thứ tự bước**, mỗi bước tự mở menu của chính nó (lệnh `menu:` trong `auto` của bước); không mở trước menu
+của bước sau. Trình tự:
+1. **Điều kiện đầu vào** – đã vào Edusoft (đăng nhập theo CHUNG-001), đúng năm học/học kỳ test.
+2. **Kiểm tra trùng dữ liệu định thêm** ở mọi màn hình chứa dữ liệu đó (vd sinh viên: `Danh mục sinh viên` rồi
+   `Danh sách sinh viên học kỳ`): tìm mã và tên test → **đã có thì tự chọn mã/tên test khác** (`unique: MSSV`, `unique: TEN`),
+   không dừng test. Tên test chọn trong danh sách không dính tổ hợp Telex (Mot, Hai, Ba, Bon, Nam, Sau, Bay, Tam…).
+3. **Thu thập dữ liệu danh mục tiền đề** (chỉ xem, không sửa): mở danh mục, lấy các dòng đúng loại, **chọn ngẫu nhiên một
+   dòng và ghi nhớ** vào biến (`pick: BIẾN = lọc @ cột`). Vd `Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định`
+   → một lý do thuộc loại quyết định vào mới → `{LYDO}`; lớp của học kỳ lấy từ Danh sách sinh viên học kỳ → `{LOP}`.
+4. **Sau đó mới thêm** dữ liệu ở menu chính, dùng các giá trị đã kiểm tra/ghi nhớ ở bước 2–3.
+5. **KIỂM TRA THÊM** trên màn hình đó và màn hình nhận dữ liệu → **Sửa** → **KIỂM TRA SỬA** → **Xóa** (chỉ xác nhận khi hộp
+   thoại nêu đúng mã test) → **KIỂM TRA XÓA** (`absent:`).
+Biến lấy ở bước trước ghi trong `vars` dạng `"(lấy ở bước N)"`. Bước kiểm tra/thu thập lỗi thì luồng dừng (không thêm dữ liệu
+với giá trị chưa kiểm tra); người chạy thấy popup lỗi và chọn Tạo lỗi / Không phải lỗi / Dừng test.
+
 ## Lỗi trong Edusoft (2 loại)
 1. **Lỗi chức năng / dữ liệu** (`type: "func"`): thực hiện chức năng (lưu, xóa, sửa, import, tính…) nhưng dữ liệu sau thao tác không được lưu hoặc sai. Ghi: `action`, `expectedData` (dữ liệu đã nhập/mong đợi), `actualData` (dữ liệu thực tế sau khi mở lại màn hình), ảnh.
 2. **Lỗi EX – hệ thống** (`type: "ex"`): trong Edusoft nhấn **Ctrl+Shift+E** để hiện chi tiết lỗi → chụp ảnh menu đang thao tác (kèm cửa sổ chi tiết) → nhấn **Ctrl+Shift+F** để hiện menu code. Ghi: `exDetail` (nguyên văn chi tiết lỗi), `menuCode`, ảnh (bắt buộc). Kịch bản có lỗi EX đang mở hiển thị đỏ trên trang.

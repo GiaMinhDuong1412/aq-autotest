@@ -11,8 +11,8 @@
    ]
   },
   {
-   "condition": "Thêm một quyết định vào mới khác có sinh viên trùng mã {MSSV} (trong lúc quyết định {SOQD} ở bước 7–10 còn tồn tại)",
-   "expected": "Chương trình chặn hoặc cảnh báo trùng mã sinh viên; KIỂM TRA: Danh mục sinh viên chỉ có một dòng {MSSV} với họ tên của bước 6. (Cần xác nhận: tài liệu chưa nêu quy tắc chặn trùng.)",
+   "condition": "Thêm một quyết định vào mới khác có sinh viên trùng mã {MSSV} (trong lúc quyết định {SOQD} ở bước 8–11 còn tồn tại)",
+   "expected": "Chương trình chặn hoặc cảnh báo trùng mã sinh viên; KIỂM TRA: Danh mục sinh viên chỉ có một dòng {MSSV} với họ tên của bước 7. (Cần xác nhận: tài liệu chưa nêu quy tắc chặn trùng.)",
    "name": "Mã sinh viên đã tồn tại",
    "steps": [
     "Bấm Thêm, nhập quyết định {SOQD}B, thêm sinh viên Mã SV = {MSSV} với tên khác.",
@@ -20,7 +20,7 @@
    ]
   },
   {
-   "condition": "Quyết định {SOQD} đã lưu (sau bước 8)",
+   "condition": "Quyết định {SOQD} đã lưu (sau bước 9)",
    "expected": "KIỂM TRA SỬA: tên mới {TEN2} hiển thị ở cả quyết định và Danh mục sinh viên, không còn tên cũ {TEN}. (Cần xác nhận: tài liệu chưa nêu dữ liệu sinh viên có được sửa từ màn hình quyết định không.)",
    "name": "Sửa sinh viên trong quyết định",
    "steps": [
@@ -29,44 +29,123 @@
    ]
   }
  ],
+ "auto": [
+  [],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+   "unique: MSSV",
+   "unique: TEN",
+   "shot: danh-muc-sinh-vien"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
+   "unique: MSSV",
+   "unique: TEN",
+   "pick: LOP = @ Mã lớp|Lớp",
+   "shot: ds-sinh-vien-hoc-ky"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định",
+   "pick: LYDO = vào mới|trúng tuyển @ Mã lý do|Mã",
+   "shot: danh-muc-ly-do"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+   "click: Thêm|Thêm mới"
+  ],
+  [
+   "type: Số quyết định = {SOQD}",
+   "select: Lý do quyết định|Lý do = {LYDO}",
+   "date?: Ngày lập|Ngày quyết định = {NGAYQD}",
+   "date?: Ngày hiệu lực = {NGAYQD}",
+   "shot: thong-tin-quyet-dinh"
+  ],
+  [
+   "type: Mã SV|Mã sinh viên = {MSSV}",
+   "type: Họ lót = {HOLOT}",
+   "type: Tên = {TEN}",
+   "date: Ngày sinh = {NGAYSINH}",
+   "select: Phái|Giới tính = Nam",
+   "select: Mã lớp|Lớp = {LOP}",
+   "save: Lưu"
+  ],
+  [
+   "find_row: {SOQD}",
+   "expect: {MSSV}",
+   "shot: kiem-tra-them"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+   "find_row: {MSSV}",
+   "shot: dm-sinh-vien-co-sv",
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
+   "find_row: {MSSV}",
+   "shot: ds-hoc-ky-co-sv"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+   "find_row: {SOQD}",
+   "click?: Sửa",
+   "date: Ngày hiệu lực = {NGAYHL2}",
+   "save: Lưu"
+  ],
+  [
+   "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+   "find_row: {SOQD}",
+   "expect: {NGAYHL2}",
+   "shot: kiem-tra-sua"
+  ],
+  [
+   "delete_row: {SOQD}"
+  ],
+  [
+   "absent: {SOQD}",
+   "menu: Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
+   "absent: {MSSV}",
+   "shot: kiem-tra-xoa"
+  ]
+ ],
  "code": "QLSV-001",
  "createdAt": "2026-10-29T16:30:00.000Z",
  "createdBy": null,
  "dataFlow": {
-  "in": "Đăng nhập Edusoft (CHUNG-001); lớp test {LOP} của học kỳ đang chọn; Danh mục lý do, tên quyết định, người ký đã có sẵn (chỉ kiểm tra, không sửa)",
+  "in": "Đăng nhập Edusoft (CHUNG-001); mã/tên test chưa có trong Danh mục sinh viên và Danh sách sinh viên học kỳ (tự đổi nếu trùng); lớp {LOP} lấy từ Danh sách sinh viên học kỳ; lý do {LYDO} chọn ngẫu nhiên trong Danh mục lý do quyết định (loại vào mới) – chỉ đọc, không sửa",
   "next": [],
-  "out": "Quyết định {SOQD} và sinh viên {MSSV} ({HOLOT} {TEN}, lớp {LOP}) — được xóa ở bước 11, không để lại dữ liệu test"
+  "out": "Quyết định {SOQD} và sinh viên {MSSV} ({HOLOT} {TEN}, lớp {LOP}) — được xóa ở bước 12, không để lại dữ liệu test"
  },
- "expected": "Sinh viên mới vào hệ thống qua Quyết định vào mới (lưu đồ QLSV: DS trúng tuyển → Quyết định vào mới → Danh mục sinh viên → Danh sách sinh viên học kỳ), không thêm thẳng vào Danh mục sinh viên. Thêm: quyết định và sinh viên hiển thị ngay trên màn hình quyết định, Danh mục sinh viên và Danh sách sinh viên học kỳ. Sửa: mở lại thấy giá trị mới, không còn giá trị cũ. Xóa: quyết định không còn trên màn hình và sinh viên không còn trong Danh sách sinh viên học kỳ. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục 1 và 2.1–2.2; lưu đồ QLSV.pdf.) Cần xác nhận: tài liệu chỉ mô tả chi tiết quyết định học lại, đổi lớp, nghỉ học, tạm dừng, tốt nghiệp — giao diện Quyết định vào mới lấy theo cùng mẫu (Thêm → thông tin QĐ → thêm/Import sinh viên → Lưu); việc xóa quyết định có xóa sinh viên khỏi Danh mục sinh viên hay không.",
+ "expected": "Trình tự: kiểm tra trùng mã/tên ở Danh mục sinh viên và Danh sách sinh viên học kỳ → thu thập lý do quyết định vào mới → thêm quyết định. Sinh viên mới vào hệ thống qua Quyết định vào mới (lưu đồ QLSV: DS trúng tuyển → Quyết định vào mới → Danh mục sinh viên → Danh sách sinh viên học kỳ), không thêm thẳng vào Danh mục sinh viên. Thêm: quyết định và sinh viên hiển thị ngay trên màn hình quyết định, Danh mục sinh viên và Danh sách sinh viên học kỳ. Sửa: mở lại thấy giá trị mới, không còn giá trị cũ. Xóa: quyết định không còn trên màn hình và sinh viên không còn trong Danh sách sinh viên học kỳ. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục 1 và 2.1–2.2; lưu đồ QLSV.pdf.) Cần xác nhận: tài liệu chỉ mô tả chi tiết quyết định học lại, đổi lớp, nghỉ học, tạm dừng, tốt nghiệp — giao diện Quyết định vào mới lấy theo cùng mẫu (Thêm → thông tin QĐ → thêm/Import sinh viên → Lưu); việc xóa quyết định có xóa sinh viên khỏi Danh mục sinh viên hay không.",
  "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
  "module": "QLSV",
  "process": "",
  "product": "edusoft",
+ "scriptReady": true,
  "source": {
   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 1, 2.1–2.2; QLSV.pdf (lưu đồ quản lý sinh viên); QLSV_CapNhatLyLichSinhVien, mục I",
   "plan": "edusoft-QLSV"
  },
  "status": "notrun",
  "steps": [
-  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có một lớp test của học kỳ để xếp sinh viên (ghi mã lớp vào {LOP}); chỉ dùng dữ liệu có tiền tố TEST, không đụng sinh viên thật.",
-  "Kiểm tra danh mục dùng cho quyết định (chỉ xem, không sửa): mở lần lượt Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định, Danh mục tên quyết định, Danh sách người ký quyết định. Mỗi danh mục có ít nhất 1 dòng dùng được cho quyết định vào mới; ghi lại Lý do, Tên quyết định, Người ký sẽ dùng.",
-  "Kiểm tra trước khi thêm: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} → chưa có dòng nào (sinh viên chỉ được đưa vào hệ thống qua quyết định).",
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố TEST, không đụng sinh viên thật.",
+  "Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định thêm → nếu đã có thì tự chọn mã / tên test khác chưa có trong danh mục.",
+  "Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {TEN} → nếu đã có thì tự chọn mã / tên test khác; ghi nhớ một mã lớp {LOP} của học kỳ để xếp sinh viên.",
+  "Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định, lấy các lý do thuộc loại quyết định vào mới → chọn ngẫu nhiên 1 lý do, ghi nhớ {LYDO}.",
   "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm.",
-  "Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định, Lý do, Ngày lập = {NGAYQD}, Ngày hiệu lực = {NGAYQD}, Người ký (theo bước 2).",
+  "Nhập thông tin quyết định: Số quyết định = {SOQD}, Lý do quyết định = {LYDO} (bước 4), Ngày lập = {NGAYQD}, Ngày hiệu lực = {NGAYQD}; Tên quyết định, Người ký chọn giá trị có sẵn.",
   "Thêm sinh viên vào danh sách của quyết định: Mã SV = {MSSV}, Họ lót = {HOLOT}, Tên = {TEN}, Ngày sinh = {NGAYSINH}, Phái = Nam, Lớp = {LOP} (cột đánh dấu đỏ là bắt buộc). Bấm Lưu.",
-  "KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới; mở lại thấy đúng Số QĐ, Lý do, Ngày hiệu lực, Người ký và có sinh viên {MSSV} trong danh sách.",
-  "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): sinh viên {MSSV} hiển thị trong Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên và trong Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ của học kỳ đang chọn, đúng lớp {LOP}, họ tên {HOLOT} {TEN}, ngày sinh {NGAYSINH}.",
-  "Sửa quyết định {SOQD}: đổi Ngày hiệu lực thành {NGAYHL2}. Bấm Lưu.",
-  "KIỂM TRA SỬA: đóng màn hình, mở lại Quyết định vào mới, chọn {SOQD} → Ngày hiệu lực hiển thị {NGAYHL2}, không còn {NGAYQD}; Số QĐ, Lý do, Người ký và sinh viên {MSSV} giữ nguyên.",
+  "KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới; mở lại thấy đúng Số QĐ, Lý do {LYDO}, Ngày hiệu lực và có sinh viên {MSSV}.",
+  "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): sinh viên {MSSV} hiển thị trong Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên và Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, đúng lớp {LOP}, họ tên {HOLOT} {TEN}.",
+  "Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, đổi Ngày hiệu lực thành {NGAYHL2}. Bấm Lưu.",
+  "KIỂM TRA SỬA: mở lại Quyết định vào mới, chọn {SOQD} → Ngày hiệu lực hiển thị {NGAYHL2}, không còn {NGAYQD}; Số QĐ, Lý do và sinh viên {MSSV} giữ nguyên.",
   "Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa, xác nhận (chỉ xác nhận khi hộp thoại nêu đúng {SOQD} hoặc {MSSV}).",
-  "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới; sinh viên {MSSV} không còn trong Danh sách sinh viên học kỳ. Kiểm tra cả Danh mục sinh viên và ghi lại {MSSV} còn hay không (Cần xác nhận quy tắc)."
+  "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới; sinh viên {MSSV} không còn trong Danh sách sinh viên học kỳ (ghi lại {MSSV} còn trong Danh mục sinh viên hay không – Cần xác nhận quy tắc)."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-10-29T16:30:00.000Z",
+ "updatedAt": "2026-10-30T18:07:59.000Z",
  "updatedBy": null,
  "vars": {
   "HOLOT": "Kiem Thu",
-  "LOP": "(mã lớp test của học kỳ)",
+  "LOP": "(lấy ở bước 3)",
+  "LYDO": "(lấy ở bước 4)",
   "MSSV": "TEST{ddHHMM}",
   "MSSV2": "TEST{ddHHMM}B",
   "NGAYHL2": "01/12/2026",
