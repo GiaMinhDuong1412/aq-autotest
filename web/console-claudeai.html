@@ -6994,6 +6994,7 @@ QUAY VIDEO (TÙY CHỌN)
       root.file('config.json',JSON.stringify(cfg,null,2));
       var idir=brDirVal()||r.installDir||'';if(idir&&/^[A-Za-z]:\\/.test(idir)&&SC.rnCol&&SC.me&&r.installDir!==idir)SC.rnCol.doc(SC.me).update({installDir:idir}).catch(function(){});
       root.file('thu-muc-cai.txt',/^[A-Za-z]:\\/.test(idir)?idir:'');
+      try{root.file('ket-noi-claude.bat',knBat(/^[A-Za-z]:\\/.test(idir)?idir:'%USERPROFILE%\\AQ-Autotest'));}catch(x){}
       var cf=kitCodeFiles();
       Object.keys(cf).forEach(function(k){root.file(k,/\.bat$/i.test(k)?crlf(cf[k]):/\.txt$/i.test(k)?'\ufeff'+crlf(cf[k]):cf[k]);});
       root.folder('results');
@@ -7055,8 +7056,8 @@ QUAY VIDEO (TÙY CHỌN)
     return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+
       '<div class="br-dir"><label for="brDir">Thư mục bộ test trên máy này'+(ok&&i.computer?' ('+esc(i.computer)+')':'')+'</label><div class="br-dir-row">'+
         '<input id="brDir" class="mono" value="'+esc(dir)+'" placeholder="Để trống = %USERPROFILE%\\AQ-Autotest · hoặc vd D:\\AQ-Autotest" spellcheck="false">'+
-        '<button type="button" class="btn sm'+(ok?'':' primary')+'" data-br="kn" title="Tải ket-noi-claude.bat: nối Claude app trên máy này với thư mục trên (tắt rồi mở lại Claude app). Không cần quyền admin.">'+IC.down+'Tải file kết nối</button></div>'+
-        (KIT.kn?'<p class="rn-msg '+(KIT.kn.err?'warn':KIT.kn.ok?'ok':'')+'" style="margin-top:6px">'+esc(KIT.kn.t)+(KIT.knUrl?' <a href="'+KIT.knUrl+'" download="ket-noi-claude.bat">tải lại</a>':'')+'</p>':'')+
+        '<button type="button" class="btn sm'+(ok?'':' primary')+'" data-br="kn" title="Tải AQ-Autotest-KetNoi.zip (trong có ket-noi-claude.bat): nối Claude app trên máy này với thư mục trên (tắt rồi mở lại Claude app). Không cần quyền admin.">'+IC.down+'Tải file kết nối</button></div>'+
+        (KIT.kn?'<p class="rn-msg '+(KIT.kn.err?'warn':KIT.kn.ok?'ok':'')+'" style="margin-top:6px">'+esc(KIT.kn.t)+'</p>':'')+
         '<p class="hint" style="margin-top:6px">'+(ok?'Đang đọc trực tiếp thư mục này'+(i.kitVersion?' · bộ test '+esc(i.kitVersion)+(i.kitVersion!==KITVER?', tự lên '+KITVER+' ở lần Chạy tới':''):'')+'. Đổi thư mục: sửa ô trên, tải lại file kết nối.'
           :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';}
   function b64utf8(str){var b=new TextEncoder().encode(str),bin='';for(var i=0;i<b.length;i+=8192)bin+=String.fromCharCode.apply(null,b.subarray(i,i+8192));return btoa(bin);}
@@ -7079,17 +7080,20 @@ QUAY VIDEO (TÙY CHỌN)
       'if not defined PY for /f "delims=" %%i in (\'python -c "import sys;print(sys.executable)" 2^>nul\') do set "PY=%%i"',
       'exit /b 0','','-----BEGIN CERTIFICATE-----',b64.replace(/\n$/,''),'-----END CERTIFICATE-----',''].join('\n'));}
   function brDirVal(){var e=document.getElementById('brDir');var v=String(e?e.value:(KIT.dir||'')).trim().replace(/^"|"$/g,'').replace(/\\+$/,'');return v;}
-  function knFallback(blob){try{var u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='ket-noi-claude.bat';document.body.appendChild(a);a.click();a.remove();KIT.knUrl=u;return true;}catch(e){return false;}}
-  async function knDownload(){var v=brDirVal()||'%USERPROFILE%\\AQ-Autotest';KIT.kn=null;KIT.knUrl='';
+  async function knDownload(){var v=brDirVal()||'%USERPROFILE%\\AQ-Autotest';KIT.kn=null;
     if(!(/^[A-Za-z]:\\/.test(v)||/^%[A-Za-z_]+%(\\|$)/.test(v))||/[<>"|?*]/.test(v)){KIT.kn={t:'Thư mục cần là đường dẫn Windows đầy đủ, ví dụ D:\\AQ-Autotest hoặc %USERPROFILE%\\AQ-Autotest (để trống = %USERPROFILE%\\AQ-Autotest).',err:1};renderRunner();return;}
     KIT.dir=v;var me=myRunner();
     if(/^[A-Za-z]:\\/.test(v)&&SC.rnCol&&SC.me&&(!me||me.installDir!==v))SC.rnCol.doc(SC.me).update({installDir:v,updatedAt:new Date().toISOString()}).catch(function(){});
-    var blob;try{blob=new Blob([knBat(v)],{type:'application/octet-stream'});}catch(e){KIT.kn={t:'Không tạo được file kết nối: '+((e&&e.message)||e),err:1};renderRunner();return;}
-    var ok='Đã tải ket-noi-claude.bat. Bấm đúp để chạy (không cần quyền admin, máy mới chưa có Python thì tự cài): file tắt Claude app, nối với '+v+' rồi mở lại Claude app. Sau đó mở console → Máy chạy thử → Kết nối.';
-    KIT.kn={t:'Đang tạo file…'};renderRunner();
-    try{if(!DL)throw {code:'no_dl'};await DL.save({filename:'ket-noi-claude.bat',data:blob});KIT.kn={t:ok,ok:1};}
-    catch(e){var c=e&&e.code;if(c==='declined'){KIT.kn={t:'Bạn đã hủy lưu file.',err:1};}
-      else KIT.kn=knFallback(blob)?{t:ok+' (Nếu trình duyệt chưa lưu file, bấm link "tải lại" bên cạnh.)',ok:1}:{t:'Không tải được ('+(c||(e&&e.message)||'lỗi')+'). Mở console trong Claude app bản desktop rồi thử lại.',err:1};}
+    if(!DL){KIT.kn={t:'Trang chưa được phép tải file trong lần xem này – mở console trong Claude app bản desktop, bấm Cho phép khi được hỏi rồi thử lại.',err:1};renderRunner();return;}
+    KIT.kn={t:'Đang đóng gói file kết nối…'};renderRunner();
+    var blob;try{var JSZip=await loadZip(),z=new JSZip();z.file('ket-noi-claude.bat',knBat(v));
+      z.file('DOC-TRUOC.txt','﻿'+crlf('AQ Autotest – nối Claude app với thư mục bộ test\n\n1. Giải nén file .zip này (chuột phải → Extract All).\n2. Bấm đúp ket-noi-claude.bat, nhấn Enter khi được hỏi.\n   File tắt Claude app, nối với thư mục '+v+' rồi mở lại Claude app.\n   Máy chưa có Python thì tự cài cho riêng tài khoản (không cần quyền admin).\n3. Trong Claude app: mở AQ Autotest Console → Máy chạy thử → Kết nối.\n'));
+      blob=await z.generateAsync({type:'blob',compression:'DEFLATE'});}
+    catch(e){KIT.kn={t:(e&&e.code==='zip_load'?'Không tải được thư viện nén (JSZip) – kiểm tra mạng rồi thử lại.':'Không tạo được file kết nối: '+((e&&e.message)||e)),err:1};renderRunner();return;}
+    KIT.kn={t:'Chờ bạn xác nhận lưu file AQ-Autotest-KetNoi.zip…'};renderRunner();
+    try{await DL.save({filename:'AQ-Autotest-KetNoi.zip',data:blob});
+      KIT.kn={t:'Đã tải AQ-Autotest-KetNoi.zip. Giải nén, bấm đúp ket-noi-claude.bat (không cần quyền admin): file tắt Claude app, nối với '+v+' rồi mở lại Claude app. Sau đó mở console → Máy chạy thử → Kết nối.',ok:1};}
+    catch(e){var c=e&&e.code;KIT.kn={t:c==='declined'?'Bạn đã hủy lưu file.':c==='not_granted'?'Trang chưa được cho phép tải file – bấm Cho phép khi Claude app hỏi rồi thử lại.':'Không tải được ('+(c||(e&&e.message)||'lỗi')+').',err:1};}
     renderRunner();}
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='brDir')KIT.dir=e.target.value;});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
