@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-2"
+KIT_VERSION = "2026.10.30-3"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -40,9 +40,10 @@ try:
     from pywinauto.timings import TimeoutError as PwTimeout
     from PIL import ImageGrab
 except Exception:  # pragma: no cover
-    print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
-    input("Nhấn Enter để thoát…")
-    sys.exit(1)
+    if "--chan-doan" not in sys.argv:      # kiểm tra cài đặt vẫn chạy được khi thiếu thư viện
+        print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
+        input("Nhấn Enter để thoát…")
+        sys.exit(1)
 
 try:
     import keyboard as hotkeys
@@ -1798,6 +1799,80 @@ def forget():
     print("Đã xóa mật khẩu đã lưu.")
 
 
+# ---------------------------------------------------------------- kiểm tra cài đặt
+def user_env(name):
+    """Biến môi trường của người đang dùng máy. cai-dat.bat xin quyền admin nên truyền APPDATA /
+    LOCALAPPDATA / USERPROFILE gốc qua AQ_USER_* (tài khoản admin khác có hồ sơ khác)."""
+    return os.environ.get("AQ_USER_" + name) or os.environ.get(name) or ""
+
+
+def claude_cfg_dirs():
+    """Thư mục cấu hình Claude app (bản cài thường và bản Microsoft Store) của người dùng."""
+    dirs = []
+    ad, la = user_env("APPDATA"), user_env("LOCALAPPDATA")
+    if ad and (Path(ad) / "Claude").is_dir():
+        dirs.append(Path(ad) / "Claude")
+    if la:
+        dirs += [d for d in (Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude") if d.is_dir()]
+    return dirs
+
+
+def ps(cmd, timeout=20):
+    import subprocess
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True, timeout=timeout)
+        return (r.stdout or "").strip()
+    except Exception:
+        return ""
+
+
+def agent_running():
+    try:
+        import ctypes
+        h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestAgentMutex")
+        if h:
+            ctypes.windll.kernel32.CloseHandle(h)
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def diagnose():
+    """In bảng kiểm tra cài đặt (cai-dat.bat gọi ở cuối; chạy tay: chay-test.bat --chan-doan) và lưu chan-doan.txt."""
+    import importlib.util
+    rows = []
+
+    def add(st, name, detail=""):
+        rows.append("%s %s%s" % ({"ok": "[ OK ]", "warn": "[ !! ]", "fail": "[LỖI]"}[st], name, (" – " + detail) if detail else ""))
+        print(rows[-1])
+
+    print()
+    print("=== Kiểm tra cài đặt AQ Autotest – bộ test %s – %s ===" % (KIT_VERSION, datetime.datetime.now().strftime("%d/%m/%Y %H:%M")))
+    base, tmp = str(BASE), (user_env("TEMP") or os.environ.get("TEMP") or "").lower()
+    if (tmp and base.lower().startswith(tmp)) or ".zip" in base.lower():
+        add("fail", "Thư mục bộ test", base + " là thư mục tạm / nằm trong file .zip – giải nén rồi chạy cai-dat.bat để cài vào thư mục cố định")
+    else:
+        add("ok", "Thư mục bộ test", base)
+    add("ok", "Python", sys.executable)
+    miss = [m for m in ("pywinauto", "PIL", "keyboard", "keyring", "openpyxl") if importlib.util.find_spec(m) is None]
+    add("fail" if miss else "ok", "Thư viện", ("thiếu " + ", ".join(miss) + " – chạy lại cai-dat.bat, kiểm tra mạng") if miss else "đủ")
+    exe = CFG.get("exe") or ""
+    add("ok" if exe and Path(exe).exists() else "fail", "Edusoft.NET.exe",
+        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi tải lại bộ cài")
+    add("ok" if agent_running() else "warn", "AQ Autotest Agent",
+        "đang chạy" if agent_running() else "chưa chạy – chạy lại cai-dat.bat (chọn Yes khi hỏi quyền admin)")
+    try:
+        bridge_diag(add)
+    except Exception as e:
+        add("warn", "Cầu nối Claude app", "không kiểm tra được: %s" % e)
+    try:
+        (BASE / "chan-doan.txt").write_text("\n".join(rows) + "\n", "utf-8")
+    except Exception:
+        pass
+    return rows
+
+
 # ---------------------------------------------------------------- dò giao diện
 def dump():
     from pywinauto import Desktop
@@ -1903,12 +1978,7 @@ def unregister_claude_bridge():
     localhost, server.py làm việc này trực tiếp). Chỉ xoá đúng mục của mình, giữ nguyên cấu hình khác."""
     if os.name != "nt":
         return []
-    dirs = []
-    ad, la = os.environ.get("APPDATA"), os.environ.get("LOCALAPPDATA")
-    if ad:
-        dirs.append(Path(ad) / "Claude")
-    if la:
-        dirs += list((Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude"))
+    dirs = claude_cfg_dirs()
     done = []
     for d in dirs:
         f = d / "claude_desktop_config.json"
@@ -1924,6 +1994,10 @@ def unregister_claude_bridge():
         except Exception:
             continue
     return done
+
+
+def bridge_diag(add):
+    add("ok", "Cầu nối Claude app", "không cần – console chạy trên localhost (server.py nối thẳng thư mục bộ test)")
 
 
 # ---------------------------------------------------------------- main
@@ -1947,6 +2021,9 @@ def main():
         forget()
         ask_password("edusoft", CFG["account"], reask=True)
         input("Nhấn Enter để đóng…")
+        return
+    if "--chan-doan" in args:
+        diagnose()
         return
     try:
         unregister_claude_bridge()
