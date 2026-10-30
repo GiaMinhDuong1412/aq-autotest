@@ -7450,8 +7450,10 @@ QUAY VIDEO (TÙY CHỌN)
   function toast(msg,kind,ms){var el=document.getElementById('aqToast');if(!el||!msg)return;el.querySelector('span').textContent=msg;el.className='aq-toast '+(kind||'');
     clearTimeout(TOAST.t);if(ms!==0)TOAST.t=setTimeout(function(){el.classList.add('hidden');},ms||9000);}
   document.addEventListener('click',function(e){if(e.target.closest('#aqToast button'))document.getElementById('aqToast').classList.add('hidden');});
-  /* trước khi gửi lệnh: cầu nối đã được cho phép mà chưa kiểm tra thì kiểm tra để gửi thẳng vào máy chạy test */
-  async function brTry(){if(BR.state==='ok'||!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return '';}):'';if(st==='granted')await brCheck(false);}catch(e){}}
+  /* trước khi gửi lệnh: cầu nối chưa kiểm tra lần nào thì thử (tối đa 5 giây) để gửi thẳng vào máy chạy test;
+     đã biết là không có cầu nối thì đi thẳng cách tải file lệnh – không bao giờ để nút chạy bị treo */
+  function withTimeout(p,ms){return Promise.race([Promise.resolve(p).catch(function(){}),new Promise(function(res){setTimeout(res,ms);})]);}
+  async function brTry(){if(!MCP||BR.state==='ok'||BR.state==='off'||BR.state==='checking')return;await withTimeout(brCheck(false),5000);}
   async function kitRunReq(codes){codes=codes&&codes.length?codes:['CHUNG-001'];KIT.err='';KIT.msg='';
     var r=myRunner()||{};if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
     if(!kitScens().length){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
@@ -7553,7 +7555,7 @@ QUAY VIDEO (TÙY CHỌN)
   async function brAuto(){if(!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return 'unavailable';}):'unavailable';if(st==='granted')brCheck(false);}catch(e){}}
   async function brCheck(manual){if(!MCP){BR.state='off';BR.code='Trang không dùng được kết nối trong lần xem này.';renderRunner();return;}
     BR.state='checking';renderRunner();
-    try{var r=await MCP.callTool(BRS,'status',{},{cache:false});BR.info=r.payload||null;BR.state='ok';BR.code='';BR.ecode='';
+    try{var r=await Promise.race([MCP.callTool(BRS,'status',{},{cache:false}),new Promise(function(_,rej){setTimeout(function(){rej({code:'timeout',message:'máy chạy test không trả lời sau 8 giây'});},8000);})]);BR.info=r.payload||null;BR.state='ok';BR.code='';BR.ecode='';
       var me=myRunner();if(SC.rnCol&&SC.me&&BR.info&&BR.info.kitDir&&(!me||me.kitDir!==BR.info.kitDir)){SC.rnCol.doc(SC.me).update({kitDir:BR.info.kitDir,kitComputer:BR.info.computer||'',updatedAt:new Date().toISOString()}).catch(function(){});}}
     catch(e){BR.state='off';BR.ecode=(e&&e.code)||'';BR.code=brErr(e)+(e&&e.code?' [mã lỗi: '+e.code+']':'')+(!/Electron|Claude\//i.test(navigator.userAgent||'')?' — Có vẻ bạn đang mở console trên trình duyệt web: cầu nối chỉ dùng được trong Claude app bản desktop trên máy chạy test.':'');}
     renderRunner();if(BR.state==='ok')brSync(false);}
