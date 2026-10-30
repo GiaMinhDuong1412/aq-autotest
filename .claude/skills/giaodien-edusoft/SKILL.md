@@ -1,6 +1,6 @@
 ---
 name: "giaodien-edusoft"
-description: "Nhận diện giao diện Edusoft.NET (HVNG): phân biệt button, ô tìm kiếm, ô nhập, lưới, cây menu, ribbon, hộp thoại… theo cách người dùng dạy; dùng khi viết/sửa lệnh `auto` của kịch bản, đọc file ui-*.txt hay ảnh chụp màn hình Edusoft, hoặc khi người dùng dạy thêm về giao diện."
+description: "Nhận diện giao diện Edusoft.NET (HVNG): phân biệt phân hệ, menu, chức năng, ô tìm kiếm, button, lưới dữ liệu, popup, thanh học kỳ… theo cách người dùng dạy; dùng khi viết/sửa lệnh `auto` của kịch bản, đọc file ui-*.txt hay ảnh chụp màn hình Edusoft, hoặc khi người dùng dạy thêm về giao diện."
 ---
 
 # Giao diện Edusoft – cách nhận diện phần tử
@@ -9,35 +9,51 @@ Skill này là **sổ tay do người dùng dạy**. Mọi điều người dùn
 **bắt buộc áp dụng** cho các lần sau (viết `auto` trong kịch bản, sửa `kit/aqrun.py`, đọc `ui-*.txt`, xem ảnh chụp).
 
 Thứ tự ưu tiên khi có mâu thuẫn: **Bài học người dùng dạy (mục 4)** > bảng phần tử (mục 2) > suy đoán từ tài liệu.
+Ảnh minh hoạ người dùng gửi nằm ở `anh/` cạnh file này – mở bằng Read khi cần so lại.
 
-## 1. Khung màn hình (đã biết)
+## 1. Bố cục cửa sổ chính (người dùng dạy – tài liệu "Giao diện Edusoft", ảnh `anh/01-giao-dien-chinh.png`)
 
-| Vùng | Mô tả | Loại UIA | Cách bộ test thao tác |
-|---|---|---|---|
-| Cửa sổ đăng nhập | Ô tài khoản/mật khẩu, nút Đăng nhập | `Edit`, `Button` | `set_field` gõ phím thật |
-| Ribbon | Thẻ trên cùng: Hệ thống, Sinh viên… | `TabItem` | `select()` |
-| Nút ribbon | Nút lớn trong thẻ, vd "Sinh viên học kỳ" | `Button` / `SplitButton` | bấm |
-| Cây "Danh mục chức năng" | Bên trái; nút tên `NodeN`, **chữ nằm ở Value** | `TreeItem` | nhóm: mở (ExpandCollapse / phím →); mục cuối: bấm đúp |
-| Màn hình chức năng | Mở trong **tab MDI** ở giữa | `Pane` / `TabItem` | – |
-| Hộp thoại | Cửa sổ riêng (xác nhận, thông báo, form con) | `Window` | tìm trên mọi cửa sổ, **không tự bấm Có/Yes** trừ lệnh xóa đúng mã test |
+```
+┌ Thanh tiêu đề: nút nhanh · Server Time · "EduSoft.NET [v2026.10L.00-HVNG] (2026-10-30 08:25)" ┐
+├ PHÂN HỆ (thẻ ribbon): Hệ thống · Nhân sự · Kế hoạch · … · Hoạt động cộng đồng              ┤
+├ MENU (nút lớn có icon trong thẻ, gom theo nhóm, vd nhóm "Quản lý hệ thống")                 ┤
+├──────────────┬────────────────────────────────────────────────────────────────────────────┤
+│ Danh mục     │ MÀN HÌNH CHỨC NĂNG (tab, có nút X)                                          │
+│ chức năng    │   tab con "Dạng chi tiết" / "Dạng danh sách"                                │
+│ (CHỨC NĂNG)  │   tiêu đề lưới · tiêu đề cột · DÒNG TÌM KIẾM (phễu) · các dòng dữ liệu      │
+│              │   thanh điều hướng "Record 6 of 1766"                                        │
+│──────────────│   (lưới chi tiết bên dưới, nếu có)                                           │
+│ Thông tin    │   BUTTON ở đáy màn hình: Sửa(F2) · Thêm nhóm(F3) · … · Lưu(Ctrl+S) · Đóng   │
+│ đơn vị       │                                                                              │
+├──────────────┴────────────────────────────────────────────────────────────────────────────┤
+└ Thanh trạng thái (phải): user đăng nhập "Quản trị Đại học (DH)" · Đăng xuất                 ┘
+```
 
 ## 2. Bảng phần tử
 
-Trạng thái: **✔ người dùng xác nhận** · **? suy đoán, chờ dạy**.
+Trạng thái: **✔ người dùng xác nhận** · **? suy đoán, chờ dạy**. Cột "Loại UIA" là suy đoán cho tới khi đối chiếu `ui-*.txt`.
 
-| Phần tử | Trạng thái | Loại UIA / lớp DevExpress | Dấu hiệu nhận biết | Lệnh `auto` |
+| Phần tử | Trạng thái | Nhận biết | Loại UIA (dự kiến) | Lệnh `auto` |
 |---|---|---|---|---|
-| Button (Thêm, Sửa, Xóa, Lưu…) | ? | `Button` | – | `click:` / `save:` |
-| Ô tìm kiếm (search bar) | ? | `Edit` | – | – |
-| Ô nhập (text) | ? | `Edit` (DevExpress TextEdit) | nhãn bên trái hoặc phía trên | `type:` |
-| Ô chọn (combobox / lookup) | ? | `ComboBox` / `Edit` | – | `select:` |
-| Ô ngày | ? | `Edit` (DateEdit) | – | `date:` |
-| Checkbox | ? | `CheckBox` | – | – |
-| Lưới dữ liệu (grid) | ? | `Table` / `DataGrid`, ô `DataItem` | – | `find_row:`, `expect:`, `pick:`, `unique:` |
-| Lưới dọc (nhãn trái – giá trị phải) | ? | nhãn `Text`/`DataItem`, ô chỉ hiện khi bấm | – | `type:` (gõ theo vị trí bên phải nhãn) |
-| Thanh công cụ màn hình | ? | `ToolBar` / `Button` | – | `click:` |
-
-Khi người dùng dạy một phần tử: đổi trạng thái sang ✔, điền dấu hiệu nhận biết, và ghi chi tiết ở mục 4.
+| **Phân hệ** | ✔ #1 | Thẻ chữ trên cùng (Hệ thống, Nhân sự, Kế hoạch, Khối lượng, Tuyển sinh, Sinh viên, Ký túc xá, Đăng ký MH, Tổ chức thi, Chính sách HP, Thu/chi HP, Quản lý điểm, Quản lý nhập điểm, Tốt nghiệp, Đánh giá, NC khoa học, Khảo sát đánh giá, Quản lý lưu học sinh, Hoạt động cộng đồng) | `TabItem` | cấp 1 của `menu:` |
+| **Menu** | ✔ #2 | Nút lớn có icon + chữ 2 dòng trong thẻ phân hệ; nút **mờ** = chưa dùng được | `Button` | cấp 2 của `menu:` |
+| **Chức năng** | ✔ #3 | Mục trên cây "Danh mục chức năng" bên trái; dòng in đậm có nền = nhóm/đang chọn, mục con có đường kẻ, nhóm có dấu ⊟/⊞ | `TreeItem` (chữ ở Value) | cấp cuối của `menu:` (bấm đúp) |
+| **Màn hình chức năng** | ✔ #4 | Tab ở vùng giữa, tiêu đề = tên chức năng, có nút X | tab MDI | – |
+| **Ô tìm kiếm (search bar)** | ✔ #5 | **Dòng trống ngay dưới tiêu đề cột**, đầu dòng có **icon phễu**; mỗi cột một ô | ô của lưới (dòng lọc DevExpress) | `find_row:`, `unique:`, `absent:` – xem #5 |
+| **Button** | ✔ #6 | Dãy nút **ở đáy** màn hình chức năng, có icon nhỏ, nhiều nút kèm **phím tắt trong ngoặc**; mỗi menu một bộ khác nhau | `Button` | `click:` / `save:` / `key:` |
+| **Lưới dữ liệu** | ✔ #7 | Bảng chính; **cột màu xám = sửa được**, **cột trắng = dữ liệu cứng** (chỉ đổi qua menu khác) | `Table`/`DataGrid`, ô `DataItem` | `find_row:`, `expect:`, `pick:` |
+| **Popup** | ✔ #8 | Cửa sổ con "EduSoft.NET" mở khi bấm một số button; có tiêu đề nhóm, ô nhập, lưới con, nút **Lưu / Đóng** ở đáy | `Window` | `type:`/`select:` rồi `save:` |
+| **Thanh học kỳ** | ✔ #9 | Ô chọn "Năm học" (vd 2026-2027), "Học kỳ" (vd 1) và "ĐVPC: Đại học" | `ComboBox` | – (không đổi khi test, trừ khi kịch bản yêu cầu) |
+| **Thông tin đơn vị** | ✔ #10 | Khung dưới cây chức năng: logo + tên trường (vd DEMO HVNG) | – | dùng xác nhận đúng môi trường |
+| **User / Đăng xuất** | ✔ #11 | Góc phải thanh trạng thái: tên user đăng nhập + nút Đăng xuất | `Button` | **không bấm Đăng xuất** khi đang test |
+| **Phiên bản** | ✔ #12 | Thanh tiêu đề: `EduSoft.NET [v<phiên bản>-<môi trường>] (<ngày build>)` | tiêu đề cửa sổ | ghi vào kết quả lượt chạy |
+| Ô nhập trong popup (text) | ? | ô trắng cạnh nhãn "Xxx:" bên trái | `Edit` (TextEdit) | `type:` |
+| Ô chọn trong popup | ? | ô có mũi tên ▾ (vd Môn học) | `ComboBox` / LookUpEdit | `select:` |
+| Ô chọn có nút "…" | ? | ô có nút … (vd Tính chất phòng, Phòng dự kiến) – mở hộp chọn | `Edit` + `Button` | – (chờ dạy) |
+| Checkbox | ? | ô vuông cạnh chữ (vd Nhóm học lại, Khóa) | `CheckBox` | – |
+| Ô ngày | ? | – | `Edit` (DateEdit) | `date:` |
+| Tab con của màn hình | ? | "Dạng chi tiết" / "Dạng danh sách" | `TabItem` | `click:` |
+| Thanh điều hướng lưới | ? | ⏮ ◀ "Record x of y" ▶ ⏭ dưới lưới – cho biết tổng số dòng | – | – |
 
 ## 3. Đọc `ui-*.txt` (cây UI Automation bộ test ghi khi dừng)
 
@@ -50,6 +66,7 @@ loại | tên (window_text) | automationId | lớp | toạ độ (L,T,R,B) | gi�
 - Tên trống mà có Value → bộ test vẫn tìm theo Value (cây chức năng, ô lưới).
 - Lớp DevExpress (vd `TextEdit`, `LookUpEdit`, `DateEdit`, `GridControl`, `SimpleButton`) giúp phân biệt loại
   khi `loại` chung chung (`Pane`, `Custom`). Ghi lớp đã thấy vào mục 2/4.
+- Vị trí giúp nhận vùng: button nằm sát đáy màn hình chức năng; dòng tìm kiếm ngay dưới tiêu đề cột; popup là cửa sổ riêng.
 - Mật khẩu luôn hiện `***` – không cố đọc.
 
 ## 4. Bài học người dùng dạy
@@ -65,12 +82,77 @@ loại | tên (window_text) | automationId | lớp | toạ độ (L,T,R,B) | gi�
 - Áp dụng: <kịch bản / code đã sửa theo bài này>
 ```
 
-_(chưa có bài học)_
+Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi ngày 2026-10-30, ảnh trong `anh/`.
+
+### #1 – Phân hệ (2026-10-30)
+- Nhận biết: dãy thẻ chữ trên cùng, ngay dưới thanh tiêu đề; thẻ đang chọn nổi trắng. Mỗi thẻ = một phân hệ Edusoft. Ảnh `anh/02-phan-he.png`.
+- Phân biệt với: Menu (nút có icon bên dưới) – phân hệ chỉ có chữ.
+- Thao tác đúng: bấm chọn thẻ (TabItem → `select()`).
+- Lệnh auto: `menu: Sinh viên/ …` – đoạn đầu là phân hệ.
+- Áp dụng: khớp cách `Edusoft.open_menu` đang làm.
+
+### #2 – Menu (2026-10-30)
+- Nhận biết: nút lớn có icon, chữ 1–2 dòng, nằm trong thẻ phân hệ, gom theo nhóm (tên nhóm nhỏ ở dưới, vd "Quản lý hệ thống", "Quản lý kế hoạch giảng dạy"). Ảnh `anh/03-menu.png`.
+- Phân biệt với: Button của màn hình chức năng (nằm ở đáy màn hình, icon nhỏ, có phím tắt). Nút menu **mờ** (vd "Thông tin học kỳ", "Thông tin nhóm học phần") là không bấm được.
+- Thao tác đúng: bấm một lần → cây "Danh mục chức năng" bên trái đổi theo menu.
+- Lệnh auto: `menu: Kế hoạch/ Qui hoạch nhóm học phần/ …` – đoạn thứ hai là menu. Chữ trên nút bị xuống dòng, khi tìm phải ghép lại thành một dòng.
+- Áp dụng: `open_menu` cấp 2.
+
+### #3 – Chức năng (2026-10-30)
+- Nhận biết: mục trên cây "Danh mục chức năng" (khung trái). Dòng tiêu đề in đậm (vd "Thông tin học kỳ") là nhóm; mục đang chọn tô nền vàng, in đậm; nhóm con có ⊟/⊞ (vd "Cập nhật nhóm tổ từ file"). Ảnh `anh/04-chuc-nang.png`.
+- Phân biệt với: Menu – chức năng thuộc **từng menu**, chỉ hiện sau khi bấm menu.
+- Thao tác đúng: nhóm → mở ra; mục cuối → bấm đúp, màn hình mở thành tab ở giữa.
+- Lệnh auto: đoạn cuối của `menu:`.
+- Áp dụng: `open_menu` + `expand_node`.
+
+### #4 – Màn hình chức năng (2026-10-30)
+- Nhận biết: tab ở vùng giữa, tên tab = tên chức năng (vd "Danh sách nhóm tổ") kèm nút X; bên trong có thể có tab con "Dạng chi tiết"/"Dạng danh sách", lưới chính, lưới chi tiết phía dưới (vd "Thời khóa biểu môn: …"), thanh button ở đáy. Ảnh `anh/05-man-hinh-chuc-nang.png`.
+- Thao tác đúng: mở nhiều chức năng sẽ thành nhiều tab – tìm phần tử trong tab đang chọn.
+
+### #5 – Ô tìm kiếm / search bar (2026-10-30)
+- Nhận biết: **dòng trống ngay dưới hàng tiêu đề cột của lưới**, ô đầu dòng có **icon phễu** (▽). Mỗi cột có ô riêng – gõ vào ô của cột nào thì lọc theo cột đó. Ảnh `anh/06-o-tim-kiem.png` (khung đỏ).
+- Phân biệt với: dòng dữ liệu (có giá trị), ô nhập của popup. Không phải ô tìm Ctrl+F nổi phía trên lưới.
+- Thao tác đúng: bấm vào ô của cột cần lọc (vd cột "Mã MH") → gõ giá trị → lưới chỉ còn dòng khớp; xóa chữ trong ô để bỏ lọc.
+- Lệnh auto: `find_row:`, `unique:`, `absent:` cần tìm qua dòng này.
+- Áp dụng: **chưa** – `kit/aqrun.py` (`locate_row`/`row_exists`) đang thử Ctrl+F rồi Esc; cần chuyển sang gõ vào ô lọc của cột (chờ người dùng đồng ý và có `ui-*.txt` để biết tên ô lọc).
+
+### #6 – Button (2026-10-30)
+- Nhận biết: thanh nút **ở đáy màn hình chức năng**, icon nhỏ + chữ, nhiều nút có phím tắt trong ngoặc. Mỗi menu có bộ nút khác nhau. Ví dụ màn hình "Danh sách nhóm tổ": Sửa(F2), Thêm nhóm(F3), Thêm tổ TH(F4), Thêm tổ hợp(F5), Chuyển tổ hợp thành tổ TH(F10), Import, Xuất danh sách, Đồng bộ SS TKB(F6), Refresh SS ĐK(F7), Xóa(Ctrl+T), Refresh, Sửa SS TKB(F8), Lưu(Ctrl+S), Đóng. Ảnh `anh/07-button.png`.
+- Phân biệt với: Menu (trên ribbon, icon lớn).
+- Thao tác đúng: bấm nút, hoặc dùng phím tắt ghi trong ngoặc khi bấm không ăn. Tên nút gồm cả phần "(F3)" → tìm theo phần chữ trước ngoặc.
+- Lệnh auto: `click: Thêm nhóm` (hoặc `key: {F3}`); `save:` = Lưu(Ctrl+S); xóa ở màn hình này là Xóa(**Ctrl+T**), không phải phím Delete.
+- Áp dụng: `find_any` so khớp tên đầy đủ hoặc tiền tố ≥3 ký tự nên "Thêm nhóm" khớp được "Thêm nhóm(F3)" – cần đối chiếu khi chạy thật.
+
+### #7 – Lưới dữ liệu: cột xám / cột trắng (2026-10-30)
+- Nhận biết: bảng dữ liệu chính, có ô chọn (checkbox) đầu dòng, dòng đang chọn tô xanh. **Cột màu xám = sửa được ngay trên lưới; cột màu trắng = dữ liệu cứng, đã có sẵn, chỉ thay đổi qua một số menu khác.** Ảnh `anh/08-luoi-du-lieu.png`.
+- Thao tác đúng: chỉ gõ sửa vào cột xám; cột trắng chỉ đọc để kiểm tra.
+- Lệnh auto: kịch bản sửa không được nhắm vào cột trắng – nếu cần đổi giá trị cột trắng thì tìm menu tương ứng (hỏi người dùng).
+
+### #8 – Popup (2026-10-30)
+- Nhận biết: một số button khi bấm mở cửa sổ con tiêu đề "EduSoft.NET", bên trong có tiêu đề nhóm (vd "Thông tin tổ hợp"), ô nhập/ô chọn/checkbox, lưới con, nút **Lưu** và **Đóng** ở đáy popup. "Các tài nguyên cũng tương tự". Ví dụ: Thêm nhóm(F3) → popup "Thông tin tổ hợp". Ảnh `anh/09-popup.png`.
+- Thao tác đúng: nhập trong popup rồi bấm Lưu của **popup** (không phải Lưu của màn hình phía sau); Đóng để thoát.
+- Lệnh auto: `click: Thêm nhóm` → `type:`/`select:` các ô của popup → `save:`. Bộ test tìm hộp thoại trước cửa sổ chính (`Edusoft.roots`) nên đúng thứ tự.
+
+### #9 – Thanh học kỳ đang dùng (2026-10-30)
+- Nhận biết: "Năm học [2026-2027 ▾]  Học kỳ [1 ▾]  ĐVPC: Đại học". Ảnh `anh/10-hoc-ky.png`.
+- Thao tác đúng: dữ liệu các màn hình phụ thuộc học kỳ đang chọn. Không đổi khi test trừ khi kịch bản yêu cầu; ghi năm học/học kỳ vào kết quả để đối chiếu.
+
+### #10 – Thông tin trường (2026-10-30)
+- Nhận biết: khung "Thông tin đơn vị" dưới cây chức năng: logo + tên trường (vd **DEMO HVNG**). Ảnh `anh/11-thong-tin-truong.png`.
+- Thao tác đúng: dùng xác nhận đang ở đúng môi trường test (HVNG) trước khi thao tác dữ liệu.
+
+### #11 – User đăng nhập và Đăng xuất (2026-10-30)
+- Nhận biết: góc phải thanh trạng thái dưới cùng: icon người + tên user (vd "Quản trị Đại học (DH)") và nút "Đăng xuất". Ảnh `anh/12-user-dang-xuat.png`.
+- Thao tác đúng: không bấm Đăng xuất trong lúc chạy kịch bản (trừ kịch bản đăng nhập/đăng xuất).
+
+### #12 – Thông tin phiên bản (2026-10-30)
+- Nhận biết: giữa thanh tiêu đề: `EduSoft.NET [v2026.10L.00-HVNG] (2026-10-30 08:25)` = phiên bản – môi trường (ngày build). Ảnh `anh/13-phien-ban.png`.
+- Thao tác đúng: đọc từ tiêu đề cửa sổ chính để ghi phiên bản vào lượt chạy / đối chiếu release.
 
 ## 5. Quy trình khi được dạy
 
-1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu.
-2. Ghi bài học vào mục 4, cập nhật bảng mục 2.
+1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
+2. Ghi bài học vào mục 4, cập nhật bảng mục 2 (và sơ đồ mục 1 nếu là vùng mới).
 3. Nếu bộ test phải nhận diện khác đi → sửa `kit/aqrun.py` (tăng `KIT_VERSION`), cập nhật docstring `Run.do_actions`.
 4. Rà các kịch bản `scriptReady` (`data/scenarios/`) có dùng phần tử đó → sửa `auto` (cả `data/` và DB artifact).
 5. Commit + push, cập nhật artifact nếu console thay đổi (theo CLAUDE.md).
