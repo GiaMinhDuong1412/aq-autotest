@@ -1,14 +1,28 @@
 @echo off
 chcp 65001 >nul
 net session >nul 2>&1
-if errorlevel 1 (
-  rem Xin quyen admin, truyen ho so cua nguoi dang dung may (cau noi Claude app phai ghi vao dung ho so nay)
-  powershell -NoProfile -Command "Start-Process -FilePath '%~f0' -ArgumentList '\"%APPDATA%\"','\"%LOCALAPPDATA%\"','\"%USERPROFILE%\"' -Verb RunAs"
-  exit /b
-)
-set "AQ_USER_APPDATA=%~1"
-set "AQ_USER_LOCALAPPDATA=%~2"
-set "AQ_USER_USERPROFILE=%~3"
+if not errorlevel 1 goto :admin
+rem Chua co quyen admin: ghi lai ho so nguoi dang dung may roi tu mo lai voi quyen admin
+> "%PUBLIC%\aq-autotest-user.txt" echo %APPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %LOCALAPPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %USERPROFILE%
+echo Dang xin quyen admin - chon Yes khi Windows hoi...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+if errorlevel 1 goto :noadmin
+exit /b 0
+
+:noadmin
+echo.
+echo Khong tu xin duoc quyen admin.
+echo Hay chuot phai vao cai-dat.bat, chon "Run as administrator".
+pause
+exit /b 1
+
+:admin
+set "AQ_USER_APPDATA="
+set "AQ_USER_LOCALAPPDATA="
+set "AQ_USER_USERPROFILE="
+if exist "%PUBLIC%\aq-autotest-user.txt" call :readuser
 if not defined AQ_USER_APPDATA set "AQ_USER_APPDATA=%APPDATA%"
 if not defined AQ_USER_LOCALAPPDATA set "AQ_USER_LOCALAPPDATA=%LOCALAPPDATA%"
 if not defined AQ_USER_USERPROFILE set "AQ_USER_USERPROFILE=%USERPROFILE%"
@@ -114,4 +128,13 @@ if not defined PY (
   if not errorlevel 1 for /f "delims=" %%i in ('python -c "import sys;print(sys.executable)"') do set "PY=%%i"
 )
 if defined PY (echo %PY%)>"%K%python-path.txt"
+exit /b 0
+
+:readuser
+< "%PUBLIC%\aq-autotest-user.txt" (
+  set /p AQ_USER_APPDATA=
+  set /p AQ_USER_LOCALAPPDATA=
+  set /p AQ_USER_USERPROFILE=
+)
+del "%PUBLIC%\aq-autotest-user.txt" >nul 2>&1
 exit /b 0

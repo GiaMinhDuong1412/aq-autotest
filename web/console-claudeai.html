@@ -838,6 +838,8 @@ details.mgroup[open]>summary{border-bottom:1px solid var(--line)}
 .ct-t{font-size:.84rem;font-weight:500;line-height:1.4}
 .ct-s{margin-top:3px;font-size:.68rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ct-sc{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.br-dir{margin-top:10px}.br-dir label{display:block;font-size:11px;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+.br-dir-row{display:flex;gap:8px;flex-wrap:wrap}.br-dir-row input{flex:1;min-width:220px;padding:8px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:.78rem;outline:none}.br-dir-row input:focus{border-color:var(--accent)}
 .ct-row>.ct-x{grid-column:2/-1;margin-top:-6px;min-width:0}.ct-steps{margin-top:3px}.ct-steps>summary{cursor:pointer;font-size:.68rem;color:var(--accent-2);width:max-content;max-width:100%}
 .ct-steps ol{margin:6px 0 2px;padding-left:20px;font-size:.74rem;line-height:1.5}.ct-steps li{margin:1px 0}.ct-steps li.chk{color:var(--pass)}
 .ct-dnote{margin:5px 0 0;font-size:.7rem;color:var(--run)}
@@ -1352,10 +1354,11 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
           <h4>Các bước cài đặt (một lần cho mỗi máy)</h4>
           <ol class="help-steps">
             <li><b>Khai báo trên console</b>Ở thẻ Edusoft, dán đường dẫn đầy đủ tới <code>Edusoft.NET.exe</code> và nhập tài khoản test, rồi bấm <b>Lưu</b>.<div class="help-note">Lấy đường dẫn nhanh: trong File Explorer giữ <kbd>Shift</kbd>, chuột phải vào file <code>Edusoft.NET.exe</code> → <b>Copy as path</b>, dán vào ô rồi xóa hai dấu ngoặc kép.</div></li>
-            <li><b>Tải bộ cài</b>Bấm <b>Tải bộ cài (.zip)</b> rồi giải nén ở đâu cũng được (vd thư mục Tải về). Không chạy thẳng trong file .zip.<div class="help-note">Thư mục cài thật nằm ở ô <b>Thư mục cài bộ test</b> ở bước 1 (để trống = <code>C:\Users\&lt;tên bạn&gt;\AQ-Autotest</code>). Mỗi máy có thể cài một thư mục khác; <code>cai-dat.bat</code> hỏi lại khi cài, gõ thư mục khác nếu muốn.</div></li>
+            <li><b>Tải bộ cài</b>Bấm <b>Tải bộ cài (.zip)</b> rồi giải nén ở đâu cũng được (vd thư mục Tải về). Không chạy thẳng trong file .zip.<div class="help-note">Thư mục cài lấy từ ô <b>Thư mục bộ test trên máy này</b> ở bước 2 (để trống = <code>C:\Users\&lt;tên bạn&gt;\AQ-Autotest</code>). Mỗi máy có thể cài một thư mục khác; <code>cai-dat.bat</code> hỏi lại khi cài, gõ thư mục khác nếu muốn.</div></li>
             <li><b>Chạy cai-dat.bat</b>Bấm đúp <code>cai-dat.bat</code>, chọn <b>Yes</b> khi Windows hỏi quyền admin. Script tự làm:
               <ul><li>cài Python 3.12 (qua winget) nếu máy chưa có;</li><li>cài thư viện (pywinauto, pillow, keyboard, keyring, openpyxl, obsws-python);</li><li>cài <b>AQ Autotest Agent</b> chạy nền cùng Windows để nhận lệnh chạy từ console;</li><li>chép bộ test vào thư mục cài cố định (thư mục giải nén xoá được);</li><li>đăng ký cầu nối <code>aq-autotest</code> vào Claude app của đúng người đang dùng máy;</li><li>in <b>bảng kiểm tra</b> (Python, thư viện, Edusoft.NET.exe, Agent, cầu nối, Claude app) và lưu ở <code>chan-doan.txt</code>; nếu Claude app cần nạp lại cầu nối thì hỏi và <b>tự khởi động lại Claude app</b> (Enter = đồng ý).</li></ul>
               Thấy dòng <b>Xong.</b> và các dòng <b>[ OK ]</b> là được. Nếu không tự cài được Python: tải từ python.org, khi cài tick <b>Add python.exe to PATH</b>, rồi chạy lại <code>cai-dat.bat</code>.</li>
+            <li><b>Đã cài sẵn bộ test?</b>Không cần cài lại: nhập đúng thư mục đã cài (nơi có <code>aqrun.py</code>) vào ô <b>Thư mục bộ test trên máy này</b>, bấm <b>Tải file kết nối</b>, bấm đúp <code>ket-noi-claude.bat</code> (không cần quyền admin). File tự tắt Claude app, nối với thư mục đó rồi mở lại Claude app.</li>
             <li><b>Kết nối</b>Trong Claude app (vừa được tự mở lại), mở console → <b>Máy chạy thử</b> → <b>Kết nối</b>. Bấm Cho phép khi Claude hỏi. Bước 2 chuyển sang dấu ✓ và hiện thư mục bộ test của máy này.</li>
             <li><b>Chạy test đăng nhập</b>Bấm <b>Chạy test đăng nhập</b>. Sau vài giây cửa sổ đen mở ra. Lần đầu, nhập mật khẩu Edusoft 2 lần (gõ không hiện chữ). Mật khẩu được lưu trong Windows Credential Manager nên lần sau không hỏi lại. Script mở Edusoft, đăng nhập, thử các luồng sai (sai mật khẩu, bỏ trống tên…) rồi đóng Edusoft.</li>
             <li><b>Xem kết quả</b>Nếu đã kết nối, kết quả tự về console khi chạy xong (hoặc bấm <b>Lấy kết quả mới</b>). Nếu chưa kết nối, bấm <b>Nhập kết quả…</b> và chọn thư mục <code>results</code> trong thư mục bộ test. Đăng nhập đạt thì máy chuyển sang <b>Sẵn sàng</b>.</li>
@@ -1906,6 +1909,130 @@ def main():
 if __name__ == "__main__":
     main()
 </script>
+<script type="text/plain" id="kit-ketnoi">
+# -*- coding: utf-8 -*-
+"""AQ Autotest – nối Claude app với thư mục bộ test đã cài trên máy (console tạo file này, chạy bằng
+ket-noi-claude.bat, KHÔNG cần quyền admin để ghi đúng cấu hình Claude app của người đang dùng máy).
+Tắt Claude app → ghi aq-mcp.py vào thư mục bộ test → đăng ký mục "aq-autotest" trong claude_desktop_config.json
+(giữ nguyên cấu hình khác, sao lưu lần đầu) → chạy thử cầu nối → mở lại Claude app."""
+import json, os, sys, subprocess, time, shutil
+from pathlib import Path
+
+MCP = __AQ_MCP__
+
+
+def say(st, msg):
+    print({"ok": "[ OK ]", "warn": "[ !! ]", "fail": "[LỖI]"}[st], msg)
+
+
+def ps(cmd):
+    try:
+        return subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True, timeout=20).stdout.strip()
+    except Exception:
+        return ""
+
+
+def cfg_dirs():
+    dirs = []
+    ad, la = os.environ.get("APPDATA", ""), os.environ.get("LOCALAPPDATA", "")
+    if ad and (Path(ad) / "Claude").is_dir():
+        dirs.append(Path(ad) / "Claude")
+    if la:
+        dirs += [d for d in (Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude") if d.is_dir()]
+    if not dirs and ad and la and (Path(la) / "AnthropicClaude").is_dir():
+        (Path(ad) / "Claude").mkdir(parents=True, exist_ok=True)
+        dirs.append(Path(ad) / "Claude")
+    return dirs
+
+
+def main():
+    base = Path(sys.argv[1].strip().strip('"')).expanduser()
+    print("=== AQ Autotest – nối Claude app với thư mục bộ test ===")
+    print("Thư mục:", base)
+    print()
+    dirs = cfg_dirs()
+    if not dirs:
+        say("fail", "Không thấy Claude app bản desktop của tài khoản Windows này. Cài từ https://claude.ai/download, "
+                    "mở một lần rồi chạy lại file này.")
+        return 1
+    try:
+        a = input("File này sẽ TẮT Claude app, ghi cầu nối rồi MỞ LẠI Claude app. Enter để tiếp tục, gõ k để dừng: ").strip().lower()
+    except Exception:
+        a = ""
+    if a in ("k", "n", "khong", "không", "no"):
+        return 1
+    app = ps("(Get-StartApps | Where-Object { $_.Name -eq 'Claude' } | Select-Object -First 1).AppID")
+    exe = ps("(Get-Process claude -ErrorAction SilentlyContinue | Select-Object -First 1).Path")
+    try:
+        subprocess.run(["taskkill", "/IM", "claude.exe", "/F", "/T"], capture_output=True)
+        time.sleep(2)
+    except Exception:
+        pass
+    try:
+        base.mkdir(parents=True, exist_ok=True)
+        (base / "results").mkdir(exist_ok=True)
+        (base / "aq-mcp.py").write_text(MCP, "utf-8")
+    except Exception as e:
+        say("fail", "Không ghi được vào %s: %s" % (base, e))
+        return 1
+    say("ok", "Đã ghi cầu nối aq-mcp.py vào " + str(base))
+    if not (base / "aqrun.py").exists():
+        say("warn", "Thư mục này chưa có bộ test (aqrun.py). Console vẫn kết nối được; để chạy test hãy Tải bộ cài (.zip) "
+                    "trên console, chạy cai-dat.bat và chọn đúng thư mục này.")
+    py = sys.executable
+    if py.lower().endswith("pythonw.exe"):
+        py = py[:-len("pythonw.exe")] + "python.exe"
+    want = {"command": py, "args": [str(base / "aq-mcp.py")]}
+    n = 0
+    for d in dirs:
+        f = d / "claude_desktop_config.json"
+        try:
+            txt = f.read_text("utf-8") if f.exists() else ""
+            cur = json.loads(txt) if txt.strip() else {}
+        except Exception as e:
+            say("fail", "Không đọc được %s (%s) – không sửa để tránh hỏng cấu hình Claude app" % (f, e))
+            continue
+        bak = d / "claude_desktop_config.json.aq-backup"
+        if f.exists() and not bak.exists():
+            shutil.copyfile(f, bak)
+        cur.setdefault("mcpServers", {})["aq-autotest"] = want
+        f.write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
+        say("ok", "Đã đăng ký cầu nối vào " + str(f))
+        n += 1
+    try:
+        req = "".join(json.dumps(m) + "\n" for m in (
+            {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2024-11-05", "capabilities": {}, "clientInfo": {"name": "ket-noi", "version": "1"}}},
+            {"jsonrpc": "2.0", "method": "notifications/initialized"},
+            {"jsonrpc": "2.0", "id": 2, "method": "tools/list"}))
+        out = subprocess.run([py, str(base / "aq-mcp.py")], input=req, capture_output=True, text=True, timeout=20, encoding="utf-8").stdout
+        names = [t.get("name") for line in out.splitlines() if line.strip().startswith("{")
+                 for t in ((json.loads(line).get("result") or {}).get("tools") or [])]
+        say("ok" if "status" in names else "fail", "Chạy thử cầu nối: " + ("trả lời %d lệnh" % len(names) if names else "không trả lời"))
+    except Exception as e:
+        say("fail", "Chạy thử cầu nối lỗi: %s" % e)
+    target = ("shell:AppsFolder\\" + app) if app else exe
+    if not target:
+        guess = Path(os.environ.get("LOCALAPPDATA", "")) / "AnthropicClaude" / "claude.exe"
+        target = str(guess) if guess.exists() else ""
+    started = False
+    if target:
+        try:
+            subprocess.Popen(["explorer.exe", target])
+            started = True
+        except Exception:
+            pass
+    if started:
+        say("ok", "Đã mở lại Claude app")
+    else:
+        say("warn", "Không tự mở lại được Claude app – hãy mở bằng tay")
+    print()
+    print("Xong. Trong Claude app: mở AQ Autotest Console → Máy chạy thử → bấm Kết nối (bấm Cho phép nếu được hỏi).")
+    return 0 if n else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+</script>
 <script type="text/plain" id="kit-aqrun">
 # -*- coding: utf-8 -*-
 """
@@ -1921,7 +2048,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-3"
+KIT_VERSION = "2026.10.30-4"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -4109,14 +4236,28 @@ if __name__ == "__main__":
 @echo off
 chcp 65001 >nul
 net session >nul 2>&1
-if errorlevel 1 (
-  rem Xin quyen admin, truyen ho so cua nguoi dang dung may (cau noi Claude app phai ghi vao dung ho so nay)
-  powershell -NoProfile -Command "Start-Process -FilePath '%~f0' -ArgumentList '\"%APPDATA%\"','\"%LOCALAPPDATA%\"','\"%USERPROFILE%\"' -Verb RunAs"
-  exit /b
-)
-set "AQ_USER_APPDATA=%~1"
-set "AQ_USER_LOCALAPPDATA=%~2"
-set "AQ_USER_USERPROFILE=%~3"
+if not errorlevel 1 goto :admin
+rem Chua co quyen admin: ghi lai ho so nguoi dang dung may roi tu mo lai voi quyen admin
+> "%PUBLIC%\aq-autotest-user.txt" echo %APPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %LOCALAPPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %USERPROFILE%
+echo Dang xin quyen admin - chon Yes khi Windows hoi...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+if errorlevel 1 goto :noadmin
+exit /b 0
+
+:noadmin
+echo.
+echo Khong tu xin duoc quyen admin.
+echo Hay chuot phai vao cai-dat.bat, chon "Run as administrator".
+pause
+exit /b 1
+
+:admin
+set "AQ_USER_APPDATA="
+set "AQ_USER_LOCALAPPDATA="
+set "AQ_USER_USERPROFILE="
+if exist "%PUBLIC%\aq-autotest-user.txt" call :readuser
 if not defined AQ_USER_APPDATA set "AQ_USER_APPDATA=%APPDATA%"
 if not defined AQ_USER_LOCALAPPDATA set "AQ_USER_LOCALAPPDATA=%LOCALAPPDATA%"
 if not defined AQ_USER_USERPROFILE set "AQ_USER_USERPROFILE=%USERPROFILE%"
@@ -4222,6 +4363,15 @@ if not defined PY (
   if not errorlevel 1 for /f "delims=" %%i in ('python -c "import sys;print(sys.executable)"') do set "PY=%%i"
 )
 if defined PY (echo %PY%)>"%K%python-path.txt"
+exit /b 0
+
+:readuser
+< "%PUBLIC%\aq-autotest-user.txt" (
+  set /p AQ_USER_APPDATA=
+  set /p AQ_USER_LOCALAPPDATA=
+  set /p AQ_USER_USERPROFILE=
+)
+del "%PUBLIC%\aq-autotest-user.txt" >nul 2>&1
 exit /b 0
 </script>
 <script type="text/plain" id="kit-chaytest">
@@ -6768,7 +6918,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-3';
+  var KITVER='2026.10.30-4';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -6842,7 +6992,8 @@ QUAY VIDEO (TÙY CHỌN)
       var rel=rlCur();
       var cfg=kitCfg(r);
       root.file('config.json',JSON.stringify(cfg,null,2));
-      root.file('thu-muc-cai.txt',r.installDir||'');
+      var idir=brDirVal()||r.installDir||'';if(idir&&/^[A-Za-z]:\\/.test(idir)&&SC.rnCol&&SC.me&&r.installDir!==idir)SC.rnCol.doc(SC.me).update({installDir:idir}).catch(function(){});
+      root.file('thu-muc-cai.txt',/^[A-Za-z]:\\/.test(idir)?idir:'');
       var cf=kitCodeFiles();
       Object.keys(cf).forEach(function(k){root.file(k,/\.bat$/i.test(k)?crlf(cf[k]):/\.txt$/i.test(k)?'\ufeff'+crlf(cf[k]):cf[k]);});
       root.folder('results');
@@ -6852,7 +7003,7 @@ QUAY VIDEO (TÙY CHỌN)
       var d=new Date(),ds=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
       KIT.prog='Chờ bạn xác nhận lưu file…';renderRunner();
       await DL.save({filename:'AQ-Autotest-DangNhap-'+ds+'.zip',data:blob});
-      KIT.msg='Đã tải bộ cài. Giải nén ở đâu cũng được, chạy cai-dat.bat: bộ test tự cài vào '+(r.installDir||'C:\\Users\\<tên bạn>\\AQ-Autotest')+', cuối cùng có bảng kiểm tra và tự khởi động lại Claude app nếu cần.';}
+      KIT.msg='Đã tải bộ cài. Giải nén ở đâu cũng được, chạy cai-dat.bat: bộ test tự cài vào '+(idir||'C:\\Users\\<tên bạn>\\AQ-Autotest')+', cuối cùng có bảng kiểm tra và tự khởi động lại Claude app nếu cần.';}
     catch(e){var c=e&&e.code;KIT.err=c==='declined'?'Bạn đã hủy lưu file.':c==='zip_load'?'Không tải được thư viện nén (JSZip) — kiểm tra mạng rồi thử lại.':c==='not_granted'?'Trang chưa được cho phép tải file.':'Không tải được: '+(c||(e&&e.message)||'lỗi');}
     KIT.busy=false;KIT.prog='';renderRunner();}
 
@@ -6861,7 +7012,7 @@ QUAY VIDEO (TÙY CHỌN)
   function readText(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result);};r.onerror=rej;r.readAsText(f,'utf-8');});}
   /* ---- cầu nối trực tiếp tới máy chạy test (MCP host server aq-autotest trong Claude app) ---- */
   var BRS='host:aq-autotest',BR={state:'unknown',info:null,code:'',busy:false,watch:null,seen:{}};
-  function brErr(e){var c=e&&e.code;if(c==='server_not_connected'&&window.AQ_SERVER)return 'Console trên server không nối thẳng máy chạy test: bấm Chạy để tải file lệnh về máy chạy test (Agent nhận từ thư mục Tải về), chạy xong bấm Nhập kết quả…';return c==='server_not_connected'?'Chưa thấy cầu nối trên máy này. (1) Mở console trong Claude app bản desktop trên chính máy chạy test (không phải trình duyệt). (2) Tải bộ cài, chạy cai-dat.bat: cuối cùng có bảng kiểm tra và tự khởi động lại Claude app khi cần. (3) Vẫn chưa được: gửi file chan-doan.txt trong thư mục bộ test cho người hỗ trợ.':
+  function brErr(e){var c=e&&e.code;if(c==='server_not_connected'&&window.AQ_SERVER)return 'Console trên server không nối thẳng máy chạy test: bấm Chạy để tải file lệnh về máy chạy test (Agent nhận từ thư mục Tải về), chạy xong bấm Nhập kết quả…';return c==='server_not_connected'?'Chưa thấy cầu nối trên máy này. Console phải mở trong Claude app bản desktop trên chính máy chạy test. Nhập thư mục bộ test bên dưới → Tải file kết nối → chạy ket-noi-claude.bat (tự mở lại Claude app) → mở lại console và bấm Kết nối.':
     c==='not_in_manifest'||c==='not_granted'?'Bạn chưa cho phép console dùng cầu nối máy chạy test.':c==='cancelled'?'Bạn đã từ chối thao tác trên máy chạy test.':c==='approval_required'?'Cần bạn cho phép trong Claude app.':
     c==='tool_error'?('Máy chạy test báo lỗi: '+((e&&e.message)||'')):(c||'lỗi')+(e&&e.message?' — '+e.message:'');}
   async function brAuto(){if(!MCP)return;try{var pm=await claude.use('permissions');var st=pm?await pm.state('mcp:'+BRS).catch(function(){return 'unavailable';}):'unavailable';if(st==='granted')brCheck(false);}catch(e){}}
@@ -6895,18 +7046,46 @@ QUAY VIDEO (TÙY CHỌN)
     var s2=BR.state==='ok'?(ag?'ok':'warn'):BR.code?'warn':(r.kitDir||c.via==='script'?'ok':'');
     var s3=c.status==='ok'?'ok':c.status==='fail'?'fail':c.status==='pending'?'warn':'';
     return {r:r,c:c,i:i,ag:ag,s1:s1,s2:s2,s3:s3,cur:!s1?1:s2!=='ok'?2:s3!=='ok'?3:0};}
-  function brLine(S){var i=S.i,dir=BR.state==='ok'?(i.kitDir||''):'',old=S.r.kitDir||'',inst=S.r.installDir||'C:\\Users\\<tên bạn>\\AQ-Autotest';
-    var t=BR.state==='ok'?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
-        :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy lại cai-dat.bat (quyền admin).'])
+  function brLine(S){var i=S.i,ok=BR.state==='ok',dir=ok?(i.kitDir||''):(KIT.dir!=null?KIT.dir:(S.r.installDir||''));
+    var t=ok?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
+        :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy cai-dat.bat (quyền admin) trong thư mục bộ test.'])
       :BR.state==='checking'?['','Đang kết nối máy chạy test…']
       :BR.code?['warn',BR.code]
-      :S.s2==='ok'?['','Đã cài trên máy. Mở console trong Claude app và bấm Kết nối để lệnh và kết quả đi thẳng, không cần lưu file.']
-      :['','Chưa cài trên máy này. Tải bộ cài, giải nén rồi chạy cai-dat.bat.'];
+      :['','Nhập thư mục bộ test trên máy này, bấm Tải file kết nối và chạy file đó một lần (không cần quyền admin). Sau đó bấm Kết nối — console đọc thẳng thư mục này.'];
     return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+
-      (dir?'<p class="hint">Thư mục bộ test trên máy '+esc(i.computer||'này')+': <span class="mono">'+esc(dir)+'</span>'+(i.kitVersion&&i.kitVersion!==KITVER?' · bản '+esc(i.kitVersion)+', tự lên '+KITVER+' ở lần Chạy tới':'')+'</p>'
-        :'<p class="hint">Cài vào: <span class="mono">'+esc(inst)+'</span> (đổi ở ô Thư mục cài bộ test, bước 1)'+(old?' · lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': <span class="mono">'+esc(old)+'</span>':'')+'</p>');}
+      '<div class="br-dir"><label for="brDir">Thư mục bộ test trên máy này'+(ok&&i.computer?' ('+esc(i.computer)+')':'')+'</label><div class="br-dir-row">'+
+        '<input id="brDir" class="mono" value="'+esc(dir)+'" placeholder="VD: D:\\AQ-Autotest hoặc C:\\Users\\<tên bạn>\\AQ-Autotest" spellcheck="false">'+
+        '<button type="button" class="btn sm'+(ok?'':' primary')+'" data-br="kn" title="Tải ket-noi-claude.bat: nối Claude app trên máy này với thư mục trên (tắt rồi mở lại Claude app). Không cần quyền admin.">'+IC.down+'Tải file kết nối</button></div>'+
+        '<p class="hint" style="margin-top:6px">'+(ok?'Đang đọc trực tiếp thư mục này'+(i.kitVersion?' · bộ test '+esc(i.kitVersion)+(i.kitVersion!==KITVER?', tự lên '+KITVER+' ở lần Chạy tới':''):'')+'. Đổi thư mục: sửa ô trên, tải lại file kết nối.'
+          :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';}
+  function b64utf8(str){var b=new TextEncoder().encode(str),bin='';for(var i=0;i<b.length;i+=8192)bin+=String.fromCharCode.apply(null,b.subarray(i,i+8192));return btoa(bin);}
+  function knBat(dir){var py=kitText('kit-ketnoi').replace('__AQ_MCP__',function(){return JSON.stringify(kitText('kit-mcp'));});
+    var b64=b64utf8(py).replace(/(.{64})/g,'$1\n');
+    var pys=['Python313','Python312','Python311','Python310'].map(function(v){return '"%LOCALAPPDATA%\\Programs\\Python\\'+v+'\\python.exe"';}).join(' ');
+    return crlf(['@echo off','chcp 65001 >nul','title AQ Autotest - noi Claude app voi thu muc bo test','set "DIR='+dir+'"',
+      'echo === AQ Autotest: noi Claude app voi thu muc bo test ===','echo Thu muc: %DIR%','echo.',
+      'call :findpy','if not defined PY goto :nopy','set "KN=%TEMP%\\aq-ket-noi-%RANDOM%.py"','certutil -f -decode "%~f0" "%KN%" >nul',
+      'if not exist "%KN%" goto :nocert','"%PY%" "%KN%" "%DIR%"','del "%KN%" >nul 2>&1','echo.','pause','exit /b 0','',
+      ':nopy','echo Chua co Python tren may nay. Tren console bam Tai bo cai .zip, chay cai-dat.bat - roi chay lai file nay.','pause','exit /b 1','',
+      ':nocert','echo Khong tao duoc file tam. Chay lai file nay.','pause','exit /b 1','',
+      ':findpy','set "PY="','if exist "%DIR%\\python-path.txt" set /p PY=<"%DIR%\\python-path.txt"','if defined PY if not exist "%PY%" set "PY="',
+      'for %%P in ('+pys+') do if not defined PY if exist "%%~P" set "PY=%%~P"',
+      'if not defined PY for /f "delims=" %%i in (\'py -3 -c "import sys;print(sys.executable)" 2^>nul\') do set "PY=%%i"',
+      'if not defined PY for /f "delims=" %%i in (\'python -c "import sys;print(sys.executable)" 2^>nul\') do set "PY=%%i"',
+      'exit /b 0','','-----BEGIN CERTIFICATE-----',b64.replace(/\n$/,''),'-----END CERTIFICATE-----',''].join('\n'));}
+  function brDirVal(){var e=document.getElementById('brDir');var v=String(e?e.value:(KIT.dir||'')).trim().replace(/^"|"$/g,'').replace(/\\+$/,'');return v;}
+  async function knDownload(){var v=brDirVal();KIT.err='';KIT.msg='';
+    if(!/^[A-Za-z]:\\[^<>"|?*%!]*$/.test(v)){BR.code='';KIT.err='Nhập thư mục bộ test là đường dẫn Windows đầy đủ, ví dụ D:\\AQ-Autotest.';renderRunner();return;}
+    if(!DL){KIT.err='Trang chưa được phép tải file trong lần xem này.';renderRunner();return;}
+    KIT.dir=v;var me=myRunner();
+    if(SC.rnCol&&SC.me&&(!me||me.installDir!==v))SC.rnCol.doc(SC.me).update({installDir:v,updatedAt:new Date().toISOString()}).catch(function(){});
+    try{await DL.save({filename:'ket-noi-claude.bat',data:new Blob([knBat(v)],{type:'application/octet-stream'})});
+      KIT.msg='Đã tải ket-noi-claude.bat. Bấm đúp để chạy (không cần quyền admin): nó tắt Claude app, nối với '+v+' rồi mở lại Claude app. Mở lại console → Máy chạy thử → Kết nối.';}
+    catch(e){var c=e&&e.code;KIT.err=c==='declined'?'Bạn đã hủy lưu file.':'Không tải được: '+(c||(e&&e.message)||'lỗi');}
+    renderRunner();}
+  document.addEventListener('input',function(e){if(e.target&&e.target.id==='brDir')KIT.dir=e.target.value;});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
-    if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}});
+    if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}else if(a==='kn'){knDownload();}});
   async function importRun(res,getFile){var notes=[];
         var it=byId(res.scenarioId)||SC.items.filter(function(x){return x.product===(res.product||'edusoft')&&x.code===res.scenarioCode;})[0];
         if(!it){return {r:'bad',note:res.scenarioCode+': không còn kịch bản trên console'};}
@@ -6967,9 +7146,7 @@ QUAY VIDEO (TÙY CHỌN)
     var b1='<div class="form-grid">'+
         '<div class="fld full'+(SC.rn.bad==='path'?' bad':'')+'"><label for="rnPath">Đường dẫn Edusoft.NET.exe</label><input id="rnPath" class="mono" value="'+esc(dv.path||'')+'" placeholder="E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe" spellcheck="false"></div>'+
         '<div class="fld"><label for="rnAccount">Tài khoản test</label><input id="rnAccount" class="mono" value="'+esc(dv.account||'')+'" placeholder="admindh" autocomplete="off"></div>'+
-        '<div class="fld"><label for="rnAlias">Tên trong bảng phân công release</label><input id="rnAlias" value="'+esc(dv.alias||'')+'" placeholder="Minh"></div>'+
-        '<div class="fld full'+(SC.rn.bad==='idir'?' bad':'')+'"><label for="rnInstDir">Thư mục cài bộ test trên máy chạy test</label><input id="rnInstDir" class="mono" value="'+esc(dv.installDir||'')+'" placeholder="Để trống = C:\\Users\\<tên bạn>\\AQ-Autotest · hoặc vd D:\\AQ-Autotest" spellcheck="false">'+
-          '<span class="hint" style="display:block;margin-top:5px">cai-dat.bat tự chép bộ test vào thư mục này (hỏi lại lúc cài, Enter để đồng ý). Tải bộ cài mới chỉ cần chạy cai-dat.bat, không phải giải nén vào chỗ cố định.</span></div></div>'+
+        '<div class="fld"><label for="rnAlias">Tên trong bảng phân công release</label><input id="rnAlias" value="'+esc(dv.alias||'')+'" placeholder="Minh"></div></div>'+
       '<details class="rn-more" data-rnfold="more"'+(SC.rn.more?' open':'')+'><summary>Thêm: tên máy, môi trường, quay video</summary><div class="form-grid">'+
         '<div class="fld"><label for="rnMachine">Tên máy</label><input id="rnMachine" value="'+esc(dv.machine||'')+'" placeholder="giaminh-pc"></div>'+
         '<div class="fld"><label for="rnEnv">Môi trường</label><input id="rnEnv" value="'+esc(dv.env||'')+'" placeholder="DEMO HVNG"></div>'+

@@ -1353,7 +1353,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
           <h4>Các bước cài đặt (một lần cho mỗi máy)</h4>
           <ol class="help-steps">
             <li><b>Khai báo trên console</b>Ở thẻ Edusoft, dán đường dẫn đầy đủ tới <code>Edusoft.NET.exe</code> và nhập tài khoản test, rồi bấm <b>Lưu</b>.<div class="help-note">Lấy đường dẫn nhanh: trong File Explorer giữ <kbd>Shift</kbd>, chuột phải vào file <code>Edusoft.NET.exe</code> → <b>Copy as path</b>, dán vào ô rồi xóa hai dấu ngoặc kép.</div></li>
-            <li><b>Tải bộ cài</b>Bấm <b>Tải bộ cài (.zip)</b> rồi giải nén ở đâu cũng được (vd thư mục Tải về). Không chạy thẳng trong file .zip.<div class="help-note">Thư mục cài thật nằm ở ô <b>Thư mục cài bộ test</b> ở bước 1 (để trống = <code>C:\Users\&lt;tên bạn&gt;\AQ-Autotest</code>). Mỗi máy có thể cài một thư mục khác; <code>cai-dat.bat</code> hỏi lại khi cài, gõ thư mục khác nếu muốn.</div></li>
+            <li><b>Tải bộ cài</b>Bấm <b>Tải bộ cài (.zip)</b> rồi giải nén ở đâu cũng được (vd thư mục Tải về). Không chạy thẳng trong file .zip.<div class="help-note">Thư mục cài lấy từ ô <b>Thư mục bộ test trên máy này</b> ở bước 2 (để trống = <code>C:\Users\&lt;tên bạn&gt;\AQ-Autotest</code>). Mỗi máy có thể cài một thư mục khác; <code>cai-dat.bat</code> hỏi lại khi cài, gõ thư mục khác nếu muốn.</div></li>
             <li><b>Chạy cai-dat.bat</b>Bấm đúp <code>cai-dat.bat</code>, chọn <b>Yes</b> khi Windows hỏi quyền admin. Script tự làm:
               <ul><li>cài Python 3.12 (qua winget) nếu máy chưa có;</li><li>cài thư viện (pywinauto, pillow, keyboard, keyring, openpyxl, obsws-python);</li><li>cài <b>AQ Autotest Agent</b> chạy nền cùng Windows để nhận lệnh chạy từ console;</li><li>chép bộ test vào thư mục cài cố định (thư mục giải nén xoá được);</li><li>đăng ký cầu nối <code>aq-autotest</code> vào Claude app của đúng người đang dùng máy;</li><li>in <b>bảng kiểm tra</b> (Python, thư viện, Edusoft.NET.exe, Agent, cầu nối, Claude app) và lưu ở <code>chan-doan.txt</code>; nếu Claude app cần nạp lại cầu nối thì hỏi và <b>tự khởi động lại Claude app</b> (Enter = đồng ý).</li></ul>
               Thấy dòng <b>Xong.</b> và các dòng <b>[ OK ]</b> là được. Nếu không tự cài được Python: tải từ python.org, khi cài tick <b>Add python.exe to PATH</b>, rồi chạy lại <code>cai-dat.bat</code>.</li>
@@ -1727,7 +1727,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-3"
+KIT_VERSION = "2026.10.30-4"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -3819,14 +3819,28 @@ if __name__ == "__main__":
 @echo off
 chcp 65001 >nul
 net session >nul 2>&1
-if errorlevel 1 (
-  rem Xin quyen admin, truyen ho so cua nguoi dang dung may (cau noi Claude app phai ghi vao dung ho so nay)
-  powershell -NoProfile -Command "Start-Process -FilePath '%~f0' -ArgumentList '\"%APPDATA%\"','\"%LOCALAPPDATA%\"','\"%USERPROFILE%\"' -Verb RunAs"
-  exit /b
-)
-set "AQ_USER_APPDATA=%~1"
-set "AQ_USER_LOCALAPPDATA=%~2"
-set "AQ_USER_USERPROFILE=%~3"
+if not errorlevel 1 goto :admin
+rem Chua co quyen admin: ghi lai ho so nguoi dang dung may roi tu mo lai voi quyen admin
+> "%PUBLIC%\aq-autotest-user.txt" echo %APPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %LOCALAPPDATA%
+>> "%PUBLIC%\aq-autotest-user.txt" echo %USERPROFILE%
+echo Dang xin quyen admin - chon Yes khi Windows hoi...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+if errorlevel 1 goto :noadmin
+exit /b 0
+
+:noadmin
+echo.
+echo Khong tu xin duoc quyen admin.
+echo Hay chuot phai vao cai-dat.bat, chon "Run as administrator".
+pause
+exit /b 1
+
+:admin
+set "AQ_USER_APPDATA="
+set "AQ_USER_LOCALAPPDATA="
+set "AQ_USER_USERPROFILE="
+if exist "%PUBLIC%\aq-autotest-user.txt" call :readuser
 if not defined AQ_USER_APPDATA set "AQ_USER_APPDATA=%APPDATA%"
 if not defined AQ_USER_LOCALAPPDATA set "AQ_USER_LOCALAPPDATA=%LOCALAPPDATA%"
 if not defined AQ_USER_USERPROFILE set "AQ_USER_USERPROFILE=%USERPROFILE%"
@@ -3932,6 +3946,15 @@ if not defined PY (
   if not errorlevel 1 for /f "delims=" %%i in ('python -c "import sys;print(sys.executable)"') do set "PY=%%i"
 )
 if defined PY (echo %PY%)>"%K%python-path.txt"
+exit /b 0
+
+:readuser
+< "%PUBLIC%\aq-autotest-user.txt" (
+  set /p AQ_USER_APPDATA=
+  set /p AQ_USER_LOCALAPPDATA=
+  set /p AQ_USER_USERPROFILE=
+)
+del "%PUBLIC%\aq-autotest-user.txt" >nul 2>&1
 exit /b 0
 </script>
 <script type="text/plain" id="kit-chaytest">
@@ -6478,7 +6501,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.10.30-3';
+  var KITVER='2026.10.30-4';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.2,typePause:0.06},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -6621,7 +6644,7 @@ QUAY VIDEO (TÙY CHỌN)
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}
     else if(a==='dir'||a==='install'){var el=document.getElementById('brKitDir'),v=el?el.value.trim():'';if(!v){BR.code='Nhập đường dẫn thư mục bộ test.';renderRunner();return;}
-      MCP.callTool(BRS,a==='dir'?'set_kit_dir':'install',{dir:v},{cache:false}).then(function(){KIT.msg=a==='dir'?'Đã lưu thư mục bộ test.':'Đã chép bộ test vào '+v+'. Chạy cai-dat.bat (quyền admin) trong thư mục đó một lần để cài Python, thư viện và Agent.';brCheck(true);},
+      MCP.callTool(BRS,a==='dir'?'set_kit_dir':'install',{dir:v},{cache:false}).then(function(){if(SC.rnCol&&SC.me)SC.rnCol.doc(SC.me).update({installDir:v,updatedAt:new Date().toISOString()}).catch(function(){});KIT.msg=a==='dir'?'Đã lưu thư mục bộ test.':'Đã chép bộ test vào '+v+'. Chạy cai-dat.bat (quyền admin) trong thư mục đó một lần để cài Python, thư viện và Agent.';brCheck(true);},
         function(e){BR.code=brErr(e);renderRunner();});}});
   async function importRun(res,getFile){var notes=[];
         var it=byId(res.scenarioId)||SC.items.filter(function(x){return x.product===(res.product||'edusoft')&&x.code===res.scenarioCode;})[0];
@@ -6683,9 +6706,7 @@ QUAY VIDEO (TÙY CHỌN)
     var b1='<div class="form-grid">'+
         '<div class="fld full'+(SC.rn.bad==='path'?' bad':'')+'"><label for="rnPath">Đường dẫn Edusoft.NET.exe</label><input id="rnPath" class="mono" value="'+esc(dv.path||'')+'" placeholder="E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe" spellcheck="false"></div>'+
         '<div class="fld"><label for="rnAccount">Tài khoản test</label><input id="rnAccount" class="mono" value="'+esc(dv.account||'')+'" placeholder="admindh" autocomplete="off"></div>'+
-        '<div class="fld"><label for="rnAlias">Tên trong bảng phân công release</label><input id="rnAlias" value="'+esc(dv.alias||'')+'" placeholder="Minh"></div>'+
-        '<div class="fld full'+(SC.rn.bad==='idir'?' bad':'')+'"><label for="rnInstDir">Thư mục cài bộ test trên máy chạy test</label><input id="rnInstDir" class="mono" value="'+esc(dv.installDir||'')+'" placeholder="Để trống = C:\\Users\\<tên bạn>\\AQ-Autotest · hoặc vd D:\\AQ-Autotest" spellcheck="false">'+
-          '<span class="hint" style="display:block;margin-top:5px">cai-dat.bat tự chép bộ test vào thư mục này (hỏi lại lúc cài, Enter để đồng ý). Tải bộ cài mới chỉ cần chạy cai-dat.bat, không phải giải nén vào chỗ cố định.</span></div></div>'+
+        '<div class="fld"><label for="rnAlias">Tên trong bảng phân công release</label><input id="rnAlias" value="'+esc(dv.alias||'')+'" placeholder="Minh"></div></div>'+
       '<details class="rn-more" data-rnfold="more"'+(SC.rn.more?' open':'')+'><summary>Thêm: tên máy, môi trường, quay video</summary><div class="form-grid">'+
         '<div class="fld"><label for="rnMachine">Tên máy</label><input id="rnMachine" value="'+esc(dv.machine||'')+'" placeholder="giaminh-pc"></div>'+
         '<div class="fld"><label for="rnEnv">Môi trường</label><input id="rnEnv" value="'+esc(dv.env||'')+'" placeholder="DEMO HVNG"></div>'+
