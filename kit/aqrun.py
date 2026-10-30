@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-9"
+KIT_VERSION = "2026.10.30-10"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2335,15 +2335,26 @@ def pack_results(since):
     return out
 
 
-def apply_update():
-    """Tìm file aq-autotest-update*.json (nút "Chạy test đăng nhập" trên console) trong thư mục bộ test
-    hoặc thư mục Tải về; áp dụng bản mới nhất chưa áp dụng. Trả về True nếu đã cập nhật."""
+def archive_cmd(f, tag):
+    """Chuyển file lệnh đã dùng vào lenh-da-xu-ly/ với tên kèm thời gian (không bao giờ trùng tên)."""
+    import shutil
+    d = BASE / "lenh-da-xu-ly"
+    d.mkdir(exist_ok=True)
+    shutil.move(str(f), str(d / ("%s-%s-%s" % (datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f"), tag, f.name))))
+
+
+def apply_update(path=None):
+    """Áp dụng file aq-autotest-update*.json: `path` do Agent đưa (đã nhận sẵn), hoặc tìm bản mới nhất chưa áp dụng
+    trong thư mục bộ test / Tải về (khi chạy chay-test.bat). Trả về True nếu đã cập nhật."""
     cands = []
-    for d in update_dirs():
-        try:
-            cands += [p for p in d.glob("aq-autotest-update*.json") if ".da-" not in p.name]
-        except Exception:
-            pass
+    if path:
+        cands = [Path(path)]
+    else:
+        for d in update_dirs():
+            try:
+                cands += [p for p in d.glob("aq-autotest-update*.json") if ".da-" not in p.name]
+            except Exception:
+                pass
     cands.sort(key=lambda p: p.stat().st_mtime, reverse=True)
     stamp_f = BASE / ".update-stamp"
     last = stamp_f.read_text("utf-8").strip() if stamp_f.exists() else ""
@@ -2356,10 +2367,11 @@ def apply_update():
             continue
         gen = str(data.get("generatedAt", ""))
         if gen and last and gen <= last:
-            try:
-                f.rename(f.with_name(f.stem + ".da-ap-dung.json"))
-            except Exception:
-                pass
+            if not path:
+                try:
+                    archive_cmd(f, "da-ap-dung")
+                except Exception:
+                    pass
             continue
         files = data.get("files") or {}
         for name, content in files.items():
@@ -2386,11 +2398,11 @@ def apply_update():
             (BASE / "config.json").write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
         stamp_f.write_text(gen or now_iso(), "utf-8")
         # chạy tay (chay-test.bat) thì lệnh chạy đi kèm coi như đã dùng – Agent không chạy thêm lần nữa
-        used = data.get("run") and "--cap-nhat" not in sys.argv
-        try:
-            f.rename(f.with_name(f.stem + (".da-xu-ly.json" if used else ".da-ap-dung.json")))
-        except Exception:
-            pass
+        if not path:
+            try:
+                archive_cmd(f, "chay-tay" if data.get("run") else "da-ap-dung")
+            except Exception:
+                pass
         print("Đã cập nhật bộ test lên phiên bản %s (%d file) từ %s" % (data.get("kitVersion", "?"), len(files), f))
         return True
     return False
@@ -2426,9 +2438,14 @@ def bridge_diag(add):
 # ---------------------------------------------------------------- main
 def main():
     args = [a for a in sys.argv[1:]]
+    upd_file = None
+    if "--file" in args:                       # Agent đưa đúng file lệnh vừa nhận
+        k = args.index("--file")
+        upd_file = args[k + 1] if k + 1 < len(args) else None
+        del args[k:k + 2]
     if os.environ.get("AQ_UPDATED") != "1":
         try:
-            if apply_update():
+            if apply_update(upd_file):
                 import subprocess
                 env = dict(os.environ, AQ_UPDATED="1")
                 sys.exit(subprocess.call([sys.executable, str(Path(__file__).resolve())] + args, env=env))
@@ -2454,6 +2471,11 @@ def main():
         pass
     if "--cap-nhat" in args:
         return
+    try:                                        # báo cho Agent: đang có lượt test chạy (lệnh mới sẽ xếp hàng)
+        import ctypes
+        _run_mutex = ctypes.windll.kernel32.CreateMutexW(None, False, "AQAutotestRunMutex")  # noqa: F841 – giữ tới khi thoát
+    except Exception:
+        pass
     want = set()
     for a in args:
         if a.lower().startswith("aqautotest:"):          # chạy từ nút trên AQ Autotest Console

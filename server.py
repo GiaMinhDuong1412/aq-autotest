@@ -207,7 +207,8 @@ def k_send(a):
     payload = a.get("payload")
     if not isinstance(payload, dict) or payload.get("format") not in ("aq-autotest-update/1", "aq-autotest-run-request/1"):
         raise ValueError("Lệnh không đúng định dạng")
-    name = "aq-autotest-update-run.json" if payload["format"] == "aq-autotest-update/1" else "aq-autotest-run.json"
+    stamp = time.strftime("%Y%m%d-%H%M%S") + "-%03d" % (int(time.time() * 1000) % 1000)   # mỗi lần bấm Chạy một file riêng
+    name = ("aq-autotest-update-run-%s.json" if payload["format"] == "aq-autotest-update/1" else "aq-autotest-run-%s.json") % stamp
     tmp = base / (name + ".tmp")
     tmp.write_text(json.dumps(payload, ensure_ascii=False), "utf-8")
     os.replace(tmp, base / name)
