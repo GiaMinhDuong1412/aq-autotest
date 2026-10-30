@@ -3936,6 +3936,7 @@ QUAY VIDEO (TÙY CHỌN)
   function showApp(){ $('#loginView').classList.add('hidden'); $('#appView').classList.remove('hidden'); window.scrollTo(0,0); }
   $('#loginForm').addEventListener('submit',function(e){e.preventDefault();showApp();});
   $('#ssoLogin').addEventListener('click',showApp);
+  if(window.AQ_SERVER)showApp();   /* bản trên server: đã đăng nhập thật ở /login */
   $('#togglePw').addEventListener('click',function(){var p=$('#password');p.type=p.type==='password'?'text':'password';});
   $('#logoutBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');$('#appView').classList.add('hidden');$('#loginView').classList.remove('hidden');});
 

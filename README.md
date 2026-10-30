@@ -25,6 +25,25 @@ và skill `tailieu-edusoft` trong `.claude/skills/`.
 
 Máy không có Edusoft (vd laptop) vẫn xem / sửa kịch bản, xem kết quả bình thường.
 
+## Chạy trên server công ty (gắn domain)
+Chỉ cần **một file `aq-console-server.py`** (cần Python 3.8+ trên server, không cần git):
+1. Chép file vào một thư mục trống trên server, chạy `python aq-console-server.py`.
+   Lần đầu file tạo `aq-console-server.json`. Repo GitHub riêng tư nên phải điền `"token"`: token chỉ-đọc
+   (github.com → Settings → Developer settings → Fine-grained tokens, chỉ chọn repo này, Contents = Read-only).
+   Lưu file; trong vòng 2 phút console tự tải code và chạy ở cổng `port` (mặc định 8787).
+2. Mở trang, đăng nhập `admin`, mật khẩu trong `aq-console/rieng/mat-khau-admin-lan-dau.txt`. Vào **Hồ sơ**
+   (trang `/quan-tri`) để đổi mật khẩu và thêm tài khoản cho từng người.
+3. Windows: chạy `python aq-console-server.py --tu-chay` bằng quyền admin để console tự chạy nền mỗi khi bật máy và mở cổng
+   trên tường lửa. Trỏ domain về server, mở cổng. Muốn https: điền `cert`/`key` (.pem) và đặt `port` 443, hoặc để
+   IIS/nginx/Cloudflare lo https.
+
+Sau đó không cần làm gì trên server: cứ 2 phút file hỏi GitHub nhánh `branch` (mặc định `main`), có commit mới thì tự tải,
+kiểm tra, thay và khởi động lại (bản lỗi thì quay về bản cũ). Chính file này cũng tự cập nhật.
+Dữ liệu ở `aq-console/du-lieu` (không bị ghi đè khi cập nhật code; kịch bản sửa trong repo chỉ được đưa vào khi mới hơn theo
+`updatedAt`), sao lưu mỗi ngày ở `aq-console/sao-luu`, nhật ký ở `aq-console/nhat-ky.txt`.
+Console trên server không nối trực tiếp máy chạy test: nút **Chạy** tải file lệnh về máy người bấm, Agent trên máy test nhận từ
+thư mục Tải về (mở console trên chính máy test); kết quả nhập bằng **Nhập kết quả…**.
+
 ## Đồng bộ laptop ↔ PC
 - Trước và sau mỗi buổi làm việc chạy **`dong-bo.bat`**: lưu thay đổi của máy này, lấy thay đổi của máy kia, đẩy lên GitHub.
   Console đang mở sẽ tự cập nhật sau vài giây khi dữ liệu đổi.
@@ -38,6 +57,7 @@ Máy không có Edusoft (vd laptop) vẫn xem / sửa kịch bản, xem kết qu
 | `web/claude-shim.js` | lớp thay thế API của claude.ai khi chạy localhost |
 | `kit/` | bộ test cài trên máy chạy test (`aqrun.py`, `aq-agent.py`, `cai-dat.bat`…) |
 | `data/` | kịch bản, lượt chạy, lỗi, release, danh mục kế hoạch, ảnh |
+| `aq-console-server.py` | bản chạy trên server: tự tải code từ GitHub, tự cập nhật, bắt đăng nhập |
 | `tools/embed_kit.py` | nhúng lại `kit/` vào `web/index.html` trước khi commit |
 
 ## Giới hạn so với bản trên claude.ai

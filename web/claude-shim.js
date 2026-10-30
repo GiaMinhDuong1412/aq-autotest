@@ -1,15 +1,19 @@
 /* AQ Autotest – thay window.claude (của claude.ai) khi chạy console trên localhost.
  * Cung cấp đúng phần console dùng: db, user, assets, downloads, permissions, mcp (host:aq-autotest).
  * Dữ liệu đi qua server.py (lưu file JSON trong data/). Thay đổi từ máy khác (git pull) được
- * nhận nhờ thăm dò /api/rev mỗi 2 giây. */
+ * nhận nhờ thăm dò /api/rev mỗi 2 giây.
+ * Trên server (window.AQ_SERVER, server.py --public): người dùng là tài khoản đăng nhập, không có cầu nối
+ * tới máy chạy test (nút Chạy tải file lệnh về máy người bấm, Agent nhận từ thư mục Tải về). */
 (function () {
   'use strict';
-  var LOCAL = window.AQ_LOCAL || {};
+  var SERVER = !!window.AQ_SERVER;
+  var LOCAL = window.AQ_LOCAL || window.AQ_SERVER || {};
   var H = { 'Content-Type': 'application/json', 'X-AQ': '1' };
   function err(code, message) { var e = new Error(message || code); e.code = code; e.message = message || code; return e; }
   async function api(method, url, body, headers) {
     var r = await fetch(url, { method: method, headers: headers || H, body: body === undefined ? undefined : (body instanceof Blob ? body : JSON.stringify(body)) });
     var j = null; try { j = await r.json(); } catch (e) { j = null; }
+    if (r.status === 401 && SERVER) { location.href = '/login'; throw err('login', 'Cần đăng nhập lại'); }
     if (!r.ok) throw err(r.status === 404 ? 'not_found' : r.status === 422 ? 'tool_error' : 'bad_request', (j && j.error) || ('HTTP ' + r.status));
     return j;
   }
@@ -75,7 +79,10 @@
   var user = {
     id: async function () { return LOCAL.userId || null; },
     me: async function () { return { id: LOCAL.userId, name: LOCAL.userName || '' }; },
-    profiles: async function (ids) { var o = {}; (ids || []).forEach(function (id) { o[id] = { id: id, name: id === LOCAL.userId ? (LOCAL.userName || '') : '' }; }); return o; },
+    profiles: async function (ids) {
+      var all = {}; try { ((await api('GET', '/api/users')).users || []).forEach(function (u) { all[u.id] = u; }); } catch (e) { }
+      var o = {}; (ids || []).forEach(function (id) { o[id] = { id: id, name: all[id] ? all[id].name : id === LOCAL.userId ? (LOCAL.userName || '') : '' }; }); return o;
+    },
     search: async function () { return []; },
     isOwner: function () { return true; }, canEdit: function () { return true; }, can: async function () { return true; }
   };
@@ -102,15 +109,25 @@
   /* ---------------- mcp: chỉ host:aq-autotest (server.py làm trực tiếp) ---------------- */
   var mcp = {
     callTool: async function (server, tool, input) {
+      if (SERVER) throw err('server_not_connected', 'Console trên server không nối trực tiếp máy chạy test – nút Chạy tải file lệnh về máy này.');
       if (server !== 'host:aq-autotest') throw err('server_not_connected', 'Bản localhost không có kết nối ' + server);
       var out = await api('POST', '/api/kit/' + encodeURIComponent(tool), input || {});
       return { content: [{ type: 'text', text: JSON.stringify(out) }], structuredContent: out, payload: out };
     },
-    listTools: async function () { return { servers: [{ server: 'host:aq-autotest', authStatus: 'connected', tools: [] }] }; },
+    listTools: async function () { if (SERVER) return { servers: [] }; return { servers: [{ server: 'host:aq-autotest', authStatus: 'connected', tools: [] }] }; },
     server: async function (name) { return new Proxy({}, { get: function (_, t) { return function (input) { return mcp.callTool(name, t, input).then(function (r) { return r.payload; }); }; } }); }
   };
 
   var permissions = { state: async function () { return 'granted'; }, request: async function () { return {}; }, manage: async function () { } };
   var caps = { db: db, user: user, assets: assets, downloads: downloads, mcp: mcp, permissions: permissions };
+  if (SERVER) {          // menu tài khoản: "Hồ sơ" → trang Tài khoản, "Đăng xuất" → đăng xuất thật
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('#accountMenu .account-item');
+      if (!b || b.hasAttribute('data-page-go')) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.id === 'logoutBtn') fetch('/logout', { method: 'POST', headers: { 'X-AQ': '1' } }).then(function () { location.href = '/login'; });
+      else location.href = '/quan-tri';
+    }, true);
+  }
   window.claude = { use: function (name) { return Promise.resolve(caps[name] || null); } };
 })();
