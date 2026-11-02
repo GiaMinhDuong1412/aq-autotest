@@ -1,0 +1,168 @@
+{
+ "actual": "Dừng ở bước 7: Người test dừng test tại đây (Không thấy nút \"Chọn\" trong vùng \"Danh sách lớp\")\nDữ liệu test: HOLOT = Kiem Thu, LOP = HKH49C1, LYDO = N2, MSSV = TEST030114, MSSV2 = TEST030114B, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030114, TEN = Mot, TEN2 = Hai, TENQD2 = TEST_QD_030114_SUA.",
+ "alts": [
+  {
+   "at": "2026-11-02T18:18:50.307157Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:18:50.307157Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:18:50.307157Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-11-02T18:19:03.475Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "c0d5972ae31dc9e069253102b662f819",
+   "name": "ui-buoc-7-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-11-02T18:18:50.307157Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.11.03-4",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "03/11/2026 01:14  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 01:14  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 01:15  Bước 2: ĐẠT · MSSV = TEST030114 chưa có · TEN = Mot chưa có · Đã tắt Danh mục sinh viên — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 01:16  Chọn ngẫu nhiên LOP = HKH49C1 (trong 50 dòng phù hợp)\n03/11/2026 01:16  Bước 3: ĐẠT · MSSV = TEST030114 chưa có · TEN = Mot chưa có · LOP = HKH49C1 (Unchecked · CATBD49C10066 · Đỗ Thị Thúy · Kiều · Nữ · 11/07/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 ) · Đã tắt Danh sách sinh viên học kỳ — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 01:16  Chọn ngẫu nhiên LYDO = N2 (trong 2 dòng phù hợp)\n03/11/2026 01:16  Bước 4: ĐẠT · LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 01:17  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 01:17  Bước 6: ĐẠT · #IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 01:18  Đã ghi cây giao diện (556 phần tử) vào ui-buoc-7-loi.txt\n03/11/2026 01:18  Bước 7: BỎ QUA · Người test dừng test tại đây (Không thấy nút \"Chọn\" trong vùng \"Danh sách lớp\") — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" → cửa sổ \"Chi tiết lý lịch sinh viên\":\n03/11/2026 01:18  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 01:18  Kết thúc: Bị chặn",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-11-02T18:14:16.443711Z",
+ "status": "blocked",
+ "steps": [
+  {
+   "at": "2026-11-02T18:14:18.026368Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "02af9b8553c50bece9c7368701540cd5"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:15:28.338611Z",
+   "note": "MSSV = TEST030114 chưa có · TEN = Mot chưa có · Đã tắt Danh mục sinh viên",
+   "res": "ok",
+   "shots": [
+    "10bd1e9873b063a9276ed61466c9184d"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:16:31.619694Z",
+   "note": "MSSV = TEST030114 chưa có · TEN = Mot chưa có · LOP = HKH49C1 (Unchecked · CATBD49C10066 · Đỗ Thị Thúy · Kiều · Nữ · 11/07/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 ) · Đã tắt Danh sách sinh viên học kỳ",
+   "res": "ok",
+   "shots": [
+    "161850aa12bb232411d1c53d60f93657"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:16:47.993702Z",
+   "note": "LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định",
+   "res": "ok",
+   "shots": [
+    "e6f51428838486e0d63cb710bdccccef"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:17:03.729943Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "0a04d53710569bd05e79910bf703eeb4"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:17:20.909315Z",
+   "note": "#IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2)",
+   "res": "ok",
+   "shots": [
+    "403cfdaa8d72cf13c2e57315bd8ee787"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:18:49.281582Z",
+   "note": "Người test dừng test tại đây (Không thấy nút \"Chọn\" trong vùng \"Danh sách lớp\")",
+   "res": "skip",
+   "shots": [
+    "cde801ed35247e31882c27b5cde5dedd",
+    "5d7d9e940c3b74de23e2254134360554",
+    "198465cb7e4b6c1d8e58e1b8c6bd7272"
+   ]
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "vars": {
+  "HHMMSS": "011416",
+  "HOLOT": "Kiem Thu",
+  "LOP": "HKH49C1",
+  "LOP_DONG": "Unchecked · CATBD49C10066 · Đỗ Thị Thúy · Kiều · Nữ · 11/07/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 năm 2022 - 2023 · Học kỳ 2 năm 2025 - 2026 · TP Hải Phòng · Ngành 1 · Ngoại ngữ 2 row 42 · 012345678911 · 012345678911 · support@aqtech.vn · Email 2 row 42",
+  "LYDO": "N2",
+  "LYDO_DONG": "Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới",
+  "MSSV": "TEST030114",
+  "MSSV2": "TEST030114B",
+  "NGAYQD": "03/11/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_030114",
+  "TEN": "Mot",
+  "TEN2": "Hai",
+  "TENQD2": "TEST_QD_030114_SUA",
+  "ddHHMM": "030114",
+  "ddmmyyyy": "03/11/2026",
+  "yymmdd": "261103"
+ },
+ "video": null,
+ "videoFile": null
+}
