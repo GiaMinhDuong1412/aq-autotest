@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.11.02-1"
+KIT_VERSION = "2026.11.02-2"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1009,16 +1009,50 @@ class Edusoft:
         main = getattr(self.main, "handle", None)
         return [w for w in self.windows() if w.handle != main]
 
-    def dialog_text(self, w):
-        parts = []
+    # Hộp thoại của khung AQ (AQControls.AQMessageBox): MsgBox – nội dung ở "lblMessage", nút btn1/btn2/btn3;
+    # ErrorMsgBox – lỗi hệ thống ("Đã xảy ra lỗi khi xử lý nghiệp vụ… [Gửi mail về Support]"): lblThongBao, rtxt_Error.
+    MSG_IDS = ("lblMessage",)
+    ERR_IDS = ("rtxt_Error", "lblThongBao", "btnViewErrorHelp", "btnViewErrorHelpDetail", "btnViewErrorData")
+
+    def dialog_info(self, w):
+        """(loại, chữ): loại = "error" (ErrorMsgBox), "msg" (MsgBox) hoặc "" (cửa sổ khác); chữ đưa nội dung chính lên đầu."""
+        kind, main, parts = "", [], []
         try:
             for el in w.descendants():
-                t = el.window_text()
-                if t and t not in parts:
+                try:
+                    aid = el.element_info.automation_id or ""
+                except Exception:
+                    aid = ""
+                try:
+                    t = el.window_text()
+                    if not t and aid == "rtxt_Error":
+                        t = el.iface_value.CurrentValue
+                except Exception:
+                    t = ""
+                if aid in self.ERR_IDS:
+                    kind = "error"
+                elif aid in self.MSG_IDS and kind != "error":
+                    kind = "msg"
+                if not t:
+                    continue
+                if aid in self.MSG_IDS or aid in ("lblThongBao", "rtxt_Error"):
+                    main.append(t)
+                elif t not in parts:
                     parts.append(t)
         except Exception:
             pass
-        return "\n".join(parts)
+        txt = "\n".join(main + [p for p in parts if p not in main])
+        if kind == "error":
+            txt = "[Lỗi hệ thống Edusoft] " + txt
+        return kind, txt
+
+    def dialog_text(self, w):
+        return self.dialog_info(w)[1]
+
+    def is_error_dialog(self, w, txt=None):
+        """Hộp lỗi hệ thống: ErrorMsgBox của Edusoft hoặc chữ có dấu hiệu exception."""
+        kind, t = self.dialog_info(w)
+        return kind == "error" or bool(EX_PAT.search(txt if txt is not None else t))
 
     # --- tìm phần tử trên mọi cửa sổ của Edusoft (menu thả xuống, hộp thoại, form con…)
     def dialog_button(self, d, *groups):
@@ -1311,7 +1345,7 @@ class Run:
         """Phát hiện hộp thoại lỗi EX sau thao tác; nếu có thì lấy chi tiết + menu code."""
         for d in self.es.dialogs():
             body = self.es.dialog_text(d)
-            if not EX_PAT.search(body):
+            if not self.es.is_error_dialog(d, body):
                 continue
             CAP.show("Phát hiện lỗi EX", label + " · lấy chi tiết (Ctrl+Shift+E) và menu code (Ctrl+Shift+F)")
             shots = []
@@ -1410,8 +1444,8 @@ class Run:
                 ds = es.new_windows(es.snap)
                 for d in ds:
                     txt = es.dialog_text(d).replace("\n", " ")
-                    if EX_PAT.search(txt):
-                        raise RuntimeError("Lỗi hệ thống khi lưu")
+                    if es.is_error_dialog(d, txt):
+                        raise RuntimeError("Lỗi hệ thống khi lưu: " + txt[:200])
                     yes = es.dialog_button(d, ("có", "yes"))
                     if yes is not None and re.search(r"lưu|cập nhật", txt, re.I) and not ERR_PAT.search(txt):
                         es.press(yes)          # "Bạn có muốn lưu…?" – đúng ý định của bước
@@ -1437,7 +1471,7 @@ class Run:
                     time.sleep(0.4)
                 if not ds:
                     raise RuntimeError("Không có thông báo nào (mong đợi: %s)" % arg)
-                if EX_PAT.search(txt):
+                if EX_PAT.search(txt) or any(es.is_error_dialog(d, "") for d in ds):
                     raise RuntimeError("Lỗi hệ thống: " + txt[:200])
                 if not pat.search(txt):
                     raise RuntimeError("Thông báo không như mong đợi (%s): %s" % (arg, txt[:250]))
