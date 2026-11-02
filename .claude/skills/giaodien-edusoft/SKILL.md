@@ -184,6 +184,27 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   được qua connector → dùng kịch bản khảo sát chỉ-xem (`KS-QLSV-001`) để có ảnh + `ui-ks-*.txt` thật.
 - Áp dụng: kit `2026.10.30-14` – lệnh `cancel` chỉ gửi Esc khi đang có cửa sổ con (theo #13).
 
+### #15 – Khung nhập (detail) dùng TÊN CONTROL, không có nhãn (lượt chạy QLSV-001 ngày 2026-11-02 23:39, kit -14)
+- Hiện tượng: bước 1–5 đạt (ô tìm kiếm, chọn ngẫu nhiên lớp/lý do chạy đúng); bước 6 "Không tìm thấy Lý do quyết định" vì
+  **nhãn ô ("Số quyết định:", "Lý do quyết định:"…) KHÔNG có trong cây UIA**.
+- Nhận biết (`ui-buoc-6-loi.txt`, màn hình mã `S15.04` Quyết định vào mới): màn hình = lưới trái `Table "Danh sách quyết định"`
+  (automationId `viewDataCtrl`, nút đáy: In, Tách quyết định, Refresh, Thêm, Sửa, Xóa, Đóng – **mờ khi đang nhập**) + khung phải
+  `Pane AQDetailRight` → `XtraLayoutControl` (tiêu đề "Chi tiết Danh sách quyết định") với nút đáy **Lưu / Hủy**.
+  Mỗi ô là `Pane <Tên>_UC` → ô `<Tên>` (automationId = tên cột dữ liệu) → ô soạn thảo thật lớp `WindowsForms10.EDIT` (id là số
+  handle, đổi mỗi lần – không dùng). Dấu bắt buộc là `Text "* "` cạnh ô. Lưới bố cục liệt kê `DataItem` tên đúng bằng tên control.
+  Ánh xạ S15.04: Số quyết định* `SoQDSV` · Tên quyết định `TenQDSV` · Ngày lập QĐ* `NgayLapQDSV` (mặc định hôm nay) ·
+  Lý do quyết định* `IDLDQDSV` (lookup: cột Mã loại / Tên loại quyết định, vd TT = Quyết định Trúng tuyển) · Ngày hiệu lực
+  `NGAYHLQDSV` (mặc định hôm nay) · Người ký `IDChuKy` (Loại chữ ký: Chữ ký đơn ▾, Chọn chữ ký ▾ + ô chữ) · Ghi chú `GcQDSV` ·
+  Hình quyết định `NoiDung`. Lưới con `Table "Danh sách sinh viên"` (cột Mã SV, Họ lót, Tên, Phái, Mã lớp (mới); có dòng lọc;
+  nút đáy **Import, Thêm, Thêm mới 1 SV, Xóa**). Các khung thường gặp: `AQViewL` (lưới trái), `aqSplitContainer1`.
+- Thao tác đúng: ô của khung nhập → `type: #SoQDSV = …`, `select: #IDLDQDSV = TT` (gõ mã rồi Enter), `date: #NGAYHLQDSV = …`;
+  sinh viên mới vào quyết định → `click: Thêm mới 1 SV` (popup/ô chưa biết – kịch bản đã thêm `dump`).
+- Áp dụng: kit `2026.11.02-1` – `field_for` nhận `#TênControl` (`Edusoft.by_id`, lấy ô EDIT bên trong); QLSV-001 bước 6, 10 dùng
+  `#…`; bước 7 bấm Thêm mới 1 SV rồi chụp + `dump: them-moi-1-sv`.
+- Mã nguồn client Edusoft (nếu người dùng đưa): đọc các form/`*.Designer.cs` để lấy bảng **tên control ↔ nhãn** và kiểu control
+  cho từng màn hình (mã màn hình như `S15.04`), ghi thành bảng trong `thao-tac.md`; **không** commit mã nguồn vào repo
+  (để ngoài git, vd `local/` hoặc scratchpad) – chỉ ghi bảng ánh xạ.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
