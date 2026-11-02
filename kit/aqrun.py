@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
 
-KIT_VERSION = "2026.10.30-14"
+KIT_VERSION = "2026.11.02-1"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1104,6 +1104,10 @@ class Edusoft:
     def field_for(self, label, timeout=8):
         """Ô nhập cho nhãn `label` (có thể nhiều tên cách nhau bằng |). Trả về (ô, nhãn); ô = None nếu
         giao diện là lưới dọc (ô chỉ hiện khi bấm vào dòng) – khi đó gõ theo vị trí bên phải nhãn."""
+        ids = [x[1:].strip() for x in alts_of(label) if x.strip().startswith("#")]
+        if ids:                                   # "#SoQDSV": tên control (automationId) – nhãn Edusoft không có trong UIA
+            el = self.by_id(ids, timeout=timeout)
+            return el, el
         lab = self.find_any(label, types=("Text", "Custom", "Pane", "Group", "TreeItem", "ListItem", "DataItem"), timeout=timeout)
         lr = lab.rectangle()
         lm = (lr.top + lr.bottom) / 2
@@ -1131,6 +1135,31 @@ class Edusoft:
             return None, lab
         cands.sort(key=lambda x: (round(x[0] / 25), x[1]))
         return cands[0][2], lab
+
+    def by_id(self, ids, timeout=8):
+        """Ô nhập theo tên control (automationId), vd SoQDSV, IDLDQDSV, NGAYHLQDSV: lấy ô soạn thảo thật bên trong
+        (lớp WindowsForms10.EDIT) nếu có. Tìm hộp thoại / form con trước, cửa sổ chính sau."""
+        end = time.time() + timeout
+        while True:
+            for root in self.roots():
+                for i in ids:
+                    try:
+                        hits = [e for e in root.descendants() if e.element_info.automation_id == i and e.is_visible()]
+                    except Exception:
+                        continue
+                    if not hits:
+                        continue
+                    el = hits[0]
+                    try:
+                        inner = [e for e in el.descendants() if ".EDIT." in (e.element_info.class_name or "") and e.is_visible()]
+                        if inner:
+                            return inner[0]
+                    except Exception:
+                        pass
+                    return el
+            if time.time() > end:
+                raise LookupError("Không tìm thấy ô #%s trên màn hình" % "|#".join(ids))
+            time.sleep(0.5)
 
     def type_at_label(self, lab, value):
         """Lưới dọc DevExpress: bấm vào ô giá trị bên phải nhãn rồi gõ."""
@@ -1316,6 +1345,8 @@ class Run:
           menu: A/ B/ C                 mở menu
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
+          type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
+                                         dùng cho màn hình Edusoft vì nhãn ô không có trong cây giao diện
           select: Nhãn = giá trị          gõ rồi Enter (ô chọn danh sách)
           save: Lưu                      bấm Lưu và kiểm tra thông báo (lỗi → bước Lỗi)
           expect: chữ                    chờ chữ xuất hiện trên màn hình
