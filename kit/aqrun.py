@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-5"
+KIT_VERSION = "2026.11.03-6"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1717,7 +1717,8 @@ class Run:
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
           find_row: giá trị @ Cột|Cột    tìm dòng: gõ giá trị vào Ô TÌM KIẾM của cột (dòng lọc có icon phễu ngay dưới
                                          tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì chỉ xem các dòng đang hiện
-          delete_row: giá trị @ Cột      xóa dòng; CHỈ xác nhận khi hộp thoại nêu đúng giá trị
+          delete_row: giá trị @ Cột      xóa dòng; form "Danh sách đang chọn để xóa" chỉ được có dòng mang giá trị → tick → Thực hiện;
+                                         hộp "Xác nhận xóa…?" chỉ bấm Có khi nêu đúng giá trị hoặc đã kiểm form
           cancel                         hủy thao tác đang nhập (không lưu)
           dump: tên                      ghi cây giao diện ra file ui-tên.txt
           unique: BIẾN @ Cột             giá trị {BIẾN} không được có sẵn trong lưới đang mở – có thì tự đổi
@@ -1882,29 +1883,7 @@ class Run:
                 arg, col = split_col(arg)
                 el = self.locate_row(arg, col)
                 es.click(el)
-                es.snap = es.handles()
-                es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
-                time.sleep(2)
-                ds = es.new_windows(es.snap)
-                txt = " / ".join(es.dialog_text(d).replace("\n", " ") for d in ds)
-                if not ds:
-                    raise RuntimeError("Bấm Xóa nhưng không có hộp thoại xác nhận")
-                yes = None
-                if norm(arg) in norm(txt):
-                    for d in ds:
-                        yes = es.dialog_button(d, ("có", "yes", "đồng ý", "ok", "xóa", "xoá"))
-                        if yes is not None:
-                            break
-                if yes is None:
-                    for d in ds:
-                        no = es.dialog_button(d, ("không", "no", "hủy", "cancel", "đóng"))
-                        if no is not None:
-                            es.press(no)
-                    raise RuntimeError("Hộp thoại xác nhận xóa không nêu mã %s nên KHÔNG xóa – hãy xóa tay. Nội dung: %s" % (arg, txt[:200]))
-                es.press(yes)
-                time.sleep(2.5)
-                es.close_dialogs(6)
-                notes.append("Đã xóa " + arg)
+                notes += self.delete_flow(arg)
                 self.clear_filter()
             elif verb == "cancel":
                 es.snap = es.handles()
@@ -1988,6 +1967,125 @@ class Run:
             tried.append(cur)
             self.vars[var] = cur
         raise RuntimeError("Không tìm được giá trị %s chưa có sẵn (đã thử %s)" % (var, ", ".join(tried)))
+
+    def win_rows(self, root):
+        """Các dòng dữ liệu của lưới trong một cửa sổ: {số dòng: [(tên cột, giá trị, phần tử)]} – lấy cả ô check
+        ("#" = Checked/Unchecked); bỏ dòng lọc và dòng nhóm (số âm)."""
+        rows = {}
+        try:
+            cells = root.descendants(control_type="DataItem")
+        except Exception:
+            cells = []
+        for c in cells:
+            try:
+                m = re.match(r"^(.*?)\s+row\s*(-?\d+)$", norm(c.element_info.name or c.window_text() or ""))
+                if not m or int(m.group(2)) < 0 or re.search(r"filter|lọc", m.group(1), re.I):
+                    continue
+                v = ""
+                try:
+                    v = c.iface_value.CurrentValue or ""
+                except Exception:
+                    pass
+                rows.setdefault(int(m.group(2)), []).append((m.group(1).strip(), nfc(str(v or "")).strip(), c))
+            except Exception:
+                continue
+        return rows
+
+    def delete_flow(self, code):
+        """Bấm Xóa rồi đi hết các bước xác nhận của Edusoft (lượt QLSV-001 03/11 01:22):
+          1. form "Danh sách đang chọn để xóa, vui lòng kiểm tra và chọn xác thực lại" (lưới có ô check, nút Thực hiện):
+             MỌI dòng trong lưới phải mang mã `code` (không thì Đóng, không xóa) → tick ô check các dòng đó → Thực hiện;
+          2. hộp "Xác nhận xóa dữ liệu đang chọn?" Có/Không → Có khi hộp nêu đúng mã HOẶC đã kiểm ở bước 1;
+          3. thông báo kết quả → OK. Hộp hỏi không nêu mã và chưa qua bước 1 → bấm Không, báo lỗi (không xóa)."""
+        es = self.es
+        es.snap = es.handles()
+        es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
+        time.sleep(2)
+        notes, seen, forms = [], set(), []
+        verified = confirmed = False
+        key = norm(code)
+
+        def close_forms():
+            for f in forms:
+                try:
+                    b = es.dialog_button(f, ("đóng", "close", "hủy", "huỷ", "cancel"))
+                    if b is not None and f.is_visible():
+                        es.press(b)
+                except Exception:
+                    pass
+
+        def refuse(msg):
+            close_forms()
+            raise RuntimeError(msg)
+
+        idle = 0
+        for _ in range(12):
+            ds = [d for d in es.new_windows(es.snap) if d.handle not in seen]
+            if not ds:
+                if confirmed or idle >= 3:
+                    break
+                idle += 1
+                time.sleep(1)
+                continue
+            idle = 0
+            d = ds[-1]
+            seen.add(d.handle)
+            if es.is_form(d):
+                forms.append(d)
+                rows = self.win_rows(d)
+                data = {k: r for k, r in rows.items() if any(v and n != "#" and v not in ("Checked", "Unchecked") for n, v, _ in r)}
+                hit = {k: r for k, r in data.items() if any(key and key in norm(v) for _, v, _ in r)}
+                if not hit or len(hit) != len(data):
+                    others = [" · ".join(v for _, v, _ in r if v and v not in ("Checked", "Unchecked")) for k, r in data.items() if k not in hit]
+                    refuse("Danh sách xác nhận xóa không chỉ có %s (%s) nên KHÔNG xóa – hãy xóa tay" % (code, "; ".join(others)[:200] or "không đọc được dòng"))
+                for k, r in hit.items():
+                    box = next((c for n, v, c in r if v in ("Unchecked", "Checked") or n == "#"), None)
+                    if box is None:
+                        continue
+                    if es.field_value(box) != "Checked":
+                        es.click(box)
+                        time.sleep(ACTION_DELAY)
+                    if es.field_value(box) == "Unchecked":
+                        es.click(box)                     # lần đầu chỉ chọn ô, lần hai mới tick
+                btn = es.dialog_button(d, ("thực hiện", "xóa", "xoá", "đồng ý", "ok", "chọn"))
+                if btn is None:
+                    refuse("Form xác nhận xóa không có nút Thực hiện")
+                verified = True
+                notes.append("Đã tick %d dòng %s trong danh sách xác nhận xóa" % (len(hit), code))
+                es.press(btn)
+                time.sleep(2)
+                continue
+            txt = es.dialog_text(d)
+            head = (txt.split("\n") or [""])[0]
+            if es.is_error_dialog(d, txt):
+                ok = es.dialog_button(d, ("đóng", "ok", "close"))
+                if ok is not None:
+                    es.press(ok)
+                refuse("Xóa bị lỗi: " + txt[:300])
+            no = es.dialog_button(d, ("không", "no", "hủy", "huỷ", "cancel"))
+            yes = es.dialog_button(d, ("có", "yes", "đồng ý", "ok", "xóa", "xoá"))
+            if no is not None:                            # câu hỏi xác nhận
+                if yes is not None and (key in norm(txt) or (verified and re.search(r"xóa|xoá|delete", norm(txt), re.I))):
+                    es.press(yes)
+                    confirmed = True
+                    time.sleep(2)
+                    continue
+                es.press(no)
+                refuse("Hộp thoại xác nhận xóa không nêu mã %s nên KHÔNG xóa – hãy xóa tay. Nội dung: %s" % (code, head[:200]))
+            if txt:
+                notes.append(head[:120])
+            ok = es.dialog_button(d, ("ok", "đóng", "close", "đồng ý")) or yes
+            if ok is not None:
+                es.press(ok)
+            else:
+                pkb.send_keys("{ENTER}")
+            time.sleep(1)
+        if not confirmed:
+            refuse("Bấm Xóa nhưng không thấy hộp thoại xác nhận xóa %s" % code)
+        close_forms()
+        es.close_dialogs(6)
+        notes.append("Đã xóa " + code)
+        return notes
 
     def grid_rows(self):
         """Các dòng đang hiện trong lưới của màn hình: mỗi dòng là danh sách (tên cột, giá trị). Ô lưới DevExpress là

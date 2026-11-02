@@ -1,0 +1,179 @@
+{
+ "actual": "Dừng ở bước 12: Người test dừng test tại đây (Hộp thoại xác nhận xóa không nêu mã TEST_QD_030122 nên KHÔNG xóa – hãy xóa tay. Nội dung: aqPanel1 Danh sách quyết định scroll bar Column Left Page Le)\nDữ liệu test: HOLOT = Kiem Thu, LOP = LTMQT52A4, LYDO = N2, MSSV = TEST030122, MSSV2 = TEST030122B, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030122, TEN = Hai, TEN2 = Hai, TENQD2 = TEST_QD_030122_SUA.",
+ "alts": [
+  {
+   "at": "2026-11-02T18:29:47.309596Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:29:47.309596Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:29:47.309596Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-11-02T18:30:07.025Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "e1bd49848404f7ba19232b173d25f1c7",
+   "name": "ui-buoc-12-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-11-02T18:29:47.310597Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.11.03-5",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "03/11/2026 01:22  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 01:22  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 01:24  TEN = Mot đã có sẵn → dùng Hai\n03/11/2026 01:24  Bước 2: ĐẠT · MSSV = TEST030122 chưa có · Mot đã có, đổi thành Hai · Đã tắt Danh mục sinh viên — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 01:25  Chọn ngẫu nhiên LOP = LTMQT52A4 (trong 50 dòng phù hợp)\n03/11/2026 01:25  Bước 3: ĐẠT · MSSV = TEST030122 chưa có · TEN = Hai chưa có · LOP = LTMQT52A4 (Unchecked · 26CH0026QLD · Trần Văn · Trọng · Nam · 11/06/1987 · Đang học · Đang học · LTMQT52A4 · 52DH_LTMQTA · Học kỳ 1) · Đã tắt Danh sách sinh viên học kỳ — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 01:25  Chọn ngẫu nhiên LYDO = N2 (trong 2 dòng phù hợp)\n03/11/2026 01:25  Bước 4: ĐẠT · LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 01:25  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 01:26  Bước 6: ĐẠT · #IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 01:27  Bước 7: ĐẠT · Mở danh sách chọn của Mã lớp (mới) · Thấy dòng LTMQT52A4 — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" → cửa sổ \"Chi tiết lý lịch sinh viên\":\n03/11/2026 01:27  Bước 8: ĐẠT · Thấy dòng TEST_QD_030122 · Đã tắt Quyết định vào mới — KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới và có sinh viên {MSSV}. Xong tắt màn hình Q\n03/11/2026 01:27  Bước 9: ĐẠT · Thấy dòng TEST030122 · Đã tắt Danh sách sinh viên học kỳ — KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có \n03/11/2026 01:28  Bước 10: ĐẠT · Thấy dòng TEST_QD_030122 — Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.\n03/11/2026 01:28  Bước 11: ĐẠT · Thấy dòng TEST_QD_030122 — KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.\n03/11/2026 01:29  Đã ghi cây giao diện (413 phần tử) vào ui-buoc-12-loi.txt\n03/11/2026 01:29  Bước 12: BỎ QUA · Người test dừng test tại đây (Hộp thoại xác nhận xóa không nêu mã TEST_QD_030122 nên KHÔNG xóa – hãy xóa tay. Nội dung: aqPanel1 Danh sách quyết định scroll bar Column Left Page Le) — Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa, xác nhận (chỉ xác nhận khi hộp thoại nêu đúng {SOQD}).\n03/11/2026 01:29  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 01:29  Kết thúc: Bị chặn",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-11-02T18:22:40.277682Z",
+ "status": "blocked",
+ "steps": [
+  {
+   "at": "2026-11-02T18:22:45.667117Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "fce583f61eae21c837d7620bdea84d39"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:24:18.446047Z",
+   "note": "MSSV = TEST030122 chưa có · Mot đã có, đổi thành Hai · Đã tắt Danh mục sinh viên",
+   "res": "ok",
+   "shots": [
+    "834c15d9e33856186a6e38b872027d1a"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:25:22.307945Z",
+   "note": "MSSV = TEST030122 chưa có · TEN = Hai chưa có · LOP = LTMQT52A4 (Unchecked · 26CH0026QLD · Trần Văn · Trọng · Nam · 11/06/1987 · Đang học · Đang học · LTMQT52A4 · 52DH_LTMQTA · Học kỳ 1) · Đã tắt Danh sách sinh viên học kỳ",
+   "res": "ok",
+   "shots": [
+    "dbe469541be2d0a53e7af7e726cf6ffe"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:25:38.899754Z",
+   "note": "LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định",
+   "res": "ok",
+   "shots": [
+    "4549ae8fb6b7b681b256e28a45400314"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:25:55.000161Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "147b2ec5fa411c2b02ff4bb6568f8e7d"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:26:12.216769Z",
+   "note": "#IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2)",
+   "res": "ok",
+   "shots": [
+    "8e494512c272192c960bf8091deb7f5e"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:27:12.111193Z",
+   "note": "Mở danh sách chọn của Mã lớp (mới) · Thấy dòng LTMQT52A4",
+   "res": "ok",
+   "shots": [
+    "9d331fa8e664294d94ba852e6a3482a2",
+    "5465d5b8d999da0d62fd0bde3fb07ad1",
+    "285abc80cc1c6f1d5d64677798469e09"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:27:29.217134Z",
+   "note": "Thấy dòng TEST_QD_030122 · Đã tắt Quyết định vào mới",
+   "res": "ok",
+   "shots": [
+    "1788907925a8205f3c9da8368742cc3b"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:27:57.207910Z",
+   "note": "Thấy dòng TEST030122 · Đã tắt Danh sách sinh viên học kỳ",
+   "res": "ok",
+   "shots": [
+    "c980cad9b60461198cf2b651a1d9ab9e"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:28:31.757076Z",
+   "note": "Thấy dòng TEST_QD_030122",
+   "res": "ok",
+   "shots": [
+    "acad01eb082fd4bd63377fcc97f4a245"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:28:46.011624Z",
+   "note": "Thấy dòng TEST_QD_030122",
+   "res": "ok",
+   "shots": [
+    "7ee47a0b6964b8a3349b348836901284"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:29:46.282879Z",
+   "note": "Người test dừng test tại đây (Hộp thoại xác nhận xóa không nêu mã TEST_QD_030122 nên KHÔNG xóa – hãy xóa tay. Nội dung: aqPanel1 Danh sách quyết định scroll bar Column Left Page Le)",
+   "res": "skip",
+   "shots": [
+    "a70b9604875a5b484643f9e52cd3bca7"
+   ]
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "vars": {
+  "HHMMSS": "012240",
+  "HOLOT": "Kiem Thu",
+  "LOP": "LTMQT52A4",
+  "LOP_DONG": "Unchecked · 26CH0026QLD · Trần Văn · Trọng · Nam · 11/06/1987 · Đang học · Đang học · LTMQT52A4 · 52DH_LTMQTA · Học kỳ 1 năm 2025 - 2026 · Học kỳ 2 năm 2028 - 2029 · Hải Phòng · Ngành 1 · Ngoại ngữ 2 row 5 · Số CMND row 5 · Số CCCD row 5 · Email liên lạc row 5 · Email 2 row 5",
+  "LYDO": "N2",
+  "LYDO_DONG": "Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới",
+  "MSSV": "TEST030122",
+  "MSSV2": "TEST030122B",
+  "NGAYQD": "03/11/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_030122",
+  "TEN": "Hai",
+  "TEN2": "Hai",
+  "TENQD2": "TEST_QD_030122_SUA",
+  "ddHHMM": "030122",
+  "ddmmyyyy": "03/11/2026",
+  "yymmdd": "261103"
+ },
+ "version": "v2026.11A.01",
+ "video": null,
+ "videoFile": null
+}
