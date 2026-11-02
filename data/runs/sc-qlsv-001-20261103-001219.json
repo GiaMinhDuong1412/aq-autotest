@@ -1,0 +1,167 @@
+{
+ "actual": "Dừng ở bước 7: Người test dừng test tại đây (Không tìm thấy \"Thêm mới 1 SV\" trên màn hình)\nDữ liệu test: HOLOT = Kiem Thu, LOP = NBH49A6, LYDO = TT, MSSV = TEST030012, MSSV2 = TEST030012B, NGAYHL2 = 01/12/2026, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030012, TEN = Mot, TEN2 = Hai.",
+ "alts": [
+  {
+   "at": "2026-11-02T17:16:58.946783Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T17:16:58.946783Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T17:16:58.946783Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-11-02T17:17:10.408Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "c9dfc7fb233d9ff7eea741a9d1d3a7fa",
+   "name": "ui-buoc-7-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-11-02T17:16:58.946783Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.11.02-2",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "03/11/2026 00:12  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 00:12  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 00:13  Bước 2: ĐẠT · MSSV = TEST030012 chưa có · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 00:14  Chọn ngẫu nhiên LOP = NBH49A6 (trong 50 dòng phù hợp)\n03/11/2026 00:14  Bước 3: ĐẠT · MSSV = TEST030012 chưa có · TEN = Mot chưa có · LOP = NBH49A6 (Unchecked · CATBD49A60140 · Phạm Thị Thu · Trà · Nữ · 03/05/2004 · Đang học · Đang học · NBH49A6 · 49DH_NBHA · Học kỳ 1 ) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 00:15  Chọn ngẫu nhiên LYDO = TT (trong 2 dòng phù hợp)\n03/11/2026 00:15  Bước 4: ĐẠT · LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới) — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 00:16  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm.\n03/11/2026 00:16  Bước 6: ĐẠT — Nhập thông tin quyết định: Số quyết định = {SOQD}, Lý do quyết định = {LYDO} (bước 4), Ngày lập = {NGAYQD}, Ngày hiệu lự\n03/11/2026 00:16  Đã ghi cây giao diện (466 phần tử) vào ui-buoc-7-loi.txt\n03/11/2026 00:16  Bước 7: BỎ QUA · Người test dừng test tại đây (Không tìm thấy \"Thêm mới 1 SV\" trên màn hình) — Thêm sinh viên vào danh sách của quyết định: Mã SV = {MSSV}, Họ lót = {HOLOT}, Tên = {TEN}, Ngày sinh = {NGAYSINH}, Phái\n03/11/2026 00:16  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 00:16  Kết thúc: Bị chặn",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-11-02T17:12:19.929077Z",
+ "status": "blocked",
+ "steps": [
+  {
+   "at": "2026-11-02T17:12:21.961334Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "3f3c2599be9794ea00c55d842ec1840a"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:13:33.376053Z",
+   "note": "MSSV = TEST030012 chưa có · TEN = Mot chưa có",
+   "res": "ok",
+   "shots": [
+    "85bb11083c08395f5235b68f507c5557"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:14:58.904433Z",
+   "note": "MSSV = TEST030012 chưa có · TEN = Mot chưa có · LOP = NBH49A6 (Unchecked · CATBD49A60140 · Phạm Thị Thu · Trà · Nữ · 03/05/2004 · Đang học · Đang học · NBH49A6 · 49DH_NBHA · Học kỳ 1 )",
+   "res": "ok",
+   "shots": [
+    "4905374ee2e0f0ff6e228855becbb0c8"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:15:38.643221Z",
+   "note": "LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới)",
+   "res": "ok",
+   "shots": [
+    "913d274cc45aaf14cdd67a52b63dc788"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:16:06.426136Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "3607dd19f89341fcf986aab7ccf4ce99"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:16:29.008698Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "c91cb93709acf135317cbc0ead5f3efd"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:16:57.443868Z",
+   "note": "Người test dừng test tại đây (Không tìm thấy \"Thêm mới 1 SV\" trên màn hình)",
+   "res": "skip",
+   "shots": [
+    "aea49fdc7295b9a64ec9204521002bf9"
+   ]
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "vars": {
+  "HHMMSS": "001219",
+  "HOLOT": "Kiem Thu",
+  "LOP": "NBH49A6",
+  "LOP_DONG": "Unchecked · CATBD49A60140 · Phạm Thị Thu · Trà · Nữ · 03/05/2004 · Đang học · Đang học · NBH49A6 · 49DH_NBHA · Học kỳ 1 năm 2022 - 2023 · Học kỳ 2 năm 2025 - 2026 · Tỉnh Tuyên Quang · Ngành 1 · Ngoại ngữ 2 row 24 · 012345678911 · 012345678911 · support@aqtech.vn · thutraltt352004@gmail.com",
+  "LYDO": "TT",
+  "LYDO_DONG": "Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới",
+  "MSSV": "TEST030012",
+  "MSSV2": "TEST030012B",
+  "NGAYHL2": "01/12/2026",
+  "NGAYQD": "03/11/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_030012",
+  "TEN": "Mot",
+  "TEN2": "Hai",
+  "ddHHMM": "030012",
+  "ddmmyyyy": "03/11/2026",
+  "yymmdd": "261103"
+ },
+ "version": "v2026.11A.01",
+ "video": null,
+ "videoFile": null
+}

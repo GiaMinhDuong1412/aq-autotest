@@ -237,6 +237,19 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   map cột; bảng lỗi). Dll theo phân hệ: `Edusoft.SRM` = điểm, tốt nghiệp, chứng chỉ, in điểm (namespace D1–D10, Q1–Q9, DKTBB…);
   QLSV nhiều khả năng ở `Edusoft.SMS` (chưa có) – chỉ cần nếu màn hình QLSV là `UCT_*` riêng.
 
+### #18 – Ô tra cứu phải CHỌN, hai nút Thêm, chữ Unicode tổ hợp (lượt chạy QLSV-001 2026-11-03 00:12, kit 11.02-2; người dùng dạy)
+- Ô tra cứu (vd Lý do quyết định `#IDLDQDSV`): gõ "TT" chỉ lọc/tô sáng dòng trong danh sách thả xuống (cột Mã loại | Tên loại
+  quyết định) – **chưa chọn**; rời ô là mất giá trị (lượt này ô Lý do trống). Đúng: mở danh sách (nút ▾ `Button "Open"` của ô)
+  rồi **bấm chọn dòng**; nếu gõ thì gõ xong phải bấm chọn dòng đang có. Kit `2026.11.03-1`: `choose: #Ô = giá trị` (mở rồi chọn),
+  `select: #Ô = giá trị` (gõ rồi chọn); không đọc được danh sách thì ghi `ui-danh-sach-*.txt` rồi Enter; ô vẫn trống → bước Lỗi.
+- Quyết định vào mới có **hai cụm nút Thêm**: thanh dưới danh sách quyết định trái (In, Tách quyết định, Refresh, Thêm, Sửa, Xóa,
+  Đóng) và thanh dưới lưới con "Danh sách sinh viên" (**Import, Thêm, Thêm mới 1 SV, Xóa**). Lưới con: "Thêm" = chọn sinh viên
+  có sẵn; "Thêm mới 1 SV" = thêm dòng sinh viên mới (cột Mã SV, Họ lót, Tên, Phái, Mã lớp (mới)). Ghi rõ vùng:
+  `click: Thêm @ Danh sách quyết định`, `click: Thêm mới 1 SV @ Danh sách sinh viên` (tên vùng = tên `Table` trong ui-*.txt).
+- Nhập trên lưới: `cell: Cột = giá trị @ Lưới` (bấm ô ở dòng dưới cùng, gõ; ô có danh sách thì chọn dòng khớp).
+- Chữ Việt trong Edusoft có chỗ ở dạng **Unicode tổ hợp** (nút "Thêm mới 1 SV": "mới" = ơ + U+0301) → so khớp phải chuẩn hoá NFC
+  (kit `norm()` đã làm); lượt 00:12 báo "Không tìm thấy Thêm mới 1 SV" dù nút có trên màn hình chính vì lý do này.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
