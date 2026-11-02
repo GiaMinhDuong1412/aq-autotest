@@ -305,6 +305,10 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Xóa xong lưới **vẫn còn dòng** (chưa nạp lại) → người dùng dạy: tắt màn hình bằng X, mở lại menu, kiểm tra lại;
   không còn = Đạt. Kit: `absent:` tự làm việc này (menu lấy từ lần mở menu gần nhất / menu chính của kịch bản).
 - QLSV-001 lượt này: bước 1–12 đạt (xóa thành công), bước 13 dừng vì lưới cũ. Người dùng bỏ các luồng thay thế, chỉ chạy luồng chính.
+- Lượt 03/11 01:50 (kit 11.03-7): tắt rồi mở lại "Quyết định vào mới" ngay sau khi xóa → Edusoft bật **lỗi EX thật**
+  (InvalidOperationException "This command is only applicable to WaitForms" tại SplashScreenManager.SetWaitFormDescription ←
+  AQViewers.MainForm.CallFunction ← treeChucNangC3_DoubleClick; menu S15.04). Người dùng xác nhận "test là phải như này" –
+  ghi lỗi EX (Ctrl+Shift+E chi tiết, Ctrl+Shift+F menu code), không né.
 
 ## 5. Quy trình khi được dạy
 
