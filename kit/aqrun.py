@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-4"
+KIT_VERSION = "2026.11.03-5"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1420,7 +1420,10 @@ class Edusoft:
                 base = self.area_el(area, timeout=2)
             except LookupError:
                 base = None
-            for _ in range(4):
+            # Lên dần tới tận cửa sổ chứa vùng (form popup "Danh sách lớp": lưới nằm sâu 8 tầng, thanh nút Export/Chọn/Đóng
+            # là con trực tiếp của cửa sổ – lượt 03/11 01:14 chỉ lên 4 tầng nên không thấy nút "Chọn"). Tầng gần nhất thắng.
+            top = self.root_handle(base) if base is not None else None
+            for _ in range(30):
                 if base is None:
                     break
                 try:
@@ -1428,6 +1431,11 @@ class Edusoft:
                         for el in base.descendants(control_type=t):
                             if norm_label(el.window_text()) in wants and el.is_visible():
                                 return el
+                    try:
+                        if top and base.element_info.handle == top:
+                            break
+                    except Exception:
+                        pass
                     base = base.parent()
                 except Exception:
                     break

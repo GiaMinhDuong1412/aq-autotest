@@ -277,6 +277,15 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Viết `auto` cho form con: bấm nút mở form → thao tác ô bằng `#TenControl` (kit tìm form con trước cửa sổ chính) →
   `save: Lưu` (nút Lưu của form) → form tự đóng, quay lại màn hình chính.
 
+### #21 – Thanh nút của form chọn (Export / Chọn / Đóng) nằm xa lưới (lượt QLSV-001 03/11 01:14, kit 11.03-4)
+- Form **Danh sách lớp** (`FormChonView`): lưới `viewDataCtrl` "Danh sách lớp" nằm sâu ~8 tầng (SourceViewBase → SplitControlView
+  → … → AQViewL → Table), còn thanh nút (Group "Dock Bottom" → MenuBar "Main menu" → Button Export/**Chọn**/Đóng) là con
+  trực tiếp của cửa sổ form. Kit cũ chỉ lên 4 tầng từ lưới nên báo "Không thấy nút Chọn trong vùng Danh sách lớp".
+- Kit `2026.11.03-5`: `click: Nút @ Vùng` lên dần **tới tận cửa sổ chứa vùng** (form con hoặc cửa sổ chính), tầng gần
+  nhất thắng – vẫn phân biệt được các nút trùng tên (Thêm của lưới con vẫn được tìm trước Thêm của danh sách trái).
+- Mẫu chung cho mọi form chọn (FormChonView: chọn lớp, chọn sinh viên, chọn môn…): `find_row: {GIÁ_TRỊ} @ Cột` (dòng lọc) →
+  `click: Chọn @ <tên lưới của form>`.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
