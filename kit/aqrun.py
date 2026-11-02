@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-2"
+KIT_VERSION = "2026.11.03-3"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -32,9 +32,9 @@ if os.name == "nt":
                 pass
 CFG = json.loads((BASE / "config.json").read_text("utf-8"))
 DEMO = CFG.get("demo", {})
-STEP_DELAY = float(DEMO.get("stepDelay", 1.2))
-TYPE_PAUSE = float(DEMO.get("typePause", 0.06))
-ACTION_DELAY = float(DEMO.get("actionDelay", 0.8))     # nghỉ giữa hai lệnh thao tác để Edusoft kịp vẽ màn hình
+STEP_DELAY = float(DEMO.get("stepDelay", 1.0))         # nghỉ giữa các bước test (~1 giây, người dùng yêu cầu 03/11)
+TYPE_PAUSE = float(DEMO.get("typePause", 0.03))
+ACTION_DELAY = float(DEMO.get("actionDelay", 0.3))     # nghỉ ngắn giữa hai lệnh thao tác (các lệnh tìm phần tử đã tự chờ)
 
 try:
     from pywinauto import Application, Desktop, keyboard as pkb
@@ -126,13 +126,14 @@ class Caption:
     C = dict(bg="#ffffff", line="#d5dce8", fg="#111726", dim="#4a5368", mute="#8a93a6", acc="#5b4cf0",
              ok="#1f9d55", bad="#d64545", skip="#8a93a6", soft="#f3f5fa", badbg="#fdeeee", okbg="#e9f7ef")
     W = 460
-    HOLD = 1.2            # dòng trạng thái giữ ít nhất 1,2 giây rồi mới đổi chữ
+    HOLD = 0.6            # dòng trạng thái giữ ít nhất 0,6 giây rồi mới đổi chữ
     ROWS = 5
 
     def __init__(self):
         self.q = queue.Queue()
         self.root = None
-        self.st = dict(code="", title="", menu="", text="", steps=[], alts=[], srec=[], arec=[], cur=None, status="")
+        self.st = dict(code="", title="", menu="", text="", steps=[], alts=[], srec=[], arec=[], cur=None, status="",
+                       t0=None, t_end=None, t_step=None, durs={})
         self.small = False
         self.moved = None
         self._pending = None
@@ -181,10 +182,10 @@ class Caption:
 
         def tick():
             self._render()
-            r.after(700, tick)
+            r.after(500, tick)
 
         r.after(120, pump)
-        r.after(700, tick)
+        r.after(500, tick)
         r.after(60, lambda: self._style(False))
         threading.Thread(target=self._run, args=(worker,), daemon=True).start()
         r.mainloop()
@@ -203,11 +204,25 @@ class Caption:
         """Bắt đầu một kịch bản: popup hiện mã, tên, menu và danh sách bước (trạng thái đọc thẳng từ srec/arec)."""
         steps = texts or [str(x) for x in (sc.get("steps") or [])]
         self.st.update(code=sc.get("code", ""), title=sc.get("title", ""), menu=" › ".join(menu_segs(sc.get("menu", ""))),
-                       steps=steps, alts=[a.get("name", "") for a in (sc.get("altFlows") or [])], srec=srec, arec=arec, cur=None, text="")
+                       steps=steps, alts=[a.get("name", "") for a in (sc.get("altFlows") or [])], srec=srec, arec=arec, cur=None, text="",
+                       t0=time.time(), t_end=None, t_step=None, durs={})
+        self.q.put(("__state__", None))
+
+    def finish(self):
+        """Kịch bản chạy xong: dừng đồng hồ (tổng thời gian giữ nguyên trên popup)."""
+        s, now = self.st, time.time()
+        if s["cur"] and s["t_step"]:
+            s["durs"][s["cur"]] = now - s["t_step"]
+        s.update(t_end=now, t_step=None)
         self.q.put(("__state__", None))
 
     def at(self, kind, idx, text):
         """Bước / luồng con bắt đầu chạy – chỉ gọi khi bước trước đã xong, nên chữ "Thao tác" không nhảy giữa chừng."""
+        s, now = self.st, time.time()
+        if s["cur"] and s["t_step"] and s["cur"] != (kind, idx):
+            s["durs"][s["cur"]] = now - s["t_step"]        # thời gian thực hiện bước vừa xong
+        if s["cur"] != (kind, idx) or not s["t_step"]:
+            s["t_step"] = now
         self.st.update(cur=(kind, idx), text=str(text or ""), status="")
         self._pending = None
         self.q.put(("__state__", None))
@@ -270,7 +285,9 @@ class Caption:
             w.bind("<ButtonPress-1>", self._drag_start)
             w.bind("<B1-Motion>", self._drag)
         self.l_title = self._lbl(box, "Đang chuẩn bị…", 11, C["fg"], True, self.W - 30)
-        self.l_title.pack(fill="x", padx=14, pady=(2, 6))
+        self.l_title.pack(fill="x", padx=14, pady=(2, 2))
+        self.l_timer = self._lbl(box, "", 9, C["acc"], True, self.W - 30)      # ⏱ tổng thời gian · thời gian bước đang chạy
+        self.l_timer.pack(fill="x", padx=14, pady=(0, 6))
         self.info = tk.Frame(box, bg=C["bg"])
         self.info.pack(fill="x", padx=14)
         self._lbl(self.info, "Menu", 8, C["mute"], True).grid(row=0, column=0, sticky="nw", padx=(0, 10))
@@ -308,6 +325,7 @@ class Caption:
         t = s["text"] or "—"
         self.l_text.config(text=t if len(t) <= 260 else t[:257] + "…")
         self.l_status.config(text=s["status"])
+        self.l_timer.config(text=self._timer_text())
         if self.small:
             self.lst.pack_forget()
         else:
@@ -324,12 +342,33 @@ class Caption:
                 now = (kind, idx) == cur and res is None
                 icon, color = ("●", C["acc"]) if now else {"ok": ("✓", C["ok"]), "bad": ("✗", C["bad"]), "skip": ("–", C["skip"])}.get(res, ("○", C["mute"]))
                 short = " ".join(str(txt).split())
-                short = short if len(short) <= 48 else short[:46] + "…"
-                row.config(text="%s  %s · %s" % (icon, lab, short), fg=color if (now or res) else C["dim"],
+                short = short if len(short) <= 44 else short[:42] + "…"
+                d = s["durs"].get((kind, idx))
+                tail = ("  · " + self._fmt(d)) if (d is not None and res) else ""
+                row.config(text="%s  %s · %s%s" % (icon, lab, short, tail), fg=color if (now or res) else C["dim"],
                            font=("Segoe UI", 9, "bold" if now else "normal"))
                 if not row.winfo_ismapped():
                     row.pack(fill="x", padx=8, pady=1)
         self._place()
+
+    @staticmethod
+    def _fmt(sec):
+        sec = int(round(sec or 0))
+        h, m, x = sec // 3600, sec // 60 % 60, sec % 60
+        return ("%d:%02d:%02d" % (h, m, x)) if h else ("%d:%02d" % (m, x))
+
+    def _timer_text(self):
+        s = self.st
+        if not s["t0"]:
+            return ""
+        now = time.time()
+        txt = "⏱ Tổng %s" % self._fmt((s["t_end"] or now) - s["t0"])
+        if s["t_end"]:
+            return txt + " · đã xong"
+        if s["cur"] and s["t_step"]:
+            lab = ("Bước %d" % (s["cur"][1] + 1)) if s["cur"][0] == "step" else ("Luồng A%d" % (s["cur"][1] + 1))
+            txt += "  ·  %s: %s" % (lab, self._fmt(now - s["t_step"]))
+        return txt
 
     def _place(self):
         r = self.root
@@ -639,19 +678,19 @@ class Edusoft:
             el.draw_outline(colour="red", thickness=3)
         except Exception:
             pass
-        time.sleep(STEP_DELAY * 0.5)
+        time.sleep(ACTION_DELAY)
 
     def click(self, el, double=False):
         self.mark(el)
         (el.double_click_input if double else el.click_input)()
-        time.sleep(STEP_DELAY * 0.5)
+        time.sleep(ACTION_DELAY)
 
     def type_into(self, el, value):
         self.mark(el)
         el.click_input()
         pkb.send_keys("{END}" + "{BACKSPACE}" * 40, pause=0.005)
         pkb.send_keys(esc_keys(value), with_spaces=True, pause=TYPE_PAUSE)
-        time.sleep(STEP_DELAY * 0.4)
+        time.sleep(ACTION_DELAY)
 
     def field_value(self, el):
         for get in (lambda: el.get_value(), lambda: el.iface_value.CurrentValue, lambda: el.window_text()):
@@ -722,7 +761,7 @@ class Edusoft:
             pkb.send_keys("{SPACE}")
         else:
             el.click_input()
-        time.sleep(STEP_DELAY * 0.5)
+        time.sleep(ACTION_DELAY)
 
     def dialogs_other(self):
         skip = {getattr(self.login, "handle", None), getattr(self.main, "handle", None)}
@@ -1001,8 +1040,8 @@ class Edusoft:
                 self.expand_node(el)              # nhóm trên cây chức năng: mở nhóm để thấy mục con
             else:
                 self.click(el, double=(last and ct in ("TreeItem", "DataItem", "ListItem")))
-            time.sleep(1.2)
-        time.sleep(STEP_DELAY * 1.5)
+            time.sleep(0.8)
+        time.sleep(1.5)                            # chờ màn hình chức năng mở xong
 
     def expand_node(self, el):
         """Bấm chọn nhóm trên cây rồi mở nhóm (ExpandCollapse); không được thì bấm đúp – chỉ khi nhóm đang đóng,
@@ -1826,7 +1865,7 @@ class Run:
                 self.dump(arg or label or "man-hinh")
             elif verb == "key":
                 pkb.send_keys(arg)
-                time.sleep(STEP_DELAY * 0.5)
+                time.sleep(ACTION_DELAY)
             elif verb == "wait":
                 time.sleep(float(arg or 1))
             elif verb == "ok":
@@ -2075,7 +2114,7 @@ class Run:
         print("» %s (thao tác tay) — F8 = Đạt · F9 = Lỗi · F10 = Bỏ qua" % label)
         res = CAP.ask("__step__", label, text)
         if res:
-            time.sleep(STEP_DELAY * 0.5)
+            time.sleep(ACTION_DELAY)
             return res
         if hotkeys is None:
             k = input("   %s – nhập 8 (Đạt) / 9 (Lỗi) / 0 (Bỏ qua): " % label).strip()
@@ -2094,7 +2133,7 @@ class Run:
     def ask_error(self, rec, label, kind, idx, text):
         if CAP.root is not None:                     # form trên popup, tự đưa con trỏ vào – không gõ nhầm sang Edusoft
             self.add_bug(rec, kind, idx, text, CAP.ask("__bug__", label, self.expand(text)) or {})
-            time.sleep(STEP_DELAY * 0.5)
+            time.sleep(ACTION_DELAY)
             return
         try:                                          # không có tkinter: hỏi trong cửa sổ đen – đưa nó lên trước
             import ctypes
@@ -2129,6 +2168,7 @@ class Run:
             rec["note"] = "Lỗi chức năng · " + action
 
     def run_block(self, kind, idx, label, text, actions, rec):
+        t_start = time.time()
         CAP.at(kind, idx, self.expand(text))      # popup đổi "Thao tác" khi bước trước đã xong
         time.sleep(STEP_DELAY)
         self.es.keep_open()
@@ -2180,6 +2220,7 @@ class Run:
             if s:
                 rec["shots"].append(s)
         rec["at"] = now_iso()
+        rec["sec"] = round(time.time() - t_start, 1)      # thời gian thực hiện bước (giây)
         self.say("%s: %s%s — %s" % (label, {"ok": "ĐẠT", "bad": "LỖI", "skip": "BỎ QUA"}.get(rec["res"], "?"), (" · " + rec["note"]) if rec["note"] else "", text[:120]))
         return rec["res"]
 
@@ -2266,6 +2307,7 @@ class Run:
         for b in self.bugs:
             lab = ("Bước %d" if b["kind"] == "step" else "Luồng A%d") % (b["stepIndex"] + 1)
             lines.append(lab + " — " + ("Lỗi EX" + (" (menu code %s)" % b.get("menuCode") if b.get("menuCode") else "") + ": " + (b.get("exDetail", "").split("\n")[0][:160]) if b["type"] == "ex" else "Lỗi chức năng: " + b.get("actualData", "")[:160]))
+        CAP.finish()
         self.say("Kết thúc: %s" % {"pass": "Đạt", "fail": "Không đạt", "blocked": "Bị chặn"}[status])
         out = dict(format="aq-autotest-run/1", runId=self.id, scenarioId=sc["id"], scenarioCode=sc["code"], scenarioTitle=sc.get("title", ""),
                    product=sc.get("product", "edusoft"), module=sc.get("module", ""), runnerId=CFG.get("runnerId"), machine=CFG.get("machine", ""),
@@ -2576,6 +2618,7 @@ def run_login_test(sc, es, account, password):
         es.kill()
     main_res = [x["res"] for x in steps]
     status = "fail" if "bad" in main_res + [a["res"] for a in alts] else ("pass" if all(x == "ok" for x in main_res) else "blocked")
+    CAP.finish()
     r.say("Kết thúc: %s" % {"pass": "Đạt", "fail": "Không đạt", "blocked": "Bị chặn"}[status])
     lines = [("Bước %d" if b["kind"] == "step" else "Luồng A%d") % (b["stepIndex"] + 1) + " — " + b.get("actualData", "") for b in r.bugs]
     out = dict(format="aq-autotest-run/1", kitVersion=KIT_VERSION, runId=r.id, scenarioId=sc["id"], scenarioCode=sc["code"], scenarioTitle=sc.get("title", ""),
