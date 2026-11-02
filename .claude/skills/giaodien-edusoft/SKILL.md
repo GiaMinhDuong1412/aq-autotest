@@ -296,6 +296,16 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Lượt cũ (kit ≤ 11.03-5) đọc lưới bằng tên phần tử (không có giá trị ô) nên tưởng hộp không nêu mã → bấm Đóng, dữ liệu test
   TEST_QD_030122 còn lại (xóa tay hoặc chạy lại – lượt sau mã khác nên không trùng).
 
+### #23 – Kết quả Lưu/Xóa báo ở THANH TRẠNG THÁI; lưới không tự nạp lại (lượt QLSV-001 03/11 01:35, kit 11.03-7)
+- Lưu / Xóa thành công thường **không bật hộp thoại**: chữ xanh hiện ở thanh trạng thái dưới đáy cửa sổ chính
+  (StatusBar "Status bar" → Text, cạnh "Năm học", "Học kỳ", "ĐVPC: …"), vd **"Xóa dữ liệu thành công"**,
+  "Cập nhật mẫu tin Chi tiết Danh sách quyết định thành công". Kit: `save:` và `delete_row:` chờ chữ này đổi
+  (`status_msg`/`wait_status`), ghi vào ghi chú bước; chữ báo lỗi → bước Lỗi.
+- Trong lúc xóa có cửa sổ "progressPanel1" (không có nút) – chờ nó tự tắt, không bấm gì.
+- Xóa xong lưới **vẫn còn dòng** (chưa nạp lại) → người dùng dạy: tắt màn hình bằng X, mở lại menu, kiểm tra lại;
+  không còn = Đạt. Kit: `absent:` tự làm việc này (menu lấy từ lần mở menu gần nhất / menu chính của kịch bản).
+- QLSV-001 lượt này: bước 1–12 đạt (xóa thành công), bước 13 dừng vì lưới cũ. Người dùng bỏ các luồng thay thế, chỉ chạy luồng chính.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
