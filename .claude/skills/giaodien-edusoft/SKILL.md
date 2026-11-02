@@ -216,6 +216,27 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   **Không** có ánh xạ tên control ↔ nhãn. Dùng để tra đúng chữ hộp thoại cho `expect_dialog:`/`expect:`; không commit cả file.
 - Nhãn ô của khung nhập (vd S15.04) không nằm trong `Languages.xml` → lấy từ metadata trong dll (`AQControls…`, module) hoặc CSDL.
 
+### #17 – Khung AQ dựng màn hình từ CSDL (đọc metadata dll 2026-11-02: AQViewers, AQControls.Forms.UI.v3, AQFramework, Edusoft.Base, Edusoft.SRM)
+- Phần lớn màn hình là **màn hình chung theo metadata**: `AQViewL` (lưới trái, kế thừa `AQViewBase`) + `AQDetailRight`
+  (khung nhập phải) đọc cấu hình **View/FieldView** trong CSDL rồi tự tạo control. Không có form riêng trong dll →
+  không thể lấy bảng nhãn từ dll; nhãn = `TenLabel` (bảng `AQDmField`, ghi đè theo View ở FieldView), vị trí `RowIndex/ColIndex`,
+  `TabOrder`, `AllowNull` (= dấu `*`), `ReadOnly`, `Hide/HideLbl`, `DefaultValField`, `CtrlType`. Bảng metadata thấy trong
+  câu SQL: `AQDmFile` (MaFile = tên bảng), `AQFileField`, `AQDmField` (MaField, TenField, TenLabel, SpecType, DoDaiField).
+- Control tạo ra: tên = `MaField` (cột CSDL), bọc trong `<MaField>_UC`; nhãn là **chữ của LayoutControlItem** (DevExpress
+  vẽ, không có trong UIA) → kit chỉ tìm được ô bằng `#MaField`. Muốn gõ theo nhãn phải có bảng nhãn ↔ MaField lấy từ CSDL.
+- Kiểu ô (`AQFramework.TypeControl`): TextBox, ComboEdit, CheckBoxEdit, SpinEdit, DateTimePicker, ImagePicture,
+  **LockupEdit** (`AQLockUpEdit`: gõ mã rồi Enter, có cờ `KeyPressEnter`), ComboEnum, ComboImage, RichTextBox, ChooseImage;
+  ngoài ra khung nhập có loại riêng: Ngày sinh, NHHK, Sinh viên (gõ mã SV), Chữ ký, Địa chỉ/Địa bàn, Mail, Số phiếu, Mật khẩu.
+- Kiểu View (`TypeView`): ViewDoi (lưới + khung nhập), ViewOnly, EditOnly.
+- **Hộp thoại**: `AQControls.AQMessageBox.MsgBox` (Form; nội dung ở `lblMessage`, nút `btn1`/`btn2`/`btn3` chữ Có/Không/OK…);
+  **lỗi hệ thống** = `ErrorMsgBox` (`lblThongBao`, `rtxt_Error`, nút `btnViewErrorHelp…`, chữ "Đã xảy ra lỗi khi xử lý nghiệp vụ…
+  [Gửi mail về Support]") → coi là **Lỗi** (bad), chụp ảnh, không bấm gửi mail.
+- Lưu trùng mã: hộp thoại "`<mã>` đã có, có chấp nhận bị trùng không?" → không bấm Có (kit đã không bao giờ tự bấm Có).
+- Màn hình **tùy biến** = lớp `UCT_*` kế thừa `AQViewCommonCtr` (control tên cố định: `btn…`, `txt…`, `look_…`, `rdo_…`, `chk…`,
+  `spn…`, `dat_TuNgay/dat_DenNgay`, `lbl…`); nhập Excel = `UCImport_01/02/03` (Chọn file, Sheet, Dòng tiêu đề, Dòng dữ liệu;
+  map cột; bảng lỗi). Dll theo phân hệ: `Edusoft.SRM` = điểm, tốt nghiệp, chứng chỉ, in điểm (namespace D1–D10, Q1–Q9, DKTBB…);
+  QLSV nhiều khả năng ở `Edusoft.SMS` (chưa có) – chỉ cần nếu màn hình QLSV là `UCT_*` riêng.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
