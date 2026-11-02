@@ -310,6 +310,17 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   AQViewers.MainForm.CallFunction ← treeChucNangC3_DoubleClick; menu S15.04). Người dùng xác nhận "test là phải như này" –
   ghi lỗi EX (Ctrl+Shift+E chi tiết, Ctrl+Shift+F menu code), không né.
 
+### #24 – Script xóa "thành công" nhưng Edusoft không xóa (lượt 03/11 01:35 + 01:50, kit 11.03-6/7)
+- Dấu hiệu: ghi chú bước 12 "Đã tick 1 dòng … · Đã xóa …" nhưng ảnh `buoc-12.png` vẫn còn dòng, thanh trạng thái KHÔNG đổi
+  sang "Xóa dữ liệu thành công" (vẫn "Cập nhật mẫu tin …"); người test làm tay thì xóa được.
+- Nguyên nhân (suy từ bằng chứng): ô check `#` trong form "Danh sách đang chọn để xóa" không ở trạng thái tick lúc bấm
+  Thực hiện – kit cũ có thể bấm ô 2 lần liền (tick rồi bỏ tick) vì đọc giá trị ô khi ô đang sửa chưa ghi vào lưới;
+  Thực hiện → Có với 0 dòng chọn nên không xóa gì. Kit cũ còn không kiểm thanh trạng thái nên báo nhầm "Đã xóa".
+- Kit `2026.11.03-9`: `tick_box` bấm ô 1 lần → chờ đọc → bấm sang ô khác cùng dòng (đẩy giá trị vào lưới) → đọc lại; chỉ bấm
+  lần 2 khi đọc chắc chắn còn Unchecked; không tick được → không xóa, báo lỗi. Bấm Thực hiện / Có bằng chuột như người test.
+  Ảnh `xoa-da-tick.png` (form trước Thực hiện). Sau Có **bắt buộc** thanh trạng thái báo "Xóa … thành công", không thì bước Lỗi
+  ("Edusoft KHÔNG báo Xóa dữ liệu thành công") + ảnh `xoa-khong-bao.png`.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.

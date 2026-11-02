@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-8"
+KIT_VERSION = "2026.11.03-9"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2156,21 +2156,23 @@ class Run:
                 if not hit or len(hit) != len(data):
                     others = [" · ".join(v for _, v, _ in r if v and v not in ("Checked", "Unchecked")) for k, r in data.items() if k not in hit]
                     refuse("Danh sách xác nhận xóa không chỉ có %s (%s) nên KHÔNG xóa – hãy xóa tay" % (code, "; ".join(others)[:200] or "không đọc được dòng"))
+                ticks = []
                 for k, r in hit.items():
                     box = next((c for n, v, c in r if v in ("Unchecked", "Checked") or n == "#"), None)
                     if box is None:
                         continue
-                    if es.field_value(box) != "Checked":
-                        es.click(box)
-                        time.sleep(ACTION_DELAY)
-                    if es.field_value(box) == "Unchecked":
-                        es.click(box)                     # lần đầu chỉ chọn ô, lần hai mới tick
+                    other = next((c for n, v, c in r if c is not box), None)
+                    ticks.append(self.tick_box(box, other))
+                if any(t == "Unchecked" for t in ticks):
+                    self.shot_into(notes, "xoa-chua-tick")
+                    refuse("Không tick được ô chọn của dòng %s trong danh sách xác nhận xóa (ô vẫn Unchecked) – chưa xóa" % code)
+                self.shot_into(notes, "xoa-da-tick")
                 btn = es.dialog_button(d, ("thực hiện", "xóa", "xoá", "đồng ý", "ok", "chọn"))
                 if btn is None:
                     refuse("Form xác nhận xóa không có nút Thực hiện")
                 verified = True
-                notes.append("Đã tick %d dòng %s trong danh sách xác nhận xóa" % (len(hit), code))
-                es.press(btn)
+                notes.append("Tick dòng %s: %s" % (code, ", ".join(t or "không đọc được" for t in ticks) or "không thấy ô chọn"))
+                es.click(btn)                             # bấm chuột như người test (nút thanh công cụ DevExpress)
                 time.sleep(2)
                 continue
             txt = es.dialog_text(d)
@@ -2184,7 +2186,15 @@ class Run:
             yes = es.dialog_button(d, ("có", "yes", "đồng ý", "ok", "xóa", "xoá"))
             if no is not None:                            # câu hỏi xác nhận
                 if yes is not None and (key in norm(txt) or (verified and re.search(r"xóa|xoá|delete", norm(txt), re.I))):
-                    es.press(yes)
+                    notes.append("Xác nhận: " + head[:80] + " → Có")
+                    es.click(yes)                         # bấm chuột vào Có
+                    time.sleep(1)
+                    try:
+                        still = d.is_visible()
+                    except Exception:
+                        still = False
+                    if still:                             # chưa đóng → bấm lại bằng phím
+                        es.press(yes)
                     confirmed = True
                     time.sleep(2)
                     continue
@@ -2202,13 +2212,51 @@ class Run:
             refuse("Bấm Xóa nhưng không thấy hộp thoại xác nhận xóa %s" % code)
         close_forms()
         es.close_dialogs(6)
-        st = es.wait_status(st0, 10)                      # "Xóa dữ liệu thành công" ở thanh trạng thái
+        st = es.wait_status(st0, 12)                      # "Xóa dữ liệu thành công" ở thanh trạng thái
         if st and ERR_PAT.search(st) and not OK_PAT.search(st):
             raise RuntimeError("Xóa không thành công (thanh trạng thái): " + st[:200])
-        if st:
-            notes.append("Thanh trạng thái: " + st[:150])
+        if not (st and re.search(r"xóa|xoá", st, re.I) and OK_PAT.search(st)):
+            # Lượt 03/11 01:35 và 01:50: kit báo "Đã xóa" nhưng Edusoft không xóa (thanh trạng thái không đổi, dòng còn).
+            self.shot_into(notes, "xoa-khong-bao")
+            raise RuntimeError("Đã bấm Xóa → Thực hiện → Có nhưng Edusoft KHÔNG báo \"Xóa dữ liệu thành công\" (thanh trạng thái: %s) – "
+                               "dữ liệu %s có thể chưa bị xóa" % (st or es.status_msg() or "không đổi", code))
+        notes.append("Thanh trạng thái: " + st[:150])
         notes.append("Đã xóa " + code)
         return notes
+
+    def tick_box(self, box, other=None):
+        """Tick ô chọn (cột "#") của một dòng lưới DevExpress, CHẮC CHẮN ô thành Checked:
+        bấm 1 lần → bấm sang ô khác cùng dòng (đẩy giá trị từ ô đang sửa vào lưới) → đọc lại; còn Unchecked thì bấm lần 2.
+        Không bấm 2 lần liền nhau (lượt 01:35/01:50 bấm 2 lần → tick rồi bỏ tick, Thực hiện xóa không được dòng nào).
+        Trả giá trị cuối ("Checked"/"Unchecked"/"" nếu không đọc được)."""
+        es = self.es
+
+        def read():
+            v = es.field_value(box) or ""
+            return v if v in ("Checked", "Unchecked") else ""
+
+        if read() == "Checked":
+            return "Checked"
+        v = ""
+        for _ in range(2):
+            es.click(box)
+            for _ in range(4):
+                time.sleep(0.4)
+                v = read()
+                if v == "Checked":
+                    return v
+            if other is not None:
+                try:
+                    es.click(other)                       # rời ô check → giá trị được ghi vào lưới
+                except Exception:
+                    pass
+                time.sleep(0.6)
+                v = read()
+                if v == "Checked":
+                    return v
+            if v != "Unchecked":
+                return v                                  # không đọc được giá trị – không bấm thêm (tránh bỏ tick)
+        return v
 
     def grid_rows(self):
         """Các dòng đang hiện trong lưới của màn hình: mỗi dòng là danh sách (tên cột, giá trị). Ô lưới DevExpress là
