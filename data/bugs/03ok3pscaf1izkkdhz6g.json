@@ -1,0 +1,32 @@
+{
+ "action": "",
+ "actualData": "",
+ "createdAt": "2026-11-02T19:00:08.958Z",
+ "createdBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "exDetail": "DevExpress.XtraEditors.v16.2  [ExpType: System.InvalidOperationException/ExpType]\n[ExpMsg: This command is only applicable to WaitForms/ExpMsg]\n[ExpStack:    at DevExpress.XtraSplashScreen.SplashScreenManager.SetWaitFormDescription(String description)\n   at AQControls.Waiting.Progress.SetDescription(String value, String[] parameters)\n   at AQViewers.MainForm.CallFunction(String maFunction, Int64 IDPhanHe, String fullMenuPath)\n   at AQViewers.MainForm.treeChucNangC3_DoubleClick(Object sender, EventArgs e)\n   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)\n   at DevExpress.XtraTreeList.TreeList.OnDoubleClick(EventArgs e)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at DevExpress.XtraEditors.Container.EditorContainer.WndProc(Message& m)\n   at DevExpress.XtraTreeList.TreeList.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)/ExpStack]",
+ "expectedData": "",
+ "kind": "step",
+ "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
+ "menuCode": "[ FORMXULY ]\nS15.04 - Quyết định vào mới\nEdusoft.SMS.S02.UCQDSV,Edusoft.SMS\nSinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định vào mới",
+ "module": "QLSV",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runId": "sc-qlsv-001-20261103-015029",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "shots": [
+  "8ee8d0af795a3c1bd184b196c6bfb1a9"
+ ],
+ "source": "script",
+ "status": "open",
+ "stepIndex": 12,
+ "stepText": "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới (xóa thành công). Nếu vẫn thấy (lưới chưa nạp lại) → tắt màn hình bằng X, mở lại menu, kiểm tra lần nữa: không còn = Đạt. Xong tắt màn hình.",
+ "type": "ex",
+ "updatedAt": "2026-11-02T19:00:08.958Z",
+ "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "version": "v2026.11A.01"
+}
