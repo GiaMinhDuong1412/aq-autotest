@@ -2147,7 +2147,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-3"
+KIT_VERSION = "2026.11.03-4"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2837,11 +2837,47 @@ class Edusoft:
                 continue
         return None
 
+    def root_handle(self, el):
+        """Cửa sổ cấp cao THẬT chứa phần tử (Win32 GetAncestor GA_ROOT). Không dùng top_level_parent() của UIA:
+        UIA xếp form con của Edusoft (vd "Chi tiết lý lịch sinh viên" khi bấm Thêm mới 1 SV, Danh sách lớp…) vào trong
+        cửa sổ chính nên top_level_parent() trả về cửa sổ chính – lượt 03/11 01:05 vì thế đã tự đóng nhầm form."""
+        e = el
+        for _ in range(40):
+            if e is None:
+                return None
+            try:
+                h = e.element_info.handle
+            except Exception:
+                h = None
+            if h:
+                try:
+                    import ctypes
+                    return ctypes.windll.user32.GetAncestor(h, 2) or h
+                except Exception:
+                    return h
+            try:
+                e = e.parent()
+            except Exception:
+                return None
+        return None
+
+    def is_form(self, w):
+        """Form nhập liệu / chọn (có khung nhập AQDetailRight, lưới, tab) – KHÁC hộp thông báo; kit không tự đóng form."""
+        try:
+            for el in w.descendants():
+                ei = el.element_info
+                if ei.automation_id in ("AQDetailRight", "AQViewL", "viewDataCtrl") or ei.control_type in ("Table", "DataGrid", "Tab"):
+                    return True
+        except Exception:
+            pass
+        return False
+
     def focus(self, el):
         """Đưa con trỏ bàn phím vào đúng phần tử qua UI Automation (không bấm theo toạ độ màn hình,
         vì toạ độ hay lệch khi máy có 2 màn hình / tỉ lệ hiển thị khác nhau)."""
         try:
-            el.top_level_parent().set_focus()
+            h = self.root_handle(el)
+            (self.uia(h) if h else el.top_level_parent()).set_focus()
         except Exception:
             pass
         try:
@@ -2858,11 +2894,7 @@ class Edusoft:
         """Điền ô nhập bằng BÀN PHÍM THẬT (Edusoft/DevExpress chỉ ghi nhận giá trị khi được gõ):
         đưa con trỏ vào đúng ô qua UI Automation (không bấm theo toạ độ), xác nhận ô đang có con trỏ,
         xóa bằng End + Backspace rồi gõ. Ô thường được đọc lại để kiểm tra. Trả về True nếu đúng."""
-        try:                                       # không đóng chính form con chứa ô (vd popup "Thêm mới 1 SV")
-            keep = el.top_level_parent().handle
-        except Exception:
-            keep = None
-        self.close_dialogs(3, keep=keep)
+        self.close_dialogs(3, keep=self.root_handle(el))   # chỉ đóng hộp thông báo, không đóng form chứa ô
         value = str(value)
         self.mark(el)
         for attempt in range(3):
@@ -2914,13 +2946,30 @@ class Edusoft:
             time.sleep(0.4)
         return []
 
-    def close_dialogs(self, timeout=8, keep=None):
-        """Đóng thông báo: bấm nút Đóng/OK NẰM TRONG hộp thoại (không đụng nút Đóng của khung đăng nhập);
-        không có nút thì Enter; vẫn còn thì gửi lệnh đóng cửa sổ. Chờ tới khi không còn hộp thoại."""
+    def close_dialogs(self, timeout=8, keep=None, forms=False):
+        """Đóng THÔNG BÁO: bấm nút Đóng/OK NẰM TRONG hộp thoại (không đụng nút Đóng của khung đăng nhập);
+        không có nút thì Enter; vẫn còn thì gửi lệnh đóng cửa sổ. Chờ tới khi không còn hộp thoại.
+        Form nhập liệu / chọn (is_form) KHÔNG bị đóng trừ khi forms=True – các menu Edusoft hay mở form con
+        (Thêm mới 1 SV, Danh sách lớp, Import…) và bước tiếp theo cần form đó."""
         end = time.time() + timeout
         tries = 0
+        formc = {}
+
+        def targets():
+            out = []
+            for d in self.dialogs_other():
+                if d.handle == keep:
+                    continue
+                if not forms:
+                    if d.handle not in formc:
+                        formc[d.handle] = self.is_form(d)
+                    if formc[d.handle]:
+                        continue
+                out.append(d)
+            return out
+
         while time.time() < end:
-            ds = [d for d in self.dialogs_other() if d.handle != keep]
+            ds = targets()
             if not ds:
                 if self.login is not None:
                     try:
@@ -2949,7 +2998,7 @@ class Edusoft:
                     except Exception:
                         pass
             time.sleep(0.8)
-        return not [d for d in self.dialogs_other() if d.handle != keep]
+        return not targets()
 
     def kill(self):
         try:
@@ -3352,7 +3401,8 @@ class Edusoft:
         lab = self.find_any(label, types=("Text", "Custom", "Pane", "Group", "TreeItem", "ListItem", "DataItem"), timeout=timeout)
         lr = lab.rectangle()
         lm = (lr.top + lr.bottom) / 2
-        root = lab.top_level_parent()
+        rh = self.root_handle(lab)
+        root = self.uia(rh) if rh else lab.top_level_parent()
         cands = []
         for t in ("Edit", "ComboBox", "Spinner", "Document"):
             try:
@@ -8129,7 +8179,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.03-3';
+  var KITVER='2026.11.03-4';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
