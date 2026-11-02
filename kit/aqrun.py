@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-7"
+KIT_VERSION = "2026.11.03-8"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -126,6 +126,8 @@ class Caption:
     C = dict(bg="#ffffff", line="#d5dce8", fg="#111726", dim="#4a5368", mute="#8a93a6", acc="#5b4cf0",
              ok="#1f9d55", bad="#d64545", skip="#8a93a6", soft="#f3f5fa", badbg="#fdeeee", okbg="#e9f7ef")
     W = 460
+    W_WIDE = 720          # khi hiện khung lỗi / ghi lỗi: rộng hơn để đọc đủ chi tiết lỗi EX
+    BORDER = 3            # viền màu làm nổi popup: tím = đang chạy · đỏ = gặp lỗi · xanh = xong
     HOLD = 0.6            # dòng trạng thái giữ ít nhất 0,6 giây rồi mới đổi chữ
     ROWS = 5
 
@@ -135,6 +137,8 @@ class Caption:
         self.st = dict(code="", title="", menu="", text="", steps=[], alts=[], srec=[], arec=[], cur=None, status="",
                        t0=None, t_end=None, t_step=None, durs={})
         self.small = False
+        self.wide = False
+        self.bkey = None      # màu viền đang giữ (bad/ok khi có khung lỗi / kết quả), None = theo trạng thái chạy
         self.moved = None
         self._pending = None
         self._hold = 0.0
@@ -150,7 +154,7 @@ class Caption:
         r = self.root = tk.Tk()
         r.overrideredirect(True)
         r.attributes("-topmost", True)
-        r.configure(bg=self.C["line"])
+        r.configure(bg=self.C["acc"])
         self._build()
 
         def pump():
@@ -216,6 +220,15 @@ class Caption:
         s.update(t_end=now, t_step=None)
         self.q.put(("__state__", None))
 
+    def _border(self, key=None):
+        """key = "bad"/"ok" giữ màu viền tới khi khung hỏi đóng; None = tím khi đang chạy, xanh khi xong."""
+        if key is not None:
+            self.bkey = key
+        try:
+            self.root.configure(bg=self.C[self.bkey or ("ok" if self.st["t_end"] else "acc")])
+        except Exception:
+            pass
+
     def at(self, kind, idx, text):
         """Bước / luồng con bắt đầu chạy – chỉ gọi khi bước trước đã xong, nên chữ "Thao tác" không nhảy giữa chừng."""
         s, now = self.st, time.time()
@@ -271,7 +284,7 @@ class Caption:
     def _build(self):
         tk, C, r = self.tk, self.C, self.root
         box = self.box = tk.Frame(r, bg=C["bg"])
-        box.pack(fill="both", expand=True, padx=1, pady=1)
+        box.pack(fill="both", expand=True, padx=self.BORDER, pady=self.BORDER)
         hd = tk.Frame(box, bg=C["bg"])
         hd.pack(fill="x", padx=14, pady=(10, 0))
         self.l_app = self._lbl(hd, "AQ AUTOTEST", 8, C["mute"], True)
@@ -326,6 +339,11 @@ class Caption:
         self.l_text.config(text=t if len(t) <= 260 else t[:257] + "…")
         self.l_status.config(text=s["status"])
         self.l_timer.config(text=self._timer_text())
+        self._border()
+        w = self.W_WIDE if self.wide else self.W
+        self.l_title.config(wraplength=w - 30)
+        self.l_text.config(wraplength=w - 100)
+        self.l_menu.config(wraplength=w - 100)
         if self.small:
             self.lst.pack_forget()
         else:
@@ -373,12 +391,15 @@ class Caption:
     def _place(self):
         r = self.root
         r.update_idletasks()
-        h = self.box.winfo_reqheight() + 2
+        w = self.W_WIDE if self.wide else self.W
+        h = self.box.winfo_reqheight() + 2 * self.BORDER
         if self.moved:
             x, y = self.moved
+            x = min(x, max(0, r.winfo_screenwidth() - w))
         else:
-            x, y = r.winfo_screenwidth() - self.W - 18, max(0, r.winfo_screenheight() - h - 70)
-        r.geometry("%dx%d+%d+%d" % (self.W, h, x, y))
+            x, y = r.winfo_screenwidth() - w - 18, max(0, r.winfo_screenheight() - h - 70)
+        y = min(y, max(0, r.winfo_screenheight() - h - 40))
+        r.geometry("%dx%d+%d+%d" % (w, h, x, y))
 
     def _toggle(self):
         self.small = not self.small
@@ -437,10 +458,30 @@ class Caption:
         for w in self.act.winfo_children():
             w.destroy()
         self.act.pack_forget()
+        self.wide = False
+        self.bkey = None
+        self._border()
         self._place()
 
-    def _act_new(self, bg=None):
+    def _textbox(self, parent, text="", height=6, bg=None, readonly=False):
+        """Ô chữ nhiều dòng có thanh cuộn – chi tiết lỗi EX (stack trace) dài, ô một dòng không xem/dán đủ."""
+        tk, C = self.tk, self.C
+        fr = tk.Frame(parent, bg=bg or C["bg"])
+        sb = tk.Scrollbar(fr, orient="vertical")
+        t = tk.Text(fr, height=height, wrap="word", font=("Consolas", 9), relief="solid", bd=1, yscrollcommand=sb.set,
+                    bg="#fbfbfd" if readonly else "#ffffff", fg=C["fg"], padx=4, pady=3)
+        sb.config(command=t.yview)
+        sb.pack(side="right", fill="y")
+        t.pack(side="left", fill="both", expand=True)
+        if text:
+            t.insert("1.0", text)
+        if readonly:
+            t.config(state="disabled")
+        return fr, t
+
+    def _act_new(self, bg=None, wide=False):
         self._act_clear()
+        self.wide = wide
         if self.small:
             self._toggle()
         self.act.config(bg=bg or self.C["bg"])
@@ -461,10 +502,12 @@ class Caption:
     def _act_err(self, label, payload, rq):
         C = self.C
         text, err = payload
-        a = self._act_new(C["badbg"])
+        a = self._act_new(C["badbg"], wide=True)
+        self._border("bad")
         self._lbl(a, "⚠  %s gặp lỗi – test đang tạm dừng" % label, 10, C["bad"], True, bg=C["badbg"]).pack(fill="x", padx=10, pady=(8, 2))
-        self._lbl(a, err[:300], 9, C["fg"], False, self.W - 60, bg=C["badbg"]).pack(fill="x", padx=10)
-        self._lbl(a, "Xem màn hình Edusoft rồi chọn. Luồng này sẽ dừng, các luồng khác vẫn test tiếp.", 8, C["dim"], False, self.W - 60,
+        fr, _ = self._textbox(a, err, height=min(12, max(3, err.count("\n") + len(err) // 90 + 1)), bg=C["badbg"], readonly=True)
+        fr.pack(fill="x", padx=10)
+        self._lbl(a, "Xem màn hình Edusoft rồi chọn. Luồng này sẽ dừng, các luồng khác vẫn test tiếp.", 8, C["dim"], False, self.W_WIDE - 60,
                   bg=C["badbg"]).pack(fill="x", padx=10, pady=(6, 0))
         f = self.tk.Frame(a, bg=C["badbg"])
         f.pack(fill="x", padx=10, pady=(8, 10))
@@ -476,7 +519,8 @@ class Caption:
     def _act_bug(self, label, prefill, rq, cont=False):
         tk, C = self.tk, self.C
         prefill = prefill if isinstance(prefill, dict) else dict(type="func", exp=str(prefill or ""))
-        a = self._act_new()
+        a = self._act_new(wide=True)
+        self._border("bad")
         self._lbl(a, "Ghi lỗi · %s" % label, 10, C["fg"], True).pack(fill="x")
         kind = tk.StringVar(value=prefill.get("type", "func"))
         rf = tk.Frame(a, bg=C["bg"])
@@ -485,13 +529,20 @@ class Caption:
         body.pack(fill="x")
         ents = {}
 
-        def row(key, lab):
+        def row(key, lab, lines=0):
             fr = tk.Frame(body, bg=C["bg"])
             self._lbl(fr, lab, 8, C["mute"], True).pack(fill="x")
-            e = tk.Entry(fr, font=("Segoe UI", 10), relief="solid", bd=1)
-            e.insert(0, str(prefill.get(key, ""))[:400])
-            e.pack(fill="x", pady=(1, 5), ipady=2)
+            if lines:                                   # chi tiết lỗi EX / menu code: dán nhiều dòng, có thanh cuộn
+                tf, e = self._textbox(fr, str(prefill.get(key, "")), height=lines)
+                tf.pack(fill="x", pady=(1, 5))
+            else:
+                e = tk.Entry(fr, font=("Segoe UI", 10), relief="solid", bd=1)
+                e.insert(0, str(prefill.get(key, ""))[:1000])
+                e.pack(fill="x", pady=(1, 5), ipady=2)
             ents[key] = (fr, e)
+
+        def val(e):
+            return e.get("1.0", "end-1c") if isinstance(e, tk.Text) else e.get()
 
         def swap():
             ex = kind.get() == "ex"
@@ -508,11 +559,11 @@ class Caption:
         row("action", "Thao tác (Lưu / Thêm / Sửa / Xóa / Import / …)")
         row("exp", "Dữ liệu mong đợi")
         row("act", "Dữ liệu thực tế")
-        row("detail", "Chi tiết lỗi EX (Ctrl+Shift+E rồi dán)")
-        row("code", "Menu code (Ctrl+Shift+F)")
+        row("detail", "Chi tiết lỗi EX (Ctrl+Shift+E rồi dán – dán được nhiều dòng)", 12)
+        row("code", "Menu code (Ctrl+Shift+F)", 4)
 
         def save():
-            out = dict(type=kind.get(), **{k: e.get().strip() for k, (fr, e) in ents.items()})
+            out = dict(type=kind.get(), **{k: val(e).strip() for k, (fr, e) in ents.items()})
             self._unfocus()
             if cont:
                 self._act_done("Đã ghi lỗi – lỗi vào menu Lỗi khi kết quả về console. Luồng này dừng lại.", rq, out)
@@ -531,7 +582,8 @@ class Caption:
         self._btn(f, "Lưu lỗi", save, C["bad"]).pack(side="left", padx=(0, 6))
         self._btn(f, "Quay lại" if cont else "Không ghi chi tiết", back, solid=False).pack(side="left")
         for fr, e in ents.values():
-            e.bind("<Return>", lambda ev: save())
+            if not isinstance(e, tk.Text):              # ô nhiều dòng: Enter xuống dòng, không lưu
+                e.bind("<Return>", lambda ev: save())
         swap()
         self._style(True)
         self.root.after(80, lambda: self._focus(ents["action"][1] if kind.get() != "ex" else ents["detail"][1]))
@@ -539,6 +591,7 @@ class Caption:
     def _act_done(self, msg, rq, result):
         C = self.C
         a = self._act_new(C["okbg"])
+        self._border("ok")
         self._lbl(a, msg, 9, C["fg"], False, self.W - 60, bg=C["okbg"]).pack(fill="x", padx=10, pady=(8, 4))
         f = self.tk.Frame(a, bg=C["okbg"])
         f.pack(fill="x", padx=10, pady=(2, 10))
