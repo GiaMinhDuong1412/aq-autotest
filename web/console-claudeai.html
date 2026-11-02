@@ -2147,7 +2147,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-9"
+KIT_VERSION = "2026.11.03-10"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2737,6 +2737,74 @@ class Caption:
 CAP = Caption()
 
 
+class Node:
+    """Phần tử UIA đọc sẵn bằng MỘT lần gọi (CacheRequest): loại, tên, id, lớp, toạ độ, ẩn/hiện, giá trị.
+    Duyệt cây kiểu cũ (descendants(control_type=…) nhiều lần + hỏi từng thuộc tính) tốn hàng nghìn lần gọi chéo tiến trình
+    – mỗi lần tìm vài giây; bản này một lần quét cả cây. `wrap()` mới tạo wrapper pywinauto khi cần bấm/gõ."""
+    __slots__ = ("ct", "name", "aid", "cls", "rect", "off", "val", "_e", "_w")
+
+    def __init__(self, e, ct, name, aid, cls, rect, off, val):
+        self._e, self.ct, self.name, self.aid, self.cls, self.rect, self.off, self.val, self._w = e, ct, name, aid, cls, rect, off, val, None
+
+    @property
+    def visible(self):
+        l, t, r, b = self.rect
+        return not self.off and r > l and b > t
+
+    def inside(self, rc):
+        l, t, r, b = self.rect
+        cx, cy = (l + r) / 2, (t + b) / 2
+        return rc[0] <= cx <= rc[2] and rc[1] <= cy <= rc[3]
+
+    def wrap(self):
+        if self._w is None:
+            from pywinauto.controls.uiawrapper import UIAWrapper
+            from pywinauto.uia_element_info import UIAElementInfo
+            self._w = UIAWrapper(UIAElementInfo(self._e))
+        return self._w
+
+
+_SCAN = {}
+
+
+def uia_scan(root):
+    """Mọi phần tử con của `root` (wrapper UIA) dưới dạng Node – một lần FindAllBuildCache. Lỗi → None (dùng cách cũ)."""
+    try:
+        if "cr" not in _SCAN:
+            from pywinauto.uia_defines import IUIA
+            u = IUIA()
+            cr = u.iuia.CreateCacheRequest()
+            for pid in (30005, 30003, 30011, 30012, 30001, 30022, 30045):   # Name, ControlType, AutomationId, ClassName,
+                cr.AddProperty(pid)                                       # BoundingRectangle, IsOffscreen, Value
+            _SCAN.update(u=u, cr=cr, ids=dict(u.known_control_type_ids))
+        u, cr, ids = _SCAN["u"], _SCAN["cr"], _SCAN["ids"]
+        arr = root.element_info.element.FindAllBuildCache(4, u.true_condition, cr)     # 4 = TreeScope_Descendants
+        out = []
+        for i in range(arr.Length):
+            e = arr.GetElement(i)
+            try:
+                rc = e.CachedBoundingRectangle
+                rect = (rc.left, rc.top, rc.right, rc.bottom)
+            except Exception:
+                rect = (0, 0, 0, 0)
+            try:
+                val = e.GetCachedPropertyValue(30045)
+                val = val if isinstance(val, str) else ""
+            except Exception:
+                val = ""
+            try:
+                out.append(Node(e, ids.get(e.CachedControlType, ""), nfc(e.CachedName or ""), e.CachedAutomationId or "",
+                                e.CachedClassName or "", rect, bool(e.CachedIsOffscreen), nfc(val)))
+            except Exception:
+                continue
+        return out
+    except Exception as e:
+        if not _SCAN.get("warned"):
+            _SCAN["warned"] = True
+            print("   (quét nhanh UIA không dùng được – tìm theo cách cũ: %s)" % e)
+        return None
+
+
 # ---------------------------------------------------------------- Edusoft
 class Edusoft:
     def __init__(self):
@@ -2916,6 +2984,9 @@ class Edusoft:
 
     def is_form(self, w):
         """Form nhập liệu / chọn (có khung nhập AQDetailRight, lưới, tab) – KHÁC hộp thông báo; kit không tự đóng form."""
+        nodes = uia_scan(w)
+        if nodes is not None:
+            return any(nd.aid in ("AQDetailRight", "AQViewL", "viewDataCtrl") or nd.ct in ("Table", "DataGrid", "Tab") for nd in nodes)
         try:
             for el in w.descendants():
                 ei = el.element_info
@@ -3414,6 +3485,33 @@ class Edusoft:
         end = time.time() + timeout
         while True:
             for root in (roots or self.roots()):
+                nodes = uia_scan(root)
+                if nodes is not None:                   # nhanh: một lần quét, so tên/giá trị trên dữ liệu đọc sẵn
+                    best = None
+                    ex = [getattr(x, "element_info", None) for x in (exclude or [])]
+                    for t in types:
+                        for nd in nodes:
+                            if nd.ct != t or not nd.visible:
+                                continue
+                            names = [norm_label(nd.name)]
+                            if t in ("TreeItem", "DataItem", "ListItem", "Custom", "Text") or not nd.name:
+                                names.append(norm_label(nd.val))
+                            names = [n for n in names if n]
+                            if not names:
+                                continue
+                            hit = any(n == w for n in names for w in wants)
+                            near = any(n.startswith(w) and len(w) >= 3 for n in names for w in wants)
+                            if not (hit or near):
+                                continue
+                            w_ = nd.wrap()
+                            if ex and w_.element_info in ex:
+                                continue
+                            if hit:
+                                return w_
+                            best = best or w_
+                    if best is not None:
+                        return best
+                    continue
                 best = None
                 for t in types:
                     try:
@@ -3487,7 +3585,18 @@ class Edusoft:
         end = time.time() + timeout
         while True:
             for root in self.roots():
+                nodes = uia_scan(root)
                 for i in ids:
+                    if nodes is not None:
+                        k = next((n for n, nd in enumerate(nodes) if nd.aid == i and nd.visible), None)
+                        if k is None:
+                            continue
+                        self.last_outer = el = nodes[k].wrap()
+                        ol, ot, or_, ob = nodes[k].rect
+                        for nd in nodes[k + 1:k + 12]:      # ô soạn thảo thật nằm ngay sau trong cây, trong khung ô
+                            if ".EDIT." in nd.cls and nd.visible and nd.inside((ol - 1, ot - 1, or_ + 1, ob + 1)):
+                                return nd.wrap()
+                        return el
                     try:
                         hits = [e for e in root.descendants() if e.element_info.automation_id == i and e.is_visible()]
                     except Exception:
@@ -3756,6 +3865,17 @@ class Edusoft:
         `below`: chỉ lấy ô nằm dưới toạ độ y này (bỏ qua dòng lọc vừa gõ giá trị)."""
         want = norm(value)
         for root in (roots or self.roots()):
+            nodes = uia_scan(root)
+            if nodes is not None:
+                grids = [nd.rect for nd in nodes if nd.ct in ("Table", "DataGrid") and nd.visible]
+                for nd in nodes:
+                    if not nd.visible or not (nd.ct in ("DataItem", "ListItem", "TreeItem") or any(nd.inside(g) for g in grids)):
+                        continue
+                    if want and (want == norm(nd.name) or want == norm(nd.val)):
+                        if below is not None and nd.rect[1] <= below:
+                            continue
+                        return nd.wrap()
+                continue
             pools = []
             for g in ("Table", "DataGrid"):
                 try:
@@ -4197,7 +4317,7 @@ class Run:
                 cur = m.group(1) + str(random.randint(10 ** (n - 1) if n > 1 else 0, 10 ** n - 1))
             else:                                   # tên: lấy tên test khác chưa thử
                 left = [x for x in self.SAFE_NAMES if x not in tried]
-                cur = left[0] if left else first + random.choice("BCDGHK")
+                cur = random.choice(left) if left else first + random.choice("BCDGHK")
             tried.append(cur)
             self.vars[var] = cur
         raise RuntimeError("Không tìm được giá trị %s chưa có sẵn (đã thử %s)" % (var, ", ".join(tried)))
@@ -4241,37 +4361,68 @@ class Run:
           1. form "Danh sách đang chọn để xóa, vui lòng kiểm tra và chọn xác thực lại" (lưới có ô check, nút Thực hiện):
              MỌI dòng trong lưới phải mang mã `code` (không thì Đóng, không xóa) → tick ô check các dòng đó → Thực hiện;
           2. hộp "Xác nhận xóa dữ liệu đang chọn?" Có/Không → Có khi hộp nêu đúng mã HOẶC đã kiểm ở bước 1;
-          3. thông báo kết quả → OK. Hộp hỏi không nêu mã và chưa qua bước 1 → bấm Không, báo lỗi (không xóa)."""
+          3. CHỜ Edusoft xử lý như người test: không bấm Đóng form khi đang xóa; xong khi thanh trạng thái báo
+             "Xóa … thành công" (tối đa 40 giây). Thông báo kết quả → OK.
+        Mọi việc ghi vào nhật ký có mốc thời gian (`trace`) – báo lỗi kèm nhật ký để biết Edusoft dừng ở đâu."""
         es = self.es
         es.snap = es.handles()
         st0 = es.status_msg()
+        t0 = time.time()
+        trace = []
+
+        def log(msg):
+            trace.append("+%.1fs %s" % (time.time() - t0, msg))
+
         es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
-        time.sleep(2)
+        log("bấm Xóa (thanh trạng thái trước: %s)" % (st0 or "trống"))
+        time.sleep(1.5)
         notes, seen, forms = [], set(), []
         verified = confirmed = False
+        t_conf = None
         key = norm(code)
+
+        def alive(w):
+            try:
+                return bool(w.is_visible())
+            except Exception:
+                return False
 
         def close_forms():
             for f in forms:
+                if not alive(f):
+                    continue
                 try:
                     b = es.dialog_button(f, ("đóng", "close", "hủy", "huỷ", "cancel"))
-                    if b is not None and f.is_visible():
+                    if b is not None:
+                        log("bấm Đóng form xác nhận")
                         es.press(b)
                 except Exception:
                     pass
 
         def refuse(msg):
             close_forms()
-            raise RuntimeError(msg)
+            raise RuntimeError(msg + "\nNhật ký xóa: " + " | ".join(trace))
 
-        idle = 0
-        for _ in range(12):
+        idle, st = 0, ""
+        end = time.time() + 70
+        while time.time() < end:
             ds = [d for d in es.new_windows(es.snap) if d.handle not in seen]
             if not ds:
-                if confirmed or idle >= 3:
-                    break
                 idle += 1
-                time.sleep(1)
+                if confirmed:
+                    st = es.status_msg()
+                    if st and st != st0:
+                        log("thanh trạng thái: " + st)
+                        break
+                    if time.time() - t_conf > 40:
+                        log("hết 40 giây chờ, thanh trạng thái vẫn: %s; form còn mở: %s" % (st or "trống", any(alive(f) for f in forms)))
+                        break
+                    if forms and not any(alive(f) for f in forms) and not getattr(self, "_form_gone", False):
+                        self._form_gone = True
+                        log("form xác nhận tự đóng")
+                elif idle >= 8:
+                    break
+                time.sleep(0.5)
                 continue
             idle = 0
             d = ds[-1]
@@ -4281,13 +4432,15 @@ class Run:
             except Exception:
                 has_btn = False
             if not has_btn:                               # progressPanel "đang xử lý" – chờ nó tự tắt, không bấm gì
-                time.sleep(1)
+                log("cửa sổ đang xử lý (không có nút): " + (es.dialog_text(d).split("\n")[0][:60] or "?"))
+                time.sleep(0.5)
                 continue
             if es.is_form(d):
                 forms.append(d)
                 rows = self.win_rows(d)
                 data = {k: r for k, r in rows.items() if any(v and n != "#" and v not in ("Checked", "Unchecked") for n, v, _ in r)}
                 hit = {k: r for k, r in data.items() if any(key and key in norm(v) for _, v, _ in r)}
+                log("form xác nhận: %d dòng, %d dòng mang mã" % (len(data), len(hit)))
                 if not hit or len(hit) != len(data):
                     others = [" · ".join(v for _, v, _ in r if v and v not in ("Checked", "Unchecked")) for k, r in data.items() if k not in hit]
                     refuse("Danh sách xác nhận xóa không chỉ có %s (%s) nên KHÔNG xóa – hãy xóa tay" % (code, "; ".join(others)[:200] or "không đọc được dòng"))
@@ -4298,6 +4451,7 @@ class Run:
                         continue
                     other = next((c for n, v, c in r if c is not box), None)
                     ticks.append(self.tick_box(box, other))
+                log("tick ô chọn: " + (", ".join(t or "không đọc được" for t in ticks) or "không thấy ô chọn"))
                 if any(t == "Unchecked" for t in ticks):
                     self.shot_into(notes, "xoa-chua-tick")
                     refuse("Không tick được ô chọn của dòng %s trong danh sách xác nhận xóa (ô vẫn Unchecked) – chưa xóa" % code)
@@ -4306,13 +4460,15 @@ class Run:
                 if btn is None:
                     refuse("Form xác nhận xóa không có nút Thực hiện")
                 verified = True
-                notes.append("Tick dòng %s: %s" % (code, ", ".join(t or "không đọc được" for t in ticks) or "không thấy ô chọn"))
                 es.click(btn)                             # bấm chuột như người test (nút thanh công cụ DevExpress)
-                time.sleep(2)
+                log("bấm " + (btn.window_text() or "Thực hiện"))
+                time.sleep(1.5)
                 continue
             txt = es.dialog_text(d)
             head = (txt.split("\n") or [""])[0]
             if es.is_error_dialog(d, txt):
+                log("LỖI: " + head[:120])
+                self.shot_into(notes, "xoa-loi")
                 ok = es.dialog_button(d, ("đóng", "ok", "close"))
                 if ok is not None:
                     es.press(ok)
@@ -4321,42 +4477,43 @@ class Run:
             yes = es.dialog_button(d, ("có", "yes", "đồng ý", "ok", "xóa", "xoá"))
             if no is not None:                            # câu hỏi xác nhận
                 if yes is not None and (key in norm(txt) or (verified and re.search(r"xóa|xoá|delete", norm(txt), re.I))):
-                    notes.append("Xác nhận: " + head[:80] + " → Có")
                     es.click(yes)                         # bấm chuột vào Có
-                    time.sleep(1)
-                    try:
-                        still = d.is_visible()
-                    except Exception:
-                        still = False
-                    if still:                             # chưa đóng → bấm lại bằng phím
+                    log("hỏi \"%s\" → Có" % head[:80])
+                    time.sleep(0.8)
+                    if alive(d):                          # chưa đóng → bấm lại bằng phím
                         es.press(yes)
-                    confirmed = True
-                    time.sleep(2)
+                        log("hộp hỏi chưa đóng → bấm Có lần 2 (phím)")
+                    if not confirmed:
+                        confirmed, t_conf = True, time.time()
                     continue
+                log("hỏi lạ \"%s\" → Không" % head[:80])
                 es.press(no)
                 refuse("Hộp thoại xác nhận xóa không nêu mã %s nên KHÔNG xóa – hãy xóa tay. Nội dung: %s" % (code, head[:200]))
+            log("thông báo: " + (head[:120] or "?"))
             if txt:
                 notes.append(head[:120])
+            if OK_PAT.search(txt) and re.search(r"xóa|xoá", txt, re.I):
+                st = st or head
             ok = es.dialog_button(d, ("ok", "đóng", "close", "đồng ý")) or yes
             if ok is not None:
                 es.press(ok)
             else:
                 pkb.send_keys("{ENTER}")
-            time.sleep(1)
+            time.sleep(0.8)
+        self._form_gone = False
         if not confirmed:
             refuse("Bấm Xóa nhưng không thấy hộp thoại xác nhận xóa %s" % code)
-        close_forms()
-        es.close_dialogs(6)
-        st = es.wait_status(st0, 12)                      # "Xóa dữ liệu thành công" ở thanh trạng thái
         if st and ERR_PAT.search(st) and not OK_PAT.search(st):
-            raise RuntimeError("Xóa không thành công (thanh trạng thái): " + st[:200])
+            refuse("Xóa không thành công (thanh trạng thái): " + st[:200])
         if not (st and re.search(r"xóa|xoá", st, re.I) and OK_PAT.search(st)):
-            # Lượt 03/11 01:35 và 01:50: kit báo "Đã xóa" nhưng Edusoft không xóa (thanh trạng thái không đổi, dòng còn).
+            # Lượt 01:35 / 01:50 / 02:09: Edusoft không xóa (thanh trạng thái không đổi, dòng còn) – có ảnh + nhật ký để xác định
             self.shot_into(notes, "xoa-khong-bao")
-            raise RuntimeError("Đã bấm Xóa → Thực hiện → Có nhưng Edusoft KHÔNG báo \"Xóa dữ liệu thành công\" (thanh trạng thái: %s) – "
-                               "dữ liệu %s có thể chưa bị xóa" % (st or es.status_msg() or "không đổi", code))
+            refuse("Đã bấm Xóa → Thực hiện → Có nhưng Edusoft KHÔNG báo \"Xóa dữ liệu thành công\" (thanh trạng thái: %s) – "
+                   "dữ liệu %s có thể chưa bị xóa" % (st or es.status_msg() or "không đổi", code))
+        close_forms()                                     # đã xóa xong mà form còn mở → đóng
+        es.close_dialogs(6)
         notes.append("Thanh trạng thái: " + st[:150])
-        notes.append("Đã xóa " + code)
+        notes.append("Đã xóa " + code + " (" + "; ".join(trace[-3:]) + ")")
         return notes
 
     def tick_box(self, box, other=None):
@@ -4398,6 +4555,23 @@ class Run:
         DataItem tên "<cột> row N", giá trị ở Value; gom các ô cùng hàng theo toạ độ."""
         out = []
         for root in self.es.roots():
+            nodes = uia_scan(root)
+            if nodes is not None:
+                grids = [nd.rect for nd in nodes if nd.ct in ("Table", "DataGrid") and nd.visible]
+                byrow = {}
+                for nd in nodes:
+                    if nd.ct != "DataItem" or not nd.visible or not any(nd.inside(g) for g in grids):
+                        continue
+                    v = (nd.val or "").strip()
+                    name = re.sub(r"\s+row\s*\d+$", "", nd.name, flags=re.I).strip()
+                    if not v or re.search(r"filter|lọc", name, re.I):
+                        continue
+                    byrow.setdefault(nd.rect[1] // 6, []).append((nd.rect[0], name, v))
+                for k in sorted(byrow):
+                    out.append([(n, v) for _, n, v in sorted(byrow[k])])
+                if out:
+                    return out
+                continue
             cells = []
             for g in ("Table", "DataGrid"):
                 try:
@@ -4463,6 +4637,25 @@ class Run:
         """Tiêu đề cột `col` (nhiều tên cách nhau |) của lưới trên màn hình đang mở; nhiều lưới thì lấy lưới trên cùng."""
         wants = [norm_label(x) for x in alts_of(col)]
         for root in self.es.roots():
+            nodes = uia_scan(root)
+            if nodes is not None:
+                grids = [nd.rect for nd in nodes if nd.ct in ("Table", "DataGrid") and nd.visible]
+                trees = [nd.rect for nd in nodes if nd.ct == "Tree" and nd.aid.lower().startswith("treechucnang")]
+                best = None
+                for t in ("HeaderItem", "Header", "Custom", "Text"):
+                    for nd in nodes:
+                        if nd.ct != t or not nd.visible or norm_label(nd.name) not in wants:
+                            continue
+                        if any(nd.inside(g) for g in trees):
+                            continue                    # cây "Danh mục chức năng" bên trái
+                        if t not in ("HeaderItem", "Header") and not any(nd.inside(g) for g in grids):
+                            continue
+                        if best is None or nd.rect[1] < best.rect[1]:
+                            best = nd
+                    if best is not None:
+                        self._hdr_grid = next((g for g in grids if best.inside(g)), None)
+                        return best.wrap()
+                continue
             grids, trees = [], []
             for g in ("Table", "DataGrid"):
                 try:
@@ -4520,7 +4713,7 @@ class Run:
             pkb.send_keys(esc_keys(value), with_spaces=True, pause=TYPE_PAUSE)
         time.sleep(0.4)
         pkb.send_keys("{ENTER}")
-        time.sleep(1.8)
+        time.sleep(0.9)                                 # locate_row tự chờ tiếp tới khi lưới lọc xong
         self._filter = (hdr, x, y, r.top)
         return y
 
@@ -4537,9 +4730,22 @@ class Run:
             mouse.click(coords=(x, y))
             time.sleep(0.4)
             pkb.send_keys("{END}" + "{BACKSPACE}" * 40 + "{ENTER}", pause=0.003)
-            time.sleep(1.2)
+            time.sleep(0.7)
         except Exception:
             pass
+
+    def grid_empty(self, y):
+        """Lưới vừa lọc (dòng lọc ở toạ độ y) không còn dòng dữ liệu nào (DataItem "<cột> row N" dưới dòng lọc)."""
+        g = getattr(self, "_hdr_grid", None)
+        for root in self.es.roots():
+            nodes = uia_scan(root)
+            if nodes is None:
+                return False
+            for nd in nodes:
+                if nd.ct == "DataItem" and nd.visible and nd.rect[1] > y + 3 and re.search(r"\srow\s*\d+$", nd.name) \
+                        and (g is None or nd.inside(g)):
+                    return False
+        return True
 
     def locate_row(self, value, col=""):
         """Dòng trong lưới có ô đúng bằng `value`. Có cột: gõ giá trị vào ô tìm kiếm (dòng lọc) của cột rồi tìm
@@ -4550,14 +4756,18 @@ class Run:
             if hdr is None:
                 raise RuntimeError("Không thấy cột \"%s\" (ô tìm kiếm) trong danh sách đang mở" % col)
             y = self.filter_grid(hdr, value)
-            end = time.time() + 6
+            t0 = time.time()
+            end = t0 + 6
             while True:
                 el = es.element_with_text(value, below=y + 3)
                 if el is not None:
                     return el
+                if time.time() - t0 > 1.2 and self.grid_empty(y):
+                    # lưới đã lọc xong mà không còn dòng nào → chắc chắn "chưa có", khỏi chờ đủ 6 giây
+                    raise LookupError("Không thấy dòng \"%s\" (cột %s) trong danh sách" % (value, col))
                 if time.time() > end:
                     raise LookupError("Không thấy dòng \"%s\" (cột %s) trong danh sách" % (value, col))
-                time.sleep(0.6)
+                time.sleep(0.4)
         el = es.element_with_text(value)              # không ghi cột: chỉ tìm trong các dòng đang hiện
         if el is None:
             raise LookupError("Không thấy dòng \"%s\" trong các dòng đang hiện (ghi \"@ Tên cột\" để tìm bằng ô tìm kiếm)" % value)
@@ -8456,7 +8666,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.03-9';
+  var KITVER='2026.11.03-10';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

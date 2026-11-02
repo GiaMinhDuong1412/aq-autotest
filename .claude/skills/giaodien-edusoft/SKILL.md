@@ -321,6 +321,18 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   Ảnh `xoa-da-tick.png` (form trước Thực hiện). Sau Có **bắt buộc** thanh trạng thái báo "Xóa … thành công", không thì bước Lỗi
   ("Edusoft KHÔNG báo Xóa dữ liệu thành công") + ảnh `xoa-khong-bao.png`.
 
+### #25 – Tốc độ nhận diện & lần xóa thứ 3 vẫn không xóa (lượt 03/11 02:09, kit 11.03-9 → 11.03-10)
+- Chậm: bước 2 (Danh mục sinh viên) 3 phút. Nguyên nhân trong kit: mỗi lần tìm duyệt cây UIA nhiều lần (`descendants(control_type=…)`
+  cho từng loại) và hỏi từng thuộc tính (hàng nghìn lần gọi chéo tiến trình); kiểm tra "chưa có" luôn chờ đủ 6 giây; tên test
+  thử lần lượt Mot→Hai→… (các lượt trước đã dùng nên mỗi lượt thử 5–6 tên). Kit 11.03-10: `uia_scan` một lần
+  `FindAllBuildCache` lấy tên/loại/id/lớp/toạ độ/giá trị cả cây; dùng cho find_any, by_id, element_with_text, column_header,
+  grid_rows, is_form; lưới lọc xong không còn dòng → kết luận "chưa có" sau ~1,2 giây; tên test chọn ngẫu nhiên.
+- Xóa lượt 02:09: ảnh `xoa-da-tick` cho thấy ô đã tick (cả ô nhóm, ô tiêu đề) → Thực hiện → Có, nhưng thanh trạng thái không đổi,
+  dòng còn. Kit cũ bấm **Đóng form** khoảng 3–4 giây sau Có (khi chưa thấy gì) – có thể cắt ngang lúc Edusoft đang xóa.
+  Kit 11.03-10: sau Có **không bấm gì**, chờ tới 40 giây cho thanh trạng thái báo "Xóa … thành công" / form tự đóng; ghi
+  **nhật ký xóa** có mốc thời gian (bấm Xóa, form xác nhận, tick, Thực hiện, hỏi → Có, cửa sổ đang xử lý, thông báo, form tự
+  đóng, thanh trạng thái) vào ghi chú / lỗi của bước. Người dùng đang thử xóa tay trên Edusoft để xem có phải lỗi phần mềm.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
