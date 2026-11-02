@@ -333,6 +333,18 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   **nhật ký xóa** có mốc thời gian (bấm Xóa, form xác nhận, tick, Thực hiện, hỏi → Có, cửa sổ đang xử lý, thông báo, form tự
   đóng, thanh trạng thái) vào ghi chú / lỗi của bước. Người dùng đang thử xóa tay trên Edusoft để xem có phải lỗi phần mềm.
 
+### #26 – Hộp hỏi Có/Không: con trỏ mặc định ở **Không** (người dùng phát hiện 03/11, kit 11.03-11)
+- Hộp "Xác nhận xóa dữ liệu đang chọn?" (và các hộp hỏi AQ MsgBox khác) mở ra với con trỏ bàn phím ở **Không** (viền chấm).
+  Ảnh lượt chạy cho thấy Có sáng (chuột đang trỏ) và Không có viền con trỏ – tức kit "vừa chọn Có vừa chọn Không".
+- Kit cũ: bấm chuột Có, 0,8 giây sau hộp chưa đóng thì `press(Có)` = đặt con trỏ + gửi **Space**; `focus()` coi là đã đặt được con
+  trỏ khi không kiểm được → Space rơi vào nút đang có con trỏ = **Không** → Edusoft không xóa (người dùng xóa tay vẫn được).
+- Kit 11.03-11: `press_yes` – đưa hộp lên trước, ghi "nút đang chọn sẵn", chụp `xoa-hoi-xac-nhan.png`, bấm CHUỘT vào Có, chờ
+  hộp đóng tới 3 giây; chưa đóng thì chỉ gửi Space khi ĐÃ KIỂM con trỏ ở Có, không thì Invoke nút Có; vẫn mở → báo lỗi
+  (không xóa). `focus()` không kiểm được con trỏ → trả False (press bấm chuột, không gửi phím mù). Hộp "Bạn có muốn lưu…?"
+  của `save:` cũng dùng `press_yes`.
+- Quy tắc chung: **không bao giờ gửi Space/Enter vào hộp hỏi khi chưa chắc con trỏ ở đúng nút** – nút mặc định của Edusoft
+  thường là nút an toàn (Không).
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
