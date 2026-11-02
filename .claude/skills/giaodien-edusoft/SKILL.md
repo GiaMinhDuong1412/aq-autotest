@@ -266,6 +266,17 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Quy trình QLSV-001 người dùng chốt: thêm QĐ (thông tin + Thêm mới 1 SV + chọn lớp) → Lưu → kiểm tra QĐ → Danh sách sinh viên
   học kỳ có SV mới (có = Đạt) → Sửa Tên QĐ → Lưu → kiểm tra → Xóa QĐ → kiểm tra không còn. Xong.
 
+### #20 – Form con (popup nhập/chọn) là cửa sổ riêng nhưng UIA xếp vào cửa sổ chính (lượt QLSV-001 03/11 01:05, kit 11.03-3)
+- Rất nhiều menu Edusoft mở **form con**: Thêm mới 1 SV ("Chi tiết lý lịch sinh viên"), Danh sách lớp (nút …), Import, chọn
+  sinh viên… Đó là cửa sổ Win32 cấp cao (thuộc cửa sổ chính) – UIA lại xếp nó **vào trong** cửa sổ chính, nên
+  `top_level_parent()` của ô trong form trả về cửa sổ chính.
+- Lỗi đã gặp: `set_field` đóng "hộp thoại" trước khi gõ, tưởng form là thông báo → bấm Đóng của form → ô `#MaSV` mất,
+  "không nhận giá trị". Kit `2026.11.03-4`: tìm cửa sổ chứa ô bằng Win32 `GetAncestor(GA_ROOT)` (`root_handle`), và
+  `close_dialogs` **chỉ đóng hộp thông báo**, bỏ qua form (`is_form`: có `AQDetailRight`/`AQViewL`/`viewDataCtrl` hoặc
+  Table/DataGrid/Tab). Muốn đóng form thì dùng nút của form (`click: Đóng`, `save: Lưu`) hoặc `cancel`.
+- Viết `auto` cho form con: bấm nút mở form → thao tác ô bằng `#TenControl` (kit tìm form con trước cửa sổ chính) →
+  `save: Lưu` (nút Lưu của form) → form tự đóng, quay lại màn hình chính.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
