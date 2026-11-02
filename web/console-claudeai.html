@@ -2147,7 +2147,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-1"
+KIT_VERSION = "2026.11.03-2"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2819,7 +2819,11 @@ class Edusoft:
         """Điền ô nhập bằng BÀN PHÍM THẬT (Edusoft/DevExpress chỉ ghi nhận giá trị khi được gõ):
         đưa con trỏ vào đúng ô qua UI Automation (không bấm theo toạ độ), xác nhận ô đang có con trỏ,
         xóa bằng End + Backspace rồi gõ. Ô thường được đọc lại để kiểm tra. Trả về True nếu đúng."""
-        self.close_dialogs(3)
+        try:                                       # không đóng chính form con chứa ô (vd popup "Thêm mới 1 SV")
+            keep = el.top_level_parent().handle
+        except Exception:
+            keep = None
+        self.close_dialogs(3, keep=keep)
         value = str(value)
         self.mark(el)
         for attempt in range(3):
@@ -2871,13 +2875,13 @@ class Edusoft:
             time.sleep(0.4)
         return []
 
-    def close_dialogs(self, timeout=8):
+    def close_dialogs(self, timeout=8, keep=None):
         """Đóng thông báo: bấm nút Đóng/OK NẰM TRONG hộp thoại (không đụng nút Đóng của khung đăng nhập);
         không có nút thì Enter; vẫn còn thì gửi lệnh đóng cửa sổ. Chờ tới khi không còn hộp thoại."""
         end = time.time() + timeout
         tries = 0
         while time.time() < end:
-            ds = self.dialogs_other()
+            ds = [d for d in self.dialogs_other() if d.handle != keep]
             if not ds:
                 if self.login is not None:
                     try:
@@ -2906,7 +2910,7 @@ class Edusoft:
                     except Exception:
                         pass
             time.sleep(0.8)
-        return not self.dialogs_other()
+        return not [d for d in self.dialogs_other() if d.handle != keep]
 
     def kill(self):
         try:
@@ -3505,6 +3509,53 @@ class Edusoft:
                 raise LookupError("Không thấy ô cột \"%s\" ở dòng đang nhập của lưới %s" % (col, area))
             time.sleep(0.5)
 
+    def close_screen(self, name, timeout=8):
+        """Tắt màn hình chức năng bằng nút X trên tab MDI (TabItem tên màn hình → nút Close của tab)."""
+        tab = self.find_any(name, types=("TabItem",), roots=[self.main], timeout=timeout)
+        tr = tab.rectangle()
+        btns = []
+        try:
+            btns = [b for b in tab.descendants(control_type="Button") if b.is_visible()]
+        except Exception:
+            pass
+        if not btns:
+            for b in self.main.descendants(control_type="Button"):
+                try:
+                    r = b.rectangle()
+                    if norm(b.window_text()) in ("close", "đóng") and tr.left <= r.left and r.right <= tr.right + 2 \
+                            and tr.top - 2 <= r.top and r.bottom <= tr.bottom + 2 and b.is_visible():
+                        btns.append(b)
+                except Exception:
+                    continue
+        if not btns:
+            raise LookupError("Không thấy nút X của màn hình \"%s\"" % name)
+        self.mark(btns[0])
+        btns[0].click_input()
+        return True
+
+    def cell_button(self, cell, area=""):
+        """Nút "…" của ô lưới (hiện khi ô đang soạn): bấm ô, tìm Button nằm trong ô; không có thì bấm mép phải ô."""
+        cr = cell.rectangle()
+        self.mark(cell)
+        cell.click_input()
+        time.sleep(0.5)
+        cell.click_input()
+        time.sleep(0.6)
+        roots = [self.area_el(area, timeout=2)] if area else [self.main]
+        for root in roots:
+            try:
+                for b in root.descendants(control_type="Button"):
+                    r = b.rectangle()
+                    if cr.left - 2 <= r.left and r.right <= cr.right + 24 and cr.top - 3 <= r.top and r.bottom <= cr.bottom + 3 \
+                            and r.width() < 40 and b.is_visible():
+                        self.mark(b)
+                        b.click_input()
+                        return "nút trong ô"
+            except Exception:
+                continue
+        cell.click_input(coords=(max(cr.width() - 8, 1), cr.height() // 2))   # nút "…" vẽ ở mép phải ô
+        return "mép phải ô"
+
     def type_at_label(self, lab, value):
         """Lưới dọc DevExpress: bấm vào ô giá trị bên phải nhãn rồi gõ."""
         from pywinauto import mouse
@@ -3579,7 +3630,8 @@ class Edusoft:
         return n
 
 
-EX_PAT = re.compile(r"exception|object reference|stack ?trace|sqlexception|lỗi hệ thống|unhandled|system\.", re.I)
+# không bắt chữ "System." trơn: ô ảnh của Edusoft tên "System.Drawing.Bitmap" (báo nhầm lỗi EX lượt 03/11 00:29)
+EX_PAT = re.compile(r"exception|object reference|stack ?trace|lỗi hệ thống|unhandled|\bat system\.[a-z]", re.I)
 
 
 # ---------------------------------------------------------------- lượt chạy
@@ -3695,6 +3747,8 @@ class Run:
                                          (ô theo #Ten; ô theo nhãn thì gõ rồi Enter như cũ)
           choose: #Ten = giá trị         mở danh sách của ô (nút ▾) rồi bấm chọn dòng khớp, không gõ trước
           cell: Cột = giá trị @ Lưới     gõ vào ô của cột ở dòng đang nhập (dòng dưới cùng) của lưới "Lưới"
+          cellbtn: Cột @ Lưới            bấm nút "…" của ô (dòng dưới cùng) – mở cửa sổ chọn (vd Danh sách lớp → find_row → Chọn)
+          close: Tên màn hình            tắt màn hình chức năng bằng nút X trên tab (test xong chức năng nào tắt chức năng đó)
           click: Nút @ Vùng              bấm nút thuộc vùng (vd "Thêm @ Danh sách sinh viên" ≠ Thêm của danh sách trái)
           save: Lưu                      bấm Lưu và kiểm tra thông báo (lỗi → bước Lỗi)
           expect: chữ                    chờ chữ xuất hiện trên màn hình
@@ -3757,6 +3811,24 @@ class Run:
                     self.shot_into(notes, "chon-" + slug)
                     raise RuntimeError("Ô \"%s\" chưa chọn được \"%s\" (%s; ô đang là \"%s\")" % (lab, val, how, got or ""))
                 notes.append("%s = %s (%s)" % (lab.split("|")[0], got.strip()[:40], how))
+            elif verb == "close":
+                es.snap = es.handles()
+                es.close_screen(arg)
+                time.sleep(1.2)
+                for d in es.new_windows(es.snap):        # hỏi lưu thay đổi → Không (bước đã lưu/không cần lưu)
+                    no = es.dialog_button(d, ("không", "no"))
+                    if no is not None:
+                        es.press(no)
+                notes.append("Đã tắt " + arg)
+            elif verb == "cellbtn":
+                col, area = split_col(arg)
+                el = es.grid_cell(col, area)
+                es.snap = es.handles()
+                how = es.cell_button(el, area)
+                time.sleep(1.5)
+                if not es.new_windows(es.snap):
+                    raise RuntimeError("Bấm nút … của ô \"%s\" (%s) nhưng không mở cửa sổ chọn" % (col, how))
+                notes.append("Mở danh sách chọn của " + col.split("|")[0])
             elif verb == "cell":
                 spec, area = split_col(arg)
                 col, _, val = spec.partition("=")
@@ -8014,7 +8086,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.03-1';
+  var KITVER='2026.11.03-2';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.5,typePause:0.06,actionDelay:1},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
