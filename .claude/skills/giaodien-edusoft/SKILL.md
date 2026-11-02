@@ -230,7 +230,7 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Kiểu View (`TypeView`): ViewDoi (lưới + khung nhập), ViewOnly, EditOnly.
 - **Hộp thoại**: `AQControls.AQMessageBox.MsgBox` (Form; nội dung ở `lblMessage`, nút `btn1`/`btn2`/`btn3` chữ Có/Không/OK…);
   **lỗi hệ thống** = `ErrorMsgBox` (`lblThongBao`, `rtxt_Error`, nút `btnViewErrorHelp…`, chữ "Đã xảy ra lỗi khi xử lý nghiệp vụ…
-  [Gửi mail về Support]") → coi là **Lỗi** (bad), chụp ảnh, không bấm gửi mail.
+  [Gửi mail về Support]") → coi là **Lỗi** (bad), chụp ảnh, không bấm gửi mail. Kit `2026.11.02-2`: `Edusoft.dialog_info`/`is_error_dialog` nhận theo tên control, nội dung `lblMessage` lên đầu, lỗi hệ thống thêm "[Lỗi hệ thống Edusoft]".
 - Lưu trùng mã: hộp thoại "`<mã>` đã có, có chấp nhận bị trùng không?" → không bấm Có (kit đã không bao giờ tự bấm Có).
 - Màn hình **tùy biến** = lớp `UCT_*` kế thừa `AQViewCommonCtr` (control tên cố định: `btn…`, `txt…`, `look_…`, `rdo_…`, `chk…`,
   `spn…`, `dat_TuNgay/dat_DenNgay`, `lbl…`); nhập Excel = `UCImport_01/02/03` (Chọn file, Sheet, Dòng tiêu đề, Dòng dữ liệu;
