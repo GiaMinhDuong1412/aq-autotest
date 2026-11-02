@@ -1,5 +1,5 @@
 {
- "actual": "Dừng ở bước 6: Người test dừng test tại đây (Không tìm thấy \"Lý do quyết định|Lý do\" trên màn hình)\nDữ liệu test: HOLOT = Kiem Thu, LOP = NBH49A6, LYDO = TT, MSSV = TEST022339, MSSV2 = TEST022339B, NGAYHL2 = 01/12/2026, NGAYQD = 02/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_022339, TEN = Mot, TEN2 = Hai.",
+ "actual": "Dừng ở bước 7: Người test dừng test tại đây (Không tìm thấy \"Thêm mới 1 SV\" trên màn hình)\nDữ liệu test: HOLOT = Kiem Thu, LOP = NBH49A6, LYDO = TT, MSSV = TEST030012, MSSV2 = TEST030012B, NGAYHL2 = 01/12/2026, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030012, TEN = Mot, TEN2 = Hai.",
  "altFlows": [
   {
    "condition": "Thêm quyết định vào mới nhưng không nhập Số quyết định, hoặc không chọn Lớp cho sinh viên {MSSV2}",
@@ -51,26 +51,26 @@
   ],
   [
    "menu: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
-   "click: Thêm|Thêm mới"
+   "click: Thêm @ Danh sách quyết định"
   ],
   [
    "type: #SoQDSV = {SOQD}",
    "type: #TenQDSV = {SOQD}",
-   "select: #IDLDQDSV = {LYDO}",
+   "choose: #IDLDQDSV = {LYDO}",
    "date: #NGAYHLQDSV = {NGAYQD}",
    "shot: thong-tin-quyet-dinh"
   ],
   [
-   "click: Thêm mới 1 SV",
+   "click: Thêm mới 1 SV @ Danh sách sinh viên",
    "wait: 2",
    "shot: them-moi-1-sv",
    "dump: them-moi-1-sv",
-   "type: Mã SV|Mã sinh viên = {MSSV}",
-   "type: Họ lót = {HOLOT}",
-   "type: Tên = {TEN}",
-   "date: Ngày sinh = {NGAYSINH}",
-   "select: Phái|Giới tính = Nam",
-   "select: Mã lớp|Lớp = {LOP}",
+   "cell: Mã SV = {MSSV} @ Danh sách sinh viên",
+   "cell: Họ lót = {HOLOT} @ Danh sách sinh viên",
+   "cell: Tên = {TEN} @ Danh sách sinh viên",
+   "cell: Phái = Nam @ Danh sách sinh viên",
+   "cell: Mã lớp (mới)|Mã lớp = {LOP} @ Danh sách sinh viên",
+   "shot: sinh-vien-da-nhap",
    "save: Lưu"
   ],
   [
@@ -119,17 +119,17 @@
  },
  "expected": "Trình tự: kiểm tra trùng mã/tên ở Danh mục sinh viên và Danh sách sinh viên học kỳ → thu thập lý do quyết định vào mới → thêm quyết định. Sinh viên mới vào hệ thống qua Quyết định vào mới (lưu đồ QLSV: DS trúng tuyển → Quyết định vào mới → Danh mục sinh viên → Danh sách sinh viên học kỳ), không thêm thẳng vào Danh mục sinh viên. Thêm: quyết định và sinh viên hiển thị ngay trên màn hình quyết định, Danh mục sinh viên và Danh sách sinh viên học kỳ. Sửa: mở lại thấy giá trị mới, không còn giá trị cũ. Xóa: quyết định không còn trên màn hình và sinh viên không còn trong Danh sách sinh viên học kỳ. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục 1 và 2.1–2.2; lưu đồ QLSV.pdf.) Cần xác nhận: tài liệu chỉ mô tả chi tiết quyết định học lại, đổi lớp, nghỉ học, tạm dừng, tốt nghiệp — giao diện Quyết định vào mới lấy theo cùng mẫu (Thêm → thông tin QĐ → thêm/Import sinh viên → Lưu); việc xóa quyết định có xóa sinh viên khỏi Danh mục sinh viên hay không.",
  "lastRun": {
-  "at": "2026-11-02T16:44:43.275588Z",
+  "at": "2026-11-02T17:16:58.946783Z",
   "by": "u_L8VJITzyuU54eIqCAl0PKQ",
   "hasEx": false,
   "mode": "auto",
-  "runId": "sc-qlsv-001-20261102-233958",
+  "runId": "sc-qlsv-001-20261103-001219",
   "status": "blocked",
   "version": "v2026.11A.01"
  },
  "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
  "module": "QLSV",
- "process": "02/11/2026 23:39  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n02/11/2026 23:40  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n02/11/2026 23:41  Bước 2: ĐẠT · MSSV = TEST022339 chưa có · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n02/11/2026 23:42  Chọn ngẫu nhiên LOP = NBH49A6 (trong 50 dòng phù hợp)\n02/11/2026 23:42  Bước 3: ĐẠT · MSSV = TEST022339 chưa có · TEN = Mot chưa có · LOP = NBH49A6 (Unchecked · CATBD49A60012 · Phạm Quỳnh · Anh · Nữ · 08/06/2004 · Đang học · Đang học · NBH49A6 · 49DH_NBHA · Học kỳ 1 nă) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n02/11/2026 23:43  Chọn ngẫu nhiên LYDO = TT (trong 2 dòng phù hợp)\n02/11/2026 23:43  Bước 4: ĐẠT · LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới) — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n02/11/2026 23:43  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm.\n02/11/2026 23:44  Đã ghi cây giao diện (466 phần tử) vào ui-buoc-6-loi.txt\n02/11/2026 23:44  Bước 6: BỎ QUA · Người test dừng test tại đây (Không tìm thấy \"Lý do quyết định|Lý do\" trên màn hình) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Lý do quyết định = {LYDO} (bước 4), Ngày lập = {NGAYQD}, Ngày hiệu lự\n02/11/2026 23:44  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n02/11/2026 23:44  Kết thúc: Bị chặn",
+ "process": "03/11/2026 00:12  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 00:12  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 00:13  Bước 2: ĐẠT · MSSV = TEST030012 chưa có · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 00:14  Chọn ngẫu nhiên LOP = NBH49A6 (trong 50 dòng phù hợp)\n03/11/2026 00:14  Bước 3: ĐẠT · MSSV = TEST030012 chưa có · TEN = Mot chưa có · LOP = NBH49A6 (Unchecked · CATBD49A60140 · Phạm Thị Thu · Trà · Nữ · 03/05/2004 · Đang học · Đang học · NBH49A6 · 49DH_NBHA · Học kỳ 1 ) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 00:15  Chọn ngẫu nhiên LYDO = TT (trong 2 dòng phù hợp)\n03/11/2026 00:15  Bước 4: ĐẠT · LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới) — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 00:16  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm.\n03/11/2026 00:16  Bước 6: ĐẠT — Nhập thông tin quyết định: Số quyết định = {SOQD}, Lý do quyết định = {LYDO} (bước 4), Ngày lập = {NGAYQD}, Ngày hiệu lự\n03/11/2026 00:16  Đã ghi cây giao diện (466 phần tử) vào ui-buoc-7-loi.txt\n03/11/2026 00:16  Bước 7: BỎ QUA · Người test dừng test tại đây (Không tìm thấy \"Thêm mới 1 SV\" trên màn hình) — Thêm sinh viên vào danh sách của quyết định: Mã SV = {MSSV}, Họ lót = {HOLOT}, Tên = {TEN}, Ngày sinh = {NGAYSINH}, Phái\n03/11/2026 00:16  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 00:16  Kết thúc: Bị chặn",
  "product": "edusoft",
  "scriptReady": true,
  "source": {
@@ -142,9 +142,9 @@
   "Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định thêm → nếu đã có thì tự chọn mã / tên test khác chưa có trong danh mục.",
   "Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {TEN} → nếu đã có thì tự chọn mã / tên test khác; ghi nhớ một mã lớp {LOP} của học kỳ để xếp sinh viên.",
   "Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định, lấy các lý do thuộc loại quyết định vào mới → chọn ngẫu nhiên 1 lý do, ghi nhớ {LYDO}.",
-  "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm.",
-  "Nhập thông tin quyết định: Số quyết định = {SOQD}, Lý do quyết định = {LYDO} (bước 4), Ngày lập = {NGAYQD}, Ngày hiệu lực = {NGAYQD}; Tên quyết định, Người ký chọn giá trị có sẵn.",
-  "Thêm sinh viên vào danh sách của quyết định: Mã SV = {MSSV}, Họ lót = {HOLOT}, Tên = {TEN}, Ngày sinh = {NGAYSINH}, Phái = Nam, Lớp = {LOP} (cột đánh dấu đỏ là bắt buộc). Bấm Lưu.",
+  "Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên trái).",
+  "Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO} (bước 4) – không chỉ gõ, Ngày hiệu lực = {NGAYQD} (Ngày lập mặc định hôm nay); Người ký để mặc định.",
+  "Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" (khác nút \"Thêm\" bên cạnh – Thêm dùng để chọn sinh viên có sẵn), nhập trên dòng mới Mã SV = {MSSV}, Họ lót = {HOLOT}, Tên = {TEN}, Phái = Nam, Mã lớp (mới) = {LOP}. Bấm Lưu.",
   "KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới; mở lại thấy đúng Số QĐ, Lý do {LYDO}, Ngày hiệu lực và có sinh viên {MSSV}.",
   "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): sinh viên {MSSV} hiển thị trong Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên và Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, đúng lớp {LOP}, họ tên {HOLOT} {TEN}.",
   "Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, đổi Ngày hiệu lực thành {NGAYHL2}. Bấm Lưu.",
@@ -153,7 +153,7 @@
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới; sinh viên {MSSV} không còn trong Danh sách sinh viên học kỳ (ghi lại {MSSV} còn trong Danh mục sinh viên hay không – Cần xác nhận quy tắc)."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-11-02T17:10:00.000Z",
+ "updatedAt": "2026-11-02T18:30:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",

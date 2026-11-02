@@ -2145,9 +2145,9 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
             chay-test.bat KLGD-003     (chỉ chạy các mã được liệt kê)
             do-giao-dien.bat           (ghi cây giao diện Edusoft đang mở ra file dump-*.txt)
 """
-import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64
+import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.02-2"
+KIT_VERSION = "2026.11.03-1"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2204,8 +2204,13 @@ def esc_keys(s):
     return "".join("{%s}" % c if c in "+^%~(){}[]" else c for c in str(s))
 
 
+def nfc(s):
+    """Edusoft có chỗ lưu chữ Việt dạng Unicode TỔ HỢP (vd nút "Thêm mới 1 SV": ơ + dấu sắc rời) – đưa về dạng dựng sẵn."""
+    return unicodedata.normalize("NFC", str(s or ""))
+
+
 def norm(s):
-    return re.sub(r"\s+", " ", str(s or "")).strip().lower()
+    return re.sub(r"\s+", " ", nfc(s)).strip().lower()
 
 
 def norm_label(s):
@@ -2678,6 +2683,30 @@ class Edusoft:
     def uia(self, handle):
         return Desktop(backend="uia").window(handle=handle).wrapper_object()
 
+    def all_handles(self):
+        """Mọi cửa sổ cấp cao đang hiện của Edusoft, kể cả danh sách thả xuống nhỏ (không lọc kích thước)."""
+        pid = self.pid()
+        try:
+            return {w.handle for w in Desktop(backend="win32").windows(process=pid, visible_only=True)} if pid else set()
+        except Exception:
+            return set()
+
+    def new_popups(self, before):
+        """Cửa sổ mới hiện ra so với `before` (all_handles), gồm cả danh sách thả xuống của ô tra cứu / ô lưới."""
+        main_h = getattr(self.main, "handle", None)
+        out = []
+        for h in self.all_handles() - set(before or ()):
+            if h == main_h:
+                continue
+            try:
+                w = self.uia(h)
+                r = w.rectangle()
+                if r.width() >= 20 and r.height() >= 15:
+                    out.append(w)
+            except Exception:
+                continue
+        return out
+
     def windows(self):
         hs = self.top_handles()
         if hs:
@@ -2764,7 +2793,7 @@ class Edusoft:
             try:
                 v = get()
                 if v is not None:
-                    return str(v)
+                    return nfc(v)
             except Exception:
                 continue
         return None
@@ -3176,7 +3205,7 @@ class Edusoft:
                     parts.append(t)
         except Exception:
             pass
-        txt = "\n".join(main + [p for p in parts if p not in main])
+        txt = nfc("\n".join(main + [p for p in parts if p not in main]))
         if kind == "error":
             txt = "[Lỗi hệ thống Edusoft] " + txt
         return kind, txt
@@ -3319,6 +3348,7 @@ class Edusoft:
                     if not hits:
                         continue
                     el = hits[0]
+                    self.last_outer = el                  # ô ngoài (có nút mở danh sách "Open" của ô tra cứu)
                     try:
                         inner = [e for e in el.descendants() if ".EDIT." in (e.element_info.class_name or "") and e.is_visible()]
                         if inner:
@@ -3328,6 +3358,151 @@ class Edusoft:
                     return el
             if time.time() > end:
                 raise LookupError("Không tìm thấy ô #%s trên màn hình" % "|#".join(ids))
+            time.sleep(0.5)
+
+    # --- ô tra cứu (AQLockUpEdit / LookUpEdit), lưới nhập, nút theo vùng
+    def popup_row(self, wins, value):
+        """Dòng trong danh sách thả xuống có ô (tên hoặc giá trị) đúng bằng `value`; bỏ dòng lọc."""
+        want = norm(value)
+        best = None
+        for w in wins:
+            try:
+                els = w.descendants()
+            except Exception:
+                continue
+            for el in els:
+                try:
+                    if el.element_info.control_type not in ("DataItem", "ListItem", "Custom", "Text", "TreeItem", "Edit"):
+                        continue
+                    name = norm(el.window_text())
+                    if "filter row" in name:
+                        continue
+                    vals = [name]
+                    try:
+                        vals.append(norm(el.iface_value.CurrentValue))
+                    except Exception:
+                        pass
+                    if want in vals and el.is_visible():
+                        if el.element_info.control_type in ("DataItem", "ListItem"):
+                            return el
+                        best = best or el
+                except Exception:
+                    continue
+        return best
+
+    def open_dropdown(self, outer, inner):
+        """Mở danh sách của ô tra cứu: bấm nút "Open" của ô; không có thì Alt+↓ (không dùng Esc/F4)."""
+        for base in [b for b in (outer, inner) if b is not None]:
+            try:
+                for b in base.descendants(control_type="Button"):
+                    if norm(b.window_text()) in ("open", "mở", "") and b.is_visible():
+                        self.mark(b)
+                        b.click_input()
+                        return True
+            except Exception:
+                continue
+        if self.focus(inner):
+            pkb.send_keys("%{DOWN}")
+            return True
+        return False
+
+    def choose_lookup(self, outer, inner, value, typed=True, on_unknown=None):
+        """CHỌN giá trị trong ô tra cứu (người dùng dạy: gõ xong phải chọn dòng đang có, không để danh sách mở):
+        typed=True → gõ rồi chọn; typed=False → mở danh sách rồi chọn (không thấy dòng thì gõ để lọc rồi chọn).
+        Chọn = bấm dòng khớp trong danh sách; danh sách không đọc được qua UIA → gọi on_unknown (ghi cây giao diện) rồi Enter.
+        Trả về (giá trị ô sau khi chọn, cách chọn)."""
+        before = self.all_handles()
+        if typed:
+            self.set_field(inner, value)
+            time.sleep(1.0)
+        pops = self.new_popups(before)
+        if not pops:
+            self.open_dropdown(outer, inner)
+            time.sleep(1.2)
+            pops = self.new_popups(before)
+        row = self.popup_row(pops, value) if pops else None
+        if row is None and pops and not typed:            # danh sách dài: gõ để lọc rồi tìm lại
+            self.focus(inner)
+            pkb.send_keys(esc_keys(value), with_spaces=True, pause=TYPE_PAUSE)
+            time.sleep(1.0)
+            pops = self.new_popups(before) or pops
+            row = self.popup_row(pops, value)
+        how = "bấm dòng %s" % value
+        if row is not None:
+            self.mark(row)
+            row.click_input()
+            time.sleep(0.8)
+            if self.new_popups(before):
+                try:
+                    row.click_input(double=True)
+                except Exception:
+                    pass
+                time.sleep(0.8)
+        else:
+            if pops and on_unknown:
+                on_unknown()
+            how = "Enter (không đọc được danh sách)" if pops else "Enter (không thấy danh sách)"
+            self.focus(inner)
+            pkb.send_keys("{ENTER}")
+            time.sleep(0.8)
+        if self.new_popups(before):
+            how += " · danh sách vẫn mở"
+        return self.field_value(inner), how
+
+    def area_el(self, area, timeout=6):
+        return self.find_any(area, types=("Table", "Group", "Pane", "Custom", "Tree", "List", "Text"), timeout=timeout)
+
+    def find_in_area(self, text, area, timeout=10):
+        """Nút `text` thuộc vùng `area` (tên lưới/khung, vd "Danh sách sinh viên"): tìm trong vùng rồi lên dần các
+        khung cha (thanh nút nằm cạnh lưới) – phân biệt các nút trùng tên (Thêm của danh sách trái / của lưới con)."""
+        wants = [norm_label(x) for x in alts_of(text)]
+        end = time.time() + timeout
+        while True:
+            try:
+                base = self.area_el(area, timeout=2)
+            except LookupError:
+                base = None
+            for _ in range(4):
+                if base is None:
+                    break
+                try:
+                    for t in ("Button", "MenuItem", "SplitButton"):
+                        for el in base.descendants(control_type=t):
+                            if norm_label(el.window_text()) in wants and el.is_visible():
+                                return el
+                    base = base.parent()
+                except Exception:
+                    break
+            if time.time() > end:
+                raise LookupError("Không thấy nút \"%s\" trong vùng \"%s\"" % (text, area))
+            time.sleep(0.5)
+
+    def grid_cell(self, col, area="", timeout=6):
+        """Ô của lưới ở dòng dưới cùng (dòng vừa thêm) thuộc cột `col` (DataItem "<cột> row N"; bỏ dòng lọc)."""
+        wants = [norm_label(x) for x in alts_of(col)]
+        end = time.time() + timeout
+        while True:
+            roots = self.roots()
+            if area:
+                try:
+                    roots = [self.area_el(area, timeout=2)]
+                except LookupError:
+                    pass
+            for root in roots:
+                cands = []
+                try:
+                    for el in root.descendants(control_type="DataItem"):
+                        m = re.match(r"^(.*?) row (-?\d+)$", norm(el.window_text()))
+                        if not m or "filter" in m.group(1) or norm_label(m.group(1)) not in wants:
+                            continue
+                        if el.is_visible():
+                            cands.append((el.rectangle().top, el))
+                except Exception:
+                    continue
+                if cands:
+                    return max(cands, key=lambda x: x[0])[1]
+            if time.time() > end:
+                raise LookupError("Không thấy ô cột \"%s\" ở dòng đang nhập của lưới %s" % (col, area))
             time.sleep(0.5)
 
     def type_at_label(self, lab, value):
@@ -3516,7 +3691,11 @@ class Run:
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
                                          dùng cho màn hình Edusoft vì nhãn ô không có trong cây giao diện
-          select: Nhãn = giá trị          gõ rồi Enter (ô chọn danh sách)
+          select: Nhãn|#Ten = giá trị     ô tra cứu/danh sách: gõ giá trị rồi CHỌN dòng khớp trong danh sách thả xuống
+                                         (ô theo #Ten; ô theo nhãn thì gõ rồi Enter như cũ)
+          choose: #Ten = giá trị         mở danh sách của ô (nút ▾) rồi bấm chọn dòng khớp, không gõ trước
+          cell: Cột = giá trị @ Lưới     gõ vào ô của cột ở dòng đang nhập (dòng dưới cùng) của lưới "Lưới"
+          click: Nút @ Vùng              bấm nút thuộc vùng (vd "Thêm @ Danh sách sinh viên" ≠ Thêm của danh sách trái)
           save: Lưu                      bấm Lưu và kiểm tra thông báo (lỗi → bước Lỗi)
           expect: chữ                    chờ chữ xuất hiện trên màn hình
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
@@ -3554,8 +3733,55 @@ class Run:
                 es.open_menu(arg)
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
-                es.click(es.find_any(arg, timeout=15), double=(verb == "dclick"))
+                arg, area = split_col(arg)
+                el = es.find_in_area(arg, area, timeout=15) if area else es.find_any(arg, timeout=15)
+                es.click(el, double=(verb == "dclick"))
                 time.sleep(1)
+            elif verb in ("select", "choose") and arg.lstrip().startswith("#") or verb == "choose":
+                lab, _, val = arg.partition("=")
+                lab, val = lab.strip(), val.strip()
+                es.last_outer = None
+                inner, _ = es.field_for(lab)
+                if inner is None:
+                    raise LookupError("Ô \"%s\" không chọn được (không có ô nhập)" % lab)
+                outer = getattr(es, "last_outer", None)
+                if outer is None:
+                    try:
+                        outer = inner.parent()
+                    except Exception:
+                        outer = None
+                slug = re.sub(r"[^A-Za-z0-9]+", "-", lab.split("|")[0]).strip("-").lower() or "o"
+                got, how = es.choose_lookup(outer, inner, val, typed=(verb == "select"),
+                                            on_unknown=lambda: self.dump("danh-sach-" + slug))
+                if not (got or "").strip() or "vẫn mở" in how:
+                    self.shot_into(notes, "chon-" + slug)
+                    raise RuntimeError("Ô \"%s\" chưa chọn được \"%s\" (%s; ô đang là \"%s\")" % (lab, val, how, got or ""))
+                notes.append("%s = %s (%s)" % (lab.split("|")[0], got.strip()[:40], how))
+            elif verb == "cell":
+                spec, area = split_col(arg)
+                col, _, val = spec.partition("=")
+                col, val = col.strip(), val.strip()
+                el = es.grid_cell(col, area)
+                before = es.all_handles()
+                es.mark(el)
+                el.click_input()
+                time.sleep(0.4)
+                el.click_input()                        # lần 2: mở trình soạn của ô (DevExpress)
+                time.sleep(0.4)
+                pkb.send_keys("{END}" + "{BACKSPACE}" * 40, pause=0.003)
+                if val:
+                    pkb.send_keys(esc_keys(val), with_spaces=True, pause=TYPE_PAUSE)
+                time.sleep(0.8)
+                pops = es.new_popups(before)
+                if pops:                                # ô có danh sách (Phái, Mã lớp…): chọn dòng khớp
+                    row = es.popup_row(pops, val)
+                    if row is not None:
+                        row.click_input()
+                    else:
+                        self.dump("danh-sach-o-" + re.sub(r"[^a-z0-9]+", "-", norm(col)).strip("-"))
+                        pkb.send_keys("{ENTER}")
+                    time.sleep(0.8)
+                notes.append("%s = %s" % (col.split("|")[0], val))
             elif verb in ("type", "select", "date"):
                 lab, _, val = arg.partition("=")
                 val = val.strip()
@@ -7788,7 +8014,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.02-2';
+  var KITVER='2026.11.03-1';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1.5,typePause:0.06,actionDelay:1},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
