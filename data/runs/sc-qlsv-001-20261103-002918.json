@@ -1,0 +1,174 @@
+{
+ "actual": "Bước 7 — Lỗi EX (menu code Edusoft.SMS.S02): SplitControlView\nDữ liệu test: HOLOT = Kiem Thu, LOP = HKH49C1, LYDO = TT, MSSV = TEST030029, MSSV2 = TEST030029B, NGAYHL2 = 01/12/2026, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030029, TEN = Mot, TEN2 = Hai.",
+ "alts": [
+  {
+   "at": "2026-11-02T17:34:16.180326Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T17:34:16.180326Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T17:34:16.180326Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-11-02T17:34:32.760Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "f51e0541b725f91dd60b3040d0393fb9",
+   "name": "ui-them-moi-1-sv.txt"
+  },
+  {
+   "id": "32b649574f6b44a39001523b9d011e35",
+   "name": "ui-buoc-7-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-11-02T17:34:16.180326Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.11.03-1",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "03/11/2026 00:29  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 00:29  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 00:30  Bước 2: ĐẠT · MSSV = TEST030029 chưa có · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 00:32  Chọn ngẫu nhiên LOP = HKH49C1 (trong 50 dòng phù hợp)\n03/11/2026 00:32  Bước 3: ĐẠT · MSSV = TEST030029 chưa có · TEN = Mot chưa có · LOP = HKH49C1 (Unchecked · CATBD49C10095 · Trần Khánh · Minh · Nữ · 09/03/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 n) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 00:32  Chọn ngẫu nhiên LYDO = TT (trong 2 dòng phù hợp)\n03/11/2026 00:32  Bước 4: ĐẠT · LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới) — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 00:33  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 00:33  Bước 6: ĐẠT · #IDLDQDSV = TT - Quyết định Trúng tuyển (bấm dòng TT) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 00:33  Đã ghi cây giao diện (1159 phần tử) vào ui-them-moi-1-sv.txt\n03/11/2026 00:34  Đã ghi cây giao diện (1159 phần tử) vào ui-buoc-7-loi.txt\n03/11/2026 00:34  Bước 7: LỖI EX (menu code Edusoft.SMS.S02)\n03/11/2026 00:34  Bước 7: LỖI · Lỗi EX · menu code Edusoft.SMS.S02 — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" (khác nút \"Thêm\" bên cạnh – Thêm dùng \n03/11/2026 00:34  Đã ghi nhận luồng chính: Lỗi – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 00:34  Kết thúc: Không đạt",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-11-02T17:29:18.563867Z",
+ "status": "fail",
+ "steps": [
+  {
+   "at": "2026-11-02T17:29:23.780479Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "dbc47fc0ab46d4c380da96b7d8f56bdc"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:30:35.373637Z",
+   "note": "MSSV = TEST030029 chưa có · TEN = Mot chưa có",
+   "res": "ok",
+   "shots": [
+    "68179aa30b9772b32b546892fcae1dc2"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:32:02.641507Z",
+   "note": "MSSV = TEST030029 chưa có · TEN = Mot chưa có · LOP = HKH49C1 (Unchecked · CATBD49C10095 · Trần Khánh · Minh · Nữ · 09/03/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 n)",
+   "res": "ok",
+   "shots": [
+    "d59b3ddc4f9dc27b9a5da5fd298ce042"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:32:42.802960Z",
+   "note": "LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới)",
+   "res": "ok",
+   "shots": [
+    "b72a3b9bf2fe23251967e72972892b45"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:33:08.985333Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "880d848118a5d9e504793db068104199"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:33:33.319204Z",
+   "note": "#IDLDQDSV = TT - Quyết định Trúng tuyển (bấm dòng TT)",
+   "res": "ok",
+   "shots": [
+    "2d5deca27187ef82197730ff655068d0"
+   ]
+  },
+  {
+   "at": "2026-11-02T17:34:14.676614Z",
+   "note": "Lỗi EX · menu code Edusoft.SMS.S02",
+   "res": "bad",
+   "shots": [
+    "420eef5f8ce74d444d67fa003f731bde",
+    "c45416a22f0d4bf370d239c67430461d",
+    "13e2ec5445ad5fa0dea35d69b4962b7f",
+    "1fcc0c71b4a7790dc98b613194e0294c"
+   ]
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Bỏ qua – bước trước lỗi",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "vars": {
+  "HHMMSS": "002918",
+  "HOLOT": "Kiem Thu",
+  "LOP": "HKH49C1",
+  "LOP_DONG": "Unchecked · CATBD49C10095 · Trần Khánh · Minh · Nữ · 09/03/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 năm 2022 - 2023 · Học kỳ 2 năm 2025 - 2026 · Thành Phố Hà Nội · Ngành 1 · Ngoại ngữ 2 row 43 · 012345678911 · 012345678911 · support@aqtech.vn · maithao4004@gmail.com",
+  "LYDO": "TT",
+  "LYDO_DONG": "Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới",
+  "MSSV": "TEST030029",
+  "MSSV2": "TEST030029B",
+  "NGAYHL2": "01/12/2026",
+  "NGAYQD": "03/11/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_030029",
+  "TEN": "Mot",
+  "TEN2": "Hai",
+  "ddHHMM": "030029",
+  "ddmmyyyy": "03/11/2026",
+  "yymmdd": "261103"
+ },
+ "version": "v2026.11A.01",
+ "video": null,
+ "videoFile": null
+}

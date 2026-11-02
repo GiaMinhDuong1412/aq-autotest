@@ -250,6 +250,22 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Chữ Việt trong Edusoft có chỗ ở dạng **Unicode tổ hợp** (nút "Thêm mới 1 SV": "mới" = ơ + U+0301) → so khớp phải chuẩn hoá NFC
   (kit `norm()` đã làm); lượt 00:12 báo "Không tìm thấy Thêm mới 1 SV" dù nút có trên màn hình chính vì lý do này.
 
+### #19 – "Thêm mới 1 SV" mở form, chọn lớp bằng nút "…", tắt màn hình bằng X (người dùng dạy 2026-11-03, lượt 00:29)
+- "Thêm mới 1 SV" (lưới Danh sách sinh viên của Quyết định vào mới) mở **cửa sổ riêng** "Chi tiết lý lịch sinh viên"
+  (`UC_CapNhatLyLich_Add`, khung `AQDetailRight`, tab Lý lịch / Liên lạc / Gia đình / Thông tin vợ-chồng / Hồ sơ sinh viên;
+  nút đáy **Lưu, Đóng**). Nhập các ô dấu * đỏ: `#MaSV`, `#HoLotSV`, `#TenSV` + Ngày sinh (`NgaySinhC` gồm 3 ô `#txtDay`,
+  `#txtMonth`, `#txtYear`, nút lịch `picCalendar`) → Lưu → form đóng, lưới có dòng sinh viên mới.
+  Ô khác: `Phai`, `DC_IDNoiSinhSV` (nút …), `IDLop`, `IDDV`, `NguonTuyen`, `IDDT`, `IDTG`, `QuocTich`, `SoCMND`…
+- Ô **Mã lớp (mới)** của dòng đó: bấm ô → hiện nút **"…"** ở mép phải → cửa sổ "EduSoft.NET" **Danh sách lớp** (cột Mã lớp,
+  Tên lớp; có dòng lọc; ~500 lớp; nút Export, **Chọn**, Đóng): tìm lớp (dòng lọc Mã lớp) → bấm dòng → **Chọn**. Rồi Lưu quyết định.
+  Kit: `cellbtn: Mã lớp (mới) @ Danh sách sinh viên`, `find_row: {LOP} @ Mã lớp`, `click: Chọn @ Danh sách lớp`.
+- Mỗi màn hình chức năng có nút **X** trên tab MDI (TabItem tên màn hình + Button "Close"): **test xong chức năng nào tắt
+  chức năng đó** → `close: Tên màn hình` (hỏi lưu thì bấm Không).
+- Lỗi EX báo nhầm: ô ảnh có tên "System.Drawing.Bitmap" → kit 2026.11.03-2 bỏ mẫu "system." trơn khỏi `EX_PAT`.
+- Ô nhập trong form con: `set_field` không còn đóng chính form chứa ô (trước đây `close_dialogs` đóng mọi cửa sổ con).
+- Quy trình QLSV-001 người dùng chốt: thêm QĐ (thông tin + Thêm mới 1 SV + chọn lớp) → Lưu → kiểm tra QĐ → Danh sách sinh viên
+  học kỳ có SV mới (có = Đạt) → Sửa Tên QĐ → Lưu → kiểm tra → Xóa QĐ → kiểm tra không còn. Xong.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
