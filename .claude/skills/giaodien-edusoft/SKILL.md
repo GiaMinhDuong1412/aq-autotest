@@ -205,6 +205,17 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
   cho từng màn hình (mã màn hình như `S15.04`), ghi thành bảng trong `thao-tac.md`; **không** commit mã nguồn vào repo
   (để ngoài git, vd `local/` hoặc scratchpad) – chỉ ghi bảng ánh xạ.
 
+### #16 – Thư mục cài Edusoft và `Languages.xml` (2026-11-02, người dùng gửi từ `A:\EDUSOFT\aq.edusoft.all`)
+- `A:\EDUSOFT\aq.edusoft.all` là **bản đã build** (539 dll, 212 mẫu báo biểu `.mrt` Stimulsoft, DevExpress **v16.2**),
+  không có mã nguồn (`.cs`/`.sln`). Đừng gửi `*.config` (mật khẩu SMTP, chuỗi kết nối).
+- Module Edusoft = `Edusoft.<MÃ>.dll` (+ `.WcfContracts`): SRM, RMS, SCH, SMS, CMS, DCM, TPM, EPM, HRM, PMS, MDS, ZMS, SRT,
+  JMS, EMS, BSM, STM, EVA, DMS, TQM, ILS, EAU; nền: `Edusoft.Base`, `Edusoft.DataAccess/DataObjects`, `AQFramework`,
+  `AQControls.Forms.UI.v3` (control AQ…), `AQViewers`, `AQData.*`.
+- `Languages.xml` (một ngôn ngữ VN, ~14.000 `<Item ID="MA_HANG" Value="…">`) = **bảng thông báo/nhãn theo mã hằng**
+  (vd `CHUA_NHAP_SO_QD` = "Chưa nhập số quyết định", `SO_QD_DA_TON_TAI_TRONG_HK` = "Số quyết định này đã tồn tại trong học kỳ").
+  **Không** có ánh xạ tên control ↔ nhãn. Dùng để tra đúng chữ hộp thoại cho `expect_dialog:`/`expect:`; không commit cả file.
+- Nhãn ô của khung nhập (vd S15.04) không nằm trong `Languages.xml` → lấy từ metadata trong dll (`AQControls…`, module) hoặc CSDL.
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
