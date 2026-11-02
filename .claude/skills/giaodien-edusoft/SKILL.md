@@ -286,6 +286,16 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Mẫu chung cho mọi form chọn (FormChonView: chọn lớp, chọn sinh viên, chọn môn…): `find_row: {GIÁ_TRỊ} @ Cột` (dòng lọc) →
   `click: Chọn @ <tên lưới của form>`.
 
+### #22 – Xóa có nhiều bước xác nhận (lượt QLSV-001 03/11 01:22, kit 11.03-6)
+- Bấm **Xóa** trên danh sách (vd Quyết định vào mới) → cửa sổ "EduSoft.NET" chữ xanh **"Danh sách đang chọn để xóa, vui lòng
+  kiểm tra và chọn xác thực lại"**: lưới (cùng tên lưới gốc, vd "Danh sách quyết định") có cột ô check `#` (DataItem
+  "# row N" = Checked/Unchecked), nút Export / **Thực hiện** / Đóng. Phải **tick ô check** dòng cần xóa → **Thực hiện**.
+- Tiếp theo hộp "**Xác nhận xóa dữ liệu đang chọn?**" (Có / Không – không nêu mã) → **Có** → thông báo kết quả → OK.
+- Kit `delete_row` tự đi hết chuỗi này. An toàn: mọi dòng trong lưới xác nhận phải mang mã test (không thì Đóng, không xóa);
+  hộp hỏi không nêu mã chỉ được bấm Có khi đã qua bước kiểm lưới đó; hộp hỏi khác → Không.
+- Lượt cũ (kit ≤ 11.03-5) đọc lưới bằng tên phần tử (không có giá trị ô) nên tưởng hộp không nêu mã → bấm Đóng, dữ liệu test
+  TEST_QD_030122 còn lại (xóa tay hoặc chạy lại – lượt sau mã khác nên không trùng).
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.

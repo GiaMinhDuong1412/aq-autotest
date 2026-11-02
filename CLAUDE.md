@@ -77,6 +77,6 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - Không đọc/hiển thị mật khẩu email SMTP trong `client.config` của Edusoft.
 - Chỉ thao tác bản **EDUSOFT - HVNG - Copy** (`E:\AQ - Works\EDUSOFT_ALL_ENV\EDUSOFT - HVNG - Copy\Edusoft.NET.exe`), không đụng
   các môi trường Edusoft khác. Dữ liệu test có tiền tố rõ ràng (`AUTO…`, `TEST_…`) và có luồng dọn dữ liệu; xóa chỉ khi hộp
-  thoại xác nhận nêu đúng mã dữ liệu test.
+  thoại xác nhận nêu đúng mã dữ liệu test (hoặc danh sách xác nhận xóa "Danh sách đang chọn để xóa" chỉ có dòng mang mã test).
 - Hỏi người dùng trước khi thêm thao tác làm thay đổi dữ liệu ngoài phạm vi kịch bản. Không sửa file Excel gốc trừ khi được yêu cầu.
 - Gõ phím thật nên chuỗi nhập tránh tổ hợp Telex (dd, aa, s/f/r/x/j sau nguyên âm…) và nhắc tắt Unikey/EVKey khi chạy.

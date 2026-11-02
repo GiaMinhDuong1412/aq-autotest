@@ -1,5 +1,5 @@
 {
- "actual": "Bước 7 — Lỗi EX (menu code Edusoft.SMS.S02): SplitControlView\nDữ liệu test: HOLOT = Kiem Thu, LOP = HKH49C1, LYDO = TT, MSSV = TEST030029, MSSV2 = TEST030029B, NGAYHL2 = 01/12/2026, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030029, TEN = Mot, TEN2 = Hai.",
+ "actual": "Dừng ở bước 12: Người test dừng test tại đây (Hộp thoại xác nhận xóa không nêu mã TEST_QD_030122 nên KHÔNG xóa – hãy xóa tay. Nội dung: aqPanel1 Danh sách quyết định scroll bar Column Left Page Le)\nDữ liệu test: HOLOT = Kiem Thu, LOP = LTMQT52A4, LYDO = N2, MSSV = TEST030122, MSSV2 = TEST030122B, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030122, TEN = Hai, TEN2 = Hai, TENQD2 = TEST_QD_030122_SUA.",
  "altFlows": [
   {
    "condition": "Thêm quyết định vào mới nhưng không nhập Số quyết định, hoặc không chọn Lớp cho sinh viên {MSSV2}",
@@ -127,24 +127,24 @@
  },
  "expected": "Thêm: quyết định {SOQD} lưu được, có sinh viên {MSSV} (lớp {LOP}); sinh viên mới hiển thị trong Danh sách sinh viên học kỳ. Sửa: Tên quyết định đổi thành {TENQD2}. Xóa: quyết định {SOQD} không còn trên màn hình, xóa thành công. Mỗi màn hình test xong được tắt bằng nút X trên tab. (Theo hướng dẫn người dùng 03/11/2026; QLSV_CapNhatQuyetDinhVaoRa.)",
  "lastRun": {
-  "at": "2026-11-02T17:34:16.180326Z",
+  "at": "2026-11-02T18:29:47.310597Z",
   "by": "u_L8VJITzyuU54eIqCAl0PKQ",
-  "hasEx": true,
+  "hasEx": false,
   "mode": "auto",
-  "runId": "sc-qlsv-001-20261103-002918",
-  "status": "fail",
+  "runId": "sc-qlsv-001-20261103-012240",
+  "status": "blocked",
   "version": "v2026.11A.01"
  },
  "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới",
  "module": "QLSV",
- "process": "03/11/2026 00:29  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 00:29  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 00:30  Bước 2: ĐẠT · MSSV = TEST030029 chưa có · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 00:32  Chọn ngẫu nhiên LOP = HKH49C1 (trong 50 dòng phù hợp)\n03/11/2026 00:32  Bước 3: ĐẠT · MSSV = TEST030029 chưa có · TEN = Mot chưa có · LOP = HKH49C1 (Unchecked · CATBD49C10095 · Trần Khánh · Minh · Nữ · 09/03/2004 · Đang học · Đang học · HKH49C1 · 49DH_HKHC · Học kỳ 1 n) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 00:32  Chọn ngẫu nhiên LYDO = TT (trong 2 dòng phù hợp)\n03/11/2026 00:32  Bước 4: ĐẠT · LYDO = TT (Unchecked · TT · Quyết định Trúng tuyển · Viết tắt row 11 · Quyết định vào mới) — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 00:33  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 00:33  Bước 6: ĐẠT · #IDLDQDSV = TT - Quyết định Trúng tuyển (bấm dòng TT) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 00:33  Đã ghi cây giao diện (1159 phần tử) vào ui-them-moi-1-sv.txt\n03/11/2026 00:34  Đã ghi cây giao diện (1159 phần tử) vào ui-buoc-7-loi.txt\n03/11/2026 00:34  Bước 7: LỖI EX (menu code Edusoft.SMS.S02)\n03/11/2026 00:34  Bước 7: LỖI · Lỗi EX · menu code Edusoft.SMS.S02 — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" (khác nút \"Thêm\" bên cạnh – Thêm dùng \n03/11/2026 00:34  Đã ghi nhận luồng chính: Lỗi – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 00:34  Kết thúc: Không đạt",
+ "process": "03/11/2026 01:22  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 01:22  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 01:24  TEN = Mot đã có sẵn → dùng Hai\n03/11/2026 01:24  Bước 2: ĐẠT · MSSV = TEST030122 chưa có · Mot đã có, đổi thành Hai · Đã tắt Danh mục sinh viên — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 01:25  Chọn ngẫu nhiên LOP = LTMQT52A4 (trong 50 dòng phù hợp)\n03/11/2026 01:25  Bước 3: ĐẠT · MSSV = TEST030122 chưa có · TEN = Hai chưa có · LOP = LTMQT52A4 (Unchecked · 26CH0026QLD · Trần Văn · Trọng · Nam · 11/06/1987 · Đang học · Đang học · LTMQT52A4 · 52DH_LTMQTA · Học kỳ 1) · Đã tắt Danh sách sinh viên học kỳ — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 01:25  Chọn ngẫu nhiên LYDO = N2 (trong 2 dòng phù hợp)\n03/11/2026 01:25  Bước 4: ĐẠT · LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 01:25  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 01:26  Bước 6: ĐẠT · #IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 01:27  Bước 7: ĐẠT · Mở danh sách chọn của Mã lớp (mới) · Thấy dòng LTMQT52A4 — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" → cửa sổ \"Chi tiết lý lịch sinh viên\":\n03/11/2026 01:27  Bước 8: ĐẠT · Thấy dòng TEST_QD_030122 · Đã tắt Quyết định vào mới — KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới và có sinh viên {MSSV}. Xong tắt màn hình Q\n03/11/2026 01:27  Bước 9: ĐẠT · Thấy dòng TEST030122 · Đã tắt Danh sách sinh viên học kỳ — KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có \n03/11/2026 01:28  Bước 10: ĐẠT · Thấy dòng TEST_QD_030122 — Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.\n03/11/2026 01:28  Bước 11: ĐẠT · Thấy dòng TEST_QD_030122 — KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.\n03/11/2026 01:29  Đã ghi cây giao diện (413 phần tử) vào ui-buoc-12-loi.txt\n03/11/2026 01:29  Bước 12: BỎ QUA · Người test dừng test tại đây (Hộp thoại xác nhận xóa không nêu mã TEST_QD_030122 nên KHÔNG xóa – hãy xóa tay. Nội dung: aqPanel1 Danh sách quyết định scroll bar Column Left Page Le) — Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa, xác nhận (chỉ xác nhận khi hộp thoại nêu đúng {SOQD}).\n03/11/2026 01:29  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 01:29  Kết thúc: Bị chặn",
  "product": "edusoft",
  "scriptReady": true,
  "source": {
   "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục 1, 2.1–2.2; QLSV.pdf (lưu đồ quản lý sinh viên); QLSV_CapNhatLyLichSinhVien, mục I",
   "plan": "edusoft-QLSV"
  },
- "status": "fail",
+ "status": "blocked",
  "steps": [
   "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố TEST, không đụng sinh viên thật.",
   "Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định thêm (ô tìm kiếm của cột) → nếu đã có thì tự chọn mã/tên test khác. Xong tắt màn hình (nút X trên tab).",
@@ -157,11 +157,11 @@
   "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có là Đạt, không có là Lỗi. Xong tắt màn hình.",
   "Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.",
   "KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.",
-  "Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa, xác nhận (chỉ xác nhận khi hộp thoại nêu đúng {SOQD}).",
+  "Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick ô chọn dòng {SOQD} → Thực hiện → \"Xác nhận xóa dữ liệu đang chọn?\" → Có → thông báo kết quả → OK. Danh sách có dòng khác hoặc hộp hỏi lạ thì KHÔNG xóa.",
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới (xóa thành công). Xong tắt màn hình."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-11-02T19:00:00.000Z",
+ "updatedAt": "2026-11-02T19:40:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",
