@@ -1765,7 +1765,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-6"
+KIT_VERSION = "2026.11.03-7"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2827,6 +2827,7 @@ class Edusoft:
         segs = menu_segs(path)
         if not segs:
             return
+        self.last_menu = path
         for i, s in enumerate(segs):
             last = i == len(segs) - 1
             el = self.find_any(s, roots=[self.main] if i == 0 else None, timeout=12,
@@ -3224,6 +3225,38 @@ class Edusoft:
                 raise LookupError("Không thấy ô cột \"%s\" ở dòng đang nhập của lưới %s" % (col, area))
             time.sleep(0.5)
 
+    STATUS_PAT = re.compile(r"thành công|thất bại|không thành|lỗi|không (được|thể)|đã (lưu|xóa|xoá|thêm|cập nhật)", re.I)
+
+    def status_msg(self):
+        """Thông báo trên THANH TRẠNG THÁI dưới đáy cửa sổ chính (StatusBar → Text, vd "Xóa dữ liệu thành công",
+        "Cập nhật mẫu tin Chi tiết Danh sách quyết định thành công") – Edusoft báo kết quả Lưu/Xóa ở đây, không bật hộp thoại."""
+        sb = getattr(self, "_sb", None)
+        for attempt in range(2):
+            if sb is None:
+                try:
+                    sb = next(iter(self.main.descendants(control_type="StatusBar")), None)
+                except Exception:
+                    sb = None
+                self._sb = sb
+            if sb is None:
+                return ""
+            try:
+                out = [nfc(t.window_text()).strip() for t in sb.descendants(control_type="Text")]
+                return " · ".join(t for t in out if t and self.STATUS_PAT.search(t))
+            except Exception:
+                sb = self._sb = None                      # thanh trạng thái cũ đã mất – tìm lại
+        return ""
+
+    def wait_status(self, before, timeout=8):
+        """Chờ thanh trạng thái đổi khác `before` (thông báo mới sau Lưu/Xóa); trả chữ mới, hết giờ thì "" ."""
+        end = time.time() + timeout
+        while time.time() < end:
+            m = self.status_msg()
+            if m and m != before:
+                return m
+            time.sleep(0.5)
+        return ""
+
     def close_screen(self, name, timeout=8):
         """Tắt màn hình chức năng bằng nút X trên tab MDI (TabItem tên màn hình → nút Close của tab)."""
         tab = self.find_any(name, types=("TabItem",), roots=[self.main], timeout=timeout)
@@ -3466,6 +3499,7 @@ class Run:
           close: Tên màn hình            tắt màn hình chức năng bằng nút X trên tab (test xong chức năng nào tắt chức năng đó)
           click: Nút @ Vùng              bấm nút thuộc vùng (vd "Thêm @ Danh sách sinh viên" ≠ Thêm của danh sách trái)
           save: Lưu                      bấm Lưu và kiểm tra thông báo (lỗi → bước Lỗi)
+                                         + đọc THANH TRẠNG THÁI dưới đáy ("… thành công") – Edusoft báo kết quả ở đó
           expect: chữ                    chờ chữ xuất hiện trên màn hình
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
           find_row: giá trị @ Cột|Cột    tìm dòng: gõ giá trị vào Ô TÌM KIẾM của cột (dòng lọc có icon phễu ngay dưới
@@ -3479,6 +3513,7 @@ class Run:
           pick: BIẾN = lọc|lọc @ cột     đọc các dòng của lưới đang mở, giữ dòng có chữ "lọc", chọn NGẪU NHIÊN
                                          một dòng: {BIẾN} = ô của cột (không ghi cột = ô đầu), {BIẾN_DONG} = cả dòng
           absent: giá trị @ Cột          giá trị KHÔNG còn trong lưới (kiểm tra sau khi xóa)
+                                         vẫn thấy → tắt màn hình (X), mở lại menu, kiểm tra lần nữa
           shot: tên                      chụp ảnh màn hình vào bước
           key / wait / ok / note         như cũ"""
         es = self.es
@@ -3528,13 +3563,7 @@ class Run:
                     raise RuntimeError("Ô \"%s\" chưa chọn được \"%s\" (%s; ô đang là \"%s\")" % (lab, val, how, got or ""))
                 notes.append("%s = %s (%s)" % (lab.split("|")[0], got.strip()[:40], how))
             elif verb == "close":
-                es.snap = es.handles()
-                es.close_screen(arg)
-                time.sleep(1.2)
-                for d in es.new_windows(es.snap):        # hỏi lưu thay đổi → Không (bước đã lưu/không cần lưu)
-                    no = es.dialog_button(d, ("không", "no"))
-                    if no is not None:
-                        es.press(no)
+                self.close_screen(arg)
                 notes.append("Đã tắt " + arg)
             elif verb == "cellbtn":
                 col, area = split_col(arg)
@@ -3588,6 +3617,7 @@ class Run:
                     notes.append("%s: gõ theo vị trí" % lab.strip().split("|")[0])
             elif verb == "save":
                 es.snap = es.handles()
+                st0 = es.status_msg()
                 es.click(es.find_any(arg or "Lưu", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
                 time.sleep(2.5)
                 ds = es.new_windows(es.snap)
@@ -3605,6 +3635,12 @@ class Run:
                         raise RuntimeError("Lưu không thành công: " + txt[:250])
                     notes.append("Thông báo: " + txt[:150])
                 es.close_dialogs(5)
+                st = es.wait_status(st0, 5)
+                if st:
+                    if ERR_PAT.search(st) and not OK_PAT.search(st):
+                        self.shot_into(notes, "%s-trang-thai" % (label or "luu").lower().replace(" ", "-"))
+                        raise RuntimeError("Lưu không thành công (thanh trạng thái): " + st[:200])
+                    notes.append("Thanh trạng thái: " + st[:150])
             elif verb == "expect":
                 es.find_any(arg, types=("Text", "Custom", "DataItem", "Edit", "TitleBar", "Window", "Pane", "Button"), timeout=12)
             elif verb == "expect_dialog":
@@ -3671,7 +3707,17 @@ class Run:
             elif verb == "absent":
                 arg, col = split_col(arg)
                 if self.row_exists(arg, col):
-                    raise RuntimeError("Vẫn còn \"%s\" trong danh sách" % arg)
+                    # Lưới chưa nạp lại sau Xóa (thanh trạng thái đã báo thành công mà dòng vẫn hiện) → tắt màn hình,
+                    # mở lại menu rồi kiểm tra lần nữa (người dùng dạy 03/11).
+                    path = getattr(es, "last_menu", "") or self.sc.get("menu") or ""
+                    segs = menu_segs(path)
+                    if not segs:
+                        raise RuntimeError("Vẫn còn \"%s\" trong danh sách" % arg)
+                    self.close_screen(segs[-1])
+                    es.open_menu(path)
+                    notes.append("Tắt và mở lại " + segs[-1])
+                    if self.row_exists(arg, col):
+                        raise RuntimeError("Vẫn còn \"%s\" trong danh sách (đã tắt, mở lại màn hình)" % arg)
                 notes.append("Không còn " + arg)
             elif verb == "shot":
                 self.shot_into(notes, arg or (label or "anh").lower().replace(" ", "-"))
@@ -3721,6 +3767,17 @@ class Run:
             self.vars[var] = cur
         raise RuntimeError("Không tìm được giá trị %s chưa có sẵn (đã thử %s)" % (var, ", ".join(tried)))
 
+    def close_screen(self, name):
+        """Tắt màn hình bằng nút X trên tab; hỏi lưu thay đổi → Không (bước đã lưu/không cần lưu)."""
+        es = self.es
+        es.snap = es.handles()
+        es.close_screen(name)
+        time.sleep(1.2)
+        for d in es.new_windows(es.snap):
+            no = es.dialog_button(d, ("không", "no"))
+            if no is not None:
+                es.press(no)
+
     def win_rows(self, root):
         """Các dòng dữ liệu của lưới trong một cửa sổ: {số dòng: [(tên cột, giá trị, phần tử)]} – lấy cả ô check
         ("#" = Checked/Unchecked); bỏ dòng lọc và dòng nhóm (số âm)."""
@@ -3752,6 +3809,7 @@ class Run:
           3. thông báo kết quả → OK. Hộp hỏi không nêu mã và chưa qua bước 1 → bấm Không, báo lỗi (không xóa)."""
         es = self.es
         es.snap = es.handles()
+        st0 = es.status_msg()
         es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
         time.sleep(2)
         notes, seen, forms = [], set(), []
@@ -3783,6 +3841,13 @@ class Run:
             idle = 0
             d = ds[-1]
             seen.add(d.handle)
+            try:
+                has_btn = any(b.is_visible() for b in d.descendants(control_type="Button"))
+            except Exception:
+                has_btn = False
+            if not has_btn:                               # progressPanel "đang xử lý" – chờ nó tự tắt, không bấm gì
+                time.sleep(1)
+                continue
             if es.is_form(d):
                 forms.append(d)
                 rows = self.win_rows(d)
@@ -3837,6 +3902,11 @@ class Run:
             refuse("Bấm Xóa nhưng không thấy hộp thoại xác nhận xóa %s" % code)
         close_forms()
         es.close_dialogs(6)
+        st = es.wait_status(st0, 10)                      # "Xóa dữ liệu thành công" ở thanh trạng thái
+        if st and ERR_PAT.search(st) and not OK_PAT.search(st):
+            raise RuntimeError("Xóa không thành công (thanh trạng thái): " + st[:200])
+        if st:
+            notes.append("Thanh trạng thái: " + st[:150])
         notes.append("Đã xóa " + code)
         return notes
 
@@ -7807,7 +7877,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.03-6';
+  var KITVER='2026.11.03-7';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

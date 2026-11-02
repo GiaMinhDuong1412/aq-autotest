@@ -70,6 +70,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   không dùng Invoke cho nút mở hộp thoại; Edusoft chạy quyền admin nên bộ test phải chạy quyền admin (Agent lo việc này).
 - **Không gửi phím Esc** trên màn hình Edusoft: Esc đóng màn hình chức năng, ở cửa sổ chính hỏi "Thoát khỏi chương trình?"
   (kit tự bấm Không). Tìm dòng bằng ô tìm kiếm của cột, không dùng Ctrl+F.
+- Kết quả Lưu/Xóa thường hiện ở **thanh trạng thái** dưới đáy (vd "Xóa dữ liệu thành công"), không phải hộp thoại; xóa xong
+  lưới có thể chưa nạp lại – `absent:` tự tắt màn hình (X), mở lại menu rồi kiểm tra lần nữa.
 
 ## Quy tắc an toàn (bắt buộc)
 - Tài khoản test `admindh` chỉ dùng cho môi trường demo/test. **Không** ghi mật khẩu vào `data/`, kịch bản, log hay commit;

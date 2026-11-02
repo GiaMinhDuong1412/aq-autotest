@@ -1,0 +1,181 @@
+{
+ "actual": "Dừng ở bước 13: Script không làm được (Vẫn còn \"TEST_QD_030135\" trong danh sách) – người test xác nhận không phải lỗi\nDữ liệu test: HOLOT = Kiem Thu, LOP = HKH49B1, LYDO = N2, MSSV = TEST030135, MSSV2 = TEST030135B, NGAYQD = 03/11/2026, NGAYSINH = 01/01/2006, SOQD = TEST_QD_030135, TEN = Ba, TEN2 = Hai, TENQD2 = TEST_QD_030135_SUA.",
+ "alts": [
+  {
+   "at": "2026-11-02T18:44:24.081055Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:44:24.081055Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-11-02T18:44:24.081055Z",
+   "note": "Chưa tự động – kiểm tra tay khi cần",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-11-02T18:44:52.628Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "18d5d04d81b6a030bacb256ad3dd8aca",
+   "name": "ui-buoc-13-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-11-02T18:44:24.081055Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.11.03-6",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "03/11/2026 01:35  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n03/11/2026 01:35  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n03/11/2026 01:37  TEN = Mot đã có sẵn → dùng Ba\n03/11/2026 01:37  Bước 2: ĐẠT · MSSV = TEST030135 chưa có · Mot đã có, đổi thành Ba · Đã tắt Danh mục sinh viên — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n03/11/2026 01:38  Chọn ngẫu nhiên LOP = HKH49B1 (trong 50 dòng phù hợp)\n03/11/2026 01:38  Bước 3: ĐẠT · MSSV = TEST030135 chưa có · TEN = Ba chưa có · LOP = HKH49B1 (Unchecked · CATBD49B10039 · Hà Văn · Giáp · Nam · 16/02/2004 · Đang học · Đang học · HKH49B1 · 49DH_HKHB · Học kỳ 1 năm ) · Đã tắt Danh sách sinh viên học kỳ — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n03/11/2026 01:38  Chọn ngẫu nhiên LYDO = N2 (trong 2 dòng phù hợp)\n03/11/2026 01:38  Bước 4: ĐẠT · LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định — Thu thập lý do quyết định (chỉ xem, không sửa): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyế\n03/11/2026 01:38  Bước 5: ĐẠT — Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm (nút Thêm của danh sách quyết định bên\n03/11/2026 01:38  Bước 6: ĐẠT · #IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2) — Nhập thông tin quyết định: Số quyết định = {SOQD}, Tên quyết định = {SOQD}, Lý do quyết định: mở danh sách và CHỌN {LYDO\n03/11/2026 01:39  Bước 7: ĐẠT · Mở danh sách chọn của Mã lớp (mới) · Thấy dòng HKH49B1 — Thêm sinh viên mới vào quyết định: ở lưới Danh sách sinh viên bấm \"Thêm mới 1 SV\" → cửa sổ \"Chi tiết lý lịch sinh viên\":\n03/11/2026 01:40  Bước 8: ĐẠT · Thấy dòng TEST_QD_030135 · Đã tắt Quyết định vào mới — KIỂM TRA THÊM: quyết định {SOQD} hiển thị trong danh sách Quyết định vào mới và có sinh viên {MSSV}. Xong tắt màn hình Q\n03/11/2026 01:40  Bước 9: ĐẠT · Thấy dòng TEST030135 · Đã tắt Danh sách sinh viên học kỳ — KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có \n03/11/2026 01:41  Bước 10: ĐẠT · Thấy dòng TEST_QD_030135 — Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.\n03/11/2026 01:41  Bước 11: ĐẠT · Thấy dòng TEST_QD_030135 — KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.\n03/11/2026 01:42  Bước 12: ĐẠT · Đã tick 1 dòng TEST_QD_030135 trong danh sách xác nhận xóa · progressPanel1 · Đã xóa TEST_QD_030135 — Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick ô chọn\n03/11/2026 01:42  Đã ghi cây giao diện (476 phần tử) vào ui-buoc-13-loi.txt\n03/11/2026 01:44  Bước 13: BỎ QUA · Script không làm được (Vẫn còn \"TEST_QD_030135\" trong danh sách) – người test xác nhận không phải lỗi — KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới (xóa thành công). Xong tắt màn hình.\n03/11/2026 01:44  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n03/11/2026 01:44  Kết thúc: Bị chặn",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-11-02T18:35:07.189460Z",
+ "status": "blocked",
+ "steps": [
+  {
+   "at": "2026-11-02T18:35:12.746853Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "1845b78ebf920c44e6ef6cfc3cd8a63e"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:37:07.566920Z",
+   "note": "MSSV = TEST030135 chưa có · Mot đã có, đổi thành Ba · Đã tắt Danh mục sinh viên",
+   "res": "ok",
+   "shots": [
+    "c9c3eea5ac4973ae8e331b8abe3348bd"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:38:10.633564Z",
+   "note": "MSSV = TEST030135 chưa có · TEN = Ba chưa có · LOP = HKH49B1 (Unchecked · CATBD49B10039 · Hà Văn · Giáp · Nam · 16/02/2004 · Đang học · Đang học · HKH49B1 · 49DH_HKHB · Học kỳ 1 năm ) · Đã tắt Danh sách sinh viên học kỳ",
+   "res": "ok",
+   "shots": [
+    "dd02e69a1ab725c1939be13b0442e47a"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:38:26.980117Z",
+   "note": "LYDO = N2 (Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới) · Đã tắt Danh mục lý do quyết định",
+   "res": "ok",
+   "shots": [
+    "546370b5a716842880fa254af59a696f"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:38:42.542766Z",
+   "note": "",
+   "res": "ok",
+   "shots": [
+    "510037d981b2ca11659bf588cf3b0e5c"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:38:59.537687Z",
+   "note": "#IDLDQDSV = N2 - Quyết định ngành 2 (bấm dòng N2)",
+   "res": "ok",
+   "shots": [
+    "6b042a2eb34c0b763b5a1cb7dacd2040"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:39:58.466759Z",
+   "note": "Mở danh sách chọn của Mã lớp (mới) · Thấy dòng HKH49B1",
+   "res": "ok",
+   "shots": [
+    "c4479dfd217dbb2c89a8d5ab0977767f",
+    "ba0c4d12a749381cf6f061b4d18e5ac3",
+    "e5e8c77db411e1f6286514b8e58a8d50"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:40:15.299728Z",
+   "note": "Thấy dòng TEST_QD_030135 · Đã tắt Quyết định vào mới",
+   "res": "ok",
+   "shots": [
+    "6d933cc8bf3f7b3b4236ac0ab154153d"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:40:42.896843Z",
+   "note": "Thấy dòng TEST030135 · Đã tắt Danh sách sinh viên học kỳ",
+   "res": "ok",
+   "shots": [
+    "e0c15d516133d04e16780bbef32dedb4"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:41:17.330620Z",
+   "note": "Thấy dòng TEST_QD_030135",
+   "res": "ok",
+   "shots": [
+    "d72d09ee366d27eb7bd55c68df4078b3"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:41:32.065437Z",
+   "note": "Thấy dòng TEST_QD_030135",
+   "res": "ok",
+   "shots": [
+    "a487457fd5ad163d8dcbd96951eb3aee"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:42:01.680708Z",
+   "note": "Đã tick 1 dòng TEST_QD_030135 trong danh sách xác nhận xóa · progressPanel1 · Đã xóa TEST_QD_030135",
+   "res": "ok",
+   "shots": [
+    "e1438c5623689c6b740506f09bfb6cc8"
+   ]
+  },
+  {
+   "at": "2026-11-02T18:44:23.058115Z",
+   "note": "Script không làm được (Vẫn còn \"TEST_QD_030135\" trong danh sách) – người test xác nhận không phải lỗi",
+   "res": "skip",
+   "shots": [
+    "241d1390e2ed227b5f9e5c315e6831db"
+   ]
+  }
+ ],
+ "vars": {
+  "HHMMSS": "013507",
+  "HOLOT": "Kiem Thu",
+  "LOP": "HKH49B1",
+  "LOP_DONG": "Unchecked · CATBD49B10039 · Hà Văn · Giáp · Nam · 16/02/2004 · Đang học · Đang học · HKH49B1 · 49DH_HKHB · Học kỳ 1 năm 2022 - 2023 · Học kỳ 2 năm 2025 - 2026 · Tỉnh Thanh Hóa · Ngành 1 · Ngoại ngữ 2 row 27 · 012345678911 · 012345678911 · support@aqtech.vn · hagiap1602@gmail.com",
+  "LYDO": "N2",
+  "LYDO_DONG": "Unchecked · N2 · Quyết định ngành 2 · Viết tắt row 5 · Quyết định vào mới",
+  "MSSV": "TEST030135",
+  "MSSV2": "TEST030135B",
+  "NGAYQD": "03/11/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_030135",
+  "TEN": "Ba",
+  "TEN2": "Hai",
+  "TENQD2": "TEST_QD_030135_SUA",
+  "ddHHMM": "030135",
+  "ddmmyyyy": "03/11/2026",
+  "yymmdd": "261103"
+ },
+ "version": "v2026.11A.01",
+ "video": null,
+ "videoFile": null
+}
