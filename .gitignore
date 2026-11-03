@@ -10,3 +10,6 @@ AQAutotest-IIS-cai-dat.zip
 server-iis/cai-dat-log.txt
 aq-console/
 aq-console-server.json
+
+# kết quả tools/trich_source.py (gửi cho Claude, không commit)
+trich-*.txt
