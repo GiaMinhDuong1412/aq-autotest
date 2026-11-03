@@ -81,4 +81,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   các môi trường Edusoft khác. Dữ liệu test có tiền tố rõ ràng (`AUTO…`, `TEST_…`) và có luồng dọn dữ liệu; xóa chỉ khi hộp
   thoại xác nhận nêu đúng mã dữ liệu test (hoặc danh sách xác nhận xóa "Danh sách đang chọn để xóa" chỉ có dòng mang mã test).
 - Hỏi người dùng trước khi thêm thao tác làm thay đổi dữ liệu ngoài phạm vi kịch bản. Không sửa file Excel gốc trừ khi được yêu cầu.
+- Source Edusoft trên TFS (`$TFS_URL` = https://portal.aqtech.vn:1443/tfs/AQ, repo Git `Source.NET`, token ở biến môi trường `TFS_TOKEN`,
+  quyền Code (Read)): **chỉ đọc** qua REST API (GET) để lấy tên điều khiển, câu thông báo, ràng buộc nghiệp vụ cho `auto`/kịch bản.
+  Không push/commit/sửa gì trên TFS; không chép source vào repo này (chỉ ghi tên điều khiển, câu thông báo vào skill `giaodien-edusoft`);
+  bỏ qua chuỗi kết nối, mật khẩu, file `*.config`. Không in token ra log/chat; người dùng dán token vào chat thì nhắc thu hồi.
 - Gõ phím thật nên chuỗi nhập tránh tổ hợp Telex (dd, aa, s/f/r/x/j sau nguyên âm…) và nhắc tắt Unikey/EVKey khi chạy.
