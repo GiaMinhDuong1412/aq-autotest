@@ -1,0 +1,65 @@
+# Mỗi lần merge (push) vào main: kiểm tra → đóng gói app AQ Auto Test → tạo GitHub Release "v<năm.tháng.ngày>-<số lần chạy>".
+# App trên máy người dùng thấy bản mới qua nút "Cập nhật" (app_update.py đọc releases/latest).
+name: Phát hành app AQ Auto Test
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:            # dữ liệu chạy test riêng từng máy, tài liệu: không tạo phiên bản mới
+      - "data/runs/**"
+      - "data/bugs/**"
+      - "data/runners/**"
+      - "data/assets/**"
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phat-hanh-app
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Kiểm tra mã
+        run: python tools/kiem_tra.py
+
+      - name: Số phiên bản
+        id: ver
+        run: echo "ver=$(TZ=Asia/Ho_Chi_Minh date +%Y.%m.%d)-${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+
+      - name: Đóng gói
+        run: python tools/dong_goi_app.py --phien-ban "${{ steps.ver.outputs.ver }}" --ra dist
+
+      - name: Ghi chú phiên bản
+        run: |
+          PREV=$(git describe --tags --abbrev=0 2>/dev/null || true)
+          {
+            echo "AQ Auto Test ${{ steps.ver.outputs.ver }} – commit ${GITHUB_SHA::7}"
+            echo
+            echo "Thay đổi:"
+            if [ -n "$PREV" ]; then git log --no-merges --pretty='- %s' "$PREV..HEAD" | head -40; else git log --no-merges --pretty='- %s' -20; fi
+            echo
+            echo "Máy mới: tải AQ-AutoTest-${{ steps.ver.outputs.ver }}-windows.zip, giải nén, bấm đúp \"AQ Auto Test.cmd\"."
+            echo "Máy đã cài: bấm nút cập nhật ở góc trên console."
+          } > notes.md
+
+      - name: Tạo Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.ver.outputs.ver }}" dist/* \
+            --title "AQ Auto Test ${{ steps.ver.outputs.ver }}" \
+            --notes-file notes.md \
+            --target "$GITHUB_SHA"

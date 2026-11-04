@@ -39,6 +39,7 @@ def main():
     ap.add_argument("--lien-ket", help="file do trich_source.py --ma-view xuất (lớp màn hình → MaView1)")
     ap.add_argument("--truong", help="file tuy-chinh-truong.txt (tools/xuat_tuy_chinh_truong.sql) – áp nhãn cột/tiêu đề trường đã đổi")
     ap.add_argument("--ra", default="man-hinh", help="thư mục kết quả")
+    ap.add_argument("--json", help="ghi thêm file JSON cho console, vd web/edusoft-catalog.json")
     a = ap.parse_args()
 
     ph = {r["IDPhanHe"]: r for r in doc(a.aqdata, "047")}
@@ -141,14 +142,12 @@ def main():
     for r in v1.values():
         man[nhom_ph(r["IDPHChinh"])].append(r)
 
-    def mo_ta_view(r1):
-        out = [f"### {r1['MaView1']} – {r1['TenView1'].strip()}"]
-        for i, v in enumerate(sorted(views[r1["IDView1"]], key=lambda x: x["IDView"]), 1):
-            tat = [t for k, t in TAT if v.get(k) == "1"]
-            bang = fl.get(v["MainTable"], {}).get("MaFile", "")
-            td = tieu_de.get(v["IDView"])
-            out.append(f"- Lưới {i}" + (f" «{td}»" if td else "") + (f" (bảng {bang})" if bang else "") + (f"; tắt: {', '.join(tat)}" if tat else ""))
-            cot, an, o_sua = [], [], []
+    def luoi_cua(r1):
+        """Các lưới của một màn hình, dạng dữ liệu (dùng cho cả .md và .json)."""
+        ra = []
+        for v in sorted(views[r1["IDView1"]], key=lambda x: x["IDView"]):
+            g = {"td": tieu_de.get(v["IDView"], ""), "bang": fl.get(v["MainTable"], {}).get("MaFile", ""),
+                 "tat": [t for k, t in TAT if v.get(k) == "1"], "cot": [], "o": [], "nut": []}
             ds = sorted(fv[v["IDView"]], key=lambda x: (int(float(thu_tu.get(x["IDFieldView"], {}).get("TabOrder") or 9999)),
                                                          fd.get(x["IDField"], {}).get("MaField", "")))
             for x in ds:
@@ -156,19 +155,34 @@ def main():
                 if not d:
                     continue
                 nhan = nhan_cot.get(x["IDFieldView"]) or (d.get("Tenlabel") or d.get("TenField") or d["MaField"]).strip()
-                kieu = KIEU_O.get(x.get("CtrlType", ""), "")
-                s = f"{nhan} [{d['MaField']}]" + ("(trường đổi nhãn)" if x["IDFieldView"] in nhan_truong else "") + (f"{{{kieu}}}" if kieu else "") + ("(chỉ đọc)" if x.get("ReadOnly") == "1" else "")
-                (an if x.get("Hide") == "1" else cot).append(s)
+                co = ("a" if x.get("Hide") == "1" else "") + ("r" if x.get("ReadOnly") == "1" else "") + \
+                     ("t" if x["IDFieldView"] in nhan_truong else "")
+                g["cot"].append([nhan, d["MaField"], KIEU_O.get(x.get("CtrlType", ""), ""), co])
                 if x["IDFieldView"] in sua:
-                    o_sua.append(f"#{d['MaField']}")
+                    g["o"].append(d["MaField"])
+            for b in sorted(nut[v["IDView"]], key=lambda x: x.get("OrderIndex") or ""):
+                g["nut"].append([b["CommandName"], b["ToolTip"].strip(), b.get("HotKey") or ""])
+            ra.append(g)
+        return ra
+
+    def mo_ta_view(r1):
+        out = [f"### {r1['MaView1']} – {r1['TenView1'].strip()}"]
+        for i, g in enumerate(luoi_cua(r1), 1):
+            out.append(f"- Lưới {i}" + (f" «{g['td']}»" if g["td"] else "") + (f" (bảng {g['bang']})" if g["bang"] else "") +
+                       (f"; tắt: {', '.join(g['tat'])}" if g["tat"] else ""))
+            def nhan(c):
+                return f"{c[0]} [{c[1]}]" + ("(trường đổi nhãn)" if "t" in c[3] else "") + (f"{{{c[2]}}}" if c[2] else "") + \
+                       ("(chỉ đọc)" if "r" in c[3] else "")
+            cot = [nhan(c) for c in g["cot"] if "a" not in c[3]]
+            an = [nhan(c) for c in g["cot"] if "a" in c[3]]
             if cot:
                 out.append("  - Cột: " + "; ".join(cot))
             if an:
                 out.append("  - Cột ẩn: " + "; ".join(an))
-            if o_sua:
-                out.append("  - Ô trên form sửa: " + ", ".join(o_sua))
-            for b in sorted(nut[v["IDView"]], key=lambda x: x.get("OrderIndex") or ""):
-                out.append(f"  - Nút {b['CommandName']}: \"{b['ToolTip'].strip()}\"" + (f" ({b['HotKey']})" if b.get("HotKey") else ""))
+            if g["o"]:
+                out.append("  - Ô trên form sửa: " + ", ".join("#" + o for o in g["o"]))
+            for b in g["nut"]:
+                out.append(f"  - Nút {b[0]}: \"{b[1]}\"" + (f" ({b[2]})" if b[2] else ""))
         return out
 
     def chuan(x):
@@ -177,6 +191,39 @@ def main():
     for r1 in v1.values():
         if views.get(r1["IDView1"]) and r1.get("HuyView1") != "1":
             theo_ten[chuan(r1["TenView1"])].append(r1)
+
+    def man_cua_menu(r, lop):
+        if lop_view.get(lop):
+            return lop_view[lop], False
+        doan = [x["MaView1"] for x in theo_ten.get(chuan(r.get("TenChucNang")), []) + theo_ten.get(chuan(ten(r)), [])]
+        return list(dict.fromkeys(doan)), bool(doan)
+
+    if a.json:  # dữ liệu cho trang "Màn hình Edusoft" và kiểm tra lệnh auto trên console
+        import datetime
+        import json
+        js = {"ver": datetime.date.today().isoformat(), "ph": [], "menus": [], "views": {}}
+        for x in sorted(ph.values(), key=lambda x: x["MaPhanHe"]):
+            js["ph"].append({"ma": x["MaPhanHe"], "ten": x["TenPhanHe"], "vt": x["VtPhanHe"]})
+        can = set()
+        for ma, ds in menu.items():
+            p = next((x for x in ph.values() if x["MaPhanHe"] == ma), None)
+            for dd, r, f, lop in ds:
+                if not lop:
+                    continue
+                mv, doan = man_cua_menu(r, lop)
+                can.update(mv)
+                js["menus"].append({"ma": r["MaChucNang"], "ph": ma, "path": ((p["VtPhanHe"] + "/ ") if p else "") + dd,
+                                    "lop": lop, "p1": r.get("Param1") or "", "views": mv, "doan": doan})
+        js["menus"].sort(key=lambda m: (m["ph"], m["path"].lower()))
+        for r1 in v1.values():
+            if r1.get("HuyView1") == "1" and r1["MaView1"] not in can:
+                continue
+            g = luoi_cua(r1)
+            if g:
+                js["views"][r1["MaView1"]] = {"ten": r1["TenView1"].strip(), "ph": nhom_ph(r1["IDPHChinh"]), "luoi": g}
+        with open(a.json, "w", encoding="utf-8") as w:
+            json.dump(js, w, ensure_ascii=False, separators=(",", ":"))
+        print("Đã ghi", os.path.abspath(a.json), os.path.getsize(a.json) // 1024, "KB")
 
     os.makedirs(a.ra, exist_ok=True)
     idx = ["# Danh mục màn hình Edusoft.NET (cấu hình gốc AQ)", "",
@@ -197,13 +244,9 @@ def main():
                 dong += f" → `{lop}`"
                 if r.get("Param1"):
                     dong += f" (Param1={r['Param1']})"
-                if lop_view.get(lop):
-                    dong += " – màn hình: " + ", ".join(lop_view[lop])
-                else:
-                    doan = [x["MaView1"] for x in theo_ten.get(chuan(r.get("TenChucNang")), []) +
-                            theo_ten.get(chuan(ten(r)), [])]
-                    if doan:
-                        dong += " – màn hình (đoán theo tên): " + ", ".join(dict.fromkeys(doan))
+                mv, doan = man_cua_menu(r, lop)
+                if mv:
+                    dong += (" – màn hình (đoán theo tên): " if doan else " – màn hình: ") + ", ".join(mv)
             out.append(dong)
         out += ["", "## Màn hình (view) và lưới", ""]
         for r1 in sorted(man.get(ma, []), key=lambda x: x["MaView1"].lower()):

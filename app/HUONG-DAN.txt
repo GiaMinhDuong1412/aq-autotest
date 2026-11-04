@@ -1,0 +1,32 @@
+AQ AUTO TEST – app console kịch bản test Edusoft/Netweb chạy trên máy cá nhân
+==========================================================================
+
+CÀI LẦN ĐẦU
+1. Giải nén AQ-AutoTest-<phiên bản>-windows.zip vào một thư mục cố định, vd D:\AQ-AutoTest
+   (không cần cài Python hay Git – Python nhúng nằm sẵn trong thư mục python\).
+2. Bấm đúp "AQ Auto Test.cmd". Lần đầu app tạo lối tắt "AQ Auto Test" trên Desktop và mở trình duyệt
+   ở http://localhost:8788
+3. Muốn dùng nút Cập nhật: trên console bấm "Phiên bản app" (góc trên) → dán token GitHub chỉ-đọc
+   (github.com → Settings → Developer settings → Fine-grained tokens → chọn repo aq-autotest,
+   Permissions → Contents = Read-only). Token lưu ở rieng\app.json trên máy này.
+
+CẬP NHẬT
+- Mỗi lần nhóm phát triển merge vào nhánh main, GitHub tự tạo một phiên bản (Release) mới.
+- Console tự kiểm tra khi mở; có bản mới thì hiện nút "Cập nhật bản …" ở góc trên. Bấm → app tải, cài và
+  khởi động lại (vài giây). Dữ liệu của máy (du-lieu\) giữ nguyên; kịch bản mới của bản phát hành được gộp vào
+  (bản ghi nào mới hơn theo thời gian sửa thì lấy).
+
+THOÁT APP
+- Console chạy nền. Muốn tắt hẳn: menu tài khoản (góc trên phải) → "Thoát app AQ Auto Test".
+
+MÁY CHẠY TEST (máy có Edusoft)
+- Trang "Máy chạy thử" → nhập thư mục bộ test → "Cài bộ test vào đây" → chạy cai-dat.bat một lần (quyền admin).
+  Bộ test cần Python có pywinauto (cai-dat.bat tự lo).
+
+THƯ MỤC
+  launcher.py, AQ Auto Test.cmd   khởi động app
+  python\                          Python nhúng
+  phien-ban\<bản>\                 mã nguồn từng phiên bản (hien-tai.txt = bản đang dùng)
+  du-lieu\                         dữ liệu của máy này
+  rieng\                           cấu hình riêng (cổng, token)
+  nhat-ky.txt                      nhật ký
