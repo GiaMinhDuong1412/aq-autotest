@@ -384,6 +384,9 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
 - **Định nghĩa gốc màn hình chưa tìm thấy** (11/2026): CSDL trường (bản backup, 3 050 bảng) chỉ có phần chỉnh riêng –
   `HFieldEdit`, `HFieldView2`, `HOrderView`, `HValSetV`, `HViewSpliter`, `HMenuCustom` – trỏ tới `IDView`/`IDFieldView`/`IDChucNang`
   không có bảng gốc; `HMess` là câu chữ Netweb. Thư mục cài Edusoft cũng không có file định nghĩa (file không đuôi = cache
-  WebView2, `.xml` = tài liệu DevExpress, `logs/webapi.log.*` = log, **không gửi**); còn lại `Resources\Languages.xml`.
+  WebView2, `.xml` = tài liệu DevExpress, `logs/webapi.log.*` = log, **không gửi**).
+- **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
+  "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
+  Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
 - Hộp chọn dùng chung (`AQViewers/Controls`): `F_ChonNHHK` (chọn năm học-học kỳ), `F_NhapNgay`/`F_Nhap2Ngay`, `F_NhapMa`,
   `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).

@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-11"
+KIT_VERSION = "2026.11.04-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -101,7 +101,11 @@ def alts_of(text):
     return [x.strip() for x in str(text or "").split("|") if x.strip()]
 
 
-ERR_PAT = re.compile(r"lỗi|không (được|thể|hợp lệ|thành công)|trùng|đã tồn tại|đã có|bắt buộc|chưa nhập|chưa chọn|vui lòng|thiếu|invalid|error|not allowed", re.I)
+# Câu lỗi lấy theo danh mục Resources\Languages.xml của Edusoft (skill giaodien-edusoft/thong-bao.md), vd "Import dữ liệu thất bại",
+# "Ngày ra phải lớn hơn ngày vào", "Mã … không tồn tại trong danh mục", "Nhóm thi này đã bị khóa".
+ERR_PAT = re.compile(r"lỗi|không (được|thể|hợp lệ|thành công|tồn tại|đúng|cho phép)|thất bại|trùng|đã tồn tại|đã có|bắt buộc|"
+                     r"chưa nhập|chưa chọn|vui lòng|thiếu|phải (lớn|nhỏ) hơn|vượt quá|(đã|bị) khóa|sai định dạng|"
+                     r"invalid|error|not allowed", re.I)
 OK_PAT = re.compile(r"thành công|đã lưu|hoàn tất|successful", re.I)
 
 
