@@ -11,6 +11,12 @@ Skill này là **sổ tay do người dùng dạy**. Mọi điều người dùn
 Thứ tự ưu tiên khi có mâu thuẫn: **Bài học người dùng dạy (mục 4)** > bảng phần tử (mục 2) > suy đoán từ tài liệu.
 Ảnh minh hoạ người dùng gửi nằm ở `anh/` cạnh file này – mở bằng Read khi cần so lại.
 
+**Danh mục màn hình gốc** (`man-hinh/index.md`, mỗi phân hệ một file `man-hinh/<MaPhanHe>.md`, vd `QLSV.md` = ribbon "Sinh viên"):
+đường dẫn menu đúng chữ trên ribbon/cây (viết thẳng vào `menu:`), lớp màn hình, các lưới (cột = nhãn [MaField], cột ẩn,
+nút tắt Thêm/Sửa/Xóa…), ô trên form sửa (`#MaField` cho `type:`/`choose:`/`date:`), nút riêng (tooltip, phím tắt).
+Tra bằng Grep theo tên menu/màn hình **trước khi viết `auto`**. Đây là cấu hình gốc AQ – HVNG có thể ẩn/đổi nhãn bằng bảng
+`H…`; khi lệch với `ui-*.txt` thì tin `ui-*.txt` và ghi bài học.
+
 ## 1. Bố cục cửa sổ chính (người dùng dạy – tài liệu "Giao diện Edusoft", ảnh `anh/01-giao-dien-chinh.png`)
 
 ```
@@ -410,6 +416,15 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   025 AQDmMess…; gói cũ đánh số 000–146 + `AQ.Data.Specs` nên có thể lệch – đối chiếu theo tên cột).
   Công cụ: `python tools\doc_aqdata.py D:\Source.NET.zip --trong edusoft.server.zip` (hoặc thư mục `wcf\bin` của server trường)
   → `aqdata\*.csv` + `tom-tat.txt` + `aqdata.zip`; chỉ giải nén, bỏ bảng người dùng/khách hàng, để trống cột mật khẩu/khóa. Xem một đoạn source: `trich_source.py … --dong
+  Gói server trong source khớp đúng thứ tự trunk (001 AQDmFile … 146 AQFileHuongDan; 000 không phải JSON). Quan hệ:
+  `AQDMChucNang` (menu; `IDChucNangParent` → cha, gốc là `AQDMPhanHe`; chữ hiện = `VtChucNang`/`VtPhanHe`) –`iddoituong`→
+  `AQDMForm` (`FormRun` = lớp màn hình, vd `Edusoft.SMS.S02.UCQDSV`; `Param1` của menu = loại, vd VAO_MOI/DOI_LOP) → lớp tự nạp
+  `AQDMView1` (MaView1 ghi trong source) → `AQView` (lưới; cờ NoneInsert/NoneDelete/NoneSua…; `MainTable` → `AQDmFile`) →
+  `AQFieldView` (cột; `IDField` → `AQDmField.Tenlabel` = nhãn, `MaField` = tên ô; `Hide`, `ReadOnly`, `CtrlType` 4=ngày,
+  13=nút "…"), `AQFieldView2.TabOrder` (thứ tự), `AQFieldEdit` (ô trên form sửa), `AQViewAddCtrl` (nút riêng: CommandName,
+  ToolTip, HotKey). Lập danh mục: `python tools/lap_danh_muc.py <aqdata> --lien-ket trich-ma-view.txt --ra
+  .claude/skills/giaodien-edusoft/man-hinh`; `trich-ma-view.txt` từ `trich_source.py <source.zip> --ma-view
+  aqdata\aq.data046-AQDMView1.csv` (lớp màn hình → MaView1).
   "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
