@@ -20,6 +20,10 @@ concurrency:
   group: phat-hanh-app
   cancel-in-progress: false
 
+env:
+  PYTHONUTF8: "1"                 # Windows runner: in chữ tiếng Việt không lỗi cp1252
+  PYTHONIOENCODING: "utf-8"
+
 jobs:
   release:
     runs-on: windows-latest          # cần Windows để build bộ cài .exe (Inno Setup)

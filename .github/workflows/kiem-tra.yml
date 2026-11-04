@@ -6,6 +6,10 @@ on:
   push:
     branches-ignore: [main]
 
+env:
+  PYTHONUTF8: "1"                 # Windows runner: in chữ tiếng Việt không lỗi cp1252
+  PYTHONIOENCODING: "utf-8"
+
 jobs:
   kiem-tra:
     runs-on: ubuntu-latest
