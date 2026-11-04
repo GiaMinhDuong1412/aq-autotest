@@ -381,5 +381,9 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   "Đóng tab hiện tại" (`btnDongHienTai`), "Đóng tất cả tab ngoại trừ hiện tại", "Đóng tất cả"; thanh trạng thái `bar3`:
   "Năm học" (`barNamHoc`), "Học kỳ" (`barListHocKy`), "Kỳ thi", "Năm", "Tháng", "Đợt đánh giá", "Kỳ tuyển sinh", "Kỳ đánh giá",
   `lblStatusMess` (**câu kết quả Lưu/Xóa hiện ở đây**), `lblUserName`, "Đăng xuất" (`btnBarDangXuat`).
+- **Định nghĩa gốc màn hình chưa tìm thấy** (11/2026): CSDL trường (bản backup, 3 050 bảng) chỉ có phần chỉnh riêng –
+  `HFieldEdit`, `HFieldView2`, `HOrderView`, `HValSetV`, `HViewSpliter`, `HMenuCustom` – trỏ tới `IDView`/`IDFieldView`/`IDChucNang`
+  không có bảng gốc; `HMess` là câu chữ Netweb. Thư mục cài Edusoft cũng không có file định nghĩa (file không đuôi = cache
+  WebView2, `.xml` = tài liệu DevExpress, `logs/webapi.log.*` = log, **không gửi**); còn lại `Resources\Languages.xml`.
 - Hộp chọn dùng chung (`AQViewers/Controls`): `F_ChonNHHK` (chọn năm học-học kỳ), `F_NhapNgay`/`F_Nhap2Ngay`, `F_NhapMa`,
   `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).
