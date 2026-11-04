@@ -185,244 +185,244 @@
 ## Màn hình (view) và lưới
 
 ### DANHSACHDOTTHI – Danh sách đợt thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã đợt thi [MaDotThi]; Tên đợt thi [TenDotThi]; Tên viết tắt [VtDotThi]; Số môn thi [SoMonThi]; Tổng số thí sinh [SoThiSinh]; Tổ thi [ToThi]; Phòng thi [PhongThi]
+- Lưới 1 «Danh sách đợt thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã đợt thi [MaDotThi]; Tên đợt thi [TenDotThi]; Tên viết tắt [VtDotThi]; Số môn thi [SoMonThi]; Tổng số thí sinh dự thi [SoThiSinh]; Tổng số tổ thi [ToThi]; Tổng số phòng thi [PhongThi]
 ### DANHSACHDUTHI – Danh sách dự thi
-- Lưới 1 (bảng LKQDKDThi); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Thứ tự sinh viên dự thi [TTKQDKDThi]; Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi]; Nhóm/tổ [NhomTo]; Mã môn học [MaMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Mã SV [MaSV]; Họ và tên [TenDayDu](chỉ đọc); Mã lớp [MaLopSV](chỉ đọc); Loại sinh viên dự thi [LoaiSV]{chọn}(chỉ đọc); Điểm [DiemDB]; Ghi chú kết quả đăng ký dự thi [GCKQDKDThi]; Ngày thi [NgayThi]{ngày}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Dãy phòng [DayPH](chỉ đọc); Họ lót [HoLotSV]; Tên [TenSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]
+- Lưới 1 «Danh sách tất cả sinh viên dự thi trong kỳ thi» (bảng LKQDKDThi); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Thứ tự [TTKQDKDThi]; Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi]; Nhóm/tổ [NhomTo]; Mã môn học [MaMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Mã SV [MaSV]; Họ và tên [TenDayDu](chỉ đọc); Mã lớp [MaLopSV](chỉ đọc); Loại sinh viên dự thi [LoaiSV]{chọn}(chỉ đọc); Cấm thi [DiemDB]; Ghi chú dự thi [GCKQDKDThi]; Ngày thi [NgayThi]{ngày}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Dãy phòng [DayPH](chỉ đọc); Họ lót [HoLotSV]; Tên [TenSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]
   - Cột ẩn: ID kết quả đăng ký thi [IDKQDKDThi]; ID nhóm thi [IDNhomThi]; Sinh viên [IDSV]; KH điểm TP [KyHieuTP]; Niên học học kỳ [NHHK]; Tổ thi? [isToThi](chỉ đọc)
 ### DANHSACHDUTHI_GC – Danh sách dự thi
-- Lưới 1 (bảng LKQDKDThi); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách tất cả sinh viên dự thi trong kỳ thi» (bảng LKQDKDThi); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Mã lớp [MaLopSV](chỉ đọc); Loại sinh viên dự thi [LoaiSV]{chọn}(chỉ đọc); Điểm [DiemDB](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Dãy phòng [DayPH](chỉ đọc); Ghi chú kết quả đăng ký dự thi [GCKQDKDThi]
   - Cột ẩn: ID kết quả đăng ký thi [IDKQDKDThi]; ID nhóm thi [IDNhomThi]; Sinh viên [IDSV]; KH điểm TP [KyHieuTP](chỉ đọc); Niên học học kỳ [NHHK]; Tổ thi? [isToThi](chỉ đọc)
 ### DANHSACHDUTHI_SBD – Danh sách dự thi
-- Lưới 1 (bảng LKQDKDThi); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Giờ bắt đầu [GioBD](chỉ đọc); Giờ thi [GioThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Mã phòng [MaPH](chỉ đọc); Tên viết tắt [VTPH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Số báo danh [SBDDuThi]
+- Lưới 1 «Danh sách sinh viên dự thi trong kỳ thi» (bảng LKQDKDThi); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Giờ bắt đầu [GioBD](chỉ đọc); Giờ thi [GioThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Mã phòng [MaPH](chỉ đọc); Viết tắt phòng [VTPH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Số báo danh [SBDDuThi]
   - Cột ẩn: ID kết quả đăng ký thi [IDKQDKDThi]; ID nhóm thi [IDNhomThi]; Sinh viên [IDSV]; KH điểm TP [KyHieuTP](chỉ đọc); Mã lớp [MaLopSV](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Tổ thi? [isToThi](chỉ đọc)
 ### DANHSACHTOTHI – Danh sách tổ thi
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Sĩ số trung bình [SSoTB](chỉ đọc); Mã cán bộ giám sát [MaNVGiamSat]{nút …}; Số lượng [SLToHoc]; Ghi chú 1 [GhiChu1]; Mã cán bộ thư ký [MaNVThuKy]{nút …}; Số tiết thi [SoTietThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc)
-  - Cột ẩn: Sỉ số [SiSoDuKien](chỉ đọc); Số sinh viên [SoSV]
+- Lưới 1 «Danh sách tổ thi đã tạo» (bảng LToThi); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); CBGD [MaNV](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Sĩ số trung bình dự thi [SSoTB](chỉ đọc); Mã cán bộ giám sát [MaNVGiamSat]{nút …}; Số lượng tổ thi [SLToHoc]; Danh sách sỉ số mỗi tổ [GhiChu1]; Mã cán bộ thư ký [MaNVThuKy]{nút …}; Số tiết thi [SoTietThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc)
+  - Cột ẩn: Sỉ số tổ thi [SiSoDuKien](chỉ đọc); Sỉ số dự thi [SoSV]
 ### DSNHOM_TOTHI – Danh sách nhóm thi/tổ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Loại đối tượng [LoaiDTuong](chỉ đọc); Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số sv tối đa [SSoTDa](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng thi [MAPTHI](chỉ đọc); Sức chứa thi [SucChuaThi]
+- Lưới 1 «Chọn tổ thi cần hiệu chỉnh danh sách sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Loại đối tượng [LoaiDTuong](chỉ đọc); Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số tối đa [SSoTDa](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Tiết BD thi [TietThiBD](chỉ đọc); Mã phòng thi [MAPTHI](chỉ đọc); Sức chứa phòng [SucChuaThi]
   - Cột ẩn: Mã phòng [MaPH](chỉ đọc)
 ### DSSVTRONGTOTHI – Danh sách sinh viên trong tổ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên trong tổ thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Ghi chú [GhiChu]
   - Cột ẩn: TT danh sách [TTDS]; Tên lớp [TenLop]
 ### GHEPNHOMTHI – Gộp nhóm thi chung danh sách
-- Lưới 1 (bảng LGhepThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: KH điểm TP [KyHieuTP](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV]; Tuần kết thúc [TuanktHoc](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Sỉ số [SiSoDuKien](chỉ đọc); Mã hình thức thi [MaHTThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); SL trạm tối đa [SLTramMax]; Nhóm thi [NhomThiDK]; Điểm K1 [K1](chỉ đọc); Điểm C1 [C1](chỉ đọc)
+- Lưới 1 «Danh sách nhóm thi đã được đồng bộ từ nhóm học phần (Nhập cùng giá trị cột GHÉP NHÓM THI cho trường hợp muốn ghép thi cùng môn học).» (bảng LGhepThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Kỳ thi [KyHieuTP](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm MH [NhomTo](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Giảng viên dạy [MaNV](chỉ đọc); Họ tên giảng viên [TenDayDuNV]; Tuần kết thúc học [TuanktHoc](chỉ đọc); Sỉ số học [SiSoDDK](chỉ đọc); Sỉ số thi [SiSoDuKien](chỉ đọc); Hình thức thi [MaHTThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); SL trạm tối đa [SLTramMax]; Ghép nhóm thi [NhomThiDK]; Điểm K1 [K1](chỉ đọc); Điểm C1 [C1](chỉ đọc)
   - Cột ẩn: Tên hình thức thi [TenHTThi]; Tổ TH [ToTH](chỉ đọc)
 ### GHEPNHOMTHITUDONG – Gộp nhóm thi chung danh sách
-- Lưới 1 (bảng LGhepThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Tuần kết thúc [TuanktHoc](chỉ đọc); Mã hình thức thi [MaHTThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Sỉ số [SiSoDuKien](chỉ đọc)
+- Lưới 1 «Danh sách nhóm thi» (bảng LGhepThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Tuần kết thúc [TuanktHoc](chỉ đọc); Mã hình thức thi [MaHTThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Sỉ số nhóm thi [SiSoDuKien](chỉ đọc)
   - Cột ẩn: KH điểm TP [KyHieuTP](chỉ đọc); Nhóm thi [NhomThiDK](chỉ đọc); Số lượng [SLToHoc](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Thứ tự tổ học [TTToHoc](chỉ đọc); Tổ TH [ToTH](chỉ đọc)
 ### IDViewCBCoiThiKhac – Danh sách cán bộ coi thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách cán bộ coi thi»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Phái [PhaiNV]{chọn}; Cấp coi thi [CapNVCoiThi]{chọn}
 ### IM_HuyKQDTHITheoFile_SVMH – View import hủy kqdk dự thi theo file sv i mh
 - Lưới 1 (bảng KDMMH); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã môn học [MaMH]; Nhóm/tổ [NhomTo](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc)
 ### IMPORT_KQDKDTHI_TOTHI – Import danh sách dự thi cho tổ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import danh sách dự thi cho tổ thi»; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Niên học học kỳ [NHHK]; Loại sinh viên dự thi [LoaiSV]{chọn}
 ### LDKienPCCoiThi – LDKienPCCoiThi
-- Lưới 1 (bảng LDKienPCCoiThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Điều kiện ràng buộc phân công cán bộ coi thi» (bảng LDKienPCCoiThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
   - Cột: Điều kiện ràng buộc [DGDKienPCCoiThi]; Ràng buộc [IsCheckDKienPCCoiThi]
   - Cột ẩn: ID Điều kiện phân công coi thi [IDDKienPCCoiThi]; Mã DK ràng buộc phân công coi thi [MaDKienPCCoiThi]
 ### LDMHTTHI – Danh mục hình thức thi
-- Lưới 1 (bảng LDMHTThi); tắt: Xuất, Sửa trên lưới
+- Lưới 1 «Danh sách hình thức thi» (bảng LDMHTThi); tắt: Xuất, Sửa trên lưới
   - Cột: Mã hình thức thi [MaHTThi]; Tên hình thức thi [TenHTThi]; Tên viết tắt [VtHTThi]; Ghi chú [GcHTThi]
   - Cột ẩn: Mặc định [DfHTThi]; Hình thức thi [IDHTThi]; KH điểm TP [KyHieuTP]; Tên tiếng anh [TenHTThiEg]
   - Ô trên form sửa: #MaHTThi, #TenHTThi, #VtHTThi, #GcHTThi, #TenHTThiEg
   - Nút btnSave: "Lưu" (f)
 ### LDMLOAITG – Danh mục loại đơn vị thời gian
-- Lưới 1 (bảng LDMLoaiTG); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Định nghĩa loại thời gian sử dụng trong chương trình» (bảng LDMLoaiTG); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã loại thời gian [MaLoaiTG]; Tên loại thời gian [TenLoaiTG]; Số tiết/ca sáng [STSang]; Số tiết/ca chiều [STChieu]; Số tiết/ca tối [STToi]; Niên học học kỳ [NHHK]
   - Cột ẩn: Mặc định [DfLoaiTG]; Ghi chú [GcLoaiTG]; Qui đổi ra số tiết [QUIDOITIET]{số}; Tên tiếng anh [TenLoaiTGEg]; Tên viết tắt [VtLoaiTG]
   - Ô trên form sửa: #MaLoaiTG, #TenLoaiTG, #STSang, #STChieu, #STToi
-- Lưới 2 (bảng LDMLoaiTGCT); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 2 «Giờ/ phút tương ứng của từng loại thời gian» (bảng LDMLoaiTGCT); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Thứ tự thời gian [ThuTuTG]{số}; Giờ bắt đầu [GioBD]; Số phút [SoPhut]
   - Ô trên form sửa: #ThuTuTG, #GioBD, #SoPhut
 ### LDSCBCoiThiVL – Danh sách cán bộ coi thi vãng lai
-- Lưới 1 (bảng LDSCBCoiThiVL); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cán bộ coi thi vãng lai» (bảng LDSCBCoiThiVL); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã CB coi thi vãng lai [MaCBCoiThiVL]; Mã đợt thi [MaDotThi]; Họ tên CB coi thi vãng lai [HoTenCBCoiThiVL]; Ngày sinh [NgaySinhCBCoiThiVL]{ngày}; Phái [PhaiCBCoiThiVL]{chọn}; Số CMND [SoCMNDCBCoiThiVL]; Số điện thoại [SoDTCBCoiThiVL]; Email [EmailCBCoiThiVL]; Ghi chú [GCCBCoiThiVL]
   - Cột ẩn: Mã đợt thi [IDDotThi]
   - Ô trên form sửa: #MaCBCoiThiVL, #HoTenCBCoiThiVL, #NgaySinhCBCoiThiVL, #PhaiCBCoiThiVL, #SoCMNDCBCoiThiVL, #SoDTCBCoiThiVL, #EmailCBCoiThiVL, #GCCBCoiThiVL, #IDDotThi
 ### LDSCUNGSINHVIEN – DS sinh viên học 2 chương trình
-- Lưới 1 (bảng LDSCungSinhVien); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Họ lót [HoLotSV]; Tên [TenSV]; Mã SV [MaSV]; Mã lớp [MaLop]; Tên ng/chng [TenNgChng]; Mã SV [MASV2]; Mã Lớp HK [MaLopHK]; Tên ngành ch/ngành [TenNgChngB]
+- Lưới 1 «Danh sách cùng sinh viên học 2 chương trình» (bảng LDSCungSinhVien); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Họ lót [HoLotSV]; Tên [TenSV]; Mã SV 1 [MaSV]; Mã lớp 1 [MaLop]; Tên ngành/ chuyên ngành 1 [TenNgChng]; Mã SV 2 [MASV2]; Mã lớp 2 [MaLopHK]; Tên ngành/chuyên ngành 2 [TenNgChngB]
   - Cột ẩn: Mã sinh viên 1 [IDSV1]; Mã sinh viên 2 [IDSV2]; Mã khối [MaKhoi]; Mã khối hk [MaKhoiHK]
   - Ô trên form sửa: #IDSV1, #IDSV2
 ### LDSVangThiTam – LDSVangThiTam
-- Lưới 1 (bảng LDSVangThiTam); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên vắng thi» (bảng LDSVangThiTam); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Ngày thi [NgayThi]{ngày}; Ghi chú [GCVangThiTam]
   - Cột ẩn: Môn học [IDMH]; Sinh viên [IDSV]
   - Ô trên form sửa: #TenDayDu, #TenMH, #NhomThi, #ToThi, #NgayThi, #GCVangThiTam, #IDMH, #IDSV
 ### LGANNGAYTHI_TIETTHIUT – Gán ngày thi và tiết thi ưu tiên
-- Lưới 1 (bảng LNhomThi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Mã viên chức [MaNV]; Số dự thi [SoDuThi](chỉ đọc); Ngày thi ưu tiên [NThiUTien]{ngày}; Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); TBD ưu tiên [TietBDUT]{số}
+- Lưới 1 «Nhập ngày thi và tiết bắt đầu thi ưu tiên cho nhóm thi. (Danh sách không hiển thị các nhóm thi có đánh dấu ghép thi)» (bảng LNhomThi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); CBGD [MaNV]; Số dự thi [SoDuThi](chỉ đọc); Ngày thi ưu tiên [NThiUTien]{ngày}; Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); TBD ưu tiên [TietBDUT]{số}
 ### LGANPHONGTHIUUTIEN – Gán phòng thi ưu tiên
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Môn thi [MonThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Số tiết thi [SoTietThi]; Ngày thi dự kiến [NgayThiDuKien]{ngày}(chỉ đọc); Tiết thi dự kiến [TietThiDuKien](chỉ đọc); Ngày thi ưu tiên [NThiUTien]{ngày}(chỉ đọc); TBD ưu tiên [TietBDUT](chỉ đọc); Ngày thi [NgayThi]; Mã tính chất phòng [MaTCPhong]; Mã phòng [MaPH]{nút …}; Tiết bắt đầu [TietThiBD]; Phòng đợi [MaPHDoi]{nút …}
-  - Cột ẩn: Loại đối tượng [LoaiDTuong](chỉ đọc); Mã đối tượng [MaDoiTuong](chỉ đọc); Số TC [SoTinChi](chỉ đọc)
+- Lưới 1 «Chọn phòng thi và phòng đợi ưu tiên cho tổ thi» (bảng LToThi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Môn thi [MonThi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Số tiết thi [SoTietThi]; Ngày thi dự kiến theo TKB [NgayThiDuKien]{ngày}(chỉ đọc); TBĐ dự kiến theo TKB [TietThiDuKien](chỉ đọc); Ngày thi ưu tiên [NThiUTien]{ngày}(chỉ đọc); TBD ưu tiên [TietBDUT](chỉ đọc); Ngày thi [NgayThi]; TC phòng [MaTCPhong]; Chọn phòng thi [MaPH]{nút …}; Tiết bắt đầu [TietThiBD]; Chọn phòng đợi [MaPHDoi]{nút …}
+  - Cột ẩn: Loại ĐT [LoaiDTuong](chỉ đọc); Mã ĐT [MaDoiTuong](chỉ đọc); Số TC [SoTinChi](chỉ đọc)
 ### LGHEPNHOMTHI – Ghép nhóm thi chung thời gian
-- Lưới 1 (bảng LGhepThi); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Số dự thi [SoDuThi](chỉ đọc); Ký hiệu ghép [GhepCaThi]{số}
+- Lưới 1 «Nhập cùng [Ký hiệu ghép] cho nhóm thi cùng thời gian khi xếp lịch thi» (bảng LGhepThi); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Mã giảng viên giảng dạy [MaNV](chỉ đọc); Tên giảng viên giảng dạy [TenDayDuNV](chỉ đọc); Sỉ số học [SiSoDDK](chỉ đọc); Sỉ số dự thi [SoDuThi](chỉ đọc); Ký hiệu ghép [GhepCaThi]{số}
 ### LGHEPPHONGTHICHOTO – Ghép phòng thi cho tổ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Ký hiệu ghép [GhepCaThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Loại đối tượng [LoaiDTuong]; Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ký hiệu ghép [GhepPThi]
+- Lưới 1 «Nhập cùng [Ký hiệu ghép phòng] cho tổ thi cùng phòng, không phân biệt nhóm thi.»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); KH ghép nhóm thi song song [GhepCaThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Loại đối tượng [LoaiDTuong]; Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ký hiệu ghép phòng [GhepPThi]
   - Cột ẩn: Môn thi [MonThi](chỉ đọc)
 ### LGhepPhongThiCungNgay – Ghép phòng thi cho lịch thi cùng Ngày & Tiết bắt dầu
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Nhập cùng [Ký hiệu ghép] cho lịch thi cùng NGÀY & TIẾT BẮT ĐẦU cần ghép» (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Mã tính chất phòng [MaTCPhong](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH]{nút …}(chỉ đọc); Sức chứa thi [SucChuaThi](chỉ đọc); Ký hiệu ghép [KyHieuGhPh]
 ### LGhepPhongThiCungNgay1 – Ghép phòng thi cho lịch thi cùng Ngày & Tiết bắt dầu
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng thi trước ghép phòng [MAPThiTruocGh](chỉ đọc); Ký hiệu ghép [KyHieuGhPh]; Mã phòng [MaPH]{nút …}(chỉ đọc); Ngày ghép phòng [NgayGhPh]
+- Lưới 1 «Danh sách lịch thi sau khi ghép phòng» (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng trước ghép [MAPThiTruocGh](chỉ đọc); Ký hiệu ghép [KyHieuGhPh]; Mã phòng sau ghép [MaPH]{nút …}(chỉ đọc); Ngày ghép phòng [NgayGhPh]
 ### LGHEPTOTHITHUCONG – Ghép tổ thi thủ công
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Loại đối tượng [LoaiDTuong](chỉ đọc); Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số sv tối đa [SSoTDa](chỉ đọc); Ký hiệu ghép [GhepPThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc)
+- Lưới 1 «Điều kiện ghép tổ thi: cùng môn học + cùng nhóm thi + cùng ký hiệu ghép. (Chương trình không hiển thị các tổ thi đã từng được lưu ghép)»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Loại đối tượng [LoaiDTuong](chỉ đọc); Mã đối tượng [MaDoiTuong](chỉ đọc); Sĩ số sv tối đa [SSoTDa](chỉ đọc); Ký hiệu ghép tổ thi [GhepPThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc)
 ### LHSUTLT – Hệ số ưu tiên xếp lịch thi
-- Lưới 1 (bảng LHSUTLT); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã ưu tiên [MaHSUTLG]; Tên ưu tiên [TenHSUTLG]; Điểm ưu tiên [SoDiemUT]
+- Lưới 1 «Hệ số ưu tiên xếp lịch thi tự động» (bảng LHSUTLT); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã ưu tiên [MaHSUTLG]; Tên ưu tiên [TenHSUTLG]; Điểm số ưu tiên [SoDiemUT]
   - Cột ẩn: ID hệ số [IDHSUTLG]
   - Ô trên form sửa: #MaHSUTLG, #TenHSUTLG, #SoDiemUT
 ### LHTTHIMH – Hình thức thi theo môn học
-- Lưới 1 (bảng LHThiMH); tắt: Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Mã hình thức thi [MaHTThi]; Tên hình thức thi [TenHTThi]; Số tiết thi [SoTietThi]; Sĩ số trung bình [SSoTB]; Sĩ số sv tối đa [SSoTDa]; Sổ tổ thi tối đa/nhóm [SSoTDaNh]; KH điểm TP [KyHieuTP]; TC Phòng [IDTCPhong]
+- Lưới 1 «Danh sách hình thức thi theo môn học trong kỳ thi & niên học học kỳ» (bảng LHThiMH); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Mã hình thức thi [MaHTThi]; Hình thức thi [TenHTThi]; Số tiết thi [SoTietThi]; Sĩ số trung bình [SSoTB]; Sĩ số sv tối đa [SSoTDa]; Sổ tổ thi tối đa/nhóm [SSoTDaNh]; KH điểm TP [KyHieuTP]; TC Phòng [IDTCPhong]
   - Cột ẩn: Hình thức thi [IDHTThi]; Môn học [IDMH]; Có gửi tin nhắn HT thi [IsKgThongBao]; Không thi lý thuyết [isKhongThi]
   - Ô trên form sửa: #TenMH, #SoTietThi, #SSoTB, #SSoTDa, #SSoTDaNh, #IDTCPhong, #IDHTThi, #IDMH, #IsKgThongBao
   - Nút btnUpdate: "Sửa" (w)
 ### LLOCKDT – Khóa/mở lịch thi theo đợt thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã đợt thi [MaDotThi](chỉ đọc); Tên đợt thi [TenDotThi](chỉ đọc); Ngày lock DT [NgayLockDT]{ngày}; Ghi chú [GCLockDT]
+- Lưới 1 «Danh sách đợt thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã đợt thi [MaDotThi](chỉ đọc); Tên đợt thi [TenDotThi](chỉ đọc); Ngày khóa [NgayLockDT]{ngày}; Ghi chú [GCLockDT]
   - Cột ẩn: Mã đợt thi [IDDotThi]
 ### LLOCKHK – Khóa/mở sổ lịch thi theo học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Niên học học kỳ [NHHK](chỉ đọc); Ngay lock HK [NgayLockHK]{ngày}; Ghi chú [GCLockHK]
+- Lưới 1 «Danh sách năm học học kỳ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Niên học học kỳ [NHHK](chỉ đọc); Ngày khóa [NgayLockHK]{ngày}; Ghi chú [GCLockHK]
 ### LLOCKKT – Khóa/mở lịch thi theo kỳ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: KH điểm TP [KyHieuTP](chỉ đọc); Loại điểm [TenDiem](chỉ đọc); Ngày lockKT [NgayLockKT]{ngày}; Ghi chú [GCLockKT]
+- Lưới 1 «Danh sách kỳ thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã kỳ thi [KyHieuTP](chỉ đọc); Tên kỳ thi [TenDiem](chỉ đọc); Ngày khóa [NgayLockKT]{ngày}; Ghi chú [GCLockKT]
 ### LLOCKNT – Khóa/mở sổ lịch thi theo nhóm thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Ngày lock NT [NgayLockNT]{ngày}; Ghi chú [GCLockNT]
+- Lưới 1 «Danh sách nhóm thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Ngày khóa [NgayLockNT]{ngày}; Ghi chú [GCLockNT]
 ### LNHOMTHI – Cập nhật thông tin nhóm thi
-- Lưới 1 (bảng LNhomThi); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm thi» (bảng LNhomThi); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Hình thức thi [IDHTThi]; Số tiết thi [SoTietThi]; Sĩ số đã đăng ký [SiSoDDK]; Không xếp phòng [IsKhXepPh]; KH điểm TP [KyHieuTP]; Ngày thi ưu tiên [NThiUTien]; TC Phòng [IDTCPhong]; Thi khác TG [TKhacTG]; Công thức phân tổ [CTPhanTo]; TBD ưu tiên [TietBDUT]; Ký hiệu ghép [GhepCaThi]; Sĩ số trung bình [SSoTB]; Không xếp lý thuyết [KgXepLT]; Số dự thi [SoDuThi]; Mã hình thức thi [MaHTThi]; Xếp phòng chờ [IsXepPhCho]
   - Cột ẩn: Ghi chú [GCNhomThi]; Mã đợt thi [IDDotThi]; Nhóm thi phụ thuộc [IDNThiPhuTh]; Không phân tổ thi [IsKhPhanToThi]; Sĩ số sv tối đa [SSoTDa]; Số TC [SoTinChi]; Tên đợt thi [TenDotThi]
   - Ô trên form sửa: #TenMH, #NhomThi, #IDHTThi, #SoTietThi, #SiSoDDK, #IsKhXepPh, #KyHieuTP, #IDTCPhong, #CTPhanTo, #GhepCaThi, #SSoTB, #KgXepLT, #SoDuThi, #GCNhomThi, #IDDotThi, #IDNThiPhuTh, #IsKhPhanToThi, #SSoTDa
 ### LNPHANCONGCOITHI – Nhập phân công coi thi
-- Lưới 1 (bảng LDKCoiThiKhac); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Nhập phân công coi thi khác» (bảng LDKCoiThiKhac); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Mã cơ sở [MaCoSo](chỉ đọc); Dãy phòng [DayPH](chỉ đọc)
 ### LNVCoiThiDotThi – Nhân viên coi thi
-- Lưới 1 (bảng LNVCoiThiDotThi); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
-  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Phái [PhaiNV]{chọn}(chỉ đọc); Ngày sinh [NgSinhNVCNV](chỉ đọc); Tên đơn vị [TenDV]; Tên bộ môn [TenBOMON]; Mã đợt thi [IDDotThi]; Cấp coi thi [CapNVCoiThi]{chọn}
-  - Cột ẩn: Trạng thái [HienDienNV]{chọn}(chỉ đọc); Đơn vị cấp trên [IDDVP](chỉ đọc); Nơi sinh [NoiSinhNV](chỉ đọc)
+- Lưới 1 «Danh sách viên chức được coi thi trong từng kỳ thi» (bảng LNVCoiThiDotThi); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Phái [PhaiNV]{chọn}(chỉ đọc); Ngày sinh [NgSinhNVCNV](chỉ đọc); Khoa/Đơn vị [TenDV]; Tên bộ môn [TenBOMON]; Mã đợt thi [IDDotThi]; Cấp coi thi [CapNVCoiThi]{chọn}
+  - Cột ẩn: Trạng thái [HienDienNV]{chọn}(chỉ đọc); Khoa/Đơn vị [IDDVP](chỉ đọc); Nơi sinh [NoiSinhNV](chỉ đọc)
   - Ô trên form sửa: #MaNV, #TenDayDuNV, #PhaiNV, #HienDienNV, #NoiSinhNV
 ### LTACHTOTHITHUCONG – Tách tổ thi thủ công
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã môn học [MaMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Số tổ thi [SoToThi]{số}
+- Lưới 1 «Danh sách tổ thi. Nhập số lượng tổ thi cần tách vào cột [Số tổ thi tách]»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã môn học [MaMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc); Số tổ thi tách [SoToThi]{số}
 ### LTRAMMONTHI – Định nghĩa trạm thi cho môn thi
-- Lưới 1 (bảng LTramMonThi); tắt: Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Kỳ thi cha [KyHieuTPP]; KH điểm TP [KyHieuTP]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Thứ tự trạm [TTTram]; % điểm [PTDiemTram]; Hình thức thi [HTThi]{chọn}; Số phút thi [SoPhutThi]; SL cán bộ chấm thi [SLCBChamThi]; SL cán bộ giám sát [SLCBGiamSat]; Thiêt bị hổ trợ [ThietBiHoTro]; Chức năng trạm [ChucNangTram]
+- Lưới 1 «Định nghĩa trạm thi cho môn học» (bảng LTramMonThi); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Kỳ thi cha [KyHieuTPP]; Kỳ thi [KyHieuTP]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Thứ tự trạm [TTTram]; % điểm [PTDiemTram]; Hình thức thi [HTThi]{chọn}; Số phút thi [SoPhutThi]; SL cán bộ chấm thi [SLCBChamThi]; SL cán bộ giám sát [SLCBGiamSat]; Thiêt bị hổ trợ [ThietBiHoTro]; Chức năng trạm [ChucNangTram]
   - Cột ẩn: Đơn vị phân cấp [IDDVPC]; Môn học [IDMH]; ID trạm môn thi [IDTramMonThi]; Số tiết môn học [SoTietMH]
   - Ô trên form sửa: #KyHieuTPP, #KyHieuTP, #TTTram, #PTDiemTram, #HTThi, #SoPhutThi, #SLCBChamThi, #SLCBGiamSat, #ThietBiHoTro, #ChucNangTram, #IDMH
 ### LYDOKHONGXEPDUOCLICHTH – Lý do không xếp được lịch thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; TenLoi [TenLoi]
+- Lưới 1 «Lý do không xếp được thời khóa biểu tổ hợp»; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Lý do [TenLoi]
 ### NHATKYLICHTHI – Nhật ký lịch thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Ngày thêm [NgayThem]; Mã user [MaUser]; Ngày thi [NgayThi]; Tiết bắt đầu [TietThiBD]; Số tiết thi [SoTietThi]; Mã phòng [MaPH]
+- Lưới 1 «Nhật ký lịch thi theo tổ thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Ngày thay đổi [NgayThem]; Người thay đổi [MaUser]; Ngày thi [NgayThi]; Tiết thi bắt đầu [TietThiBD]; Số tiết thi [SoTietThi]; Mã phòng [MaPH]
 ### TruyVetLichThi1 – Truy vết lịch thi
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Số TC [SoTinChi]; Số tiết [SoTiet]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Mã field [MaField]; Số tiết thi [SoTietThi]; Ngày thi [NgayThi]{ngày}; Tiết bắt đầu [TietThiBD]; Phòng đợi [MaPHDoi]; Mã phòng thi [MAPTHI]
+- Lưới 1 «Danh sách hiệu chỉnh lịch thi» (bảng LToThi); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Số TC [SoTinChi]; Số tiết nhóm thi [SoTiet]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Field thay đổi [MaField]; Số tiết tổ thi hiện tại [SoTietThi]; Ngày thi hiện tại [NgayThi]{ngày}; Tiết bắt đầu hiện tại [TietThiBD]; Phòng đợi hiện tại [MaPHDoi]; Phòng thi hiện tại [MAPTHI]
 ### VIEW_CHUYEN_DIEM_TRU – Chuyển điểm trừ vào phân hệ điểm
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên vi phạm qui chế»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Điểm trừ [DIEMTRU]; Điểm thi [DiemThi]; Điểm còn lại [DiemConLai]; Đã trừ [IsDaTru]; Tên vi phạm [TenVPQCThi]
 ### VIEW_HOAN_THI_DA_GHEP_THI – Danh sách hoãn thi đã ghép thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách hoãn thi đã ghép thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; KH điểm TP [KyHieuTP]; Niên học học kỳ [NHHK]; Ngày đk hoãn thi [NgayHT]
 ### View_HuyLichThiTheoDanhSach – Hủy lịch thi theo danh sách
-- Lưới 1 (bảng LKQDKDThi); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên» (bảng LKQDKDThi); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Mã phòng [MaPH](chỉ đọc); Tên viết tắt [VTPH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc)
   - Cột ẩn: ID kết quả đăng ký thi [IDKQDKDThi]; ID nhóm thi [IDNhomThi]; Sinh viên [IDSV]; KH điểm TP [KyHieuTP](chỉ đọc); Mã lớp [MaLopSV](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Tổ thi? [isToThi](chỉ đọc)
 ### VIEW_THULAOCOITHI – Định mức thù lao coi thi ra giờ chuẩn
-- Lưới 1 (bảng LThuLaoCoiThi); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách định mức thù lao coi thi» (bảng LThuLaoCoiThi); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số phút thi [SoPhutThi]; Qui đổi giờ chuẩn [SoQuiDoiGioChuanNCKH]; Hệ số buổi tối [HSBuoiToi]; Hệ số thứ 7 [HSThu7]; Hệ số chủ nhật [HSChuNhat]
   - Ô trên form sửa: #SoPhutThi, #SoQuiDoiGioChuanNCKH, #HSBuoiToi, #HSThu7, #HSChuNhat
 ### VIEWCHONMHHK – Danh sách môn học mở trong học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn học mở trong học kỳ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Tên viết tắt [VtMH]; Số TC [SoTinChi]; Ghi chú [GcMH]
 ### ViewDMQuyenCoiThi – Danh mục quyền coi thi
-- Lưới 1 (bảng LDMQuyenCoiThi); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Thứ tự quyền coi thi [TTQuyenCoiThi]; Mã quyền coi thi [MaQuyenCoiThi]; Tên quyền coi thi [TenQuyenCoiThi]
-  - Cột ẩn: Ghi chú quyền coi thi [GcQuyenCoiThi]; Tên tiếng anh [TenQuyenCoiThiEg]; Viết tắt quyền coi thi [VtQuyenCoiThi]
+- Lưới 1 «Danh mục quyền coi thi» (bảng LDMQuyenCoiThi); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: STT [TTQuyenCoiThi]; Mã quyền coi thi [MaQuyenCoiThi]; Tên quyền coi thi [TenQuyenCoiThi]
+  - Cột ẩn: Ghi chú [GcQuyenCoiThi]; Tên tiếng anh [TenQuyenCoiThiEg]; Viết tắt quyền coi thi [VtQuyenCoiThi]
   - Ô trên form sửa: #TTQuyenCoiThi, #MaQuyenCoiThi, #TenQuyenCoiThi, #GcQuyenCoiThi
 ### ViewDSDuThiSBD – Cập nhật số báo danh của danh sách dự thi
-- Lưới 1 (bảng LKQDKDThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Cập nhật SBD» (bảng LKQDKDThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã môn học [MaMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Số báo danh [SBDDuThi]
 ### ViewDSMonHocTheoDotThi – View danh sách môn học theo đợt thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách môn học»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Mã đợt thi [MaDotThi]; Số TC [SoTinChi]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Sĩ số tổ thi [SiSoToThi]; Số tiết thi [SoTietThi]; Mã tính chất phòng [MaTCPhong]; Ngày thi [NgayThi]{ngày}; Tiết bắt đầu [TietThiBD]; Mã phòng [MaPH]; Phòng đợi [MaPHDoi]; Mã hình thức thi [MaHTThi]
 ### VIEWDSNHOMTHICANTACH – Danh sách nhóm thi tách nhóm
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Sĩ số đã đăng ký [SiSoDDK]; Nhóm thi [NhomThiDK]; Nhóm thi [NhomThi]; Số lượng [SoLuong]; Số NH [SoLuongNhom]
+- Lưới 1 «Danh sách nhóm thi được học bởi nhiều lớp có thể được tách»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Sĩ số đã đăng ký [SiSoDDK]; Nhóm thi [NhomThiDK]; Nhóm thi [NhomThi]; Số lượng lớp [SoLuong]; Số lượng nhóm thi [SoLuongNhom]
   - Cột ẩn: Nhóm/tổ [NhomTo]; Số tiết thi [SoTietThi]
 ### ViewDSNhomThiKT – Danh sách nhóm thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách nhóm thi»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Nhóm thi [NhomThi]; Số tiết thi [SoTietThi]; Sĩ số trung bình [SSoTB]; Ghi chú [GCNhomThi]
 ### VIEWDSPHONGTHI – Danh sách phòng thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phòng thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã phòng [MaPH]; Phòng đợi [MaPHDoi]; Tên phòng [TenPHHK]; Sức chứa [SucChuaPH]; Sức chứa thi [SucChuaThi]; Dãy phòng [DayPHHK]; Mã tính chất phòng [MaTCPhong]; Tên tính chất phòng [TenTCPhong]
 ### ViewDSToThiKT – Danh sách tổ thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách tổ thi»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Tổ thi [ToThi]; Ngày thi [NgayThi]{ngày}; Số tiết thi [SoTietThi]; Tiết bắt đầu [TietThiBD]
 ### ViewGhepSVHT – Danh sách ghép sv hoãn thi vào tổ thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Mã hình thức thi [MaHTThi]; ID nhóm thi [IDNhomThi]; ID tổ thi [IDToThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Dãy phòng [DayPH](chỉ đọc); Sức chứa [SucChuaPH](chỉ đọc); Ghi chú kết quả đăng ký dự thi [GCKQDKDThi]
-  - Cột ẩn: Đã chuyển [DaChuyen](chỉ đọc); Điểm thi [DiemThi](chỉ đọc); KH điểm TP [KyHieuTP](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Tên hình thức thi [TenHTThi]
+- Lưới 1 «Danh sách sinh viên hoãn thi ghép vào tổ thi»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Mã hình thức thi [MaHTThi]; Nhóm thi [IDNhomThi]; Tổ thi [IDToThi]; Sĩ số tổ thi [SiSoToThi](chỉ đọc); Ngày thi [NgayThi]{ngày}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Tiết bắt đầu [TietThiBD](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Dãy phòng [DayPH](chỉ đọc); Sức chứa [SucChuaPH](chỉ đọc); Ghi chú kết quả đăng ký dự thi [GCKQDKDThi]
+  - Cột ẩn: Đã chuyển [DaChuyen](chỉ đọc); Điểm thi [DiemThi](chỉ đọc); Kỳ thi [KyHieuTP](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Tên hình thức thi [TenHTThi]
 ### VIEWKQXEPLTHITHEOTKB – Kết quả xếp lịch thi theo TKB
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
-  - Cột: Mã môn học [MaMH]; Tổ thi [ToThi]; Loại đối tượng [LoaiDTuong]; Tên môn học [TenMH]; Mã đối tượng [MaDoiTuong]; Nhóm thi [NhomThi]; Số sinh viên [SoSV]; Tên hình thức thi [TenHTThi]; Tuần kết thúc [TuanktHoc]; Tuần bắt đầu [TuanBD]; Ngày thi [NgayThi]{ngày}; Thứ [Thu]; Tiết bắt đầu [TietThiBD]; Số tiết thi [SoTietThi]; Thời gian thi [ThoiGianThi]; Thời lượng thi [ThoiLuongThi]; Mã phòng [MaPH]
+- Lưới 1 «Kết quả xếp lịch thi»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+  - Cột: Mã môn học [MaMH]; Tổ thi [ToThi]; Loại đối tượng [LoaiDTuong]; Tên môn học [TenMH]; Mã đối tượng [MaDoiTuong]; Nhóm thi [NhomThi]; Số sinh viên [SoSV]; Tên hình thức thi [TenHTThi]; Tuần kết thúc học [TuanktHoc]; Tuần thi [TuanBD]; Ngày thi [NgayThi]{ngày}; Thứ [Thu]; Tiết BĐ [TietThiBD]; Số tiết thi [SoTietThi]; Giờ bắt đầu [ThoiGianThi]; Số phút [ThoiLuongThi]; Phòng Thi [MaPH]
   - Cột ẩn: Tuần thi [TuanThi]
 ### ViewL404002 – Danh sách cán bộ coi thi
-- Lưới 1 (bảng NNVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cán bộ coi thi» (bảng NNVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Họ lót [HoLotNV]; Tên nhân viên [TenNV]; Tên đầy đủ [TenDayDuNV]; Ngày sinh [NgSinhNVC]; Phái [PhaiNV]{chọn}; Nơi sinh [NoiSinhNV]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Hệ số lương [HSL]; Ghi chú [GCNV]
   - Cột ẩn: Tên chức vụ [TenChucVu]
 ### ViewLichThiDacThu – Danh sách lịch thi sinh viên đặc thù
-- Lưới 1 (bảng LLichThiDacThu); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lịch thi sinh viên đặc thù» (bảng LLichThiDacThu); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã môn học [MaMH]; Tên môn học [TenMH]; Mã SV [MaSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Nhóm thi [NhomThi]; Nhóm học [NhomHoc]; NHHK Học [NHHKHoc]; Ngày thi [NgayThi]{ngày}; Phòng thi [PhongThi]; Số tiết thi [SoTietThi]{số}; Tiết bắt đầu [TietThiBD]{số}; Điểm thi [DiemThi]; Ghi chú [GCLichThiDacThu]; Ghi chú khác [GCLichThiDacThu1]
   - Cột ẩn: Giờ bắt đầu [GioBD]; Môn học [IDMH]; Sinh viên [IDSV]; Số phút [SoPhut]{số}
   - Ô trên form sửa: #TenMH, #TenDayDu, #NgaySinhC, #NhomThi, #NhomHoc, #NHHKHoc, #NgayThi, #PhongThi, #SoTietThi, #TietThiBD, #DiemThi, #GCLichThiDacThu, #GCLichThiDacThu1, #GioBD, #IDMH, #IDSV, #SoPhut
 ### ViewMHThi – Danh sách các nhóm thi đã thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm thi đã được xếp lịch thi»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Nhóm thi [NhomThi]
 ### ViewNhatKyHCLT – Nhật ký hiệu chỉnh lịch thi
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### VIEWPHANTOTHIBUOC2 – Phân tổ thi bước 2
-- Lưới 1 (bảng LHThiMH); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách nhóm thi đã được tạo» (bảng LHThiMH); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Số sinh viên [SoSV]
 ### ViewTietBDThi – Định nghĩa tiết bắt đầu được phép xếp lịch thi
-- Lưới 1 (bảng KTietNghi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Ghi chú [GhiChu](chỉ đọc)
+- Lưới 1 «Check chọn danh sách tiết bắt đầu được phép xếp lịch thi. (Không chọn tiết nào có nghĩa là không ràng buộc)» (bảng KTietNghi); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Tiết [GhiChu](chỉ đọc)
   - Cột ẩn: Giờ bắt đầu [GioBD](chỉ đọc); Số tiết thi [TietThi](chỉ đọc)
 ### ViewTruyVetLichThi – Truy vết hiệu chỉnh lịch thi
-- Lưới 1 (bảng LToThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách truy vết hiệu chỉnh lịch thi» (bảng LToThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Số tiết thi [SoTietThi]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Số TC [SoTinChi]; Ngày thi [NgayThi]; Tiết bắt đầu [TietThiBD]; Mã field [MaField]; Mã phòng thi [MAPTHI]; Phòng đợi [MaPHDoi]
 ### VL_LTramNhomThi – Cập nhật thông tin trạm thi
-- Lưới 1 (bảng LNhomThi); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm thi» (bảng LNhomThi); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Số tiết thi [SoTietThi]; KH điểm TP [KyHieuTP]; Tên môn học [TenMH]; Ngày thi ưu tiên [NThiUTien]; Nhóm thi [NhomThi]; Hình thức thi [IDHTThi]; Sĩ số đã đăng ký [SiSoDDK]; Mã hình thức thi [MaHTThi]; Ghi chú [GCNhomThi]; TC Phòng [IDTCPhong]; Thi khác TG [TKhacTG]; Không xếp phòng [IsKhXepPh]; Công thức phân tổ [CTPhanTo]; TBD ưu tiên [TietBDUT]; Ký hiệu ghép [GhepCaThi]; Sĩ số trung bình [SSoTB]; Xếp phòng chờ [IsXepPhCho]; Không xếp lý thuyết [KgXepLT]; Số dự thi [SoDuThi]
   - Cột ẩn: Ghi chú 1 [GhiChu1]
   - Ô trên form sửa: #MaMH, #TenMH, #NhomThi, #GhiChu1
 ### VR_LTramNhomThi – Danh sách trạm thi
-- Lưới 1 (bảng LTramNhomThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
-  - Cột: Thứ tự trạm [TTTram]; Chức năng trạm [ChucNangTram]; % điểm [PTDiemTram](chỉ đọc); Hình thức thi [HTThi]{chọn}; Số phút thi [SoPhutThi]; SL cán bộ chấm thi [SLCBChamThi]; SL cán bộ giám sát [SLCBGiamSat]; Thiêt bị hổ trợ [ThietBiHoTro]
+- Lưới 1 «Danh sách trạm thi của từng nhóm thi» (bảng LTramNhomThi); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+  - Cột: STT [TTTram]; Chức năng trạm [ChucNangTram]; % điểm [PTDiemTram](chỉ đọc); Hình thức thi [HTThi]{chọn}; Số phút thi [SoPhutThi]; SLCB chấm thi [SLCBChamThi]; SLCB giám sát [SLCBGiamSat]; Thiêt bị hổ trợ [ThietBiHoTro]
 ### VW_TOTHI_KHGIN_BGD – Xem/sửa tổ thi không in bảng ghi điểm
-- Lưới 1 (bảng LToThi); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách tổ thi» (bảng LToThi); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm thi [NhomThi](chỉ đọc); Mã viên chức [MaNV](chỉ đọc); Tổ thi [ToThi](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Không in BGĐ [IsKhgInBGD]; Sĩ số trung bình [SSoTB](chỉ đọc); Số lượng [SLToHoc](chỉ đọc); Ghi chú 1 [GhiChu1](chỉ đọc); Mã cán bộ giám sát [MaNVGiamSat]{nút …}(chỉ đọc); Mã cán bộ thư ký [MaNVThuKy]{nút …}(chỉ đọc); Số tiết thi [SoTietThi](chỉ đọc); Sĩ số tổ thi [SiSoToThi](chỉ đọc)
   - Cột ẩn: Sỉ số [SiSoDuKien](chỉ đọc); Số sinh viên [SoSV](chỉ đọc)
 ### XemDanhSachTheoNhomThi – Xem danh sách theo nhóm thi
-- Lưới 1; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Họ và tên [TenDayDu]; Phái [Phai]; Mã lớp [MaLop]; Nhóm/tổ [NhomTo]; Số TC [SoTinChi]; Mã bộ môn [MaBOMON]; Mã đơn vị [MaDV]
+- Lưới 1 «Danh sách theo nhóm thi»; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Họ và tên [TenDayDu]; Phái [Phai]; Mã lớp [MaLop]; Nhóm/tổ [NhomTo]; Số TC [SoTinChi]; Mã bộ môn [MaBOMON]; Mã Khoa [MaDV]

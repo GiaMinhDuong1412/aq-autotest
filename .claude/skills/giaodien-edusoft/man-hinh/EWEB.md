@@ -100,48 +100,48 @@
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Số tín chỉ học phí [SoTCHP]; Đơn giá [DonGiaHPCT]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]
 ### VIEW_WThongBaoND – Tạo đối tượng sinh viên thông báo
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Tạo đối tượng sinh viên thông báo»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thêm [NgayThem]{ngày}; Chủ đề [ChuDeTB]; Nội dung TB [NoiDungTB]; Mã user [MaUser]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]
   - Ô trên form sửa: #ChuDeTB, #NoiDungTB, #GhiChuView1
 ### VIEW_WThongBaoNDCT – Danh sách sinh viên
-- Lưới 1 (bảng WThongBaoNDCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách sinh viên» (bảng WThongBaoNDCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã SV [MaSV](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Phái [Phai](chỉ đọc); Đã xem [IsDaXem](chỉ đọc)
 ### VIEW_WThongBaoNDCT_GV – Danh sách giảng viên
-- Lưới 1 (bảng WThongBaoNDCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách giảng viên» (bảng WThongBaoNDCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV]; Nơi sinh [NoiSinhNV]; Phái [PhaiNV]{chọn}(chỉ đọc); Đã xem [IsDaXem](chỉ đọc)
 ### ViewGH_GUESTXEMTHONGTIN – Setting guest xem thông tin
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Chỉnh định guest xem thông tin»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeLogic]
 ### VIEWGH_THOIGIANDKTRONGNGAYEDUWEB – Thời gian đăng ký trong ngày
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Thời gian cho phép đăng ký trong ngày»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeInt]
 ### ViewGH_XEMTHONGTIN – Setting xem thông tin
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeLogic]
 ### VIEWSETTINGEDUWEB – Chỉnh định thông số EduWeb
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Thứ tự [TTSettingEduWEB](chỉ đọc); Tên phân hệ [TenPhanHe](chỉ đọc); Mã setting EduWEB [MaSettingEduWEB](chỉ đọc); Tên setting EduWEB [NoiDungSettingEduWEB](chỉ đọc); Giá trị setting EduWEB [GiaTriSettingEduWEB]
+- Lưới 1 «Chỉnh định thông số EduWEB»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Thứ tự [TTSettingEduWEB](chỉ đọc); Phân hệ quản lý [TenPhanHe](chỉ đọc); Mã setting EduWEB [MaSettingEduWEB](chỉ đọc); Tên setting EduWEB [NoiDungSettingEduWEB](chỉ đọc); Giá trị setting EduWEB [GiaTriSettingEduWEB]
 ### WDongHPOnline – Danh sách giao dịch đóng học phí online
-- Lưới 1 (bảng WDongHPOnline); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Niên học học kỳ [NHHK]; Số tiền [SoTien]; Mô tả [MoTaChiTiet]; Ngày giao dịch [NgayGioGiaoDich]; Ngày xác nhận [NgayGioXacNhan]
+- Lưới 1 «Danh sách giao dịch học phí online» (bảng WDongHPOnline); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Niên học học kỳ [NHHK]; Số tiền [SoTien]; Mô tả [MoTaChiTiet]; Ngày giờ giao dịch [NgayGioGiaoDich]; Ngày giờ xác nhận [NgayGioXacNhan]
 ### WEB_DOWN_KQDK – Chuyển KQĐK từ EduWEB
 ### WEB_DSNHOMTHI – Danh sách nhóm thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm thi [NhomThi]; Mã đợt thi [MaDotThi]; Ngày thi [NgayThi]
 ### WEB_DSTOTHI – Danh sách tổ thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách tổ thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Mã đợt thi [MaDotThi]; Ngày thi [NgayThi]
 ### WEB_ThongKeKQDK – Thống kê kết quả đăng ký môn học
-- Lưới 1; tắt: Thêm, Xuất, Nạp lại, Gộp mã, Sửa bên phải
-  - Cột: Số thứ tự [Stt]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm/tổ [NhomTo]; Tổ [ToHoc]; Số TC [SoTinChi]; Sĩ số cho phép đk [SiSoCPDK]; Số lượng [SoLuong]; Phần trăm đã đăng ký [PtramDK]
+- Lưới 1 «Thống kê số lượng đăng ký môn học trong học kỳ»; tắt: Thêm, Xuất, Nạp lại, Gộp mã, Sửa bên phải
+  - Cột: Số thứ tự [Stt]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm/tổ [NhomTo]; Tổ [ToHoc]; Số TC [SoTinChi]; Số cho đăng ký [SiSoCPDK]; Số đã đăng ký [SoLuong]; Phần trăm đã đăng ký [PtramDK]
 ### WLOI_DOWN_HP – Lỗi download học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Phiếu thu lỗi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Số tiền [SoTien]; Ngày xác nhận [NgayGioXacNhan]; Số C.Từ ngân hàng [SoCTuNH]; Lỗi dữ liệu [LoiDuLieu]
 ### WTB_TG_DONG_HP – Thông báo thời gian đóng học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thông báo thời gian đóng học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Hạn đóng học phí [HanChotDongHP]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổng hp phải đóng [PhaiThu]; Đã đóng [DaDong]; Còn Nợ [ConNo]; Đã hủy [IsDaHuy]
 ### WThongBaoND – Thông báo cho sinh viên/CB-CNV (web)
-- Lưới 1 (bảng WThongBaoND); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nội dung thông báo» (bảng WThongBaoND); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thêm [NgayThem]{ngày}; Chủ đề [ChuDeTB]; Nội dung TB [NoiDungTB]; Mã user [MaUser]
   - Ô trên form sửa: #ChuDeTB, #NoiDungTB

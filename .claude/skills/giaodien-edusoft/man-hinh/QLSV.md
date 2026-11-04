@@ -447,20 +447,20 @@
 ## Màn hình (view) và lưới
 
 ### AQDMTTTN – Danh mục thông tin tốt nghiệp (AQ)
-- Lưới 1 (bảng AQDMTTTN); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh mục thông tin tốt nghiệp» (bảng AQDMTTTN); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã thông tin [MaTTTN]; Tên thông tin [TenTTTN]; Tên tiếng anh [TenTTTNEg]; Tên viết tắt [VtTTTN]; Ghi chú [GcTTTN]
   - Ô trên form sửa: #MaTTTN, #TenTTTN, #TenTTTNEg, #VtTTTN, #GcTTTN
 ### CHON_DMNGUOIKY – Danh mục người ký
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách người ký»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### CHON_DMTENQD – Danh mục tên quyết định
-- Lưới 1 (bảng SDMTenQDSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách tên quyết định» (bảng SDMTenQDSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã quyết định [MaQDSV]; Tên quyết định [TenQDSV]; Tên viết tắt [VtQDSV]; Ghi chú [GcTenQDSV]
 ### CHONDMSV – Chọn sinh viên
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]
   - Cột ẩn: Ghi chú [GcSV]; Sinh viên [IDSV]; Tên đầy đủ trên VB [TenDayDuVB]; Tên viết tắt [VtSV]
 ### CONTROL_SINHVIEN – Giao diện chọn mã sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số QĐ [SoQDV]; Ngày quyết định vào [NgayQDV]
 ### IMP_MucHBKhoiHK – Import mức học bổng của khối học kỳ
 - Lưới 1 (bảng SKHHBHKCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -469,20 +469,20 @@
 - Lưới 1 (bảng SDSKHHBHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối học bổng [MaKhHBHK]; Tên khối học bổng [TenKhHBHK]; Tên tiếng anh [TenKhHBHKEg]; Nguồn TBHB [NguonTBHB]{chọn}; Hệ điểm học bổng [HeDiemHB]{chọn}; Số tiền học bổng [STienKHHBHK]{số}; Ghi chú [GcKhHBHK]; Tên viết tắt [VtKhHBHK]; Mã nhóm khối HBHK [MaNhomKhHB]
 ### LOP_SINHVIEN – Giao diện chọn lớp - sinh viên
-- Lưới 1 (bảng SDMLOP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp - sinh viên» (bảng SDMLOP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên lớp [TenLop]; Tên [TenSV]; Tên viết tắt [VTLop]; Ghi chú [GcLop]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Nơi sinh [NoiSinh]
 ### LOP_SINHVIENCopy – Giao diện chọn lớp - sinh viên
-- Lưới 1 (bảng SDMLOP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp» (bảng SDMLOP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên lớp [TenLop]; Tên [TenSV]; Tên viết tắt [VTLop]; Ghi chú [GcLop]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Điểm rèn luyện học kỳ [DiemRLHK]
 ### NHAPDIEMRLHKSV – Nhập điểm rèn luyện học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Phái [Phai](chỉ đọc)
 ### QLSV_DienSVHK_DHHN – Cập nhật diện sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách diện sinh viên học kỳ» (bảng SSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Diện sinh viên [IDDSV]; Tên diện sinh viên [TenDSV](chỉ đọc); Diện học tập [DienHocTap]{chọn}; Nguồn kinh phí [NguonKPhi]{chọn}
 ### QLSV_ThongKeDiemRL – Thống kê điểm rèn luyện
-- Lưới 1 (bảng SKetQuaDGRL); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
-  - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Mã khối [MaKhoi]; Tên khối [TenKhoi]; Niên khóa [NienKhoa]; Số sinh viên [SoSV]; SLSV được phép đã đánh giá [SLSVDaDG]; SL còn lại [SLConLai]
+- Lưới 1 «Danh sách lớp» (bảng SKetQuaDGRL); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+  - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Mã khối [MaKhoi]; Tên khối [TenKhoi]; Niên khóa [NienKhoa]; Số sinh viên [SoSV]; SLSV đã đánh giá [SLSVDaDG]; SLSV chưa đánh giá [SLConLai]
   - Cột ẩn: Mã bậc hệ [MaBH]; Mã BH Ng/ChNg [MaBHNgChNg]; Mã Ng/CNg [MaNgChng]; Tên bậc hệ [TenBH]; Tên BH Ng/ChNg [TenBHNgChNg]; Tên ng/chng [TenNgChng]
 ### QLSV_ViewCapNhatLyLichNew – Cập nhật lý lịch
 - Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -505,31 +505,31 @@
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Họ lót [HoLotSV]; Tên [TenSV]; Tên viết tắt [VtSV]; Ngày sinh [NgaySinhC]; Phái [Phai]; Nơi sinh [NoiSinh]; Lớp sinh viên [IDLop]; Hình sinh viên [AvatarSV]; Dân tộc [IDDT]; Tôn giáo [IDTG]; Đơn vị [IDDV]; Thẻ thư viện [TheThuVien]; Số tài khoản [SoTaiKhoan]; Bậc hệ [IDBH]; Ngân hàng [IDNgHang]; Chi nhánh [CHINHANHNH]; Số năm bộ đội [SoNamBD]; Số năm TNXP [SoNamTNXP]; Số CMND [SoCMND]; Sinh viên [IDSV]; Cân nặng [CanNang]; Chiều cao [ChieuCao]; Quốc tịch [QuocTich]; Có nghề [CoNghe]; Cơ quan công tác [CQCT]; Chức vụ công tác [CVCQCT]; Đang học [DangHoc]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Địa chỉ [DC_DCTT]; Địa chỉ [DC_DCVC]; Điện thoại 1 [DC_DT1HK]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 1 [DC_DT1TT]; Điện thoại 1 [DC_DT1VC]; Điện thoại 2 [DC_DT2HK]; Điện thoại 2 [DC_DT2LLSV]; Điện thoại 2 [DC_DT2TT]; Điện thoại 2 [DC_DT2VC]; Email 1 [DC_Eml1HK]; Email 1 [DC_EML1LLSV]; Email 1 [DC_Eml1TT]; Email 1 [DC_Eml1VC]; Email 2 [DC_Eml2HK]; Email liên lạc (2) [DC_EML2LL]; Email 2 [DC_Eml2TT]; Email 2 [DC_Eml2VC]; GC hộ khẩu [DC_GcHK]; GC liên lạc [DC_GcLL]; GC thường trú [DC_GcTT]; GC vợ chồng [DC_GcVC]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Tỉnh/thành [DC_IDDBTT]; Tỉnh/thành [DC_IDDBVC]; Địa chỉ CQCT [DCCQCT]; ĐK kinh tế [DKKinhTe]; Ghi chú [GcSV]; Ghi chú [GcThPhanGD]; Tỉnh/thành [IDDB_CQCT]; Loại cư trú [LoaiCuTru]; Cha mất [MatCha]; Mẹ mất [MatMe]; Ngày ngoại trú [NgayNgTru]; Nghề ng vợ/chồng [NgNghiepVC]; Ngày sinh [NgSinhCha]; Ngày sinh [NgSinhMe]; Người liên lạc [NguoiLL]; Nguồn tuyển [NguonTuyen]; Nghề nghiệp [NNgCha]; Nghề nghiệp [NNgMe]; Nơi cấp [NoiCapCMND]; Phòng ký túc xá [PhongKTX]; Quê quán [QueQuan]; Số anh chị em [SoAnhChiEm]; Tên cha [TenCha]; Tên chủ hộ [TenChuHo]; Tên chủ hộ (HK) [TenChuHoHK]; Tên mẹ [TenMe]; Tên vợ/chồng [TenVC]; Thành phần GĐ [ThPhanGD]; Trường chuyển [TrChuyen]; IDHSTS [IDHSTS]; Tên [TenSV2]; Tên sv (Index) [TenSVIdx]; Ngày cấp [NgCapCMND]; Họ lót [HoLotSV2]; Họ SV (Index) [HoSVIdx]; Mã ĐB nơi sinh [DC_IDNoiSinhSV]; Email 2 [DC_EML2LLSV]; Số ĐT mẹ [DC_DT1Me]; Số ĐT cha [DC_DT1Cha]; Ghi chú dùng bên detailright [GhiChuView1]; Tên hộ [TenHo]; Điện thoại NgLL [DC_DTNgLL]; Email NgLL [DC_EmlNgLL]; Số báo danh [SoBD]; Điểm 1 [Diem1]; Điểm 2 [Diem2]; Điểm 3 [Diem3]; Diem4 [Diem4]; Điểm ưu tiên [DiemUT]; Diem5 [Diem5]; Điểm tổng [DiemTong]; Ngành thi [NganhThi]; Khối thi [KhoiThi]; Nhóm khu vực [NhomKVTS]; Đối tượng TS [DOITUONGTS]; Năm tốt nghiệp [NAMTN]; Tên tiếng anh [NoiSinhEg]; Mã số thuế [MaSoThue]; Tên đơn vị [TenDVThue]; Thứ tự [TTSV]; Thời gian thâm niên ct [TGianCT]; Đợt tuyển sinh [DotTS]; Điểm chuẩn theo Tổ hợp XT [DIEMCHUAN]; Nợ đầu ra [NoDauRa]; Tên phương thức [TenPTXT]; Học lực [HocLuc]; Hạnh kiểm [HanhKiem]; Điểm TB Lớp 12 [DMLP12]; Số bảo hiểm SV [SoBHSV]; Thời điểm BHSV [ThoiDiemBHSV]; Mã bệnh viện KCB [IDBVKCB]; Mã còng [MaCong]; ID SV text [IDSVText]; Tên trường THPT 12 [TenTRPT12]; Tỉnh trường THPT 12 [TenTinhPT12]; Thi KTNL [ThiKTNL]; Điểm TB Lớp 10 [DMLP10]; Điểm TB Lớp 11 [DMLP11]; Ngày sinh giám hộ [NgSinhGH]; Tên giám hộ [TenGiamHo]; Loại khuyết tật [LoaiKhuyetTat]; Nghề nghiệp giám hộ [NNgGH]; Số văn bằng [SOVBSV]; Số vào sổ [SoVaoSOSV]; Ngày nhập học [NgayNHOC]; Xét tuyển [LoaiPTXT]; Số cấp chứng nhận [SoCapCN]; Ngày vào đoàn [NgayVDoan]; Ngày vào đảng [NgayVDang]; Học phí đã đóng [DaDongHPHK]; Đơn vị đăng ký dự thi [DVDKDTHI]; Chứng chỉ ngoại ngữ (CCNN) [TenCCNN]; Điểm CCNN [DiemCCNN]; Ghi chú HS [GhiChuHS]; Ghi chú TS [GCTSINH]; Password [Password]; Khóa học [KhoaHocText]; Điểm TBTN ngoài [DTBTNNG]; Số CCCD [SoCCCD]; Nơi cấp CCCD [NoiCapCCCD]; Ngày cấp CCCD [NgCapCCCD]
   - Ô trên form sửa: #MaSV, #TenDayDu, #HoLotSV, #TenSV, #VtSV, #NgaySinhC, #Phai, #NoiSinh, #IDLop, #AvatarSV, #IDDT, #IDTG, #IDDV, #TheThuVien, #SoTaiKhoan, #IDBH, #IDNgHang, #CHINHANHNH, #SoNamBD, #SoNamTNXP, #SoCMND, #CanNang, #ChieuCao, #QuocTich, #CoNghe, #CQCT, #CVCQCT, #DangHoc, #DC_DCHK, #DC_DCLLSV, #DC_DCTT, #DC_DCVC, #DC_DT1HK, #DC_DT1LLSV, #DC_DT1TT, #DC_DT1VC, #DC_DT2HK, #DC_DT2LLSV, #DC_DT2TT, #DC_DT2VC, #DC_Eml1HK, #DC_EML1LLSV, #DC_Eml1TT, #DC_Eml1VC, #DC_Eml2HK, #DC_Eml2TT, #DC_Eml2VC, #DC_GcHK, #DC_GcLL, #DC_GcTT, #DC_GcVC, #DC_IDDBHK, #DC_IDDBLL, #DC_IDDBTT, #DC_IDDBVC, #DCCQCT, #DKKinhTe, #GcSV, #GcThPhanGD, #IDDB_CQCT, #LoaiCuTru, #MatCha, #MatMe, #NgayNgTru, #NgNghiepVC, #NgSinhCha, #NgSinhMe, #NguoiLL, #NguonTuyen, #NNgCha, #NNgMe, #NoiCapCMND, #PhongKTX, #QueQuan, #SoAnhChiEm, #TenCha, #TenChuHo, #TenChuHoHK, #TenMe, #TenVC, #ThPhanGD, #TrChuyen, #NgCapCMND, #DC_IDNoiSinhSV, #DC_EML2LLSV, #DC_DT1Me, #DC_DT1Cha, #GhiChuView1, #TenHo, #DC_DTNgLL, #DC_EmlNgLL
 ### QLSV_ViewDatGTh – View nhập ds đạt giải thưởng
-- Lưới 1 (bảng SGIAITHSV); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đạt giải thưởng» (bảng SGIAITHSV); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên giải thưởng [TenGiaiTH]; Đạt cấp [DatCapGTH]{chọn}
   - Cột ẩn: Sinh viên [IDSV]; Họ và tên [TenDayDu]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #TenGiaiTH, #DatCapGTH, #IDSV
 ### QLSV_ViewDKCLBSV – Đăng ký câu lạc bộ sinh viên
-- Lưới 1 (bảng SDKCLBSV); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đăng ký câu lạc bộ» (bảng SDKCLBSV); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Ngày ĐK tham gia [NgayTGCLB]{ngày}; Mã câu lạc bộ sv [MaCLBSV]
   - Cột ẩn: Ghi chú [GcDKCLB]; Câu lạc bộ sv [IDCLBSV]; Sinh viên [IDSV]; Tên câu lạc bộ sv [TenCLBSV]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #NgayTGCLB, #GcDKCLB, #IDCLBSV, #IDSV
 ### QLSV_ViewDKQDCH – Danh sách QD chuyển
-- Lưới 1 (bảng SDSSVQDCH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên lập QĐ tạm dừng» (bảng SDSSVQDCH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Số quyết định [SoQDSV]; NHHK QĐ [NHHKCH]; Số học kỳ nghỉ [SoHKNghi]
   - Cột ẩn: Ghi chú [GcQDSV]; Lý do QĐ [IDLDQDSV]; Sinh viên [IDSV]; Mã lý do [MaLDQDSV]; Ngày lập QĐ [NgayLapQDSV]{ngày}; Tên quyết định [TenQDSV]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #SoQDSV, #NHHKCH, #SoHKNghi, #GcQDSV, #IDLDQDSV, #IDSV, #NgayLapQDSV, #TenQDSV
 ### QLSV_ViewGanMucHB – Gan muc hoc bong
-- Lưới 1 (bảng SKHHBHKCT); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách mức học bổng» (bảng SKHHBHKCT); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Mức học bổng [MucHB]{chọn}(chỉ đọc); Số tiền học bổng giới hạn [STHBGH]{số}
 ### QLSV_ViewNhapDiemNKhoa – View nhập điểm ngoại khóa
-- Lưới 1 (bảng SHDNGKHOA); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên nhập điểm ngoại khóa» (bảng SHDNGKHOA); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên HD ngoại khóa [TenHDNgKhoa]; Điểm ngoại khóa [DiemNgKhoa]
   - Cột ẩn: Sinh viên [IDSV]; Họ và tên [TenDayDu]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #TenHDNgKhoa, #DiemNgKhoa, #IDSV
 ### QLSV_ViewTTNgoaiTru – Danh sách nhật ký sinh viên ngoại trú
-- Lưới 1 (bảng SSNTRUHK); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Người liên lạc [NguoiLL]; Địa chỉ liên lạc [DC_DCLLSV]; Mã địa bàn 2 [MaDB2]; Tên địa bàn [TenDB2]; Tên chủ hộ [TenChuHo]; Mối quan hệ chủ hộ [QuanHeChuHo]; Địa chỉ ngoại trú [DiaChiNgoaiTru]; Mã địa bàn [MaDB]; Tên địa bàn [TenDB]; Số CMND [SoCMND]; Nơi cấp [NoiCapCMND]; Ngày cấp [NgCapCMND]{ngày}; Điện thoại 1 [DC_DT1LL]; Điện thoại 2 [DC_DT2LL]; Email liên lạc [DC_EML1LL]; Mã ngân hàng [MaNH]; Tên ngân hàng [TenNH]; Ngân hàng [IDNgHang]
+- Lưới 1 «Danh sách sinh viên ngoại trú» (bảng SSNTRUHK); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Người liên lạc [NguoiLL]; Địa chỉ liên lạc [DC_DCLLSV]; Mã Quận/Huyện [MaDB2]; Quận/Huyện [TenDB2]; Tên chủ hộ [TenChuHo]; Mối quan hệ chủ hộ [QuanHeChuHo]; Địa chỉ ngoại trú [DiaChiNgoaiTru]; Mã Quận/Huyện [MaDB]; Quận/Huyện [TenDB]; Số CMND [SoCMND]; Nơi cấp [NoiCapCMND]; Ngày cấp [NgCapCMND]{ngày}; Điện thoại 1 [DC_DT1LL]; Điện thoại 2 [DC_DT2LL]; Email liên lạc [DC_EML1LL]; Mã ngân hàng [MaNH]; Tên ngân hàng [TenNH]; Ngân hàng [IDNgHang]
   - Cột ẩn: Chi nhánh [CHINHANHNH]; Tỉnh/thành [DC_IDDBLL]; Ghi chú [GhiChuNTru]; ID địa bàn ngoại trú [IDDBNgoaiTru]; Sinh viên [IDSV]; Đang ở trọ [IsSVDangOTro]; Số tài khoản [SoTaiKhoan]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #NguoiLL, #DC_DCLLSV, #TenChuHo, #QuanHeChuHo, #DiaChiNgoaiTru, #SoCMND, #NoiCapCMND, #NgCapCMND, #DC_DT1LL, #DC_DT2LL, #DC_EML1LL, #IDNgHang, #CHINHANHNH, #DC_IDDBLL, #GhiChuNTru, #IDDBNgoaiTru, #IDSV, #IsSVDangOTro, #SoTaiKhoan
 ### S-BANCS-LOP – Quản lý ban cán sự lớp
@@ -537,25 +537,25 @@
   - Cột: Lớp sinh viên [IDLop]; Tên lớp [TenLop]; Ghi chú [GhiChu]
   - Ô trên form sửa: #IDLop, #TenLop, #GhiChu
 ### S-CAPNHATQDTN – Cập nhật quyết định tốt nghiệp
-- Lưới 1 (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
-  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); ID quyết định [IDQD]
+- Lưới 1 «Cập nhập quyết định tốt nghiệp» (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); SốQĐ [IDQD]
 ### S-CAPPHAT-GCN – Cấp phát giấy chứng nhận
-- Lưới 1 (bảng SGCNSV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Ngày cấp GCN [NgayCapGCN]{ngày}; Tên giấy CN [TenGCN]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Nơi sinh [NoiSinh]; Số chứng nhận [SOCNSV]; Mã GCN [MaGCN]
-  - Cột ẩn: Còn Nợ [ConNo]; Địa chỉ [DC_DCHK]; Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]; Ghi chú [GCGCNSV]; Ghi chú 1 [GCGCNSV1]; Ghi chú 2 [GCGCNSV2]; Hiện diện SV [HienDienSV]{chọn}; ID giấy CN [IDGCN]; Sinh viên [IDSV]; Mã địa bàn [MaDB]; Phái [Phai]; Số TCDKHK [SOTCDKHK]; TCTLHK [SoTCTLHK]; Tên địa bàn [TenDB]; Họ và tên [TenDayDu]; Tên lớp [TenLop]; Trạng thái GCN [TrangThaiGCNSV]{chọn}
+- Lưới 1 «Cấp phát giấy chứng nhận» (bảng SGCNSV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Ngày cấp [NgayCapGCN]{ngày}; Tên giấy CN [TenGCN]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Nơi sinh [NoiSinh]; Số CN [SOCNSV]; Mã GCN [MaGCN]
+  - Cột ẩn: Còn Nợ [ConNo]; Địa chỉ [DC_DCHK]; Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]; Ghi chú [GCGCNSV]; Ghi chú 1 [GCGCNSV1]; Ghi chú 2 [GCGCNSV2]; Hiện diện SV [HienDienSV]{chọn}; Mã giấy CN [IDGCN]; Sinh viên [IDSV]; Mã địa bàn [MaDB]; Phái [Phai]; Số TCDKHK [SOTCDKHK]; TCTLHK [SoTCTLHK]; Tên địa bàn [TenDB]; Họ và tên [TenDayDu]; Tên lớp [TenLop]; Trạng thái GCN [TrangThaiGCNSV]{chọn}
   - Ô trên form sửa: #NgayCapGCN, #HoLotSV, #TenSV, #NgaySinhC, #MaLop, #DC_DCHK, #DC_DT1LLSV, #DC_EML1LLSV, #GCGCNSV, #GCGCNSV1, #GCGCNSV2, #HienDienSV, #IDGCN, #IDSV, #MaDB, #Phai, #TenDB
 ### S-CHON-REPORT – Chọn mẫu in của user
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn mẫu in»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã report con [SubCode]; Tên Sub report [TenSubReport]
   - Nút btnPrint: "In test GCN" (F9)
 ### S-CHONSV – Giao diện chọn danh mục sinh viên.
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Nơi sinh [NoiSinh]; Mã lớp [MaLop]
 ### S-CHONSVCopy – Giao diện chọn danh mục sinh viên.
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Tỉnh trường THPT 12 [TenTinhPT12]; Tên trường THPT 12 [TenTRPT12]; Mã lớp [MaLop]; Nơi sinh [NoiSinh]; Số tiền HB [SoTienHB]
 ### S-COVANHT – Quản lý cố vấn học tập
-- Lưới 1 (bảng SSVHK); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cố vấn học kỳ» (bảng SSVHK); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Họ lót [HoLotNV]; Tên nhân viên [TenNV]; Ngày sinh [NgSinhNVCNV]; Số sinh viên [SoSV]
   - Cột ẩn: Ghi chú [GhiChu]; Mã viên chức [IDNV]; Tên đầy đủ [TenDayDuNV]
   - Ô trên form sửa: #GhiChu, #IDNV, #TenDayDuNV
@@ -563,7 +563,7 @@
   - Nút btnAdd: "Load DSSV" (F5)
   - Nút btnSave: "Lưu CVHT" (F8)
 ### S-CPTHE-SV – Quản lý cấp phát thẻ sinh viên
-- Lưới 1 (bảng SCPTSV); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên cấp phát thẻ sinh viên» (bảng SCPTSV); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Lần cấp [LanCap]; Mã SV [MaSV]; Họ lót [HoLotSV]; Ngày cấp thẻ sv [NgayCapTSV]{ngày}; Hiệu lực thẻ sv [HieuLucTSV]{ngày}; Tên [TenSV]; Ngày sinh [NgaySinhC]{ngày}; Mã lớp [MaLop]
   - Cột ẩn: Ghi chú [GCCPTSV]; Lệ phí [LePhi]
   - Ô trên form sửa: #LanCap, #MaSV, #HoLotSV, #NgayCapTSV, #HieuLucTSV, #TenSV, #NgaySinhC, #MaLop, #GCCPTSV, #LePhi
@@ -573,88 +573,88 @@
   - Nút btnSave: "Check TT" (F5)
 ### S-DIEMTKRL – Xem điểm tổng kết rèn luyện
 ### S-DIENCSC – Quản lý diện chính sách chung
-- Lưới 1 (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách diện chính sách chung» (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; % miễn giảm [PhTramMGCS]; Tên khoa [TenKhoa]; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Tên dân tộc [TenDT]; Mã lớp [MaLop]; Mã diện chính sách [MaDCS]; Mã khoa [MaKhoa]; Ngày nhập [NgayNhap]{ngày}
   - Cột ẩn: Ghi chú [GcDCSSVC]; Diện chính sách [IDDCS]; Sinh viên [IDSV]; NHHK bắt đầu [NHHKBD]; NHHK kết thúc [NHHKKT]; Tên diện chính sách [TenDCS]; Họ và tên [TenDayDu]
   - Ô trên form sửa: #NgaySinhC, #GcDCSSVC, #IDDCS, #IDSV, #NHHKBD, #NHHKKT, #TenDCS, #TenDayDu
 ### S-DIENCSCCopy – Danh sách sinh viên hợp lệ
-- Lưới 1 (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đồng bộ» (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Mã diện chính sách [MaDCS]; Tên diện chính sách [TenDCS]; Mã trợ cấp xã hội [MaTCXH]
   - Cột ẩn: Ghi chú [GcDCSSVC]; Họ và tên [TenDayDu]
   - Ô trên form sửa: #NgaySinhC, #GcDCSSVC, #TenDayDu
 ### S-DIENSV_HK – Đồng bộ diện chính sách học kỳ
-- Lưới 1 (bảng SDCSSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; % miễn giảm [PhTramMGCS]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Tên dân tộc [TenDT]; Mã lớp [MaLop]; Mã diện chính sách [MaDCS]; Mã khoa [MaKhoa]; Ngày thêm [NgayThem]{ngày}
+- Lưới 1 «Danh sách diện chính sách học kỳ» (bảng SDCSSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; % Miễn giảm [PhTramMGCS]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Tên dân tộc [TenDT]; Mã lớp [MaLop]; Mã diện chính sách [MaDCS]; Mã khoa [MaKhoa]; Ngày thêm [NgayThem]{ngày}
   - Cột ẩn: Ghi chú [GCDCSSVHK]; Hiệu lực đến thg/năm [HieuLucDenThgNam]; Hiệu lực từ thg/năm [HieuLucTuThgNam]; Diện chính sách [IDDCS]; Sinh viên [IDSV]; Niên học học kỳ [NHHK]; Ngày quyết định [NgayQDDCSSV]{ngày}; Số quyết định [SoQDDCSSV]; Tên diện chính sách [TenDCS]; Họ và tên [TenDayDu]; Tên khoa [TenKhoa]; Tên lớp [TenLop]
   - Ô trên form sửa: #NgaySinhC, #GCDCSSVHK, #IDDCS, #IDSV, #NgayQDDCSSV, #SoQDDCSSV, #TenDCS, #TenDayDu, #TenLop
 ### S-DMCVBCS – Danh mục ban cán sự chọn
-- Lưới 1 (bảng SDMCVBCS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục chức vụ ban cán sự lớp» (bảng SDMCVBCS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã chức vụ [MaCVBCS]; Tên chức vụ [TenCVBCS]; Tên tiếng anh [TenCVBCSEg]; Tên viết tắt [VtCVBCS]; Ghi chú [GcCVBCS]
 ### S-DMDCS – Danh mục diện chính sách chọn
-- Lưới 1 (bảng SDMDCS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục diện chính sách» (bảng SDMDCS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã diện chính sách [MaDCS]; Tên diện chính sách [TenDCS]; Tên tiếng anh [TenDCSEg]; Tên viết tắt [VtDCS]; Ghi chú [GcDCS]; % miễn giảm [PhTramMGCS]
 ### S-DMDSV – Danh mục diện sinh viên chọn
-- Lưới 1 (bảng SDMDSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục diện sinh viên» (bảng SDMDSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã diện sinh viên [MaDSV]; Tên diện sinh viên [TenDSV]; Tên tiếng anh [TenDSVEg]; Tên viết tắt [VtDSV]; Ghi chú [GcDSV]
 ### S-DMSV-FULL – Danh sách sinh viên không edit
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh mục sinh viên» (bảng SDMSV); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Mã lớp(cuối) [MaLopCuoi]
 ### S-DOANTHE-SV – Cập nhật thông tin đoàn thể cho sv
 - Lưới 1 (bảng SDTSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Sinh viên [IDSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Ngày vào [NgayVao]; Ngày ra [NgayRa]; Loại đoàn thể [LoaiDThe]; Ghi chú [GcDTSV]; Ghi chú [GhiChu]
   - Ô trên form sửa: #IDSV, #TenDayDu, #NgaySinhC, #NgayVao, #NgayRa, #LoaiDThe, #GcDTSV, #GhiChu
 ### S-DOTXETTN – Danh sách đợt xét tốt nghiệp
-- Lưới 1 (bảng DDOTTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách đợt xét tốt nghiệp» (bảng DDOTTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã đợt [MaDotTN]; Số quyết định [SoQDSV]; Niên học học kỳ [NHHK]; Ngày ký [NgayKy]{ngày}; Số lượng [SoLuong]; Số lượng đạt [SoLuongDat]
 ### S-DS-CBS-LOP – Danh sách ban cán sự lớp
-- Lưới 1 (bảng SCVSV); tắt: Thêm, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách ban cán sự lớp» (bảng SCVSV); tắt: Thêm, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải, Thoát
   - Cột: Mã chức vụ [MaCVBCS]{nút …}; Mã SV [MaSV]{nút …}; Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc)
   - Nút btnDelete: "Xóa ban cán sự" (F8)
 ### S-DS-HSSV – Danh sách hồ sơ của sinh viên
-- Lưới 1 (bảng SHSSV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách hồ sơ» (bảng SHSSV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã hồ sơ [MaHS]; Tên hồ sơ [TenHS]; Ngày nộp hồ sơ [NgayNopHS]{ngày}; Hình hồ sơ [AvatarHS]; Ghi chú [GcHSSV]
   - Nút btnDelete: "Xóa hồ sơ" (F2)
   - Nút btnAdd: "Thêm hồ sơ" (F5)
 ### S-DS-QDKTKL – Danh sách quyết định khen thưởng - kỷ luật
-- Lưới 1 (bảng SDSQDKK); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định» (bảng SDSQDKK); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số quyết định [SoQDKK]; Tên khen thưởng kỷ luật [TenKKSV]; Tên quyết định [TenQDKK]; Ngày ký [NgayKyKK]{ngày}; Ngày hiệu lực [NgayHLKK]{ngày}; Người ký [NguoiKyKK]; Ghi chú [GcQDKK]; Niên học học kỳ [NHHK]
-  - Cột ẩn: Ghi chú [GhiChu]; ID KTKL [IDKKSV]; Nội dung [NoiDung]; Số vào sổ [SoVSQDKK]
+  - Cột ẩn: Ghi chú [GhiChu]; Lý do [IDKKSV]; Nội dung [NoiDung]; Số vào sổ [SoVSQDKK]
   - Ô trên form sửa: #SoQDKK, #TenQDKK, #NgayKyKK, #NgayHLKK, #NguoiKyKK, #GcQDKK, #GhiChu, #IDKKSV, #NoiDung
 ### S-DS-QUYETDINH – Danh sách quyết định
-- Lưới 1 (bảng SDSQD); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định» (bảng SDSQD); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày lập QĐ [NgayLapQDSV]{ngày}; Tên lý do [TenLDQDSV]; Số quyết định [SoQDSV]; Tên quyết định [TenQDSV]; Mã quyết định [MaQDSV]; Ngày thêm [NgayThem]{ngày}
   - Cột ẩn: Ghi chú [GcQDSV]; Ghi chú [GhiChu]; Người ký [IDChuKy]; Lý do QĐ [IDLDQDSV]; Mã lý do [MaLDQDSV]; Ngày hiệu lực [NGAYHLQDSV]{ngày}; Niên học học kỳ [NHHK]; Ngày hoàn thành QĐ [NgayHTQDSV]{ngày}; Người ký QD [NguoiKyQDSV]; Nội dung [NoiDung]; Nội dung 2 [NoiDung2]
   - Ô trên form sửa: #NgayLapQDSV, #SoQDSV, #TenQDSV, #GcQDSV, #GhiChu, #IDChuKy, #IDLDQDSV, #NGAYHLQDSV, #NgayHTQDSV, #NoiDung, #NoiDung2
   - Nút btnDelete: "Xóa quyết định" (CTRLT)
   - Nút btnSave: "Lưu quyết định" (F10)
 ### S-DS-QUYETDINH2 – Danh sách quyết định
-- Lưới 1 (bảng SDSQD); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định» (bảng SDSQD); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày lập QĐ [NgayLapQDSV]{ngày}; Tên lý do [TenLDQDSV]; Số quyết định [SoQDSV]; Tên quyết định [TenQDSV]; Mã quyết định [MaQDSV]; Người ký QD [NguoiKyQDSV]; Ngày thêm [NgayThem]{ngày}
   - Cột ẩn: Ghi chú [GcQDSV]; Ghi chú [GhiChu]; Người ký [IDChuKy]; Lý do QĐ [IDLDQDSV]; Ngày hiệu lực [NGAYHLQDSV]{ngày}; Niên học học kỳ [NHHK]; Nội dung [NoiDung]; Nội dung 2 [NoiDung2]
   - Ô trên form sửa: #NgayLapQDSV, #SoQDSV, #TenQDSV, #MaQDSV, #GcQDSV, #GhiChu, #IDChuKy, #IDLDQDSV, #NGAYHLQDSV, #NoiDung, #NoiDung2
 ### S-DS-VBSV – Danh sách văn bằng của sinh viên
-- Lưới 1 (bảng SVBSV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
-  - Cột: Số văn bằng [SOVBSV]; Tên bậc đào tạo [BacDTVB]{chọn}; Hệ đào tạo [HeDTVB]{chọn}; Nơi cấp [TruongVB]; ID nơi cấp VB [IDDBVB]; Ngày cấp [NgayCapVB]
+- Lưới 1 «Danh sách văn bằng» (bảng SVBSV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+  - Cột: Số văn bằng [SOVBSV]; Tên bậc đào tạo [BacDTVB]{chọn}; Hệ đào tạo [HeDTVB]{chọn}; Nơi cấp [TruongVB]; Quốc gia cấp [IDDBVB]; Ngày cấp VB [NgayCapVB]
   - Nút btnDelete: "Xóa hồ sơ" (F3)
   - Nút btnAdd: "Thêm văn bằng" (F10)
 ### S-DSDOANTHESV – Danh sách chi tiết đoàn thể của sinh viên
-- Lưới 1 (bảng SDTSV); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách chi tiết đoàn thể» (bảng SDTSV); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Loại đoàn thể [LoaiDThe]{chọn}; Ngày vào [NgayVao]{ngày}; Ngày ra [NgayRa]{ngày}; Ghi chú [GcDTSV]
   - Nút btnDelete: "Xóa đoàn thể" (F8)
   - Nút btnAdd: "Thêm đoàn thể" (F5)
 ### S-DSLDQD – Danh sách lý do quyết định
-- Lưới 1 (bảng SDMLDQD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách lý do quyết định» (bảng SDMLDQD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã lý do [MaLDQDSV]; Tên lý do [TenLDQDSV]; Loại lý do [LoaiLDQDSV]{chọn}; Tên viết tắt [VtLDQDSV]; Ghi chú [GcLDQDSV]; Trao đổi [IsTraoDoi]
 ### S-DSQDCHON – Danh sách quyết định chọn
-- Lưới 1 (bảng SDSQD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định» (bảng SDSQD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số quyết định [SoQDSV]; Niên học học kỳ [NHHK]; Tên quyết định [TenQDSV]; Người ký QD [NguoiKyQDSV]; Ngày lập QĐ [NgayLapQDSV]; Ngày hiệu lực [NGAYHLQDSV]
 ### S-DSSV-CV – Danh sách sinh viên cố vấn
-- Lưới 1 (bảng SSVHK); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách sinh viên» (bảng SSVHK); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]
   - Nút btnAdd: "Thêm sinh viên" (F5)
   - Nút btnDelete: "Xóa sinh viên" (F8)
 ### S-DSSV-KTKL – Danh sách sinh viên của quyết định kt - kl
-- Lưới 1 (bảng SSVHK); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách sinh viên quyết định» (bảng SSVHK); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Tên viết tắt [VTLop](chỉ đọc); Ghi chú [GcLop]; Nội dung VP [NoiDungVP]{chọn}; Ghi chú KTKL [GcSVKK]
   - Cột ẩn: Lớp sinh viên [IDLop]; Sinh viên [IDSV]; Mã đợt [MaDotTN]; Mã khối [MaKhoi]; Mã lớp [MaLop]; Niên học học kỳ [NHHK]
   - Nút btnDelete: "Xóa quyết định" (F8)
@@ -662,10 +662,10 @@
 - Lưới 1 (bảng SSVHK); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV]; Mã khối [MaKhoi]; Ghi chú KTKL [GcSVKK]
 ### S-DSSV-NHAP – Danh sách sinh viên nhập điểm
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Điểm tk rèn luyện [DiemTKRL]
 ### S-DSSV-QD – Danh sách sinh viên nhận quyết định
-- Lưới 1 (bảng SDMSV); tắt: Sửa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách sinh viên» (bảng SDMSV); tắt: Sửa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai](chỉ đọc); Nơi sinh [NoiSinh]; Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp (cũ) [MaLopCu](chỉ đọc); Mã lớp (mới) [MaLopMoi]{nút …}; Số học kỳ nghỉ [SoHKNghi]{số}; ĐTBTN [DTBTN](chỉ đọc); Xếp loại [XLTNTC](chỉ đọc); Sí số hiện diện [SiSoHD](chỉ đọc); Mã SV mới [MaSVMoi]; Ghi chú [GcDSSVQD]
   - Nút btnImport: "Thêm sinh viên từ file" (AltF5)
   - Nút btnDelete: "Xóa sinh viên" (CTLT)
@@ -673,16 +673,16 @@
 - Lưới 1 (bảng SDMSV); tắt: Sửa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai](chỉ đọc); Nơi sinh [NoiSinh]; Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp (cũ) [MaLopCu](chỉ đọc); Mã lớp (mới) [MaLopMoi]{nút …}; Số học kỳ nghỉ [SoHKNghi]{số}; ĐTBTN [DTBTN](chỉ đọc); Xếp loại [XLTNTC](chỉ đọc); Sí số hiện diện [SiSoHD](chỉ đọc)
 ### S-DSSVHK – Danh sách sinh viên học kỳ - giao diện ngang hàng
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên lớp [TenLop]; Tên [TenSV]; Ngày sinh [NgaySinhC]
 ### S-DSVHK – Cập nhật diện sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Danh sách diện sinh viên học kỳ» (bảng SSVHK); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã diện sinh viên [MaDSV]; Tên diện sinh viên [TenDSV]
 ### S-GANG-QD-DMSV – Gáng quyết định cho danh mục
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên gáng QĐ»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số quyết định [SoQDSV]; Mã SV [MaSV]
 ### S-GVCN – Cập nhật thông tin giáo viên chủ nhiệm
-- Lưới 1; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách giáo viên chủ nhiệm lớp»; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã viên chức [MaNV]{nút …}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Ghi chú [GcGVCN]
 ### S-HS-SINHVIEN – Cập nhật hồ sơ sinh viên
 - Lưới 1 (bảng SHSSV); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -703,28 +703,28 @@
   - Ô trên form sửa: #MaSV, #TenDayDu, #HoLotSV, #TenSV, #VtSV, #NgaySinhC, #Phai, #IDLop, #AvatarSV, #IDDT, #IDTG, #IDDV, #IDNgChNg, #TheThuVien, #SoTaiKhoan, #IDBH, #IDNgHang, #CHINHANHNH, #SoNamBD, #SoNamTNXP, #SoCMND, #CanNang, #ChieuCao, #QuocTich, #CoNghe, #DangHoc, #DC_DCHK, #DC_DCLLSV, #DC_DCTT, #DC_DCVC, #DC_DT1HK, #DC_DT1LLSV, #DC_DT1TT, #DC_DT1VC, #DC_DT2HK, #DC_DT2LLSV, #DC_DT2TT, #DC_DT2VC, #DC_Eml1HK, #DC_EML1LLSV, #DC_Eml1TT, #DC_Eml1VC, #DC_Eml2HK, #DC_Eml2TT, #DC_Eml2VC, #DC_GcHK, #DC_GcLL, #DC_GcTT, #DC_GcVC, #DC_IDDBHK, #DC_IDDBLL, #DC_IDDBTT, #DC_IDDBVC, #DKKinhTe, #GcSV, #GcThPhanGD, #LoaiCuTru, #MatCha, #MatMe, #NgayNgTru, #NgNghiepVC, #NgSinhCha, #NgSinhMe, #NguoiLL, #NguonTuyen, #NNgCha, #NNgMe, #NoiCapCMND, #PhongKTX, #QueQuan, #SoAnhChiEm, #TenCha, #TenChuHo, #TenChuHoHK, #TenMe, #TenVC, #ThPhanGD, #TrChuyen, #NgCapCMND, #DC_IDNoiSinhSV, #DC_EML2LLSV, #DC_DT1Me, #DC_DT1Cha, #GhiChuView1, #TenHo, #TTSV, #DC_DTNgLL, #DC_EmlNgLL, #NoiSinh
 ### S-NHAPDIEMRL – Nhập điểm rèn luyện theo mã ghi điểm
 ### S-NHAPTTCC – Nhập thông tin chung chi
-- Lưới 1 (bảng STTTNCT); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách thông tin chứng chỉ sinh viên» (bảng STTTNCT); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Phái [Phai](chỉ đọc); Nơi sinh [NoiSinh](chỉ đọc); Tên dân tộc [TenDT](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Mã đợt [MaDotTN](chỉ đọc); Số vào sổ [SoVaoSo]; Ngày vào sổ [NGAYVAOSO]{ngày}; Số văn bằng [SOVBSV]; Ngày thanh toán [NgayTT]{ngày}; Ngày cấp [NgayCap]{ngày}; Ghi chú [GhiChuTN]; ĐTK [DTBTK]{số}(chỉ đọc); Xếp loại toàn khóa [XepLoaiTK](chỉ đọc); ĐTBTN [DTBTN]{số}(chỉ đọc); Xếp loại tốt nghiệp [XepLoaiTN](chỉ đọc); Mã chứng chỉ [MaCC](chỉ đọc); Tên chứng chỉ [TenCC](chỉ đọc)
   - Cột ẩn: Lần xét [LanXet](chỉ đọc); Mã bậc [MaBac](chỉ đọc); Mã hệ đào tạo [MaHe](chỉ đọc); Ngày lập QĐ [NgayLapQDSV]{ngày}(chỉ đọc); Số quyết định [SoQDSV](chỉ đọc); Tên đơn vị QL [TenDVQL](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Tên loại VB [TenLoaiVB](chỉ đọc)
 ### S-NHAPTTCC-Imp – View cập nhật thông tin tôt nghiệp
 - Lưới 1 (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Mã chứng chỉ [MaCC]; Số vào sổ [SoVaoSo]{số}; Ngày vào sổ [NGAYVAOSO]{ngày}; Số văn bằng [SOVBSV]{số}; Ngày thanh toán [NgayTT]{ngày}; Ngày cấp [NgayCap]{ngày}; Ghi chú [GhiChuTN]
 ### S-NHAPTTTN – Nhập thông tin tốt nghiệp
-- Lưới 1 (bảng STTTNCT); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Phái [Phai](chỉ đọc); Nơi sinh [NoiSinh](chỉ đọc); Tên dân tộc [TenDT](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Mã đợt [MaDotTN](chỉ đọc); Số vào sổ [SoVaoSo]; Ngày vào sổ [NGAYVAOSO]{ngày}; Số văn bằng [SOVBSV]; Ngày thanh toán [NgayTT]{ngày}; Ngày cấp [NgayCap]{ngày}; Số QĐ [SoQD]; Ghi chú [GhiChuTN]; ĐTK [DTBTK]{số}(chỉ đọc); Xếp loại toàn khóa [XepLoaiTK](chỉ đọc); ĐTBTN [DTBTN]{số}(chỉ đọc); Xếp loại tốt nghiệp [XepLoaiTN](chỉ đọc)
+- Lưới 1 «Thông tin tốt nghiệp sinh viên» (bảng STTTNCT); tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Phái [Phai](chỉ đọc); Nơi sinh [NoiSinh](chỉ đọc); Tên dân tộc [TenDT](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Mã đợt [MaDotTN](chỉ đọc); Số vào sổ [SoVaoSo]; Ngày vào sổ [NGAYVAOSO]{ngày}; Số văn bằng [SOVBSV]; Ngày thanh toán [NgayTT]{ngày}; Ngày cấp [NgayCap]{ngày}; Số QĐ [SoQD]; Ghi chú [GhiChuTN]; ĐTK [DTBTK]{số}(chỉ đọc); Xếp loại TK [XepLoaiTK](chỉ đọc); ĐTBTN [DTBTN]{số}(chỉ đọc); Xếp loại TN [XepLoaiTN](chỉ đọc)
   - Cột ẩn: Lần xét [LanXet](chỉ đọc); Loại lý do [LoaiLDQDSV]{chọn}(chỉ đọc); Mã bậc [MaBac](chỉ đọc); Mã địa bàn [MaDB](chỉ đọc); Mã dân tộc [MaDT](chỉ đọc); Mã hệ đào tạo [MaHe](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Ngày lập QĐ [NgayLapQDSV]{ngày}(chỉ đọc); Người ký [NguoiKy](chỉ đọc); Niên khóa [NienKhoa](chỉ đọc); Quốc tịch [QuocTich]{chọn}(chỉ đọc); Số quyết định [SoQDSV](chỉ đọc); Tên bậc hệ [TenBH](chỉ đọc); Tên bậc văn bằng [TenBacVanBang](chỉ đọc); Tên địa bàn [TenDB](chỉ đọc); Tên xếp loại [TenDGCT](chỉ đọc); Tên đơn vị QL [TenDVQL](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Tên loại VB [TenLoaiVB](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Tên văn bằng [TenVanBang](chỉ đọc); Tên yêu cầu [TenYeuCau](chỉ đọc)
 ### S-NHAPTTTN-Imp – View cập nhật thông tin tôt nghiệp
 - Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Số vào sổ [SoVaoSo]{số}; Ngày vào sổ [NGAYVAOSO]{ngày}; Số văn bằng [SOVBSV]{số}; Ngày thanh toán [NgayTT]{ngày}; Ngày cấp [NgayCap]{ngày}; Số QĐ [SoQD]; Ghi chú [GhiChuTN]; Niên học học kỳ [NHHK]
 ### S-QDDTPRL – Qui định điểm rèn luyện thành phần
-- Lưới 1 (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Qui định điểm rèn luyện thành phần» (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã rèn luyện tp [MaTPRL](chỉ đọc); Tên rèn luyện tp [TenTPRL](chỉ đọc); Điểm [Diem]{số}
   - Nút btnSave: "Kiểm tra dữ liệu điểm" (F10)
 ### S-THTOANTN – Cập nhật thông tin thanh toán tốt nghiệp
-- Lưới 1 (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Cập nhật thông tin thanh toán» (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Ngày thanh toán [NgayTT]{ngày}
 ### S-TTVBTN – Cập nhật thông tin văn bằng
-- Lưới 1 (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Cập nhật thông tin văn bằng» (bảng STTSVTN); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]
   - Cột ẩn: Ngày cấp [NgayCap]; Số văn bằng [SOVBSV]; Số vào sổ [SoVaoSo]
 ### S-VBSINHVIEN – Cập nhật văn bằng sinh viên
@@ -735,65 +735,65 @@
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Thông tin [ThongTin]; Giá trị [GiaTri]
 ### S52.SHCD – Sinh hoạt công dân
-- Lưới 1 (bảng SSHCD); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh hoạt công dân» (bảng SSHCD); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Niên học học kỳ [NHHK]; Ngày sinh hoạt [NgaySHCD]{ngày}; Miễn SHCD [IsMienSHCD]
   - Cột ẩn: ID sinh hoạt công dân [IDSHCD]; Sinh viên [IDSV]; Nội dung sinh hoạt [NoiDungSHCD]; Họ và tên [TenDayDu]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #NHHK, #NgaySHCD, #IsMienSHCD, #IDSV, #NoiDungSHCD
 ### S_CHONBACHE – Giao diện chọn bậc hệ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách bậc hệ đào tạo»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]; Tên viết tắt [VtBH]; Ghi chú [GcBH]; Mã BH XT [MaBHXT]; Tên BH XT [TenBHXT]
 ### S_CHONDCS – View chon diện sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Sửa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách sinh viên» (bảng SSVHK); tắt: Thêm, Sửa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Tên khối [TenKhoi](chỉ đọc); Mã Ng/CNg [MaNgChng](chỉ đọc); Tên ng/chng [TenNgChng](chỉ đọc)
 ### S_DIEMRLSVNAMHOC – Danh sách điểm rèn luyện sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Năm học [NamHoc]{số}; Năm thứ [NamThu]; Học kỳ 1 [HK1]; Học kỳ [HK]; Học kỳ 2 [HK2]; Điểm rèn luyện năm học [DiemRLNH]
+- Lưới 1 «Kết quả tổng kết điểm rèn luyện sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Năm học [NamHoc]{số}; Năm thứ [NamThu]; Học kỳ 1 [HK1]; Học kỳ [HK]; Học kỳ 2 [HK2]; Điểm RLNH [DiemRLNH]
 ### S_DIEMTPRL – Danh sách điểm thành phần rèn luyện
-- Lưới 1 (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm thành phần rèn luyện» (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã rèn luyện tp [MaTPRL]; Tên rèn luyện tp [TenTPRL]; Điểm [Diem]; Tên viết tắt [VtTPRL]; Ghi chú [GcTPRL]
 ### S_DMDIABAN – Danh sách các tỉnh
-- Lưới 1 (bảng NDMDB); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách tỉnh/thành phố - Quận/huyện» (bảng NDMDB); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã địa bàn [MaDB](chỉ đọc); Tên địa bàn [TenDB](chỉ đọc); Tên viết tắt [VTDB](chỉ đọc)
   - Cột ẩn: Mã địa bàn [IDDB]; ID địa bàn cha [IDDBC]
 ### S_DOTBHSV – Danh sách đợt đóng bảo hiểm sinh viên
-- Lưới 1 (bảng SDotBHSV); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách đợt đóng bảo hiểm sinh viên» (bảng SDotBHSV); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã đợt BHSV [MaDotBHSV]; Tên đợt BH [TenDotBHSV]; Viết tắt [VtDotBHSV]; Ghi chú [GcDotBHSV]
   - Cột ẩn: Loại BHSV [LoaiBHSV]{chọn}; Ngày BĐ đợt [NgayBDDotBHSV]{ngày}
   - Ô trên form sửa: #MaDotBHSV, #TenDotBHSV, #VtDotBHSV, #GcDotBHSV, #LoaiBHSV, #NgayBDDotBHSV
 ### S_DSSVBH – Danh sách sinh viên đóng bảo hiểm
-- Lưới 1 (bảng SDSSVBH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đóng bảo hiểm» (bảng SDSSVBH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã đợt BHSV [MaDotBHSV]; Số bảo hiểm SV [SoBHSV]; Mã SV [MaSV]; Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Hiện diện SV [HienDienSV]{chọn}; Phái [Phai]{chọn}(chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Nơi đăng ký KCB [NoiDKKCB]; Mã Cty BH [MaCTyBH]; Mã lớp [MaLop]; Ngày BĐBH [NgayBDBHSV]{ngày}; Ngày KTBH [NgayKTBHSV]{ngày}; Ghi chú [GcBHSV]
   - Cột ẩn: Mã bệnh viện KCB [IDBVKCB]; ID cty bảo hiểm [IDCTyBH]; ID Dot BH SV [IDDotBHSV]; Sinh viên [IDSV]; Mức bảo hiểm [MucBH]; Ngày đóng [NgayDongBHSV]{ngày}; Tiền bảo hiểm [STienThuBHSV]{số}; Số CMND [SoCMND](chỉ đọc); Tên Cty BH [TenCTyBH]; Họ và tên [TenDayDu](chỉ đọc); Tên đợt BH [TenDotBHSV]
   - Ô trên form sửa: #SoBHSV, #Phai, #NgaySinhC, #NoiDKKCB, #MaLop, #NgayBDBHSV, #NgayKTBHSV, #GcBHSV, #IDBVKCB, #IDCTyBH, #IDDotBHSV, #IDSV, #MucBH, #NgayDongBHSV, #STienThuBHSV, #SoCMND, #TenDayDu
 ### S_IMPORT_DIEMRL – Import điểm rèn luyện
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### S_IMPORT_DRLERROR – Import điểm rèn luyện thất bại
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách import điểm rèn luyện bị lỗi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Phái [Phai]; Điểm rèn luyện học kỳ [DiemRLHK]; Lý do [LyDoLoi]
 ### S_IMPORT_LYLICHSV – Cập nhật lý lịch SV từ file
 - Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Sinh viên [IDSV]; Họ lót [HoLotSV]; Tên [TenSV]; Họ và tên [TenDayDu]; Tên viết tắt [VtSV]; Họ lót [HoLotSV2]; Tên [TenSV2]; Ghi chú [GcSV]; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]; Phái [Phai]; Cân nặng [CanNang]; Chiều cao [ChieuCao]; Chi nhánh [CHINHANHNH]; Có nghề [CoNghe]; Cơ quan công tác [CQCT]; Chức vụ công tác [CVCQCT]; Đang học [DangHoc]; Địa chỉ [DC_DCHK]; Địa chỉ liên lạc [DC_DCLLSV]; Địa chỉ [DC_DCTT]; Địa chỉ [DC_DCVC]; Điện thoại 1 [DC_DT1HK]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 1 [DC_DT1TT]; Điện thoại 1 [DC_DT1VC]; Điện thoại 2 [DC_DT2HK]; Điện thoại 2 [DC_DT2LLSV]; Điện thoại 2 [DC_DT2TT]; Điện thoại 2 [DC_DT2VC]; Email 1 [DC_Eml1HK]; Email 1 [DC_EML1LLSV]; Email 1 [DC_Eml1TT]; Email 1 [DC_Eml1VC]; Email 2 [DC_Eml2HK]; Email liên lạc (2) [DC_EML2LL]; Email 2 [DC_Eml2TT]; Email 2 [DC_Eml2VC]; GC hộ khẩu [DC_GcHK]; GC liên lạc [DC_GcLL]; GC thường trú [DC_GcTT]; GC vợ chồng [DC_GcVC]; Địa chỉ CQCT [DCCQCT]; ĐK kinh tế [DKKinhTe]; Ghi chú [GcThPhanGD]; Họ SV (Index) [HoSVIdx]; Loại cư trú [LoaiCuTru]; Cha mất [MatCha]; Mẹ mất [MatMe]; Ngày ngoại trú [NgayNgTru]; Nghề ng vợ/chồng [NgNghiepVC]; Ngày sinh [NgSinhCha]; Ngày sinh [NgSinhMe]; Người liên lạc [NguoiLL]; Nguồn tuyển [NguonTuyen]; Nghề nghiệp [NNgCha]; Nghề nghiệp [NNgMe]; Nơi cấp [NoiCapCMND]; Password [Password]; Phòng ký túc xá [PhongKTX]; Quê quán [QueQuan]; Quốc tịch [QuocTich]; Số anh chị em [SoAnhChiEm]; Số CMND [SoCMND]; Số năm bộ đội [SoNamBD]; Số năm TNXP [SoNamTNXP]; Số tài khoản [SoTaiKhoan]; Tên cha [TenCha]; Tên chủ hộ [TenChuHo]; Tên chủ hộ (HK) [TenChuHoHK]; Tên mẹ [TenMe]; Tên sv (Index) [TenSVIdx]; Tên vợ/chồng [TenVC]; Thẻ thư viện [TheThuVien]; Thành phần GĐ [ThPhanGD]; Trường chuyển [TrChuyen]; Thứ tự [TTSV]
 ### S_IMPORTDRLTHANHCONG – Import điểm rèn luyện thành công
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách import điểm rèn luyện thành công»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Mã lớp [MaLop]; Điểm rèn luyện học kỳ [DiemRLHK]
 ### S_KHOIHBHK – Danh sách khối học bổng học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách khối»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MaKhoi]; Tên khối [TenKhoi]; Tên viết tắt [VtKhoi]; Ghi chú [GcKhoi]; Mã khối học bổng [MaKhHBHK]; Tên khối học bổng [TenKhHBHK]; Nguồn TBHB [NguonTBHB]{chọn}; Hệ điểm học bổng [HeDiemHB]{chọn}; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mã nhóm khối HBHK [MaNhomKhHB]; Tổng số [TongSo]
   - Cột ẩn: Mã nhà tài trợ [MaTAITRO]; Tên nhóm khối HBHK [TenNhomKhHB]
 ### S_KHOIHBHK_KQ – Kết quả kiểm tra danh sách khối học bổng học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Kết quả kiểm tra khối học bổng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MaKhoi]; Tên khối [TenKhoi]; Niên khóa [NienKhoa]; Tên viết tắt [VtKhoi]; Mã khối học bổng [MaKhHBHK]; Nguồn TBHB [NguonTBHB]; Hệ điểm học bổng [HeDiemHB]; Tổng số [TongSo]; Diện xét [DienXet]; Diện không xét [DienKhongXet]
 ### S_KQ_IMPORT_LYLICHSV – Kết quả cập nhật lý lịch sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cập nhật thành công»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]; Mã lớp [MaLop]
 ### S_KQIMPORT_LYLICH_ER – Kết quả import lý lịch SV lỗi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cập nhật bị lỗi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]; Mã lớp [MaLop]; Lý do [LyDoLoi]
 ### S_KQKKLOP – Kết quả xét khen thưởng theo tập thể lớp
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp khen thưởng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Tên viết tắt [VTLop]; Số sinh viên [SoSV]; Xếp loại [XLTKC]
 ### S_KQKKSV – Kết quả xét khen thưởng sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên khen thưởng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; TC tổng [TCTong]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Điểm trung bình học tập [DTBHT]; Xếp loại học tập [XLHT]; Điểm trung bình rèn luyện [DTBRL]; Xếp loại rèn luyện [XLRL]; Xếp loại [XLTKC]
   - Cột ẩn: ĐTB4 [DTBTKH4]
 ### S_NGOAITRUSV – Thông tin nội trú/ngoại trú sinh viên
@@ -801,122 +801,122 @@
   - Cột: Sinh viên [IDSV]; Mã SV [MaSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Phòng ký túc xá [PhongKTX]; Ngày ngoại trú [NgayNgTru]; Loại cư trú [LoaiCuTru]; Địa chỉ [DC_DCTT]; Tên chủ hộ [TenChuHo]; Điện thoại 1 [DC_DT1TT]; Điện thoại 2 [DC_DT2TT]; Email 1 [DC_Eml1TT]; Email 2 [DC_Eml2TT]; GC thường trú [DC_GcTT]; Tỉnh/thành [DC_IDDBTT]; Phái [Phai]; Tên hộ [TenHo]; Điện thoại 1 [DC_DT1LLSV]
   - Ô trên form sửa: #IDSV, #TenDayDu, #NgaySinhC, #PhongKTX, #NgayNgTru, #LoaiCuTru, #DC_DCTT, #TenChuHo, #DC_DT1TT, #DC_DT2TT, #DC_Eml1TT, #DC_Eml2TT, #DC_IDDBTT, #Phai, #TenHo, #DC_DT1LLSV
 ### S_NHAPDIEMRLSV – Nhập điểm rèn luyện
-- Lưới 1 (bảng SDRLHK); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên nhập điểm rèn luyện» (bảng SDRLHK); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Điểm rèn luyện học kỳ [DiemRLHK]{số}
   - Cột ẩn: Hiện diện SV [HienDienSV]{chọn}(chỉ đọc); Họ SV (Index) [HoSVIdx](chỉ đọc); Sinh viên [IDSV](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Tên sv (Index) [TenSVIdx](chỉ đọc)
   - Nút btnXuLyImp: "Import" (F2)
 ### S_NHAPDIEMTPRL – Màn hình nhập điểm thành phần rèn luyện
-- Lưới 1 (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm thành phần rèn luyện» (bảng SDMTPRL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã rèn luyện tp [MaTPRL]; Tên rèn luyện tp [TenTPRL]; Tên viết tắt [VtTPRL]; Điểm [Diem]; Ghi chú [GcTPRL]
   - Cột ẩn: Tên tiếng anh [TenTPRLEg]
-- Lưới 2 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 2 «Danh sách lớp - sinh viên học kỳ» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên lớp [TenLop]; Tên [TenSV]; Tên viết tắt [VTLop]; Ghi chú [GcLop]; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]
 ### S_NKNGOAITRU – Nhật ký ngoại trú sinh viên
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Ngày chuyển ngoại trú [NgChuyenNgoaiTru]; Địa chỉ ngoại trú [DiaChiNgoaiTru]; Tên địa bàn [TenDB]; Loại hình [LoaiHinh]{chọn}; Ngày thêm [NgayThem]
+- Lưới 1 «Danh sách thay đổi địa chỉ ngoại trú của sinh viên»; tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Ngày thay đổi ngoại trú [NgChuyenNgoaiTru]; Địa chỉ ngoại trú [DiaChiNgoaiTru]; Tên địa bàn [TenDB]; Loại hình [LoaiHinh]{chọn}; Ngày thêm [NgayThem]
 ### S_SVGCN – Danh sách sinh viên được cấp giấy chứng nhận
-- Lưới 1; tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách sinh viên»; tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]
 ### S_TIMKIEMSV – Tìm kiếm sinh viên
-- Lưới 1 (bảng SDMSV); tắt: Nạp lại
+- Lưới 1 «Tìm kiếm sinh viên» (bảng SDMSV); tắt: Nạp lại
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Phái [Phai]; Ngày sinh [NgaySinhC]; Tỉnh/thành [DC_IDDBHK]; Đơn vị [IDDV]; Ngành [IDNgChNg]; Bậc hệ [IDBH]; Dân tộc [IDDT]; Tôn giáo [IDTG]; Diện chính sách [IDDCS]; Hiện diện SV [HienDienSV]; Lớp sinh viên [IDLop]; Mã khối [IDKhoi]
 ### SBDGCN – Bộ đếm giấy chứng nhận
-- Lưới 1; tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Bộ đếm giấy chứng nhận»; tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bộ đếm [MaBDGCN]; Tên bộ đếm [TenBDGCN]; Số CN hiện tại [SoCNHT]; Tên viết tắt [VTBDGCN]
   - Cột ẩn: Ghi chú [GCBDGCN]; Điền 0 trước? [IsFill]; Chiều dài số GCN [LengthSVn]; Tên tiếng anh [TenBDGCNEg]
   - Ô trên form sửa: #MaBDGCN, #TenBDGCN, #SoCNHT, #VTBDGCN, #GCBDGCN, #IsFill, #LengthSVn, #TenBDGCNEg
 ### SDIEMDANH – Điểm danh sinh viên
-- Lưới 1 (bảng SDiemDanh); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thông tin điểm danh» (bảng SDiemDanh); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày giờ điểm danh [NgayGioDiemDanh]{ngày}; Viên chức điểm danh [IDNVDiemDanh]; Họ tên người điểm danh [HoTenNVDiemDanh]; Ghi chú [GCDiemDanh]; Ghi chú dùng bên detailright [GhiChuView1]
   - Cột ẩn: Giờ bắt đầu [GioBD]; Đơn vị phân cấp [IDDVPC]; ID điểm danh [IDDiemDanh]; ID phòng [IDPhong]; ID thời khóa biểu [IDTKB]; Niên học học kỳ [NHHK]; Ngày học [NgayHoc]; Số phút [SoPhut]; Số tiết [SoTiet]; Thứ [Thu]; Tiết BĐ [TietBD]; Tuần học [TuanNgayHoc]
   - Ô trên form sửa: #NgayGioDiemDanh, #IDNVDiemDanh, #HoTenNVDiemDanh, #GCDiemDanh, #GhiChuView1
 ### SDMBVKCB – Danh mục bệnh viện khám chữa bệnh
-- Lưới 1 (bảng SDMBVKCB); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách bệnh viện khám chữa bệnh» (bảng SDMBVKCB); tắt: Sửa trên lưới
   - Cột: Mã BVKCB [MaBVKCB]; Tên BVKCB [TenBVKCB]; Viết tắt [VtBVKCB]; Ghi chú [GcBVKCB]
   - Cột ẩn: Mặc định [DfBVKCB]; Địa chỉ [DiaChiBVKCB]; Không quản lý [HuyBVKCB]; Tên tiếng anh [TenBVKCBEg]
   - Ô trên form sửa: #MaBVKCB, #TenBVKCB, #VtBVKCB, #GcBVKCB, #DiaChiBVKCB, #TenBVKCBEg
 ### SDMCAPKKSV – Danh mục cấp khen thưởng kỷ luật sinh viên
-- Lưới 1 (bảng SDMCAPKKSV); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách cấp khen thưởng kỷ luật» (bảng SDMCAPKKSV); tắt: Sửa trên lưới
   - Cột: Mã cấp KTKL [MaCapKKSV]; Tên cấp KTKL [TenCapKKSV]; Viết tắt KTKL [VtCapKKSV]; Tên tiếng anh [TenCapKKSVEg]; Ghi chú KTKL [GcCapKKSV]
   - Cột ẩn: Mặc định [DfCapKKSV]; Không còn quản lý [HuyCapKKSV]; Thứ tự cấp KTKL [TTCapKKSV]
   - Ô trên form sửa: #MaCapKKSV, #TenCapKKSV, #VtCapKKSV, #TenCapKKSVEg, #GcCapKKSV, #DfCapKKSV
 ### SDMCauHoiDGRL – Danh mục câu hỏi đanh giá rèn luyện
-- Lưới 1 (bảng SDMCauHoiDGRL); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã câu hỏi DGRL [MaCauHoiDGRL]; Mã nhóm câu hỏi [MaNhomCauHoiDGRL]; Tên câu hỏi DGRL [TenCauHoiDGRL]; Điểm max [DiemMax]{số}; Thứ tự câu hỏi DGRL [TTCauHoiDGRL]
+- Lưới 1 «Danh mục câu hỏi đánh giá rèn luyện» (bảng SDMCauHoiDGRL); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã câu hỏi [MaCauHoiDGRL]; Mã nhóm câu hỏi [MaNhomCauHoiDGRL]; Tên câu hỏi [TenCauHoiDGRL]; Điểm max [DiemMax]{số}; Thứ tự câu hỏi DGRL [TTCauHoiDGRL]
   - Cột ẩn: Ghi chú câu hỏi DGRL [GcCauHoiDGRL]; ID nhóm câu hỏi DGRL [IDNhomCauHoiDGRL]; Vi phạm [IsViPham]; Tên câu hỏi DGRL Eg [TenCauHoiDGRLEg]
   - Ô trên form sửa: #MaCauHoiDGRL, #TenCauHoiDGRL, #DiemMax, #TTCauHoiDGRL, #GcCauHoiDGRL, #IDNhomCauHoiDGRL, #IsViPham, #TenCauHoiDGRLEg
 ### SDMCLBSV – Danh mục câu lạc bộ sinh viên
-- Lưới 1 (bảng SDMCLBSV); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục câu lạc bộ sinh viên» (bảng SDMCLBSV); tắt: Sửa trên lưới
   - Cột: Mã câu lạc bộ sv [MaCLBSV]; Viết tắt câu lạc bộ sv [VtCLBSV]; Tên câu lạc bộ sv [TenCLBSV]
   - Cột ẩn: Ghi chú câu lạc bộ sv [GcCLBSV]; Tên câu lạc bộ sv Eg [TenCLBSVEg]
   - Ô trên form sửa: #MaCLBSV, #VtCLBSV, #TenCLBSV, #GcCLBSV, #TenCLBSVEg
 ### SDMCVBCS – Danh mục chức vụ cán sự lớp
-- Lưới 1 (bảng SDMCVBCS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục ban cán sự lớp» (bảng SDMCVBCS); tắt: Sửa trên lưới
   - Cột: Mã chức vụ [MaCVBCS]; Tên chức vụ [TenCVBCS]; Tên viết tắt [VtCVBCS]; Ghi chú [GcCVBCS]
   - Cột ẩn: Không quản lý [HuyCVBCS]; Tên tiếng anh [TenCVBCSEg]
   - Ô trên form sửa: #MaCVBCS, #TenCVBCS, #VtCVBCS, #GcCVBCS, #TenCVBCSEg
 ### SDMDCS – Danh mục diện chính sách sinh viên
-- Lưới 1 (bảng SDMDCS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục diện chính sách» (bảng SDMDCS); tắt: Sửa trên lưới
   - Cột: Mã diện chính sách [MaDCS]; Tên diện chính sách [TenDCS]; Tên viết tắt [VtDCS]; Loại diện chính sách [LoaiDCS]{chọn}; Diện học bổng [IsDienHB]
   - Cột ẩn: Ghi chú [GcDCS]; Không quản lý [HuyDCS]; Thứ tự [TTDCS]; Tên tiếng anh [TenDCSEg]
   - Ô trên form sửa: #MaDCS, #TenDCS, #VtDCS, #LoaiDCS, #IsDienHB, #GcDCS, #TenDCSEg
 ### SDMDSV – Danh mục diện sinh viên (đóng học phí)
-- Lưới 1 (bảng SDMDSV); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục diện sinh viên» (bảng SDMDSV); tắt: Sửa trên lưới
   - Cột: Mã diện sinh viên [MaDSV]; Tên diện sinh viên [TenDSV]; Tên viết tắt [VtDSV]; Ghi chú [GcDSV]
   - Cột ẩn: Không quản lý [HuyDSV]; Tên tiếng anh [TenDSVEg]
   - Ô trên form sửa: #MaDSV, #TenDSV, #VtDSV, #GcDSV, #HuyDSV, #TenDSVEg
 ### SDMDTUSV – Danh mục đơn từ sinh viên
-- Lưới 1 (bảng SDMDTUSV); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục đơn từ sinh viên» (bảng SDMDTUSV); tắt: Sửa trên lưới
   - Cột: Mã đơn từ SV [MaDTuSV]; Tên đơn từ SV [TenDTuSV]; Viết tắt đơn từ SV [VtDTuSV]
   - Cột ẩn: Ghi chú đơn từ SV [GcDTuSV]; Tên tiếng anh [TenDTuSVEg]
   - Ô trên form sửa: #MaDTuSV, #TenDTuSV, #VtDTuSV, #GcDTuSV, #TenDTuSVEg
 ### SDMGCN – Danh mục giấy chứng nhận
-- Lưới 1 (bảng SDMGCN); tắt: Sửa trên lưới
-  - Cột: Mã GCN [MaGCN]; Tên giấy CN [TenGCN]; Tên viết tắt [VtGCN]; ID BGD CN [IDBDGCN]
+- Lưới 1 «Danh mục giấy chứng nhận» (bảng SDMGCN); tắt: Sửa trên lưới
+  - Cột: Mã GCN [MaGCN]; Tên giấy CN [TenGCN]; Tên viết tắt [VtGCN]; Bộ đếm GCN [IDBDGCN]
   - Cột ẩn: Danh sách email quản lý [DSEmailQuanLy]; Danh sách email xử lý [DSEmailXuLy]; Ghi chú [GcGCN]; Mã mẫu in [IDSubReport]; Điều kiện 1 [IsDKCap1]; Điều kiện 2 [IsDKCap2]; Điều kiện 3 [IsDKCap3]; Điều kiện 4 [IsDKCap4]; Điều kiện 5 [IsDKCap5]; Điều kiện 6 [IsDKCap6]; Hiển thị trên Web [IsOnline]; Loại chứng nhận [LoaiGCN]{chọn}; Nội dung TB [NoiDungTB]; Số lần cấp tối đa /1 HK [SoLanCapMax]{số}; Sồ ngày trả GCN [SoNgayTraGCN]{số}; Tên tiếng anh [TenGCNEg]; Tháng hiệu lực [ThangHieuLuc]{số}
   - Ô trên form sửa: #MaGCN, #TenGCN, #VtGCN, #IDBDGCN, #DSEmailQuanLy, #DSEmailXuLy, #GcGCN, #IDSubReport, #IsDKCap1, #IsDKCap2, #IsDKCap3, #IsDKCap4, #IsDKCap5, #IsDKCap6, #LoaiGCN, #TenGCNEg, #ThangHieuLuc
 ### SDMHS – Danh mục hồ sơ
-- Lưới 1 (bảng SDMHS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục hồ sơ» (bảng SDMHS); tắt: Sửa trên lưới
   - Cột: Mã hồ sơ [MaHS]; Tên hồ sơ [TenHS]; Tên viết tắt [VtHS]; Ghi chú [GcHS]
   - Cột ẩn: Hồ sơ mặc định [DfHS]; F_FLDHOSO [F_FLDHOSO]; Hồ sơ xét tuyển [IsHSXetTuyen]; Có ngoại ngữ [IsNgNgu]; Thứ tự [TTHs]
   - Ô trên form sửa: #MaHS, #TenHS, #VtHS, #GcHS, #DfHS, #TTHs
 ### SDMKK – Danh mục khen thưởng kỷ luật sinh viên
-- Lưới 1 (bảng SDMKK); tắt: Sửa trên lưới
-  - Cột: Loại lý do [LoaiKKSV]{chọn}; Mã KTKL [MaKKSV]; Tên khen thưởng kỷ luật [TenKKSV]; Tên viết tắt [VtKKSV]; Mã cấp KTKL [IDCapKKSV]; Ghi chú [GcKKSV]; Không xét HBKK [IsKgXetHBKKSV]; Hạ bậc tốt nghiệp [CoHBTN]
+- Lưới 1 «Danh mục lý do khen thưởng kỷ luật» (bảng SDMKK); tắt: Sửa trên lưới
+  - Cột: Phân loại [LoaiKKSV]{chọn}; Mã KTKL [MaKKSV]; Tên khen thưởng kỷ luật [TenKKSV]; Tên viết tắt [VtKKSV]; Mã cấp KTKL [IDCapKKSV]; Ghi chú [GcKKSV]; Không xét HBKK [IsKgXetHBKKSV]; Hạ bậc tốt nghiệp [CoHBTN]
   - Cột ẩn: Không quản lý [HuyKKSV]; Không xét khen thưởng [IsKgXetKT]; Tên tiếng anh [TenKKSVEg]
   - Ô trên form sửa: #LoaiKKSV, #MaKKSV, #TenKKSV, #VtKKSV, #IDCapKKSV, #GcKKSV, #IsKgXetHBKKSV, #CoHBTN, #IsKgXetKT, #TenKKSVEg
 ### SDMLDQD – Danh mục loại quyết đình vào ra sinh viên
-- Lưới 1 (bảng SDMLDQD); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục lý do quyết định» (bảng SDMLDQD); tắt: Sửa trên lưới
   - Cột: Mã lý do [MaLDQDSV]; Tên lý do [TenLDQDSV]; Tên viết tắt [VtLDQDSV]; Loại lý do [LoaiLDQDSV]{chọn}; Mã mẫu in [IDSubReport]; Mã mẫu in danh sách [IDSubReportDS]; Bộ đếm [IDBoDem]
   - Cột ẩn: Mặc định [DfLDQDSV]; Ghi chú [GcLDQDSV]; Dự thính [IsDuThinh]; Trao đổi [IsTraoDoi]; Nhóm thống kê [PhanNhomTK]{chọn}; Tên tiếng anh [TenLDQDSVEg]
   - Ô trên form sửa: #MaLDQDSV, #TenLDQDSV, #VtLDQDSV, #LoaiLDQDSV, #IDSubReport, #IDSubReportDS, #IDBoDem, #DfLDQDSV, #GcLDQDSV, #IsDuThinh, #IsTraoDoi, #TenLDQDSVEg
 ### SDMLVDT – Danh mục lĩnh vực đào tạo
-- Lưới 1 (bảng SDMLVDT); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục lĩnh vực đào tạo» (bảng SDMLVDT); tắt: Sửa trên lưới
   - Cột: Mã lĩnh vực đt [MaLVDT]; Tên lĩnh vực đt [TenLVDT]; Viết tắt lĩnh vực đt [VtLVDT]
   - Cột ẩn: Ghi chú lĩnh vực đt [GcLVDT]; Khối ngành [KhoiNganh]{chọn}; Tên tiếng anh [TenLVDTEg]
   - Ô trên form sửa: #MaLVDT, #TenLVDT, #VtLVDT, #GcLVDT, #KhoiNganh, #TenLVDTEg
 ### SDMNCVB – Danh mục nơi cấp văn bằng
-- Lưới 1 (bảng SDMNCVB); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục nơi cấp văn bằng» (bảng SDMNCVB); tắt: Sửa trên lưới
   - Cột: Mã nơi cấp VB [MaNCVB]; Tên nơi cấp VB [TenNCVB]; Viết tắt [VtNCVB]; Điện thoại [DC_DTNCVB]; Địa chỉ [DC_DCNCVB]
   - Cột ẩn: Ghi chú [GcNCVB]; Tên tiếng anh [TenNCVBEg]
   - Ô trên form sửa: #MaNCVB, #TenNCVB, #VtNCVB, #DC_DTNCVB, #DC_DCNCVB, #GcNCVB, #TenNCVBEg
 ### SDMNhomCauHoiDGRL – Danh mục nhóm câu hỏi đánh giá rèn luyện
-- Lưới 1 (bảng SDMNhomCauHoiDGRL); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục nhóm câu hỏi DGRL» (bảng SDMNhomCauHoiDGRL); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Thứ tự [TTNhomCauHoiDGRL]; Mã nhóm câu hỏi [MaNhomCauHoiDGRL]; Tên nhóm câu hỏi [TenNhomCauHoiDGRL]; Điểm max [DiemMax]
   - Cột ẩn: Ghi chú [GcNhomCauHoiDGRL]; Tên tiếng anh [TenNhomCauHoiDGRLEg]
   - Ô trên form sửa: #TTNhomCauHoiDGRL, #MaNhomCauHoiDGRL, #TenNhomCauHoiDGRL, #DiemMax, #GcNhomCauHoiDGRL, #TenNhomCauHoiDGRLEg
 ### SDMPhanLoaiKetQuaDGRL – Danh mục phân loại kết quả rèn luyện
-- Lưới 1 (bảng SDMPhanLoaiKetQuaDGRL); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh mục phân loại kết quả» (bảng SDMPhanLoaiKetQuaDGRL); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã phân loại [MaPhanLoaiKetQuaDGRL]; Tên phân loại [TenPhanLoaiKetQuaDGRL]; Điểm kết quả DGRL [DiemKetQuaDGRL]
   - Cột ẩn: Ghi chú [GcPhanLoaiKetQuaDGRL]; Tên tiếng anh [TTPhanLoaiKetQuaDGRL]; Tên tiếng anh [TenPhanLoaiKetQuaDGRLEg]; Tên viết tắt [VtPhanLoaiKetQuaDGRL]
   - Ô trên form sửa: #MaPhanLoaiKetQuaDGRL, #TenPhanLoaiKetQuaDGRL, #DiemKetQuaDGRL, #GcPhanLoaiKetQuaDGRL, #TTPhanLoaiKetQuaDGRL, #TenPhanLoaiKetQuaDGRLEg, #VtPhanLoaiKetQuaDGRL
 ### SDMSV1 – Danh sách sinh viên ngoài học kỳ
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]
   - Cột ẩn: Hình sinh viên [AvatarSV]; Chi nhánh [CHINHANHNH]; Cơ quan công tác [CQCT]; Chức vụ công tác [CVCQCT]; Cân nặng [CanNang]; Chiều cao [ChieuCao]; Có nghề [CoNghe]; Địa chỉ CQCT [DCCQCT]; Địa chỉ [DC_DCHK]; Địa chỉ liên lạc [DC_DCLLSV]; Địa chỉ [DC_DCTT]; Địa chỉ [DC_DCVC]; Điện thoại 1 [DC_DT1HK]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 1 [DC_DT1TT]; Điện thoại 1 [DC_DT1VC]; Điện thoại 2 [DC_DT2HK]; Điện thoại 2 [DC_DT2LLSV]; Điện thoại 2 [DC_DT2TT]; Điện thoại 2 [DC_DT2VC]; Email 1 [DC_EML1LLSV]; Email liên lạc (2) [DC_EML2LL]; Email 1 [DC_Eml1HK]; Email 1 [DC_Eml1TT]; Email 1 [DC_Eml1VC]; Email 2 [DC_Eml2HK]; Email 2 [DC_Eml2TT]; Email 2 [DC_Eml2VC]; GC hộ khẩu [DC_GcHK]; GC liên lạc [DC_GcLL]; GC thường trú [DC_GcTT]; GC vợ chồng [DC_GcVC]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Tỉnh/thành [DC_IDDBTT]; Tỉnh/thành [DC_IDDBVC]; ĐK kinh tế [DKKinhTe]; Đang học [DangHoc]; Sinh viên mặc định [DfSV]; Ghi chú [GcLyLich]; Ghi chú [GcSV]; Ghi chú [GcThPhanGD]; Họ lót [HoLotSV2]; Họ SV (Index) [HoSVIdx]; Không quản lý [HuySV]; ID ch/ngành SV [IDChNgSV]; Tỉnh/thành [IDDB_CQCT]; Dân tộc [IDDT]; Ngân hàng [IDNgHang]; Sinh viên [IDSV]; Tôn giáo [IDTG]; Lock điểm [IsLockDiem]; Đã khóa [IsLockSV]; Loại cư trú [LoaiCuTru]; Mã user [MaUser]; Cha mất [MatCha]; Mẹ mất [MatMe]; Nghề nghiệp [NNgCha]; Nghề nghiệp [NNgMe]; Nghề ng vợ/chồng [NgNghiepVC]; Ngày sinh [NgSinhCha]; Ngày sinh [NgSinhMe]; Ngày ngoại trú [NgayNgTru]; Ngày sinh [NgaySinh]; Ngày thêm [NgayThem]; Người liên lạc [NguoiLL]; Nguồn tuyển [NguonTuyen]; Nơi cấp [NoiCapCMND]; Nơi sinh [NoiSinh]; Phái [Phai]; Phòng ký túc xá [PhongKTX]; Quê quán [QueQuan]; Quốc tịch [QuocTich]; Số anh chị em [SoAnhChiEm]; Số CMND [SoCMND]; Số năm bộ đội [SoNamBD]; Số năm TNXP [SoNamTNXP]; Số tài khoản [SoTaiKhoan]; Thứ tự [TTSV]; Tên cha [TenCha]; Tên chủ hộ [TenChuHo]; Tên chủ hộ (HK) [TenChuHoHK]; Họ và tên [TenDayDu]; Tên mẹ [TenMe]; Tên [TenSV2]; Tên sv (Index) [TenSVIdx]; Tên vợ/chồng [TenVC]; Thành phần GĐ [ThPhanGD]; Thẻ thư viện [TheThuVien]; Trường chuyển [TrChuyen]; Tên viết tắt [VtSV]
   - Nút btnAdd: "Thêm mới" (F)
 ### SDMSV_ – Danh mục sinh viên
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Import, Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục sinh viên» (bảng SDMSV); tắt: Thêm, Import, Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Đơn vị phân cấp [IDDVPC]; NHHK vào [NHHKVao]; Mã SV [MaSV]; Nội dung minh chứng [NoiDungMC]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Mã lớp [MaLop]; Mã Lớp HK [MaLopHK]; Điện thoại 1 [DC_DT1HK]; Mã ngành [MaNganh]; Hiện diện SV [HienDienSV]{chọn}(chỉ đọc); Nơi sinh [NoiSinh]
   - Cột ẩn: Hình sinh viên [AvatarSV]; Địa chỉ [DC_DCHK]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Ghi chú [GcBVKCB]; Ghi chú [GcSV]; Lớp sinh viên [IDLop]; Khóa học [KhoaHocTC]; Mã bậc hệ [MaBH]; Mã BVKCB [MaBVKCB]; Mã khoa [MaKhoa]; Mã khối [MaKhoi]; Mã lý do [MaLDQDSV]; Mã SV dự thính [MaSVDuThinh]; Niên học học kỳ [NHHK]; NHHK ra [NHHKRa]; Ngày cấp CCCD [NgCapCCCD]; Ngày cấp [NgCapCMND]; Ngày lập QĐ [NgayLapQDSV]{ngày}; Ngày thêm [NgayThem]; Nơi cấp CCCD [NoiCapCCCD]; Nơi cấp [NoiCapCMND]; Số bảo hiểm SV [SoBHSV]; Số CCCD [SoCCCD]; Số CMND [SoCMND]; Số học kỳ nghỉ [SoHKNghi]; Số quyết định [SoQDSV]; Số tài khoản [SoTaiKhoan]; Tên bậc hệ [TenBH]; Tên BVKCB [TenBVKCB]; Tên lĩnh vực đt [TenLVDT]; Tên ngành [TenNganh]
   - Ô trên form sửa: #MaSV, #NoiDungMC, #HoLotSV, #TenSV, #NgaySinhC, #Phai, #NoiSinh, #AvatarSV, #DC_DT1LLSV, #DC_EML1LLSV, #IDLop, #MaLDQDSV, #MaSVDuThinh, #NgayLapQDSV, #SoHKNghi, #SoQDSV
@@ -926,101 +926,101 @@
   - Cột ẩn: Hình sinh viên [AvatarSV]; Địa chỉ [DC_DCHK]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]; Ghi chú [GcSV]; Lớp sinh viên [IDLop]; Mã bậc hệ [MaBH]; Mã khoa [MaKhoa]; Mã lý do [MaLDQDSV]; Mã SV dự thính [MaSVDuThinh]; NHHK ra [NHHKRa]; NHHK vào [NHHKVao]; Ngày lập QĐ [NgayLapQDSV]{ngày}; Nơi sinh [NoiSinh]; Số CMND [SoCMND]; Số học kỳ nghỉ [SoHKNghi]; Số quyết định [SoQDSV]; Số tài khoản [SoTaiKhoan]; Tên bậc hệ [TenBH]; Tên ngành [TenNganh]
   - Ô trên form sửa: #IDDVPC, #MaSV, #HoLotSV, #TenSV, #NgaySinhC, #Phai, #AvatarSV, #DC_DT1LLSV, #DC_EML1LLSV, #IDLop, #MaLDQDSV, #MaSVDuThinh, #NgayLapQDSV, #NoiSinh, #SoHKNghi, #SoQDSV
 ### SDMTAITRO – Danh mục nhà tài trợ
-- Lưới 1 (bảng SDMTAITRO); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách nhà tài trợ» (bảng SDMTAITRO); tắt: Sửa trên lưới
   - Cột: Mã nhà tài trợ [MaTAITRO]; Viết tắt nhà tài trợ [VtTAITRO]; Tên nhà tài trợ [TenTAITRO]
   - Cột ẩn: Ghi chú nhà tài trợ [GcTAITRO]; Tên tiếng anh [TenTAITROEg]
   - Ô trên form sửa: #MaTAITRO, #VtTAITRO, #TenTAITRO, #GcTAITRO, #TenTAITROEg
 ### SDMTCXH – Danh mục trợ cấp xã hội
-- Lưới 1 (bảng SDMTCXH); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục trợ cấp xã hội» (bảng SDMTCXH); tắt: Sửa trên lưới
   - Cột: Loại trợ cấp [LoaiTroCap]{chọn}; Mã trợ cấp xã hội [MaTCXH]; Tên trợ cấp xã hội [TenTCXH]; Tên viết tắt [VtTCXH]; Tên tiếng anh [TenTCXHEg]; Thứ tự [TTTCXH]; Ghi chú [GcTCXH]
   - Cột ẩn: TCXH mặc định [DfTCXH]; Trực tiếp số tiền [IsTrucTiepTien]
   - Ô trên form sửa: #LoaiTroCap, #MaTCXH, #TenTCXH, #VtTCXH, #TenTCXHEg, #TTTCXH, #GcTCXH, #DfTCXH
 ### SDMTENQDSV – Danh mục tên quyết định sinh viên
-- Lưới 1 (bảng SDMTenQDSV); tắt: Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục tên quyết định» (bảng SDMTenQDSV); tắt: Gộp mã, Sửa trên lưới
   - Cột: Mã quyết định [MaQDSV]; Tên quyết định [TenQDSV]; Tên viết tắt [VtQDSV]; Ghi chú [GcTenQDSV]
   - Cột ẩn: Mặc định [DfQDSV]; Không quản lý [HuyQDSV]; Tên tiếng anh [TenQDSVEg]
   - Ô trên form sửa: #MaQDSV, #TenQDSV, #VtQDSV, #GcTenQDSV, #DfQDSV, #HuyQDSV, #TenQDSVEg
 ### SDMTPRL – Danh mục thành phần điểm rèn luyện
-- Lưới 1 (bảng SDMTPRL); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục thành phần rèn luyện» (bảng SDMTPRL); tắt: Sửa trên lưới
   - Cột: Mã rèn luyện tp [MaTPRL]; Tên rèn luyện tp [TenTPRL]; Tên viết tắt [VtTPRL]; Điểm [Diem]; Ghi chú [GcTPRL]
   - Cột ẩn: Tên tiếng anh [TenTPRLEg]
   - Ô trên form sửa: #MaTPRL, #TenTPRL, #VtTPRL, #Diem, #GcTPRL, #TenTPRLEg
 ### SDNKHHB – Định nghĩa khối học bổng học kỳ
-- Lưới 1 (bảng SDNKHHB); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Định nghĩa khối học bổng học kỳ» (bảng SDNKHHB); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MaKhoi]; Nguồn TBHB [NguonTBHB]{chọn}; Tên khối [TenKhoi]; Loại đối tượng HB [LoaiDTHB]{chọn}; Mã khối học bổng [MaKhHBHK]
   - Cột ẩn: Ghi chú [GhiChu]; Khối HBHK [IDKHHBHK]; Mã khối [IDKhoi]; Không xét học bổng [IsKhgXet]; Mã nhà tài trợ [MaTAITRO]; Niên học học kỳ [NHHK]; Số lượng học bổng [SLHB]; Số lượng giới hạn [SLSVXet]; Số tiền học bổng HK [STienHBHK]; Số tiền học bổng NH [STienHBNH]; Tên khối học bổng [TenKhHBHK]
   - Ô trên form sửa: #TenKhoi, #LoaiDTHB, #GhiChu, #IDKHHBHK, #IDKhoi, #IsKhgXet, #SLSVXet, #STienHBHK, #STienHBNH, #TenKhHBHK
 ### SDSHB – Danh sách sinh viên nhận học bổng
-- Lưới 1 (bảng SDSHB); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Mã khối học bổng [MaKhHBHK](chỉ đọc); ĐTB HB [DiemTBHB](chỉ đọc); Điểm rèn luyện học bổng [DiemRLHB](chỉ đọc); Điểm TB hệ 10 [DiemTBHB10](chỉ đọc); Số TC đăng ký [SoTCDK](chỉ đọc); Mức học bổng [MucHB]{chọn}; Tiền học bổng [TienHB]{số}; Ghi chú HB [GcHBSV](chỉ đọc); Niên khóa [NienKhoa](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Ch.Ng [MaChNg](chỉ đọc); Tên ch/ngành [TenChNg](chỉ đọc); TCTLHK [SoTCTLHK](chỉ đọc)
-  - Cột ẩn: Điểm trung bình học bổng tương đương [DiemTBHBTD](chỉ đọc); Kết quả [KetQuaXet](chỉ đọc); Lý do [LyDoHB]{chọn}(chỉ đọc); Mức HB [MucDatHB]{chọn}; Ngày thêm [NgayThem]{ngày}(chỉ đọc); Nhận học bổng [NhanHB]{chọn}; % MG [PTramMG](chỉ đọc); Số môn nợ học phần [SoMonNoHP](chỉ đọc); Số tín chỉ nợ học phần [SoTCNoHP](chỉ đọc)
+- Lưới 1 «Danh sách sinh viên nhận học bổng» (bảng SDSHB); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Mã khối học bổng [MaKhHBHK](chỉ đọc); ĐTB HB [DiemTBHB](chỉ đọc); Điểm RL [DiemRLHB](chỉ đọc); Điểm TB hệ 10 [DiemTBHB10](chỉ đọc); Số TC ĐK [SoTCDK](chỉ đọc); Xếp loại [MucHB]{chọn}; Tiền học bổng [TienHB]{số}; Lý do [GcHBSV](chỉ đọc); Niên khóa [NienKhoa](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Ch.Ng [MaChNg](chỉ đọc); Tên ch/ngành [TenChNg](chỉ đọc); TCTLHK [SoTCTLHK](chỉ đọc)
+  - Cột ẩn: Điểm trung bình học bổng tương đương [DiemTBHBTD](chỉ đọc); Kết quả [KetQuaXet](chỉ đọc); Lý do [LyDoHB]{chọn}(chỉ đọc); Mức HB [MucDatHB]{chọn}; Ngày nhận học bổng [NgayThem]{ngày}(chỉ đọc); Nhận học bổng [NhanHB]{chọn}; % MG [PTramMG](chỉ đọc); Số môn nợ học phần [SoMonNoHP](chỉ đọc); Số tín chỉ nợ học phần [SoTCNoHP](chỉ đọc)
 ### SDSKGHB – Danh sách không xét học bổng
-- Lưới 1 (bảng SDSKGHB); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên không xét học bổng» (bảng SDSKGHB); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]
   - Cột ẩn: Sinh viên [IDSV]; Lý do không xét học bổng [LyDoKgXetHB]; Họ và tên [TenDayDu](chỉ đọc); Tên lớp [TenLop](chỉ đọc)
   - Ô trên form sửa: #Phai, #NgaySinhC, #IDSV, #LyDoKgXetHB, #TenDayDu, #TenLop
 ### SDSKHHBHK – Danh sách khối học bổng học kỳ
-- Lưới 1 (bảng SDSKHHBHK); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã khối học bổng [MaKhHBHK]; Tên khối học bổng [TenKhHBHK]; Tên viết tắt [VtKhHBHK]; Số lượng [SoLuong]; Số lượng giỏi [SoLuongGioi]
-  - Cột ẩn: Ghi chú [GcKhHBHK]; Ghi chú [GhiChu]; Hệ điểm học bổng [HeDiemHB]{chọn}; ID nhóm khối hoc bổng [IDNhomKhHB]; Nhà tài trợ [IDTAITRO]; Mã nhóm khối HBHK [MaNhomKhHB]; Nguồn TBHB [NguonTBHB]{chọn}; Số tiền học bổng [STienKHHBHK]; Tên tiếng anh [TenKhHBHKEg]
+- Lưới 1 «Danh sách khối học bổng học kỳ» (bảng SDSKHHBHK); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã khối học bổng [MaKhHBHK]; Tên khối học bổng [TenKhHBHK]; Tên viết tắt [VtKhHBHK]; Số lượng [SoLuong]; SL Giỏi [SoLuongGioi]
+  - Cột ẩn: Ghi chú [GcKhHBHK]; Ghi chú [GhiChu]; Hệ điểm học bổng [HeDiemHB]{chọn}; Nhóm học bổng [IDNhomKhHB]; Nhà tài trợ [IDTAITRO]; Mã nhóm khối HBHK [MaNhomKhHB]; Nguồn TBHB [NguonTBHB]{chọn}; Số tiền học bổng [STienKHHBHK]; Tên tiếng anh [TenKhHBHKEg]
   - Ô trên form sửa: #MaKhHBHK, #TenKhHBHK, #VtKhHBHK, #GcKhHBHK, #GhiChu, #IDNhomKhHB, #IDTAITRO, #STienKHHBHK, #TenKhHBHKEg
 ### SDSQDKK_LOP – Danh sách quyết định khen thưởng tập thể lớp
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định khen thưởng»; tắt: Import, Xuất, In, Nạp lại, Gộp mã, Sửa trên lưới
 ### SGCNSV – Giấy chứng nhận sinh viên
-- Lưới 1; tắt: Thêm, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Cấp phát giấy chứng nhận»; tắt: Thêm, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số chứng nhận [SoCN]; ID giấy CN [IDGCN]; Ngày cấp GCN [NgayCapGCN]{ngày}; Ghi chú [GCGCNSV]; Ghi chú [GhiChu]
   - Ô trên form sửa: #SoCN, #IDGCN, #NgayCapGCN, #GCGCNSV, #GhiChu
 ### SHocKyDGRL – Danh mục học kỳ đánh giá rèn luyện
-- Lưới 1 (bảng SHocKyDGRL); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục học kỳ đánh giá rèn luyện» (bảng SHocKyDGRL); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Đang đánh giá [IsDangDG]; Sinh viên không nhập hoạt động [IsSVKhgNhapHoatDong]; GC học kỳ đánh giá rèn luyện [GcHocKyDGRL]
   - Ô trên form sửa: #NHHK, #IsDangDG, #IsSVKhgNhapHoatDong, #GcHocKyDGRL
 ### SKHHBHKCT – Danh sách khối học bổng chi tiết
-- Lưới 1 (bảng SKHHBHKCT); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách mức học bổng» (bảng SKHHBHKCT); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Mức học bổng [MucHB]{chọn}; Số tiền học bổng giới hạn [STHBGH]{số}; Ngưỡng trung bình học bổng [NguongTB]{số}; Ngưỡng TBRL [NguongTBRL]{số}; Số lượng học bổng giới hạn [SLHBGH]
 ### SNhapGhiChuNhomToDiemDanh – Nhập ghi chú điểm danh
-- Lưới 1 (bảng SDiemDanh); tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã
+- Lưới 1 «Nhập ghi chú cho điểm danh» (bảng SDiemDanh); tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Tổ TH [ToTH](chỉ đọc); Tên tổ hợp [TenToHop](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Tiết BĐ [TietBD](chỉ đọc); Số tiết [SoTiet](chỉ đọc); Mã phòng [MaPH](chỉ đọc); Ghi chú [GCDiemDanh]; Ngày giờ điểm danh [NgayGioDiemDanh](chỉ đọc); Họ tên người điểm danh [HoTenNVDiemDanh](chỉ đọc); Phép [VangCoPhep](chỉ đọc); Vắng [VangKhongPhep](chỉ đọc); Đi trể [SLDiHocTre](chỉ đọc); Về sớm [SLVeSom](chỉ đọc)
   - Cột ẩn: Tên đầy đủ [TenDayDuNV](chỉ đọc)
 ### SNhapGhiChuSinhVienDiemDanh – Nhập ghi chú danh sách sinh viên điểm danh
-- Lưới 1 (bảng SSVDiemDanh); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên điểm danh trong học kỳ» (bảng SSVDiemDanh); tắt: Thêm, Xóa, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Tổ TH [ToTH](chỉ đọc); Ngày học [NgayHoc]{ngày}(chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Hiện diện SV [HienDienSV]{chọn}(chỉ đọc); Thứ [Thu](chỉ đọc); Tiết BĐ [TietBD](chỉ đọc); Số tiết [SoTiet](chỉ đọc); Trạng thái điểm danh [TrangThaiDiemDanh]{chọn}; Ngày giờ vào lớp [NgayGioVaoLop]; Số phút về sớm [SoPhutVeSom]; Số phút vào trể [SoPhutVaoTre]; Ghi chú [GCSVDiemDanh]
   - Cột ẩn: ID điểm danh [IDDiemDanh](chỉ đọc); Sinh viên [IDSV](chỉ đọc); ID sinh vien điểm danh [IDSVDiemDanh](chỉ đọc); Mã nhóm học [MaNhomHoc](chỉ đọc)
 ### SNhomToDiemDanh – Danh sách nhóm tổ theo ngày học
-- Lưới 1 (bảng SDiemDanh); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Tên tổ hợp [TenToHop]; Sĩ số đã đăng ký [SiSoDDK]; Tiết BĐ [TietBD]; Số tiết [SoTiet]; Tên đầy đủ [TenDayDuNV]; Mã phòng [MaPH]; Allway? [IsAlway]; Ngày giờ điểm danh [NgayGioDiemDanh]; Họ tên người điểm danh [HoTenNVDiemDanh]; Phép [VangCoPhep]; Vắng [VangKhongPhep]; Đi trể [SLDiHocTre]; Về sớm [SLVeSom]
+- Lưới 1 «Danh sách thời khóa biểu nhóm tổ» (bảng SDiemDanh); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Tổ hợp [TenToHop]; Sĩ số đã đăng ký [SiSoDDK]; Tiết BĐ [TietBD]; Số tiết [SoTiet]; Giảng viên [TenDayDuNV]; Mã phòng [MaPH]; Đã ĐD [IsAlway]; Ngày giờ điểm danh [NgayGioDiemDanh]; Họ tên người điểm danh [HoTenNVDiemDanh]; Phép [VangCoPhep]; Vắng [VangKhongPhep]; Đi trể [SLDiHocTre]; Về sớm [SLVeSom]
 ### SSVDIEMDANH – Danh sách sinh viên điểm danh
-- Lưới 1 (bảng SSVDiemDanh); tắt: Thêm, Xóa, Import, In, Đổi mã, Gộp mã
-  - Cột: Họ lót [HoLotSV](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã đơn vị [MaDV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã Ng/CNg [MaNgChng](chỉ đọc); Điện thoại 1 [DC_DT1LLSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Số lượt người [SoLuotNguoi](chỉ đọc); Ghi chú sinh viên HK điểm danh [GCSVHKDiemDanh]; Hiện diện SV [HienDienSV]{chọn}(chỉ đọc); Mã môn học [MaMH]; Tên môn học [TenMH]; Trạng thái điểm danh [TrangThaiDiemDanh]{chọn}; Nhóm/tổ [NhomTo]; Email 1 [DC_EML1LLSV]; Tuần bắt đầu [TuanBD]; Tuần bắt đầu học kỳ [TuanBDHK]; Ngày giờ vào lớp [NgayGioVaoLop]; Ngày học [NgayHoc]{ngày}; Thứ [Thu]; Tiết BĐ [TietBD]; Số tiết [SoTiet]; Ghi chú [GCSVDiemDanh]; Số phút về sớm [SoPhutVeSom]; Tổ TH [ToTH](chỉ đọc); Số phút vào trể [SoPhutVaoTre]; Ghi chú 1 [GhiChu1](chỉ đọc)
+- Lưới 1 «Danh sách sinh viên điểm danh vắng học kỳ» (bảng SSVDiemDanh); tắt: Thêm, Xóa, Import, In, Đổi mã, Gộp mã
+  - Cột: Họ lót [HoLotSV](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã khoa [MaDV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã ngành [MaNgChng](chỉ đọc); Điện thoại 1 [DC_DT1LLSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Số lượt vắng học kỳ [SoLuotNguoi](chỉ đọc); Ghi chú vắng sinh viên [GCSVHKDiemDanh]; Hiện diện SV [HienDienSV]{chọn}(chỉ đọc); Mã môn học [MaMH]; Tên môn học [TenMH]; Trạng thái điểm danh [TrangThaiDiemDanh]{chọn}; Nhóm/tổ [NhomTo]; Email 1 [DC_EML1LLSV]; Tuần năm học [TuanBD]; Tuần học kỳ [TuanBDHK]; Ngày giờ vào lớp [NgayGioVaoLop]; Ngày học [NgayHoc]{ngày}; Thứ [Thu]; Tiết BĐ [TietBD]; Số tiết [SoTiet]; Ghi chú [GCSVDiemDanh]; Số phút về sớm [SoPhutVeSom]; Tổ TH [ToTH](chỉ đọc); Số phút vào trể [SoPhutVaoTre]; Ghi chú 1 [GhiChu1](chỉ đọc)
   - Cột ẩn: ID điểm danh [IDDiemDanh](chỉ đọc); Sinh viên [IDSV](chỉ đọc); ID sinh vien điểm danh [IDSVDiemDanh](chỉ đọc)
 ### SSVHK – Danh sách sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên học kỳ» (bảng SSVHK); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Đơn vị phân cấp [IDDVPC]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Mã lớp [MaLop]; Mã cố vấn học tập [MaCVHT]; Mã khối [MaKhoi]; Mã Ng/CNg [MaNgChng]; Mã khoa [MaKhoa]; Mã bậc [MaBac]; Mã hệ đào tạo [MaHe]; Mã bậc hệ [MaBH]; Mã qui chế [MaQC]; Tên học chế [TenHC]; NHHK vào [NHHKVao]; NHHK ra [NHHKRa]; Nơi sinh [NoiSinh]
-  - Cột ẩn: Địa chỉ [DC_DCHK]; Số ĐT cha [DC_DT1Cha]; Số ĐT mẹ [DC_DT1Me]; Ghi chú [GcSVHK]; Khóa học [KhoaHocTC]; Loại lý do [LoaiLDQDSV]{chọn}; Mã địa bàn [MaDB]; Mã dân tộc [MaDT]; Mã đơn vị QL [MaDVQL]; Mã lý do [MaLDQDSV]; Mã tôn giáo [MaTG]; NHHKKK [NHHKKK]; Năm thứ [NamThu]; Ngày ký [NgayKyKK]{ngày}; Ngày thêm [NgayThem]; Niên khóa [NienKhoa]; Nợ đầu ra [NoDauRa]; Sinh viên ngành [SVNganh]{chọn}; Số báo danh [SoBD]; Số CCCD [SoCCCD]; Số CMND [SoCMND]; Số quyết định [SoQDKK]; Số tài khoản [SoTaiKhoan]; Tên bậc hệ [TenBH]; Tên bậc đào tạo [TenBac]; Tên cha [TenCha]; Tên địa bàn [TenDB]; Tên dân tộc [TenDT]; Tên đơn vị QL [TenDVQL]; Tên hệ [TenHe]; Tên khoa [TenKhoa]; Tên mẹ [TenMe]; Tên ng/chng [TenNgChng]; Tên tôn giáo [TenTG]
+  - Cột ẩn: Địa chỉ [DC_DCHK]; Số ĐT cha [DC_DT1Cha]; Số ĐT mẹ [DC_DT1Me]; Ghi chú [GcSVHK]; Khóa học [KhoaHocTC]; Loại lý do [LoaiLDQDSV]{chọn}; Mã địa bàn [MaDB]; Mã dân tộc [MaDT]; Mã đơn vị QL [MaDVQL]; Mã lý do [MaLDQDSV]; Mã tôn giáo [MaTG]; NHHKKK [NHHKKK]; Năm thứ [NamThu]; Ngày ký [NgayKyKK]{ngày}; Ngày thêm [NgayThem]; Niên khóa [NienKhoa]; Nợ đầu ra [NoDauRa]; Sinh viên ngành [SVNganh]{chọn}; Số báo danh [SoBD]; Số CCCD [SoCCCD]; Số CMND [SoCMND]; Số quyết định [SoQDKK]; Số tài khoản [SoTaiKhoan]; Tên bậc hệ [TenBH]; Tên bậc [TenBac]; Tên cha [TenCha]; Tên địa bàn [TenDB]; Tên dân tộc [TenDT]; Tên đơn vị QL [TenDVQL]; Tên hệ [TenHe]; Tên khoa [TenKhoa]; Tên mẹ [TenMe]; Tên ng/chng [TenNgChng]; Tên tôn giáo [TenTG]
   - Ô trên form sửa: #MaSV, #HoLotSV, #TenSV, #NgaySinhC, #MaLop
 ### SSVHK-CHON – Danh sách sinh viên học kỳ - chọn
-- Lưới 1 (bảng SSVHK); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên học kỳ» (bảng SSVHK); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Mã lớp [MaLop]
 ### SSVHKCopy – Danh sách sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên» (bảng SSVHK); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Mã lớp [MaLop]; Mã cố vấn học tập [MaCVHT]; Mã khối [MaKhoi]; Mã Ng/CNg [MaNgChng]; Mã ngành [MaNganh]; Mã bậc [MaBac]; Mã hệ đào tạo [MaHe]; Mã bậc hệ [MaBH]; Mã khoa [MaKhoa]; NHHK vào [NHHKVao]
   - Ô trên form sửa: #MaSV, #HoLotSV, #TenSV, #NgaySinhC, #MaLop
 ### STIEN_TROCAPXH – Nhập tiền trợ cấp xã hội
-- Lưới 1 (bảng STienTCXH); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách trợ cấp xã hội» (bảng STienTCXH); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Loại trợ cấp [LoaiTroCap]{chọn}; Mã trợ cấp xã hội [MaTCXH]; Tên trợ cấp xã hội [TenTCXH]; Tên viết tắt [VtTCXH]; Tiền trợ cấp [TienTCXH]{số}; Số tháng trợ cấp [SoThangTCXH]{số}
   - Cột ẩn: Mã trợ cấp xã hội [IDTCXH]
   - Ô trên form sửa: #TenTCXH, #VtTCXH, #TienTCXH, #SoThangTCXH, #IDTCXH
 ### STROCAPXH_CHUNG – Trợ cấp xã hội chung
-- Lưới 1 (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên nhận trợ cấp xã hội» (bảng SDCSSVC); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Tên dân tộc [TenDT]; Mã trợ cấp xã hội [MaTCXH]; Mã lớp [MaLop]
   - Cột ẩn: Ghi chú [GcDCSSVC]; Sinh viên [IDSV]; Mã trợ cấp xã hội [IDTCXH]; NHHK bắt đầu [NHHKBD]; NHHK kết thúc [NHHKKT]; Họ và tên [TenDayDu]; Tên trợ cấp xã hội [TenTCXH]
   - Ô trên form sửa: #NgaySinhC, #GcDCSSVC, #IDSV, #IDTCXH, #NHHKBD, #NHHKKT, #TenDayDu, #TenTCXH
 ### STROCAPXH_HK – Trợ cấp sinh viên học kỳ
-- Lưới 1 (bảng SDCSSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên nhận trợ cấp học kỳ» (bảng SDCSSVHK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Tên dân tộc [TenDT]; Hiện diện SV [HienDienSV]{chọn}; Mã trợ cấp xã hội [MaTCXH]; Mã lớp [MaLop]
   - Cột ẩn: Đến ngày [DenNgay]{ngày}; Ghi chú [GCDCSSVHK]; Hiệu lực đến thg/năm [HieuLucDenThgNam]; Hiệu lực từ thg/năm [HieuLucTuThgNam]; Diện chính sách [IDDCS]; Sinh viên [IDSV]; Họ và tên [TenDayDu]; Tên lớp [TenLop]; Tên trợ cấp xã hội [TenTCXH]; Tiền trợ cấp [TienTroCap]; Từ ngày [TuNgay]{ngày}
   - Ô trên form sửa: #NgaySinhC, #DenNgay, #GCDCSSVHK, #HieuLucDenThgNam, #HieuLucTuThgNam, #IDDCS, #IDSV, #TenDayDu, #TenLop, #TenTCXH, #TienTroCap, #TuNgay
 ### SYCBH – Danh sách yêu cầu bảo hiểm
-- Lưới 1 (bảng SDSYCBH); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách yêu cầu bảo hiểm» (bảng SDSYCBH); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Số bảo hiểm SV [SoBHSV]; Mã đợt BHSV [MaDotBHSV]; Ngày yêu cầu [NgayYCBH]{ngày}; Tổng viện phí [TongVienPhi]; Bảo hiểm chi trả [BHChiTra]; Ghi chú [GCYCBH]; Đã thanh toán [DaTToanBH]
   - Cột ẩn: ID BHSV [IDBHSV]; ID lý do bảo hiểm [IDLDBH]
   - Ô trên form sửa: #HoLotSV, #TenSV, #SoBHSV, #MaDotBHSV, #NgayYCBH, #TongVienPhi, #BHChiTra, #GCYCBH, #DaTToanBH, #IDBHSV, #IDLDBH
@@ -1028,25 +1028,25 @@
 - Lưới 1 (bảng SDMSV); tắt: Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Địa chỉ [DC_DCHK]
 ### TruyVetNoiCapVB – Truy vết nơi cấp văn bằng
-- Lưới 1 (bảng SDMNCVB); tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nơi cấp văn bằng truy vết» (bảng SDMNCVB); tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã nơi cấp VB [MaNCVB]; Mô tả [MoTaCV]; Tên nơi cấp VB [TenNCVB]; Mã field [MaField]; Giá trị cũ [OldValue]; Giá trị mới [NewValue]; UserName [UserName]; Ngày sửa chữa [NgaySuaChua]
 ### VIEW_CHONDMSV – Chọn danh mục sinh viên
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]
 ### VIEW_CHONKHOIHB – Danh mục khối học bổng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách khối học bổng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối học bổng [MaKhHBHK]; Tên khối học bổng [TenKhHBHK]; Tên viết tắt [VtKhHBHK]; Ghi chú [GcKhHBHK]
 ### View_DanhSachLopFull – View danh sách lớp
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Mã khối [MaKhoi]; Tên khối [TenKhoi]; NHHK vào [NHHKVao]; NHHK ra [NHHKRa]; Niên khóa [NienKhoa]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mã Ng/CNg [MaNgChng]; Tên ng/chng [TenNgChng]; Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]; Mã bậc [MaBac]; Tên bậc đào tạo [TenBac]; Mã hệ đào tạo [MaHe]; Tên hệ [TenHe]
+- Lưới 1 «Danh sách lớp»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Mã khối [MaKhoi]; Tên khối [TenKhoi]; NHHK vào [NHHKVao]; NHHK ra [NHHKRa]; Niên khóa [NienKhoa]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mã Ng/CNg [MaNgChng]; Tên ng/chng [TenNgChng]; Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]; Mã bậc [MaBac]; Tên bậc [TenBac]; Mã hệ đào tạo [MaHe]; Tên hệ [TenHe]
 ### View_DSSVDiemDanhHuyKQDK – Xóa kết quả SV Đã Hủy DKMH
-- Lưới 1 (bảng SSVDiemDanh); tắt: Thêm, Sửa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên điểm danh đã hủy KQĐK» (bảng SSVDiemDanh); tắt: Thêm, Sửa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm/tổ [NhomTo]; Mã lớp [MaLop]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mã Ng/CNg [MaNgChng]; Tên BH Ng/ChNg [TenBHNgChNg]; Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]
 ### View_DSSVHK – Danh sách sinh viên học kỳ
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên học kỳ» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]{ngày}; Hiện diện SV [HienDienSV]{chọn}; Niên khóa [NienKhoa]; Mã lớp [MaLop]; Mã khối [MaKhoi]; Mã Ng/CNg [MaNgChng]; Mã bậc [MaBac]; Mã hệ đào tạo [MaHe]; Mã bậc hệ [MaBH]; Mã qui chế [MaQC]; Tên qui chế [TenQC]; NHHK vào [NHHKVao]; NHHK ra [NHHKRa]
 ### View_DSSVQuaHan – Danh sách sinh viên quá hạn đào tạo
-- Lưới 1; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Mã lớp [MaLop]; Tên lớp [TenLop]; Mã khối [MaKhoi]; Tên khối [TenKhoi]; NHHK vào [NHHKVao]; NHHK ra [NHHKRa]; Niên khóa [NienKhoa]
 ### VIEW_IMPORTDIEMRL – Import điểm rèn luyện
 - Lưới 1 (bảng SDRLHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -1054,32 +1054,32 @@
 - Lưới 1 (bảng HThoiGianDKLop); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Ngày bắt đầu ĐG [NgayBDDKLop]; Ngày kết thúc ĐG [NgayKTDKLop]; Đối tượng áp dụng [LoaiDKLop]
 ### View_InGCN_Ngay – In giấy chứng nhận theo ngày
-- Lưới 1 (bảng SGCNSV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên» (bảng SGCNSV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày cấp GCN [NgayCapGCN]{ngày}; Mã GCN [MaGCN]; Số chứng nhận [SOCNSV]; Mã SV [MaSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Phái [Phai]; Mã lớp [MaLop]; Tên giấy CN [TenGCN]
   - Cột ẩn: Số CMND [SoCMND]
   - Ô trên form sửa: #NgayCapGCN, #NgaySinhC, #Phai, #MaLop
 ### View_ThoiGianDGLop – View danh sách thời gian đánh giá rèn luyện theo lớp
-- Lưới 1 (bảng HThoiGianDKLop); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách lớp học kỳ» (bảng HThoiGianDKLop); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Ngày bắt đầu đánh giá SV [NgayBDDGSV]{ngày}; Ngày kết thúc đánh giá SV [NgayKTDGSV]{ngày}; Ngày bắt đầu đánh giá CVHT [NgayBDDGCVHT]{ngày}; Ngày kết thúc đánh giá CVHT [NgayKTDGCVHT]{ngày}; Ngày bắt đầu đánh giá Khoa [NgayBDDGKhoa]{ngày}; Ngày kết thúc đánh giá khoa [NgayKTDGKHOA]{ngày}; Mã khối [MaKhoi](chỉ đọc); Tên khối [TenKhoi](chỉ đọc); Niên khóa [NienKhoa](chỉ đọc); Mã bậc [MaBac](chỉ đọc); Tên bậc đào tạo [TenBac](chỉ đọc); Mã hệ đào tạo [MaHe](chỉ đọc); Tên hệ [TenHe](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Tên bậc hệ [TenBH](chỉ đọc); Mã Ng/CNg [MaNgChng](chỉ đọc); Tên ng/chng [TenNgChng](chỉ đọc)
 ### View_XemBangDiemTongHopRL – Xem bảng điểm tổng hợp điểm rèn luyện
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Hiện diện [HienDienSV2]{chọn}; Mã lớp [MaLop]; Tên lớp [TenLop]; Điểm rèn luyện học kỳ [DiemRLHK]; Niên học học kỳ [NHHK]
 ### View_XemDiemRLTongHop – Xem điểm rèn luyện tổng hợp năm học
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên lớp [TenLop]; Năm học [NamHoc]; Năm thứ [NamThu]; Điểm rèn luyện học kỳ [DiemRLHK]; Niên học học kỳ [NHHK]; Điểm 1 [Diem1]; Điểm 2 [Diem2]; Điểm rèn luyện năm học [DiemRLNH]
-  - Cột ẩn: Điểm 3 [Diem3]
+- Lưới 1 «Danh sách điểm rèn luyện năm học sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên lớp [TenLop]; Năm học [NamHoc]; Năm thứ [NamThu]; Điểm rèn luyện học kỳ [DiemRLHK]; Niên học học kỳ [NHHK]; ĐRLHK1 [Diem1]; ĐRLHK2 [Diem2]; Điểm rèn luyện năm học [DiemRLNH]
+  - Cột ẩn: ĐRLHK3 [Diem3]
 ### ViewCapNhatHSSVBanSao – View cập nhật HSSV bản sao
 - Lưới 1 (bảng SHSSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã hồ sơ [MaHS]; Bản sao` [IsBanSao]; Photo [IsPhoto]; Tạm thời [IsTamThoi]
 ### VIEWCHONNHHK – View chọn niên học học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách niên học học kỳ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Tên NHHK [TenNHHK]
 ### VIEWCHONSSVHK – Chọn sinh viên theo NHHK
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục sinh viên» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Email 1 [DC_Eml1VC]; Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Thứ tự [TTSV]; Tên lớp [TenLop]
   - Cột ẩn: Sinh viên [IDSV]
 ### ViewDSSVBHYT – Danh Sách Sinh Viên Bảo Hiểm Y Tế
-- Lưới 1; tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách Hồ sơ BHYT sinh viên»; tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Số bảo hiểm SV [SoBHSV]; Mã hộ gia đình [MaHoGiaDinh]; Số hộ khẩu [SoHoKhau]; Mã BVKCB [MaBVKCB]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Mã bệnh viện KCB [IDBVKCB]; Tên BVKCB [TenBVKCB]; Tên lớp [TenLop]
   - Ô trên form sửa: #MaLop, #MaSV, #HoLotSV, #TenSV, #SoBHSV, #MaHoGiaDinh, #SoHoKhau, #GhiChuView1, #IDBVKCB, #TenLop
@@ -1090,42 +1090,42 @@
 - Lưới 1 (bảng SThongTinGDSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Số CMND [SoCMNDGD]; Họ tên [HoTenGD]; Ngày sinh [NgaySinhGD]; Phái [Phai]; Số bảo hiểm xã hội [SoBHXHGD]; Mối quan hệ [MoiQuanHe]
 ### VIEWGS_HESOTBRLNH – Hệ số trung bình rèn luyện năm học
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Hệ số trung bình rèn luyện năm học»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeDecimal]
 ### VIEWGS_ThongTinXemKhiChuaNhap – Danh sách thông tin không được xem khi chưa nhập thông tin sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách thông tin không được xem khi chưa nhập thông tin sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeLogic]
 ### ViewInTheoDoiHTSV – In bảng theo dõi học tập sv
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Mã lớp [MaLopSV]
 ### ViewInTTNDBuoiDay – In bảng ghi tóm tắt nội dung buổi dạy
-- Lưới 1 (bảng SDiemDanh); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách giảng viên» (bảng SDiemDanh); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]
 ### VIEWKQDGRL – Kết quả đánh giá rèn luyện
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã câu hỏi DGRL [MaCauHoiDGRL]; Tên câu hỏi DGRL [TenCauHoiDGRL]; Điểm số khoa [DiemSoKhoa]{số}; Điểm số CVHT [DiemSoCVHT]{số}; Điểm số sinh viên [DiemSoSV]{số}; Tổng điểm CVHT [TongDiemCVHT]{số}; Tổng điểm khoa [TongDiemKHOA]{số}; Tổng điểm sinh viên [TongDiemSV]{số}; Sinh viên ghi chú DGRL [SVGhiChu]
+- Lưới 1 «Kết quả đánh giá rèn luyện»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã câu hỏi [MaCauHoiDGRL]; Tên câu hỏi [TenCauHoiDGRL]; Điểm số khoa [DiemSoKhoa]{số}; Điểm số CVHT [DiemSoCVHT]{số}; Điểm số sinh viên [DiemSoSV]{số}; Tổng điểm CVHT [TongDiemCVHT]{số}; Tổng điểm khoa [TongDiemKHOA]{số}; Tổng điểm sinh viên [TongDiemSV]{số}; Sinh viên ghi chú DGRL [SVGhiChu]
 ### VIEWSS_HESONHANTINHHB – Hệ số nhân tính học bổng
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeInt]
 ### VIEWSS_NGUONGHB – Ngưỡng học bổng theo xếp loại
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Ngưỡng học bổng theo xếp loại sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeDecimal]
 ### VIEWSS_PHANTRAMHUONGHBKK – Loại hệ số nhân khi tính học bổng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Phần trăm tính hưởng học bổng khuyến khích»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeInt]
 ### VIEWSS_PTRAMSLMUCHB – Phần trăm số lượng mức học bổng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Phần trăm số lượng mức học bổng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeInt]
 ### VIEWSS_PTRDATHBHP – Phần trăm số lượng mức học bổng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Phần trăm đạt học phí học bổng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeInt]
 ### VIEWSS_TIENHB – Tiền học bổng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Học bổng theo xếp loại sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeDecimal]
 ### ViewSSVDIEMDANH – Danh sách sinh viên điểm danh
 - Lưới 1 (bảng SSVDiemDanh); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]; Mã lớp [MaLop]; Mã Ng/CNg [MaNgChng]; Mã đơn vị [MaDV]
 ### WEB_DSSVTheoNhomMH – Danh sách sinh viên theo nhóm môn học
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên môn học» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Mã lớp [MaLop]; Tên lớp [TenLop]; Điểm [DiemDB]{chọn}
   - Cột ẩn: Điện thoại 1 [DC_DT1LLSV]; Email 1 [DC_EML1LLSV]; Sinh viên [IDSV]

@@ -386,56 +386,56 @@
 ## Màn hình (view) và lưới
 
 ### B3.02.F001.DSCBNANGPC – Danh sách chuẩn bị nâng phụ cấp thâm niên nhà giáo
-- Lưới 1 (bảng NDSCBNPCTNNG); tắt: Thêm, Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách chuẩn bị nâng phụ cấp thâm niên nhà giáo» (bảng NDSCBNPCTNNG); tắt: Thêm, Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm [NamPC]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [ThangPC]; Mã đơn vị [MaDV]; Mốc nâng PCTNNG cũ [MocNangPCTNNGCu]{ngày}; Mã phụ cấp TNNG [MaPCTNNG]; % PCTNNG cũ [MucPCTNNGCu]; Mã PCTNNG mới [MaPCTNNGMoi]; % PCTNNG mới [MucPCTNNGMoi]; Cán bộ văn phòng [IsPCTNNGCBQL]
 ### B3.02.F003.QDNPCTNNG – Danh sách QĐ nâng phụ cấp thâm niên nhà giáo
-- Lưới 1 (bảng NQTPCTNNG); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách QĐ nâng phụ cấp thâm niên nhà giáo» (bảng NQTPCTNNG); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Mã phụ cấp TNNG [MaPCTNNG](chỉ đọc); Tên phụ cấp TNNG [TenPCTNNG](chỉ đọc); % PCTNNG cũ [MucPCTNNGCu](chỉ đọc); % PCTNNG mới [MucPCTNNGMoi]{số}; Số quyết định [SoQDNS]; Ngày quyết định [NgayQDNS]{ngày}; Ngày hiệu lực [NgayHLPCTNNG]{ngày}; Mốc nâng PCTNNG [MocNangPCTNNG]{ngày}; Cán bộ văn phòng [IsPCTNNGCBQL]
 ### B3.02.F004.QDNPCTNNG – Danh sách QĐ nâng phụ cấp thâm niên nhà giáo
-- Lưới 1 (bảng NQTPCTNNG); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Mã PCTNNG mới [MaPCTNNGMoi]; % PCTNNG mới [MucPCTNNGMoi]; Mốc nâng PCTNNG [MocNangPCTNNG]{ngày}; Mã phụ cấp TNNG [MaPCTNNG]; % PCTNNG cũ [MucPCTNNGCu]; Mốc nâng PCTNNG cũ [MocNangPCTNNGCu]{ngày}; Ngày hiệu lực [NgayHLPCTNNG]{ngày}; Số quyết định [SoQDNS]; Ngày quyết định [NgayQDNS]{ngày}; Cán bộ văn phòng [IsPCTNNGCBQL]; Hình quy trình nâng phụ cấp [ImageQDNPCTNNG]
+- Lưới 1 «Danh sách quyết định nâng phụ cấp thâm niên nhà giáo» (bảng NQTPCTNNG); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Mã PCTNNG mới [MaPCTNNGMoi]; % PCTNNG mới [MucPCTNNGMoi]; Mốc nâng PCTNNG [MocNangPCTNNG]{ngày}; Mã phụ cấp TNNG cũ [MaPCTNNG]; % PCTNNG cũ [MucPCTNNGCu]; Mốc nâng PCTNNG cũ [MocNangPCTNNGCu]{ngày}; Ngày hiệu lực [NgayHLPCTNNG]{ngày}; Số quyết định [SoQDNS]; Ngày quyết định [NgayQDNS]{ngày}; Cán bộ văn phòng [IsPCTNNGCBQL]; Hình quy trình nâng phụ cấp [ImageQDNPCTNNG]
   - Cột ẩn: Mã viên chức [IDNV]; ID phụ cấp [IDPCCTNNGCu]; PC TNNG mới [IDPCTNNGMoi]
   - Ô trên form sửa: #TenDayDuNV, #MucPCTNNGMoi, #MocNangPCTNNG, #MaPCTNNG, #MucPCTNNGCu, #MocNangPCTNNGCu, #NgayHLPCTNNG, #SoQDNS, #NgayQDNS, #IsPCTNNGCBQL, #ImageQDNPCTNNG, #IDNV, #IDPCTNNGMoi
 ### B3.03.F008.QDNHSCDLD – Danh sách QĐ nâng hệ số cường độ lao động
-- Lưới 1 (bảng NQTHSCDLD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách QĐ nâng hệ số cường độ lao động» (bảng NQTHSCDLD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Mã hệ số CĐLĐ [MaHSCDLD](chỉ đọc); Tên hệ số CĐLĐ [TenHSCDLD](chỉ đọc); HS CĐLĐ cũ [HSCDLDCu](chỉ đọc); Số quyết định [SoQDNS]; Ngày quyết định [NgayQDNS]{ngày}; HS CĐLĐ mới [HSCDLDMoi]{số}; Ngày hiệu lực [NgayHLHSCDLD]{ngày}; Mốc nâng HSCĐLĐ [MocNangHSCDLD]{ngày}
 ### B3.04.F005.DSCBNANGHS – Danh sách chuẩn bị nâng hệ số cường độ lao động
-- Lưới 1 (bảng NDSCBNHSCDLD); tắt: Thêm, Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách chuẩn bị nâng hệ số cường độ lao động» (bảng NDSCBNHSCDLD); tắt: Thêm, Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm [Nam]; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]; Mã đơn vị [MaDV]; Mốc nâng HSCĐLĐ cũ [MocNangHSCDLDCu]{ngày}; Mã hệ số CĐLĐ [MaHSCDLD]; HS CĐLĐ cũ [HSCDLDCu]; Mã HSCDLD mới [MaHSCDLDMoi]; HS CĐLĐ mới [HSCDLDMoi]
 ### B3.04.F007.QDNHSCDLD – Danh sách QĐ nâng hệ số cường độ lao động
-- Lưới 1 (bảng NQTHSCDLD); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Số quyết định [SoQDNS]; Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Mã HSCDLD mới [MaHSCDLDMoi]; HS CĐLĐ mới [HSCDLDMoi]; Ngày hiệu lực [NgayHLHSCDLD]{ngày}; Mốc nâng HSCĐLĐ [MocNangHSCDLD]{ngày}; Mã hệ số CĐLĐ [MaHSCDLD]; HS CĐLĐ cũ [HSCDLDCu]; Mốc nâng HSCĐLĐ cũ [MocNangHSCDLDCu]{ngày}; Ngày quyết định [NgayQDNS]{ngày}
+- Lưới 1 «Danh sách quyết định nâng hệ số cường độ lao động» (bảng NQTHSCDLD); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Số quyết định [SoQDNS]; Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Mã HSCDLD mới [MaHSCDLDMoi]; HS CĐLĐ mới [HSCDLDMoi]; Ngày hiệu lực [NgayHLHSCDLD]{ngày}; Mốc nâng HSCĐLĐ [MocNangHSCDLD]{ngày}; Mã hệ số CĐLĐ cũ [MaHSCDLD]; HS CĐLĐ cũ [HSCDLDCu]; Mốc nâng HSCĐLĐ cũ [MocNangHSCDLDCu]{ngày}; Ngày quyết định [NgayQDNS]{ngày}
   - Cột ẩn: ID HS CĐLĐ cũ [IDHSCDLDCu]; ID HS CĐLĐ mới [IDHSCDLDMoi]; Mã viên chức [IDNV]
   - Ô trên form sửa: #SoQDNS, #TenDayDuNV, #HSCDLDMoi, #NgayHLHSCDLD, #MocNangHSCDLD, #MaHSCDLD, #HSCDLDCu, #MocNangHSCDLDCu, #NgayQDNS, #IDHSCDLDMoi, #IDNV
 ### NBIENDONGDSTHANG – Danh sách biến động trong tháng
-- Lưới 1 (bảng NBienDongDSThang); tắt: Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]{số}; Ngày sinh [NgSinhNVCNV]; Phái [PhaiNV]{chọn}; Loại quyết định [LoaiLDQDNS]{chọn}; Ngày thêm [NgayThem]
+- Lưới 1 «Danh sách nhân viên biến động trong tháng» (bảng NBienDongDSThang); tắt: Sửa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]{số}; Ngày sinh [NgSinhNVCNV]; Phái [PhaiNV]{chọn}; Loại quyết định [LoaiLDQDNS]{chọn}; Ngày giờ lưu [NgayThem]
 ### NDMHSCDLD – Danh mục hệ số cường độ lao động
-- Lưới 1 (bảng NDMHSCDLD); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục hệ số cường độ lao động» (bảng NDMHSCDLD); tắt: Sửa trên lưới
   - Cột: Mã hệ số CĐLĐ [MaHSCDLD]; Tên hệ số CĐLĐ [TenHSCDLD]; Hệ số khởi điểm [KhoiDiemHS]; Số tháng lên hệ số [SoThangLHS]; Mức lên hệ số [MucLenHS]
   - Cột ẩn: Ghi chú [GcHSCDLD]; Tên hệ số CĐLĐ [TenHSCDLDEg]; Viết tắt [VtHSCDLD]
   - Ô trên form sửa: #MaHSCDLD, #TenHSCDLD, #KhoiDiemHS, #SoThangLHS, #MucLenHS, #GcHSCDLD, #TenHSCDLDEg
 ### NDMLDGiamLKK – Danh mục lý do giảm lương khuyến khích
-- Lưới 1 (bảng NDMLDGiamLKK); tắt: Sửa trên lưới
-  - Cột: Mã lý do giảm lương khuyến khích [MaLDGiamLKK]; Tên lý do giảm lương khuyến khích [TenLDGiamLKK]; % giảm [PTGiamLKK]
+- Lưới 1 «Danh sách lý do giảm lương khuyến khích» (bảng NDMLDGiamLKK); tắt: Sửa trên lưới
+  - Cột: Mã lý do giảm lương [MaLDGiamLKK]; Tên lý do giảm lương [TenLDGiamLKK]; % giảm [PTGiamLKK]
   - Cột ẩn: Ghi chú lý do giảm lương khuyến khích [GcLDGiamLKK]; Hủy lý do giảm lương khuyến khích [HuyLDGiamLKK]; Tên lý do giảm lương khuyến khích Eg [TenLDGiamLKKEg]; Viết tắt lý do giảm lương khuyến khích [VtLDGiamLKK]
   - Ô trên form sửa: #MaLDGiamLKK, #TenLDGiamLKK, #PTGiamLKK, #GcLDGiamLKK
 ### NDMLOAICONGLG – Danh mục loại tiền thưởng
-- Lưới 1 (bảng NDMLoaiCongLg); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục loại cộng vào lương» (bảng NDMLoaiCongLg); tắt: Sửa trên lưới
   - Cột: Mã loại thưởng [MaLoaiCongLg]; Tên loại thưởng [TenLoaiCongLg]; Viết tắt [VtLoaiCongLg]
   - Cột ẩn: Ghi chú [GcLoaiCongLg]; Tên tiếng anh [TenLoaiCongLgEg]; TenMauInLuong [TenMauInLuong]{chọn}
   - Ô trên form sửa: #MaLoaiCongLg, #TenLoaiCongLg, #VtLoaiCongLg, #GcLoaiCongLg, #TenLoaiCongLgEg
 ### NDMLoaiTienNgoaiGio – NDMLoaiTienNgoaiGio
-- Lưới 1 (bảng NDMLoaiTienNgoaiGio); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục loại tiền ngoài giờ» (bảng NDMLoaiTienNgoaiGio); tắt: Sửa trên lưới
   - Cột: Mã loại tiền ngoài giờ [MaLoaiTienNgoaiGio]; Tên loại tiền ngoài giờ [TenLoaiTienNgoaiGio]; Tên tiếng anh [TenLoaiTienNgoaiGioEg]; Viết tắt [VtLoaiTienNgoaiGio]; Thứ tự [TTLoaiTienNgoaiGio]; Ghi chú [GCLoaiTienNgoaiGio]
   - Ô trên form sửa: #MaLoaiTienNgoaiGio, #TenLoaiTienNgoaiGio, #TenLoaiTienNgoaiGioEg, #VtLoaiTienNgoaiGio, #TTLoaiTienNgoaiGio, #GCLoaiTienNgoaiGio
 ### NDMLOAITRULG – Danh mục loại tiền quỹ
-- Lưới 1 (bảng NDMLoaiTruLg); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục loại trừ trong lương» (bảng NDMLoaiTruLg); tắt: Sửa trên lưới
   - Cột: Mã loại quỹ [MaLoaiTruLg]; Tên loại quỹ [TenLoaiTruLg]; TenMauInLuong [TenMauInLuong]{chọn}
   - Cột ẩn: Ghi chú [GcLoaiTruLg]; Tên tiếng anh [TenLoaiTruLgEg]; Viết tắt [VtLoaiTruLg]
   - Ô trên form sửa: #MaLoaiTruLg, #TenLoaiTruLg, #GcLoaiTruLg, #TenLoaiTruLgEg, #VtLoaiTruLg
 ### NDMNGACH_DHDK – Danh mục ngạch
-- Lưới 1 (bảng NDMNgach); tắt: Thêm, Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục ngạch viên chức» (bảng NDMNgach); tắt: Thêm, Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã ngạch [MaNgach]; Tên ngạch [TenNgach]; Số tháng lên lương [SoThangLL]; Mức lên hệ số [MucLenHS]; Hệ số khởi điểm [KhoiDiemHS]
   - Ô trên form sửa: #MaNgach, #TenNgach, #SoThangLL, #MucLenHS, #KhoiDiemHS
 ### NDMNV_LUONG – Danh mục nhân viên
@@ -443,286 +443,286 @@
   - Cột: Tên đơn vị [TenDV]; Đơn vị [IDDV]; Mã đơn vị [MaDV]; Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Ngày sinh [NgSinhNVCNV]; Phái [PhaiNV]; Nơi sinh [NoiSinhNV]
   - Cột ẩn: Hình nhân viên [AvatarNV]; Bí danh [BiDanh]; Chi nhánh [CHINHANHNH]; Căn nặng [CanNangNV]; Chiều cao [ChieuCaoNV]; Số điện thoại [DC_DT1LLNV]; Số điện thoại (2) [DC_DT2LLNV]; Email [DC_Eml1LLNV]; Email 2 [DC_Eml2LLNV]; ID địa bàn HKNV [DC_IDDBHKNV]; ID địa bàn LLNV [DC_IDDBLLNV]; ID địa bàn TTNV [DC_IDDBTTNV]; ID địa bàn VCNV [DC_IDDBVCNV]; Lịch sử bản thân (từ 12 tuổi đến nay) [DDLS1]; Lịch sử bản thân 2 [DDLS2]; Lịch sử bản thân 3 [DDLS3]; Nhân viên mặc định [DfNV]; Số CNCT Đảng [GCNDang]; Ghi chú [GCNV]; Họ lót (index) [HONVIDX]; Họ lót (index) [HONVIDX2]; Không quản lý [HUYNV]; Trạng thái [HienDienNV]; Hộ khẩu [HoKhauNV]; Họ lót [HoLotNV]; Họ lót [HoLotNV2]; Trình độ [IDBacNV]; Dân tộc [IDDT]; Ngân hàng [IDNH]; Mã viên chức [IDNV]; Ngành [IDNganhNV]; Tỉnh/Thành [IDNoiSinh]; PL giảng viên [IDPLGV]; Tỉnh/Thành [IDQueQuan]; Quốc tịch [IDQuocTich]; Tôn giáo [IDTG]; Tỉnh/Thành [IDTamTru]; Lịch sử viên chức [LSCB]; Loại sức khỏe [LoaiKSK]; Mã user [MaUser]; PC ngành (%) [MucPCNganh]; Ngày vào đảng dự bị [NamDang]; Ngày chính thức [NamDangCT]; Năm vào đoàn [NamDoan]; Năm vào ngành [NamVaoNganh]; Ngày cấp [NgCapSBH]; Ngày cấp [NgCapSLD]; Ngày cấp thẻ tạm trú [NgCapTamTru]; Ngày khám sức khỏe [NgKSK]; Ngày cấp [NgayCapCMNDNV]; Ngày cấp [NgayCapPassport]; Ngày tham gia công tác [NgayCongTac]; Ngày CNCT Đảng [NgayGCNDang]; Ngày hết hạn Passport [NgayHHPassport]; Ngày hết hạn SLĐ [NgayHHSLD]; Ngày hết hạn thẻ tạm trú [NgayHHTamTru]; Ngày cấp PGS [NgayPGS]; NgaySinhNV [NgaySinhNV]; NgayTD [NgayTD]; Ngày cấp tiến sĩ [NgayTSi]; Ngày thêm [NgayThem]; Ngày về trường [NgayVeTruong]; Nhóm máu [NhomMau]; Nơi cấp [NoiCapCMNDNV]; Nơi cấp [NoiCapPassport]; Nơi cấp [NoiCapSBH]; Nơi cấp SLĐ [NoiCapSLD]; Nơi cấp thẻ tạm trú [NoiCapTamTru]; Nơi kết nạp [NoiDang]; Nơi kết nạp đoàn [NoiDoan]; Số passport [Passport]; Password [PasswordNV]; Phát hiện địa phương [PhatHienDP]; Quân nhân [QuanNhan]; Quê quán [QueQuanNV]; SL đề tài cấp bộ [SLDTBo]; SL đề tài cấp bộ(sau PGS) [SLDTBo1]; SL đề tài cấp cơ sở [SLDTCoSo]; SL đề tài cấp cơ sở(sau PGS) [SLDTCoSo1]; SL sách viết [SLSachViet]; SL sách viết (sau PGS) [SLSachViet1]; SL TSi hướng dẫn [SLTSiHD]; SL Th.Si hướng dẫn [SLThSiHD]; Số CMND [SoCMNDNV]; Số thẻ đảng [SoDang]; Số thẻ đoàn [SoDoan]; Số khám sức khỏe [SoKSK]; Số bảo hiểm [SoSBH]; Số sổ LĐ [SoSLD]; Số tài khoản [SoTK]; Số thẻ tạm trú [SoTamTru]; Tạm trú [TAMTRU]; Trình độ học vấn [TDHV]; Tên nv Idx [TENNVIDX]; Tên nv Idx2 [TENNVIDX2]; Tình trạng hôn nhân [TTHonNhan]; Thứ tự [TTNV]; Tên dân tộc [TenDT]; Tên nhân viên [TenNV]; Tên nhân viên [TenNV2]; Tên tôn giáo [TenTG]; Tên viết tắt [VTNV]; Ý kiến công an khu vực [YKienCS]
 ### NDMPCCV – Danh mục loại phụ cấp chức vụ
-- Lưới 1 (bảng NDMPCCV); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục loại phụ cấp chức vụ» (bảng NDMPCCV); tắt: Sửa trên lưới
   - Cột: Mã loại phụ cấp [MaPCCV]; Tên loại phụ cấp [TenPCCV]; Viết tắt [VTPCCV]
   - Cột ẩn: Ghi chú [GCPCCV]; Thứ tự [TTPCCV]; Tên loại phụ cấp tiếng anh [TenPCCVEg]
   - Ô trên form sửa: #MaPCCV, #TenPCCV, #VTPCCV, #GCPCCV, #TenPCCVEg
 ### NDMPCDV – Danh mục các loại phụ cấp của đơn vị
-- Lưới 1 (bảng NDMPCDV); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục các loại phụ cấp của đơn vị» (bảng NDMPCDV); tắt: Sửa trên lưới
   - Cột: Mã loại phụ cấp [MaPCDV]; Tên loại phụ cấp [TenPCDV]; Viết tắt [VTPCDV]
   - Cột ẩn: Ghi chú [GCPCDV]; Tên loại phụ cấp tiếng anh [TenPCDVEg]
   - Ô trên form sửa: #MaPCDV, #TenPCDV, #VTPCDV, #GCPCDV, #TenPCDVEg
 ### NDMPCKHAC – Danh mục các loại phụ cấp khác
-- Lưới 1 (bảng NDMPCKhac); tắt: Sửa trên lưới
-  - Cột: Mã loại phụ cấp [MaPCKhac]; Tên loại phụ cấp [TenPCKhac]; Loại tính vào lương [LoaiHeSo]{chọn}; PC chuyên môn [MucPC]{số}
+- Lưới 1 «Danh mục các loại phụ cấp khác» (bảng NDMPCKhac); tắt: Sửa trên lưới
+  - Cột: Mã loại phụ cấp [MaPCKhac]; Tên loại phụ cấp [TenPCKhac]; Loại tính vào lương [LoaiHeSo]{chọn}; Mức phụ cấp [MucPC]{số}
   - Cột ẩn: Ghi chú [GcPCKhac]; Tên loại phụ cấp [TenPCKhacEg]; Viết tắt [VtPCKhac]
   - Ô trên form sửa: #MaPCKhac, #TenPCKhac, #LoaiHeSo, #MucPC, #GcPCKhac, #TenPCKhacEg, #VtPCKhac
 ### NDMPCTNNG – Danh mục phụ cấp thâm niên nhà giáo
-- Lưới 1 (bảng NDMPCTNNG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục phụ cấp thâm niên nhà giáo» (bảng NDMPCTNNG); tắt: Sửa trên lưới
   - Cột: Mã phụ cấp TNNG [MaPCTNNG]; Tên phụ cấp TNNG [TenPCTNNG]; Mức khởi điểm [KhoiDiemPC]; Số tháng lên PC [SoThangLPC]; Mức lên PC [MucLenPC]
   - Cột ẩn: Ghi chú [GcPCTNNG]; Tên tiếng anh [TenPCTNNGEg]; Viết tắt [VtPCTNNG]
   - Ô trên form sửa: #MaPCTNNG, #TenPCTNNG, #KhoiDiemPC, #SoThangLPC, #MucLenPC, #GcPCTNNG, #TenPCTNNGEg, #VtPCTNNG
 ### NDMPLTHAISAN_LUONG – Danh mục phân loại thai sản
-- Lưới 1 (bảng NDMPLTHAISAN); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh mục chế độ ốm đau, thai sản, nghỉ dưỡng phục hồi sức khỏe» (bảng NDMPLTHAISAN); tắt: Nạp lại, Sửa trên lưới
   - Cột: Phân loại [LOAITHAISAN]{chọn}; Thứ tự [TTPLThaiSan]; Mã phân loại [MaPLThaiSan]; Tên phân loại [TenPLThaiSan]; Nghỉ theo QĐPL [IsTheoQDPL]; Số ngày nghỉ [SoThangNghi]{số}; Viết tắt [VtPLThaiSan]; Số tháng lấy HSL bình quân [SOTHANGHSLBQ]; % lương [PTLuong]; Số tháng hưởng lương tối thiểu [SOTHANGLTT]
   - Cột ẩn: Mặc định [DfPLThaiSan]; Ghi chú [GcPLThaiSan]; Tên tiếng anh [TenPLThaiSanEg]
   - Ô trên form sửa: #LOAITHAISAN, #TTPLThaiSan, #MaPLThaiSan, #TenPLThaiSan, #IsTheoQDPL, #SoThangNghi, #VtPLThaiSan, #SOTHANGHSLBQ, #PTLuong, #SOTHANGLTT, #GcPLThaiSan, #TenPLThaiSanEg
 ### NDMXLLD – Danh mục xếp loại lao động
-- Lưới 1 (bảng NDMXLLD); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục xếp loại lao động» (bảng NDMXLLD); tắt: Sửa trên lưới
   - Cột: Mã xếp loại lao động [MaXLLD]; Tên xếp loại lao động [TenXLLD]; % lương XLLĐ [PTLuongXLLD]{số}; Mặc định [DfXLLD]
   - Cột ẩn: Ghi chú [GcXLLD]; Tên xếp loại lao động [TenXLLDEg]; Viết tắt [VtXLLD]
   - Ô trên form sửa: #MaXLLD, #TenXLLD, #PTLuongXLLD, #DfXLLD, #GcXLLD, #TenXLLDEg, #VtXLLD
 ### NDSCBNPCTNLamViec – Danh sách chuẩn bị nâng phụ cấp thâm niên làm việc
-- Lưới 1 (bảng NDSCBNPCTNLamViec); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Năm [Nam]; Số quyết định thâm niên làm việc [SoQDTNLamViec]; Mã viên chức [MaNV]; Tháng [Thang]; Tên đầy đủ [TenDayDuNV]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mức phụ cấp thâm niên làm việc cũ [MucPCTNLamViecCu]; Mốc nâng quyết định thâm niên làm việc cũ [MocNangQDTNLamViecCu]{ngày}; Mức phụ cấp thâm niên làm việc mới [MucPCTNLamViecMoi]; Mốc nâng quyết định thâm niên làm việc mới [MocNangQDTNLamViecMoi]{ngày}
+- Lưới 1 «Danh sách chuẩn bị nâng phụ cấp thâm niên làm việc» (bảng NDSCBNPCTNLamViec); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Năm [Nam]; Số quyết định [SoQDTNLamViec]; Mã viên chức [MaNV]; Tháng [Thang]; Tên đầy đủ [TenDayDuNV]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Mức phụ cấp cũ [MucPCTNLamViecCu]; Mốc nâng quyết định cũ [MocNangQDTNLamViecCu]{ngày}; Mức phụ cấp  mới [MucPCTNLamViecMoi]; Mốc nâng quyết định mới [MocNangQDTNLamViecMoi]{ngày}
   - Cột ẩn: IDNDSCBNPCTNLamViec [IDNDSCBNPCTNLamViec]; Mã viên chức [IDNV]; ID phụ cấp thâm niên làm việc [IDQTPCTNLamViec]
 ### NDSCONGLUONG – Danh sách cộng lương
-- Lưới 1 (bảng NQTCongLg); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Danh sách viên chức được thưởng trong tháng năm đang xử lý» (bảng NQTCongLg); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Mã viên chức [MaNV]; Năm cộng [NamCong]{số}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tháng cộng [ThangCong]; Tên loại thưởng [TenLoaiCongLg](chỉ đọc); Loại tính vào lương [LoaiHeSo]{chọn}; Mức cộng [MucCong]{số}; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]
   - Cột ẩn: ID loại thưởng [IDLoaiCongLg]; Mã viên chức [IDNV]; Mã loại thưởng [MaLoaiCongLg]
 ### NDSHSPCCV – Danh sách hệ số phụ cấp chức vụ
-- Lưới 1 (bảng NHSPCCV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phụ cấp chức vụ» (bảng NHSPCCV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã chức vụ [MaChucVu]; Tên chức vụ [TenChucVu]; Tên loại phụ cấp [TenPCCV]; Mức phụ cấp [MucPCCV]; Loại tính vào lương [LoaiHeSo]{chọn}
   - Cột ẩn: Chức vụ [IDChucVu]; Loại phụ cấp [IDPCCV]
   - Ô trên form sửa: #TenChucVu, #MucPCCV, #LoaiHeSo, #IDChucVu, #IDPCCV
 ### NDSTRULUONG – Danh sách trừ lương
-- Lưới 1 (bảng NQTTruLg); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Danh sách trừ lương trong tháng năm đang xử lý» (bảng NQTTruLg); tắt: Sửa, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Mã viên chức [MaNV]; Năm trừ [NamTru]{số}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tháng trừ [ThangTru]; Tên loại quỹ [TenLoaiTruLg](chỉ đọc); Loại tính vào lương [LoaiHeSo]{chọn}; Mức trừ [MucTru]{số}
   - Cột ẩn: ID loại quỹ [IDLoaiTruLg]; Mã viên chức [IDNV]; Mã loại quỹ [MaLoaiTruLg]
 ### NDUTOANLUONG – Dự toán lương năm
-- Lưới 1 (bảng NDuToanLuong); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Dự toán lương năm» (bảng NDuToanLuong); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Năm [Nam]{số}; Tăng hệ số lương [TangHSL]; Giảm hệ số lương [GiamHSL]; Tăng PCVK [TangPCVK]; Giảm PCVK [GiamPCVK]; Tăng phụ cấp chức vụ [TangPCCV]; Giảm phụ cấp chức vụ [GiamPCCV]; Tăng PC độc hại, y tế [TangPCTheoDV]; Giảm PC độc hại, y tế [GiamPCTheoDV]; Tăng PCTNNG [TangPCTNNG]; Giảm PCTNNG [GiamPCTNNG]; BHYT, BHXH, BHTN [TangBaoHiem]; Giảm BHXH, BHYT, BHTN [GiamBaoHiem]; Tăng HSCĐLĐ [TangHSCDLD]; Giảm HSCĐLĐ [GiamHSCDLD]; Tăng PCCM [TangPhuCap]; Giảm PCCM [GiamPhuCap]; Tăng lương tối thiểu kỳ I [TangLuongTT1]; Tháng tăng LTT kỳ I [ThangTangLuongTT1]; Tăng lương tối thiểu kỳ II [TangLuongTT2]; Tháng tăng LTT kỳ II [ThangTangLuongTT2]; Tăng số lượng HĐ khoán [TangSLHDKhoan]; Giảm số lượng HĐ khoán [GiamSLHDKhoan]; Tăng đơn giá HĐ khoán [TangDGHDKhoan]; Giảm đơn giá HĐ khoán [GiamDGHDKhoan]; Tăng số lượng đắt đỏ [TangSLDatDo]; Giảm số lượng đắt đỏ [GiamSLDatDo]; Đơn giá đắt đỏ [TangDGDatDo]; Giảm đơn giá đắt đỏ [GiamDGDatDo]; Tăng mức đóng bảo hiểm [TangMucDongBH]; Tăng số lượng PC đứng lớp [TangSLPCDL]; Giảm đơn giá PC đứng lớp [GiamDGPCDL]; Giảm số lượng PC đứng lớp [GiamSLPCDL]; Tăng đơn giá PC đứng lớp [TangDGPCDL]; Tăng số lượng ngoài giờ [TangSLNgoaiGio]; Tăng đơn giá ngoài giờ [TangDGNgoaiGio]; Giảm số lượng ngoài giờ [GiamSLNgoaiGio]; Giảm đơn giá ngoài giờ [GiamDGNgoaiGio]
   - Cột ẩn: Dự toán lương [IDDuToanLuong]
   - Ô trên form sửa: #Nam, #TangHSL, #GiamHSL, #TangPCVK, #GiamPCVK, #TangPCCV, #GiamPCCV, #TangPCTheoDV, #GiamPCTheoDV, #TangPCTNNG, #GiamPCTNNG, #TangBaoHiem, #GiamBaoHiem, #TangHSCDLD, #GiamHSCDLD, #TangPhuCap, #GiamPhuCap, #TangLuongTT1, #ThangTangLuongTT1, #TangLuongTT2, #ThangTangLuongTT2, #TangSLHDKhoan, #GiamSLHDKhoan, #TangDGHDKhoan, #GiamDGHDKhoan, #TangSLDatDo, #GiamSLDatDo, #TangDGDatDo, #GiamDGDatDo, #TangMucDongBH, #TangSLPCDL, #GiamDGPCDL, #GiamSLPCDL, #TangDGPCDL, #TangSLNgoaiGio, #TangDGNgoaiGio, #GiamSLNgoaiGio, #GiamDGNgoaiGio
 ### NHoanThueTNCN – Danh sách hoàn thuế TNCN
-- Lưới 1 (bảng NHoanThueTNCN); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách hoàn thuế thu nhập cá nhân» (bảng NHoanThueTNCN); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tháng [Thang]; Năm [Nam]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Ngày hoàn thuế TNCN [NgayHoanThueTNCN]{ngày}; Số tiền hoàn thuế TNCN [SoTienHoanThueTNCN]; Ghi chú [GCHoanThueTNCN]
   - Cột ẩn: ID hoàn thuế TNCN [IDHoanThueTNCN]; Mã viên chức [IDNV]
   - Ô trên form sửa: #Thang, #Nam, #TenDayDuNV, #NgayHoanThueTNCN, #SoTienHoanThueTNCN, #GCHoanThueTNCN, #IDNV
 ### NHOCTAPNUOCNGOAI – Quá trình học tập nước ngoài
-- Lưới 1 (bảng NYeuCauDTCT); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Quá trình học tập nước ngoài» (bảng NYeuCauDTCT); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Loại hình học [LoaiHinhDT]{chọn}; Mã viên chức [MaNV]; Số quyết định [SoQDSV]; Tên đầy đủ [TenDayDuNV]; Tên cấp đào tạo [TenCapDT]; Tên chương trình [TenTenCTDT]; Mã Ng/CNg [MaNgChng]; Mã bậc [MaBac]; Mã khóa học [MaKhoaHoc]; Số công văn [SoCongVan]; Lý do từ chối [LyDoTC]; Thông tin học phí [ThongTinHP]; Trường đào tạo [TruongDT]; Kinh phí [KinhPhi]; Khóa học [IDKhoaHoc]; Ngày BĐ [BDHoc]; Ngày KT [KTHoc]; Ngày quyết định [NgayQD]{ngày}; Ngày nghỉ [NgayBDNghiDT]{ngày}; Ngày làm việc lại [NgayKTNghiDT]{ngày}
   - Cột ẩn: Trình độ [IDBacNV]; Mã cấp đào tạo [IDCapDT]; Chức vụ nhân viên [IDChucVuNV]; Mã địa bàn [IDDB]; Đơn vị [IDDVNV]; Mã viên chức [IDNV]; Ngành [IDNganhNV]; Tên chương trình [IDTenCTDT]; Đào tạo [IDYeuCauDT]; Ngày tốt nghiệp [NgayTotNghiep]{ngày}
   - Ô trên form sửa: #LoaiHinhDT, #SoQDSV, #TenDayDuNV, #LyDoTC, #ThongTinHP, #TruongDT, #KinhPhi, #IDKhoaHoc, #BDHoc, #KTHoc, #NgayQD, #NgayBDNghiDT, #NgayKTNghiDT, #IDBacNV, #IDCapDT, #IDChucVuNV, #IDDB, #IDDVNV, #IDNV, #IDNganhNV, #IDTenCTDT, #IDYeuCauDT, #NgayTotNghiep
 ### NHSLTROCAP – Trợ cấp cho hệ số lương thấp
-- Lưới 1 (bảng NHSLTroCap); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách trợ cấp theo hệ số lương» (bảng NHSLTroCap); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Từ tháng [TuThang]{số}; Từ năm [TuNam]{số}; HSL tối thiểu [HSLTroCap]{số}; Loại tính vào lương [LoaiHeSo]{chọn}; Mức được trợ cấp [MucTroCap]{số}
   - Ô trên form sửa: #TuThang, #TuNam, #HSLTroCap, #LoaiHeSo, #MucTroCap
 ### NHSPCDV – Danh sách phụ cấp đơn vị
-- Lưới 1 (bảng NHSPCDV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phụ cấp đơn vị» (bảng NHSPCDV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Tên loại phụ cấp [TenPCDV]; Mức phụ cấp [MucPCDV]; Loại tính vào lương [LoaiHeSo]{chọn}
   - Cột ẩn: Đơn vị [IDDV]; Loại phụ cấp [IDPCDV]
   - Ô trên form sửa: #TenDV, #MucPCDV, #LoaiHeSo, #IDDV, #IDPCDV
 ### NKhauTruThueTNCN – Khấu trừ thuế thu nhập cá nhân
-- Lưới 1 (bảng NKhauTruThueTNCN); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Khấu trừ thuế thu nhập cá nhân» (bảng NKhauTruThueTNCN); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tháng [Thang]{số}; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Số tiền khấu trừ thuế TNCN [SoTienKhauTruThueTNCN]; Ngày khấu trừ thuế TNCN [NgayKhauTruThueTNCN]{ngày}; Tính vào bảng lương [LoaiBangLuong]{chọn}; Ghi chú [GCKhauTruThueTNCN]
   - Cột ẩn: ID khấu trừ thuế TNCN [IDKhauTruThueTNCN]; Mã viên chức [IDNV]
   - Ô trên form sửa: #Thang, #Nam, #TenDayDuNV, #SoTienKhauTruThueTNCN, #NgayKhauTruThueTNCN, #LoaiBangLuong, #GCKhauTruThueTNCN, #IDNV
 ### NKHOASOLUONG – Khóa sổ bảng lương
-- Lưới 1 (bảng NKhoaSoLuong); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
-  - Cột: Tháng [Thang]; Năm [Nam]{số}; Ngày thêm [NgayThem]; Mã user [MaUser]; Ghi chú [GCKhoaSoLuong]
+- Lưới 1 «Khóa sổ lương tháng» (bảng NKhoaSoLuong); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+  - Cột: Tháng [Thang]; Năm [Nam]{số}; Ngày giờ khóa [NgayThem]; User khóa [MaUser]; Ghi chú [GCKhoaSoLuong]
   - Ô trên form sửa: #Thang, #Nam, #GCKhoaSoLuong
 ### NMucThueTNCNLKK – Định nghĩa mức thuế thu nhập cá nhân
-- Lưới 1 (bảng NMucThueTNCNLKK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Tổng thu nhập [MucThuNhap]; Mức thuế [MucThue]
+- Lưới 1 «Định nghĩa mức tạm thu thuế thu nhập cá nhân» (bảng NMucThueTNCNLKK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Hạn mức tổng thu nhập [MucThuNhap]; % mức thuế [MucThue]
   - Ô trên form sửa: #MucThuNhap, #MucThue
 ### NNGHICHAMVOSINH – Nghỉ chăm vợ sinh
-- Lưới 1 (bảng NNghiChamVoSinh); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức nghỉ chăm vợ sinh» (bảng NNghiChamVoSinh); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Ngày nghỉ [NgayBDNghi]{ngày}; Nghỉ đến ngày [NgayKTNghi]{ngày}; Có truy thu lương kỳ 1 [TruyThuLuongKy1]; Có truy thu lương kỳ 2 [TruyThuLuongKy2]; Ngày nhập thay đổi [NgayNhapTD]{ngày}
   - Cột ẩn: Mã viên chức [IDNV]; Id nghỉ chăm vợ sinh [IDNghiChamVoSinh]; Tên đơn vị [TenDV]
   - Ô trên form sửa: #TenDayDuNV, #NgayBDNghi, #NgayKTNghi, #TruyThuLuongKy1, #TruyThuLuongKy2, #NgayNhapTD, #IDNV, #TenDV
 ### NNGHITHAISAN_LUONG – Danh sách nghỉ thai sản
-- Lưới 1 (bảng NNghiThaiSan); tắt: Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Hệ số lương [HSL]{số}; Tên phân loại [TenPLThaiSan]; Ngày bắt đầu [NgayBDThaiSan]{ngày}; Ngày kết thúc [NgayKTThaiSan]{ngày}
+- Lưới 1 «Danh sách viên chức nghỉ ốm đau, thai sản, dưỡng phục hồi sức khỏe» (bảng NNghiThaiSan); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Hệ số lương [HSL]{số}; Loại nghỉ [TenPLThaiSan]; Ngày bắt đầu [NgayBDThaiSan]{ngày}; Ngày kết thúc [NgayKTThaiSan]{ngày}
   - Cột ẩn: Y/bác sĩ KCB [BACSIKCB]; Cấp bệnh viện KCB [CAPBVKCB]; Chuỗi lưu ds hsl bình quân [CHUOIHSLBQ]; Đợt thay đổi [DotNhapTD]; Họ tên con [HOTENCON]; Chức vụ nhân viên [IDChucVuNV]; Đơn vị [IDDVNV]; Mã viên chức [IDNV]; ID nghỉ thai sản [IDNghiThaiSan]; Mã phân loại [IDPLThaiSan]; Không miễn giảm định mức KLGD [IsKgMGDM]; Lý do hiệu chỉnh [LYDOHC]; Lý do nghỉ [LYDOKCB]; Mã phân loại [MaPLThaiSan]; Ngày cấp GKS [NGAYCAPGKS]{ngày}; NgàyKCB [NGAYKCB]{ngày}; Ngày sinh con [NGAYSINHCON]{ngày}; Nơi cấp GKS [NOICAPGKS]; Nơi sinh con [NOISINHCON]; Ngày bắt đầu không lương [NgayBDKhongLuong]{ngày}; Ngày bắt đầu tính lương [NgayBDTinhLuong]{ngày}; Ngày nhập thay đổi [NgayNhapTD]{ngày}; Ngày thai sản vào sớm [NgayTSVaoSom]{ngày}; % lương [PTLuong]{số}; Quyển số GKS [QUYENSOGKS]; Quyển số KCB [QUYENSOKCB]; Số GKS [SOGKS]; Số KCB [SOKCB]; Số ngày miễn giãm định mức nghiên cứu khoa học sau khi vào l [SoNgayMGDMVaoLai]; Số tháng bảo hiểm [SoThangBH]{số}; Tên cơ sở y tế [TENCSYTKCB]; Thành tiền [THANHTIENHSL]{số}; Thành tiền [THANHTIENLTT]{số}; Mức hưởng mới [TONGTIENMOI]{số}; Tên đơn vị [TenDV]; Thời điểm [ThoiDiem]{ngày}; Tình trạng [TinhTrang]; Tổng tiền [TongTien]{số}
   - Ô trên form sửa: #TenDayDuNV, #HSL, #NgayBDThaiSan, #NgayKTThaiSan, #BACSIKCB, #CAPBVKCB, #HOTENCON, #IDNV, #IDPLThaiSan, #LYDOKCB, #NGAYCAPGKS, #NGAYKCB, #NGAYSINHCON, #NOICAPGKS, #NOISINHCON, #PTLuong, #QUYENSOGKS, #QUYENSOKCB, #SOGKS, #SOKCB, #SoThangBH, #TENCSYTKCB, #THANHTIENHSL, #THANHTIENLTT, #TenDV, #TongTien
 ### NNGHITHAISAN_LUONG_DHDK – Danh sách nghỉ thai sản
-- Lưới 1 (bảng NNghiThaiSan); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức» (bảng NNghiThaiSan); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Hệ số lương [HSL]{số}; Ngày bắt đầu [NgayBDThaiSan]{ngày}; Ngày kết thúc [NgayKTThaiSan]{ngày}
   - Cột ẩn: Y/bác sĩ KCB [BACSIKCB]; Cấp bệnh viện KCB [CAPBVKCB]; Chuỗi lưu ds hsl bình quân [CHUOIHSLBQ]; Đợt thay đổi [DotNhapTD]; Họ tên con [HOTENCON]; Chức vụ nhân viên [IDChucVuNV]; Đơn vị [IDDVNV]; Mã viên chức [IDNV]; ID nghỉ thai sản [IDNghiThaiSan]; Mã phân loại [IDPLThaiSan]; Không miễn giảm định mức KLGD [IsKgMGDM]; Lý do hiệu chỉnh [LYDOHC]; Lý do nghỉ [LYDOKCB]; Mã phân loại [MaPLThaiSan]; Ngày cấp GKS [NGAYCAPGKS]{ngày}; NgàyKCB [NGAYKCB]{ngày}; Ngày sinh con [NGAYSINHCON]{ngày}; Nơi cấp GKS [NOICAPGKS]; Nơi sinh con [NOISINHCON]; Ngày bắt đầu không lương [NgayBDKhongLuong]{ngày}; Ngày bắt đầu tính lương [NgayBDTinhLuong]{ngày}; Ngày nhập thay đổi [NgayNhapTD]{ngày}; Ngày thai sản vào sớm [NgayTSVaoSom]{ngày}; % lương [PTLuong]{số}; Quyển số GKS [QUYENSOGKS]; Quyển số KCB [QUYENSOKCB]; Số GKS [SOGKS]; Số KCB [SOKCB]; Số ngày miễn giãm định mức nghiên cứu khoa học sau khi vào l [SoNgayMGDMVaoLai]; Số tháng bảo hiểm [SoThangBH]{số}; Tên cơ sở y tế [TENCSYTKCB]; Thành tiền [THANHTIENHSL]{số}; Thành tiền [THANHTIENLTT]{số}; Mức hưởng mới [TONGTIENMOI]{số}; Tên đơn vị [TenDV]; Tên phân loại [TenPLThaiSan]; Thời điểm [ThoiDiem]{ngày}; Tình trạng [TinhTrang]; Tổng tiền [TongTien]{số}
   - Ô trên form sửa: #TenDayDuNV, #NgayBDThaiSan, #NgayKTThaiSan, #HOTENCON, #IDNV, #NGAYCAPGKS, #NGAYSINHCON, #NOICAPGKS, #NOISINHCON, #QUYENSOGKS, #SOGKS, #TenDV
 ### NNgoaiLePCCV – Danh sách ngoại lệ phụ cấp công việc
-- Lưới 1 (bảng NNgoaiLePCCV); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức hưởng phụ cấp công việc» (bảng NNgoaiLePCCV); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]; Từ năm [TuNam]; Đến tháng [DenThang]; Đến năm [DenNam]; Số tiền [SoTienPCCV]; Ghi chú ngoại lệ PCCV [GCNgoaiLePCCV]
   - Cột ẩn: Mã viên chức [IDNV]; ID ngoại lệ PC công việc [IDNgoaiLePCCV]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #SoTienPCCV, #GCNgoaiLePCCV, #IDNV
 ### NNgoaiLeThueTNCN – Ngoại lệ mức đóng thuế thu nhập cá nhân
-- Lưới 1 (bảng NNgoaiLeThueTNCN); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức đóng thuế thu nhập cá nhân ngoại lệ» (bảng NNgoaiLeThueTNCN); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]{số}; Từ năm [TuNam]{số}; Đến tháng [DenThang]{số}; Đến năm [DenNam]{số}; Tiền thuế [SoTienThue]; Id ngoại lệ [IDNgoaiLeThueTNCN]
   - Cột ẩn: Mã viên chức [IDNV]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #SoTienThue, #IDNV
 ### NNVKGLGTRTHANG – Nhân viên không lương trước tháng
-- Lưới 1 (bảng NNVKgLgTrThang); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách không hưởng lương kỳ II trong tháng» (bảng NNVKgLgTrThang); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]{số}; Lý do [LyDoKgLgTr]
   - Cột ẩn: Mã viên chức [IDNV]
   - Ô trên form sửa: #Nam, #TenDayDuNV, #Thang, #LyDoKgLgTr, #IDNV
 ### NNVThangDHDK – Danh sách viên chức đã tính lương trong tháng
-- Lưới 1 (bảng NNVThangDHDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Tên loại HĐ [TenLHD]; Phần trăm lương trong tháng [PTLuongTrongThang]; Tiền lương CB [TienLuongCB]; Tên phụ cấp [TenPhuCap]; Tiền phụ cấp chức vụ Đảng, Đoàn [TienPCChucVuDangDoan]; Tiền phụ cấp chức vụ [TienPCChucVu]; Tiền phụ cấp chức vụ trách nhiệm [TienPCChucVuTrachNhiem]; HS chuyên môn [MucPhuCap]; Hệ số phụ cấp [HSPhuCapLaiXe]; Số ngày học nước ngoài [SoNgayHocNN]; Số ngày nghỉ phép [SoNgayNghiPhep]; Số ngày nghỉ hộ sản [SoNgayNghiHoSan]; Số ngày hưởng lương [SoNgayHuongLuong]; Số tiền phụ cấp trình độ cao [SoTienPhuCapTDCao]; Số tiền ăn ca hoàn lại [SoTienAnCaHoanLai]; Tiền BHXH [TienBHXH]; Tiền BHYT [TienBHYT]; Tiền BHTN [TienBHTN]; Tiền KPCD [TienKPCD]; Tiền bảo hiểm tự nguyện [TienBHTuNguyen]; Số tiền tạm thu thuế TNCN [SoTienTamThuThueTNCN]; Số tiền thuê [SoTienThueNhaCV]; Số tiền tạm ứng [SoTienTamUng]; Số tiền thực nhận [SoTienThucNhan]; Ghi chú [GCNVThang]
-  - Cột ẩn: GCCongThuc [GCCongThuc]; Năm [Nam]; Tháng [Thang]; Trạng thái không lương [TrangThaiKL]
+- Lưới 1 «Danh sách viên chức được tính lương trong tháng» (bảng NNVThangDHDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Loại hợp đồng [TenLHD]; Phần trăm lương trong tháng [PTLuongTrongThang]; Mức lương cơ bản [TienLuongCB]; Nhóm lương [TenPhuCap]; Phụ cấp Đảng, Đoàn [TienPCChucVuDangDoan]; Phụ cấp chức vụ [TienPCChucVu]; Phụ cấp trách nhiệm [TienPCChucVuTrachNhiem]; HS lương chức danh [MucPhuCap]; Hệ số PC lái xe [HSPhuCapLaiXe]; Số ngày học nước ngoài [SoNgayHocNN]; Số ngày nghỉ phép [SoNgayNghiPhep]; Số ngày nghỉ hộ sản [SoNgayNghiHoSan]; Số ngày hưởng lương [SoNgayHuongLuong]; Tiền PC trình độ cao [SoTienPhuCapTDCao]; Số tiền ăn ca hoàn lại [SoTienAnCaHoanLai]; Tiền BHXH [TienBHXH]; Tiền BHYT [TienBHYT]; Tiền BHTN [TienBHTN]; Tiền KPCD [TienKPCD]; Tiền bảo hiểm tự nguyện [TienBHTuNguyen]; Số tiền tạm thu thuế TNCN [SoTienTamThuThueTNCN]; Tiền thuê nhà công vụ [SoTienThueNhaCV]; Số tiền tạm ứng [SoTienTamUng]; Số tiền thực nhận [SoTienThucNhan]; Ghi chú [GCNVThang]
+  - Cột ẩn: Ghi chú công thức lương [GCCongThuc]; Năm [Nam]; Tháng [Thang]; Trạng thái không lương [TrangThaiKL]
 ### nnvthangimport – nnvthangimport
 - Lưới 1 (bảng NNVThang); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: TienTTLuong_PCCV [TienTTLuong_PCCV]; Tiền kinh phí Đảng [TienKPDang]; Học hàm [IDHocHam]; TienTTLuongTr_PCCV [TienTTLuongTr_PCCV]; Không đóng BHXH [KBHXH]; Tiền lương CB [TienLuongCB]; Hệ số lương [HSL]; PC giáo viên [TienPCGV]; Tiền truy lĩnh lương cb nghỉ phép vào sớm [TienTLNP_LCB]; % PCTNNG [HSTNNG]; PL giảng viên [IDPLGV]; TL PCCBQL [TienTLPCCBQL]; Truy thu khác [TienTTKhacTr]; Tiền TLPCTNNG không đóng BH [TongTienTLPCTNNGKhongDongBH]; TL lương PLGV [TienTLLuongPLGV]; Chức vụ [IDChucVu]; % PCCBQL [TienPCCBQL]; ID phụ cấp [IDPCTNNG]; Tiền truy lĩnh trợ cấp đơn vị nghỉ phép vào sớm [TienTLNP_PCDV]; Số tiền khấu trừ thuế TNCN [SoTienKhauTruThueTNCNKy2]; TL lương kỳ II PCCV [TienTLLuongTrPCCV]; Truy thu PC cán bộ QL [TienTTPCCbql_PCCV]; Tiền truy thu BHXH HTNN có QĐ trể [TienTTBHXHHTNNTre]; Số tháng TL NV mới [SoThangTLNVMoi]; Tiền PC đắt đỏ không được hưởng [TienPCDatDoNone]; Trình độ [IDBacNV]; Mức phụ cấp [MucPCDV]; Tiền lương theo trường [TienLuongTr]; Trợ cấp đơn vị [TienPCDV]; Id hệ số [IDHSCDLD]; Tiền BHXH [TienBHXH]; PCCV [PCCV]; Phụ cấp công việc [IDPhuCap]; TL PCCBQL PCCV [TienTLPCCbqlPCCV]; Tổng hệ số [TongHSTr]; Tiền truy thu có đóng BH [TongTienTTCoDongBH]; ID phụ cấp [IDQTPCTNNG]; HS thâm niên [HSTNCongViec]; Tiền truy thu BHBB HTNN có QĐ trể [TienTTBHBBHTNNTre]; PL giảng viên [IDQTPLGV]; TL PCGV của nâng lương [TienTLPcgvLG]; Không đóng BHTN [KBHTN]; ID hợp đồng khoán ngoài giờ [IDHDLVNgGio]; Ghi chú biến động [GCBienDong]; HS đánh giá k2 [HSK2]; Truy thu nghỉ phép [TienTTNP]; Tiền KPCD [TienKPCD]; Tiền BHTN [TienBHTN]; Truy thu % theo ĐV [TienTTPTDV]; Tiền truy lãnh đào tạo kỳ 2 [TienTLDTTr]; PC thâm niên NG [TienPCTNNG]; % PCCBQL [MucPCCBQL]; TienTLPCGVDT [TienTLPCGVDT]; Tiền sau đánh giá [TienDanhGia]; TL lương HĐ [TienTLLuongHDLV]; TienTLPCDVDT [TienTLPCDVDT]; Trợ cấp chức vụ [TienHSPCCV]; Tiền lương CB [TienLuongCBTr]; Tiền truy lãnh bảo hiểm [TienTLBHDT]; Mã xếp loại lao động [IDXLLD]; TL PCGV của PCCV [TienTLPcgvPCCV]; Truy thu KPCD nghỉ phép vào sớm [TienTTNP_KPCD]; Truy thu PCTNNG [TienTTPCTNNG_PCCV]; PC đắt đỏ [TienPCDatDo]; Tiền TL không đóng BH [TongTienTLKhongDongBH]; IDHD [IDHDLV]; Chi nhánh [CHINHANHNH]; Mã viên chức [IDNV]; TienTNNgoaiLuong [TienTNNgoaiLuong]; Truy thu HTNN [TienTTDTTr]; Không đóng BHYT [KBHYT]; Tiền truy thu lương HTNN có QĐ trể [TienTTHTNNTre]; Số phụ thuộc [SoNguoiPT]; Tiền truy lĩnh PC công việc [TienTLPCCongViec]; Tiền TL có đóng BH [TongTienTLCoDongBH]; Truy thu BHXH nghỉ phép vào sớm [TienTTNP_BHXH]; Tiền TL PCTNNG HTNN có QĐ trể [TienTLPCTNNGHTNNTre]; Tiền truy thu BHYT HTNN có QĐ trể [TienTTBHYTHTNNTre]; TL hệ số CĐLĐ [TienTLLuongTrHSCDLD]; Truy thu nghỉ phép [TienTTNPTr]; TL CBQL hợp đồng [TienTLPccbqlHDLV]; TL PCGV hợp đồng [TienTLPcgvHDLV]; PCTNQL [PCTNQL]; IDQTLG [IDQTLG]; Truy thu BHTN nghỉ phép vào sớm [TienTTNP_BHTN]; Tiền truy lĩnh PC TNNG nghỉ phép vào sớm [TienTLNP_PCTNNG]; Tien PCQL k3 [TienPCQuanLy]; Truy lãnh khác [TienTLKhac]; % lương HĐ [PTLuongHD]; Trạng thái không lương [TrangThaiKL]; Đơn vị [IDDV]; Tiền truy lãnh đào tạo [TienTLDT]; Năm [Nam]; Ngân hàng [IDNH]; Đã nghỉ hưu [NghiHuu]; Khống đóng KP Đảng [KkPDang]; Tiền thưởng [TienThuong]; Tiền PC công việc k2 [TienPCCongViec]; Tiền HĐ ngoài giờ [TienHDNgGio]; Tiền lương đợt 1 [MucHuongLuongDot1]; Truy thu BHYT nghỉ phép vào sớm [TienTTNP_BHYT]; IDQTCV [IDQTCV]; Số tài khoản [SoTK]; Cán bộ văn phòng [IsPCTNNGCBQL]; TienTLPCDDDT [TienTLPCDDDT]; TL lương PCCV [TienTLLuongPCCV]; TL lương của nâng lương [TienTLLuongLG]; Số tiền hoàn thuế TNCN [SoTienHoanThueTNCN]; Ghi chú [GCNVThang]; Tiền truy thu BHTN HTNN có QĐ trể [TienTTBHTNHTNNTre]; Truy thu học tập [TienTTDT]; Số tiền khấu trừ thuế TNCN [SoTienKhauTruThueTNCN]; Tiền truy lĩnh PC giáo viên nghỉ phép vào sớm [TienTLNP_PCGV]; Không đóng KPCD [KKPCD]; Loại phụ cấp [IDPCDV]; Tiền truy lĩnh lương cb trường nghỉ phép vào sớm [TienTLNP_LCBTr]; Truy lãnh khác [TienTLKhacTr]; Tiền quỹ [TienQuy]; Lương tối thiểu nội bộ [MUCLUONGCOBANNOIBO]; Truy thu khác [TienTTKhac]; Tiền truy lĩnh tiền đánh giá [TienTLTienDanhGia]; Tiền lương kỳ 2 không được hưởng [TienLuongCBTrNone]; Tháng [Thang]; HS chuyên môn [MucPhuCap]; Ngạch [IDNgach]; Trừ lương [TruLuongTr]; PC khác [TienPCKhac]; % lương XLLĐ [PTLuongXLLD]; Trợ cấp theo HSL [TienTroCapHSL]; Tiền TL HTNN có QĐ trể [TienTLHTNNTre]; Tiền truy lãnh đào tạo [TienTLLuongDTTr]; PCCV kiêm nhiệm [PCCVKiemNhiem]; % PCGV [PCGV]; PCVK [PCVK]; IDNV [IDNVThang]; Tiền PC giáo viên không được hưởng [TienPCGVNone]; Số BHYT [SoBHYT]; Truy thu PCGV [TienTTPcgv_PCCV]; Tiền BHYT [TienBHYT]; Loại tính vào lương [LoaiHeSo]; Tiền truy lĩnh PCĐĐ nghỉ phép vào sớm [TienTLNP_PCDD]; Hệ số CĐLĐ [HSCDLD]; IDLHD [IDLHD]; Lương tối thiểu [MUCLUONGCOBAN]; Tiền lương tháng tổng [TienLuongTg]; PhanTramTTBHDT [PhanTramTTBHDT]; Tổng hệ số [TongHS]; TL CBQL của nâng lương [TienTLPccbqlLG]; Tiền lương theo nhà nước [TienLuongNN]; Tiền PCCV [TienPCCV]; Trợ cấp đơn vị không được hưởng [TienPCDVNone]; Tiền truy thu tiền đánh giá [TienTTTienDanhGia]; TL lương kỳ II của nâng lương [TienTLLuongTrLG]; TL lương kỳ II HDLV [TienTLLuongTrHDLV]; HS PCTNQL chức vụ [HSPCTNQLCV]; Bậc lương [BacLuong]; % lương theo đơn vị [PTLuongDV]; TL lương kỳ II HSCM [TienTLLuongTrPC]; Tiền truy thu không đóng BH [TongTienTTKhongDongBH]; % lương đợt 1 [PTLuongDot1]; TL lương PCTNNG [TienTLLuongPCTNNG]; ID chức vụ kiêm nhiệm [IDChucVuKiemNhiem]; HS đánh giá k1 [HSK1]; Trừ lương [TruLuongNN]; Truy thu BH [TienTTBHDT]; Tiền TLPCTNNG có đóng BH [TongTienTLPCTNNGCoDongBH]; Số tiền tạm ứng [SoTienTamUng]; Ngày thêm [NgayThem]; Mã user [MaUser]
 ### NNVThangPTDot1 – Danh sách nhân viên tháng (Chỉnh sửa PT đợt 1)
-- Lưới 1 (bảng NNVThang); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên học hàm [TenHocHam](chỉ đọc); Tên chức vụ [TenChucVu](chỉ đọc); Mã ngạch [MaNgach](chỉ đọc); Tên bộ môn [TenBMNV](chỉ đọc); Tên khoa [TenKhoaNV](chỉ đọc); Mã loại HĐ [MaLHD](chỉ đọc); Tên loại HĐ [TenLHD](chỉ đọc); % lương HĐ [PTLuongHD](chỉ đọc); Bậc lương [BacLuong](chỉ đọc); PCCV [PCCV](chỉ đọc); Hệ số lương [HSL](chỉ đọc); % PCGV [PCGV](chỉ đọc); PCVK [PCVK](chỉ đọc); % PCTNNG [HSTNNG](chỉ đọc); % PCCBQL [MucPCCBQL](chỉ đọc); Trợ cấp chức vụ [TienHSPCCV](chỉ đọc); Trợ cấp đơn vị [TienPCDV](chỉ đọc); Tiền lương CB [TienLuongCB](chỉ đọc); PC giáo viên [TienPCGV](chỉ đọc); PC thâm niên NG [TienPCTNNG](chỉ đọc); Tiền sau đánh giá [TienDanhGia](chỉ đọc); Tien PCQL k3 [TienPCQuanLy](chỉ đọc); Tiền PC công việc k2 [TienPCCongViec](chỉ đọc); % PCCBQL [TienPCCBQL](chỉ đọc); Mã xếp loại lao động [MaXLLD](chỉ đọc); % lương XLLĐ [PTLuongXLLD](chỉ đọc); Cán bộ văn phòng [IsPCTNNGCBQL](chỉ đọc); Hệ số CĐLĐ [HSCDLD](chỉ đọc); HS chuyên môn [MucPhuCap](chỉ đọc); PC khác [TienPCKhac](chỉ đọc); Trợ cấp theo HSL [TienTroCapHSL](chỉ đọc); PC đắt đỏ [TienPCDatDo](chỉ đọc); Tiền thưởng [TienThuong](chỉ đọc); TL lương của nâng lương [TienTLLuongLG](chỉ đọc); TL PCGV của nâng lương [TienTLPcgvLG](chỉ đọc); TL CBQL của nâng lương [TienTLPccbqlLG](chỉ đọc); TL lương PCCV [TienTLLuongPCCV](chỉ đọc); TL PCGV của PCCV [TienTLPcgvPCCV](chỉ đọc); TL PCCBQL PCCV [TienTLPCCbqlPCCV](chỉ đọc); TL lương HĐ [TienTLLuongHDLV](chỉ đọc); TL PCGV hợp đồng [TienTLPcgvHDLV](chỉ đọc); TL CBQL hợp đồng [TienTLPccbqlHDLV](chỉ đọc); TL lương PLGV [TienTLLuongPLGV](chỉ đọc); TL lương PCTNNG [TienTLLuongPCTNNG](chỉ đọc); Tiền truy lĩnh PCĐĐ nghỉ phép vào sớm [TienTLNP_PCDD](chỉ đọc); Tiền truy lĩnh lương cb trường nghỉ phép vào sớm [TienTLNP_LCBTr](chỉ đọc); Tiền truy lĩnh PC giáo viên nghỉ phép vào sớm [TienTLNP_PCGV](chỉ đọc); Tiền truy lĩnh trợ cấp đơn vị nghỉ phép vào sớm [TienTLNP_PCDV](chỉ đọc); Truy thu nghỉ phép [TienTTNP](chỉ đọc); Truy thu BH [TienTTBHDT](chỉ đọc); Tiền BHTN [TienBHTN](chỉ đọc); Tiền BHXH [TienBHXH](chỉ đọc); Tiền BHYT [TienBHYT](chỉ đọc); Tiền KPCD [TienKPCD](chỉ đọc); Tiền quỹ [TienQuy](chỉ đọc); Truy thu % theo ĐV [TienTTPTDV](chỉ đọc); Truy thu học tập [TienTTDT](chỉ đọc); Tiền lương theo nhà nước [TienLuongNN](chỉ đọc); Tiền truy lĩnh lương cb nghỉ phép vào sớm [TienTLNP_LCB](chỉ đọc); Truy thu BHYT nghỉ phép vào sớm [TienTTNP_BHYT](chỉ đọc); Truy thu BHTN nghỉ phép vào sớm [TienTTNP_BHTN](chỉ đọc); Truy thu BHXH nghỉ phép vào sớm [TienTTNP_BHXH](chỉ đọc); Truy thu KPCD nghỉ phép vào sớm [TienTTNP_KPCD](chỉ đọc); Tiền lương tháng tổng [TienLuongTg](chỉ đọc); Truy thu nghỉ phép [TienTTNPTr](chỉ đọc); Trừ lương [TruLuongNN](chỉ đọc); TL lương kỳ II HDLV [TienTLLuongTrHDLV](chỉ đọc); TL hệ số CĐLĐ [TienTLLuongTrHSCDLD](chỉ đọc); TL lương kỳ II của nâng lương [TienTLLuongTrLG](chỉ đọc); TL lương kỳ II HSCM [TienTLLuongTrPC](chỉ đọc); TL lương kỳ II PCCV [TienTLLuongTrPCCV](chỉ đọc); Số tài khoản [SoTK](chỉ đọc); Số tài khoản 2 [SoTK2](chỉ đọc); Số CMND [SoCMNDNV](chỉ đọc); Tiền lương theo trường [TienLuongTr](chỉ đọc); Tiền lương CB [TienLuongCBTr](chỉ đọc); % lương đợt 1 [PTLuongDot1]; Tiền lương đợt 1 [MucHuongLuongDot1](chỉ đọc)
+- Lưới 1 «Danh sách viên chức trong tháng» (bảng NNVThang); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên học hàm [TenHocHam](chỉ đọc); Tên chức vụ [TenChucVu](chỉ đọc); Mã ngạch [MaNgach](chỉ đọc); Tên bộ môn [TenBMNV](chỉ đọc); Tên khoa [TenKhoaNV](chỉ đọc); Mã loại HĐ [MaLHD](chỉ đọc); Tên loại HĐ [TenLHD](chỉ đọc); % lương HĐ [PTLuongHD](chỉ đọc); Bậc lương [BacLuong](chỉ đọc); PCCV [PCCV](chỉ đọc); Hệ số lương [HSL](chỉ đọc); % PCGV [PCGV](chỉ đọc); PCVK [PCVK](chỉ đọc); % PCTNNG [HSTNNG](chỉ đọc); % PCCBQL [MucPCCBQL](chỉ đọc); Trợ cấp chức vụ [TienHSPCCV](chỉ đọc); Trợ cấp đơn vị [TienPCDV](chỉ đọc); Tiền lương CB [TienLuongCB](chỉ đọc); Tiền PCGV [TienPCGV](chỉ đọc); Tiền PCTNNG [TienPCTNNG](chỉ đọc); Tiền đánh giá [TienDanhGia](chỉ đọc); Tiền PCQL [TienPCQuanLy](chỉ đọc); Tiền PC công việc [TienPCCongViec](chỉ đọc); % PCCBQL [TienPCCBQL](chỉ đọc); Mã xếp loại lao động [MaXLLD](chỉ đọc); % lương XLLĐ [PTLuongXLLD](chỉ đọc); Cán bộ văn phòng [IsPCTNNGCBQL](chỉ đọc); Hệ số CĐLĐ [HSCDLD](chỉ đọc); HS chuyên môn [MucPhuCap](chỉ đọc); PC khác [TienPCKhac](chỉ đọc); Trợ cấp theo HSL [TienTroCapHSL](chỉ đọc); PC đắt đỏ [TienPCDatDo](chỉ đọc); Tiền thưởng [TienThuong](chỉ đọc); TL lương của nâng lương [TienTLLuongLG](chỉ đọc); TL PCGV của nâng lương [TienTLPcgvLG](chỉ đọc); TL CBQL của nâng lương [TienTLPccbqlLG](chỉ đọc); TL lương PCCV [TienTLLuongPCCV](chỉ đọc); TL PCGV của PCCV [TienTLPcgvPCCV](chỉ đọc); TL PCCBQL PCCV [TienTLPCCbqlPCCV](chỉ đọc); TL lương HĐ [TienTLLuongHDLV](chỉ đọc); TL PCGV hợp đồng [TienTLPcgvHDLV](chỉ đọc); TL CBQL hợp đồng [TienTLPccbqlHDLV](chỉ đọc); TL lương PLGV [TienTLLuongPLGV](chỉ đọc); TL lương PCTNNG [TienTLLuongPCTNNG](chỉ đọc); Tiền truy lĩnh PCĐĐ nghỉ phép vào sớm [TienTLNP_PCDD](chỉ đọc); Tiền truy lĩnh lương cb trường nghỉ phép vào sớm [TienTLNP_LCBTr](chỉ đọc); Tiền truy lĩnh PC giáo viên nghỉ phép vào sớm [TienTLNP_PCGV](chỉ đọc); Tiền truy lĩnh trợ cấp đơn vị nghỉ phép vào sớm [TienTLNP_PCDV](chỉ đọc); Truy thu nghỉ phép [TienTTNP](chỉ đọc); Truy thu BH [TienTTBHDT](chỉ đọc); Tiền BHTN [TienBHTN](chỉ đọc); Tiền BHXH [TienBHXH](chỉ đọc); Tiền BHYT [TienBHYT](chỉ đọc); Tiền KPCD [TienKPCD](chỉ đọc); Tiền quỹ [TienQuy](chỉ đọc); Truy thu % theo ĐV [TienTTPTDV](chỉ đọc); Truy thu học tập [TienTTDT](chỉ đọc); Tiền lương theo nhà nước [TienLuongNN](chỉ đọc); Tiền truy lĩnh lương cb nghỉ phép vào sớm [TienTLNP_LCB](chỉ đọc); Truy thu BHYT nghỉ phép vào sớm [TienTTNP_BHYT](chỉ đọc); Truy thu BHTN nghỉ phép vào sớm [TienTTNP_BHTN](chỉ đọc); Truy thu BHXH nghỉ phép vào sớm [TienTTNP_BHXH](chỉ đọc); Truy thu KPCD nghỉ phép vào sớm [TienTTNP_KPCD](chỉ đọc); Tiền lương tháng tổng [TienLuongTg](chỉ đọc); Truy thu nghỉ phép [TienTTNPTr](chỉ đọc); Trừ lương [TruLuongNN](chỉ đọc); TL lương kỳ II HDLV [TienTLLuongTrHDLV](chỉ đọc); TL hệ số CĐLĐ [TienTLLuongTrHSCDLD](chỉ đọc); TL lương kỳ II của nâng lương [TienTLLuongTrLG](chỉ đọc); TL lương kỳ II HSCM [TienTLLuongTrPC](chỉ đọc); TL lương kỳ II PCCV [TienTLLuongTrPCCV](chỉ đọc); Số tài khoản [SoTK](chỉ đọc); Số tài khoản 2 [SoTK2](chỉ đọc); Số CMND [SoCMNDNV](chỉ đọc); Tiền lương theo trường [TienLuongTr](chỉ đọc); Tiền lương CB [TienLuongCBTr](chỉ đọc); % lương đợt 1 [PTLuongDot1]; Mức hưởng lương đợt 1 [MucHuongLuongDot1](chỉ đọc)
   - Cột ẩn: Trừ lương [TruLuongTr](chỉ đọc)
   - Ô trên form sửa: #MaNV, #TenDayDuNV, #BacLuong, #HSL, #PCVK
 ### NPhuCapLaiXe – Danh sách viên chức phụ cấp lái xe
-- Lưới 1 (bảng NPhuCapLaiXe); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức hưởng phụ cấp lái xe» (bảng NPhuCapLaiXe); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]{số}; Từ năm [TuNam]; Đến tháng [DenThang]{số}; Đến năm [DenNam]; Hệ số phụ cấp [HSPhuCapLaiXe]; Ghi chú [GCPhuCapLaiXe]
   - Cột ẩn: Mã viên chức [IDNV]; IDPhuCapLaiXe [IDPhuCapLaiXe]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #HSPhuCapLaiXe, #GCPhuCapLaiXe, #IDNV
 ### NPhuCapTDC – Danh sách viên chức hưởng phụ cấp trình độ cao
-- Lưới 1 (bảng NPhuCapTDCao); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức hương phụ cấp» (bảng NPhuCapTDCao); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]; Từ năm [TuNam]; Đến tháng [DenThang]; Đến năm [DenNam]; Số ngày hưởng phụ cấp [SoNgayPhuCapTDCao]; % phụ cấp [PTPhuCapTDCao]; Ghi chú [GCPhuCapTDCao]
   - Cột ẩn: Mã viên chức [IDNV]; IDPhuCapTDCao [IDPhuCapTDCao]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #SoNgayPhuCapTDCao, #PTPhuCapTDCao, #GCPhuCapTDCao, #IDNV
 ### NQPCTNLamViec – Danh sách quyết định phụ cấp thâm niên làm việc
-- Lưới 1 (bảng NQTPCTNLamViec); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Số quyết định thâm niên làm việc [SoQDTNLamViec]; Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên đơn vị [TenDV]; Ngày quyết định thâm niên làm việc [NgayQDTNLamViec]{ngày}; Mức phụ cấp thâm niên làm việc cũ [MucPCTNLamViecCu]; Mức phụ cấp thâm niên làm việc mới [MucPCTNLamViecMoi]; Mốc nâng quyết định thâm niên làm việc [MocNangQDTNLamViec]{ngày}; Ngày hiệu lực quyết định thâm niên làm việc [NgayHLQDTNLamViec]{ngày}
+- Lưới 1 «Danh sách quyết định nâng phụ cấp thâm niên làm việc» (bảng NQTPCTNLamViec); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Số quyết định [SoQDTNLamViec]; Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên đơn vị [TenDV]; Ngày quyết định [NgayQDTNLamViec]{ngày}; Mức phụ cấp cũ [MucPCTNLamViecCu]; Mức phụ cấp  mới [MucPCTNLamViecMoi]; Mốc nâng quyết định [MocNangQDTNLamViec]{ngày}; Ngày hiệu lực [NgayHLQDTNLamViec]{ngày}
   - Cột ẩn: Mã viên chức [IDNV]; ID phụ cấp thâm niên làm việc [IDQTPCTNLamViec]
   - Ô trên form sửa: #SoQDTNLamViec, #TenDayDuNV, #NgayQDTNLamViec, #MucPCTNLamViecCu, #MucPCTNLamViecMoi, #MocNangQDTNLamViec, #NgayHLQDTNLamViec, #IDNV
 ### NQTLG_DHDK – Danh sách thay đổi nâng bậc ngạch lương
 - Lưới 1 (bảng NQTLG); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### NQTPCKHAC – Quá trình phụ cấp khác
-- Lưới 1 (bảng NQTPCKhac); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Quyết định phụ cấp khác» (bảng NQTPCKhac); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Mã loại phụ cấp [MaPCKhac]; Tên loại phụ cấp [TenPCKhac]; Từ tháng [TuThang]{số}; Từ năm [TuNam]{số}; Ngày hiệu lực [NgayHLPC]{ngày}; Số quyết định [SoQDNS]; Ngày quyết định [NgayQDNS]{ngày}
   - Cột ẩn: Mã viên chức [IDNV]; Mã phụ cấp [IDPCKhac]
   - Ô trên form sửa: #TenDayDuNV, #TenPCKhac, #TuThang, #TuNam, #SoQDNS, #NgayQDNS, #IDNV, #IDPCKhac
 ### NTamKgTinhLuong – Danh sách viên chức tạm không tính lương tháng
-- Lưới 1 (bảng NTamKgLuongThang); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức tạm không tính lương trong tháng» (bảng NTamKgLuongThang); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]; Tên đơn vị [TenDV]
   - Cột ẩn: Mã viên chức [IDNV]; ID tạm không lương [IDTamKgLuongThang]; Lý do không tính lương [LyDoEnum]{chọn}; Lý do [LyDoKgLuong]
   - Ô trên form sửa: #Nam, #TenDayDuNV, #Thang, #TenDV, #IDNV
 ### NTAMUNGLUONG – Tạm ứng lương
-- Lưới 1 (bảng NTamUngLuong); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức tạm ứng lương trong tháng» (bảng NTamUngLuong); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Tháng [Thang]; Năm [Nam]{số}; Số tiền tạm ứng [SoTienTamUng]
   - Cột ẩn: Mã viên chức [IDNV]{nút …}; Id tạm ứng [IDTamUngLuong]
   - Ô trên form sửa: #TenDayDuNV, #TenDV, #Thang, #Nam, #SoTienTamUng, #IDNV
 ### NThueNhaCV – Danh sách viên chức thuê nhà công vụ tháng
-- Lưới 1 (bảng NThueNhaCV); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức thuê nhà công vụ» (bảng NThueNhaCV); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]{số}; Từ năm [TuNam]; Đến tháng [DenThang]{số}; Đến năm [DenNam]; Số tiền thuê [SoTienThueNhaCV]; Ghi chú [GCThueNhaCV]; IDThueNhaCV [IDThueNhaCV]
   - Cột ẩn: Mã viên chức [IDNV]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #SoTienThueNhaCV, #GCThueNhaCV, #IDNV
 ### NTHUETNCN – Biến động thuế TNCN
-- Lưới 1 (bảng NThueTNCN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Tổng thu nhập [MucThuNhap]{số}; Năm [Nam]; Mức thuế [MucThue]{số}; Tháng [Thang]; Số tiền đóng trước [MucDongThue]{số}
+- Lưới 1 «Biến động thuế thu nhập cá nhân» (bảng NThueTNCN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Tổng thu nhập [MucThuNhap]{số}; Năm [Nam]; Mức thuế (%) [MucThue]{số}; Tháng [Thang]; Số tiền đóng trước [MucDongThue]{số}
   - Ô trên form sửa: #MucThuNhap, #Nam, #MucThue, #Thang, #MucDongThue
 ### NTHUNHAPNGOAILUONG – Thu nhập ngoài lương
-- Lưới 1 (bảng NThuNgapNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Số CMND [SoCMNDNV]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Stt [TTTN]; Số tiền [SoTienTN]; Mã loại tiền ngoài giờ [MaLoaiTienNgoaiGio]; Tính vào bảng lương [LoaiBangLuong]{chọn}; Tính thuế TNCN [IsThueTNCN]; Lý do [LyDoTN]
+- Lưới 1 «Danh sách thu nhập ngoài lương» (bảng NThuNgapNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Số CMND [SoCMNDNV]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Stt [TTTN]; Số tiền [SoTienTN]; Loại tiền ngoài giờ [MaLoaiTienNgoaiGio]; Tính vào bảng lương [LoaiBangLuong]{chọn}; Tính thuế TNCN [IsThueTNCN]; Lý do [LyDoTN]
   - Cột ẩn: ID loại tiền ngoài giờ [IDLoaiTienNgoaiGio]; Mã viên chức [IDNV]{nút …}; ID thu nhập [IDThuNgapNgoaiLg]; Năm [Nam]{số}; Tháng [Thang]
   - Ô trên form sửa: #TenDayDuNV, #TTTN, #SoTienTN, #LoaiBangLuong, #IsThueTNCN, #LyDoTN, #IDLoaiTienNgoaiGio, #IDNV, #Nam, #Thang
 ### NTienAnThang – Danh sách viên chức ăn ca trong tháng
-- Lưới 1 (bảng NTienAnThang); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Viên chức có số ngày KHÔNG ăn ca trong tháng» (bảng NTienAnThang); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]; Năm [Nam]; Số ngày ăn ca [SoNgayAnCa]; Ghi chú [GCTienAnThang]
   - Cột ẩn: Mã viên chức [IDNV]; IDTienAnThang [IDTienAnThang]
   - Ô trên form sửa: #TenDayDuNV, #Thang, #Nam, #SoNgayAnCa, #GCTienAnThang, #IDNV
 ### NTienDanhGia – Danh sách tiền đánh giá
-- Lưới 1 (bảng NTienDanhGia); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh sách tiền sau đánh giá» (bảng NTienDanhGia); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]{số}; Từ năm [TuNam]; Đến tháng [DenThang]{số}; Đến năm [DenNam]; Loại tiền lương [LoaiTienLuong]{chọn}; Tiền sau đánh giá [TienDanhGia]{số}; Tiền truy lĩnh tiền đánh giá [TienTLTienDanhGia]; Tiền truy thu tiền đánh giá [TienTTTienDanhGia]; Ghi chú [GCTienDanhGia]
   - Cột ẩn: Mã viên chức [IDNV]; ID tiền đánh giá [IDTienDanhGia]
   - Ô trên form sửa: #TenDayDuNV, #TuThang, #TuNam, #DenThang, #DenNam, #LoaiTienLuong, #TienDanhGia, #TienTLTienDanhGia, #TienTTTienDanhGia, #GCTienDanhGia, #IDNV
 ### NTLHSCDLD – Hiệu chỉnh truy lãnh hệ số cường độ lao động
-- Lưới 1 (bảng NTLHSCDLD); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Hiệu chỉnh thời gian truy lãnh HS cường độ lao động» (bảng NTLHSCDLD); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; Số ngày được truy lãnh [SoNgayTL]; HS CĐLĐ cũ [HSCDLDCu]; HS CĐLĐ mới [HSCDLDMoi]; Hệ số CĐLĐ chênh lệch [HSCDLDChLch]
   - Cột ẩn: Hệ số hiệu chỉnh [HSCDLDChLchHC]; Mã viên chức [IDNV]; ID quá trình [IDQTHSCDLD]; ID [IDTLHSCDLD]; Năm truy lãnh hiệu chỉnh [NamTLHC]; Tháng truy lãnh [ThangTLHC]; TL lương kỳ II [TienTLLuongTr]
   - Ô trên form sửa: #MaNV, #NAMTL, #TenDayDuNV, #ThangTL, #TenDV, #SoThangTL, #SoNgayTL
 ### NTLHTNN – Truy lãnh học tập nước ngoài về
-- Lưới 1 (bảng NTLHHTN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức được truy lãnh học tập nước ngoài về sớm» (bảng NTLHHTN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV](chỉ đọc); Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tháng truy lãnh [ThangTL]; Tháng vào lại [ThangVe]; Năm vào lại [NAMVE]{số}; Số tháng truy lãnh [SoThangTL]
   - Cột ẩn: Mã viên chức [IDNV]{nút …}; IDTLHTNN [IDTLHTNN]; Tên đơn vị [TenDV](chỉ đọc)
   - Ô trên form sửa: #NAMTL, #TenDayDuNV, #ThangTL, #ThangVe, #NAMVE, #SoThangTL, #IDNV, #TenDV
 ### NTLHTNNCoQDTre – Danh sách viên chức học tập nước ngoài có QĐ trể
-- Lưới 1 (bảng NTLHTNNCoQDTre); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức được truy lãnh do đi học tập nước ngoài có QĐ trể» (bảng NTLHTNNCoQDTre); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV](chỉ đọc); Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV](chỉ đọc); Số tháng truy lãnh [SoThangTL]; Lý do không tính lương [LyDoEnum]{chọn}
   - Cột ẩn: Mã viên chức [IDNV]; ID truy lãnh nước ngoài có QĐ trể [IDTLHTNNCoQDTre]
   - Ô trên form sửa: #NAMTL, #TenDayDuNV, #ThangTL, #TenDV, #SoThangTL, #LyDoEnum, #IDNV
 ### NTLLG – Hiệu chỉnh truy lãnh lương
-- Lưới 1 (bảng NTLLG); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Hiệu chỉnh truy lãnh nâng ngạch bậc lương» (bảng NTLLG); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; Số ngày được truy lãnh [SoNgayTL]; HSL cũ [HSLCu]; HSL mới [HSLMoi]; HSL chênh lệch [HSLChLch]; PCVK cũ [HSTNVKCu]; PCVK mới [HSTNVKMoi]; % PCVK chênh lệch [PCVKChLch]
   - Cột ẩn: Mã viên chức [IDNV]; IDQTLG [IDQTLG]
   - Ô trên form sửa: #MaNV, #NAMTL, #TenDayDuNV, #ThangTL, #TenDV, #SoThangTL, #SoNgayTL
 ### NTLNVMOI – Truy lãnh nhân viên mới
-- Lưới 1 (bảng NTLNVMoi); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Viên chức mới cần truy lãnh» (bảng NTLNVMoi); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Năm [Nam]{số}; Mã viên chức [MaNV]; Tháng [Thang]{số}; Tên đầy đủ [TenDayDuNV]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]{số}
   - Cột ẩn: Mã viên chức [IDNV]
   - Ô trên form sửa: #Nam, #Thang, #TenDayDuNV, #SoThangTL, #IDNV
 ### NTLPC – Hiệu chỉnh truy lãnh phụ cấp chuyên môn
-- Lưới 1 (bảng NTLPC); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; Số ngày được truy lãnh [SoNgayTL]; Mức PC mới [MucPCMoi]; Mức PC cũ [MucPCCu]; Mức phụ cấp chuyên môn chênh lệch [MucPCChLch]
+- Lưới 1 «Hiệu chỉnh truy lãnh phụ cấp chuyên môn» (bảng NTLPC); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; Số ngày được truy lãnh [SoNgayTL]; Mức PC mới [MucPCMoi]; Mức PC cũ [MucPCCu]; Mức phụ cấp chênh lệch [MucPCChLch]
   - Cột ẩn: Mã viên chức [IDNV]; Mã QTPC [IDQTPC]; ID [IDTLPC]; Mức phụ cấp hiệu chỉnh [MucPCChLchHC]; Năm truy lãnh hiệu chỉnh [NamTLHC]; Tháng truy lãnh [ThangTLHC]; TL lương kỳ II [TienTLLuongTr]
   - Ô trên form sửa: #MaNV, #NAMTL, #TenDayDuNV, #ThangTL, #TenDV, #SoThangTL, #SoNgayTL, #MucPCChLch
 ### NTLPCCBQL – Hiệu chỉnh truy lãnh PC cán bộ quản lý
-- Lưới 1 (bảng NPCCBQL); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; Chênh lệch [MucPCCBQLChLch]
+- Lưới 1 «Danh sách viên chức được truy lãnh khi hiệu chỉnh PC cán bộ quản lý» (bảng NPCCBQL); tắt: Thêm, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Tên đơn vị [TenDV]; Số tháng truy lãnh [SoThangTL]; % Chênh lệch [MucPCCBQLChLch]
   - Ô trên form sửa: #MaNV, #NAMTL, #TenDayDuNV, #ThangTL, #TenDV, #SoThangTL
 ### NTLPhepVaoSom – Truy lãnh viên chức nghỉ phép vào sớm
-- Lưới 1 (bảng NTLPhepVaoSom); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức được truy lãnh khi nghỉ phép vào sớm» (bảng NTLPhepVaoSom); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm truy lãnh [NAMTL]{số}; Tên đầy đủ [TenDayDuNV]; Tháng truy lãnh [ThangTL]; Loại thời gian được truy lãnh [ThoiGianTL]{chọn}; Có truy thu các loại bảo hiểm [IsDongBH]
   - Cột ẩn: Mã viên chức [IDNV]; ID nghỉ phép [IDPhepVaoSom]; Số ngày được truy lãnh [SoNgayTL]{số}
   - Ô trên form sửa: #NAMTL, #TenDayDuNV, #ThangTL, #ThoiGianTL, #IsDongBH, #IDNV, #SoNgayTL
 ### NTruyLanhNgoaiLuong – Truy lãnh ngoài lương
-- Lưới 1 (bảng NTruyLanhNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Truy lãnh ngoài lương trong tháng» (bảng NTruyLanhNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Năm [Nam]{số}; Số CMND [SoCMNDNV]; Mã viên chức [MaNV]; Tháng [Thang]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tính vào bảng lương [LoaiBangLuong]{chọn}; Số tiền [SoTienTN]; Lý do [LyDoTN]
   - Cột ẩn: Mã viên chức [IDNV]{nút …}; ID thu nhập [IDThuNgapNgoaiLg]
   - Ô trên form sửa: #Nam, #Thang, #TenDayDuNV, #LoaiBangLuong, #SoTienTN, #LyDoTN, #IDNV
 ### NTruyThuNgoaiLuong – Truy thu ngoài lương
-- Lưới 1 (bảng NTruyThuNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Truy thu ngoài lương trong tháng» (bảng NTruyThuNgoaiLg); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Năm [Nam]{số}; Mã viên chức [MaNV]; Tháng [Thang]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tính vào bảng lương [LoaiBangLuong]{chọn}; Số tiền [SoTienTN]; Lý do [LyDoTN]
   - Cột ẩn: Mã viên chức [IDNV]{nút …}; ID thu nhập [IDThuNgapNgoaiLg]; Số CMND [SoCMNDNV]
   - Ô trên form sửa: #Nam, #Thang, #TenDayDuNV, #LoaiBangLuong, #SoTienTN, #LyDoTN, #IDNV
 ### NXLLDNV – Xếp loại lao động nhân viên
-- Lưới 1 (bảng NXLLDNV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Từ năm [TuNam]{số}; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]{số}; Mã xếp loại lao động [MaXLLD]; Tên chức vụ [TenChucVu]; Tên đơn vị [TenDV]
+- Lưới 1 «Danh sách xếp loại lao động» (bảng NXLLDNV); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Năm [TuNam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [TuThang]{số}; Mã xếp loại lao động [MaXLLD]; Tên chức vụ [TenChucVu]; Tên đơn vị [TenDV]
   - Cột ẩn: Mã viên chức [IDNV]; Mã xếp loại lao động [IDXLLD]; Tên xếp loại lao động [TenXLLD]
   - Ô trên form sửa: #TuNam, #TenDayDuNV, #TuThang, #IDNV, #IDXLLD
 ### TruyThuBHHTNN – Truy thu các loại bảo hiểm htnn
-- Lưới 1 (bảng NNgoaiLeTTHTNN); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách truy thu thêm các loại bảo hiểm khi viên chức đi học nước ngoài» (bảng NNgoaiLeTTHTNN); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Năm [Nam]{số}; Tên đầy đủ [TenDayDuNV]; Tháng [Thang]{số}; Tên đơn vị [TenDV]; Số tiền BHTN [SoTienNgoaiLeTTBHTN]; Số tiền BHYT [SoTienNgoaiLeTTBHYT]; Số tiền BHXH [SoTienNgoaiLeTTBHXH]; Ghi chú [GCNgoaiLeTTHTNN]
   - Cột ẩn: Mã viên chức [IDNV]; Id ngoại lệ [IDNgoaiLeTTHTNN]
   - Ô trên form sửa: #Nam, #TenDayDuNV, #Thang, #SoTienNgoaiLeTTBHTN, #SoTienNgoaiLeTTBHYT, #SoTienNgoaiLeTTBHXH, #GCNgoaiLeTTHTNN, #IDNV
 ### VIEW_CHONLHD – Chọn loại hợp đồng
-- Lưới 1 (bảng NDMLHD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn loại hợp đồng» (bảng NDMLHD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã loại HĐ [MaLHD]; Tên loại HĐ [TenLHD]
   - Cột ẩn: Có hạn kết thúc hợp đồng [CoHanHD]; Có tập sự [CoTS]; Có thực tập [CoTT]
 ### VIEWCHONDV – Chọn đơn vị
-- Lưới 1 (bảng NDMDV); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Tên khoa [TenKhoa]
+- Lưới 1 «Chọn đơn vị viên chức» (bảng NDMDV); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã đơn vị [MaDV]; Tên đơn vị [TenDV]; Đơn vị quản lý [TenKhoa]
 ### VIEWCHONHDREP – Chọn loại hợp đồng dung bên report
-- Lưới 1 (bảng NDMLHD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn loại hợp đồng» (bảng NDMLHD); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã loại HĐ [MaLHD]; Tên loại HĐ [TenLHD]
   - Cột ẩn: Có hạn kết thúc hợp đồng [CoHanHD]; Có tập sự [CoTS]; Có thực tập [CoTT]
 ### VIEWCHONNVDANGLAMVIEC – Chọn nhân viên còn đang làm việc
-- Lưới 1 (bảng NDMNV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Họ lót [HoLotNV]; Tên nhân viên [TenNV]; Ngày sinh [NgSinhNVCNV]; Phái [PhaiNV]{chọn}; Tên đơn vị [TenDV]; Tên chức vụ [TenChucVu]; Tên loại HĐ [TenLHD]; Số tháng truy lãnh [SoThangTL]; Số năm bộ đội [SoNamBD]
+- Lưới 1 «Chọn danh sách viên chức» (bảng NDMNV); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Họ lót [HoLotNV]; Tên nhân viên [TenNV]; Ngày sinh [NgSinhNVCNV]; Phái [PhaiNV]{chọn}; Đơn vị [TenDV]; Chức vụ [TenChucVu]; Loại hợp đồng [TenLHD]; Số tháng làm việc/năm [SoThangTL]; Số năm thâm niên [SoNamBD]
 ### ViewDSNVGiamLuongKK – Danh sách nhân viên giảm lương khuyến khích
-- Lưới 1 (bảng NNVGiamLuongKK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Tên lý do giảm lương khuyến khích [TenLDGiamLKK]; Tên lý do giảm lương khuyến khích Eg [TenLDGiamLKKEg]; % giảm [PTGiamLKK]
+- Lưới 1 «Danh sách viên chức bị giảm lương khuyến khích» (bảng NNVGiamLuongKK); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã viên chức [MaNV]; Tên đầy đủ [TenDayDuNV]; Lý do giảm lương [TenLDGiamLKK]; Tên lý do giảm lương khuyến khích Eg [TenLDGiamLKKEg]; % giảm [PTGiamLKK]
   - Cột ẩn: ID kỳ hưởng lương khuyến khích [IDKyHuongLuongKK]; ID lý do giảm lương khuyến khích [IDLDGiamLKK]; Mã viên chức [IDNV]
   - Ô trên form sửa: #TenDayDuNV, #PTGiamLKK, #IDLDGiamLKK, #IDNV
 ### ViewDVLuongNuocNgoai – Danh sách đơn vị để in lương viên chức nước ngoài
-- Lưới 1 (bảng NDMDV); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách đơn vị» (bảng NDMDV); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Mã đơn vị [MaDV]; Tên đơn vị [TenDV]
   - Cột ẩn: Đơn vị [IDDV]
 ### ViewHSDVKK – Danh sách hệ số đơn vị lương khuyến khích
-- Lưới 1 (bảng NHSDVLuongKK); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã đơn vị [MaDV](chỉ đọc); Tên đơn vị [TenDV](chỉ đọc); Số lượng nhân viên [SoLuongNV](chỉ đọc); Hệ số lương khuyến khích DV [HSLuongKKDV]{số}; Hệ số hoàn thành nhiệm vụ DV [HSHoanThanhNhiemVuDV]{số}
+- Lưới 1 «Danh sách đơn vị có viên chức được tính lương» (bảng NHSDVLuongKK); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã đơn vị [MaDV](chỉ đọc); Tên đơn vị [TenDV](chỉ đọc); Số lượng nhân viên [SoLuongNV](chỉ đọc); Hệ số lương khuyến khích đơn vị [HSLuongKKDV]{số}; Hệ số hoàn thành nhiệm vụ [HSHoanThanhNhiemVuDV]{số}
   - Cột ẩn: Đơn vị [IDDV]
 ### ViewHSVCKK – Danh sách hệ số viên chức lương khuyến khích
-- Lưới 1 (bảng NNVLuongKK); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Phụ cấp công việc [IDPhuCap](chỉ đọc); Đơn vị [IDDV](chỉ đọc); HS chuyên môn [MucPhuCap](chỉ đọc); Tiền phụ cấp [TienPhuCap](chỉ đọc); Ngày về trường [NgayVeTruong]{ngày}(chỉ đọc); ID lý do không hưởng lương [IDLDKgLKK]; Hệ số hoàn thành nhiệm vụ [HSHoanThanhNhiemVuCN]{số}; Hệ số kỷ luật [HSKyLuatCN]{số}; Tỷ lệ hưởng lương khuyến khích [TyLeHuongLKK]{số}; Số tháng làm việc trong kỳ [SoThangLVLKK]{số}(chỉ đọc); Khống đóng KP Đảng [KkPDang]; Hệ số lương khuyến khích DV [HSLuongKKDV](chỉ đọc); Hệ số hoàn thành nhiệm vụ DV [HSHoanThanhNhiemVuDV](chỉ đọc); Số tháng lương kk sau hệ số [SoThangLKKSauHS](chỉ đọc); Tiền tổng lương khuyến khích [TienTongLKK](chỉ đọc); % thuế TNCN lương khuyến khích [PTThueTNCNLKK](chỉ đọc); Tiền thuế TNCN LKK [TienThueTNCNLKK]; Tiền kinh phí Đảng [TienKPDang](chỉ đọc); Tiền thực lãnh lương khuyến khích [TienThucLanhLKK](chỉ đọc); Ghi chú [GCNVLuongKK](chỉ đọc)
+- Lưới 1 «Danh sách viên chức đã chốt được tính lương trong kỳ» (bảng NNVLuongKK); tắt: Thêm, Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã viên chức [MaNV](chỉ đọc); Tên đầy đủ [TenDayDuNV](chỉ đọc); Nhóm lương [IDPhuCap](chỉ đọc); Đơn vị [IDDV](chỉ đọc); Lương chức danh [MucPhuCap](chỉ đọc); Tiền phụ cấp [TienPhuCap](chỉ đọc); Ngày về trường [NgayVeTruong]{ngày}(chỉ đọc); Lý do không hưởng lương (nếu có) [IDLDKgLKK]; Hệ số hoàn thành nhiệm vụ [HSHoanThanhNhiemVuCN]{số}; Hệ số kỷ luật [HSKyLuatCN]{số}; Tỷ lệ hưởng lương đi học/thử việc/nghỉ sinh con [TyLeHuongLKK]{số}; Số tháng làm việc trong kỳ [SoThangLVLKK]{số}(chỉ đọc); Không đóng KP Đảng [KkPDang]; Hệ số lương khuyến khích DV [HSLuongKKDV](chỉ đọc); Hệ số hoàn thành nhiệm vụ DV [HSHoanThanhNhiemVuDV](chỉ đọc); Số tháng lương kk sau hệ số [SoThangLKKSauHS](chỉ đọc); Tiền tổng lương khuyến khích [TienTongLKK](chỉ đọc); % thuế TNCN lương khuyến khích [PTThueTNCNLKK](chỉ đọc); Tiền thuế TNCN LKK [TienThueTNCNLKK]; Tiền kinh phí Đảng [TienKPDang](chỉ đọc); Tiền thực lãnh lương khuyến khích [TienThucLanhLKK](chỉ đọc); Ghi chú [GCNVLuongKK](chỉ đọc)
 ### ViewKyHuongLuongKK – Định nghĩa kỳ hưởng lương khuyến khích
-- Lưới 1 (bảng NKyHuongLuongKK); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách kỳ hưởng lương khuyến khích» (bảng NKyHuongLuongKK); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Loại kỳ hưởng lương khuyến khích [LoaiKyHuongLuongKK]{chọn}; Tên kỳ hưởng lương khuyến khích [TenKyHuongLuongKK]; Quý [Quy]{số}; Năm [Nam]; Từ tháng [TuThang]{số}; Từ năm [TuNam]; Đến tháng [DenThang]{số}; Đến năm [DenNam]; Số tháng [SoThangKyHuongLuongKK]{số}; Khóa sổ kỳ lương [IsKhoaKyHuongLuongKK]
   - Ô trên form sửa: #LoaiKyHuongLuongKK, #TenKyHuongLuongKK, #Quy, #Nam, #TuThang, #TuNam, #DenThang, #DenNam, #SoThangKyHuongLuongKK, #IsKhoaKyHuongLuongKK
 ### ViewNLoaiTienNgLg – Loại tiền ngoài giờ
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục loại tiền ngoài giờ»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã loại tiền ngoài giờ [MaLoaiTienNgoaiGio]; Tên loại tiền ngoài giờ [TenLoaiTienNgoaiGio]; Tên tiếng anh [TenLoaiTienNgoaiGioEg]; Viết tắt [VtLoaiTienNgoaiGio]; Thứ tự [TTLoaiTienNgoaiGio]
   - Cột ẩn: ID loại tiền ngoài giờ [IDLoaiTienNgoaiGio]
 ### ViewTamThuThueTNCN – Tạm tính thuế thu nhập cá nhân
-- Lưới 1 (bảng NTamThuThueTNCN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách viên chức tạm thu thuế TNCN» (bảng NTamThuThueTNCN); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã viên chức [MaNV]; Từ năm [TuNam]; Tên đầy đủ [TenDayDuNV]; Từ tháng [TuThang]; Mức thuế [MucThue]; Tổng thu nhập [MucThuNhap]; Tiền thuế [SoTienThue]
   - Cột ẩn: Giảm trừ phụ bản thân [GiamTruPhuBThan]; Mã viên chức [IDNV]; Tạm thu thuế TNCN [IDTamThuThueTNCN]; PC khác [PhuCapKhac]; Số phụ thuộc [SoNguoiPT]; Số tiền tạm thu thuế TNCN [SoTienTamThuThueTNCN]; TN ngoài lương chịu thuế [TNNgoaiChiuThue]; Thu nhập ngoài lương không thuế [TNNgoaiKhongThue]; Thu nhập chịu thuế [ThuNhapChiuThue]; Thu nhập tính thuế [ThuNhapTinhThue]
   - Ô trên form sửa: #TuNam, #TuThang, #MucThue, #MucThuNhap, #SoTienThue, #GiamTruPhuBThan, #IDNV, #PhuCapKhac, #SoNguoiPT, #SoTienTamThuThueTNCN, #TNNgoaiChiuThue, #TNNgoaiKhongThue, #ThuNhapChiuThue, #ThuNhapTinhThue

@@ -104,17 +104,17 @@
 ### AQ01 – Fix lỗi hệ thống
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### AQCNBODEM – Chức năng và bộ đếm
-- Lưới 1 (bảng AQCNBODEM); tắt: Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chức năng và bộ đếm» (bảng AQCNBODEM); tắt: Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã chức năng [MaChucNang]; Tên chức năng [TenChucNang]; Loại bộ đếm [LoaiBoDem]{chọn}
   - Cột ẩn: ID chức năng [IDChucNang]
   - Ô trên form sửa: #TenChucNang, #LoaiBoDem, #IDChucNang
 ### AQDANGKYTRUONG – Danh sách đăng ký server của trường
-- Lưới 1 (bảng AQDangkyTruong); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Cấp key cho trường» (bảng AQDangkyTruong); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã trường tổ chức thi [MaTruong]; Phân loại server [PhanLoaiServer]{chọn}; Tên máy [Tenmay]; Key được cấp [RegKey]
   - Cột ẩn: Mã trường [IDTruong]
   - Ô trên form sửa: #PhanLoaiServer, #Tenmay, #RegKey, #IDTruong
 ### AQDeleteKem – Định nghĩa file được xóa cùng file chính
-- Lưới 1 (bảng AQDeleteKem); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách file xóa» (bảng AQDeleteKem); tắt: Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: ID File parent [IDFileP]; ID File child [IDFileC]
   - Ô trên form sửa: #IDFileP, #IDFileC
 ### AQDIEUKIENCHISOSETTING – Danh sách điều kiện chỉ số chỉnh định
@@ -122,12 +122,12 @@
   - Cột: Mã Setting [MaSetting]; Index 1 [Index1]; Index 2 [Index2]; Điều kiện [DieuKien]; Dieu kiện (2) [DieuKien1]
   - Ô trên form sửa: #MaSetting, #Index1, #Index2, #DieuKien, #DieuKien1
 ### AQDMCAPKTKL – Danh mục cấp khen thưởng kỷ luật nhân viên (AQ)
-- Lưới 1 (bảng AQDMCapKTKL); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục cấp khen thưởng kỷ luật» (bảng AQDMCapKTKL); tắt: Sửa trên lưới
   - Cột: Mã cấp KTKL [MaCapKTKL]; Tên cấp KTKL [TenCapKTKL]; Tên viết tắt [VtCapKTKL]
   - Cột ẩn: Ghi chú [GcCapKTKL]; Tên tiếng anh [TenCapKTKLEg]
   - Ô trên form sửa: #GcCapKTKL, #MaCapKTKL, #TenCapKTKL, #TenCapKTKLEg, #VtCapKTKL
 ### AQDMCVBCS – Danh mục chức vụ cán sự lớp (AQ)
-- Lưới 1 (bảng AQDMCVBCS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục chức vụ ban cán sự lớp» (bảng AQDMCVBCS); tắt: Sửa trên lưới
   - Cột: Mã chức vụ [MaCVBCS]; Tên chức vụ [TenCVBCS]; Tên viết tắt [VtCVBCS]
   - Cột ẩn: Ghi chú [GcCVBCS]; Tên tiếng anh [TenCVBCSEg]
   - Ô trên form sửa: #GcCVBCS, #MaCVBCS, #TenCVBCS, #TenCVBCSEg, #VtCVBCS
@@ -137,17 +137,17 @@
   - Cột ẩn: Ghi chú [GcHS]; Tên tiếng anh [TenHSEg]
   - Ô trên form sửa: #GcHS, #MaHS, #TenHS, #TenHSEg, #VtHS
 ### AQDMKTKL – Danh mục khen thưởng kỷ luật nhân viên (AQ)
-- Lưới 1 (bảng AQDMKTKL); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục khen thưởng kỷ luật» (bảng AQDMKTKL); tắt: Sửa trên lưới
   - Cột: Loại KT/KL [LoaiKKNV]{chọn}; Mã KTKL [MaKTKL]; Tên KTKL [TenKTKL]; Viết tắt KTKL [VtKTKL]
   - Cột ẩn: Ghi chú KTKL [GcKTKL]; Tên tiếng anh [TenKTKLEg]
   - Ô trên form sửa: #GcKTKL, #LoaiKKNV, #MaKTKL, #TenKTKL, #TenKTKLEg, #VtKTKL
 ### AQDMLBG – Danh mục loại bận giờ (AQ)
-- Lưới 1 (bảng AQDMLBG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục loại bận giờ» (bảng AQDMLBG); tắt: Sửa trên lưới
   - Cột: Mã loại bận giờ [MaLBG]; Tên viết tắt [VTLBG]; Tên loại bận giờ [TenLBG]
   - Cột ẩn: Ghi chú [GCLBG]; Tên tiếng anh [TenLBGEg]
   - Ô trên form sửa: #MaLBG, #VTLBG, #TenLBG, #GCLBG, #TenLBGEg
 ### AQDmLoaiBB – Danh mục loại biên bản (AQ)
-- Lưới 1 (bảng AQDmLoaiBB); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh mục loại biên bản» (bảng AQDmLoaiBB); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã loại biên bản [MaLoaiBB]; Tên loại biên bản [TenLoaiBB]; Viết tắt loại biên bản [VtLoaiBB]; Loại biên bản [LoaiBB]{chọn}
   - Cột ẩn: Ghi chú loại biên bản [GcLoaiBB]; Tên tiếng anh [TenLoaiBBEg]
   - Ô trên form sửa: #MaLoaiBB, #TenLoaiBB, #VtLoaiBB, #LoaiBB, #GcLoaiBB, #TenLoaiBBEg
@@ -157,31 +157,31 @@
   - Cột ẩn: Ghi chú loại văn bản [GcLVB]; Tên tiếng anh [TenLVBEg]
   - Ô trên form sửa: #GcLVB, #MaLVB, #TenLVB, #TenLVBEg, #VtLVB
 ### AQDMLVUC – Danh mục lĩnh vực công văn (AQ)
-- Lưới 1 (bảng AQDMLVuc); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục lĩnh vực» (bảng AQDMLVuc); tắt: Sửa trên lưới
   - Cột: Mã lĩnh vực [MaLVuc]; Tên lĩnh vực [TenLVuc]; Viết tắt lĩnh vực [VtLVuc]
   - Cột ẩn: Ghi chú lĩnh vực [GcLVuc]; Tên tiếng anh [TenLVucEg]
   - Ô trên form sửa: #MaLVuc, #TenLVuc, #VtLVuc, #GcLVuc, #TenLVucEg
 ### AQDmMess – Danh mục thông báo
-- Lưới 1 (bảng AQDmMess); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh mục thông báo» (bảng AQDmMess); tắt: Nạp lại, Sửa trên lưới
   - Cột: Thứ tự [TTMess]; Mã thông báo [MaMess]; Tên thông báo [TenMess]; Tên tiếng anh [TenMessEg]; ấn bản core [AnBanCore]; Tên viết tắt [VtMess]
   - Ô trên form sửa: #TTMess, #MaMess, #TenMess, #TenMessEg, #AnBanCore, #VtMess
 ### AQDMNHTCDG – Danh mục nhóm tiêu chí đánh giá (AQ)
-- Lưới 1 (bảng AQDMNhTCDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục nhóm tiêu chí đánh giá» (bảng AQDMNhTCDG); tắt: Sửa trên lưới
   - Cột: Mã nhóm tiêu chí [MaNhTCDG]; Viết tắt [VTNhTCDG]; Tên nhóm tiêu chí đánh giá [TenNhTCDG]
   - Cột ẩn: Ghi chú [GCNhTCDG]; Mã phiếu [IDPhieuDG]; Tên tiếng anh [TenNhTCDGEg]
   - Ô trên form sửa: #MaNhTCDG, #VTNhTCDG, #TenNhTCDG, #GCNhTCDG, #IDPhieuDG, #TenNhTCDGEg
 ### AQDMPHIEUDG – Danh mục phiếu đánh giá (AQ)
-- Lưới 1 (bảng AQDMPhieuDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục phiếu đánh giá» (bảng AQDMPhieuDG); tắt: Sửa trên lưới
   - Cột: Mã phiếu [MaPhieuDG]; Tên phiếu đánh giá [TenPhieuDG]; Viết tắt [VTPhieuDG]
   - Cột ẩn: Ghi chú [GCPhieuDG]; Mã file word mẫu [IDTmpWord]; Tên tiếng anh [TenPhieuDGEg]
   - Ô trên form sửa: #MaPhieuDG, #TenPhieuDG, #VTPhieuDG, #GCPhieuDG, #IDTmpWord, #TenPhieuDGEg
 ### AQDMREPORTCTRL – Danh mục control của báo biểu (AQ)
-- Lưới 1 (bảng AQDMReportCtrl); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục report control» (bảng AQDMReportCtrl); tắt: Sửa trên lưới
   - Cột: Mã Report Ctrl [MaReportCtrl]; Tên report control [TenReportCtrl]; Tên viết tắt [VtReportCtrl]; Index object [IndexObj]; Index field [IndexField]
   - Cột ẩn: Ghi chú [GcReportCtrl]; Tên report ctrl [TenReportCtrlEg]
   - Ô trên form sửa: #MaReportCtrl, #TenReportCtrl, #VtReportCtrl, #IndexObj, #IndexField, #GcReportCtrl, #TenReportCtrlEg
 ### AQDMTCDG – Danh mục tiêu chí đánh giá (AQ)
-- Lưới 1 (bảng AQDMTCDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục tiêu chí đánh giá» (bảng AQDMTCDG); tắt: Sửa trên lưới
   - Cột: Mã tiêu chí đánh giá [MaTCDG]; Tên tiêu chí đánh giá [TenTCDG]; Viết tắt [VTTCDG]
   - Cột ẩn: Bắt buộc [BatBuocTL]; Kiểu dữ liệu trả lời [DataTypeTL]{chọn}; Điểm tối đa [DiemToiDa]; Vai trò [DoiTuongDG]{chọn}; Ghi chú [GCTCDG]; Nhóm tiêu chí [IDNhomTCDG]; Tên tiếng anh [TenTCDGEg]
   - Ô trên form sửa: #MaTCDG, #TenTCDG, #VTTCDG, #BatBuocTL, #DataTypeTL, #DiemToiDa, #DoiTuongDG, #GCTCDG, #IDNhomTCDG, #TenTCDGEg
@@ -196,7 +196,7 @@
   - Cột ẩn: Ghi chú [GcTPRL]; Tên tiếng anh [TenTPRLEg]
   - Ô trên form sửa: #GcTPRL, #MaTPRL, #TenTPRL, #TenTPRLEg, #VtTPRL
 ### AQDMTTHTDG – Danh mục thông tin hổ trợ đánh giá (AQ)
-- Lưới 1 (bảng AQDMTTHTDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục thông tin đánh giá» (bảng AQDMTTHTDG); tắt: Sửa trên lưới
   - Cột: Mã thông tin [MaTTHTDG]; Tên thông tin [TenTTHTDG]; Viết tắt [VTTTHTDG]; Kiểu dữ liệu trả lời [DataTypeTL]{chọn}
   - Cột ẩn: Bắt buộc [BatBuocTL]; Ghi chú [GCTTHTDG]; Mã phiếu [IDPhieuDG]; Tên tiếng anh [TenTTHTDGEg]
   - Ô trên form sửa: #MaTTHTDG, #TenTTHTDG, #VTTTHTDG, #DataTypeTL, #BatBuocTL, #IDPhieuDG, #TenTTHTDGEg
@@ -204,8 +204,8 @@
 - Lưới 1 (bảng AQDuLieuMau); tắt: Thêm, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên [TenSV]; Tên lớp [TenLop]; Tên khoa [TenKhoa]; Họ và tên [TenDayDu]; Tên bậc hệ [TenBH]; Số tiền [SoTien]; SoTC [SoTC]; Phái [Phai]; Ngày sinh [NgaySinhC]; Ngày nhập học [NgayNhapHoc]; Mã SV [MaSV]; Mã lớp [MaLop]; Mã khoa [MaKhoa]; Mã bậc hệ [MaBH]; ID Dữ liệu mẫu [IDDuLieuMau]; Họ lót [HoLotSV]; Ghi chú [GcSV]; Ngày thêm [NgayThemC]; Mã user [MaUser]
 ### AQFileHuongDan – File hướng dẫn AQ
-- Lưới 1 (bảng AQFileHuongDan); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã phòng học [IDPH]; Thứ tự [TTFileHuongDan]; Tên chức năng [TenFileHuongDan]; File quy trình [FileQuyTrinh]; Link Video [LinkVideo]; LinkFileQuyTrinh [LinkFileQuyTrinh]; Ghi chú [GcFileHuongDan]
+- Lưới 1 «Danh mục File hướng dẫn» (bảng AQFileHuongDan); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã phân hệ [IDPH]; Thứ tự [TTFileHuongDan]; Tên chức năng [TenFileHuongDan]; File quy trình [FileQuyTrinh]; Link Video [LinkVideo]; LinkFileQuyTrinh [LinkFileQuyTrinh]; Ghi chú [GcFileHuongDan]
   - Ô trên form sửa: #IDPH, #TTFileHuongDan, #TenFileHuongDan, #LinkVideo, #LinkFileQuyTrinh, #GcFileHuongDan
 ### AQFILEKTHK – Danh sách file thừa kế học kỳ
 - Lưới 1 (bảng AQFileKTHK); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -213,7 +213,7 @@
   - Cột ẩn: ID File [IDFile]; ID File KTHK [IDFileKTHK]
   - Ô trên form sửa: #KieuThuaKe, #TTKTHK, #IDFile
 ### AQMessNgonNgu – Dịch danh mục mess
-- Lưới 1 (bảng AQMessNgonNgu); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách message» (bảng AQMessNgonNgu); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã thông báo [MaMess](chỉ đọc); Tên thông báo [TenMess](chỉ đọc); Nội dung ngôn ngữ [NoiDungNgonNgu]
 ### AQPHANCAP – Thông tin cây phân cấp
 - Lưới 1 (bảng AQPhanCap); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -223,11 +223,11 @@
 - Lưới 1; tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Bảng chính [TableP]; Field chính [FieldP]; Bảng phụ [TableC]; Field phụ [FieldC]; Loại relation [RelationType]; Ràng buộc xóa [DeleteRule]; Update [UpdateRule]; phamvirel [Phamvirel]; Khóa kép [KeyKep]; Nhóm liên kết [NhomLKR]; QH bắc cầu [BacCauR]; Loại quan hệ [LoaiQHR]; Mã tree [MaTree]
 ### AQRELATIONVIRTUAL – Relation ảo
-- Lưới 1 (bảng AQRelationVirtual); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách relation file ảo» (bảng AQRelationVirtual); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: ID File parent [IDFileP]; ID File child [IDFileC]; ID Fileld parent [IDFieldP]; ID Fileld chile [IDFieldC]; phamvirel [Phamvirel]; Cha chính là con nếu null [PAsCIsNull]
   - Ô trên form sửa: #IDFileP, #IDFileC, #IDFieldP, #IDFieldC, #Phamvirel, #PAsCIsNull
 ### AQUPDATEDB – Cập nhật database
-- Lưới 1 (bảng AQFileField); tắt: Thêm, Xóa, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Cập nhật database» (bảng AQFileField); tắt: Thêm, Xóa, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã file [MaFile]; Tên file [TenFile]; Mã phân hệ [MaPhanHe]; Mã nhóm file [MaFile0]; Tên nhóm file [TenFile0]; Prefix [Fprefix]; Phân loại file [PlFile1]; Danh mục? [IsDM]; Ngoài db [NotInDB]; Quản lý file [Owned]; File mã [FileMapp]; Mã field [MaField]; Tên Field [TenField]; Tên viết tắt [VtField]; Tên label [Tenlabel]; Kiểu field DB [SpecType]; Kiểu field view [SpecType0]; Phân loại field [plfield]; Độ dài DB [LenDB]; Độ dài field [DoDaiField]; Allow Null SQL [AllowNullSQL]; Cho rỗng [AllowNull]; Khóa chính [IsKhoa]; Khóa phụ [IsKhoaPhu]; TT file field [TTFileField]; Mã Enum [MaEnum]; Field chọn [FieldChon]; Môn cụ thể [FieldMap]; Mã field cũ [MaFieldCu]; Bảng chính [TableP]; Kết quả [KQTaoFile]
 ### AQUPDATEFILEFIELD – Update file field
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -236,21 +236,21 @@
 - Lưới 1 (bảng AQUser); tắt: Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: ID user [IDUser]; Tên đầy đủ [HotenTK]; Tên viết tắt [VtUser]; Nhóm tài khoản [NhomTK]; Đơn vị phân cấp [IDDVPC]; Hình user [AvatarUser]; Thứ tự [TTUser]; Trạng thái [TrangThai]
 ### AQVALUESETTINGDV – Setting riêng cho đơn vị
-- Lưới 1 (bảng AQValueSettingDV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách biến setting trường» (bảng AQValueSettingDV); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã trường [IDTruong]; Mã setting [IDSetting]; Mã trường tổ chức thi [MaTruong]; Index 1 [Index1]; Index 2 [Index2]; Giá trị [GiaTri]; Niên học học kỳ [NHHK]
   - Cột ẩn: ID cấp đối tượng KLGD [IDCap]; Phân cấp đối tượng tính KLGD (Ví dụ lớp, Bậc hệ) [IDPhanCap]; ID setting dv [IDValueSettingDV]
   - Ô trên form sửa: #IDTruong, #IDSetting, #Index1, #Index2, #GiaTri, #NHHK, #IDCap, #IDPhanCap
 ### AQVWRPTRENAME – Dữ liệu field trên giao diện và báo biểu (AQ)
 - Lưới 1 (bảng AQVWRPTRENAME); tắt: Sửa trên lưới
 ### DSPhienBanBackup – Danh sách phiên bản backup report
-- Lưới 1 (bảng HBackupReport); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiên bản backup của report» (bảng HBackupReport); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thêm [NgayThem]; Mã BackupReport [MaBackupReport]; Tên sao lưu report [TenBackupReport]; Ghi chú [GhiChuBKReport]
 ### MDMNgoaiTe – MDMNgoaiTe
-- Lưới 1 (bảng MDMNgoaiTe); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Danh sách ngoại tệ» (bảng MDMNgoaiTe); tắt: Nạp lại, Sửa trên lưới
   - Cột: Mã ngoại tệ [MaNgoaiTe]; Tên ngoại tệ [TenNgoaiTe]; Tên tiếng anh [TenNgoaiTeEg]; Viết tắt [VtNgoaiTe]; Thứ tự [TTNgoaiTe]; Ghi chú [GCNgoaiTe]
   - Ô trên form sửa: #MaNgoaiTe, #TenNgoaiTe, #TenNgoaiTeEg, #VtNgoaiTe, #TTNgoaiTe, #GCNgoaiTe
 ### QLSV_View_XemSV_Test – Xem_SV_Test
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thông tin sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Lớp sinh viên [IDLop]; Tên lớp [TenLop]; Phái [Phai]
   - Cột ẩn: Sinh viên [IDSV]
   - Ô trên form sửa: #HoLotSV, #TenSV, #Phai, #IDSV
@@ -280,22 +280,22 @@
   - Cột ẩn: Lớp sinh viên [IDLop]; Sinh viên [IDSV]; IDTestSVHocKy [IDTestSVHocKy]; Niên học học kỳ [NHHK]
   - Ô trên form sửa: #TenDayDu, #TenLop, #IDLop, #IDSV
 ### VIEW_DS_ADDIN_COPY – Danh sách addin copy
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách addin copy»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã addin [MaAddin]; Tên addin [TenAddin]; Tên tiếng anh [TenAddinEg]; Ghi chú [GcAddin]; Kinh phí [KinhPhi]; Phiên bản [PhienBan]
 ### View_EditSettingEWeb – Danh sách setting AQSettingEduWeb
-- Lưới 1 (bảng AQSettingEduWEB); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách setting EduWEB» (bảng AQSettingEduWEB); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã phân hệ [MaPhanHe]; Thứ tự [TTSettingEduWEB]; Mã setting EduWEB [MaSettingEduWEB]; Tên setting EduWEB [NoiDungSettingEduWEB]; GhiChuSettingeduweb [GhiChuSettingeduweb]; Kiểu dữ liệu [DataTypeInt]{chọn}
   - Cột ẩn: Admin sửa [AdminEdit]; Giá trị [GiaTri]; Mã addin [IDAddin]; ID Enum [IDEnum]; Mã phân hệ [IDPhanHe]
   - Ô trên form sửa: #TTSettingEduWEB, #MaSettingEduWEB, #NoiDungSettingEduWEB, #GhiChuSettingeduweb, #DataTypeInt, #AdminEdit, #GiaTri, #IDAddin, #IDEnum, #IDPhanHe
 ### VIEW_KTBHKHOI – Kiểm tra bậc hệ khối
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách khối sai bậc hệ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MaKhoi]; Tên khối [TenKhoi]; Mã bậc hệ [MaBH]; Số học kỳ [SoHK]; Số học kỳ của NH [SoHKNH]; Số học kỳ tối đa [SoHKMax]; Mã hệ đào tạo [MaHe]; Mã bậc hệ mơi [MaBHMoi]
 ### ViewDMMailTemplate – Danh mục template gửi mail cho sv (Dung)
-- Lưới 1 (bảng HDmTempMail); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục template» (bảng HDmTempMail); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã Template Mail [MaTempMail]; Tên Template Mail [TenTempMail]; NoiDungTempMail [NoiDungTempMail]
   - Ô trên form sửa: #MaTempMail, #TenTempMail, #NoiDungTempMail
 ### ViewEmpty – ViewEmpty - Tùy thuộc vào dữ liệu mà hiển thị cột
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Kết quả truy vết thao tác»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### VIEWGH_MAILSERVER – Thông số mail
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã
+- Lưới 1 «Thông số mail server»; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeString]

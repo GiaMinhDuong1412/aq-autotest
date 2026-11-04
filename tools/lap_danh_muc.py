@@ -5,7 +5,8 @@
 
 Kết quả: mỗi phân hệ một file <MaPhanHe>.md (menu theo đúng đường dẫn hiện trên Edusoft + các màn hình/lưới của phân hệ)
 và index.md. Đường dẫn menu dùng tên viết tắt (VtPhanHe / VtChucNang) – đúng chữ hiện trên ribbon/cây chức năng,
-viết thẳng vào lệnh `menu:` được. Cột lưới = AQDmField.Tenlabel, ô nhập trên form sửa = #MaField.
+viết thẳng vào lệnh `menu:` được. «Tiêu đề lưới» = chữ sau `@` trong lệnh (AQValSetV1 1/14); cột lưới = nhãn đã đổi
+(AQValSetV1 2/14) hoặc AQDmField.Tenlabel; ô nhập trên form sửa = #MaField.
 Đây là cấu hình gốc của AQ; trường (HVNG) có thể chỉnh lại bằng các bảng H… (HFieldView2, HFieldEdit, HMenuCustom…).
 """
 import argparse
@@ -53,6 +54,17 @@ def main():
         fv[r["IDView"]].append(r)
     thu_tu = {r["IDFieldView"]: r for r in doc(a.aqdata, "077")}
     sua = {r["IDFieldView"]: r for r in doc(a.aqdata, "030")}
+    # AQValSetV/AQValSetV1: cài đặt hiển thị; (1,14) = tiêu đề lưới, (2,14) = nhãn cột đã đổi
+    vs1 = collections.defaultdict(dict)
+    for r in doc(a.aqdata, "042"):
+        vs1[r["IDValSetV"]][(r["Index1"], r["Index2"])] = r["GiaTri"]
+    tieu_de, nhan_cot = {}, {}
+    for r in doc(a.aqdata, "039"):
+        g = vs1.get(r["IDValSetV"], {})
+        if not r["IDFieldView"] and g.get(("1", "14")):
+            tieu_de[r["IDView"]] = g[("1", "14")].strip()
+        if r["IDFieldView"] and g.get(("2", "14")):
+            nhan_cot[r["IDFieldView"]] = g[("2", "14")].strip()
     nut = collections.defaultdict(list)
     for r in doc(a.aqdata, "053"):
         nut[r["IDView"]].append(r)
@@ -100,7 +112,8 @@ def main():
         for i, v in enumerate(sorted(views[r1["IDView1"]], key=lambda x: x["IDView"]), 1):
             tat = [t for k, t in TAT if v.get(k) == "1"]
             bang = fl.get(v["MainTable"], {}).get("MaFile", "")
-            out.append(f"- Lưới {i}" + (f" (bảng {bang})" if bang else "") + (f"; tắt: {', '.join(tat)}" if tat else ""))
+            td = tieu_de.get(v["IDView"])
+            out.append(f"- Lưới {i}" + (f" «{td}»" if td else "") + (f" (bảng {bang})" if bang else "") + (f"; tắt: {', '.join(tat)}" if tat else ""))
             cot, an, o_sua = [], [], []
             ds = sorted(fv[v["IDView"]], key=lambda x: (int(float(thu_tu.get(x["IDFieldView"], {}).get("TabOrder") or 9999)),
                                                          fd.get(x["IDField"], {}).get("MaField", "")))
@@ -108,7 +121,7 @@ def main():
                 d = fd.get(x["IDField"])
                 if not d:
                     continue
-                nhan = (d.get("Tenlabel") or d.get("TenField") or d["MaField"]).strip()
+                nhan = nhan_cot.get(x["IDFieldView"]) or (d.get("Tenlabel") or d.get("TenField") or d["MaField"]).strip()
                 kieu = KIEU_O.get(x.get("CtrlType", ""), "")
                 s = f"{nhan} [{d['MaField']}]" + (f"{{{kieu}}}" if kieu else "") + ("(chỉ đọc)" if x.get("ReadOnly") == "1" else "")
                 (an if x.get("Hide") == "1" else cot).append(s)
@@ -127,7 +140,8 @@ def main():
     os.makedirs(a.ra, exist_ok=True)
     idx = ["# Danh mục màn hình Edusoft.NET (cấu hình gốc AQ)", "",
            "Sinh bằng `tools/lap_danh_muc.py` từ dữ liệu hệ thống AQ.Data… của gói server. Đường dẫn menu = chữ hiện trên",
-           "ribbon/cây chức năng; cột lưới = nhãn (Tenlabel) [MaField]; ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`.",
+           "ribbon/cây chức năng; «tiêu đề lưới» = chữ sau `@` (vd `click: Thêm @ Danh sách quyết định`); cột lưới = nhãn [MaField];",
+           "ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`/`date:`.",
            "Trường có thể chỉnh lại (ẩn cột, đổi nhãn, đổi menu) bằng bảng H… trong CSDL trường – khi lệch thì tin `ui-*.txt`.", "",
            "| Phân hệ | Tên trên ribbon | Số menu | Số màn hình | File |", "|---|---|---|---|---|"]
     for ma in sorted(set(menu) | set(man), key=lambda m: (m == "KHAC", m)):

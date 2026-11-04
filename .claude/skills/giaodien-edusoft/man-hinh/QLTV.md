@@ -137,24 +137,24 @@
 ## Màn hình (view) và lưới
 
 ### DSNHHK_TINHNHANHHPSV – Danh sách học kỳ học phí sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách học kỳ tính học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Tổng hp phải đóng [PhaiThu]; Số tín chỉ học phí [SoTCHP]; Trạng thái xử lý điểm [TrangThaiXL]
 ### DSPHANBOTUDONG – Danh sách sinh viên phân bổ tự động
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên phân bổ học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Niên học học kỳ [NHHK]; Họ lót [HoLotSV]; Mã nhóm [MaNhCT]; Tên nhóm thu [TenNhCT]; Tên [TenSV]; Loại HP [LoaiDTHP]; Mã lớp [MaLop]; Diễn giải [DienGiaiHP]; Tiền tạm ứng [TienTamUngHP]; Tổng hp phải đóng [PhaiThu]
 ### DSPhieuThuLechTien – Danh sách phiếu thu lệch tiền chi tiết
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã lớp [MaLop]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Số tiền thu [TienPT]; Tổng hp phải đóng [PhaiThu]; Tiền tạm ứng [TienTamUngHP]; Mã user [MaUser]
+- Lưới 1 «Danh sách phiếu thu bị lệch giữa tổng tiền thu và tổng từ chi tiết thu» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã lớp [MaLop]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Tổng tiền thu [TienPT]; Tổng từ chi tiết thu [PhaiThu]; Tiền tạm ứng [TienTamUngHP]; Mã user [MaUser]
 ### FAST_THUHP – Thu học phí từ phần mềm FAST
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### IMP_THU_VANG_LAI – Import thu vãng lai
-- Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import phiếu thu vãng lai» (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Số chứng từ [SoCTu]; Quyển số [QUYENSO]; Ngày thu/chi [NgayTChi]; Ghi chú thu [GCThuVL]; Mã loại thu vãng lai [MaLTVL]; Số tiền [SoTienThu]; User thu [UserThu]
 ### IMPORTHOANHP – Import hoàn học phí
 - Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Quyển số [QUYENSO]; Số chứng từ [SoCTu]; Số tiền thu [TienPT]; Loại chứng từ [LoaiCTu]; Ngày thu/chi [NgayTChi]; Thu ngân hàng [THUNH]; Ghi chú [GHICHUPT]
 ### IMPORTHOCPHICOMH – Import học phí có môn học
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import học phí có môn học» (bảng MPTHU); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã môn học [MaMH]; Nhóm/tổ [NhomTo]; Số chứng từ [SoCTu]; Mẩu số [MauSoPT]; Ký hiệu [KyHieuPT]; Ngày thu/chi [NgayTChi]; Thu ngân hàng [THUNH]; Số C.Từ ngân hàng [SoCTuNH]; Số tiền thu [TienPT]; Ghi chú [GHICHUPT]
 ### IMPORTHOCPHICOMHCopy – Import học phí có môn học
 - Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
@@ -172,60 +172,60 @@
 - Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Số chứng từ [SoCTu]; Mẩu số [MauSoPT]; Ký hiệu [KyHieuPT]; Ngày thu/chi [NgayTChi]; Thu ngân hàng [THUNH]; Ghi chú thu [GCThuVL]; Số tiền [SoTienThu]; Thuế VAT (%) [ThueVAT]; Chuyển khoản [IsChKhoan]; Mã loại thu vãng lai [MaLTVL]; Chi tiết thu [GCThuVLCT]; Đơn vị tính [DonViTinh]; Đơn giá [DonGiaThu]; Số lượng [SoLuongThu]; Số tiền chi tiết [SoTienThuCT]; Mã ngân hàng [MaNH]; Email [EmailDTThu]; Diễn giải thu [DienGiaiThu]
 ### M210603 – Import phiếu thu (HP+HL+VL)
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu import»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Quyển số [QUYENSO]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH]; Ngày thu/chi [NgayTChi]; Số tiền thu [TienPT]; Ghi chú [GHICHUPT]; Mã loại thu vãng lai [MaLTVL]; Thuế VAT (%) [ThueVAT]; Đơn vị tính [DonViTinh]; Đơn giá [DonGiaThu]; Số lượng [SoLuongThu]; Số tiền chi tiết [SoTienThuCT]; Chi tiết thu [GCThuVLCT]
 ### M_TTHPDATHU – Thông tin học phí đã thu
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Phiếu đã thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thu/chi [NgayTChi]; Số tiền [SoTien]; Số chứng từ [SoCTu]; Mẩu số [MauSoPT]; Ký hiệu [KyHieuPT]
 ### MDMLTVL – Danh mục loại thu vãng lai
-- Lưới 1 (bảng MDMLTVL); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách loại thu vãng lai» (bảng MDMLTVL); tắt: Sửa trên lưới
   - Cột: Mã loại thu vãng lai [MaLTVL]; Tên loại thu vãng lai [TenLTVL]; Tên nhóm thu [TenNhCT]; Viết tắt loại thu vãng lai [VtLTVL]; Đơn vị tính [DonViTinh]; Đơn giá vãng lai [DonGiaVL]; Mặc định loại thu vãng lai [DfLTVL]; Hủy loại thu vãng lai [HuyLTVL]; Có thuế (VAT) [IsCoVAT]
   - Cột ẩn: Ghi chú loại thu vãng lai [GcLTVL]; Bộ đếm [IDBoDem]; Nhóm thu [IDNhCT]; Mã mẫu in [IDSubReport]; Tên tiếng anh [TenLTVLEg]
   - Ô trên form sửa: #MaLTVL, #TenLTVL, #VtLTVL, #DonViTinh, #DonGiaVL, #DfLTVL, #HuyLTVL, #IsCoVAT, #GcLTVL, #IDBoDem, #IDNhCT, #IDSubReport, #TenLTVLEg
 ### MDMTKTHU – Danh mục công thức thống kê
-- Lưới 1 (bảng MDMTKThu); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách công thức thống kê» (bảng MDMTKThu); tắt: Sửa trên lưới
   - Cột: Mã TK Thu [MaTKThu]; Tên TK Thu [TenTKThu]; Tên viết tắt [VtTKThu]
   - Cột ẩn: Ghi chú [GcTKThu]; Tên tiếng anh [TenTKThuEg]
   - Ô trên form sửa: #MaTKThu, #TenTKThu, #VtTKThu, #GcTKThu, #TenTKThuEg
 ### MDOISOATPTHU – Đối soát phiếu thu online
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu đối soát - Chọn phiếu chưa gạch nợ chuyển vào Edusoft»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Số hóa đơn [SoHoaDon]; Số tiền [SoTien]; Ngày khỏi tạo [NgayKhoiTaoGD]; Ngày Th/Toán [NgayThanhToan]{ngày}; Mã lớp [MaLop]; Kết quả đối soát [KQDOISOAT]
 ### MDSHDKHP – Danh sách hủy đăng ký học phí
-- Lưới 1 (bảng MNKHDKHP); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn đã hủy đăng ký» (bảng MNKHDKHP); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Diễn giải [DienGiaiHP]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Nhóm học [NhomHoc]; Số tín chỉ học phí [SoTCHP]; Số tiền thu [TienPT]; Đơn giá [DonGiaHPCT]; User thu [UserThu]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Ngày đăng ký [NgayDK]; Ngày hủy ĐK [NGAYHUYDK]; Số tiền thu CT [TienPTCT]
 ### MNKTCHP – Nhật ký thay đổi tín chỉ HP lý thuyết
-- Lưới 1; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhật ký thay đổi»; tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Số TC [SoTinChi]; Tên môn học [TenMH]; Số TC HP LT [STCLT]; User thực hiện [USERTHUCHIEN]; Ngày thực hiện [NGAYTHUCHIEN]
 ### MPHIEUPB – Danh sách phiếu phân bổ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu phân bổ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tiền phân bổ HP [TienPhanBoHP]; Ngày thu/chi [NgayTChi]; Mã user [MaUser]; Tên nhóm thu [TenNhCT]
 ### P09F01 – Danh sách loại phiếu thu vãng lai
-- Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Loại thu vãng lai» (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã loại thu vãng lai [MaLTVL]; Tên loại thu vãng lai [TenLTVL]; Đơn vị tính [DonViTinh]; Đơn giá vãng lai [DonGiaVL]
 ### P09F01B – Chi tiết thu vãng lai
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Các khoản thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã loại thu vãng lai [MaLTVL](chỉ đọc); Tên loại thu vãng lai [TenLTVL](chỉ đọc); Đơn vị tính [DonViTinh]; Đơn giá [DonGiaThu]; Số lượng [SoLuongThu]; Số tiền chi tiết [SoTienThuCT]
 ### P09F01C – Chi tiết thu vãng lai
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Các khoản thu»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã SV [MaSV]{nút …}; Họ và tên [TenDayDu](chỉ đọc); Mã loại thu vãng lai [MaLTVL](chỉ đọc); Chi tiết thu [GCThuVLCT]; Đơn vị tính [DonViTinh]; Đơn giá [DonGiaThu]; Số lượng [SoLuongThu]{số}; Số tiền chi tiết [SoTienThuCT]; Thuế VAT (%) [ThueVAT](chỉ đọc); Tiền thuế [VATAmount]; Sao chép [COPYROW]
 ### P09F03 – Danh sách phiếu thu vãng lai học kỳ
-- Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thu vãng lai» (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]{ngày}; Thu ngân hàng [THUNH]; Số tiền [SoTienThu]; Thuế VAT (%) [ThueVAT]; Ghi chú thu [GCThuVL]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]{ngày}; Code HDDT [CodeHDDT]; Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Email [EmailDTThu]; Lớp [LopDTThu]; Địa chỉ [DiaChiDTThu]; Quyển số [QUYENSO]; Mẩu số [MauSoPT]; Ký hiệu [KyHieuPT]; Mã ngân hàng [MaNH]; Tên ngân hàng [TenNH]; Chuyển khoản [IsChKhoan]; User thu [UserThu]; Ngày thêm [NgayThem]{ngày}; BHYT [IsBHYT]; Diễn giải thu [DienGiaiThu]
-  - Cột ẩn: Đơn giá vãng lai [DonGiaVL]; Mã loại thu vãng lai [MaLTVL]
+  - Cột ẩn: Số tiền phải thu [DonGiaVL]; Mã loại thu vãng lai [MaLTVL]
 ### P09F04 – Gán số chứng từ cho phiếu chưa cấp chứng từ
 - Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]{ngày}; Thu ngân hàng [THUNH]; Số tiền [SoTienThu]; Thuế VAT (%) [ThueVAT]; Ghi chú thu [GCThuVL]; Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Email [EmailDTThu]; Lớp [LopDTThu]; Địa chỉ [DiaChiDTThu]; Quyển số [QUYENSO]; Mẩu số [MauSoPT]; Ký hiệu [KyHieuPT]; Mã ngân hàng [MaNH]; Tên ngân hàng [TenNH]; Chuyển khoản [IsChKhoan]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]; User thu [UserThu]; Ngày thêm [NgayThem]; Mã loại thu vãng lai [MaLTVL]; BHYT [IsBHYT]; Diễn giải thu [DienGiaiThu]
 ### P09F05 – Thu vãng lai
-- Lưới 1 (bảng MPThuVL); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu» (bảng MPThuVL); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]{ngày}; Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Lớp [LopDTThu]; Số tiền [SoTienThu]{số}; Ghi chú thu [GCThuVL]; Quyển số [QUYENSO]; Mã loại thu vãng lai [MaLTVL]
   - Cột ẩn: Đơn giá [DonGiaThu]{số}; Đơn vị tính [DonViTinh]; Loại thu [IDLTVL]; Số lượng [SoLuongThu]{số}
   - Ô trên form sửa: #SoCTu, #NgayTChi, #MaDTThu, #HoTenDTThu, #LopDTThu, #SoTienThu, #GCThuVL, #QUYENSO, #DonGiaThu, #DonViTinh, #IDLTVL, #SoLuongThu
 ### P09F05N – Thu vãng lai
-- Lưới 1 (bảng MPThuVL); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thu» (bảng MPThuVL); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]{ngày}; Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Lớp [LopDTThu]; Số tiền [SoTienThu]{số}; Ghi chú thu [GCThuVL]; Quyển số [QUYENSO]; Ghi chú dùng bên detailright [GhiChuView1]
   - Ô trên form sửa: #SoCTu, #NgayTChi, #MaDTThu, #HoTenDTThu, #LopDTThu, #SoTienThu, #GCThuVL, #QUYENSO, #GhiChuView1
 ### P09F71 – Nhóm thu vãng lai
-- Lưới 1 (bảng MNhCT); tắt: In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhóm thu vãng lai» (bảng MNhCT); tắt: In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã nhóm [MaNhCT]; Tên nhóm thu [TenNhCT]; Tên viết tắt [VtNhCT]; Mẫu hóa đơn [MauHDDT]; Ký hiệu hóa đơn [KyHieuHDDT]; Ghi chú [GcNhCT]
   - Ô trên form sửa: #MaNhCT, #TenNhCT, #VtNhCT, #MauHDDT, #KyHieuHDDT, #GcNhCT
 ### THUHOCPHIVNPAY – Thu học phí qua ngân hàng trực tuyến
@@ -233,176 +233,176 @@
 ### THUHP1SV – Thu học phí từng sinh viên
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### V0.0302 – Cân bằng phiếu thu lệch tiền
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Họ lót [HoLotSV]; Quyển số [QUYENSO]; Tên [TenSV]; Mã loại thu [MaLThu]; Số chứng từ [SoCTu]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Tên loại thu [TenLThu]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Đã thu [DaThu]; Số lần thu [SoLanThu]
+- Lưới 1 «Danh sách phiếu thu  có số đã thu > phải thu.»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Họ lót [HoLotSV]; Quyển số [QUYENSO]; Tên [TenSV]; Mã loại thu [MaLThu]; Số chứng từ [SoCTu]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Tên loại thu [TenLThu]; Học phí chưa giảm [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Đã thu [DaThu]; Số lần thu [SoLanThu]
 ### V0.0305 – Danh sách nợ chi tiết
-- Lưới 1; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nợ chi tiết học kỳ»; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên lớp [TenLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Loại HP [LoaiDTHP]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Đã thu [DaThu]; Còn Nợ [ConNo]
 ### V0.0306 – Danh sách nợ chi tiết
-- Lưới 1; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nợ»; tắt: Thêm, Xóa, Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Tên lớp [TenLop]; Loại HP [LoaiDTHP]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Đã thu [DaThu]; Còn Nợ [ConNo]
 ### V0.07 – Danh sách phiếu thu HP
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách phiếu thu» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai]{chọn}(chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Số HDDT [SoHDDT](chỉ đọc); Ngày lập HDDT [NgayLapHDDT]{ngày}(chỉ đọc); Code HDDT [CodeHDDT](chỉ đọc); ĐVT_HĐĐT [DonViTinhHDDT](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Mã nhóm [MaNhCT](chỉ đọc); Tên nhóm thu [TenNhCT](chỉ đọc); SoInvoice [SoInvoice](chỉ đọc); Quyển số [QUYENSO]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH](chỉ đọc); Số tiền thu [TienPT](chỉ đọc); Tiền HDDT [TienHDDT](chỉ đọc); Ghi chú [GHICHUPT]; Ngày thu/chi [NgayTChi]{ngày}; Mã user [MaUser](chỉ đọc); Kênh đóng [NguonDongHP]{chọn}(chỉ đọc); Số C.Từ ngân hàng [SoCTuNH](chỉ đọc); Ngày thêm [NgayThem](chỉ đọc); Số tài khoản [SoTaiKhoan](chỉ đọc); Mã ngân hàng [MaNH](chỉ đọc); Tên ngân hàng [TenNH](chỉ đọc); Chuyển khoản [IsChKhoan](chỉ đọc); Ngày giờ in [NgayGioInBL]{ngày}; Đã in biên lai [IsInBienLai]; Thẻ pos [ThePos]; Diễn giải thu [DienGiaiThu]
   - Cột ẩn: Mã địa phương [MaDiaPhuong](chỉ đọc); Tên địa phương [TenDiaPhuong](chỉ đọc)
 ### V0.08 – Danh sách phiếu thu chưa có số chứng từ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu chưa có số chứng từ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Tiền thu [TienThuGoc]; Thu ngân hàng [THUNH]
 ### V0.1.11 – Danh sách phiếu thu trùng chứng từ
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách phiếu thu trùng chứng từ» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Số chứng từ [SoCTu]; Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai]{chọn}(chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Tên nhóm thu [TenNhCT](chỉ đọc); Quyển số [QUYENSO]; Thu ngân hàng [THUNH](chỉ đọc); Số tiền thu [TienPT](chỉ đọc); Ghi chú [GHICHUPT]; Ngày thu/chi [NgayTChi]{ngày}; Mã user [MaUser](chỉ đọc); Kênh đóng [NguonDongHP]{chọn}(chỉ đọc); Số C.Từ ngân hàng [SoCTuNH](chỉ đọc); Ngày thêm [NgayThem](chỉ đọc)
 ### V0.1.12 – Đối soát phiếu thu
 - Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số C.Từ ngân hàng [SoCTuNH]; Số tiền thu [TienPT]
 ### V0.1.16 – Gia hạn đóng học phí
-- Lưới 1 (bảng MGHHP); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách gia hạn học phí» (bảng MGHHP); tắt: Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Ngày gia hạn [NgayGHHP]{ngày}
   - Cột ẩn: Sinh viên [IDSV]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MaLop, #NgayGHHP, #IDSV
 ### V0102 – Thu học phí không đối chiếu nợ
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### V0117 – Danh sách phiếu thu chưa có mã sinh viên
-- Lưới 1 (bảng MPTHUKXD); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu» (bảng MPTHUKXD); tắt: Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Họ tên SV [HoTenSV]; Số tiền thu [TienPT]; Số chứng từ [SoCTu]; Số C.Từ ngân hàng [SoCTuNH]; Ngày thu/chi [NgayTChi]{ngày}; Kênh đóng [NguonDongHP]; Thu ngân hàng [THUNH]; Ghi chú [GHICHUPT]
   - Ô trên form sửa: #MaSV, #HoTenSV, #TienPT, #SoCTu, #SoCTuNH, #NgayTChi, #THUNH, #GHICHUPT
 ### V2158 – Danh sách sinh viên phát sinh học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên phát sinh học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Xem chi tiết [XemChiTiet]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Mã khoa [MaKhoa]; Mã ngành [MaNganh]; HP đầu kỳ [HPDauKy]; HL đầu kỳ [HLDauKy]; HP phát sinh [HPPhatSinh]; HL phát sinh [HLPhatSinh]; HP đã đóng [HPDaDong]; HL đã đóng [HLDaDong]; HP cuối kỳ [HPCuoiKy]; HL cuối kỳ [HLCuoiKy]
 ### V4101 – Danh sách sinh viên tổng hợp học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên tổng hợp học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]; Mã khoa [MaKhoa]; Tên khoa [TenKhoa]; Khóa học [KhoaHoc]; Học phí [HocPhi]; Số tiền miễn giảm [MienGiam]; Phải đóng [PhaiDong]; Nợ học kỳ cũ [NoHKCu]; Đã đóng [DaDong]; Còn Nợ [ConNo]
 ### V_DSPHIEUBAOHUY – Danh sách phiếu báo hủy
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu báo hủy»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Mã lớp [MaLop]; Tên [TenSV]; Mã ngành [MaNganh]; Tên ngành [TenNganh]; Mã khoa [MaKhoa]; Tên khoa [TenKhoa]; SoInvoice [SoInvoice]; NgayKhTao [NgayKhTao]{ngày}; Ngày hủy [NgayHuy]{ngày}; Tổng hp phải đóng [PhaiThu]; Hủy [IsHuyInvoice]
 ### VDOICHIEUNH – Đối chiếu học phí thu ngân hàng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đối chiếu chưa khớp»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Số tiền đóng [STDong]; Số tiền đóng ngân hàng [STDongNH]; Lý do [LyDoLoi]
 ### VIEW_CHON_DOT_HOC – Chọn đợt học
-- Lưới 1 (bảng KDOTHOC); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn đợt học» (bảng KDOTHOC); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: TT đợt học [TTDotHc]; Mã đợt học [MaDotHc]; Tên đợt học [TenDotHc]
 ### VIEW_CHON_SV_PNT – View chọn sinh viên in phiếu nộp tiền
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu nộp tiền»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SoInvoice [SoInvoice]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]{chọn}; Tổng hp phải đóng [PhaiThu]{số}; Mã lớp [MaLop]; Tên lớp [TenLop]; Niên khóa [NienKhoa]; Mã đơn vị [MaDV]; Tên đơn vị [TenDV]
 ### VIEW_CHUA_TINH_HP – Kết quả đăng ký chưa tính học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách KQĐK chưa có học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Môn chương trình [MonCTDT]; Hình thức tính học phí [HinhThucTinhHP]{chọn}; Số tín chỉ học phí [SoTCHP]; Đơn giá [DonGiaHPCT]; Học phí (chưa giảm) [ThanhTien]
 ### VIEW_CHUYENHP_EDUWEB – Chuyển HP từ Edu web
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### VIEW_DL_Voucher – Danh sách phiếu Voucher
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách dữ liệu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: ProjectCode [ProjectCode]; DepartmentCode [DepartmentCode]; CustomerCode [CustomerCode]; VoucherNumber [VoucherNumber]; VoucherDate [VoucherDate]; Thành công [IsSucc]; Credit [Credit]; Debit [Debit]; AccCredit [AccCredit]; AccDebit [AccDebit]; ExpenseCode [ExpenseCode]; DescriptionDetail [DescriptionDetail]
 ### VIEW_DSDOTFAST – Danh sách đợt chuyển dữ liệu qua Fast
-- Lưới 1 (bảng MDotFast); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã đợt [MaDotFast]; Từ ngày [TuNgay]{ngày}; Đến ngày [DenNgay]{ngày}; Ngày chuyển [NgayChuyenFast]{ngày}; Ghi chú [GCChuyenFast]; Thành công [IsSucc]; Mã user [MaUser]
+- Lưới 1 «Danh sách lần chuyển dữ liệu qua Fast» (bảng MDotFast); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã đợt [MaDotFast]; Từ ngày [TuNgay]{ngày}; Đến ngày [DenNgay]{ngày}; Ngày chuyển [NgayChuyenFast]{ngày}; Ghi chú [GCChuyenFast]; Thành công [IsSucc]; User thực hiện [MaUser]
 ### VIEW_FIX_PBHP – View fix phiếu phân bổ học phí sai
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Sửa, Import, Xuất, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu phân bổ học phí sai» (bảng MPTHU); tắt: Thêm, Sửa, Import, Xuất, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Tiền thu [TienThuGoc]; Tiền tạm ứng [TienTamUngHP]; Tiền phân bổ chi tiết [TienPhanBoCT]
 ### VIEW_FIX_PHIEU – Fix phiếu thu nhiều invoice
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu nhiều phiếu báo»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; NHHK thu HP [NHHKThuHP]; Số chứng từ [SoCTu]; Ngày thu/chi [NgayTChi]; Tiền thu [TienThuGoc]; Số tiền thu [TienPT]; Tiền tạm ứng [TienTamUngHP]; SoInvoice [SoInvoice]
 ### View_GanMauSoHDDTLop – Khai báo mẫu số HDDT theo lớp
-- Lưới 1 (bảng SDMLOP); tắt: Nạp lại, Sửa trên lưới
+- Lưới 1 «Khai báo mẫu số HDDT theo lớp» (bảng SDMLOP); tắt: Nạp lại, Sửa trên lưới
   - Cột: Đơn vị phân cấp [IDDVPC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Tên viết tắt [VTLop](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Tên bậc hệ [TenBH](chỉ đọc); Mã Ng/CNg [MaNgChng](chỉ đọc); Mã đơn vị [MaDV](chỉ đọc); Mã qui chế [MaQC](chỉ đọc); NHHK vào [NHHKVao](chỉ đọc); Niên khóa [NienKhoa](chỉ đọc); Mã trường liên kết [MaDP](chỉ đọc); Mẫu số HDDT [MauSoHDDT]
   - Cột ẩn: Ghi chú [GcLop](chỉ đọc); Không quản lý [HuyLop](chỉ đọc); Chương trình học [IDCTHOC](chỉ đọc); Trường liên kết [IDDP](chỉ đọc); Đơn vị quản lý [IDDVQL](chỉ đọc); Mã khối [IDKhoi](chỉ đọc); Ngành [IDNgChNg](chỉ đọc); Đào tạo ngắn hạn [IsNganHan](chỉ đọc); Ký tự hệ [KyTuHe](chỉ đọc); Mã chương trình học [MaCTHOC](chỉ đọc); Mã đơn vị QL [MaDVQL](chỉ đọc); Mã số lớp [MaSoLop](chỉ đọc); NHHK ra [NHHKRa](chỉ đọc); Số HK tính học phí niên chế [SoHKHPNC](chỉ đọc); Tên đơn vị [TenDV](chỉ đọc); Tên đơn vị QL [TenDVQL](chỉ đọc); Tên tiếng anh [TenLopEg](chỉ đọc); Tên tiếng anh 2 [TenLopEg2](chỉ đọc); Tên ng/chng [TenNgChng](chỉ đọc); Thời gian học [ThoiGianHoc](chỉ đọc)
   - Ô trên form sửa: #IDDVPC, #MaLop, #TenLop, #VTLop, #GcLop, #HuyLop, #IDCTHOC, #IDDP, #IDDVQL, #IDKhoi, #IDNgChNg, #KyTuHe, #MaSoLop, #SoHKHPNC, #TenLopEg, #TenLopEg2, #ThoiGianHoc
 ### VIEW_HOAN_HPCT – Hoàn học phí chi tiết
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chi tiết hoàn»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Diễn giải [DienGiaiHP](chỉ đọc); Đã thu [DaThu]{số}(chỉ đọc); Số tiền [SoTienThu]{số}; Thu/Chi [ThuChi]; Niên học học kỳ [NHHK](chỉ đọc)
 ### VIEW_HOC_PHI_VA_KTX – Danh sách phiếu thu học phí và ký túc xá
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu học phí và ký túc xá»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thu/chi [NgayTChi]{ngày}; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH]; Số tiền [SoTien]; Ghi chú [GHICHUPT]; Phiếu ký túc xá [PhieuKTX]
 ### VIEW_IN_HOA_DON – In hóa đơn
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### VIEW_LOI_VV_BP – Lỗi mã vụ việc hoặc bộ phận
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Lỗi mã vụ việc hoặc bộ phận»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MaKhoi]; Tên khối [TenKhoi]; Mã vụ việc [MaVVFast]; Mã bộ phận [MaBPFast]; Mã ngành [MaNganh]; Mã khoa [MaKhoa]; Tên ngành [TenNganh]; Tên khoa [TenKhoa]
 ### VIEW_MAPBP – Map mã đơn vị với mã bộ phận
-- Lưới 1 (bảng NDMDV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhập mã bộ phận tương ứng với đơn vị» (bảng NDMDV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã đơn vị [MaDV](chỉ đọc); Tên đơn vị [TenDV](chỉ đọc); Mã bộ phận [MaBPFast]
 ### VIEW_MAPVV – Nhập mã bộ phân và vụ việc
-- Lưới 1 (bảng KDMKHOI); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhập mã vụ việc tương ứng với ngành/chuyên ngành» (bảng KDMKHOI); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã Ng/CNg [MaNgChng](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Tên ng/chng [TenNgChng](chỉ đọc); Tên khối [TenKhoi](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Mã bậc hệ [MaBH](chỉ đọc); Mã vụ việc [MaVVFast]; Mã bộ phận [MaBPFast]; Tên ngành [TenNganh](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc)
 ### VIEW_PBHP – Phân bổ học phí
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách chờ phân bổ học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Tiền tạm ứng [TienTamUngHP]; Còn Nợ [ConNo]; Nợ sau phân bổ [NoSauPB]; Chi tiết [Chitiet]
   - Cột ẩn: Mã đơn vị [MaDV]; Mã Ng/CNg [MaNgChng]; Niên khóa [NienKhoa]; Tên ng/chng [TenNgChng]
 ### VIEW_PBHP2 – Phân bổ học phí theo môn
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Nhóm học [NhomHoc]; Tiền tạm ứng [TienTamUngHP]; Còn Nợ [ConNo]; Nợ sau phân bổ [NoSauPB]; Chi tiết [Chitiet]
 ### VIEW_PHIEU_DA_XUAT_FAST – Chọn phiếu xuất sang Fast
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách các phiếu đã chuyển»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày thu/chi [NgayTChi]{ngày}; Số chứng từ [SoCTu]; Tiền thu [TienThuGoc]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]{ngày}; Ghi chú [GHICHUPT]; Tên nhóm thu [TenNhCT]; Mã đợt [MaDotFast]; Ghi chú [GCChuyenFast]; Ngày chuyển [NgayChuyenFast]{ngày}
 ### VIEW_PTHU_SV_DA_NGHI – Danh sách phiếu thu sau khi sinh viên nghỉ
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách phiếu thu sau khi sinh viên nghỉ học» (bảng MPTHU); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Mã nhóm [MaNhCT](chỉ đọc); Tên nhóm thu [TenNhCT](chỉ đọc); Quyển số [QUYENSO]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH](chỉ đọc); Số tiền thu [TienPT](chỉ đọc); Tiền tạm ứng [TienTamUngHP]; Ghi chú [GHICHUPT]; Ngày thu/chi [NgayTChi]{ngày}; Mã user [MaUser](chỉ đọc); Kênh đóng [NguonDongHP]{chọn}(chỉ đọc); Thẻ pos [ThePos]; Diễn giải thu [DienGiaiThu]; NHHK thu HP [NHHKThuHP]; NHHK ra [NHHKRa]
 ### VIEW_SUA_CT_THU – Sửa các khoản thu chi tiết
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chi tiết thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã môn học [MaMH]; Diễn giải [DienGiaiHP]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Tổng hp phải đóng [PhaiThu]; Số tiền thu CT [TienPTCT]; Nội dung hiệu chỉnh [NoiDungCTHC]
 ### View_SuaTTHDDT – Danh sách sinh viên
-- Lưới 1 (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên» (bảng SDMSV); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Tên đơn vị [TenDVThue]; Địa chỉ [DC_DCDVTHUE]; Mã số thuế [MaSoThue]
 ### View_TachPhieuBaoSV – Danh sách KQĐK trong học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách điểm học kỳ»; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã
   - Cột: Mã ngành [MaNganh](chỉ đọc); Mã SV [MaSV](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã CBGD [MaCBGD](chỉ đọc); Tên CBGD [TenDayDuCBGD](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Phần trăm B1 [B1PT](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Ngành 1 [IsNganh1](chỉ đọc); Ngành 2 [IsNganh2](chỉ đọc); Điểm HP L1 [DiemHPL1](chỉ đọc); Điểm HP L2 [DiemHPL2](chỉ đọc); Phần trăm thi [T1PT](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Phần trăm K1 [K1PT](chỉ đọc); Số TC [SoTinChi]{số}(chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Tổ [ToHoc](chỉ đọc); Điểm B1 [B1](chỉ đọc); Điểm B2 [B2](chỉ đọc); Điểm K1 [K1](chỉ đọc); Điểm K2 [K2](chỉ đọc); Điểm K3 [K3](chỉ đọc); Điểm K4 [K4](chỉ đọc); Điểm thi [T1](chỉ đọc); Điểm T2 [T2](chỉ đọc); Điểm T3 [T3](chỉ đọc); Điểm TKHP [DiemHP](chỉ đọc); Hệ chữ [DiemChuHP](chỉ đọc); Đạt HP [DatHP](chỉ đọc); User thực hiện [USERTHUCHIEN](chỉ đọc); Ngày đăng ký [NgayDK]{ngày}(chỉ đọc); Tính chất HP [TChatHP]{chọn}(chỉ đọc); Số tín chỉ học phí [SoTCHP]{số}(chỉ đọc); Đơn giá [DonGiaHP](chỉ đọc); Học phí (chưa giảm) [ThanhTien](chỉ đọc); Miễn giảm [TTienMG](chỉ đọc); Tổng hp phải đóng [PhaiThu](chỉ đọc); Tách phiếu nộp tiền [SoPNT]
 ### VIEW_WEB_DONG_HP_ONLINE – Đóng học phí online
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Diễn giải [DienGiaiHP]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Số tín chỉ học phí [SoTCHP]; Loại HP [LoaiDTHP]; Đơn giá [DonGiaHPCT]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Đã thu [DaThu]; Còn phải thu [ConPhaiThu]
 ### VIEW_XUAT_FAST – Chọn phiếu xuất sang Fast
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn phiếu cần chuyển»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày thu/chi [NgayTChi]; Số chứng từ [SoCTu]; Tiền thu [TienThuGoc]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]; Ghi chú [GHICHUPT]; Tên nhóm thu [TenNhCT]
 ### View_XuatHDDT – Danh sách phiếu thu HP
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tìm [ButtonView_Tim](chỉ đọc); Mẫu số HDDT [MauSoHDDT]; Ký hiệu hóa đơn [KyHieuHDDT]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]{ngày}; Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Tên đơn vị [TenDVThue](chỉ đọc); Địa chỉ [DC_DCDVTHUE](chỉ đọc); Mã số thuế [MaSoThue](chỉ đọc); Phái [Phai]{chọn}(chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Xuất HDDT [IsXuatHDDT](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã ngành [MaNganh](chỉ đọc); Tên ngành [TenNganh](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Quyển số [QUYENSO](chỉ đọc); Số chứng từ [SoCTu](chỉ đọc); Thu ngân hàng [THUNH](chỉ đọc); Số tiền thu [TienPT](chỉ đọc); Tiền HDDT [TienHDDT](chỉ đọc); Ghi chú [GHICHUPT](chỉ đọc); Ngày thu/chi [NgayTChi]{ngày}(chỉ đọc); Mã user [MaUser](chỉ đọc); Kênh đóng [NguonDongHP]{chọn}(chỉ đọc); Số C.Từ ngân hàng [SoCTuNH](chỉ đọc); Ngày thêm [NgayThem](chỉ đọc); Số tài khoản [SoTaiKhoan](chỉ đọc); Chuyển khoản [IsChKhoan](chỉ đọc)
 ### View_XuatHDDTVL – Danh sách phiếu thu vãng lai học kỳ
-- Lưới 1 (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thu vãng lai» (bảng MPThuVL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tìm [ButtonView_Tim](chỉ đọc); Mẫu số HDDT [MauSoHDDT]; Ký hiệu hóa đơn [KyHieuHDDT]; Số HDDT [SoHDDT]; Ngày lập HDDT [NgayLapHDDT]; Số chứng từ [SoCTu](chỉ đọc); Ngày thu/chi [NgayTChi]{ngày}(chỉ đọc); Thu ngân hàng [THUNH](chỉ đọc); Số tiền [SoTienThu](chỉ đọc); Thuế VAT (%) [ThueVAT](chỉ đọc); Ghi chú thu [GCThuVL](chỉ đọc); Mã SV [MaDTThu](chỉ đọc); Họ và tên [HoTenDTThu](chỉ đọc); Email [EmailDTThu](chỉ đọc); Xuất HDDT [IsXuatHDDT](chỉ đọc); Lớp [LopDTThu](chỉ đọc); Địa chỉ [DiaChiDTThu](chỉ đọc); Quyển số [QUYENSO](chỉ đọc); Mẩu số [MauSoPT](chỉ đọc); Ký hiệu [KyHieuPT](chỉ đọc); Mã ngân hàng [MaNH](chỉ đọc); Tên ngân hàng [TenNH](chỉ đọc); Chuyển khoản [IsChKhoan](chỉ đọc); User thu [UserThu](chỉ đọc); Ngày thêm [NgayThem](chỉ đọc); Mã loại thu vãng lai [MaLTVL](chỉ đọc); BHYT [IsBHYT](chỉ đọc); Diễn giải thu [DienGiaiThu](chỉ đọc)
 ### ViewDSNgoaiTe – ViewDSNgoaiTe
-- Lưới 1 (bảng MDMNgoaiTe); tắt: Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách ngoại tệ» (bảng MDMNgoaiTe); tắt: Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã ngoại tệ [MaNgoaiTe]; Tên ngoại tệ [TenNgoaiTe]; Viết tắt [VtNgoaiTe]; Ghi chú [GCNgoaiTe]
   - Cột ẩn: ID ngoại tệ [IDNgoaiTe]
 ### VIEWDSNOHPTHEOSV – Danh sách nợ học phí
-- Lưới 1 (bảng MHPCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nợ học phí» (bảng MHPCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Loai đơn giá học phí [LoaiDGHP]{chọn}(chỉ đọc); Đơn giá [DonGiaHPCT](chỉ đọc); Đơn giá mới [DonGiaMoi](chỉ đọc); Tổng hp phải đóng [PhaiThu](chỉ đọc); Số tiền [TienPhat](chỉ đọc); Tổng số [TongSo](chỉ đọc)
 ### VIEWHLIMPORTHP – Danh sách dòng hợp lệ import học phí
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách dòng hợp lệ» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số thứ tự trong Report [STTReport]; Mã SV [MaSV]; Họ và tên [TenDayDu]; Loại HP [LoaiDTHP]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH]; Số tiền thu [TienPT]; Ngày thu/chi [NgayTChi]; Ghi chú [GHICHUPT]
 ### VIEWIMPORTPHIEUTHUTRUNG – Danh sách sinh viên đã có phiếu thu
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách sinh viên đã có phiếu thu» (bảng SSVHK); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]; Mã lớp [MaLop]
   - Cột ẩn: Tên lớp [TenLop]
 ### VIEWLOIIMPORTHP – Lỗi import học phí
-- Lưới 1 (bảng MHPCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lỗi» (bảng MHPCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số thứ tự trong Report [STTReport]; Mã SV [MaSV]; Loại HP [LoaiDTHP]; Số chứng từ [SoCTu]; Thu ngân hàng [THUNH]; Số tiền thu [TienPT]; Ngày thu/chi [NgayTChi]; Ghi chú [GHICHUPT]; Lỗi [MaLoi]
 ### ViewNKHuyPhieuVL – Nhật ký hủy phiếu vãng lai
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Số chứng từ [SoCTu]; Số tiền [SoTienThu]; Ghi chú thu [GCThuVL]; Ngày thu/chi [NgayTChi]; User thu [UserThu]; Ngày thực hiện [NgayGioLog]; Người thực hiện [CreatedBy]; Tên máy tính [PCName]; Địa chỉ vật lý [PAddress]
+- Lưới 1 «Nhật ký phiếu thu vãng lai»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaDTThu]; Họ và tên [HoTenDTThu]; Số chứng từ [SoCTu]; Số tiền [SoTienThu]; Ghi chú thu [GCThuVL]; Ngày thu/chi [NgayTChi]; User thu [UserThu]; Ngày hủy [NgayGioLog]; User hủy [CreatedBy]; Tên máy tính [PCName]; Địa chỉ vật lý [PAddress]
 ### VIEWNKPHIEUTHU – Nhật ký phiếu thu sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhật ký phiếu thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tác vụ [Action]{chọn}; Ngày thực hiện [NgayGioLog]; Tên máy tính [PCName]; Địa chỉ vật lý [PAddress]; User thực hiện [USERTHUCHIEN]; Mã field [MaField]; Mã View [MAVIEW1]; Tên trường thông tin [TenView1]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; NHHK thu HP [NHHKThuHP]; Số chứng từ [SoCTu]; Tiền thu [TienThuGoc]; Thu ngân hàng [THUNH]; Hoàn học phí [IsHoanHP]; Ghi chú [GHICHUPT]; Tiền thu cũ [TienThuCu]; Giá trị cũ [OldValue]; Giá trị mới [NewValue]
 ### VIEWNKPHIEUTHUVL – Nhật ký phiếu thu vãng lai
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhật ký phiếu thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã View [MAVIEW1]; Tên trường thông tin [TenView1]; NHHK thu [NHHKThu]; Mã SV [MaDTThu]; Họ lót [HoLotDTThu]; Tên [TenDTThu]; Số chứng từ [SoCTu]; Số tiền [SoTienThu]; Tiền thu cũ [TienThuCu]; Thu ngân hàng [THUNH]; Hoàn học phí [IsHoanHP]; Ghi chú thu [GCThuVL]; Tác vụ [Action]{chọn}; User thu [UserThu]; Ngày thêm [NgayThem]; Ngày thực hiện [NgayGioLog]; User thực hiện [USERTHUCHIEN]
 ### ViewTyGia – ViewTyGia
-- Lưới 1 (bảng MTyGia); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách tỷ giá ngoại tệ» (bảng MTyGia); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Ngày giờ điều chỉnh [NgayGioDC]{ngày}; Lần điều chỉnh [LanDCTyGia]; Ghi chú [GcTyGia]; Ghi chú 1 [GhiChu1]
   - Cột ẩn: ID tỷ giá [IDTyGia]
   - Ô trên form sửa: #NgayGioDC, #LanDCTyGia, #GcTyGia, #GhiChu1
 ### ViewTyGiaCT – ViewTyGiaCT
-- Lưới 1 (bảng MTyGiaCT); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách tỷ giá chi tiết» (bảng MTyGiaCT); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã ngoại tệ [MaNgoaiTe](chỉ đọc); Tên ngoại tệ [TenNgoaiTe](chỉ đọc); Tỷ giá ngoại tệ [TyGiaNgoaiTe]
   - Cột ẩn: ID ngoại tệ [IDNgoaiTe]; ID tỷ giá [IDTyGia]; ID tỷ giá chi tiết [IDTyGiaCT]
 ### VTHUGIAYBAO – Thu học phí theo giấy báo
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn học đóng học phí»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổng hp phải đóng [PhaiThu]
 ### VW_DSPHIEUBAO – Danh sách phiếu báo
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu báo»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; SoInvoice [SoInvoice]; NgayKhTao [NgayKhTao]{ngày}; Tổng hp phải đóng [PhaiThu]
 ### VW_GAN_PHIEU_BAO_VAO_PHIEU_THU – Chọn phiếu báo gán vào phiếu thu
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn phiếu báo cần gán»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; SoInvoice [SoInvoice]; NgayKhTao [NgayKhTao]; Tên nhóm thu [TenNhCT]; Tổng hp phải đóng [PhaiThu]
 ### VW_SUA_PHIEU_PHIEU_THU_PHIEU_BAO – Sửa phiếu thu nhiều phiếu báo
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phiếu thu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; NgayKhTao [NgayKhTao]; Ngày thực hiện [NGAYTHUCHIEN]; Ngày thu/chi [NgayTChi]; SoInvoice [SoInvoice]; Tổng hp phải đóng [PhaiThu]; Hủy [IsHuyInvoice]; Số chứng từ [SoCTu]; Số tiền thu [TienPT]; Thu [IsThu]; Rút [IsRut]; Xóa [IsXoa]
 ### XemSuaPThuHP – Xem sửa nhanh phiếu thu học phí
-- Lưới 1 (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách phiếu thu» (bảng MPTHU); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Quyển số [QUYENSO]; Số chứng từ [SoCTu]; Ghi chú [GHICHUPT]; Ngày thu/chi [NgayTChi]{ngày}; Số tiền thu [TienPT](chỉ đọc); Tiền tạm ứng [TienTamUngHP](chỉ đọc); Tiền phân bổ HP [TienPhanBoHP](chỉ đọc); Thu ngân hàng [THUNH]; Mã user [MaUser]; Ngày thêm [NgayThem]; Loại chứng từ [LoaiCTu]{chọn}

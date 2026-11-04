@@ -1,7 +1,8 @@
 # Danh mục màn hình Edusoft.NET (cấu hình gốc AQ)
 
 Sinh bằng `tools/lap_danh_muc.py` từ dữ liệu hệ thống AQ.Data… của gói server. Đường dẫn menu = chữ hiện trên
-ribbon/cây chức năng; cột lưới = nhãn (Tenlabel) [MaField]; ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`.
+ribbon/cây chức năng; «tiêu đề lưới» = chữ sau `@` (vd `click: Thêm @ Danh sách quyết định`); cột lưới = nhãn [MaField];
+ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`/`date:`.
 Trường có thể chỉnh lại (ẩn cột, đổi nhãn, đổi menu) bằng bảng H… trong CSDL trường – khi lệch thì tin `ui-*.txt`.
 
 | Phân hệ | Tên trên ribbon | Số menu | Số màn hình | File |

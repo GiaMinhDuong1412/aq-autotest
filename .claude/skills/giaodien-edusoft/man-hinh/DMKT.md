@@ -197,179 +197,179 @@
 ## Màn hình (view) và lưới
 
 ### D21.08 – Nhập điểm theo sinh viên hoãn thi đăng ký dự thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên hoãn thi đăng ký dự thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Tổ TH [ToTH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Niên học học kỳ [NHHK](chỉ đọc); Điểm thi [T1]
 ### D21.09 – Trả điểm cho sinh viên chưa có điểm
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên chưa có điểm»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Mã môn học [MaMH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Mã lớp [MaLop]; Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Tổ TH [ToTH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Điểm thi [T1]
 ### D2304 – Nhóm được phép cộng điểm
-- Lưới 1 (bảng KToHoc); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm học» (bảng KToHoc); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm/tổ [NhomTo]; Sĩ số cho phép đk [SiSoCPDK](chỉ đọc); Mã lớp [MaLopTH](chỉ đọc); Sĩ số đã đăng ký [SiSoDDK](chỉ đọc); Điểm thi [T1]; Cho phép cộng điểm [IsDuocCongDiem]
 ### D2507 – Import điểm từ scanner
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã bảng ghi điểm [MaBGD](chỉ đọc); Trang in [ThuTuTrangIn](chỉ đọc); Số thứ tự [Stt](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Điểm [DiemDB](chỉ đọc); KH điểm TP [KyHieuTP](chỉ đọc); Điểm cũ [DiemCu](chỉ đọc); Điểm scan [DiemScan](chỉ đọc); Điểm thành phần [DiemTP]; Lỗi [MaLoi](chỉ đọc); Xem chi tiết [XemChiTiet]
+- Lưới 1 «Danh sách điểm scan»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã bảng ghi điểm [MaBGD](chỉ đọc); Trang in [ThuTuTrangIn](chỉ đọc); Số thứ tự [Stt](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Điểm ĐB [DiemDB](chỉ đọc); KH điểm TP [KyHieuTP](chỉ đọc); Điểm cũ [DiemCu](chỉ đọc); Điểm scan [DiemScan](chỉ đọc); Điểm thành phần [DiemTP]; Lỗi [MaLoi](chỉ đọc); Xem chi tiết [XemChiTiet]
 ### D2508 – Import điểm danh từ scanner
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm danh scan»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Form ID [KeyMaBDD](chỉ đọc); Trang điểm danh [BDDPAGE](chỉ đọc); Số thứ tự [Stt](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Trạng thái điểm danh [TrangThaiDiemDanh]{chọn}(chỉ đọc); Lỗi [MaLoi](chỉ đọc); Xem chi tiết [XemChiTiet]
 ### D2804 – Gán zero điểm hoãn thi quá hạn
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn chưa có điểm»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Niên học học kỳ [NHHK]; Gán [IsGan]; Khóa Thi [T1LOCK]
 ### D2807 – Gán zero môn chưa có điểm quá hạn
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Niên học học kỳ [NHHK]; Gán [IsGan]; Khóa Thi [T1LOCK]
 ### D29.03 – Ủy quyền cán bộ nhập điểm online
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Ủy quyền cán bộ nhập điểm»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Tổ TH [ToTH](chỉ đọc); Mã CBGD [MaCBGD](chỉ đọc); Mã CB ủy quyền [MaCBUQ]; Tên CB  bộ ủy quyền [HoTenCBUQ](chỉ đọc)
 ### D31.04 – Danh sách điểm bảo lưu lỗi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Dánh sách điểm lỗi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Điểm thành phần [DiemTP]; Ghi chú [GCDiemBL]; Niên học học kỳ [NHHK]
 ### D31.07 – In điểm bảo lưu theo số quyết định
-- Lưới 1 (bảng DDiemBL); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách quyết định» (bảng DDiemBL); tắt: Thêm, Sửa, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số QĐ [SoQDBL]; Ngày QĐ [NgayQDBL]{ngày}
   - Cột ẩn: ID điểm bảo lưu [IDDiemBL]
 ### D3106_01 – Xem điểm bảo lưu hủy
-- Lưới 1 (bảng DDiemBLHetHan); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Ngày thêm [NgayThem]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Niên học học kỳ [NHHK]; Điểm thành phần [DiemTP]; SoQDHuyBL [SoQDHuyBL]; NgayQDHuyBL [NgayQDHuyBL]; GCHuyBL [GCHuyBL]; Ngày hết hạn [NgayHetHan]
+- Lưới 1 «Danh sách điểm hủy bảo lưu» (bảng DDiemBLHetHan); tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Ngày thêm [NgayThem]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Niên học học kỳ [NHHK]; Điểm thành phần [DiemTP]; Số QĐ hủy bảo lưu [SoQDHuyBL]; Ngày QĐ hủy bảo lưu [NgayQDHuyBL]; GCHuyBL [GCHuyBL]; Ngày hết hạn [NgayHetHan]
 ### D_LOI_SCAN – Lỗi nhận dạng scanner
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách lỗi nhận dạng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Vị trí dòng [IndexLine](chỉ đọc); Tên file ảnh [ImageName](chỉ đọc); Mã BGĐ (byte) [MaBGDByte](chỉ đọc); Mã trang (byte) [MaPageByte](chỉ đọc); Mã bảng ghi điểm [MaBGD](chỉ đọc); Mã trang [MaPage](chỉ đọc); Lỗi scan điểm [LoaiLoiScanDiem]{chọn}(chỉ đọc); Xem chi tiết [XemChiTiet]; Ghi chú 1 [GhiChu1](chỉ đọc)
 ### D_LOI_SCAN_DD – Lỗi nhận dạng scanner điểm danh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách lỗi nhận dạng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Vị trí dòng [IndexLine](chỉ đọc); Form ID [KeyMaBDD](chỉ đọc); Mã trang (byte) [MaPageByte](chỉ đọc); Số sinh viên (byte) [SoSinhVienByte]; Mã Ngày (byte) [NgayDDByte](chỉ đọc); Mã trang [MaPage](chỉ đọc); Số sinh viên [SoSinhVien]; Ngày điểm danh [NgayDD]{ngày}(chỉ đọc); Lỗi scan điểm danh [LoaiLoiScanDiemDanh]{chọn}(chỉ đọc); Xem chi tiết [XemChiTiet]
 ### DCHUYENDIEMTUEDUWEB – Download điểm từ EduWeb
-- Lưới 1 (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm» (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Điểm B1 [B1]; Điểm B1.1 [B11]; Điểm B1.2 [B12]; Điểm B1.3 [B13]; Điểm B2 [B2]; Điểm B2.1 [B21]; Điểm B2.2 [B22]; Điểm B2.3 [B23]; Điểm B3 [B3]; Điểm B3.1 [B31]; Điểm B3.2 [B32]; Điểm B3.3 [B33]; Điểm K1 [K1]; Điểm K1.1 [K11]; Điểm K1.2 [K12]; Điểm K1.3 [K13]; Điểm K2 [K2]; Điểm K2.1 [K21]; Điểm K2.2 [K22]; Điểm K2.3 [K23]; Điểm K3 [K3]; Điểm K3.1 [K31]; Điểm K3.2 [K32]; Điểm K3.3 [K33]; Điểm K4 [K4]; Điểm C1 [C1]; Điểm C1.1 [C11]; Điểm C1.2 [C12]; Điểm C1.3 [C13]; Điểm C2 [C2]; Điểm C2.1 [C21]; Điểm C2.2 [C22]; Điểm C2.3 [C23]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]; Khóa điểm B1 [ngaykhoabt]{ngày}; Khóa điểm K1 [ngaykhoakt]{ngày}; Khóa điểm T1 [ngaykhoa]{ngày}
 ### DDMMAUSCAN – Danh mục mẫu scan
-- Lưới 1 (bảng DDmMauScan); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục mẫu scan» (bảng DDmMauScan); tắt: Sửa trên lưới
   - Cột: Mã mẫu scan [MaMauScan]; Ten mẫu scan [TenMauScan]; Tên viết tắt [VTMauScan]
   - Cột ẩn: Ghi chú [GCMauScan]; Làm tròn [LamTronBGD]{chọn}; Độ dài chuối điểm [LenChuoiDiem]{số}; Độ dài ID form [LenIDForm]{số}; Độ dài tên file [LenTenFile]{số}; Độ dài trang [LenTrang]{số}; Scan ngang [ScanNgatBGD]{số}; Số sv [SoSVBGD]; Tên tiếng anh [TenMauScanEg]; Vị trí chuỗi điểm [ViTriChuoiDiem]{số}; Vi trí ID form [ViTriIDForm]; Vi trí tên file [ViTriTenFile]{số}; Vi trí trang [ViTriTrang]{số}
   - Ô trên form sửa: #MaMauScan, #TenMauScan, #VTMauScan, #GCMauScan, #LamTronBGD, #LenChuoiDiem, #LenIDForm, #LenTenFile, #LenTrang, #ScanNgatBGD, #SoSVBGD, #TenMauScanEg, #ViTriChuoiDiem, #ViTriIDForm, #ViTriTenFile, #ViTriTrang
 ### DDMPLND – Danh mục quyềni nhập điểm
-- Lưới 1 (bảng DDMPLND); tắt: Nạp lại, Sửa trên lưới, Thoát
+- Lưới 1 «Danh mục loại nhập điểm» (bảng DDMPLND); tắt: Nạp lại, Sửa trên lưới, Thoát
   - Cột: Mã phân loại nhập điểm [MaPLND]; Tên phân loại [TenPLND]; Viết tắt phân loại [VtPLND]
   - Cột ẩn: Ghi chú phân loại [GcPLND]; Tên tiếng anh [TenPLNDEg]
   - Ô trên form sửa: #MaPLND, #TenPLND, #VtPLND, #GcPLND, #TenPLNDEg
-- Lưới 2 (bảng DPLNDCT); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 2 «Danh sách phân loại chi tiết» (bảng DPLNDCT); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: KH điểm TP [KyHieuTP]; Phân cấp user [PhanCapUser]{chọn}
   - Ô trên form sửa: #KyHieuTP, #PhanCapUser
 ### DHOIPHACH – Hồi phách từ danh sách thi
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### DHT001 – Phân quyền nhập theo môn học
-- Lưới 1 (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách môn học phân quyền» (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Cho nhập [IsNhapDiem]; Mã khoa quản lý bộ môn [MaKhoaBM](chỉ đọc); Mã BM QL MH [MaBmQLMH](chỉ đọc); Tên khoa quản lý bộ môn [TenKhoaBM](chỉ đọc); Tên BM QL MH [TenBmQLMH](chỉ đọc)
 ### DHT002 – Phân quyền nhập điểm theo lớp học phần
-- Lưới 1 (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách lớp học phần phân quyền» (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Mã khối [MaKhoi](chỉ đọc); Mã khoa [MaKhoa](chỉ đọc); Tên khoa [TenKhoa](chỉ đọc); Cho nhập [IsNhapDiem]
 ### DHT003 – Phân quyền nhập theo nhóm môn học
-- Lưới 1 (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách nhóm môn học phân quyền» (bảng DPQDIEM); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm/tổ [NhomTo](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Cho nhập [IsNhapDiem]; Mã khoa quản lý bộ môn [MaKhoaBM](chỉ đọc); Mã BM QL MH [MaBmQLMH](chỉ đọc); Tên khoa quản lý bộ môn [TenKhoaBM](chỉ đọc); Tên BM QL MH [TenBmQLMH](chỉ đọc)
 ### DIEMTP_KHG_TRONG_SO – Kiểm tra điểm thành phần không có trọng số
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm không có trọng số %»; tắt: Thêm, Xóa, Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; KH điểm TP [KyHieuTP]; Điểm thành phần [DiemTP]
 ### DIMPORTDIEMQT – Import điểm quá trình
-- Lưới 1 (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import điểm quá trình» (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã môn học [MaMH]
 ### DKS.09 – Khóa sổ điểm bảo lưu
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Khóa/mở khóa điểm bảo lưu»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Khóa [IsLockBL]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Điểm thành phần [DiemTP]; Số QĐ [SoQDBL]; Ngày QĐ [NgayQDBL]{ngày}; Niên học học kỳ [NHHK]; Ngày hết hạn [NgayHetHan]{ngày}; Ghi chú [GCDiemBL]
 ### DLOGNHOMPHACH – Nhật ký nhóm phách
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhật ký nhóm phách»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã nhóm [MaNhPhach]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Tác vụ [Action]{chọn}; User thực hiện [USERTHUCHIEN]; Ngày thực hiện [NGAYTHUCHIEN]; Mã View [MAVIEW1]; Tên trường thông tin [TenView1]
 ### IMP_DIEM_TP_SAI – Import điểm thành phần sai
-- Lưới 1 (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import điểm thành phần nhập sai» (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Mã môn học [MaMH]; Nhóm/tổ [NhomTo]; KH điểm TP [KyHieuTP]; Điểm sai trên phần mềm [DiemPM]; Điểm gốc (điểm đúng) [DiemBD]; Mã viên chức [MaNV]; Mã lý do SĐ [MaLDSD]; Đã chỉnh sửa [DaChinhDiem]
 ### IMPORT_DIEM_DKMH – Import điểm + đăng ký môn học + tạo nhóm học
-- Lưới 1 (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Import điểm + đăng ký môn học» (bảng SSVHK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Nhóm học [NhomHoc]; KH điểm TP [KyHieuTP]; Điểm thành phần [DiemTP]; GC chuyển kqđk [LyDo]
 ### NHAPDIEMHOCKY – Nhập điểm học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm học kỳ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]; Điểm TKHP [DiemHP]; Hệ chữ [DiemChuHP]; Đạt HP [DatHP]
 ### NHAPTHONGTINDIEMSAI – Nhập thông tin điểm sai
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### V_SV_CHUYEN_LICH_THI – Nhập điểm sinh viên chuyển lịch thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên chuyển lịch thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; Ngày thi [NgayThi]{ngày}; Nhóm học [NhomHoc]; Điểm thi [T1]; Điểm B1 [B1]; Phần trăm B1 [B1PT]; Điểm B2 [B2]; Phần trăm B2 [B2PT]; Điểm B3 [B3]; Phần trăm B3 [B3PT]; Điểm B4 [B4]; Phần trăm B4 [B4PT]; Điểm K1 [K1]; Phần trăm K1 [K1PT]; Điểm K2 [K2]; Phần trăm K2 [K2PT]; Điểm K3 [K3]; Phần trăm K3 [K3PT]; Điểm K4 [K4]; Phần trăm K4 [K4PT]; Điểm C1 [C1]; Phần trăm C1 [C1PT]; Điểm C2 [C2]; Phần trăm C2 [C2PT]; Điểm C3 [C3]; Phần trăm C3 [C3PT]; Điểm C4 [C4]; Phần trăm C4 [C4PT]; Phần trăm thi [T1PT]
 ### VBKDIEM – Sao lưu điểm
-- Lưới 1 (bảng DBKDiem); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách học kỳ sao lưu điểm» (bảng DBKDiem); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Ghi chú backup điểm [GCBKDiem]; Ngày backup điểm [NgayBKDiem]{ngày}; Mã user [MaUser]
 ### VIEW_BAC_CO_DIEM – View bậc cờ điểm
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### VIEW_CHON_BO_BLNGANH – Chọn bộ bảo lưu ngành
-- Lưới 1 (bảng DDmBLNganh); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh mục bộ bảo lưu» (bảng DDmBLNganh); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bộ bảo lưu [MaBLNganh]; Tên bộ bảo lưu [TenBLNganh]; Tên bộ bảo lưu (2) [TenBLNganhEg]; Viết tắt [VtBLNganh]
 ### VIEW_CHON_DIEM – Chọn điểm chuyển vào bảo lưu
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ [ToHoc]; Điểm TKHP [DiemHP]; Niên học học kỳ [NHHK]
 ### VIEW_CHUYEN_DIEM_BL – Danh sách điểm bảo lưu
-- Lưới 1 (bảng DDiemBL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm bảo lưu» (bảng DDiemBL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Điểm thành phần [DiemTP]; Niên học học kỳ [NHHK]; Ghi chú [GCDiemBL]
 ### VIEW_CHUYEN_DIEM_DAC_BIET – Danh sách điểm
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Mã lớp [MaLop]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm B3 [B3]; Điểm C1 [C1]; Điểm C2 [C2]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]; Điểm TKHP [DiemHP]; Điểm cũ [DiemCu]; Ghi chú điểm [GcNhapDiem]; Đã chuyển [DaChuyen]; Số lượng đã chuyển [SLDaChuyen]; Số tín chỉ đã chuyển [SoTCDaChuyen]; Môn bắt buộc [IsMHBB]
 ### VIEW_CHUYEN_DIEM_DAC_BIET_SV – Danh sách điểm
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm môn học»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Niên học học kỳ [NHHK]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm B3 [B3]; Điểm C1 [C1]; Điểm C2 [C2]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]; Điểm TKHP [DiemHP]; Điểm cũ [DiemCu]; Ghi chú điểm [GcNhapDiem]; Đã chuyển [DaChuyen]; Số lượng đã chuyển [SLDaChuyen]; Số tín chỉ đã chuyển [SoTCDaChuyen]; Môn tốt nghiệp? [IsMHTN]
 ### VIEW_CONG_MON_MODUN – Cộng môn modun
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn mô đun của sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Cách tính điểm [CachTinhMonModun]{chọn}; Điểm tổng kết học phần [DiemTKHP]; Xem chi tiết [XemChiTiet]; Danh sách môn thiếu [DSMONTHIEU]; Không đạt [KhgDat]; Lý do [LyDoLoi]
 ### VIEW_D2111 – Chuyển điểm trung gian -> điểm chính theo nhóm học
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Chọn điểm cần chuyển»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV2]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ [ToHoc]; KH điểm TP [KyHieuTP]; Điểm trung gian [DiemTPTG]; Điểm chính thức [DiemTPCT]; Trạng thái điểm [TrangThaiDiem]{chọn}; Mã lớp [MaLop]
 ### VIEW_D2112 – Chuyển điểm trung gian -> điểm chính theo nhóm thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm trung gian khác điểm chính»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV2]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm thi [NhomThi]; Tổ thi [ToThi]; KH điểm TP [KyHieuTP]; Điểm trung gian [DiemTPTG]; Điểm chính thức [DiemTPCT]; Trạng thái điểm [TrangThaiDiem]{chọn}; Mã lớp [MaLop]
 ### VIEW_DIEM_HOAN_THI – Nhập điểm hoãn thi
-- Lưới 1 (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm hoãn thi» (bảng MKQDK); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Hiện diện SV [HienDienSV]{chọn}; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Điểm [DiemDB]; Đã chuyển [DaChuyen]; Điểm thi [DiemThi]; Mã khoa [MaKhoa]; Tên khoa [TenKhoa]
 ### VIEW_DIEM_SCAN – Danh sách điểm scan
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm được scan»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; KH điểm TP [KyHieuTP]; Điểm thành phần [DiemTP]; Mã bảng ghi điểm [MaBGD]; Trang [TrangBGD]; User scan [UserScan]; Ngày scan [NgayScan]{ngày}; Tên file [FileName]
 ### VIEW_DS_SAI_DIEM – Danh sách điểm sai được ghi nhận
-- Lưới 1 (bảng DDiemSai); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Điểm hiện tại [DIEMHT](chỉ đọc); Điểm sai trên phần mềm [DiemPM]; Điểm gốc (điểm đúng) [DiemBD]; ID GV sai điểm [IDGVSD]; ID lý do SĐ [IDLDSD]; Đã chỉnh sửa [DaChinhDiem]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên lý do SĐ [TenLDSD](chỉ đọc)
+- Lưới 1 «Danh sách điểm ghi nhận sai» (bảng DDiemSai); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Mã môn học [MaMH](chỉ đọc); Tên môn học [TenMH](chỉ đọc); Nhóm học [NhomHoc](chỉ đọc); Số TC [SoTinChi](chỉ đọc); Điểm hiện tại [DIEMHT](chỉ đọc); Điểm nhập sai [DiemPM]; Điểm gốc (điểm đúng) [DiemBD]; GV nhập sai [IDGVSD]; Lý do sai [IDLDSD]; Đã chỉnh sửa [DaChinhDiem]; Tên đầy đủ [TenDayDuNV](chỉ đọc); Tên lý do SĐ [TenLDSD](chỉ đọc)
 ### VIEW_DSKQDKHK – Danh sách KQĐK trong học kỳ
-- Lưới 1; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm học kỳ»; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã CBGD [MaCBGD]; Tên ngành [TenNganh]; Mã ngành [MaNganh]; Tên CBGD [TenDayDuCBGD]; Tên khoa [TenKhoa]; Ngày sinh [NgaySinhC]; Mã khoa [MaKhoa]; Mã lớp [MaLop]; Phần trăm B1 [B1PT]; Mã môn học [MaMH]; Ngành 1 [IsNganh1]; Ngành 2 [IsNganh2]; Điểm HP L1 [DiemHPL1]; Điểm HP L2 [DiemHPL2]; Phần trăm thi [T1PT]; Tên môn học [TenMH]; Phần trăm K1 [K1PT]; Số TC [SoTinChi]{số}; Nhóm học [NhomHoc]; Tổ [ToHoc]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]; Điểm TKHP [DiemHP]; Hệ chữ [DiemChuHP]; Điểm số (Hệ 4) [DiemSoHP]; Đạt HP [DatHP]; User thực hiện [USERTHUCHIEN]; Ngày đăng ký [NgayDK]{ngày}; Tính chất HP [TChatHP]{chọn}; Số tín chỉ học phí [SoTCHP]{số}; Đơn giá [DonGiaHP]; Học phí (chưa giảm) [ThanhTien]; Miễn giảm [TTienMG]; Tổng hp phải đóng [PhaiThu]; Ghi chú [GcKQDK]
 ### VIEW_GAN_DIEM_CT – Gán điểm cấm thi theo điều kiện
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách cấm thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Phần trăm B1 [B1PT]; Phần trăm B2 [B2PT]; Phần trăm K1 [K1PT]; Phần trăm K2 [K2PT]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm thi [T1]
 ### VIEW_MON_MODUN_CT – Danh sách môn mô đun con
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn mô đun con»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Cách tính điểm [CachTinhMonModun]{chọn}; Điểm tổng kết học phần [DiemTKHP]; Trọng số điểm [TrongSoMonModun]
 ### VIEW_NHAP_HOAN_THI_MH – Nhập hoãn thi theo môn học
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách sinh viên đăng ký»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]; Phái [Phai]; Mã lớp [MaLop]; Điểm [DiemDB]; Nhập [IsNhap]
 ### VIEW_NHAP_HOAN_THI_SV – Nhập điểm hoãn thi sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Kết quả đăng ký sinh viên»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm học [NhomHoc]; Tổ TH [ToTH]; Điểm [DiemDB]; Nhập [IsNhap]
 ### View_SVChuaNhapDiem – Danh sách sinh viên chưa nhập điểm
 - Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã lớp [MaLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm/tổ [NhomTo]; Ngày thêm [NgayThem]; Mã user [MaUser]; Điểm TKHP [DiemHP]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm B3 [B3]; Điểm B4 [B4]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm C1 [C1]; Điểm C2 [C2]; Điểm P1 [P1]; Điểm P2 [P2]; Điểm P3 [P3]; Điểm P4 [P4]; Điểm P5 [P5]; Điểm P6 [P6]; Điểm Q1 [Q1]; Điểm Q1 [Q2]; Điểm Q2 mới [Q3]; Điểm Q4 [Q4]; Điểm Q5 [Q5]; Điểm Q6 [Q6]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]
 ### VIEW_XEM_BL_MODUN – Xem điểm bảo lưu môn mô đun
-- Lưới 1 (bảng DDiemBL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Dánh sách điểm môn mô đun» (bảng DDiemBL); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Điểm thành phần [DiemTP]; Ghi chú [GCDiemBL]; Xem chi tiết [XemChiTiet]
 ### VIEW_XEMFILESVDK – Danh sách sinh viên đã đăng ký
-- Lưới 1; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã Ng/CNg [MaNgChng]; Tên ng/chng [TenNgChng]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Ngày thi lần 2 [NGAYTHIL2]{ngày}; Tiết BĐ thi lần 2 [TIETBDL2]; Phòng thi [PhongThi]; Ngày thêm [NgayThem]{ngày}; Đăng ký online [IsDKOnline]
+- Lưới 1 «Danh sách sinh viên đã đăng ký thi lại lần 2 trong học kỳ»; tắt: Thêm, Xóa, Import, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ lót [HoLotSV]; Tên [TenSV]; Mã lớp [MaLop]; Mã Ng/CNg [MaNgChng]; Tên ng/chng [TenNgChng]; Mã môn học [MaMH]; Tên môn học [TenMH]; Nhóm học [NhomHoc]; Ngày thi lần 2 [NGAYTHIL2]{ngày}; Ca thi 2 [TIETBDL2]; Phòng thi [PhongThi]; Ngày thêm [NgayThem]{ngày}; Đăng ký online [IsDKOnline]
 ### ViewChonTieuChuanCC – View chọn tiêu chuẩn chứng chỉ
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách tiêu chuẩn»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã tiêu chuẩn [MaTChuan]; Tên tiêu chuẩn [TenTChuan]; Tên chứng chỉ [TenCC]
 ### VIEWCONGBODIEMTK – Công bố điểm tổng kết
-- Lưới 1 (bảng DCongBoDiemTP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm học» (bảng DCongBoDiemTP); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn học [MaMH]; Tên môn học [TenMH]; Số TC [SoTinChi]; Nhóm/tổ [NhomTo]; Mã CBGD [MaCBGD]; Họ lót CBGD [HoLotCBGD]; Tên CB [TenCBGD]; Công bố [IsCongBoDiemTK]; Điểm B1 [B1]; Điểm B2 [B2]; Điểm B3 [B3]; Điểm C1 [C1]; Điểm C2 [C2]; Điểm K1 [K1]; Điểm K2 [K2]; Điểm K3 [K3]; Điểm K4 [K4]; Điểm thi [T1]; Điểm T2 [T2]; Điểm T3 [T3]
 ### VIEWDSLOPINBL – Danh sách lớp in bảo lưu điểm theo số quyết định
-- Lưới 1 (bảng SDMLOP); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp» (bảng SDMLOP); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]; Tên viết tắt [VTLop]; Ghi chú [GcLop]
   - Cột ẩn: Lớp sinh viên [IDLop]
 ### ViewMHBoTuc – Danh sách bổ túc môn học
-- Lưới 1 (bảng DMHBoTuc); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã SV [MaSV]; Họ và tên [TenDayDu]; Mã lớp [MaLop]; Tên lớp [TenLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Điểm [DiemBoTuc]; Đạt [DatBoTuc]
+- Lưới 1 «Danh sách bổ túc môn học» (bảng DMHBoTuc); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã SV [MaSV]; Họ và tên sinh viên [TenDayDu]; Mã lớp [MaLop]; Tên lớp [TenLop]; Mã môn học [MaMH]; Tên môn học [TenMH]; Điểm [DiemBoTuc]; Đạt [DatBoTuc]
   - Cột ẩn: Môn học [IDMH]; ID môn học bổ túc [IDMHBoTuc]; Sinh viên [IDSV]
   - Ô trên form sửa: #TenDayDu, #TenMH, #DiemBoTuc, #DatBoTuc, #IDMH, #IDSV
 ### ViewSVBoTucMH – Danh sách sv bổ túc môn học
 - Lưới 1 (bảng SDMSV); tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
 ### ViewSVDiemDanh – ViewSVDiemDanh
-- Lưới 1 (bảng SDiemDanh); tắt: Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách sinh viên nhóm» (bảng SDiemDanh); tắt: Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Dòng dữ liệu [SttDong](chỉ đọc); Mã SV [MaSV](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã lớp [MaLop](chỉ đọc); Tên lớp [TenLop](chỉ đọc); Trạng thái điểm danh [TrangThaiDiemDanh]{chọn}
 ### VIMPORT_PK – Import điểm phúc khảo
 - Lưới 1 (bảng DSVPhucKhao); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới

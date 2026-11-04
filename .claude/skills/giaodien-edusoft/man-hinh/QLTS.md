@@ -297,132 +297,132 @@
 ## Màn hình (view) và lưới
 
 ### CHON_TDSTS – Chọn danh sách thí sinh
-- Lưới 1 (bảng TDSTS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
   - Cột: Mã DS thí sinh [MADSTS](chỉ đọc); SBD [SBD](chỉ đọc); Họ và tên [TenDayDu](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Lý do cấm thi [GCCAMTHI]; Số CMND [SoCMND](chỉ đọc); Lý do tuyển thẳng [GCTUYENTHG]; Lý do miễn thi [GCMIENTHI]
   - Cột ẩn: Cấm thi [CAMTHI](chỉ đọc); Mã thí sinh [IDDSTS](chỉ đọc); ID miễn thi [IDMIENTHI](chỉ đọc); Môn thi [IDMONTS](chỉ đọc); Tuyển thẳng [TUYENTHG](chỉ đọc)
 ### Chon_TGRPTS – Môn thi chung thời gian
-- Lưới 1 (bảng TGRPTS); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thông tin tổ chức thi cho nhóm thi chung» (bảng TGRPTS); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên môn [TENMONTS](chỉ đọc); Ký hiệu ghép [MAGRPTS](chỉ đọc); Tên nhóm môn thi chung [TENGRPTS]; Thứ tự [TTGRPTS]; Hệ điểm TS [HEDIEMTS]{chọn}
   - Cột ẩn: Nhóm ghép thi chung [IDGRPTS]; ID kỳ TS [IDKyTS]; Môn thi [IDMONTS]; Mã môn [MAMONTS]; Niên học học kỳ [NHHK]; Tên tiếng anh [TENGRPTSEG]
 ### DSThiSinhTrungTuyen – Danh sách thí sinh trúng tuyển
-- Lưới 1 (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
-  - Cột: SBD [SBD]; Phiếu số (C) [PHIEUSOBGD]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; NV ưu tiên [UUTIENNV]; Năm tốt nghiệp [NAMTN]; Mã ngành [MANGTS]; Mã khối [MAKHOITS]; Điểm cộng XT [DIEMCONGXT]; Điểm chuẩn theo Tổ hợp XT [DIEMCHUAN]
+- Lưới 1 «Danh sách thí sinh trúng tuyển» (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+  - Cột: SBD [SBD]; Phiếu số (C) [PHIEUSOBGD]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; NV ưu tiên [UUTIENNV]; Năm tốt nghiệp [NAMTN]; Mã ngành [MANGTS]; Mã khối [MAKHOITS]; Tổng điểm thí sinh [DIEMCONGXT]; Điểm chuẩn theo Tổ hợp XT [DIEMCHUAN]
 ### QLSV_ViewHSBH – Hồ sơ nhập học bậc hệ
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách bậc hệ»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Bậc hệ [IDBH]
   - Ô trên form sửa: #TenBH, #GhiChuView1, #IDBH
 ### QLTS_NhapHoSoThiSinh – Nhập hồ sơ thí sinh
-- Lưới 1 (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Mã DS thí sinh [MADSTS]; Họ lót [HoLotSV]; Tên [TenSV]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Đợt nộp đơn thi [DOT]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; Điểm TB Lớp 10 [DMLP10]; Điểm TB Lớp 11 [DMLP11]; Điểm TB Lớp 12 [DMLP12]; Năm tốt nghiệp [NAMTN]{số}; Số BD trường nộp đơn [SBDCUMPT](chỉ đọc); Phiếu số (code) [PHIEUSO]; Mã khối [MAKHOITS](chỉ đọc); Mã ngành [MANGTS](chỉ đọc); Năm thi [NAMCUMPT]{số}(chỉ đọc); Tên cụm thi [TENCUMTHI]; Ghi chú dùng bên detailright [GhiChuView1]
   - Cột ẩn: Hình sinh viên [AvatarSV]; CC bổ túc [CCBoTuc]; Học bạ THPT [CO_HB]; TN THPT [CO_TN]; Cơ sở ĐT [CoSoDT]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Đối tượng TS [DOITUONGTS]; Điểm tổng [DiemTong]; Diện trúng tuyển [DienTT]; Đơn vị CT [DonViCTac]; Ghi chú hồ sơ [GCDSTS]; Ghi chú hồ sơ 2 [GCDSTS2]; Ghi chú dùng bên detailright 2 [GhiChuView2]; Hạnh kiểm [HanhKiem]{chọn}; Hệ đào tạo [HeDTVBTB]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; Cụm thi PT [IDCUMPT](chỉ đọc); Mã cụm thi [IDCUMTHI]; Dân tộc [IDDT]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; ID TT cụm phổ thông [IDTTCUMPT]; Miễn AV [IsAnhVan]; Lớp 10 [LOP10]; Lớp 11 [LOP11]; Lớp 12 [LOP12]; Chương trình giảng dạy [LoaiCTGD]{chọn}; Mã đợt [MADOTNVTS]; Điểm ĐK1 [MonDK1]; Điểm ĐK2 [MonDK2]; Ngành TN [NganhTN]; Ngày cấp [NgayCap]; Ngày cấp [NgayCapVB]; Người liên lạc [NguoiLL]; Nhóm khu vực [NhomKVTS]; Nơi cấp [NoiCapCMND]; Nơi cấp VBSV [NoiCapVBSV]; Nơi sinh [NoiSinh]; Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Quốc tịch [QuocTich]; Số văn bằng [SOVBSV]; Số tín chỉ [SoTCCTHoc]; Tên khối [TENKHOITS](chỉ đọc); Tên ngành [TENNGTS](chỉ đọc); THPT [THPT]; Họ và tên [TenDayDu]; NV ưu tiên [UUTIENNV]; Xếp loại tốt nghiệp [XepLoaiTN]
   - Ô trên form sửa: #SBD, #MADSTS, #HoLotSV, #TenSV, #LOAIHOSOTS, #DOT, #Phai, #NgaySinhC, #SoCMND, #DMLP10, #DMLP11, #DMLP12, #NAMTN, #SBDCUMPT, #PHIEUSO, #NAMCUMPT, #GhiChuView1, #AvatarSV, #CCBoTuc, #CO_HB, #CO_TN, #CoSoDT, #DC_DCHK, #DC_DCHK2, #DC_DCLLSV, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DOITUONGTS, #DiemTong, #DienTT, #DonViCTac, #GCDSTS, #GCDSTS2, #GhiChuView2, #HanhKiem, #HeDTVBTB, #HocLuc, #IDBH, #IDCUMPT, #IDCUMTHI, #IDDT, #IDKHOITS, #IDNGTS, #IsAnhVan, #LOP10, #LOP11, #LOP12, #LoaiCTGD, #MonDK1, #MonDK2, #NganhTN, #NgayCap, #NgayCapVB, #NguoiLL, #NhomKVTS, #NoiCapCMND, #NoiCapVBSV, #NoiSinh, #PHIEUSOBGD, #QuocTich, #SOVBSV, #SoTCCTHoc, #TENKHOITS, #TENNGTS, #THPT, #XepLoaiTN
 ### QLTS_NhapHoSoThiSinh_DHQT – Nhập hồ sơ thí sinh
-- Lưới 1 (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Mã khối [MAKHOITS](chỉ đọc); Mã ngành [MANGTS](chỉ đọc); Số liệu đơn vị học trình [SoLDVHT]; Đăng ký ôn thi tiếng Anh [IsDKONTA]; Đăng ký bổ sung kiến thức [IsDKBSKT]; Đăng ký hướng dẫn ôn tập [IsDKHDOT]; Nguồn tuyển [NguonTuyen]{chọn}
   - Cột ẩn: Hình sinh viên [AvatarSV]; CC bổ túc [CCBoTuc]; Học bạ THPT [CO_HB]; TN THPT [CO_TN]; Cơ quan công tác [CQCT]; Cơ sở ĐT [CoSoDT]; Địa chỉ [DC_DCCHA]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Địa chỉ [DC_DCME]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; DC_DTCQCT1 [DC_DTCQCT1]; DC_DTCQCT2 [DC_DTCQCT2]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Đối tượng TS [DOITUONGTS]; Đợt nộp đơn thi [DOT]; GPA [DiemCGPA]; Điểm [DiemNN1]; Điểm [DiemNN2]; Điểm tổng [DiemTong]; Diện trúng tuyển [DienTT]; Đơn vị CT [DonViCTac]; Ghi chú hồ sơ [GCDSTS]; Ghi chú hồ sơ 2 [GCDSTS2]; Ghi chú dùng bên detailright [GhiChuView1]; Ghi chú dùng bên detailright 2 [GhiChuView2]; Hạnh kiểm [HanhKiem]{chọn}; Hệ đào tạo [HeDTVBTB]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; Cụm thi PT [IDCUMPT](chỉ đọc); Mã cụm thi [IDCUMTHI]; Đợt XT [IDDOTNVTS]; Dân tộc [IDDT]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; ID TT cụm phổ thông [IDTTCUMPT]; Miễn AV [IsAnhVan]; KNLV [KNLV]; Chương trình giảng dạy [LoaiCTGD]{chọn}; Mã đợt [MADOTNVTS]; Mã DS thí sinh [MADSTS]; Điểm ĐK1 [MonDK1]; Điểm ĐK2 [MonDK2]; Năm thi [NAMCUMPT]{số}(chỉ đọc); Năm tốt nghiệp [NAMTN]{số}; Ngày cấp [NgCapNN1]; Ngày cấp [NgCapNN2]; Nghề nghiệp [NgNghiep]; Ngày sinh [NgSinhCha]; Ngày sinh [NgSinhMe]; Ngành TN [NganhTN]; Ngày cấp [NgayCap]; Ngày cấp [NgayCapVB]; Người liên lạc [NguoiLL]; Nhóm khu vực [NhomKVTS]; Nơi cấp [NoiCapCMND]; Nơi cấp [NoiCapNN1]; Nơi cấp [NoiCapNN2]; Nơi cấp VBSV [NoiCapVBSV]; Nơi sinh [NoiSinh]; Phiếu số (code) [PHIEUSO]; Quê quán [QueQuan]; Quốc tịch [QuocTich]; SBD [SBD]; Số BD trường nộp đơn [SBDCUMPT](chỉ đọc); Số văn bằng [SOVBSV]; Số CMND [SoCMND]; Số tín chỉ [SoTCCTHoc]; Tên cụm thi [TENCUMTHI]; Tên khối [TENKHOITS](chỉ đọc); Tên ngành [TENNGTS](chỉ đọc); THPT [THPT]; Tên đề tài [TTDeTai]; Tuyển thẳng [TUYENTHG]; Tên cha [TenCha]; Tên giảng viên [TenGVHD1]; Tên giảng viên [TenGVHD2]; Tên mẹ [TenMe]; Trình độ NN [TrinhDoNN1]; Trình độ NN [TrinhDoNN2]; Trình độ PT [TrinhDoPT]; NV ưu tiên [UUTIENNV]; Xếp loại tốt nghiệp [XepLoaiTN]
   - Ô trên form sửa: #HoLotSV, #TenSV, #Phai, #NgaySinhC, #PHIEUSOBGD, #LOAIHOSOTS, #IsDKONTA, #IsDKBSKT, #IsDKHDOT, #NguonTuyen, #AvatarSV, #CQCT, #DC_DCCHA, #DC_DCHK, #DC_DCLLSV, #DC_DCME, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DOITUONGTS, #DiemCGPA, #DiemNN1, #DiemNN2, #GCDSTS, #GhiChuView1, #GhiChuView2, #IDCUMTHI, #IDDOTNVTS, #IDDT, #IDKHOITS, #IDNGTS, #IsAnhVan, #KNLV, #NgCapNN1, #NgCapNN2, #NgNghiep, #NgSinhCha, #NgSinhMe, #NgayCap, #NguoiLL, #NoiCapCMND, #NoiCapNN1, #NoiCapNN2, #NoiSinh, #QueQuan, #QuocTich, #SoCMND, #TTDeTai, #TUYENTHG, #TenCha, #TenGVHD1, #TenGVHD2, #TenMe, #TrinhDoNN1, #TrinhDoNN2, #TrinhDoPT
 ### QLTS_NhapHoSoThiSinh_NL – Nhập hồ sơ thí sinh nâng lực
-- Lưới 1 (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; Năm tốt nghiệp [NAMTN]{số}; Mã ngành [MANGTS](chỉ đọc); Ghi chú dùng bên detailright [GhiChuView1]; Nhóm khu vực [NhomKVTS]{chọn}; Đối tượng TS [DOITUONGTS]{chọn}; Nơi học [NoiHocTS]{chọn}
   - Cột ẩn: Hình sinh viên [AvatarSV]; Học bạ THPT [CO_HB]; TN THPT [CO_TN]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Điểm TB Lớp 10 [DMLP10]; Điểm TB Lớp 11 [DMLP11]; Điểm TB Lớp 12 [DMLP12]; Đợt nộp đơn thi [DOT]; Điểm tổng [DiemTong]; Đơn vị CT [DonViCTac]; Ghi chú hồ sơ [GCDSTS]; Ghi chú hồ sơ 2 [GCDSTS2]; Ghi chú hồ sơ 3 [GCDSTS3]; Hạnh kiểm [HanhKiem]{chọn}; Hệ đào tạo [HeDTVBTB]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; Dân tộc [IDDT]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; Miễn AV [IsAnhVan]; Đăng ký online [IsDKOnline]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Lớp 10 [LOP10]; Lớp 11 [LOP11]; Lớp 12 [LOP12]; Chương trình giảng dạy [LoaiCTGD]{chọn}; Mã đợt [MADOTNVTS]; Mã DS thí sinh [MADSTS]; Mã khối [MAKHOITS](chỉ đọc); Năm thi [NAMCUMPT]{số}(chỉ đọc); Ngày cấp [NgayCap]; Người liên lạc [NguoiLL]; Nơi cấp [NoiCapCMND]; Nơi sinh [NoiSinh]; Phiếu số (code) [PHIEUSO]; Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Quốc tịch [QuocTich]; SBD [SBD]; Tên ngành [TENNGTS](chỉ đọc); THPT [THPT]; Họ và tên [TenDayDu]; NV ưu tiên [UUTIENNV]; Xếp loại tốt nghiệp [XepLoaiTN]
   - Ô trên form sửa: #Phai, #NgaySinhC, #SoCMND, #GhiChuView1, #NhomKVTS, #DOITUONGTS, #NoiHocTS, #CO_TN, #DC_DCHK, #DC_DCLLSV, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DiemTong, #GCDSTS, #IDDT, #LOP10, #LOP11, #LOP12, #NgayCap, #NoiCapCMND, #NoiSinh, #PHIEUSOBGD, #QuocTich, #TenDayDu
 ### QLTS_NhapHoThiSinhKhac – Nhập hồ sơ thí sinh khác
-- Lưới 1 (bảng TDSTS); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Mã DS thí sinh [MADSTS]; Họ lót [HoLotSV]; Tên [TenSV]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Đợt nộp đơn thi [DOT]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; Điểm TB Lớp 10 [DMLP10]; Điểm TB Lớp 11 [DMLP11]; Điểm TB Lớp 12 [DMLP12]; Năm tốt nghiệp [NAMTN]{số}; Số BD trường nộp đơn [SBDCUMPT](chỉ đọc); Phiếu số (code) [PHIEUSO]; Mã khối [MAKHOITS](chỉ đọc); Mã ngành [MANGTS](chỉ đọc); Năm thi [NAMCUMPT]{số}(chỉ đọc); Tên cụm thi [TENCUMTHI]
   - Cột ẩn: Hình sinh viên [AvatarSV]; Học bạ THPT [CO_HB]; TN THPT [CO_TN]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Đối tượng TS [DOITUONGTS]; Diện trúng tuyển [DienTT]; Ghi chú hồ sơ [GCDSTS]; Ghi chú hồ sơ 2 [GCDSTS2]; Ghi chú dùng bên detailright 2 [GhiChuView2]; Bậc hệ [IDBH]; Cụm thi PT [IDCUMPT](chỉ đọc); Mã cụm thi [IDCUMTHI]; Dân tộc [IDDT]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; ID TT cụm phổ thông [IDTTCUMPT]; Lớp 10 [LOP10]; Lớp 11 [LOP11]; Lớp 12 [LOP12]; Ngày cấp [NgayCap]; Người liên lạc [NguoiLL]; Nhóm khu vực [NhomKVTS]; Nơi cấp [NoiCapCMND]; Nơi sinh [NoiSinh]; Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Quốc tịch [QuocTich]; Tên khối [TENKHOITS](chỉ đọc); Tên ngành [TENNGTS](chỉ đọc)
   - Ô trên form sửa: #SBD, #MADSTS, #HoLotSV, #TenSV, #LOAIHOSOTS, #DOT, #Phai, #NgaySinhC, #SoCMND, #DMLP10, #DMLP11, #DMLP12, #NAMTN, #SBDCUMPT, #PHIEUSO, #NAMCUMPT, #AvatarSV, #CO_HB, #CO_TN, #DC_DCHK, #DC_DCHK2, #DC_DCLLSV, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DOITUONGTS, #DienTT, #GCDSTS, #GCDSTS2, #GhiChuView2, #IDBH, #IDCUMPT, #IDCUMTHI, #IDDT, #IDKHOITS, #IDNGTS, #LOP10, #LOP11, #LOP12, #NgayCap, #NguoiLL, #NhomKVTS, #NoiCapCMND, #NoiSinh, #PHIEUSOBGD, #QuocTich, #TENKHOITS, #TENNGTS
 ### QLTS_NhapHSXetDHTHS – Nhập hồ sơ thí sinh xét bằng đại học thạc sĩ
-- Lưới 1 (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh» (bảng TDSTS); tắt: In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Số CMND [SoCMND]; Năm tốt nghiệp [NAMTN]{số}; Mã ngành [MANGTS](chỉ đọc); Ghi chú dùng bên detailright [GhiChuView1]; Nhóm khu vực [NhomKVTS]{chọn}; Đối tượng TS [DOITUONGTS]{chọn}; Nơi học [NoiHocTS]{chọn}
   - Cột ẩn: Hình sinh viên [AvatarSV]; Học bạ THPT [CO_HB]; TN THPT [CO_TN]; Địa chỉ [DC_DCHK]; Địa chỉ 2 [DC_DCHK2]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Điểm TB Lớp 10 [DMLP10]; Điểm TB Lớp 11 [DMLP11]; Điểm TB Lớp 12 [DMLP12]; Đợt nộp đơn thi [DOT]; Điểm TN [DiemTN]; Điểm tổng [DiemTong]; Đơn vị CT [DonViCTac]; Ghi chú hồ sơ [GCDSTS]; Ghi chú hồ sơ 2 [GCDSTS2]; Hạnh kiểm [HanhKiem]{chọn}; Hệ đào tạo [HeDTVBTB]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; Dân tộc [IDDT]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; Miễn AV [IsAnhVan]; Đã TN bằng ĐH/Ths [IsBangDHThS]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Lớp 10 [LOP10]; Lớp 11 [LOP11]; Lớp 12 [LOP12]; Xếp loại [LoaiBangTN]{chọn}; Chương trình giảng dạy [LoaiCTGD]{chọn}; Mã đợt [MADOTNVTS]; Mã DS thí sinh [MADSTS]; Mã khối [MAKHOITS](chỉ đọc); Năm thi [NAMCUMPT]{số}(chỉ đọc); Ngành TN [NganhTN]; Ngày cấp [NgayCap]; Người liên lạc [NguoiLL]; Nơi cấp [NoiCapCMND]; Nơi sinh [NoiSinh]; Phiếu số (code) [PHIEUSO]; Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Quốc tịch [QuocTich]; SBD [SBD]; Tên ngành [TENNGTS](chỉ đọc); THPT [THPT]; Họ và tên [TenDayDu]; Trường tốt nghiệp [TruongTN]; NV ưu tiên [UUTIENNV]; Xếp loại tốt nghiệp [XepLoaiTN]
   - Ô trên form sửa: #Phai, #NgaySinhC, #SoCMND, #NAMTN, #GhiChuView1, #NhomKVTS, #DOITUONGTS, #NoiHocTS, #DC_DCHK, #DC_DCLLSV, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DiemTN, #GCDSTS, #IDDT, #IsBangDHThS, #LoaiBangTN, #NganhTN, #NgayCap, #NoiCapCMND, #NoiSinh, #PHIEUSOBGD, #QuocTich, #TenDayDu, #TruongTN
 ### QLTS_ViewChonMonPT – View chọn môn phúc tra
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách môn»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn [MAMONTS]; Tên môn [TENMONTS]
 ### QLTS_ViewMonPT – Danh sách môn phúc tra
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách môn học phúc tra»; tắt: Thêm, Sửa, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã môn [MAMONTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Điểm cũ [DIEMPTCU](chỉ đọc); Điểm mới [DIEMPTMOI]{số}
 ### QLTS_ViewNhapDiemPhucTra – View nhập điểm môn phúc tra
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách điểm môn phúc tra của thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Mã môn [MAMONTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Điểm cũ [DIEMPTCU](chỉ đọc); Điểm mới [DIEMPTMOI]{số}; Ghi chú [GCPHTRAMON]
 ### QLTS_ViewNhapHoSoPT – Nhập hồ sơ phúc tra thí sinh
-- Lưới 1 (bảng TPHTRA); tắt: Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách hồ sơ thí sinh» (bảng TPHTRA); tắt: Import, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Phiếu số (C) [PHIEUSOBGD](chỉ đọc); Mã DS thí sinh [MADSTS](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Ngày nộp đơn [NGAYPTTS]{ngày}(chỉ đọc)
   - Cột ẩn: Ghi chú [GCPHTRA]; Ghi chú 1 [GhiChu1]; Mã thí sinh [IDDSTS]
   - Ô trên form sửa: #PHIEUSOBGD, #HoLotSV, #TenSV, #NGAYPTTS, #GCPHTRA, #GhiChu1, #IDDSTS
 ### QLTS_ViewNhapHSPTXT – View nhap dieu kien HS PTXT
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phương thức»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã phương thức [MaPTXT]; Tên phương thức [TenPTXT]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Phương thức [IDPTXT]
   - Ô trên form sửa: #TenPTXT, #GhiChuView1, #IDPTXT
 ### QLTS_ViewNhapKT_LOP – Khoản thu Lop trúng tuyển
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách lớp trúng tuyển»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã lớp [MaLop]; Tên lớp [TenLop]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Lớp sinh viên [IDLop]
   - Ô trên form sửa: #TenLop, #GhiChuView1, #IDLop
 ### QLTS_XemSuaTTTongHopCumTS – Xem sửa thông tin tuyển sinh của Bộ GD-ĐT
-- Lưới 1 (bảng TTTCUMPT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thông tin thí sinh từ Bộ GD - ĐT» (bảng TTTCUMPT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số BD trường nộp đơn [SBDCUMPT]; Họ lót [HoLotSV]; Tên [TenSV]; Năm thi [NAMCUMPT]{số}; Số CMND [SoCMND]; Phái [Phai]{chọn}; Ngày sinh [NgaySinhC]; Nơi sinh [NoiSinh]; Phiếu số (C) [PHIEUSOBGD]; Toán [TOAN]; Lý [LY]; Hóa [HOA]; Văn [VAN]; Sử [SU]; Địa [DIA]; Ngoại ngữ [NGOAINGU]; Sinh [SINH]
   - Cột ẩn: Hình sinh viên [AvatarSV]; Địa chỉ [DC_DCHK]; Địa chỉ liên lạc [DC_DCLLSV]; Điện thoại 1 [DC_DT1LLSV]; Điện thoại 2 [DC_DT2LLSV]; Email 1 [DC_EML1LLSV]; Email 2 [DC_EML2LLSV]; Tỉnh/thành [DC_IDDBHK]; Tỉnh/thành [DC_IDDBLL]; Đối tượng TS [DOITUONGTS]; Ghi chú hồ sơ [GCDSTS]; Họ lót [HoLotSV2]; Cụm thi PT [IDCUMPT]; Dân tộc [IDDT]; Niên học học kỳ [NHHK]; Ngày cấp [NgayCap]; Người liên lạc [NguoiLL]; Nhóm khu vực [NhomKVTS]; Nơi cấp [NoiCapCMND]; Quốc tịch [QuocTich]; Họ và tên [TenDayDu]; Tên [TenSV2]
   - Ô trên form sửa: #SBDCUMPT, #HoLotSV, #TenSV, #NAMCUMPT, #SoCMND, #Phai, #NgaySinhC, #NoiSinh, #TOAN, #LY, #HOA, #VAN, #SU, #DIA, #NGOAINGU, #SINH, #AvatarSV, #DC_DCHK, #DC_DCLLSV, #DC_DT1LLSV, #DC_EML1LLSV, #DC_IDDBHK, #DC_IDDBLL, #DOITUONGTS, #GCDSTS, #IDCUMPT, #IDDT, #NgayCap, #NguoiLL, #NhomKVTS, #NoiCapCMND, #QuocTich
 ### TBacTH – Điểm ưu tiên tuyển sinh
-- Lưới 1 (bảng TBACTH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Định nghĩa điểm ưu tiên khu vực đối tượng cho trường hợp ngoại lệ» (bảng TBACTH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Nhóm đối tượng [NhomDTTS]{chọn}; Nhóm khu vực [NhomKVTS]{chọn}; Nguyện vọng [NGUYENVONG]{chọn}; Mã bậc hệ [MaBH]; Mã ngành [MANGTS]; Mã khối [MAKHOITS]; Điểm ưu tiên [DIEMUTKVDT]
   - Cột ẩn: ID bậc thang [IDBACTH]; Bậc hệ [IDBH]; Đơn vị phân cấp [IDDVPC]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; Tên khối [TENKHOITS]; Tên ngành [TENNGTS]; Tên bậc hệ [TenBH]
   - Ô trên form sửa: #NhomDTTS, #NhomKVTS, #NGUYENVONG, #DIEMUTKVDT, #IDBH, #IDKHOITS, #IDNGTS
 ### TCHUAN – Nhập điểm chuẩn xét tuyển
-- Lưới 1 (bảng TCHUAN); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
-  - Cột: Đợt XT [IDDOTNVTS]; Mã ngành [MANGTS]{nút …}; Mã khối [MAKHOITS]{nút …}; Điểm chuẩn theo Tổ hợp XT [DIEMCHUAN]; Phương thức [IDPTXT]
-  - Cột ẩn: TN THPT [CO_TN]; Điểm sàn [DiemSan]; Điểm tổng TBHK [DiemSan2]; DiemThiNL [DiemThiNL]; Độ tuổi [DoTuoi]; Hạnh kiểm [HanhKiem]{chọn}; Hạnh kiểm HK1LP12 [HanhKiem2]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; ID bậc chuẩn [IDCHUAN]; Đơn vị phân cấp [IDDVPC]; Khối tuyển sinh [IDKHOITS]{nút …}; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; Xếp loại [LoaiBangTN]{chọn}
+- Lưới 1 «Nhập điểm chuẩn xét tuyển» (bảng TCHUAN); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+  - Cột: Đợt XT [IDDOTNVTS]; Ngành tuyển sinh [MANGTS]{nút …}; Khối tuyển sinh [MAKHOITS]{nút …}; Điểm chuẩn theo Tổ hợp XT [DIEMCHUAN]; Phương thức [IDPTXT]
+  - Cột ẩn: TN THPT [CO_TN]; Điểm sàn [DiemSan]; Điểm tổng TBHK [DiemSan2]; Điểm thi năng lực [DiemThiNL]; Độ tuổi [DoTuoi]; Hạnh kiểm [HanhKiem]{chọn}; Hạnh kiểm HK1LP12 [HanhKiem2]{chọn}; Học lực [HocLuc]{chọn}; Bậc hệ [IDBH]; ID bậc chuẩn [IDCHUAN]; Đơn vị phân cấp [IDDVPC]; Khối tuyển sinh [IDKHOITS]{nút …}; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; Xếp loại [LoaiBangTN]{chọn}
 ### TDMCUMPT – Danh mục cụm thi phổ thông
-- Lưới 1 (bảng TDMCUMPT); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục cụm thi phổ thông» (bảng TDMCUMPT); tắt: Sửa trên lưới
   - Cột: Mã cụm thi PT [MACUMPT]; Tên cụm thi PT [TENCUMPT]; Viết tắt [VTCUMPT]; Mã địa bàn [MaDB]; Nhóm khu vực [NhomKVTS]{chọn}
   - Cột ẩn: Địa chỉ cụm thi [DCCUMPT]; Ghi chú [GCCUMPT]; Tỉnh/thành [IDDBCUMPT]; Tên tiếng anh [TENCUMPTEG]; Tên địa bàn [TenDB]
   - Ô trên form sửa: #MACUMPT, #TENCUMPT, #VTCUMPT, #NhomKVTS, #DCCUMPT, #GCCUMPT, #IDDBCUMPT, #TENCUMPTEG, #TenDB
 ### TDMCUMTHI – Danh mục cụm thi
-- Lưới 1 (bảng TDMCUMTHI); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách cụm thi» (bảng TDMCUMTHI); tắt: Sửa trên lưới
   - Cột: Mã cụm thi [MACUMTHI]; Tên cụm thi [TENCUMTHI]; Viết tắt [VTCUMTHI]
   - Cột ẩn: Ghi chú [GCCUMTHI]; Tên tiếng anh [TENCUMTHIEG]
   - Ô trên form sửa: #MACUMTHI, #TENCUMTHI, #VTCUMTHI, #GCCUMTHI, #TENCUMTHIEG
 ### TDMKHOITS – Danh mục khối tuyển sinh
-- Lưới 1 (bảng TDMKHOITS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục khối tuyển sinh» (bảng TDMKHOITS); tắt: Sửa trên lưới
   - Cột: Mã khối [MAKHOITS]; Tên khối [TENKHOITS]; Viết tắt [VTKHOITS]
   - Cột ẩn: Ghi chú [GCKHOITS]; Tên tiếng anh [TENKHOITSEG]
   - Ô trên form sửa: #MAKHOITS, #TENKHOITS, #VTKHOITS, #GCKHOITS, #TENKHOITSEG
 ### TDMMONTS – Danh mục môn thi tuyển sinh
-- Lưới 1 (bảng TDMMONTS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục môn thi tuyển sinh» (bảng TDMMONTS); tắt: Sửa trên lưới
   - Cột: Mã môn [MAMONTS]; Tên môn [TENMONTS]; Viết tắt [VTMONTS]
   - Cột ẩn: Ghi chú [GCMONTS]; Tên tiếng anh [TENMONTSEG]
   - Ô trên form sửa: #MAMONTS, #TENMONTS, #VTMONTS, #GCMONTS, #TENMONTSEG
 ### TDMNGTS – Danh mục ngành tuyển sinh
-- Lưới 1 (bảng TDMNGTS); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục ngành tuyển sinh» (bảng TDMNGTS); tắt: Sửa trên lưới
   - Cột: Mã ngành [MANGTS]; Tên ngành [TENNGTS]; Viết tắt [VTNGTS]
   - Cột ẩn: Ghi chú [GCNGTS]; Mã số NgTS [MASONGTS]; Tên tiếng anh [TENNGTSEG]
   - Ô trên form sửa: #MANGTS, #TENNGTS, #VTNGTS, #GCNGTS, #TENNGTSEG
 ### TDMTRPT – Danh mục trường phổ thông
-- Lưới 1 (bảng TDMTRPT); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục trường phổ thông» (bảng TDMTRPT); tắt: Sửa trên lưới
   - Cột: Mã trường PT [MATRPT]; Tên trường PT [TENTRPT]; Viết tắt [VTTRPT]; Mã địa bàn [MaDB]; Nhóm khu vực [NhomKVTS]{chọn}
   - Cột ẩn: Địa chỉ trường [DCTRPT]; Ghi chú [GCTRPT]; Tỉnh/thành [IDDBTRPT]; Tên tiếng anh [TENTRPTEG]; Tên địa bàn [TenDB]
   - Ô trên form sửa: #MATRPT, #TENTRPT, #VTTRPT, #NhomKVTS, #DCTRPT, #GCTRPT, #IDDBTRPT, #TENTRPTEG, #TenDB
 ### TDMTTTHI – Danh mục trung tâm thi
-- Lưới 1 (bảng TDMTTTHI); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục trung tâm thi» (bảng TDMTTTHI); tắt: Sửa trên lưới
   - Cột: Mã trung tâm [MATTTHI]; Tên trung tâm [TENTTTHI]; Viết tắt [VTTTTHI]
   - Cột ẩn: Ghi chú [GCTTTHI]; Tên tiếng anh [TENTTTHIEG]
   - Ô trên form sửa: #MATTTHI, #TENTTTHI, #VTTTTHI, #GCTTTHI, #TENTTTHIEG
 ### TDOTNVXT_HUYKQXET – Hủy kết quả xét tuyển theo đợt
-- Lưới 1 (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
-  - Cột: Nguyện vọng [NGUYENVONG]{chọn}(chỉ đọc); Mã đợt [MADOTNVTS](chỉ đọc); Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}(chỉ đọc); Số lượng [SoLuong](chỉ đọc); Ngày xét [NgayXet](chỉ đọc); Số lượng thời gian đã quy đổi [SOLUONGTG](chỉ đọc); Ghi chú [GCDOTNVTS](chỉ đọc)
+- Lưới 1 «Danh sách đợt tuyển sinh đã có kết quả xét tuyển» (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+  - Cột: Nguyện vọng [NGUYENVONG]{chọn}(chỉ đọc); Mã đợt [MADOTNVTS](chỉ đọc); Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}(chỉ đọc); Số lượng thí sinh [SoLuong](chỉ đọc); Ngày đã xét tuyển [NgayXet](chỉ đọc); Số lượng thí sinh trúng tuyển [SOLUONGTG](chỉ đọc); Ghi chú [GCDOTNVTS](chỉ đọc)
 ### TDOTNVXT_KHOA – Xét tuyển theo đợt
-- Lưới 1 (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
-  - Cột: Nguyện vọng [NGUYENVONG]{chọn}(chỉ đọc); Mã đợt [MADOTNVTS](chỉ đọc); Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}(chỉ đọc); Số lượng [SoLuong](chỉ đọc); Ngày xét [NgayXet](chỉ đọc); Số lượng thời gian đã quy đổi [SOLUONGTG](chỉ đọc); Khóa đợt xét tuyển [ISLOCKNVTS]; Ngày khóa đợt XT [NGAYLOCKNVTS](chỉ đọc); User khóa đợt XT [USERLOCKNVTS](chỉ đọc)
+- Lưới 1 «Danh sách đợt xét tuyển trong kỳ tuyển sinh» (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa bên phải
+  - Cột: Nguyện vọng [NGUYENVONG]{chọn}(chỉ đọc); Mã đợt [MADOTNVTS](chỉ đọc); Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}(chỉ đọc); Số lượng thí sinh [SoLuong](chỉ đọc); Ngày đã xét tuyển [NgayXet](chỉ đọc); Số lượng đã trúng tuyển [SOLUONGTG](chỉ đọc); KHÓA [ISLOCKNVTS]; Ngày khóa/mở khóa cuối cùng [NGAYLOCKNVTS](chỉ đọc); User khóa/mở khóa cuối cùng [USERLOCKNVTS](chỉ đọc)
   - Cột ẩn: Ghi chú [GCDOTNVTS](chỉ đọc)
 ### TDSTS_DoiPhong – Đổi phòng thí sinh
-- Lưới 1 (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Chọn môn thi thí sinh cần đổi phòng» (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Mã cụm thi [MACUMTHI]; Mã ngành [MANGTS]; Mã khối [MAKHOITS]; SBD [SBD]; Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Phái [Phai]; Số CMND [SoCMND]; Đối tượng TS [DOITUONGTS]{chọn}; Nhóm khu vực [NhomKVTS]{chọn}; Tên môn [TENMONTS]; Mã phòng thi [MAPHTHI]; Mã hội đồng [MAHDGK]
   - Cột ẩn: Cấm thi [CAMTHI]; Môn thi [IDMONTS]; Khóa SBD [ISLOCKSBD]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Mã cụm thi PT [MACUMPT]; Mã DS thí sinh [MADSTS]; Mã môn [MAMONTS]; Năm thi [NAMCUMPT]; Năm tốt nghiệp [NAMTN]; Ngày/giờ khóa [NGAYLOCKSBD]; Tên cụm thi PT [TENCUMPT]; Tên cụm thi [TENCUMTHI]; Tên khối [TENKHOITS]; Tên ngành [TENNGTS]; Tuyển thẳng [TUYENTHG]; User khóa SBD [USERLOCKSBD]
 ### TDSTS_KHOA – Khoá danh sách số báo danh đã gán
-- Lưới 1 (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Check chọn danh sách thí sinh đã gán số báo danh cần khóa» (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Phái [Phai]; Số CMND [SoCMND]; Mã khối [MAKHOITS]; Số báo danh [SBD2]; Mã cụm thi [MACUMTHI]; Đối tượng TS [DOITUONGTS]{chọn}; Nhóm khu vực [NhomKVTS]{chọn}; Mã ngành [MANGTS]; Cấm thi [CAMTHI]; Tuyển thẳng [TUYENTHG]; Ngày/giờ khóa [NGAYLOCKSBD]; User khóa SBD [USERLOCKSBD]
   - Cột ẩn: Khóa SBD [ISLOCKSBD]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Mã cụm thi PT [MACUMPT]; Mã DS thí sinh [MADSTS]; Năm thi [NAMCUMPT]; Năm tốt nghiệp [NAMTN]; Tên cụm thi PT [TENCUMPT]; Tên cụm thi [TENCUMTHI]; Tên khối [TENKHOITS]; Tên ngành [TENNGTS]
 ### TDSTS_NhapSBDTrucTiep – Nhập số báo danh trực tiếp thí sinh
@@ -430,234 +430,234 @@
   - Cột: Họ và tên [TenDayDu]; Ngày sinh [NgaySinhC]; Phái [Phai]; Số CMND [SoCMND]; Mã khối [MAKHOITS]; SBD [SBD]; Mã cụm thi [MACUMTHI]; Đối tượng TS [DOITUONGTS]{chọn}; Nhóm khu vực [NhomKVTS]{chọn}; Mã ngành [MANGTS]; Cấm thi [CAMTHI]; Tuyển thẳng [TUYENTHG]; Ngày/giờ khóa [NGAYLOCKSBD]; User khóa SBD [USERLOCKSBD]
   - Cột ẩn: Khóa SBD [ISLOCKSBD]; Loại hồ sơ tuyển sinh [LOAIHOSOTS]{chọn}; Mã cụm thi PT [MACUMPT]; Mã DS thí sinh [MADSTS]; Năm thi [NAMCUMPT]; Năm tốt nghiệp [NAMTN]; Tên cụm thi PT [TENCUMPT]; Tên cụm thi [TENCUMTHI]; Tên khối [TENKHOITS]; Tên ngành [TENNGTS]
 ### TDSTSTC – Danh sách thí sinh và môn tự chọn
-- Lưới 1 (bảng TDSTSTC); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Nhập môn tự chọn cho thí sinh» (bảng TDSTSTC); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã
   - Cột: Số BD trường nộp đơn [SBDCUMPT](chỉ đọc); Mã DS thí sinh [MADSTS](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Phái [Phai]{chọn}(chỉ đọc); Ngày sinh [NgaySinhC](chỉ đọc); Số CMND [SoCMND](chỉ đọc); Phiếu số (code) [PHIEUSO](chỉ đọc); Chứng chỉ 3 [CC3](chỉ đọc); Nhóm tự chọn [IDNGKHTC1]; Nhóm tự chọn 2 [IDNGKHTC2]; Nhóm tự chọn 3 [IDNGKHTC3]; Nhóm tự chọn 4 [IDNGKHTC4]
   - Cột ẩn: Điểm TB Lớp 10 [DMLP10](chỉ đọc); Điểm TB Lớp 11 [DMLP11](chỉ đọc); Điểm TB Lớp 12 [DMLP12](chỉ đọc); ID kỳ TS [IDKyTS](chỉ đọc); Môn thi [IDMONTS](chỉ đọc); ID nhóm tự chọn [IDNGKHTC]
 ### TGanMonThiChung – Gán các môn tổ chức thi chung
-- Lưới 1 (bảng TNGKHMON); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã ngành [MANGTS](chỉ đọc); Tên ngành [TENNGTS](chỉ đọc); Mã khối [MAKHOITS](chỉ đọc); Tên khối [TENKHOITS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Hệ số môn thi [HESOTS](chỉ đọc); Ký hiệu ghép [MAGRPTS]
+- Lưới 1 «Nhập cùng giá trị cột KÝ HIỆU GHÉP MÔN cho môn thi chung» (bảng TNGKHMON); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã ngành [MANGTS](chỉ đọc); Tên ngành [TENNGTS](chỉ đọc); Mã khối [MAKHOITS](chỉ đọc); Tên khối [TENKHOITS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Hệ số môn thi [HESOTS](chỉ đọc); Ký hiệu ghép môn [MAGRPTS]
   - Cột ẩn: Nhóm ghép thi chung [IDGRPTS](chỉ đọc); Môn thi [IDMONTS](chỉ đọc); ID ngành khối môn [IDNGKHMON](chỉ đọc); Mã môn [MAMONTS]
 ### TGRPTS – Thông tin nhóm thi chung
-- Lưới 1 (bảng TGRPTS); tắt: Thêm, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Thông tin tổ chức thi cho các nhóm thi chung» (bảng TGRPTS); tắt: Thêm, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Tên môn [TENMONTS]; Ký hiệu ghép [MAGRPTS]; Tên nhóm môn thi chung [TENGRPTS]; Hệ điểm TS [HEDIEMTS]{chọn}
   - Cột ẩn: Ghi chú [GCGRPTS]; Nhóm ghép thi chung [IDGRPTS]; ID kỳ TS [IDKyTS]; Môn thi [IDMONTS]; Mã môn [MAMONTS]; Niên học học kỳ [NHHK]; Tên tiếng anh [TENGRPTSEG]; Thứ tự [TTGRPTS]; Viết tắt [VTGRPTS]
   - Ô trên form sửa: #MAGRPTS, #TENGRPTS, #HEDIEMTS, #GCGRPTS, #IDMONTS, #TENGRPTSEG, #TTGRPTS, #VTGRPTS
-- Lưới 2 (bảng TGRPTSCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 2 «Thông tin nhóm thi chung và buổi thi» (bảng TGRPTSCT); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ngày thi [NGAYTHITS]{ngày}; Buổi thi thứ [BUOITHITHU]; Hình thức thi [HTTHITS]{chọn}; Trọng số [TRONGSODIEM]; Hệ điểm TS chi tiết [HEDIEMTSCT]{chọn}; Hủy DSTS miễn thi [HUYDSMT]; Đánh phách SBD vắng [ISPHSBDVANG]; Làm phách? [ISLAMPHACH]; Số phách bắt đầu [SOPHACHMIN]; Số bài thi/nhóm [SOBAINHOM]; Số bài thi/túi [SOBAITUI]; Số túi bắt đầu [SOTUIMIN]; Số thí sinh 1 hội đồng [SOTSTHI]; SL hội đồng cùng thời gian [SOHOIDONG]; Giờ thi [GIOTHITS]; Số phút thi [SOPHUTTS]; Kết hợp phổ biến qui chế thi [ISNGAYTT]; Số phút chuẩn bị trước thi [SOPHUTTR]; Số phút chuẩn bị sau [SOPHUTSAU]; Giờ BĐ sáng [GIOBDPVS]; Số ca phỏng vấn sáng [SOTSSANG]; Giờ BĐ chiều [GIOBDPVC]; Số ca phỏng vấn chiều [SOTSCHIEU]; Giờ BĐ tối [GIOBDPVT]; Số ca phỏng vấn tối [SOTSTOI]; Ghi chú nội dung thi [GCGRPTSCT]
   - Cột ẩn: Nhóm ghép thi chung [IDGRPTS]; Buổi thi thứ [IDGRPTSCT]; ID kỳ TS [IDKyTS]; Khóa nhóm thi [ISLOCKGRPCT]; Khóa phách [ISLOCKPHACH]; Mã user [MaUser]; Ngày/giờ lock group thi [NGAYLOCKGRPCT]; Ngày/giờ lock [NGAYLOCKPHACH]; Niên học học kỳ [NHHK]; Ngày thêm [NgayThem]; Thứ tự [STTSCANGRPCT]; User lock group thi [USERLOCKGRPCT]; User lock [USERLOCKPHACH]
   - Ô trên form sửa: #NGAYTHITS, #BUOITHITHU, #HTTHITS, #TRONGSODIEM, #HEDIEMTSCT, #HUYDSMT, #ISPHSBDVANG, #ISLAMPHACH, #SOPHACHMIN, #SOBAINHOM, #SOBAITUI, #SOTUIMIN, #SOTSTHI, #SOHOIDONG, #GIOTHITS, #SOPHUTTS, #ISNGAYTT, #SOPHUTTR, #SOPHUTSAU, #GIOBDPVS, #SOTSSANG, #GIOBDPVC, #SOTSCHIEU, #GIOBDPVT, #SOTSTOI, #GCGRPTSCT
 ### TGRPTSCTHD – Danh sách hội đồng thi chung
-- Lưới 1 (bảng TGRPTSCTHD); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách hội đồng thi chung cho buổi thi vấn đáp» (bảng TGRPTSCTHD); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên môn [TENMONTS]; Ký hiệu ghép [MAGRPTS]; Mã hội đồng [MAHDGK]; Buổi thi thứ [BUOITHITHU]; Ghi chú nội dung thi [GCGRPTSCT]; Hội đồng thứ [HOIDONG]; Tên hội đồng giám khảo [TENHDGK]
   - Cột ẩn: Nhóm ghép thi chung [IDGRPTS]; Buổi thi thứ [IDGRPTSCT]; ID GRP TS buối thi hội đồng [IDGRPTSCTHD]; Hội đồng giám khảo [IDHDGK]; ID kỳ TS [IDKyTS]; Môn thi [IDMONTS]; Mã môn [MAMONTS]; Tên nhóm môn thi chung [TENGRPTS]
   - Ô trên form sửa: #HOIDONG, #IDGRPTS, #IDGRPTSCT, #IDHDGK, #IDMONTS
 ### TGRPTSCTHD_DHQT – Danh sách hội đồng thi chung
-- Lưới 1 (bảng TGRPTSCTHD); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách hội đồng thi chung cho buổi thi vấn đáp» (bảng TGRPTSCTHD); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã ngành [MANGTS]; Tên ngành [TENNGTS]; Hội đồng thứ [HOIDONG]; Mã hội đồng [MAHDGK]; Tên hội đồng giám khảo [TENHDGK]; Số TS hội đồng [SoTSHD]
   - Cột ẩn: Hội đồng giám khảo [IDHDGK]; Ngành tuyển sinh [IDNGTS]
   - Ô trên form sửa: #HOIDONG, #SoTSHD, #IDHDGK, #IDNGTS
 ### THDGK – Nhập danh sách hội đồng giám khảo
-- Lưới 1 (bảng THDGK); tắt: Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Danh sách hội đồng giám khảo cho môn thi» (bảng THDGK); tắt: Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Tên môn [TENMONTS]; Mã hội đồng [MAHDGK]; Tên hội đồng giám khảo [TENHDGK]
   - Cột ẩn: Môn thi [IDMONTS]; Mã môn [MAMONTS]; Tên tiếng anh [TENHDGKEG]
   - Ô trên form sửa: #MAHDGK, #TENHDGK, #IDMONTS, #TENHDGKEG
-- Lưới 2 (bảng TDSHDGK); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 2 «Thành viên trong hội đồng giáo khảo» (bảng TDSHDGK); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Thứ tự [TTDSHDGK]; Chức danh giám khảo [CHUCDANHGK]; Họ tên giám khảo [HOTENGK]
   - Cột ẩn: ID danh sách thanh viên HĐGK [IDDSHDGK]; Hội đồng giám khảo [IDHDGK]; ID kỳ TS [IDKyTS]; Niên học học kỳ [NHHK]
   - Ô trên form sửa: #TTDSHDGK, #CHUCDANHGK, #HOTENGK
 ### THDGK_DHQT – Nhập danh sách hội đồng giám khảo
-- Lưới 1 (bảng TDSHDGK); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Thành viên trong hội đồng giáo khảo» (bảng TDSHDGK); tắt: Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Thứ tự [TTDSHDGK]; Họ tên giám khảo [HOTENGK]; Chức danh giám khảo [CHUCDANHGK]; Loại thành viên [LoaiTVHD]{chọn}
   - Ô trên form sửa: #TTDSHDGK, #HOTENGK, #CHUCDANHGK, #LoaiTVHD
-- Lưới 2 (bảng THDGK); tắt: Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 2 «Danh sách hội đồng giám khảo cho môn thi» (bảng THDGK); tắt: Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Mã hội đồng [MAHDGK]; Tên hội đồng giám khảo [TENHDGK]; Tên tiếng anh [TENHDGKEG]; Loại thư ký [LoaiHDG]{chọn}; Tên môn [TENMONTS]
   - Cột ẩn: Môn thi [IDMONTS]
   - Ô trên form sửa: #MAHDGK, #TENHDGK, #TENHDGKEG, #LoaiHDG
 ### THSTS – Hồ sơ tuyển sinh
-- Lưới 1 (bảng THSTS); tắt: Nạp lại, Gộp mã, Sửa trên lưới
+- Lưới 1 «Hồ sơ tuyển sinh» (bảng THSTS); tắt: Nạp lại, Gộp mã, Sửa trên lưới
   - Cột: Số báo danh [SoBD]; Họ lót [HoLot]; Tên [Ten]; Ngày sinh [NgaySinh]; ID kỳ TS [IDKyTS]; Khối thi [KhoiThi]; Ngành trúng tuyển [NganhTT]; Nhóm đối tượng [NhomDTTS]; Nhóm khu vực [NhomKVTS]; Điểm 1 [Diem1]; Điểm 2 [Diem2]; Điểm 3 [Diem3]; Điểm kv đối tượng [DiemKVDT]; Điểm tổng [DiemTong]
   - Cột ẩn: Niên học học kỳ [NHHK]
   - Ô trên form sửa: #SoBD, #HoLot, #Ten, #NgaySinh, #IDKyTS, #KhoiThi, #NganhTT, #NhomDTTS, #NhomKVTS, #Diem1, #Diem2, #Diem3, #DiemKVDT, #DiemTong, #NHHK
 ### TKhoiCumGanSBD – Gán số báo danh cho thí sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã khối [MAKHOITS]; Cụm thi thứ [CUMTHITHU]; Tên khối [TENKHOITS]; SBD bắt đầu [SBDMIN]; Số lần có phép [SLCOPHEP]; Số lượng cấp bằng [SLCapBang]; SL còn lại [SLConLai]; Số Lượng [SLChuaDatYC]; Số lượng chưa đọc [SLChuaDocTB]
+- Lưới 1 «Danh sách khối & cụm thi có thí sinh cần gán số báo danh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã khối [MAKHOITS]; Cụm thi thứ [CUMTHITHU]; Tên khối [TENKHOITS]; SBD bắt đầu [SBDMIN]; Số lượng thí sinh [SLCOPHEP]; SL đã gán SBD [SLCapBang]; SL chưa gán SBD [SLConLai]; SL cấm thi [SLChuaDatYC]; SL tuyển thẳng [SLChuaDocTB]
   - Cột ẩn: Mã cụm thi [IDCUMTHI]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; ID TT Khối TS [IDTTKHOITS]; Mã cụm thi [MACUMTHI]; Ngày/giờ phổ biến nội quy [NGAYGIOPBNQ]; Số phút phổ biến nội qui [SOPHUTPBNQ]
 ### TKHTHUTS – Danh mục khoản thu tuyển sinh
-- Lưới 1 (bảng TKHTHUTS); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách khoản thu» (bảng TKHTHUTS); tắt: Sửa trên lưới
   - Cột: Mã khoản thu [MaKhThu]; Tên khoản thu [TenKhThu]; Viết tắt [VTKhThu]; Loại HP và có in trên Phiếu thu [LoaiHP]; Khoản bắt buộc (chỉ áp dụng khi import) [KhoanBB]; Nhóm HD [NhomHD]; Số tiền [SoTien]; Ghi chú [GhiChu]
   - Ô trên form sửa: #MaKhThu, #TenKhThu, #VTKhThu, #LoaiHP, #KhoanBB, #NhomHD, #SoTien, #GhiChu
 ### TKYTS – Danh sách kỳ tuyển sinh
-- Lưới 1 (bảng TKYTS); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Mã kỳ TS [MaKyTS]; Tên kỳ TS [TenKyTS]; Viết tắt [VTKYTS]; Chỉ tuyển 1 bậc hệ [ISTUYEN1BH]; Mã bậc hệ [MaBH]
+- Lưới 1 «Danh sách kỳ tuyển sinh» (bảng TKYTS); tắt: Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Mã kỳ TS [MaKyTS]; Tên kỳ TS [TenKyTS]; Viết tắt [VTKYTS]; Chỉ tuyển 1 bậc hệ [ISTUYEN1BH]; Bậc hệ tuyển sinh [MaBH]
   - Cột ẩn: Ghi chú [GCKYTS]; Bậc hệ [IDBH]; Tên tiếng anh [TENKYTSEG]
   - Ô trên form sửa: #MaKyTS, #TenKyTS, #VTKYTS, #ISTUYEN1BH, #GCKYTS, #IDBH, #TENKYTSEG
 ### TNGKHTC – Nhóm ngành khối tự chọn
-- Lưới 1 (bảng TNGKHTC); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhóm môn học tự chọn của ngành khối thi» (bảng TNGKHTC); tắt: Import, Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã ngành [MANGTS]; Tên ngành [TENNGTS]; Mã khối [MAKHOITS]; Tên khối [TENKHOITS]; Tên nhóm môn tự chọn [TENNGKHTC]; Thứ tự [TTDSNGKHTC]
   - Cột ẩn: Ghi chú [GCDSNGKHTC]; Ghi chú [GhiChu]; Khối tuyển sinh [IDKHOITS]; ID kỳ TS [IDKyTS]; ID ngành khối [IDNGKH]; ID nhóm tự chọn [IDNGKHTC]; Ngành tuyển sinh [IDNGTS]; Niên học học kỳ [NHHK]; Tên nhóm tiếng anh [TENNGKHTCEG]; Viết tắt [VTNGKHTC]
   - Ô trên form sửa: #TENNGKHTC, #TTDSNGKHTC, #GhiChu, #IDKHOITS, #IDNGTS, #TENNGKHTCEG
 ### TNGKHTC_MON – Môn thi trong ngành khối tự chọn
-- Lưới 1 (bảng TNGKHMON); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
+- Lưới 1 «Chọn danh sách môn thi của nhóm tự chọn (Môn thi được định nghĩa trong DS ngành khối môn)» (bảng TNGKHMON); tắt: Sửa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Thoát
   - Cột: Tên môn [TENMONTS]; Hệ số môn thi [HESOTS]; Ngưỡng điểm đạt môn ĐK [NGDATTS]; Ngưỡng điểm liệt môn thi [NGLIETTS]
   - Cột ẩn: Mã môn [MAMONTS]
 ### TPHTHI – Danh sách phòng thi
-- Lưới 1 (bảng TPHTHI); tắt: Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phòng thi trong kỳ tuyển sinh» (bảng TPHTHI); tắt: Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Tên cụm thi [TENCUMTHI]; Thứ tự [TTPHTHI]; Mã phòng thi [MAPHTHI]; Tên phòng thi [TENPHTHI]; Sức chứa [SucChuaPhThi]; Loại phòng [LOAIPHONG]{chọn}; Tên trung tâm [TENTTTHI]
   - Cột ẩn: Default [DFPHTHI]; Ghi chú [GCPHTHI]; Che mẫu tin [HUYPHTHI]; Đơn vị phân cấp [IDDVPC]; ID kỳ TS [IDKyTS]; Ngành tuyển sinh [IDNGTS]; ID phòng thi [IDPHTHI]; Trung tâm thi [IDTTTHI]; Mã trung tâm [MATTTHI]; Tên tiếng anh [TENPHTHIEG]; Viết tắt [VTPHTHI]
   - Ô trên form sửa: #TTPHTHI, #MAPHTHI, #TENPHTHI, #SucChuaPhThi, #LOAIPHONG, #IDNGTS, #IDTTTHI, #TENPHTHIEG
 ### TPTXT – Danh mục phương thức xét tuyển
-- Lưới 1 (bảng TPTXT); tắt: Sửa trên lưới
+- Lưới 1 «Danh mục phương thức xét tuyển» (bảng TPTXT); tắt: Sửa trên lưới
   - Cột: Mã phương thức [MaPTXT]; Tên phương thức [TenPTXT]; Viết tắt [VTPTXT]; Bộ đếm [IDBoDem]; Mã mẫu in [IDSubReport]
   - Cột ẩn: Mặc định [DFPTXT]; Ghi chú [GCPTXT]; Tên tiếng anh [TenPTXTEG]
   - Ô trên form sửa: #MaPTXT, #TenPTXT, #VTPTXT, #IDBoDem, #IDSubReport, #GCPTXT, #TenPTXTEG
 ### TS_502 – Nhập số báo danh vắng
-- Lưới 1 (bảng TTSVANG); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách thí sinh» (bảng TTSVANG); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: SBD [SBD](chỉ đọc); Họ lót [HoLotSV](chỉ đọc); Tên [TenSV](chỉ đọc); Mã ngành [MANGTS](chỉ đọc); Mã khối [MAKHOITS](chỉ đọc); Mã phòng thi [MAPHTHI](chỉ đọc); Vắng [VANG]
 ### TS_504 – Dánh phách danh sách thí sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm tuyển sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ký hiệu ghép [MAGRPTS]; Tên nhóm môn thi chung [TENGRPTS]; Mã môn [MAMONTS]; Tên môn [TENMONTS]; Hình thức thi [HTTHITS]{chọn}; Buổi thi thứ [BUOITHITHU]; Số bài thi/túi [SOBAITUI]; Số bài thi/nhóm [SOBAINHOM]; Số túi bắt đầu [SOTUIMIN]; Số phách bắt đầu [SOPHACHMIN]; Khóa nhóm thi [ISLOCKGRPCT]; Khóa phách [ISLOCKPHACH]
 ### TS_505 – Khóa/Mở khóa nhóm tuyển sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách nhóm tuyển sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Ký hiệu ghép [MAGRPTS](chỉ đọc); Tên nhóm môn thi chung [TENGRPTS](chỉ đọc); Mã môn [MAMONTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Hình thức thi [HTTHITS]{chọn}(chỉ đọc); Buổi thi thứ [BUOITHITHU](chỉ đọc); Số bài thi/túi [SOBAITUI](chỉ đọc); Số bài thi/nhóm [SOBAINHOM](chỉ đọc); Số túi bắt đầu [SOTUIMIN](chỉ đọc); Số phách bắt đầu [SOPHACHMIN](chỉ đọc); Khóa nhóm thi [ISLOCKGRPCT](chỉ đọc); Khóa phách [ISLOCKPHACH]
 ### TS_506 – Hủy phách của nhóm tuyển sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm tuyển sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ký hiệu ghép [MAGRPTS]; Tên nhóm môn thi chung [TENGRPTS]; Mã môn [MAMONTS]; Tên môn [TENMONTS]; Số bài thi/túi [SOBAITUI]; Số bài thi/nhóm [SOBAINHOM]; Số túi bắt đầu [SOTUIMIN]; Số phách bắt đầu [SOPHACHMIN]; Khóa nhóm thi [ISLOCKGRPCT]; Khóa phách [ISLOCKPHACH]
 ### TS_511 – Sửa phách thí sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: SBD [SBD](chỉ đọc); Số phách [PHACHTS]; Số túi [TUITS](chỉ đọc)
 ### TS_6101 – Nhập điểm (+/-) môn thi của thí sinh
-- Lưới 1 (bảng TDSTSMONTP); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Điểm thưởng/phạt môn thi của thí sinh» (bảng TDSTSMONTP); tắt: Xuất, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Họ lót [HoLotSV]; Tên [TenSV]; Mã ngành [MANGTS]; Mã khối [MAKHOITS]; Mã môn [MAMONTS]; Hính thức (+/-) [HTPHAT]{chọn}; Điểm phạt [DIEMPHAT]; Điểm thưởng [DIEMTHUONG]; Ghi chú phạt [GCPHAT]; Ghi chú thưởng [GCTHUONG]
   - Cột ẩn: Mã thí sinh [IDDSTS]; Môn thi [IDMONTS]
   - Ô trên form sửa: #HoLotSV, #TenSV, #MANGTS, #MAKHOITS, #HTPHAT, #DIEMPHAT, #DIEMTHUONG, #GCPHAT, #GCTHUONG, #IDDSTS, #IDMONTS
 ### TS_621 – Nhập điểm theo số phách
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Số phách [PHACHTS]; Điểm môn thi [DIEMMONCT]; Mã môn [MAMONTS]; Mã DS thí sinh [MADSTS]; Họ và tên [TenDayDu]; Ghi chú nội dung thi [GCGRPTSCT]; Ghi chú 1 [GhiChu1]
+- Lưới 1 «Danh sách thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: Số phách [PHACHTS]; Điểm môn thi [DIEMMONCT]; Mã môn [MAMONTS]; Mã DS thí sinh [MADSTS]; Họ và tên [TenDayDu]; Ghi chú nội dung thi [GCGRPTSCT]; Ghi chú [GhiChu1]
 ### TS_622 – Nhập điểm theo phòng và số báo danh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Điểm môn thi [DIEMMONCT]
 ### TS_623 – Nhập điểm theo hội đồng thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Điểm môn thi [DIEMMONCT]
 ### TS_624 – Import file thi trắc nghiệm
 - Lưới 1 (bảng TDSTSMONCT); tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; Điểm môn thi [DIEMMONCT]
 ### TS_CHON_HOI_DONG – Chọn hội đồng thi vấn đáp
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách hội đồng thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã hội đồng [MAHDGK]; Tên hội đồng giám khảo [TENHDGK]; Hội đồng thứ [HOIDONG]; Ngày thi [NgayThi]; Giờ thi [GioThiPV]
 ### TS_CHON_MON_THI – Chọn môn thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Môn tuyển sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã môn [MAMONTS]; Tên môn [TENMONTS]; Viết tắt [VTMONTS]
 ### TS_CHON_NGANH_KHOI – Chọn ngành khối TS
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách ngành khối»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã ngành [MANGTS]; Tên ngành [TENNGTS]; Mã khối [MAKHOITS]; Tên khối [TENKHOITS]
 ### TS_CHON_PHONG_THI – Chọn phòng thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phòng thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã phòng thi [MAPHTHI]; Tên phòng thi [TENPHTHI]; Viết tắt [VTPHTHI]; Tên tiếng anh [TENPHTHIEG]
 ### TS_CHON_TRANG_SCAN – Chọn trang scan
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách trang scan»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Trang in [STTTRANG]; Từ STT [STTMIN]; Đến STT [STTMAX]
 ### TS_CHON_TUI – Chọn túi thi
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách túi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Số túi [TUITS]; Từ phách [PHACHTSMIN]; Đến phách [PHACHTSMAX]
 ### TS_CONG_DIEM – Cộng điểm tuyển sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm tổ chức thi»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ký hiệu ghép [MAGRPTS]; Tên nhóm môn thi chung [TENGRPTS]; Viết tắt [VTGRPTS]; Ghi chú [GCGRPTS]
 ### TS_DIEM_TRANG_SCAN_SBD – Kiểm dò điểm trang scan số báo danh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách điểm»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: SBD [SBD]; STT [STTSCAN]; Điểm môn thi [DIEMMONCT]
 ### TS_LOI_TRONG_SO – Danh sách nhóm tổ chức thi có trọng số không hợp lệ
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách nhóm tổ chức thi có trọng số không hợp lệ»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Ký hiệu ghép [MAGRPTS]; Tên nhóm môn thi chung [TENGRPTS]; Hình thức thi [HTTHITS]{chọn}; Buổi thi thứ [BUOITHITHU]; Trọng số [TRONGSODIEM]
 ### TS_TT_PHACH_NHOM_THI – Nhập thông tin phách cho nhóm thi chung
-- Lưới 1 (bảng TGRPTSCT); tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Thông tin nhóm thi chung» (bảng TGRPTSCT); tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã
   - Cột: Ký hiệu ghép [MAGRPTS](chỉ đọc); Tên nhóm môn thi chung [TENGRPTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Hình thức thi [HTTHITS]{chọn}(chỉ đọc); Buổi thi thứ [BUOITHITHU](chỉ đọc); Số bài thi/túi [SOBAITUI]; Số bài thi/nhóm [SOBAINHOM]; Số phách bắt đầu [SOPHACHMIN]; Số túi bắt đầu [SOTUIMIN]; Ngày thi [NGAYTHITS](chỉ đọc); Ghi chú nội dung thi [GCGRPTSCT](chỉ đọc)
 ### TS_TT_PHACH_NHOM_THI_SINGGLE_CHECK – Nhập thông tin phách cho nhóm thi chung
-- Lưới 1 (bảng TGRPTSCT); tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách nhóm thi» (bảng TGRPTSCT); tắt: Thêm, Xóa, Xuất, Nạp lại, Đổi mã, Gộp mã
   - Cột: Ký hiệu ghép [MAGRPTS](chỉ đọc); Tên nhóm môn thi chung [TENGRPTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc); Hình thức thi [HTTHITS]{chọn}(chỉ đọc); Buổi thi thứ [BUOITHITHU](chỉ đọc); Số bài thi/túi [SOBAITUI]; Số bài thi/nhóm [SOBAINHOM]; Số phách bắt đầu [SOPHACHMIN]; Số túi bắt đầu [SOTUIMIN]; Ngày thi [NGAYTHITS]{ngày}(chỉ đọc); Ghi chú nội dung thi [GCGRPTSCT](chỉ đọc)
 ### TTTKHOITS – Gán SBD min cho khối & cụm thi
-- Lưới 1 (bảng TTTKHOITS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
-  - Cột: Mã khối [MAKHOITS](chỉ đọc); Tên khối [TENKHOITS](chỉ đọc); Ngày/giờ phổ biến nội quy [NGAYGIOPBNQ]; Số phút phổ biến nội qui [SOPHUTPBNQ]; Thứ tự [TTDSKHOITS](chỉ đọc); Số lượng [SoLuong]{số}(chỉ đọc); Số lượng tồn [SoLuongTon]{số}(chỉ đọc); SBD min cụm 1 [SBDMIN1]; Cụm thi 1 [IDCUMTHI1]; Cụm thi 2 [IDCUMTHI2]; Cụm thi 3 [IDCUMTHI3]; Cụm thi 4 [IDCUMTHI4]; SBD min cụm 2 [SBDMIN2]; Cụm thi 5 [IDCUMTHI5]; Cụm thi 6 [IDCUMTHI6]; SBD min cụm 3 [SBDMIN3]; Cụm thi 7 [IDCUMTHI7]; Cụm thi 8 [IDCUMTHI8]; Cụm thi 9 [IDCUMTHI9]; Cụm thi 10 [IDCUMTHI10]; SBD min cụm 4 [SBDMIN4]; SBD min cụm 5 [SBDMIN5]; SBD min cụm 6 [SBDMIN6]; SBD min cụm 7 [SBDMIN7]; SBD min cụm 8 [SBDMIN8]; SBD min cụm 9 [SBDMIN9]; SBD min cụm 10 [SBDMIN10]
+- Lưới 1 «Gán số báo danh bắt đầu cho khối tuyển sinh» (bảng TTTKHOITS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã
+  - Cột: Mã khối [MAKHOITS](chỉ đọc); Tên khối [TENKHOITS](chỉ đọc); Ngày giờ PBNQ [NGAYGIOPBNQ]; Số phút PBNQ [SOPHUTPBNQ]; Thứ tự [TTDSKHOITS](chỉ đọc); SL thí sinh [SoLuong]{số}(chỉ đọc); SBD min đề nghị [SoLuongTon]{số}(chỉ đọc); SBD min [SBDMIN1]; Cụm thi 1 [IDCUMTHI1]; Cụm thi 2 [IDCUMTHI2]; Cụm thi 3 [IDCUMTHI3]; Cụm thi 4 [IDCUMTHI4]; SBD min cụm 2 [SBDMIN2]; Cụm thi 5 [IDCUMTHI5]; Cụm thi 6 [IDCUMTHI6]; SBD min cụm 3 [SBDMIN3]; Cụm thi 7 [IDCUMTHI7]; Cụm thi 8 [IDCUMTHI8]; Cụm thi 9 [IDCUMTHI9]; Cụm thi 10 [IDCUMTHI10]; SBD min cụm 4 [SBDMIN4]; SBD min cụm 5 [SBDMIN5]; SBD min cụm 6 [SBDMIN6]; SBD min cụm 7 [SBDMIN7]; SBD min cụm 8 [SBDMIN8]; SBD min cụm 9 [SBDMIN9]; SBD min cụm 10 [SBDMIN10]
   - Cột ẩn: Khối tuyển sinh [IDKHOITS]
 ### VDoiPhongThiSinh – Đổi phòng thí sinh
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
-  - Cột: Ngày thi [NGAYTHITS]{ngày}; Buổi thi thứ [BUOITHITHU]; Số phút thi [SOPHUTTS]; Hình thức thi [HTTHITS]; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng [SoLuong]; Số lượng khối lượng đã quy đổi [SoLuongKL]; Ngày/giờ lock group thi [NGAYLOCKGRPCT]; Số lượng tồn [SoLuongTon]; User lock group thi [USERLOCKGRPCT]
+- Lưới 1 «Chọn dữ liệu cần nhập phòng thi»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+  - Cột: Ngày thi [NGAYTHITS]{ngày}; Buổi thi thứ [BUOITHITHU]; Số phút thi [SOPHUTTS]; Hình thức thi [HTTHITS]; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng thí sinh [SoLuong]; Số lượng đã gán phòng [SoLuongKL]; Ngày/giờ lock group thi [NGAYLOCKGRPCT]; Số lượng chưa gán phòng [SoLuongTon]; User lock group thi [USERLOCKGRPCT]
   - Cột ẩn: Môn thi [IDMONTS]; Khóa nhóm thi [ISLOCKGRPCT]; Mã môn [MAMONTS]
 ### VHopLePhongThi – Kiểm tra hợp lệ phòng thi
 - Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
-  - Cột: Mã phòng thi [MAPHTHI]; Tên phòng thi [TENPHTHI]; Loại phòng [LOAIPHONG]{chọn}; Sức chứa [SucChuaPhThi]; Tên cụm thi [TENCUMTHI]; Ngày thi [NGAYTHITS]; Buổi thi thứ [BUOITHITHU]; Tên môn [TENMONTS]; Số lượng [SoLuong]; Hình thức thi [HTTHITS]{chọn}
+  - Cột: Mã phòng thi [MAPHTHI]; Tên phòng thi [TENPHTHI]; Loại phòng [LOAIPHONG]{chọn}; Sức chứa [SucChuaPhThi]; Tên cụm thi [TENCUMTHI]; Ngày thi [NGAYTHITS]; Buổi thi thứ [BUOITHITHU]; Tên môn [TENMONTS]; Số lượng thí sinh [SoLuong]; Hình thức thi [HTTHITS]{chọn}
 ### VIEW_CHON_TS – View chọn thí sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách thí sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã DS thí sinh [MADSTS]; Họ lót [HoLotSV]; Tên [TenSV]; Ngày sinh [NgaySinhC]
 ### ViewNgKhoiMon – View nhập ngành khối môn tuyển sinh
-- Lưới 1 (bảng TNGKH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách ngành khối tuyển sinh» (bảng TNGKH); tắt: Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã ngành [MANGTS]; Tên ngành [TENNGTS]; Mã khối [MAKHOITS]; Tên khối [TENKHOITS]
   - Cột ẩn: Ghi chú [GCNGKH]; Khối tuyển sinh [IDKHOITS]; Ngành tuyển sinh [IDNGTS]
   - Ô trên form sửa: #TENNGTS, #TENKHOITS, #GCNGKH, #IDKHOITS, #IDNGTS
-- Lưới 2 (bảng TNGKHMON); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
-  - Cột: Thứ tự [TTNGKHMON]; Mã môn [MAMONTS]; Tên môn [TENMONTS]; Hệ số môn thi [HESOTS]
+- Lưới 2 «Danh sách ngành khối & môn tuyển sinh» (bảng TNGKHMON); tắt: Thêm, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+  - Cột: STT [TTNGKHMON]; Mã môn [MAMONTS]; Tên môn [TENMONTS]; Hệ số môn thi [HESOTS]
   - Cột ẩn: Môn thi [IDMONTS]; Môn điều kiện [ISMONTSTQ]; Ngưỡng điểm đạt môn ĐK [NGDATTS]; Ngưỡng điểm liệt môn thi [NGLIETTS]
   - Ô trên form sửa: #TTNGKHMON, #TENMONTS, #HESOTS, #IDMONTS
 ### ViewST_COKHOITS – Danh sách khối tuyến sinh
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách khối tuyến sinh»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeLogic]
 ### ViewST_DIEMUUDT – Điểm ưu tiên 1 đối tượng
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Điểm ưu tiên 1 đối tượng»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeDecimal]
 ### VIEWST_TTGANSV – Nhập thứ tự phương thức gán mã số sinh viên
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Nhập thứ tự phương thức gán mã số SV»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum]; Giá trị cấp cha [*ColNameP]; Giá trị [GiaTriTreeInt]
 ### VIEWTHSDTT – Hồ sơ nhập học diện trúng tuyển
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Hồ sơ nhập học diện trúng tuyển»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Bậc hệ [IDBH]
   - Ô trên form sửa: #TenBH, #GhiChuView1, #IDBH
 ### VIEWTHSDTTCT – Danh sách hệ số
-- Lưới 1 (bảng THSDTT); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách hồ sơ» (bảng THSDTT); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Thứ tự [TTHs]; Mã hồ sơ [MaHS](chỉ đọc); Tên hồ sơ [TenHS](chỉ đọc)
 ### ViewTKHOIMON – Nhập môn thi cho khối
-- Lưới 1; tắt: Thêm, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Nhập môn thi cho khối»; tắt: Thêm, Import, Xuất, In, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã khối [MAKHOITS]; Tên khối [TENKHOITS]; Viết tắt [VTDSKHOITS]; Điểm sàn [DiemSan]
   - Cột ẩn: Ghi chú [GCDSKHOITS]; Ghi chú dùng bên detailright [GhiChuView1]
   - Ô trên form sửa: #MAKHOITS, #TENKHOITS, #VTDSKHOITS, #GhiChuView1
 ### ViewTKHOIMONCT – Danh sách môn thi
-- Lưới 1 (bảng TDMMONTS); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách môn thi» (bảng TDMMONTS); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Thứ tự [TTKHMON]{số}; Mã môn [MAMONTS](chỉ đọc); Tên môn [TENMONTS](chỉ đọc)
   - Cột ẩn: Ghi chú [GCMONTS](chỉ đọc); Viết tắt [VTMONTS](chỉ đọc)
 ### VIEWTKTDTT – Khoản thu diện trúng tuyển
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Khoản thu diện trúng tuyển»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã bậc hệ [MaBH]; Tên bậc hệ [TenBH]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Bậc hệ [IDBH]
   - Ô trên form sửa: #TenBH, #GhiChuView1, #IDBH
 ### VIEWTKTDTTCT – Khoản thu diện trúng tuyển
-- Lưới 1 (bảng TKTHUDTT); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách khoản thu» (bảng TKTHUDTT); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Mã khoản thu [MaKhThu](chỉ đọc); Tên khoản thu [TenKhThu](chỉ đọc); Số tiền [SoTien](chỉ đọc); Ghi chú [GhiChu]
 ### VIEWTPANNHDIEM – Định nghĩa phương án nhập điểm
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Định nghĩa phương án nhập điểm»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã phương thức [MaPTXT]; Tên phương thức [TenPTXT]
   - Cột ẩn: Ghi chú dùng bên detailright [GhiChuView1]; Phương thức [IDPTXT]
   - Ô trên form sửa: #TenPTXT, #GhiChuView1, #IDPTXT
 ### VIEWTPANNHDIEMCT – Danh sách phương án
-- Lưới 1; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
-  - Cột: Loại phương án nhập điểm [LoaiPAND](chỉ đọc); Hệ số [HeSoPAND]; Ghi chú 1 [GhiChu1](chỉ đọc)
+- Lưới 1 «Danh sách phương án»; tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Thoát
+  - Cột: Loại phương án nhập điểm [LoaiPAND](chỉ đọc); Hệ số [HeSoPAND]; Tên loại phương án nhập điểm [GhiChu1](chỉ đọc)
 ### VKetQuaPhanBoPhongThi – Kết quả phân bổ phòng thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+- Lưới 1 «Danh sách thí sinh CHƯA ĐƯỢC phân bổ phòng do không tìm được phòng»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
   - Cột: Ngày thi [NGAYTHITS]; Buổi thi thứ [BUOITHITHU]; Tên môn [TENMONTS]; Tên cụm thi [TENCUMTHI]; Mã phòng thi [MAPHTHI]; Tên phòng thi [TENPHTHI]; Sức chứa [SucChuaPhThi]; Họ và tên [TenDayDu]; SBD [SBD]; Lỗi [MaLoi]
 ### VKhoaSoPhongThi – Khóa sổ phòng thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
-  - Cột: Ngày thi [NGAYTHITS]{ngày}; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng [SoLuong]; Số lượng khối lượng đã quy đổi [SoLuongKL]; Số lượng tồn [SoLuongTon]; Ngày/giờ lock group thi [NGAYLOCKGRPCT]; User lock group thi [USERLOCKGRPCT]
+- Lưới 1 «Check chọn danh sách ngày & môn thi đã gán phòng cần khóa»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+  - Cột: Ngày thi [NGAYTHITS]{ngày}; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng thí sinh [SoLuong]; Số lượng đã gán phòng [SoLuongKL]; Số lượng chưa gán phòng [SoLuongTon]; Ngày giờ khóa [NGAYLOCKGRPCT]; User khóa [USERLOCKGRPCT]
   - Cột ẩn: Môn thi [IDMONTS]; Khóa nhóm thi [ISLOCKGRPCT]; Mã môn [MAMONTS]
 ### VPhanBoPhongThi – Phân bổ phòng thi
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
-  - Cột: Ngày thi [NGAYTHITS]{ngày}; Buổi thi thứ [BUOITHITHU]; Tên ngành [TENNGTS]; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng [SoLuong]; Số lượng khối lượng đã quy đổi [SoLuongKL]; Số lượng tồn [SoLuongTon]; Mã phòng thi [MAPHTHI]
+- Lưới 1 «Phân bổ phòng thi cho thí sinh»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải, Thoát
+  - Cột: Ngày thi [NGAYTHITS]{ngày}; Buổi thi thứ [BUOITHITHU]; Tên ngành [TENNGTS]; Tên môn [TENMONTS]; Ghi chú nội dung thi [GCGRPTSCT]; Số lượng thí sinh [SoLuong]; Số lượng đã gán phòng [SoLuongKL]; Số lượng chưa gán phòng [SoLuongTon]; Mã phòng thi [MAPHTHI]
   - Cột ẩn: Môn thi [IDMONTS]; Mã môn [MAMONTS]
 ### VTrungTKBThiSinh – Trùng thời gian thi thí sinh
-- Lưới 1; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Thoát
+- Lưới 1 «Danh sách thí sinh bị trùng thời gian thi»; tắt: Thêm, Sửa, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Thoát
   - Cột: Họ và tên [TenDayDu]; SBD [SBD]; Mã khối [MAKHOITS]; Tên ngành [TENNGTS]; Tên cụm thi [TENCUMTHI]; Ngày thi [NGAYTHITS]; Buổi thi thứ [BUOITHITHU]; Tên môn [TENMONTS]
 ### XETTUYEN_TDOTNVTS – Xét tuyển theo đợt
-- Lưới 1 (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
-  - Cột: Mã đợt [MADOTNVTS]; Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}; Ghi chú [GCDOTNVTS]; Số lượng [SoLuong]; Ngày xét [NgayXet]; Số lượng thời gian đã quy đổi [SOLUONGTG]
+- Lưới 1 «Chọn đợt thi cần xét tuyển» (bảng TDOTNVTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+  - Cột: Đợt tuyển sinh [MADOTNVTS]; Ngày dự kiến xét tuyển [NGAYDKXT]{ngày}; Ghi chú đợt xét tuyển [GCDOTNVTS]; Số lượng thí sinh [SoLuong]; Ngày đã xét tuyển [NgayXet]; Số lượng đã trúng tuyển [SOLUONGTG]
   - Cột ẩn: Nguyện vọng [NGUYENVONG]{chọn}
 ### XETTUYEN_TDSTS – Xét tuyển theo danh sách thí sinh
-- Lưới 1 (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
+- Lưới 1 «Chọn danh sách thí sinh xét tuyển» (bảng TDSTS); tắt: Thêm, Xóa, Import, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới, Sửa bên phải
   - Cột: Phiếu số (C) [PHIEUSOBGD]; Họ lót [HoLotSV]; Tên [TenSV]; Phái [Phai]; Ngày sinh [NgaySinhC]; SBD [SBD]; Số CMND [SoCMND]; Năm tốt nghiệp [NAMTN]; Mã khối [MAKHOITS]; Mã ngành [MANGTS]; Mã đợt [MADOTNVTS]

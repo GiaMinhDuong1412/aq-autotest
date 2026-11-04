@@ -47,28 +47,28 @@
   - Cột: Cấp full [StrCapFull](chỉ đọc); Tên [Name](chỉ đọc); Ngày bắt đầu đánh giá [NgayBDDG]{ngày}; Ngày kết thúc đánh giá [NgayKTDG]{ngày}
   - Cột ẩn: Đối tượng tree [DoiTuongTree]; Giá trị [GiaTri]; ID [ID]; ID cấp đối tượng KLGD [IDCap](chỉ đọc); Cây phân cấp [IDLoaiPhanCap]; Phân cấp đối tượng tính KLGD (Ví dụ lớp, Bậc hệ) [IDPhanCap]; ID Parent [ParentID]; Tên Node Full [TenNodeFull]
 ### ViewDMPLSach – Danh sách phân loại sách
-- Lưới 1 (bảng ODMPLSach); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
+- Lưới 1 «Danh sách phân loại» (bảng ODMPLSach); tắt: Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã, Sửa trên lưới
   - Cột: Mã Phân loại sách [MaPLSach]; Tên Phân loại sách [TenPLSach]; Ghi chú Phân loại sách [GcPLSach]
   - Cột ẩn: ID Phân loại sách [IDPLSach]
   - Ô trên form sửa: #MaPLSach, #TenPLSach, #GcPLSach
 ### VIEWSY_ThoiGianDanhGiaGD – Đối tượng và thời gian đánh giá giảng dạy
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Thời gian đánh giá giảng dạy»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeDatetime]{ngày}
 ### VIEWSY_ThongTinXemKhiChuaDanhGia – Chỉnh định thông số xem thông tin khi chưa DGGD
-- Lưới 1; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
+- Lưới 1 «Danh sách thông tin không được xem khi chưa đánh giá»; tắt: Thêm, Xóa, Import, Xuất, In, Nạp lại, Đổi mã, Gộp mã
   - Cột: Tên Enum [ColNameEnum](chỉ đọc); Giá trị cấp cha [*ColNameP](chỉ đọc); Giá trị [GiaTriTreeLogic]
 ### YDMBOTCDG – Danh mục bộ tiêu chí đánh giá
-- Lưới 1 (bảng YDMBOTCDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách bộ tiêu chí đánh giá» (bảng YDMBOTCDG); tắt: Sửa trên lưới
   - Cột: Mã bộ tiêu chí đáng giá [MaBoTCDG]; Tên bộ tiêu chí đánh giá [TenBoTCDG]; Thứ tự [TtBoTCDG]
   - Cột ẩn: Ghi chú [GcBoTCDG]; Tên tiếng anh [TenBoTCDGEG]; Tên viết tắt [VtBoTCDG]
   - Ô trên form sửa: #MaBoTCDG, #TenBoTCDG, #TtBoTCDG, #GcBoTCDG, #TenBoTCDGEG, #VtBoTCDG
 ### YDMNHTCDG – Danh mục nhóm tiêu chí đánh giá
-- Lưới 1 (bảng YDMNHTCDG); tắt: Sửa trên lưới
+- Lưới 1 «Danh sách nhóm tiêu chí» (bảng YDMNHTCDG); tắt: Sửa trên lưới
   - Cột: Mã nhóm tiêu chí [MaNhTCDG]; Tên bộ tiêu chí đánh giá [TenBoTCDG]; Tên nhóm tiêu chí đánh giá [TenNhTCDG]; Thứ tự [TTNhTCDG]; Tên tiếng anh [TenNhTCDGEg]
   - Cột ẩn: Ghi chú [GCNhTCDG]; Bộ tiêu chí [IDBoTCDG]; Phân loại bộ tiêu chí đánh giá [PhanLoaiTCDG]; Viết tắt [VTNhTCDG]
   - Ô trên form sửa: #MaNhTCDG, #TenNhTCDG, #TTNhTCDG, #TenNhTCDGEg, #GCNhTCDG, #IDBoTCDG, #VTNhTCDG
 ### YDMTCDG – Danh mục tiêu chí đánh giá
-- Lưới 1 (bảng YDMTCDG); tắt: Sửa trên lưới
-  - Cột: Thứ tự [TTTCDG]; Tên bộ tiêu chí đánh giá [TenBoTCDG]; Mã tiêu chí đánh giá [MaTCDG]; Tên nhóm tiêu chí đánh giá [TenNhTCDG]; Tên tiêu chí đánh giá [TenTCDG]; Có sử dụng bộ đáp án [CoDapAn]
-  - Cột ẩn: Ghi chú [GCTCDG]; Nhóm tiêu chí [IDNhTCDG]; Phân loại bộ tiêu chí đánh giá [PhanLoaiTCDG]; Tên tiếng anh [TenTCDGEg]; Trọng số tiêu chí [TrongSoTC]; Viết tắt [VTTCDG]
+- Lưới 1 «Danh sách tiêu chí đánh giá» (bảng YDMTCDG); tắt: Sửa trên lưới
+  - Cột: Thứ tự [TTTCDG]; Bộ [TenBoTCDG]; Mã tiêu chí đánh giá [MaTCDG]; Tên nhóm tiêu chí đánh giá [TenNhTCDG]; Tên tiêu chí đánh giá [TenTCDG]; Có sử dụng bộ đáp án [CoDapAn]
+  - Cột ẩn: Ghi chú [GCTCDG]; Nhóm [IDNhTCDG]; Phân loại bộ tiêu chí đánh giá [PhanLoaiTCDG]; Tên tiếng anh [TenTCDGEg]; Trọng số tiêu chí [TrongSoTC]; Viết tắt [VTTCDG]
   - Ô trên form sửa: #TTTCDG, #MaTCDG, #TenTCDG, #CoDapAn, #GCTCDG, #IDNhTCDG, #TenTCDGEg, #TrongSoTC, #VTTCDG
