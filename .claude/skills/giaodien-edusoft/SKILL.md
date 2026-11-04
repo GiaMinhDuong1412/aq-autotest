@@ -356,13 +356,30 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 ## 6. Tra source Edusoft (`tools/trich_source.py`)
 
 Source nằm trên TFS (chỉ đọc) hoặc file zip trên máy người dùng – **không đưa source vào repo/chat**. Người dùng chạy
-`python tools\trich_source.py <zip> --liet-ke | "<từ khóa>" | --tim "<câu>"` rồi gửi file `trich-*.txt` (chỉ tên điều khiển,
-caption, cột lưới, câu thông báo). Ghi những gì rút ra được vào mục 4/bảng mục 2, không chép nguyên file trích.
+`python tools\trich_source.py <zip> --liet-ke | "<từ khóa>" | --tim "<câu>" | --tat-ca` rồi gửi file `trich-*.txt` / `trich-tat-ca.zip`
+(chỉ tên điều khiển, caption, cột lưới, câu thông báo). Ghi điều rút ra vào đây, không chép nguyên file trích.
 
-Cấu trúc (từ `--liet-ke`, 11/2026 – 4 665 file Designer): `trunk2/Edusoft.<MÃ>/Edusoft.<MÃ>/<nhóm>/<mục>/<Form>.Designer.cs`.
-Số form theo mã: SRM 991 · RMS 680 · AQDataTools 424 (control dùng chung: `AQControls.v3` – MsgBox, nút chung AQButtonLuu/
-AQButtonClose…, `AQViewers`) · SMS 409 · SCH 259 · CMS 228 · EPM 186 · HRM 182 · NET 161 · MDS 157 · DCM 146 · TPM 111 · SRT 103 …
-- Tên form theo mẫu `F001_…`, `UCT_…`, `UC_…`, `Frm_…`; **tiêu đề form không nằm trong Designer** (gần như trống) – tên
-  màn hình trên menu nhiều khả năng lấy từ CSDL, nên tìm form theo tên lớp/đường dẫn hoặc `--tim` câu chữ hiện trên màn hình.
-- ? Ứng viên cho QĐ vào/ra sinh viên (QLSV-001), chưa xác nhận: `Edusoft.SMS/S02/` – `UCQDSV`, `S02_F001_ThemSVQD`,
-  `Frm_QuyetDinh`, `Form_ThemSVHK`, `UCT_CapNhatSoQDVaoMoi`, `F002_KiemTraQDVaoRaSV`.
+Cấu trúc (bản trích 11/2026 – 4 665 file Designer): `trunk2/Edusoft.<MÃ>/Edusoft.<MÃ>/<nhóm>/<mục>/<Form>.Designer.cs`.
+Mã module → nghiệp vụ (? suy từ tên form, chờ xác nhận): SMS sinh viên (QĐ vào/ra, học bổng, rèn luyện) · RMS đăng ký môn
+học + học phí · SRM điểm/bảng ghi điểm, xét tốt nghiệp-luận văn · EPM lịch thi · SCH thời khóa biểu · TPM chương trình đào tạo/
+môn học · DCM khối lượng giảng dạy, thù lao CBGD · TQM khảo sát đánh giá · MDS ký túc xá (nội trú) · CMS tuyển sinh ·
+BSM kho học liệu · HRM nhân sự · PMS lương · JMS tài sản · DMS công văn · EMS kiểm định (minh chứng) · SRT NCKH ·
+STM đào tạo ngắn hạn · EVA đánh giá viên chức · ILS lưu học sinh · NET lõi chung (phân quyền, nhập điểm…) ·
+AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
+
+**Điều quan trọng rút ra:**
+- Màn hình chức năng phần lớn **dựng theo cấu hình trong CSDL**, không vẽ trong source: user control kế thừa
+  `AQViewers.AQViewCommonCtr` chỉ chứa một `SourceViewBase` (3 087 chỗ dùng) → bên trong `SplitControlView` (AQSplitContainer)
+  → lưới/nút/nhãn sinh lúc chạy (khớp `FormChonView`/`viewDataCtrl` ở mục 4). Ví dụ QĐ vào/ra SV: `Edusoft.SMS/S02/UCQDSV`
+  chỉ có `grdQD | SourceViewBase`. ⇒ **Tên ô, nút, cột cho `auto` phải lấy từ `ui-*.txt`, không lấy được từ source.**
+  Source chỉ có ích cho form vẽ tay, câu thông báo nghiệp vụ (vd UCQDSV: "Ngày về phải lớn hơn ngày đi") và tên lớp.
+- Câu thông báo chung ("Xóa dữ liệu thành công", "Thoát khỏi chương trình?", "Danh sách đang chọn để xóa") **không có trong
+  source** – nhiều khả năng lấy từ CSDL/thư viện biên dịch; cứ dùng đúng chữ quan sát trên màn hình.
+- Cửa sổ chính `AQViewers/MainForm` (RibbonForm, tiêu đề "EduSoft.NET"): ribbon `ribonMain`; khung trái `dockLeft`
+  "Danh mục chức năng" chứa cây `treeChucNangC3` (cột "Tên chức năng" [TenChucNang]) và `navBarControl1` nhóm "Thông tin đơn vị"
+  (`lblTenTruong`); vùng tab màn hình `tabForm` (AQTabControl, trang "Phổ dụng"/"Các chức năng"); menu chuột phải tab:
+  "Đóng tab hiện tại" (`btnDongHienTai`), "Đóng tất cả tab ngoại trừ hiện tại", "Đóng tất cả"; thanh trạng thái `bar3`:
+  "Năm học" (`barNamHoc`), "Học kỳ" (`barListHocKy`), "Kỳ thi", "Năm", "Tháng", "Đợt đánh giá", "Kỳ tuyển sinh", "Kỳ đánh giá",
+  `lblStatusMess` (**câu kết quả Lưu/Xóa hiện ở đây**), `lblUserName`, "Đăng xuất" (`btnBarDangXuat`).
+- Hộp chọn dùng chung (`AQViewers/Controls`): `F_ChonNHHK` (chọn năm học-học kỳ), `F_NhapNgay`/`F_Nhap2Ngay`, `F_NhapMa`,
+  `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).
