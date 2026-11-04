@@ -1,0 +1,73 @@
+{
+  "name": "aq-auto-test",
+  "productName": "AQ Auto Test",
+  "version": "0.0.0",
+  "description": "AQ Auto Test – console kịch bản test Edusoft/Netweb chạy trên máy cá nhân",
+  "main": "src/main.js",
+  "author": "AQTech",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --publish never"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "vn.aqtech.autotest",
+    "productName": "AQ Auto Test",
+    "executableName": "AQ Auto Test",
+    "copyright": "AQTech",
+    "files": [
+      "src/**/*",
+      "build/icon.ico",
+      "package.json"
+    ],
+    "extraResources": [
+      { "from": "res/app", "to": "app" },
+      { "from": "res/python", "to": "python" }
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "electronLanguages": [
+      "en-US",
+      "vi"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "AQ Auto Test",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "include": "build/installer.nsh",
+      "artifactName": "AQ-AutoTest-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "AQ-AutoTest-Portable-${version}.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "GiaMinhDuong1412",
+        "repo": "aq-autotest-releases",
+        "releaseType": "release"
+      }
+    ]
+  }
+}

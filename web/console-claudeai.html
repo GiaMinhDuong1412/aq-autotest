@@ -1358,6 +1358,8 @@ td.subtext{display:table-cell;margin:0}
 .mh-sum{display:flex;flex-wrap:wrap;gap:8px 18px;padding:12px 18px;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
 @media (max-width:760px){.mh-list{max-height:none}.mh-tbl td:nth-child(3),.mh-tbl th:nth-child(3){display:none}}
 #appUpd.newer{background:var(--accent);border-color:var(--accent);color:#fff}
+.upd-body{margin:14px 0 0;font-size:.86rem;color:var(--fg-dim)}.upd-body p{margin:0}
+.upd-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -1484,7 +1486,6 @@ td.subtext{display:table-cell;margin:0}
       <div class="account-sep"></div>
       <button class="account-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg>Hồ sơ</button>
       <button class="account-item" data-page-go="runner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5H9.4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4.2l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.6c.1-.3.1-.7.1-1Z"/></svg>Cấu hình runner</button>
-      <button class="account-item hidden" id="appTokenBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></svg>Token GitHub (cập nhật app)</button>
       <button class="account-item hidden" id="appQuitBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg>Thoát app AQ Auto Test</button>
       <div class="account-sep"></div>
       <button class="account-item danger" id="logoutBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12H4m0 0 4-4m-4 4 4 4M14 5h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/></svg>Đăng xuất</button>
@@ -6601,7 +6602,7 @@ QUAY VIDEO (TÙY CHỌN)
   function showApp(){ $('#loginView').classList.add('hidden'); $('#appView').classList.remove('hidden'); window.scrollTo(0,0); }
   $('#loginForm').addEventListener('submit',function(e){e.preventDefault();showApp();});
   $('#ssoLogin').addEventListener('click',showApp);
-  if(window.AQ_SERVER)showApp();   /* bản trên server: đã đăng nhập thật ở /login */
+  if(window.AQ_SERVER||window.AQ_AUTH)showApp();   /* server / app AQ Auto Test: đã đăng nhập thật ở trang login */
   $('#togglePw').addEventListener('click',function(){var p=$('#password');p.type=p.type==='password'?'text':'password';});
   $('#logoutBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');$('#appView').classList.add('hidden');$('#loginView').classList.remove('hidden');});
 
@@ -9334,32 +9335,33 @@ QUAY VIDEO (TÙY CHỌN)
     var r=e.target.closest('[data-mhsel]');if(r){MH.sel=MH.sel===r.getAttribute('data-mhsel')?null:r.getAttribute('data-mhsel');var m=MH.idx.code[MH.sel];if(m)MH.ph=m.ph;renderMH();return;}
     if(e.target.closest('[data-mhreload]'))mhLoad();});
 
-  /* ===== App AQ Auto Test: phiên bản + cập nhật (chỉ khi chạy bằng app/launcher.py – window.AQ_APP) ===== */
-  var APPU={info:null,busy:false};
-  function appPost(path,body){return fetch('api/app/'+path,{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify(body||{})})
-    .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||('HTTP '+r.status));return j;});});}
-  function appBtn(){var b=$('#appUpd'),i=APPU.info||{},l=i.latest,nw=i.newer;if(!b)return;b.classList.remove('hidden');b.classList.toggle('newer',!!nw);
-    b.textContent=APPU.busy?(i.msg||'Đang cập nhật…'):nw?'⬆ Cập nhật bản '+l.version:'AQ Auto Test '+(window.AQ_APP.version||'');}
-  function appCheck(quiet){return appPost('check').then(function(j){APPU.info=j;appBtn();return j;},function(e){APPU.info=Object.assign({},APPU.info||{},{err:e.message});appBtn();if(!quiet)throw e;});}
-  function appToken(){var t=prompt('Dán token GitHub chỉ-đọc để app tải bản cập nhật (github.com → Settings → Developer settings → Fine-grained tokens: chọn repo aq-autotest, Contents = Read-only). Để trống để xoá token.','');
-    if(t===null)return Promise.resolve();return appPost('token',{token:t.trim()}).then(function(){toast(t.trim()?'Đã lưu token trên máy này':'Đã xoá token','ok');return appCheck(true);});}
-  function appWaitRestart(oldVer){var n=0;var tick=function(){n++;fetch('api/app/info',{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
-      if(j.version&&j.version!==oldVer){toast('Đã cập nhật lên bản '+j.version+' – tải lại trang…','ok');setTimeout(function(){location.reload();},800);return;}
-      if(!j.busy&&/lỗi/i.test(j.msg||'')){APPU.busy=false;APPU.info=Object.assign({},APPU.info,{msg:j.msg});appBtn();toast(j.msg,'err',15000);return;}
-      APPU.info=Object.assign({},APPU.info,{msg:j.msg});appBtn();if(n<200)setTimeout(tick,1500);},function(){if(n<200)setTimeout(tick,1500);});};setTimeout(tick,1500);}
-  function appClick(){if(APPU.busy)return;appCheck(false).then(function(j){
-      if(j.newer){var l=j.latest;if(!confirm('Cập nhật AQ Auto Test lên bản '+l.version+'?\n\nĐang dùng: '+j.version+(l.notes?'\n\nThay đổi:\n'+l.notes.slice(0,1200):'')+'\n\nApp sẽ tự khởi động lại (vài giây), dữ liệu trên máy giữ nguyên.'))return;
-        APPU.busy=true;appBtn();appPost('update').then(function(){appWaitRestart(j.version);},function(e){APPU.busy=false;appBtn();toast('Không cập nhật được: '+e.message,'err',15000);});}
-      else toast('Đang dùng bản mới nhất ('+j.version+(j.latest&&j.latest.version&&j.latest.version!==j.version?' · bản phát hành '+j.latest.version:'')+')','ok',6000);
-    },function(e){if(!(APPU.info&&APPU.info.hasToken)||/token|404|401|403/i.test(e.message)){toast(e.message,'err',9000);appToken();}else toast(e.message,'err',12000);});}
-  if(window.AQ_APP){var APPID=Math.random().toString(36).slice(2);   /* launcher tắt app khi không còn trang nào mở (đóng cửa sổ) */
-    var appPing=function(){fetch('api/app/ping?id='+APPID,{cache:'no-store'}).catch(function(){});};appPing();setInterval(appPing,30000);
-    document.addEventListener('visibilitychange',function(){if(!document.hidden)appPing();});
-    addEventListener('pagehide',function(){try{navigator.sendBeacon('api/app/bye',JSON.stringify({id:APPID}));}catch(e){}});
-    $('#appUpd').addEventListener('click',appClick);$('#appTokenBtn').classList.remove('hidden');$('#appQuitBtn').classList.remove('hidden');
-    $('#appTokenBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');appToken();});
-    $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');if(confirm('Thoát app AQ Auto Test? (Đóng cửa sổ app cũng là thoát.) Mở lại bằng lối tắt "AQ Auto Test".'))appPost('quit').then(function(){document.body.innerHTML='<p style="padding:40px;font-family:sans-serif">Đã thoát AQ Auto Test. Mở lại bằng lối tắt “AQ Auto Test”.</p>';setTimeout(function(){try{window.close();}catch(e){}},300);});});
-    fetch('api/app/info').then(function(r){return r.json();}).then(function(j){APPU.info=j;appBtn();if(j.hasToken)appCheck(true);});}
+  /* ===== App AQ Auto Test (desktop/, Electron – window.aqDesktop từ preload): phiên bản + cập nhật =====
+     App tự kiểm tra bản mới (repo public aq-autotest-releases) khi mở và 4 giờ/lần; có bản mới thì hiện hộp thông báo mời cập nhật. */
+  var APPU={st:null,asked:''};
+  function appLabel(u){var v=(window.AQ_APP&&window.AQ_APP.version)||(u&&u.current)||'';switch(u&&u.status){
+    case 'checking':return 'Đang kiểm tra…';case 'available':return '⬆ Cập nhật bản '+u.version;case 'downloading':return 'Đang tải '+(u.percent||0)+'%';
+    case 'downloaded':return '⟳ Khởi động lại để cập nhật';case 'latest':return '✓ Bản mới nhất '+v;case 'error':return '⚠ '+(u.error||'Lỗi cập nhật');default:return 'AQ Auto Test '+v;}}
+  function appRender(u){var b=$('#appUpd');if(!b)return;b.classList.remove('hidden');b.textContent=appLabel(u);
+    b.classList.toggle('newer',!!u&&(u.status==='available'||u.status==='downloaded'));
+    b.title=u&&u.status==='error'?(u.error||''):'Phiên bản app AQ Auto Test – bấm để kiểm tra / cập nhật';}
+  function appModal(u){var old=$('#appUpdModal');if(old)old.remove();var m=document.createElement('div');m.id='appUpdModal';m.className='sync-ov';
+    var done=u.status==='downloaded';
+    m.innerHTML='<div class="sy-box upd-box" role="dialog" aria-modal="true"><div class="sy-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg><div><h3>'+(done?'Đã tải xong bản '+esc(u.version):'Có phiên bản mới: '+esc(u.version))+'</h3>'+
+      '<p>Đang dùng: '+esc(u.current||'')+'</p></div></div><div class="upd-body"><p>'+(done?'Bấm <b>Khởi động lại</b> để cài bản mới (vài giây). Dữ liệu trên máy giữ nguyên.':
+        u.portable?'Bản không cài (portable) không tự cập nhật được: bấm <b>Tải bản mới</b> để mở trang tải.':'Bấm <b>Cập nhật</b> để tải bản mới, xong app hỏi khởi động lại. Dữ liệu trên máy giữ nguyên.')+'</p></div>'+
+      '<div class="upd-foot"><button class="btn" data-x>Để sau</button><button class="btn primary" data-go>'+(done?'Khởi động lại':u.portable?'Tải bản mới':'Cập nhật')+'</button></div></div>';
+    document.body.appendChild(m);
+    m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();else if(e.target.closest('[data-go]')){m.remove();window.aqDesktop.updateAct();}});}
+  if(window.AQ_APP){$('#appQuitBtn').classList.remove('hidden');
+    $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');
+      if(confirm('Thoát app AQ Auto Test? (Đóng cửa sổ app cũng là thoát.)')){if(window.aqDesktop)window.aqDesktop.quit();else fetch('api/app/quit',{method:'POST',headers:{'X-AQ':'1'}});}});
+    appRender(null);
+    if(window.aqDesktop){
+      $('#appUpd').addEventListener('click',function(){var u=APPU.st;if(u&&(u.status==='available'||u.status==='downloaded'))appModal(u);else window.aqDesktop.updateAct();});
+      window.aqDesktop.onUpdate(function(u){var prev=APPU.st;APPU.st=u;appRender(u);
+        if((u.status==='available'||u.status==='downloaded')&&APPU.asked!==u.status+u.version){APPU.asked=u.status+u.version;appModal(u);}
+        if(u.status==='error'&&prev&&prev.status==='downloading')toast('Cập nhật lỗi: '+(u.error||''),'err',12000);});
+      window.aqDesktop.getUpdate().then(function(u){if(u){APPU.st=u;appRender(u);if(u.status==='available'||u.status==='downloaded'){APPU.asked=u.status+u.version;appModal(u);}}});}}
   initScenarios();
 })();
 </script>

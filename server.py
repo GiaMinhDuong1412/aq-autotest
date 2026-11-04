@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent
 WEB, KIT, DATA, LOCAL = ROOT / "web", ROOT / "kit", ROOT / "data", ROOT / "local"
 ASSETS = DATA / "assets"
 CFG_FILE = LOCAL / "config.json"
-APP = None                                      # bản app AQ Auto Test (app/launcher.py đặt AQ_APP_HOME): nút cập nhật phiên bản
+APP = None                                      # app AQ Auto Test (desktop/, Electron, đặt AQ_APP_HOME): bắt đăng nhập, báo phiên bản
 if os.environ.get("AQ_APP_HOME"):
     sys.path.insert(0, str(ROOT))               # Python nhúng không tự thêm thư mục script vào sys.path
     import app_update as APP
@@ -41,7 +41,7 @@ KIT_BLOCKS = {"kit-aqrun": "aqrun.py", "kit-agent": "aq-agent.py", "kit-caidat":
               "kit-quenmk": "quen-mat-khau.bat", "kit-huongdan": "HUONG-DAN.txt"}
 LOCK = threading.Lock()
 REV = {"n": 0}
-MODE = {"public": False, "https": False, "base": ""}     # base: đường dẫn con khi chạy dưới IIS, vd /aqautotest
+MODE = {"public": False, "auth": False, "https": False, "base": ""}  # auth: bắt đăng nhập (--public hoặc app AQ Auto Test)     # base: đường dẫn con khi chạy dưới IIS, vd /aqautotest
 CUR = threading.local()                         # người dùng của yêu cầu đang xử lý (chế độ --public)
 # biểu tượng cửa sổ app (Edge/Chrome chế độ --app lấy favicon làm icon cửa sổ)
 APP_ICON = ('<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'%3E'
@@ -76,7 +76,7 @@ def col_dir(path):
         me = getattr(CUR, "uid", None) or CFG["userId"]
         if segs[2] == "me":
             segs[2] = me
-        elif MODE["public"] and segs[2] != me:
+        elif MODE["auth"] and segs[2] != me:
             raise ValueError("Không được đọc dữ liệu riêng của người khác")
         return LOCAL.joinpath(*segs)           # dữ liệu riêng từng người: chỉ ở máy này
     return DATA.joinpath(*segs)
@@ -336,6 +336,11 @@ def load_auth():
         return
     except FileNotFoundError:
         pass
+    if not MODE["public"]:                         # app AQ Auto Test trên máy cá nhân: tài khoản mặc định admin / 1234
+        AUTH["data"] = {"secret": secrets.token_hex(32), "users": {CFG.get("userId") or DEFAULT_USER: {
+            "login": "admin", "name": CFG.get("userName") or "Quản trị", "admin": True, "pw": pw_hash("1234"), "ver": 1}}}
+        save_auth()
+        return
     pw = secrets.token_urlsafe(9)
     # admin đầu tiên giữ mã người dùng cũ để dữ liệu đã có (người tạo kịch bản, máy chạy test…) vẫn khớp
     AUTH["data"] = {"secret": secrets.token_hex(32), "users": {DEFAULT_USER: {
@@ -410,8 +415,8 @@ def a_account(h, a):
             if not pw_ok(str(a.get("old") or ""), me["pw"]):
                 return h.send(400, {"error": "Mật khẩu hiện tại không đúng"})
             new = str(a.get("new") or "")
-            if len(new) < 8:
-                return h.send(400, {"error": "Mật khẩu mới phải từ 8 ký tự"})
+            if len(new) < (8 if MODE["public"] else 4):
+                return h.send(400, {"error": "Mật khẩu mới phải từ %d ký tự" % (8 if MODE["public"] else 4)})
             me["pw"], me["ver"] = pw_hash(new), me.get("ver", 1) + 1
             save_auth()
             return h.send(200, {"ok": True}, extra={"Set-Cookie": h.cookie(make_token(CUR.uid, me), 30 * 86400)})
@@ -558,6 +563,13 @@ def page_html():
     if MODE["public"]:
         u = users()[CUR.uid]
         boot = "window.AQ_SERVER={userId:%s,userName:%s};" % (js(CUR.uid), js(u.get("name") or u.get("login")))
+    elif MODE["auth"]:                               # app: đăng nhập thật nhưng vẫn là máy chạy test (có /api/kit)
+        u = users()[CUR.uid]
+        boot = "window.AQ_LOCAL={userId:%s,userName:%s};window.AQ_AUTH={login:%s,admin:%s};" % (
+            js(CUR.uid), js(u.get("name") or u.get("login")), js(u.get("login")), "true" if u.get("admin") else "false")
+        if APP:
+            boot += ("window.AQ_APP={version:%s};document.addEventListener('DOMContentLoaded',function(){document.title='AQ Auto Test';});"
+                     % js(APP.VERSION))
     else:
         boot = "window.AQ_LOCAL={userId:%s,userName:%s};" % (js(CFG["userId"]), js(CFG.get("userName") or ""))
         if APP:
@@ -617,8 +629,7 @@ class H(BaseHTTPRequestHandler):
                 return False
             if raw.startswith(base + "/"):
                 self.path = self.path[len(base):]
-        if self.command != "GET" and self.headers.get("X-AQ") != "1" and not (
-                APP and self.command == "POST" and urlparse(self.path).path == "/api/app/bye"):  # sendBeacon khi đóng cửa sổ: không gắn được header
+        if self.command != "GET" and self.headers.get("X-AQ") != "1":
             self.send(403, {"error": "forbidden"})
             return False
         if not MODE["public"]:
@@ -626,7 +637,8 @@ class H(BaseHTTPRequestHandler):
             if host not in ("localhost", "127.0.0.1"):
                 self.send(403, {"error": "forbidden"})
                 return False
-            return True
+            if not MODE["auth"]:
+                return True
         path = urlparse(self.path).path
         try:
             c = SimpleCookie(self.headers.get("Cookie") or "")
@@ -649,14 +661,16 @@ class H(BaseHTTPRequestHandler):
         try:
             if u.path in ("/", "/index.html"):
                 return self.send(200, page_html(), "text/html; charset=utf-8")
-            if MODE["public"] and u.path == "/login":
+            if MODE["auth"] and u.path == "/login":
                 if CUR.uid:
                     return self.send(302, "", "text/plain; charset=utf-8", {"Location": MODE["base"] + "/"})
-                return self.send(200, LOGIN_HTML.replace("{W}", "880px").replace("{BODY}", LOGIN_BODY), "text/html; charset=utf-8")
-            if MODE["public"] and u.path == "/quan-tri":
-                return self.send(200, LOGIN_HTML.replace("{W}", "760px").replace("{BODY}", ACCOUNT_BODY), "text/html; charset=utf-8")
+                body = LOGIN_BODY if MODE["public"] else LOGIN_BODY.replace("AUTOTEST CONSOLE", "AQ AUTO TEST")
+                return self.send(200, LOGIN_HTML.replace("{W}", "880px").replace("{BODY}", body), "text/html; charset=utf-8")
+            if MODE["auth"] and u.path == "/quan-tri":
+                body = ACCOUNT_BODY if MODE["public"] else ACCOUNT_BODY.replace("từ 8 ký tự", "từ 4 ký tự")
+                return self.send(200, LOGIN_HTML.replace("{W}", "760px").replace("{BODY}", body), "text/html; charset=utf-8")
             if u.path == "/api/users":
-                if not MODE["public"]:
+                if not MODE["auth"]:
                     return self.send(200, {"users": [{"id": CFG["userId"], "name": CFG.get("userName") or ""}]})
                 return self.send(200, {"users": [user_public(k, v) for k, v in users().items()]})
             if u.path == "/edusoft-catalog.json":           # danh mục màn hình Edusoft (tools/lap_danh_muc.py --json)
@@ -682,8 +696,6 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, p.read_bytes(), ct, extra)
             if APP and u.path == "/api/app/info":
                 return self.send(200, APP.info())
-            if APP and u.path == "/api/app/ping" and not MODE["public"]:
-                return self.send(200, APP.ping(q.get("id")))
             if u.path == "/api/rev":
                 return self.send(200, {"rev": data_signature()})
             if u.path == "/api/db":
@@ -693,7 +705,7 @@ class H(BaseHTTPRequestHandler):
                 v = read_doc(f) if f.exists() else None
                 return self.send(200, {"exists": v is not None, "data": v})
             if u.path == "/api/me":
-                if MODE["public"]:
+                if MODE["auth"]:
                     return self.send(200, user_public(CUR.uid, users()[CUR.uid]))
                 return self.send(200, {"id": CFG["userId"], "name": CFG.get("userName") or ""})
             return self.send(404, {"error": "not found"})
@@ -706,11 +718,11 @@ class H(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         try:
-            if MODE["public"] and u.path == "/login":
+            if MODE["auth"] and u.path == "/login":
                 return a_login(self, self.jbody())
-            if MODE["public"] and u.path == "/logout":
+            if MODE["auth"] and u.path == "/logout":
                 return self.send(200, {"ok": True}, extra={"Set-Cookie": self.cookie("", 0)})
-            if MODE["public"] and u.path == "/api/account":
+            if MODE["auth"] and u.path == "/api/account":
                 return a_account(self, self.jbody())
             if u.path == "/api/db":                       # add
                 doc_id = uuid.uuid4().hex[:20]
@@ -720,16 +732,8 @@ class H(BaseHTTPRequestHandler):
             if u.path == "/api/assets":
                 return self.send(200, save_asset(self.body(), self.headers.get("Content-Type")))
             if APP and u.path.startswith("/api/app/") and not MODE["public"]:
-                act = {"check": APP.check, "update": APP.update, "quit": APP.quit_app}
-                try:
-                    if u.path == "/api/app/token":
-                        return self.send(200, APP.set_token(self.jbody()))
-                    if u.path == "/api/app/bye":
-                        return self.send(200, APP.bye(self.jbody()))
-                    if u.path[9:] in act:
-                        return self.send(200, act[u.path[9:]]())
-                except RuntimeError as e:
-                    return self.send(422, {"error": str(e)})
+                if u.path == "/api/app/quit":
+                    return self.send(200, APP.quit_app())
                 return self.send(404, {"error": "not found"})
             if u.path.startswith("/api/kit/"):
                 tool = u.path[9:]
@@ -817,10 +821,11 @@ def main():
         CFG_FILE = LOCAL / "config.json"
         CFG = load_cfg()
     MODE["public"] = a.public
+    MODE["auth"] = a.public or (APP is not None and not os.environ.get("AQ_APP_NO_LOGIN"))
     MODE["base"] = "/" + a.base.strip("/") if a.base.strip("/") else ""
     if not CFG_FILE.exists():
         save_cfg(CFG)
-    if a.public:
+    if MODE["auth"]:
         load_auth()
     host = a.host or ("0.0.0.0" if a.public else "127.0.0.1")
     srv = ThreadingHTTPServer((host, a.port), H)

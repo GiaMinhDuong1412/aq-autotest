@@ -27,5 +27,16 @@ aqdata/
 aqdata*.zip
 trich-ma-view.txt
 tuy-chinh-truong.txt
-dist/
-build/
+/dist/
+/build/
+# app desktop (desktop/): tài nguyên sinh khi đóng gói, thư viện npm, bộ cài
+desktop/res/
+desktop/dist/
+desktop/node_modules/
+desktop/package-lock.json
+# file trích/ghi chú source Edusoft để ở thư mục gốc (không đưa lên git)
+duoi-file-source.txt
+file-dang-ngo-source.txt
+cac-file-dinh-nghia.txt
+thu-muc-edusoft.txt
+aqdata.rar

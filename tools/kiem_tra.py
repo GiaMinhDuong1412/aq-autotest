@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 loi = []
-for f in ["server.py", "app_update.py", "app/launcher.py", "aq-console-server.py", "kit/aqrun.py", "kit/aq-agent.py"] + \
+for f in ["server.py", "app_update.py", "aq-console-server.py", "kit/aqrun.py", "kit/aq-agent.py"] + \
         [p.relative_to(ROOT).as_posix() for p in (ROOT / "tools").glob("*.py")]:
     try:
         py_compile.compile(str(ROOT / f), doraise=True)
@@ -27,6 +27,15 @@ if shutil.which("node"):
     r = subprocess.run(["node", "--check", t.name], capture_output=True, text=True)
     if r.returncode:
         loi.append("JS trang console: " + (r.stderr or r.stdout)[:800])
+    for f in sorted((ROOT / "desktop" / "src").glob("*.js")):     # app Electron
+        r = subprocess.run(["node", "--check", str(f)], capture_output=True, text=True)
+        if r.returncode:
+            loi.append("JS %s: %s" % (f.relative_to(ROOT).as_posix(), (r.stderr or r.stdout)[:800]))
+import json  # noqa: E402
+try:
+    json.loads((ROOT / "desktop" / "package.json").read_text("utf-8"))
+except Exception as e:  # noqa: BLE001
+    loi.append("desktop/package.json lỗi: %s" % e)
 if not (ROOT / "web" / "edusoft-catalog.json").exists():
     loi.append("Thiếu web/edusoft-catalog.json (tools/lap_danh_muc.py --json)")
 print("\n".join(loi) or "Kiểm tra: OK")
