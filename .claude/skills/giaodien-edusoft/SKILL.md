@@ -391,6 +391,11 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   `ViewServiceBL.GetViewParams(idView1, subview)` → `GetSpliter`/`GetDmView`/`GetView`, dùng cùng ngữ cảnh `db` với các bảng `H…`
   (phần trường chỉnh) – nhưng 175 bảng `AQ…` này **không có trong `sys.tables`** của bản backup trường → có thể là synonym/view
   trỏ sang CSDL khác (chưa kiểm).
+- Bảng `AQ…` **không nằm trong CSDL trường**: được đóng thành file dữ liệu hệ thống `AQ.Data001…146.dll` (đuôi .dll nhưng là
+  dữ liệu, có file 22 byte) ở **server** (`wcf/bin`, `web/bin` của gói `edusoft.server.zip`), vd 001 = AQDmFile, 002 = AQDmField,
+  003 = AQFileField, 004 = AQRelation; công cụ `ReleaseTools/SysDataManager` (có KeyGen) tạo ra. Máy client không có các file
+  này – Edusoft.NET lấy định nghĩa màn hình **qua WCF của server**. Không giải mã các file này; cần danh mục menu/cột thì xin
+  nhóm phát triển AQTech xuất từ SysDataManager. Thực tế: tên ô/nút/cột cho `auto` lấy từ `ui-*.txt` khi chạy.
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
   Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
