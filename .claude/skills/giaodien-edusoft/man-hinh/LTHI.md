@@ -16,10 +16,10 @@
 - `LKT3.02` Tổ chức thi/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Lịch thi/ Trùng thời khóa biểu phòng → `Edusoft.EPM.LKT._03.F002_TrungTKBPhongThi`
 - `LKT3.03` Tổ chức thi/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Lịch thi/ Trùng thời khóa biểu sinh viên → `Edusoft.EPM.LKT._03.F003_TrungTKBSinhVien`
 - `LKT2` Tổ chức thi/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Tổ thi
-- `LKT2.01` Tổ chức thi/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Tổ thi/ Danh sách MH có SV chưa phân tổ → `Edusoft.EPM.LKT._02.F002_DanhSachMHSVChuaPhanTo`
+- `LKT2.01` Tổ chức thi/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Tổ thi/ Danh sách MH có SV chưa phân tổ → `Edusoft.EPM.LKT._02.F002_DanhSachMHSVChuaPhanTo` – màn hình: VIEWDSDOTTHISVCHUAPHANTO
 - `LTV` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu
-- `LTV1` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký biến động lịch thi theo nhóm/tổ → `Edusoft.EPM.LTV._01.F001_NhatKyBienDongLichThi`
-- `LTV2` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký hiệu chỉnh lịch thi → `Edusoft.EPM.LTV._02.F001_NhatKyHieuChinhLichThi`
+- `LTV1` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký biến động lịch thi theo nhóm/tổ → `Edusoft.EPM.LTV._01.F001_NhatKyBienDongLichThi` – màn hình: NHATKYLICHTHI, DANHSACHTOTHI
+- `LTV2` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký hiệu chỉnh lịch thi → `Edusoft.EPM.LTV._02.F001_NhatKyHieuChinhLichThi` – màn hình (đoán theo tên): ViewNhatKyHCLT
 - `LTV3` Tổ chức thi/ An toàn dữ liệu/ Truy vết dữ liệu/ Xem log lịch thi → `Edusoft.EPM.LTV._02.F002_XemLogLichThi`
 - `L1` Tổ chức thi/ Chính sách lịch thi
 - `L13` Tổ chức thi/ Chính sách lịch thi/ Chỉnh định thông số kỳ thi
@@ -28,18 +28,18 @@
 - `L11.02` Tổ chức thi/ Chính sách lịch thi/ Nhập danh sách không thi/ Theo học phần
 - `L12` Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học
 - `L12.01` Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Danh mục tính chất thi môn học
-- `L12.02` Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Nhập tính chất thi môn học → `Edusoft.EPM.L21._02.F002_HinhThucThiTungMonHoc`
+- `L12.02` Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Nhập tính chất thi môn học → `Edusoft.EPM.L21._02.F002_HinhThucThiTungMonHoc` – màn hình: LHTTHIMH
 - `L15` Tổ chức thi/ Chính sách lịch thi/ Định nghĩa tên gọi ca thi → `Edusoft.EPM.UCT.UC_DinhNghiaTenGoiCaThi`
 - `L14` Tổ chức thi/ Chính sách lịch thi/ Định nghĩa thời gian → `Edusoft.EPM.UCT.UCDMLoaiTG`
 - `L311` Tổ chức thi/ Hiệu chỉnh lịch thi
 - `L311.01` Tổ chức thi/ Hiệu chỉnh lịch thi/ Cập nhật lịch thi
-- `L311.07` Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi → `Edusoft.EPM.L31._02.F003_DanhSachSinhVienDuThi`
+- `L311.07` Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi → `Edusoft.EPM.L31._02.F003_DanhSachSinhVienDuThi` – màn hình (đoán theo tên): DSSVTRONGTOTHI
 - `L311.12` Tổ chức thi/ Hiệu chỉnh lịch thi/ Ghép sinh viên hoãn thi vào tổ thi → `Edusoft.EPM.L31._04.F001_GhepSVHoanThiVaoToThi`
 - `L311.09` Tổ chức thi/ Hiệu chỉnh lịch thi/ Ghép phòng thi cùng Ngày & Tiết → `Edusoft.EPM.L41._10.F006_GhepPhongThiCungNgayTiet` (Param1=GHEPPHONG)
 - `L22.06.CT` Tổ chức thi/ Hiệu chỉnh lịch thi/ Gán SV có ĐKMH vào tổ thi - theo DS sinh viên → `Edusoft.EPM.L41._11.F007_GanSVCoDKMHVaoToThiChiTiet`
 - `L22.06` Tổ chức thi/ Hiệu chỉnh lịch thi/ Gán SV có ĐKMH vào tổ thi - theo sinh viên → `Edusoft.EPM.L41._11.F007_GanSVCoDKMHVaoToThi`
 - `L311.05` Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh lịch thi → `Edusoft.EPM.L41._10.F005_CapNhatPhongThiChoLichThi`
-- `L22.05` Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo sinh viên → `Edusoft.EPM.L41._11.F004_InLichThiTheoSinhVien`
+- `L22.05` Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo sinh viên → `Edusoft.EPM.L41._11.F004_InLichThiTheoSinhVien` – màn hình: TEST
 - `L22.02` Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo tổ thi → `Edusoft.EPM.L31._02.F002_BoSungDanhSachThi`
 - `L31.10` Tổ chức thi/ Hiệu chỉnh lịch thi/ Hủy ghép phòng thi cùng Ngày & Tiết → `Edusoft.EPM.L41._10.F006_GhepPhongThiCungNgayTiet` (Param1=HUYGHEPPHONG)
 - `L311.11` Tổ chức thi/ Hiệu chỉnh lịch thi/ Lịch thi sinh viên đặc thù → `Edusoft.EPM.L31._02.F007_LichThiSVDacThu`
@@ -65,84 +65,84 @@
 - `L49` Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách coi thi vãng lai → `Edusoft.EPM.L49.F001_DSCBCoiThiVL`
 - `L47` Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi → `Edusoft.EPM.L4._07.F001_NhapDanhSachCanBoCoiThi`
 - `L42` Tổ chức thi/ Hoạt động coi thi/ Nhập SL cán bộ coi thi cho tổ thi → `Edusoft.EPM.L4._02.F001_NhapSLCanBoCoiThiChoToThi`
-- `L43` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi → `Edusoft.EPM.L4._03.F001_PhanCongCoiThi`
+- `L43` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi → `Edusoft.EPM.L4._03.F001_PhanCongCoiThi` – màn hình (đoán theo tên): LCAPNHATPHONG
 - `L48` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác
-- `L48.01` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác/ Danh mục quyền coi thi → `Edusoft.EPM.L4._03.F002_DMQuyenCoiThiKhac`
+- `L48.01` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác/ Danh mục quyền coi thi → `Edusoft.EPM.L4._03.F002_DMQuyenCoiThiKhac` – màn hình (đoán theo tên): ViewDMQuyenCoiThi
 - `L48.02` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác/ Nhập phân công coi thi khác → `Edusoft.EPM.L4._03.F003_NhapPCCoiThiKhac`
 - `L41` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi
-- `L41.03` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Quy định thời gian ngoài giờ → `Edusoft.EPM.L4._01.F003_QuiDinhThoiGianNgoaiGio`
-- `L41.02` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Định mức thù lao coi thi → `Edusoft.EPM.L4._01.F002_DinhMucThuLaoCoiThi`
-- `L41.04` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Định mức thù lao coi thi ra giờ chuẩn → `Edusoft.EPM.L4._01.F004_DinhMucThuLaoCoiThiGioChuan`
+- `L41.03` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Quy định thời gian ngoài giờ → `Edusoft.EPM.L4._01.F003_QuiDinhThoiGianNgoaiGio` – màn hình (đoán theo tên): LTGNgoaiGio
+- `L41.02` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Định mức thù lao coi thi → `Edusoft.EPM.L4._01.F002_DinhMucThuLaoCoiThi` – màn hình (đoán theo tên): LThuLaoCoiThi
+- `L41.04` Tổ chức thi/ Hoạt động coi thi/ Định mức thù lao coi thi/ Định mức thù lao coi thi ra giờ chuẩn → `Edusoft.EPM.L4._01.F004_DinhMucThuLaoCoiThiGioChuan` – màn hình (đoán theo tên): VIEW_THULAOCOITHI
 - `L23` Tổ chức thi/ Hủy danh sách dự thi
 - `L23.05` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo danh sách sinh viên → `Edusoft.EPM.L41._10.F008_HuyLichThiTheoDanhSach`
 - `L23.04` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo file → `Edusoft.EPM.L31._03.F005_HuyTheoTapTin`
-- `L23.02` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo môn học → `Edusoft.EPM.L31._03.F002_HuyDanhSachTheoMonHoc`
+- `L23.02` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo môn học → `Edusoft.EPM.L31._03.F002_HuyDanhSachTheoMonHoc` – màn hình (đoán theo tên): VIEWHUYDANHSACHTHITHEOMH
 - `L23.03` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo sinh viên rút môn học → `Edusoft.EPM.L31._03.F002_HuyDanhSachTheoMonHoc` (Param1=RUTMH)
 - `L23.01` Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo đợt thi → `Edusoft.EPM.L31._03.F001_HuyDanhSachDotThi`
 - `L40` Tổ chức thi/ Hủy lịch thi
 - `L311.02` Tổ chức thi/ Hủy lịch thi/ Hủy lịch thi theo đợt
-- `L31.05` Tổ chức thi/ Hủy lịch thi/ Hủy theo sinh viên → `Edusoft.EPM.L41._11.F004_InLichThiTheoSinhVien` (Param1=DELETE)
-- `L311.03` Tổ chức thi/ Hủy lịch thi/ Hủy theo đợt - môn học → `Edusoft.EPM.L41._10.F003_HuyLichThiTheoMonHoc` (Param1=-6202456415681237410)
+- `L31.05` Tổ chức thi/ Hủy lịch thi/ Hủy theo sinh viên → `Edusoft.EPM.L41._11.F004_InLichThiTheoSinhVien` (Param1=DELETE) – màn hình: TEST
+- `L311.03` Tổ chức thi/ Hủy lịch thi/ Hủy theo đợt - môn học → `Edusoft.EPM.L41._10.F003_HuyLichThiTheoMonHoc` (Param1=-6202456415681237410) – màn hình (đoán theo tên): VIEWHUYLICHTHITHEOTO, VIEWHUYLICHTHITHEOMONHOC
 - `L311.06` Tổ chức thi/ Hủy lịch thi/ Hủy theo đợt - nhóm thi → `Edusoft.EPM.L41._10.F003_HuyLichThiTheoMonHoc` (Param1=-7158751000620875302)
 - `L311.04` Tổ chức thi/ Hủy lịch thi/ Hủy tất cả → `Edusoft.EPM.L41._10.F004_HuyTatCaLichThi`
 - `L10` Tổ chức thi/ In giấy vào phòng thi
 - `L101` Tổ chức thi/ In giấy vào phòng thi/ Danh mục lý do in giấy vào phòng thi
-- `L102` Tổ chức thi/ In giấy vào phòng thi/ In giấy vào phòng thi → `Edusoft.EPM.L10._02.F001_SinhVienInGiayVaoPhongThi`
-- `L104` Tổ chức thi/ In giấy vào phòng thi/ Sinh viên in giấy vào phòng thi → `Edusoft.EPM.L10._04.F001_DanhSachSinhVienInGiayVaoPhongThi`
+- `L102` Tổ chức thi/ In giấy vào phòng thi/ In giấy vào phòng thi → `Edusoft.EPM.L10._02.F001_SinhVienInGiayVaoPhongThi` – màn hình (đoán theo tên): VIEWLL1002001
+- `L104` Tổ chức thi/ In giấy vào phòng thi/ Sinh viên in giấy vào phòng thi → `Edusoft.EPM.L10._04.F001_DanhSachSinhVienInGiayVaoPhongThi` – màn hình (đoán theo tên): VIEWLL1002001
 - `L103` Tổ chức thi/ In giấy vào phòng thi/ Thống kê số lượng in giấy → `Edusoft.EPM.L10._03.F001_ThongKeSoLuongInGiay`
 - `LBB` Tổ chức thi/ Khai thác báo biểu
 - `L5` Tổ chức thi/ Quản lý hoãn thi
-- `L52` Tổ chức thi/ Quản lý hoãn thi/ Ghép SV hoãn vào kỳ thi → `Edusoft.EPM.L01._02.F001_GhepHTvaoDS`
+- `L52` Tổ chức thi/ Quản lý hoãn thi/ Ghép SV hoãn vào kỳ thi → `Edusoft.EPM.L01._02.F001_GhepHTvaoDS` – màn hình: VIEWGHEPHOANTHI, VIEWHUYGHEPHOANTHI
 - `L54` Tổ chức thi/ Quản lý hoãn thi/ In danh sách thi hoãn thi → `Edusoft.EPM.L01._03.DanhSachSinhVienHoanThi`
 - `L53` Tổ chức thi/ Quản lý hoãn thi/ In thống kê thi hoãn thi → `Edusoft.EPM.L01._03.ThongKeSinhVienHoanThi`
-- `L51` Tổ chức thi/ Quản lý hoãn thi/ Sinh viên đăng ký hoãn thi → `Edusoft.EPM.L01._01.F001_DanhSachSVHT`
+- `L51` Tổ chức thi/ Quản lý hoãn thi/ Sinh viên đăng ký hoãn thi → `Edusoft.EPM.L01._01.F001_DanhSachSVHT` – màn hình: VIEWRESULTIMPORT
 - `L2` Tổ chức thi/ Quản lý nhóm thi
 - `L22.04` Tổ chức thi/ Quản lý nhóm thi/ In danh sách thi theo nhóm thi → `Edusoft.EPM.L31._03.F004_InDanhSachThiTheoNhomThi`
 - `L22.03` Tổ chức thi/ Quản lý nhóm thi/ In thống kê sinh viên theo nhóm thi → `Edusoft.EPM.L31._03.F003_InThongKeSoLSVTheoNhomThi`
 - `L21` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi
-- `L21.02` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin nhóm thi → `Edusoft.EPM.L31._01.F002_CapNhatThongTinNhomThi`
-- `L21.06` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin trạm thi → `Edusoft.EPM.L31._01.F006_CapNhatThongTinTramThi`
-- `L21.01` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi → `Edusoft.EPM.L31._01.F001_GopCacNhomThiChungDanhSach`
-- `L21.10` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Hiệu chỉnh SV trong nhóm thi → `Edusoft.EPM.L31._01.F010_HieuChinhSVNhomThi`
+- `L21.02` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin nhóm thi → `Edusoft.EPM.L31._01.F002_CapNhatThongTinNhomThi` – màn hình (đoán theo tên): LNHOMTHI
+- `L21.06` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin trạm thi → `Edusoft.EPM.L31._01.F006_CapNhatThongTinTramThi` – màn hình (đoán theo tên): VL_LTramNhomThi
+- `L21.01` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi → `Edusoft.EPM.L31._01.F001_GopCacNhomThiChungDanhSach` – màn hình (đoán theo tên): VIEWDSCHONNHOMTHI, VIEWDSNHOMTHI, WEB_DSNHOMTHI, View_ImpTGNhapDiem, ViewDSNhomThiKT
+- `L21.10` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Hiệu chỉnh SV trong nhóm thi → `Edusoft.EPM.L31._01.F010_HieuChinhSVNhomThi` – màn hình: VIEWMONHOC
 - `L21.07A` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Khóa thông tin tin nhóm thi → `Edusoft.EPM.L41._01.F007_KhoaNhomThi`
 - `L21.05` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Nhóm môn học không tổ chức thi → `Edusoft.RMS.M03._02.F003_CamDKMHTheoNhomMH` (Param1=isConfigKgThi)
 - `L21.03` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Tách nhóm thi theo lớp sinh viên → `Edusoft.EPM.L31._01.F003_TachNhomThiTheoLop`
 - `L21.04` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Xem KHGD môn học trong học kỳ → `Edusoft.SCH.Report.X2200` (Param1=-9022261640588698060)
 - `L21.11` Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Xem/sửa nhóm thi không in bảng ghi điểm → `Edusoft.EPM.L31._01.F011_NhomThiKhgInBangGhiDiem`
-- `L22.07` Tổ chức thi/ Quản lý nhóm thi/ Xem danh sách theo nhóm thi → `Edusoft.EPM.L31._03.F006_XemDanhSachTheoNhomThi`
+- `L22.07` Tổ chức thi/ Quản lý nhóm thi/ Xem danh sách theo nhóm thi → `Edusoft.EPM.L31._03.F006_XemDanhSachTheoNhomThi` – màn hình (đoán theo tên): XemDanhSachTheoNhomThi
 - `L22.01` Tổ chức thi/ Quản lý nhóm thi/ Đồng bộ sĩ số dự thi → `Edusoft.EPM.L31._02.F001_TaoDongBoDanhSachThi`
 - `L55` Tổ chức thi/ Quản lý nộp điểm
 - `L55.02` Tổ chức thi/ Quản lý nộp điểm/ In tổng hợp nộp điểm theo khoa → `Edusoft.EPM.L55._01.F002_InTongHopNopDiemTheoKhoa`
-- `L55.01` Tổ chức thi/ Quản lý nộp điểm/ Nhập thời gian nộp điểm → `Edusoft.EPM.L55._01.F001_NhapThoiGianNopDiem`
+- `L55.01` Tổ chức thi/ Quản lý nộp điểm/ Nhập thời gian nộp điểm → `Edusoft.EPM.L55._01.F001_NhapThoiGianNopDiem` – màn hình (đoán theo tên): LCAPNHATPHONGCopy
 - `L6` Tổ chức thi/ Quản lý thi cải thiện
-- `L62` Tổ chức thi/ Quản lý thi cải thiện/ Ghép sinh viên cải thiện vào kỳ thi → `Edusoft.EPM.L11._02.F001_GhepCTvaoDS`
+- `L62` Tổ chức thi/ Quản lý thi cải thiện/ Ghép sinh viên cải thiện vào kỳ thi → `Edusoft.EPM.L11._02.F001_GhepCTvaoDS` – màn hình: VIEWHUYGHEPCAITHIEN, VIEWGHEPCAITHIEN
 - `L64` Tổ chức thi/ Quản lý thi cải thiện/ In danh sách thi cải thiện → `Edusoft.EPM.L11._04.UCT_DanhSachSinhVienCaiThien`
 - `L63` Tổ chức thi/ Quản lý thi cải thiện/ In thống kê thi cải thiện → `Edusoft.EPM.L11._03.UCT_ThongKeSinhVienCaiThien`
-- `L61` Tổ chức thi/ Quản lý thi cải thiện/ Sinh viên đăng ký thi cải thiện → `Edusoft.EPM.L11._03.F001_DSDangKyThiCaiThien`
+- `L61` Tổ chức thi/ Quản lý thi cải thiện/ Sinh viên đăng ký thi cải thiện → `Edusoft.EPM.L11._03.F001_DSDangKyThiCaiThien` – màn hình: VIEWDANGKYTHICAITHIEN, VIEWMONHOCDKCAITHIEN
 - `L3` Tổ chức thi/ Quản lý tổ thi
 - `L35` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi
-- `L35.02` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Ghép tổ thi thủ công → `Edusoft.EPM.L41._05.F002_GhepPhongThiThuCong`
+- `L35.02` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Ghép tổ thi thủ công → `Edusoft.EPM.L41._05.F002_GhepPhongThiThuCong` – màn hình (đoán theo tên): LGHEPTOTHITHUCONG
 - `L35.01` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Ghép tổ thi tự động → `Edusoft.EPM.L41._05.F001_GhepPhongThiTuDong`
-- `L35.03` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Tách tổ thi thủ công → `Edusoft.EPM.L41._05.F003_TachPhongThiThuCong`
+- `L35.03` Tổ chức thi/ Quản lý tổ thi/ Ghép tách tổ thi/ Tách tổ thi thủ công → `Edusoft.EPM.L41._05.F003_TachPhongThiThuCong` – màn hình (đoán theo tên): LTACHTOTHITHUCONG
 - `L36` Tổ chức thi/ Quản lý tổ thi/ In thống kê cung cầu phòng thi → `Edusoft.EPM.L41._06.F001_ThongKeCungCauPhongThi`
 - `L33` Tổ chức thi/ Quản lý tổ thi/ Qui hoạch phòng thi
 - `L34` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi
-- `L34.05` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Danh sách tổ thi đã tạo → `Edusoft.EPM.L41._04.F004_DanhSachToThi`
+- `L34.05` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Danh sách tổ thi đã tạo → `Edusoft.EPM.L41._04.F004_DanhSachToThi` – màn hình: DANHSACHTOTHI
 - `L34.04` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ In danh sách thi theo tổ thi → `Edusoft.EPM.L41._04.F003_InDanhSachThiTheoToThi1`
 - `L34.03` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ In thống kê sinh viên theo tổ thi → `Edusoft.EPM.L41._04.F002_ThongKeSoLuongTheoSVToThi`
-- `L21.07` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Nhập cán bộ trạm thi → `Edusoft.EPM.L31._01.F007_NhapCanBoTramThi`
+- `L21.07` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Nhập cán bộ trạm thi → `Edusoft.EPM.L31._01.F007_NhapCanBoTramThi` – màn hình (đoán theo tên): LCBTramThi
 - `L34.08` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân công chấm thi → `Edusoft.EPM.L41._04.F005_PhanCongChamThi`
-- `L34.09` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi theo file → `Edusoft.EPM.L41._04.F006_CapNhatToThiTheoFile`
+- `L34.09` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi theo file → `Edusoft.EPM.L41._04.F006_CapNhatToThiTheoFile` – màn hình (đoán theo tên): Imp_PhanToThi
 - `L34.01` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi tự động → `Edusoft.EPM.L41._04.F001_PhanToThi`
-- `L34.10` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Xem/Sửa tổ thi không in bảng ghi điểm → `Edusoft.EPM.L41._04.F007_ToThiKhongInBangGhiDiem`
+- `L34.10` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Xem/Sửa tổ thi không in bảng ghi điểm → `Edusoft.EPM.L41._04.F007_ToThiKhongInBangGhiDiem` – màn hình (đoán theo tên): VW_TOTHI_KHGIN_BGD
 - `LQT` Tổ chức thi/ Quản trị phân hệ
-- `LBS` Tổ chức thi/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `LQT3` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI)
-- `LQT2` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI)
+- `LBS` Tổ chức thi/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `LQT3` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `LQT2` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `LQT1` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi
 - `LQY2` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền phân công coi thi
 - `LQY1` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền quản lý kỳ thi
-- `LQY3` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền xếp  theo nhóm thi → `AQViewers.Settings.UC_SettingsTool1`
+- `LQY3` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền xếp  theo nhóm thi → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `LQT0` Tổ chức thi/ Quản trị phân hệ/ Quản lý danh mục
 - `LQT01` Tổ chức thi/ Quản trị phân hệ/ Quản lý danh mục/ Định nghĩa trạm cho môn thi → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7672439207751004728)
 - `L8` Tổ chức thi/ Tài nguyên và ràng buộc
@@ -155,7 +155,7 @@
 - `L38` Tổ chức thi/ Tài nguyên và ràng buộc/ Tài nguyên xếp lịch thi/ Ngày & tiết bắt đầu thi ưu tiên → `Edusoft.EPM.L41._08.F001_GanNgayThi_TietThiUuTien`
 - `L313` Tổ chức thi/ Tài nguyên và ràng buộc/ Tài nguyên xếp lịch thi/ Phòng thi ưu tiên → `Edusoft.EPM.L41._08.F002_GanPhongThiUuTienChoToThi`
 - `L56` Tổ chức thi/ Vi phạm Qui chế thi
-- `L56.04` Tổ chức thi/ Vi phạm Qui chế thi/ Chuyển điểm trừ vào phân hệ điểm → `Edusoft.EPM.L56._01.F04_ChuyenDiemTruVaoDiemThi`
+- `L56.04` Tổ chức thi/ Vi phạm Qui chế thi/ Chuyển điểm trừ vào phân hệ điểm → `Edusoft.EPM.L56._01.F04_ChuyenDiemTruVaoDiemThi` – màn hình (đoán theo tên): VIEW_CHUYEN_DIEM_TRU
 - `L56.00` Tổ chức thi/ Vi phạm Qui chế thi/ Danh mục vi phạm quy chế thi
 - `L56.03` Tổ chức thi/ Vi phạm Qui chế thi/ DSSV vi phạm Quy chế thi → `Edusoft.EPM.L56._01.F01_DSSVViPham`
 - `L56.05` Tổ chức thi/ Vi phạm Qui chế thi/ In DSSV vi phạm quy chế thi → `Edusoft.EPM.L56._01.F05_InDSSVViPham`
@@ -176,11 +176,11 @@
 - `DTL01.01` Tổ chức thi/ Đăng ký thi lại & cải thiện/ Đăng ký thi lại & cải thiện → `Edusoft.SRM.DTL._01.F01_DKThiLai`
 - `L7` Tổ chức thi/ Định nghĩa đợt thi
 - `L31.04` Tổ chức thi/ Định nghĩa đợt thi/ Ghép nhóm thi tự động → `Edusoft.EPM.L41._01.F004_GhepNhomThiSauKhiGanDot`
-- `L31.02` Tổ chức thi/ Định nghĩa đợt thi/ Gán đối tượng thi → `Edusoft.EPM.L41._01.F002_NhapDotThiTheoCayPhanCap`
+- `L31.02` Tổ chức thi/ Định nghĩa đợt thi/ Gán đối tượng thi → `Edusoft.EPM.L41._01.F002_NhapDotThiTheoCayPhanCap` – màn hình: VIEWCAYPHANCAPDOTTHI
 - `L31.03` Tổ chức thi/ Định nghĩa đợt thi/ Gán đợt thi cho nhóm thi → `Edusoft.EPM.L41._01.F003_NhapDotThiTheoNhomThi`
-- `L33.01` Tổ chức thi/ Định nghĩa đợt thi/ Nhập phòng sử dụng trong đợt → `Edusoft.EPM.L41._03.F001_NhapPhongThiSuDungChoDotThi`
-- `L32.01` Tổ chức thi/ Định nghĩa đợt thi/ Nhập thời gian không thi → `Edusoft.EPM.L41._02.F001_NhapThoiGianChoDotThi`
-- `L31.01` Tổ chức thi/ Định nghĩa đợt thi/ Định nghĩa đợt thi & gán nhóm thi → `Edusoft.EPM.L41._01.F001_CapNhatDotThi`
+- `L33.01` Tổ chức thi/ Định nghĩa đợt thi/ Nhập phòng sử dụng trong đợt → `Edusoft.EPM.L41._03.F001_NhapPhongThiSuDungChoDotThi` – màn hình: VIEWPHONGDOTTHI, VIEWNHAPPTDOTTHI
+- `L32.01` Tổ chức thi/ Định nghĩa đợt thi/ Nhập thời gian không thi → `Edusoft.EPM.L41._02.F001_NhapThoiGianChoDotThi` – màn hình: VIEWTIETTHI
+- `L31.01` Tổ chức thi/ Định nghĩa đợt thi/ Định nghĩa đợt thi & gán nhóm thi → `Edusoft.EPM.L41._01.F001_CapNhatDotThi` – màn hình: VIEWTGKTCT, VIEWCAPNHATDOTTHI, VIEWDSNHOMTHI
 
 ## Màn hình (view) và lưới
 

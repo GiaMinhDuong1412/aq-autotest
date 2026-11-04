@@ -427,6 +427,12 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   aqdata\aq.data046-AQDMView1.csv` (lớp màn hình → MaView1).
   Tiêu đề lưới / nhãn cột: `AQValSetV`+`AQValSetV1` – (1,14) = tiêu đề lưới (chữ sau `@`), (2,14) = nhãn cột đã đổi, (2,16) = độ
   rộng. Phần trường tự chỉnh (bảng `H…`: HMenuCustom, HValSetV/1, HFieldView2, HFieldEdit…): `tools/xuat_tuy_chinh_truong.sql` (sqlcmd, chỉ đọc).
+  Nối menu → lưới: `AQViewAddCtrl.Method` / `AQViewMethod.TenMethod` dạng "Assembly,Lớp,Hàm" chứa đúng lớp màn hình của lưới
+  (vd btnSave "Lưu quyết định" của S-DS-QUYETDINH gọi `Edusoft.SMS.S02.UCQDSV`), cộng `trich-ma-view.txt` từ source; còn lại
+  ghi "đoán theo tên" (TenView1 = tên menu) – phải kiểm lại bằng `ui-*.txt`.
+  **HVNG tự chỉnh rất ít** (CSDL backup 11/2026): HMenuCustom 117 dòng chỉ cho menu Edusoft web (ẩn/hiện, đổi tên trên web);
+  HValSetV ~1 070 dòng gần hết là độ rộng cột (2,16), chỉ 1 nhãn cột đổi (NhomTo → "Lớp tín chỉ"); HFieldView2/HOrderView = thứ
+  tự/khóa cột theo cấp người dùng (UserLevel 512/1024/2048/65536). → Danh mục gốc AQ dùng được cho HVNG bản desktop.
   Xem một đoạn source: `trich_source.py … --dong "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").

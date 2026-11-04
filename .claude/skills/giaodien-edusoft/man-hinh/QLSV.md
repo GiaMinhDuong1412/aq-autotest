@@ -31,12 +31,12 @@
 - `S.15.02` Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ In DSSV theo cố vấn học tập → `Edusoft.SMS.S37.UC_PrintDanhSachCVHT`
 - `S.15.07` Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ In thống kê theo cố vấn học tập mẫu 1 → `Edusoft.SMS.UC_Print` (Param1=-5493511650693210724)
 - `S.15.08` Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ In thống kê theo cố vấn học tập mẫu 2 → `Edusoft.SMS.UC_Print` (Param1=-6776732447497236341)
-- `S.15.01` Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Thông tin cố vấn học tập → `Edusoft.SMS.UC_CVHT`
+- `S.15.01` Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Thông tin cố vấn học tập → `Edusoft.SMS.UC_CVHT` – màn hình: S-DSSV-CV, S-COVANHT
 - `S.32` Sinh viên/ Hoạt động đoàn thể
 - `S.13` Sinh viên/ Hoạt động đoàn thể/ Ban cán sự lớp
 - `DM_SDMCVBCS` Sinh viên/ Hoạt động đoàn thể/ Ban cán sự lớp/ Danh mục chức vụ cán sự lớp
 - `S13.02` Sinh viên/ Hoạt động đoàn thể/ Ban cán sự lớp/ In danh sách cán sự lớp → `Edusoft.SMS.UCT.UC_ChonLopDS_Print`
-- `S13.01` Sinh viên/ Hoạt động đoàn thể/ Ban cán sự lớp/ Thông tin ban cán sự lớp → `Edusoft.SMS.S13.UC_BanCanSu`
+- `S13.01` Sinh viên/ Hoạt động đoàn thể/ Ban cán sự lớp/ Thông tin ban cán sự lớp → `Edusoft.SMS.S13.UC_BanCanSu` – màn hình: S-DS-CBS-LOP
 - `S.53` Sinh viên/ Hoạt động đoàn thể/ Câu lạc bộ sinh viên
 - `S53.01` Sinh viên/ Hoạt động đoàn thể/ Câu lạc bộ sinh viên/ Danh mục câu lạc bộ sinh viên
 - `S53.02` Sinh viên/ Hoạt động đoàn thể/ Câu lạc bộ sinh viên/ Danh sách đăng ký câu lạc bộ SV → `Edusoft.SMS.S52.F002_DangKyCauLacBoSV`
@@ -50,14 +50,14 @@
 - `S54.03` Sinh viên/ Hoạt động đoàn thể/ Hoạt động xã hội/ Xem hoạt động xã hội sinh viên → `Edusoft.SMS.S52.F004_InDSHoatDongXaHoi`
 - `S55` Sinh viên/ Hoạt động đoàn thể/ Nhập Sinh viên đạt giải thưởng → `Edusoft.SMS.S52.F005_SVDatGiaiThuong`
 - `S56` Sinh viên/ Hoạt động đoàn thể/ Nhập điểm hoạt động ngoại khóa SV → `Edusoft.SMS.S52.F006_NhapDiemHDNgKhoa`
-- `S.52` Sinh viên/ Hoạt động đoàn thể/ Sinh hoạt công dân → `Edusoft.SMS.S52.F001_SinhHoatCongDan`
+- `S.52` Sinh viên/ Hoạt động đoàn thể/ Sinh hoạt công dân → `Edusoft.SMS.S52.F001_SinhHoatCongDan` – màn hình (đoán theo tên): S52.SHCD
 - `S.11` Sinh viên/ Hoạt động đoàn thể/ Đoàn thể sinh viên
 - `S11.02` Sinh viên/ Hoạt động đoàn thể/ Đoàn thể sinh viên/ In DSSV theo đoàn thể → `Edusoft.SMS.UC_InDSSV_DT`
 - `S11.03` Sinh viên/ Hoạt động đoàn thể/ Đoàn thể sinh viên/ Thêm thông tin đoàn thể bằng file → `Edusoft.SMS.S32.UCT_ImportDoanThe`
-- `S11.01` Sinh viên/ Hoạt động đoàn thể/ Đoàn thể sinh viên/ Thông tin đoàn thể → `Edusoft.SMS.S32.UC_DoanTheSV`
+- `S11.01` Sinh viên/ Hoạt động đoàn thể/ Đoàn thể sinh viên/ Thông tin đoàn thể → `Edusoft.SMS.S32.UC_DoanTheSV` – màn hình: S-DSDOANTHESV
 - `S.34` Sinh viên/ Hồ sơ và Văn bằng
 - `S3` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên
-- `S32` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên → `Edusoft.SMS.S30.UC_HoSoSV`
+- `S32` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên → `Edusoft.SMS.S30.UC_HoSoSV` – màn hình: S-DS-HSSV
 - `S32A` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ SV từ file → `Edusoft.SMS.S30.UC_ImportHSSV`
 - `S32C` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật trả hồ sơ sinh viên → `Edusoft.SMS.S30.UC_TraHoSoSV`
 - `S31` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Danh mục hồ sơ
@@ -68,7 +68,7 @@
 - `S33` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ In thống kê theo tình trạng hồ sơ → `Edusoft.SMS.UC_Print`
 - `S31A` Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Định nghĩa hồ sơ cho bậc hệ → `Edusoft.SMS.S30.UCT_PhanLoaiHS_BH`
 - `S4` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên
-- `S41` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Cập nhật văn bằng sinh viên → `Edusoft.SMS.S30.UC_VanBangSV`
+- `S41` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Cập nhật văn bằng sinh viên → `Edusoft.SMS.S30.UC_VanBangSV` – màn hình: S-DS-VBSV
 - `S401` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Cập nhật văn bằng từ file → `Edusoft.SMS.S30.UCT_ImportVBSV` (Param1=Update)
 - `S42` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ In thông tin văn bằng SV theo lớp → `Edusoft.SMS.S30.UCT_PrintVanBangSV_TheoLop`
 - `S400` Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Thêm văn bằng SV từ file → `Edusoft.SMS.S30.UCT_ImportVBSV`
@@ -79,12 +79,12 @@
 - `S65` Sinh viên/ Khen thưởng và Kỷ luật/ In DSSV khen thưởng → `Edusoft.SMS.S50.F004_InDSKK_PhanLoai` (Param1=1)
 - `S67` Sinh viên/ Khen thưởng và Kỷ luật/ In DSSV khen thưởng/kỷ luật theo file → `Edusoft.SMS.S50.F005_InDanhSachKKTheoFile`
 - `S66` Sinh viên/ Khen thưởng và Kỷ luật/ In DSSV kỷ luật → `Edusoft.SMS.S50.F004_InDSKK_PhanLoai` (Param1=0)
-- `S63_01` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định cảnh báo học vụ → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=3)
-- `S64` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định khen thưởng → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=0)
-- `S63` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định kỷ luật → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=1)
+- `S63_01` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định cảnh báo học vụ → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=3) – màn hình: S-DSSV-KTKL, VIEWRESULTIMPORT
+- `S64` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định khen thưởng → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=0) – màn hình: S-DSSV-KTKL, VIEWRESULTIMPORT
+- `S63` Sinh viên/ Khen thưởng và Kỷ luật/ Quyết định kỷ luật → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=1) – màn hình: S-DSSV-KTKL, VIEWRESULTIMPORT
 - `S69` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên
 - `S69.5` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ In danh sách dự kiến khen thưởng → `Edusoft.SMS.S50.F002_InDSKhenThuong` (Param1=1)
-- `S69.6` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Nhập quyết định khen thưởng lớp được xét → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=2)
+- `S69.6` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Nhập quyết định khen thưởng lớp được xét → `Edusoft.SMS.S05.UC_QDKT_KL` (Param1=2) – màn hình: S-DSSV-KTKL, VIEWRESULTIMPORT
 - `S69.4` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Xem danh sách lớp đạt tiêu chuẩn → `Edusoft.SMS.S50.F003_XemDSKhenThuong` (Param1=1)
 - `S69.2` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Xét khen thưởng lớp theo tiêu chuẩn → `Edusoft.SMS.S50.F001_XetKhenThuong` (Param1=1)
 - `S69.1` Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Định nghĩa tiêu chuẩn xét → `Edusoft.SRM.S01.S0101.S0101_DNTCHUANKHENTHUONG` (Param1=1)
@@ -122,12 +122,12 @@
 - `S.36.19.04` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng tài trợ/ Xét học bổng → `Edusoft.SMS.S14.F006_XetHocBong` (Param1=SQLHBTAITRO)
 - `S183A2` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Chỉnh định số tháng hưởng học bổng → `Edusoft.SMS.S14.UCT_ImportSetting_HB`
 - `S183A` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Chỉnh định số tín chỉ tối thiểu để xét HB → `Edusoft.SMS.S14.UCT_ImportSetting_HB`
-- `S183` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách không xét học bổng → `Edusoft.SMS.S14.F003_DinhNghiaDSKgXetHB`
-- `S181` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK`
-- `S.36.19.02` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK`
-- `S.18B1` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK`
-- `S180` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách nhóm khối HBHK → `Edusoft.SMS.S14.F000_DSNhomHB`
-- `S.16.21.01` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách nhóm khối HBHK → `Edusoft.SMS.S14.F000_DSNhomHB`
+- `S183` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách không xét học bổng → `Edusoft.SMS.S14.F003_DinhNghiaDSKgXetHB` – màn hình (đoán theo tên): SDSKGHB
+- `S181` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK` – màn hình: SKHHBHKCT
+- `S.36.19.02` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK` – màn hình: SKHHBHKCT
+- `S.18B1` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ → `Edusoft.SMS.S14.F001_DMKhoiHBHK` – màn hình: SKHHBHKCT
+- `S180` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách nhóm khối HBHK → `Edusoft.SMS.S14.F000_DSNhomHB` – màn hình (đoán theo tên): SNhomKhHB
+- `S.16.21.01` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách nhóm khối HBHK → `Edusoft.SMS.S14.F000_DSNhomHB` – màn hình (đoán theo tên): SNhomKhHB
 - `S.16.21.04` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách sinh viên xét HB → `Edusoft.SMS.S14.F002_DinhNghiaDSSVXetHB`
 - `S812A` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách SV xét học bổng → `Edusoft.SMS.S14.F002_DinhNghiaDSSVXetHB`
 - `S188` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ In bảng tổng hợp xét học bổng → `Edusoft.SMS.SBB.F015_InBangTongHopHB`
@@ -156,36 +156,36 @@
 - `S.16.21.05` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xét học bổng → `Edusoft.SMS.S14.F006_XetHocBong`
 - `S185` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xét học bổng → `Edusoft.SMS.S14.F006_XetHocBong`
 - `S.18B0` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xét đạt môn anh văn tiên quyết HK → `Edusoft.SMS.HOCBONG.DHQT_XetDatAVTQuyet`
-- `S.18B2` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.UCT_DinhKhoiHKHBHK_DHQT`
-- `S.36.19.03` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.F002_DinhNghiaKhoiHBHK`
-- `S182` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.F002_DinhNghiaKhoiHBHK`
+- `S.18B2` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.UCT_DinhKhoiHKHBHK_DHQT` – màn hình (đoán theo tên): SDNKHHB
+- `S.36.19.03` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.F002_DinhNghiaKhoiHBHK` – màn hình (đoán theo tên): SDNKHHB
+- `S182` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ → `Edusoft.SMS.S14.F002_DinhNghiaKhoiHBHK` – màn hình (đoán theo tên): SDNKHHB
 - `S180A` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa tiêu chuẩn xét học bổng → `Edusoft.SMS.S14.UCT_ViewDinhNghiaTieuChuan`
 - `S.16` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách
 - `DM_SDMDCS1` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Danh mục diện chính sách
-- `S162` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên chung → `Edusoft.SMS.UC_DienChinhSachC`
+- `S162` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên chung → `Edusoft.SMS.UC_DienChinhSachC` – màn hình: N12.30.10, S-DIENCSC
 - `S163` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên học kỳ → `Edusoft.SMS.UC_DienChinhSachHK`
 - `S164` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ In DSSV miễm giảm → `Edusoft.SMS.S14.UCT_PrinhDanhSachDienChinhSach`
 - `S165` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ In thống kê miễm giảm DCS → `Edusoft.SMS.S14.F017_InThongKeHocBongDCSSinhVien`
-- `S161` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Nhập phần trăm miễn giảm DCS → `Edusoft.RMS.M21._03.F003_MienGiamDienCS`
+- `S161` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Nhập phần trăm miễn giảm DCS → `Edusoft.RMS.M21._03.F003_MienGiamDienCS` – màn hình: VIEWMIENGIAMDIENCHINHSACH, VIEWRESULTIMPORT
 - `S.150` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp
 - `S.151` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Danh mục trợ cấp
 - `S.155` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ In DSSV hưởng trợ cấp → `Edusoft.SMS.S14.F012_InTroCapXHSinhVien`
 - `S156` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ In thống kê theo trợ cấp → `Edusoft.SMS.S14.F012_InThongKeTroCapXHSinhVien`
 - `S.152` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Nhập tiền trợ cấp → `Edusoft.SMS.S14.F009_NhapTienTroCapXaHoi`
-- `S.153` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên chung → `Edusoft.SMS.F010_NhapTroCapXHChung`
-- `S.154` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên học kỳ → `Edusoft.SMS.F011_NhapTroCapXHHK`
+- `S.153` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên chung → `Edusoft.SMS.F010_NhapTroCapXHChung` – màn hình: N12.30.10
+- `S.154` Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên trợ cấp/ Trợ cấp sinh viên học kỳ → `Edusoft.SMS.F011_NhapTroCapXHHK` – màn hình (đoán theo tên): STROCAPXH_HK
 - `S40` Sinh viên/ Quản lý bảo hiểm
 - `S40.05` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn
 - `S05.53` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách SV đóng BHTN (theo đợt) → `Edusoft.SMS.S40.F002_DSSVDongBH` (Param1=2)
-- `S05.54` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách yêu cầu bảo hiểm → `Edusoft.SMS.S40.F005_DSYeuCauBaoHiem` (Param1=2)
-- `S40.51` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách đợt bảo hiểm tai nạn → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=2)
+- `S05.54` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách yêu cầu bảo hiểm → `Edusoft.SMS.S40.F005_DSYeuCauBaoHiem` (Param1=2) – màn hình (đoán theo tên): SYCBH
+- `S40.51` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Danh sách đợt bảo hiểm tai nạn → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=2) – màn hình: S_DOTBHSV
 - `S05.57` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ In danh sách SV yêu cầu BH → `Edusoft.SMS.S40.F003_InDSSVBoiThuongTaiNan` (Param1=2)
 - `S05.55` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ In danh sách SV đóng bảo BHTN (theo đợt) → `Edusoft.SMS.S40.F003_InDSSVDongBH` (Param1=2)
 - `S05.56` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ In tổng hợp danh sách SV BHTN theo lớp → `Edusoft.SMS.S40.F003_A_InTongHopDSSVDongBH` (Param1=2)
 - `S40.52` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm tai nạn/ Định nghĩa mức bảo hiểm tai nạn → `Edusoft.SMS.S40.F004_DinhNghiaMucBH` (Param1=BHTN)
 - `S40.04` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể
 - `S40.42` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ Danh sách SV đóng bảo hiểm TT → `Edusoft.SMS.S40.F002_DSSVDongBH` (Param1=1)
-- `S40.41` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ Danh sách đợt bảo hiểm thân thể → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=1)
+- `S40.41` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ Danh sách đợt bảo hiểm thân thể → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=1) – màn hình: S_DOTBHSV
 - `S40.43` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ In danh sách SV đóng BHTT (theo đợt) → `Edusoft.SMS.S40.F003_InDSSVDongBH` (Param1=1)
 - `S40.45` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ In tổng hợp danh sách SV BHTT theo lớp → `Edusoft.SMS.S40.F003_A_InTongHopDSSVDongBH` (Param1=1)
 - `S40.44` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm thân thể/ Định nghĩa mức bảo hiểm thân thể → `Edusoft.SMS.S40.F004_DinhNghiaMucBH` (Param1=BHTT)
@@ -194,7 +194,7 @@
 - `S40.01` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh mục công ty bảo hiểm
 - `S40.02.B` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh sách bệnh viện khám chữa bệnh → `Edusoft.SMS.S40.UCT_DanhSachBenhVienHK`
 - `S40.32` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh sách SV đóng bảo hiểm YT → `Edusoft.SMS.S40.F002_DSSVDongBH` (Param1=0)
-- `S40.31` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh sách đợt bảo hiểm y tế → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=0)
+- `S40.31` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Danh sách đợt bảo hiểm y tế → `Edusoft.SMS.S40.F001_DSDotDongBH` (Param1=0) – màn hình: S_DOTBHSV
 - `S40.33` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ In danh sách SV đóng BHYT (theo đợt) → `Edusoft.SMS.S40.F003_InDSSVDongBH` (Param1=0)
 - `S40.35` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ In tổng hợp danh sách SV BHYT theo lớp → `Edusoft.SMS.S40.F003_A_InTongHopDSSVDongBH` (Param1=0)
 - `S40.36` Sinh viên/ Quản lý bảo hiểm/ Bảo hiểm y tế/ Thông tin BHYT SV nhập online → `Edusoft.SMS.S40.UCT_NhapThongTinBHYTOnLine`
@@ -204,7 +204,7 @@
 - `S.19.02` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Chính sách cấp giấy chứng nhận
 - `S.19.03` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cấp và in giấy chứng nhận → `Edusoft.SMS.UC_CapGCN`
 - `S.19.03A` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cập nhật giấy chứng nhận online → `Edusoft.SMS.S19.UCT_CapNhatGCN_Online` (Param1=0)
-- `DM_SDMGCN` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh mục giấy chứng nhận → `Edusoft.SMS.S19.UCT_DanhMucGCN`
+- `DM_SDMGCN` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh mục giấy chứng nhận → `Edusoft.SMS.S19.UCT_DanhMucGCN` – màn hình (đoán theo tên): AQDMGCNSV, SDMGCN
 - `S.19.01` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh sách mẫu giấy chứng nhận → `Edusoft.SMS.S19.UC_DSMauGCN` (Param1=-6612544473154952206)
 - `S19.01B` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Gán số bộ đếm GCN → `Edusoft.SMS.S19.UCT_GanBoDemGCN`
 - `S.19.06.A` Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ In giấy chứng nhận sinh viên theo ngày → `Edusoft.SMS.S19.UC_PrintGCN_Theo_Ngay`
@@ -233,17 +233,17 @@
 - `S.55.3` Sinh viên/ Quản lý sinh hoạt/ In hoạt động sinh viên → `Edusoft.SMS.S53.F002_InDSSinhHoatSV`
 - `S.55.2` Sinh viên/ Quản lý sinh hoạt/ Xem sinh hoạt theo sinh viên → `Edusoft.SMS.S53.F001_DanhSachSinhHoatSV`
 - `SQT` Sinh viên/ Quản trị phân hệ
-- `SBS` Sinh viên/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `SQT3` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV)
-- `SQT2` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV)
+- `SBS` Sinh viên/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `SQT3` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `SQT2` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `SQT1` Sinh viên/ Quản trị phân hệ/ Phân quyền phân hệ
 - `SQT0` Sinh viên/ Quản trị phân hệ/ Quản lý danh mục
 - `S1` Sinh viên/ Sinh viên học kỳ
 - `S20` Sinh viên/ Sinh viên học kỳ/ Danh mục chương trình học
-- `S13` Sinh viên/ Sinh viên học kỳ/ Danh mục lớp → `Edusoft.Base.UCT.UCT_DanhMucLop`
-- `S11` Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên → `Edusoft.SMS.S20.F000_DanhMucSinhVien`
+- `S13` Sinh viên/ Sinh viên học kỳ/ Danh mục lớp → `Edusoft.Base.UCT.UCT_DanhMucLop` – màn hình (đoán theo tên): SDMLOP
+- `S11` Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên → `Edusoft.SMS.S20.F000_DanhMucSinhVien` – màn hình (đoán theo tên): SDMSV_, N12.10.14, View_DMSV, SDMSVDuThinh
 - `S11.1` Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên dự thính → `Edusoft.SMS.S20.F000_DanhMucSinhVien` (Param1=IsDuThinh = 1)
-- `S12` Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ → `Edusoft.SMS.S01.UCSSVHK`
+- `S12` Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ → `Edusoft.SMS.S01.UCSSVHK` – màn hình: SDMSV1, VIEWRESULTIMPORT
 - `S16` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên
 - `S16.05` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ NVQS theo hộ khẩu → `Edusoft.SMS.SBB.F021_DSSVNVQSTheoHoKhau`
 - `S16.03` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Quản lý đầu ra → `Edusoft.SMS.SBB.F018_InDSQLDauRaSV`
@@ -264,8 +264,8 @@
 - `S19` Sinh viên/ Sinh viên học kỳ/ Kiểm tra cập nhật hiện diện sinh viên → `Edusoft.SMS.UCT.UCT_ChonDSSV_File_Print`
 - `S15` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên
 - `S21` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên dự thính
-- `S15.17` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên dự thính/ Quyết định trúng tuyển dự thính → `Edusoft.SMS.S02.UCQDSV` (Param1=DOI_LOP_DU_THINH)
-- `S15.16` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên dự thính/ Quyết định vào mới SV dự thính → `Edusoft.SMS.S02.UCQDSV` (Param1=VAO_MOI_DU_THINH)
+- `S15.17` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên dự thính/ Quyết định trúng tuyển dự thính → `Edusoft.SMS.S02.UCQDSV` (Param1=DOI_LOP_DU_THINH) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.16` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên dự thính/ Quyết định vào mới SV dự thính → `Edusoft.SMS.S02.UCQDSV` (Param1=VAO_MOI_DU_THINH) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
 - `S15.1` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên ngành 2
 - `S15.1.6` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên ngành 2/ In danh sách theo lý do quyết định N2 → `Edusoft.SMS.Report.UC_LDQD` (Param1=-8077729052936310733)
 - `S15.1.6.1` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên ngành 2/ In DSSV theo lớp N2 → `Edusoft.SMS.Report.UC_InDSSV_Nganh2`
@@ -279,24 +279,24 @@
 - `S15.1.7` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên ngành 2/ Thống kê theo lý do quyết định → `Edusoft.SMS.SBB.F013_ThongKeTheoLyDoQD` (Param1=-8937110885136920739)
 - `S15.09D` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Cập nhật số quyết định vào mới → `Edusoft.SMS.S02.UCT_CapNhatSoQDVaoMoi`
 - `S15.00.A` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định → `Edusoft.SMS.S02.UCT_DanhMucLyDoQD`
-- `S15_NhomChuKy` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_NhomChuKy`
+- `S15_NhomChuKy` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_NhomChuKy` – màn hình: HDMNHCHUKY
 - `S15.02` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục tên quyết định
 - `S15.03` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh sách người ký quyết định → `AQViewers.Controls.UCDanhMucChuKy` (Param1=QDSV)
 - `S15.12` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ In DSSV theo lý do quyết định → `Edusoft.SMS.Report.UC_LDQD` (Param1=-5620199429468994697)
 - `S15.14` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ In DSSV tạm dừng học → `Edusoft.SMS.SBB.F019_InDSSVHetHanTamDung`
 - `S15.09C` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Nhập QD tạm dừng ở HK sau (nhập tạm) → `Edusoft.SMS.S20.UCT_DanhSachQDChuyen`
 - `S15.09A` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Nhập QĐ tốt nghiệp từ file xét TN → `Edusoft.SMS.S02.UCT_QDTNTheoDot`
-- `S15.05` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định học lại → `Edusoft.SMS.S02.UCQDSV` (Param1=HOC_LAI)
-- `S15.07` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định nghỉ học → `Edusoft.SMS.S02.UCQDSV` (Param1=NGHI_HOC)
-- `S15.08` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tạm dừng → `Edusoft.SMS.S02.UCQDSV` (Param1=TAM_DUNG)
-- `S15.09` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tốt nghiệp → `Edusoft.SMS.S02.UCQDSV` (Param1=TOT_NGHIEP)
-- `S15.04` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới → `Edusoft.SMS.S02.UCQDSV` (Param1=VAO_MOI)
-- `S15.06` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định đổi lớp → `Edusoft.SMS.S02.UCQDSV` (Param1=DOI_LOP)
+- `S15.05` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định học lại → `Edusoft.SMS.S02.UCQDSV` (Param1=HOC_LAI) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.07` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định nghỉ học → `Edusoft.SMS.S02.UCQDSV` (Param1=NGHI_HOC) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.08` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tạm dừng → `Edusoft.SMS.S02.UCQDSV` (Param1=TAM_DUNG) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.09` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tốt nghiệp → `Edusoft.SMS.S02.UCQDSV` (Param1=TOT_NGHIEP) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.04` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới → `Edusoft.SMS.S02.UCQDSV` (Param1=VAO_MOI) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
+- `S15.06` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định đổi lớp → `Edusoft.SMS.S02.UCQDSV` (Param1=DOI_LOP) – màn hình: S-DSSV-QD, VIEWRESULTIMPORT, S-DS-QUYETDINH
 - `S15.13` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Thống kê theo lý do quyết định → `Edusoft.SMS.SBB.F013_ThongKeTheoLyDoQD` (Param1=-6237127969157370710)
 - `S15.23` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Xem DSSV vào mới có quyết định rỗng → `Edusoft.SMS.S20.UCT_ViewXemQDEmpty`
 - `S15.00.B` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Định nghĩa bộ đếm QĐ vào/ra → `Edusoft.HRM.YTe.N12._10.F20_BoDemYTe` (Param1=QDVAORASV)
 - `S15.00` Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Định nghĩa mẫu giấy quyết định → `Edusoft.SMS.S19.UC_DSMauGCN` (Param1=-4996164736723711616)
-- `S14` Sinh viên/ Sinh viên học kỳ/ Tìm kiếm sinh viên → `Edusoft.SMS.S00.F001_TimKiemSV`
+- `S14` Sinh viên/ Sinh viên học kỳ/ Tìm kiếm sinh viên → `Edusoft.SMS.S00.F001_TimKiemSV` – màn hình (đoán theo tên): S_TIMKIEMSV
 - `S2` Sinh viên/ Thông tin sinh viên
 - `S2.10` Sinh viên/ Thông tin sinh viên/ Chuyên ngành của sinh viên
 - `S210.3` Sinh viên/ Thông tin sinh viên/ Chuyên ngành của sinh viên/ In DSSV theo chuyên ngành → `Edusoft.SMS.S20.UC_InDSSVChuyenNganh`
@@ -307,9 +307,9 @@
 - `S2.18.01` Sinh viên/ Thông tin sinh viên/ Gia hạn đào tạo sinh viên/ Nhập thông tin gia hạn đào tạo → `Edusoft.SMS.S20.UCT_NhapGiaHanDaoTao`
 - `S0` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên
 - `S2.010` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Chỉnh định thông tin lý lịch SV trên Web → `Edusoft.SMS.S20.UC_ChinhDinhThongTinLyLichSV`
-- `S2.01` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên → `Edusoft.SMS.S20.UC_CapNhatLyLich`
+- `S2.01` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên → `Edusoft.SMS.S20.UC_CapNhatLyLich` – màn hình: S-LYLICH
 - `S2.04.A` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên theo lớp → `Edusoft.SMS.S20.UCT_CapNhatLyLichTheoLop`
-- `S2.04` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch SV từ file → `Edusoft.SMS.S20.F002_CapNhatLyLichTuFile`
+- `S2.04` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch SV từ file → `Edusoft.SMS.S20.F002_CapNhatLyLichTuFile` – màn hình: VIEWRESULTIMPORT
 - `S2.02` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Import ảnh sinh viên → `Edusoft.SMS.S20.UC_ImportAnhcs` (Param1=SDMSV)
 - `S2.08` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ In lý lịch sinh viên → `Edusoft.SMS.S20.UC_InLyLich`
 - `S2.05` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Quá trình sinh viên → `Edusoft.Base.B03.B03_01_QuaTrinh`
@@ -334,7 +334,7 @@
 - `S2.09B` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ In  DSSV chưa nhập ngoại trú Online → `Edusoft.SMS.SBB.UCT_InDSSVChuaNhapNgoaiTruOnlie`
 - `S2.09.A` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ In DSSV theo loại cư trú → `Edusoft.SMS.SBB.F022_InDSSVTheoNgoaiTru`
 - `S2.09` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ In thông tin ngoại trú sinh viên → `Edusoft.SMS.SBB.UC_LopSinhVienHK`
-- `S2.06` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ Nhật ký ngoại trú sinh viên → `Edusoft.SMS.S20.F003_NhatKyNgoaiTru`
+- `S2.06` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ Nhật ký ngoại trú sinh viên → `Edusoft.SMS.S20.F003_NhatKyNgoaiTru` – màn hình: S_NKNGOAITRU
 - `S2.07` Sinh viên/ Thông tin sinh viên/ Thông tin nội trú/ngoại trú/ Thời gian đăng ký ngoại trú trên Web → `Edusoft.RMS.M03._02.UCT_QuyDinhThoiGianNetWeb_TheoLop` (Param1=4)
 - `S2.09E` Sinh viên/ Thông tin sinh viên/ Xác nhận thông tin sinh viên tốt nghiệp → `Edusoft.SMS.S20.UC_NhapDoiTuongSV` (Param1=-5944588093473266183)
 - `S2.15` Sinh viên/ Thông tin sinh viên/ Đối tượng SV xét tốt nghiệp
@@ -381,17 +381,17 @@
 - `S902` Sinh viên/ Điểm danh và Điểm rèn luyện/ In phiếu điểm rèn luyện/ In phiếu điểm rèn luyện theo lớp → `Edusoft.SMS.UCT.UC_ChonLopDS_Print`
 - `S901` Sinh viên/ Điểm danh và Điểm rèn luyện/ In phiếu điểm rèn luyện/ In phiếu điểm rèn luyện từng sinh viên → `Edusoft.SMS.S8.UC_InKetQuanRenLuyen_New`
 - `S7` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh
-- `S70` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Import sinh viên vắng → `Edusoft.SMS.S7.F005_ImportDSSinhVienVang`
-- `S78` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In bảng ghi tóm tắt nội dung buổi dạy → `Edusoft.SMS.S7.F010_InTomTatNDBuoiDayGV`
+- `S70` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Import sinh viên vắng → `Edusoft.SMS.S7.F005_ImportDSSinhVienVang` – màn hình (đoán theo tên): View_ImpDSSVVang
+- `S78` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In bảng ghi tóm tắt nội dung buổi dạy → `Edusoft.SMS.S7.F010_InTomTatNDBuoiDayGV` – màn hình (đoán theo tên): ViewInTTNDBuoiDay
 - `S77` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In bảng theo dõi học tập sinh viên → `Edusoft.SMS.S7.F011_InNgayHocTapSV`
 - `S73` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In thống kê sinh viên vắng nhiều → `Edusoft.SMS.S7.F002_InSVVang`
 - `S74` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In thống kê vắng theo môn học → `Edusoft.SMS.S7.F003_ThongKeVangTheoMon`
 - `S76` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In thống kê vắng theo SV → `Edusoft.SMS.S7.F004_ThongKeVangTheoSV`
 - `S79` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập ghi chú vắng sinh viên → `Edusoft.SMS.S7.F006_DSSVCoVangHocKy`
-- `S75` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập ghi chú điểm danh môn học → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8867311345837840514)
+- `S75` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập ghi chú điểm danh môn học → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8867311345837840514) – màn hình (đoán theo tên): SNhapGhiChuNhomToDiemDanh
 - `S71` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập và tạo ngày điểm danh → `Edusoft.SMS.S7.F001_NhapDiemDanh`
 - `S72` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Xem chi tiết file điểm danh vắng → `Edusoft.SMS.S7.F007_XemChiTietFileDiemDanh`
-- `S7.08` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Xóa kết quả SV Đã Hủy DKMH → `Edusoft.SMS.S7.F008_DSSVDiemDanhDaHuyKQDK`
+- `S7.08` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Xóa kết quả SV Đã Hủy DKMH → `Edusoft.SMS.S7.F008_DSSVDiemDanhDaHuyKQDK` – màn hình (đoán theo tên): View_DSSVDiemDanhHuyKQDK
 - `S8` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện
 - `S8.1` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Danh mục phân loại
 - `S83` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện
@@ -399,16 +399,16 @@
 - `S81.01` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Danh mục học kỳ đánh giá
 - `S81.03` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Danh sách câu hỏi
 - `S81.02` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Danh sách nhóm câu hỏi → `Edusoft.SMS.SBB.UCT_DanhMucNhomCauHoiRL`
-- `S81.20` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Import điểm rèn luyện → `Edusoft.SMS.S7.F009_ImportDiemRenLuyenSV`
+- `S81.20` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Import điểm rèn luyện → `Edusoft.SMS.S7.F009_ImportDiemRenLuyenSV` – màn hình (đoán theo tên): S_IMPORT_DIEMRL, VIEW_IMPORTDIEMRL
 - `S83.18` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ In tổng hợp kết quả → `Edusoft.SMS.Report.UCT_ThongKeDiemRLTheoLop` (Param1=-8958920411798681172)
 - `S83.21` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ In điểm rèn luyện theo SV → `Edusoft.SMS.Report.UCT_InDiemRenLuyenTPSV`
-- `S81.04` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Kết quả đánh giá rèn luyện → `Edusoft.SMS.SBB.KetQuaDGRL`
+- `S81.04` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Kết quả đánh giá rèn luyện → `Edusoft.SMS.SBB.KetQuaDGRL` – màn hình (đoán theo tên): VIEWKQDGRL
 - `S83.19` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Sinh viên in giấy xác nhận → `Edusoft.SMS.Report.UCT_InGiayXacNhan`
 - `S83.17` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Thống kê xếp loại theo lớp → `Edusoft.SMS.Report.UCT_ThongKeDiemRLTheoLop`
 - `S81.05` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Thời gian đánh giá online → `Edusoft.SMS.SBB.UCT_QuyDinhThoiGianDGRL`
 - `S81.22` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện thành phần/ Xem tiến độ CVHT đánh giá → `Edusoft.SMS.SBB.ThongKeTienDoCVHT_DGRL`
 - `S83.05A` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Hủy điểm rèn luyện → `Edusoft.SMS.S8.UCT_HuyDiemRLHLTheoLop`
-- `S83.03` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Import điểm rèn luyện → `Edusoft.SMS.S8.F004_NhapDiemRLTheoTapTin`
+- `S83.03` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Import điểm rèn luyện → `Edusoft.SMS.S8.F004_NhapDiemRLTheoTapTin` – màn hình: S_NHAPDIEMRLSV
 - `S83.01` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ In danh sách BGD rèn luyện → `Edusoft.SMS.UC_InDiemHKRL`
 - `S83.07` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ In DSSV chưa nhập điểm rèn luyện → `Edusoft.SMS.SBB.F000_InDSSVChuaNhapDiemRL`
 - `S83.10` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ In kết quả rèn luyện học kỳ → `Edusoft.SMS.SBB.F002_InKQRLHK`
@@ -424,8 +424,8 @@
 - `S83.06A` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Khóa điểm rèn luyện → `Edusoft.SMS.S8.UCT_KhoaDiemRL`
 - `S83.02` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập theo danh sách ghi điểm
 - `S83.04` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập từ McScanner
-- `S83.05` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện → `Edusoft.SMS.S8.F002_NhapDiemTKRLTheoLop`
-- `S83.05B` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện 1 sinh viên → `Edusoft.SMS.S8.F005_NhapDiemRenLuyen1SV`
+- `S83.05` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện → `Edusoft.SMS.S8.F002_NhapDiemTKRLTheoLop` – màn hình (đoán theo tên): S_NHAPDIEMRLSV
+- `S83.05B` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện 1 sinh viên → `Edusoft.SMS.S8.F005_NhapDiemRenLuyen1SV` – màn hình (đoán theo tên): View_NhapDiemRL1SV
 - `S83.06` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Tổng kết điểm rèn luyện → `Edusoft.SMS.S8.F003_TongKetDiemRenLuyen`
 - `S83.17A` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Xem tổng hợp điểm rèn luyện học kỳ → `Edusoft.SMS.SBB.F39_XemTongHopDiemRL`
 - `S83.17B` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Xem tổng hợp điểm rèn luyện năm học → `Edusoft.SMS.SBB.F38_XemTongHopDiemRLNamHoc`
@@ -436,7 +436,7 @@
 - `S82.03` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Nhập từ danh sách ghi điểm
 - `S82.04` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Nhập từ file ghi điểm thành phần
 - `S82.06` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Nhập điểm thành phần rèn luyện → `Edusoft.SMS.S8.F001_NhapDiemRLTPTheoLop`
-- `S82.01` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Quy định điểm TP rèn luyện → `Edusoft.SMS.UC_QD_DiemTPRL`
+- `S82.01` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Quy định điểm TP rèn luyện → `Edusoft.SMS.UC_QD_DiemTPRL` – màn hình: S-QDDTPRL
 - `S82.08` Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm thành phần rèn luyện/ Tổng kết điểm TP rèn luyện
 - `S10` Sinh viên/ Điểm danh và Điểm rèn luyện/ Xử lý kết quả rèn luyện
 - `S10.04` Sinh viên/ Điểm danh và Điểm rèn luyện/ Xử lý kết quả rèn luyện/ In kết quả xét → `Edusoft.SMS.S8.XULY_KQRL.F003_InKetQuaXetRL`

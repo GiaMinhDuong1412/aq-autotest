@@ -19,7 +19,7 @@
 - `EE3` Lưu trữ minh chứng/ Hội đồng đánh giá
 - `EE3.06` Lưu trữ minh chứng/ Hội đồng đánh giá/ Danh mục loại nhóm hội đồng
 - `EE3.02A` Lưu trữ minh chứng/ Hội đồng đánh giá/ Danh mục nhân viên ngoài
-- `EE3.01` Lưu trữ minh chứng/ Hội đồng đánh giá/ Danh sách thành viên hội đồng → `Edusoft.EMS.EE03.F001_DanhSachThanhVienHD`
+- `EE3.01` Lưu trữ minh chứng/ Hội đồng đánh giá/ Danh sách thành viên hội đồng → `Edusoft.EMS.EE03.F001_DanhSachThanhVienHD` – màn hình (đoán theo tên): ViewThanhVienDGLVThS
 - `EE3.05` Lưu trữ minh chứng/ Hội đồng đánh giá/ Huy động nguồn lực → `Edusoft.EMS.EE03.F004_KeHoachHuyDong`
 - `EE3.02` Lưu trữ minh chứng/ Hội đồng đánh giá/ Nhóm hội đồng đánh giá → `Edusoft.EMS.EE03.F002_NhomHoiDongDanhGia`
 - `EE3.03` Lưu trữ minh chứng/ Hội đồng đánh giá/ Phân công nhóm thực hiện → `Edusoft.EMS.EE03.F003_PhanCongNhomThucHien`
@@ -34,12 +34,12 @@
 - `EE4.02` Lưu trữ minh chứng/ Định nghĩa dữ liệu/ Danh sách dữ liệu nguồn minh chứng → `Edusoft.EMS.EE04.F002_DanhSachDuLieuMinhChung`
 - `EE2` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá
 - `EE2.05` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Danh sách minh chứng tiêu chí → `Edusoft.EMS.EE02.F005_DSMinhChungTieuChi`
-- `EE2.07` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Danh sách quyết định đợt đánh giá → `Edusoft.EMS.EE02.F006_DSQuyetDinhDotDG`
+- `EE2.07` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Danh sách quyết định đợt đánh giá → `Edusoft.EMS.EE02.F006_DSQuyetDinhDotDG` – màn hình (đoán theo tên): ViewDSQDDotDG
 - `EE2.06` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Import bộ tiêu chuẩn mẫu từ BGD → `Edusoft.EMS.EE02.F006_ImportDuLieuMauTuBGD`
-- `EE2.02` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Kế hoạch thời gian thực hiện → `Edusoft.EMS.EE02.F002_KeHoachThucHien`
+- `EE2.02` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Kế hoạch thời gian thực hiện → `Edusoft.EMS.EE02.F002_KeHoachThucHien` – màn hình (đoán theo tên): ViewEEKeHoach
 - `EE2.01` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Quyết định thành lập đợt đánh giá → `Edusoft.EMS.EE02.F001_QDDotDanhGia`
 - `EE2.03` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Định nghĩa danh sách tiêu chuẩn → `Edusoft.EMS.EE02.F003_DanhSachTieuChuan`
-- `EE2.04` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Định nghĩa danh sách tiêu chí → `Edusoft.EMS.EE02.F004_DanhSachTieuChi`
+- `EE2.04` Lưu trữ minh chứng/ Định nghĩa đợt đánh giá/ Định nghĩa danh sách tiêu chí → `Edusoft.EMS.EE02.F004_DanhSachTieuChi` – màn hình (đoán theo tên): ViewEEDNDSTC
 
 ## Màn hình (view) và lưới
 

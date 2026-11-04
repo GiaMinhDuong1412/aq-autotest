@@ -34,7 +34,7 @@
 - `X50.20.02` Ký túc xá/ Quản lý hoạt động/ Hoạt động thành viên/ In danh sách Ban tự quản → `Edusoft.MDS.X50._20.X001_InThongTinBQLKTX`
 - `X50.20.01` Ký túc xá/ Quản lý hoạt động/ Hoạt động thành viên/ Thông tin thành viên Ban tự quản → `Edusoft.MDS.X50._20.F001_NhapThongTinBQLKTX`
 - `X50.30` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua
-- `X50.30.01` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ Danh sách đối tượng đánh giá → `Edusoft.MDS.X50._30.X01_DSDTDanhGiaRL`
+- `X50.30.01` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ Danh sách đối tượng đánh giá → `Edusoft.MDS.X50._30.X01_DSDTDanhGiaRL` – màn hình (đoán theo tên): ZDSDTDG1
 - `X50.30.06` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ In danh sách khen thưởng, kỷ luật → `Edusoft.MDS.X50._30.X06_InDanhSachQuyetDinhKhenThuongKL`
 - `X50.30.05` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ In danh sách kết quả thi đua → `Edusoft.MDS.X50._30.X05_InDanhSachKetQuaThiDua`
 - `X50.30.07` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ In thống kê theo phân loại kết quả → `Edusoft.MDS.X50._30.X07_InThongKeDanhHieuThiDua`
@@ -42,21 +42,21 @@
 - `X50.30.02` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ Nhập/import điểm đánh giá → `Edusoft.MDS.X50._30.X02_NhapDiemDGRL`
 - `X50.30.03` Ký túc xá/ Quản lý hoạt động/ Quản lý thi đua/ Xét và kết quả đánh giá → `Edusoft.MDS.X50._30.X03_XetThiDua`
 - `X50.40` Ký túc xá/ Quản lý hoạt động/ Quản lý tạm vắng
-- `X50.40.01` Ký túc xá/ Quản lý hoạt động/ Quản lý tạm vắng/ Danh sách tạm vắng → `Edusoft.MDS.X50._40.X504001_TamVang`
+- `X50.40.01` Ký túc xá/ Quản lý hoạt động/ Quản lý tạm vắng/ Danh sách tạm vắng → `Edusoft.MDS.X50._40.X504001_TamVang` – màn hình (đoán theo tên): X5040.01
 - `X50.40.02` Ký túc xá/ Quản lý hoạt động/ Quản lý tạm vắng/ Xem tạm vắng từng đối tượng → `Edusoft.MDS.X50._40.X504002_XemTamVang`
 - `X20` Ký túc xá/ Quản lý hợp đồng
 - `X20.30` Ký túc xá/ Quản lý hợp đồng/ Nhật ký thay đổi phòng
 - `X20.30.01` Ký túc xá/ Quản lý hợp đồng/ Nhật ký thay đổi phòng/ Xem/ in lịch sử lưu trú SV → `Edusoft.MDS.X20._30.X01_LichSuLuuTruSV`
 - `X20.20` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra
 - `X20.3` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Phiếu hoàn trả tiền HĐ → `Edusoft.MDS.X20._20.X03_PhieuHoanTraTienHD`
-- `X20.20.01` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thanh lý hợp đồng → `Edusoft.MDS.X20._20.X01_ThanhLyHDLuuTru`
+- `X20.20.01` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thanh lý hợp đồng → `Edusoft.MDS.X20._20.X01_ThanhLyHDLuuTru` – màn hình (đoán theo tên): X2020.01
 - `X20.4` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thống kê hoàn trả → `Edusoft.MDS.Report.RP_ThongKeHoanTraHopDong`
 - `X20.20.02` Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thống kê thanh lý hợp đồng → `Edusoft.MDS.Report.RP_ThongKeVaoRaTheoDTLuuTru`
 - `X20.10` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào
 - `X20.10.06` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Chuyển phòng lưu trú → `Edusoft.MDS.X20._10.X06_ChuyenPhong`
 - `X20.10.13` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Duyệt hợp đồng đã thanh toán online → `Edusoft.MDS.X20._10.X09_DsHopDong` (Param1=DUYET)
 - `X20.10.04` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Gia hạn hợp đồng
-- `X20.10.4.1` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Gia hạn hợp đồng/ Gia hạn hợp đồng → `Edusoft.MDS.X20._10.X04_GiaHanHopDong`
+- `X20.10.4.1` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Gia hạn hợp đồng/ Gia hạn hợp đồng → `Edusoft.MDS.X20._10.X04_GiaHanHopDong` – màn hình (đoán theo tên): X2010.04.GH
 - `X20.10.09` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng còn hiệu lực → `Edusoft.MDS.X20._10.X09_DsHopDong`
 - `X20.10.12` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng theo phòng → `Edusoft.MDS.X20._10.X01_HDTheoPhong`
 - `X20.10.02` Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng với SV chưa xếp lớp → `Edusoft.MDS.X20._10.X02_HDSVKoLop`
@@ -76,14 +76,14 @@
 - `X30.90.01` Ký túc xá/ Quản lý thanh toán/ Báo biểu/ In danh sách thu theo ngày → `Edusoft.MDS.X02._90.F001_InDSThuChiTheoNgay` (Param1=0)
 - `X30.90.02` Ký túc xá/ Quản lý thanh toán/ Báo biểu/ In thống kê thu phí → `Edusoft.MDS.X02._90.F001_InDSThuChiTheoNgay` (Param1=1)
 - `X30.60` Ký túc xá/ Quản lý thanh toán/ Chốt nợ
-- `X30.60.01` Ký túc xá/ Quản lý thanh toán/ Chốt nợ/ Chốt nợ ký túc xá → `Edusoft.MDS.X30._60.X3060_01_ChotNoLuuTru`
+- `X30.60.01` Ký túc xá/ Quản lý thanh toán/ Chốt nợ/ Chốt nợ ký túc xá → `Edusoft.MDS.X30._60.X3060_01_ChotNoLuuTru` – màn hình (đoán theo tên): X30.60.01
 - `X30.20` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng
-- `X30.50.01` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Chỉ số sử dụng dịch vụ/ tháng → `Edusoft.MDS.X30._50.X01_NhapChiSoDichVu`
+- `X30.50.01` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Chỉ số sử dụng dịch vụ/ tháng → `Edusoft.MDS.X30._50.X01_NhapChiSoDichVu` – màn hình: X01_NHAPCHISODICHVU
 - `X30.20.05` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Hiệu chỉnh số tiền phí ký túc xá → `Edusoft.MDS.X30._30.X04_HieuChinhTienPhi`
-- `X30.20.03` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ In và khóa hóa đơn → `Edusoft.MDS.X30._30.X03_InVaKhoaInvoice`
+- `X30.20.03` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ In và khóa hóa đơn → `Edusoft.MDS.X30._30.X03_InVaKhoaInvoice` – màn hình (đoán theo tên): X30.20.03
 - `X30.20.02` Ký túc xá/ Quản lý thanh toán/ Nhập và tính phí tháng/ Tính phí ký túc xá → `Edusoft.MDS.X30._30.X02_TinhInvoiceDSDT`
 - `X30.50` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng
-- `X30.50.04` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng/ In hóa đơn → `Edusoft.Base.UCT.UCT_DangPhatTrien`
+- `X30.50.04` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng/ In hóa đơn → `Edusoft.Base.UCT.UCT_DangPhatTrien` – màn hình (đoán theo tên): VIEW_IN_HOA_DON
 - `X30.50.05` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng/ In thống kê phòng đã thu, phòng còn nợ → `Edusoft.MDS.Report.RP_DSThuDVPhong`
 - `X30.50.06` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng/ In thống kê theo chu kỳ → `Edusoft.MDS.Report.RP_DSThuDVTheoChuKy`
 - `X30.50.03` Ký túc xá/ Quản lý thanh toán/ Quản lý phí dịch vụ phòng/ Thu tiền dịch vụ → `Edusoft.MDS.X30._50.X03_ThuPhiDichVu`
@@ -91,21 +91,21 @@
 - `X30.30` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng
 - `X30.30.09` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Cập nhật hóa đơn điện tử ký túc xá → `Edusoft.RMS.M21._05.F025_CapNhatTTHDDT` (Param1=-6380968986849095914)
 - `X30.30.06` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Danh sách khoản thu phát sinh → `Edusoft.MDS.X30._30.X06_ThuPhatSinh`
-- `X30.30.02` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Danh sách phiếu thu → `Edusoft.MDS.X30._30.X01_ThuPhiLuuTru`
+- `X30.30.02` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Danh sách phiếu thu → `Edusoft.MDS.X30._30.X01_ThuPhiLuuTru` – màn hình (đoán theo tên): XDSPHIEUTHU, X02.03.02
 - `X30.30.07` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Gán phiếu thu chưa có số chứng từ → `Edusoft.MDS.X30._30.X01_ThuPhiLuuTru`
 - `X30.30.05` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Import phiếu thu → `Edusoft.MDS.X30._30.X05_ImportTamUng`
 - `X30.30.01` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Thu phí lưu trú → `Edusoft.MDS.X02._03.X02_03_01_ThuPhiLuuTru`
 - `X30.30.08` Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Xuất hóa đơn điện tử ký túc xá → `Edusoft.RMS.M21._05.F024_XuatHDDT` (Param1=-6380968986849095914)
 - `X30.101` Ký túc xá/ Quản lý thanh toán/ Tạm ứng
-- `X30.30.04` Ký túc xá/ Quản lý thanh toán/ Tạm ứng/ Cân đối nợ lưu trú → `Edusoft.MDS.X30._30.X04_CanDoiNo`
-- `X30.30.03` Ký túc xá/ Quản lý thanh toán/ Tạm ứng/ Tạm ứng lưu trú → `Edusoft.MDS.X30._30.X03_TamUngLuuTru`
+- `X30.30.04` Ký túc xá/ Quản lý thanh toán/ Tạm ứng/ Cân đối nợ lưu trú → `Edusoft.MDS.X30._30.X04_CanDoiNo` – màn hình (đoán theo tên): X30.30.04
+- `X30.30.03` Ký túc xá/ Quản lý thanh toán/ Tạm ứng/ Tạm ứng lưu trú → `Edusoft.MDS.X30._30.X03_TamUngLuuTru` – màn hình (đoán theo tên): X30.30.03
 - `X60` Ký túc xá/ Quản lý thiết bị phòng
 - `X60.02` Ký túc xá/ Quản lý thiết bị phòng/ Danh mục trang thiết bị phòng
 - `X60.01` Ký túc xá/ Quản lý thiết bị phòng/ Danh mục đơn vị tính trang thiết bị
 - `X60.04` Ký túc xá/ Quản lý thiết bị phòng/ Sửa chữa thiết bị phòng → `Edusoft.MDS.X60.F004_SuaChuaThietBiPhong`
 - `X60.06` Ký túc xá/ Quản lý thiết bị phòng/ Thống kê các thiết bị dãy/tòa nhà → `Edusoft.MDS.X60.F006_ThongKeTrangThietBiPhong`
 - `X60.03` Ký túc xá/ Quản lý thiết bị phòng/ Trang thiết bị phòng dạng chi tiết → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5448125507302164279)
-- `X60.05` Ký túc xá/ Quản lý thiết bị phòng/ Trang thiết bị phòng dạng danh sách → `Edusoft.MDS.X60.F005_DanhSachThietBiPhong`
+- `X60.05` Ký túc xá/ Quản lý thiết bị phòng/ Trang thiết bị phòng dạng danh sách → `Edusoft.MDS.X60.F005_DanhSachThietBiPhong` – màn hình (đoán theo tên): VIEW_DSTBPHDS
 - `X10` Ký túc xá/ Quản lý đăng ký lưu trú
 - `X10.90` Ký túc xá/ Quản lý đăng ký lưu trú/ Báo biểu
 - `X01.90.01` Ký túc xá/ Quản lý đăng ký lưu trú/ Báo biểu/ In danh sách thành viên KTX → `Edusoft.MDS.X02._02.F006_InDSThanhVienKTX`
@@ -122,13 +122,13 @@
 - `X10.30.01` Ký túc xá/ Quản lý đăng ký lưu trú/ Xét duyệt đơn đăng ký/ Duyệt/ hủy sơ bộ → `Edusoft.MDS.X10._30.X1030_01_DuyetCap1`
 - `X10.30.00` Ký túc xá/ Quản lý đăng ký lưu trú/ Xét duyệt đơn đăng ký/ Kiểm duyệt diện ưu tiên → `Edusoft.MDS.X10._30.X1030_00_DuyetDienUuTien`
 - `X10.20` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú
-- `X10.20.01` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Danh sách đơn đăng ký → `Edusoft.MDS.X10._20.X1020_01_DKLuuTru`
+- `X10.20.01` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Danh sách đơn đăng ký → `Edusoft.MDS.X10._20.X1020_01_DKLuuTru` – màn hình (đoán theo tên): X1020.01
 - `X01.02.81` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Xem danh sách phòng rảnh (web) → `Edusoft.MDS.WEB.ViewPhongTrong.ascx`
 - `X01.02.82` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Đăng ký lưu trú KTX (web)
 - `X01.02.83` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Đăng ký rời nội trú KTX (web)
 - `XQT` Ký túc xá/ Quản trị phân hệ
-- `XQT3` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX)
-- `XQT2` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX)
+- `XQT3` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `XQT2` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `XQT1` Ký túc xá/ Quản trị phân hệ/ Phân quyền phân hệ
 - `X30.20.01` Ký túc xá/ Quản trị phân hệ/ Quy định thời gian tự động tính → `Edusoft.MDS.X02._02.X02_02_01_CauHinhTinhHoaDon`
 - `XQT0` Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục
@@ -139,10 +139,10 @@
 - `X30.50.07` Ký túc xá/ Đăng ký dịch vụ/ Dịch vụ theo phòng → `Edusoft.MDS.X30._50.X07_NhapHangDichVuPhong`
 - `X30.20.04` Ký túc xá/ Đăng ký dịch vụ/ Dịch vụ theo đối tượng → `Edusoft.MDS.X30._20.X02_DangKyDichVu`
 - `X30.10` Ký túc xá/ Định nghĩa dịch vụ và giá
-- `X30.10.04` Ký túc xá/ Định nghĩa dịch vụ và giá/ Danh mục công thức thu → `Edusoft.MDS.X30._10.X03_DMCongThuc`
+- `X30.10.04` Ký túc xá/ Định nghĩa dịch vụ và giá/ Danh mục công thức thu → `Edusoft.MDS.X30._10.X03_DMCongThuc` – màn hình (đoán theo tên): MDMCTTHU
 - `X30.10.01` Ký túc xá/ Định nghĩa dịch vụ và giá/ Danh mục dịch vụ → `Edusoft.MDS.X30._10.X01_DanhMucDichVu`
 - `X30.10.07` Ký túc xá/ Định nghĩa dịch vụ và giá/ Hạn mức miễn phí theo đối tượng → `Edusoft.MDS.X30._10.X07_HanMucDVMienPhiTheoDT`
-- `X30.10.02` Ký túc xá/ Định nghĩa dịch vụ và giá/ Hạng mục dịch vụ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5171792101161399944)
+- `X30.10.02` Ký túc xá/ Định nghĩa dịch vụ và giá/ Hạng mục dịch vụ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5171792101161399944) – màn hình (đoán theo tên): X30.10.02
 - `X30.10.03` Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá hạng mục dịch vụ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6453816341451450554)
 - `X30.10.06` Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5056602472837341869)
 - `X30.10.05` Ký túc xá/ Định nghĩa dịch vụ và giá/ Định nghĩa nhóm thu → `Edusoft.MDS.X02._02.X02_02_03_DNNhomThu`

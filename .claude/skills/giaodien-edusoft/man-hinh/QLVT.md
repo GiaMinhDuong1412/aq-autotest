@@ -6,7 +6,7 @@
 - `JKT` Vật tư/ An toàn dữ liệu/ Truy vết thao tác lập biên bản → `Edusoft.JMS.JAT.J001_TruyVetBienBanTaiSan`
 - `J60` Vật tư/ Chốt sổ
 - `J60.10` Vật tư/ Chốt sổ/ Chốt số năm → `Edusoft.JMS.J60._10.F01_ChotSoNam`
-- `J60.20` Vật tư/ Chốt sổ/ Chốt sổ theo tháng → `Edusoft.JMS.J60._10.F002_ChotSoTheoThang`
+- `J60.20` Vật tư/ Chốt sổ/ Chốt sổ theo tháng → `Edusoft.JMS.J60._10.F002_ChotSoTheoThang` – màn hình (đoán theo tên): View_ChotSoTheoThang
 - `J10.30.01` Vật tư/ Chốt sổ/ Tính khấu hao tài sản → `Edusoft.JMS.J30._10.F01_TinhKhauHaoTS`
 - `JBB` Vật tư/ Khai thác báo biểu
 - `J50` Vật tư/ Nhập xuất vật tư
@@ -35,8 +35,8 @@
 - `J20.10.06` Vật tư/ Quản lý biên bản/ Tài sản/ Đình chỉ sử dụng tài sản → `Edusoft.JMS.J20._10.F006_DinhChiSDTS`
 - `J20.10.03` Vật tư/ Quản lý biên bản/ Tài sản/ Định giá lại tài sản → `Edusoft.JMS.J20._10.F003_DinhGiaTaiSan`
 - `JQT` Vật tư/ Quản trị phân hệ
-- `JQT2` Vật tư/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLVT)
-- `JQT1` Vật tư/ Quản trị phân hệ/ Gán số đếm bắt đầu → `AQViewers.HTQL.UCT_GanSoDem`
+- `JQT2` Vật tư/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLVT) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `JQT1` Vật tư/ Quản trị phân hệ/ Gán số đếm bắt đầu → `AQViewers.HTQL.UCT_GanSoDem` – màn hình (đoán theo tên): HBODEMCT, HBODEMCT_GAN
 - `JQT0` Vật tư/ Quản trị phân hệ/ Quản lý danh mục
 - `J10` Vật tư/ Thông tin chung
 - `J10.10` Vật tư/ Thông tin chung/ Danh mục
@@ -44,7 +44,7 @@
 - `J10.10.05` Vật tư/ Thông tin chung/ Danh mục/ Danh mục dự án
 - `J10.10.06` Vật tư/ Thông tin chung/ Danh mục/ Danh mục loại (nhóm) tài sản
 - `J10.10.09` Vật tư/ Thông tin chung/ Danh mục/ Danh mục loại biên bản
-- `J10.10.13` Vật tư/ Thông tin chung/ Danh mục/ Danh mục phòng thiết bị → `Edusoft.JMS.J10._10.F13_DSPhongThietBi`
+- `J10.10.13` Vật tư/ Thông tin chung/ Danh mục/ Danh mục phòng thiết bị → `Edusoft.JMS.J10._10.F13_DSPhongThietBi` – màn hình (đoán theo tên): VIEWDMPTTB
 - `J10.10.03` Vật tư/ Thông tin chung/ Danh mục/ Danh mục quốc gia
 - `J10.10.07` Vật tư/ Thông tin chung/ Danh mục/ Danh mục tài sản cố định → `Edusoft.JMS.J10._10.F007_TSCoDinh`
 - `J10.10.12` Vật tư/ Thông tin chung/ Danh mục/ Danh mục vật tư → `Edusoft.JMS.J10._10.F012_TSVatTu`

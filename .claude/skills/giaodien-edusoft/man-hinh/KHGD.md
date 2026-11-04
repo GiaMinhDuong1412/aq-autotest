@@ -17,46 +17,46 @@
 - `KTV4` Kế hoạch/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký thay đổi CTĐT thực hiện → `Edusoft.TPM.K01._002.F002_TruyVetKCTDTTH`
 - `KTV3` Kế hoạch/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký thay đổi danh mục môn học → `Edusoft.SCH.KX17.F002_TruyVetDMMonHoc`
 - `K6` Kế hoạch/ Biểu đồ kế hoạch học tập
-- `K71` Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập khối → `Edusoft.SCH.KX04._01.uctF001` (Param1=KHOI)
-- `K72` Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp → `Edusoft.SCH.KX04._01.uctF001` (Param1=LOP)
+- `K71` Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập khối → `Edusoft.SCH.KX04._01.uctF001` (Param1=KHOI) – màn hình: VIEWBDKH
+- `K72` Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp → `Edusoft.SCH.KX04._01.uctF001` (Param1=LOP) – màn hình: VIEWBDKH
 - `K7_DMKHBD` Kế hoạch/ Biểu đồ kế hoạch học tập/ Danh mục ký hiệu biểu đồ kế hoạch
 - `K6.3` Kế hoạch/ Biểu đồ kế hoạch học tập/ Lớp xếp TKB theo ngày
-- `K6.3.3` Kế hoạch/ Biểu đồ kế hoạch học tập/ Lớp xếp TKB theo ngày/ Nhập thông tin lớp → `Edusoft.Base.UCT.UCLopHK` (Param1=-6696758647819207621)
+- `K6.3.3` Kế hoạch/ Biểu đồ kế hoạch học tập/ Lớp xếp TKB theo ngày/ Nhập thông tin lớp → `Edusoft.Base.UCT.UCLopHK` (Param1=-6696758647819207621) – màn hình: VIEWKLOPHK
 - `K6.3.2` Kế hoạch/ Biểu đồ kế hoạch học tập/ Lớp xếp TKB theo ngày/ Định nghĩa các đợt học của lớp → `Edusoft.SCH.KX04._06.uctF001`
 - `K.16` Kế hoạch/ Bảng tham chiếu tuần
 - `K.16.1` Kế hoạch/ Bảng tham chiếu tuần/ Bảng tham chiếu tuần → `Edusoft.SCH.KX16.F001_BangThamChieuTuan`
 - `K.16.2` Kế hoạch/ Bảng tham chiếu tuần/ In bảng tham chiếu tuần → `Edusoft.SCH.Report.X1025`
 - `K4` Kế hoạch/ Chương trình đào tạo
 - `K41` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo
-- `K41.02` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT chuẩn → `Edusoft.TPM.K01._002.UCT_CTDTCH_Edit`
-- `K41.03` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT kế hoạch → `Edusoft.TPM.K01._002.UCT_CTDTKH_Edit`
-- `K41.04` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT thực hiện → `Edusoft.TPM.K01._002.UCT_CTDTTH_Edit`
+- `K41.02` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT chuẩn → `Edusoft.TPM.K01._002.UCT_CTDTCH_Edit` – màn hình: VIEWCHONDMMH
+- `K41.03` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT kế hoạch → `Edusoft.TPM.K01._002.UCT_CTDTKH_Edit` – màn hình: VIEWCHONDMMH
+- `K41.04` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT thực hiện → `Edusoft.TPM.K01._002.UCT_CTDTTH_Edit` – màn hình: VIEWCHONDMMH
 - `K41.01` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Danh mục phiên bản CTDT chuẩn
 - `K14.13` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Gán CTĐT cho sinh viên đặc biệt → `Edusoft.TPM.K01._002.UCT_GanCTDTKhoiChoSVDacBiet`
 - `K41.10` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Gán đợt học kỳ cho CTĐT thực hiện → `Edusoft.SCH.KX04._01.uctF002_GanDotCTDTTH`
 - `K41.06` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ In CTDT khối kiến thức → `Edusoft.TPM.K01._003.InTheoKhoiKienThuc`
 - `K41.07` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ In kế hoạch CTĐT thực hiện năm → `Edusoft.SCH.Report.K4107`
-- `K41.12` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Khối áp dụng môn không tính điểm nhập trong CTĐT → `Edusoft.TPM.K01._002.UCT_MonKhongTinhDiemTheoCTDT`
+- `K41.12` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Khối áp dụng môn không tính điểm nhập trong CTĐT → `Edusoft.TPM.K01._002.UCT_MonKhongTinhDiemTheoCTDT` – màn hình (đoán theo tên): K14.12
 - `K42.04` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Môn học cùng môn khác mã → `Edusoft.TPM.K03.F003_MonKhacMa`
 - `K42.05` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Môn học cùng môn khác mã (Học phí) → `Edusoft.TPM.K03.F003_MonKhacMa2`
 - `K41.08.A` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Nhập Giảng Viên dự kiến CTĐT kế hoạch → `Edusoft.SCH.Report.F009_NhapGVDuKienCTDTKH`
 - `K41.08` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Nhập thời gian CTĐT thực hiện năm → `Edusoft.SCH.Report.K4107_NhapGV`
-- `K41.00` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Số tiết môn học theo bậc hệ → `Edusoft.TPM.K01._002.UCT_ViewMHTheoBacHe`
+- `K41.00` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Số tiết môn học theo bậc hệ → `Edusoft.TPM.K01._002.UCT_ViewMHTheoBacHe` – màn hình: N12.30.10
 - `K41.01.B` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Số tiết môn học theo phiên bản → `Edusoft.TPM.K01._002.UCT_ViewMHTheoPhienBan`
 - `K41.01.A` Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ Tiêu chuẩn chương trình đào tạo → `Edusoft.SRM.Q5.Q51.Q51_01_07_DNTChuanCTDT`
 - `K43` Kế hoạch/ Chương trình đào tạo/ Môn học bổ sung kiến thức ngành
 - `K43.01` Kế hoạch/ Chương trình đào tạo/ Môn học bổ sung kiến thức ngành/ Nhập môn học bổ sung kiến thức ngành → `Edusoft.TPM.K01._002.UCT_NhapKhNgMHBoSung`
 - `K41.05` Kế hoạch/ Chương trình đào tạo/ Môn học tự chọn
-- `DM_KNHANHTC` Kế hoạch/ Chương trình đào tạo/ Môn học tự chọn/ Nhánh môn học tự chọn → `Edusoft.TPM.K01._002.UCT_NhanhMH`
+- `DM_KNHANHTC` Kế hoạch/ Chương trình đào tạo/ Môn học tự chọn/ Nhánh môn học tự chọn → `Edusoft.TPM.K01._002.UCT_NhanhMH` – màn hình: VIEWCHONDMMH, VIEWMHTC, KNHANHTC
 - `DM_KDMNHOMTC` Kế hoạch/ Chương trình đào tạo/ Môn học tự chọn/ Nhóm môn học tự chọn
 - `K44` Kế hoạch/ Chương trình đào tạo/ Số tín chỉ tốt nghiệp
-- `K44.01` Kế hoạch/ Chương trình đào tạo/ Số tín chỉ tốt nghiệp/ Cập nhật số tín chỉ tốt nghiệp → `Edusoft.TPM.K01._002.F004_CapNhatTCTotNghiep`
+- `K44.01` Kế hoạch/ Chương trình đào tạo/ Số tín chỉ tốt nghiệp/ Cập nhật số tín chỉ tốt nghiệp → `Edusoft.TPM.K01._002.F004_CapNhatTCTotNghiep` – màn hình (đoán theo tên): ViewCapNhatTCTotNghiep
 - `K40` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học
-- `K4_DMMH` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học → `Edusoft.TPM.K01._002.UCT_VIewMH`
+- `K4_DMMH` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục môn học → `Edusoft.TPM.K01._002.UCT_VIewMH` – màn hình: KDMMH, N12.30.10
 - `K40.00` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Danh mục nhóm môn học
 - `K40.03` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ In môn học đã sử dụng trong hệ thống → `Edusoft.TPM.K01._002.F001_InMonHocDaSuDung`
 - `K40.07B` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Nhập khoa môn học tiên quyết học bổng → `Edusoft.TPM.K01._002.UCT_DinhNghiaKhoa_MHTQHB`
-- `K40.06` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Nhập tên môn học theo ngành → `Edusoft.TPM.K01._001.F004_TenMHTheoNganh`
+- `K40.06` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Nhập tên môn học theo ngành → `Edusoft.TPM.K01._001.F004_TenMHTheoNganh` – màn hình (đoán theo tên): K40.06
 - `DQT5.02` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Phần trăm điểm cho tự điển môn học → `Edusoft.SRM.D5.D51.D51_05_PTTuDienMH`
 - `K40.01` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Xem sửa môn học không tính điểm trung bình → `Edusoft.TPM.K01._002.UCT_ViewCapNhat_MH_KGTINH_DTB`
 - `K40.02` Kế hoạch/ Chương trình đào tạo/ Thông tin môn học/ Xem sửa môn học luận án → `Edusoft.TPM.K01._002.UCT_ViewCapNhat_MH_LUAN_AN`
@@ -82,18 +82,18 @@
 - `K.313` Kế hoạch/ Chấm công giảng dạy/ Duyệt dữ liệu chấm công so với TKB → `Edusoft.SCH.KX31.F003_DuyetChamCongVaTKB`
 - `K.311` Kế hoạch/ Chấm công giảng dạy/ Dữ liệu chấm công chưa xử lý → `Edusoft.SCH.KX31.F001_DuLieuChamCongTho`
 - `K.312` Kế hoạch/ Chấm công giảng dạy/ Dữ liệu chấm công đã xử lý → `Edusoft.SCH.KX31.F002_DuLieuChamCongDaXyLy`
-- `K.314.8` Kế hoạch/ Chấm công giảng dạy/ Tổng hợp số giờ giảng dạy học kỳ → `Edusoft.SCH.KX31.F004_TongHopGioChamCong`
+- `K.314.8` Kế hoạch/ Chấm công giảng dạy/ Tổng hợp số giờ giảng dạy học kỳ → `Edusoft.SCH.KX31.F004_TongHopGioChamCong` – màn hình (đoán theo tên): KTHChamCongHK
 - `K0` Kế hoạch/ Danh sách dữ liệu học kỳ
-- `K0.1` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách lớp học kỳ → `Edusoft.Base.UCT.UCLopHK`
-- `K0.3` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách môn học học kỳ → `Edusoft.SCH.KX04._03.uctF001` (Param1=-7036545928143220005)
-- `K0.2` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ → `Edusoft.Base.UCT.UCKPhongHK`
+- `K0.1` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách lớp học kỳ → `Edusoft.Base.UCT.UCLopHK` – màn hình: VIEWKLOPHK
+- `K0.3` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách môn học học kỳ → `Edusoft.SCH.KX04._03.uctF001` (Param1=-7036545928143220005) – màn hình: VIEWQHTH
+- `K0.2` Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ → `Edusoft.Base.UCT.UCKPhongHK` – màn hình: VIEWCHONHONGNGOAINHHK, KPHHK
 - `K0.4` Kế hoạch/ Danh sách dữ liệu học kỳ/ Định nghĩa môn học liên kết → `Edusoft.SCH.KX04._09.F001_XemSuaMHLK`
 - `KBB` Kế hoạch/ Khai thác báo biểu
 - `K.14` Kế hoạch/ Nghỉ dạy và dạy bù
-- `K.14.02` Kế hoạch/ Nghỉ dạy và dạy bù/ In lịch nghỉ dạy và dạy bù → `Edusoft.SCH.Report.X3225`
+- `K.14.02` Kế hoạch/ Nghỉ dạy và dạy bù/ In lịch nghỉ dạy và dạy bù → `Edusoft.SCH.Report.X3225` – màn hình: VIEWCHONNVHK
 - `K.14.01` Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù → `Edusoft.SCH.KX10.uct_F001_NghiDay`
 - `K14.04` Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê chi tiết → `Edusoft.SCH.Report.X3227`
-- `K14.03` Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê nghỉ dạy và dạy bù → `Edusoft.SCH.Report.X3225`
+- `K14.03` Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê nghỉ dạy và dạy bù → `Edusoft.SCH.Report.X3225` – màn hình: VIEWCHONNVHK
 - `K14.05` Kế hoạch/ Nghỉ dạy và dạy bù/ Thống kê tổng hợp → `Edusoft.SCH.Report.X3228`
 - `K.30` Kế hoạch/ Quản lý thiết bị học tập
 - `K32` Kế hoạch/ Quản lý thiết bị học tập/ Báo biểu thống kê
@@ -110,12 +110,12 @@
 - `K30.3` Kế hoạch/ Quản lý thiết bị học tập/ Định nghĩa dữ liệu/ Thiết bị sử dụng cho môn học → `Edusoft.SCH.KX30._01.F003_DinhNghiaMonHocTS`
 - `K7` Kế hoạch/ Qui hoạch nhóm học phần
 - `K75` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động
-- `K75.02` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ niên chế → `Edusoft.SCH.KX05._01.uctF002`
-- `K75.01` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ tín chỉ → `Edusoft.SCH.KX05._01.uctF001`
-- `K75.03` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Lớp xếp TKB theo ngày → `Edusoft.SCH.KX05._01.uctF002` (Param1=xeptkbtheongay)
+- `K75.02` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ niên chế → `Edusoft.SCH.KX05._01.uctF002` – màn hình: CHONKHOI
+- `K75.01` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ tín chỉ → `Edusoft.SCH.KX05._01.uctF001` – màn hình: CHONKHOI, DSMHDKML, DSMHTCDKML
+- `K75.03` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Lớp xếp TKB theo ngày → `Edusoft.SCH.KX05._01.uctF002` (Param1=xeptkbtheongay) – màn hình: CHONKHOI
 - `K75.04` Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Quy hoạch nhóm học phần → `Edusoft.SCH.KX05._01.F003` (Param1=QuyHoach)
-- `K7.01` Kế hoạch/ Qui hoạch nhóm học phần/ Xem chính sách tạo file nhóm MH → `Edusoft.SCH.KX04._03.uctF001` (Param1=-7036545928143220005)
-- `K73` Kế hoạch/ Qui hoạch nhóm học phần/ Xem chính sách tạo file nhóm MH → `Edusoft.SCH.KX04._03.uctF001`
+- `K7.01` Kế hoạch/ Qui hoạch nhóm học phần/ Xem chính sách tạo file nhóm MH → `Edusoft.SCH.KX04._03.uctF001` (Param1=-7036545928143220005) – màn hình: VIEWQHTH
+- `K73` Kế hoạch/ Qui hoạch nhóm học phần/ Xem chính sách tạo file nhóm MH → `Edusoft.SCH.KX04._03.uctF001` – màn hình: VIEWQHTH
 - `K7.06` Kế hoạch/ Qui hoạch nhóm học phần/ Xem sửa các lớp ghép → `Edusoft.SCH.KX04._04.uctF001`
 - `K7.07` Kế hoạch/ Qui hoạch nhóm học phần/ Xem sửa ghép lớp môn học → `Edusoft.SCH.KX04._07.F001_DanhSachGhepLopMH`
 - `K7.10` Kế hoạch/ Qui hoạch nhóm học phần/ Xem sửa ký hiệu tạo nhóm → `Edusoft.SCH.KX04._10.F001_KyHieuNhom`
@@ -131,7 +131,7 @@
 - `K.33` Kế hoạch/ Quản lý học liệu
 - `k33.6` Kế hoạch/ Quản lý học liệu/ Danh mục loại tài liệu
 - `K33.7` Kế hoạch/ Quản lý học liệu/ Danh sách tài liệu môn khối → `Edusoft.SCH.KX34.UCT_DanhSachFileMonKhoi`
-- `K33.1.1` Kế hoạch/ Quản lý học liệu/ Danh sách đề cương → `Edusoft.SCH.KX34.UCT_DanhSachFileDeCuong`
+- `K33.1.1` Kế hoạch/ Quản lý học liệu/ Danh sách đề cương → `Edusoft.SCH.KX34.UCT_DanhSachFileDeCuong` – màn hình (đoán theo tên): KDeCuong, KDSDeCuong
 - `K33.2.1` Kế hoạch/ Quản lý học liệu/ Gán đề cương môn học → `Edusoft.SCH.KX34.UCT_GanDeCuongMH`
 - `K33.5` Kế hoạch/ Quản lý học liệu/ Thống kê môn học thiếu/đủ đề cương → `Edusoft.SCH.KX34.UCT_DanhSachMHDaCoDeCuong`
 - `K33.4` Kế hoạch/ Quản lý học liệu/ Xem file bài giảng giảng viên → `Edusoft.SCH.KX34.UCT_DuyetFileDeCuongTKB` (Param1=DA_DUYET)
@@ -147,19 +147,19 @@
 - `K.18.3.04A` Kế hoạch/ Quản lý hồ sơ bệnh án/ Kết quả thực hiện HSBA trong học kỳ/ In kiểm tra dữ liệu/ Sinh viên chưa tạo HSBA → `Edusoft.SCH.KX18._03.UCT_InKiemTraDuLieu`
 - `K.18.2` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ
 - `K.18.2.02` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ DS sinh viên không thực hiện HSBA → `Edusoft.SCH.KX18._02.UCT_SVKhongThucHienHSBA`
-- `K.18.2.04` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ Gán cấu trúc HSBA cho sinh viên → `Edusoft.SCH.KX18._02.UCT_GanCauTrucHSBA`
+- `K.18.2.04` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ Gán cấu trúc HSBA cho sinh viên → `Edusoft.SCH.KX18._02.UCT_GanCauTrucHSBA` – màn hình (đoán theo tên): GanCauTrucHSBA
 - `K.18.2.05` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ In kiểm tra môn chưa gán loại HSBA → `Edusoft.SCH.KX18._02.UCT_InKiemTraMHKhongHSBA`
 - `K.18.2.01` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ In kiểm tra môn chưa gán số lượng HSBA → `Edusoft.SCH.KX18._02.UCT_InKiemTraMHHSBA`
 - `K.18.2.03` Kế hoạch/ Quản lý hồ sơ bệnh án/ Quản lý HSBA trong học kỳ/ Nhóm môn học không cần thực hiện HSBA → `Edusoft.SCH.KX18._02.UCT_NhomHocKhongThucHienHSBA`
 - `K.18.1` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu
-- `K.18.1.01` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Danh mục loại bệnh án → `Edusoft.SCH.K18._01.UCT_DMLoaiBenhAn`
+- `K.18.1.01` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Danh mục loại bệnh án → `Edusoft.SCH.K18._01.UCT_DMLoaiBenhAn` – màn hình (đoán theo tên): KDMLoaiBenhAn
 - `K.18.1.02` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Danh mục thành phần HSBA → `Edusoft.SCH.KX18._01.UCT_DMThanhPhanHSBA`
 - `K.18.1.05` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Danh sách cán bộ kiểm định → `Edusoft.SCH.KX18._01.UCT_DinhNghiaCBCIVaCBKD` (Param1=CBKD)
 - `K.18.1.04` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Danh sách giảng viên CI hướng dẫn → `Edusoft.SCH.KX18._01.UCT_DinhNghiaCBCIVaCBKD`
 - `K.18.1.06` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Gán loại HSBA cho môn học → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6612953879804701169)
 - `K.18.1.03` Kế hoạch/ Quản lý hồ sơ bệnh án/ Định nghĩa dữ liệu/ Gán số lượng HSBA cho môn học → `Edusoft.SCH.KX18._01.UCT_DinhNghiaMonHocHSBA`
 - `K.32` Kế hoạch/ Quản lý phòng chức năng
-- `K32.01` Kế hoạch/ Quản lý phòng chức năng/ Danh sách phòng chức năng → `Edusoft.SCH.KX32.F001_DanhSachPhongChucNang`
+- `K32.01` Kế hoạch/ Quản lý phòng chức năng/ Danh sách phòng chức năng → `Edusoft.SCH.KX32.F001_DanhSachPhongChucNang` – màn hình (đoán theo tên): View_DanhSachPHCN, VIEWCHONPHONGCN
 - `K32.02` Kế hoạch/ Quản lý phòng chức năng/ Duyệt phòng đăng ký online → `Edusoft.SCH.KX32.F002_DuyetPhongChucNang`
 - `K32.04` Kế hoạch/ Quản lý phòng chức năng/ Thống kê sử dụng phòng chức năng → `Edusoft.SCH.KX32.F004_ThongKeSuDungPhongCN`
 - `K32.03` Kế hoạch/ Quản lý phòng chức năng/ Xem phòng đã đăng ký → `Edusoft.SCH.KX32.F003_XemDanhSachPhongCN`
@@ -169,17 +169,17 @@
 - `K127` Kế hoạch/ Quản lý sử dụng phòng/ Duyệt sử dụng phòng đột xuất → `Edusoft.SCH.KP01._01.uctF003_DuyetPhongDotXuat`
 - `K124` Kế hoạch/ Quản lý sử dụng phòng/ In kiểm tra THGD → `Edusoft.SCH.Report.P2050`
 - `K125` Kế hoạch/ Quản lý sử dụng phòng/ In kiểm tra THGD (mẫu chi tiết) → `Edusoft.SCH.Report.P2050` (Param1=P2051)
-- `K121` Kế hoạch/ Quản lý sử dụng phòng/ Sử dụng phòng đột xuất → `Edusoft.SCH.KP01._01.uctF001`
+- `K121` Kế hoạch/ Quản lý sử dụng phòng/ Sử dụng phòng đột xuất → `Edusoft.SCH.KP01._01.uctF001` – màn hình: VIEWADDPHHK_KP01_01_UCTF001, VIEWSDPHHK
 - `K126` Kế hoạch/ Quản lý sử dụng phòng/ Tìm phòng thay thế và khóa phòng → `Edusoft.SCH.KP01._02.uctF001_KhoaPhongHK`
 - `K122` Kế hoạch/ Quản lý sử dụng phòng/ Tìm phòng rảnh → `Edusoft.SCH.KP01._01.uctF002`
 - `KQT` Kế hoạch/ Quản trị phân hệ
-- `KBS` Kế hoạch/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `KQT3` Kế hoạch/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KHGD)
-- `KQT2` Kế hoạch/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KHGD)
+- `KBS` Kế hoạch/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `KQT3` Kế hoạch/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KHGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `KQT2` Kế hoạch/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KHGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `KQT6` Kế hoạch/ Quản trị phân hệ/ Gửi TKB qua email cho giảng viên → `Edusoft.SCH.KX07._01.uct_F014_GuiICalendarGV`
 - `KQT4` Kế hoạch/ Quản trị phân hệ/ Kiểm tra dữ liệu bậc hệ ngành → `Edusoft.TPM.K01._002.UCT_XemDanhSachBHNganh`
 - `KQT1` Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu
-- `KQT1.03` Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học → `AQViewers.Settings.UC_SettingsTool1`
+- `KQT1.03` Kế hoạch/ Quản trị phân hệ/ Phân quyền dữ liệu thời khóa biểu/ Theo cây đơn vị / môn học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `KQT0` Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục
 - `KQT5` Kế hoạch/ Quản trị phân hệ/ Thời gian khoa nhập phân công CBGD → `Edusoft.SCH.KX17.F003_ThoiGianNhapPhanCongGD`
 - `KQT8` Kế hoạch/ Quản trị phân hệ/ Tịnh lùi tuần học → `Edusoft.SCH.KX05._02.uctF007_TinhTuyenTuanHoc` (Param1=TINHLUI)
@@ -196,14 +196,14 @@
 - `K8.51` Kế hoạch/ Thông tin nhóm học phần/ In bài học nhóm tổ → `Edusoft.SCH.KX05._02.uctF009_InBaiHocCBGD`
 - `K81` Kế hoạch/ Thông tin nhóm học phần/ In kế hoạch CTĐTTH năm sau gán CBGD → `Edusoft.SCH.Report.K4107` (Param1=isInCoCBGD)
 - `K8_13` Kế hoạch/ Thông tin nhóm học phần/ KT phân công không đủ số tiết MH → `Edusoft.SCH.Report.F004_PhanCongGiangDay`
-- `K92.04` Kế hoạch/ Thông tin nhóm học phần/ Nhóm tổ không xét trùng TKB → `Edusoft.SCH.KK1._1._01.uct_F005`
+- `K92.04` Kế hoạch/ Thông tin nhóm học phần/ Nhóm tổ không xét trùng TKB → `Edusoft.SCH.KK1._1._01.uct_F005` – màn hình: VIEWSETTRUNGTKBCHOCUMTIET
 - `K93.06` Kế hoạch/ Thông tin nhóm học phần/ Nhóm tổ xếp TKB song song → `Edusoft.SCH.KX04._05.uctF001`
 - `K8.50` Kế hoạch/ Thông tin nhóm học phần/ Nhập bài học nhóm tổ → `Edusoft.SCH.KX05._02.uctF008_NhapBaiHocCBGD`
 - `K8_14` Kế hoạch/ Thông tin nhóm học phần/ Nhập ký hiệu đặc thù nhóm học phần → `Edusoft.SCH.KX05._02.uctF005_EditMHDT`
 - `K8_16` Kế hoạch/ Thông tin nhóm học phần/ Nhập phần trăm điểm lớp môn học → `Edusoft.SCH.KX05._02.uctF006_NhapPhanTramDiemLopMH`
-- `K81_4` Kế hoạch/ Thông tin nhóm học phần/ Phân công CBGD → `Edusoft.SCH.KX05._02.uctF001` (Param1=-6105296232703279084)
+- `K81_4` Kế hoạch/ Thông tin nhóm học phần/ Phân công CBGD → `Edusoft.SCH.KX05._02.uctF001` (Param1=-6105296232703279084) – màn hình (đoán theo tên): DSNHOMMHXEPTKB_PHANCONGCBGD, DSNHOMMHXEPTKB_PHANCONGCBGD_BCVT
 - `K8.70` Kế hoạch/ Thông tin nhóm học phần/ Sửa sĩ số sinh viên tính khối lượng
-- `K8.12` Kế hoạch/ Thông tin nhóm học phần/ Thời hạn đóng học phí của nhóm → `Edusoft.SCH.KK1._1._01.uct_F006`
+- `K8.12` Kế hoạch/ Thông tin nhóm học phần/ Thời hạn đóng học phí của nhóm → `Edusoft.SCH.KK1._1._01.uct_F006` – màn hình (đoán theo tên): K812
 - `K.11.11` Kế hoạch/ Thông tin nhóm học phần/ Xem thông tin chi tiết giảng dạy → `Edusoft.SCH.KX07._01.uct_F016_XuatTTTongHopGiangDay` (Param1=CHITIET)
 - `K.11.10` Kế hoạch/ Thông tin nhóm học phần/ Xem thông tin tổng hợp giảng dạy → `Edusoft.SCH.KX07._01.uct_F016_XuatTTTongHopGiangDay`
 - `K8_20` Kế hoạch/ Thông tin nhóm học phần/ Định nghĩa đợt học
@@ -211,7 +211,7 @@
 - `K8_20_02` Kế hoạch/ Thông tin nhóm học phần/ Định nghĩa đợt học/ Gán đợt học cho nhóm tổ → `Edusoft.SCH.KX05._02.uctF010_GanDotHocChoNhomTo`
 - `K05` Kế hoạch/ Thông tin viên chức
 - `K04` Kế hoạch/ Thông tin viên chức/ Danh mục viên chức
-- `K054` Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ → `Edusoft.Base.UCT.UCNhanVienHK` (Param1=-4974647039825721667)
+- `K054` Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ → `Edusoft.Base.UCT.UCNhanVienHK` (Param1=-4974647039825721667) – màn hình: KPHHK
 - `K056` Kế hoạch/ Thông tin viên chức/ Hợp đồng giảng dạy
 - `K056.01` Kế hoạch/ Thông tin viên chức/ Hợp đồng giảng dạy/ Danh sách hợp đồng giảng dạy → `Edusoft.TPM.K04.F001_HopDongGiangDay`
 - `K056.02` Kế hoạch/ Thông tin viên chức/ Hợp đồng giảng dạy/ Thanh toán hợp đồng giảng dạy → `Edusoft.TPM.K04.F002_ThanhLyHopDongGD`
@@ -241,33 +241,33 @@
 - `K_109` Kế hoạch/ Thời khóa biểu/ Chỉnh định
 - `K_108` Kế hoạch/ Thời khóa biểu/ Chỉnh định/ Hệ số ưu tiên xếp TKB tự động → `Edusoft.SCH.KX07._03.Uct_F002`
 - `K.103` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu
-- `K.103.01` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế CBGD → `Edusoft.SCH.KX07._02.uctF001`
+- `K.103.01` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế CBGD → `Edusoft.SCH.KX07._02.uctF001` – màn hình: VIEWCHONNVHK
 - `K.103.02` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế phòng → `Edusoft.SCH.KX07._02.uctF002`
 - `K.103.05` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Tối ưu phòng & SS đã đăng ký → `Edusoft.SCH.KX07._02.uctF005`
 - `K.103.04` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Tối ưu sử dụng phòng → `Edusoft.SCH.KX07._02.uctF004`
 - `K.103.03` Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Xử lý TKB trùng ngày nghỉ lễ → `Edusoft.SCH.KX07._02.uctF003`
 - `K.108` Kế hoạch/ Thời khóa biểu/ Import từ file
-- `K.110` Kế hoạch/ Thời khóa biểu/ Import từ file/ Cập nhật thời khóa biểu → `Edusoft.SCH.KX07._01.uctF004`
-- `K.106` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học & TKB → `Edusoft.SCH.KX07._01.uct_F005` (Param1=1)
-- `K.104` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học không TKB → `Edusoft.SCH.KX07._01.uct_F005` (Param1=0)
-- `K.112` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import tổ hợp → `Edusoft.SCH.KX07._01.uct_F005` (Param1=2)
+- `K.110` Kế hoạch/ Thời khóa biểu/ Import từ file/ Cập nhật thời khóa biểu → `Edusoft.SCH.KX07._01.uctF004` – màn hình: IMPORT_TKB, IMPORTTOHOCTKBCOPY
+- `K.106` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học & TKB → `Edusoft.SCH.KX07._01.uct_F005` (Param1=1) – màn hình: IMPORT_TKB, IMPORTTOHOC, IMPORTTOHOCTKB, IMP_CAPNHATPHONGTKB, VIEWRESULTIMPORT
+- `K.104` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học không TKB → `Edusoft.SCH.KX07._01.uct_F005` (Param1=0) – màn hình: IMPORT_TKB, IMPORTTOHOC, IMPORTTOHOCTKB, IMP_CAPNHATPHONGTKB, VIEWRESULTIMPORT
+- `K.112` Kế hoạch/ Thời khóa biểu/ Import từ file/ Import tổ hợp → `Edusoft.SCH.KX07._01.uct_F005` (Param1=2) – màn hình: IMPORT_TKB, IMPORTTOHOC, IMPORTTOHOCTKB, IMP_CAPNHATPHONGTKB, VIEWRESULTIMPORT
 - `K.111` Kế hoạch/ Thời khóa biểu/ Khóa thời TKB theo lớp → `Edusoft.SCH.KX07._04.uctF001_LockTKBTheoLop`
 - `K.114` Kế hoạch/ Thời khóa biểu/ Khóa TKB theo nhóm tổ → `Edusoft.RMS.M03._02.F003_CamDKMHTheoNhomMH` (Param1=IsKhoa)
 - `K.13` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu
 - `K13.03` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng học kỳ → `Edusoft.SCH.KK1._1._02.uctF001`
-- `K.13.01` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần → `Edusoft.SCH.KK1._1._01.F001`
+- `K.13.01` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần → `Edusoft.SCH.KK1._1._01.F001` – màn hình: VIEWCHONNVHK
 - `K.13.02` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần - nhiều đối tượng
 - `K1304` Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Lý do không xếp được TKB → `Edusoft.SCH.KX07._01.uct_F006`
 - `K.107` Kế hoạch/ Thời khóa biểu/ Xóa thời khóa biểu → `Edusoft.SCH.KX07._03.Uct_F001`
 - `K.101` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu
-- `K.101.3` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Công bố TKB  lên web(dạng cây) → `AQViewers.Settings.UC_SettingsTool1`
+- `K.101.3` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Công bố TKB  lên web(dạng cây) → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `K.101.4` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Công bố TKB lên web (dạng danh sách) → `Edusoft.SCH.KX07._01.uct_F013_CongBoTKB`
 - `K.101.5` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ DS dự báo SV sẽ ĐK học phần → `Edusoft.SCH.Report.F001_DSDuBaoSVSeDKHocPhan`
 - `K.101.6` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Không công bố TKB lên web → `Edusoft.SCH.KX07._01.uct_F013_CongBoTKB` (Param1=ISKHONGCONGBO)
 - `K.102` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Xếp thời khóa biểu thủ công → `Edusoft.SCH.KX07._01.uct_F002` (Param1=uct_F003)
 - `K.105` Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Xếp thời khóa biểu tự động → `Edusoft.SCH.KX07._01.uct_F002` (Param1=XepTKBTuDong)
 - `K.113` Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu hạn chế cụm tiết
-- `K.113.1` Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu hạn chế cụm tiết/ Danh mục cụm tiết hạn chế → `Edusoft.SCH.KX10.uct_F002_DMHanCheCTXTKB`
+- `K.113.1` Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu hạn chế cụm tiết/ Danh mục cụm tiết hạn chế → `Edusoft.SCH.KX10.uct_F002_DMHanCheCTXTKB` – màn hình (đoán theo tên): ViewChonDMHanCheXTKB
 - `K.113.2` Kế hoạch/ Thời khóa biểu/ Xếp thời khóa biểu hạn chế cụm tiết/ Xếp TKB tự động → `Edusoft.SCH.KX07._01.uct_F002` (Param1=XepTKBTuDong)
 - `K.115` Kế hoạch/ Thời khóa biểu/ Đóng môn học → `Edusoft.SCH.KX10.F003_DongMH`
 - `K9` Kế hoạch/ Tài nguyên và ràng buộc
@@ -276,13 +276,13 @@
 - `K93.03` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu cán bộ bận giờ → `Edusoft.SCH.KX06._01.uctF001`
 - `K93.05` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu lớp bận giờ → `Edusoft.SCH.KX06._03.uctF001`
 - `K93.04` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý dữ liệu phòng bận giờ → `Edusoft.SCH.KX06._02.uctF001`
-- `K93.02` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý ngày nghỉ chung → `Edusoft.SCH.KX03._01.uctF003`
+- `K93.02` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý ngày nghỉ chung → `Edusoft.SCH.KX03._01.uctF003` – màn hình: VIEWNGAYNGHI
 - `K93.01` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý tiết nghỉ chung → `Edusoft.SCH.KX03._01.uctF001`
 - `K93.05.1` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Thứ tự học các môn của lớp xếp TKB theo ngày → `Edusoft.SCH.KX05._02.uctF003_ThuTuXepMHLop`
 - `K93.07` Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Tiết bắt đầu xếp TKB → `Edusoft.EPM.L41._08.F003_GioiHanTietBatDauThi` (Param1=1)
 - `K92` Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB
 - `K92.05` Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Ngày ưu tiên tổ hợp xếp TKB theo ngày → `Edusoft.SCH.KX05._04.uctF003_NgayUuTienToHop`
-- `K92.01` Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Phòng và buổi học ưu tiên lớp → `Edusoft.SCH.KX04._02.uctF001`
+- `K92.01` Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Phòng và buổi học ưu tiên lớp → `Edusoft.SCH.KX04._02.uctF001` – màn hình: VIEWPHONGBUOIUUTIEN, TREEPHONGBUOIUUTIEN
 - `K92.03` Kế hoạch/ Tài nguyên và ràng buộc/ Tài nguyên xếp TKB/ Phòng ưu tiên nhóm học → `Edusoft.SCH.KX05._04.uctF002`
 - `KHD` Kế hoạch/ Xem file hướng dẫn
 - `khd2` Kế hoạch/ Xem file hướng dẫn/ AQ10.10 → `Edusoft.STM._09.AQ_10_FileHuongDan` (Param1=-4691994746435452815)

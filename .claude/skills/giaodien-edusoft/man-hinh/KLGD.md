@@ -13,14 +13,14 @@
 - `G3.03.7` Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Xem sửa đơn vị thanh toán theo nhóm MH → `Edusoft.DCM.G3._02.F03_GanDVBMThayThe`
 - `G3.05` Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy
 - `G3.02.2` Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ CBGD dạy thay thế, dạy chung, dạy dùm → `Edusoft.DCM.G3._04.F01_CBGDThayThe`
-- `G3.05.1` Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy → `Edusoft.DCM.G3._05.F01_HieuChinhKLGD`
+- `G3.05.1` Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh khối lượng giảng dạy → `Edusoft.DCM.G3._05.F01_HieuChinhKLGD` – màn hình (đoán theo tên): GKLHC, G3.05.1
 - `G3.05.3` Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ Hiệu chỉnh loại ngoài giờ của thời khóa biểu → `Edusoft.DCM.G3._05.F03_HieuChinhLoaiNgoaiGioTKB`
 - `G3.08` Khối lượng/ Chuẩn bị dữ liệu/ In danh sách mời giảng
 - `G3.08.2` Khối lượng/ Chuẩn bị dữ liệu/ In danh sách mời giảng/ In danh sách mời giảng → `Edusoft.DCM.G4._06.F01_InTongHopThuLaoKhoaTheoDot`
 - `G3.08.1` Khối lượng/ Chuẩn bị dữ liệu/ In danh sách mời giảng/ In danh sách mời giảng
 - `G3.07` Khối lượng/ Chuẩn bị dữ liệu/ Không tính khối lượng
 - `G3.07.2` Khối lượng/ Chuẩn bị dữ liệu/ Không tính khối lượng/ Nhóm tổ không tính khối lượng → `Edusoft.RMS.M03._02.F003_CamDKMHTheoNhomMH` (Param1=ISKGTINHKL)
-- `G3.07.1` Khối lượng/ Chuẩn bị dữ liệu/ Không tính khối lượng/ Đối tượng không tính khối lượng → `AQViewers.Settings.UC_SettingsTool1`
+- `G3.07.1` Khối lượng/ Chuẩn bị dữ liệu/ Không tính khối lượng/ Đối tượng không tính khối lượng → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `G3.04` Khối lượng/ Chuẩn bị dữ liệu/ Khối lượng giảng dạy khác
 - `G3.04.2` Khối lượng/ Chuẩn bị dữ liệu/ Khối lượng giảng dạy khác/ Gán đợt tính khối lượng
 - `G3.04.1` Khối lượng/ Chuẩn bị dữ liệu/ Khối lượng giảng dạy khác/ Nhập dạng chi tiết → `Edusoft.DCM.G3._04.F02_NhapKhoiLuongGiangDayKhac` (Param1=-5402906174338363399)
@@ -32,7 +32,7 @@
 - `G3.01` Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt
 - `G3.01.1` Khối lượng/ Chuẩn bị dữ liệu/ Định nghĩa đợt/ Định nghĩa đợt tính khối lượng → `Edusoft.DCM.G3._02.F01_DNDotTinhKLGD`
 - `G1` Khối lượng/ Khai báo thông số
-- `G1.18` Khối lượng/ Khai báo thông số/ Bậc thang đơn giá vượt giờ → `Edusoft.DCM.UCT.UCT_NhapBTDonGiaVuotGio`
+- `G1.18` Khối lượng/ Khai báo thông số/ Bậc thang đơn giá vượt giờ → `Edusoft.DCM.UCT.UCT_NhapBTDonGiaVuotGio` – màn hình (đoán theo tên): GBTDonGiaVuotGio
 - `G1.12` Khối lượng/ Khai báo thông số/ Chính sách giờ nghĩa vụ
 - `G1.12.2` Khối lượng/ Khai báo thông số/ Chính sách giờ nghĩa vụ/ Nhập qui đổi định mức → `Edusoft.DCM.UCT.UCT_NhapQuiDoiDM`
 - `G1.12.1` Khối lượng/ Khai báo thông số/ Chính sách giờ nghĩa vụ/ Nhập số giờ nghĩa vụ → `Edusoft.DCM.UCT.UCT_NhapLGCHK`
@@ -44,7 +44,7 @@
 - `G1.10.1` Khối lượng/ Khai báo thông số/ Công thức loại hình/ Định nghĩa loại hình học kỳ → `Edusoft.DCM.G1._01.F09_HSLoaiHinhHK`
 - `G1.10.3` Khối lượng/ Khai báo thông số/ Công thức loại hình/ Đối tượng và hệ số loại hình → `Edusoft.DCM.G1._09.F02_GanHSLoaiHinh`
 - `G1.15` Khối lượng/ Khai báo thông số/ Công thức tính các loại hệ số
-- `G1.15.1` Khối lượng/ Khai báo thông số/ Công thức tính các loại hệ số/ Định nghĩa công thức các loại hệ số → `AQViewers.Settings.UC_SettingsTool1`
+- `G1.15.1` Khối lượng/ Khai báo thông số/ Công thức tính các loại hệ số/ Định nghĩa công thức các loại hệ số → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `G1.13` Khối lượng/ Khai báo thông số/ Danh sách CBGD
 - `G1.13.5` Khối lượng/ Khai báo thông số/ Danh sách CBGD/ Danh mục chức vụ
 - `G1.13.4` Khối lượng/ Khai báo thông số/ Danh sách CBGD/ Danh mục ngạch
@@ -81,7 +81,7 @@
 - `G1.23` Khối lượng/ Khai báo thông số/ Hệ số theo phòng học
 - `G1.23.1` Khối lượng/ Khai báo thông số/ Hệ số theo phòng học/ Mức hệ số phòng học học kỳ → `Edusoft.DCM.UCT.UCT_NhapMucPHNNHK`
 - `G1.23.2` Khối lượng/ Khai báo thông số/ Hệ số theo phòng học/ Phòng và mức hệ số phòng → `Edusoft.DCM.G1._23.UCT_NhapPHHSPH`
-- `G1.17` Khối lượng/ Khai báo thông số/ Hệ số theo tổng tiết thực dạy → `Edusoft.DCM.UCT.UCT_NhapHSThucDay`
+- `G1.17` Khối lượng/ Khai báo thông số/ Hệ số theo tổng tiết thực dạy → `Edusoft.DCM.UCT.UCT_NhapHSThucDay` – màn hình (đoán theo tên): GBTHSThucDay
 - `G1.22` Khối lượng/ Khai báo thông số/ Hệ số tổ học
 - `G1.22.1` Khối lượng/ Khai báo thông số/ Hệ số tổ học/ Mức hệ số tổ học → `Edusoft.DCM.UCT.UCT_NhapMucToHocNNHK`
 - `G1.22.2` Khối lượng/ Khai báo thông số/ Hệ số tổ học/ Qui định mức hệ số cho tổ học → `Edusoft.DCM.G1._22.UCT_NhapToHocHSToHoc`
@@ -99,20 +99,20 @@
 - `G1.24` Khối lượng/ Khai báo thông số/ Khối kiến thức môn học
 - `G1.11.2` Khối lượng/ Khai báo thông số/ Khối kiến thức môn học/ Danh mục khối kiến thức
 - `G1.24.2` Khối lượng/ Khai báo thông số/ Khối kiến thức môn học/ Gán khối kiến thức cho MH → `Edusoft.DCM.G1._24.F001_GanKhoiKTChoMonHoc`
-- `G1.16` Khối lượng/ Khai báo thông số/ Mức hưởng theo hệ đào tạo → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-4821191500114104435)
+- `G1.16` Khối lượng/ Khai báo thông số/ Mức hưởng theo hệ đào tạo → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-4821191500114104435) – màn hình (đoán theo tên): GMucHuongHeDT
 - `G1.08` Khối lượng/ Khai báo thông số/ Đơn giá lớp đông
 - `G1.08.1` Khối lượng/ Khai báo thông số/ Đơn giá lớp đông/ Bậc thang đơn giá lớp đông → `Edusoft.DCM.G1.F03_HSBacThangHK`
 - `G1.08.2` Khối lượng/ Khai báo thông số/ Đơn giá lớp đông/ Đối tượng và mức bậc thang → `Edusoft.DCM.G1._08.F02_GanHSBacThang`
 - `GBB` Khối lượng/ Khai thác báo biểu
 - `G6` Khối lượng/ Quản lý chi phí đi xa
-- `G6.2` Khối lượng/ Quản lý chi phí đi xa/ Chốt và tính chi phí đi xa → `Edusoft.DCM.G5.F002_ChotTinhChiPhiDiXa`
+- `G6.2` Khối lượng/ Quản lý chi phí đi xa/ Chốt và tính chi phí đi xa → `Edusoft.DCM.G5.F002_ChotTinhChiPhiDiXa` – màn hình (đoán theo tên): GChotKLDXHK
 - `G6.3` Khối lượng/ Quản lý chi phí đi xa/ Hiệu chỉnh chi phí đã tính → `Edusoft.DCM.G5.F003_HieuChinhChiPhiDaTinh`
 - `G6.4` Khối lượng/ Quản lý chi phí đi xa/ In thanh toán chi phí đi xa → `Edusoft.DCM.Report.UCT_InThanhToanChiPhiDiLai`
 - `G6.1` Khối lượng/ Quản lý chi phí đi xa/ Định nghĩa đơn giá theo địa phương → `Edusoft.DCM.G5.F001_DinhNghiaDonGiaDP`
 - `GQT` Khối lượng/ Quản trị phân hệ
-- `GBS` Khối lượng/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `GQT3` Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD)
-- `GQT2` Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD)
+- `GBS` Khối lượng/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `GQT3` Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `GQT2` Khối lượng/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `GQT0` Khối lượng/ Quản trị phân hệ/ Quản lý danh mục
 - `G5` Khối lượng/ Thanh toán khối lượng
 - `G5.2` Khối lượng/ Thanh toán khối lượng/ Danh sách phiếu đã thanh toán → `Edusoft.DCM.G4._02.F10_XemThanhToanKL`

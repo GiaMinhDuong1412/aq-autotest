@@ -3,7 +3,7 @@
 ## Menu (đường dẫn → lớp màn hình)
 
 - `ZA` Khảo sát đánh giá/ An toàn dữ liệu
-- `ZA.02` Khảo sát đánh giá/ An toàn dữ liệu/ Cấm xem thông tin chưa khảo sát đánh giá → `Edusoft.ZMS.ZA._01.F002_CamXemTTChuaKSDG`
+- `ZA.02` Khảo sát đánh giá/ An toàn dữ liệu/ Cấm xem thông tin chưa khảo sát đánh giá → `Edusoft.ZMS.ZA._01.F002_CamXemTTChuaKSDG` – màn hình (đoán theo tên): ViewCamXemTTChuaKSDG
 - `KFDG` Khảo sát đánh giá/ An toàn dữ liệu/ Khóa form đánh giá → `Edusoft.ZMS.ZA._01.F001_KhoaFormDanhGia`
 - `Z1` Khảo sát đánh giá/ Chuẩn bị form
 - `Z1.02` Khảo sát đánh giá/ Chuẩn bị form/ Ngoại lệ
@@ -11,8 +11,8 @@
 - `Z1.01` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi
 - `Z1.01.01` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục form đánh giá → `Edusoft.ZMS.Z1._01.F001_DanhMucFormDG`
 - `Z1.01.02` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục thang đo đánh giá → `Edusoft.ZMS.Z1._01.F002_DanhMucBoTraLoi`
-- `Z1.01.04` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi → `Edusoft.ZMS.Z1._01.F004_DanhSachCauHoi`
-- `Z1.01.03` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi → `Edusoft.ZMS.Z1._01.F003_NhomCauHoi`
+- `Z1.01.04` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi → `Edusoft.ZMS.Z1._01.F004_DanhSachCauHoi` – màn hình (đoán theo tên): ZCauHoi, IMPORT_CAUHOI
+- `Z1.01.03` Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Nhóm câu hỏi → `Edusoft.ZMS.Z1._01.F003_NhomCauHoi` – màn hình (đoán theo tên): ZNhomCauHoi
 - `Z3` Khảo sát đánh giá/ Danh sách đánh giá
 - `Z3.03` Khảo sát đánh giá/ Danh sách đánh giá/ Kiểm tra danh sách
 - `Z3.03.03` Khảo sát đánh giá/ Danh sách đánh giá/ Kiểm tra danh sách/ DS đáp viên thiếu chưa tạo trong HK → `Edusoft.ZMS.Z3._03.F003_InDSDapVienChuaTaoHK`
@@ -31,7 +31,7 @@
 - `Z0` Khảo sát đánh giá/ Phân quyền form đánh giá theo HK
 - `Z0.01` Khảo sát đánh giá/ Phân quyền form đánh giá theo HK/ Phân quyền khai thác form đánh giá theo học kỳ
 - `ZQT` Khảo sát đánh giá/ Quản trị phân hệ
-- `ZQT0` Khảo sát đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KSDG)
+- `ZQT0` Khảo sát đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KSDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `Z4` Khảo sát đánh giá/ Trả lời đánh giá
 - `Z4.03` Khảo sát đánh giá/ Trả lời đánh giá/ Kiểm tra trả lời
 - `Z4.03.01` Khảo sát đánh giá/ Trả lời đánh giá/ Kiểm tra trả lời/ In danh sách đáp viên chưa trả lời

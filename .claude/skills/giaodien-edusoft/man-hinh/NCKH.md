@@ -6,13 +6,13 @@
 - `O56` NC khoa học/ Bài báo kỷ yếu
 - `O56.1` NC khoa học/ Bài báo kỷ yếu/ Danh mục loại bài báo kỷ yếu → `Edusoft.SRT.O8._01.F005_DanhMucBaiBao` (Param1=1)
 - `O56.2` NC khoa học/ Bài báo kỷ yếu/ Danh sách bài báo đăng kỷ yếu → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=1)
-- `O56.3` NC khoa học/ Bài báo kỷ yếu/ Duyệt bài báo kỷ yếu → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=1)
+- `O56.3` NC khoa học/ Bài báo kỷ yếu/ Duyệt bài báo kỷ yếu → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=1) – màn hình (đoán theo tên): VIEW_DUYETKYYEU
 - `O56.4` NC khoa học/ Bài báo kỷ yếu/ Tổng hợp kỷ yếu đăng trong năm → `Edusoft.SRT.O8._01.F002_BaoCaoTapChi` (Param1=-5235679084776412330)
 - `O55` NC khoa học/ Bài báo tạp chí
 - `O8.03` NC khoa học/ Bài báo tạp chí/ Báo cáo tạp chí theo viên chức → `Edusoft.SRT.O8._01.F003_BaoCaoTapChiTheoVC`
 - `O55.1` NC khoa học/ Bài báo tạp chí/ Danh mục loại bài báo tạp chí → `Edusoft.SRT.O8._01.F005_DanhMucBaiBao` (Param1=0)
 - `O55.2` NC khoa học/ Bài báo tạp chí/ Danh sách bài báo tạp chí → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=0)
-- `O55.3` NC khoa học/ Bài báo tạp chí/ Duyệt bài báo tạp chí → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=0)
+- `O55.3` NC khoa học/ Bài báo tạp chí/ Duyệt bài báo tạp chí → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=0) – màn hình (đoán theo tên): VIEW_DUYETBAIBAO
 - `O8.02` NC khoa học/ Bài báo tạp chí/ Tổng hợp bài báo đăng trong năm → `Edusoft.SRT.O8._01.F002_BaoCaoTapChi` (Param1=-7273839160561494446)
 - `O18` NC khoa học/ Bàn giao đề tài
 - `O18.01` NC khoa học/ Bàn giao đề tài/ Danh sách đề tài bàn giao → `Edusoft.SRT.O18.F001_DeTaiBanGiao`
@@ -33,9 +33,9 @@
 - `O19` NC khoa học/ Duyệt lý lịch nhập online
 - `O19.03` NC khoa học/ Duyệt lý lịch nhập online/ Duyệt quá trình công tác viên chức → `Edusoft.SRT.O19.F12_DuyetQuaTrinhDaoTao`
 - `O19.01` NC khoa học/ Duyệt lý lịch nhập online/ Duyệt trình độ chuyên môn viên chức → `Edusoft.SRT.O19.F010_DuyetTrinhDoChuyenMon`
-- `O19.02` NC khoa học/ Duyệt lý lịch nhập online/ Duyệt văn bằng chứng chỉ viên chức → `Edusoft.SRT.O19.F11_DuyetVanBangCC`
+- `O19.02` NC khoa học/ Duyệt lý lịch nhập online/ Duyệt văn bằng chứng chỉ viên chức → `Edusoft.SRT.O19.F11_DuyetVanBangCC` – màn hình (đoán theo tên): View_DuyetVanBangCC
 - `O9` NC khoa học/ Dự thi đề tài
-- `O9.01` NC khoa học/ Dự thi đề tài/ Đề tài dự thi → `Edusoft.SRT.O9._01.F001_DuThiDeTai`
+- `O9.01` NC khoa học/ Dự thi đề tài/ Đề tài dự thi → `Edusoft.SRT.O9._01.F001_DuThiDeTai` – màn hình (đoán theo tên): ViewDuThiDeTai
 - `O50` NC khoa học/ Giáo trình/Sách/Tự điển
 - `O16.00` NC khoa học/ Giáo trình/Sách/Tự điển/ Danh mục phân loại sách → `Edusoft.SRT.O19.F009_ODMPLSach`
 - `O16.08` NC khoa học/ Giáo trình/Sách/Tự điển/ Duyệt sách GV nhập online → `Edusoft.SRT.O19.F007_DuyetSachOnline`
@@ -55,12 +55,12 @@
 - `O14.03.01` NC khoa học/ Khối lượng NCKH/ Tính khối lượng/ Tính khối lượng → `Edusoft.SRT.O14.F004_TinhKLNCKH`
 - `O14.03.03` NC khoa học/ Khối lượng NCKH/ Tính khối lượng/ Xem kết quả sau khi tính → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6690042670858834432)
 - `O14.01` NC khoa học/ Khối lượng NCKH/ Định nghĩa định mức
-- `O14.01.01` NC khoa học/ Khối lượng NCKH/ Định nghĩa định mức/ Chuẩn định mức → `Edusoft.SRT.O14.F001_DinhNghiaChuanDinhMuc`
+- `O14.01.01` NC khoa học/ Khối lượng NCKH/ Định nghĩa định mức/ Chuẩn định mức → `Edusoft.SRT.O14.F001_DinhNghiaChuanDinhMuc` – màn hình (đoán theo tên): GCHUANDM
 - `O14.01.02` NC khoa học/ Khối lượng NCKH/ Định nghĩa định mức/ Phần trăm định mức theo chức vụ → `Edusoft.SRT.O14.F002_PhanTramDinhMuc`
 - `O16` NC khoa học/ Lý lịch khoa học
 - `O16.06` NC khoa học/ Lý lịch khoa học/ In lý lịch khoa học của giảng viên → `Edusoft.SRT.O19.F005_InLyLichKhoaHocCuaGV_DHNT`
 - `O16.05` NC khoa học/ Lý lịch khoa học/ In lý lịch khoa học của giảng viên → `Edusoft.SRT.Report.F008_InLyLichKhoaHocCuaGV`
-- `O16.03` NC khoa học/ Lý lịch khoa học/ Thông tin giải thưởng đề tài → `Edusoft.SRT.O19.F003_GiaiThuongLyLichKH`
+- `O16.03` NC khoa học/ Lý lịch khoa học/ Thông tin giải thưởng đề tài → `Edusoft.SRT.O19.F003_GiaiThuongLyLichKH` – màn hình (đoán theo tên): ViewGiaiThuongLyLichKH
 - `O17` NC khoa học/ NCKH của sinh viên/ học viên
 - `O17.04.01` NC khoa học/ NCKH của sinh viên/ học viên/ Danh mục cấp giải thưởng
 - `O17.04` NC khoa học/ NCKH của sinh viên/ học viên/ Danh mục loại giải thưởng
@@ -70,12 +70,12 @@
 - `O17.06` NC khoa học/ NCKH của sinh viên/ học viên/ Kết quả giải thưởng đề tài
 - `O17.01` NC khoa học/ NCKH của sinh viên/ học viên/ Nhập hội đồng xét giải thưởng → `Edusoft.SRT.O17.F001_NhapHDXetGiaiThuong`
 - `O17.02` NC khoa học/ NCKH của sinh viên/ học viên/ Nhập kết quả và HĐ xét thưởng → `Edusoft.SRT.O17.F002_NhapDiemXetGiaiThuong`
-- `O2.08` NC khoa học/ NCKH của sinh viên/ học viên/ Tham gia đào tạo trình độ tiến sĩ → `Edusoft.SRT.O2.F003_DangKyDeTaiSV` (Param1=-8501459488696523274)
+- `O2.08` NC khoa học/ NCKH của sinh viên/ học viên/ Tham gia đào tạo trình độ tiến sĩ → `Edusoft.SRT.O2.F003_DangKyDeTaiSV` (Param1=-8501459488696523274) – màn hình (đoán theo tên): ViewGVTHDeTaiNCKH
 - `O2.07` NC khoa học/ NCKH của sinh viên/ học viên/ Đề tài sinh viên dự thưởng → `Edusoft.SRT.O2.F003_DangKyDeTaiSV` (Param1=-5517868070721476510)
 - `O54` NC khoa học/ Nghiên cứu khoa học khác
 - `O54.1` NC khoa học/ Nghiên cứu khoa học khác/ Danh mục loại NCKH khác → `Edusoft.SRT.O8._01.F005_DanhMucBaiBao` (Param1=8)
 - `O54.2` NC khoa học/ Nghiên cứu khoa học khác/ Duyệt loại NCKH khác → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=8)
-- `O8.09` NC khoa học/ Nghiên cứu khoa học khác/ Nghiên cứu khoa học khác → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=8)
+- `O8.09` NC khoa học/ Nghiên cứu khoa học khác/ Nghiên cứu khoa học khác → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=8) – màn hình (đoán theo tên): ViewNCKHKhac
 - `O13` NC khoa học/ Nhập kết quả NCKH
 - `O13.01` NC khoa học/ Nhập kết quả NCKH/ Danh mục loại nhiệm vụ
 - `O13.02` NC khoa học/ Nhập kết quả NCKH/ Danh mục nhiệm vụ
@@ -88,29 +88,29 @@
 - `O12` NC khoa học/ Quản lý hồ sơ đề tài
 - `O12.02` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách file word mẫu
 - `O12.02.01` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách file word mẫu/ Đề tài khoa học sinh viên → `Edusoft.SRT.O12.F002_InFileWordDTKHSV`
-- `O12.01` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách hồ sơ → `Edusoft.SRT.O12.F001_DanhSachHoSoNCKH`
+- `O12.01` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách hồ sơ → `Edusoft.SRT.O12.F001_DanhSachHoSoNCKH` – màn hình (đoán theo tên): X2010.02.HS
 - `OQT` NC khoa học/ Quản trị phân hệ
-- `OQT3` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH)
-- `OQT2` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH)
+- `OQT3` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `OQT2` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `OQT1` NC khoa học/ Quản trị phân hệ/ Phân quyền phân hệ
 - `OQT0` NC khoa học/ Quản trị phân hệ/ Quản lý danh mục
 - `O4` NC khoa học/ Thẩm định kinh phí
 - `O4.01` NC khoa học/ Thẩm định kinh phí/ Nhập hội đồng thẩm định → `Edusoft.SRT.O4.F001_NhapHoiDongThamDinhKinhPhiDeTai`
-- `O4.02` NC khoa học/ Thẩm định kinh phí/ Thẩm định kinh phí đề tài → `Edusoft.SRT.O4.F002_ThamDinhKinhPhiDeTai`
+- `O4.02` NC khoa học/ Thẩm định kinh phí/ Thẩm định kinh phí đề tài → `Edusoft.SRT.O4.F002_ThamDinhKinhPhiDeTai` – màn hình (đoán theo tên): ViewOKPDeTaiNCKH
 - `O5` NC khoa học/ Triển khai đề tài
-- `O5.02` NC khoa học/ Triển khai đề tài/ Báo cáo tiến độ thực hiện → `Edusoft.SRT.O5.F002_LuuBaoCaoTienDoThucHien`
+- `O5.02` NC khoa học/ Triển khai đề tài/ Báo cáo tiến độ thực hiện → `Edusoft.SRT.O5.F002_LuuBaoCaoTienDoThucHien` – màn hình (đoán theo tên): ViewOBCTienDoDeTai
 - `O5.05` NC khoa học/ Triển khai đề tài/ Duyệt điểm báo cáo GV nhập online → `Edusoft.SRT.O5.F005_DuyetBCTienDoDeTai`
 - `O5.01` NC khoa học/ Triển khai đề tài/ Hợp đồng triển khai đề tài → `Edusoft.SRT.O5.F001_LapHopDongTrienKhaiDeTai`
 - `O5.03` NC khoa học/ Triển khai đề tài/ In báo cáo tổng hợp tiến độ thực hiện → `Edusoft.SRT.O5.F003_InBaoCaoTongHopTienDoThucHienDeTai`
 - `O5.04` NC khoa học/ Triển khai đề tài/ Nhập nhắc nhở báo cáo → `Edusoft.SRT.O5.F004_NhacNhoBaoCaoTienDo`
 - `O20` NC khoa học/ Tác phẩm nghệ thuật
 - `O20.2` NC khoa học/ Tác phẩm nghệ thuật/ Danh mục tác phẩm nghệ thuật → `Edusoft.SRT.O8._01.F005_DanhMucBaiBao` (Param1=6)
-- `O20.3` NC khoa học/ Tác phẩm nghệ thuật/ Duyệt tác phẩm nghệ thuật → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=6)
-- `O8.07` NC khoa học/ Tác phẩm nghệ thuật/ Tác phẩm nghệ thuật → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=6)
+- `O20.3` NC khoa học/ Tác phẩm nghệ thuật/ Duyệt tác phẩm nghệ thuật → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=6) – màn hình (đoán theo tên): VIEW_DUYETTACPHAMNT
+- `O8.07` NC khoa học/ Tác phẩm nghệ thuật/ Tác phẩm nghệ thuật → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=6) – màn hình (đoán theo tên): ViewTapChiNgheThuat, ViewDangTacPhamNgheThuat
 - `O52` NC khoa học/ Tư vấn thiết kế xây dựng
 - `O52.1` NC khoa học/ Tư vấn thiết kế xây dựng/ Danh mục loại tư vấn TKXD → `Edusoft.SRT.O8._01.F005_DanhMucBaiBao` (Param1=7)
 - `O52.2` NC khoa học/ Tư vấn thiết kế xây dựng/ Duyệt thiết kế xây dựng → `Edusoft.SRT.O8._01.F004_DuyetTapChiDeTai` (Param1=7)
-- `O8.08` NC khoa học/ Tư vấn thiết kế xây dựng/ Tư vấn giải pháp thiết kế xây dựng → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=7)
+- `O8.08` NC khoa học/ Tư vấn thiết kế xây dựng/ Tư vấn giải pháp thiết kế xây dựng → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=7) – màn hình (đoán theo tên): ViewTuVanGiaiPhapThietKe
 - `O8` NC khoa học/ Tạp chí/Hội thảo/Tọa đàm
 - `O8.06` NC khoa học/ Tạp chí/Hội thảo/Tọa đàm/ Bài viết hội thảo
 - `O8.06.02` NC khoa học/ Tạp chí/Hội thảo/Tọa đàm/ Bài viết hội thảo/ Danh sách bài viết hội thảo → `Edusoft.SRT.O8._01.F001_DangTapChi` (Param1=9)
@@ -142,8 +142,8 @@
 - `O2.05` NC khoa học/ Đề tài/nhiệm vụ/ Duyệt đề tài giảng viên nhập online → `Edusoft.SRT.O2.F005_DuyetDeTaiGV`
 - `O2.02` NC khoa học/ Đề tài/nhiệm vụ/ In bảng tổng hợp đăng ký đề tài → `Edusoft.SRT.O2.F002_TongHopDeTaiDangKy`
 - `O6` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài
-- `O6.04.01` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ Danh sách đề tài nghiệm thu → `Edusoft.SRT.O6._04.F001_NhapHoiDongNghiemThu`
-- `O6.04.04` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ In biên bản họp hội đồng nghiệm thu → `Edusoft.SRT.O6._04.F004_InBienBanHopHoiDongNghiemThu`
+- `O6.04.01` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ Danh sách đề tài nghiệm thu → `Edusoft.SRT.O6._04.F001_NhapHoiDongNghiemThu` – màn hình (đoán theo tên): ViewODiemNghiemThu
+- `O6.04.04` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ In biên bản họp hội đồng nghiệm thu → `Edusoft.SRT.O6._04.F004_InBienBanHopHoiDongNghiemThu` – màn hình (đoán theo tên): ViewInBienBanNghiemThu
 - `O6.04.05` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ In bảng tổng hợp kết quả xét duyệt
 - `06.05` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ In danh sách đề tài → `Edusoft.SRT.O6._05.F001_DanhSachDeTaiNghiemThu`
 - `O6.02` NC khoa học/ Đề tài/nhiệm vụ/ Nghiệm thu đề tài/ In đề tài chưa nhận đề nghị nghiệm thu → `Edusoft.SRT.Report.F002_DSDTDenHanNTChuaDeNghi`
@@ -174,13 +174,13 @@
 - `O1.10` NC khoa học/ Định nghĩa dữ liệu/ Danh mục ngạch
 - `O1.15` NC khoa học/ Định nghĩa dữ liệu/ Danh mục nhiệm vụ NCKH
 - `O1.14` NC khoa học/ Định nghĩa dữ liệu/ Danh mục phân loại nhiệm vụ NCKH
-- `O1.08` NC khoa học/ Định nghĩa dữ liệu/ Danh mục sinh viên → `Edusoft.SMS.S20.F000_DanhMucSinhVien`
+- `O1.08` NC khoa học/ Định nghĩa dữ liệu/ Danh mục sinh viên → `Edusoft.SMS.S20.F000_DanhMucSinhVien` – màn hình (đoán theo tên): SDMSV_, N12.10.14, View_DMSV, SDMSVDuThinh
 - `O1.16` NC khoa học/ Định nghĩa dữ liệu/ Danh mục vai trò nhiệm vụ
 - `O1.07` NC khoa học/ Định nghĩa dữ liệu/ Danh mục viên chức
 - `O1.06` NC khoa học/ Định nghĩa dữ liệu/ Danh mục xếp loại nghiệm thu đề tài
 - `O1.05` NC khoa học/ Định nghĩa dữ liệu/ Danh mục xếp loại xét duyệt đề tài
 - `O15.03` NC khoa học/ Định nghĩa dữ liệu/ Danh mục đơn vị ngoài trường
-- `O14.04` NC khoa học/ Định nghĩa dữ liệu/ ĐN năm tính khối lượng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6853992462430446125)
+- `O14.04` NC khoa học/ Định nghĩa dữ liệu/ ĐN năm tính khối lượng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6853992462430446125) – màn hình (đoán theo tên): ODSNamNCKH
 
 ## Màn hình (view) và lưới
 

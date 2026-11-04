@@ -300,7 +300,7 @@ def main():
                         thay.append(v)
             for lit in RE_LIT.findall(src):
                 k = lit.strip().lower()
-                if k in ma and ma[k] not in thay and k not in ma_bang and len(k) >= 4:
+                if k in ma and ma[k] not in thay and len(k) >= 4:  # mã view hay trùng mã bảng – vẫn lấy, lap_danh_muc chỉ dùng cho lớp màn hình
                     thay.append(ma[k])
             for n in re_so.findall(src):
                 if n in so and so[n] not in thay:

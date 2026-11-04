@@ -4,9 +4,9 @@
 
 - `VAT` Thu/chi HP/ An toàn dữ liệu
 - `VAT1` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu
-- `VAT13` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi sau ngày → `AQViewers.Settings.UC_SettingsTool1`
-- `VAT11` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi toàn học kỳ → `AQViewers.Settings.UC_SettingsTool1`
-- `VAT12` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi trước ngày → `AQViewers.Settings.UC_SettingsTool1`
+- `VAT13` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi sau ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VAT11` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi toàn học kỳ → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VAT12` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi trước ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `VTV` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu
 - `VTV7` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký thu vãng lai 1 sinh viên → `Edusoft.RMS.VTV._01.F006_NhatKyThuVL`
 - `VTV2` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký hủy ĐKMH đã thu HP → `Edusoft.RMS.VTV._01.F002_NhatKyHuyDKHPTheoSV`
@@ -46,8 +46,8 @@
 - `V0` Thu/chi HP/ Hoạt động thu/chi
 - `V0.01A` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử
 - `V0.01.18` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Cập nhật hóa đơn điện tử từ EduWEB → `Edusoft.RMS.M21._05.F025_CapNhatTTHDDT`
-- `V0.01.28` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Import hóa đơn điện tử → `Edusoft.RMS.M21._05.F037_ImportHDDT`
-- `V0.01.27` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Khai báo mẫu số HDDT theo lớp → `Edusoft.RMS.M21._05.F036_GanMauSoHDDTChoLop`
+- `V0.01.28` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Import hóa đơn điện tử → `Edusoft.RMS.M21._05.F037_ImportHDDT` – màn hình (đoán theo tên): View_ImportHDDT
+- `V0.01.27` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Khai báo mẫu số HDDT theo lớp → `Edusoft.RMS.M21._05.F036_GanMauSoHDDTChoLop` – màn hình (đoán theo tên): View_GanMauSoHDDTLop
 - `V0.01.20` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Xem sửa thông tin hóa đơn điện tử → `Edusoft.RMS.M21._05.F025_XemSuaTTHDDT`
 - `V0.01.17` Thu/chi HP/ Hoạt động thu/chi/ Hóa đơn điện tử/ Xuất hóa đơn điện tử → `Edusoft.RMS.M21._05.F024_XuatHDDT`
 - `V0.02` Thu/chi HP/ Hoạt động thu/chi/ In học phí
@@ -68,14 +68,14 @@
 - `V0.0302` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Chuyển học phí thu dư vào tạm ứng → `Edusoft.RMS.VTV._04.F001_CanBangChiTietThu`
 - `V10` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Kiểm dò phiếu thu → `Edusoft.RMS.M21._05.F009_DSPhieuThuLechTienCT`
 - `V0.0304` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Kiểm tra KQĐK chưa tính học phí → `Edusoft.RMS.M21._05.F015_KiemTraHPChuaTinh`
-- `V0.03.03` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Kiểm tra tính học phí theo file → `Edusoft.RMS.M21._05.F014_KiemTraHPTheoFile`
+- `V0.03.03` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Kiểm tra tính học phí theo file → `Edusoft.RMS.M21._05.F014_KiemTraHPTheoFile` – màn hình: DIMPORTDIEM2
 - `V0.0306` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Xem danh sách nợ học kỳ → `Edusoft.RMS.VTV._04.F003_XemDSNoHK`
 - `V0.0305` Thu/chi HP/ Hoạt động thu/chi/ Kiểm tra học phí/ Xem DS nợ chi tiết trong học kỳ → `Edusoft.RMS.VTV._04.F002_DSSVConNoMonHoc`
 - `V0.01` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí
-- `V0.01.19` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách hóa đơn học bổng → `Edusoft.RMS.M21._05.F026_DSHoaDonHocBong`
-- `V0.01.22` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu phân bổ → `Edusoft.RMS.M21._05.F008_DSPhieuPhanBoHK`
+- `V0.01.19` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách hóa đơn học bổng → `Edusoft.RMS.M21._05.F026_DSHoaDonHocBong` – màn hình (đoán theo tên): MPThuHB
+- `V0.01.22` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu phân bổ → `Edusoft.RMS.M21._05.F008_DSPhieuPhanBoHK` – màn hình (đoán theo tên): MPHIEUPB
 - `V0.1.17` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu chưa gán mã SV → `Edusoft.RMS.M21._05.F020_DSPThuSaiMaSV`
-- `V0.07` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu học kỳ → `Edusoft.RMS.M21._05.F011_DSPhieuThuHK`
+- `V0.07` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu học kỳ → `Edusoft.RMS.M21._05.F011_DSPhieuThuHK` – màn hình (đoán theo tên): DANHMUCLOAITHUHK
 - `V0.01.24` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách SV đóng HP theo MH → `Edusoft.RMS.M21._05.F030_DSSVDongHPTheoMH`
 - `V0.01.21` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ DS phiếu thu sau khi sv nghỉ → `Edusoft.RMS.M21._05.F031_DSPhieuThuSVDaNghi`
 - `V0.1.16` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ DSSV gia hạn đóng học phí → `Edusoft.RMS.M21._05.F019_GiaHanHP`
@@ -83,19 +83,19 @@
 - `V0.01.23` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Gán số chứng từ phiếu HP, KTX và Vãng lai → `Edusoft.RMS.M21._05.F029_GanChungTuHPVaKTX`
 - `V0.1.23` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import học phí và vãng lai → `Edusoft.RMS.M21._06.F003_ImportTatCaLoaiPhieuThu`
 - `V0.1.10` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import phiếu hoàn → `Edusoft.RMS.M21._06.F002_ImportPhieuHoan`
-- `V04` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import phiếu thu → `Edusoft.RMS.M21._06.F001_ImportHocPhiSV`
+- `V04` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import phiếu thu → `Edusoft.RMS.M21._06.F001_ImportHocPhiSV` – màn hình: VIEWRESULTIMPORT
 - `V0.1.11` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Lọc phiếu thu trùng chứng từ → `Edusoft.RMS.M21._05.F016_LocPhieuThuTrungSoCTu`
 - `V0.1.13` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Nhập DS sinh viên nộp voucher → `Edusoft.SMS.HOCBONG.F08_NhapDSNhanHB`
-- `V0.1.18` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Phân bổ học phí theo môn → `Edusoft.RMS.M21._05.F008_PhanBoTheoNhomHoc`
+- `V0.1.18` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Phân bổ học phí theo môn → `Edusoft.RMS.M21._05.F008_PhanBoTheoNhomHoc` – màn hình (đoán theo tên): VIEW_PBHP2
 - `V09A` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Phân bổ học phí tạm ứng → `Edusoft.RMS.M21._05.F008_PhanBoHP_DHMO`
 - `V09` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Phân bổ học phí tự động → `Edusoft.RMS.M21._05.F008_PhanBoHPTuDong`
-- `V05.02` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí theo giấy báo → `Edusoft.RMS.M21._05.F001_ThuHPTheoSPNopTien`
+- `V05.02` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí theo giấy báo → `Edusoft.RMS.M21._05.F001_ThuHPTheoSPNopTien` – màn hình (đoán theo tên): VTHUGIAYBAO
 - `V05` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí 1 SV → `Edusoft.RMS.M21._05.F001_ThuHP1SV`
-- `V0.1.02` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí không đối chiếu nợ → `Edusoft.RMS.M21._05.F022_ThuHPNhanh1SV`
+- `V0.1.02` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí không đối chiếu nợ → `Edusoft.RMS.M21._05.F022_ThuHPNhanh1SV` – màn hình (đoán theo tên): V0102
 - `V0.1.03` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí tổng hợp → `Edusoft.RMS.M21._05.F023_ThuHPNhanh1SV`
 - `H90.14` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Trích xuất SV từ file ngân hàng → `Edusoft.Base.B03.UCT_TrichMaSVTheoFile`
 - `V0.01.25` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Tách phiếu báo sinh viên → `Edusoft.RMS.M21._05.F033_TachPhieuBaoSV`
-- `V0.01.32` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Xem chi tiết phiếu thu các học kỳ → `Edusoft.RMS.M21._05.F032_XemCTPhieuThuHK`
+- `V0.01.32` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Xem chi tiết phiếu thu các học kỳ → `Edusoft.RMS.M21._05.F032_XemCTPhieuThuHK` – màn hình (đoán theo tên): View_DSMHPhieuThuHK, View_XemCTPhieuThuHK
 - `V0.01.26` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Xóa phiếu báo đã hủy (HK hiện tại) → `Edusoft.RMS.M21._05.F034_XoaPhieuBaoHuy`
 - `V0.01.35` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Xóa phiếu báo học phí → `Edusoft.RMS.M21._05.F035_XoaPhieuBaoHP`
 - `V0.1.12` Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Đối soát phiếu thu online → `Edusoft.RMS.M21._05.F017_DoiSoatPhieuThuOnline`
@@ -110,24 +110,24 @@
 - `V90` Thu/chi HP/ Quản lý thu vãng lai
 - `V9001` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai
 - `V90.01.08` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Cập nhật hóa đơn điện tử vãng lai → `Edusoft.RMS.M21._05.F025_CapNhatTTHDDT` (Param1=-6005115067793939617)
-- `V90.01.00A` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh mục loại thu vãng lai → `Edusoft.RMS.P09.F72_DMLoaiThuVL`
+- `V90.01.00A` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh mục loại thu vãng lai → `Edusoft.RMS.P09.F72_DMLoaiThuVL` – màn hình (đoán theo tên): MDMLTVL
 - `V90.01.00` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh mục nhóm thu vãng lai → `Edusoft.RMS.P09.F71_NhomThuVL`
 - `V90.01.03` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh sách thu vãng lai học kỳ → `Edusoft.RMS.P09.F03_DSPThuVangLaiHK`
 - `V90.01.09` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ In bảng kê theo loại thu → `Edusoft.RMS.P09.F08_InBangKeTheoLoaiThu`
 - `V90.02.01` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ In bảng kê thu vãng lai → `Edusoft.RMS.P09.F04_InBangKeThuVangLai`
 - `V90.01.06` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ In bảng tổng hợp thu vãng lai → `Edusoft.RMS.P09.F06_InTongHopThuVangLai`
 - `V90.01.05` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ In chi tiết hóa đơn thu tiền → `Edusoft.RMS.P09.F07_InHoaDonPhieuThu`
-- `V90.01.02` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Phải thu vãng lai → `Edusoft.RMS.P09.F73_PhaiThuVL`
+- `V90.01.02` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Phải thu vãng lai → `Edusoft.RMS.P09.F73_PhaiThuVL` – màn hình (đoán theo tên): View_PhaiThuVL
 - `V90.01.07` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Xuất hóa đơn điện tử vãng lai → `Edusoft.RMS.M21._05.F024_XuatHDDT` (Param1=-6005115067793939617)
 - `VQT` Thu/chi HP/ Quản trị phân hệ
-- `VQT3` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV)
-- `VQT2` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV)
+- `VQT3` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VQT2` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `VQT1` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ
 - `VQY1` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập học phí
-- `PQT6` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập phiếu thu theo user → `Edusoft.RMS.P06._01.F001_PhanQuyenNhapPhieuThuTheoUser`
+- `PQT6` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập phiếu thu theo user → `Edusoft.RMS.P06._01.F001_PhanQuyenNhapPhieuThuTheoUser` – màn hình (đoán theo tên): PQT6
 - `VQT0` Thu/chi HP/ Quản trị phân hệ/ Quản lý danh mục
 - `VQT0.02` Thu/chi HP/ Quản trị phân hệ/ Quản lý danh mục/ Loại thu vãng lai → `Edusoft.RMS.P09.F72_DMLoaiThuVL`
-- `VQT0.01` Thu/chi HP/ Quản trị phân hệ/ Quản lý danh mục/ Nhóm thu vãng lai → `Edusoft.RMS.P09.F71_NhomThuVL`
+- `VQT0.01` Thu/chi HP/ Quản trị phân hệ/ Quản lý danh mục/ Nhóm thu vãng lai → `Edusoft.RMS.P09.F71_NhomThuVL` – màn hình (đoán theo tên): P09F71
 - `VQT4` Thu/chi HP/ Quản trị phân hệ/ Quản lý mẫu và bộ đếm thu học phí
 - `P001.06` Thu/chi HP/ Quản trị phân hệ/ Quản lý mẫu và bộ đếm thu học phí/ Gán bộ đếm theo đối tượng → `Edusoft.RMS.P01._01.F004_BoDemHPTheoDoiTuong`
 - `VQT4.01` Thu/chi HP/ Quản trị phân hệ/ Quản lý mẫu và bộ đếm thu học phí/ Định nghĩa mẫu thu học phí → `Edusoft.RMS.VTV._05.V05_01_DNPhieuThu` (Param1=MAUTHUHOCPHI)

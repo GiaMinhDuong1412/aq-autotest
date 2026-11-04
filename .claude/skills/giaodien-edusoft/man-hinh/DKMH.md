@@ -15,19 +15,19 @@
 - `M201` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký
 - `M26` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK khác học kỳ → `Edusoft.RMS.M04._01.F005_ChuyenNhomDKKhacHK`
 - `M27` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK khác học kỳ theo file → `Edusoft.RMS.M04._01.F010_ChuyenDKTheoFileKhacHK`
-- `M25` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK theo lớp (niên chế) → `Edusoft.RMS.M04._01.F004_ChuyenNhomDKTheoLop`
+- `M25` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK theo lớp (niên chế) → `Edusoft.RMS.M04._01.F004_ChuyenNhomDKTheoLop` – màn hình (đoán theo tên): M24
 - `M22` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK theo tập tin → `Edusoft.RMS.M04._01.F002_ChuyenNhomDKTheoFile`
 - `M21` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK từ 1 nhóm đến 1 nhóm → `Edusoft.RMS.M04._01.F001_ChuyenNhomDK`
 - `M20110` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Cập nhật ghi chú KQĐK → `Edusoft.RMS.M04._01.F011_CapNhatGhiChuDK`
 - `M23` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Gán tổ thực hành cho KQĐK → `Edusoft.RMS.M04._03.F001_GanToTHChoNhomTo`
-- `M20109` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Hủy tổ TH của kết quả đăng ký → `Edusoft.RMS.M04._03.F002_ChuyenDKTuToTHVeNhom`
+- `M20109` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Hủy tổ TH của kết quả đăng ký → `Edusoft.RMS.M04._03.F002_ChuyenDKTuToTHVeNhom` – màn hình (đoán theo tên): CHUYENDKQUANHOM
 - `M20113` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Kiểm tra - cập nhật môn học bắt đầu → `Edusoft.RMS.M04._01.F013_CapNhatMHGoc`
-- `M20112` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Nhập điểm Hoãn thi → `Edusoft.SRM.D2.D28.F002_NhapDiemHTTheoSV`
+- `M20112` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Nhập điểm Hoãn thi → `Edusoft.SRM.D2.D28.F002_NhapDiemHTTheoSV` – màn hình (đoán theo tên): VIEW_DIEM_HOAN_THI, VIEW_NHAP_DIEM_HT
 - `M20111` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Nhập điểm Rút môn học → `Edusoft.SRM.D2.D28.F001_NhapDiemDBTheoMH`
 - `M20114` Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Xem/sửa môn học bắt đầu → `Edusoft.RMS.M04._01.F014_SuaMHGoc`
 - `M202` Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất  học lại
 - `M202.01` Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất  học lại/ Chuyển kết quả vào danh sách học lại → `Edusoft.RMS.M04._01.F006_CapNhatTinhChatDKHL`
-- `M202.03` Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất  học lại/ Cập nhật tính chất học lại → `Edusoft.RMS.M04._01.F012_GanTinhChatHL`
+- `M202.03` Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất  học lại/ Cập nhật tính chất học lại → `Edusoft.RMS.M04._01.F012_GanTinhChatHL` – màn hình (đoán theo tên): DK_TCHATHL
 - `M202.02` Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất  học lại/ Hủy kết quả khỏi danh sách học lại → `Edusoft.RMS.M04._01.F007_HuyTinhChatDKHL`
 - `M5` Đăng ký MH/ Học lại, cải thiện & rút MH
 - `M6.01` Đăng ký MH/ Học lại, cải thiện & rút MH/ Đăng ký học cải thiện
@@ -35,13 +35,13 @@
 - `M6` Đăng ký MH/ Học lại, cải thiện & rút MH/ Đăng ký rút môn học
 - `M3` Đăng ký MH/ Hủy KQ ĐKMH
 - `M32` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - 1 nhóm học/một số SV → `Edusoft.RMS.M04._02.F002_HuyNhomHocMotSoSV`
-- `M31` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - 1 nhóm học/tất cả SV → `Edusoft.RMS.M04._02.F001_HuyNhomHocTatCaSV`
+- `M31` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - 1 nhóm học/tất cả SV → `Edusoft.RMS.M04._02.F001_HuyNhomHocTatCaSV` – màn hình: VIEWDANHSACHMHDADK
 - `M3.014` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - còn nợ học phí → `Edusoft.RMS.M04._04.F01_HuyDKChuaHTHP`
 - `M3.013` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - ngoài DSSV học kỳ → `Edusoft.RMS.M04._02.F018_HUyDKNgoaiHK`
-- `M33` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo lớp → `Edusoft.RMS.M04._02.F003_HuyTheoLop`
+- `M33` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo lớp → `Edusoft.RMS.M04._02.F003_HuyTheoLop` – màn hình: VIEWHUYDANGKY
 - `M40` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo Lớp - MH → `Edusoft.RMS.M04._02.F016_DKLopTheoMH`
 - `M3.015` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo ngày đăng ký → `Edusoft.RMS.M04._02.F019_HuyKQDKTheoNgay`
-- `M34` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo sinh viên → `Edusoft.RMS.M04._02.F004_HuyTheoSV`
+- `M34` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo sinh viên → `Edusoft.RMS.M04._02.F004_HuyTheoSV` – màn hình: VIEWDANHSACHMHDADK
 - `M35` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo tập tin → `Edusoft.RMS.M04._02.F005_HuyTheoTapTin`
 - `M3.011` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - trùng môn học → `Edusoft.RMS.M04._02.F015_HuyDKTrungMH`
 - `M38` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - trùng TKB/lịch thi → `Edusoft.RMS.M04._02.F009_HuyTrungDKTKBLichThi`
@@ -50,10 +50,10 @@
 - `M37` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - vi phạm tín chỉ tối thiểu → `Edusoft.RMS.M04._02.F007_HuyTheoTinChiToiThieu`
 - `M36` Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - vi phạm tín chỉ tối đa → `Edusoft.RMS.M04._02.F006_HuyTheoTinChiToiDa`
 - `M3.051` Đăng ký MH/ Hủy KQ ĐKMH/ In phiếu hoàn tiền → `Edusoft.RMS.M04._02.F051_InLaiPhieuHoan`
-- `M3.012` Đăng ký MH/ Hủy KQ ĐKMH/ Phục hồi kết quả đăng ký → `Edusoft.RMS.M04._02.F017_PhucHoiDKSV`
+- `M3.012` Đăng ký MH/ Hủy KQ ĐKMH/ Phục hồi kết quả đăng ký → `Edusoft.RMS.M04._02.F017_PhucHoiDKSV` – màn hình (đoán theo tên): M312
 - `MBB` Đăng ký MH/ Khai thác báo biểu
 - `MR` Đăng ký MH/ Quản lý báo biểu
-- `MR6` Đăng ký MH/ Quản lý báo biểu/ Bảng thống kê KQDK → `Edusoft.RMS.MK2._01.F004_BangHieuChinhDKMH`
+- `MR6` Đăng ký MH/ Quản lý báo biểu/ Bảng thống kê KQDK → `Edusoft.RMS.MK2._01.F004_BangHieuChinhDKMH` – màn hình: KLOPHK
 - `MR1` Đăng ký MH/ Quản lý báo biểu/ DSSV nhận phiếu ĐKMH
 - `MR1.R022` Đăng ký MH/ Quản lý báo biểu/ DSSV nhận phiếu ĐKMH/ In tất cả → `Edusoft.RMS.MK2._01.F024_DSSVNhanPhieuDKMHToanTruong`
 - `MR1.R020` Đăng ký MH/ Quản lý báo biểu/ DSSV nhận phiếu ĐKMH/ Theo cố vấn học tập → `Edusoft.RMS.MK2._01.F022_DSSVNhanPhieuDKMHTheoCVHT`
@@ -93,14 +93,14 @@
 - `MR3.R018` Đăng ký MH/ Quản lý báo biểu/ Thống kê đăng ký học lại/ Theo danh sách ký nhận đăng ký học lại → `Edusoft.RMS.MK2._01.F021_DSSVKyNhanDKHocLai`
 - `MR3.F047` Đăng ký MH/ Quản lý báo biểu/ Thống kê đăng ký học lại/ Thống kê danh sách đăng ký học lại → `Edusoft.RMS.MK2._01.F047_TKDangKyHocLaiTheoMH`
 - `MQT` Đăng ký MH/ Quản trị phân hệ
-- `MQT3` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH)
-- `MQT2` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH)
+- `MQT3` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `MQT2` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `MQT1` Đăng ký MH/ Quản trị phân hệ/ Phân quyền phân hệ
 - `MQT0` Đăng ký MH/ Quản trị phân hệ/ Quản lý danh mục
 - `MQT4` Đăng ký MH/ Quản trị phân hệ/ Tài khoản không ràng buộc ĐKMH → `Edusoft.RMS.MAT._02.F002_UsertVuotKTDK`
 - `M17` Đăng ký MH/ Rút môn học online
 - `M17.1` Đăng ký MH/ Rút môn học online/ Thời gian rút môn học theo lớp → `Edusoft.RMS.M03._02.UCT_ThoiGianRutMHOnline`
-- `M17.2` Đăng ký MH/ Rút môn học online/ Xem kết quả Rút môn học → `Edusoft.RMS.M03._02.F011_XemKetQuaRutMonHoc`
+- `M17.2` Đăng ký MH/ Rút môn học online/ Xem kết quả Rút môn học → `Edusoft.RMS.M03._02.F011_XemKetQuaRutMonHoc` – màn hình (đoán theo tên): ViewXemKetQuaRutMonHoc
 - `M4` Đăng ký MH/ Thống kê TKB
 - `M4.0` Đăng ký MH/ Thống kê TKB/ Thống kê rảnh bận chung
 - `M4.02` Đăng ký MH/ Thống kê TKB/ Thống kê rảnh bận chung/ Thống kê DSSV bận → `Edusoft.RMS.MK2._01.F045_KhaoSatDSSVBan`
@@ -115,15 +115,15 @@
 - `M1` Đăng ký MH/ Đăng ký môn học
 - `M7` Đăng ký MH/ Đăng ký môn học/ Môn học thay thế
 - `M7.02` Đăng ký MH/ Đăng ký môn học/ Môn học thay thế/ Chuyển MHTT từ ĐKMH vào phân hệ Điểm → `Edusoft.RMS.M07._02.F001_ChuyenMonThayTheSV`
-- `M7.01` Đăng ký MH/ Đăng ký môn học/ Môn học thay thế/ Môn thay thế trước đăng ký → `Edusoft.RMS.M7._01.F001_MonThayTheSV`
+- `M7.01` Đăng ký MH/ Đăng ký môn học/ Môn học thay thế/ Môn thay thế trước đăng ký → `Edusoft.RMS.M7._01.F001_MonThayTheSV` – màn hình: VIEWMHTT
 - `M14` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online
 - `M10.50` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung → `Edusoft.RMS.M03._02.UCT_SettingDKMH`
 - `M10.08` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định ngày đăng ký rải rác → `Edusoft.RMS.M10._01.F011_NgayDangKyRaiRac`
 - `M10.07` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Cấm SV đăng ký một số môn học → `Edusoft.RMS.M03._02.F004_CamSVDKMH_New`
 - `M10.05` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Cấm SV đăng ký vì các lý do khác → `Edusoft.RMS.M03._02.F001_DSSVCamDKMH`
-- `M10.25` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Hệ sinh viên đăng ký môn mở hệ khác → `Edusoft.RMS.M03._02.F004_HeSinhVienDKMHMoHeKhac`
+- `M10.25` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Hệ sinh viên đăng ký môn mở hệ khác → `Edusoft.RMS.M03._02.F004_HeSinhVienDKMHMoHeKhac` – màn hình (đoán theo tên): View_HeDKMH
 - `M10.17` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Lớp sinh viên không đăng ký → `Edusoft.RMS.M10._04.F001_LopKhongChoDKOnline`
-- `M10.13` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Môn chỉ được phép chọn 1 khi đăng ký → `Edusoft.RMS.M10._03.F001_MonChon1DK`
+- `M10.13` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Môn chỉ được phép chọn 1 khi đăng ký → `Edusoft.RMS.M10._03.F001_MonChon1DK` – màn hình (đoán theo tên): M10.13
 - `M10.15` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Môn học dành cho khối đăng ký → `Edusoft.RMS.M10._03.F002_MonHocChoDoiTuongDK`
 - `M14.01` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Nhóm tổ không đăng ký → `Edusoft.RMS.M03._02.F003_NhomKhgDKOnline` (Param1=ISKGDKONLINE)
 - `M14.02` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Nhóm tổ ưu tiên một số sinh viên đăng ký → `Edusoft.RMS.M03._02.F010_NhomToDKMH`
@@ -141,8 +141,8 @@
 - `M15` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp
 - `M15.3` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời gian đóng học phí ngân hàng → `Edusoft.RMS.M03._01.F006_ThoiGianDongHPOnline`
 - `M15.4` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời gian đóng học phí ngân hàng theo sv → `Edusoft.RMS.M03._01.F007_ThoiGianDongHPOnline_SV`
-- `M15.1` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời hạn đóng theo lớp → `Edusoft.RMS.M03._01.F004_ThoiHanDongTheoLop`
-- `M15.2` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời hạn đóng theo sinh viên → `Edusoft.RMS.M03._01.F005_ThoiHanDongTheoSV`
+- `M15.1` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời hạn đóng theo lớp → `Edusoft.RMS.M03._01.F004_ThoiHanDongTheoLop` – màn hình (đoán theo tên): V_ThoiHanHPTheoLop
+- `M15.2` Đăng ký MH/ Đăng ký môn học/ Thời hạn đóng hp/ Thời hạn đóng theo sinh viên → `Edusoft.RMS.M03._01.F005_ThoiHanDongTheoSV` – màn hình (đoán theo tên): V_ThoiHanHPTheoSV
 - `M10` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc
 - `M10.06` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Nhóm không cho đăng ký offline → `Edusoft.RMS.M03._02.F003_NhomKhgDKOffline` (Param1=ISKGDK)
 - `M10.19` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Nhóm tổ ưu tiên dành cho khoa → `Edusoft.RMS.M10._07.F001_NhapKhoaSVDKNhom`
@@ -151,27 +151,27 @@
 - `M10.12` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ SV không ràng buộc ĐKMH → `Edusoft.RMS.MAT._02.F003_SVKhongRBDK`
 - `M10.09` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Sửa sĩ số cho phép đăng ký nhóm tổ → `Edusoft.SCH.KX05._02.SuaNhanhSiSoNhomTo`
 - `M10.14` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Tín chỉ tối đa theo sinh viên → `Edusoft.RMS.M03._02.F008_TCMaxTungSV`
-- `M10.04` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Điều kiện đăng ký cải thiện → `Edusoft.RMS.M03._02.F005_DKDKCaiThien`
+- `M10.04` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Điều kiện đăng ký cải thiện → `Edusoft.RMS.M03._02.F005_DKDKCaiThien` – màn hình (đoán theo tên): VIEWDKDKCAITHIEN
 - `M10.02` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa bộ tín chỉ tối đa → `Edusoft.RMS.M03._02.F002_DinhNghiaTCToiDa`
 - `M10.03` Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành → `Edusoft.RMS.M01._01.F014_MonHocTQ`
-- `M13` Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên → `Edusoft.RMS.M03._01.F001_DKMHTungSinhVien`
+- `M13` Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên → `Edusoft.RMS.M03._01.F001_DKMHTungSinhVien` – màn hình (đoán theo tên): M0301, ViewKQDK_EduWeb, M0302
 - `M1.4` Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên có hiển thị TKB → `Edusoft.RMS.M03._01.F003_DKMH1SVDang2`
 - `M16` Đăng ký MH/ Đăng ký môn học/ Đăng ký bán tự động
 - `M16.01` Đăng ký MH/ Đăng ký môn học/ Đăng ký bán tự động/ Theo lớp → `Edusoft.RMS.M01._01.F013_DKMHBanTuDongTheoLop`
 - `M12` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin
 - `M12.1` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Nhập nguyên vọng đăng ký
-- `M11.04` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo mã sinh viên → `Edusoft.RMS.M01._01.F001_DKMHTheoFileMaSV`
+- `M11.04` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo mã sinh viên → `Edusoft.RMS.M01._01.F001_DKMHTheoFileMaSV` – màn hình: VIEWRESULTIMPORT, VIEWDSIMPORTSVDUNG
 - `M12.3` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo nguyện vọng đã nhập
 - `M12.2` Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo sinh viên - môn học → `Edusoft.RMS.M01._01.F002_ImportDKMaSVMH`
 - `M11` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động
-- `M11.01` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp → `Edusoft.RMS.M01._01.F004_DKMHTheoLop`
+- `M11.01` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp → `Edusoft.RMS.M01._01.F004_DKMHTheoLop` – màn hình: KLOPHK
 - `M11.05` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp một số môn học → `Edusoft.RMS.M01._01.F005_DKMHTheoLopMotSoMH`
 - `M11.06` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo môn học một số lớp → `Edusoft.RMS.M01._01.F006_DKMHTheoMHMotSoLop`
 - `M11.02` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Đăng ký môn học tự động - theo môn học
 - `M11.03` Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Đăng ký từng sinh viên → `Edusoft.RMS.M01._01.F012_DKTuDong1SV`
 - `M19` Đăng ký MH/ Đăng ký nguyện vọng online
 - `M10.20` Đăng ký MH/ Đăng ký nguyện vọng online/ Thời gian đăng ký nguyện vọng → `Edusoft.RMS.M01._01.F011_ThoiGianDKNguyenVong`
-- `M19.2` Đăng ký MH/ Đăng ký nguyện vọng online/ Xem danh sách nguyện vọng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8619523273445507021)
+- `M19.2` Đăng ký MH/ Đăng ký nguyện vọng online/ Xem danh sách nguyện vọng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8619523273445507021) – màn hình (đoán theo tên): XEMDSNV
 
 ## Màn hình (view) và lưới
 

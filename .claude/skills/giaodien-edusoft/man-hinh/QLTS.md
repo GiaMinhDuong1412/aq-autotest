@@ -9,16 +9,16 @@
 - `T10.01` Tuyển sinh/ Chuẩn bị/ Chuẩn bị hồ sơ nộp
 - `T1.05` Tuyển sinh/ Chuẩn bị/ Danh sách cụm thi → `Edusoft.CMS.T1.T1_05_DanhSachCumThi`
 - `T1.10` Tuyển sinh/ Chuẩn bị/ Danh sách cụm thi phổ thông → `Edusoft.CMS.T1.T1_10_DanhSachCumThiPThong`
-- `T1.02` Tuyển sinh/ Chuẩn bị/ Danh sách khối tuyển sinh → `Edusoft.CMS.T1.T1_02_DanhSachKhoiTS`
-- `T1.01` Tuyển sinh/ Chuẩn bị/ Danh sách kỳ tuyển sinh → `Edusoft.SRM.T11.T1101.T1101_01_KyTuyenSinh`
+- `T1.02` Tuyển sinh/ Chuẩn bị/ Danh sách khối tuyển sinh → `Edusoft.CMS.T1.T1_02_DanhSachKhoiTS` – màn hình (đoán theo tên): ViewKhoiTS
+- `T1.01` Tuyển sinh/ Chuẩn bị/ Danh sách kỳ tuyển sinh → `Edusoft.SRM.T11.T1101.T1101_01_KyTuyenSinh` – màn hình (đoán theo tên): TKYTS
 - `T1.04` Tuyển sinh/ Chuẩn bị/ Danh sách môn thi tuyển sinh → `Edusoft.CMS.T1.T1_04_DanhSachMonThiTS`
 - `T1.03` Tuyển sinh/ Chuẩn bị/ Danh sách ngành tuyển sinh → `Edusoft.CMS.T1.T1_03_DanhSachNganhTS`
-- `T1.06A` Tuyển sinh/ Chuẩn bị/ Danh sách phòng thi → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5666626557962440480)
+- `T1.06A` Tuyển sinh/ Chuẩn bị/ Danh sách phòng thi → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5666626557962440480) – màn hình (đoán theo tên): VIEWDSPHONGTHI, TPHTHI
 - `T1.06` Tuyển sinh/ Chuẩn bị/ Danh sách trung tâm thi → `Edusoft.CMS.T1.T1_06_DanhSachTrungTamThi`
 - `T1.09` Tuyển sinh/ Chuẩn bị/ Danh sách đợt tuyển sinh → `Edusoft.CMS.T1.T1_09_DanhSachDotXetTuyenNV`
 - `T1.07` Tuyển sinh/ Chuẩn bị/ Nhập ngành/khối tuyển sinh → `Edusoft.CMS.T1.T1_07_DanhSachNganhKhoiTS`
 - `T1.12` Tuyển sinh/ Chuẩn bị/ Định nghĩa phương thức hồ sơ XT → `Edusoft.CMS.T1.T1_12_DinhNghiaPTXTHS`
-- `T1.11` Tuyển sinh/ Chuẩn bị/ Định nghĩa phương án nhập điểm → `Edusoft.CMS.T1.T1_11_DinhNghiaPhuongAnNhapDiem`
+- `T1.11` Tuyển sinh/ Chuẩn bị/ Định nghĩa phương án nhập điểm → `Edusoft.CMS.T1.T1_11_DinhNghiaPhuongAnNhapDiem` – màn hình (đoán theo tên): VIEWTPANNHDIEM
 - `T8` Tuyển sinh/ Danh sách xét tuyển
 - `T8.02` Tuyển sinh/ Danh sách xét tuyển/ Danh sách thí sinh/đợt xét tuyển → `Edusoft.CMS.T8.T8_02_NhapFileNguenVongTS`
 - `T8.04` Tuyển sinh/ Danh sách xét tuyển/ Gán đợt xét tuyển → `Edusoft.CMS.T8.T8_04_GanDotXetTrungTuyen`
@@ -93,9 +93,9 @@
 - `T2.04` Tuyển sinh/ Nhập liệu hồ sơ/ In kiểm tra hợp lệ dữ liệu → `Edusoft.Base.UCT.UCT_CallViewByForm`
 - `T2.05` Tuyển sinh/ Nhập liệu hồ sơ/ In kiểm tra khả năng trùng hồ sơ → `Edusoft.Base.UCT.UCT_CallViewByForm`
 - `T2.03_2` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển
-- `T2.03_2.01` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển/ Chuẩn bị khoản thu lệ phí → `Edusoft.CMS.T22.T22_NhapKhoanThuLePhi`
+- `T2.03_2.01` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển/ Chuẩn bị khoản thu lệ phí → `Edusoft.CMS.T22.T22_NhapKhoanThuLePhi` – màn hình: T22_NhapKhoanThuLePhi
 - `T2.03_2.03` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển/ In liệt kê sinh viên đóng lệ phí xét tuyển → `Edusoft.CMS.T22.T22_InLietKeSVDongLePhi`
-- `T2.03_2.02` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển/ Nhập lệ phí xét tuyển → `Edusoft.CMS.T22.T22_NhapLePhiXetTuyen`
+- `T2.03_2.02` Tuyển sinh/ Nhập liệu hồ sơ/ Lệ  phí xét tuyển/ Nhập lệ phí xét tuyển → `Edusoft.CMS.T22.T22_NhapLePhiXetTuyen` – màn hình: T22_NhapLePhiXetTuyen
 - `T2.03` Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh
 - `T2.03.04` Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ In các mẫu thống kê số hồ sơ → `Edusoft.Base.UCT.UCT_CallViewByForm`
 - `T2.03.08` Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ In danh sách trùng → `Edusoft.CMS.T2.UCT_InDanhSachTrung`
@@ -123,8 +123,8 @@
 - `T5.03` Tuyển sinh/ Phách thi/ In kiểm tra DS thí sinh vắng hợp lệ → `Edusoft.CMS.Report.T00_InDSNgangKhoiKhongHopLe` (Param1=-6489896370371541139)
 - `T5.05` Tuyển sinh/ Phách thi/ Khóa/ mở khóa số phách đã gán → `Edusoft.CMS.T5.T505_Lock_UnLockNhomTS`
 - `T5.11` Tuyển sinh/ Phách thi/ Nhập File SBD-Phách → `Edusoft.CMS.T5.T511_SuaPhachThi`
-- `T5.02` Tuyển sinh/ Phách thi/ Nhập số báo danh vắng → `Edusoft.CMS.T5.T502_NhapSBDVang`
-- `T5.01` Tuyển sinh/ Phách thi/ Nhập thông tin phách cho nhóm thi chung → `Edusoft.CMS.T5.T501_NhapThongTinPhach`
+- `T5.02` Tuyển sinh/ Phách thi/ Nhập số báo danh vắng → `Edusoft.CMS.T5.T502_NhapSBDVang` – màn hình (đoán theo tên): TS_502
+- `T5.01` Tuyển sinh/ Phách thi/ Nhập thông tin phách cho nhóm thi chung → `Edusoft.CMS.T5.T501_NhapThongTinPhach` – màn hình (đoán theo tên): TS_TT_PHACH_NHOM_THI, TS_TT_PHACH_NHOM_THI_SINGGLE_CHECK
 - `T11` Tuyển sinh/ Phúc Tra
 - `T11.08` Tuyển sinh/ Phúc Tra/ Chuyển điểm phúc tra về điểm tuyển sinh → `Edusoft.CMS.T11.F004_DongBoDiemPhucTra`
 - `T11.04` Tuyển sinh/ Phúc Tra/ In bảng ghi điểm phúc tra → `Edusoft.CMS.T11.RP_InMonHocPhucTra`
@@ -136,15 +136,15 @@
 - `T11.01` Tuyển sinh/ Phúc Tra/ Nhập hồ sơ xin phúc tra → `Edusoft.CMS.T11.F001_NhapHSPhucTra`
 - `T11.05` Tuyển sinh/ Phúc Tra/ Nhập điểm phúc tra → `Edusoft.CMS.T11.F002_NhapDiemPhucTra`
 - `TQT` Tuyển sinh/ Quản trị phân hệ
-- `TBS` Tuyển sinh/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `TQT3` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS)
-- `TQT2` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS)
+- `TBS` Tuyển sinh/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `TQT3` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `TQT2` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `TQT.04` Tuyển sinh/ Quản trị phân hệ/ Gán số bắt đầu cho bộ đếm chung phân hệ → `Edusoft.Base.UCT.UCT_CallViewByForm`
 - `TQT0` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục
 - `TQT0.2` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục dân tộc
-- `TQT0.4` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục ngành tuyển sinh → `Edusoft.CMS.T1.UCT_DanhMucNganhTSDangTree`
-- `TQT0.1` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục địa bàn → `Edusoft.Base.UCT.UCT_DanhMucDiaBan`
-- `T1.08` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Nhập môn thi cho khối → `Edusoft.CMS.T1.T1_08_DanhSachMonThiKhoi`
+- `TQT0.4` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục ngành tuyển sinh → `Edusoft.CMS.T1.UCT_DanhMucNganhTSDangTree` – màn hình (đoán theo tên): TDMNGTS
+- `TQT0.1` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục địa bàn → `Edusoft.Base.UCT.UCT_DanhMucDiaBan` – màn hình (đoán theo tên): NDMDB
+- `T1.08` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Nhập môn thi cho khối → `Edusoft.CMS.T1.T1_08_DanhSachMonThiKhoi` – màn hình (đoán theo tên): ViewTKHOIMON
 - `T10` Tuyển sinh/ Tiếp sinh
 - `T10.00` Tuyển sinh/ Tiếp sinh/ Bộ đếm số phiếu học phí → `Edusoft.CMS.T10._00.UCT_NhapBoDemSoPhieu`
 - `T10.07` Tuyển sinh/ Tiếp sinh/ Chuyển danh sách thí sinh đã đóng học phí sang phân hệ Thu/Chi HP → `Edusoft.CMS.T10.UCT_ChueynDLQLSV` (Param1=QLTV)
@@ -185,7 +185,7 @@
 - `T4.10` Tuyển sinh/ Tổ chức thi/ In thống kê số lượng thí sinh đặc biệt → `Edusoft.CMS.T4.T4_10_InThongKeSLDuThi`
 - `T4.07` Tuyển sinh/ Tổ chức thi/ Nhập hội đồng cho buổi thi vấn đáp → `Edusoft.CMS.T4.T4_07_NhapHoiDongThiVanDap`
 - `T4.00` Tuyển sinh/ Tổ chức thi/ Nhập hội đồng giám khảo → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5617151641520979038)
-- `T4.03` Tuyển sinh/ Tổ chức thi/ Nhập hội đồng giám khảo → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7313956544919715109)
+- `T4.03` Tuyển sinh/ Tổ chức thi/ Nhập hội đồng giám khảo → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7313956544919715109) – màn hình (đoán theo tên): THDGK, THDGK_DHQT
 - `T4.07A` Tuyển sinh/ Tổ chức thi/ Nhập hội đồng thi vấn đáp → `Edusoft.CMS.T4.T4_07_NhapHoiDongThiVanDap` (Param1=-5373431988204720286)
 - `T4.01` Tuyển sinh/ Tổ chức thi/ Nhập nhóm môn thi tự chọn → `Edusoft.CMS.T4.T4_01_DanhSachNganhKhoiMonTuChon`
 - `T4.04` Tuyển sinh/ Tổ chức thi/ Nhập phòng thi → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5666626557962440480)
@@ -196,14 +196,14 @@
 - `T4.09.2` Tuyển sinh/ Tổ chức thi/ Nhập thí sinh đặc biệt/ Nhập danh sách tuyển thằng → `Edusoft.CMS.T4.T4_09_NhapThiSinhDatBiet` (Param1=isNhapDSTuyenThang)
 - `T4.06` Tuyển sinh/ Tổ chức thi/ Nhập thông tin nhóm thi chung → `Edusoft.CMS.T4.T4_19_NhapTTNhomThiChung` (Param1=-7120174889551983309)
 - `T4.12` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh
-- `T4.12.4` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Hủy phòng thi đã gán → `Edusoft.CMS.T4._12.T4_12_3_KhoaSoPhongThi` (Param1=HUY)
-- `T4.12.1` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ In dự kiến thí sinh & phòng thi → `Edusoft.CMS.T4._12.T4_12_1_InThongKeThiSinhPhongThi`
+- `T4.12.4` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Hủy phòng thi đã gán → `Edusoft.CMS.T4._12.T4_12_3_KhoaSoPhongThi` (Param1=HUY) – màn hình: EMPTY
+- `T4.12.1` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ In dự kiến thí sinh & phòng thi → `Edusoft.CMS.T4._12.T4_12_1_InThongKeThiSinhPhongThi` – màn hình: EMPTY
 - `T4.12.8` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ In thống kê sử dụng phòng theo cụm thi → `Edusoft.CMS.Report.T00_InDSNgangKhoiKhongHopLe` (Param1=-7373267530046919783)
 - `T4.12.7` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ In thống kê sử dụng phòng theo môn → `Edusoft.CMS.Report.T00_InDSNgangKhoiKhongHopLe` (Param1=-7169174972230713105)
-- `T4.12.3` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Khóa/mở khóa phòng thi đã gán → `Edusoft.CMS.T4._12.T4_12_3_KhoaSoPhongThi` (Param1=LOCK)
-- `T4.12.5` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Kiểm tra hợp lệ phòng thi → `Edusoft.CMS.T4._12.T4_12_5_KiemTraHopLePhongThi`
-- `T4.12.6` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Nhập phòng thi cho thí sinh → `Edusoft.CMS.T4_12.T4_12_6_NhapPhongThiSinh`
-- `T4.12.2` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Phân bố phòng thi cho thí sinh → `Edusoft.CMS.T4._12.T2_12_2_PhanBoPhongThi`
+- `T4.12.3` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Khóa/mở khóa phòng thi đã gán → `Edusoft.CMS.T4._12.T4_12_3_KhoaSoPhongThi` (Param1=LOCK) – màn hình: EMPTY
+- `T4.12.5` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Kiểm tra hợp lệ phòng thi → `Edusoft.CMS.T4._12.T4_12_5_KiemTraHopLePhongThi` – màn hình (đoán theo tên): VHopLePhongThi
+- `T4.12.6` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Nhập phòng thi cho thí sinh → `Edusoft.CMS.T4_12.T4_12_6_NhapPhongThiSinh` – màn hình: EMPTY
+- `T4.12.2` Tuyển sinh/ Tổ chức thi/ Phòng thi thí sinh/ Phân bố phòng thi cho thí sinh → `Edusoft.CMS.T4._12.T2_12_2_PhanBoPhongThi` – màn hình: EMPTY
 - `T4.11` Tuyển sinh/ Tổ chức thi/ Số báo danh thí sinh
 - `T4.11.1` Tuyển sinh/ Tổ chức thi/ Số báo danh thí sinh/ Gán SBD min cho khối + cụm thi → `Edusoft.CMS.T4._11.T4_11_1_GanSBDMinKhoiCum`
 - `T4.11.2` Tuyển sinh/ Tổ chức thi/ Số báo danh thí sinh/ Gán/ gán tiếp số SBD → `Edusoft.CMS.T4._11.T4_11_2_GanSBDThiSinh`
@@ -242,7 +242,7 @@
 - `T7.01` Tuyển sinh/ Điểm chuẩn/ In thống kê điểm
 - `T7.01.1` Tuyển sinh/ Điểm chuẩn/ In thống kê điểm/ Theo nguyện vọng → `Edusoft.CMS.T7.T7_01_ThongKeDiemThi`
 - `T7.01.2` Tuyển sinh/ Điểm chuẩn/ In thống kê điểm/ Theo nguyện vọng/đơt → `Edusoft.Base.UCT.UCT_CallViewByForm`
-- `T7.03` Tuyển sinh/ Điểm chuẩn/ Nhập điểm chuẩn xét tuyển → `Edusoft.CMS.T7.T7_03_NhapDiemChuan`
+- `T7.03` Tuyển sinh/ Điểm chuẩn/ Nhập điểm chuẩn xét tuyển → `Edusoft.CMS.T7.T7_03_NhapDiemChuan` – màn hình (đoán theo tên): TCHUAN
 - `T7.02` Tuyển sinh/ Điểm chuẩn/ Điểm ưu tiên khác với qui định → `Edusoft.CMS.T7.T7_02_NhapDiemUuTien`
 - `T6` Tuyển sinh/ Điểm thi
 - `T6.14` Tuyển sinh/ Điểm thi/ Cộng/cộng lại điểm thi các môn → `Edusoft.CMS.T6._14.F001_CongLaiDiemThi`

@@ -33,7 +33,7 @@
 - `DTV6` Quản lý điểm/ An toàn dữ liệu/ Truy vết dữ liệu/ Truy vết thay đổi % nhóm học → `Edusoft.SRM.DAT.DAT2.DAT2_03_TruyVetTrongSoMH`
 - `D1` Quản lý điểm/ Bảng ghi điểm
 - `D12` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm
-- `D12.02` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm học lại - học vượt → `Edusoft.SRM.D1.D10.D10_00_InBGD` (Param1=-8842431928057240837)
+- `D12.02` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm học lại - học vượt → `Edusoft.SRM.D1.D10.D10_00_InBGD` (Param1=-8842431928057240837) – màn hình (đoán theo tên): D12.02
 - `D12.01` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm theo lớp → `Edusoft.SRM.D1.D10.D10_00_InBGD` (Param1=-4709021041761684925)
 - `D12.05` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm theo môn học → `Edusoft.SRM.D1.D10.D10_00_InBGD` (Param1=-8422574926655075565)
 - `D12.03` Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm theo nhóm học → `Edusoft.SRM.D1.D10.D10_00_InBGD` (Param1=-6375165463331586950)
@@ -51,7 +51,7 @@
 - `D14.05` Quản lý điểm/ Bảng ghi điểm/ Xem mã bảng ghi điểm/ Xem mã ghi điểm của nhóm thi → `Edusoft.SRM.D1.D14.F05_XemBGDNhomThi`
 - `D14.04` Quản lý điểm/ Bảng ghi điểm/ Xem mã bảng ghi điểm/ Xem mã ghi điểm của tổ TH → `Edusoft.SRM.D1.D14.F04_XemBGDToTH`
 - `D14.06` Quản lý điểm/ Bảng ghi điểm/ Xem mã bảng ghi điểm/ Xem mã ghi điểm của tổ thi → `Edusoft.SRM.D1.D14.F06_XemBGDToThi`
-- `D14.02` Quản lý điểm/ Bảng ghi điểm/ Xem mã bảng ghi điểm/ Xem mã ghi điểm học lại - học vượt → `Edusoft.SRM.D1.D14.F02_XemBGDHLHV`
+- `D14.02` Quản lý điểm/ Bảng ghi điểm/ Xem mã bảng ghi điểm/ Xem mã ghi điểm học lại - học vượt → `Edusoft.SRM.D1.D14.F02_XemBGDHLHV` – màn hình (đoán theo tên): D1402
 - `D11` Quản lý điểm/ Bảng ghi điểm/ Định nghĩa mẫu bảng ghi điểm
 - `D11.01` Quản lý điểm/ Bảng ghi điểm/ Định nghĩa mẫu bảng ghi điểm/ Danh sách mẫu bảng ghi điểm → `Edusoft.SRM.D1.D11.D11_01_DinhNghiaBGD` (Param1=BGD)
 - `D.10` Quản lý điểm/ Học bổng
@@ -107,17 +107,17 @@
 - `D93.02` Quản lý điểm/ Quản lý chứng chỉ/ Xét chứng chỉ/ Xét theo đợt và tiêu chuẩn (CC) → `Edusoft.SRM.D9.D93.D93_02_01_XetTheoDotTChuan`
 - `D92` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét
 - `D92.04` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Chuyển SV chưa đạt ở học kỳ trước → `Edusoft.SRM.D9.D92.D92_04_ChuyenChuaDatTuHKTruoc`
-- `D92.02` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách lớp xét (CC) → `Edusoft.SRM.D9.D92.D92_01_02_DotTCCCLop`
-- `D92.03` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách SV xét (CC) → `Edusoft.SRM.D9.D92.D92_01_03_DotTCCCSV`
-- `D92.01` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách đợt xét (CC) → `Edusoft.SRM.D9.D92.D92_01_01_DotCC`
+- `D92.02` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách lớp xét (CC) → `Edusoft.SRM.D9.D92.D92_01_02_DotTCCCLop` – màn hình: D9202
+- `D92.03` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách SV xét (CC) → `Edusoft.SRM.D9.D92.D92_01_03_DotTCCCSV` – màn hình: D9203
+- `D92.01` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách đợt xét (CC) → `Edusoft.SRM.D9.D92.D92_01_01_DotCC` – màn hình: D9201
 - `D92.06` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ In danh sách xét theo khoa (CC) → `Edusoft.SRM.D9.D92.D92_06_01_InDSXetTheoKhoa`
 - `D92.05` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ In danh sách xét theo tiêu chuẩn (CC) → `Edusoft.SRM.D9.D92.D92_05_01_InDSXetTheoTChuan`
 - `D92.08` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ In SV đã có điểm bảo lưu → `Edusoft.SRM.D9.D92.D92_08_InDSSVDaCoDiemBL`
 - `D92.09` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Thời gian xét chứng chỉ → `Edusoft.SRM.QAT._05.F02_TGXetTN` (Param1=CHUNGCHI)
 - `D97.07` Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Tạo SV xét do tạm dừng ở  học kỳ trước → `Edusoft.SRM.D9.D92.D92_07_TaoDSXetTuSVTamDung`
 - `DQT3` Quản lý điểm/ Quản lý môn thay thế
-- `DQT31.02` Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế khối → `Edusoft.SRM.DQT3.DQT302.DQT302_MonThayTheKhoi`
-- `DQT31.01` Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sinh viên → `Edusoft.SRM.DQT3.DQT301.DQT301_MonThayTheCuaSV`
+- `DQT31.02` Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế khối → `Edusoft.SRM.DQT3.DQT302.DQT302_MonThayTheKhoi` – màn hình: DQT3.02, AQCAYCHUCNAND
+- `DQT31.01` Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sinh viên → `Edusoft.SRM.DQT3.DQT301.DQT301_MonThayTheCuaSV` – màn hình (đoán theo tên): VIEWMHTT
 - `DQT31.05` Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sv ngành 2 → `Edusoft.SRM.DQT3.DQT301.DQT301_MonThayTheNganh2SV`
 - `DQT31.06` Quản lý điểm/ Quản lý môn thay thế/ Hủy điểm không đạt SV - theo file → `Edusoft.SRM.DQT3.DQT303.F001_HuyDiemKhongDatSVTheoFile`
 - `DQT31.07` Quản lý điểm/ Quản lý môn thay thế/ Hủy điểm không đạt SV - theo SV → `Edusoft.SRM.DQT3.DQT303.F002_HuyDiemKhongDatSV`
@@ -175,25 +175,25 @@
 - `D53.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Bảng qui đổi điểm/ Định nghĩa bảng qui đổi điểm → `Edusoft.SRM.D5.D53.D53_01_BangQuiDoiDiem`
 - `D51` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm
 - `D51.04` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % điểm thành phần riêng cho KQĐK → `Edusoft.SRM.D5.D51.D51_PhanTramTheoKQDK`
-- `D51.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % môn học/nhóm học → `Edusoft.SRM.D5.D51.D51_TiLePhanTramMH`
+- `D51.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % môn học/nhóm học → `Edusoft.SRM.D5.D51.D51_TiLePhanTramMH` – màn hình: D51.01
 - `D51.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % điểm thành phần theo nhóm → `Edusoft.SRM.D5.D51.D51_PhanTramTheoNhom`
 - `D51.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Tính theo trung bình cộng → `Edusoft.SRM.D5.D51.D51_02_MHTinhTrungBinhCong`
 - `D58` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Cộng điểm học bổng
 - `D58.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Cộng điểm học bổng/ Cộng điểm học bổng - DSSV học kỳ → `Edusoft.SRM.D5.D52.D52_30_CongHB_DSSV`
 - `D56` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm
 - `D56.05` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Môn học có điểm thành phần 0 vẫn tính điểm tổng kết → `Edusoft.SRM.D5.D56.D56_04_MHDiemTP0VanTinhDiemTK`
-- `D56.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Môn học khối không quản lý điểm → `Edusoft.SRM.D5.D56.D56_03_MHKhoiKhgQLD`
+- `D56.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Môn học khối không quản lý điểm → `Edusoft.SRM.D5.D56.D56_03_MHKhoiKhgQLD` – màn hình (đoán theo tên): VMHKHOIKHGQLD
 - `D56.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Môn học SV không tính điểm TB → `Edusoft.SRM.D5.D56.D56_02_MonTuChonKhongDTB`
 - `D56.04` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Môn học SV không tính điểm TB (Ngành 2) → `Edusoft.SRM.D5.D56.D56_02_MonTuChonKhongDTB` (Param1=NGANH2)
-- `D56.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Nhóm học không quản lý điểm → `Edusoft.SRM.D5.D56.D56_01_Nhom_KQLD`
+- `D56.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Không quản lý điểm/ Nhóm học không quản lý điểm → `Edusoft.SRM.D5.D56.D56_01_Nhom_KQLD` – màn hình (đoán theo tên): D5601
 - `D55` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Làm tròn điểm theo môn học
 - `D55.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Làm tròn điểm theo môn học/ Làm tròn chung theo môn học → `Edusoft.SRM.D5.D55.D55_01_LamTronMHDacBiet`
 - `D55.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Làm tròn điểm theo môn học/ Làm tròn theo nhóm học → `Edusoft.SRM.D5.D55.D55_02_LamTronTheoNhom`
 - `DQT8` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học
 - `DQT8.04` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt theo khối → `Edusoft.SRM.DQT8.DQT802.DQT802_DiemDatCuaKhoi`
-- `DQT8.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học - Qui chế → `Edusoft.SRM.DQT8.DQT802.DQT802_DiemDatDacBietMHQC`
-- `DQT8.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học → `Edusoft.SRM.DQT8.DQT801.DQT801_DiemDatDacBietMH`
-- `DQT8.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học - khối → `Edusoft.SRM.DQT8.DQT802.DQT802_DiemDatDacBietMHKhoi`
+- `DQT8.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học - Qui chế → `Edusoft.SRM.DQT8.DQT802.DQT802_DiemDatDacBietMHQC` – màn hình: DQT803
+- `DQT8.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học → `Edusoft.SRM.DQT8.DQT801.DQT801_DiemDatDacBietMH` – màn hình: DQT801
+- `DQT8.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Nhập điểm đạt đặc biệt môn học/ Nhập điểm đạt đặc biệt môn học - khối → `Edusoft.SRM.DQT8.DQT802.DQT802_DiemDatDacBietMHKhoi` – màn hình: DQT802
 - `D57` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Quản lý thành phần con
 - `D57.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Quản lý thành phần con/ Xem/sửa số điểm thành phần con → `Edusoft.SRM.D5.D57.D57_01_QuanLyTPCon`
 - `D54` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Thay đổi nhiệm ý cộng điểm trên học phần
@@ -211,27 +211,27 @@
 - `D52.03` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm TB - từng sinh viên → `Edusoft.SRM.D5.D52.D52_03_Cong1SV`
 - `D52.09` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm toàn trường → `Edusoft.SRM.D5.D52.D52_09_CongToanTruong`
 - `D52.01` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm TP B và C học kỳ hiện tại → `Edusoft.SRM.D5.D52.D52_01_CongDiemTPCha`
-- `D52.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Khối chưa cộng điểm → `Edusoft.SRM.CongDiem.F008_ChuaCongDiem`
+- `D52.02` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Khối chưa cộng điểm → `Edusoft.SRM.CongDiem.F008_ChuaCongDiem` – màn hình (đoán theo tên): DCHUACONGDIEM
 - `D52.15` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Nhóm MH chưa tính điểm/công bố điểm → `Edusoft.RMS.M03._02.F003_NhomKhgTinhDiemCongBoDiem`
-- `D52.11` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Nhật ký cộng điểm → `Edusoft.SRM.NK.F01_NKCongDiem`
+- `D52.11` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Nhật ký cộng điểm → `Edusoft.SRM.NK.F01_NKCongDiem` – màn hình (đoán theo tên): VIEW_NK_CONG_DIEM
 - `D52.20` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Xem khối lớp cộng điểm → `Edusoft.SRM.DKTGD.DKTGD2.DKTGD2_01_ViewLopVaSetting`
-- `D52.10` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Đối tượng công bố điểm lên web → `AQViewers.Settings.UC_SettingsTool1`
+- `D52.10` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Đối tượng công bố điểm lên web → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DQT` Quản lý điểm/ Quản trị phân hệ
-- `DBS` Quản lý điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
+- `DBS` Quản lý điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
 - `DQT7` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký
-- `DQT7.04` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Bộ ký tên report → `AQViewers.Reports.ChuKy.UCT_BoChuKyReport`
-- `DQT7.02` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Danh mục nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_NhomChuKy`
+- `DQT7.04` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Bộ ký tên report → `AQViewers.Reports.ChuKy.UCT_BoChuKyReport` – màn hình (đoán theo tên): VBOKYREPORT
+- `DQT7.02` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Danh mục nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_NhomChuKy` – màn hình: HDMNHCHUKY
 - `DQT7.03` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Danh sách ký tên/Nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_ChiTietChuKy`
 - `DQT5` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ
 - `DQT5.08` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Chỉnh định CTĐT tính điểm theo khối → `Edusoft.SRM.DHT.F08_SETTINHTHEO_KHOI`
 - `DQT5.03` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Phân quyền nhập chứng chỉ ngoài → `Edusoft.SRM.DQT._03.F01_PhanQuyenNhapCC`
 - `DQT5.06` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Thành phần con môn học theo học kỳ → `Edusoft.SRM.DHT.F05_TPConMonHocHK`
-- `DQT5.04` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa nhãn điểm môn đặc biệt → `Edusoft.SRM.DHT.F03_DinhNghiaNhanDiemMonDB`
+- `DQT5.04` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa nhãn điểm môn đặc biệt → `Edusoft.SRM.DHT.F03_DinhNghiaNhanDiemMonDB` – màn hình (đoán theo tên): DNNHANDIEMMONDB
 - `DQT5.07` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa phổ điểm in → `Edusoft.SRM.KTTC.F37_DDMPhoDiem`
 - `DQT5.05` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa thành phần con môn học → `Edusoft.SRM.DHT.F04_MonHocCoTPCon`
 - `DQT5.01` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa tên nhãn điểm chung → `Edusoft.SRM.DHT.F01_DinhNghiaTenDiem`
-- `DQT4` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM)
-- `DQT2` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM)
+- `DQT4` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `DQT2` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DQT11` Quản lý điểm/ Quản trị phân hệ/ Giải phóng bớt bảng ghi điểm quá cũ → `Edusoft.SRM.DHT.F07_XoaBangGhiDiemCu`
 - `DQT9` Quản lý điểm/ Quản trị phân hệ/ Phiên bản report
 - `DQT9.01` Quản lý điểm/ Quản trị phân hệ/ Phiên bản report/ Phiên bản report → `AQViewers.Reports.Vesions.DNVersionReport`
@@ -251,7 +251,7 @@
 - `D74.08` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In kết quả xét theo đợt (HK) → `Edusoft.SRM.D7.D704.D704_07_InKetQuaTheoDot`
 - `D74.02` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê kết quả (HK) → `Edusoft.SRM.D7.D704.D704_01_InTongHopKQHocKy`
 - `D74.09` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê kết quả theo Khối lớp → `Edusoft.SRM.D7.D704.D704_InTKTheoKhoiLop`
-- `D74.13` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê kết quả theo lớp → `Edusoft.SRM.D7.D704.D704_11_InTKTheoLop`
+- `D74.13` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê kết quả theo lớp → `Edusoft.SRM.D7.D704.D704_11_InTKTheoLop` – màn hình (đoán theo tên): D704.11
 - `D74.05` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê kết quả theo Ngành Khóa → `Edusoft.SRM.D7.D704.D704_05_InTKTheoNganhKhoa`
 - `D74.03` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In thống kê theo hộ khẩu (HK) → `Edusoft.SRM.D7.D704.D704_03_InTongHopKQHoKhau`
 - `D74.11` Quản lý điểm/ Xử lý học vụ học kỳ/ In kết quả/ In tổng hợp kết quả theo khóa → `Edusoft.SRM.D7.D704.D704_InTongHopSVBiCanhBao`
@@ -283,9 +283,9 @@
 - `D76.02` Quản lý điểm/ Xử lý học vụ học kỳ/ Xét điều kiện bổ sung/ Kết quả xét theo điều kiện bổ sung → `Edusoft.SRM.D7.D706.F02_KQXetDieuKienBoSung`
 - `D76.01` Quản lý điểm/ Xử lý học vụ học kỳ/ Xét điều kiện bổ sung/ Xét theo điều kiện bổ sung → `Edusoft.SRM.D7.D706.F01_XetTiepDieuKienBoSung`
 - `D72` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét
-- `D72.02` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách lớp xét (HK) → `Edusoft.SRM.D7.D702.D72_02_01_LopXetHVHK`
-- `D72.03` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách SV xét (HK) → `Edusoft.SRM.D7.D702.D72_03_01_SVXetHVHK`
-- `D72.01` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách đợt xét (HK) → `Edusoft.SRM.D7.D702.D72_01_01_DNDotXetHVHK`
+- `D72.02` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách lớp xét (HK) → `Edusoft.SRM.D7.D702.D72_02_01_LopXetHVHK` – màn hình: D7202
+- `D72.03` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách SV xét (HK) → `Edusoft.SRM.D7.D702.D72_03_01_SVXetHVHK` – màn hình: D7203
+- `D72.01` Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách đợt xét (HK) → `Edusoft.SRM.D7.D702.D72_01_01_DNDotXetHVHK` – màn hình: D7201
 - `D100` Quản lý điểm/ Xử lý học vụ ngành 2
 - `D1004` Quản lý điểm/ Xử lý học vụ ngành 2/ In kết quả
 - `D1004.01` Quản lý điểm/ Xử lý học vụ ngành 2/ In kết quả/ In kết quả xét theo lớp (HK) → `Edusoft.SRM.D7.D704.D704_01_InKetQuaXetHocKy` (Param1=2)
@@ -307,9 +307,9 @@
 - `D1003.01` Quản lý điểm/ Xử lý học vụ ngành 2/ Xét học kỳ/ Xét theo đợt (HK) → `Edusoft.SRM.D7.D703.D73_01_01_XetHVHKTheoDot`
 - `D1003.02` Quản lý điểm/ Xử lý học vụ ngành 2/ Xét học kỳ/ Xét theo đợt và tiêu chuẩn (HK) → `Edusoft.SRM.D7.D703.D73_02_01_XetHVNHTheoDotVaTC` (Param1=2)
 - `D1002` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét
-- `D1002.02` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách lớp xét (HK) → `Edusoft.SRM.D7.D702.D72_02_01_LopXetHVHK` (Param1=2)
-- `D1002.03` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách SV xét (HK) → `Edusoft.SRM.D7.D702.D72_03_01_SVXetHVHK` (Param1=2)
-- `D1002.01` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách đợt xét (HK) → `Edusoft.SRM.D7.D702.D72_01_01_DNDotXetHVHK` (Param1=2)
+- `D1002.02` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách lớp xét (HK) → `Edusoft.SRM.D7.D702.D72_02_01_LopXetHVHK` (Param1=2) – màn hình: D7202
+- `D1002.03` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách SV xét (HK) → `Edusoft.SRM.D7.D702.D72_03_01_SVXetHVHK` (Param1=2) – màn hình: D7203
+- `D1002.01` Quản lý điểm/ Xử lý học vụ ngành 2/ Đợt và danh sách xét/ Danh sách đợt xét (HK) → `Edusoft.SRM.D7.D702.D72_01_01_DNDotXetHVHK` (Param1=2) – màn hình: D7201
 - `D8` Quản lý điểm/ Xử lý học vụ năm học
 - `D84` Quản lý điểm/ Xử lý học vụ năm học/ In kết quả
 - `D84.01` Quản lý điểm/ Xử lý học vụ năm học/ In kết quả/ In kết quả xét (NH) → `Edusoft.SRM.D8.D804.D804_01_InKQXetNamHoc`

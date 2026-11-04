@@ -21,9 +21,9 @@
 - `U3.03` Kho sách/ Nhập trả/ Lưu phiếu nhập kho đã ký → `Edusoft.BSM.U3._03.F001_LuuPhieuNhapKhoDaKyTheoSoPhieuXuat`
 - `U3.01` Kho sách/ Nhập trả/ Nhập kho trả học liệu → `Edusoft.BSM.U3._01.F001_DonViNhapKhoTraHL`
 - `UQT` Kho sách/ Quản trị phân hệ
-- `UQT3` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD)
-- `UQT2` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD)
-- `UDMMH` Kho sách/ Quản trị phân hệ/ Danh mục môn học → `Edusoft.TPM.K01._002.UCT_VIewMH` (Param1=UDMMH)
+- `UQT3` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `UQT2` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `UDMMH` Kho sách/ Quản trị phân hệ/ Danh mục môn học → `Edusoft.TPM.K01._002.UCT_VIewMH` (Param1=UDMMH) – màn hình: KDMMH, N12.30.10
 - `U1.05.F003` Kho sách/ Quản trị phân hệ/ In mã vạch học liệu → `Edusoft.BSM.U1._05.F003_InMaVachHL`
 - `UC4` Kho sách/ Quản trị phân hệ/ Phân quyền phân hệ
 - `UQT0` Kho sách/ Quản trị phân hệ/ Quản lý danh mục
@@ -38,19 +38,19 @@
 - `U2.03.01` Kho sách/ Xuất kho/ In kiểm tra học liệu đăng ký/ Đăng ký đang chờ xử lý
 - `U2.02` Kho sách/ Xuất kho/ Xuất kho
 - `U2.02.07` Kho sách/ Xuất kho/ Xuất kho/ In kiểm tra học liệu chưa xuất kho vật lý → `Edusoft.BSM.U2._02.F007_InKiemTraHocLieuChuaXuatKhoVatLy`
-- `U2.02.04` Kho sách/ Xuất kho/ Xuất kho/ In phiếu xuất kho theo số phiếu xuất → `Edusoft.BSM.U2._02.F004_InPhieuXuatKhoTheoSoPhieuXuat`
-- `U2.02.05` Kho sách/ Xuất kho/ Xuất kho/ Lưu phiếu xuất kho đã ký → `Edusoft.BSM.U2._02.F005_LuuPhieuXuatKhoDaKyTheoSoPhieuXuat`
-- `U2.02.02` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho từ đăng ký của sinh viên → `Edusoft.BSM.U2._02.F002_XuatKhoTuDangKyCuaSinhVien`
-- `U2.02.01` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho từ đăng ký của đơn vị → `Edusoft.BSM.U2._02.F001_XuatKhoTuDangKyCuaDonVi`
-- `U2.02.03` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho tự do → `Edusoft.BSM.U2._02.F003_XuatKhoTuDo`
-- `U2.02.06` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho vật lý → `Edusoft.BSM.U2._02.F006_XuatKhoVatLy`
+- `U2.02.04` Kho sách/ Xuất kho/ Xuất kho/ In phiếu xuất kho theo số phiếu xuất → `Edusoft.BSM.U2._02.F004_InPhieuXuatKhoTheoSoPhieuXuat` – màn hình (đoán theo tên): ViewInPhieuXuatKho
+- `U2.02.05` Kho sách/ Xuất kho/ Xuất kho/ Lưu phiếu xuất kho đã ký → `Edusoft.BSM.U2._02.F005_LuuPhieuXuatKhoDaKyTheoSoPhieuXuat` – màn hình (đoán theo tên): ViewUXuatKho
+- `U2.02.02` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho từ đăng ký của sinh viên → `Edusoft.BSM.U2._02.F002_XuatKhoTuDangKyCuaSinhVien` – màn hình (đoán theo tên): ViewSVUXuatKho
+- `U2.02.01` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho từ đăng ký của đơn vị → `Edusoft.BSM.U2._02.F001_XuatKhoTuDangKyCuaDonVi` – màn hình (đoán theo tên): ViewDVUXuatKho
+- `U2.02.03` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho tự do → `Edusoft.BSM.U2._02.F003_XuatKhoTuDo` – màn hình (đoán theo tên): ViewTuDoUXuatKho
+- `U2.02.06` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho vật lý → `Edusoft.BSM.U2._02.F006_XuatKhoVatLy` – màn hình (đoán theo tên): ViewVatLyUXuatKho
 - `U2.02.08` Kho sách/ Xuất kho/ Xuất kho/ Xuất kho vật lý nhanh → `Edusoft.BSM.U2._02.F008_XuatKhoVatLyNhanh`
 - `U2.01` Kho sách/ Xuất kho/ Đăng ký học liệu
-- `U2.01.02` Kho sách/ Xuất kho/ Đăng ký học liệu/ Sinh viên đăng ký → `Edusoft.BSM.U2._01.F002_SinhVienDangKy`
-- `U2.01.01` Kho sách/ Xuất kho/ Đăng ký học liệu/ Đơn vị liên kết đăng ký → `Edusoft.BSM.U2._01.F001_DonViLienKetDangKy`
+- `U2.01.02` Kho sách/ Xuất kho/ Đăng ký học liệu/ Sinh viên đăng ký → `Edusoft.BSM.U2._01.F002_SinhVienDangKy` – màn hình (đoán theo tên): ViewSVUDangKyHL
+- `U2.01.01` Kho sách/ Xuất kho/ Đăng ký học liệu/ Đơn vị liên kết đăng ký → `Edusoft.BSM.U2._01.F001_DonViLienKetDangKy` – màn hình (đoán theo tên): ViewDVUDangKyHL
 - `U5` Kho sách/ Xử lý kho
 - `U5.04` Kho sách/ Xử lý kho/ Cấu trúc kho
-- `U5.4.1` Kho sách/ Xử lý kho/ Cấu trúc kho/ Chỉnh định cấu trúc kho → `Edusoft.BSM.U5._04.F001_ChinhDinhCauTrucKho`
+- `U5.4.1` Kho sách/ Xử lý kho/ Cấu trúc kho/ Chỉnh định cấu trúc kho → `Edusoft.BSM.U5._04.F001_ChinhDinhCauTrucKho` – màn hình (đoán theo tên): ViewUCauTrucKho
 - `U5.4.2` Kho sách/ Xử lý kho/ Cấu trúc kho/ Xem sơ đồ phòng kho → `Edusoft.BSM.U5._04.F002_XemSoDoPhongKho`
 - `U5.02` Kho sách/ Xử lý kho/ Kiểm kê kho
 - `U5.02.02` Kho sách/ Xử lý kho/ Kiểm kê kho/ Báo cáo kiểm kê → `Edusoft.BSM.U5._02.F002_XemKiemKeKho`
@@ -65,10 +65,10 @@
 - `U5.05.02` Kho sách/ Xử lý kho/ Nhập học liệu in đối chiếu công nợ đơn vị/ Số lượng đã sử dụng trong kỳ → `Edusoft.BSM.U5._05.F001_NhapSLHLTheoHK` (Param1=2)
 - `U5.03` Kho sách/ Xử lý kho/ Tái sắp xếp kho
 - `U5.03.02` Kho sách/ Xử lý kho/ Tái sắp xếp kho/ Báo cáo hiệu liệu nhanh luân chuyển → `Edusoft.BSM.U5._03.F002_BaoCaoHocLieuNhanhLuanChuyen`
-- `U5.03.01` Kho sách/ Xử lý kho/ Tái sắp xếp kho/ Báo cáo học liệu chậm luân chuyển → `Edusoft.BSM.U5._03.F001_BaoCaoHocLieuChamLuanChuyen`
+- `U5.03.01` Kho sách/ Xử lý kho/ Tái sắp xếp kho/ Báo cáo học liệu chậm luân chuyển → `Edusoft.BSM.U5._03.F001_BaoCaoHocLieuChamLuanChuyen` – màn hình (đoán theo tên): ViewBaoCaoHocLieuChamLuanChuyen
 - `U5.03.03` Kho sách/ Xử lý kho/ Tái sắp xếp kho/ Tái sắp xếp kho → `Edusoft.BSM.U5._03.F003_TaiSapXepKho`
 - `U4` Kho sách/ Đóng băng
-- `U4.02` Kho sách/ Đóng băng/ Hủy đóng băng học liệu → `Edusoft.BSM.U4._02.F001_HuyDongBangHocLieu`
+- `U4.02` Kho sách/ Đóng băng/ Hủy đóng băng học liệu → `Edusoft.BSM.U4._02.F001_HuyDongBangHocLieu` – màn hình: sourceViewDongBangHL
 - `U4.01` Kho sách/ Đóng băng/ Đóng băng học liệu → `Edusoft.BSM.U4._01.F001_DongBangHocLieu`
 
 ## Màn hình (view) và lưới

@@ -4,13 +4,13 @@
 
 - `F02` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học
 - `F01.5` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Danh sách giảng viên khóa học → `Edusoft.STM._01.F003_DanhSachGiangVienKhoaHoc`
-- `F01.3` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Danh sách phòng trong khóa học → `Edusoft.STM._01.F002_NhapPhongKH`
+- `F01.3` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Danh sách phòng trong khóa học → `Edusoft.STM._01.F002_NhapPhongKH` – màn hình (đoán theo tên): FPHKhoaHoc
 - `F02.3` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Nhập lệ phí môn học → `Edusoft.STM._02.F003_NhapLePhiMonHoc`
-- `F02.2` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Nhập lịch khai giảng dự kiến → `Edusoft.STM._02.F002_NhapLichKhaiGiangDuKien`
+- `F02.2` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Nhập lịch khai giảng dự kiến → `Edusoft.STM._02.F002_NhapLichKhaiGiangDuKien` – màn hình (đoán theo tên): FTKBMonDTNH
 - `F02.5` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Nhập phòng và giảng viên môn học → `Edusoft.STM._02.F002_NhapPHGVKhoaHoc`
 - `F02.1` Đào tạo ngắn hạn/ Chuẩn bị dữ liệu khóa học/ Định nghĩa khóa học → `Edusoft.STM._02.F001_DinhNghiaKhoaHoc`
 - `F07` Đào tạo ngắn hạn/ Cấp chứng chỉ
-- `F07.02` Đào tạo ngắn hạn/ Cấp chứng chỉ/ Danh sách sinh viên nhận chứng chỉ → `Edusoft.STM._07.F007_DanhSachSVNhanCC`
+- `F07.02` Đào tạo ngắn hạn/ Cấp chứng chỉ/ Danh sách sinh viên nhận chứng chỉ → `Edusoft.STM._07.F007_DanhSachSVNhanCC` – màn hình (đoán theo tên): VIEW_DSSVNCC
 - `F07.01` Đào tạo ngắn hạn/ Cấp chứng chỉ/ Quyết định cấp chứng chỉ → `Edusoft.STM._07.F007_NhapCC`
 - `F06` Đào tạo ngắn hạn/ Học phí
 - `F06.01` Đào tạo ngắn hạn/ Học phí/ Tính và đóng học phí → `Edusoft.STM._06.F001_TinhVaDongHocPhi`
@@ -18,14 +18,14 @@
 - `F05` Đào tạo ngắn hạn/ Nhập điểm
 - `F05.5` Đào tạo ngắn hạn/ Nhập điểm/ In chứng nhận hoàn thành môn học → `Edusoft.STM._05.F005_InChungNhan`
 - `F05.1` Đào tạo ngắn hạn/ Nhập điểm/ Nhập điểm môn học → `Edusoft.STM._05.F001_NhapDiemThiMonDTNH`
-- `F05.3` Đào tạo ngắn hạn/ Nhập điểm/ Nhập điểm môn học nhiều thành phần → `Edusoft.STM._05.F003_NhapDiemMHNhieuThanhPhan`
-- `F05.4` Đào tạo ngắn hạn/ Nhập điểm/ Xem kết quả sau khi xét → `Edusoft.STM._05.F004_XemKQSauKhiXet`
+- `F05.3` Đào tạo ngắn hạn/ Nhập điểm/ Nhập điểm môn học nhiều thành phần → `Edusoft.STM._05.F003_NhapDiemMHNhieuThanhPhan` – màn hình (đoán theo tên): FNhapDiemMHNhieuTP
+- `F05.4` Đào tạo ngắn hạn/ Nhập điểm/ Xem kết quả sau khi xét → `Edusoft.STM._05.F004_XemKQSauKhiXet` – màn hình (đoán theo tên): XEMKQXET
 - `F05.2` Đào tạo ngắn hạn/ Nhập điểm/ Xét kết quả thi → `Edusoft.STM._05.F002_XetKetQuaThi`
 - `F08` Đào tạo ngắn hạn/ Phúc khảo
 - `F08.2` Đào tạo ngắn hạn/ Phúc khảo/ Xét lại kết quả phúc khảo → `Edusoft.STM._08.F009_XetLaiKQPhucKhao`
-- `F08.1` Đào tạo ngắn hạn/ Phúc khảo/ Đơn phúc khảo → `Edusoft.STM._08.F008_NhapDonXinPhucKhao`
+- `F08.1` Đào tạo ngắn hạn/ Phúc khảo/ Đơn phúc khảo → `Edusoft.STM._08.F008_NhapDonXinPhucKhao` – màn hình (đoán theo tên): VIEWDIEMPHUCKHAO, VIEW_PHUCKHAO
 - `FQT` Đào tạo ngắn hạn/ Quản trị phân hệ
-- `FQT2` Đào tạo ngắn hạn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DTNH)
+- `FQT2` Đào tạo ngắn hạn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DTNH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `FQT0` Đào tạo ngắn hạn/ Quản trị phân hệ/ Quản lý danh mục
 - `F04` Đào tạo ngắn hạn/ Tổ chức thi
 - `F04.01` Đào tạo ngắn hạn/ Tổ chức thi/ Nhập lịch dự thi → `Edusoft.STM._02.F002_NhapLichThiMK`
@@ -35,10 +35,10 @@
 - `F03.1` Đào tạo ngắn hạn/ Đăng ký môn học/ Danh mục sinh viên ngoài trường
 - `F03.4` Đào tạo ngắn hạn/ Đăng ký môn học/ In sinh viên đăng ký môn học → `Edusoft.STM._03.F003_InSVDKMH`
 - `F03.2` Đào tạo ngắn hạn/ Đăng ký môn học/ Sinh viên đăng ký môn học → `Edusoft.STM._03.F001_KetQuaDKDTNH`
-- `F03.3` Đào tạo ngắn hạn/ Đăng ký môn học/ Đăng ký môn học từng sinh viên → `Edusoft.STM._03.F002_DKMHNganHanTungSV`
+- `F03.3` Đào tạo ngắn hạn/ Đăng ký môn học/ Đăng ký môn học từng sinh viên → `Edusoft.STM._03.F002_DKMHNganHanTungSV` – màn hình (đoán theo tên): M0301, ViewKQDK_EduWeb, M0302
 - `F01` Đào tạo ngắn hạn/ Định nghĩa dữ liệu
 - `F01.1` Đào tạo ngắn hạn/ Định nghĩa dữ liệu/ Danh mục môn học
-- `F01.6` Đào tạo ngắn hạn/ Định nghĩa dữ liệu/ Danh mục viên chức ngoài trường → `Edusoft.STM._01.F005_DanhMucVienChucNT`
+- `F01.6` Đào tạo ngắn hạn/ Định nghĩa dữ liệu/ Danh mục viên chức ngoài trường → `Edusoft.STM._01.F005_DanhMucVienChucNT` – màn hình (đoán theo tên): FDMNVNgoai, VIEW_DMNVNT
 - `F01.2` Đào tạo ngắn hạn/ Định nghĩa dữ liệu/ Thành phần thi môn học → `Edusoft.STM._01.F001_DinhNghiaMHNhieuThanhPhan`
 - `F01.4` Đào tạo ngắn hạn/ Định nghĩa dữ liệu/ Định nghĩa giờ tiết học → `Edusoft.STM._01.F002_DinhNghiaTietGio`
 

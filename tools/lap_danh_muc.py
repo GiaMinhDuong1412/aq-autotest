@@ -37,6 +37,7 @@ def main():
     ap = argparse.ArgumentParser(description="Lập danh mục màn hình Edusoft từ CSV bảng AQ…")
     ap.add_argument("aqdata", help="thư mục CSV do doc_aqdata.py xuất")
     ap.add_argument("--lien-ket", help="file do trich_source.py --ma-view xuất (lớp màn hình → MaView1)")
+    ap.add_argument("--truong", help="file tuy-chinh-truong.txt (tools/xuat_tuy_chinh_truong.sql) – áp nhãn cột/tiêu đề trường đã đổi")
     ap.add_argument("--ra", default="man-hinh", help="thư mục kết quả")
     a = ap.parse_args()
 
@@ -65,9 +66,36 @@ def main():
             tieu_de[r["IDView"]] = g[("1", "14")].strip()
         if r["IDFieldView"] and g.get(("2", "14")):
             nhan_cot[r["IDFieldView"]] = g[("2", "14")].strip()
+    nhan_truong = {}  # nhãn trường (HVNG…) đã đổi, ưu tiên hơn AQ
+    if a.truong:
+        b = open(a.truong, "rb").read()
+        t = b.decode("utf-16") if b[:2] in (b"\xff\xfe", b"\xfe\xff") else b.decode("utf-8-sig", "replace")
+        bang, hdr = None, None
+        for dong in t.splitlines():
+            if dong.startswith("##BANG="):
+                bang, hdr = dong[7:].strip(), None
+                continue
+            if not bang or not dong.strip() or set(dong.strip()) <= set("-|"):
+                continue
+            if hdr is None:
+                hdr = dong.split("|")
+                continue
+            r = dict(zip(hdr, dong.split("|")))
+            if bang == "HValSetV" and (r.get("Index1"), r.get("Index2")) in (("2", "14"), ("1", "14")) and r.get("GiaTri"):
+                if r["Index1"] == "2" and r["IDFieldView"] != "NULL":
+                    nhan_truong[r["IDFieldView"]] = r["GiaTri"].strip()
+                elif r["IDView"] != "NULL":
+                    tieu_de[r["IDView"]] = r["GiaTri"].strip()
+    nhan_cot.update(nhan_truong)
     nut = collections.defaultdict(list)
+    view_lop = collections.defaultdict(set)  # IDView -> lớp màn hình (lấy từ Method của nút riêng / sự kiện lưới)
     for r in doc(a.aqdata, "053"):
         nut[r["IDView"]].append(r)
+        if len(r["Method"].split(",")) >= 2:
+            view_lop[r["IDView"]].add(r["Method"].split(",")[1].strip())
+    for r in doc(a.aqdata, "029"):
+        if len(r["TenMethod"].split(",")) >= 2:
+            view_lop[r["IDView"]].add(r["TenMethod"].split(",")[1].strip())
 
     # lớp màn hình → các MaView1 (từ source), để nối menu với màn hình
     lop_view = collections.defaultdict(list)
@@ -78,6 +106,12 @@ def main():
                 p = [x.strip() for x in dong.split("|")]
                 if len(p) >= 3 and p[2].lower() in ma_v1 and p[2] not in lop_view[p[1]]:
                     lop_view[p[1]].append(p[2])
+    for id1, vs in views.items():
+        for v in vs:
+            for lop in view_lop.get(v["IDView"], ()):
+                m = v1[id1]["MaView1"] if id1 in v1 else None
+                if m and m not in lop_view[lop]:
+                    lop_view[lop].append(m)
 
     def ten(r):
         return (r.get("VtChucNang") or r.get("TenChucNang") or "").strip()
@@ -123,7 +157,7 @@ def main():
                     continue
                 nhan = nhan_cot.get(x["IDFieldView"]) or (d.get("Tenlabel") or d.get("TenField") or d["MaField"]).strip()
                 kieu = KIEU_O.get(x.get("CtrlType", ""), "")
-                s = f"{nhan} [{d['MaField']}]" + (f"{{{kieu}}}" if kieu else "") + ("(chỉ đọc)" if x.get("ReadOnly") == "1" else "")
+                s = f"{nhan} [{d['MaField']}]" + ("(trường đổi nhãn)" if x["IDFieldView"] in nhan_truong else "") + (f"{{{kieu}}}" if kieu else "") + ("(chỉ đọc)" if x.get("ReadOnly") == "1" else "")
                 (an if x.get("Hide") == "1" else cot).append(s)
                 if x["IDFieldView"] in sua:
                     o_sua.append(f"#{d['MaField']}")
@@ -136,6 +170,13 @@ def main():
             for b in sorted(nut[v["IDView"]], key=lambda x: x.get("OrderIndex") or ""):
                 out.append(f"  - Nút {b['CommandName']}: \"{b['ToolTip'].strip()}\"" + (f" ({b['HotKey']})" if b.get("HotKey") else ""))
         return out
+
+    def chuan(x):
+        return re.sub(r"\s+", " ", (x or "").strip().lower())
+    theo_ten = collections.defaultdict(list)  # tên màn hình -> view có lưới (để đoán menu chưa nối được)
+    for r1 in v1.values():
+        if views.get(r1["IDView1"]) and r1.get("HuyView1") != "1":
+            theo_ten[chuan(r1["TenView1"])].append(r1)
 
     os.makedirs(a.ra, exist_ok=True)
     idx = ["# Danh mục màn hình Edusoft.NET (cấu hình gốc AQ)", "",
@@ -157,6 +198,11 @@ def main():
                     dong += f" (Param1={r['Param1']})"
                 if lop_view.get(lop):
                     dong += " – màn hình: " + ", ".join(lop_view[lop])
+                else:
+                    doan = [x["MaView1"] for x in theo_ten.get(chuan(r.get("TenChucNang")), []) +
+                            theo_ten.get(chuan(ten(r)), [])]
+                    if doan:
+                        dong += " – màn hình (đoán theo tên): " + ", ".join(dict.fromkeys(doan))
             out.append(dong)
         out += ["", "## Màn hình (view) và lưới", ""]
         for r1 in sorted(man.get(ma, []), key=lambda x: x["MaView1"].lower()):

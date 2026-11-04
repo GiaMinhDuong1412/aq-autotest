@@ -5,29 +5,29 @@
 - `CA` Công văn/ An toàn dữ liệu
 - `CKT` Công văn/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ
 - `C30` Công văn/ Công văn nội bộ
-- `C30.10.01` Công văn/ Công văn nội bộ/ Danh sách công văn nội bộ → `Edusoft.DMS.C30._10.C30_10_01_DSCVANNOIBO`
+- `C30.10.01` Công văn/ Công văn nội bộ/ Danh sách công văn nội bộ → `Edusoft.DMS.C30._10.C30_10_01_DSCVANNOIBO` – màn hình (đoán theo tên): C30.10.01
 - `C10` Công văn/ Công văn đi
-- `C10.10.01` Công văn/ Công văn đi/ Danh sách công văn đi → `Edusoft.DMS.C10._10.C10_10_01_DSCVANDI`
+- `C10.10.01` Công văn/ Công văn đi/ Danh sách công văn đi → `Edusoft.DMS.C10._10.C10_10_01_DSCVANDI` – màn hình (đoán theo tên): C10.10.01
 - `C20` Công văn/ Công văn đến
-- `C20.10.01` Công văn/ Công văn đến/ Danh sách công văn đến → `Edusoft.DMS.C20._10.C20_10_01_DSCVANDEN`
+- `C20.10.01` Công văn/ Công văn đến/ Danh sách công văn đến → `Edusoft.DMS.C20._10.C20_10_01_DSCVANDEN` – màn hình (đoán theo tên): C20.10.01, DSCONGVANDEN
 - `C20.10.05` Công văn/ Công văn đến/ Xem danh sách nhận và đọc mail → `Edusoft.DMS.C20._10.C20_10_05_XemNVNhanVaDocMail`
 - `C90` Công văn/ Nhận và xử lý công văn
-- `C90.10.01` Công văn/ Nhận và xử lý công văn/ Duyệt công văn → `Edusoft.DMS.C90._10.C90_10_01_DSCVAN_DUYET`
+- `C90.10.01` Công văn/ Nhận và xử lý công văn/ Duyệt công văn → `Edusoft.DMS.C90._10.C90_10_01_DSCVAN_DUYET` – màn hình (đoán theo tên): CDUYETCONGVAN
 - `C90.20.01` Công văn/ Nhận và xử lý công văn/ Xử lý công văn nhận → `Edusoft.DMS.C90._20.C90_20_01_DSCVAN_NHAN`
 - `C40` Công văn/ Quyết định
-- `C40.10.10` Công văn/ Quyết định/ Danh sách quyết định → `Edusoft.DMS.C40._10.C10_DSQuyetDinh`
+- `C40.10.10` Công văn/ Quyết định/ Danh sách quyết định → `Edusoft.DMS.C40._10.C10_DSQuyetDinh` – màn hình (đoán theo tên): S-DS-QUYETDINH, S-DS-QUYETDINH2, C40.10.10
 - `C40.10.12` Công văn/ Quyết định/ Quyết định IU → `Edusoft.DMS.C40._10.C10_QT_QDDHQuocTe`
 - `C40.10.13` Công văn/ Quyết định/ Quyết định IU (ĐT) → `Edusoft.DMS.C40._10.C10_QT_QDDHQuocTeDaoTao`
 - `C40.10.11` Công văn/ Quyết định/ Quyết định ĐHQG → `Edusoft.DMS.C40._10.C10_QT_QDDHQuocGia`
 - `CBB` Công văn/ Quản lý báo biểu
 - `CQT` Công văn/ Quản trị phân hệ
-- `CQT2` Công văn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLCV)
+- `CQT2` Công văn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLCV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `CQT0` Công văn/ Quản trị phân hệ/ Quản lý danh mục
 - `C3` Công văn/ Thông tin chung
 - `C3.01` Công văn/ Thông tin chung/ Danh mục
 - `C3.10.03` Công văn/ Thông tin chung/ Danh mục/ Danh mục loại văn bản
-- `C3.01.02` Công văn/ Thông tin chung/ Danh mục/ Danh mục đơn vị ngoài → `Edusoft.DMS.C2.C201.C201_01_DMCQNgoai`
-- `C3.01.01` Công văn/ Thông tin chung/ Danh mục/ Danh mục đơn vị nội bộ → `Edusoft.DMS.C2.C201.C201_02_DMCQNoiBo`
+- `C3.01.02` Công văn/ Thông tin chung/ Danh mục/ Danh mục đơn vị ngoài → `Edusoft.DMS.C2.C201.C201_01_DMCQNgoai` – màn hình: CDMCQNGOAI, NDMDVNGOAI
+- `C3.01.01` Công văn/ Thông tin chung/ Danh mục/ Danh mục đơn vị nội bộ → `Edusoft.DMS.C2.C201.C201_02_DMCQNoiBo` – màn hình: CDMCQNOIBO
 - `C3.02` Công văn/ Thông tin chung/ Người ký
 - `C3.02.03` Công văn/ Thông tin chung/ Người ký/ Lãnh đạo duyệt → `Edusoft.DMS.CGD.C201.C201_05_DMNVDUYET`
 - `C3.02.01` Công văn/ Thông tin chung/ Người ký/ Lãnh đạo ký chính → `Edusoft.DMS.CGD.C201.C201_03_DMNVKYCHINH`

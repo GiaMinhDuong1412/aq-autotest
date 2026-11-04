@@ -13,21 +13,21 @@
 - `AQ03_15` AQ Tool/ Business tools/ Import dữ liệu phân tích số liệu → `AQViewers.PhanTichSL.ImportDuLieuPTSL`
 - `AQ04` AQ Tool/ Database tools
 - `AQ04.TL` AQ Tool/ Database tools/ Database tools
-- `AQ03_6` AQ Tool/ Database tools/ Database tools/ Cập nhật database từ file → `AQViewers.GenDM.AlterFileField`
+- `AQ03_6` AQ Tool/ Database tools/ Database tools/ Cập nhật database từ file → `AQViewers.GenDM.AlterFileField` – màn hình: AQUPDATEDB, AQDMFILE
 - `AQ03_1` AQ Tool/ Database tools/ Database tools/ Tách mã field (db,view,report)
-- `AQ04_8` AQ Tool/ Database tools/ Database tools/ Tạo file danh mục tự động → `AQViewers.GenDM.GenFileDM`
+- `AQ04_8` AQ Tool/ Database tools/ Database tools/ Tạo file danh mục tự động → `AQViewers.GenDM.GenFileDM` – màn hình: GENFILEDM
 - `AQ05_9` AQ Tool/ Database tools/ Database tools/ Tạo view danh mục tự động → `AQViewers.AutoCreateViewDanhMuc`
-- `AQ03_8` AQ Tool/ Database tools/ Database tools/ Update file field → `AQViewers.GenDM.UpdateFileField`
+- `AQ03_8` AQ Tool/ Database tools/ Database tools/ Update file field → `AQViewers.GenDM.UpdateFileField` – màn hình: AQUPDATEDB, GENFILEDM
 - `AQ03_9` AQ Tool/ Database tools/ Database tools/ Xuất file AQ → `AQViewers.Settings.ExportFileAQ`
-- `AQ03_7` AQ Tool/ Database tools/ Database tools/ Xóa field từ file import → `AQViewers.GenDM.DeleteFieldOnDatabase`
+- `AQ03_7` AQ Tool/ Database tools/ Database tools/ Xóa field từ file import → `AQViewers.GenDM.DeleteFieldOnDatabase` – màn hình: AQUPDATEDB
 - `AQ04.FF` AQ Tool/ Database tools/ File field
-- `AQ04.FF.06` AQ Tool/ Database tools/ File field/ Chuyển đổi chuỗi Unicode tổ hợp qua dựng sẵn → `AQViewers.UniCode.UCT_UniCode` (Param1=0)
+- `AQ04.FF.06` AQ Tool/ Database tools/ File field/ Chuyển đổi chuỗi Unicode tổ hợp qua dựng sẵn → `AQViewers.UniCode.UCT_UniCode` (Param1=0) – màn hình (đoán theo tên): VIEWCONVERTUNICODE
 - `AQ03_4` AQ Tool/ Database tools/ File field/ Danh mục Enum
 - `AQ05_10` AQ Tool/ Database tools/ File field/ Danh mục field
 - `AQ04_5` AQ Tool/ Database tools/ File field/ Danh mục file
 - `AQ04_4` AQ Tool/ Database tools/ File field/ Danh mục nhóm file
 - `AQ04_7` AQ Tool/ Database tools/ File field/ Danh sách file & field → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-9034935149055360219)
-- `AQ04_11` AQ Tool/ Database tools/ File field/ Dịch danh mục field → `AQViewers.Language.UCT_DichDmField`
+- `AQ04_11` AQ Tool/ Database tools/ File field/ Dịch danh mục field → `AQViewers.Language.UCT_DichDmField` – màn hình (đoán theo tên): AQFieldNgonNgu
 - `AQ003_4_1` AQ Tool/ Database tools/ File field/ Xem enum dạng chi tiết → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5271523777871538995)
 - `AQ04_9` AQ Tool/ Database tools/ File field/ Xem file field dạng danh sách → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-9114721645022617551)
 - `AQ04.RL` AQ Tool/ Database tools/ Relation
@@ -42,11 +42,11 @@
 - `AQ03_5` AQ Tool/ Database tools/ Đồng bộ database/ Đồng bộ database → `AQViewers.GenDM.SysDatabase`
 - `AQ01` AQ Tool/ Dữ liệu mẫu
 - `AQ09` AQ Tool/ Function tools
-- `AQ09_6` AQ Tool/ Function tools/ Chức năng và bộ đếm → `AQViewers.ThongTinTruong.UCT_ChucNangBoDem`
-- `AQ09_2` AQ Tool/ Function tools/ Danh mục chức năng → `AQViewers.ThongTinTruong.UCT_DanhMucChucNang`
+- `AQ09_6` AQ Tool/ Function tools/ Chức năng và bộ đếm → `AQViewers.ThongTinTruong.UCT_ChucNangBoDem` – màn hình (đoán theo tên): AQCNBODEM
+- `AQ09_2` AQ Tool/ Function tools/ Danh mục chức năng → `AQViewers.ThongTinTruong.UCT_DanhMucChucNang` – màn hình (đoán theo tên): AQDMCHUCNANG_OLD
 - `AQ09_5` AQ Tool/ Function tools/ Danh mục form
 - `AQ09_4` AQ Tool/ Function tools/ Danh mục nhóm form
-- `AQ09_1` AQ Tool/ Function tools/ Danh mục phân hệ → `AQViewers.ThongTinTruong.UCT_PhanHeAddin_Min`
+- `AQ09_1` AQ Tool/ Function tools/ Danh mục phân hệ → `AQViewers.ThongTinTruong.UCT_PhanHeAddin_Min` – màn hình: AQDMPHANHE
 - `AQ09_8` AQ Tool/ Function tools/ Danh sách file hướng dẫn youtube
 - `AQ09_7` AQ Tool/ Function tools/ Dịch cây chức năng → `AQViewers.Language.UCT_DichCayChucNang`
 - `AQ02` AQ Tool/ Report tools
@@ -54,11 +54,11 @@
 - `AQ01_1` AQ Tool/ Report tools/ Danh mục nhóm report
 - `AQ02_4` AQ Tool/ Report tools/ Danh sách field của báo biểu → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5677566412912101445)
 - `AQ02_2` AQ Tool/ Report tools/ Danh sách source của báo biểu → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8922989166438148684)
-- `AQ02_5` AQ Tool/ Report tools/ Dịch nội dung report → `AQViewers.Language.UCT_DichNoiDungReport`
+- `AQ02_5` AQ Tool/ Report tools/ Dịch nội dung report → `AQViewers.Language.UCT_DichNoiDungReport` – màn hình (đoán theo tên): AQValSetR1NgonNgu
 - `AQ06` AQ Tool/ Sale tools
 - `AQ06_4` AQ Tool/ Sale tools/ Cấp addin cho trường → `AQViewers.ThongTinTruong.UCT_TruongAddin`
 - `AQ06_3` AQ Tool/ Sale tools/ Cấp key cho trường → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-9215703877547750161)
-- `AQ09_3` AQ Tool/ Sale tools/ Danh mục addin → `AQViewers.ThongTinTruong.UCT_AddinToiThieu`
+- `AQ09_3` AQ Tool/ Sale tools/ Danh mục addin → `AQViewers.ThongTinTruong.UCT_AddinToiThieu` – màn hình (đoán theo tên): AQDMADDIN_OLD
 - `AQ06_1` AQ Tool/ Sale tools/ Danh mục trường sử dụng
 - `AQ06_2` AQ Tool/ Sale tools/ Danh sách addin & trường
 - `AQ08` AQ Tool/ Setting tools
@@ -95,7 +95,7 @@
 - `AQ05_1` AQ Tool/ View tools/ Danh mục nhóm giao diện
 - `AQ05_3` AQ Tool/ View tools/ Danh sách control bổ sung trên giao diện → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8725487019135284152)
 - `AQ05_4` AQ Tool/ View tools/ Danh sách method của control trên giao diện → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8235164427555532325)
-- `AQ05_5` AQ Tool/ View tools/ Dịch nội dung view → `AQViewers.Language.UCT_DichNoiDungView`
+- `AQ05_5` AQ Tool/ View tools/ Dịch nội dung view → `AQViewers.Language.UCT_DichNoiDungView` – màn hình (đoán theo tên): AQValSetV1NgonNgu
 - `AHD` AQ Tool/ Xem file hướng dẫn
 - `AHD1` AQ Tool/ Xem file hướng dẫn/ Tài liệu hướng dẫn EduSoft.NET → `Edusoft.STM._09.AQ_10_FileHuongDan` (Param1=-9220125419915581246)
 

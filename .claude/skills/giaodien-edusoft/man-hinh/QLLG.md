@@ -78,18 +78,18 @@
 - `B5.01` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương
 - `B5.01.5` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Danh mục loại tiền ngoài giờ
 - `B5.01.1` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Danh mục loại tiền thưởng
-- `B5.01.3` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Thu nhập ngoài giờ → `Edusoft.PMS.B5._01.F003_ThuNhapNgoaiLuong`
-- `B5.01.4` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Truy lãnh ngoài lương → `Edusoft.PMS.B5._01.F004_TruyLanhNgoaiLuong`
+- `B5.01.3` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Thu nhập ngoài giờ → `Edusoft.PMS.B5._01.F003_ThuNhapNgoaiLuong` – màn hình: NTHUNHAPNGOAILUONG
+- `B5.01.4` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Truy lãnh ngoài lương → `Edusoft.PMS.B5._01.F004_TruyLanhNgoaiLuong` – màn hình (đoán theo tên): NTruyLanhNgoaiLuong
 - `B5.01.2` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương/ Viên chức được thưởng → `Edusoft.PMS.B5._01.F001_DanhSachCongTien`
 - `B5.02` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương
 - `B5.02.1` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương/ Danh mục loại tiền quỹ
-- `B05.2.3` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương/ Truy thu ngoài lương → `Edusoft.PMS.B5._01.F004_TruyLanhNgoaiLuong`
+- `B05.2.3` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương/ Truy thu ngoài lương → `Edusoft.PMS.B5._01.F004_TruyLanhNgoaiLuong` – màn hình (đoán theo tên): NTruyThuNgoaiLuong
 - `B5.02.2` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương/ Viên chức bị trừ quỹ → `Edusoft.PMS.B5._01.F002_DanhSachTruTien`
 - `B5.02.4` Lương/ Biến động trong tháng/ Biến động trừ tiền trong lương/ Viên chức tạm ứng → `Edusoft.PMS.B5._01.F004_TruyLanhNgoaiLuong`
 - `B5.05` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ
-- `B5.05.2` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ/ Viên chức nghỉ việc → `Edusoft.PMS.B5.F007_VienChucNghiTrongThang`
+- `B5.05.2` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ/ Viên chức nghỉ việc → `Edusoft.PMS.B5.F007_VienChucNghiTrongThang` – màn hình: DS-NVHK
 - `B5.05.3` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ/ Viên chức tạm không lương → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7404772686439069634)
-- `B5.05.1` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ/ Vào mới, vào lại → `Edusoft.PMS.B5.F008_VienChucVaoMoiVaoLaiTrongThang`
+- `B5.05.1` Lương/ Biến động trong tháng/ Biến động viên chức không qua QĐ/ Vào mới, vào lại → `Edusoft.PMS.B5.F008_VienChucVaoMoiVaoLaiTrongThang` – màn hình: DS-NVHK
 - `B5.03` Lương/ Biến động trong tháng/ Ngoại lệ phụ cấp đắt đỏ
 - `B5.03.2` Lương/ Biến động trong tháng/ Ngoại lệ phụ cấp đắt đỏ/ Truy lãnh thêm phụ cấp đắt đỏ → `Edusoft.PMS.B5.F005_NhapTruyLanhPCDatDo`
 - `B5.03.3` Lương/ Biến động trong tháng/ Ngoại lệ phụ cấp đắt đỏ/ Truy thu thêm phụ cấp đắt đỏ → `Edusoft.PMS.B5.F004_NhapTruyThuPCDatDo`
@@ -161,7 +161,7 @@
 - `B15.12.2` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm
 - `B15.12.2.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Kỳ I → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-6102902761942276911)
 - `B15.12.2.2` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Kỳ II → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-4615974350205806012)
-- `B15.12.2.4` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Số tháng xác định chi thưởng cuối năm → `AQViewers.Settings.UC_SettingsTool1`
+- `B15.12.2.4` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Số tháng xác định chi thưởng cuối năm → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `B15.12.2.3` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Tổng hợp → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-8193036808318137188)
 - `B15.12.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Thu nhập tăng thêm cuối năm
 - `B15.12.1.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Thu nhập tăng thêm cuối năm/ Kỳ I → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-4629269179755408785)
@@ -214,8 +214,8 @@
 - `B11.06.2` Lương/ Báo biểu truy lãnh/ Truy lãnh thâm niên/ Bảng truy lãnh nâng thâm niên cán bộ văn phòng → `Edusoft.PMS.Reports.B11._06.R001_TruyLanhPhuCapThamNienNhaGiao` (Param1=-6299438069957549300)
 - `B11.06.1` Lương/ Báo biểu truy lãnh/ Truy lãnh thâm niên/ Thâm niên nhà giáo → `Edusoft.PMS.Reports.B11._06.R001_TruyLanhPhuCapThamNienNhaGiao` (Param1=-7598747541317508056)
 - `B11.04` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới
-- `B11.04.1` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới/ Truy lãnh lương → `Edusoft.PMS.Reports.B14._04.RB11_04_01_TruyLanhLuongNVMoi`
-- `B11.04.3` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới/ Truy lãnh phụ cấp CBQL → `Edusoft.PMS.Reports.B11._04.RB11_04_03_TruyLanhPCCBQLNVMoi`
+- `B11.04.1` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới/ Truy lãnh lương → `Edusoft.PMS.Reports.B14._04.RB11_04_01_TruyLanhLuongNVMoi` – màn hình: CHONDMDV
+- `B11.04.3` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới/ Truy lãnh phụ cấp CBQL → `Edusoft.PMS.Reports.B11._04.RB11_04_03_TruyLanhPCCBQLNVMoi` – màn hình: CHONDMDV
 - `B11.04.2` Lương/ Báo biểu truy lãnh/ Truy lãnh viên chức mới/ Truy lãnh ưu đãi giáo viên → `Edusoft.PMS.Reports.B13._01.RB13_01_PhuCapGiaoVien` (Param1=-7995759832610086735)
 - `B11.05` Lương/ Báo biểu truy lãnh/ Truy lãnh ưu đãi
 - `B11.05.1` Lương/ Báo biểu truy lãnh/ Truy lãnh ưu đãi/ Truy lãnh nâng PC ưu đãi giáo viên → `Edusoft.PMS.Reports.B11._01.RB11` (Param1=-6659060520296361497)
@@ -231,13 +231,13 @@
 - `B39.2` Lương/ Bảo hiểm/ thuế/ Mức đóng BHXH người lao động (%) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=BHXH)
 - `B39.1` Lương/ Bảo hiểm/ thuế/ Mức đóng BHYT người lao động (%) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=BHYT)
 - `B39.4` Lương/ Bảo hiểm/ thuế/ Mức đóng công đoàn người lao động (%) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=KPCD)
-- `B39.6` Lương/ Bảo hiểm/ thuế/ Tạm tính thuế thu nhập cá nhân → `Edusoft.PMS.B9.UCT_TamThuThueTNCN`
+- `B39.6` Lương/ Bảo hiểm/ thuế/ Tạm tính thuế thu nhập cá nhân → `Edusoft.PMS.B9.UCT_TamThuThueTNCN` – màn hình (đoán theo tên): ViewTamThuThueTNCN
 - `B39.5` Lương/ Bảo hiểm/ thuế/ Viên chức đóng BH tự nguyện → `Edusoft.PMS.B8.UCT_VCNgoaiLe` (Param1=DongBHTuNguyen)
 - `B40` Lương/ Chỉnh định
 - `B40.2` Lương/ Chỉnh định/ Mức lương tối thiểu nhà nước (đồng) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=LuongCoBan)
 - `B40.1` Lương/ Chỉnh định/ Số ngày làm việc trong tháng (ngày)
 - `B34` Lương/ Chức vụ
-- `B34.1` Lương/ Chức vụ/ Danh mục chức vụ → `Edusoft.PMS.B34.F003_DanhMucChucVu`
+- `B34.1` Lương/ Chức vụ/ Danh mục chức vụ → `Edusoft.PMS.B34.F003_DanhMucChucVu` – màn hình (đoán theo tên): NDMChucVu_DHDK, NDMCHUCVU
 - `B34.6` Lương/ Chức vụ/ Danh sách hưởng phụ cấp lái xe → `Edusoft.PMS.B34.F001_DanhSachVienChucPCLX`
 - `B34.3` Lương/ Chức vụ/ Phụ cấp chức vụ ngoại lệ tháng → `Edusoft.PMS.B8.UCT_VCNgoaiLe` (Param1=PhuCapChucVu)
 - `B34.5` Lương/ Chức vụ/ Phụ cấp trách nhiệm ngoại lệ tháng → `Edusoft.PMS.B8.UCT_VCNgoaiLe` (Param1=PhuCapTrachNhiem)
@@ -250,7 +250,7 @@
 - `B32` Lương/ Hiệu chỉnh truy lãnh
 - `B21.01` Lương/ Hiệu chỉnh truy lãnh/ Hệ số cường độ lao động → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8231989539607889785)
 - `B21.03` Lương/ Hiệu chỉnh truy lãnh/ Hệ số lương → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6860080129318309831)
-- `B21.04` Lương/ Hiệu chỉnh truy lãnh/ Hợp đồng làm việc → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5613636289684416086)
+- `B21.04` Lương/ Hiệu chỉnh truy lãnh/ Hợp đồng làm việc → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5613636289684416086) – màn hình (đoán theo tên): NHDLV, NHDLV_DHDK
 - `B21.02` Lương/ Hiệu chỉnh truy lãnh/ Phụ cấp chuyên môn → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8570118808639828929)
 - `B21.07` Lương/ Hiệu chỉnh truy lãnh/ Phụ cấp chức vụ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6285981691621081705)
 - `B21.08` Lương/ Hiệu chỉnh truy lãnh/ Phụ cấp cán bộ văn phòng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6824548460080144902)
@@ -263,16 +263,16 @@
 - `B4.04.4` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Danh mục khóa học đào tạo
 - `B4.04.1` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Danh mục ngành đào tạo
 - `B4.04.3` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Danh mục tên chương trình học
-- `B4.04.6` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Quá trình học tập nước ngoài → `Edusoft.HRM.DaoTao.N7._01.F002_YeuCauDaoTao_DangDanhSach` (Param1=-6615588103210780908)
+- `B4.04.6` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Quá trình học tập nước ngoài → `Edusoft.HRM.DaoTao.N7._01.F002_YeuCauDaoTao_DangDanhSach` (Param1=-6615588103210780908) – màn hình (đoán theo tên): NHOCTAPNUOCNGOAI
 - `B4.03` Lương/ Hoạt động viên chức/ Nghỉ phép
 - `B4.03.1` Lương/ Hoạt động viên chức/ Nghỉ phép/ Danh mục loại nghỉ phép
-- `B4.03.2` Lương/ Hoạt động viên chức/ Nghỉ phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep` (Param1=-7309510854432398976)
+- `B4.03.2` Lương/ Hoạt động viên chức/ Nghỉ phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep` (Param1=-7309510854432398976) – màn hình (đoán theo tên): NQTNP, NQTNP_Luong, NQTNP_Luong_DHDK
 - `B4.01` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK
 - `B4.01.1` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Danh mục ốm đau,thai sản,  dưỡng PHSK → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-4835189236267716153)
 - `B4.01.2` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Danh sách nghỉ ốm đau, thai sản, PHSK → `Edusoft.HRM.ThaiSan.UCT_N9` (Param1=-8480407280534284872)
-- `B4.01.3` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Nghỉ chăm vợ sinh → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8070973244497632947)
+- `B4.01.3` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Nghỉ chăm vợ sinh → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8070973244497632947) – màn hình (đoán theo tên): NNGHICHAMVOSINH
 - `B46` Lương/ Hợp đồng làm việc
-- `B46.` Lương/ Hợp đồng làm việc/ Danh mục loại hợp đồng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5839404801662540211)
+- `B46.` Lương/ Hợp đồng làm việc/ Danh mục loại hợp đồng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5839404801662540211) – màn hình (đoán theo tên): NDMLHD, NDMLHD_DHDK
 - `B46.2` Lương/ Hợp đồng làm việc/ Danh sách hợp đồng làm việc → `Edusoft.HRM.N1._02.F001_DMHopDong` (Param1=-4933767068993054426)
 - `BBB` Lương/ Khai thác báo biểu
 - `B33` Lương/ Lương chức danh
@@ -343,19 +343,19 @@
 - `BQT1` Lương/ Quản trị phân hệ/ Phân quyền phân hệ
 - `BQT0` Lương/ Quản trị phân hệ/ Quản lý danh mục
 - `B41` Lương/ Thuê nhà công vụ
-- `B41.1` Lương/ Thuê nhà công vụ/ Danh sách viên chức thuê nhà công vụ tháng → `Edusoft.PMS.B41.F001_DanhSachVienChucThueNhaThang`
+- `B41.1` Lương/ Thuê nhà công vụ/ Danh sách viên chức thuê nhà công vụ tháng → `Edusoft.PMS.B41.F001_DanhSachVienChucThueNhaThang` – màn hình (đoán theo tên): NThueNhaCV
 - `B20` Lương/ Thuế thu nhập cá nhân
 - `B20.1` Lương/ Thuế thu nhập cá nhân/ Khai báo mức thuế
 - `B9.06` Lương/ Thuế thu nhập cá nhân/ Khai báo mức thuế/ Mức giảm trừ thuế TNCN bản thân(đồng) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=ThueBanThan)
 - `B9.07` Lương/ Thuế thu nhập cá nhân/ Khai báo mức thuế/ Mức giảm trừ thuế TNCN phụ thuộc(đồng) → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=ThuePhuThuoc)
 - `B9.14` Lương/ Thuế thu nhập cá nhân/ Khai báo mức thuế/ Mức khai thuế thu nhập cá nhân → `Edusoft.PMS.B9._14.F002_KhaiThueTNCN`
-- `B20.3` Lương/ Thuế thu nhập cá nhân/ Viên chức bị khấu trừ thuế TNCN → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5077332870116959579)
+- `B20.3` Lương/ Thuế thu nhập cá nhân/ Viên chức bị khấu trừ thuế TNCN → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5077332870116959579) – màn hình (đoán theo tên): NKhauTruThueTNCN
 - `B8.07` Lương/ Thuế thu nhập cá nhân/ Viên chức đóng thuế TNCN ngoại lệ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6519839755300813832)
 - `B5.06` Lương/ Thuế thu nhập cá nhân/ Viên chức được hoàn thuế TNCN → `Edusoft.PMS.B5.F011_HoanThueTNCN`
 - `B1` Lương/ Thông tin viên chức
-- `B1.06` Lương/ Thông tin viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich`
+- `B1.06` Lương/ Thông tin viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich` – màn hình (đoán theo tên): QLSV_ViewCapNhatLyLichNew_DHHN, QLSV_ViewCapNhatLyLichNew, S-LYLICHCopy, VIEW_NDMNV_NTC2, S-LYLICH, VIEW_NDMNV, QLSV_ViewCapNhatLyLichNew_DHMOTX, VIEW_NDMNV_BVTB, QLSV_ViewCapNhatLyLichNew_DHSG
 - `B1.02` Lương/ Thông tin viên chức/ Danh mục viên chức → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5750344788265313293)
-- `B1.07` Lương/ Thông tin viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0)
+- `B1.07` Lương/ Thông tin viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0) – màn hình: NDMNV
 - `B1.01` Lương/ Thông tin viên chức/ Danh mục đơn vị
 - `B1.08` Lương/ Thông tin viên chức/ Thay đổi thông tin ngân hàng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6980682235439743509)
 - `B1.04` Lương/ Thông tin viên chức/ Thông tin bảo hiểm y tế
@@ -374,7 +374,7 @@
 - `B42.1` Lương/ Tính lương/ Tính lương → `Edusoft.PMS.B18._03.F001_TinhLuong`
 - `B18.02` Lương/ Tính lương/ Tính lương → `Edusoft.PMS.B18._03.F001_TinhLuong`
 - `B18.09` Lương/ Tính lương/ Tính lại thuế TNCN → `Edusoft.PMS.B18._03.F001_TinhLuong` (Param1=Thue)
-- `B18.03` Lương/ Tính lương/ Xem các thông số tính lương → `Edusoft.PMS.B18._03.F002_XemThongSoTinhLuong`
+- `B18.03` Lương/ Tính lương/ Xem các thông số tính lương → `Edusoft.PMS.B18._03.F002_XemThongSoTinhLuong` – màn hình (đoán theo tên): VIEWNTSLGTHANG
 - `B42.2` Lương/ Tính lương/ Xem danh sách sau khi tính → `Edusoft.PMS.B1.UCNhanVienThang` (Param1=-7519807968374431378)
 - `B18.08` Lương/ Tính lương/ Xem danh sách sau khi tính lương → `Edusoft.PMS.B1.UCNhanVienThang` (Param1=-6968746546239078135)
 - `B18.06` Lương/ Tính lương/ Xem danh sách viên chức tháng → `Edusoft.PMS.B1.UCNhanVienThang` (Param1=-5859169056761634658)

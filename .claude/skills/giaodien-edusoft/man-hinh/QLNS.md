@@ -3,7 +3,7 @@
 ## Menu (đường dẫn → lớp màn hình)
 
 - `NA` Nhân sự/ An toàn dữ liệu
-- `NKHCTTDV` Nhân sự/ An toàn dữ liệu/ Nhật ký hiệu chỉnh thông tin ĐV → `Edusoft.HRM.ANTOAN.Frm_TruyVetNDMDV`
+- `NKHCTTDV` Nhân sự/ An toàn dữ liệu/ Nhật ký hiệu chỉnh thông tin ĐV → `Edusoft.HRM.ANTOAN.Frm_TruyVetNDMDV` – màn hình (đoán theo tên): TruyVetNDMDV
 - `N10` Nhân sự/ Bảo hiểm
 - `N10.01` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động
 - `N10.01.6` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Biến động % mức đóng bảo hiểm → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=MucDongBHNguoiSDLD)
@@ -15,7 +15,7 @@
 - `N10.01.7` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ In đề nghị cấp sổ bảo hiểm A01-TS → `Edusoft.HRM.Report.N1003_DSBienDongDBH` (Param1=-6017392620198828221)
 - `N10.01.8` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ In đề nghị cấp sổ bảo hiểm TK01-TS → `Edusoft.HRM.Report.N1003_DSBienDongDBH` (Param1=TK01-TS)
 - `N10.01.2` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Thay đổi thông tin người đóng BH → `Edusoft.HRM.NhanSu.N10._01.F002_ThayDoiThongTinCaNhanDongBH`
-- `N10.01.3` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Viên chức chưa có sổ BH → `Edusoft.HRM.NhanSu.N10._01.F003_DSVienChucKhongDongBH`
+- `N10.01.3` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Viên chức chưa có sổ BH → `Edusoft.HRM.NhanSu.N10._01.F003_DSVienChucKhongDongBH` – màn hình: VIEW_NVCHUADONGBH
 - `N10.01.11` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Xuất file biến động giảm D02_TS → `Edusoft.HRM.Report.N1003_DSBienDongDBH` (Param1=GiamBaoHiem)
 - `N10.01.9` Nhân sự/ Bảo hiểm/ Bảo hiểm lao động/ Xuất file biến động tăng D02_TS → `Edusoft.HRM.Report.N1003_DSBienDongDBH` (Param1=TangBaoHiem)
 - `N10.1` Nhân sự/ Bảo hiểm/ Bảo hiểm phúc lợi
@@ -31,33 +31,33 @@
 - `N5` Nhân sự/ Công tác & phép
 - `N5.1` Nhân sự/ Công tác & phép/ Công tác
 - `N32.04` Nhân sự/ Công tác & phép/ Công tác/ Danh mục loại công tác
-- `N51` Nhân sự/ Công tác & phép/ Công tác/ Quá trình công tác → `Edusoft.HRM.N5._01.uctF001_QuaTrinhCongTac`
+- `N51` Nhân sự/ Công tác & phép/ Công tác/ Quá trình công tác → `Edusoft.HRM.N5._01.uctF001_QuaTrinhCongTac` – màn hình (đoán theo tên): NQTCT
 - `N5.1.1` Nhân sự/ Công tác & phép/ Công tác/ Thống kê chi phí công tác → `Edusoft.HRM.Report.N5001_CT`
 - `N5.2` Nhân sự/ Công tác & phép/ Phép
 - `N32.06` Nhân sự/ Công tác & phép/ Phép/ Danh mục loại nghỉ phép
-- `N53` Nhân sự/ Công tác & phép/ Phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep`
+- `N53` Nhân sự/ Công tác & phép/ Phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep` – màn hình (đoán theo tên): NQTNP, NQTNP_Luong, NQTNP_Luong_DHDK
 - `N5.2.1` Nhân sự/ Công tác & phép/ Phép/ Thống kê nghỉ phép → `Edusoft.HRM.Report.RP_N5001_NP`
 - `N52.3` Nhân sự/ Công tác & phép/ Phép/ Xem số ngày được nghỉ phép → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6873373627574640920)
 - `N35` Nhân sự/ Danh hiệu nhà giáo
 - `N35.1` Nhân sự/ Danh hiệu nhà giáo/ Danh mục danh hiệu
 - `N35.2` Nhân sự/ Danh hiệu nhà giáo/ Quyết định phong danh hiệu → `Edusoft.HRM.DanhHieuNhaGiao.uct_QuaTrinhDHNG`
 - `N8` Nhân sự/ Danh sách viên chức
-- `N01` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7511011290845545798)
-- `N8.11` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch BCVT → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7456500920348239589)
-- `N8.12` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch NTC2 → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7873783567613833963)
+- `N01` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7511011290845545798) – màn hình (đoán theo tên): QLSV_ViewCapNhatLyLichNew_DHHN, QLSV_ViewCapNhatLyLichNew, S-LYLICHCopy, VIEW_NDMNV_NTC2, S-LYLICH, VIEW_NDMNV, QLSV_ViewCapNhatLyLichNew_DHMOTX, VIEW_NDMNV_BVTB, QLSV_ViewCapNhatLyLichNew_DHSG
+- `N8.11` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch BCVT → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7456500920348239589) – màn hình (đoán theo tên): QLSV_ViewCapNhatLyLichNew_DHHN, QLSV_ViewCapNhatLyLichNew, S-LYLICHCopy, VIEW_NDMNV_NTC2, S-LYLICH, VIEW_NDMNV, QLSV_ViewCapNhatLyLichNew_DHMOTX, VIEW_NDMNV_BVTB, QLSV_ViewCapNhatLyLichNew_DHSG
+- `N8.12` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch NTC2 → `Edusoft.HRM.N5.UCT_CapNhatLyLich` (Param1=-7873783567613833963) – màn hình (đoán theo tên): QLSV_ViewCapNhatLyLichNew_DHHN, QLSV_ViewCapNhatLyLichNew, S-LYLICHCopy, VIEW_NDMNV_NTC2, S-LYLICH, VIEW_NDMNV, QLSV_ViewCapNhatLyLichNew_DHMOTX, VIEW_NDMNV_BVTB, QLSV_ViewCapNhatLyLichNew_DHSG
 - `N8.04` Nhân sự/ Danh sách viên chức/ Cập nhật lý lịch viên chức theo file → `Edusoft.HRM.NhanSu.N0._01.UCT_CapNhatLyLichTheoFile`
-- `N8.20` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên cơ hữu → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=0))
-- `N8.21` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên mời giảng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=4))
-- `N8.22` Nhân sự/ Danh sách viên chức/ Danh mục cán bộ văn phòng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=5))
-- `N8.23` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên thỉnh giảng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=LoaiNhanVien=6)
+- `N8.20` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên cơ hữu → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=0)) – màn hình: NDMNV
+- `N8.21` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên mời giảng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=4)) – màn hình: NDMNV
+- `N8.22` Nhân sự/ Danh sách viên chức/ Danh mục cán bộ văn phòng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=5)) – màn hình: NDMNV
+- `N8.23` Nhân sự/ Danh sách viên chức/ Danh mục giảng viên thỉnh giảng → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=LoaiNhanVien=6) – màn hình: NDMNV
 - `N8.15` Nhân sự/ Danh sách viên chức/ Danh mục nhóm CB-GV-NV
-- `N09` Nhân sự/ Danh sách viên chức/ Danh mục viên chức → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien`
-- `N8.17` Nhân sự/ Danh sách viên chức/ Danh mục viên chức cơ hữu → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=0 or LoaiNhanVien=2))
-- `N8.19` Nhân sự/ Danh sách viên chức/ Danh mục viên chức khoán → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien=1 or LoaiNhanVien=2))
-- `N8.14` Nhân sự/ Danh sách viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0)
+- `N09` Nhân sự/ Danh sách viên chức/ Danh mục viên chức → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` – màn hình: NDMNV
+- `N8.17` Nhân sự/ Danh sách viên chức/ Danh mục viên chức cơ hữu → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien is null or LoaiNhanVien=0 or LoaiNhanVien=2)) – màn hình: NDMNV
+- `N8.19` Nhân sự/ Danh sách viên chức/ Danh mục viên chức khoán → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(LoaiNhanVien=1 or LoaiNhanVien=2)) – màn hình: NDMNV
+- `N8.14` Nhân sự/ Danh sách viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0) – màn hình: NDMNV
 - `N04` Nhân sự/ Danh sách viên chức/ Danh mục đơn vị
 - `N8.01` Nhân sự/ Danh sách viên chức/ Danh mục địa bàn
-- `N02` Nhân sự/ Danh sách viên chức/ Danh sách viên chức học kỳ → `Edusoft.Base.UCT.UCNhanVienHK` (Param1=-4974647039825721667)
+- `N02` Nhân sự/ Danh sách viên chức/ Danh sách viên chức học kỳ → `Edusoft.Base.UCT.UCNhanVienHK` (Param1=-4974647039825721667) – màn hình: KPHHK
 - `N0.1` Nhân sự/ Danh sách viên chức/ Import ảnh CBCNV → `Edusoft.SMS.S20.UC_ImportAnhcs` (Param1=NDMNV)
 - `N8.26` Nhân sự/ Danh sách viên chức/ Nhập hồ sơ viên chức → `Edusoft.HRM.NhanVien.UCT_NhapThongTinHSNV`
 - `N8.09` Nhân sự/ Danh sách viên chức/ Nhập thông tin thư ký khoa → `Edusoft.HRM.NhanVien.UTC_NhapLoaiThuKy`
@@ -65,21 +65,21 @@
 - `DM_NDMLDQD` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Danh mục lý do quyết định
 - `N8.1` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Danh sách người ký quyết định → `AQViewers.Controls.UCDanhMucChuKy` (Param1=QLNV)
 - `N88` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định biệt phái → `Edusoft.HRM.NhanSu.N0._01.F008_QuyetDinhBietPhai`
-- `N85` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định chuyển đơn vị → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=CHUYEN_DON_VI)
-- `N84` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định nghỉ việc → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=NGHI)
-- `N86` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định tạm nghỉ → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=TAM_DUNG)
-- `N83` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định vào lại → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=VAO_LAI)
-- `N82` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định vào mới → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=VAO_MOI)
+- `N85` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định chuyển đơn vị → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=CHUYEN_DON_VI) – màn hình: N_QUYETDINH_NS, NHANVIEN_QD
+- `N84` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định nghỉ việc → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=NGHI) – màn hình: N_QUYETDINH_NS, NHANVIEN_QD
+- `N86` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định tạm nghỉ → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=TAM_DUNG) – màn hình: N_QUYETDINH_NS, NHANVIEN_QD
+- `N83` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định vào lại → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=VAO_LAI) – màn hình: N_QUYETDINH_NS, NHANVIEN_QD
+- `N82` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Quyết định vào mới → `Edusoft.HRM.NhanSu.N0._01.F004_QuyetDinhVaoRa` (Param1=VAO_MOI) – màn hình: N_QUYETDINH_NS, NHANVIEN_QD
 - `N89` Nhân sự/ Danh sách viên chức/ Quyết định vào/ra viên chức/ Tra cứu quá trình quyết định nhân sự → `Edusoft.HRM.NhanSu.N0._01.F009_TraCuuQTQDNhanSu`
 - `N8.13` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị
 - `N8.13.7` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ In danh sách giải thể đơn vị → `Edusoft.HRM.NhanSu.N11.F007_InDanhSachGiaiTheDonVi`
 - `N8.8` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ Quyết định phê duyệt đề án → `Edusoft.HRM.DuyetDeAn.F001_PheDuyetDeAn`
-- `N8.13.4` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ chuyển chức năng đơn vị → `Edusoft.HRM.NhanSu.N11.UctF002_QuyetDinhGiaiTheDonVi` (Param1=-7282276299012520504)
-- `N8.13.6` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ chuyển đơn vị trực thuộc → `Edusoft.HRM.NhanSu.N11.UctF004_QuyetDinhChuyenDVTrucThuoc`
-- `QD_GTDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ giải thế đơn vị → `Edusoft.HRM.NhanSu.N11.UctF002_QuyetDinhGiaiTheDonVi`
-- `QD_SNDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ sáp nhập đơn vị → `Edusoft.HRM.NhanSu.N11.UctF003_QuyetDinhSapNhapDonVi`
+- `N8.13.4` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ chuyển chức năng đơn vị → `Edusoft.HRM.NhanSu.N11.UctF002_QuyetDinhGiaiTheDonVi` (Param1=-7282276299012520504) – màn hình (đoán theo tên): ViewQDChuyenChucNangDV
+- `N8.13.6` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ chuyển đơn vị trực thuộc → `Edusoft.HRM.NhanSu.N11.UctF004_QuyetDinhChuyenDVTrucThuoc` – màn hình (đoán theo tên): ViewQDChuyenDVTrucThuoc
+- `QD_GTDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ giải thế đơn vị → `Edusoft.HRM.NhanSu.N11.UctF002_QuyetDinhGiaiTheDonVi` – màn hình (đoán theo tên): ViewQDGTDV
+- `QD_SNDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ sáp nhập đơn vị → `Edusoft.HRM.NhanSu.N11.UctF003_QuyetDinhSapNhapDonVi` – màn hình (đoán theo tên): ViewQDSNDV
 - `N8.13.5` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ tách đơn vị → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8687110094938939687)
-- `QD_DTDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ đổi tên đơn vị → `Edusoft.HRM.NhanSu.N11.UctF001_QuyetDinhDoiTenDonVi`
+- `QD_DTDV` Nhân sự/ Danh sách viên chức/ Quyết định đơn vị/ QĐ đổi tên đơn vị → `Edusoft.HRM.NhanSu.N11.UctF001_QuyetDinhDoiTenDonVi` – màn hình (đoán theo tên): ViewQDDTDV
 - `N20` Nhân sự/ Hệ số phụ cấp
 - `N20.1` Nhân sự/ Hệ số phụ cấp/ Danh mục phụ cấp hệ số
 - `N20.2` Nhân sự/ Hệ số phụ cấp/ Danh sách chuẩn bị nâng hệ số → `Edusoft.HRM.N20._01.uctF001_DSChuanBiNangPC`
@@ -112,7 +112,7 @@
 - `N31.6` Nhân sự/ Khối lượng định mức năm/ Nhập khối lượng/ Khối lượng phục vụ học kỳ → `Edusoft.HRM.KLGiangDay.uctF001_KLPV`
 - `N31.16` Nhân sự/ Khối lượng định mức năm/ Nhập khối lượng/ Nhật ký sửa dữ liệu khối lượng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5846669070353683533)
 - `N31.3` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức
-- `N31.1` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức/ Chuẩn định mức → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7425933405215670933)
+- `N31.1` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức/ Chuẩn định mức → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7425933405215670933) – màn hình (đoán theo tên): GCHUANDM
 - `N31.21` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức/ Danh sách viên chức ngoại lệ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-4998548652530990051)
 - `N31.20` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức/ Miễn giảm định mức viên chức mới → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6417167544801083652)
 - `N31.22` Nhân sự/ Khối lượng định mức năm/ Định nghĩa định mức/ Phần trăm định mức → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6360467887252297574)
@@ -128,7 +128,7 @@
 - `N21` Nhân sự/ Ngạch bậc lương/ QĐ nâng lương → `Edusoft.HRM.N2._01.uctF001_QuyetDinhNangLuong`
 - `N30` Nhân sự/ Ngạch bậc lương/ Thống kê biến động lương của viên chức → `Edusoft.HRM.Luong.N2._01.uctF005_ThongKeBienDongLuong`
 - `N38` Nhân sự/ Nhân viên vãng lai
-- `N38.01` Nhân sự/ Nhân viên vãng lai/ Danh mục nhân viên vãng lai → `Edusoft.HRM.NhanSu.N36.F001_DanhMucNhanVienVangLai`
+- `N38.01` Nhân sự/ Nhân viên vãng lai/ Danh mục nhân viên vãng lai → `Edusoft.HRM.NhanSu.N36.F001_DanhMucNhanVienVangLai` – màn hình (đoán theo tên): NDMNSVL
 - `N38.02` Nhân sự/ Nhân viên vãng lai/ Danh sách NV vãng lai học kỳ → `Edusoft.HRM.NhanSu.N36.F002_DanhSachNVVangLaiHK`
 - `N34` Nhân sự/ Phân loại giảng viên
 - `N34.1` Nhân sự/ Phân loại giảng viên/ Danh mục phân loại ưu đãi giáo viên
@@ -155,7 +155,7 @@
 - `N50.5` Nhân sự/ Quản lý chấm công/ Xem dữ liệu chấm công → `Edusoft.HRM.QuanLyMayChamCong.F005_XemDuLieuMCC`
 - `N50.4` Nhân sự/ Quản lý chấm công/ Xem nhật ký tải dữ liệu → `Edusoft.HRM.QuanLyMayChamCong.F004_XemNhatKyChamCong`
 - `N50.6` Nhân sự/ Quản lý chấm công/ Định nghĩa ca làm việc → `Edusoft.HRM.QuanLyMayChamCong.CaLamViec.F001_DinhNghiaCaLamViec`
-- `N50.2` Nhân sự/ Quản lý chấm công/ Đồng bộ viên chức với máy CC → `Edusoft.HRM.QuanLyMayChamCong.F002_DongBoVienChucMayCC`
+- `N50.2` Nhân sự/ Quản lý chấm công/ Đồng bộ viên chức với máy CC → `Edusoft.HRM.QuanLyMayChamCong.F002_DongBoVienChucMayCC` – màn hình (đoán theo tên): View_DongBoNVMayCC
 - `N36` Nhân sự/ Quản lý HT nhiệm vụ
 - `N36.1` Nhân sự/ Quản lý HT nhiệm vụ/ Danh mục nhiệm vụ
 - `N36.2` Nhân sự/ Quản lý HT nhiệm vụ/ Quá trình hoàn thành nhiệm vụ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5388374816325839877)
@@ -164,26 +164,26 @@
 - `N12.10.10` Nhân sự/ Quản lý y tế/ Danh mục/ Danh mục nhóm thuốc
 - `N12.10.30` Nhân sự/ Quản lý y tế/ Danh mục/ Danh mục thuốc
 - `N12.10.20` Nhân sự/ Quản lý y tế/ Danh mục/ Danh mục đơn vị tính
-- `N12.10.40` Nhân sự/ Quản lý y tế/ Danh mục/ Danh sách sinh viên → `Edusoft.HRM.YTe.N12._10.F14_DSSinhVien`
-- `N12.10.50` Nhân sự/ Quản lý y tế/ Danh mục/ Định nghĩa bộ đếm y tế → `Edusoft.HRM.YTe.N12._10.F20_BoDemYTe` (Param1=Y_TE)
+- `N12.10.40` Nhân sự/ Quản lý y tế/ Danh mục/ Danh sách sinh viên → `Edusoft.HRM.YTe.N12._10.F14_DSSinhVien` – màn hình (đoán theo tên): DSSINHVIEN, ZVIEWDSSV, VIEW_WThongBaoNDCT, CHON_SV_IN_BGD, View_SuaTTHDDT
+- `N12.10.50` Nhân sự/ Quản lý y tế/ Danh mục/ Định nghĩa bộ đếm y tế → `Edusoft.HRM.YTe.N12._10.F20_BoDemYTe` (Param1=Y_TE) – màn hình (đoán theo tên): HDMBODEM_YTE
 - `N12.60` Nhân sự/ Quản lý y tế/ In báo cáo
 - `N12.60.20` Nhân sự/ Quản lý y tế/ In báo cáo/ In báo cáo xuất nhập tồn → `Edusoft.HRM.YTe.N12._60.F20_InTonKho`
 - `N12.60.10` Nhân sự/ Quản lý y tế/ In báo cáo/ In danh sách khám bệnh → `Edusoft.HRM.YTe.N12._60.F10_InDSKhamBenh`
 - `N12.60.30` Nhân sự/ Quản lý y tế/ In báo cáo/ Thống kê thuốc đã kê toa → `Edusoft.HRM.YTe.N12._60.F30_TKSLThuocKeToa` (Param1=2)
 - `N12.30` Nhân sự/ Quản lý y tế/ Khám sức khỏe
-- `N12.30.40` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám bệnh → `Edusoft.HRM.YTe.N12._30.F60_DSKhamBenh` (Param1=1)
-- `N12.30.10` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám sức khỏe nhập học → `Edusoft.HRM.YTe.N12._30.F10_DSKhamSKDauVao`
+- `N12.30.40` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám bệnh → `Edusoft.HRM.YTe.N12._30.F60_DSKhamBenh` (Param1=1) – màn hình (đoán theo tên): N_DSKHAMBENH, N_DSKHAMBENH2
+- `N12.30.10` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám sức khỏe nhập học → `Edusoft.HRM.YTe.N12._30.F10_DSKhamSKDauVao` – màn hình: N12.30.10
 - `N12.30.30` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám sức khỏe ra trường → `Edusoft.HRM.YTe.N12._30.F30_DSKhamSKRaTruong`
-- `N12.30.20` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám sức khỏe định kỳ → `Edusoft.HRM.YTe.F002_KhamChuaBenh` (Param1=1)
-- `N12.30.50` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách sức khỏe cần theo dõi → `Edusoft.HRM.YTe.N12._30.F50_DSSKCanTheoDoi`
+- `N12.30.20` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách khám sức khỏe định kỳ → `Edusoft.HRM.YTe.F002_KhamChuaBenh` (Param1=1) – màn hình: VIEW_THUOC
+- `N12.30.50` Nhân sự/ Quản lý y tế/ Khám sức khỏe/ Danh sách sức khỏe cần theo dõi → `Edusoft.HRM.YTe.N12._30.F50_DSSKCanTheoDoi` – màn hình: N12.30.10
 - `N12.20` Nhân sự/ Quản lý y tế/ Nhập thuốc
-- `N12.20.10` Nhân sự/ Quản lý y tế/ Nhập thuốc/ Nhập thuốc → `Edusoft.HRM.YTe.N12._20.F10_NhapThuoc`
+- `N12.20.10` Nhân sự/ Quản lý y tế/ Nhập thuốc/ Nhập thuốc → `Edusoft.HRM.YTe.N12._20.F10_NhapThuoc` – màn hình: N_NHAPTHUOC, VIEW_THUOC
 - `N12.50` Nhân sự/ Quản lý y tế/ Tồn kho
 - `N12.50.20` Nhân sự/ Quản lý y tế/ Tồn kho/ Khóa sổ thuốc → `Edusoft.HRM.YTe.N12._50.F20_KhoaSoThuoc`
 - `N12.50.10` Nhân sự/ Quản lý y tế/ Tồn kho/ Xem/Tính tồn kho → `Edusoft.HRM.YTe.N12._50.F10_TinhTonKho`
 - `NQT` Nhân sự/ Quản trị phân hệ
-- `NQT3` Nhân sự/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLNS)
-- `NQT2` Nhân sự/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLNS)
+- `NQT3` Nhân sự/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLNS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `NQT2` Nhân sự/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLNS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `NA1` Nhân sự/ Quản trị phân hệ/ Phân quyền phân hệ
 - `NQT0` Nhân sự/ Quản trị phân hệ/ Quản lý danh mục
 - `NQT4` Nhân sự/ Quản trị phân hệ/ Sửa nóng thông tin viên chức
@@ -207,10 +207,10 @@
 - `N42.01` Nhân sự/ Trình độ chuyên môn/ Học vị - bậc học/ Quá trình thay đổi học vị-bậc → `Edusoft.HRM.DaoTao.N7._01.F002_YeuCauDaoTao_DangDanhSach` (Param1=-5266603522796839085)
 - `N4.3` Nhân sự/ Trình độ chuyên môn/ Lý luận chính trị
 - `N47` Nhân sự/ Trình độ chuyên môn/ Lý luận chính trị/ Danh mục lý luận chính trị
-- `N43` Nhân sự/ Trình độ chuyên môn/ Lý luận chính trị/ Quá trình lý luận chính trị → `Edusoft.HRM.N4._02.uctF001_QuyetDinhLLCT`
+- `N43` Nhân sự/ Trình độ chuyên môn/ Lý luận chính trị/ Quá trình lý luận chính trị → `Edusoft.HRM.N4._02.uctF001_QuyetDinhLLCT` – màn hình (đoán theo tên): NQTLLCT
 - `N4.4` Nhân sự/ Trình độ chuyên môn/ Văn bằng - Chứng chỉ
 - `N46` Nhân sự/ Trình độ chuyên môn/ Văn bằng - Chứng chỉ/ Danh mục văn bằng chứng chỉ
-- `N42` Nhân sự/ Trình độ chuyên môn/ Văn bằng - Chứng chỉ/ Quá trình văn bằng chứng chỉ → `Edusoft.HRM.N4._04.uctF001_QuaTrinhVBCC`
+- `N42` Nhân sự/ Trình độ chuyên môn/ Văn bằng - Chứng chỉ/ Quá trình văn bằng chứng chỉ → `Edusoft.HRM.N4._04.uctF001_QuaTrinhVBCC` – màn hình (đoán theo tên): NQTVBCC
 - `N.23` Nhân sự/ Trợ cấp theo đơn vị làm việc
 - `N.23.1` Nhân sự/ Trợ cấp theo đơn vị làm việc/ Danh mục loại trợ cấp đơn vị
 - `N.23.3` Nhân sự/ Trợ cấp theo đơn vị làm việc/ Viên chức được trợ cấp → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7435401704972551520)
@@ -225,7 +225,7 @@
 - `N13.2` Nhân sự/ Tuyển dụng & Hợp đồng/ Quản lý tập sự & thực tập/ In danh sách viên chức tập sự/thực tập → `Edusoft.HRM.Report.UCT_N13001_TuyenDungDSTapSu`
 - `N13.1` Nhân sự/ Tuyển dụng & Hợp đồng/ Quản lý tập sự & thực tập/ Phân công tập sự/thực tập → `Edusoft.HRM.NhanSu.N1._02.N1`
 - `N11` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng
-- `NDMUV` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Danh sách ứng viên → `Edusoft.HRM.TuyenDung.UCT_DanhMucUngVien`
+- `NDMUV` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Danh sách ứng viên → `Edusoft.HRM.TuyenDung.UCT_DanhMucUngVien` – màn hình: NDMNV
 - `N11.004.01` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ In danh sách ứng viên → `Edusoft.HRM.Report.RP_InDanhSachUV`
 - `N11.03` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn
 - `N11.03.1` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ Danh mục loại phỏng vấn & giảng thử
@@ -233,9 +233,9 @@
 - `N11.05` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ Danh sách hội đồng PV → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8914195271522646137)
 - `N11.01.3` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ In phiếu điểm PV chi tiết → `Edusoft.HRM.Report.RP_N10005` (Param1=-9218620896814596632)
 - `N11.03.4` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ In phiếu điểm PV tổng hợp → `Edusoft.HRM.Report.RP_N10005` (Param1=-7198415166425693653)
-- `N11.02` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ Kết quả phỏng vấn → `Edusoft.HRM.N1._01.F003_KetQuaTuyenDung`
+- `N11.02` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ Kết quả phỏng vấn → `Edusoft.HRM.N1._01.F003_KetQuaTuyenDung` – màn hình: NDMNV
 - `N11.04` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Phỏng vấn/ Quá trình phỏng vấn → `Edusoft.HRM.TuyenDung.N1._01.F004_KetQuaPhongVan`
-- `N11.01` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Yêu cầu tuyển dụng → `Edusoft.HRM.N1._01.F001_YeuCauTuyenDung`
+- `N11.01` Nhân sự/ Tuyển dụng & Hợp đồng/ Tuyển dụng/ Yêu cầu tuyển dụng → `Edusoft.HRM.N1._01.F001_YeuCauTuyenDung` – màn hình: VIEWYEUCAUTDCHITIET
 - `NHD` Nhân sự/ Xem file hướng dẫn
 - `NHD1` Nhân sự/ Xem file hướng dẫn/ Tài liệu hướng dẫn EduSoft.NET → `Edusoft.STM._09.AQ_10_FileHuongDan` (Param1=-5418149301138198225)
 - `N40` Nhân sự/ Đoàn tham quan

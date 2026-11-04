@@ -5,7 +5,7 @@
 - `RAT` Quản lý nhập điểm/ An toàn dữ liệu
 - `DCB` Quản lý nhập điểm/ An toàn dữ liệu/ Công bố điểm
 - `DCB.01` Quản lý nhập điểm/ An toàn dữ liệu/ Công bố điểm/ Công bố điểm thành phần
-- `DCB.02` Quản lý nhập điểm/ An toàn dữ liệu/ Công bố điểm/ Công bố điểm tổng kết → `Edusoft.SRM.DCB.F002_CongBoDiemTK`
+- `DCB.02` Quản lý nhập điểm/ An toàn dữ liệu/ Công bố điểm/ Công bố điểm tổng kết → `Edusoft.SRM.DCB.F002_CongBoDiemTK` – màn hình (đoán theo tên): VIEWCONGBODIEMTK
 - `DTG` Quản lý nhập điểm/ An toàn dữ liệu/ Gán thời gian nhập điểm phúc khảo → `Edusoft.SRM.QAT._05.F03_TGNhapLoaiDiem`
 - `RAT1` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu
 - `DAT1.09` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa - mở khóa điểm bảo lưu → `Edusoft.SRM.DQT._03.F04_LockDiemBL`
@@ -15,18 +15,18 @@
 - `DAT1.01` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa nhập điểm học kỳ hiện tại theo phân cấp sinh viên → `Edusoft.SRM.DAT.DAT1.DAT1_01_DienSV`
 - `DAT1.04` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học
 - `DAT1.04.3` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo nhóm tổ cụ thể → `Edusoft.SRM.DAT.DAT3.DAT3_1_KhoaSoNhomToHoc`
-- `DAT1.04.1` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1`
+- `DAT1.04.1` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DAT1.04.4` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo nhóm tổ cụ thể → `Edusoft.SRM.DAT.DAT3.DAT3_1_KhoaSoNhomToHoc` (Param1=KyThi)
-- `DAT1.04.2` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1`
+- `DAT1.04.2` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DAT1.07` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Nhập điểm theo lớp kế hoạch → `Edusoft.SRM.DAT.DAT1.DAT1_07_LopKeHoach`
 - `DAT1.13` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Đồng bộ điểm hoãn thi đã nhập → `Edusoft.SRM.DQT._03.F06_DongBoHTDaNhap`
 - `RKT` Quản lý nhập điểm/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ
 - `DKT2.01` Quản lý nhập điểm/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ In kiểm tra hợp lệ file điểm thành phần → `Edusoft.SRM.DK.DKT2.DKT2_01_01_InDiemKhongHopLe`
 - `DKT2.07` Quản lý nhập điểm/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ Kiểm tra điểm đã nhập không có trọng số % → `Edusoft.SRM.DK.DKT2.DKT2_07_KTDiemTPKgTrongSo`
 - `RLV` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu
-- `DTV1` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Nhật ký nhập điểm → `Edusoft.SRM.DAT.DAT2.DAT2_01_NhatKyNhapDiem`
+- `DTV1` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Nhật ký nhập điểm → `Edusoft.SRM.DAT.DAT2.DAT2_01_NhatKyNhapDiem` – màn hình (đoán theo tên): VIEWDSNKNHAPDIEM
 - `DVT4` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Truy vết nhóm phách → `Edusoft.SRM.DAT.DAT2.DAT2_06_TruyVetNhomPhach`
-- `DVT3` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Truy vết môn bảo lưu → `Edusoft.SRM.D3.D31.F3113_TruyVetMonBaoLuu`
+- `DVT3` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Truy vết môn bảo lưu → `Edusoft.SRM.D3.D31.F3113_TruyVetMonBaoLuu` – màn hình (đoán theo tên): View_25329
 - `DTV2` Quản lý nhập điểm/ An toàn dữ liệu/ Lưu vết dữ liệu/ Truy vết điểm → `Edusoft.SRM.DAT.DAT2.DAT2_02_TimDiemHuy`
 - `RBB` Quản lý nhập điểm/ Khai thác báo biểu
 - `DHS` Quản lý nhập điểm/ Quản lý hồ sơ điểm
@@ -48,15 +48,15 @@
 - `D21.11` Quản lý nhập điểm/ Quản lý nhập điểm/ Chuyển điểm trung gian vào điểm chính/ Điểm TG -> Chính (theo nhóm học) → `Edusoft.SRM.NhapDiem.F025_ChuyenDiemTGVaoChinhTheoNhomHoc`
 - `D21.12` Quản lý nhập điểm/ Quản lý nhập điểm/ Chuyển điểm trung gian vào điểm chính/ Điểm TG -> Chính (theo nhóm thi) → `Edusoft.SRM.NhapDiem.F027_ChuyenDiemTGVaoChinhTheoNhomThi`
 - `D25` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học
-- `D25.10` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Download điểm từ EduWEB → `Edusoft.SRM.NhapDiem.F020_DownLoadDiemTuEduWeb`
+- `D25.10` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Download điểm từ EduWEB → `Edusoft.SRM.NhapDiem.F020_DownLoadDiemTuEduWeb` – màn hình (đoán theo tên): DCHUYENDIEMTUEDUWEB
 - `D25.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ File Excel dạng hàng dọc → `Edusoft.SRM.NhapDiem.F004_ImportDiem`
 - `D25.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import Excel nhiều file → `Edusoft.SRM.NhapDiem.F011_ImportMulti`
-- `D25.13` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import ghi chú điểm → `Edusoft.SRM.NhapDiem.F023_ImportGhiChuDiem`
+- `D25.13` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import ghi chú điểm → `Edusoft.SRM.NhapDiem.F023_ImportGhiChuDiem` – màn hình (đoán theo tên): DIMPORTGCDIEM
 - `D25.02` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import từ file excel → `Edusoft.SRM.NhapDiem.F009_ImportDiemDang2`
 - `D25.09` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import điểm + nhóm học → `Edusoft.SRM.NhapDiem.F019_ImportDiemVaNhomTo`
 - `D25.12` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import điểm + ĐKMH + Tạo nhóm học → `Edusoft.SRM.NhapDiem.F022_ImportDiemVaDKMH`
 - `D25.08` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import điểm nhiều học kỳ → `Edusoft.SRM.NhapDiem.F009_ImportDiemDang3`
-- `D25.11` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import điểm quá trình → `Edusoft.SRM.NhapDiem.F021_ImportDiemQuaTrinhDHLN`
+- `D25.11` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import điểm quá trình → `Edusoft.SRM.NhapDiem.F021_ImportDiemQuaTrinhDHLN` – màn hình (đoán theo tên): DIMPORTDIEMQT
 - `D25.07` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Từ phần mềm McScanner → `Edusoft.SRM.NhapDiem.F012_ImportFileScan`
 - `D25.04` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Từ phần mềm McScore
 - `D25.05` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Từ phần mềm McTest Lite
@@ -65,9 +65,9 @@
 - `D25.31` Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Xem/sửa lý do vào sai điểm → `Edusoft.SRM.NhapDiem.F025_ImportDiemTPSai`
 - `D23` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm
 - `D23.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Khóa theo nhóm học → `Edusoft.SRM.DAT.DAT3.DAT3_2_KhoaNhapDiemBGD` (Param1=-5331908648734522332)
-- `D23.09` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Mở khóa nhập điểm thành phần → `Edusoft.SRM.DAT.DAT3.DAT3_9_MoKhoaNhapDiemTP` (Param1=-5331908648734522332)
+- `D23.09` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Mở khóa nhập điểm thành phần → `Edusoft.SRM.DAT.DAT3.DAT3_9_MoKhoaNhapDiemTP` (Param1=-5331908648734522332) – màn hình (đoán theo tên): ViewMoKhoaNhapDiemTP
 - `D23.05` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Mở khóa theo nhóm học → `Edusoft.SRM.DAT.DAT3.DAT3_2_MoKhoaNhapDiemBGD` (Param1=-5331908648734522332)
-- `D23.04` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Nhóm được phép cộng điểm → `Edusoft.SRM.DAT.DAT3.DAT3_8_NhomDuocCongDiem`
+- `D23.04` Quản lý nhập điểm/ Quản lý nhập điểm/ Khóa dữ liệu điểm/ Nhóm được phép cộng điểm → `Edusoft.SRM.DAT.DAT3.DAT3_8_NhomDuocCongDiem` – màn hình (đoán theo tên): D2304
 - `D26` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác
 - `D26.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác/ Nhập điểm 1 môn học/sinh viên → `Edusoft.SRM.NhapDiem.F003_NhapDiem1SV`
 - `D26.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác/ Nhập điểm học kỳ 1 sinh viên → `Edusoft.SRM.NhapDiem.F014_NhapDiemSVHKHienTai`
@@ -84,22 +84,22 @@
 - `D21.09` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Cộng và lưu điểm môn Mô-đun → `Edusoft.SRM.NhapDiem.F024_TinhMHModule`
 - `D21.20` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ DS môn Mô-đun đã tạo bảo lưu → `Edusoft.SRM.NhapDiem.F024_XemDiemMonModule`
 - `D21.21` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm SV chuyển lịch thi → `Edusoft.SRM.NhapDiem.F028_NhapDiemSVChuyenNhomThi`
-- `D21.02` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm học lại -  học vượt → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5202011002223348638)
+- `D21.02` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm học lại -  học vượt → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5202011002223348638) – màn hình: VIEWRESULTIMPORT
 - `D21.10` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm SV có hoãn thi → `Edusoft.SRM.NhapDiem.F016_NhapDiemSVHoanThi_DHHN`
-- `D21.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo lớp → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5358547665143811319)
-- `D21.05` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo môn học → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-7291129530446944369)
-- `D21.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo nhóm học → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5331908648734522332)
-- `D21.04` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo nhóm thi → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5301195538167078667)
-- `D21.08` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo sv hoãn thi đk dự thi → `Edusoft.SRM.NhapDiem.F016_NhapDiemSVHoanThi`
-- `D21.07` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo tổ thi → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-7004682594122218975)
-- `D21.06` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo tổ thực hành → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5270458391662318775)
+- `D21.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo lớp → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5358547665143811319) – màn hình: VIEWRESULTIMPORT
+- `D21.05` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo môn học → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-7291129530446944369) – màn hình: VIEWRESULTIMPORT
+- `D21.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo nhóm học → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5331908648734522332) – màn hình: VIEWRESULTIMPORT
+- `D21.04` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo nhóm thi → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5301195538167078667) – màn hình: VIEWRESULTIMPORT
+- `D21.08` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo sv hoãn thi đk dự thi → `Edusoft.SRM.NhapDiem.F016_NhapDiemSVHoanThi` – màn hình (đoán theo tên): D21.08
+- `D21.07` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo tổ thi → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-7004682594122218975) – màn hình: VIEWRESULTIMPORT
+- `D21.06` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo tổ thực hành → `Edusoft.SRM.NhapDiem.F001_NhapDiem` (Param1=-5270458391662318775) – màn hình: VIEWRESULTIMPORT
 - `D28` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt
 - `D2802` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Chuyển điểm P/NP theo môn học → `Edusoft.SRM.D2.D28.D28_ChuyenDiemDacBietTheoMH`
 - `D2803` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Chuyển điểm P/NP theo sinh viên → `Edusoft.SRM.D2.D28.D28_ChuyenDiemDacBietTheoSV`
 - `D2807` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Gán Zero cho môn chưa có điểm quá hạn → `Edusoft.SRM.D2.D28.F006_GanZeroDiemDBMonChuaCoDiem`
 - `D2806` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Gán cấm thi theo điều kiện điểm → `Edusoft.SRM.D2.D28.F005_GanCamThiTheoDieuKienDiemTP`
 - `D2804` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Gán Zero cho điểm hoãn thi quá hạn → `Edusoft.SRM.D2.D28.F003_GanZeroDiemHTQuaHan`
-- `D2805` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Nhập điểm hoãn thi → `Edusoft.SRM.D2.D28.F004_NhapDiemHoanThi`
+- `D2805` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Nhập điểm hoãn thi → `Edusoft.SRM.D2.D28.F004_NhapDiemHoanThi` – màn hình (đoán theo tên): VIEW_DIEM_HOAN_THI, VIEW_NHAP_DIEM_HT
 - `D2801` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Nhập điểm đặc biệt → `Edusoft.SRM.D2.D28.D28_DSDiemDacBiet`
 - `D2808` Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm đặc biệt/ Trả điểm cho loại điểm chưa có điểm → `Edusoft.SRM.NhapDiem.F029_TraDiemSVChuaCoDiem`
 - `D29` Quản lý nhập điểm/ Quản lý nhập điểm/ Quản lý nhập điểm online
@@ -108,7 +108,7 @@
 - `D29.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Quản lý nhập điểm online/ Thời gian nhập điểm nhóm học → `Edusoft.SRM.DQT4.DQT401.DQT401_01_TGNhapDiemOnline`
 - `D29.03` Quản lý nhập điểm/ Quản lý nhập điểm/ Quản lý nhập điểm online/ Ủy quyền cán bộ nhập điểm → `Edusoft.SRM.DQT4.DQT401.DQT4_04_UyQuyenCBNhapDiem`
 - `D30` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm thưởng
-- `D30.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm thưởng/ Điểm thưởng môn học → `Edusoft.SRM.DTL._02.F01_DiemThuongMH`
+- `D30.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm thưởng/ Điểm thưởng môn học → `Edusoft.SRM.DTL._02.F01_DiemThuongMH` – màn hình (đoán theo tên): DIEM_THUONG_MH
 - `D30.02` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm thưởng/ Điểm thưởng tích lũy → `Edusoft.SRM.DTL._02.F02_DiemThuongTL`
 - `D22` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm danh môn học
 - `D22.01` Quản lý nhập điểm/ Quản lý nhập điểm/ Điểm danh môn học/ Import từ phần mềm McScanner → `Edusoft.SRM.DBDD.F02_ImportFileScan`
@@ -121,12 +121,12 @@
 - `DQP1.05` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ In hướng dẫn ghi phách → `Edusoft.SRM.DQP1.DQP105.DQP105_InHuongDanGhiPhach`
 - `DQP1.09` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ In kết quả thi → `Edusoft.SRM.DQP1.DQP109.DQP109_InKetQuaThi`
 - `DQP1.03` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Khóa/Mở khóa nhóm → `Edusoft.SRM.DQP1.DQP103.DQP103_KhoaNhomPhach`
-- `DQP1.08` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Nhập điểm theo DS thí sinh → `Edusoft.SRM.DQP1.DQP108.DQP108_NhapDiemTheoDSDuThi`
-- `DQP1.07` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Nhập điểm theo số phách → `Edusoft.SRM.DQP1.DQP107.DQP107_NhapDiemTheoPhach`
-- `DQT1.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Phân quyền nhập điểm phách online → `Edusoft.SRM.DQP1.DQP112.F001_PhanQuyenNhapDiemPhachNhomHocOnline`
+- `DQP1.08` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Nhập điểm theo DS thí sinh → `Edusoft.SRM.DQP1.DQP108.DQP108_NhapDiemTheoDSDuThi` – màn hình (đoán theo tên): DQP108
+- `DQP1.07` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Nhập điểm theo số phách → `Edusoft.SRM.DQP1.DQP107.DQP107_NhapDiemTheoPhach` – màn hình (đoán theo tên): DQP107, TS_621
+- `DQT1.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Phân quyền nhập điểm phách online → `Edusoft.SRM.DQP1.DQP112.F001_PhanQuyenNhapDiemPhachNhomHocOnline` – màn hình (đoán theo tên): VPQPHACHONLINE
 - `DQP1.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Sửa phách môn học → `Edusoft.SRM.DQP1.DQP111.DQP111_SuaPhach`
 - `DQP1.01` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Tạo nhóm phách môn học → `Edusoft.SRM.DQP1.DQP101.DQP101_TaoNhomPhachMonHoc`
-- `DQP1.02` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Tạo phách môn học → `Edusoft.SRM.DQP1.DQP102.DQP102_TaoPhachMonHoc`
+- `DQP1.02` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách học/ Tạo phách môn học → `Edusoft.SRM.DQP1.DQP102.DQP102_TaoPhachMonHoc` – màn hình (đoán theo tên): DQP102
 - `DQP2` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi
 - `DQT2.13` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Gán thời gian nhập phách thi online → `Edusoft.SRM.DQP2.DQP212.F001_GanThoiGianPhachThi`
 - `DQP2.10` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Hồi phách vào file điểm → `Edusoft.SRM.DQP2.DQP210.DQP210_HoiPhachVaoFileDiem`
@@ -135,10 +135,10 @@
 - `DQP2.05` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ In hướng dẫn ghi phách → `Edusoft.SRM.DQP2.DQP205.DQP205_InHuongDanGhiPhach`
 - `DQP2.09` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ In kết quả thi → `Edusoft.SRM.DQP2.DQP209.DQP209_InKetQuaThi`
 - `DQP2.03` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Khóa/Mở khóa → `Edusoft.SRM.DQP2.DQP203.DQP203_KhoaNhomPhach`
-- `DQP2.08` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo DS thí sinh → `Edusoft.SRM.DQP2.DQP208.DQP208_NhapDiemTheoDSDuThi`
-- `DQP2.07` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo số phách → `Edusoft.SRM.DQP2.DQP207.DQP207_NhapDiemTheoPhach`
+- `DQP2.08` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo DS thí sinh → `Edusoft.SRM.DQP2.DQP208.DQP208_NhapDiemTheoDSDuThi` – màn hình (đoán theo tên): DQP108
+- `DQP2.07` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo số phách → `Edusoft.SRM.DQP2.DQP207.DQP207_NhapDiemTheoPhach` – màn hình (đoán theo tên): DQP107, TS_621
 - `DQT2.12` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Phân công cán bộ nhập điểm phách thi online → `Edusoft.SRM.DQP2.DQP212.F001_GanCanBoPhachThi`
-- `DQT2.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Phân quyền nhập điểm phách online → `Edusoft.SRM.DQP2.DQP212.F001_PhanQuyenNhapDiemPhachNhomThiOnline`
+- `DQT2.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Phân quyền nhập điểm phách online → `Edusoft.SRM.DQP2.DQP212.F001_PhanQuyenNhapDiemPhachNhomThiOnline` – màn hình (đoán theo tên): VPQPHACHONLINE
 - `DQP2.11` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Sửa phách môn thi → `Edusoft.SRM.DQP2.DQP211.DQP211_SuaPhach`
 - `DQP2.01` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Tạo nhóm phách môn thi → `Edusoft.SRM.DQP2.DQP201.DQP201_TaoNhomPhachMonThi`
 - `DQP2.02` Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Tạo phách môn thi → `Edusoft.SRM.DQP2.DQP202.DQP202_TaoPhachMonThi`
@@ -149,16 +149,16 @@
 - `D31.12` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Danh sách đợt bảo lưu (chuẩn bị) → `Edusoft.SRM.D3.D31.F3112_DotBaoLuu`
 - `D31.06` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Hủy điểm bảo lưu hết hạn → `Edusoft.SRM.D3.D31.D3106_HuyDiemBaoLuuHetHan`
 - `D31.10` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In DS bảo lưu được hoàn học phí trong học kỳ → `Edusoft.SRM.D3.D31.D3112_InDSSVHoanHPBaoLuu`
-- `D31.05` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu 1 sinh viên → `Edusoft.SRM.D3.D31.D3105_InBaoLuu1SV`
+- `D31.05` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu 1 sinh viên → `Edusoft.SRM.D3.D31.D3105_InBaoLuu1SV` – màn hình (đoán theo tên): D7.03.01B
 - `D31.05.1` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu sinh viên - theo file → `Edusoft.SRM.D3.D31.D3105_01_InBaoLuuSVTheoFile`
 - `D31.05.2` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu theo lớp → `Edusoft.SRM.D3.D31.D3108_InBaoLuuTheoLop`
-- `D31.07` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu theo số quyết định → `Edusoft.SRM.D3.D31.D3107_01_InDiemBaoLuuTheoSoQD`
+- `D31.07` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ In điểm bảo lưu theo số quyết định → `Edusoft.SRM.D3.D31.D3107_01_InDiemBaoLuuTheoSoQD` – màn hình (đoán theo tên): D31.07
 - `D31.37` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Kiểm tra sinh viên vi phạm tín chỉ tối đa → `Edusoft.SRM.D3.D31.F3114_KiemTraBLVuotTinChiChoPhep`
 - `D31.04` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Kiểm tra lỗi điểm bảo lưu → `Edusoft.SRM.D3.D31.D3104_KiemTraDiemBaoLuu`
 - `D31.01` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Nhập điểm bảo lưu → `Edusoft.SRM.D3.D31.D31_DSDiemBaoLuu`
 - `D31.36` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Tạo file import từ Bộ bảo lưu → `Edusoft.SRM.D3.D31.D31_TaoFileImportTuBoBaoLuu`
 - `D31.06.1` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Xem nhật ký điểm bảo lưu hết hạn → `Edusoft.SRM.D3.D31.D3109_XemNhatKyDiemBaoLuuHetHan`
-- `D31.08` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Xem điểm bảo lưu hủy → `Edusoft.SRM.D3.D31.D3110_XemDiemBaoLuuHuy`
+- `D31.08` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Xem điểm bảo lưu hủy → `Edusoft.SRM.D3.D31.D3110_XemDiemBaoLuuHuy` – màn hình (đoán theo tên): D3106_01
 - `D31.35` Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Định nghĩa Bộ bảo lưu → `Edusoft.SRM.D3.D31.D31_BoBaoLuuMacDinhChoNganh`
 - `D4` Quản lý nhập điểm/ Quản lý điểm phúc khảo
 - `D41.07` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Cập nhật điểm theo file → `Edusoft.SRM.D4.D42.D42_CapNhatDiemPhucKhaoTheoFile`
@@ -169,27 +169,27 @@
 - `D4201` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ In phúc khảo từng sinh viên → `Edusoft.SRM.D4.D45.D45_01_InPhucKhao1SV`
 - `D4202` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ In phúc khảo từng SV theo tập tin → `Edusoft.SRM.D4.D45.D45_02_InPhucKhaoTheoFile`
 - `D41.03` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập điểm theo môn học → `Edusoft.SRM.D4.D44.D44_NhapDiemPhucKhao`
-- `D41.04` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập điểm theo sinh viên → `Edusoft.SRM.D4.D42.D42_SuaFilePhucKhao`
-- `D41.01` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập đơn xin phúc khảo → `Edusoft.SRM.D4.D41.D41_NhapDonPhucKhao`
+- `D41.04` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập điểm theo sinh viên → `Edusoft.SRM.D4.D42.D42_SuaFilePhucKhao` – màn hình: D42
+- `D41.01` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập đơn xin phúc khảo → `Edusoft.SRM.D4.D41.D41_NhapDonPhucKhao` – màn hình: VIEWDIEMPHUCKHAO, VIEWDONPHUCKHAO
 - `D41.08` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Thống kê tình hình phúc khảo theo năm học → `Edusoft.SRM.D4.D45.D45_03_ThongKeTinhHinhPhucKhao`
 - `RQT` Quản lý nhập điểm/ Quản trị phân hệ
-- `RBS` Quản lý nhập điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy`
-- `RQT3` Quản lý nhập điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DMKT)
+- `RBS` Quản lý nhập điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `RQT3` Quản lý nhập điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DMKT) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `RQT2` Quản lý nhập điểm/ Quản trị phân hệ/ Khóa sổ điểm
 - `RQT2.04` Quản lý nhập điểm/ Quản trị phân hệ/ Khóa sổ điểm/ Khóa sổ toàn khóa → `Edusoft.SRM.DQT._02.F04_KhoaSoToanKhoa`
 - `RQT5` Quản lý nhập điểm/ Quản trị phân hệ/ Nhập điểm online
 - `RQT5.01` Quản lý nhập điểm/ Quản trị phân hệ/ Nhập điểm online/ Thời gian nhập điểm online
 - `RQT1` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ
-- `DQY1.01` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo diện sinh viên → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapSV)
+- `DQY1.01` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo diện sinh viên → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapSV) – màn hình: VIEWPHANQUYENNHAPDIEM
 - `DQY1.07` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo lớp học phần → `Edusoft.SRM.DQT._01.F02_PhanQuyenLopHP`
-- `DQY1.02` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo lớp kế hoạch → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapLopKH)
+- `DQY1.02` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo lớp kế hoạch → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapLopKH) – màn hình: VIEWPHANQUYENNHAPDIEM
 - `DQY1.03` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo môn học → `Edusoft.SRM.DQT._01.F01_PhanQuyenMH`
-- `DQY1.04` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ học → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapNhom)
+- `DQY1.04` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ học → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapNhom) – màn hình: VIEWPHANQUYENNHAPDIEM
 - `DQY1.10` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ học → `Edusoft.SRM.DQT._01.F03_PhanQuyenNhomMH`
-- `DQY1.05` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ thi → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapNhomThi)
+- `DQY1.05` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Nhập điểm theo nhóm/tổ thi → `AQViewers.Settings.FrmPhanQuyenNhapDiem` (Param1=GD_IsPQNhapNhomThi) – màn hình: VIEWPHANQUYENNHAPDIEM
 - `DQY.09` Quản lý nhập điểm/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập điểm bảo lưu → `Edusoft.SRM.DQT._03.F03_PhanQuyenNhapBL`
 - `RQT4` Quản lý nhập điểm/ Quản trị phân hệ/ Sao lưu và so sánh
-- `RQT4.1` Quản lý nhập điểm/ Quản trị phân hệ/ Sao lưu và so sánh/ Sao lưu điểm → `Edusoft.SRM.BK.F001_BabkupDiem`
+- `RQT4.1` Quản lý nhập điểm/ Quản trị phân hệ/ Sao lưu và so sánh/ Sao lưu điểm → `Edusoft.SRM.BK.F001_BabkupDiem` – màn hình (đoán theo tên): VBKDIEM
 - `RQT4.2` Quản lý nhập điểm/ Quản trị phân hệ/ Sao lưu và so sánh/ So sánh với điểm sao lưu → `Edusoft.SRM.BK.F002_SoSanhDiemBackup`
 - `RHD` Quản lý nhập điểm/ Xem file hướng dẫn
 - `RHD1` Quản lý nhập điểm/ Xem file hướng dẫn/ Tài liệu hướng dẫn EduSoft.NET → `Edusoft.STM._09.AQ_10_FileHuongDan` (Param1=-7622969244279658925)

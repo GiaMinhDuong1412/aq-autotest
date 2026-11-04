@@ -15,9 +15,9 @@
 - `Q7.00` Tốt nghiệp/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ Xem thông tin quyết định vào ra 1 sinh viên → `Edusoft.SMS.S02.UCPhanTichQD` (Param1=DHNL)
 - `QTV` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu
 - `QTV5.2` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký danh sách xét TN 1 SV → `Edusoft.SRM.QAT._01.F05_NhatKyTaoDSXetTN1SV`
-- `QTV7` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký môn bắt buộc → `Edusoft.SRM.QAT._01.F03_NhatKyMonTN`
+- `QTV7` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký môn bắt buộc → `Edusoft.SRM.QAT._01.F03_NhatKyMonTN` – màn hình (đoán theo tên): VIEW_LOG_MONBB
 - `QTV8` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký nhóm tự chọn → `Edusoft.SRM.QAT._01.F04_NhatKyNhomTCTN`
-- `QTV6` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký user xét tốt nghiệp → `Edusoft.SRM.QAT._01.F02_NhatKyUserXetTN`
+- `QTV6` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký user xét tốt nghiệp → `Edusoft.SRM.QAT._01.F02_NhatKyUserXetTN` – màn hình (đoán theo tên): V_QAT01F02
 - `QTV2` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký xét làm luận văn tốt nghiêp
 - `QTV3` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký xét thi TN & làm luận văn TN
 - `QTV1` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký xét thi tốt nghiệp
@@ -25,19 +25,19 @@
 - `QTV5` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký xét tốt nghiệp → `Edusoft.SRM.QAT._01.F01_NhatKyXetTN1SV`
 - `QLV` Tốt nghiệp/ Bảo vệ luận văn
 - `QLV04` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn
-- `QLV04.06` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Chuyển điểm luận văn vào môn học → `Edusoft.SRM.QLV._04.F006_ChuyenDiemLuanVanVaoMH`
+- `QLV04.06` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Chuyển điểm luận văn vào môn học → `Edusoft.SRM.QLV._04.F006_ChuyenDiemLuanVanVaoMH` – màn hình (đoán theo tên): ViewDSSVDatVaoMH
 - `QLV04.02` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Danh sách sinh viên bảo vệ luận văn → `Edusoft.SRM.QLV._04.F002_DSSVBaoVeLV` (Param1=THAC_SI)
 - `QLV04.03` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Gán hội đồng bảo vệ luận văn cho sinh viên → `Edusoft.SRM.QLV._04.F003_GanHDBVLV` (Param1=THAC_SI)
-- `QLV04.05` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Gán thời gian bảo vệ luận văn → `Edusoft.SRM.QLV._04.F005_GanTGBaoVeLuanVan` (Param1=THAC_SI)
+- `QLV04.05` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Gán thời gian bảo vệ luận văn → `Edusoft.SRM.QLV._04.F005_GanTGBaoVeLuanVan` (Param1=THAC_SI) – màn hình (đoán theo tên): View_GanTGBaoVeLuanVan
 - `QLV04.01` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Hội đồng bảo vệ luận văn → `Edusoft.SRM.QLV._04.F001_HDBaoVeLuanVan` (Param1=THAC_SI)
-- `QLV04.04` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Nhập điểm bảo vệ luận văn → `Edusoft.SRM.QLV._04.F004_NhapDiemBVLV` (Param1=THAC_SI)
+- `QLV04.04` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Nhập điểm bảo vệ luận văn → `Edusoft.SRM.QLV._04.F004_NhapDiemBVLV` (Param1=THAC_SI) – màn hình (đoán theo tên): ViewNhapDiemBVLV
 - `QLV04.07` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ luận văn/ Điểm cộng luận văn → `Edusoft.SRM.QLV._05.F001_DiemCongLuanVan`
 - `QLV03` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương
-- `QLV03.04` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Chuyển SV đạt vào DS bảo vệ luận văn → `Edusoft.SRM.QLV._03.F004_ChuyenDSSVDatVaoDSBVLV` (Param1=THAC_SI)
+- `QLV03.04` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Chuyển SV đạt vào DS bảo vệ luận văn → `Edusoft.SRM.QLV._03.F004_ChuyenDSSVDatVaoDSBVLV` (Param1=THAC_SI) – màn hình (đoán theo tên): ViewDSSVDatVaoLV
 - `QLV03.02` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Gán hội đồng bảo vệ đề cương cho sinh viên → `Edusoft.SRM.QLV._03.F002_GanHoiDongBVDC` (Param1=THAC_SI)
-- `QLV03.05` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Gán thời gian bảo vệ đề cương → `Edusoft.SRM.QLV._03.F005_GanTGBaoVeDeCuong` (Param1=THAC_SI)
+- `QLV03.05` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Gán thời gian bảo vệ đề cương → `Edusoft.SRM.QLV._03.F005_GanTGBaoVeDeCuong` (Param1=THAC_SI) – màn hình (đoán theo tên): View_GanTGBaoVeDeCuong
 - `QLV03.01` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Hội đồng bảo vệ đề cương → `Edusoft.SRM.QLV._03.F001_HDBaoVeDeCuong` (Param1=THAC_SI)
-- `QLV03.03` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Nhập điểm và kết quả bảo vệ đề cương → `Edusoft.SRM.QLV._03.F003_NhapDiemKQDeCuong` (Param1=THAC_SI)
+- `QLV03.03` Tốt nghiệp/ Bảo vệ luận văn/ Bảo vệ đề cương/ Nhập điểm và kết quả bảo vệ đề cương → `Edusoft.SRM.QLV._03.F003_NhapDiemKQDeCuong` (Param1=THAC_SI) – màn hình (đoán theo tên): ViewNhapDiemKQDC
 - `QLV90` Tốt nghiệp/ Bảo vệ luận văn/ In
 - `QLV90.01` Tốt nghiệp/ Bảo vệ luận văn/ In/ In danh sách SV bảo vệ → `Edusoft.SRM.Report.RP_DSSVDKDeTaiLV`
 - `QLV90.02` Tốt nghiệp/ Bảo vệ luận văn/ In/ In danh sách SV bảo vệ luận văn → `Edusoft.SRM.Report.RP_DSSVBaoVeLV`
@@ -55,13 +55,13 @@
 - `QLV02.02` Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Nhập điểm hướng dẫn đề tài → `Edusoft.SRM.QLV._02.F002_NhapDiemHDDeCuong`
 - `QLV02.03` Tốt nghiệp/ Bảo vệ luận văn/ Đăng ký đề tài/ Quyết định đổi người HDKH Ngành/Chương trình → `Edusoft.SRM.QLV._02.F004_QDDoiDeTaiGVHuongDan`
 - `QLV01` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn
-- `QLV01.02` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách nhóm hội đồng bảo vệ luận văn → `Edusoft.SRM.QLV._01.F002_DSNhomHDBVLV` (Param1=THAC_SI)
+- `QLV01.02` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách nhóm hội đồng bảo vệ luận văn → `Edusoft.SRM.QLV._01.F002_DSNhomHDBVLV` (Param1=THAC_SI) – màn hình (đoán theo tên): ViewDNhHDBVLV
 - `QLV01.03` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách thành viên hội đồng trong đợt → `Edusoft.SRM.QLV._01.F003_DSThanhVienHDTrongDot` (Param1=THAC_SI)
-- `QLV01.01` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách đợt bảo vệ luận văn → `Edusoft.SRM.QLV._01.F001_DSDotBVLuanVan` (Param1=THAC_SI)
+- `QLV01.01` Tốt nghiệp/ Bảo vệ luận văn/ Đợt bảo vệ luận văn/ Danh sách đợt bảo vệ luận văn → `Edusoft.SRM.QLV._01.F001_DSDotBVLuanVan` (Param1=THAC_SI) – màn hình (đoán theo tên): VIEW_DSDOT_BVLV, ViewDDotBVLV
 - `QBB` Tốt nghiệp/ Khai thác báo biểu
 - `QKL` Tốt nghiệp/ Khóa luận tốt nghiệp
 - `QKL.02` Tốt nghiệp/ Khóa luận tốt nghiệp/ Giảng viên được hướng dẫn → `Edusoft.SRM.QKL.QKL_02_GVDHuongDanKLTN`
-- `QKL.01` Tốt nghiệp/ Khóa luận tốt nghiệp/ Sinh viên được phép đăng ký → `Edusoft.SRM.QKL.QKL_01_SVDuocPhepDKKL`
+- `QKL.01` Tốt nghiệp/ Khóa luận tốt nghiệp/ Sinh viên được phép đăng ký → `Edusoft.SRM.QKL.QKL_01_SVDuocPhepDKKL` – màn hình (đoán theo tên): QKL.01
 - `QKL.04` Tốt nghiệp/ Khóa luận tốt nghiệp/ Thời gian đăng ký lớp theo ngày giờ → `Edusoft.RMS.M03._02.UCT_ThoiGianDKMHNgayGioTheoLop` (Param1=1)
 - `QLK.03` Tốt nghiệp/ Khóa luận tốt nghiệp/ Xem danh sách đã đăng ký → `Edusoft.SRM.QKL.QKL_03_XemDSDKKhoaLuanTN`
 - `QKS` Tốt nghiệp/ Khóa dữ liệu
@@ -94,8 +94,8 @@
 - `QNCS.01` Tốt nghiệp/ Nghiên cứu sinh/ Đăng ký đề tài NCS
 - `QNCS.1.01` Tốt nghiệp/ Nghiên cứu sinh/ Đăng ký đề tài NCS/ Danh sánh đăng ký đề tài NCS → `Edusoft.SRM.QLV._02.F001_DSSVDangKyDeCuong` (Param1=NCS)
 - `QQT` Tốt nghiệp/ Quản trị phân hệ
-- `QQT3` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN)
-- `QQT2` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN)
+- `QQT3` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `QQT2` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `QQT1` Tốt nghiệp/ Quản trị phân hệ/ Phân quyền quản lý phân hệ
 - `QQT0` Tốt nghiệp/ Quản trị phân hệ/ Quản lý danh mục
 - `QHD` Tốt nghiệp/ Xem file hướng dẫn
@@ -145,8 +145,8 @@
 - `Q91.02` Tốt nghiệp/ Xét khác/ Tiêu chuẩn/ Danh mục xét khác
 - `Q91.01` Tốt nghiệp/ Xét khác/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (Khác) → `Edusoft.SRM.Q9.Q91.Q91_01_01_TCKhac`
 - `Q95` Tốt nghiệp/ Xét khác/ Xem kết quả
-- `Q95.02` Tốt nghiệp/ Xét khác/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q9.Q95.Q95_02_01_XemDSSVKhongDat`
-- `Q95.01` Tốt nghiệp/ Xét khác/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q9.Q95.Q95_01_01_XemDSSVDat`
+- `Q95.02` Tốt nghiệp/ Xét khác/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q9.Q95.Q95_02_01_XemDSSVKhongDat` – màn hình (đoán theo tên): ViewDSSVKhongDatTN
+- `Q95.01` Tốt nghiệp/ Xét khác/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q9.Q95.Q95_01_01_XemDSSVDat` – màn hình (đoán theo tên): ViewDSSVDatTN
 - `Q93` Tốt nghiệp/ Xét khác/ Xét loại khác
 - `Q93.04` Tốt nghiệp/ Xét khác/ Xét loại khác/ Xét 1 sinh viên (Khác) → `Edusoft.SRM.Q9.Q93.Q93_04_01_XetTheo1SinhVien`
 - `Q93.05` Tốt nghiệp/ Xét khác/ Xét loại khác/ Xét file mã SV (Khác) → `Edusoft.SRM.Q9.Q93.Q93_05_01_XetTheoFileSV`
@@ -171,8 +171,8 @@
 - `Q21` Tốt nghiệp/ Xét luận văn/ Tiêu chuẩn
 - `Q21.01` Tốt nghiệp/ Xét luận văn/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (LV) → `Edusoft.SRM.Q2.Q21.Q21_01_01_TCLVan`
 - `Q25` Tốt nghiệp/ Xét luận văn/ Xem kết quả
-- `Q25.02` Tốt nghiệp/ Xét luận văn/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_LUAN_VAN)
-- `Q25.01` Tốt nghiệp/ Xét luận văn/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_LUAN_VAN)
+- `Q25.02` Tốt nghiệp/ Xét luận văn/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_LUAN_VAN) – màn hình (đoán theo tên): ViewDSSVKhongDatTN
+- `Q25.01` Tốt nghiệp/ Xét luận văn/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_LUAN_VAN) – màn hình (đoán theo tên): ViewDSSVDatTN
 - `Q23` Tốt nghiệp/ Xét luận văn/ Xét luận văn
 - `Q23.04` Tốt nghiệp/ Xét luận văn/ Xét luận văn/ Xét 1 sinh viên (LV) → `Edusoft.SRM.Q2.Q23.Q23_04_01_XetLVanTheo1SV`
 - `Q23.05` Tốt nghiệp/ Xét luận văn/ Xét luận văn/ Xét file mã SV (LV) → `Edusoft.SRM.Q2.Q23.Q23_05_01_XetLVanTheoFileSV`
@@ -199,8 +199,8 @@
 - `Q41` Tốt nghiệp/ Xét thi và luận văn/ Tiêu chuẩn
 - `Q41.01` Tốt nghiệp/ Xét thi và luận văn/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TLV) → `Edusoft.SRM.Q4.Q41.Q41_01_01_DNTChuanThi_LV`
 - `Q46` Tốt nghiệp/ Xét thi và luận văn/ Xem kết quả
-- `Q46.02` Tốt nghiệp/ Xét thi và luận văn/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_THI_LUAN_VAN)
-- `Q46.01` Tốt nghiệp/ Xét thi và luận văn/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_THI_LUAN_VAN)
+- `Q46.02` Tốt nghiệp/ Xét thi và luận văn/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_THI_LUAN_VAN) – màn hình (đoán theo tên): ViewDSSVKhongDatTN
+- `Q46.01` Tốt nghiệp/ Xét thi và luận văn/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_THI_LUAN_VAN) – màn hình (đoán theo tên): ViewDSSVDatTN
 - `Q43` Tốt nghiệp/ Xét thi và luận văn/ Xét thi và luận văn
 - `Q43.04` Tốt nghiệp/ Xét thi và luận văn/ Xét thi và luận văn/ Xét 1 sinh viên (TLV) → `Edusoft.SRM.Q4.Q43.Q43_04_01_XetThi_LVTheo1SV`
 - `Q43.05` Tốt nghiệp/ Xét thi và luận văn/ Xét thi và luận văn/ Xét file mã SV (TLV) → `Edusoft.SRM.Q4.Q43.Q43_05_01_XetThi_LVTheoFileSV`
@@ -228,8 +228,8 @@
 - `Q11` Tốt nghiệp/ Xét thi/ Tiêu chuẩn
 - `Q11.01` Tốt nghiệp/ Xét thi/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (Thi) → `Edusoft.SRM.Q1.Q11.Q11_01_01_TCThi`
 - `Q15` Tốt nghiệp/ Xét thi/ Xem kết quả
-- `Q15.02` Tốt nghiệp/ Xét thi/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_THI)
-- `Q15.01` Tốt nghiệp/ Xét thi/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_THI)
+- `Q15.02` Tốt nghiệp/ Xét thi/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_THI) – màn hình (đoán theo tên): ViewDSSVKhongDatTN
+- `Q15.01` Tốt nghiệp/ Xét thi/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_THI) – màn hình (đoán theo tên): ViewDSSVDatTN
 - `Q13` Tốt nghiệp/ Xét thi/ Xét thi
 - `Q13.04` Tốt nghiệp/ Xét thi/ Xét thi/ Xét 1 sinh viên (Thi) → `Edusoft.SRM.Q1.Q13.Q13_04_01_XetThiTheo1SV`
 - `Q13.05` Tốt nghiệp/ Xét thi/ Xét thi/ Xét file mã SV (Thi) → `Edusoft.SRM.Q1.Q13.Q13_05_01_XetThiTheoFileSV`
@@ -239,7 +239,7 @@
 - `Q13.02` Tốt nghiệp/ Xét thi/ Xét thi/ Xét theo đợt và tiêu chuẩn (Thi) → `Edusoft.SRM.Q1.Q13.Q13_02_01_XetThiTheoDotVaTC`
 - `Q12` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét
 - `Q12.02` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ Danh sách lớp xét (Thi) → `Edusoft.SRM.Q1.Q12.Q12_02_01_LopXetThi`
-- `Q12.03` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ Danh sách SV xét (Thi) → `Edusoft.SRM.Q1.Q12.Q12_03_01_SVXetThi`
+- `Q12.03` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ Danh sách SV xét (Thi) → `Edusoft.SRM.Q1.Q12.Q12_03_01_SVXetThi` – màn hình: Q12.03
 - `Q12.01` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ Danh sách đợt xét (Thi) → `Edusoft.SRM.Q1.Q12.Q12_01_01_DotThi`
 - `Q12.06` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ In danh sách xét theo khoa (Thi) → `Edusoft.SRM.Q1.Q12.Q12_06_01_InDSXetTheoKhoa`
 - `Q12.05` Tốt nghiệp/ Xét thi/ Đợt và danh sách xét/ In danh sách xét theo tiêu chuẩn (Thi) → `Edusoft.SRM.Q1.Q12.Q12_05_01_InDSXetTheoTChuan`
@@ -255,8 +255,8 @@
 - `Q31` Tốt nghiệp/ Xét tiền tốt nghiệp/ Tiêu chuẩn
 - `Q31.01` Tốt nghiệp/ Xét tiền tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TTN) → `Edusoft.SRM.Q3.Q31.Q31_01_01_TCTienTN`
 - `Q36` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xem kết quả
-- `Q36.02` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_TIEN_TN)
-- `Q36.01` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_TIEN_TN)
+- `Q36.02` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xem kết quả/ Danh sách sinh viên không đạt → `Edusoft.SRM.Q1.Q15.Q15_01_02_DSSVKhongDat` (Param1=TC_TIEN_TN) – màn hình (đoán theo tên): ViewDSSVKhongDatTN
+- `Q36.01` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xem kết quả/ Danh sách sinh viên đạt → `Edusoft.SRM.Q1.Q15.Q15_01_01_DSSVDat` (Param1=TC_TIEN_TN) – màn hình (đoán theo tên): ViewDSSVDatTN
 - `Q33` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xét tiền tốt nghiệp
 - `Q33.04` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xét tiền tốt nghiệp/ Xét 1 sinh viên (TTN) → `Edusoft.SRM.Q3.Q33.Q33_04_01_XetTienTNTheo1SV`
 - `Q33.05` Tốt nghiệp/ Xét tiền tốt nghiệp/ Xét tiền tốt nghiệp/ Xét file mã SV (TTN) → `Edusoft.SRM.Q3.Q33.Q33_05_01_XetTienTNTheoFileSV`
@@ -346,12 +346,12 @@
 - `Q22.04.A` Tốt nghiệp/ Xét tốt nghiệp/ Luận án tốt nghiệp/ In DS và luận văn SV tốt nghiệp → `Edusoft.SRM.Report.UCPrint`
 - `Q510.3` Tốt nghiệp/ Xét tốt nghiệp/ Luận án tốt nghiệp/ Nhập điều kiện hoàn thành hồ sơ TN → `Edusoft.SRM.Q2.Q22.Q22_07_01_DMXETTNLVTS`
 - `Q22.04` Tốt nghiệp/ Xét tốt nghiệp/ Luận án tốt nghiệp/ Thông tin luận văn tốt nghiệp → `Edusoft.SRM.Q2.Q22.Q22_04_01_TTLanAn`
-- `Q22.4.2` Tốt nghiệp/ Xét tốt nghiệp/ Luận án tốt nghiệp/ Thông tin nghiên cứu khoa học → `Edusoft.SRM.Q2.Q22.Q22_04_02_TTNCKH`
+- `Q22.4.2` Tốt nghiệp/ Xét tốt nghiệp/ Luận án tốt nghiệp/ Thông tin nghiên cứu khoa học → `Edusoft.SRM.Q2.Q22.Q22_04_02_TTNCKH` – màn hình (đoán theo tên): View_TTNCKH
 - `Q55` Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp
-- `Q55.01` Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp/ Xem/sửa môn TN của lớp → `Edusoft.SRM.Q5.Q55.Q55_01_01_MonTNLop`
+- `Q55.01` Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp/ Xem/sửa môn TN của lớp → `Edusoft.SRM.Q5.Q55.Q55_01_01_MonTNLop` – màn hình (đoán theo tên): Q55.01
 - `Q51` Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn
 - `Q51.02` Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ In DSSV học vượt tín chỉ môn tự chọn → `Edusoft.SRM.Q5.Q51.Q51_02_01_InDSSVVuotTCTuChon` (Param1=NGANH1)
-- `Q51.01` Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN) → `Edusoft.SRM.Q5.Q51.Q51_01_01_DNTChuanTN`
+- `Q51.01` Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN) → `Edusoft.SRM.Q5.Q51.Q51_01_01_DNTChuanTN` – màn hình: Q11.01
 - `Q56` Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp
 - `Q56.03` Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Cập nhật tên văn bằng sinh viên → `Edusoft.SRM.Q5.Q56.ViewCapNhatTenVBSV`
 - `Q56.02` Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp → `Edusoft.SRM.Q5.Q56.Q56_02_01_XemDSKhTN`
@@ -359,14 +359,14 @@
 - `Q53` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp
 - `Q53.07` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Kiểm tra hạ bậc tốt nghiệp → `Edusoft.SRM.Q5.Q53.Q53_07_KiemTraHaBac`
 - `Q53.04` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét 1 sinh viên (TN) → `Edusoft.SRM.Q5.Q53.Q53_04_01_XetTNTheo1SV`
-- `Q53.05` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét file mã SV (TN) → `Edusoft.SRM.Q5.Q53.Q53_05_01_XetTNTheoFileSV`
+- `Q53.05` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét file mã SV (TN) → `Edusoft.SRM.Q5.Q53.Q53_05_01_XetTNTheoFileSV` – màn hình: VIEWRESULTIMPORT
 - `Q53.06` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét một số sinh viên (TN) → `Edusoft.SRM.Q5.Q53.Q53_06_01_XetTNMotSoSV`
 - `Q53.03` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo lớp (TN) → `Edusoft.SRM.Q5.Q53.Q53_03_01_XetTNTheoLop`
 - `Q53.01` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo đợt (TN) → `Edusoft.SRM.Q5.Q53.Q53_01_01_XetTNTheoDot`
 - `Q53.02` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo đợt và tiêu chuẩn (TN) → `Edusoft.SRM.Q5.Q53.Q53_02_01_XetTNTheoDotVaTC`
 - `Q53.06A` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét tạm theo file SV và tiêu chuẩn (TN) → `Edusoft.SRM.Q5.Q53.Q53_05_01_XetTamTNTheoFileSV`
 - `Q53.08` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Đăng ký xét tốt nghiệp online
-- `Q53.8.1` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Đăng ký xét tốt nghiệp online/ Danh mục điều kiện xét → `Edusoft.SRM.Q5.Q53.Q53_08_01_DMDKXetTN`
+- `Q53.8.1` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Đăng ký xét tốt nghiệp online/ Danh mục điều kiện xét → `Edusoft.SRM.Q5.Q53.Q53_08_01_DMDKXetTN` – màn hình (đoán theo tên): DDMDKXTN
 - `Q53.8.2` Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Đăng ký xét tốt nghiệp online/ Xem danh sách sinh viên đăng ký → `Edusoft.SRM.Q5.Q53.Q53_08_02_DSSVXetTN`
 - `Q61` Tốt nghiệp/ Xét tốt nghiệp/ Định nghĩa mẫu văn bằng
 - `Q61.01` Tốt nghiệp/ Xét tốt nghiệp/ Định nghĩa mẫu văn bằng/ Định nghĩa mẫu văn bằng → `Edusoft.SRM.Q6.Q61.Q6101_DNMauVanBang` (Param1=VBTN)
@@ -374,9 +374,9 @@
 - `Q52.04` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Chuyển sinh viên chưa đạt qua đợt mới → `Edusoft.SRM.Q5.Q52.Q52_04_01_ChuyenSVKhongTN`
 - `Q52.04A` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Chuyển SV đạt HK trước qua đợt mới → `Edusoft.SRM.Q5.Q52.Q52_04_01_ChuyenSVDatTN`
 - `Q52.02` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách lớp xét (TN) → `Edusoft.SRM.Q5.Q52.Q52_02_01_LopXetTN`
-- `Q52.09` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách sinh viên nợ thủ tục → `Edusoft.SRM.Q5.Q52.Q52_11_DSSVNoThuTuc`
+- `Q52.09` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách sinh viên nợ thủ tục → `Edusoft.SRM.Q5.Q52.Q52_11_DSSVNoThuTuc` – màn hình (đoán theo tên): VIEW_NO_THU_TUC
 - `Q52.03` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách SV xét (TN) → `Edusoft.SRM.Q5.Q52.Q52_03_01_SVXetTN`
-- `Q52.01` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách đợt xét (TN) → `Edusoft.SRM.Q5.Q52.Q52_01_01_DNDotXetTN`
+- `Q52.01` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách đợt xét (TN) → `Edusoft.SRM.Q5.Q52.Q52_01_01_DNDotXetTN` – màn hình: Q21.01
 - `Q52.06` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ In danh sách theo khoa (TN) → `Edusoft.SRM.Q5.Q52.Q52_05_02_InDSXetTheoKhoa`
 - `Q52.05` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ In danh sách theo tiêu chuẩn (TN) → `Edusoft.SRM.Q5.Q52.Q52_05_01_InDSXetTheoTChuan`
 - `Q54.16` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ In DSSV xét kèm điểm môn học → `Edusoft.SRM.Q5.Q54.Q54_16_InDSSVTNKemDiemMH`
@@ -386,7 +386,7 @@
 - `Q52.13` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ In xác nhận nợ tài vụ → `Edusoft.SRM.Q5.Q52.Q52_13_InXacNhanNoHPTheoDot`
 - `Q54.17` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Thêm SV xét chưa có trong danh sách → `Edusoft.SRM.Q5.Q52.Q52_14_ThemSVXetChuaTao`
 - `Q52.7` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Thông tin luận văn tốt nghiệp (TN)
-- `Q52.20` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Thời gian xét tốt nghiệp → `Edusoft.SRM.QAT._05.F02_TGXetTN` (Param1=TOTNGHIEP)
+- `Q52.20` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Thời gian xét tốt nghiệp → `Edusoft.SRM.QAT._05.F02_TGXetTN` (Param1=TOTNGHIEP) – màn hình (đoán theo tên): VIEW_TGXETTN
 - `Q52.08` Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Tạo SV xét do tạm dừng ở  học kỳ trước → `Edusoft.SRM.Q5.Q52.Q52_08_01_TaoDSXetTuSVTamDung`
 - `Q8` Tốt nghiệp/ Xóa dữ liệu xét
 - `Q81` Tốt nghiệp/ Xóa dữ liệu xét/ Xóa danh sách và kết quả các loại xét

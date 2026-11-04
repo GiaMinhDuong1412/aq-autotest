@@ -12,8 +12,8 @@
 - `E06.1` Đánh giá/ Kiểm tra dữ liệu/ Viên chức không đủ điểm tối thiểu → `Edusoft.EVA.Report.N8003_DanhGia_ChuaDatDiemToiThieu`
 - `E06.3` Đánh giá/ Kiểm tra dữ liệu/ Đơn vị vượt mức điểm thưởng → `Edusoft.EVA.Report.N8004_DanhGia_DonViVuotMucDiemQuyDinh`
 - `EQT` Đánh giá/ Quản trị phân hệ
-- `EQT3` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG)
-- `EQT2` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG)
+- `EQT3` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `EQT2` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `EQT1` Đánh giá/ Quản trị phân hệ/ Phân quyền phân hệ
 - `EQT0` Đánh giá/ Quản trị phân hệ/ Quản lý danh mục
 - `EHD` Đánh giá/ Xem file hướng dẫn
@@ -45,11 +45,11 @@
 - `E01.04` Đánh giá/ Định nghĩa dữ liệu/ Danh mục/ tiêu chí đánh giá/ Danh mục phiếu đánh giá
 - `E02.03` Đánh giá/ Định nghĩa dữ liệu/ Danh mục/ tiêu chí đánh giá/ Danh mục thông tin hỗ trợ đánh giá
 - `E02.02` Đánh giá/ Định nghĩa dữ liệu/ Danh mục/ tiêu chí đánh giá/ Danh mục tiêu chí đánh giá
-- `E01.01` Đánh giá/ Định nghĩa dữ liệu/ Danh sách ban giám hiệu → `Edusoft.EVA.N8._01.F003_DSBanGiamHieu`
-- `E01.02` Đánh giá/ Định nghĩa dữ liệu/ Danh sách trưởng đơn vị → `Edusoft.EVA.N8._01.F004_DSTruongDV`
+- `E01.01` Đánh giá/ Định nghĩa dữ liệu/ Danh sách ban giám hiệu → `Edusoft.EVA.N8._01.F003_DSBanGiamHieu` – màn hình (đoán theo tên): DSBGH
+- `E01.02` Đánh giá/ Định nghĩa dữ liệu/ Danh sách trưởng đơn vị → `Edusoft.EVA.N8._01.F004_DSTruongDV` – màn hình: DS-NVHK
 - `E01.03` Đánh giá/ Định nghĩa dữ liệu/ Phiếu đánh giá theo chức vụ → `Edusoft.EVA.N8._01.F005_DoiTuongDanhGia` (Param1=-4986416759695523048)
 - `E01.07` Đánh giá/ Định nghĩa dữ liệu/ Phiếu đánh giá theo phân loại ngạch → `Edusoft.EVA.N8._01.F005_DoiTuongDanhGia` (Param1=-8382981821880437746)
-- `E03.02` Đánh giá/ Định nghĩa dữ liệu/ Viên chức không được đánh giá → `Edusoft.EVA.N8._01.F001_DSNVKhongDanhGia`
+- `E03.02` Đánh giá/ Định nghĩa dữ liệu/ Viên chức không được đánh giá → `Edusoft.EVA.N8._01.F001_DSNVKhongDanhGia` – màn hình: DS-NVHK
 - `E01.05` Đánh giá/ Định nghĩa dữ liệu/ Viên chức nhập thông tin hổ trợ ĐG online → `Edusoft.EVA.N8._01.F005_DSNhapThongTinHoTroDG`
 - `E03.01` Đánh giá/ Định nghĩa dữ liệu/ Định nghĩa đợt đánh giá
 
