@@ -1,6 +1,6 @@
-<title>AQ Autotest Console</title>
+<title>AQ Auto Test</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 /* Layout: dark test-runner console — compact rail, results strip, test list + terminal log. Dark-first. */
 :root{
@@ -1356,6 +1356,147 @@ td.subtext{display:table-cell;margin:0}
 #appUpd.newer{background:var(--accent);border-color:var(--accent);color:#fff}
 .upd-body{margin:14px 0 0;font-size:.86rem;color:var(--fg-dim)}.upd-body p{margin:0}
 .upd-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+
+/* ================= v2 – giao diện AQ Auto Test mới (2026.11) =================
+   Thanh bên xanh đậm cố định · màu chính xanh dương · font Be Vietnam Pro (hiển thị tiếng Việt chuẩn) · trang Tổng quan · tìm nhanh Ctrl K.
+   Theme mặc định = "AQ Xanh" (sáng); các theme cũ vẫn chọn được ở nút bảng màu. */
+:root{--display:"Be Vietnam Pro","Segoe UI",sans-serif;--body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --sb-bg:#0b1324;--sb-bg2:#111c33;--sb-line:#1c2944;--sb-fg:#c9d3e6;--sb-mute:#8391ab;--sb-act:#1f3a75;--sb-acc:#60a5fa}
+:root:not([data-theme]){
+  --bg:#f2f5fa; --bg-2:#ffffff; --bg-3:#f6f8fc; --raise:#eef2f9;
+  --line:#e1e7f0; --line-2:#cfd8e6;
+  --fg:#0f172a; --fg-dim:#334155; --muted:#5a6679;
+  --accent:#2563eb; --accent-2:#1d4ed8; --accent-deep:#1e40af;
+  --pass:#0f8a55; --fail:#d03c3c; --run:#b26b00; --skip:#7d8aa0;
+  --on-pass:#fff; --on-run:#fff;
+  --shadow:0 18px 40px rgba(15,23,42,.14); --card-shadow:0 1px 2px rgba(15,23,42,.05);
+  color-scheme:light}
+body{font-family:var(--body);letter-spacing:0}
+h1,h2,h3{letter-spacing:-.01em}
+
+/* thanh bên */
+.app-shell{grid-template-columns:248px 1fr}
+.sidebar{width:248px;padding:16px 12px 12px;background:var(--sb-bg);border-right:0;color:var(--sb-fg)}
+.sidebar-brand{padding:6px 8px 18px;margin-bottom:6px;border-bottom:1px solid var(--sb-line)}
+.sidebar-brand strong{color:#fff;font-size:.98rem;font-weight:700}
+.sidebar-brand span.sub{color:var(--sb-mute);font-family:var(--body);font-size:.68rem;letter-spacing:0}
+.sidebar .brand-mark.sm{background:linear-gradient(145deg,#3b82f6,#1d4ed8);border-radius:10px}
+.sidebar-close{color:#fff}
+.main-nav{gap:2px}
+.nav-label{margin:16px 12px 6px;color:var(--sb-mute);font-family:var(--body);font-size:.64rem;font-weight:700;letter-spacing:.1em}
+.nav-item{padding:8px 10px;border-radius:9px;color:var(--sb-fg);font-size:.84rem;font-weight:500}
+.nav-item .ic{width:26px;height:26px;background:transparent;color:var(--sb-mute)}
+.nav-item:hover{background:var(--sb-bg2);color:#fff}
+.nav-item:hover .ic{color:#fff}
+.nav-item.active{background:var(--sb-act);color:#fff}
+.nav-item.active .ic{background:transparent;color:var(--sb-acc)}
+.nav-item.active::before{display:block;left:-12px;top:8px;bottom:8px;width:3px;background:var(--sb-acc)}
+.nav-item .meta{color:var(--sb-mute);font-family:var(--body);font-size:.7rem}
+.nav-item.active .meta{color:#c7dbff}
+.nav-item .meta.hot,.nav-item .bugmeta.hot{color:#fca5a5}
+.nav-item.sub{padding:6px 10px 6px 46px;font-size:.8rem}
+.nav-group{color:var(--sb-fg)}
+.nav-group .ic{color:var(--sb-mute)}
+.sidebar .recent,.sidebar .nav-label.recent-label{display:none}
+.sidebar-bottom{border-top:1px solid var(--sb-line);padding-top:10px}
+.user-card{border-top:0;color:#fff;padding:6px 6px 2px}
+.user-card small{color:var(--sb-mute);font-family:var(--body)}
+.sidebar .avatar{background:#1f3a75;color:#dbe7ff}
+
+/* thanh trên */
+.topbar{height:60px;background:var(--bg-2);border-bottom:1px solid var(--line);gap:14px}
+.breadcrumbs{font-family:var(--body);font-size:.8rem}
+.breadcrumbs strong{font-weight:600}
+.qk-open{display:flex;align-items:center;gap:10px;flex:0 1 380px;min-width:0;height:38px;margin-left:18px;padding:0 12px;border:1px solid var(--line-2);border-radius:10px;
+  background:var(--bg-3);color:var(--muted);font:inherit;font-size:.82rem;text-align:left;cursor:pointer}
+.qk-open:hover{border-color:var(--accent);color:var(--fg)}
+.qk-open svg{width:16px;height:16px;flex:none}
+.qk-open span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qk-open kbd,.qk-hint kbd{font-family:var(--mono);font-size:.66rem;padding:2px 6px;border:1px solid var(--line-2);border-radius:5px;background:var(--bg-2);color:var(--fg-dim)}
+.env-badge{font-family:var(--body);font-size:.74rem;font-weight:600}
+.account-trigger,.top-icon{border-radius:10px}
+.account-trigger small{font-family:var(--body)}
+.content{max-width:1320px;padding-top:24px}
+.avatar{background:var(--accent)}
+
+/* thành phần chung */
+.card{border-radius:12px;box-shadow:var(--card-shadow)}
+.btn{border-radius:9px;font-weight:600}
+.btn.primary{background:var(--accent)}
+.run-head h2{font-size:1.5rem;font-weight:700}
+
+/* trang Tổng quan */
+.hm-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px}
+.hm-head h2{font-size:1.6rem;font-weight:700}
+.hm-head p{margin:6px 0 0;color:var(--fg-dim);font-size:.88rem}
+.hm-acts{display:flex;flex-wrap:wrap;gap:8px}
+.hm-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.hm-kpi{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);box-shadow:var(--card-shadow);
+  color:var(--fg);font:inherit;text-align:left;cursor:pointer;transition:border-color .12s}
+.hm-kpi:hover{border-color:var(--accent)}
+.hm-kpi .k{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.78rem;font-weight:600}
+.hm-kpi .k svg{width:16px;height:16px;color:var(--accent)}
+.hm-kpi b{font-family:var(--display);font-size:1.9rem;font-weight:700;line-height:1.1}
+.hm-kpi .s{font-size:.76rem;color:var(--fg-dim)}
+.hm-kpi.bad b{color:var(--fail)}
+.hm-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px;margin-bottom:16px}
+.hm-card{padding:16px 18px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);box-shadow:var(--card-shadow);min-width:0}
+.hm-card h3{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px;font-size:.98rem;font-weight:700}
+.hm-card h3 button{border:0;background:none;color:var(--accent);font:inherit;font-size:.78rem;font-weight:600;cursor:pointer;padding:0}
+.hm-empty{padding:18px 4px;color:var(--muted);font-size:.84rem}
+.hm-runs{width:100%;border-collapse:collapse;font-size:.82rem}
+.hm-runs td{padding:9px 6px;border-top:1px solid var(--line);vertical-align:middle}
+.hm-runs tr:first-child td{border-top:0}
+.hm-runs tr{cursor:pointer}.hm-runs tr:hover td{background:var(--bg-3)}
+.hm-runs .code{font-family:var(--mono);font-weight:600;white-space:nowrap}
+.hm-runs .ti{color:var(--fg-dim);max-width:0;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-runs .tm{color:var(--muted);white-space:nowrap;text-align:right}
+.pill{display:inline-block;min-width:44px;padding:3px 8px;border-radius:6px;font-size:.7rem;font-weight:700;text-align:center;white-space:nowrap}
+.pill.pass{background:var(--pass-soft);color:var(--pass)}.pill.fail{background:var(--fail-soft);color:var(--fail)}
+.pill.run,.pill.blocked{background:var(--run-soft);color:var(--run)}.pill.skip{background:var(--skip-soft);color:var(--skip)}
+.hm-cov{display:flex;flex-direction:column;gap:2px}
+.hm-cov button{display:grid;grid-template-columns:62px minmax(0,1fr) 120px 74px;align-items:center;gap:10px;padding:7px 6px;border:0;border-radius:8px;background:none;color:var(--fg);font:inherit;font-size:.82rem;text-align:left;cursor:pointer}
+.hm-cov button:hover{background:var(--bg-3)}
+.hm-cov .c{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--accent-2)}
+.hm-cov .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-cov .bar{height:7px;border-radius:4px;background:var(--raise);overflow:hidden}
+.hm-cov .bar i{display:block;height:100%;border-radius:4px;background:var(--accent)}
+.hm-cov .v{color:var(--muted);font-size:.74rem;text-align:right;white-space:nowrap}
+.hm-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:.84rem}
+.hm-steps li{display:flex;align-items:center;gap:10px}
+.hm-steps li i{width:18px;height:18px;border-radius:50%;border:2px solid var(--line-2);flex:none;box-sizing:border-box}
+.hm-steps li.done i{border:0;background:var(--pass)}
+.hm-steps li.cur i{border:5px solid var(--accent)}
+.hm-steps li.cur span{font-weight:700}
+.hm-steps li em{margin-left:auto;font-style:normal;color:var(--muted);font-size:.76rem}
+.hm-dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:10px 0 0;font-size:.82rem}
+.hm-dl dt{color:var(--muted)}.hm-dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.hm-rn{display:flex;align-items:center;gap:9px;font-weight:700}
+.hm-rn i{width:9px;height:9px;border-radius:50%;background:var(--skip)}.hm-rn i.ok{background:var(--pass)}.hm-rn i.bad{background:var(--fail)}
+.hm-side{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media(max-width:1100px){.hm-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hm-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.hm-kpis{grid-template-columns:minmax(0,1fr)}.hm-cov button{grid-template-columns:52px minmax(0,1fr) 60px}.hm-cov .v{display:none}}
+
+a.nav-item{text-decoration:none}
+.breadcrumbs{white-space:nowrap;min-width:0;overflow:hidden}.breadcrumbs strong{overflow:hidden;text-overflow:ellipsis}
+.env-badge,#appUpd,.account-trigger .who{white-space:nowrap}.top-actions{flex:none}
+@media(max-width:1180px){.env-badge{display:none}}
+/* tìm nhanh (Ctrl K) */
+.qk-ov{position:fixed;inset:0;z-index:90;display:flex;justify-content:center;align-items:flex-start;padding:12vh 16px 16px;background:rgba(8,13,26,.45)}
+.qk-box{width:min(640px,100%);max-height:70vh;display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:14px;background:var(--bg-2);box-shadow:var(--shadow);overflow:hidden}
+.qk-in{display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--line)}
+.qk-in svg{width:18px;height:18px;color:var(--muted);flex:none}
+.qk-in input{flex:1;height:54px;border:0;outline:0;background:transparent;color:var(--fg);font:inherit;font-size:1rem}
+.qk-list{overflow-y:auto;padding:6px}
+.qk-grp{padding:10px 10px 4px;color:var(--muted);font-size:.68rem;font-weight:700;letter-spacing:.08em}
+.qk-it{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:0;border-radius:8px;background:none;color:var(--fg);font:inherit;font-size:.86rem;text-align:left;cursor:pointer}
+.qk-it .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qk-it .t small{color:var(--muted);margin-left:6px}
+.qk-it .tag2{font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--accent-2);background:var(--accent-soft);padding:2px 6px;border-radius:5px;flex:none}
+.qk-it.on,.qk-it:hover{background:var(--accent-soft)}
+.qk-hint{display:flex;gap:14px;padding:9px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:.72rem}
+.qk-none{padding:22px 12px;color:var(--muted);font-size:.86rem;text-align:center}
+@media(max-width:760px){.qk-open span,.qk-open kbd{display:none}.qk-open{flex:0 0 auto;margin-left:auto}}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -1419,13 +1560,14 @@ td.subtext{display:table-cell;margin:0}
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
       <span class="brand-mark sm">AQ</span>
-      <div><strong>AQTech</strong><span class="sub">autotest console</span></div>
+      <div><strong>AQ Auto Test</strong><span class="sub">Edusoft · Netweb · AQTech</span></div>
       <button class="sidebar-close" id="sidebarClose" aria-label="Đóng menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <nav class="main-nav">
-      <div class="nav-label">THIẾT KẾ</div>
+      <button class="nav-item active" data-page="home"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span><span>Tổng quan</span></button>
+      <div class="nav-label">KIỂM THỬ</div>
       <div class="nav-group"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4h6M9 4a2 2 0 0 0-2 2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-1a2 2 0 0 0-2-2M9 4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M8 12l2 2 4-4M8 17h8"/></svg></span><span>Phân công release</span></div>
-      <button class="nav-item sub active" data-page="scenarios" data-prod="edusoft"><span>Edusoft</span><span class="meta" id="rlNavMeta-edusoft">—</span></button>
+      <button class="nav-item sub" data-page="scenarios" data-prod="edusoft"><span>Edusoft</span><span class="meta" id="rlNavMeta-edusoft">—</span></button>
       <button class="nav-item sub" data-page="scenarios" data-prod="netweb"><span>Netweb</span><span class="meta" id="rlNavMeta-netweb">—</span></button>
       <button class="nav-item" data-page="releases">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M7 14h3M7 17h6"/></svg></span>
@@ -1435,25 +1577,26 @@ td.subtext{display:table-cell;margin:0}
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 10h16M4 15h10M4 20h7M17 15l2 2 3-4"/></svg></span>
         <span>Danh mục kịch bản</span><span class="meta" id="ctNavCount">—</span>
       </button>
-      <button class="nav-item" data-page="screens">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9M12 13h5M12 16h3"/></svg></span>
-        <span>Màn hình Edusoft</span><span class="meta" id="mhNavCount">—</span>
-      </button>
-      <button class="nav-item" data-page="members">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.2.6 3.5 2.8 3.5 6"/></svg></span>
-        <span>Danh mục user</span><span class="meta" id="mbNavCount">—</span>
-      </button>
-      <button class="nav-item" data-page="runner">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-        <span>Máy chạy thử</span><span class="meta rnmeta" id="rnNavState">—</span>
-      </button>
-      <div class="nav-label">KẾT QUẢ</div>
       <button class="nav-item" data-page="bugs">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4ZM12 8V5M8 13H4M20 13h-4M8 17l-3 2M16 17l3 2M8 9 5 7M16 9l3-2"/></svg></span>
         <span>Lỗi</span><span class="meta bugmeta" id="bgNavCount">—</span>
       </button>
-      <div class="nav-label">RECENT RUNS</div>
-      <div class="recent" id="recentRuns"></div>
+      <div class="nav-label">EDUSOFT</div>
+      <button class="nav-item" data-page="screens">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9M12 13h5M12 16h3"/></svg></span>
+        <span>Màn hình Edusoft</span><span class="meta" id="mhNavCount">—</span>
+      </button>
+      <div class="nav-label">MÁY CHẠY</div>
+      <button class="nav-item" data-page="runner">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <span>Máy chạy thử</span><span class="meta rnmeta" id="rnNavState">—</span>
+      </button>
+      <div class="nav-label">QUẢN TRỊ</div>
+      <button class="nav-item" data-page="members">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.2.6 3.5 2.8 3.5 6"/></svg></span>
+        <span>Danh mục user</span><span class="meta" id="mbNavCount">—</span>
+      </button>
+      <a class="nav-item nav-ext hidden" id="navAcct" href="quan-tri"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></span><span>Tài khoản đăng nhập</span></a>
     </nav>
     <div class="sidebar-bottom">
       <div class="runner-chip"><span class="status-pulse"></span><div><strong>Runner online</strong><span class="sub">agent-01 · idle</span></div></div>
@@ -1468,7 +1611,8 @@ td.subtext{display:table-cell;margin:0}
   <div class="main-area">
     <header class="topbar">
       <button class="menu-button" id="menuBtn" aria-label="Mở menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <div class="breadcrumbs"><span id="crumbRoot">thiết kế</span><span>/</span><strong id="crumb">phân-công-release</strong></div>
+      <div class="breadcrumbs"><span id="crumbRoot">AQ Auto Test</span><span>/</span><strong id="crumb">Tổng quan</strong></div>
+      <button type="button" class="qk-open" id="qkOpen" aria-label="Tìm nhanh (Ctrl K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg><span>Tìm menu, màn hình, kịch bản, lỗi…</span><kbd>Ctrl K</kbd></button>
       <div class="top-actions">
         <span class="env-badge"><span></span>demo-hvng</span>
         <button type="button" class="btn sm hidden" id="appUpd" title="Phiên bản app AQ Auto Test – bấm để kiểm tra / cập nhật"></button>
@@ -1564,7 +1708,8 @@ td.subtext{display:table-cell;margin:0}
       </div>
     </aside></div>
     <main class="content">
-      <section class="page active" id="page-scenarios">
+      <section class="page active" id="page-home"><div id="hmMain"></div></section>
+      <section class="page" id="page-scenarios">
         <div class="run-head"><div>
           <span class="tag scen">PHÂN CÔNG RELEASE</span>
           <h2 id="scTitle">Phân công release</h2>
@@ -6129,9 +6274,9 @@ QUAY VIDEO (TÙY CHỌN)
   $('#logoutBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');$('#appView').classList.add('hidden');$('#loginView').classList.remove('hidden');});
 
   /* nav */
-  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={scenarios:['thiết kế','phân-công-release'],releases:['thiết kế','danh-sách-release'],catalog:['thiết kế','danh-mục-kịch-bản'],screens:['thiết kế','màn-hình-edusoft'],runner:['thiết kế','máy-chạy-thử'],members:['thiết kế','danh-mục-user'],bugs:['kết quả','lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
+  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={home:['AQ Auto Test','Tổng quan'],scenarios:['Kiểm thử','Phân công release'],releases:['Kiểm thử','Danh sách release'],catalog:['Kiểm thử','Danh mục kịch bản'],screens:['Edusoft','Màn hình Edusoft'],runner:['Máy chạy','Máy chạy thử'],members:['Quản trị','Danh mục user'],bugs:['Kiểm thử','Lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
   $$('.nav-item').forEach(function(b){b.addEventListener('click',function(){
-    var p=b.getAttribute('data-page');
+    var p=b.getAttribute('data-page');if(!p||!names[p])return;
     $$('.nav-item').forEach(function(x){x.classList.toggle('active',x===b)});
     $$('.page').forEach(function(pg){pg.classList.toggle('active',pg.id==='page-'+p)});
     crumbRoot.textContent=names[p][0];crumb.textContent=names[p][1];closeSidebar();window.scrollTo(0,0);
@@ -6152,7 +6297,7 @@ QUAY VIDEO (TÙY CHỌN)
 
   /* theme: gốc tối/sáng + 5 theme màu; chỉ đổi màu, không đổi font */
   var THEMES=[
-    {id:'',n:'Theo hệ thống',d:'Tối hoặc sáng theo máy',c:['#0a0e16','#eef1f7','#7c6cff']},
+    {id:'',n:'AQ Xanh (mặc định)',d:'Sáng · xanh dương · thanh bên xanh đậm',c:['#f2f5fa','#0b1324','#2563eb']},
     {id:'dark',n:'Tối (gốc)',d:'Nền đêm · tím',c:['#0a0e16','#141b2b','#7c6cff']},
     {id:'light',n:'Sáng (gốc)',d:'Nền trắng · tím',c:['#eef1f7','#ffffff','#6a4eff']},
     {id:'ocean',n:'Biển xanh',d:'Sáng · xanh dương',c:['#e9f1fa','#ffffff','#0b6bcb']},
@@ -7738,7 +7883,7 @@ QUAY VIDEO (TÙY CHỌN)
   $('#rlTester').addEventListener('change',function(e){RL.f.tester=e.target.value;if(SC.view!=='module'&&!busy()){SC.view='module';}renderRelease();});
   $('#rlRes').addEventListener('change',function(e){RL.f.res=e.target.value;if(SC.view!=='module'&&!busy()){SC.view='module';}renderRelease();});
   $('#rlNew').addEventListener('click',function(){if(busy()){blockNav();return;}RL.newRel={version:'',sheetUrl:''};RL.err='';SC.view='module';SC.mod='ALL';renderAll();scrollMain();});
-  $$('.nav-item[data-prod]').forEach(function(n){n.addEventListener('click',function(){$('#crumb').textContent='phân-công-release · '+n.getAttribute('data-prod');if(busy())return;SC.product=n.getAttribute('data-prod');SC.mod='ALL';SC.view='module';RL.pick=null;RL.flash='';renderAll();renderRelease();});});
+  $$('.nav-item[data-prod]').forEach(function(n){n.addEventListener('click',function(){$('#crumb').textContent='Phân công release · '+(n.getAttribute('data-prod')==='netweb'?'Netweb':'Edusoft');if(busy())return;SC.product=n.getAttribute('data-prod');SC.mod='ALL';SC.view='module';RL.pick=null;RL.flash='';renderAll();renderRelease();});});
   function saveUi(){try{localStorage.setItem('aq.ui',JSON.stringify({grp:RL.grp,sec:RL.sec}));}catch(x){}}
   try{var ui=JSON.parse(localStorage.getItem('aq.ui')||'{}');if(ui.grp)RL.grp=ui.grp;if(ui.sec)RL.sec=ui.sec;}catch(x){}
   function startNewFromItem(it){if(!SC.canWrite)return;var p=it.product==='netweb'?'netweb':'edusoft',m=p==='netweb'?nwMod(it.menu):(MODS.edusoft.some(function(x){return x.c===it.module;})?it.module:(MODS.edusoft.some(function(x){return x.c===it.group;})?it.group:'CHUNG'));
@@ -8813,6 +8958,112 @@ QUAY VIDEO (TÙY CHỌN)
     var p=e.target.closest('[data-mhph]');if(p){MH.ph=p.getAttribute('data-mhph');MH.q='';MH.sel=null;MH.tab='tra';$('#mhSearch').value='';renderMH();return;}
     var r=e.target.closest('[data-mhsel]');if(r){MH.sel=MH.sel===r.getAttribute('data-mhsel')?null:r.getAttribute('data-mhsel');var m=MH.idx.code[MH.sel];if(m)MH.ph=m.ph;renderMH();return;}
     if(e.target.closest('[data-mhreload]'))mhLoad();});
+
+  /* ===== v2: trang Tổng quan (page-home) + tìm nhanh Ctrl K =====
+     Tổng quan tự vẽ lại khi kịch bản / lượt chạy / lỗi / release / máy chạy thay đổi (bọc renderMeta, renderRelease, renderRunner). */
+  var HM={t:null};
+  var HM_ST={pass:['pass','Đạt'],fail:['fail','Lỗi'],blocked:['blocked','Dừng'],running:['run','Đang chạy'],skip:['skip','Bỏ qua']};
+  var HM_REL={testing:'Đang test',draft:'Chuẩn bị',done:'Đã release',released:'Đã release',closed:'Đã chốt'};
+  function hmIc(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'+d+'</svg>';}
+  function hmWhen(iso){if(!iso)return '';var d=new Date(iso);if(isNaN(d))return '';var p=function(n){return (n<10?'0':'')+n;};
+    return p(d.getDate())+'/'+p(d.getMonth()+1)+' '+p(d.getHours())+':'+p(d.getMinutes());}
+  function hmRel(){var l=(RL.list||[]).slice();if(!l.length)return null;
+    var t=l.filter(function(r){return r.status==='testing';});if(t.length)l=t;
+    l.sort(function(a,b){return String(b.createdAt||'').localeCompare(String(a.createdAt||''));});return l[0];}
+  function hmName(){var n=(window.AQ_AUTH&&window.AQ_LOCAL&&window.AQ_LOCAL.userName)||(window.AQ_SERVER&&window.AQ_SERVER.userName)||(window.AQ_LOCAL&&window.AQ_LOCAL.userName)||'';
+    return n&&n!=='Tôi'?n:(window.AQ_AUTH&&window.AQ_AUTH.login)||'';}
+  function renderHome(){var el=$('#hmMain');if(!el)return;
+    if(!$('#page-home').classList.contains('active')){HM.dirty=true;return;}HM.dirty=false;
+    var items=SC.items,runs=SC.runs.slice().sort(function(a,b){return String(b.startedAt||'').localeCompare(String(a.startedAt||''));});
+    var ready=items.filter(function(it){return it.scriptReady;}).length;
+    var cnt={pass:0,fail:0,blocked:0};runs.forEach(function(r){if(cnt[r.status]!=null)cnt[r.status]++;});
+    var act=SC.bugs.filter(activeBug),rel=hmRel(),r=myRunner(),cat=MH.cat;
+    var nm=hmName(),now=new Date();
+    var h='<div class="hm-head"><div><h2>'+(nm?'Xin chào, '+esc(nm):'Tổng quan')+'</h2><p>'+
+      (rel?'Release <b class="mono">'+esc(rel.version||'')+'</b> · '+esc(HM_REL[rel.status]||rel.status||'')+(rel.currentRound?' lần '+rel.currentRound:'')+' · ':'')+
+      'môi trường EDUSOFT - HVNG - Copy · '+now.toLocaleDateString('vi-VN',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'})+'</p></div>'+
+      '<div class="hm-acts"><button type="button" class="btn" data-page-go="screens">'+hmIc('<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9"/>')+'Màn hình Edusoft</button>'+
+      '<button type="button" class="btn" data-page-go="catalog">'+hmIc('<path d="M12 5v14M5 12h14"/>')+'Kịch bản</button>'+
+      '<button type="button" class="btn primary" data-page-go="runner">'+hmIc('<path d="M7 4v16l13-8z"/>')+'Chạy kịch bản</button></div></div>';
+    h+='<div class="hm-kpis">'+
+      '<button type="button" class="hm-kpi" data-page-go="catalog"><span class="k">'+hmIc('<path d="M4 5h16M4 10h16M4 15h10M4 20h7"/>')+'Kịch bản</span><b>'+(SC.loaded?items.length:'…')+'</b><span class="s">'+ready+' chạy bằng script</span></button>'+
+      '<button type="button" class="hm-kpi" data-page-go="runner"><span class="k">'+hmIc('<path d="M7 4v16l13-8z"/>')+'Lượt chạy</span><b>'+(SC.runsLoaded?runs.length:'…')+'</b><span class="s"><span style="color:var(--pass)">'+cnt.pass+' đạt</span> · <span style="color:var(--fail)">'+cnt.fail+' lỗi</span> · <span style="color:var(--run)">'+cnt.blocked+' dừng</span></span></button>'+
+      '<button type="button" class="hm-kpi'+(act.length?' bad':'')+'" data-page-go="bugs"><span class="k">'+hmIc('<path d="M12 8a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4ZM12 8V5M8 13H4M20 13h-4"/>')+'Lỗi đang mở</span><b>'+(SC.bugsLoaded?act.length:'…')+'</b><span class="s">'+SC.bugs.length+' lỗi đã ghi</span></button>'+
+      '<button type="button" class="hm-kpi" data-page-go="screens"><span class="k">'+hmIc('<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9"/>')+'Danh mục Edusoft</span><b>'+(cat?cat.ph.length:'…')+'</b><span class="s">'+(cat?'phân hệ · '+cat.menus.length.toLocaleString('vi-VN')+' menu · '+Object.keys(cat.views).length.toLocaleString('vi-VN')+' màn hình':'đang tải danh mục…')+'</span></button>'+
+      '</div>';
+    var rows=runs.slice(0,8).map(function(x){var st=HM_ST[x.status]||['skip',x.status||'—'],it=byId(x.scenarioId);
+      return '<tr data-goto="'+esc(x.scenarioId||'')+'" data-run-open="'+esc(x.id)+'"><td><span class="pill '+st[0]+'">'+esc(st[1])+'</span></td><td class="code">'+esc(x.scenarioCode||'')+'</td>'+
+        '<td class="ti">'+esc(it?it.title||'':'')+'</td><td class="tm">'+esc(hmWhen(x.finishedAt||x.startedAt))+'</td></tr>';}).join('');
+    var mods=(MODS.edusoft||[]).map(function(m){var sc=items.filter(function(it){return it.product==='edusoft'&&modOf(it)===m.c;});
+      var menus=cat?cat.menus.filter(function(x){return x.ph===m.c;}).length:0;
+      var used={};sc.forEach(function(it){if(it.menu)used[String(it.menu).toLowerCase()]=1;});var nu=Object.keys(used).length;
+      return {c:m.c,n:m.n,sc:sc.length,menus:menus,nu:nu};});
+    mods.sort(function(a,b){return (b.sc-a.sc)||(b.menus-a.menus);});
+    var cov=mods.slice(0,9).map(function(m){var pct=m.menus?Math.min(100,Math.round(m.nu*100/m.menus)):(m.sc?100:0);
+      return '<button type="button" data-page-go="catalog"><span class="c">'+esc(m.c)+'</span><span class="n">'+esc(m.n)+'</span><span class="bar"><i style="width:'+Math.max(pct,m.sc?3:0)+'%"></i></span>'+
+        '<span class="v">'+m.sc+' KB'+(m.menus?' · '+m.menus+' menu':'')+'</span></button>';}).join('');
+    var relH='';
+    if(rel){var plan=rel.plan||[],cur=-1;for(var i=0;i<plan.length;i++)if(!plan[i].done){cur=i;break;}
+      relH='<div class="hm-card"><h3>Release '+esc(rel.version||'')+'<button type="button" data-page-go="scenarios">Phân công</button></h3><ol class="hm-steps">'+
+        plan.map(function(st,i){return '<li class="'+(st.done?'done':i===cur?'cur':'')+'"><i></i><span>'+esc(st.label||st.key||'')+'</span><em>'+esc(st.owner||'—')+'</em></li>';}).join('')+'</ol>'+
+        (rel.testers&&rel.testers.length?'<dl class="hm-dl"><dt>Người test</dt><dd>'+esc(rel.testers.join(', '))+'</dd></dl>':'')+'</div>';}
+    else relH='<div class="hm-card"><h3>Release<button type="button" data-page-go="releases">Danh sách</button></h3><div class="hm-empty">'+(RL.loaded?'Chưa có phiên bản release nào.':'Đang tải…')+'</div></div>';
+    var ck=r&&r.check,ok=ck&&ck.status==='ok',bad=ck&&ck.status==='fail';
+    var rnH='<div class="hm-card"><h3>Máy chạy thử<button type="button" data-page-go="runner">Mở</button></h3>'+
+      (r?'<div class="hm-rn"><i class="'+(ok?'ok':bad?'bad':'')+'"></i>'+esc(r.kitComputer||r.alias||r.machine||'Máy này')+'</div><dl class="hm-dl">'+
+        (r.env?'<dt>Môi trường</dt><dd>'+esc(r.env)+'</dd>':'')+(r.account?'<dt>Tài khoản</dt><dd>'+esc(r.account)+'</dd>':'')+
+        (ck&&ck.version?'<dt>Edusoft</dt><dd>'+esc(ck.version)+'</dd>':'')+
+        (ck?'<dt>Kiểm tra</dt><dd>'+esc(hmWhen(ck.at))+' – '+esc(ck.message||ck.status||'')+'</dd>':'<dt>Kiểm tra</dt><dd>chưa kiểm tra khởi động</dd>')+'</dl>'
+        :'<div class="hm-empty">'+(SC.rnLoaded?'Máy này chưa khai báo thư mục bộ test – vào Máy chạy thử để cài.':'Đang tải…')+'</div>')+'</div>';
+    h+='<div class="hm-grid"><div class="hm-card"><h3>Lượt chạy gần đây<button type="button" data-page-go="runner">Tất cả</button></h3>'+
+      (rows?'<table class="hm-runs"><tbody>'+rows+'</tbody></table>':'<div class="hm-empty">'+(SC.runsLoaded?'Chưa có lượt chạy nào.':'Đang tải…')+'</div>')+'</div>'+
+      '<div class="hm-side">'+relH+rnH+'</div></div>';
+    h+='<div class="hm-card"><h3>Độ phủ kịch bản theo phân hệ Edusoft<button type="button" data-page-go="catalog">Danh mục kịch bản</button></h3><div class="hm-cov">'+cov+'</div></div>';
+    el.innerHTML=h;
+    if(!MH.cat&&!MH.loading)mhLoad();}
+  function hmSoon(){clearTimeout(HM.t);HM.t=setTimeout(renderHome,120);}
+  var _hmMeta=renderMeta;renderMeta=function(){_hmMeta.apply(this,arguments);hmSoon();};
+  var _hmRel=renderRelease;renderRelease=function(){_hmRel.apply(this,arguments);hmSoon();};
+  var _hmRn=renderRunner;renderRunner=function(){_hmRn.apply(this,arguments);hmSoon();};
+  var _hmMH=renderMH;renderMH=function(){_hmMH.apply(this,arguments);hmSoon();};
+  $$('.nav-item[data-page="home"]').forEach(function(n){n.addEventListener('click',function(){renderHome();});});
+  if(window.AQ_AUTH||window.AQ_SERVER){var na=$('#navAcct');if(na)na.classList.remove('hidden');}
+
+  /* tìm nhanh: trang, kịch bản, menu Edusoft (danh mục màn hình), lỗi */
+  var QK={el:null,sel:0,res:[]};
+  var QK_PAGES=[['home','Tổng quan'],['scenarios','Phân công release'],['releases','Danh sách release'],['catalog','Danh mục kịch bản'],['bugs','Lỗi'],['screens','Màn hình Edusoft'],['runner','Máy chạy thử'],['members','Danh mục user']];
+  function qkN(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();}
+  function qkSearch(q){var n=qkN(q).trim(),out=[];var hit=function(){for(var i=0;i<arguments.length;i++)if(qkN(arguments[i]).indexOf(n)>=0)return true;return false;};
+    QK_PAGES.forEach(function(p){if(!n||hit(p[1]))out.push({g:'TRANG',t:p[1],go:function(){showPage(p[0]);}});});
+    if(n){SC.items.filter(function(it){return hit(it.code,it.title,it.menu);}).slice(0,8).forEach(function(it){
+        out.push({g:'KỊCH BẢN',tag:it.code,t:it.title||'',sub:it.menu||'',go:function(){goScenario(it.id);}});});
+      if(MH.cat)MH.cat.menus.filter(function(m){return hit(m.ma,m.path);}).slice(0,10).forEach(function(m){
+        var leaf=String(m.path||'').split('/').pop().trim();
+        out.push({g:'MENU EDUSOFT',tag:m.ph,t:leaf,sub:m.ma+' · '+m.path,go:function(){showPage('screens');MH.ph=m.ph;MH.sel=m.ma;MH.tab='tra';renderMH();}});});
+      SC.bugs.filter(function(b){return hit(b.title,b.scenarioCode,b.note);}).slice(0,5).forEach(function(b){
+        out.push({g:'LỖI',tag:b.scenarioCode||'',t:b.title||'(không tiêu đề)',go:function(){showPage('bugs');}});});}
+    return out;}
+  function qkRender(){var box=QK.el.querySelector('.qk-list'),q=QK.el.querySelector('input').value;QK.res=qkSearch(q);if(QK.sel>=QK.res.length)QK.sel=0;
+    if(!QK.res.length){box.innerHTML='<div class="qk-none">Không thấy kết quả cho “'+esc(q)+'”'+(MH.cat?'':' (danh mục màn hình đang tải…)')+'</div>';return;}
+    var g='',h='';QK.res.forEach(function(r,i){if(r.g!==g){g=r.g;h+='<div class="qk-grp">'+esc(g)+'</div>';}
+      h+='<button type="button" class="qk-it'+(i===QK.sel?' on':'')+'" data-qk="'+i+'">'+(r.tag?'<span class="tag2">'+esc(r.tag)+'</span>':'')+'<span class="t">'+esc(r.t)+(r.sub?'<small>'+esc(r.sub)+'</small>':'')+'</span></button>';});
+    box.innerHTML=h;var on=box.querySelector('.qk-it.on');if(on&&on.scrollIntoView)on.scrollIntoView({block:'nearest'});}
+  function qkClose(){if(QK.el){QK.el.remove();QK.el=null;}}
+  function qkPick(i){var r=QK.res[i];qkClose();if(r)r.go();}
+  function qkOpen(){if(QK.el)return;if(!MH.cat&&!MH.loading)mhLoad();
+    var o=document.createElement('div');o.className='qk-ov';o.innerHTML='<div class="qk-box" role="dialog" aria-modal="true" aria-label="Tìm nhanh"><div class="qk-in">'+
+      hmIc('<circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/>')+'<input type="search" placeholder="Tìm menu Edusoft, kịch bản, lỗi hoặc trang…" aria-label="Tìm nhanh" autocomplete="off" spellcheck="false"></div>'+
+      '<div class="qk-list"></div><div class="qk-hint"><span><kbd>↑</kbd> <kbd>↓</kbd> chọn</span><span><kbd>Enter</kbd> mở</span><span><kbd>Esc</kbd> đóng</span></div></div>';
+    document.body.appendChild(o);QK.el=o;QK.sel=0;var inp=o.querySelector('input');
+    inp.addEventListener('input',function(){QK.sel=0;qkRender();});
+    inp.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();QK.sel=Math.min(QK.res.length-1,QK.sel+1);qkRender();}
+      else if(e.key==='ArrowUp'){e.preventDefault();QK.sel=Math.max(0,QK.sel-1);qkRender();}
+      else if(e.key==='Enter'){e.preventDefault();qkPick(QK.sel);}else if(e.key==='Escape'){e.preventDefault();e.stopPropagation();qkClose();}});
+    o.addEventListener('click',function(e){var b=e.target.closest('[data-qk]');if(b){qkPick(+b.getAttribute('data-qk'));return;}if(e.target===o)qkClose();});
+    qkRender();inp.focus();}
+  $('#qkOpen').addEventListener('click',qkOpen);
+  document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='k'||e.key==='K')){e.preventDefault();if(QK.el)qkClose();else qkOpen();}});
+  renderHome();
 
   /* ===== App AQ Auto Test (desktop/, Electron – window.aqDesktop từ preload): phiên bản + cập nhật =====
      App tự kiểm tra bản mới (repo public aq-autotest-releases) khi mở và 4 giờ/lần; có bản mới thì hiện hộp thông báo mời cập nhật. */

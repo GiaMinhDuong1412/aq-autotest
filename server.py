@@ -460,9 +460,9 @@ def a_account(h, a):
 
 
 LOGIN_HTML = """<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Đăng nhập – AQ Autotest</title>
+<title>Đăng nhập – AQ Auto Test</title>
 <script>try{var t=localStorage.getItem('aq-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"><style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"><style>
 :root{--bg:#0a0e16;--card:#0f1420;--in:#141b2b;--fg:#e7edf7;--dim:#aeb9cc;--mute:#78859b;--line:#222c40;--line2:#2c3850;--acc:#7c6cff;--deep:#5a47e6;--acc2:#9b8cff;--err:#f6706e;--ok:#34d399;color-scheme:dark}
 @media (prefers-color-scheme:light){:root:not([data-theme]){--bg:#eef1f7;--card:#fff;--in:#f6f8fc;--fg:#111726;--dim:#39445a;--mute:#64718a;--line:#e3e8f1;--line2:#d5dce8;--acc:#6a4eff;--deep:#4a30d9;--acc2:#5a3ff0;--err:#db4a48;--ok:#0f9d63;color-scheme:light}}
 :root[data-theme=light]{--bg:#eef1f7;--card:#fff;--in:#f6f8fc;--fg:#111726;--dim:#39445a;--mute:#64718a;--line:#e3e8f1;--line2:#d5dce8;--acc:#6a4eff;--deep:#4a30d9;--acc2:#5a3ff0;--err:#db4a48;--ok:#0f9d63;color-scheme:light}
@@ -471,15 +471,16 @@ LOGIN_HTML = """<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta
 :root[data-theme=sakura]{--bg:#faeff3;--card:#fff;--in:#fff6f9;--fg:#2b1220;--dim:#5a3446;--mute:#8a6474;--line:#efdbe2;--line2:#e3c6d0;--acc:#d0336b;--deep:#951b49;--acc2:#b8245a;--err:#c8312f;--ok:#1f8a5a;color-scheme:light}
 :root[data-theme=forest]{--bg:#0a120f;--card:#0f1915;--in:#14211c;--fg:#e3f0e9;--dim:#a8c2b5;--mute:#76907f;--line:#1e3029;--line2:#2a4238;--acc:#1f9a6b;--deep:#137050;--acc2:#5ed3a0;--err:#f0776c;--ok:#7bdc8c;color-scheme:dark}
 :root[data-theme=midnight]{--bg:#07101d;--card:#0c1728;--in:#111f35;--fg:#e2ecf8;--dim:#a6b8d0;--mute:#7387a4;--line:#1b2b44;--line2:#263a57;--acc:#1585cc;--deep:#0b5f99;--acc2:#5cc0ff;--err:#ff7a7a;--ok:#3ddc97;color-scheme:dark}
+:root:not([data-theme]){--bg:#f2f5fa;--card:#fff;--in:#f6f8fc;--fg:#0f172a;--dim:#334155;--mute:#5a6679;--line:#e1e7f0;--line2:#cfd8e6;--acc:#2563eb;--deep:#0b1324;--acc2:#1d4ed8;--err:#d03c3c;--ok:#0f8a55;color-scheme:light}
 *{box-sizing:border-box}
-body{position:relative;margin:0;min-height:100vh;display:grid;place-items:center;overflow-x:hidden;background:var(--bg);color:var(--fg);font:15px/1.5 "IBM Plex Sans","Segoe UI",system-ui,sans-serif;padding:32px 16px}
+body{position:relative;margin:0;min-height:100vh;display:grid;place-items:center;overflow-x:hidden;background:var(--bg);color:var(--fg);font:15px/1.5 "Be Vietnam Pro","Segoe UI",system-ui,sans-serif;padding:32px 16px}
 body::before{content:"";position:fixed;top:-180px;left:-140px;width:560px;height:560px;border-radius:50%;background:var(--acc);opacity:.25;filter:blur(90px);pointer-events:none}
-h1,h2{font-family:Sora,"Segoe UI",sans-serif;letter-spacing:-.02em;margin:0}
+h1,h2{font-family:"Be Vietnam Pro","Segoe UI",sans-serif;letter-spacing:-.01em;margin:0}
 a{color:var(--acc2)}
 .card{position:relative;display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:{W};min-height:540px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 18px 44px rgba(0,0,0,.25);overflow:hidden}
 .side{display:flex;flex-direction:column;gap:26px;padding:40px;color:#fff;background:linear-gradient(155deg,var(--acc),var(--deep))}
-.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);font:700 1.05rem Sora,sans-serif}
-.brand b{display:block;font-family:Sora,sans-serif}.brand small{display:block;opacity:.72;font:500 .62rem "IBM Plex Mono",monospace;letter-spacing:.2em}
+.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);font:700 1.05rem "Be Vietnam Pro",sans-serif}
+.brand b{display:block}.brand small{display:block;opacity:.72;font:500 .62rem "JetBrains Mono",monospace;letter-spacing:.2em}
 .side h1{font-size:1.9rem;line-height:1.15}.side p{margin:0;opacity:.84;font-size:.9rem;max-width:32ch}.side .foot{margin-top:auto;font-size:.72rem;opacity:.66}
 .panel{display:flex;flex-direction:column;justify-content:center;padding:44px 48px}
 .panel h2{font-size:1.6rem}.panel>p,.sub{margin:8px 0 24px;color:var(--mute);font-size:.86rem}
