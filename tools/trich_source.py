@@ -23,6 +23,7 @@ BO_QUA = re.compile(r"password|passwd|pwd\s*=|connectionstring|data source=|init
                     r"server=|smtp|apikey|api_key|secret|token|"
                     r"\b\w*(key|iv|salt|pass|pwd)\w*(\.text)?\s*=\s*(new\s+byte|\{|\"|@\")|"  # khóa / mật khẩu gán trực tiếp
                     r"\btxt\w*(user|sever|server|host|db)\w*\.text\s*=\s*\"|[\w-]+\.aqtech\.(edu\.)?vn|"  # ô đăng nhập điền sẵn, máy chủ nội bộ
+                    r"\b(key|iv|salt|rgbkey|rgbiv)\s*=|getbytes\(\s*\"|computehash\(|frombase64string\(\s*\"|"  # khóa sinh từ chuỗi
                     r"\"[A-Za-z0-9+/=_-]{24,}\"|0x[0-9a-f]{2}\s*,\s*0x[0-9a-f]{2}\s*,\s*0x", re.I)  # chuỗi base64 / mảng byte dài
 STR = r'"((?:[^"\\\r\n]|\\.)*)"'
 RE_DECL = re.compile(r"this\.(\w+)\s*=\s*new\s+([\w\.]+)\s*\(")

@@ -403,7 +403,13 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   `AQData.Business/Common/SystemData.cs`, có `DataMap` ánh xạ tên ↔ file) → client nhận qua WCF → ghép phần chỉnh của trường
   (`H…`) → màn hình. Muốn có danh mục menu/view/cột đúng phiên bản: xin AQTech xuất (SELECT chỉ đọc) các bảng `AQDmChucNang`,
   `AQDmView1`, `AQView`, `AQFieldView(2)`, `AQDmField`, `AQFieldEdit`… hoặc dùng chính `AQData.Business.dll` của server trường đọc
-  file `AQ.Data…` rồi xuất CSV (chạy trên máy người dùng, không đụng khóa). Xem một đoạn source: `trich_source.py … --dong
+  file `AQ.Data…` rồi xuất CSV (chạy trên máy người dùng, không đụng khóa).
+  **Định dạng file** (`SystemData.ReadResource`): `AQ.DataNNN` = JSON danh sách bản ghi **nén gzip** (file 22 byte = `[]`),
+  đọc từ thư mục bin của server; `DataMap` ánh xạ tên bảng → số file theo thứ tự (trunk: 001 AQDmFile, 002 AQDmField,
+  027 AQDMChucNang, 030 AQFieldEdit, 046 AQDMView1, 055 AQFieldView, 059 AQView, 061 AQViewSpliter, 077 AQFieldView2,
+  025 AQDmMess…; gói cũ đánh số 000–146 + `AQ.Data.Specs` nên có thể lệch – đối chiếu theo tên cột).
+  Công cụ: `python tools\doc_aqdata.py D:\Source.NET.zip --trong edusoft.server.zip` (hoặc thư mục `wcf\bin` của server trường)
+  → `aqdata\*.csv` + `tom-tat.txt` + `aqdata.zip`; chỉ giải nén, bỏ bảng người dùng/khách hàng, để trống cột mật khẩu/khóa. Xem một đoạn source: `trich_source.py … --dong
   "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
