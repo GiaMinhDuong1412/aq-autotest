@@ -106,6 +106,8 @@ def main():
     ap.add_argument("nguon", help="thư mục bin của server, hoặc file .zip source (kèm --trong)")
     ap.add_argument("--trong", help="tên gói server trong file zip, vd edusoft.server.zip")
     ap.add_argument("--ra", default="aqdata", help="thư mục kết quả (mặc định aqdata)")
+    ap.add_argument("--chi", help="chỉ xuất các file/bảng này, cách nhau dấu phẩy: số file (027) hoặc tên bảng đoán (AQView)")
+    ap.add_argument("--toi-da-mb", type=float, default=20, help="mỗi file zip tối đa bao nhiêu MB (mặc định 20) – lớn hơn thì tách phần")
     a = ap.parse_args()
 
     files = tim_file(a.nguon, a.trong)
@@ -113,12 +115,15 @@ def main():
         print("Không thấy file AQ.Data… nào.")
         return 1
     os.makedirs(a.ra, exist_ok=True)
+    chi = {x.strip().lower() for x in (a.chi or "").split(",") if x.strip()}
     tt = ["file | đoán tên bảng | số dòng | kết quả | các cột"]
     xuat = []
     for ten in sorted(files):
         b = files[ten]
         so = ten[7:]
         doan = DATAMAP[int(so) - 1] if so.isdigit() and 1 <= int(so) <= len(DATAMAP) else ("specs" if so == ".specs" else "?")
+        if chi and not ({so.lstrip("."), so.lstrip(".").lstrip("0"), doan.lower()} & chi):
+            continue
         try:
             raw = giai_nen(b)
         except Exception as x:  # noqa: BLE001
@@ -158,13 +163,32 @@ def main():
     p_tt = os.path.join(a.ra, "tom-tat.txt")
     with open(p_tt, "w", encoding="utf-8") as w:
         w.write("\n".join(tt) + "\n")
-    zp = a.ra.rstrip("\\/") + ".zip"
-    with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
-        for p in xuat + [p_tt]:
-            z.write(p, os.path.relpath(p, a.ra))
+    goc = a.ra.rstrip("\\/")
+    for cu in os.listdir(os.path.dirname(os.path.abspath(goc))):  # xóa zip cũ của lần chạy trước
+        if re.fullmatch(re.escape(os.path.basename(goc)) + r"(-\d+)?\.zip", cu):
+            os.remove(os.path.join(os.path.dirname(os.path.abspath(goc)), cu))
+    gioi_han = int(a.toi_da_mb * 1048576)
+    phan, cur, dung = [], [p_tt], 0
+    for p in sorted(xuat, key=os.path.getsize):
+        with open(p, "rb") as r:
+            uoc = len(zlib.compress(r.read(), 6)) + 200
+        if cur and dung + uoc > gioi_han and len(cur) > (1 if cur[0] == p_tt else 0):
+            phan.append(cur)
+            cur, dung = [], 0
+        cur.append(p)
+        dung += uoc
+    phan.append(cur)
+    zips = []
+    for i, ds in enumerate(phan, 1):
+        zp = goc + (f"-{i}" if len(phan) > 1 else "") + ".zip"
+        with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+            for p in ds:
+                z.write(p, os.path.relpath(p, a.ra))
+        zips.append(zp)
     print(f"Đọc {len(files)} file, xuất {len(xuat)} bảng ra {os.path.abspath(a.ra)}")
     print(f"Tóm tắt: {os.path.abspath(p_tt)}")
-    print(f"Gửi Claude: {os.path.abspath(zp)} ({os.path.getsize(zp) // 1024} KB)")
+    for zp in zips:
+        print(f"Gửi Claude: {os.path.abspath(zp)} ({os.path.getsize(zp) // 1024} KB)")
     return 0
 
 
