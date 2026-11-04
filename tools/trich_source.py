@@ -21,7 +21,8 @@ import zipfile
 
 BO_QUA = re.compile(r"password|passwd|pwd\s*=|connectionstring|data source=|initial catalog|user id=|"
                     r"server=|smtp|apikey|api_key|secret|token|"
-                    r"\b\w*(key|iv|salt|pass)\w*\s*=\s*(new\s+byte|\{|\"|@\")|"  # khóa mã hóa gán trực tiếp
+                    r"\b\w*(key|iv|salt|pass|pwd)\w*(\.text)?\s*=\s*(new\s+byte|\{|\"|@\")|"  # khóa / mật khẩu gán trực tiếp
+                    r"\btxt\w*(user|sever|server|host|db)\w*\.text\s*=\s*\"|[\w-]+\.aqtech\.(edu\.)?vn|"  # ô đăng nhập điền sẵn, máy chủ nội bộ
                     r"\"[A-Za-z0-9+/=_-]{24,}\"|0x[0-9a-f]{2}\s*,\s*0x[0-9a-f]{2}\s*,\s*0x", re.I)  # chuỗi base64 / mảng byte dài
 STR = r'"((?:[^"\\\r\n]|\\.)*)"'
 RE_DECL = re.compile(r"this\.(\w+)\s*=\s*new\s+([\w\.]+)\s*\(")
@@ -239,6 +240,7 @@ def main():
     ap.add_argument("--tim", help="tìm chuỗi (câu thông báo, caption) trong toàn bộ *.cs / *.resx")
     ap.add_argument("--trong", help="với --tim: chỉ tìm trong file có đường dẫn chứa chuỗi này (vd AQViewers/Viewer); "
                                        "khi đó tìm cả .edmx/.sql")
+    ap.add_argument("--dong", help="in một đoạn dòng của file, dạng \"đường/dẫn/File.cs:635-940\" (dòng giống khóa/mật khẩu bị che)")
     ap.add_argument("--toi-da", type=int, default=30, help="số form tối đa khi trích (mặc định 30)")
     ap.add_argument("--tat-ca", action="store_true", help="trích mọi module, mỗi module 1 file, nén thành trich-tat-ca.zip")
     ap.add_argument("--ca-cong-cu", action="store_true", help="--tat-ca gồm cả Setup/Test/Tool… (mặc định bỏ)")
@@ -249,7 +251,23 @@ def main():
     out = []
     if a.tat_ca:
         return trich_tat_ca(nguon, a.ra or "trich-tat-ca", a.ca_cong_cu)
-    if a.tim:
+    if a.dong:
+        m = re.match(r"(.+):(\d+)-(\d+)$", a.dong.strip())
+        if not m:
+            raise SystemExit('--dong cần dạng "đường/dẫn/File.cs:635-940"')
+        loc, dau, cuoi = m.group(1).replace("\\", "/").lower(), int(m.group(2)), min(int(m.group(3)), int(m.group(2)) + 2000)
+        for p in nguon.tat_ca:
+            if loc not in p.lower() or p.lower().endswith(".config"):
+                continue
+            out.append(f"===== {p}")
+            for i, dong in enumerate((nguon.doc(p) or "").splitlines(), 1):
+                if dau <= i <= cuoi:
+                    out.append(f"{i:5d}: " + ("[đã che]" if BO_QUA.search(dong) else dong.rstrip()[:300]))
+        if not out:
+            print("Không thấy file nào có đường dẫn chứa:", loc)
+            return 1
+        ten = "trich-dong-" + re.sub(r"\W+", "-", os.path.basename(loc)).strip("-")[:40] + f"-{dau}-{cuoi}.txt"
+    elif a.tim:
         k = khong_dau(a.tim)
         loc = a.trong.replace("\\", "/").lower() if a.trong else ""
         for p in (nguon.tat_ca if loc else nguon.ds):

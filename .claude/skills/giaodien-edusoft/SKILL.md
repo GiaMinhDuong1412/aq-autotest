@@ -396,6 +396,15 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   003 = AQFileField, 004 = AQRelation; công cụ `ReleaseTools/SysDataManager` (có KeyGen) tạo ra. Máy client không có các file
   này – Edusoft.NET lấy định nghĩa màn hình **qua WCF của server**. Không giải mã các file này; cần danh mục menu/cột thì xin
   nhóm phát triển AQTech xuất từ SysDataManager. Thực tế: tên ô/nút/cột cho `auto` lấy từ `ui-*.txt` khi chạy.
+- **Chuỗi nguồn gốc định nghĩa màn hình** (đã xác minh từ source): CSDL gốc của AQTech (CSDL phát triển nội bộ, có đủ bảng `AQ…`)
+  → `SysDataManager` ("System Data Management": *Export 148 file AQ System Data*, *Export system data (các file cách nhau dấu
+  phẩy)*, *Import/Update from edusoft*) → 148 file `AQ.Data…` đóng vào gói server → server đọc bằng
+  `SystemData.ReadResource<T>(sourceName)` / `SystemData.ReadAQResource(sourceName, Type) → DataTable` (lớp
+  `AQData.Business/Common/SystemData.cs`, có `DataMap` ánh xạ tên ↔ file) → client nhận qua WCF → ghép phần chỉnh của trường
+  (`H…`) → màn hình. Muốn có danh mục menu/view/cột đúng phiên bản: xin AQTech xuất (SELECT chỉ đọc) các bảng `AQDmChucNang`,
+  `AQDmView1`, `AQView`, `AQFieldView(2)`, `AQDmField`, `AQFieldEdit`… hoặc dùng chính `AQData.Business.dll` của server trường đọc
+  file `AQ.Data…` rồi xuất CSV (chạy trên máy người dùng, không đụng khóa). Xem một đoạn source: `trich_source.py … --dong
+  "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
   Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
