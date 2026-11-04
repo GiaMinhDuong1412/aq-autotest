@@ -30,6 +30,8 @@ REPO_MAC_DINH = "giaminhduong1412/aq-autotest"
 RESTART_CODE = 75
 API = os.environ.get("AQ_APP_API") or "https://api.github.com"  # đổi được để thử nghiệm
 STATE = {"busy": False, "msg": "", "latest": None}
+PAGES = {}            # id trang console đang mở -> lần ping cuối (launcher dựa vào đây để biết cửa sổ app đã đóng)
+PAGE_TTL = 150        # giây; trang ẩn/thu nhỏ bị trình duyệt giãn hẹn giờ tới ~1 phút
 
 
 def conf():
@@ -68,10 +70,28 @@ def _loi(e):
     return "Không kết nối được GitHub: %s" % (getattr(e, "reason", None) or e)
 
 
+def pages():
+    now = time.time()
+    for k in [k for k, t in PAGES.items() if now - t > PAGE_TTL]:
+        PAGES.pop(k, None)
+    return len(PAGES)
+
+
+def ping(pid):
+    if pid:
+        PAGES[str(pid)[:40]] = time.time()
+    return {"ok": True, "pages": pages()}
+
+
+def bye(body):
+    PAGES.pop(str(body.get("id") or "")[:40], None)
+    return {"ok": True, "pages": pages()}
+
+
 def info():
     c = conf()
     return {"app": True, "version": VERSION, "repo": c["repo"], "hasToken": bool(c["token"]), "busy": STATE["busy"],
-            "msg": STATE["msg"], "latest": STATE["latest"]}
+            "msg": STATE["msg"], "latest": STATE["latest"], "pages": pages()}
 
 
 def set_token(body):

@@ -9352,9 +9352,13 @@ QUAY VIDEO (TÙY CHỌN)
         APPU.busy=true;appBtn();appPost('update').then(function(){appWaitRestart(j.version);},function(e){APPU.busy=false;appBtn();toast('Không cập nhật được: '+e.message,'err',15000);});}
       else toast('Đang dùng bản mới nhất ('+j.version+(j.latest&&j.latest.version&&j.latest.version!==j.version?' · bản phát hành '+j.latest.version:'')+')','ok',6000);
     },function(e){if(!(APPU.info&&APPU.info.hasToken)||/token|404|401|403/i.test(e.message)){toast(e.message,'err',9000);appToken();}else toast(e.message,'err',12000);});}
-  if(window.AQ_APP){$('#appUpd').addEventListener('click',appClick);$('#appTokenBtn').classList.remove('hidden');$('#appQuitBtn').classList.remove('hidden');
+  if(window.AQ_APP){var APPID=Math.random().toString(36).slice(2);   /* launcher tắt app khi không còn trang nào mở (đóng cửa sổ) */
+    var appPing=function(){fetch('api/app/ping?id='+APPID,{cache:'no-store'}).catch(function(){});};appPing();setInterval(appPing,30000);
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)appPing();});
+    addEventListener('pagehide',function(){try{navigator.sendBeacon('api/app/bye',JSON.stringify({id:APPID}));}catch(e){}});
+    $('#appUpd').addEventListener('click',appClick);$('#appTokenBtn').classList.remove('hidden');$('#appQuitBtn').classList.remove('hidden');
     $('#appTokenBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');appToken();});
-    $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');if(confirm('Thoát app AQ Auto Test? Console sẽ dừng; mở lại bằng lối tắt "AQ Auto Test".'))appPost('quit').then(function(){document.body.innerHTML='<p style="padding:40px;font-family:sans-serif">Đã thoát AQ Auto Test. Mở lại bằng lối tắt “AQ Auto Test” trên Desktop.</p>';});});
+    $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');if(confirm('Thoát app AQ Auto Test? (Đóng cửa sổ app cũng là thoát.) Mở lại bằng lối tắt "AQ Auto Test".'))appPost('quit').then(function(){document.body.innerHTML='<p style="padding:40px;font-family:sans-serif">Đã thoát AQ Auto Test. Mở lại bằng lối tắt “AQ Auto Test”.</p>';setTimeout(function(){try{window.close();}catch(e){}},300);});});
     fetch('api/app/info').then(function(r){return r.json();}).then(function(j){APPU.info=j;appBtn();if(j.hasToken)appCheck(true);});}
   initScenarios();
 })();
