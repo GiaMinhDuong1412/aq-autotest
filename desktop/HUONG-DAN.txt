@@ -1,0 +1,36 @@
+AQ AUTO TEST – app console kịch bản test Edusoft/Netweb chạy trên máy cá nhân (Windows)
+==========================================================================================
+
+CÀI LẦN ĐẦU
+1. Vào https://github.com/GiaMinhDuong1412/aq-autotest-releases/releases/latest (trang công khai, không cần tài khoản GitHub),
+   tải AQ-AutoTest-Setup-<phiên bản>.exe, bấm đúp. Không cần quyền admin, không cần cài Python hay Git.
+   (Windows SmartScreen có thể hỏi vì bộ cài chưa ký số: bấm "More info" → "Run anyway".)
+   Bản không cần cài: AQ-AutoTest-Portable-<phiên bản>.exe – bấm đúp là chạy (không tự cập nhật).
+2. App tự mở. Lần sau mở bằng lối tắt "AQ Auto Test" trên Desktop / Start Menu.
+3. Đăng nhập: tài khoản mặc định admin / 1234. Vào menu tài khoản (góc trên phải) → Hồ sơ để đổi mật khẩu,
+   thêm tài khoản cho người khác dùng chung máy.
+
+CẬP NHẬT
+- Mỗi lần nhóm phát triển merge vào nhánh main, GitHub tự tạo phiên bản mới.
+- App tự kiểm tra khi mở và 4 giờ/lần. Có bản mới thì hiện hộp thông báo "Có phiên bản mới" → bấm Cập nhật →
+  tải xong bấm Khởi động lại (vài giây). Không cần token hay tài khoản GitHub. Nút phiên bản ở góc trên cũng bấm được.
+- Dữ liệu của máy giữ nguyên; kịch bản mẫu mới của bản phát hành được gộp vào (bản ghi nào sửa sau thì lấy).
+
+THOÁT APP
+- Đóng cửa sổ (nút X) là thoát hẳn. Hoặc menu tài khoản → "Thoát app AQ Auto Test".
+
+PHÍM TẮT
+- F5 / Ctrl+R tải lại trang · Ctrl + / Ctrl - / Ctrl 0 phóng to, thu nhỏ · F12 công cụ gỡ lỗi.
+
+MÁY CHẠY TEST (máy có Edusoft)
+- Trang "Máy chạy thử" → nhập thư mục bộ test → "Cài bộ test vào đây" → chạy cai-dat.bat một lần (quyền admin).
+- File lệnh / kết quả console tải về nằm trong thư mục Tải về (Downloads) như khi dùng trình duyệt.
+
+THƯ MỤC
+  %LOCALAPPDATA%\Programs\aq-auto-test\    chương trình (AQ Auto Test.exe, Python nhúng, mã console)
+  %APPDATA%\AQ Auto Test\du-lieu\           dữ liệu của máy này (kịch bản, lượt chạy, lỗi, ảnh)
+  %APPDATA%\AQ Auto Test\rieng\             cấu hình riêng, tài khoản (auth.json)
+  %APPDATA%\AQ Auto Test\nhat-ky.txt        nhật ký – gửi file này khi báo lỗi
+
+ĐÃ CÀI BẢN ĐẦU TIÊN (bộ cài Inno, thư mục %LOCALAPPDATA%\Programs\AQ-AutoTest)
+- Bản mới tự chuyển dữ liệu từ bản cũ ở lần mở đầu tiên. Sau đó gỡ bản cũ: Settings → Apps → "AQ Auto Test version 2026.11.04-…".

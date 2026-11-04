@@ -1,18 +1,19 @@
 # AQ Autotest Console (localhost)
 
 ## App AQ Auto Test (máy cá nhân, không cần cài Python/Git)
-- **Tải & cài**: trang Releases của repo → bản mới nhất → **`AQ-AutoTest-Setup-<phiên bản>.exe`** → bấm đúp, Next → Finish
-  (không cần quyền admin, cài vào `%LOCALAPPDATA%\Programs\AQ-AutoTest`, tạo lối tắt Start Menu/Desktop, gỡ trong
-  Settings → Apps). Mở bằng lối tắt **AQ Auto Test** → app mở trong cửa sổ riêng (Edge chế độ ứng dụng, không thanh địa chỉ/tab); đóng cửa sổ là thoát.
-  Bản không cần cài: `AQ-AutoTest-<phiên bản>-windows.zip` – giải nén, bấm đúp `AQ Auto Test.cmd`.
-- **Cập nhật**: nút phiên bản ở góc trên console. Lần đầu bấm sẽ hỏi token GitHub chỉ-đọc (Fine-grained, chỉ repo này,
-  Contents = Read-only) – lưu ở `rieng\app.json` trên máy. Có bản mới thì nút đổi thành "⬆ Cập nhật bản …"; bấm là tải,
-  cài, khởi động lại. Dữ liệu máy (`du-lieu\`) giữ nguyên, kịch bản mới của bản phát hành được gộp theo `updatedAt`.
-- **Phát hành**: làm trên nhánh riêng → (GitHub Actions "Kiểm tra" chạy) → merge vào `main` → workflow
-  "Phát hành app AQ Auto Test" tự kiểm tra, đóng gói (`tools/dong_goi_app.py`) và tạo Release `v<năm.tháng.ngày>-<số>`.
-  Thay đổi chỉ ở `data/runs|bugs|runners|assets` hoặc `*.md` không tạo phiên bản.
-- Mã app: `app/launcher.py` (khởi động, tự chạy lại sau cập nhật), `app_update.py` (kiểm tra/tải bản mới, server.py nạp khi
-  có biến `AQ_APP_HOME`), trang **Màn hình Edusoft** đọc `web/edusoft-catalog.json` (`tools/lap_danh_muc.py --json`).
+- **Tải & cài**: https://github.com/GiaMinhDuong1412/aq-autotest-releases/releases/latest (repo public, không cần tài khoản)
+  → **`AQ-AutoTest-Setup-<phiên bản>.exe`** → bấm đúp (không cần quyền admin). App có tên, icon, cửa sổ riêng (`AQ Auto Test.exe`,
+  Electron); đóng cửa sổ là thoát. Bản không cài: `AQ-AutoTest-Portable-<phiên bản>.exe`.
+- **Đăng nhập**: tài khoản mặc định `admin` / `1234`; menu tài khoản → Hồ sơ để đổi mật khẩu, thêm tài khoản.
+- **Cập nhật**: app tự kiểm tra (khi mở + 4 giờ/lần), có bản mới thì hiện hộp thông báo → Cập nhật → Khởi động lại. Không cần token.
+  Dữ liệu máy (`%APPDATA%\AQ Auto Test\du-lieu`) giữ nguyên, kịch bản mẫu mới được gộp theo `updatedAt`.
+- **Phát hành**: làm trên nhánh riêng → (GitHub Actions "Kiểm tra" build thử + chạy `--smoke`) → merge vào `main` → workflow
+  "Phát hành app AQ Auto Test" build bộ cài và tạo Release `v<năm>.<tháng>.<số lần chạy>` ở repo này và ở repo public
+  `aq-autotest-releases` (secret `RELEASES_TOKEN`: token Contents Read and write trên repo public). Thay đổi chỉ ở
+  `data/runs|bugs|runners|assets` hoặc `*.md` không tạo phiên bản.
+- Mã app: `desktop/` (Electron: `src/main.js` chạy `server.py` bằng Python nhúng, `src/updater.js` electron-updater,
+  `src/preload.js` → `window.aqDesktop`), `tools/dong_goi_app.py` chuẩn bị `desktop/res/{app,python}`; chạy thử từ mã:
+  `cd desktop && npm install && npm start`. Trang **Màn hình Edusoft** đọc `web/edusoft-catalog.json` (`tools/lap_danh_muc.py --json`).
 
 Console quản lý kịch bản test Edusoft.NET / Netweb của AQTech + bộ test chạy kịch bản thật trên Edusoft.
 Chạy trên máy bằng Python, dữ liệu là file JSON trong `data/`, đồng bộ giữa các máy bằng GitHub.

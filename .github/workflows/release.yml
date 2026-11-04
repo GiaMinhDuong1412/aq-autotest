@@ -1,5 +1,7 @@
-# Mỗi lần merge (push) vào main: kiểm tra → đóng gói app AQ Auto Test → tạo GitHub Release "v<năm.tháng.ngày>-<số lần chạy>".
-# App trên máy người dùng thấy bản mới qua nút "Cập nhật" (app_update.py đọc releases/latest).
+# Mỗi lần merge (push) vào main: kiểm tra → build app AQ Auto Test (Electron + Python nhúng) → tạo Release "v<năm>.<tháng>.<số lần chạy>"
+#   - ở repo này (private), và
+#   - ở repo public GiaMinhDuong1412/aq-autotest-releases: app trên máy người dùng kiểm tra và tải bản mới ở đó, KHÔNG cần token
+#     (cần secret RELEASES_TOKEN của repo này: token có quyền Contents: Read and write trên repo public đó) – giống aq-case-widget.
 name: Phát hành app AQ Auto Test
 
 on:
@@ -23,10 +25,12 @@ concurrency:
 env:
   PYTHONUTF8: "1"                 # Windows runner: in chữ tiếng Việt không lỗi cp1252
   PYTHONIOENCODING: "utf-8"
+  PUBLIC_REPO: GiaMinhDuong1412/aq-autotest-releases
+  HAS_RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN != '' }}
 
 jobs:
   release:
-    runs-on: windows-latest          # cần Windows để build bộ cài .exe (Inno Setup)
+    runs-on: windows-latest
     defaults:
       run:
         shell: bash
@@ -42,39 +46,74 @@ jobs:
         with:
           python-version: "3.12"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Kiểm tra mã
         run: python tools/kiem_tra.py
 
-      - name: Số phiên bản
+      - name: Số phiên bản (năm.tháng.số lần chạy – luôn tăng, đúng semver cho electron-updater)
         id: ver
-        run: echo "ver=$(python -c "import datetime as d;print((d.datetime.now(d.timezone.utc)+d.timedelta(hours=7)).strftime('%Y.%m.%d'))")-${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+        run: echo "ver=$(python -c "import datetime as d;t=d.datetime.now(d.timezone.utc)+d.timedelta(hours=7);print('%d.%d' % (t.year, t.month))").${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
 
-      - name: Đóng gói
-        run: python tools/dong_goi_app.py --phien-ban "${{ steps.ver.outputs.ver }}" --ra dist
+      - name: Chuẩn bị mã + Python nhúng
+        run: python tools/dong_goi_app.py --ra desktop/res
 
-      - name: Bộ cài .exe
+      - name: Build bộ cài (Setup + Portable)
+        working-directory: desktop
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: |
+          npm version "${{ steps.ver.outputs.ver }}" --no-git-tag-version --allow-same-version
+          npm install --no-audit --no-fund
+          npx electron-builder --win --x64 --publish never
+          ls -la dist
+          cat dist/latest.yml
+
+      - name: Chạy thử bản build (--smoke)
         shell: pwsh
-        run: ./tools/build_setup.ps1 -Ver "${{ steps.ver.outputs.ver }}" -Dist dist
+        run: |
+          $p = Start-Process -FilePath "desktop/dist/win-unpacked/AQ Auto Test.exe" -ArgumentList "--smoke" -PassThru
+          if (-not $p.WaitForExit(150000)) { $p.Kill(); Write-Error "Chạy thử quá 150 giây"; exit 1 }
+          if ($p.ExitCode -ne 0) { Write-Error "Chạy thử thất bại (mã $($p.ExitCode))"; exit 1 }
+          "Chạy thử: OK"
 
       - name: Ghi chú phiên bản
         run: |
+          V="${{ steps.ver.outputs.ver }}"
           PREV=$(git describe --tags --abbrev=0 2>/dev/null || true)
           {
-            echo "AQ Auto Test ${{ steps.ver.outputs.ver }} – commit ${GITHUB_SHA::7}"
+            echo "AQ Auto Test $V – commit ${GITHUB_SHA::7}"
             echo
             echo "Thay đổi:"
             if [ -n "$PREV" ]; then git log --no-merges --pretty='- %s' "$PREV..HEAD" | head -40; else git log --no-merges --pretty='- %s' -20; fi
-            echo
-            echo "Máy mới: tải AQ-AutoTest-Setup-${{ steps.ver.outputs.ver }}.exe, bấm đúp để cài (không cần quyền admin), mở bằng lối tắt \"AQ Auto Test\"."
-            echo "Bản không cần cài: AQ-AutoTest-${{ steps.ver.outputs.ver }}-windows.zip – giải nén, bấm đúp \"AQ Auto Test.cmd\"."
-            echo "Máy đã cài: bấm nút cập nhật ở góc trên console."
           } > notes.md
+          {
+            echo "**Tải về (Windows):**"
+            echo "- \`AQ-AutoTest-Setup-$V.exe\`: bộ cài, khuyên dùng (không cần quyền admin, tự báo và cài bản mới về sau)"
+            echo "- \`AQ-AutoTest-Portable-$V.exe\`: bản chạy ngay, không cần cài (không tự cập nhật)"
+            echo
+            echo "Đã cài rồi thì app tự báo khi có bản mới: bấm **Cập nhật** trong hộp thông báo."
+          } > pub-notes.md
 
-      - name: Tạo Release
+      - name: Tạo Release (private)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "v${{ steps.ver.outputs.ver }}" dist/* \
-            --title "AQ Auto Test ${{ steps.ver.outputs.ver }}" \
-            --notes-file notes.md \
-            --target "$GITHUB_SHA"
+          V="${{ steps.ver.outputs.ver }}"
+          gh release create "v$V" desktop/dist/*.exe desktop/dist/*.blockmap desktop/dist/latest.yml \
+            --title "AQ Auto Test $V" --notes-file notes.md --target "$GITHUB_SHA"
+
+      - name: Phát hành sang repo public (để app tự cập nhật)
+        if: env.HAS_RELEASES_TOKEN == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+        run: |
+          V="${{ steps.ver.outputs.ver }}"
+          gh release create "v$V" desktop/dist/*.exe desktop/dist/*.blockmap desktop/dist/latest.yml \
+            -R "$PUBLIC_REPO" --title "AQ Auto Test $V" --notes-file pub-notes.md --latest
+
+      - name: Nhắc cấu hình repo public
+        if: env.HAS_RELEASES_TOKEN != 'true'
+        run: echo "::warning::Chưa có secret RELEASES_TOKEN nên không phát hành sang $PUBLIC_REPO – app trên máy người dùng sẽ không thấy bản mới."

@@ -1,4 +1,4 @@
-# Kiểm tra mỗi nhánh / pull request trước khi merge vào main (cú pháp Python, JS console, kit đã nhúng).
+# Kiểm tra mỗi nhánh / pull request trước khi merge vào main (cú pháp Python/JS, kit đã nhúng) và build thử app AQ Auto Test.
 name: Kiểm tra
 
 on:
@@ -19,22 +19,41 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/kiem_tra.py
-      - name: Thử đóng gói (không kèm Python nhúng)
-        run: python tools/dong_goi_app.py --phien-ban 0.0.0-thu --ra dist --khong-python
+      - name: Thử chuẩn bị mã (không kèm Python nhúng)
+        run: python tools/dong_goi_app.py --ra desktop/res --khong-python
 
-  bo-cai-exe:                        # thử build bộ cài .exe trước khi merge
+  build-app:                         # build thử bộ cài + chạy thử --smoke trước khi merge
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - run: git config --global core.autocrlf false
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python tools/dong_goi_app.py --phien-ban 0.0.0-1 --ra dist
-      - shell: pwsh
-        run: ./tools/build_setup.ps1 -Ver 0.0.0-1 -Dist dist
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: python tools/dong_goi_app.py --ra desktop/res
+      - name: Build
+        working-directory: desktop
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: |
+          npm version "0.0.${GITHUB_RUN_NUMBER}" --no-git-tag-version --allow-same-version
+          npm install --no-audit --no-fund
+          npx electron-builder --win --x64 --publish never
+      - name: Chạy thử (--smoke)
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "desktop/dist/win-unpacked/AQ Auto Test.exe" -ArgumentList "--smoke" -PassThru
+          if (-not $p.WaitForExit(150000)) { $p.Kill(); Write-Error "Chạy thử quá 150 giây"; exit 1 }
+          if ($p.ExitCode -ne 0) { Write-Error "Chạy thử thất bại (mã $($p.ExitCode))"; exit 1 }
+          "Chạy thử: OK"
       - uses: actions/upload-artifact@v4
         with:
           name: AQ-AutoTest-Setup-thu
-          path: dist/AQ-AutoTest-Setup-*.exe
+          path: desktop/dist/AQ-AutoTest-Setup-*.exe
           retention-days: 7

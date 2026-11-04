@@ -31,12 +31,15 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   chạy được bằng thư viện chuẩn và qua `py_compile`**. Dữ liệu server ở `aq-console/du-lieu`, không nằm trong git.
   Dưới IIS: `server-iis/` (CAI-DAT.cmd), `--iis` lấy cổng `ASPNETCORE_PORT`, đường dẫn con `ASPNETCORE_APPL_PATH` → `server.py --base`;
   vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
-- **App AQ Auto Test** (máy cá nhân): `app/launcher.py` + Python nhúng, mã từng phiên bản ở `phien-ban/<ver>/`, dữ liệu
-  `du-lieu/`; `app_update.py` (server.py nạp khi có `AQ_APP_HOME`) cho nút cập nhật – đọc GitHub Release mới nhất (token chỉ-đọc ở
-  `rieng/app.json`), tải `aq-autotest-code-<ver>.zip`, server thoát mã 75, launcher chạy lại bản mới. Launcher mở console trong **cửa sổ app** (Edge/Chrome `--app`, hồ sơ `rieng/cua-so`), đóng cửa sổ = tắt server
-  (theo dõi tiến trình cửa sổ + trang ping `api/app/ping`, đóng gửi `api/app/bye` bằng sendBeacon). **Merge vào `main` = phát hành**:
-  `.github/workflows/release.yml` chạy `tools/kiem_tra.py`, `tools/dong_goi_app.py`, tạo Release `v<yyyy.mm.dd>-<n>`;
-  nhánh khác/PR chạy `kiem-tra.yml`. Trước khi merge chạy `python tools/kiem_tra.py`.
+- **App AQ Auto Test** (máy cá nhân, `desktop/`, Electron – làm theo mẫu repo `aq-case-widget`): `src/main.js` chạy `server.py`
+  bằng Python nhúng (`resources/python`, mã ở `resources/app` do `tools/dong_goi_app.py` chuẩn bị vào `desktop/res/`), dữ liệu ở
+  `%APPDATA%\AQ Auto Test\{du-lieu,rieng}`, cửa sổ riêng (đóng = thoát), file tải về vào Downloads; `--smoke` để CI chạy thử.
+  App bắt **đăng nhập** (`MODE["auth"]`, tài khoản ở `rieng/auth.json`, mặc định `admin`/`1234`, trang `/quan-tri`), trang nhận
+  `window.AQ_AUTH`; vẫn là máy chạy test (có `/api/kit`, khác `--public`). Cập nhật: `src/updater.js` (electron-updater) đọc
+  repo **public** `aq-autotest-releases` – không token; trang nhận trạng thái qua `window.aqDesktop` và hiện hộp "Có phiên bản mới".
+  **Merge vào `main` = phát hành**: `.github/workflows/release.yml` (Windows) kiểm tra, build Setup/Portable, chạy `--smoke`, tạo
+  Release `v<năm>.<tháng>.<run>` ở repo này + repo public (secret `RELEASES_TOKEN`); nhánh khác/PR chạy `kiem-tra.yml` (build thử).
+  Trước khi merge chạy `python tools/kiem_tra.py`.
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Bản claude.ai publish kèm file này (`files: {"edusoft-catalog.json": "web/edusoft-catalog.json"}`).
