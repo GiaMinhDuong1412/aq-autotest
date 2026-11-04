@@ -16,3 +16,10 @@ trich-*.txt
 
 trich-tat-ca/
 trich-*.zip
+# file tạm khi dò gói cài (tools/xem_goi.py)
+goi-ds.txt
+goi-lay/
+goi-server.txt
+*.tgz
+SysDataManager.rar
+sysdatamanager-ds.txt
