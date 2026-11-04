@@ -1,0 +1,26 @@
+{
+ "createdAt": "2026-10-30T10:35:28.895Z",
+ "group": "QLSV",
+ "idx": 1,
+ "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định vào mới",
+ "menuRaw": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định vào mới",
+ "module": "QLSV",
+ "paren": false,
+ "product": "edusoft",
+ "r1": {
+  "assignee": "Minh",
+  "at": "2026-11-02T19:17:52.837830Z",
+  "by": "u_L8VJITzyuU54eIqCAl0PKQ",
+  "ex": false,
+  "note": "Lỗi · QLSV-001 (script)",
+  "res": "o",
+  "runId": "sc-qlsv-001-20261103-020900"
+ },
+ "releaseId": "rel-2026-10G-00",
+ "scenarioIds": [
+  "es-qlsv-001"
+ ],
+ "stt": 1,
+ "title": "",
+ "updatedAt": "2026-11-02T19:18:14.311Z"
+}

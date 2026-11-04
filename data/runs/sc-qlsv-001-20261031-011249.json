@@ -1,0 +1,157 @@
+{
+ "actual": "Dừng ở bước 3: Người test dừng test tại đây (kit 2026.10.30-11 tìm bằng Ctrl+F/Esc: báo nhầm mã đã có, Esc đóng màn hình – đã sửa ở kit 2026.10.30-13).",
+ "alts": [
+  {
+   "at": "2026-10-30T18:15:04.161181Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T18:15:04.161181Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T18:15:04.161181Z",
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "createdAt": "2026-10-30T18:15:10.048Z",
+ "current": null,
+ "dumps": [
+  {
+   "id": "a8b296ee1168dbbefbebb87898f55126",
+   "name": "ui-buoc-3-loi.txt"
+  }
+ ],
+ "executor": "script",
+ "finishedAt": "2026-10-30T18:15:04.161181Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.10.30-11",
+ "machine": "",
+ "mode": "auto",
+ "module": "QLSV",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "31/10/2026 01:12  Bắt đầu QLSV-001 – Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa) (script, chế độ trình diễn)\n31/10/2026 01:12  Bước 1: ĐẠT · Đã đăng nhập theo CHUNG-001 — Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test. Chỉ dùng dữ liệu có tiền tố\n31/10/2026 01:13  MSSV = TEST310112 đã có sẵn → dùng TEST525516\n31/10/2026 01:13  Bước 2: ĐẠT · TEST310112 đã có, đổi thành TEST525516 · TEN = Mot chưa có — Kiểm tra trùng ở Danh mục sinh viên: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm mã {MSSV} và tên {TEN} định\n31/10/2026 01:14  MSSV = TEST525516 đã có sẵn → dùng TEST649891\n31/10/2026 01:14  Đã ghi cây giao diện (231 phần tử) vào ui-buoc-3-loi.txt\n31/10/2026 01:15  Bước 3: BỎ QUA · Người test dừng test tại đây (Không có dòng nào khớp \"\" trong danh sách (0 dòng đang hiện)) — Kiểm tra trùng ở Danh sách sinh viên học kỳ: mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} và {\n31/10/2026 01:15  Đã ghi nhận luồng chính: Chưa xong – tiếp theo 3 luồng con, không mở lại Edusoft\n31/10/2026 01:15  Kết thúc: Đạt",
+ "product": "edusoft",
+ "releaseId": "rel-2026-10G-00",
+ "releaseItemId": "rel-2026-10G-00--001",
+ "releaseVersion": "2026.10H.00",
+ "round": 1,
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "QLSV-001",
+ "scenarioId": "es-qlsv-001",
+ "scenarioTitle": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
+ "startedAt": "2026-10-30T18:12:49.260051Z",
+ "status": "blocked",
+ "steps": [
+  {
+   "at": "2026-10-30T18:12:53.851666Z",
+   "note": "Đã đăng nhập theo CHUNG-001",
+   "res": "ok",
+   "shots": [
+    "91c62a5303618a0f9f8e90b0c0005a1a"
+   ]
+  },
+  {
+   "at": "2026-10-30T18:13:58.724112Z",
+   "note": "TEST310112 đã có, đổi thành TEST525516 · TEN = Mot chưa có",
+   "res": "ok",
+   "shots": [
+    "05182e6f02b9ed329a50d09dbe5d96fd"
+   ]
+  },
+  {
+   "at": "2026-10-30T18:15:02.659370Z",
+   "note": "Người test dừng test tại đây (Không có dòng nào khớp \"\" trong danh sách (0 dòng đang hiện))",
+   "res": "skip",
+   "shots": [
+    "0425c7ae3a4b40b5ed934c0bb554540f"
+   ]
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": null,
+   "note": "Người test đã dừng test",
+   "res": "skip",
+   "shots": []
+  }
+ ],
+ "vars": {
+  "HHMMSS": "011249",
+  "HOLOT": "Kiem Thu",
+  "LOP": "(lấy ở bước 3)",
+  "LYDO": "(lấy ở bước 4)",
+  "MSSV": "TEST649891",
+  "MSSV2": "TEST310112B",
+  "NGAYHL2": "01/12/2026",
+  "NGAYQD": "31/10/2026",
+  "NGAYSINH": "01/01/2006",
+  "SOQD": "TEST_QD_310112",
+  "TEN": "Mot",
+  "TEN2": "Hai",
+  "ddHHMM": "310112",
+  "ddmmyyyy": "31/10/2026",
+  "yymmdd": "261031"
+ },
+ "version": "v2026.10L.00",
+ "video": null,
+ "videoFile": null
+}

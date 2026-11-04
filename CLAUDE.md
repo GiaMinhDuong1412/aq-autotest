@@ -40,6 +40,9 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **Merge vào `main` = phát hành**: `.github/workflows/release.yml` (Windows) kiểm tra, build Setup/Portable, chạy `--smoke`, tạo
   Release `v<năm>.<tháng>.<run>` ở repo này + repo public (secret `RELEASES_TOKEN`); nhánh khác/PR chạy `kiem-tra.yml` (build thử).
   Trước khi merge chạy `python tools/kiem_tra.py`.
+  Dữ liệu console claude.ai (DB artifact + ảnh) **không** tự sang app: chuyển bằng gói `.zip` (`<collection>/<id>.json` + `assets/<id>.<đuôi>`)
+  → menu tài khoản **Nhập dữ liệu (.zip)…** (`POST api/data/import`, gộp theo `updatedAt`, chỉ quản trị); **Xuất dữ liệu (.zip)** = `GET api/data/export`.
+  App chỉ chép sẵn từ repo các collection mẫu (`DATA_MAU` trong `tools/dong_goi_app.py`), không có lượt chạy/lỗi/ảnh.
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Bản claude.ai publish kèm file này (`files: {"edusoft-catalog.json": "web/edusoft-catalog.json"}`).

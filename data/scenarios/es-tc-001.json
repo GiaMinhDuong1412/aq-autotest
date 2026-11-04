@@ -1,5 +1,5 @@
 {
- "actual": "Đăng nhập thành công, vào màn hình chính v2026.10K.09.",
+ "actual": "Đăng nhập thành công, vào màn hình chính v2026.11A.01.",
  "altFlows": [
   {
    "atStep": 1,
@@ -65,17 +65,17 @@
  },
  "expected": "Đăng nhập thành công, vào màn hình chính EduSoft.NET HVNG đúng vai trò của tài khoản, không có thông báo lỗi. Bỏ trống tên đăng nhập, sai mật khẩu hoặc sai tên đăng nhập thì bị chặn, vẫn ở khung đăng nhập.",
  "lastRun": {
-  "at": "2026-10-29T15:37:08.719406Z",
+  "at": "2026-11-02T16:38:17.226219Z",
   "by": "u_L8VJITzyuU54eIqCAl0PKQ",
   "hasEx": false,
   "mode": "auto",
-  "runId": "sc-chung-001-20261029-223513",
+  "runId": "sc-chung-001-20261102-233638",
   "status": "pass",
-  "version": "v2026.10K.09"
+  "version": "v2026.11A.01"
  },
  "menu": "Màn hình đăng nhập",
  "module": "CHUNG",
- "process": "29/10/2026 22:35  Bắt đầu CHUNG-001 – Đăng nhập Edusoft.NET bản HVNG - Copy (script 2026.10.29-10, chế độ trình diễn)\n29/10/2026 22:35  Bước 1: ĐẠT — A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe\n29/10/2026 22:35  Bước 2: ĐẠT — đã chạy Edusoft.NET.exe\n29/10/2026 22:35  Bước 3: ĐẠT — khung đăng nhập hiển thị\n29/10/2026 22:35  Ô Tên đăng nhập: (1274,656)-(1443,670) · ô Mật khẩu: (1274,701)-(1443,715)\n29/10/2026 22:35  Bước 4: ĐẠT — nhập admindh\n29/10/2026 22:35  Bước 5: ĐẠT — nhập mật khẩu (7 ký tự)\n29/10/2026 22:35  Bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n29/10/2026 22:35  Bước 6: ĐẠT — vào màn hình chính v2026.10K.09\n29/10/2026 22:35  Luồng A1: ĐẠT — đường dẫn sai thì không mở được Edusoft\n29/10/2026 22:36  Luồng A2 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n29/10/2026 22:36  Luồng A2: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n29/10/2026 22:36  Luồng A3 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n29/10/2026 22:36  Luồng A3: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n29/10/2026 22:37  Luồng A5 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → có thông báo\n29/10/2026 22:37  Luồng A5: ĐẠT — bị chặn\n29/10/2026 22:37  Kết thúc: Đạt",
+ "process": "02/11/2026 23:36  Bắt đầu CHUNG-001 – Đăng nhập Edusoft.NET bản HVNG - Copy (script 2026.10.30-14, chế độ trình diễn)\n02/11/2026 23:36  Bước 1: ĐẠT — A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe\n02/11/2026 23:36  Bước 2: ĐẠT — đã chạy Edusoft.NET.exe\n02/11/2026 23:36  Bước 3: ĐẠT — khung đăng nhập hiển thị\n02/11/2026 23:36  Luồng con tại khung đăng nhập (trước khi đăng nhập đúng, cùng phiên Edusoft): A2, A3, A5\n02/11/2026 23:37  Luồng A2 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n02/11/2026 23:37  Luồng A2: ĐẠT — bị chặn\n02/11/2026 23:37  Luồng A3 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n02/11/2026 23:37  Luồng A3: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n02/11/2026 23:37  Luồng A5 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n02/11/2026 23:37  Luồng A5: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n02/11/2026 23:37  Ô Tên đăng nhập: (1274,656)-(1443,670) · ô Mật khẩu: (1274,701)-(1443,715)\n02/11/2026 23:37  Bước 4: ĐẠT — nhập admindh\n02/11/2026 23:37  Bước 5: ĐẠT — nhập mật khẩu (7 ký tự)\n02/11/2026 23:37  Bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n02/11/2026 23:38  Bước 6: ĐẠT — vào màn hình chính v2026.11A.01\n02/11/2026 23:38  Luồng A1: ĐẠT — đường dẫn sai thì không mở được Edusoft\n02/11/2026 23:38  Kết thúc: Đạt",
  "product": "edusoft",
  "status": "pass",
  "steps": [
@@ -87,7 +87,7 @@
   "Bấm Đăng nhập và chờ màn hình chính tải xong."
  ],
  "title": "Đăng nhập Edusoft.NET bản HVNG - Copy",
- "updatedAt": "2026-10-30T03:40:00.000Z",
+ "updatedAt": "2026-11-02T16:38:32.847Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
- "version": "v2026.10K.09"
+ "version": "v2026.11A.01"
 }

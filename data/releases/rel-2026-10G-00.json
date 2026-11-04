@@ -42,7 +42,7 @@
  "rounds": 1,
  "sheetName": "Menu_NEW",
  "sheetUrl": "https://aqtechltd-my.sharepoint.com/:x:/r/personal/support_aqtech_vn/_layouts/15/Doc.aspx?sourcedoc=%7BE35B1D6D-3EE5-4891-9F6A-45D49F075F8A%7D&file=Release(TestMenu).xlsx&action=default&mobileredirect=true",
- "status": "testing",
+ "status": "planning",
  "testers": [
   "Minh",
   "Dương",
@@ -52,7 +52,7 @@
   "Vi",
   "Linh"
  ],
- "updatedAt": "2026-10-30T03:30:00.000Z",
+ "updatedAt": "2026-10-30T03:33:41.909Z",
  "version": "2026.10H.00",
  "versions": [
   {

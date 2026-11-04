@@ -3,12 +3,12 @@
  "alias": "",
  "check": {
   "account": "admindh",
-  "at": "2026-10-29T15:37:08.719406Z",
-  "kitVersion": "2026.10.29-10",
+  "at": "2026-11-02T16:38:17.226219Z",
+  "kitVersion": "2026.10.30-14",
   "message": "Mở và đăng nhập thành công (script)",
-  "runId": "sc-chung-001-20261029-223513",
+  "runId": "sc-chung-001-20261102-233638",
   "status": "ok",
-  "version": "v2026.10K.09",
+  "version": "v2026.11A.01",
   "via": "script"
  },
  "env": "DEMO HVNG",
@@ -17,9 +17,10 @@
   "gv": false,
   "sv": false
  },
+ "installDir": "A:\\AQ-Autotest-DangNhap-20261029\\AQ-Autotest",
  "kitComputer": "DESKTOP-I1S5SR8",
  "kitDir": "A:\\AQ-Autotest-DangNhap-20261029\\AQ-Autotest",
  "machine": "",
  "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
- "updatedAt": "2026-10-29T15:37:22.748Z"
+ "updatedAt": "2026-11-02T16:38:32.847Z"
 }

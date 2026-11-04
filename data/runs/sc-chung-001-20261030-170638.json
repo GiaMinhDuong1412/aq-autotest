@@ -1,0 +1,115 @@
+{
+ "actual": "Đăng nhập thành công, vào màn hình chính v2026.10L.00-HVNG.",
+ "alts": [
+  {
+   "at": "2026-10-30T10:08:08.988711Z",
+   "note": "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)",
+   "res": "ok",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T10:07:02.866166Z",
+   "note": "Bị chặn – Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close",
+   "res": "ok",
+   "shots": [
+    "c57b506c17cea1f57bbf37ee34e06ca0",
+    "2f2476086212b3e6cce2e444d92652c3"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:07:17.337176Z",
+   "note": "Bị chặn – Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close",
+   "res": "ok",
+   "shots": [
+    "2c166c17c0c8070a7493289576c323fd",
+    "c564e21c0c8ad62a5cdb139d179b5b28"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:08:08.990738Z",
+   "note": "Không xảy ra trong lần chạy này",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T10:07:32.642342Z",
+   "note": "Bị chặn – Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close",
+   "res": "ok",
+   "shots": [
+    "42e406f11303b59f503a2981c4675f3a",
+    "428040f380c097164304dfaf7c716d38"
+   ]
+  }
+ ],
+ "createdAt": "2026-10-30T10:08:56.609Z",
+ "current": null,
+ "dumps": [],
+ "executor": "script",
+ "finishedAt": "2026-10-30T10:08:10.993265Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.10.30-6",
+ "machine": "",
+ "mode": "auto",
+ "module": "CHUNG",
+ "path": "E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe",
+ "process": "30/10/2026 17:06  Bắt đầu CHUNG-001 – Đăng nhập Edusoft.NET bản HVNG - Copy (script 2026.10.30-6, chế độ trình diễn)\n30/10/2026 17:06  Bước 1: ĐẠT — E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe\n30/10/2026 17:06  Bước 2: ĐẠT — đã chạy Edusoft.NET.exe\n30/10/2026 17:06  Bước 3: ĐẠT — khung đăng nhập hiển thị\n30/10/2026 17:06  Luồng con tại khung đăng nhập (trước khi đăng nhập đúng, cùng phiên Edusoft): A2, A3, A5\n30/10/2026 17:06  Luồng A2 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n30/10/2026 17:07  Luồng A2: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n30/10/2026 17:07  Luồng A3 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n30/10/2026 17:07  Luồng A3: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n30/10/2026 17:07  Luồng A5 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n30/10/2026 17:07  Luồng A5: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n30/10/2026 17:07  Ô Tên đăng nhập: (954,479)-(1123,493) · ô Mật khẩu: (954,524)-(1123,538)\n30/10/2026 17:07  Bước 4: ĐẠT — nhập admindh\n30/10/2026 17:07  Bước 5: ĐẠT — nhập mật khẩu (7 ký tự)\n30/10/2026 17:07  Bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n30/10/2026 17:08  Bước 6: ĐẠT — vào màn hình chính v2026.10L.00-HVNG\n30/10/2026 17:08  Luồng A1: ĐẠT — đường dẫn sai thì không mở được Edusoft\n30/10/2026 17:08  Kết thúc: Đạt",
+ "product": "edusoft",
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "CHUNG-001",
+ "scenarioId": "es-tc-001",
+ "scenarioTitle": "Đăng nhập Edusoft.NET bản HVNG - Copy",
+ "startedAt": "2026-10-30T10:06:38.720320Z",
+ "status": "pass",
+ "steps": [
+  {
+   "at": "2026-10-30T10:06:39.924178Z",
+   "note": "E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe",
+   "res": "ok",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T10:06:44.238238Z",
+   "note": "Đã chạy Edusoft.NET.exe",
+   "res": "ok",
+   "shots": [
+    "b37b5d6f3502e4cd84ead0290c7fd70e"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:06:47.865153Z",
+   "note": "Khung đăng nhập hiển thị",
+   "res": "ok",
+   "shots": [
+    "c8519493e8418eb5762e30076dbc1ded"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:07:36.794813Z",
+   "note": "admindh",
+   "res": "ok",
+   "shots": [
+    "5a1ed515c26f1621ee203ea3d575b75c"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:07:40.494309Z",
+   "note": "Đã nhập mật khẩu (7 ký tự) vào ô Mật khẩu",
+   "res": "ok",
+   "shots": [
+    "3fa061ab8c378baf3ba85ba92cae8ca3"
+   ]
+  },
+  {
+   "at": "2026-10-30T10:08:07.698320Z",
+   "note": "Vào màn hình chính v2026.10L.00-HVNG",
+   "res": "ok",
+   "shots": [
+    "dc370c2132e255f75fc0d139f8a72ca6"
+   ]
+  }
+ ],
+ "vars": null,
+ "version": "v2026.10L.00-HVNG",
+ "video": null,
+ "videoFile": null
+}

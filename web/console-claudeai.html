@@ -1630,6 +1630,8 @@ a.nav-item{text-decoration:none}
       <div class="account-sep"></div>
       <button class="account-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg>Hồ sơ</button>
       <button class="account-item" data-page-go="runner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5H9.4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4.2l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.6c.1-.3.1-.7.1-1Z"/></svg>Cấu hình runner</button>
+      <button class="account-item hidden" id="dataImportBtn" type="button" data-own><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>Nhập dữ liệu (.zip)…</button>
+      <button class="account-item hidden" id="dataExportBtn" type="button" data-own><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 0 4 4m-4-4-4 4M5 21h14"/></svg>Xuất dữ liệu (.zip)</button>
       <button class="account-item hidden" id="appQuitBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg>Thoát app AQ Auto Test</button>
       <div class="account-sep"></div>
       <button class="account-item danger" id="logoutBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12H4m0 0 4-4m-4 4 4 4M14 5h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/></svg>Đăng xuất</button>
@@ -9603,6 +9605,16 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="upd-foot"><button class="btn" data-x>Để sau</button><button class="btn primary" data-go>'+(done?'Khởi động lại':u.portable?'Tải bản mới':'Cập nhật')+'</button></div></div>';
     document.body.appendChild(m);
     m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();else if(e.target.closest('[data-go]')){m.remove();window.aqDesktop.updateAct();}});}
+  /* ===== Nhập / xuất toàn bộ dữ liệu (.zip) – chuyển dữ liệu từ console claude.ai hoặc máy khác sang app (chỉ quản trị) ===== */
+  if(window.AQ_LOCAL&&!window.AQ_SERVER&&(!window.AQ_AUTH||window.AQ_AUTH.admin)){
+    $('#dataImportBtn').classList.remove('hidden');$('#dataExportBtn').classList.remove('hidden');
+    $('#dataExportBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');var a=document.createElement('a');a.href='api/data/export';a.download='';document.body.appendChild(a);a.click();a.remove();});
+    $('#dataImportBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');var inp=document.createElement('input');inp.type='file';inp.accept='.zip,application/zip';
+      inp.addEventListener('change',function(){var f=inp.files&&inp.files[0];if(!f)return;toast('Đang nhập '+f.name+'…','',60000);
+        fetch('api/data/import',{method:'POST',headers:{'X-AQ':'1','Content-Type':'application/zip'},body:f}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||('HTTP '+r.status));return j;});})
+          .then(function(j){toast('Đã nhập: thêm '+j.added+', cập nhật '+j.updated+', giữ bản trên máy '+j.kept+', ảnh/file '+j.assets+(j.skipped?' (bỏ qua '+j.skipped+')':''),'ok',12000);})
+          .catch(function(e){toast('Nhập dữ liệu lỗi: '+e.message,'err',12000);});});
+      inp.click();});}
   if(window.AQ_APP){$('#appQuitBtn').classList.remove('hidden');
     $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');
       if(confirm('Thoát app AQ Auto Test? (Đóng cửa sổ app cũng là thoát.)')){if(window.aqDesktop)window.aqDesktop.quit();else fetch('api/app/quit',{method:'POST',headers:{'X-AQ':'1'}});}});
