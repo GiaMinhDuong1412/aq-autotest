@@ -13,3 +13,6 @@ aq-console-server.json
 
 # kết quả tools/trich_source.py (gửi cho Claude, không commit)
 trich-*.txt
+
+trich-tat-ca/
+trich-*.zip

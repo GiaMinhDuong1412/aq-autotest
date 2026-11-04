@@ -8,6 +8,7 @@ Cách dùng (PowerShell, trong thư mục repo aq-autotest):
   python tools\\trich_source.py D:\\Source.NET.zip --liet-ke                  -> trich-danh-sach-form.txt
   python tools\\trich_source.py D:\\Source.NET.zip "sinh vien hoc ky"         -> trich-sinh-vien-hoc-ky.txt
   python tools\\trich_source.py D:\\Source.NET.zip --tim "Xóa dữ liệu thành công"
+  python tools\\trich_source.py D:\\Source.NET.zip --tat-ca                    -> trich-tat-ca.zip (mọi module)
 Từ khóa so khớp không dấu, không phân biệt hoa thường, với đường dẫn file, tên lớp hoặc tiêu đề form.
 """
 import argparse
@@ -169,6 +170,62 @@ def trich_form(nguon, p, out):
                 if len(s) >= 3 and (any(ord(c) > 127 for c in s) or "Show(" in dong or "Message" in dong):
                     out.append(f"    {i}: {s}")
 
+CONG_CU = {"Setup", "Test", "ToolPortable", "ReleaseTools", "ToolTrienKhai"}
+
+
+def module_cua(p):
+    parts = p.split("/")
+    for x in parts[:-1]:
+        if x.startswith("Edusoft.") or x == "AQDataTools":
+            return x
+    return parts[1] if len(parts) > 2 and parts[0].lower().startswith("trunk") else parts[0]
+
+
+def trich_tat_ca(nguon, thu_muc, ca_cong_cu=False):
+    """Mỗi module 1 file <module>.txt (các form) + <module>-thong-bao.txt (chuỗi tiếng Việt ngoài form), rồi nén zip."""
+    os.makedirs(thu_muc, exist_ok=True)
+    forms, le = {}, {}
+    co_form = {re.sub(r"\.designer\.cs$", ".cs", p, flags=re.I).lower() for p in nguon.designers()}
+    for p in nguon.ds:
+        m = module_cua(p)
+        if m in CONG_CU and not ca_cong_cu:
+            continue
+        pl = p.lower()
+        if pl.endswith(".designer.cs"):
+            forms.setdefault(m, []).append(p)
+        elif pl.endswith(".cs") and pl not in co_form and "/obj/" not in pl and not pl.endswith("assemblyinfo.cs"):
+            le.setdefault(m, []).append(p)
+    files = []
+    for m in sorted(set(forms) | set(le)):
+        out = [f"# Module {m}: {len(forms.get(m, []))} form"]
+        for p in sorted(forms.get(m, [])):
+            trich_form(nguon, p, out)
+        tb = []
+        for p in sorted(le.get(m, [])):
+            dong_file = []
+            for i, dong in enumerate((nguon.doc(p) or "").splitlines(), 1):
+                if BO_QUA.search(dong) or dong.lstrip().startswith("//"):
+                    continue
+                for x in RE_LIT.findall(dong):
+                    if len(x) >= 3 and any(ord(c) > 127 for c in x):
+                        dong_file.append(f"    {i}: {x}")
+            if dong_file:
+                tb.append(f"== {p}")
+                tb.extend(dong_file)
+        for ten, noi_dung in ((m + ".txt", out), (m + "-thong-bao.txt", tb)):
+            if len(noi_dung) > (1 if ten == m + ".txt" else 0):
+                fp = os.path.join(thu_muc, ten)
+                with open(fp, "w", encoding="utf-8") as f:
+                    f.write("\n".join(noi_dung) + "\n")
+                files.append(fp)
+                print(f"  {ten}: {os.path.getsize(fp) // 1024} KB")
+    zp = thu_muc.rstrip("/\\") + ".zip"
+    with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
+        for fp in files:
+            z.write(fp, os.path.basename(fp))
+    print(f"Đã nén {len(files)} file vào {os.path.abspath(zp)} ({os.path.getsize(zp) // 1024} KB) – gửi file zip này cho Claude.")
+    return 0
+
 
 def main():
     ap = argparse.ArgumentParser(description="Trích tên điều khiển / caption / thông báo từ source Edusoft.")
@@ -177,11 +234,15 @@ def main():
     ap.add_argument("--liet-ke", action="store_true", help="liệt kê mọi form: file | lớp | tiêu đề")
     ap.add_argument("--tim", help="tìm chuỗi (câu thông báo, caption) trong toàn bộ *.cs / *.resx")
     ap.add_argument("--toi-da", type=int, default=30, help="số form tối đa khi trích (mặc định 30)")
-    ap.add_argument("-o", "--ra", help="file kết quả (.txt)")
+    ap.add_argument("--tat-ca", action="store_true", help="trích mọi module, mỗi module 1 file, nén thành trich-tat-ca.zip")
+    ap.add_argument("--ca-cong-cu", action="store_true", help="--tat-ca gồm cả Setup/Test/Tool… (mặc định bỏ)")
+    ap.add_argument("-o", "--ra", help="file kết quả (.txt; với --tat-ca là thư mục)")
     a = ap.parse_args()
 
     nguon = Nguon(a.nguon)
     out = []
+    if a.tat_ca:
+        return trich_tat_ca(nguon, a.ra or "trich-tat-ca", a.ca_cong_cu)
     if a.tim:
         k = khong_dau(a.tim)
         for p in nguon.ds:
