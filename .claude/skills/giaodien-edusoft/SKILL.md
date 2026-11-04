@@ -11,6 +11,15 @@ Skill này là **sổ tay do người dùng dạy**. Mọi điều người dùn
 Thứ tự ưu tiên khi có mâu thuẫn: **Bài học người dùng dạy (mục 4)** > bảng phần tử (mục 2) > suy đoán từ tài liệu.
 Ảnh minh hoạ người dùng gửi nằm ở `anh/` cạnh file này – mở bằng Read khi cần so lại.
 
+**Danh mục màn hình gốc** (`man-hinh/index.md`, mỗi phân hệ một file `man-hinh/<MaPhanHe>.md`, vd `QLSV.md` = ribbon "Sinh viên"):
+đường dẫn menu đúng chữ trên ribbon/cây (viết thẳng vào `menu:`), lớp màn hình, các lưới (cột = nhãn [MaField], cột ẩn,
+nút tắt Thêm/Sửa/Xóa…), ô trên form sửa (`#MaField` cho `type:`/`choose:`/`date:`), nút riêng (tooltip, phím tắt).
+Tra bằng Grep theo tên menu/màn hình **trước khi viết `auto`**. Đây là cấu hình gốc AQ – HVNG có thể ẩn/đổi nhãn bằng bảng
+`H…`; khi lệch với `ui-*.txt` thì tin `ui-*.txt` và ghi bài học.
+**Nguyên tắc (người dùng dạy 2026-11-04):** Edusoft dùng chung cho **nhiều trường**; HVNG chỉ có một số code/cấu hình riêng.
+Kịch bản và lệnh `auto` đi theo **hướng chung** (danh mục gốc AQ). Phần hiệu chỉnh riêng của từng trường phải đọc **case trên
+ACS** để hiểu (lý do, phạm vi) – không tự suy từ chỗ lệch; khi gặp màn hình HVNG khác danh mục thì ghi lại và hỏi/tra case ACS.
+
 ## 1. Bố cục cửa sổ chính (người dùng dạy – tài liệu "Giao diện Edusoft", ảnh `anh/01-giao-dien-chinh.png`)
 
 ```
@@ -352,3 +361,84 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 3. Nếu bộ test phải nhận diện khác đi → sửa `kit/aqrun.py` (tăng `KIT_VERSION`), cập nhật docstring `Run.do_actions`.
 4. Rà các kịch bản `scriptReady` (`data/scenarios/`) có dùng phần tử đó → sửa `auto` (cả `data/` và DB artifact).
 5. Commit + push, cập nhật artifact nếu console thay đổi (theo CLAUDE.md).
+
+## 6. Tra source Edusoft (`tools/trich_source.py`)
+
+Source nằm trên TFS (chỉ đọc) hoặc file zip trên máy người dùng – **không đưa source vào repo/chat**. Người dùng chạy
+`python tools\trich_source.py <zip> --liet-ke | "<từ khóa>" | --tim "<câu>" | --tat-ca` rồi gửi file `trich-*.txt` / `trich-tat-ca.zip`
+(chỉ tên điều khiển, caption, cột lưới, câu thông báo). Ghi điều rút ra vào đây, không chép nguyên file trích.
+
+Cấu trúc (bản trích 11/2026 – 4 665 file Designer): `trunk2/Edusoft.<MÃ>/Edusoft.<MÃ>/<nhóm>/<mục>/<Form>.Designer.cs`.
+Mã module → nghiệp vụ (? suy từ tên form, chờ xác nhận): SMS sinh viên (QĐ vào/ra, học bổng, rèn luyện) · RMS đăng ký môn
+học + học phí · SRM điểm/bảng ghi điểm, xét tốt nghiệp-luận văn · EPM lịch thi · SCH thời khóa biểu · TPM chương trình đào tạo/
+môn học · DCM khối lượng giảng dạy, thù lao CBGD · TQM khảo sát đánh giá · MDS ký túc xá (nội trú) · CMS tuyển sinh ·
+BSM kho học liệu · HRM nhân sự · PMS lương · JMS tài sản · DMS công văn · EMS kiểm định (minh chứng) · SRT NCKH ·
+STM đào tạo ngắn hạn · EVA đánh giá viên chức · ILS lưu học sinh · NET lõi chung (phân quyền, nhập điểm…) ·
+AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
+
+**Điều quan trọng rút ra:**
+- Màn hình chức năng phần lớn **dựng theo cấu hình trong CSDL**, không vẽ trong source: user control kế thừa
+  `AQViewers.AQViewCommonCtr` chỉ chứa một `SourceViewBase` (3 087 chỗ dùng) → bên trong `SplitControlView` (AQSplitContainer)
+  → lưới/nút/nhãn sinh lúc chạy (khớp `FormChonView`/`viewDataCtrl` ở mục 4). Ví dụ QĐ vào/ra SV: `Edusoft.SMS/S02/UCQDSV`
+  chỉ có `grdQD | SourceViewBase`. ⇒ **Tên ô, nút, cột cho `auto` phải lấy từ `ui-*.txt`, không lấy được từ source.**
+  Source chỉ có ích cho form vẽ tay, câu thông báo nghiệp vụ (vd UCQDSV: "Ngày về phải lớn hơn ngày đi") và tên lớp.
+- Câu thông báo chung ("Xóa dữ liệu thành công", "Thoát khỏi chương trình?", "Danh sách đang chọn để xóa") **không có trong
+  source** – nhiều khả năng lấy từ CSDL/thư viện biên dịch; cứ dùng đúng chữ quan sát trên màn hình.
+- Cửa sổ chính `AQViewers/MainForm` (RibbonForm, tiêu đề "EduSoft.NET"): ribbon `ribonMain`; khung trái `dockLeft`
+  "Danh mục chức năng" chứa cây `treeChucNangC3` (cột "Tên chức năng" [TenChucNang]) và `navBarControl1` nhóm "Thông tin đơn vị"
+  (`lblTenTruong`); vùng tab màn hình `tabForm` (AQTabControl, trang "Phổ dụng"/"Các chức năng"); menu chuột phải tab:
+  "Đóng tab hiện tại" (`btnDongHienTai`), "Đóng tất cả tab ngoại trừ hiện tại", "Đóng tất cả"; thanh trạng thái `bar3`:
+  "Năm học" (`barNamHoc`), "Học kỳ" (`barListHocKy`), "Kỳ thi", "Năm", "Tháng", "Đợt đánh giá", "Kỳ tuyển sinh", "Kỳ đánh giá",
+  `lblStatusMess` (**câu kết quả Lưu/Xóa hiện ở đây**), `lblUserName`, "Đăng xuất" (`btnBarDangXuat`).
+- **Định nghĩa gốc màn hình chưa tìm thấy** (11/2026): CSDL trường (bản backup, 3 050 bảng) chỉ có phần chỉnh riêng –
+  `HFieldEdit`, `HFieldView2`, `HOrderView`, `HValSetV`, `HViewSpliter`, `HMenuCustom` – trỏ tới `IDView`/`IDFieldView`/`IDChucNang`
+  không có bảng gốc; `HMess` là câu chữ Netweb. Thư mục cài Edusoft cũng không có file định nghĩa (file không đuôi = cache
+  WebView2, `.xml` = tài liệu DevExpress, `logs/webapi.log.*` = log, **không gửi**).
+- **Bảng định nghĩa gốc** (theo `AQ.DatabaseShare/DatabaseAll.edmx` + `AQData.Business/Viewer/ViewServiceBL.cs`): nhóm `AQ…` –
+  `AQDmChucNang` (menu/chức năng), `AQDmView1`/`AQDmView0`, `AQView`, `AQViewSpliter`, `AQFieldView`/`AQFieldView2`, `AQDmField`,
+  `AQFieldEdit`, `AQTabView`/`AQTabColumn`, `AQOrderView`, `AQDmForm`, `AQDmMess`/`AQDmMessErr`, `AQMessNgonNgu`… Màn hình nạp qua
+  `ViewServiceBL.GetViewParams(idView1, subview)` → `GetSpliter`/`GetDmView`/`GetView`, dùng cùng ngữ cảnh `db` với các bảng `H…`
+  (phần trường chỉnh) – nhưng 175 bảng `AQ…` này **không có trong `sys.tables`** của bản backup trường → có thể là synonym/view
+  trỏ sang CSDL khác (chưa kiểm).
+- Bảng `AQ…` **không nằm trong CSDL trường**: được đóng thành file dữ liệu hệ thống `AQ.Data001…146.dll` (đuôi .dll nhưng là
+  dữ liệu, có file 22 byte) ở **server** (`wcf/bin`, `web/bin` của gói `edusoft.server.zip`), vd 001 = AQDmFile, 002 = AQDmField,
+  003 = AQFileField, 004 = AQRelation; công cụ `ReleaseTools/SysDataManager` (có KeyGen) tạo ra. Máy client không có các file
+  này – Edusoft.NET lấy định nghĩa màn hình **qua WCF của server**. Không giải mã các file này; cần danh mục menu/cột thì xin
+  nhóm phát triển AQTech xuất từ SysDataManager. Thực tế: tên ô/nút/cột cho `auto` lấy từ `ui-*.txt` khi chạy.
+- **Chuỗi nguồn gốc định nghĩa màn hình** (đã xác minh từ source): CSDL gốc của AQTech (CSDL phát triển nội bộ, có đủ bảng `AQ…`)
+  → `SysDataManager` ("System Data Management": *Export 148 file AQ System Data*, *Export system data (các file cách nhau dấu
+  phẩy)*, *Import/Update from edusoft*) → 148 file `AQ.Data…` đóng vào gói server → server đọc bằng
+  `SystemData.ReadResource<T>(sourceName)` / `SystemData.ReadAQResource(sourceName, Type) → DataTable` (lớp
+  `AQData.Business/Common/SystemData.cs`, có `DataMap` ánh xạ tên ↔ file) → client nhận qua WCF → ghép phần chỉnh của trường
+  (`H…`) → màn hình. Muốn có danh mục menu/view/cột đúng phiên bản: xin AQTech xuất (SELECT chỉ đọc) các bảng `AQDmChucNang`,
+  `AQDmView1`, `AQView`, `AQFieldView(2)`, `AQDmField`, `AQFieldEdit`… hoặc dùng chính `AQData.Business.dll` của server trường đọc
+  file `AQ.Data…` rồi xuất CSV (chạy trên máy người dùng, không đụng khóa).
+  **Định dạng file** (`SystemData.ReadResource`): `AQ.DataNNN` = JSON danh sách bản ghi **nén gzip** (file 22 byte = `[]`),
+  đọc từ thư mục bin của server; `DataMap` ánh xạ tên bảng → số file theo thứ tự (trunk: 001 AQDmFile, 002 AQDmField,
+  027 AQDMChucNang, 030 AQFieldEdit, 046 AQDMView1, 055 AQFieldView, 059 AQView, 061 AQViewSpliter, 077 AQFieldView2,
+  025 AQDmMess…; gói cũ đánh số 000–146 + `AQ.Data.Specs` nên có thể lệch – đối chiếu theo tên cột).
+  Công cụ: `python tools\doc_aqdata.py D:\Source.NET.zip --trong edusoft.server.zip` (hoặc thư mục `wcf\bin` của server trường)
+  → `aqdata\*.csv` + `tom-tat.txt` + `aqdata.zip`; chỉ giải nén, bỏ bảng người dùng/khách hàng, để trống cột mật khẩu/khóa.
+  Gói server trong source khớp đúng thứ tự trunk (001 AQDmFile … 146 AQFileHuongDan; 000 không phải JSON). Quan hệ:
+  `AQDMChucNang` (menu; `IDChucNangParent` → cha, gốc là `AQDMPhanHe`; chữ hiện = `VtChucNang`/`VtPhanHe`) –`iddoituong`→
+  `AQDMForm` (`FormRun` = lớp màn hình, vd `Edusoft.SMS.S02.UCQDSV`; `Param1` của menu = loại, vd VAO_MOI/DOI_LOP) → lớp tự nạp
+  `AQDMView1` (MaView1 ghi trong source) → `AQView` (lưới; cờ NoneInsert/NoneDelete/NoneSua…; `MainTable` → `AQDmFile`) →
+  `AQFieldView` (cột; `IDField` → `AQDmField.Tenlabel` = nhãn, `MaField` = tên ô; `Hide`, `ReadOnly`, `CtrlType` 4=ngày,
+  13=nút "…"), `AQFieldView2.TabOrder` (thứ tự), `AQFieldEdit` (ô trên form sửa), `AQViewAddCtrl` (nút riêng: CommandName,
+  ToolTip, HotKey). Lập danh mục: `python tools/lap_danh_muc.py <aqdata> --lien-ket trich-ma-view.txt --ra
+  .claude/skills/giaodien-edusoft/man-hinh`; `trich-ma-view.txt` từ `trich_source.py <source.zip> --ma-view
+  aqdata\aq.data046-AQDMView1.csv` (lớp màn hình → MaView1).
+  Tiêu đề lưới / nhãn cột: `AQValSetV`+`AQValSetV1` – (1,14) = tiêu đề lưới (chữ sau `@`), (2,14) = nhãn cột đã đổi, (2,16) = độ
+  rộng. Phần trường tự chỉnh (bảng `H…`: HMenuCustom, HValSetV/1, HFieldView2, HFieldEdit…): `tools/xuat_tuy_chinh_truong.sql` (sqlcmd, chỉ đọc).
+  Nối menu → lưới: `AQViewAddCtrl.Method` / `AQViewMethod.TenMethod` dạng "Assembly,Lớp,Hàm" chứa đúng lớp màn hình của lưới
+  (vd btnSave "Lưu quyết định" của S-DS-QUYETDINH gọi `Edusoft.SMS.S02.UCQDSV`), cộng `trich-ma-view.txt` từ source; còn lại
+  ghi "đoán theo tên" (TenView1 = tên menu) – phải kiểm lại bằng `ui-*.txt`.
+  **HVNG tự chỉnh rất ít** (CSDL backup 11/2026): HMenuCustom 117 dòng chỉ cho menu Edusoft web (ẩn/hiện, đổi tên trên web);
+  HValSetV ~1 070 dòng gần hết là độ rộng cột (2,16), chỉ 1 nhãn cột đổi (NhomTo → "Lớp tín chỉ"); HFieldView2/HOrderView = thứ
+  tự/khóa cột theo cấp người dùng (UserLevel 512/1024/2048/65536). → Danh mục gốc AQ dùng được cho HVNG bản desktop.
+  Xem một đoạn source: `trich_source.py … --dong "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
+- **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
+  "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
+  Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
+- Hộp chọn dùng chung (`AQViewers/Controls`): `F_ChonNHHK` (chọn năm học-học kỳ), `F_NhapNgay`/`F_Nhap2Ngay`, `F_NhapMa`,
+  `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).

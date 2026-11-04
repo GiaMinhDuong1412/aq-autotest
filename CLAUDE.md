@@ -31,6 +31,14 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   chạy được bằng thư viện chuẩn và qua `py_compile`**. Dữ liệu server ở `aq-console/du-lieu`, không nằm trong git.
   Dưới IIS: `server-iis/` (CAI-DAT.cmd), `--iis` lấy cổng `ASPNETCORE_PORT`, đường dẫn con `ASPNETCORE_APPL_PATH` → `server.py --base`;
   vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
+- **App AQ Auto Test** (máy cá nhân): `app/launcher.py` + Python nhúng, mã từng phiên bản ở `phien-ban/<ver>/`, dữ liệu
+  `du-lieu/`; `app_update.py` (server.py nạp khi có `AQ_APP_HOME`) cho nút cập nhật – đọc GitHub Release mới nhất (token chỉ-đọc ở
+  `rieng/app.json`), tải `aq-autotest-code-<ver>.zip`, server thoát mã 75, launcher chạy lại bản mới. **Merge vào `main` = phát hành**:
+  `.github/workflows/release.yml` chạy `tools/kiem_tra.py`, `tools/dong_goi_app.py`, tạo Release `v<yyyy.mm.dd>-<n>`;
+  nhánh khác/PR chạy `kiem-tra.yml`. Trước khi merge chạy `python tools/kiem_tra.py`.
+- Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
+  lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
+  Bản claude.ai publish kèm file này (`files: {"edusoft-catalog.json": "web/edusoft-catalog.json"}`).
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;
   đọc trước khi viết/sửa `auto`, ghi thêm mỗi khi người dùng dạy.
@@ -44,8 +52,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 
 ## Chạy & kiểm tra
 - Chạy console: `python server.py` (hoặc `chay-console.bat`) → http://localhost:8787. `--port`, `--no-browser`.
-- Kiểm tra cú pháp: `python -m py_compile server.py kit/aqrun.py kit/aq-agent.py`; JS: tách khối `<script>` cuối
-  `web/index.html` ra file rồi `node --check`.
+- Kiểm tra: `python tools/kiem_tra.py` (cú pháp Python, `node --check` JS trang, kit đã nhúng, có danh mục màn hình).
 - Đồng bộ 2 máy: `dong-bo.bat` (commit tất cả → `git pull --rebase --autostash` → `git push`). Gặp xung đột trong
   `data/*.json`: giữ bản có `updatedAt` mới hơn, hoặc gộp trường nếu hai máy sửa trường khác nhau.
 

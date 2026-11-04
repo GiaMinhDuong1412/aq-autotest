@@ -1328,6 +1328,36 @@ td.subtext{display:table-cell;margin:0}
 .tpst{white-space:nowrap}
 .breadcrumbs{min-width:0;white-space:nowrap;overflow:hidden}.breadcrumbs strong{overflow:hidden;text-overflow:ellipsis}
 @media(max-width:560px){#crumbRoot,#crumbRoot+span{display:none}}
+/* Màn hình Edusoft (danh mục menu → lưới → cột) + kiểm tra lệnh auto */
+.mh-list{display:flex;flex-direction:column;max-height:46vh;overflow:auto}
+.mh-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:9px 16px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;color:var(--fg-dim)}
+.mh-row:hover{background:var(--bg-3)}
+.mh-row.on{background:var(--accent-soft);color:var(--fg)}
+.mh-row .mc{font-family:var(--mono);font-size:.62rem;color:var(--accent-2)}
+.mh-row .mp{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem}
+.mh-row .mk{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
+.mh-sec{padding:14px 18px;border-top:1px solid var(--line)}
+.mh-sec h4{margin:0 0 8px;font-size:.84rem}
+.mh-grid{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--bg)}
+.mh-grid .gt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:8px;font-size:.8rem}
+.mh-chip{display:inline-flex;align-items:center;gap:4px;margin:2px 4px 2px 0;padding:3px 8px;border:1px solid var(--line-2);border-radius:999px;background:var(--bg-2);color:var(--fg-dim);font-family:var(--mono);font-size:.64rem;cursor:pointer}
+.mh-chip:hover{border-color:var(--accent);color:var(--fg)}
+.mh-chip.off{opacity:.6;text-decoration:line-through;cursor:default}
+.mh-tbl{width:100%;border-collapse:collapse;font-size:.74rem}
+.mh-tbl td,.mh-tbl th{padding:4px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.mh-tbl th{color:var(--muted);font-weight:500;font-size:.66rem}
+.mh-tbl tr.an td{opacity:.55}
+.mh-tbl td.f{font-family:var(--mono);font-size:.68rem;color:var(--accent-2);cursor:pointer}
+.mh-copy{padding:2px 7px;border:1px solid var(--line-2);border-radius:7px;background:var(--bg-2);color:var(--muted);font-family:var(--mono);font-size:.6rem;cursor:pointer}
+.mh-copy:hover{color:var(--fg);border-color:var(--accent)}
+.mh-cmd{font-family:var(--mono);font-size:.7rem;word-break:break-word}
+.mh-lv{display:inline-block;min-width:62px;padding:2px 6px;border-radius:6px;font-family:var(--mono);font-size:.6rem;text-align:center}
+.mh-lv.loi{background:rgba(239,68,68,.15);color:#ef4444}
+.mh-lv.canh{background:rgba(245,158,11,.15);color:#d97706}
+.mh-lv.luuy{background:var(--bg-3);color:var(--muted)}
+.mh-sum{display:flex;flex-wrap:wrap;gap:8px 18px;padding:12px 18px;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+@media (max-width:760px){.mh-list{max-height:none}.mh-tbl td:nth-child(3),.mh-tbl th:nth-child(3){display:none}}
+#appUpd.newer{background:var(--accent);border-color:var(--accent);color:#fff}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -1407,6 +1437,10 @@ td.subtext{display:table-cell;margin:0}
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 10h16M4 15h10M4 20h7M17 15l2 2 3-4"/></svg></span>
         <span>Danh mục kịch bản</span><span class="meta" id="ctNavCount">—</span>
       </button>
+      <button class="nav-item" data-page="screens">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9M12 13h5M12 16h3"/></svg></span>
+        <span>Màn hình Edusoft</span><span class="meta" id="mhNavCount">—</span>
+      </button>
       <button class="nav-item" data-page="members">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.2.6 3.5 2.8 3.5 6"/></svg></span>
         <span>Danh mục user</span><span class="meta" id="mbNavCount">—</span>
@@ -1439,6 +1473,7 @@ td.subtext{display:table-cell;margin:0}
       <div class="breadcrumbs"><span id="crumbRoot">thiết kế</span><span>/</span><strong id="crumb">phân-công-release</strong></div>
       <div class="top-actions">
         <span class="env-badge"><span></span>demo-hvng</span>
+        <button type="button" class="btn sm hidden" id="appUpd" title="Phiên bản app AQ Auto Test – bấm để kiểm tra / cập nhật"></button>
         <button class="top-icon" id="themeToggle" aria-label="Chọn giao diện" title="Chọn giao diện"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg></button>
         <button class="account-trigger" id="accountTrigger2"><span class="avatar">AD</span><span class="who"><strong>Admin DH</strong><small>qa-admin</small></span></button>
       </div>
@@ -1449,6 +1484,8 @@ td.subtext{display:table-cell;margin:0}
       <div class="account-sep"></div>
       <button class="account-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg>Hồ sơ</button>
       <button class="account-item" data-page-go="runner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5H9.4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4.2l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.6c.1-.3.1-.7.1-1Z"/></svg>Cấu hình runner</button>
+      <button class="account-item hidden" id="appTokenBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></svg>Token GitHub (cập nhật app)</button>
+      <button class="account-item hidden" id="appQuitBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg>Thoát app AQ Auto Test</button>
       <div class="account-sep"></div>
       <button class="account-item danger" id="logoutBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12H4m0 0 4-4m-4 4 4 4M14 5h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/></svg>Đăng xuất</button>
     </div>
@@ -1589,6 +1626,21 @@ td.subtext{display:table-cell;margin:0}
         <div class="sc-body">
           <aside class="card mod-rail" id="ctRail" aria-label="Phân hệ"></aside>
           <div class="right-col" id="ctMain"></div>
+        </div>
+      </section>
+      <section class="page" id="page-screens">
+        <div class="run-head"><div>
+          <span class="tag scen">▦ MÀN HÌNH EDUSOFT</span>
+          <h2>Màn hình Edusoft</h2>
+          <p>Danh mục gốc dùng chung cho mọi trường (từ dữ liệu hệ thống AQ): menu → lưới → cột, ô nhập, nút. Bấm vào tên để chép lệnh <span class="mono">auto</span> đúng chữ. Trường có chỉnh riêng thì tin cây giao diện <span class="mono">ui-*.txt</span> và tra case ACS.</p>
+        </div></div>
+        <div class="sc-toolbar">
+          <div class="seg" id="mhTab"><button type="button" class="on" data-v="tra">Tra màn hình</button><button type="button" data-v="kt">Kiểm tra lệnh auto</button></div>
+          <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg><input id="mhSearch" placeholder="tìm menu, mã chức năng, tên lưới, cột, ô (#MaField)…"></div>
+        </div>
+        <div class="sc-body">
+          <aside class="card mod-rail" id="mhRail" aria-label="Phân hệ"></aside>
+          <div class="right-col" id="mhMain"></div>
         </div>
       </section>
       <section class="page" id="page-members">
@@ -2260,7 +2312,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.03-11"
+KIT_VERSION = "2026.11.04-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2349,7 +2401,11 @@ def alts_of(text):
     return [x.strip() for x in str(text or "").split("|") if x.strip()]
 
 
-ERR_PAT = re.compile(r"lỗi|không (được|thể|hợp lệ|thành công)|trùng|đã tồn tại|đã có|bắt buộc|chưa nhập|chưa chọn|vui lòng|thiếu|invalid|error|not allowed", re.I)
+# Câu lỗi lấy theo danh mục Resources\Languages.xml của Edusoft (skill giaodien-edusoft/thong-bao.md), vd "Import dữ liệu thất bại",
+# "Ngày ra phải lớn hơn ngày vào", "Mã … không tồn tại trong danh mục", "Nhóm thi này đã bị khóa".
+ERR_PAT = re.compile(r"lỗi|không (được|thể|hợp lệ|thành công|tồn tại|đúng|cho phép)|thất bại|trùng|đã tồn tại|đã có|bắt buộc|"
+                     r"chưa nhập|chưa chọn|vui lòng|thiếu|phải (lớn|nhỏ) hơn|vượt quá|(đã|bị) khóa|sai định dạng|"
+                     r"invalid|error|not allowed", re.I)
 OK_PAT = re.compile(r"thành công|đã lưu|hoàn tất|successful", re.I)
 
 
@@ -6550,7 +6606,7 @@ QUAY VIDEO (TÙY CHỌN)
   $('#logoutBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');$('#appView').classList.add('hidden');$('#loginView').classList.remove('hidden');});
 
   /* nav */
-  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={scenarios:['thiết kế','phân-công-release'],releases:['thiết kế','danh-sách-release'],catalog:['thiết kế','danh-mục-kịch-bản'],runner:['thiết kế','máy-chạy-thử'],members:['thiết kế','danh-mục-user'],bugs:['kết quả','lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
+  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={scenarios:['thiết kế','phân-công-release'],releases:['thiết kế','danh-sách-release'],catalog:['thiết kế','danh-mục-kịch-bản'],screens:['thiết kế','màn-hình-edusoft'],runner:['thiết kế','máy-chạy-thử'],members:['thiết kế','danh-mục-user'],bugs:['kết quả','lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
   $$('.nav-item').forEach(function(b){b.addEventListener('click',function(){
     var p=b.getAttribute('data-page');
     $$('.nav-item').forEach(function(x){x.classList.toggle('active',x===b)});
@@ -8862,7 +8918,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.03-11';
+  var KITVER='2026.11.04-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -9181,6 +9237,125 @@ QUAY VIDEO (TÙY CHỌN)
   function tpLink(link,code){var pl=TP.map[link.id];if(!pl)return;var its=clone(pl.items||[]);if(!its[link.idx])return;its[link.idx].scenarioCode=code;tpWrite(pl.product,pl.module,{items:its}).catch(function(){});}
   function tpAttach(db){if(!db){TP.loaded=true;renderCatalog();return;}TP.col=db.collection('testPlans');
     TP.col.onSnapshot(function(snap){var m={};snap.docs.forEach(function(d){m[d.id]=Object.assign({id:d.id},d.data());});TP.map=m;TP.loaded=true;if(!busy())renderMain();renderCatalog();},function(){TP.loaded=true;renderCatalog();});}
+
+  /* ===== Màn hình Edusoft: danh mục menu → lưới → cột/ô/nút (edusoft-catalog.json, sinh bằng tools/lap_danh_muc.py) + kiểm tra lệnh auto ===== */
+  var MH={cat:null,loading:false,err:'',ph:'QLSV',q:'',sel:null,tab:'tra',idx:null};
+  function mhN(x){return String(x==null?'':x).normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();}
+  function mhPath(x){return String(x||'').split('/').map(mhN).filter(Boolean).join('/');}
+  function mhLoad(){if(MH.cat||MH.loading)return;MH.loading=true;MH.err='';renderMH();
+    fetch('edusoft-catalog.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+      .then(function(j){MH.cat=j;mhIndex();var n=$('#mhNavCount');if(n)n.textContent=j.menus.length;})
+      .catch(function(e){MH.err='Không tải được danh mục màn hình ('+((e&&e.message)||e)+').';})
+      .then(function(){MH.loading=false;renderMH();});}
+  function mhIndex(){var c=MH.cat,ix={path:{},code:{},td:{},col:{},fld:{},name:{},leaf:{}};
+    c.menus.forEach(function(m){ix.path[mhPath(m.path)]=m;ix.code[m.ma]=m;var seg=m.path.split('/');ix.leaf[mhN(seg[seg.length-1])]=1;});
+    Object.keys(c.views).forEach(function(k){var v=c.views[k];ix.name[mhN(v.ten)]=1;
+      v.luoi.forEach(function(g){if(g.td)ix.td[mhN(g.td)]=1;g.cot.forEach(function(x){ix.col[mhN(x[0])]=1;ix.fld[x[1].toLowerCase()]=1;});g.o.forEach(function(f){ix.fld[f.toLowerCase()]=1;});});});
+    MH.idx=ix;}
+  function mhGrids(m){var out=[];(m&&m.views||[]).forEach(function(k){var v=MH.cat.views[k];if(v)v.luoi.forEach(function(g){out.push({view:k,g:g});});});return out;}
+  function mhPhName(ma){var p=(MH.cat.ph||[]).filter(function(x){return x.ma===ma;})[0];return p?p.vt:ma;}
+  function mhRailHtml(){var c=MH.cat,cnt={};c.menus.forEach(function(m){cnt[m.ph]=(cnt[m.ph]||0)+1;});
+    return '<h4>PHÂN HỆ · EDUSOFT</h4>'+c.ph.concat([{ma:'KHAC',vt:'Chưa gán phân hệ'}]).filter(function(p){return cnt[p.ma];}).map(function(p){
+      return '<button type="button" class="mod-item'+(MH.ph===p.ma?' on':'')+'" data-mhph="'+esc(p.ma)+'"><span class="mc">'+esc(p.ma)+'</span><span class="mn">'+esc(p.vt)+'</span><span class="mk">'+cnt[p.ma]+'</span></button>';}).join('');}
+  function mhMatch(m,q){if(!q)return true;if(q.charAt(0)==='#'){var f=q.slice(1);return mhGrids(m).some(function(x){return x.g.o.concat(x.g.cot.map(function(c){return c[1];})).some(function(y){return y.toLowerCase().indexOf(f)>=0;});});}
+    if(mhN(m.path+' '+m.ma+' '+m.lop).indexOf(q)>=0)return true;
+    return mhGrids(m).some(function(x){return mhN(x.g.td).indexOf(q)>=0||x.g.cot.some(function(c){return mhN(c[0]).indexOf(q)>=0;});});}
+  function mhCopyBtn(t,lbl){return '<button type="button" class="mh-copy" data-mhcopy="'+esc(t)+'" title="Chép: '+esc(t)+'">'+esc(lbl||'chép')+'</button>';}
+  function mhDetailHtml(m){var path=m.path,seg=path.split('/'),leaf=seg[seg.length-1].trim();
+    var h='<div class="mh-sec"><h4>'+esc(path)+' '+mhCopyBtn('menu: '+path,'chép menu:')+' '+mhCopyBtn('close: '+leaf,'chép close:')+'</h4>'+
+      '<div class="hint">Mã chức năng <b class="mono">'+esc(m.ma)+'</b> · lớp màn hình <span class="mono">'+esc(m.lop)+'</span>'+(m.p1?' · Param1 <span class="mono">'+esc(m.p1)+'</span>':'')+
+      (m.doan?' · <b>lưới đoán theo tên menu – kiểm lại bằng ui-*.txt</b>':'')+'</div>';
+    var gs=mhGrids(m);if(!gs.length)h+='<p class="hint">Chưa nối được màn hình này với lưới nào (màn hình in/báo cáo hoặc form riêng) – dùng <span class="mono">dump:</span> / <span class="mono">ui-*.txt</span> khi chạy.</p>';
+    gs.forEach(function(x){var g=x.g,td=g.td||MH.cat.views[x.view].ten,vis=g.cot.filter(function(c){return c[3].indexOf('a')<0;}),an=g.cot.filter(function(c){return c[3].indexOf('a')>=0;});
+      var btn=['Thêm','Sửa','Xóa'].map(function(b){var off=g.tat.indexOf(b)>=0;return off?'<span class="mh-chip off" title="Lưới này tắt nút '+b+'">'+b+'</span>':'<span class="mh-chip" data-mhcopy="'+esc('click: '+b+' @ '+td)+'">'+b+'</span>';}).join('');
+      h+='<div class="mh-grid"><div class="gt"><b>«'+esc(td)+'»</b>'+mhCopyBtn('@ '+td,'chép @ lưới')+'<span class="hint mono">'+esc(x.view)+(g.bang?' · bảng '+esc(g.bang):'')+'</span>'+btn+
+        g.nut.map(function(b){return '<span class="mh-chip" data-mhcopy="'+esc('click: '+(b[1]||b[0])+' @ '+td)+'" title="'+esc(b[0]+(b[2]?' · phím '+b[2]:''))+'">'+esc(b[1]||b[0])+(b[2]?' ('+esc(b[2])+')':'')+'</span>';}).join('')+
+        (g.tat.length?'<span class="hint">tắt: '+esc(g.tat.join(', '))+'</span>':'')+'</div>';
+      if(g.o.length)h+='<div style="margin-bottom:8px"><span class="hint">Ô trên form sửa:</span> '+g.o.map(function(f){return '<span class="mh-chip" data-mhcopy="'+esc('type: #'+f+' = ')+'">#'+esc(f)+'</span>';}).join('')+'</div>';
+      if(g.cot.length)h+='<table class="mh-tbl"><thead><tr><th>Cột (nhãn)</th><th>MaField</th><th>Kiểu</th><th>Ghi chú</th></tr></thead><tbody>'+vis.concat(an).map(function(c){
+        var note=[c[3].indexOf('a')>=0?'ẩn':'',c[3].indexOf('r')>=0?'chỉ đọc':'',c[3].indexOf('t')>=0?'trường đổi nhãn':''].filter(Boolean).join(', ');
+        return '<tr class="'+(c[3].indexOf('a')>=0?'an':'')+'"><td><span class="mh-chip" data-mhcopy="'+esc('find_row: {} @ '+c[0])+'" title="Chép lệnh tìm dòng theo cột này">'+esc(c[0])+'</span></td><td class="f" data-mhcopy="'+esc('#'+c[1])+'">'+esc(c[1])+'</td><td>'+esc(c[2])+'</td><td class="hint">'+esc(note)+'</td></tr>';}).join('')+'</tbody></table>';
+      h+='</div>';});
+    return h+'</div>';}
+  function mhTraHtml(){var q=mhN(MH.q),all=MH.cat.menus.filter(function(m){return (q?true:m.ph===MH.ph)&&mhMatch(m,q.charAt(0)==='#'?q.toLowerCase():q);});
+    var lim=all.slice(0,400),sel=MH.sel&&MH.idx.code[MH.sel];
+    return '<div class="card"><div class="list-head"><div><h3>'+(q?'Kết quả tìm “'+esc(MH.q)+'” ('+all.length+')':esc(mhPhName(MH.ph))+' · '+all.length+' menu')+'</h3><p>Danh mục ngày '+esc(MH.cat.ver)+' · đường dẫn = chữ trên ribbon/cây chức năng · «tiêu đề lưới» = chữ sau @</p></div></div>'+
+      '<div class="mh-list">'+(lim.length?lim.map(function(m){var n=(m.views||[]).length;return '<button type="button" class="mh-row'+(MH.sel===m.ma?' on':'')+'" data-mhsel="'+esc(m.ma)+'"><span class="mc">'+esc(m.ma)+'</span><span class="mp">'+esc(m.path)+'</span><span class="mk">'+(n?n+' màn hình'+(m.doan?' (đoán)':''):'—')+'</span></button>';}).join(''):'<p class="hint" style="padding:16px">Không có menu nào khớp.</p>')+
+      (all.length>lim.length?'<p class="hint" style="padding:10px 16px">… còn '+(all.length-lim.length)+' menu – gõ thêm để lọc.</p>':'')+'</div>'+
+      (sel?mhDetailHtml(sel):'<p class="hint" style="padding:14px 18px">Chọn một menu để xem lưới, cột, ô nhập và nút.</p>')+'</div>';}
+
+  /* --- kiểm tra lệnh auto của kịch bản Edusoft so với danh mục --- */
+  function mhAlts(x){return String(x||'').split('|').map(function(y){return y.trim();}).filter(Boolean);}
+  function mhCheckCmd(cmd,ctx,ix){var out=[],m=/^\s*([a-z_]+)\??\s*:\s*([\s\S]*)$/i.exec(cmd||'');if(!m)return out;var op=m[1].toLowerCase(),arg=m[2].trim();
+    function lv(l,msg){out.push({lv:l,msg:msg});}
+    var at=arg.lastIndexOf(' @ '),left=at>=0?arg.slice(0,at).trim():arg,right=at>=0?arg.slice(at+3).trim():'';
+    var gs=mhGrids(ctx.menu),inCtxTd=function(t){return gs.some(function(x){return mhN(x.g.td)===mhN(t);});},
+      inCtxCol=function(t){return gs.some(function(x){return x.g.cot.some(function(c){return mhN(c[0])===mhN(t);});});};
+    if(op==='menu'){var mm=ix.path[mhPath(arg)];if(!mm){var leaf=mhN(arg.split('/').pop()),gu=MH.cat.menus.filter(function(x){return mhN(x.path.split('/').pop())===leaf;}).slice(0,3);
+        lv('loi','Không có menu này trong danh mục'+(gu.length?' – gần nhất: '+gu.map(function(x){return x.path;}).join(' | '):''));}
+      ctx.menu=mm||null;return out;}
+    if(/[{]/.test(right))right='';
+    if(right&&['click','find_row','delete_row','unique','absent','pick'].indexOf(op)>=0){
+      var cand=mhAlts(right);
+      if(op==='click'){if(!cand.some(inCtxTd)&&!cand.some(function(t){return ix.td[mhN(t)];}))lv('canh','Không có lưới «'+right+'» trong danh mục');
+        else{var b=mhN(left);gs.forEach(function(x){if(cand.some(function(t){return mhN(t)===mhN(x.g.td);})&&x.g.tat.some(function(t){return mhN(t)===b;}))lv('canh','Lưới «'+x.g.td+'» tắt nút '+left);});}}
+      else if(!cand.some(inCtxCol)&&!cand.some(function(t){return ix.col[mhN(t)];}))lv('canh','Không có cột «'+right+'» trong danh mục');}
+    if((op==='cell'||op==='cellbtn')){var col=op==='cell'?left.split('=')[0].trim():left;
+      if(col&&!mhAlts(col).some(function(t){return ix.col[mhN(t)];}))lv('canh','Không có cột «'+col+'» trong danh mục');
+      if(right&&!mhAlts(right).some(function(t){return ix.td[mhN(t)];}))lv('canh','Không có lưới «'+right+'» trong danh mục');}
+    if(['type','choose','select','date'].indexOf(op)>=0){var f=/^#([\w.]+)/.exec(left);if(f&&!ix.fld[f[1].toLowerCase()])lv('luuy','Ô #'+f[1]+' không có trong danh mục (có thể là ô riêng của form – kiểm bằng ui-*.txt)');}
+    if(op==='close'&&arg&&!mhAlts(arg).some(function(t){return ix.leaf[mhN(t)]||ix.name[mhN(t)];}))lv('luuy','Không thấy màn hình «'+arg+'» trong danh mục');
+    return out;}
+  function mhCheckScen(sc){var ix=MH.idx,res=[],base=sc.menu?ix.path[mhPath(sc.menu)]:null;
+    if(sc.menu&&!base)res.push({where:'menu chính',cmd:sc.menu,lv:'loi',msg:'Menu chính của kịch bản không có trong danh mục'});
+    function flow(list,name){(list||[]).forEach(function(a,i){var cmds=Array.isArray(a)?a:String(a||'').split(/\n|;(?=\s*[a-z_]+\??:)/i),ctx={menu:base};
+      cmds.forEach(function(c){mhCheckCmd(c,ctx,ix).forEach(function(r){res.push({where:name+' bước '+(i+1),cmd:c,lv:r.lv,msg:r.msg});});});});}
+    flow(sc.auto,'Luồng chính');(sc.altFlows||[]).forEach(function(af){flow(af.auto,'Luồng “'+(af.name||'')+'”');});return res;}
+  function mhKtHtml(){var list=SC.items.filter(function(x){return x.product==='edusoft'&&((x.auto||[]).some(function(a){return a&&String(a).trim()&&String(a)!=='';})||(x.altFlows||[]).some(function(af){return (af.auto||[]).length;}));})
+      .sort(function(a,b){return String(a.code).localeCompare(String(b.code));});
+    var lvName={loi:'lỗi',canh:'cảnh báo',luuy:'lưu ý'},tot={loi:0,canh:0,luuy:0};
+    var rows=list.map(function(sc){var r=mhCheckScen(sc);r.forEach(function(x){tot[x.lv]++;});
+      return '<div class="mh-sec"><h4>'+esc(sc.code||'—')+' · '+esc(sc.title||'')+' <span class="hint">'+(r.length?r.filter(function(x){return x.lv!=='luuy';}).length+' lỗi/cảnh báo · '+r.filter(function(x){return x.lv==='luuy';}).length+' lưu ý':'khớp danh mục')+'</span></h4>'+
+        (r.length?'<table class="mh-tbl"><tbody>'+r.map(function(x){return '<tr><td><span class="mh-lv '+x.lv+'">'+lvName[x.lv]+'</span></td><td class="hint">'+esc(x.where)+'</td><td><div class="mh-cmd">'+esc(x.cmd)+'</div><div class="hint">'+esc(x.msg)+'</div></td></tr>';}).join('')+'</tbody></table>':'')+'</div>';}).join('');
+    return '<div class="card"><div class="list-head"><div><h3>Kiểm tra lệnh auto ('+list.length+' kịch bản Edusoft có lệnh)</h3><p>Đối chiếu menu:, tên lưới sau @, tên cột, ô #MaField với danh mục gốc. “Lỗi” = menu không có; “cảnh báo” = tên lưới/cột không thấy hoặc lưới tắt nút; “lưu ý” = ô riêng của form, cần xem ui-*.txt.</p></div></div>'+
+      '<div class="mh-sum"><span>lỗi <b>'+tot.loi+'</b></span><span>cảnh báo <b>'+tot.canh+'</b></span><span>lưu ý <b>'+tot.luuy+'</b></span></div>'+(rows||'<p class="hint" style="padding:16px">Chưa có kịch bản Edusoft nào có lệnh auto.</p>')+'</div>';}
+  function renderMH(){var main=$('#mhMain'),rail=$('#mhRail');if(!main)return;
+    $$('#mhTab button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')===MH.tab);});
+    if(!MH.cat){rail.innerHTML='';main.innerHTML='<div class="card"><p class="hint" style="padding:18px">'+esc(MH.err||'Đang tải danh mục màn hình…')+(MH.err?' <button type="button" class="btn sm" data-mhreload>Thử lại</button>':'')+'</p></div>';return;}
+    rail.innerHTML=mhRailHtml();main.innerHTML=MH.tab==='kt'?mhKtHtml():mhTraHtml();}
+  $$('.nav-item[data-page="screens"]').forEach(function(n){n.addEventListener('click',function(){if(!MH.cat)mhLoad();else renderMH();});});
+  $('#mhTab').addEventListener('click',function(e){var b=e.target.closest('button[data-v]');if(!b)return;MH.tab=b.getAttribute('data-v');renderMH();});
+  var mhT=null;$('#mhSearch').addEventListener('input',function(e){MH.q=e.target.value;clearTimeout(mhT);mhT=setTimeout(function(){if(MH.tab!=='tra'){MH.tab='tra';}renderMH();},180);});
+  $('#page-screens').addEventListener('click',function(e){
+    var c=e.target.closest('[data-mhcopy]');if(c){var t=c.getAttribute('data-mhcopy');
+      var done=function(){toast('Đã chép: '+t,'ok',3500);};
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){prompt('Chép lệnh:',t);});else prompt('Chép lệnh:',t);return;}
+    var p=e.target.closest('[data-mhph]');if(p){MH.ph=p.getAttribute('data-mhph');MH.q='';MH.sel=null;MH.tab='tra';$('#mhSearch').value='';renderMH();return;}
+    var r=e.target.closest('[data-mhsel]');if(r){MH.sel=MH.sel===r.getAttribute('data-mhsel')?null:r.getAttribute('data-mhsel');var m=MH.idx.code[MH.sel];if(m)MH.ph=m.ph;renderMH();return;}
+    if(e.target.closest('[data-mhreload]'))mhLoad();});
+
+  /* ===== App AQ Auto Test: phiên bản + cập nhật (chỉ khi chạy bằng app/launcher.py – window.AQ_APP) ===== */
+  var APPU={info:null,busy:false};
+  function appPost(path,body){return fetch('api/app/'+path,{method:'POST',headers:{'Content-Type':'application/json','X-AQ':'1'},body:JSON.stringify(body||{})})
+    .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||('HTTP '+r.status));return j;});});}
+  function appBtn(){var b=$('#appUpd'),i=APPU.info||{},l=i.latest,nw=i.newer;if(!b)return;b.classList.remove('hidden');b.classList.toggle('newer',!!nw);
+    b.textContent=APPU.busy?(i.msg||'Đang cập nhật…'):nw?'⬆ Cập nhật bản '+l.version:'AQ Auto Test '+(window.AQ_APP.version||'');}
+  function appCheck(quiet){return appPost('check').then(function(j){APPU.info=j;appBtn();return j;},function(e){APPU.info=Object.assign({},APPU.info||{},{err:e.message});appBtn();if(!quiet)throw e;});}
+  function appToken(){var t=prompt('Dán token GitHub chỉ-đọc để app tải bản cập nhật (github.com → Settings → Developer settings → Fine-grained tokens: chọn repo aq-autotest, Contents = Read-only). Để trống để xoá token.','');
+    if(t===null)return Promise.resolve();return appPost('token',{token:t.trim()}).then(function(){toast(t.trim()?'Đã lưu token trên máy này':'Đã xoá token','ok');return appCheck(true);});}
+  function appWaitRestart(oldVer){var n=0;var tick=function(){n++;fetch('api/app/info',{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
+      if(j.version&&j.version!==oldVer){toast('Đã cập nhật lên bản '+j.version+' – tải lại trang…','ok');setTimeout(function(){location.reload();},800);return;}
+      if(!j.busy&&/lỗi/i.test(j.msg||'')){APPU.busy=false;APPU.info=Object.assign({},APPU.info,{msg:j.msg});appBtn();toast(j.msg,'err',15000);return;}
+      APPU.info=Object.assign({},APPU.info,{msg:j.msg});appBtn();if(n<200)setTimeout(tick,1500);},function(){if(n<200)setTimeout(tick,1500);});};setTimeout(tick,1500);}
+  function appClick(){if(APPU.busy)return;appCheck(false).then(function(j){
+      if(j.newer){var l=j.latest;if(!confirm('Cập nhật AQ Auto Test lên bản '+l.version+'?\n\nĐang dùng: '+j.version+(l.notes?'\n\nThay đổi:\n'+l.notes.slice(0,1200):'')+'\n\nApp sẽ tự khởi động lại (vài giây), dữ liệu trên máy giữ nguyên.'))return;
+        APPU.busy=true;appBtn();appPost('update').then(function(){appWaitRestart(j.version);},function(e){APPU.busy=false;appBtn();toast('Không cập nhật được: '+e.message,'err',15000);});}
+      else toast('Đang dùng bản mới nhất ('+j.version+(j.latest&&j.latest.version&&j.latest.version!==j.version?' · bản phát hành '+j.latest.version:'')+')','ok',6000);
+    },function(e){if(!(APPU.info&&APPU.info.hasToken)||/token|404|401|403/i.test(e.message)){toast(e.message,'err',9000);appToken();}else toast(e.message,'err',12000);});}
+  if(window.AQ_APP){$('#appUpd').addEventListener('click',appClick);$('#appTokenBtn').classList.remove('hidden');$('#appQuitBtn').classList.remove('hidden');
+    $('#appTokenBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');appToken();});
+    $('#appQuitBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');if(confirm('Thoát app AQ Auto Test? Console sẽ dừng; mở lại bằng lối tắt "AQ Auto Test".'))appPost('quit').then(function(){document.body.innerHTML='<p style="padding:40px;font-family:sans-serif">Đã thoát AQ Auto Test. Mở lại bằng lối tắt “AQ Auto Test” trên Desktop.</p>';});});
+    fetch('api/app/info').then(function(r){return r.json();}).then(function(j){APPU.info=j;appBtn();if(j.hasToken)appCheck(true);});}
   initScenarios();
 })();
 </script>

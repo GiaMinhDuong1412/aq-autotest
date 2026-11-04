@@ -10,3 +10,21 @@ AQAutotest-IIS-cai-dat.zip
 server-iis/cai-dat-log.txt
 aq-console/
 aq-console-server.json
+
+# kết quả tools/trich_source.py (gửi cho Claude, không commit)
+trich-*.txt
+
+trich-tat-ca/
+trich-*.zip
+# file tạm khi dò gói cài (tools/xem_goi.py)
+goi-ds.txt
+goi-lay/
+goi-server.txt
+*.tgz
+SysDataManager.rar
+sysdatamanager-ds.txt
+aqdata/
+aqdata*.zip
+trich-ma-view.txt
+tuy-chinh-truong.txt
+dist/

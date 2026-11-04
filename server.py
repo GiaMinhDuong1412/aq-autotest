@@ -29,6 +29,10 @@ ROOT = Path(__file__).resolve().parent
 WEB, KIT, DATA, LOCAL = ROOT / "web", ROOT / "kit", ROOT / "data", ROOT / "local"
 ASSETS = DATA / "assets"
 CFG_FILE = LOCAL / "config.json"
+APP = None                                      # bản app AQ Auto Test (app/launcher.py đặt AQ_APP_HOME): nút cập nhật phiên bản
+if os.environ.get("AQ_APP_HOME"):
+    sys.path.insert(0, str(ROOT))               # Python nhúng không tự thêm thư mục script vào sys.path
+    import app_update as APP
 DEFAULT_USER = "u_L8VJITzyuU54eIqCAl0PKQ"     # người dùng trên console claude.ai (giữ nguyên để dữ liệu cũ khớp)
 SEG = re.compile(r"^[A-Za-z0-9_\-.~:@+]{1,200}$")
 RUN_ID = re.compile(r"^sc-[a-z0-9][a-z0-9-]{3,80}$")
@@ -552,6 +556,8 @@ def page_html():
         boot = "window.AQ_SERVER={userId:%s,userName:%s};" % (js(CUR.uid), js(u.get("name") or u.get("login")))
     else:
         boot = "window.AQ_LOCAL={userId:%s,userName:%s};" % (js(CFG["userId"]), js(CFG.get("userName") or ""))
+        if APP:
+            boot += "window.AQ_APP={version:%s};" % js(APP.VERSION)
     head = ('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<script>%s</script><script src="claude-shim.js"></script></head><body>' % boot)
     return head + html + "</body></html>"
@@ -647,6 +653,15 @@ class H(BaseHTTPRequestHandler):
                 if not MODE["public"]:
                     return self.send(200, {"users": [{"id": CFG["userId"], "name": CFG.get("userName") or ""}]})
                 return self.send(200, {"users": [user_public(k, v) for k, v in users().items()]})
+            if u.path == "/edusoft-catalog.json":           # danh mục màn hình Edusoft (tools/lap_danh_muc.py --json)
+                f = WEB / "edusoft-catalog.json"
+                if not f.exists():
+                    return self.send(404, {"error": "Chưa có danh mục màn hình"})
+                b = f.read_bytes()
+                if "gzip" in (self.headers.get("Accept-Encoding") or ""):
+                    import gzip
+                    return self.send(200, gzip.compress(b, 6), "application/json; charset=utf-8", {"Content-Encoding": "gzip"})
+                return self.send(200, b, "application/json; charset=utf-8")
             if u.path == "/claude-shim.js":
                 return self.send(200, (WEB / "claude-shim.js").read_bytes(), "text/javascript; charset=utf-8")
             if u.path.startswith("/_blob/"):
@@ -659,6 +674,8 @@ class H(BaseHTTPRequestHandler):
                     ct = "application/octet-stream"            # file đính kèm lạ (html, svg…): tải về, không mở trong trang
                     extra["Content-Disposition"] = 'attachment; filename="%s"' % p.name
                 return self.send(200, p.read_bytes(), ct, extra)
+            if APP and u.path == "/api/app/info":
+                return self.send(200, APP.info())
             if u.path == "/api/rev":
                 return self.send(200, {"rev": data_signature()})
             if u.path == "/api/db":
@@ -694,6 +711,16 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, {"id": doc_id})
             if u.path == "/api/assets":
                 return self.send(200, save_asset(self.body(), self.headers.get("Content-Type")))
+            if APP and u.path.startswith("/api/app/") and not MODE["public"]:
+                act = {"check": APP.check, "update": APP.update, "quit": APP.quit_app}
+                try:
+                    if u.path == "/api/app/token":
+                        return self.send(200, APP.set_token(self.jbody()))
+                    if u.path[9:] in act:
+                        return self.send(200, act[u.path[9:]]())
+                except RuntimeError as e:
+                    return self.send(422, {"error": str(e)})
+                return self.send(404, {"error": "not found"})
             if u.path.startswith("/api/kit/"):
                 tool = u.path[9:]
                 if tool not in KIT_TOOLS:

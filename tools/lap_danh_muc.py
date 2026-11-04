@@ -1,0 +1,264 @@
+#!/usr/bin/env python3
+"""Lập danh mục menu → màn hình → cột/ô nhập/nút của Edusoft.NET từ các CSV do tools/doc_aqdata.py xuất (bảng AQ…).
+
+  python tools/lap_danh_muc.py <thư mục aqdata> [--lien-ket trich-ma-view.txt] [--ra .claude/skills/giaodien-edusoft/man-hinh]
+
+Kết quả: mỗi phân hệ một file <MaPhanHe>.md (menu theo đúng đường dẫn hiện trên Edusoft + các màn hình/lưới của phân hệ)
+và index.md. Đường dẫn menu dùng tên viết tắt (VtPhanHe / VtChucNang) – đúng chữ hiện trên ribbon/cây chức năng,
+viết thẳng vào lệnh `menu:` được. «Tiêu đề lưới» = chữ sau `@` trong lệnh (AQValSetV1 1/14); cột lưới = nhãn đã đổi
+(AQValSetV1 2/14) hoặc AQDmField.Tenlabel; ô nhập trên form sửa = #MaField.
+Đây là cấu hình gốc của AQ; trường (HVNG) có thể chỉnh lại bằng các bảng H… (HFieldView2, HFieldEdit, HMenuCustom…).
+"""
+import argparse
+import collections
+import csv
+import glob
+import os
+import re
+import sys
+
+csv.field_size_limit(10 ** 9)
+
+TAT = [("NoneInsert", "Thêm"), ("NoneSua", "Sửa"), ("NoneDelete", "Xóa"), ("NoneImport", "Import"),
+       ("NoneExport", "Xuất"), ("NonePrint", "In"), ("NoneRefresh", "Nạp lại"), ("NoneDoiMa", "Đổi mã"),
+       ("NoneGopMa", "Gộp mã"), ("NoneEditL", "Sửa trên lưới"), ("NoneEditR", "Sửa bên phải"), ("NoneQuit", "Thoát")]
+KIEU_O = {"4": "ngày", "13": "nút …", "7": "chọn", "3": "số"}  # suy từ dữ liệu (NgayLapQDSV=4, MaLopMoi=13…)
+
+
+def doc(thu_muc, so):
+    f = glob.glob(os.path.join(thu_muc, f"aq.data{so}-*.csv"))
+    if not f:
+        raise SystemExit(f"Thiếu file aq.data{so}-*.csv trong {thu_muc}")
+    with open(f[0], encoding="utf-8-sig") as r:
+        return list(csv.DictReader(r))
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Lập danh mục màn hình Edusoft từ CSV bảng AQ…")
+    ap.add_argument("aqdata", help="thư mục CSV do doc_aqdata.py xuất")
+    ap.add_argument("--lien-ket", help="file do trich_source.py --ma-view xuất (lớp màn hình → MaView1)")
+    ap.add_argument("--truong", help="file tuy-chinh-truong.txt (tools/xuat_tuy_chinh_truong.sql) – áp nhãn cột/tiêu đề trường đã đổi")
+    ap.add_argument("--ra", default="man-hinh", help="thư mục kết quả")
+    ap.add_argument("--json", help="ghi thêm file JSON cho console, vd web/edusoft-catalog.json")
+    a = ap.parse_args()
+
+    ph = {r["IDPhanHe"]: r for r in doc(a.aqdata, "047")}
+    cn = {r["IDChucNang"]: r for r in doc(a.aqdata, "027")}
+    fm = {r["IDForm"]: r for r in doc(a.aqdata, "083")}
+    v1 = {r["IDView1"]: r for r in doc(a.aqdata, "046")}
+    fl = {r["IDFile"]: r for r in doc(a.aqdata, "001")}
+    fd = {r["IDField"]: r for r in doc(a.aqdata, "002")}
+    views = collections.defaultdict(list)
+    for r in doc(a.aqdata, "059"):
+        views[r["IDView1"]].append(r)
+    fv = collections.defaultdict(list)
+    for r in doc(a.aqdata, "055"):
+        fv[r["IDView"]].append(r)
+    thu_tu = {r["IDFieldView"]: r for r in doc(a.aqdata, "077")}
+    sua = {r["IDFieldView"]: r for r in doc(a.aqdata, "030")}
+    # AQValSetV/AQValSetV1: cài đặt hiển thị; (1,14) = tiêu đề lưới, (2,14) = nhãn cột đã đổi
+    vs1 = collections.defaultdict(dict)
+    for r in doc(a.aqdata, "042"):
+        vs1[r["IDValSetV"]][(r["Index1"], r["Index2"])] = r["GiaTri"]
+    tieu_de, nhan_cot = {}, {}
+    for r in doc(a.aqdata, "039"):
+        g = vs1.get(r["IDValSetV"], {})
+        if not r["IDFieldView"] and g.get(("1", "14")):
+            tieu_de[r["IDView"]] = g[("1", "14")].strip()
+        if r["IDFieldView"] and g.get(("2", "14")):
+            nhan_cot[r["IDFieldView"]] = g[("2", "14")].strip()
+    nhan_truong = {}  # nhãn trường (HVNG…) đã đổi, ưu tiên hơn AQ
+    if a.truong:
+        b = open(a.truong, "rb").read()
+        t = b.decode("utf-16") if b[:2] in (b"\xff\xfe", b"\xfe\xff") else b.decode("utf-8-sig", "replace")
+        bang, hdr = None, None
+        for dong in t.splitlines():
+            if dong.startswith("##BANG="):
+                bang, hdr = dong[7:].strip(), None
+                continue
+            if not bang or not dong.strip() or set(dong.strip()) <= set("-|"):
+                continue
+            if hdr is None:
+                hdr = dong.split("|")
+                continue
+            r = dict(zip(hdr, dong.split("|")))
+            if bang == "HValSetV" and (r.get("Index1"), r.get("Index2")) in (("2", "14"), ("1", "14")) and r.get("GiaTri"):
+                if r["Index1"] == "2" and r["IDFieldView"] != "NULL":
+                    nhan_truong[r["IDFieldView"]] = r["GiaTri"].strip()
+                elif r["IDView"] != "NULL":
+                    tieu_de[r["IDView"]] = r["GiaTri"].strip()
+    nhan_cot.update(nhan_truong)
+    nut = collections.defaultdict(list)
+    view_lop = collections.defaultdict(set)  # IDView -> lớp màn hình (lấy từ Method của nút riêng / sự kiện lưới)
+    for r in doc(a.aqdata, "053"):
+        nut[r["IDView"]].append(r)
+        if len(r["Method"].split(",")) >= 2:
+            view_lop[r["IDView"]].add(r["Method"].split(",")[1].strip())
+    for r in doc(a.aqdata, "029"):
+        if len(r["TenMethod"].split(",")) >= 2:
+            view_lop[r["IDView"]].add(r["TenMethod"].split(",")[1].strip())
+
+    # lớp màn hình → các MaView1 (từ source), để nối menu với màn hình
+    lop_view = collections.defaultdict(list)
+    ma_v1 = {r["MaView1"].lower(): r for r in v1.values()}
+    if a.lien_ket:
+        with open(a.lien_ket, encoding="utf-8") as r:
+            for dong in r:
+                p = [x.strip() for x in dong.split("|")]
+                if len(p) >= 3 and p[2].lower() in ma_v1 and p[2] not in lop_view[p[1]]:
+                    lop_view[p[1]].append(p[2])
+    for id1, vs in views.items():
+        for v in vs:
+            for lop in view_lop.get(v["IDView"], ()):
+                m = v1[id1]["MaView1"] if id1 in v1 else None
+                if m and m not in lop_view[lop]:
+                    lop_view[lop].append(m)
+
+    def ten(r):
+        return (r.get("VtChucNang") or r.get("TenChucNang") or "").strip()
+
+    def duong_dan(r):
+        p, da = [], set()
+        while r and r["IDChucNang"] not in da:
+            da.add(r["IDChucNang"])
+            p.append(ten(r))
+            cha = r["IDChucNangParent"]
+            if cha in ph:
+                return cha, "/ ".join(reversed(p))
+            r = cn.get(cha)
+        return None, "/ ".join(reversed(p))
+
+    def nhom_ph(idph):
+        return ph[idph]["MaPhanHe"] if idph in ph else "KHAC"
+
+    menu = collections.defaultdict(list)
+    for r in cn.values():
+        idph, dd = duong_dan(r)
+        f = fm.get(r["iddoituong"])
+        lop = f["FormRun"].split(",")[0].strip() if f else ""
+        menu[nhom_ph(idph)].append((dd, r, f, lop))
+
+    man = collections.defaultdict(list)
+    for r in v1.values():
+        man[nhom_ph(r["IDPHChinh"])].append(r)
+
+    def luoi_cua(r1):
+        """Các lưới của một màn hình, dạng dữ liệu (dùng cho cả .md và .json)."""
+        ra = []
+        for v in sorted(views[r1["IDView1"]], key=lambda x: x["IDView"]):
+            g = {"td": tieu_de.get(v["IDView"], ""), "bang": fl.get(v["MainTable"], {}).get("MaFile", ""),
+                 "tat": [t for k, t in TAT if v.get(k) == "1"], "cot": [], "o": [], "nut": []}
+            ds = sorted(fv[v["IDView"]], key=lambda x: (int(float(thu_tu.get(x["IDFieldView"], {}).get("TabOrder") or 9999)),
+                                                         fd.get(x["IDField"], {}).get("MaField", "")))
+            for x in ds:
+                d = fd.get(x["IDField"])
+                if not d:
+                    continue
+                nhan = nhan_cot.get(x["IDFieldView"]) or (d.get("Tenlabel") or d.get("TenField") or d["MaField"]).strip()
+                co = ("a" if x.get("Hide") == "1" else "") + ("r" if x.get("ReadOnly") == "1" else "") + \
+                     ("t" if x["IDFieldView"] in nhan_truong else "")
+                g["cot"].append([nhan, d["MaField"], KIEU_O.get(x.get("CtrlType", ""), ""), co])
+                if x["IDFieldView"] in sua:
+                    g["o"].append(d["MaField"])
+            for b in sorted(nut[v["IDView"]], key=lambda x: x.get("OrderIndex") or ""):
+                g["nut"].append([b["CommandName"], b["ToolTip"].strip(), b.get("HotKey") or ""])
+            ra.append(g)
+        return ra
+
+    def mo_ta_view(r1):
+        out = [f"### {r1['MaView1']} – {r1['TenView1'].strip()}"]
+        for i, g in enumerate(luoi_cua(r1), 1):
+            out.append(f"- Lưới {i}" + (f" «{g['td']}»" if g["td"] else "") + (f" (bảng {g['bang']})" if g["bang"] else "") +
+                       (f"; tắt: {', '.join(g['tat'])}" if g["tat"] else ""))
+            def nhan(c):
+                return f"{c[0]} [{c[1]}]" + ("(trường đổi nhãn)" if "t" in c[3] else "") + (f"{{{c[2]}}}" if c[2] else "") + \
+                       ("(chỉ đọc)" if "r" in c[3] else "")
+            cot = [nhan(c) for c in g["cot"] if "a" not in c[3]]
+            an = [nhan(c) for c in g["cot"] if "a" in c[3]]
+            if cot:
+                out.append("  - Cột: " + "; ".join(cot))
+            if an:
+                out.append("  - Cột ẩn: " + "; ".join(an))
+            if g["o"]:
+                out.append("  - Ô trên form sửa: " + ", ".join("#" + o for o in g["o"]))
+            for b in g["nut"]:
+                out.append(f"  - Nút {b[0]}: \"{b[1]}\"" + (f" ({b[2]})" if b[2] else ""))
+        return out
+
+    def chuan(x):
+        return re.sub(r"\s+", " ", (x or "").strip().lower())
+    theo_ten = collections.defaultdict(list)  # tên màn hình -> view có lưới (để đoán menu chưa nối được)
+    for r1 in v1.values():
+        if views.get(r1["IDView1"]) and r1.get("HuyView1") != "1":
+            theo_ten[chuan(r1["TenView1"])].append(r1)
+
+    def man_cua_menu(r, lop):
+        if lop_view.get(lop):
+            return lop_view[lop], False
+        doan = [x["MaView1"] for x in theo_ten.get(chuan(r.get("TenChucNang")), []) + theo_ten.get(chuan(ten(r)), [])]
+        return list(dict.fromkeys(doan)), bool(doan)
+
+    if a.json:  # dữ liệu cho trang "Màn hình Edusoft" và kiểm tra lệnh auto trên console
+        import datetime
+        import json
+        js = {"ver": datetime.date.today().isoformat(), "ph": [], "menus": [], "views": {}}
+        for x in sorted(ph.values(), key=lambda x: x["MaPhanHe"]):
+            js["ph"].append({"ma": x["MaPhanHe"], "ten": x["TenPhanHe"], "vt": x["VtPhanHe"]})
+        can = set()
+        for ma, ds in menu.items():
+            p = next((x for x in ph.values() if x["MaPhanHe"] == ma), None)
+            for dd, r, f, lop in ds:
+                if not lop:
+                    continue
+                mv, doan = man_cua_menu(r, lop)
+                can.update(mv)
+                js["menus"].append({"ma": r["MaChucNang"], "ph": ma, "path": ((p["VtPhanHe"] + "/ ") if p else "") + dd,
+                                    "lop": lop, "p1": r.get("Param1") or "", "views": mv, "doan": doan})
+        js["menus"].sort(key=lambda m: (m["ph"], m["path"].lower()))
+        for r1 in v1.values():
+            if r1.get("HuyView1") == "1" and r1["MaView1"] not in can:
+                continue
+            g = luoi_cua(r1)
+            if g:
+                js["views"][r1["MaView1"]] = {"ten": r1["TenView1"].strip(), "ph": nhom_ph(r1["IDPHChinh"]), "luoi": g}
+        with open(a.json, "w", encoding="utf-8") as w:
+            json.dump(js, w, ensure_ascii=False, separators=(",", ":"))
+        print("Đã ghi", os.path.abspath(a.json), os.path.getsize(a.json) // 1024, "KB")
+
+    os.makedirs(a.ra, exist_ok=True)
+    idx = ["# Danh mục màn hình Edusoft.NET (cấu hình gốc AQ)", "",
+           "Sinh bằng `tools/lap_danh_muc.py` từ dữ liệu hệ thống AQ.Data… của gói server. Đường dẫn menu = chữ hiện trên",
+           "ribbon/cây chức năng; «tiêu đề lưới» = chữ sau `@` (vd `click: Thêm @ Danh sách quyết định`); cột lưới = nhãn [MaField];",
+           "ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`/`date:`.",
+           "Danh mục dùng chung cho mọi trường dùng Edusoft. Trường có thể chỉnh riêng (bảng H…, code riêng) – lý do/phạm vi xem case",
+           "trên ACS; khi lệch thì tin `ui-*.txt`. Menu ghi \"đoán theo tên\" = chưa chắc, kiểm lại khi chạy.", "",
+           "| Phân hệ | Tên trên ribbon | Số menu | Số màn hình | File |", "|---|---|---|---|---|"]
+    for ma in sorted(set(menu) | set(man), key=lambda m: (m == "KHAC", m)):
+        p = next((x for x in ph.values() if x["MaPhanHe"] == ma), None)
+        ten_ph = f"{p['TenPhanHe']} ({p['VtPhanHe']})" if p else "Chưa gán phân hệ"
+        out = [f"# {ma} – {ten_ph}", "", "## Menu (đường dẫn → lớp màn hình)", ""]
+        for dd, r, f, lop in sorted(menu.get(ma, []), key=lambda x: x[0].lower()):
+            vt = (p["VtPhanHe"] + "/ ") if p else ""
+            dong = f"- `{r['MaChucNang']}` {vt}{dd}"
+            if lop:
+                dong += f" → `{lop}`"
+                if r.get("Param1"):
+                    dong += f" (Param1={r['Param1']})"
+                mv, doan = man_cua_menu(r, lop)
+                if mv:
+                    dong += (" – màn hình (đoán theo tên): " if doan else " – màn hình: ") + ", ".join(mv)
+            out.append(dong)
+        out += ["", "## Màn hình (view) và lưới", ""]
+        for r1 in sorted(man.get(ma, []), key=lambda x: x["MaView1"].lower()):
+            out += mo_ta_view(r1)
+        with open(os.path.join(a.ra, f"{ma}.md"), "w", encoding="utf-8") as w:
+            w.write("\n".join(out) + "\n")
+        idx.append(f"| {ma} | {p['VtPhanHe'] if p else ''} | {len(menu.get(ma, []))} | {len(man.get(ma, []))} | [{ma}.md]({ma}.md) |")
+    with open(os.path.join(a.ra, "index.md"), "w", encoding="utf-8") as w:
+        w.write("\n".join(idx) + "\n")
+    print("Đã ghi", os.path.abspath(a.ra))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

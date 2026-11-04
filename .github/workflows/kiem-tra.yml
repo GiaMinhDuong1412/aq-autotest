@@ -1,0 +1,19 @@
+# Kiểm tra mỗi nhánh / pull request trước khi merge vào main (cú pháp Python, JS console, kit đã nhúng).
+name: Kiểm tra
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/kiem_tra.py
+      - name: Thử đóng gói (không kèm Python nhúng)
+        run: python tools/dong_goi_app.py --phien-ban 0.0.0-thu --ra dist --khong-python
