@@ -125,7 +125,7 @@
   if (AUTH) {            // menu tài khoản: "Hồ sơ" → trang Tài khoản, "Đăng xuất" → đăng xuất thật
     document.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('#accountMenu .account-item');
-      if (!b || b.hasAttribute('data-page-go') || b.id === 'appQuitBtn') return;
+      if (!b || b.hasAttribute('data-page-go') || b.hasAttribute('data-own') || b.id === 'appQuitBtn') return;
       e.preventDefault(); e.stopImmediatePropagation();
       if (b.id === 'logoutBtn') fetch('logout', { method: 'POST', headers: { 'X-AQ': '1' } }).then(function () { location.href = 'login'; });
       else location.href = 'quan-tri';

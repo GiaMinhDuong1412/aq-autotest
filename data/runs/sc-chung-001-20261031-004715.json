@@ -1,0 +1,113 @@
+{
+ "actual": "Đăng nhập thành công, vào màn hình chính v2026.10L.00.",
+ "alts": [
+  {
+   "at": "2026-10-30T17:48:43.762965Z",
+   "note": "Không mở được Edusoft – không tìm thấy file (đúng như mong đợi)",
+   "res": "ok",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T17:47:43.664058Z",
+   "note": "Bị chặn, vẫn ở khung đăng nhập",
+   "res": "ok",
+   "shots": [
+    "3aa8b3bd0ff9d395ee95d7db0ff862d2",
+    "e6479259b4c7b0a45755f2bfee25e2e6"
+   ]
+  },
+  {
+   "at": "2026-10-30T17:47:59.574319Z",
+   "note": "Bị chặn – Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close",
+   "res": "ok",
+   "shots": [
+    "b2d28f7be068a0f4c990b472658615e8",
+    "071bffe3f4d29d50223204e141cbcf3a"
+   ]
+  },
+  {
+   "at": "2026-10-30T17:48:43.762965Z",
+   "note": "Không xảy ra trong lần chạy này",
+   "res": "skip",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T17:48:16.606903Z",
+   "note": "Bị chặn, vẫn ở khung đăng nhập",
+   "res": "ok",
+   "shots": [
+    "189355ddb8c9a4c1e2555089bb738357",
+    "3bc671aebb491f18c07033631d633c65"
+   ]
+  }
+ ],
+ "createdAt": "2026-10-30T17:49:09.173Z",
+ "current": null,
+ "dumps": [],
+ "executor": "script",
+ "finishedAt": "2026-10-30T17:48:45.765323Z",
+ "importedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "kitVersion": "2026.10.30-9",
+ "machine": "",
+ "mode": "auto",
+ "module": "CHUNG",
+ "path": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+ "process": "31/10/2026 00:47  Bắt đầu CHUNG-001 – Đăng nhập Edusoft.NET bản HVNG - Copy (script 2026.10.30-9, chế độ trình diễn)\n31/10/2026 00:47  Bước 1: ĐẠT — A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe\n31/10/2026 00:47  Bước 2: ĐẠT — đã chạy Edusoft.NET.exe\n31/10/2026 00:47  Bước 3: ĐẠT — khung đăng nhập hiển thị\n31/10/2026 00:47  Luồng con tại khung đăng nhập (trước khi đăng nhập đúng, cùng phiên Edusoft): A2, A3, A5\n31/10/2026 00:47  Luồng A2 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n31/10/2026 00:47  Luồng A2: ĐẠT — bị chặn\n31/10/2026 00:47  Luồng A3 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → khung đăng nhập đã đóng\n31/10/2026 00:47  Luồng A3: ĐẠT — bị chặn (Đóng Đăng nhập không thành công. Vui lòng kiểm tra tên đăng nhập và mật khẩu. Close)\n31/10/2026 00:48  Luồng A5 – bấm Đăng nhập: phím Enter trong ô Mật khẩu → có thông báo\n31/10/2026 00:48  Luồng A5: ĐẠT — bị chặn\n31/10/2026 00:48  Ô Tên đăng nhập: (1274,656)-(1443,670) · ô Mật khẩu: (1274,701)-(1443,715)\n31/10/2026 00:48  Bước 4: ĐẠT — nhập admindh\n31/10/2026 00:48  Bước 5: ĐẠT — nhập mật khẩu (7 ký tự)\n31/10/2026 00:48  Bấm Đăng nhập: phím Enter trong ô Mật khẩu → có thông báo\n31/10/2026 00:48  Bước 6: ĐẠT — vào màn hình chính v2026.10L.00\n31/10/2026 00:48  Luồng A1: ĐẠT — đường dẫn sai thì không mở được Edusoft\n31/10/2026 00:48  Kết thúc: Đạt",
+ "product": "edusoft",
+ "runnerId": "u_L8VJITzyuU54eIqCAl0PKQ",
+ "scenarioCode": "CHUNG-001",
+ "scenarioId": "es-tc-001",
+ "scenarioTitle": "Đăng nhập Edusoft.NET bản HVNG - Copy",
+ "startedAt": "2026-10-30T17:47:15.879929Z",
+ "status": "pass",
+ "steps": [
+  {
+   "at": "2026-10-30T17:47:17.380704Z",
+   "note": "A:\\EDUSOFT\\aq.edusoft.all\\Edusoft.NET.exe",
+   "res": "ok",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T17:47:21.995047Z",
+   "note": "Đã chạy Edusoft.NET.exe",
+   "res": "ok",
+   "shots": []
+  },
+  {
+   "at": "2026-10-30T17:47:26.682539Z",
+   "note": "Khung đăng nhập hiển thị",
+   "res": "ok",
+   "shots": [
+    "0063a436a313b1301b763c3adfab3234"
+   ]
+  },
+  {
+   "at": "2026-10-30T17:48:21.115246Z",
+   "note": "admindh",
+   "res": "ok",
+   "shots": [
+    "8cf8b33aacfaf39f7622a8b4900db911"
+   ]
+  },
+  {
+   "at": "2026-10-30T17:48:25.523162Z",
+   "note": "Đã nhập mật khẩu (7 ký tự) vào ô Mật khẩu",
+   "res": "ok",
+   "shots": [
+    "43b8b574c4df0a193b6762248169f666"
+   ]
+  },
+  {
+   "at": "2026-10-30T17:48:41.738120Z",
+   "note": "Vào màn hình chính v2026.10L.00",
+   "res": "ok",
+   "shots": [
+    "6b83e2b7487f63a2a7fbf79a4a2b2de0"
+   ]
+  }
+ ],
+ "vars": null,
+ "version": "v2026.10L.00",
+ "video": null,
+ "videoFile": null
+}

@@ -159,6 +159,92 @@ def save_asset(body, ctype):
     return {"id": aid, "url": "_blob/" + aid, "sizeBytes": len(body), "contentType": ctype or "application/octet-stream"}
 
 
+
+# ------------------------------------------------------------------ nhập / xuất toàn bộ dữ liệu (.zip)
+# Dùng để chuyển dữ liệu giữa console claude.ai, app AQ Auto Test và các máy: <collection>/<id>.json + assets/<id>.<đuôi>.
+DATA_COLS = ("scenarios", "runs", "bugs", "runners", "releases", "releaseItems", "testPlans", "settings", "members")
+
+
+def doc_time(d):
+    if not isinstance(d, dict):
+        return ""
+    return str(d.get("updatedAt") or d.get("finishedAt") or d.get("startedAt") or d.get("createdAt") or "")
+
+
+def export_zip():
+    import io, zipfile
+    buf = io.BytesIO()
+    n = 0
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("AQ-AUTO-TEST-DU-LIEU.txt", "Dữ liệu AQ Auto Test – xuất lúc %s. Nhập lại bằng menu tài khoản → Nhập dữ liệu (.zip).\r\n"
+                   % time.strftime("%Y-%m-%d %H:%M:%S"))
+        for col in DATA_COLS:
+            d = DATA / col
+            if d.is_dir():
+                for f in sorted(d.glob("*.json")):
+                    z.write(f, col + "/" + f.name)
+                    n += 1
+        if ASSETS.is_dir():
+            for f in sorted(ASSETS.iterdir()):
+                if f.is_file() and re.match(r"^[0-9a-f]{32}(\.[A-Za-z0-9]{1,8})?$", f.name):
+                    z.write(f, "assets/" + f.name, zipfile.ZIP_STORED)
+    return buf.getvalue(), n
+
+
+def import_zip(body):
+    """Gộp file .zip vào kho: bản ghi chưa có thì thêm, đã có thì giữ bản mới hơn (updatedAt); ảnh chưa có thì thêm."""
+    import io, zipfile
+    try:
+        z = zipfile.ZipFile(io.BytesIO(body))
+    except zipfile.BadZipFile:
+        raise ValueError("File không phải .zip dữ liệu AQ Auto Test")
+    st = {"added": 0, "updated": 0, "kept": 0, "assets": 0, "skipped": 0}
+    with z, LOCK:
+        for info in z.infolist():
+            if info.is_dir():
+                continue
+            parts = [x for x in info.filename.replace("\\", "/").split("/") if x]
+            if parts and parts[0] == "data":
+                parts = parts[1:]
+            if len(parts) != 2:
+                continue
+            col, name = parts
+            if col == "assets":
+                if not re.match(r"^[0-9a-f]{32}(\.[A-Za-z0-9]{1,8})?$", name) or info.file_size > 200 * 1024 * 1024:
+                    st["skipped"] += 1
+                    continue
+                if asset_path(name.split(".")[0]):
+                    continue
+                ASSETS.mkdir(parents=True, exist_ok=True)
+                tmp = ASSETS / (name + ".tmp")
+                tmp.write_bytes(z.read(info))
+                os.replace(tmp, ASSETS / name)
+                st["assets"] += 1
+                continue
+            if col not in DATA_COLS or not name.endswith(".json"):
+                st["skipped"] += 1
+                continue
+            doc_id = unfname(name[:-5])
+            try:
+                new = json.loads(z.read(info).decode("utf-8"))
+                f = doc_file(col, doc_id)
+            except (ValueError, UnicodeDecodeError):
+                st["skipped"] += 1
+                continue
+            if not isinstance(new, dict):
+                st["skipped"] += 1
+                continue
+            cur = read_doc(f) if f.exists() else None
+            if cur is None:
+                write_doc(f, new)
+                st["added"] += 1
+            elif doc_time(new) > doc_time(cur):
+                write_doc(f, new)
+                st["updated"] += 1
+            else:
+                st["kept"] += 1
+    return st
+
 # ------------------------------------------------------------------ bộ test trên máy (thay cầu nối)
 def kit_dir():
     d = (CFG.get("kitDir") or "").strip()
@@ -697,6 +783,12 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, p.read_bytes(), ct, extra)
             if APP and u.path == "/api/app/info":
                 return self.send(200, APP.info())
+            if u.path == "/api/data/export":
+                if MODE["auth"] and not users()[CUR.uid].get("admin"):
+                    return self.send(403, {"error": "Chỉ tài khoản quản trị được xuất dữ liệu"})
+                b, n = export_zip()
+                fn = "AQ-du-lieu-%s.zip" % time.strftime("%Y%m%d-%H%M")
+                return self.send(200, b, "application/zip", {"Content-Disposition": 'attachment; filename="%s"' % fn})
             if u.path == "/api/rev":
                 return self.send(200, {"rev": data_signature()})
             if u.path == "/api/db":
@@ -732,6 +824,10 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, {"id": doc_id})
             if u.path == "/api/assets":
                 return self.send(200, save_asset(self.body(), self.headers.get("Content-Type")))
+            if u.path == "/api/data/import":
+                if MODE["auth"] and not users()[CUR.uid].get("admin"):
+                    return self.send(403, {"error": "Chỉ tài khoản quản trị được nhập dữ liệu"})
+                return self.send(200, import_zip(self.body()))
             if APP and u.path.startswith("/api/app/") and not MODE["public"]:
                 if u.path == "/api/app/quit":
                     return self.send(200, APP.quit_app())
