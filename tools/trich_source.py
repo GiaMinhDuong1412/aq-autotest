@@ -20,7 +20,9 @@ import unicodedata
 import zipfile
 
 BO_QUA = re.compile(r"password|passwd|pwd\s*=|connectionstring|data source=|initial catalog|user id=|"
-                    r"server=|smtp|apikey|api_key|secret|token", re.I)
+                    r"server=|smtp|apikey|api_key|secret|token|"
+                    r"\b\w*(key|iv|salt|pass)\w*\s*=\s*(new\s+byte|\{|\"|@\")|"  # khóa mã hóa gán trực tiếp
+                    r"\"[A-Za-z0-9+/=_-]{24,}\"|0x[0-9a-f]{2}\s*,\s*0x[0-9a-f]{2}\s*,\s*0x", re.I)  # chuỗi base64 / mảng byte dài
 STR = r'"((?:[^"\\\r\n]|\\.)*)"'
 RE_DECL = re.compile(r"this\.(\w+)\s*=\s*new\s+([\w\.]+)\s*\(")
 RE_PROP = re.compile(r"this\.(\w+)\.(?:Properties\.)?(Text|Caption|NullText|NullValuePrompt|ToolTip|Hint|"
