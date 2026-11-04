@@ -33,7 +33,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   vì vậy trang/shim chỉ dùng URL **tương đối** (`api/…`, `_blob/…`, `login`), không dùng `/api/…`.
 - **App AQ Auto Test** (máy cá nhân): `app/launcher.py` + Python nhúng, mã từng phiên bản ở `phien-ban/<ver>/`, dữ liệu
   `du-lieu/`; `app_update.py` (server.py nạp khi có `AQ_APP_HOME`) cho nút cập nhật – đọc GitHub Release mới nhất (token chỉ-đọc ở
-  `rieng/app.json`), tải `aq-autotest-code-<ver>.zip`, server thoát mã 75, launcher chạy lại bản mới. **Merge vào `main` = phát hành**:
+  `rieng/app.json`), tải `aq-autotest-code-<ver>.zip`, server thoát mã 75, launcher chạy lại bản mới. Launcher mở console trong **cửa sổ app** (Edge/Chrome `--app`, hồ sơ `rieng/cua-so`), đóng cửa sổ = tắt server
+  (theo dõi tiến trình cửa sổ + trang ping `api/app/ping`, đóng gửi `api/app/bye` bằng sendBeacon). **Merge vào `main` = phát hành**:
   `.github/workflows/release.yml` chạy `tools/kiem_tra.py`, `tools/dong_goi_app.py`, tạo Release `v<yyyy.mm.dd>-<n>`;
   nhánh khác/PR chạy `kiem-tra.yml`. Trước khi merge chạy `python tools/kiem_tra.py`.
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra

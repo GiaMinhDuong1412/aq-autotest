@@ -3,7 +3,7 @@
 ## App AQ Auto Test (máy cá nhân, không cần cài Python/Git)
 - **Tải & cài**: trang Releases của repo → bản mới nhất → **`AQ-AutoTest-Setup-<phiên bản>.exe`** → bấm đúp, Next → Finish
   (không cần quyền admin, cài vào `%LOCALAPPDATA%\Programs\AQ-AutoTest`, tạo lối tắt Start Menu/Desktop, gỡ trong
-  Settings → Apps). Mở bằng lối tắt **AQ Auto Test** → console ở http://localhost:8788.
+  Settings → Apps). Mở bằng lối tắt **AQ Auto Test** → app mở trong cửa sổ riêng (Edge chế độ ứng dụng, không thanh địa chỉ/tab); đóng cửa sổ là thoát.
   Bản không cần cài: `AQ-AutoTest-<phiên bản>-windows.zip` – giải nén, bấm đúp `AQ Auto Test.cmd`.
 - **Cập nhật**: nút phiên bản ở góc trên console. Lần đầu bấm sẽ hỏi token GitHub chỉ-đọc (Fine-grained, chỉ repo này,
   Contents = Read-only) – lưu ở `rieng\app.json` trên máy. Có bản mới thì nút đổi thành "⬆ Cập nhật bản …"; bấm là tải,

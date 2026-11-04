@@ -43,6 +43,10 @@ LOCK = threading.Lock()
 REV = {"n": 0}
 MODE = {"public": False, "https": False, "base": ""}     # base: đường dẫn con khi chạy dưới IIS, vd /aqautotest
 CUR = threading.local()                         # người dùng của yêu cầu đang xử lý (chế độ --public)
+# biểu tượng cửa sổ app (Edge/Chrome chế độ --app lấy favicon làm icon cửa sổ)
+APP_ICON = ('<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'%3E'
+            '%3Crect width=\'64\' height=\'64\' rx=\'14\' fill=\'%236d28d9\'/%3E%3Ctext x=\'32\' y=\'43\' font-family=\'Arial\' '
+            'font-weight=\'bold\' font-size=\'28\' fill=\'white\' text-anchor=\'middle\'%3EAQ%3C/text%3E%3C/svg%3E">')
 
 
 # ------------------------------------------------------------------ cấu hình máy
@@ -557,9 +561,10 @@ def page_html():
     else:
         boot = "window.AQ_LOCAL={userId:%s,userName:%s};" % (js(CFG["userId"]), js(CFG.get("userName") or ""))
         if APP:
-            boot += "window.AQ_APP={version:%s};" % js(APP.VERSION)
+            boot += ("window.AQ_APP={version:%s};document.addEventListener('DOMContentLoaded',function(){document.title='AQ Auto Test';});"
+                     % js(APP.VERSION))
     head = ('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<script>%s</script><script src="claude-shim.js"></script></head><body>' % boot)
+            '%s<script>%s</script><script src="claude-shim.js"></script></head><body>' % (APP_ICON if APP and not MODE["public"] else "", boot))
     return head + html + "</body></html>"
 
 
@@ -612,7 +617,8 @@ class H(BaseHTTPRequestHandler):
                 return False
             if raw.startswith(base + "/"):
                 self.path = self.path[len(base):]
-        if self.command != "GET" and self.headers.get("X-AQ") != "1":
+        if self.command != "GET" and self.headers.get("X-AQ") != "1" and not (
+                APP and self.command == "POST" and urlparse(self.path).path == "/api/app/bye"):  # sendBeacon khi đóng cửa sổ: không gắn được header
             self.send(403, {"error": "forbidden"})
             return False
         if not MODE["public"]:
@@ -676,6 +682,8 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, p.read_bytes(), ct, extra)
             if APP and u.path == "/api/app/info":
                 return self.send(200, APP.info())
+            if APP and u.path == "/api/app/ping" and not MODE["public"]:
+                return self.send(200, APP.ping(q.get("id")))
             if u.path == "/api/rev":
                 return self.send(200, {"rev": data_signature()})
             if u.path == "/api/db":
@@ -716,6 +724,8 @@ class H(BaseHTTPRequestHandler):
                 try:
                     if u.path == "/api/app/token":
                         return self.send(200, APP.set_token(self.jbody()))
+                    if u.path == "/api/app/bye":
+                        return self.send(200, APP.bye(self.jbody()))
                     if u.path[9:] in act:
                         return self.send(200, act[u.path[9:]]())
                 except RuntimeError as e:

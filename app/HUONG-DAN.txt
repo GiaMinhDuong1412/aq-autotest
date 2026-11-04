@@ -4,7 +4,8 @@ AQ AUTO TEST – app console kịch bản test Edusoft/Netweb chạy trên máy 
 CÀI LẦN ĐẦU
 1. Tải AQ-AutoTest-Setup-<phiên bản>.exe (trang Releases của repo), bấm đúp → Next → Finish.
    Không cần quyền admin, không cần cài Python hay Git. App cài vào %LOCALAPPDATA%\Programs\AQ-AutoTest,
-   tạo lối tắt "AQ Auto Test" ở Start Menu (và Desktop nếu chọn), mở trình duyệt ở http://localhost:8788
+   tạo lối tắt "AQ Auto Test" ở Start Menu (và Desktop nếu chọn) rồi mở app trong cửa sổ riêng
+   (dùng Microsoft Edge có sẵn của Windows ở chế độ ứng dụng: không thanh địa chỉ, không tab)
    (Windows SmartScreen có thể hỏi vì bộ cài chưa ký số: bấm "More info" → "Run anyway").
    Bản không cần cài: giải nén AQ-AutoTest-<phiên bản>-windows.zip, bấm đúp "AQ Auto Test.cmd".
 2. Lần sau mở bằng lối tắt "AQ Auto Test".
@@ -19,7 +20,10 @@ CẬP NHẬT
   (bản ghi nào mới hơn theo thời gian sửa thì lấy).
 
 THOÁT APP
-- Console chạy nền. Muốn tắt hẳn: menu tài khoản (góc trên phải) → "Thoát app AQ Auto Test".
+- Đóng cửa sổ app (nút X) là thoát hẳn. Hoặc menu tài khoản (góc trên phải) → "Thoát app AQ Auto Test".
+- Mở lối tắt khi app đang chạy thì mở thêm một cửa sổ.
+- Máy không có Edge/Chrome thì app mở bằng trình duyệt mặc định (đóng tab là thoát sau khoảng 20 giây).
+  Muốn luôn mở bằng trình duyệt: thêm "window": false vào rieng\app.json.
 
 MÁY CHẠY TEST (máy có Edusoft)
 - Trang "Máy chạy thử" → nhập thư mục bộ test → "Cài bộ test vào đây" → chạy cai-dat.bat một lần (quyền admin).
@@ -30,5 +34,5 @@ THƯ MỤC
   python\                          Python nhúng
   phien-ban\<bản>\                 mã nguồn từng phiên bản (hien-tai.txt = bản đang dùng)
   du-lieu\                         dữ liệu của máy này
-  rieng\                           cấu hình riêng (cổng, token)
+  rieng\                           cấu hình riêng (cổng, token); rieng\cua-so = hồ sơ cửa sổ app
   nhat-ky.txt                      nhật ký

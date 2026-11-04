@@ -57,6 +57,7 @@ Name: "{autodesktop}\AQ Auto Test"; Filename: "{app}\python\pythonw.exe"; Parame
 Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\launcher.py"""; WorkingDir: "{app}"; Description: "Mở AQ Auto Test"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
+Type: filesandordirs; Name: "{app}\rieng\cua-so"
 Type: filesandordirs; Name: "{app}\phien-ban"
 Type: filesandordirs; Name: "{app}\python"
 Type: files; Name: "{app}\nhat-ky.txt"
