@@ -385,6 +385,12 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   `HFieldEdit`, `HFieldView2`, `HOrderView`, `HValSetV`, `HViewSpliter`, `HMenuCustom` – trỏ tới `IDView`/`IDFieldView`/`IDChucNang`
   không có bảng gốc; `HMess` là câu chữ Netweb. Thư mục cài Edusoft cũng không có file định nghĩa (file không đuôi = cache
   WebView2, `.xml` = tài liệu DevExpress, `logs/webapi.log.*` = log, **không gửi**).
+- **Bảng định nghĩa gốc** (theo `AQ.DatabaseShare/DatabaseAll.edmx` + `AQData.Business/Viewer/ViewServiceBL.cs`): nhóm `AQ…` –
+  `AQDmChucNang` (menu/chức năng), `AQDmView1`/`AQDmView0`, `AQView`, `AQViewSpliter`, `AQFieldView`/`AQFieldView2`, `AQDmField`,
+  `AQFieldEdit`, `AQTabView`/`AQTabColumn`, `AQOrderView`, `AQDmForm`, `AQDmMess`/`AQDmMessErr`, `AQMessNgonNgu`… Màn hình nạp qua
+  `ViewServiceBL.GetViewParams(idView1, subview)` → `GetSpliter`/`GetDmView`/`GetView`, dùng cùng ngữ cảnh `db` với các bảng `H…`
+  (phần trường chỉnh) – nhưng 175 bảng `AQ…` này **không có trong `sys.tables`** của bản backup trường → có thể là synonym/view
+  trỏ sang CSDL khác (chưa kiểm).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
   Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
