@@ -25,7 +25,7 @@
 - `F08.2` Đào tạo ngắn hạn/ Phúc khảo/ Xét lại kết quả phúc khảo → `Edusoft.STM._08.F009_XetLaiKQPhucKhao`
 - `F08.1` Đào tạo ngắn hạn/ Phúc khảo/ Đơn phúc khảo → `Edusoft.STM._08.F008_NhapDonXinPhucKhao` – màn hình (đoán theo tên): VIEWDIEMPHUCKHAO, VIEW_PHUCKHAO
 - `FQT` Đào tạo ngắn hạn/ Quản trị phân hệ
-- `FQT2` Đào tạo ngắn hạn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DTNH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `FQT2` Đào tạo ngắn hạn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DTNH) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `FQT0` Đào tạo ngắn hạn/ Quản trị phân hệ/ Quản lý danh mục
 - `F04` Đào tạo ngắn hạn/ Tổ chức thi
 - `F04.01` Đào tạo ngắn hạn/ Tổ chức thi/ Nhập lịch dự thi → `Edusoft.STM._02.F002_NhapLichThiMK`

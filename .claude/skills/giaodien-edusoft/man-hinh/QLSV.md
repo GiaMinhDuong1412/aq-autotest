@@ -10,7 +10,7 @@
 - `SKT.17` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Cập nhật hiện diện cuối cùng → `Edusoft.SMS.S02.UCT_CapNhatHienDienCuoi`
 - `SKT1` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ In kiểm tra quyết định vào ra
 - `SKT.18` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Kiểm tra hiện diện sinh viên → `Edusoft.SMS.S02.F003_KiemTraHienDienSV`
-- `S15.11` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Phân tích quyết định vào ra 1 sinh viên → `Edusoft.SMS.S02.UCPhanTichQD`
+- `S15.11` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Phân tích quyết định vào ra 1 sinh viên → `Edusoft.SMS.S02.UCPhanTichQD` – màn hình: SSVHK
 - `S15.10` Sinh viên/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Xem biến động danh sách sinh viên → `Edusoft.SMS.S02.UC_XemBienDongDSSV`
 - `STV` Sinh viên/ An toàn dữ liệu/ Truy vết dữ liệu
 - `STV1` Sinh viên/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký biến động quyết định 1 SV
@@ -233,21 +233,21 @@
 - `S.55.3` Sinh viên/ Quản lý sinh hoạt/ In hoạt động sinh viên → `Edusoft.SMS.S53.F002_InDSSinhHoatSV`
 - `S.55.2` Sinh viên/ Quản lý sinh hoạt/ Xem sinh hoạt theo sinh viên → `Edusoft.SMS.S53.F001_DanhSachSinhHoatSV`
 - `SQT` Sinh viên/ Quản trị phân hệ
-- `SBS` Sinh viên/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `SQT3` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `SQT2` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `SBS` Sinh viên/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `SQT3` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `SQT2` Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLSV) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `SQT1` Sinh viên/ Quản trị phân hệ/ Phân quyền phân hệ
 - `SQT0` Sinh viên/ Quản trị phân hệ/ Quản lý danh mục
 - `S1` Sinh viên/ Sinh viên học kỳ
 - `S20` Sinh viên/ Sinh viên học kỳ/ Danh mục chương trình học
-- `S13` Sinh viên/ Sinh viên học kỳ/ Danh mục lớp → `Edusoft.Base.UCT.UCT_DanhMucLop` – màn hình (đoán theo tên): SDMLOP
+- `S13` Sinh viên/ Sinh viên học kỳ/ Danh mục lớp → `Edusoft.Base.UCT.UCT_DanhMucLop` – màn hình: KLOPHK
 - `S11` Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên → `Edusoft.SMS.S20.F000_DanhMucSinhVien` – màn hình (đoán theo tên): SDMSV_, N12.10.14, View_DMSV, SDMSVDuThinh
 - `S11.1` Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên dự thính → `Edusoft.SMS.S20.F000_DanhMucSinhVien` (Param1=IsDuThinh = 1)
-- `S12` Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ → `Edusoft.SMS.S01.UCSSVHK` – màn hình: SDMSV1, VIEWRESULTIMPORT
+- `S12` Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ → `Edusoft.SMS.S01.UCSSVHK` – màn hình: SSVHK, SDMSV1, VIEWRESULTIMPORT
 - `S16` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên
 - `S16.05` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ NVQS theo hộ khẩu → `Edusoft.SMS.SBB.F021_DSSVNVQSTheoHoKhau`
 - `S16.03` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Quản lý đầu ra → `Edusoft.SMS.SBB.F018_InDSQLDauRaSV`
-- `S16.04` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Theo hộ khẩu → `Edusoft.SMS.SBB.F010_DSSVTheoHoKhau`
+- `S16.04` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Theo hộ khẩu → `Edusoft.SMS.SBB.F010_DSSVTheoHoKhau` – màn hình: NDMDB
 - `S16.01` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Theo lớp → `Edusoft.SMS.UC_InDSSV`
 - `S16.01A` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Theo lớp (chọn 1 mẫu tin) → `Edusoft.SMS.UC_InDSSV` (Param1=KTTC)
 - `S17.02` Sinh viên/ Sinh viên học kỳ/ In danh sách sinh viên/ Theo năm sinh → `Edusoft.SMS.SBB.F014_ThongKeSVTheoNamSinh`
@@ -304,7 +304,7 @@
 - `S210.2` Sinh viên/ Thông tin sinh viên/ Chuyên ngành của sinh viên/ Nhập chuyên ngành sinh viên → `Edusoft.SMS.S20.UC_NhapMaChuyenNganhSV`
 - `S210.1` Sinh viên/ Thông tin sinh viên/ Chuyên ngành của sinh viên/ Nhập chuyên ngành theo lớp → `Edusoft.SMS.S20.UC_NhapChuyenNganhSVTheoLop`
 - `S2.18` Sinh viên/ Thông tin sinh viên/ Gia hạn đào tạo sinh viên
-- `S2.18.01` Sinh viên/ Thông tin sinh viên/ Gia hạn đào tạo sinh viên/ Nhập thông tin gia hạn đào tạo → `Edusoft.SMS.S20.UCT_NhapGiaHanDaoTao`
+- `S2.18.01` Sinh viên/ Thông tin sinh viên/ Gia hạn đào tạo sinh viên/ Nhập thông tin gia hạn đào tạo → `Edusoft.SMS.S20.UCT_NhapGiaHanDaoTao` – màn hình: HDMNHHK
 - `S0` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên
 - `S2.010` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Chỉnh định thông tin lý lịch SV trên Web → `Edusoft.SMS.S20.UC_ChinhDinhThongTinLyLichSV`
 - `S2.01` Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên → `Edusoft.SMS.S20.UC_CapNhatLyLich` – màn hình: S-LYLICH

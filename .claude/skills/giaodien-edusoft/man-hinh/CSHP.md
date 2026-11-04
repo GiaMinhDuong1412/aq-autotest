@@ -7,7 +7,7 @@
 - `PAT1.04` Chính sách HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa mức đơn giá và số TCHP môn học → `Edusoft.RMS.M21._07.F003_KhoaMucSoTCHPMonHoc` – màn hình (đoán theo tên): View_KhoaMucSoTCHPMonHoc
 - `PAT1.02` Chính sách HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa/Mở khóa sổ học phí các học kỳ → `Edusoft.RMS.M21._07.F001_KhoaSoHPCacHocKy` (Param1=SP_LockHocPhi)
 - `PAT1.03` Chính sách HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa/Mở khóa đơn giá học phí → `Edusoft.RMS.M21._07.F001_KhoaSoHPCacHocKy` (Param1=SP_LockDonGiaHP)
-- `PAT1.01` Chính sách HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa/mở sổ học phí → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `PAT1.01` Chính sách HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa/mở sổ học phí → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `PKT` Chính sách HP/ An toàn dữ liệu/ Kiểm tra dữ liệu
 - `PKT0.1` Chính sách HP/ An toàn dữ liệu/ Kiểm tra dữ liệu/ In chi tiết số phải thu 1 sv → `Edusoft.RMS.M21._04.F014_ChiTietSoPhaiThu1SV`
 - `PKT0.2` Chính sách HP/ An toàn dữ liệu/ Kiểm tra dữ liệu/ Nhật ký thay đổi TCHP → `Edusoft.RMS.VTV._01.F003_NhatKyThayDoiSoTCHP`
@@ -45,7 +45,7 @@
 - `P06` Chính sách HP/ Chính sách học phí/ Phụ thu học phí
 - `P06.03` Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu sinh viên ngoài học kỳ → `Edusoft.RMS.M24._01.F005_PhuThuSVNgoaiHK` – màn hình (đoán theo tên): VIEW_PHUTHU_NGHK
 - `P06.01` Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu theo sinh viên → `Edusoft.RMS.M24._01.F001_PHUTHUHP`
-- `P06.02` Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu theo sinh viên - môn học → `Edusoft.RMS.M24._01.F002_DieuChinhHocPhiTheoMonHoc` – màn hình: MMGSVMH, VIEWDIEUCHINHHOCPHIMONHOC, VIEWRESULTIMPORT
+- `P06.02` Chính sách HP/ Chính sách học phí/ Phụ thu học phí/ Phụ thu theo sinh viên - môn học → `Edusoft.RMS.M24._01.F002_DieuChinhHocPhiTheoMonHoc` – màn hình: MPHUTHU, MMGSVMH, VIEWDIEUCHINHHOCPHIMONHOC, VIEWRESULTIMPORT
 - `P0.01` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí
 - `DM_MDMCTThu` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ DM công thức thu
 - `DM_MDMLThu` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ DM loại hình thu học phí
@@ -61,7 +61,7 @@
 - `P00.02` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thu → `Edusoft.RMS.P01._01.F001_DinhNghiaLoaiPhieuThu`
 - `P00.03` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN nhóm công thức thống kê → `Edusoft.RMS.P01._01.F003_DinhNghiaLoaiThongKe`
 - `P03` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN số TC học phí đặc biệt theo nhóm học → `Edusoft.RMS.M21._02.F007_TinChiDacBietNhomHoc`
-- `P04` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí → `Edusoft.RMS.M21._01.F001_DonGiaHocPhi`
+- `P04` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí → `Edusoft.RMS.M21._01.F001_DonGiaHocPhi` – màn hình: MDGHP
 - `P00.12` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí (danh sách) → `Edusoft.RMS.M21._01.F10_NhapDonGiaCoNamVao`
 - `P00.11` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá tài liệu theo khối → `Edusoft.RMS.M21._01.F09_DonGiaTaiLieu`
 - `P07` Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá đặc biệt  nhóm học → `Edusoft.RMS.M21._02.F003_DonGIaDacBIetNhomHoc`
@@ -83,10 +83,10 @@
 - `P23.01` Chính sách HP/ Chốt nợ học phí/ Chốt nợ học phí → `Edusoft.RMS.VTV._03.F001_ChotNoHocPhi`
 - `PBB` Chính sách HP/ Khai thác báo biểu
 - `PQT` Chính sách HP/ Quản trị phân hệ
-- `PBS` Chính sách HP/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `PBS` Chính sách HP/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
 - `PQT8` Chính sách HP/ Quản trị phân hệ/ Chính sách phân bổ khi thu không xác định phiếu báo → `Edusoft.RMS.M21._01.UCT_SettingPhanBoHP`
-- `PQT3` Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=CSHP) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `PQT2` Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=CSHP) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `PQT3` Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=CSHP) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `PQT2` Chính sách HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=CSHP) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `PQT7` Chính sách HP/ Quản trị phân hệ/ Khối lớp được cộng học phí → `Edusoft.RMS.M21._04.F000_SettingCongHP`
 - `PQT5` Chính sách HP/ Quản trị phân hệ/ Phân quyền nhập đơn giá học phí → `Edusoft.RMS.M21._01.F07_PhanQuyenQLCSHP`
 - `PQT1` Chính sách HP/ Quản trị phân hệ/ Phân quyền phân hệ

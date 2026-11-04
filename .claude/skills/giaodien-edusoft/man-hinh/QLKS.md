@@ -21,8 +21,8 @@
 - `U3.03` Kho sách/ Nhập trả/ Lưu phiếu nhập kho đã ký → `Edusoft.BSM.U3._03.F001_LuuPhieuNhapKhoDaKyTheoSoPhieuXuat`
 - `U3.01` Kho sách/ Nhập trả/ Nhập kho trả học liệu → `Edusoft.BSM.U3._01.F001_DonViNhapKhoTraHL`
 - `UQT` Kho sách/ Quản trị phân hệ
-- `UQT3` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `UQT2` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `UQT3` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `UQT2` Kho sách/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KLGD) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `UDMMH` Kho sách/ Quản trị phân hệ/ Danh mục môn học → `Edusoft.TPM.K01._002.UCT_VIewMH` (Param1=UDMMH) – màn hình: KDMMH, N12.30.10
 - `U1.05.F003` Kho sách/ Quản trị phân hệ/ In mã vạch học liệu → `Edusoft.BSM.U1._05.F003_InMaVachHL`
 - `UC4` Kho sách/ Quản trị phân hệ/ Phân quyền phân hệ

@@ -215,9 +215,9 @@
 - `D52.15` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Nhóm MH chưa tính điểm/công bố điểm → `Edusoft.RMS.M03._02.F003_NhomKhgTinhDiemCongBoDiem`
 - `D52.11` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Nhật ký cộng điểm → `Edusoft.SRM.NK.F01_NKCongDiem` – màn hình (đoán theo tên): VIEW_NK_CONG_DIEM
 - `D52.20` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Xem khối lớp cộng điểm → `Edusoft.SRM.DKTGD.DKTGD2.DKTGD2_01_ViewLopVaSetting`
-- `D52.10` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Đối tượng công bố điểm lên web → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `D52.10` Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Đối tượng công bố điểm lên web → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DQT` Quản lý điểm/ Quản trị phân hệ
-- `DBS` Quản lý điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `DBS` Quản lý điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
 - `DQT7` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký
 - `DQT7.04` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Bộ ký tên report → `AQViewers.Reports.ChuKy.UCT_BoChuKyReport` – màn hình (đoán theo tên): VBOKYREPORT
 - `DQT7.02` Quản lý điểm/ Quản trị phân hệ/ Bộ chữ ký/ Danh mục nhóm chữ ký → `AQViewers.Reports.ChuKy.UCT_NhomChuKy` – màn hình: HDMNHCHUKY
@@ -230,8 +230,8 @@
 - `DQT5.07` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa phổ điểm in → `Edusoft.SRM.KTTC.F37_DDMPhoDiem`
 - `DQT5.05` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa thành phần con môn học → `Edusoft.SRM.DHT.F04_MonHocCoTPCon`
 - `DQT5.01` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định phân hệ/ Định nghĩa tên nhãn điểm chung → `Edusoft.SRM.DHT.F01_DinhNghiaTenDiem`
-- `DQT4` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `DQT2` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `DQT4` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `DQT2` Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DIEM) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DQT11` Quản lý điểm/ Quản trị phân hệ/ Giải phóng bớt bảng ghi điểm quá cũ → `Edusoft.SRM.DHT.F07_XoaBangGhiDiemCu`
 - `DQT9` Quản lý điểm/ Quản trị phân hệ/ Phiên bản report
 - `DQT9.01` Quản lý điểm/ Quản trị phân hệ/ Phiên bản report/ Phiên bản report → `AQViewers.Reports.Vesions.DNVersionReport`

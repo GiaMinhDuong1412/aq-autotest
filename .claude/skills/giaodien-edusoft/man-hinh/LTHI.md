@@ -63,7 +63,7 @@
 - `L45.02` Tổ chức thi/ Hoạt động coi thi/ In thù lao cán bộ coi thi/ Theo tổ thi → `Edusoft.EPM.L4._04.F001_TheoToThi` (Param1=LDKCOITHI)
 - `L45.01` Tổ chức thi/ Hoạt động coi thi/ In thù lao cán bộ coi thi/ Theo đợt thi → `Edusoft.EPM.L4._04.F003_TheoDotThi` (Param1=LDKCOITHI)
 - `L49` Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách coi thi vãng lai → `Edusoft.EPM.L49.F001_DSCBCoiThiVL`
-- `L47` Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi → `Edusoft.EPM.L4._07.F001_NhapDanhSachCanBoCoiThi`
+- `L47` Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi → `Edusoft.EPM.L4._07.F001_NhapDanhSachCanBoCoiThi` – màn hình: LNVCoiThiDotThi
 - `L42` Tổ chức thi/ Hoạt động coi thi/ Nhập SL cán bộ coi thi cho tổ thi → `Edusoft.EPM.L4._02.F001_NhapSLCanBoCoiThiChoToThi`
 - `L43` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi → `Edusoft.EPM.L4._03.F001_PhanCongCoiThi` – màn hình (đoán theo tên): LCAPNHATPHONG
 - `L48` Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác
@@ -136,13 +136,13 @@
 - `L34.01` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi tự động → `Edusoft.EPM.L41._04.F001_PhanToThi`
 - `L34.10` Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Xem/Sửa tổ thi không in bảng ghi điểm → `Edusoft.EPM.L41._04.F007_ToThiKhongInBangGhiDiem` – màn hình (đoán theo tên): VW_TOTHI_KHGIN_BGD
 - `LQT` Tổ chức thi/ Quản trị phân hệ
-- `LBS` Tổ chức thi/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `LQT3` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `LQT2` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `LBS` Tổ chức thi/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `LQT3` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `LQT2` Tổ chức thi/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=LTHI) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `LQT1` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi
 - `LQY2` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền phân công coi thi
 - `LQY1` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền quản lý kỳ thi
-- `LQY3` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền xếp  theo nhóm thi → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `LQY3` Tổ chức thi/ Quản trị phân hệ/ Phân quyền xếp lịch thi/ Phân quyền xếp  theo nhóm thi → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `LQT0` Tổ chức thi/ Quản trị phân hệ/ Quản lý danh mục
 - `LQT01` Tổ chức thi/ Quản trị phân hệ/ Quản lý danh mục/ Định nghĩa trạm cho môn thi → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-7672439207751004728)
 - `L8` Tổ chức thi/ Tài nguyên và ràng buộc

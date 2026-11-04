@@ -35,7 +35,7 @@
 - `J20.10.06` Vật tư/ Quản lý biên bản/ Tài sản/ Đình chỉ sử dụng tài sản → `Edusoft.JMS.J20._10.F006_DinhChiSDTS`
 - `J20.10.03` Vật tư/ Quản lý biên bản/ Tài sản/ Định giá lại tài sản → `Edusoft.JMS.J20._10.F003_DinhGiaTaiSan`
 - `JQT` Vật tư/ Quản trị phân hệ
-- `JQT2` Vật tư/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLVT) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `JQT2` Vật tư/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLVT) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `JQT1` Vật tư/ Quản trị phân hệ/ Gán số đếm bắt đầu → `AQViewers.HTQL.UCT_GanSoDem` – màn hình (đoán theo tên): HBODEMCT, HBODEMCT_GAN
 - `JQT0` Vật tư/ Quản trị phân hệ/ Quản lý danh mục
 - `J10` Vật tư/ Thông tin chung

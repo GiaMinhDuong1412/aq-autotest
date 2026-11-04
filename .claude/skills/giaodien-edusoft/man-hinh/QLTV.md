@@ -4,9 +4,9 @@
 
 - `VAT` Thu/chi HP/ An toàn dữ liệu
 - `VAT1` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu
-- `VAT13` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi sau ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `VAT11` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi toàn học kỳ → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `VAT12` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi trước ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VAT13` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi sau ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VAT11` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi toàn học kỳ → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VAT12` Thu/chi HP/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Khóa sổ nhập phiếu thu/chi trước ngày → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `VTV` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu
 - `VTV7` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký thu vãng lai 1 sinh viên → `Edusoft.RMS.VTV._01.F006_NhatKyThuVL`
 - `VTV2` Thu/chi HP/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký hủy ĐKMH đã thu HP → `Edusoft.RMS.VTV._01.F002_NhatKyHuyDKHPTheoSV`
@@ -120,8 +120,8 @@
 - `V90.01.02` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Phải thu vãng lai → `Edusoft.RMS.P09.F73_PhaiThuVL` – màn hình (đoán theo tên): View_PhaiThuVL
 - `V90.01.07` Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Xuất hóa đơn điện tử vãng lai → `Edusoft.RMS.M21._05.F024_XuatHDDT` (Param1=-6005115067793939617)
 - `VQT` Thu/chi HP/ Quản trị phân hệ
-- `VQT3` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `VQT2` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VQT3` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `VQT2` Thu/chi HP/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTV) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `VQT1` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ
 - `VQY1` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập học phí
 - `PQT6` Thu/chi HP/ Quản trị phân hệ/ Phân quyền phân hệ/ Phân quyền nhập phiếu thu theo user → `Edusoft.RMS.P06._01.F001_PhanQuyenNhapPhieuThuTheoUser` – màn hình (đoán theo tên): PQT6

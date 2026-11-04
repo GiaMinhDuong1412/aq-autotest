@@ -31,7 +31,7 @@
 - `Z0` Khảo sát đánh giá/ Phân quyền form đánh giá theo HK
 - `Z0.01` Khảo sát đánh giá/ Phân quyền form đánh giá theo HK/ Phân quyền khai thác form đánh giá theo học kỳ
 - `ZQT` Khảo sát đánh giá/ Quản trị phân hệ
-- `ZQT0` Khảo sát đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KSDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `ZQT0` Khảo sát đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=KSDG) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `Z4` Khảo sát đánh giá/ Trả lời đánh giá
 - `Z4.03` Khảo sát đánh giá/ Trả lời đánh giá/ Kiểm tra trả lời
 - `Z4.03.01` Khảo sát đánh giá/ Trả lời đánh giá/ Kiểm tra trả lời/ In danh sách đáp viên chưa trả lời

@@ -7,14 +7,14 @@
 - `Y01.02.02` Đánh giá GD/ Chỉnh định/ Bộ tiêu chí đánh giá trường → `Edusoft.TQM.Setting.Frm_BoTieuChiDGChoDoiTuong` (Param1=SY_BoThongSoDG_TR)
 - `Y01.02.03` Đánh giá GD/ Chỉnh định/ Thời gian đánh giá → `Edusoft.TQM.Setting.Frm_NgayDanhGia` (Param1=SY_ThoiGianDanhGiaGD)
 - `Y01.03` Đánh giá GD/ Danh sách không đánh giá
-- `Y01.03.02` Đánh giá GD/ Danh sách không đánh giá/ Giảng viên không đánh giá → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `Y01.03.01` Đánh giá GD/ Danh sách không đánh giá/ Nhóm học phần không đánh giá → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `Y01.03.02` Đánh giá GD/ Danh sách không đánh giá/ Giảng viên không đánh giá → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `Y01.03.01` Đánh giá GD/ Danh sách không đánh giá/ Nhóm học phần không đánh giá → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `Y03` Đánh giá GD/ In kết quả
 - `YBB` Đánh giá GD/ Khai thác báo biểu
 - `YQT` Đánh giá GD/ Quản trị phân hệ
-- `YBS` Đánh giá GD/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `YQT3` Đánh giá GD/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DGGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `YQT2` Đánh giá GD/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DGGD) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `YBS` Đánh giá GD/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `YQT3` Đánh giá GD/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DGGD) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `YQT2` Đánh giá GD/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DGGD) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `YQT0` Đánh giá GD/ Quản trị phân hệ/ Quản lý danh mục
 - `YQT4` Đánh giá GD/ Quản trị phân hệ/ Xóa kết quả đánh giá giảng viên → `Edusoft.TQM.Form.Frm_XoaDanhGiaGV`
 - `YQT5` Đánh giá GD/ Quản trị phân hệ/ Xóa kết quả đánh giá trường → `Edusoft.TQM.Form.Frm_XoaDanhGiaTruong`

@@ -12,8 +12,8 @@
 - `E06.1` Đánh giá/ Kiểm tra dữ liệu/ Viên chức không đủ điểm tối thiểu → `Edusoft.EVA.Report.N8003_DanhGia_ChuaDatDiemToiThieu`
 - `E06.3` Đánh giá/ Kiểm tra dữ liệu/ Đơn vị vượt mức điểm thưởng → `Edusoft.EVA.Report.N8004_DanhGia_DonViVuotMucDiemQuyDinh`
 - `EQT` Đánh giá/ Quản trị phân hệ
-- `EQT3` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `EQT2` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `EQT3` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `EQT2` Đánh giá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLDG) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `EQT1` Đánh giá/ Quản trị phân hệ/ Phân quyền phân hệ
 - `EQT0` Đánh giá/ Quản trị phân hệ/ Quản lý danh mục
 - `EHD` Đánh giá/ Xem file hướng dẫn

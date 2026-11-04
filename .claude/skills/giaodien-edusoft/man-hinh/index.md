@@ -3,7 +3,8 @@
 Sinh bằng `tools/lap_danh_muc.py` từ dữ liệu hệ thống AQ.Data… của gói server. Đường dẫn menu = chữ hiện trên
 ribbon/cây chức năng; «tiêu đề lưới» = chữ sau `@` (vd `click: Thêm @ Danh sách quyết định`); cột lưới = nhãn [MaField];
 ô trên form sửa = `#MaField` dùng cho `type:`/`choose:`/`date:`.
-Trường có thể chỉnh lại (ẩn cột, đổi nhãn, đổi menu) bằng bảng H… trong CSDL trường – khi lệch thì tin `ui-*.txt`.
+Danh mục dùng chung cho mọi trường dùng Edusoft. Trường có thể chỉnh riêng (bảng H…, code riêng) – lý do/phạm vi xem case
+trên ACS; khi lệch thì tin `ui-*.txt`. Menu ghi "đoán theo tên" = chưa chắc, kiểm lại khi chạy.
 
 | Phân hệ | Tên trên ribbon | Số menu | Số màn hình | File |
 |---|---|---|---|---|

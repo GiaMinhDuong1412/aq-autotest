@@ -16,6 +16,9 @@ Thứ tự ưu tiên khi có mâu thuẫn: **Bài học người dùng dạy (m�
 nút tắt Thêm/Sửa/Xóa…), ô trên form sửa (`#MaField` cho `type:`/`choose:`/`date:`), nút riêng (tooltip, phím tắt).
 Tra bằng Grep theo tên menu/màn hình **trước khi viết `auto`**. Đây là cấu hình gốc AQ – HVNG có thể ẩn/đổi nhãn bằng bảng
 `H…`; khi lệch với `ui-*.txt` thì tin `ui-*.txt` và ghi bài học.
+**Nguyên tắc (người dùng dạy 2026-11-04):** Edusoft dùng chung cho **nhiều trường**; HVNG chỉ có một số code/cấu hình riêng.
+Kịch bản và lệnh `auto` đi theo **hướng chung** (danh mục gốc AQ). Phần hiệu chỉnh riêng của từng trường phải đọc **case trên
+ACS** để hiểu (lý do, phạm vi) – không tự suy từ chỗ lệch; khi gặp màn hình HVNG khác danh mục thì ghi lại và hỏi/tra case ACS.
 
 ## 1. Bố cục cửa sổ chính (người dùng dạy – tài liệu "Giao diện Edusoft", ảnh `anh/01-giao-dien-chinh.png`)
 

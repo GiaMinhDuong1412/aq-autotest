@@ -86,7 +86,7 @@
 - `T2` Tuyển sinh/ Nhập liệu hồ sơ
 - `T2.00` Tuyển sinh/ Nhập liệu hồ sơ/ Bộ đếm hồ sơ thí sinh và xét tuyển NV → `Edusoft.CMS.T8.T8_00_NhapBoDemPBTT` (Param1=MADSTS)
 - `T2.07` Tuyển sinh/ Nhập liệu hồ sơ/ Chuẩn hóa họ tên thí sinh → `Edusoft.Base.B03.UCT_ConvertTenDayDu` (Param1=TDSTS)
-- `T2.02` Tuyển sinh/ Nhập liệu hồ sơ/ File hồ sơ thí sinh của BGD → `Edusoft.CMS.T2.T2_02_XemSuaThongTinTuyenSinhBoGiaoDuc`
+- `T2.02` Tuyển sinh/ Nhập liệu hồ sơ/ File hồ sơ thí sinh của BGD → `Edusoft.CMS.T2.T2_02_XemSuaThongTinTuyenSinhBoGiaoDuc` – màn hình: KTOHOC, KTOLOP
 - `T2.00_1` Tuyển sinh/ Nhập liệu hồ sơ/ Gán giá trị bộ đếm → `Edusoft.Base.UCT.UCT_CapNhatBoDemDoiTuong` (Param1=QLTS)
 - `T2.06` Tuyển sinh/ Nhập liệu hồ sơ/ Import ảnh thí sinh → `Edusoft.SMS.S20.UC_ImportAnhcs` (Param1=TDSTS)
 - `T2.01` Tuyển sinh/ Nhập liệu hồ sơ/ In kiểm tra chung → `Edusoft.Base.UCT.UCT_CallViewByForm`
@@ -136,9 +136,9 @@
 - `T11.01` Tuyển sinh/ Phúc Tra/ Nhập hồ sơ xin phúc tra → `Edusoft.CMS.T11.F001_NhapHSPhucTra`
 - `T11.05` Tuyển sinh/ Phúc Tra/ Nhập điểm phúc tra → `Edusoft.CMS.T11.F002_NhapDiemPhucTra`
 - `TQT` Tuyển sinh/ Quản trị phân hệ
-- `TBS` Tuyển sinh/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `TQT3` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `TQT2` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `TBS` Tuyển sinh/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `TQT3` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `TQT2` Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTS) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `TQT.04` Tuyển sinh/ Quản trị phân hệ/ Gán số bắt đầu cho bộ đếm chung phân hệ → `Edusoft.Base.UCT.UCT_CallViewByForm`
 - `TQT0` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục
 - `TQT0.2` Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục dân tộc

@@ -10,7 +10,7 @@
 - `B3.03` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số chuyên môn
 - `B3.03.1` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số chuyên môn/ Danh mục hệ số chuyên môn
 - `B3.03.2` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số chuyên môn/ Danh sách chuẩn bị nâng hệ số → `Edusoft.HRM.N20._01.uctF001_DSChuanBiNangPC`
-- `B3.03.3` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số chuyên môn/ Quyết định nâng hệ số → `Edusoft.HRM.N20._01.uctF003_QuyetDinhNangPhuCap`
+- `B3.03.3` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số chuyên môn/ Quyết định nâng hệ số → `Edusoft.HRM.N20._01.uctF003_QuyetDinhNangPhuCap` – màn hình: NQTPC
 - `B3.04` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số cường độ lao động
 - `B3.04.1` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số cường độ lao động/ Danh mục phụ cấp hệ số CĐLĐ
 - `B3.04.2` Lương/ Biến động phụ cấp viên chức/ Phụ cấp hệ số cường độ lao động/ Danh sách chuẩn bị nâng hệ số → `Edusoft.PMS.B3._04.F005_DSChuanBiNangHSCuongDoLaoDong`
@@ -59,7 +59,7 @@
 - `B2.02.5` Lương/ Biến động thông tin viên chức/ Chức vụ/ Quyết định thôi chức vụ → `Edusoft.HRM.N7._01.uctF001_QuyetDinhChucVu`
 - `B2.05` Lương/ Biến động thông tin viên chức/ Học hàm
 - `B2.05.1` Lương/ Biến động thông tin viên chức/ Học hàm/ Danh mục học hàm
-- `B2.05.2` Lương/ Biến động thông tin viên chức/ Học hàm/ Quyết định học hàm → `Edusoft.HRM.N4._01.uctF001_QuyetDinhHocHam`
+- `B2.05.2` Lương/ Biến động thông tin viên chức/ Học hàm/ Quyết định học hàm → `Edusoft.HRM.N4._01.uctF001_QuyetDinhHocHam` – màn hình: NQTHH
 - `B2.06` Lương/ Biến động thông tin viên chức/ Học vị - bậc học
 - `B2.06.1` Lương/ Biến động thông tin viên chức/ Học vị - bậc học/ Danh mục học vị - bậc học
 - `B2.06.2` Lương/ Biến động thông tin viên chức/ Học vị - bậc học/ Quá trình thay đổi học vị - bậc → `Edusoft.HRM.DaoTao.N7._01.F002_YeuCauDaoTao_DangDanhSach` (Param1=-5266603522796839085)
@@ -72,7 +72,7 @@
 - `B2.01.3` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ Danh mục ngạch bậc
 - `B2.01.2` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ Danh mục nhóm ngạch
 - `B2.01.4` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ DS chuẩn bị nâng lương tháng → `Edusoft.HRM.N2._01.uctF003_DSChuanBiNangLuong`
-- `B2.01.5` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ Quyết định nâng lương → `Edusoft.HRM.N2._01.uctF001_QuyetDinhNangLuong`
+- `B2.01.5` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ Quyết định nâng lương → `Edusoft.HRM.N2._01.uctF001_QuyetDinhNangLuong` – màn hình: NDMNGACH
 - `B2.01.6` Lương/ Biến động thông tin viên chức/ Ngạch bậc lương/ Thống kê biến động lương của cán bộ → `Edusoft.HRM.Luong.N2._01.uctF005_ThongKeBienDongLuong`
 - `B5` Lương/ Biến động trong tháng
 - `B5.01` Lương/ Biến động trong tháng/ Biến động cộng tiền vào lương
@@ -101,7 +101,7 @@
 - `B37` Lương/ Biến động viên chức trong tháng
 - `B37.4` Lương/ Biến động viên chức trong tháng/ Chốt biến động danh sách viên chức trong tháng → `Edusoft.PMS.B17.F001_BangChamCong`
 - `B37.2` Lương/ Biến động viên chức trong tháng/ Viên chức học tập nước ngoài → `Edusoft.PMS.B37.F002_QuaTrinhHocNuocNgoai` (Param1=-5860556063445360326)
-- `B37.3` Lương/ Biến động viên chức trong tháng/ Viên chức nghỉ phép → `Edusoft.PMS.B37.F003_QuaTrinhNghiPhep`
+- `B37.3` Lương/ Biến động viên chức trong tháng/ Viên chức nghỉ phép → `Edusoft.PMS.B37.F003_QuaTrinhNghiPhep` – màn hình: NQTNP
 - `B37.1` Lương/ Biến động viên chức trong tháng/ Viên chức nghỉ thai sản → `Edusoft.PMS.B37.F001_DanhSachVienChucNghiThai`
 - `B16` Lương/ Báo biểu bảo hiểm, thai sản
 - `B16.08` Lương/ Báo biểu bảo hiểm, thai sản/ Danh sách thanh toán ốm đau, thai sản, dưỡng PHSK → `Edusoft.HRM.Report.N9001_DS_ThaiSanOmDau` (Param1=-8640050319680514525)
@@ -161,7 +161,7 @@
 - `B15.12.2` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm
 - `B15.12.2.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Kỳ I → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-6102902761942276911)
 - `B15.12.2.2` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Kỳ II → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-4615974350205806012)
-- `B15.12.2.4` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Số tháng xác định chi thưởng cuối năm → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `B15.12.2.4` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Số tháng xác định chi thưởng cuối năm → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `B15.12.2.3` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Chi thưởng cuối năm/ Tổng hợp → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-8193036808318137188)
 - `B15.12.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Thu nhập tăng thêm cuối năm
 - `B15.12.1.1` Lương/ Báo biểu theo quý/năm/ Báo biểu năm/ Thu nhập tăng thêm cuối năm/ Kỳ I → `Edusoft.PMS.Reports.B10._01.RB10_01_1_LuongThangKy1` (Param1=-4629269179755408785)
@@ -266,7 +266,7 @@
 - `B4.04.6` Lương/ Hoạt động viên chức/ Học tập nước ngoài/ Quá trình học tập nước ngoài → `Edusoft.HRM.DaoTao.N7._01.F002_YeuCauDaoTao_DangDanhSach` (Param1=-6615588103210780908) – màn hình (đoán theo tên): NHOCTAPNUOCNGOAI
 - `B4.03` Lương/ Hoạt động viên chức/ Nghỉ phép
 - `B4.03.1` Lương/ Hoạt động viên chức/ Nghỉ phép/ Danh mục loại nghỉ phép
-- `B4.03.2` Lương/ Hoạt động viên chức/ Nghỉ phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep` (Param1=-7309510854432398976) – màn hình (đoán theo tên): NQTNP, NQTNP_Luong, NQTNP_Luong_DHDK
+- `B4.03.2` Lương/ Hoạt động viên chức/ Nghỉ phép/ Quá trình nghỉ phép → `Edusoft.HRM.N8._01.uctF001_QuaTrinhNghiPhep` (Param1=-7309510854432398976) – màn hình: NQTNP
 - `B4.01` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK
 - `B4.01.1` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Danh mục ốm đau,thai sản,  dưỡng PHSK → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-4835189236267716153)
 - `B4.01.2` Lương/ Hoạt động viên chức/ Thai sản, ốm đau, dưỡng PHSK/ Danh sách nghỉ ốm đau, thai sản, PHSK → `Edusoft.HRM.ThaiSan.UCT_N9` (Param1=-8480407280534284872)
@@ -278,7 +278,7 @@
 - `B33` Lương/ Lương chức danh
 - `B33.1` Lương/ Lương chức danh/ Danh mục hệ số lương chức danh
 - `B33.6` Lương/ Lương chức danh/ Danh sách chuẩn bị nâng lương → `Edusoft.HRM.N20._01.uctF001_DSChuanBiNangPC` (Param1=LuongChucDanh)
-- `B33.2` Lương/ Lương chức danh/ Lương chức danh viên chức → `Edusoft.HRM.N20._01.uctF003_QuyetDinhNangPhuCap`
+- `B33.2` Lương/ Lương chức danh/ Lương chức danh viên chức → `Edusoft.HRM.N20._01.uctF003_QuyetDinhNangPhuCap` – màn hình: NQTPC
 - `B33.4` Lương/ Lương chức danh/ Viên chức ngoại lệ → `Edusoft.PMS.B8.UCT_VCNgoaiLe` (Param1=HeSoLuong)
 - `B33.3` Lương/ Lương chức danh/ Đơn giá 1 HS lương chức danh → `Edusoft.PMS.B9.UCT_BienDongThongSoTinhLuong` (Param1=LuongChucDanh)
 - `B45` Lương/ Lương khuyến khích
@@ -313,7 +313,7 @@
 - `B44` Lương/ Ngạch lương
 - `B44.1` Lương/ Ngạch lương/ Danh mục ngạch lương
 - `B44.6` Lương/ Ngạch lương/ Danh sách chuẩn bị nâng lương → `Edusoft.HRM.N2._01.uctF007_DSChuanBiNangLuong_DHDK` (Param1=LuongCoBan)
-- `B44.3` Lương/ Ngạch lương/ Danh sách ngạch lương viên chức → `Edusoft.HRM.N2._01.uctF006_QuyetDinhNangLuong_DHDK`
+- `B44.3` Lương/ Ngạch lương/ Danh sách ngạch lương viên chức → `Edusoft.HRM.N2._01.uctF006_QuyetDinhNangLuong_DHDK` – màn hình: NDMNGACH
 - `B33.5` Lương/ Ngạch lương/ Viên chức ngoại lệ → `Edusoft.PMS.B8.UCT_VCNgoaiLe` (Param1=LuongCoBan)
 - `B31` Lương/ Phiếu lương cá nhân
 - `B15.12.5` Lương/ Phiếu lương cá nhân/ Theo năm → `Edusoft.PMS.Reports.B10._01.RB10_01_5_PhieuLuongNV` (Param1=NAM)
@@ -353,9 +353,9 @@
 - `B8.07` Lương/ Thuế thu nhập cá nhân/ Viên chức đóng thuế TNCN ngoại lệ → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6519839755300813832)
 - `B5.06` Lương/ Thuế thu nhập cá nhân/ Viên chức được hoàn thuế TNCN → `Edusoft.PMS.B5.F011_HoanThueTNCN`
 - `B1` Lương/ Thông tin viên chức
-- `B1.06` Lương/ Thông tin viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich` – màn hình (đoán theo tên): QLSV_ViewCapNhatLyLichNew_DHHN, QLSV_ViewCapNhatLyLichNew, S-LYLICHCopy, VIEW_NDMNV_NTC2, S-LYLICH, VIEW_NDMNV, QLSV_ViewCapNhatLyLichNew_DHMOTX, VIEW_NDMNV_BVTB, QLSV_ViewCapNhatLyLichNew_DHSG
+- `B1.06` Lương/ Thông tin viên chức/ Cập nhật lý lịch → `Edusoft.HRM.N5.UCT_CapNhatLyLich` – màn hình: NQHGD
 - `B1.02` Lương/ Thông tin viên chức/ Danh mục viên chức → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-5750344788265313293)
-- `B1.07` Lương/ Thông tin viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0) – màn hình: NDMNV
+- `B1.07` Lương/ Thông tin viên chức/ Danh mục viên chức trong trường → `Edusoft.HRM.NhanVien.UCT_DanhMucNhanVien` (Param1=(IsNVNgoai is null or IsNVNgoai =0) and HienDienNV = 0) – màn hình: NDMUV, NDMNV, NNVHK
 - `B1.01` Lương/ Thông tin viên chức/ Danh mục đơn vị
 - `B1.08` Lương/ Thông tin viên chức/ Thay đổi thông tin ngân hàng → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-6980682235439743509)
 - `B1.04` Lương/ Thông tin viên chức/ Thông tin bảo hiểm y tế

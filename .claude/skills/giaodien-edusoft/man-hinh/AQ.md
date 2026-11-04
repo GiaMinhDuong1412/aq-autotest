@@ -18,7 +18,7 @@
 - `AQ04_8` AQ Tool/ Database tools/ Database tools/ Tạo file danh mục tự động → `AQViewers.GenDM.GenFileDM` – màn hình: GENFILEDM
 - `AQ05_9` AQ Tool/ Database tools/ Database tools/ Tạo view danh mục tự động → `AQViewers.AutoCreateViewDanhMuc`
 - `AQ03_8` AQ Tool/ Database tools/ Database tools/ Update file field → `AQViewers.GenDM.UpdateFileField` – màn hình: AQUPDATEDB, GENFILEDM
-- `AQ03_9` AQ Tool/ Database tools/ Database tools/ Xuất file AQ → `AQViewers.Settings.ExportFileAQ`
+- `AQ03_9` AQ Tool/ Database tools/ Database tools/ Xuất file AQ → `AQViewers.Settings.ExportFileAQ` – màn hình: AQADDINTRUONG, AQVALUESETTINGDF, AQVALUESETTINGDF1, AQVALUESETTINGDV, AQDMTRUONG, AQSETTINGNODEDV
 - `AQ03_7` AQ Tool/ Database tools/ Database tools/ Xóa field từ file import → `AQViewers.GenDM.DeleteFieldOnDatabase` – màn hình: AQUPDATEDB
 - `AQ04.FF` AQ Tool/ Database tools/ File field
 - `AQ04.FF.06` AQ Tool/ Database tools/ File field/ Chuyển đổi chuỗi Unicode tổ hợp qua dựng sẵn → `AQViewers.UniCode.UCT_UniCode` (Param1=0) – màn hình (đoán theo tên): VIEWCONVERTUNICODE
@@ -43,10 +43,10 @@
 - `AQ01` AQ Tool/ Dữ liệu mẫu
 - `AQ09` AQ Tool/ Function tools
 - `AQ09_6` AQ Tool/ Function tools/ Chức năng và bộ đếm → `AQViewers.ThongTinTruong.UCT_ChucNangBoDem` – màn hình (đoán theo tên): AQCNBODEM
-- `AQ09_2` AQ Tool/ Function tools/ Danh mục chức năng → `AQViewers.ThongTinTruong.UCT_DanhMucChucNang` – màn hình (đoán theo tên): AQDMCHUCNANG_OLD
+- `AQ09_2` AQ Tool/ Function tools/ Danh mục chức năng → `AQViewers.ThongTinTruong.UCT_DanhMucChucNang` – màn hình: AQDMFORM, AQDMFILE
 - `AQ09_5` AQ Tool/ Function tools/ Danh mục form
 - `AQ09_4` AQ Tool/ Function tools/ Danh mục nhóm form
-- `AQ09_1` AQ Tool/ Function tools/ Danh mục phân hệ → `AQViewers.ThongTinTruong.UCT_PhanHeAddin_Min` – màn hình: AQDMPHANHE
+- `AQ09_1` AQ Tool/ Function tools/ Danh mục phân hệ → `AQViewers.ThongTinTruong.UCT_PhanHeAddin_Min` – màn hình: AQDMADDIN, AQDMPHANHE
 - `AQ09_8` AQ Tool/ Function tools/ Danh sách file hướng dẫn youtube
 - `AQ09_7` AQ Tool/ Function tools/ Dịch cây chức năng → `AQViewers.Language.UCT_DichCayChucNang`
 - `AQ02` AQ Tool/ Report tools
@@ -56,9 +56,9 @@
 - `AQ02_2` AQ Tool/ Report tools/ Danh sách source của báo biểu → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-8922989166438148684)
 - `AQ02_5` AQ Tool/ Report tools/ Dịch nội dung report → `AQViewers.Language.UCT_DichNoiDungReport` – màn hình (đoán theo tên): AQValSetR1NgonNgu
 - `AQ06` AQ Tool/ Sale tools
-- `AQ06_4` AQ Tool/ Sale tools/ Cấp addin cho trường → `AQViewers.ThongTinTruong.UCT_TruongAddin`
+- `AQ06_4` AQ Tool/ Sale tools/ Cấp addin cho trường → `AQViewers.ThongTinTruong.UCT_TruongAddin` – màn hình: AQDMADDIN
 - `AQ06_3` AQ Tool/ Sale tools/ Cấp key cho trường → `Edusoft.Base.UCT.UCT_CallViewByForm` (Param1=-9215703877547750161)
-- `AQ09_3` AQ Tool/ Sale tools/ Danh mục addin → `AQViewers.ThongTinTruong.UCT_AddinToiThieu` – màn hình (đoán theo tên): AQDMADDIN_OLD
+- `AQ09_3` AQ Tool/ Sale tools/ Danh mục addin → `AQViewers.ThongTinTruong.UCT_AddinToiThieu` – màn hình: AQDMADDIN
 - `AQ06_1` AQ Tool/ Sale tools/ Danh mục trường sử dụng
 - `AQ06_2` AQ Tool/ Sale tools/ Danh sách addin & trường
 - `AQ08` AQ Tool/ Setting tools

@@ -15,9 +15,9 @@
 - `DAT1.01` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa nhập điểm học kỳ hiện tại theo phân cấp sinh viên → `Edusoft.SRM.DAT.DAT1.DAT1_01_DienSV`
 - `DAT1.04` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học
 - `DAT1.04.3` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo nhóm tổ cụ thể → `Edusoft.SRM.DAT.DAT3.DAT3_1_KhoaSoNhomToHoc`
-- `DAT1.04.1` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `DAT1.04.1` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa học kỳ theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DAT1.04.4` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo nhóm tổ cụ thể → `Edusoft.SRM.DAT.DAT3.DAT3_1_KhoaSoNhomToHoc` (Param1=KyThi)
-- `DAT1.04.2` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `DAT1.04.2` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Khóa sổ nhập điểm theo nhóm/tổ học/ Khóa kỳ thi theo đối tượng học → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `DAT1.07` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Nhập điểm theo lớp kế hoạch → `Edusoft.SRM.DAT.DAT1.DAT1_07_LopKeHoach`
 - `DAT1.13` Quản lý nhập điểm/ An toàn dữ liệu/ Khóa và mở khóa dữ liệu/ Đồng bộ điểm hoãn thi đã nhập → `Edusoft.SRM.DQT._03.F06_DongBoHTDaNhap`
 - `RKT` Quản lý nhập điểm/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ
@@ -173,8 +173,8 @@
 - `D41.01` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập đơn xin phúc khảo → `Edusoft.SRM.D4.D41.D41_NhapDonPhucKhao` – màn hình: VIEWDIEMPHUCKHAO, VIEWDONPHUCKHAO
 - `D41.08` Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Thống kê tình hình phúc khảo theo năm học → `Edusoft.SRM.D4.D45.D45_03_ThongKeTinhHinhPhucKhao`
 - `RQT` Quản lý nhập điểm/ Quản trị phân hệ
-- `RBS` Quản lý nhập điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `RQT3` Quản lý nhập điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DMKT) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `RBS` Quản lý nhập điểm/ Quản trị phân hệ/ Bổ sung dữ liệu học kỳ mang sang → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `RQT3` Quản lý nhập điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DMKT) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `RQT2` Quản lý nhập điểm/ Quản trị phân hệ/ Khóa sổ điểm
 - `RQT2.04` Quản lý nhập điểm/ Quản trị phân hệ/ Khóa sổ điểm/ Khóa sổ toàn khóa → `Edusoft.SRM.DQT._02.F04_KhoaSoToanKhoa`
 - `RQT5` Quản lý nhập điểm/ Quản trị phân hệ/ Nhập điểm online

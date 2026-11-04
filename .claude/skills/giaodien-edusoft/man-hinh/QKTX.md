@@ -127,8 +127,8 @@
 - `X01.02.82` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Đăng ký lưu trú KTX (web)
 - `X01.02.83` Ký túc xá/ Quản lý đăng ký lưu trú/ Đăng ký lưu trú/ Đăng ký rời nội trú KTX (web)
 - `XQT` Ký túc xá/ Quản trị phân hệ
-- `XQT3` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `XQT2` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `XQT3` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `XQT2` Ký túc xá/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QKTX) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `XQT1` Ký túc xá/ Quản trị phân hệ/ Phân quyền phân hệ
 - `X30.20.01` Ký túc xá/ Quản trị phân hệ/ Quy định thời gian tự động tính → `Edusoft.MDS.X02._02.X02_02_01_CauHinhTinhHoaDon`
 - `XQT0` Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục

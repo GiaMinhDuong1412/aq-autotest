@@ -90,8 +90,8 @@
 - `O12.02.01` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách file word mẫu/ Đề tài khoa học sinh viên → `Edusoft.SRT.O12.F002_InFileWordDTKHSV`
 - `O12.01` NC khoa học/ Quản lý hồ sơ đề tài/ Danh sách hồ sơ → `Edusoft.SRT.O12.F001_DanhSachHoSoNCKH` – màn hình (đoán theo tên): X2010.02.HS
 - `OQT` NC khoa học/ Quản trị phân hệ
-- `OQT3` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `OQT2` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `OQT3` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `OQT2` NC khoa học/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=NCKH) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `OQT1` NC khoa học/ Quản trị phân hệ/ Phân quyền phân hệ
 - `OQT0` NC khoa học/ Quản trị phân hệ/ Quản lý danh mục
 - `O4` NC khoa học/ Thẩm định kinh phí

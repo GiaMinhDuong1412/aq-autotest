@@ -93,8 +93,8 @@
 - `MR3.R018` Đăng ký MH/ Quản lý báo biểu/ Thống kê đăng ký học lại/ Theo danh sách ký nhận đăng ký học lại → `Edusoft.RMS.MK2._01.F021_DSSVKyNhanDKHocLai`
 - `MR3.F047` Đăng ký MH/ Quản lý báo biểu/ Thống kê đăng ký học lại/ Thống kê danh sách đăng ký học lại → `Edusoft.RMS.MK2._01.F047_TKDangKyHocLaiTheoMH`
 - `MQT` Đăng ký MH/ Quản trị phân hệ
-- `MQT3` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `MQT2` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `MQT3` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `MQT2` Đăng ký MH/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=DKMH) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `MQT1` Đăng ký MH/ Quản trị phân hệ/ Phân quyền phân hệ
 - `MQT0` Đăng ký MH/ Quản trị phân hệ/ Quản lý danh mục
 - `MQT4` Đăng ký MH/ Quản trị phân hệ/ Tài khoản không ràng buộc ĐKMH → `Edusoft.RMS.MAT._02.F002_UsertVuotKTDK`
@@ -131,7 +131,7 @@
 - `M10.30` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Sinh viên không kiểm tra nợ học phí khi xem điểm → `Edusoft.RMS.M03._02.F009_SVKhongCamNoHPXemDiem`
 - `M10.60` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thống kê GV duyệt KQDK online → `Edusoft.RMS.M10._09.UCT_ThongKeKQDKDaDuyet`
 - `M10.23` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký lớp theo ngày giờ → `Edusoft.RMS.M03._02.UCT_ThoiGianDKMHNgayGioTheoLop`
-- `M10.01` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký online → `Edusoft.RMS.M01._01.F010_ThoiGianDKMH`
+- `M10.01` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký online → `Edusoft.RMS.M01._01.F010_ThoiGianDKMH` – màn hình: MDGHP
 - `M10.21` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo lớp → `Edusoft.RMS.M03._02.UCT_QuyDinhThoiGianDKMH_TheoLop` (Param1=-7051175944677112350)
 - `M10.22` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo sinh viên → `Edusoft.RMS.M01._01.F010_ThoiGianDKMH_SV`
 - `M10.44` Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Định nghĩa lớp ràng buộc nhóm ĐK → `Edusoft.RMS.M10._08.F002_NhomMHBBDK_Lop`

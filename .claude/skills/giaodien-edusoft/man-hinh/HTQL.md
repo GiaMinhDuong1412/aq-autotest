@@ -27,15 +27,15 @@
 - `H69` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản lý bảng điểm & giấy CN → `AQViewers.UserSecurity.HQY.F005_PQCapBangDiemGCN`
 - `H61_A` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ → `AQViewers.UserSecurity.HQY.F002_PhanQuyenPhanHe` – màn hình (đoán theo tên): HADMINPH
 - `H61` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ → `AQViewers.UserSecurity.HQY.F002_PhanQuyenAdmin` – màn hình (đoán theo tên): HADMINPH
-- `H62` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo chức năng → `AQViewers.UserSecurity.HQY.F002_PQChucNang` – màn hình: HUSERRIGHT, HUSERMEMBER
-- `H67` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo người dùng → `AQViewers.UserSecurity.HQY.F003_PQChucNangTheoUser` – màn hình: HUSERPQ
+- `H62` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo chức năng → `AQViewers.UserSecurity.HQY.F002_PQChucNang` – màn hình: HRIGHT, HUSERRIGHT, HUSERMEMBER
+- `H67` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo người dùng → `AQViewers.UserSecurity.HQY.F003_PQChucNangTheoUser` – màn hình: HRIGHT, HUSERPQ
 - `H61.00` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền user theo bậc hệ → `AQViewers.UserSecurity.HQY.F006_PhanQuyenUserBH` – màn hình (đoán theo tên): QLHT_ViewUserPQ_BH
 - `H70` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền user theo giấy chứng nhận → `AQViewers.UserSecurity.HQY.F007_PhanQuyenUserGCN`
 - `H70A` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền user theo đơn vị phân cấp → `AQViewers.UserSecurity.HQY.F008_PhanQuyenUserDVQL`
 - `H68` Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Ủy quyền quản trị phân hệ → `AQViewers.UserSecurity.HQY.F004_UyQuyenUser`
 - `H0` Hệ thống/ Quản lý người dùng/ Quản lý người dùng.
 - `H05` Hệ thống/ Quản lý người dùng/ Quản lý người dùng./ Danh sách admin đơn vị phân cấp
-- `H01` Hệ thống/ Quản lý người dùng/ Quản lý người dùng./ Danh sách tài khoản & nhóm tài khoản → `AQViewers.UserSecurity.HQT.F001_Users`
+- `H01` Hệ thống/ Quản lý người dùng/ Quản lý người dùng./ Danh sách tài khoản & nhóm tài khoản → `AQViewers.UserSecurity.HQT.F001_Users` – màn hình: HUSER
 - `H03` Hệ thống/ Quản lý người dùng/ Quản lý người dùng./ Liên kết tài khoản Net và viên chức → `Edusoft.Base.B04.B04_02_MapUserNhanVien`
 - `H04` Hệ thống/ Quản lý người dùng/ Quản lý người dùng./ Ủy quyền user chỉnh định biến → `Edusoft.Base.UCT.UCT_SettingUser`
 - `H60(1)` Hệ thống/ Quản lý người dùng/ Định nghĩa file được xóa → `AQViewers.UserSecurity.F006_DeleteFileDinhKem`
@@ -58,11 +58,11 @@
 - `H56.02` Hệ thống/ Quản trị hệ thống/ Chỉnh định báo biểu hệ thống/ Báo biểu chung → `AQReporters.Reports.AQTemplateReportEditor` – màn hình (đoán theo tên): AQVIEWCHINHDINHREPORT
 - `H55.04` Hệ thống/ Quản trị hệ thống/ Chỉnh định báo biểu hệ thống/ Mã/tên báo biểu → `AQReporters.Reports.ChinhDinhMaTenReport` – màn hình: VIEWCHINHDINHMATENBB
 - `H55.06` Hệ thống/ Quản trị hệ thống/ Chỉnh định báo biểu hệ thống/ Mẫu in mặc định theo user → `AQViewers.HTQL.UCT_MauInMacDinhUser`
-- `H55.05` Hệ thống/ Quản trị hệ thống/ Chỉnh định báo biểu hệ thống/ Phòng ban quản lý phân hệ → `AQReporters.Reports.ChinhDinhPhongBanPhanHe`
+- `H55.05` Hệ thống/ Quản trị hệ thống/ Chỉnh định báo biểu hệ thống/ Phòng ban quản lý phân hệ → `AQReporters.Reports.ChinhDinhPhongBanPhanHe` – màn hình: HDMPhanHe
 - `H56` Hệ thống/ Quản trị hệ thống/ Chỉnh định giao diện hệ thống
 - `H56.01` Hệ thống/ Quản trị hệ thống/ Chỉnh định giao diện hệ thống/ Giao diện chung → `AQViewers.Viewer.AQTemplateEditor2`
 - `H54` Hệ thống/ Quản trị hệ thống/ Chỉnh định giao diện hệ thống/ Mã/tên giao diện → `AQViewers.Viewer.ChinhDinhMaTenView` – màn hình: VIEWCHINHDINHMATENVIEW
-- `H51` Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống → `AQViewers.Settings.UC_SettingsTool1` – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `H51` Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống → `AQViewers.Settings.UC_SettingsTool1` – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `H56.03` Hệ thống/ Quản trị hệ thống/ Chỉnh định thông tin cột → `AQViewers.Viewer.TemplateFieldsEditor` – màn hình: VIEWSETTINGFIELDCHUNG
 - `H58` Hệ thống/ Quản trị hệ thống/ Chỉnh định thông tin đơn vị → `AQViewers.ThongTinTruong.UC_ThongTinTruong` – màn hình: AQDMADDIN1, HTTKHACHHANG
 - `H57` Hệ thống/ Quản trị hệ thống/ Chỉnh định tiến trình tự động
@@ -74,7 +74,7 @@
 - `H56.04` Hệ thống/ Quản trị hệ thống/ Gán số đếm bắt đầu → `AQViewers.HTQL.UCT_GanSoDem` – màn hình (đoán theo tên): HBODEMCT, HBODEMCT_GAN
 - `H5.1` Hệ thống/ Quản trị hệ thống/ Gửi Email đến sinh viên
 - `H5.1.1` Hệ thống/ Quản trị hệ thống/ Gửi Email đến sinh viên/ Danh mục template gửi mail
-- `H5.1.2` Hệ thống/ Quản trị hệ thống/ Gửi Email đến sinh viên/ Gửi email đến sinh viên → `Edusoft.SMS.S51.F001_GuiMailSinhVien`
+- `H5.1.2` Hệ thống/ Quản trị hệ thống/ Gửi Email đến sinh viên/ Gửi email đến sinh viên → `Edusoft.SMS.S51.F001_GuiMailSinhVien` – màn hình: KDMMH
 - `HQT0` Hệ thống/ Quản trị hệ thống/ Quản lý danh mục
 - `H52` Hệ thống/ Quản trị hệ thống/ Quản lý danh sách học kỳ
 - `H52.02` Hệ thống/ Quản trị hệ thống/ Quản lý danh sách học kỳ/ Danh sách lớp học kỳ
@@ -94,11 +94,11 @@
 - `H101.6` Hệ thống/ Quản trị NetWEB/ Yêu cầu SV xác nhận năm học mới → `Edusoft.SMS.UCT.UCT_YeuCauXacNhanSV`
 - `H101.2` Hệ thống/ Quản trị NetWEB/ Đồng bộ thông tin người dùng → `AQViewers.NetWEB.UCT_DongBoTTNguoiDung`
 - `H3` Hệ thống/ Thông tin học kỳ
-- `H33` Hệ thống/ Thông tin học kỳ/ Bổ sung dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` (Param1=1) – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `H33` Hệ thống/ Thông tin học kỳ/ Bổ sung dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` (Param1=1) – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
 - `H30` Hệ thống/ Thông tin học kỳ/ Danh mục chương trình học → `AQViewers.UserSecurity.HQT.F00_DanhMucDaHocKy` – màn hình (đoán theo tên): SDMCTHOC
-- `H31` Hệ thống/ Thông tin học kỳ/ Danh mục năm học học kỳ → `Edusoft.NET.HocKy.ViewDSNHHK`
-- `H32` Hệ thống/ Thông tin học kỳ/ Khởi tạo dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
-- `H34` Hệ thống/ Thông tin học kỳ/ Xóa dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: VIEWFILEHK, VIEWKHOITAOHK
+- `H31` Hệ thống/ Thông tin học kỳ/ Danh mục năm học học kỳ → `Edusoft.NET.HocKy.ViewDSNHHK` – màn hình: HDMNHHK
+- `H32` Hệ thống/ Thông tin học kỳ/ Khởi tạo dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
+- `H34` Hệ thống/ Thông tin học kỳ/ Xóa dữ liệu học kỳ → `Edusoft.NET.HocKy.KhoiTaoHocKy` – màn hình: SSVHK, NNVHK, VIEWFILEHK, VIEWKHOITAOHK
 - `H90` Hệ thống/ Tiện ích người sử dụng
 - `H93` Hệ thống/ Tiện ích người sử dụng/ Chuyển đổi chuỗi Unicode tổ hợp qua dựng sẵn → `AQViewers.UniCode.UCT_UniCode` (Param1=1) – màn hình (đoán theo tên): VIEWCONVERTUNICODE
 - `H90.13` Hệ thống/ Tiện ích người sử dụng/ Chuyển đổi đầu số điện thoại sinh viên → `Edusoft.Base.B03.UCT_ConvertTenDayDu` (Param1=DC_DT1LLSV)
@@ -109,7 +109,7 @@
 - `TestView` Hệ thống/ Tiện ích người sử dụng/ Giao diện & báo biểu/ Tìm hiểu giao diện mẫu → `AQViewers.Viewer.TestView` – màn hình: VIEWTEST
 - `H92` Hệ thống/ Tiện ích người sử dụng/ Gửi dữ liệu phân tích CST
 - `H97` Hệ thống/ Tiện ích người sử dụng/ Import file report → `AQViewers.Reports.UCT_ImportSubFileReport`
-- `H96` Hệ thống/ Tiện ích người sử dụng/ In cấu trúc file EduSoft.NET → `Edusoft.Base.UCT.UCT_PrintCauTrucEdu`
+- `H96` Hệ thống/ Tiện ích người sử dụng/ In cấu trúc file EduSoft.NET → `Edusoft.Base.UCT.UCT_PrintCauTrucEdu` – màn hình: AQDMFILE
 - `H98A` Hệ thống/ Tiện ích người sử dụng/ Kiểm tra thông tin họ tên sinh viên → `Edusoft.Base.B03.UCT_CheckFullName`
 - `H98` Hệ thống/ Tiện ích người sử dụng/ Kiểm tra thông tin ngày sinh sinh viên → `Edusoft.Base.B03.UCT_CheckNgaySinh`
 - `H90.12` Hệ thống/ Tiện ích người sử dụng/ Phiên bản report → `AQViewers.Reports.UCT_ViewPhienBanReport` (Param1=TAT_CA)
@@ -119,7 +119,7 @@
 - `H91` Hệ thống/ Tiện ích người sử dụng/ Định nghĩa lệnh gõ tắt menu
 - `H99` Hệ thống/ Trao đổi dữ liệu với EduWEB
 - `H99.05` Hệ thống/ Trao đổi dữ liệu với EduWEB/ Nhật ký tải dữ liệu từ EduWEB → `Edusoft.NET.EduWeb.H99_5_NhatKyTaiDuLieuWeb`
-- `H99.2` Hệ thống/ Trao đổi dữ liệu với EduWEB/ Tải dữ liệu đăng ký từ EduWEB → `Edusoft.NET.H99_2_ChuyenDuLieuWebVeNet`
+- `H99.2` Hệ thống/ Trao đổi dữ liệu với EduWEB/ Tải dữ liệu đăng ký từ EduWEB → `Edusoft.NET.H99_2_ChuyenDuLieuWebVeNet` – màn hình: SDIEMDANH, SSVDIEMDANH, SGCNSV
 - `H99.1` Hệ thống/ Trao đổi dữ liệu với EduWEB/ Xuất dữ liệu lên EduWEB → `Edusoft.NET.H99_1_XuatDuLieuWeb` – màn hình: FILE
 - `HHD` Hệ thống/ Xem file hướng dẫn
 - `HHD1` Hệ thống/ Xem file hướng dẫn/ Tài liệu hướng dẫn EduSoft.NET → `Edusoft.STM._09.AQ_10_FileHuongDan` (Param1=-5432170343908474316)

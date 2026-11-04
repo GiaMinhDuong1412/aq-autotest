@@ -12,7 +12,7 @@
 - `QAT1.04` Tốt nghiệp/ An toàn dữ liệu/ Khóa & mở khóa dữ liệu/ Xét tiền tốt nghiệp
 - `Q7` Tốt nghiệp/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ
 - `Q7.01` Tốt nghiệp/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ Kiểm tra SV qua môn học → `Edusoft.SRM.QAT._06.F001_CheckPassMon`
-- `Q7.00` Tốt nghiệp/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ Xem thông tin quyết định vào ra 1 sinh viên → `Edusoft.SMS.S02.UCPhanTichQD` (Param1=DHNL)
+- `Q7.00` Tốt nghiệp/ An toàn dữ liệu/ Kiểm tra dữ liệu phân hệ/ Xem thông tin quyết định vào ra 1 sinh viên → `Edusoft.SMS.S02.UCPhanTichQD` (Param1=DHNL) – màn hình: SSVHK
 - `QTV` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu
 - `QTV5.2` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký danh sách xét TN 1 SV → `Edusoft.SRM.QAT._01.F05_NhatKyTaoDSXetTN1SV`
 - `QTV7` Tốt nghiệp/ An toàn dữ liệu/ Truy vết dữ liệu/ Nhật ký môn bắt buộc → `Edusoft.SRM.QAT._01.F03_NhatKyMonTN` – màn hình (đoán theo tên): VIEW_LOG_MONBB
@@ -94,8 +94,8 @@
 - `QNCS.01` Tốt nghiệp/ Nghiên cứu sinh/ Đăng ký đề tài NCS
 - `QNCS.1.01` Tốt nghiệp/ Nghiên cứu sinh/ Đăng ký đề tài NCS/ Danh sánh đăng ký đề tài NCS → `Edusoft.SRM.QLV._02.F001_DSSVDangKyDeCuong` (Param1=NCS)
 - `QQT` Tốt nghiệp/ Quản trị phân hệ
-- `QQT3` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
-- `QQT2` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `QQT3` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số học kỳ → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `QQT2` Tốt nghiệp/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLTN) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `QQT1` Tốt nghiệp/ Quản trị phân hệ/ Phân quyền quản lý phân hệ
 - `QQT0` Tốt nghiệp/ Quản trị phân hệ/ Quản lý danh mục
 - `QHD` Tốt nghiệp/ Xem file hướng dẫn

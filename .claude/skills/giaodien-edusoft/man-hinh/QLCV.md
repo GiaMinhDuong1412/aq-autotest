@@ -21,7 +21,7 @@
 - `C40.10.11` Công văn/ Quyết định/ Quyết định ĐHQG → `Edusoft.DMS.C40._10.C10_QT_QDDHQuocGia`
 - `CBB` Công văn/ Quản lý báo biểu
 - `CQT` Công văn/ Quản trị phân hệ
-- `CQT2` Công văn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLCV) – màn hình: VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
+- `CQT2` Công văn/ Quản trị phân hệ/ Chỉnh định thông số toàn cục → `AQViewers.Settings.UC_SettingsTool1` (Param1=QLCV) – màn hình: KDMQC, VIEWSETTINGTREE, HVALUESETTING, VIEWSETTING
 - `CQT0` Công văn/ Quản trị phân hệ/ Quản lý danh mục
 - `C3` Công văn/ Thông tin chung
 - `C3.01` Công văn/ Thông tin chung/ Danh mục
