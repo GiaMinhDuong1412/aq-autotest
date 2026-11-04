@@ -242,6 +242,8 @@ def main():
     ap.add_argument("--trong", help="với --tim: chỉ tìm trong file có đường dẫn chứa chuỗi này (vd AQViewers/Viewer); "
                                        "khi đó tìm cả .edmx/.sql")
     ap.add_argument("--dong", help="in một đoạn dòng của file, dạng \"đường/dẫn/File.cs:635-940\" (dòng giống khóa/mật khẩu bị che)")
+    ap.add_argument("--ma-view", help="file aqdata\\aq.data046-AQDMView1.csv: tìm lớp màn hình nào dùng view nào "
+                                       "(chuỗi MaView1 / số IDView1 trong *.cs) -> trich-ma-view.txt")
     ap.add_argument("--toi-da", type=int, default=30, help="số form tối đa khi trích (mặc định 30)")
     ap.add_argument("--tat-ca", action="store_true", help="trích mọi module, mỗi module 1 file, nén thành trich-tat-ca.zip")
     ap.add_argument("--ca-cong-cu", action="store_true", help="--tat-ca gồm cả Setup/Test/Tool… (mặc định bỏ)")
@@ -252,7 +254,33 @@ def main():
     out = []
     if a.tat_ca:
         return trich_tat_ca(nguon, a.ra or "trich-tat-ca", a.ca_cong_cu)
-    if a.dong:
+    if a.ma_view:
+        import csv
+        csv.field_size_limit(10 ** 9)
+        with open(a.ma_view, encoding="utf-8-sig") as r:
+            v1 = list(csv.DictReader(r))
+        ma = {x["MaView1"].strip().lower(): x["MaView1"].strip() for x in v1 if x.get("MaView1", "").strip()}
+        so = {x["IDView1"]: x["MaView1"].strip() for x in v1}
+        re_so = re.compile(r"-?\d{15,19}")
+        for p in nguon.ds:
+            if not p.lower().endswith(".cs"):
+                continue
+            src = nguon.doc(p) or ""
+            ns = re.search(r"^\s*namespace\s+([\w\.]+)", src, re.M)
+            cl = re.search(r"\bclass\s+(\w+)", src)
+            lop = (ns.group(1) + "." if ns else "") + (cl.group(1) if cl else os.path.basename(p).split(".")[0])
+            thay = []
+            for lit in RE_LIT.findall(src):
+                k = lit.strip().lower()
+                if k in ma and ma[k] not in thay:
+                    thay.append(ma[k])
+            for n in re_so.findall(src):
+                if n in so and so[n] not in thay:
+                    thay.append(so[n])
+            for t in thay:
+                out.append(f"{p} | {lop} | {t}")
+        ten = "trich-ma-view.txt"
+    elif a.dong:
         m = re.match(r"(.+):(\d+)-(\d+)$", a.dong.strip())
         if not m:
             raise SystemExit('--dong cần dạng "đường/dẫn/File.cs:635-940"')
