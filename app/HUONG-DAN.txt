@@ -2,10 +2,12 @@ AQ AUTO TEST – app console kịch bản test Edusoft/Netweb chạy trên máy 
 ==========================================================================
 
 CÀI LẦN ĐẦU
-1. Giải nén AQ-AutoTest-<phiên bản>-windows.zip vào một thư mục cố định, vd D:\AQ-AutoTest
-   (không cần cài Python hay Git – Python nhúng nằm sẵn trong thư mục python\).
-2. Bấm đúp "AQ Auto Test.cmd". Lần đầu app tạo lối tắt "AQ Auto Test" trên Desktop và mở trình duyệt
-   ở http://localhost:8788
+1. Tải AQ-AutoTest-Setup-<phiên bản>.exe (trang Releases của repo), bấm đúp → Next → Finish.
+   Không cần quyền admin, không cần cài Python hay Git. App cài vào %LOCALAPPDATA%\Programs\AQ-AutoTest,
+   tạo lối tắt "AQ Auto Test" ở Start Menu (và Desktop nếu chọn), mở trình duyệt ở http://localhost:8788
+   (Windows SmartScreen có thể hỏi vì bộ cài chưa ký số: bấm "More info" → "Run anyway").
+   Bản không cần cài: giải nén AQ-AutoTest-<phiên bản>-windows.zip, bấm đúp "AQ Auto Test.cmd".
+2. Lần sau mở bằng lối tắt "AQ Auto Test".
 3. Muốn dùng nút Cập nhật: trên console bấm "Phiên bản app" (góc trên) → dán token GitHub chỉ-đọc
    (github.com → Settings → Developer settings → Fine-grained tokens → chọn repo aq-autotest,
    Permissions → Contents = Read-only). Token lưu ở rieng\app.json trên máy này.

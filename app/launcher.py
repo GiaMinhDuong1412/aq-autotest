@@ -46,14 +46,20 @@ def cau_hinh():
     return c
 
 
+def khoa(v):
+    return [int(x) if x.isdigit() else 0 for x in v.replace("-", ".").split(".")]
+
+
 def ban_hien_tai():
+    """Bản ghi trong hien-tai.txt, nhưng nếu có bản mới hơn đã cài đủ (vd cài đè bằng Setup.exe mới / bản tự cập nhật) thì lấy bản mới nhất."""
+    ds = sorted((p.name for p in VERS.iterdir() if p.is_dir() and not p.name.endswith(".tmp") and (p / "server.py").exists()),
+                key=khoa) if VERS.is_dir() else []
     try:
         v = (VERS / "hien-tai.txt").read_text("utf-8").strip()
-        if v and (VERS / v / "server.py").exists():
-            return v
     except OSError:
-        pass
-    ds = sorted((p.name for p in VERS.iterdir() if (p / "server.py").exists()), key=lambda v: [int(x) if x.isdigit() else 0 for x in v.replace("-", ".").split(".")]) if VERS.is_dir() else []
+        v = ""
+    if v in ds and khoa(v) >= khoa(ds[-1]):
+        return v
     return ds[-1] if ds else None
 
 
@@ -96,7 +102,7 @@ def gop_du_lieu(seed):
 def tao_loi_tat():
     """Lần đầu: tạo lối tắt "AQ Auto Test" trên Desktop (bỏ qua nếu không được)."""
     dau = RIENG / "da-tao-loi-tat"
-    if dau.exists() or os.name != "nt":
+    if dau.exists() or os.name != "nt" or list(HOME.glob("unins*.exe")):  # cài bằng Setup.exe thì bộ cài đã tạo lối tắt
         return
     cmd = HOME / "AQ Auto Test.cmd"
     ps = ("$s=(New-Object -ComObject WScript.Shell).CreateShortcut([Environment]::GetFolderPath('Desktop')+'\\AQ Auto Test.lnk');"

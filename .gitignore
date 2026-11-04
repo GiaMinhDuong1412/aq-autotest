@@ -28,3 +28,4 @@ aqdata*.zip
 trich-ma-view.txt
 tuy-chinh-truong.txt
 dist/
+build/
