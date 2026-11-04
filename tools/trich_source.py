@@ -8,6 +8,7 @@ Cách dùng (PowerShell, trong thư mục repo aq-autotest):
   python tools\\trich_source.py D:\\Source.NET.zip --liet-ke                  -> trich-danh-sach-form.txt
   python tools\\trich_source.py D:\\Source.NET.zip "sinh vien hoc ky"         -> trich-sinh-vien-hoc-ky.txt
   python tools\\trich_source.py D:\\Source.NET.zip --tim "Xóa dữ liệu thành công"
+  python tools\\trich_source.py D:\\Source.NET.zip --tim "class SourceViewBase" --trong AQViewers
   python tools\\trich_source.py D:\\Source.NET.zip --tat-ca                    -> trich-tat-ca.zip (mọi module)
 Từ khóa so khớp không dấu, không phân biệt hoa thường, với đường dẫn file, tên lớp hoặc tiêu đề form.
 """
@@ -65,8 +66,9 @@ class Nguon:
         else:
             self.zip = zipfile.ZipFile(duong_dan)
             self.ds = [n for n in self.zip.namelist() if not n.endswith("/")]
+        self.tat_ca = [p for p in self.ds if p.lower().endswith((".cs", ".resx", ".edmx", ".sql"))]
         self.ds = [p for p in self.ds if p.lower().endswith((".cs", ".resx"))]
-        self.co = set(self.ds)
+        self.co = set(self.tat_ca)
 
     def doc(self, p):
         if p not in self.co:
@@ -233,6 +235,8 @@ def main():
     ap.add_argument("tu_khoa", nargs="*", help="từ khóa tên form / tiêu đề (không dấu cũng được)")
     ap.add_argument("--liet-ke", action="store_true", help="liệt kê mọi form: file | lớp | tiêu đề")
     ap.add_argument("--tim", help="tìm chuỗi (câu thông báo, caption) trong toàn bộ *.cs / *.resx")
+    ap.add_argument("--trong", help="với --tim: chỉ tìm trong file có đường dẫn chứa chuỗi này (vd AQViewers/Viewer); "
+                                       "khi đó tìm cả .edmx/.sql")
     ap.add_argument("--toi-da", type=int, default=30, help="số form tối đa khi trích (mặc định 30)")
     ap.add_argument("--tat-ca", action="store_true", help="trích mọi module, mỗi module 1 file, nén thành trich-tat-ca.zip")
     ap.add_argument("--ca-cong-cu", action="store_true", help="--tat-ca gồm cả Setup/Test/Tool… (mặc định bỏ)")
@@ -245,10 +249,17 @@ def main():
         return trich_tat_ca(nguon, a.ra or "trich-tat-ca", a.ca_cong_cu)
     if a.tim:
         k = khong_dau(a.tim)
-        for p in nguon.ds:
+        loc = a.trong.replace("\\", "/").lower() if a.trong else ""
+        for p in (nguon.tat_ca if loc else nguon.ds):
+            if loc and loc not in p.lower():
+                continue
             for i, dong in enumerate((nguon.doc(p) or "").splitlines(), 1):
                 if k in khong_dau(dong) and not BO_QUA.search(dong):
                     out.append(f"{p}:{i}: {dong.strip()[:300]}")
+                    if len(out) >= 20000:
+                        break
+        if len(out) >= 20000:
+            out.append("!! quá 20 000 dòng – thu hẹp bằng --trong hoặc từ khóa dài hơn")
         ten = "trich-tim-" + re.sub(r"\W+", "-", k).strip("-")[:40] + ".txt"
     elif a.liet_ke or not a.tu_khoa:
         for p in sorted(nguon.designers()):
