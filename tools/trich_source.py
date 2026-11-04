@@ -256,29 +256,58 @@ def main():
         return trich_tat_ca(nguon, a.ra or "trich-tat-ca", a.ca_cong_cu)
     if a.ma_view:
         import csv
+        import glob
         csv.field_size_limit(10 ** 9)
-        with open(a.ma_view, encoding="utf-8-sig") as r:
-            v1 = list(csv.DictReader(r))
+
+        def doc_csv(f):
+            with open(f, encoding="utf-8-sig") as r:
+                return list(csv.DictReader(r))
+        v1 = doc_csv(a.ma_view)
         ma = {x["MaView1"].strip().lower(): x["MaView1"].strip() for x in v1 if x.get("MaView1", "").strip()}
         so = {x["IDView1"]: x["MaView1"].strip() for x in v1}
+        thu_muc = os.path.dirname(os.path.abspath(a.ma_view))
+        for f in glob.glob(os.path.join(thu_muc, "aq.data059-*.csv")):  # IDView (lưới) -> MaView1
+            m1 = {x["IDView1"]: x["MaView1"].strip() for x in v1}
+            so.update({x["IDView"]: m1[x["IDView1"]] for x in doc_csv(f) if x["IDView1"] in m1})
+        ma_bang = set()
+        for f in glob.glob(os.path.join(thu_muc, "aq.data001-*.csv")):  # mã bảng (dễ nhầm với mã view)
+            ma_bang = {x["MaFile"].strip().lower() for x in doc_csv(f)}
         re_so = re.compile(r"-?\d{15,19}")
+        re_gan = re.compile(r"\b(\w+)\s*=>?\s*[^;{}=]*?(?:\"([^\"]*)\"|(-?\d{15,19}))")  # const/readonly/=>/new X("…")/enum
+        hang = {}  # "ViewList.S_DS_QUYETDINH" -> MaView1 (lớp hằng sinh tự động)
+        tep = {}
         for p in nguon.ds:
             if not p.lower().endswith(".cs"):
                 continue
             src = nguon.doc(p) or ""
             ns = re.search(r"^\s*namespace\s+([\w\.]+)", src, re.M)
             cl = re.search(r"\bclass\s+(\w+)", src)
-            lop = (ns.group(1) + "." if ns else "") + (cl.group(1) if cl else os.path.basename(p).split(".")[0])
+            tep[p] = ((ns.group(1) + "." if ns else "") + (cl.group(1) if cl else os.path.basename(p).split(".")[0]), src)
+            if "_gencode/" in p.lower() and cl:
+                for m in re_gan.finditer(src):
+                    v = ma.get((m.group(2) or "").strip().lower()) or so.get(m.group(3) or "")
+                    if v:
+                        hang[cl.group(1) + "." + m.group(1)] = v
+        re_hang = re.compile(r"\b(" + "|".join(sorted({k.split(".")[0] for k in hang})) + r")\.(\w+)") if hang else None
+        for p, (lop, src) in tep.items():
+            if "_gencode/" in p.lower():
+                continue
             thay = []
+            if re_hang:
+                for m in re_hang.finditer(src):
+                    v = hang.get(m.group(1) + "." + m.group(2))
+                    if v and v not in thay:
+                        thay.append(v)
             for lit in RE_LIT.findall(src):
                 k = lit.strip().lower()
-                if k in ma and ma[k] not in thay:
+                if k in ma and ma[k] not in thay and k not in ma_bang and len(k) >= 4:
                     thay.append(ma[k])
             for n in re_so.findall(src):
                 if n in so and so[n] not in thay:
                     thay.append(so[n])
             for t in thay:
                 out.append(f"{p} | {lop} | {t}")
+        print(f"Lớp hằng sinh tự động: {len(hang)} tên trỏ tới màn hình")
         ten = "trich-ma-view.txt"
     elif a.dong:
         m = re.match(r"(.+):(\d+)-(\d+)$", a.dong.strip())
