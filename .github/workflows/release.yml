@@ -22,8 +22,14 @@ concurrency:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest          # cần Windows để build bộ cài .exe (Inno Setup)
+    defaults:
+      run:
+        shell: bash
     steps:
+      - name: Giữ nguyên xuống dòng (không đổi LF → CRLF)
+        run: git config --global core.autocrlf false
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -37,10 +43,14 @@ jobs:
 
       - name: Số phiên bản
         id: ver
-        run: echo "ver=$(TZ=Asia/Ho_Chi_Minh date +%Y.%m.%d)-${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+        run: echo "ver=$(python -c "import datetime as d;print((d.datetime.now(d.timezone.utc)+d.timedelta(hours=7)).strftime('%Y.%m.%d'))")-${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
 
       - name: Đóng gói
         run: python tools/dong_goi_app.py --phien-ban "${{ steps.ver.outputs.ver }}" --ra dist
+
+      - name: Bộ cài .exe
+        shell: pwsh
+        run: ./tools/build_setup.ps1 -Ver "${{ steps.ver.outputs.ver }}" -Dist dist
 
       - name: Ghi chú phiên bản
         run: |
@@ -51,7 +61,8 @@ jobs:
             echo "Thay đổi:"
             if [ -n "$PREV" ]; then git log --no-merges --pretty='- %s' "$PREV..HEAD" | head -40; else git log --no-merges --pretty='- %s' -20; fi
             echo
-            echo "Máy mới: tải AQ-AutoTest-${{ steps.ver.outputs.ver }}-windows.zip, giải nén, bấm đúp \"AQ Auto Test.cmd\"."
+            echo "Máy mới: tải AQ-AutoTest-Setup-${{ steps.ver.outputs.ver }}.exe, bấm đúp để cài (không cần quyền admin), mở bằng lối tắt \"AQ Auto Test\"."
+            echo "Bản không cần cài: AQ-AutoTest-${{ steps.ver.outputs.ver }}-windows.zip – giải nén, bấm đúp \"AQ Auto Test.cmd\"."
             echo "Máy đã cài: bấm nút cập nhật ở góc trên console."
           } > notes.md
 

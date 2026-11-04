@@ -17,3 +17,20 @@ jobs:
       - run: python tools/kiem_tra.py
       - name: Thử đóng gói (không kèm Python nhúng)
         run: python tools/dong_goi_app.py --phien-ban 0.0.0-thu --ra dist --khong-python
+
+  bo-cai-exe:                        # thử build bộ cài .exe trước khi merge
+    runs-on: windows-latest
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/dong_goi_app.py --phien-ban 0.0.0-1 --ra dist
+      - shell: pwsh
+        run: ./tools/build_setup.ps1 -Ver 0.0.0-1 -Dist dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AQ-AutoTest-Setup-thu
+          path: dist/AQ-AutoTest-Setup-*.exe
+          retention-days: 7
