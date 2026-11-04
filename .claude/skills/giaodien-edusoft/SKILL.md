@@ -415,7 +415,7 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   027 AQDMChucNang, 030 AQFieldEdit, 046 AQDMView1, 055 AQFieldView, 059 AQView, 061 AQViewSpliter, 077 AQFieldView2,
   025 AQDmMess…; gói cũ đánh số 000–146 + `AQ.Data.Specs` nên có thể lệch – đối chiếu theo tên cột).
   Công cụ: `python tools\doc_aqdata.py D:\Source.NET.zip --trong edusoft.server.zip` (hoặc thư mục `wcf\bin` của server trường)
-  → `aqdata\*.csv` + `tom-tat.txt` + `aqdata.zip`; chỉ giải nén, bỏ bảng người dùng/khách hàng, để trống cột mật khẩu/khóa. Xem một đoạn source: `trich_source.py … --dong
+  → `aqdata\*.csv` + `tom-tat.txt` + `aqdata.zip`; chỉ giải nén, bỏ bảng người dùng/khách hàng, để trống cột mật khẩu/khóa.
   Gói server trong source khớp đúng thứ tự trunk (001 AQDmFile … 146 AQFileHuongDan; 000 không phải JSON). Quan hệ:
   `AQDMChucNang` (menu; `IDChucNangParent` → cha, gốc là `AQDMPhanHe`; chữ hiện = `VtChucNang`/`VtPhanHe`) –`iddoituong`→
   `AQDMForm` (`FormRun` = lớp màn hình, vd `Edusoft.SMS.S02.UCQDSV`; `Param1` của menu = loại, vd VAO_MOI/DOI_LOP) → lớp tự nạp
@@ -425,7 +425,9 @@ AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
   ToolTip, HotKey). Lập danh mục: `python tools/lap_danh_muc.py <aqdata> --lien-ket trich-ma-view.txt --ra
   .claude/skills/giaodien-edusoft/man-hinh`; `trich-ma-view.txt` từ `trich_source.py <source.zip> --ma-view
   aqdata\aq.data046-AQDMView1.csv` (lớp màn hình → MaView1).
-  "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
+  Tiêu đề lưới / nhãn cột: `AQValSetV`+`AQValSetV1` – (1,14) = tiêu đề lưới (chữ sau `@`), (2,14) = nhãn cột đã đổi, (2,16) = độ
+  rộng. Phần trường tự chỉnh (bảng `H…`: HMenuCustom, HValSetV/1, HFieldView2, HFieldEdit…): `tools/xuat_tuy_chinh_truong.sql` (sqlcmd, chỉ đọc).
+  Xem một đoạn source: `trich_source.py … --dong "đường/dẫn/File.cs:đầu-cuối"` (dòng giống khóa/mật khẩu/máy chủ nội bộ bị che).
 - **Câu thông báo thật** nằm ở `Resources\Languages.xml` của bản cài (~14 000 mục `ID → câu`, vd `XOA_DU_LIEU_THANH_CONG` =
   "Xóa dữ liệu thành công", `M_THOAT` = "Thoát khỏi chương trình?", `CAPNHAT_THONGTIN_THANHCONG` = "Cập nhật mẫu tin {0} thành công").
   Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
