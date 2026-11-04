@@ -352,3 +352,17 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 3. Nếu bộ test phải nhận diện khác đi → sửa `kit/aqrun.py` (tăng `KIT_VERSION`), cập nhật docstring `Run.do_actions`.
 4. Rà các kịch bản `scriptReady` (`data/scenarios/`) có dùng phần tử đó → sửa `auto` (cả `data/` và DB artifact).
 5. Commit + push, cập nhật artifact nếu console thay đổi (theo CLAUDE.md).
+
+## 6. Tra source Edusoft (`tools/trich_source.py`)
+
+Source nằm trên TFS (chỉ đọc) hoặc file zip trên máy người dùng – **không đưa source vào repo/chat**. Người dùng chạy
+`python tools\trich_source.py <zip> --liet-ke | "<từ khóa>" | --tim "<câu>"` rồi gửi file `trich-*.txt` (chỉ tên điều khiển,
+caption, cột lưới, câu thông báo). Ghi những gì rút ra được vào mục 4/bảng mục 2, không chép nguyên file trích.
+
+Cấu trúc (từ `--liet-ke`, 11/2026 – 4 665 file Designer): `trunk2/Edusoft.<MÃ>/Edusoft.<MÃ>/<nhóm>/<mục>/<Form>.Designer.cs`.
+Số form theo mã: SRM 991 · RMS 680 · AQDataTools 424 (control dùng chung: `AQControls.v3` – MsgBox, nút chung AQButtonLuu/
+AQButtonClose…, `AQViewers`) · SMS 409 · SCH 259 · CMS 228 · EPM 186 · HRM 182 · NET 161 · MDS 157 · DCM 146 · TPM 111 · SRT 103 …
+- Tên form theo mẫu `F001_…`, `UCT_…`, `UC_…`, `Frm_…`; **tiêu đề form không nằm trong Designer** (gần như trống) – tên
+  màn hình trên menu nhiều khả năng lấy từ CSDL, nên tìm form theo tên lớp/đường dẫn hoặc `--tim` câu chữ hiện trên màn hình.
+- ? Ứng viên cho QĐ vào/ra sinh viên (QLSV-001), chưa xác nhận: `Edusoft.SMS/S02/` – `UCQDSV`, `S02_F001_ThemSVQD`,
+  `Frm_QuyetDinh`, `Form_ThemSVHK`, `UCT_CapNhatSoQDVaoMoi`, `F002_KiemTraQDVaoRaSV`.

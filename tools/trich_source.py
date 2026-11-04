@@ -87,13 +87,17 @@ def thong_tin_form(nguon, p):
     src = nguon.doc(p) or ""
     m = RE_CLASS.search(src)
     lop, cha = (m.group(1), m.group(2) or "") if m else (os.path.basename(p), "")
+    if not cha:  # lớp cha thường khai ở file .cs, không ở .Designer.cs
+        code = nguon.doc(re.sub(r"\.designer\.cs$", ".cs", p, flags=re.I)) or ""
+        m2 = re.search(r"partial\s+class\s+" + re.escape(lop) + r"\s*:\s*([\w\.]+)", code)
+        cha = m2.group(1) if m2 else ""
     t = RE_FORM_TEXT.search(src)
     return src, lop, cha, (t.group(1) if t else "")
 
 
 def trich_form(nguon, p, out):
     src, lop, cha, tieu_de = thong_tin_form(nguon, p)
-    goc = p[: -len(".designer.cs")]
+    goc = re.sub(r"\.designer\.cs$", "", p, flags=re.I)
     resx = {}
     rx = nguon.doc(goc + ".resx")
     if rx:
