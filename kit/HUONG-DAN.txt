@@ -46,6 +46,8 @@ KỊCH BẢN HIỆN CÓ
 THỬ CHẠY TRÊN DESKTOP ẨN (đang thử nghiệm)
 - Mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
 - Edusoft chạy trên một màn hình riêng không hiện ra, máy vẫn dùng bình thường; chỉ đăng nhập và chọn tab Sinh viên.
+- Cửa sổ "xem desktop ẩn" tự mở ở màn hình phụ (phóng to hết màn hình đó; không có màn hình phụ thì nằm góc phải dưới)
+  để theo dõi Edusoft đang chạy – chỉ xem, không bấm được; đóng lúc nào cũng được. Không muốn mở: thêm --khong-xem.
 - Xong sẽ có file AQ-desktop-an-<giờ>.zip trong Tải về (ảnh chụp, cây giao diện, không có mật khẩu) – gửi cho Claude.
 
 TẮT BỘ GÕ TIẾNG VIỆT (Unikey/EVKey) KHI CHẠY TEST: script gõ phím thật, bộ gõ Telex có thể đổi chữ

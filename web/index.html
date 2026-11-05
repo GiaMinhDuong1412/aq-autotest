@@ -2078,7 +2078,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.05-01"
+KIT_VERSION = "2026.11.05-02"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -5757,7 +5757,13 @@ def bridge_diag(add):
 HD_NAME = "AQTest"
 
 
+_W32 = None
+
+
 def _w32():
+    global _W32
+    if _W32:
+        return _W32
     import ctypes
     from ctypes import wintypes as W
     u32, k32, g32 = ctypes.windll.user32, ctypes.windll.kernel32, ctypes.windll.gdi32
@@ -5794,7 +5800,10 @@ def _w32():
     k32.WaitForSingleObject.argtypes = [W.HANDLE, W.DWORD]
     k32.CloseHandle.argtypes = [W.HANDLE]
     k32.TerminateProcess.argtypes = [W.HANDLE, W.UINT]
-    return ctypes, W, u32, k32, g32
+    u32.IsWindowVisible.argtypes = [W.HWND]
+    u32.IsIconic.argtypes = [W.HWND]
+    _W32 = (ctypes, W, u32, k32, g32)
+    return _W32
 
 
 def desk_name(h):
@@ -5806,16 +5815,16 @@ def desk_name(h):
     return ""
 
 
-def pw_shot(hwnd, path):
-    """Chụp một cửa sổ bằng PrintWindow (chạy được cả khi cửa sổ nằm trên desktop không hiển thị).
-    Trả về (đã chụp, ảnh toàn đen)."""
+def pw_image(hwnd):
+    """Ảnh một cửa sổ chụp bằng PrintWindow (chạy được cả khi cửa sổ nằm trên desktop không hiển thị).
+    Trả về (ảnh PIL hoặc None, PrintWindow báo thành công, toạ độ cửa sổ)."""
     ctypes, W, u32, k32, g32 = _w32()
     from PIL import Image
     r = W.RECT()
     u32.GetWindowRect(hwnd, ctypes.byref(r))
     w, h = r.right - r.left, r.bottom - r.top
-    if w <= 0 or h <= 0:
-        return False, True
+    if w <= 0 or h <= 0 or w > 8000 or h > 8000:
+        return None, False, (r.left, r.top)
     sdc = u32.GetDC(None)
     mdc = g32.CreateCompatibleDC(sdc)
     bmp = g32.CreateCompatibleBitmap(sdc, w, h)
@@ -5830,10 +5839,137 @@ def pw_shot(hwnd, path):
         g32.DeleteObject(bmp)
         g32.DeleteDC(mdc)
         u32.ReleaseDC(None, sdc)
-    img = Image.frombuffer("RGB", (w, h), buf.raw, "raw", "BGRX", 0, 1)
+    return Image.frombuffer("RGB", (w, h), buf.raw, "raw", "BGRX", 0, 1), ok, (r.left, r.top)
+
+
+def pw_shot(hwnd, path):
+    """Chụp một cửa sổ vào file. Trả về (đã chụp, ảnh toàn đen)."""
+    img, ok, _ = pw_image(hwnd)
+    if img is None:
+        return False, True
     img.save(path)
-    black = all(mx <= 12 for _, mx in img.getextrema())
-    return ok, black
+    return ok, all(mx <= 12 for _, mx in img.getextrema())
+
+
+def hd_frame(path):
+    """Một khung hình của desktop ẩn: ghép ảnh mọi cửa sổ đang hiện đúng vị trí và thứ tự chồng
+    (EnumWindows trả từ trên xuống nên dán từ dưới lên). Ghi file tạm rồi thay để cửa sổ xem không đọc dở."""
+    ctypes, W, u32, k32, g32 = _w32()
+    from PIL import Image
+    hs = []
+    PROC = ctypes.WINFUNCTYPE(W.BOOL, W.HWND, W.LPARAM)
+    cb = PROC(lambda h, l: (hs.append(h) if u32.IsWindowVisible(h) and not u32.IsIconic(h) else None) or True)
+    u32.EnumWindows(cb, 0)
+    shots = []
+    for h in reversed(hs):
+        img, ok, xy = pw_image(h)
+        if img is not None and img.width >= 20 and img.height >= 15:
+            shots.append((img, xy))
+    if not shots:
+        return False
+    x0 = min(xy[0] for _, xy in shots)
+    y0 = min(xy[1] for _, xy in shots)
+    x1 = max(xy[0] + im.width for im, xy in shots)
+    y1 = max(xy[1] + im.height for im, xy in shots)
+    can = Image.new("RGB", (min(x1 - x0, 6000), min(y1 - y0, 4000)), (40, 44, 52))
+    for im, xy in shots:
+        can.paste(im, (xy[0] - x0, xy[1] - y0))
+    tmp = Path(str(path) + ".tmp")
+    can.save(tmp, "JPEG", quality=80)
+    try:
+        os.replace(tmp, path)
+    except OSError:
+        pass                     # cửa sổ xem đang đọc file – để lần sau
+    return True
+
+
+def viewer_place():
+    """Chỗ đặt cửa sổ xem: màn hình phụ (nếu có, phóng to hết màn hình đó) – không thì góc phải dưới màn hình chính.
+    Trả về (x, y, rộng, cao, có màn hình phụ)."""
+    ctypes, W, u32, k32, g32 = _w32()
+
+    class MI(ctypes.Structure):
+        _fields_ = [("cbSize", W.DWORD), ("rcMonitor", W.RECT), ("rcWork", W.RECT), ("dwFlags", W.DWORD)]
+
+    PROC = ctypes.WINFUNCTYPE(W.BOOL, ctypes.c_void_p, ctypes.c_void_p, ctypes.POINTER(W.RECT), W.LPARAM)
+    u32.EnumDisplayMonitors.argtypes = [ctypes.c_void_p, ctypes.c_void_p, PROC, W.LPARAM]
+    u32.GetMonitorInfoW.argtypes = [ctypes.c_void_p, ctypes.POINTER(MI)]
+    mons = []
+
+    def cb(hm, hdc, rc, lp):
+        mi = MI()
+        mi.cbSize = ctypes.sizeof(mi)
+        if u32.GetMonitorInfoW(hm, ctypes.byref(mi)):
+            w = mi.rcWork
+            mons.append((bool(mi.dwFlags & 1), w.left, w.top, w.right - w.left, w.bottom - w.top))
+        return True
+
+    u32.EnumDisplayMonitors(None, None, PROC(cb), 0)
+    side = [m for m in mons if not m[0]]
+    if side:
+        _, x, y, w, h = max(side, key=lambda m: m[3] * m[4])
+        return x, y, w, h, True
+    _, x, y, w, h = (mons[0] if mons else (True, 0, 0, 1280, 800))
+    vw, vh = min(760, w // 2), min(500, h // 2)
+    return x + w - vw - 16, y + h - vh - 16, vw, vh, False
+
+
+def hd_viewer(poll, frame):
+    """Cửa sổ xem trực tiếp desktop ẩn (chỉ xem, không bấm được). poll() → (xong?, dòng đang làm).
+    Đóng cửa sổ không dừng phần thử. Trả về False nếu máy không có tkinter / Pillow ImageTk."""
+    try:
+        import tkinter as tk
+        import io
+        from PIL import Image, ImageTk
+    except Exception:
+        return False
+    x, y, w, h, side = viewer_place()
+    r = tk.Tk()
+    r.title("AQ Autotest – xem desktop ẩn \"%s\" (chỉ xem)" % HD_NAME)
+    r.geometry("%dx%d+%d+%d" % (w, h, x, y))
+    r.configure(bg="#14161c")
+    if side:                               # phóng to trên đúng màn hình phụ (đặt chỗ trước rồi mới phóng to)
+        r.update_idletasks()
+        r.after(150, lambda: r.state("zoomed"))
+    top = tk.Label(r, text="Đang chuẩn bị desktop ẩn…", anchor="w", bg="#1f2230", fg="#e8eaf0",
+                   font=("Segoe UI", 10), padx=10, pady=5)
+    top.pack(fill="x")
+    pic = tk.Label(r, bg="#14161c", fg="#8a93a6", text="Chưa có hình – đang mở Edusoft…", font=("Segoe UI", 11))
+    pic.pack(fill="both", expand=True)
+    st = {"m": None, "src": None, "key": None, "img": None, "end": None}
+
+    def tick():
+        done, line = poll()
+        if st["end"] is None:
+            top.config(text=line or "Đang chạy…")
+        try:
+            m = frame.stat().st_mtime
+            if m != st["m"]:
+                im = Image.open(io.BytesIO(frame.read_bytes()))
+                im.load()
+                st["src"], st["m"] = im, m
+        except Exception:
+            pass
+        if st["src"] is not None:
+            pw, ph = max(pic.winfo_width(), 50), max(pic.winfo_height(), 50)
+            if st["key"] != (pw, ph, st["m"]):
+                im = st["src"].copy()
+                im.thumbnail((pw, ph))
+                st["img"] = ImageTk.PhotoImage(im)
+                pic.config(image=st["img"], text="")
+                st["key"] = (pw, ph, st["m"])
+        if done:
+            if st["end"] is None:
+                st["end"] = time.time()
+                top.config(text="Xong phần thử – cửa sổ tự đóng sau 5 giây", bg="#1f9d55")
+            elif time.time() - st["end"] > 5:
+                r.destroy()
+                return
+        r.after(400, tick)
+
+    r.after(200, tick)
+    r.mainloop()
+    return True
 
 
 def hd_msg(h, m, wp=0, lp=0):
@@ -5931,6 +6067,17 @@ def probe_inside(out):
             rec("fail", "Chụp ảnh " + what + " (PrintWindow)", str(e))
             return False
 
+    stop = threading.Event()
+
+    def frames():                          # khung hình cho cửa sổ xem trên màn hình người dùng (~1,5 hình/giây)
+        while not stop.is_set():
+            try:
+                hd_frame(out / "xem.jpg")
+            except Exception:
+                pass
+            stop.wait(0.6)
+
+    threading.Thread(target=frames, daemon=True).start()
     es = Edusoft()
     try:
         me = desk_name(u32.GetThreadDesktop(k32.GetCurrentThreadId()))
@@ -6087,6 +6234,8 @@ def probe_inside(out):
         except Exception:
             pass
     finally:
+        time.sleep(1.5)                    # để cửa sổ xem kịp hiện hình cuối
+        stop.set()
         es.kill()
         rep["ketThuc"] = now_iso()
         (out / "bao-cao.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), "utf-8")
@@ -6110,6 +6259,7 @@ def probe_hidden_desktop():
     ctypes, W, u32, k32, g32 = _w32()
     print("=== Thử chạy Edusoft trên desktop ẩn \"%s\" – bộ test %s ===" % (HD_NAME, KIT_VERSION))
     print("Edusoft sẽ chạy trên một màn hình riêng không hiện ra; bạn vẫn dùng máy bình thường trong lúc thử (~2–4 phút).")
+    print("Cửa sổ \"xem desktop ẩn\" hiện ở màn hình phụ (nếu có) để theo dõi – chỉ xem, đóng lúc nào cũng được.")
     print("Chỉ mở Edusoft, đăng nhập và chọn tab Sinh viên – không thêm/sửa/xóa dữ liệu.")
     while edusoft_running():
         input("Edusoft đang mở trên máy (bản nào cũng tính). Hãy đóng Edusoft rồi nhấn Enter để tiếp tục (Ctrl+C để thôi)… ")
@@ -6142,20 +6292,23 @@ def probe_hidden_desktop():
         print("[LỖI] Không chạy được bộ test trên desktop ẩn (mã lỗi Windows %d)." % k32.GetLastError())
         u32.CloseDesktop(hdesk)
         return
-    seen, t0, limit = 0, time.time(), 8 * 60
-    rep_f = out / "bao-cao.txt"
-    while True:
-        done = k32.WaitForSingleObject(pi.hProcess, 1000) == 0
+    t0, limit = time.time(), 8 * 60
+    rep_f, log_f = out / "bao-cao.txt", out / "nhat-ky.txt"
+    ps_ = {"seen": 0, "done": False}
+
+    def poll():
+        """Một lần kiểm tra: in kết quả mới ra cửa sổ đen, dừng khi quá giờ. Trả về (xong?, dòng nhật ký cuối)."""
+        if ps_["done"]:
+            return True, ""
+        done = k32.WaitForSingleObject(pi.hProcess, 0) == 0
         try:
             lines = rep_f.read_text("utf-8").splitlines() if rep_f.exists() else []
         except Exception:
             lines = []
-        for ln in lines[seen:]:
+        for ln in lines[ps_["seen"]:]:
             print(ln)
-        seen = len(lines)
-        if done:
-            break
-        if time.time() - t0 > limit:
+        ps_["seen"] = len(lines)
+        if not done and time.time() - t0 > limit:
             print("[LỖI] Quá %d phút chưa xong – dừng phần thử." % (limit // 60))
             k32.TerminateProcess(pi.hProcess, 1)
             try:
@@ -6164,7 +6317,26 @@ def probe_hidden_desktop():
                     subprocess.run(["taskkill", "/PID", pid, "/T", "/F"], capture_output=True, timeout=20)
             except Exception:
                 pass
-            break
+            done = True
+        ps_["done"] = done
+        last = ""
+        try:
+            with open(log_f, "rb") as f:
+                f.seek(max(0, f.seek(0, 2) - 3000))
+                tail = [x.strip() for x in f.read().decode("utf-8", "ignore").splitlines() if x.strip()]
+            last = tail[-1] if tail else ""
+        except Exception:
+            pass
+        return done, last
+
+    if "--khong-xem" not in sys.argv:
+        try:
+            if hd_viewer(poll, out / "xem.jpg"):
+                print("(Cửa sổ xem desktop ẩn đã đóng – phần thử vẫn chạy tiếp nếu chưa xong.)")
+        except Exception as e:
+            print("(Không mở được cửa sổ xem: %s)" % e)
+    while not poll()[0]:
+        time.sleep(1)
     k32.CloseHandle(pi.hThread)
     k32.CloseHandle(pi.hProcess)
     time.sleep(1)
@@ -6173,7 +6345,7 @@ def probe_hidden_desktop():
     zp = (ds[-1] if ds else BASE / "results") / ("AQ-desktop-an-%s.zip" % time.strftime("%y%m%d-%H%M%S"))
     with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
         for f in out.rglob("*"):
-            if f.is_file():
+            if f.is_file() and f.suffix != ".tmp":
                 z.write(f, out.name + "/" + f.relative_to(out).as_posix())
     print()
     print("Đã xong. File kết quả:", zp)
@@ -6560,6 +6732,8 @@ KỊCH BẢN HIỆN CÓ
 THỬ CHẠY TRÊN DESKTOP ẨN (đang thử nghiệm)
 - Mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
 - Edusoft chạy trên một màn hình riêng không hiện ra, máy vẫn dùng bình thường; chỉ đăng nhập và chọn tab Sinh viên.
+- Cửa sổ "xem desktop ẩn" tự mở ở màn hình phụ (phóng to hết màn hình đó; không có màn hình phụ thì nằm góc phải dưới)
+  để theo dõi Edusoft đang chạy – chỉ xem, không bấm được; đóng lúc nào cũng được. Không muốn mở: thêm --khong-xem.
 - Xong sẽ có file AQ-desktop-an-<giờ>.zip trong Tải về (ảnh chụp, cây giao diện, không có mật khẩu) – gửi cho Claude.
 
 TẮT BỘ GÕ TIẾNG VIỆT (Unikey/EVKey) KHI CHẠY TEST: script gõ phím thật, bộ gõ Telex có thể đổi chữ
@@ -9034,7 +9208,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.05-01';
+  var KITVER='2026.11.05-02';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

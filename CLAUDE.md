@@ -23,7 +23,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   trong Tải về – cách chạy không cần cầu nối: console tải file lệnh → Agent/`chay-test.bat` chạy → "Nhập kết quả…" chọn file .zip.
   **Desktop ẩn (thử nghiệm)**: `chay-test.bat --thu-desktop-an` tạo desktop `AQTest` (CreateDesktop), chạy `aqrun.py --ben-trong`
   trên đó, thử gõ không cần phím thật (WM_KEYDOWN/WM_CHAR, WM_SETTEXT, ValuePattern), bấm Đăng nhập, chụp PrintWindow → gói
-  `AQ-desktop-an-*.zip`. Trên desktop ẩn **không** dùng `pkb.send_keys`/`click_input` (phím/chuột thật đi vào màn hình người dùng).
+  `AQ-desktop-an-*.zip`. Cửa sổ xem (`hd_viewer`, tkinter) ở màn hình phụ hiện `xem.jpg` do tiến trình con ghép ~1,5 hình/giây (`hd_frame`). Trên desktop ẩn **không** dùng `pkb.send_keys`/`click_input` (phím/chuột thật đi vào màn hình người dùng).
 - `data/` – dữ liệu dùng chung, đồng bộ qua git: `scenarios/`, `runs/`, `bugs/`, `runners/`, `releases/`, `releaseItems/`,
   `testPlans/`, `settings/`, `members/` (Danh mục user: tên gọi = tên ở cột Phân công, `modules` = phân hệ phụ trách dạng
   `edusoft:QLSV`, menu mới đưa vào phân công tự giao cho người phụ trách), `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.
