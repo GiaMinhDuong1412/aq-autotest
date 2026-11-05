@@ -21,6 +21,9 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `aqrun.py --chan-doan` in bảng kiểm tra + `chan-doan.txt`, bản claude.ai hỏi rồi tự khởi động lại Claude app),
   `chay-test.bat`, `quen-mat-khau.bat`, `HUONG-DAN.txt`. Chạy xong `aqrun.py` gói các lượt vừa chạy thành `AQ-ket-qua-<giờ>.zip`
   trong Tải về – cách chạy không cần cầu nối: console tải file lệnh → Agent/`chay-test.bat` chạy → "Nhập kết quả…" chọn file .zip.
+  **Desktop ẩn (thử nghiệm)**: `chay-test.bat --thu-desktop-an` tạo desktop `AQTest` (CreateDesktop), chạy `aqrun.py --ben-trong`
+  trên đó, thử gõ không cần phím thật (WM_KEYDOWN/WM_CHAR, WM_SETTEXT, ValuePattern), bấm Đăng nhập, chụp PrintWindow → gói
+  `AQ-desktop-an-*.zip`. Trên desktop ẩn **không** dùng `pkb.send_keys`/`click_input` (phím/chuột thật đi vào màn hình người dùng).
 - `data/` – dữ liệu dùng chung, đồng bộ qua git: `scenarios/`, `runs/`, `bugs/`, `runners/`, `releases/`, `releaseItems/`,
   `testPlans/`, `settings/`, `members/` (Danh mục user: tên gọi = tên ở cột Phân công, `modules` = phân hệ phụ trách dạng
   `edusoft:QLSV`, menu mới đưa vào phân công tự giao cho người phụ trách), `assets/` (ảnh). Mỗi bản ghi = `data/<collection>/<doc_id>.json`.

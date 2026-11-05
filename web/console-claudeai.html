@@ -2460,7 +2460,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.04-01"
+KIT_VERSION = "2026.11.05-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -6228,6 +6228,440 @@ def bridge_diag(add):
 
 
 # ---------------------------------------------------------------- main
+# ---------------------------------------------------------------- thử chạy trên desktop ẩn (chay-test.bat --thu-desktop-an)
+# Bước thử trước khi chuyển cả bộ test sang desktop ẩn: tạo desktop "AQTest" (CreateDesktop, không hiện lên màn hình người dùng),
+# chạy chính aqrun.py trên đó, mở Edusoft, thử từng cách gõ / bấm KHÔNG dùng bàn phím, chuột thật, chụp ảnh bằng PrintWindow.
+# Chỉ đăng nhập rồi mở một tab ribbon – không thêm/sửa/xóa dữ liệu. Không ghi mật khẩu vào báo cáo.
+HD_NAME = "AQTest"
+
+
+def _w32():
+    import ctypes
+    from ctypes import wintypes as W
+    u32, k32, g32 = ctypes.windll.user32, ctypes.windll.kernel32, ctypes.windll.gdi32
+    P = ctypes.c_void_p
+    u32.CreateDesktopW.restype = P
+    u32.CreateDesktopW.argtypes = [W.LPCWSTR, W.LPCWSTR, P, W.DWORD, W.DWORD, P]
+    u32.CloseDesktop.argtypes = [P]
+    u32.GetThreadDesktop.restype = P
+    u32.GetThreadDesktop.argtypes = [W.DWORD]
+    u32.OpenInputDesktop.restype = P
+    u32.OpenInputDesktop.argtypes = [W.DWORD, W.BOOL, W.DWORD]
+    u32.GetUserObjectInformationW.argtypes = [P, ctypes.c_int, P, W.DWORD, ctypes.POINTER(W.DWORD)]
+    u32.SendMessageTimeoutW.restype = P
+    u32.SendMessageTimeoutW.argtypes = [W.HWND, W.UINT, P, P, W.UINT, W.UINT, ctypes.POINTER(P)]
+    u32.PostMessageW.argtypes = [W.HWND, W.UINT, P, P]
+    u32.GetDC.restype = P
+    u32.GetDC.argtypes = [W.HWND]
+    u32.ReleaseDC.argtypes = [W.HWND, P]
+    u32.PrintWindow.argtypes = [W.HWND, P, W.UINT]
+    u32.GetWindowRect.argtypes = [W.HWND, ctypes.POINTER(W.RECT)]
+    u32.GetClientRect.argtypes = [W.HWND, ctypes.POINTER(W.RECT)]
+    u32.VkKeyScanW.restype = ctypes.c_short
+    u32.VkKeyScanW.argtypes = [ctypes.c_wchar]
+    u32.MapVirtualKeyW.argtypes = [W.UINT, W.UINT]
+    g32.CreateCompatibleDC.restype = P
+    g32.CreateCompatibleDC.argtypes = [P]
+    g32.CreateCompatibleBitmap.restype = P
+    g32.CreateCompatibleBitmap.argtypes = [P, ctypes.c_int, ctypes.c_int]
+    g32.SelectObject.restype = P
+    g32.SelectObject.argtypes = [P, P]
+    g32.DeleteObject.argtypes = [P]
+    g32.DeleteDC.argtypes = [P]
+    g32.GetDIBits.argtypes = [P, P, W.UINT, W.UINT, P, P, W.UINT]
+    k32.WaitForSingleObject.argtypes = [W.HANDLE, W.DWORD]
+    k32.CloseHandle.argtypes = [W.HANDLE]
+    k32.TerminateProcess.argtypes = [W.HANDLE, W.UINT]
+    return ctypes, W, u32, k32, g32
+
+
+def desk_name(h):
+    ctypes, W, u32, k32, g32 = _w32()
+    buf = ctypes.create_unicode_buffer(256)
+    n = W.DWORD()
+    if h and u32.GetUserObjectInformationW(h, 2, buf, ctypes.sizeof(buf), ctypes.byref(n)):   # UOI_NAME
+        return buf.value
+    return ""
+
+
+def pw_shot(hwnd, path):
+    """Chụp một cửa sổ bằng PrintWindow (chạy được cả khi cửa sổ nằm trên desktop không hiển thị).
+    Trả về (đã chụp, ảnh toàn đen)."""
+    ctypes, W, u32, k32, g32 = _w32()
+    from PIL import Image
+    r = W.RECT()
+    u32.GetWindowRect(hwnd, ctypes.byref(r))
+    w, h = r.right - r.left, r.bottom - r.top
+    if w <= 0 or h <= 0:
+        return False, True
+    sdc = u32.GetDC(None)
+    mdc = g32.CreateCompatibleDC(sdc)
+    bmp = g32.CreateCompatibleBitmap(sdc, w, h)
+    old = g32.SelectObject(mdc, bmp)
+    try:
+        ok = bool(u32.PrintWindow(hwnd, mdc, 2))        # PW_RENDERFULLCONTENT
+        bi = (ctypes.c_uint32 * 10)(40, w, (-h) & 0xFFFFFFFF, 1 | (32 << 16), 0, 0, 0, 0, 0, 0)  # BITMAPINFOHEADER
+        buf = ctypes.create_string_buffer(w * h * 4)
+        g32.GetDIBits(mdc, bmp, 0, h, buf, bi, 0)
+    finally:
+        g32.SelectObject(mdc, old)
+        g32.DeleteObject(bmp)
+        g32.DeleteDC(mdc)
+        u32.ReleaseDC(None, sdc)
+    img = Image.frombuffer("RGB", (w, h), buf.raw, "raw", "BGRX", 0, 1)
+    img.save(path)
+    black = all(mx <= 12 for _, mx in img.getextrema())
+    return ok, black
+
+
+def hd_msg(h, m, wp=0, lp=0):
+    ctypes, W, u32, k32, g32 = _w32()
+    res = ctypes.c_void_p()
+    return u32.SendMessageTimeoutW(h, m, wp, lp, 0x0002, 3000, ctypes.byref(res)), res.value   # SMTO_ABORTIFHUNG
+
+
+def el_hwnd(el):
+    e = el
+    for _ in range(5):
+        try:
+            h = e.handle
+            if h:
+                return h
+            e = e.parent()
+        except Exception:
+            break
+    return None
+
+
+WM_SETTEXT, WM_KEYDOWN, WM_KEYUP, WM_CHAR = 0x000C, 0x0100, 0x0101, 0x0102
+EM_SETSEL, WM_LBUTTONDOWN, WM_LBUTTONUP, WM_CLOSE = 0x00B1, 0x0201, 0x0202, 0x0010
+
+
+def hd_key(h, vk, ch=None):
+    """Một lần nhấn phím gửi thẳng vào cửa sổ: WM_KEYDOWN (+ WM_CHAR) + WM_KEYUP, kèm mã quét như phím thật."""
+    ctypes, W, u32, k32, g32 = _w32()
+    sc = u32.MapVirtualKeyW(vk, 0) & 0xFF
+    hd_msg(h, WM_KEYDOWN, vk, 1 | (sc << 16))
+    if ch is not None:
+        hd_msg(h, WM_CHAR, ord(ch), 1 | (sc << 16))
+    hd_msg(h, WM_KEYUP, vk, 1 | (sc << 16) | (3 << 30))
+
+
+def hd_clear(el, h):
+    if h:
+        hd_msg(h, EM_SETSEL, 0, -1 & 0xFFFFFFFF)
+        hd_key(h, 0x2E)                                    # Delete
+        hd_msg(h, EM_SETSEL, 0, -1 & 0xFFFFFFFF)
+        hd_key(h, 0x08, "\b")                              # Backspace
+    try:
+        if (el.get_value() or "").strip():
+            el.iface_value.SetValue("")
+    except Exception:
+        pass
+
+
+def hd_fill(how, el, h, value):
+    ctypes, W, u32, k32, g32 = _w32()
+    if how == "uia":
+        el.iface_value.SetValue(value)
+    elif how == "settext":
+        b = ctypes.create_unicode_buffer(value)
+        hd_msg(h, WM_SETTEXT, 0, ctypes.addressof(b))
+    elif how == "char":
+        for c in value:
+            hd_msg(h, WM_CHAR, ord(c), 1)
+    elif how == "keys":
+        for c in value:
+            vk = u32.VkKeyScanW(c)
+            if vk == -1:
+                hd_msg(h, WM_CHAR, ord(c), 1)
+            else:
+                hd_key(h, vk & 0xFF, c)
+    time.sleep(0.4)
+
+
+HD_METHODS = [("keys", "Gửi phím vào cửa sổ (WM_KEYDOWN + WM_CHAR + WM_KEYUP)"), ("char", "Gửi ký tự (WM_CHAR)"),
+              ("settext", "Đặt chữ (WM_SETTEXT)"), ("uia", "UI Automation ValuePattern.SetValue")]
+
+
+def probe_inside(out):
+    """Chạy TRÊN desktop ẩn (tiến trình con do probe_hidden_desktop tạo)."""
+    out = Path(out)
+    log = open(out / "nhat-ky.txt", "a", encoding="utf-8", buffering=1)
+    sys.stdout = sys.stderr = log
+    ctypes, W, u32, k32, g32 = _w32()
+    rows, rep = [], {"kit": KIT_VERSION, "batDau": now_iso(), "ketQua": []}
+
+    def rec(st, name, detail=""):
+        rows.append("%s %s%s" % ({"ok": "[ OK ]", "warn": "[ !! ]", "fail": "[LỖI]", "info": "[ -- ]"}[st], name, (" – " + detail) if detail else ""))
+        rep["ketQua"].append({"trangThai": st, "muc": name, "chiTiet": detail})
+        print(rows[-1])
+        (out / "bao-cao.txt").write_text("\n".join(rows) + "\n", "utf-8")
+        (out / "bao-cao.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), "utf-8")
+
+    def shot(hwnd, name, what):
+        try:
+            ok, black = pw_shot(hwnd, out / name)
+            rec("ok" if ok and not black else "fail", "Chụp ảnh " + what + " (PrintWindow)",
+                name + (" – ảnh toàn đen" if black else "") + ("" if ok else " – PrintWindow báo lỗi"))
+            return ok and not black
+        except Exception as e:
+            rec("fail", "Chụp ảnh " + what + " (PrintWindow)", str(e))
+            return False
+
+    es = Edusoft()
+    try:
+        me = desk_name(u32.GetThreadDesktop(k32.GetCurrentThreadId()))
+        inp = desk_name(u32.OpenInputDesktop(0, False, 0x0001))
+        rec("ok" if me.lower() == HD_NAME.lower() else "fail", "Chạy trên desktop ẩn",
+            "desktop của bộ test: %s, desktop đang hiện trên màn hình: %s" % (me or "?", inp or "không đọc được"))
+        try:
+            adm = bool(ctypes.windll.shell32.IsUserAnAdmin())
+        except Exception:
+            adm = False
+        rec("ok" if adm else "warn", "Quyền admin", "có" if adm else "không – Edusoft cần quyền admin, hãy chạy qua chay-test.bat")
+        t = time.time()
+        es.launch()
+        (out / "edusoft-pid.txt").write_text(str(es.pid() or ""), "utf-8")
+        es.wait_login(120)
+        rec("ok", "Mở Edusoft tới khung đăng nhập", "%s – %.0f giây" % (es.exe, time.time() - t))
+        shot(es.login.handle, "1-dang-nhap.png", "khung đăng nhập")
+        try:
+            from PIL import ImageGrab
+            r = es.login.rectangle()
+            g = ImageGrab.grab(bbox=(r.left, r.top, r.right, r.bottom), all_screens=True)
+            g.save(out / "1-dang-nhap-imagegrab.png")
+            rec("info", "Chụp kiểu cũ (ImageGrab, để so sánh)",
+                "ảnh toàn đen" if all(mx <= 12 for _, mx in g.getextrema()) else "có hình")
+        except Exception as e:
+            rec("info", "Chụp kiểu cũ (ImageGrab, để so sánh)", "lỗi: %s" % e)
+        es.dump_ui(out / "ui-dang-nhap.txt")
+        u, p = es.login_fields()
+        hu, hp = el_hwnd(u), el_hwnd(p)
+        rec("ok" if hu and hp else "warn", "Ô đăng nhập có cửa sổ Win32 riêng",
+            "ô tên: %s, ô mật khẩu: %s" % (hex(hu) if hu else "không", hex(hp) if hp else "không"))
+        try:
+            u.set_focus()
+            time.sleep(0.3)
+            rec("ok" if u.has_keyboard_focus() else "warn", "Đưa con trỏ vào ô bằng UI Automation",
+                "ô Tên đăng nhập đang có con trỏ" if u.has_keyboard_focus() else "ô chưa nhận con trỏ")
+        except Exception as e:
+            rec("warn", "Đưa con trỏ vào ô bằng UI Automation", str(e))
+        acc = CFG["account"]
+        good = []
+        for how, label in HD_METHODS:
+            if how != "uia" and not hu:
+                rec("fail", "Gõ: " + label, "ô không có cửa sổ Win32")
+                continue
+            try:
+                hd_clear(u, hu)
+                before = (es.field_value(u) or "").strip()
+                hd_fill(how, u, hu, acc)
+                got = (es.field_value(u) or "").strip()
+                okk = got == acc
+                if okk:
+                    good.append(how)
+                rec("ok" if okk else "fail", "Gõ: " + label,
+                    "đọc lại \"%s\"%s" % (got, "" if not before else " (xóa trước chưa sạch: \"%s\")" % before))
+            except Exception as e:
+                rec("fail", "Gõ: " + label, str(e))
+        pw = None
+        if keyring:
+            try:
+                pw = keyring.get_password("AQ-Autotest:edusoft", acc)
+            except Exception:
+                pw = None
+        if not good:
+            rec("fail", "Đăng nhập", "bỏ qua – không cách gõ nào điền được ô Tên đăng nhập")
+        elif not pw:
+            rec("warn", "Đăng nhập", "bỏ qua – chưa lưu mật khẩu Edusoft; chạy chay-test.bat một lần (nhập mật khẩu) rồi thử lại")
+        else:
+            how = good[0]
+            hd_clear(u, hu)
+            hd_fill(how, u, hu, acc)
+            hd_clear(p, hp)
+            hd_fill(how, p, hp, pw)
+            rec("info", "Điền tài khoản %s + mật khẩu đã lưu" % acc, "bằng cách: " + dict(HD_METHODS)[how])
+            btn = es.login_button()
+            hb = el_hwnd(btn) if btn is not None else None
+
+            def enter():
+                hd_key(hp, 0x0D, "\r")
+
+            def invoke():
+                threading.Thread(target=lambda: btn.invoke(), daemon=True).start()
+
+            def lclick():
+                rc = W.RECT()
+                u32.GetClientRect(hb, ctypes.byref(rc))
+                xy = ((rc.bottom // 2) << 16) | (rc.right // 2)
+                u32.PostMessageW(hb, WM_LBUTTONDOWN, 1, xy)
+                time.sleep(0.05)
+                u32.PostMessageW(hb, WM_LBUTTONUP, 0, xy)
+
+            res, used = None, ""
+            for label, fn, can in (("phím Enter gửi vào ô Mật khẩu", enter, bool(hp)),
+                                   ("UI Automation Invoke nút Đăng nhập", invoke, btn is not None),
+                                   ("gửi cú bấm chuột vào nút (WM_LBUTTONDOWN/UP)", lclick, bool(hb))):
+                if not can:
+                    continue
+                try:
+                    fn()
+                except Exception as e:
+                    rec("warn", "Bấm Đăng nhập: " + label, str(e))
+                    continue
+                res = es.login_reacted(8)
+                rec("ok" if res else "warn", "Bấm Đăng nhập: " + label, res or "Edusoft không phản hồi")
+                if res:
+                    used = label
+                    break
+            if res == "có thông báo":
+                ds = es.dialogs_other()
+                txt = ""
+                try:
+                    txt = es.dialog_text(ds[0])[:200]
+                    shot(ds[0].handle, "2-thong-bao.png", "thông báo")
+                except Exception:
+                    pass
+                rec("fail", "Vào màn hình chính", "Edusoft báo: " + (txt or "?"))
+            elif res:
+                if es.wait_main(90):
+                    rec("ok", "Vào màn hình chính", "%s (bấm bằng %s)" % (es.version or es.main.window_text(), used))
+                    shot(es.main.handle, "3-man-hinh-chinh.png", "màn hình chính")
+                    es.dump_ui(out / "ui-man-hinh-chinh.txt")
+                    tab = None
+                    for el in es.main.descendants(control_type="TabItem"):
+                        try:
+                            if norm(el.window_text()) == "sinh viên":
+                                tab = el
+                                break
+                        except Exception:
+                            continue
+                    if tab is None:
+                        rec("warn", "Chọn tab ribbon \"Sinh viên\"", "không thấy tab")
+                    else:
+                        try:
+                            try:
+                                tab.select()
+                            except Exception:
+                                tab.invoke()
+                            time.sleep(2)
+                            sel = False
+                            try:
+                                sel = bool(tab.is_selected())
+                            except Exception:
+                                pass
+                            rec("ok" if sel else "warn", "Chọn tab ribbon \"Sinh viên\" (UI Automation)", "đã chọn" if sel else "chưa thấy đổi tab")
+                            shot(es.main.handle, "4-tab-sinh-vien.png", "sau khi chọn tab")
+                        except Exception as e:
+                            rec("fail", "Chọn tab ribbon \"Sinh viên\" (UI Automation)", str(e))
+                else:
+                    rec("fail", "Vào màn hình chính", "không thấy màn hình chính sau 90 giây")
+    except Exception as e:
+        rec("fail", "Dừng giữa chừng", "%s: %s" % (type(e).__name__, e))
+        traceback.print_exc()
+        try:
+            es.dump_ui(out / "ui-loi.txt")
+        except Exception:
+            pass
+    finally:
+        es.kill()
+        rep["ketThuc"] = now_iso()
+        (out / "bao-cao.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), "utf-8")
+        sys.stdout, sys.stderr = sys.__stdout__, sys.__stderr__
+        log.close()
+
+
+def edusoft_running():
+    try:
+        import subprocess
+        o = subprocess.run(["tasklist", "/FI", "IMAGENAME eq " + Path(CFG.get("exe") or "Edusoft.NET.exe").name, "/NH"],
+                           capture_output=True, text=True, timeout=15).stdout
+        return Path(CFG.get("exe") or "Edusoft.NET.exe").name.lower() in o.lower()
+    except Exception:
+        return False
+
+
+def probe_hidden_desktop():
+    """chay-test.bat --thu-desktop-an: tạo desktop ẩn, chạy phần thử (probe_inside) trên đó, in báo cáo, gói .zip vào Tải về."""
+    import subprocess, zipfile
+    ctypes, W, u32, k32, g32 = _w32()
+    print("=== Thử chạy Edusoft trên desktop ẩn \"%s\" – bộ test %s ===" % (HD_NAME, KIT_VERSION))
+    print("Edusoft sẽ chạy trên một màn hình riêng không hiện ra; bạn vẫn dùng máy bình thường trong lúc thử (~2–4 phút).")
+    print("Chỉ mở Edusoft, đăng nhập và chọn tab Sinh viên – không thêm/sửa/xóa dữ liệu.")
+    while edusoft_running():
+        input("Edusoft đang mở trên máy (bản nào cũng tính). Hãy đóng Edusoft rồi nhấn Enter để tiếp tục (Ctrl+C để thôi)… ")
+    out = BASE / "results" / ("desktop-an-%s" % time.strftime("%y%m%d-%H%M%S"))
+    out.mkdir(parents=True, exist_ok=True)
+    hdesk = u32.CreateDesktopW(HD_NAME, None, None, 0, 0x10000000, None)      # GENERIC_ALL
+    if not hdesk:
+        print("[LỖI] Không tạo được desktop ẩn (mã lỗi Windows %d)." % k32.GetLastError())
+        return
+
+    class SI(ctypes.Structure):
+        _fields_ = [("cb", W.DWORD), ("lpReserved", W.LPWSTR), ("lpDesktop", W.LPWSTR), ("lpTitle", W.LPWSTR),
+                    ("dwX", W.DWORD), ("dwY", W.DWORD), ("dwXSize", W.DWORD), ("dwYSize", W.DWORD),
+                    ("dwXCountChars", W.DWORD), ("dwYCountChars", W.DWORD), ("dwFillAttribute", W.DWORD),
+                    ("dwFlags", W.DWORD), ("wShowWindow", W.WORD), ("cbReserved2", W.WORD),
+                    ("lpReserved2", ctypes.c_void_p), ("hStdInput", W.HANDLE), ("hStdOutput", W.HANDLE), ("hStdError", W.HANDLE)]
+
+    class PI(ctypes.Structure):
+        _fields_ = [("hProcess", W.HANDLE), ("hThread", W.HANDLE), ("dwProcessId", W.DWORD), ("dwThreadId", W.DWORD)]
+
+    si, pi = SI(), PI()
+    si.cb = ctypes.sizeof(si)
+    si.lpDesktop = "WinSta0\\" + HD_NAME
+    cmd = subprocess.list2cmdline([sys.executable, str(Path(__file__).resolve()), "--thu-desktop-an", "--ben-trong", str(out)])
+    os.environ["AQ_UPDATED"] = "1"
+    k32.CreateProcessW.argtypes = [W.LPCWSTR, W.LPWSTR, ctypes.c_void_p, ctypes.c_void_p, W.BOOL, W.DWORD,
+                                   ctypes.c_void_p, W.LPCWSTR, ctypes.POINTER(SI), ctypes.POINTER(PI)]
+    if not k32.CreateProcessW(None, ctypes.create_unicode_buffer(cmd), None, None, False, 0x08000000,   # CREATE_NO_WINDOW
+                              None, str(BASE), ctypes.byref(si), ctypes.byref(pi)):
+        print("[LỖI] Không chạy được bộ test trên desktop ẩn (mã lỗi Windows %d)." % k32.GetLastError())
+        u32.CloseDesktop(hdesk)
+        return
+    seen, t0, limit = 0, time.time(), 8 * 60
+    rep_f = out / "bao-cao.txt"
+    while True:
+        done = k32.WaitForSingleObject(pi.hProcess, 1000) == 0
+        try:
+            lines = rep_f.read_text("utf-8").splitlines() if rep_f.exists() else []
+        except Exception:
+            lines = []
+        for ln in lines[seen:]:
+            print(ln)
+        seen = len(lines)
+        if done:
+            break
+        if time.time() - t0 > limit:
+            print("[LỖI] Quá %d phút chưa xong – dừng phần thử." % (limit // 60))
+            k32.TerminateProcess(pi.hProcess, 1)
+            try:
+                pid = (out / "edusoft-pid.txt").read_text("utf-8").strip()
+                if pid:
+                    subprocess.run(["taskkill", "/PID", pid, "/T", "/F"], capture_output=True, timeout=20)
+            except Exception:
+                pass
+            break
+    k32.CloseHandle(pi.hThread)
+    k32.CloseHandle(pi.hProcess)
+    time.sleep(1)
+    u32.CloseDesktop(hdesk)
+    ds = [d for d in update_dirs() if d != BASE]
+    zp = (ds[-1] if ds else BASE / "results") / ("AQ-desktop-an-%s.zip" % time.strftime("%y%m%d-%H%M%S"))
+    with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in out.rglob("*"):
+            if f.is_file():
+                z.write(f, out.name + "/" + f.relative_to(out).as_posix())
+    print()
+    print("Đã xong. File kết quả:", zp)
+    print("Gửi file .zip này cho Claude (có ảnh chụp và cây giao diện, không có mật khẩu) để quyết định chuyển bộ test sang desktop ẩn.")
+    try:
+        subprocess.Popen(["explorer", "/select,", str(zp)])
+    except Exception:
+        pass
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     upd_file = None
@@ -6256,6 +6690,13 @@ def main():
         return
     if "--chan-doan" in args:
         diagnose()
+        return
+    if "--thu-desktop-an" in args:
+        if "--ben-trong" in args:
+            probe_inside(args[args.index("--ben-trong") + 1])
+        else:
+            probe_hidden_desktop()
+            input("Nhấn Enter để đóng…")
         return
     try:
         register_claude_bridge()
@@ -6593,6 +7034,11 @@ KỊCH BẢN HIỆN CÓ
 - Chạy riêng một kịch bản:  chay-test.bat QLSV-001
 - Kịch bản mới: lần chạy đầu có thể dừng ở bước giao diện chưa khớp; script ghi file ui-*.txt
   (cây giao diện Edusoft lúc đó) vào thư mục lượt chạy để Claude chỉnh lại kịch bản.
+
+THỬ CHẠY TRÊN DESKTOP ẨN (đang thử nghiệm)
+- Mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
+- Edusoft chạy trên một màn hình riêng không hiện ra, máy vẫn dùng bình thường; chỉ đăng nhập và chọn tab Sinh viên.
+- Xong sẽ có file AQ-desktop-an-<giờ>.zip trong Tải về (ảnh chụp, cây giao diện, không có mật khẩu) – gửi cho Claude.
 
 TẮT BỘ GÕ TIẾNG VIỆT (Unikey/EVKey) KHI CHẠY TEST: script gõ phím thật, bộ gõ Telex có thể đổi chữ
 (vd "dd" thành "đ").
@@ -9066,7 +9512,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.04-01';
+  var KITVER='2026.11.05-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
