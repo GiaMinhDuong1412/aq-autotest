@@ -101,7 +101,8 @@ def run_busy():
 
 
 def start_run(codes, why=""):
-    codes = [str(c).upper() for c in (codes or []) if str(c).replace("-", "").isalnum()]
+    codes = [str(c).lower() if str(c).lower() == "--thu-desktop-an" else str(c).upper()
+             for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
