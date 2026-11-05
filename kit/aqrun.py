@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.05-02"
+KIT_VERSION = "2026.11.05-03"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -4319,7 +4319,7 @@ def main():
     if "--chan-doan" in args:
         diagnose()
         return
-    if "--thu-desktop-an" in args:
+    if any(a.lower() == "--thu-desktop-an" for a in args):     # Agent bản cũ viết HOA mọi mã gửi kèm
         if "--ben-trong" in args:
             probe_inside(args[args.index("--ben-trong") + 1])
         else:

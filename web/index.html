@@ -1937,7 +1937,8 @@ def run_busy():
 
 
 def start_run(codes, why=""):
-    codes = [str(c).upper() for c in (codes or []) if str(c).replace("-", "").isalnum()]
+    codes = [str(c).lower() if str(c).lower() == "--thu-desktop-an" else str(c).upper()
+             for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
@@ -2078,7 +2079,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.05-02"
+KIT_VERSION = "2026.11.05-03"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -6385,7 +6386,7 @@ def main():
     if "--chan-doan" in args:
         diagnose()
         return
-    if "--thu-desktop-an" in args:
+    if any(a.lower() == "--thu-desktop-an" for a in args):     # Agent bản cũ viết HOA mọi mã gửi kèm
         if "--ben-trong" in args:
             probe_inside(args[args.index("--ben-trong") + 1])
         else:
@@ -6730,7 +6731,8 @@ KỊCH BẢN HIỆN CÓ
   (cây giao diện Edusoft lúc đó) vào thư mục lượt chạy để Claude chỉnh lại kịch bản.
 
 THỬ CHẠY TRÊN DESKTOP ẨN (đang thử nghiệm)
-- Mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
+- Trên console (trang Máy chạy thử, bước 3) bấm "Thử desktop ẩn" → Agent tự cập nhật bộ test rồi chạy.
+  Hoặc mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
 - Edusoft chạy trên một màn hình riêng không hiện ra, máy vẫn dùng bình thường; chỉ đăng nhập và chọn tab Sinh viên.
 - Cửa sổ "xem desktop ẩn" tự mở ở màn hình phụ (phóng to hết màn hình đó; không có màn hình phụ thì nằm góc phải dưới)
   để theo dõi Edusoft đang chạy – chỉ xem, không bấm được; đóng lúc nào cũng được. Không muốn mở: thêm --khong-xem.
@@ -9208,7 +9210,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.05-02';
+  var KITVER='2026.11.05-03';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -9225,7 +9227,7 @@ QUAY VIDEO (TÙY CHỌN)
      đã biết là không có cầu nối thì đi thẳng cách tải file lệnh – không bao giờ để nút chạy bị treo */
   function withTimeout(p,ms){return Promise.race([Promise.resolve(p).catch(function(){}),new Promise(function(res){setTimeout(res,ms);})]);}
   async function brTry(){if(!MCP||BR.state==='ok'||BR.state==='off'||BR.state==='checking')return;await withTimeout(brCheck(false),5000);}
-  async function kitRunReq(codes){codes=codes&&codes.length?codes:['CHUNG-001'];KIT.err='';KIT.msg='';
+  async function kitRunReq(codes){codes=codes&&codes.length?codes:['CHUNG-001'];KIT.err='';KIT.msg='';var hd=codes[0]==='--thu-desktop-an';
     var r=myRunner()||{};if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
     if(!kitScens().length){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
     var cfg=kitCfg(r);delete cfg.generatedAt;var now=new Date().toISOString();
@@ -9233,14 +9235,14 @@ QUAY VIDEO (TÙY CHỌN)
       run:{codes:codes,requestedAt:now,requestedBy:SC.me||null}};
     if(BR.state==='ok'){KIT.busy=true;KIT.prog='Đang gửi lệnh tới máy chạy test…';renderRunner();
       try{var sr=(await MCP.callTool(BRS,'send',{payload:body},{cache:false})).payload||{};
-        KIT.msg='Đã gửi '+codes.join(', ')+' thẳng tới máy chạy test'+(BR.info&&BR.info.computer?' '+BR.info.computer:'')+' (bộ test '+KITVER+'). '+(sr.agent===false?'Agent chưa chạy — chạy cai-dat.bat một lần.':'Cửa sổ test mở sau vài giây; kết quả tự về console khi chạy xong.');
-        brWatch(codes,now);}
+        KIT.msg=hd?'Đã gửi lệnh thử desktop ẩn tới máy chạy test (bộ test '+KITVER+'). Cửa sổ "xem desktop ẩn" mở ở màn hình phụ sau vài giây; xong sẽ có file AQ-desktop-an-….zip trong Tải về.':'Đã gửi '+codes.join(', ')+' thẳng tới máy chạy test'+(BR.info&&BR.info.computer?' '+BR.info.computer:'')+' (bộ test '+KITVER+'). '+(sr.agent===false?'Agent chưa chạy — chạy cai-dat.bat một lần.':'Cửa sổ test mở sau vài giây; kết quả tự về console khi chạy xong.');
+        if(!hd)brWatch(codes,now);}
       catch(e){KIT.err='Không gửi được qua cầu nối: '+brErr(e);}
       KIT.busy=false;KIT.prog='';renderRunner();return;}
     if(!DL){KIT.err='Trang chưa được phép tải file trong lần xem này.';renderRunner();return;}
     KIT.busy=true;KIT.prog='Chờ bạn xác nhận lưu lệnh chạy…';renderRunner();
     try{await DL.save({filename:'aq-autotest-update-run.json',data:new Blob([JSON.stringify(body)],{type:'application/json'})});
-      KIT.msg='Đã gửi lệnh chạy '+codes.join(', ')+' kèm bộ test '+KITVER+'. Agent trên máy chạy test tự cập nhật rồi mở cửa sổ test sau vài giây. Chưa có Agent thì chạy chay-test.bat. Chạy xong bấm "Nhập kết quả…" và chọn file AQ-ket-qua-….zip trong Tải về.';}
+      KIT.msg=hd?'Đã gửi lệnh thử desktop ẩn kèm bộ test '+KITVER+'. Agent tự cập nhật rồi chạy: Edusoft chạy ẩn, cửa sổ "xem desktop ẩn" hiện ở màn hình phụ. Xong sẽ có file AQ-desktop-an-….zip trong Tải về – gửi cho Claude.':'Đã gửi lệnh chạy '+codes.join(', ')+' kèm bộ test '+KITVER+'. Agent trên máy chạy test tự cập nhật rồi mở cửa sổ test sau vài giây. Chưa có Agent thì chạy chay-test.bat. Chạy xong bấm "Nhập kết quả…" và chọn file AQ-ket-qua-….zip trong Tải về.';}
     catch(e){var c=e&&e.code;KIT.err=c==='declined'?'Bạn đã hủy lưu file lệnh.':'Không gửi được lệnh chạy: '+(c||(e&&e.message)||'lỗi');}
     KIT.busy=false;KIT.prog='';renderRunner();}
   function loadXlsx(){if(window.XLSX)return Promise.resolve(window.XLSX);
@@ -9445,7 +9447,8 @@ QUAY VIDEO (TÙY CHỌN)
       :c.status==='fail'?['bad',c.message||'Đăng nhập không thành công']:c.status==='pending'?['warn','Đang chờ kiểm tra khởi động']:['','Chưa chạy. Bấm Chạy test đăng nhập để xác nhận máy chạy được kịch bản.'];
     var b3='<p class="rn-msg '+t3[0]+'">'+esc(t3[1])+'</p><div class="rn-row">'+
         (lg?'<button type="button" class="btn sm'+(cur===3?' primary':'')+'" data-kitrun="'+esc(lg.code)+'"'+(KIT.busy||(!DL&&BR.state!=='ok')?' disabled':'')+'>'+IC.play+'Chạy test đăng nhập</button>':'<span class="hint">Chưa có kịch bản CHUNG-001.</span>')+
-        (last?'<button type="button" class="btn sm" data-drawer="'+esc(lg.id)+':res">'+IC.eye+'Xem ảnh lần chạy</button>':'')+'</div>';
+        (last?'<button type="button" class="btn sm" data-drawer="'+esc(lg.id)+':res">'+IC.eye+'Xem ảnh lần chạy</button>':'')+
+        '<button type="button" class="btn sm" data-kit="hd"'+(KIT.busy||(!DL&&BR.state!=='ok')?' disabled':'')+' title="Thử nghiệm: Edusoft chạy trên desktop ẩn, cửa sổ xem ở màn hình phụ. Chỉ đăng nhập, không đổi dữ liệu">'+IC.eye+'Thử desktop ẩn</button></div>';
     var list=kitScens(),lo=SC.rn.list===undefined?cur===0:SC.rn.list;
     return '<div class="card rn-card kit-card"><div class="rn-hd"><span class="grow"><h3>Edusoft · chạy bằng script</h3><p>Script chạy trên máy của bạn: mở Edusoft, đăng nhập và làm theo kịch bản, chụp ảnh từng bước.</p></span>'+pill+
         '<button type="button" class="qbtn" data-help="es" aria-label="Hướng dẫn cài đặt Edusoft Test" title="Hướng dẫn cài đặt">?</button></div>'+
@@ -9478,7 +9481,7 @@ QUAY VIDEO (TÙY CHỌN)
     var onRunner=!!k.closest('.kit-card');toast('Đang gửi lệnh chạy '+code.split(',').join(', ')+' tới máy chạy test…','',0);
     brTry().then(function(){return kitRunReq(code.split(','));}).catch(function(e){KIT.busy=false;KIT.prog='';KIT.err='Không gửi được lệnh chạy: '+((e&&(e.message||e.code))||'lỗi');}).then(function(){toast(KIT.err||KIT.msg,KIT.err?'err':'ok',KIT.err?15000:12000);if(!onRunner){var m=KIT.err||KIT.msg;if(k.closest('.rl-row,.mod-head'))RL.flash=m;else SC.flash=m;if(!busy()){renderMain();if(DR.id)renderDrawer();}}});});
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-kit],button[data-kitmod]');if(!b||b.disabled)return;
-    var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='xls'){kitExcel();return;}if(a==='imp'||a==='impdir'){kitPick(a==='impdir');return;}
+    var a=b.getAttribute('data-kit');if(a==='dl'){rnCollect();kitDownload();return;}if(a==='upd'){rnCollect();kitUpdate();return;}if(a==='run'){kitRunReq(['CHUNG-001']);return;}if(a==='hd'){if(confirm('Thử chạy Edusoft trên desktop ẩn?\n\nĐóng mọi Edusoft đang mở trên máy chạy test trước. Bộ test sẽ mở Edusoft HVNG - Copy trên một màn hình ẩn, đăng nhập và chọn tab Sinh viên (không đổi dữ liệu). Cửa sổ xem hiện ở màn hình phụ.'))brTry().then(function(){return kitRunReq(['--thu-desktop-an']);}).then(function(){toast(KIT.err||KIT.msg,KIT.err?'err':'ok',KIT.err?15000:12000);});return;}if(a==='xls'){kitExcel();return;}if(a==='imp'||a==='impdir'){kitPick(a==='impdir');return;}
     var m=b.getAttribute('data-kitmod');if(m){KIT.scope=m;kitDownload(m).then(function(){SC.flash=KIT.err||KIT.msg;if(!busy())renderMain();});}});
 
   function tpLink(link,code){var pl=TP.map[link.id];if(!pl)return;var its=clone(pl.items||[]);if(!its[link.idx])return;its[link.idx].scenarioCode=code;tpWrite(pl.product,pl.module,{items:its}).catch(function(){});}

@@ -44,7 +44,8 @@ KỊCH BẢN HIỆN CÓ
   (cây giao diện Edusoft lúc đó) vào thư mục lượt chạy để Claude chỉnh lại kịch bản.
 
 THỬ CHẠY TRÊN DESKTOP ẨN (đang thử nghiệm)
-- Mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
+- Trên console (trang Máy chạy thử, bước 3) bấm "Thử desktop ẩn" → Agent tự cập nhật bộ test rồi chạy.
+  Hoặc mở thư mục bộ test, gõ vào thanh địa chỉ:  cmd /c chay-test.bat --thu-desktop-an   (chọn Yes khi hỏi quyền admin).
 - Edusoft chạy trên một màn hình riêng không hiện ra, máy vẫn dùng bình thường; chỉ đăng nhập và chọn tab Sinh viên.
 - Cửa sổ "xem desktop ẩn" tự mở ở màn hình phụ (phóng to hết màn hình đó; không có màn hình phụ thì nằm góc phải dưới)
   để theo dõi Edusoft đang chạy – chỉ xem, không bấm được; đóng lúc nào cũng được. Không muốn mở: thêm --khong-xem.
