@@ -1898,7 +1898,7 @@ def python_exe():
     return exe
 
 
-RUNNING = {"p": None}
+RUNNING = {"p": None, "t": 0}
 DONE = BASE / "lenh-da-xu-ly"          # file lệnh đã nhận, tên kèm thời gian nên không bao giờ trùng
 WAIT_F = BASE / "lenh-cho.json"        # hàng chờ, giữ lại khi Agent tự khởi động lại sau cập nhật
 PENDING = []                            # file lệnh đã nhận, chờ tới lượt (mỗi lần bấm Chạy là một lượt)
@@ -1922,9 +1922,11 @@ def archive(f, tag):
 
 
 def run_busy():
-    """Đang có lượt test chạy: do Agent này mở, hoặc aqrun.py đang giữ mutex (VD mở từ chay-test.bat)."""
+    """Đang có lượt test chạy = aqrun.py đang giữ mutex AQAutotestRunMutex (Agent mở hay chay-test.bat đều vậy).
+    aqrun nhả mutex khi chạy xong – kể cả lúc cửa sổ test còn chờ "Nhấn Enter để đóng…" – nên cửa sổ cũ để mở
+    không chặn lệnh mới. Tiến trình vừa mở (chưa kịp tạo mutex) tính là bận trong 90 giây đầu."""
     p = RUNNING["p"]
-    if p is not None and p.poll() is None:
+    if p is not None and p.poll() is None and time.time() - RUNNING.get("t", 0) < 90:
         return True
     try:
         h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestRunMutex")
@@ -1941,6 +1943,7 @@ def start_run(codes, why=""):
              for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
+    RUNNING["t"] = time.time()
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
 
 
@@ -2079,7 +2082,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.05-03"
+KIT_VERSION = "2026.11.06-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -6264,6 +6267,7 @@ def probe_hidden_desktop():
     print("Chỉ mở Edusoft, đăng nhập và chọn tab Sinh viên – không thêm/sửa/xóa dữ liệu.")
     while edusoft_running():
         input("Edusoft đang mở trên máy (bản nào cũng tính). Hãy đóng Edusoft rồi nhấn Enter để tiếp tục (Ctrl+C để thôi)… ")
+    run_mutex(True)
     out = BASE / "results" / ("desktop-an-%s" % time.strftime("%y%m%d-%H%M%S"))
     out.mkdir(parents=True, exist_ok=True)
     hdesk = u32.CreateDesktopW(HD_NAME, None, None, 0, 0x10000000, None)      # GENERIC_ALL
@@ -6357,6 +6361,27 @@ def probe_hidden_desktop():
         pass
 
 
+_RUN_MUTEX = []
+
+
+def run_mutex(hold):
+    """Giữ mutex AQAutotestRunMutex trong lúc chạy test để Agent xếp hàng lệnh mới; nhả ra trước khi chờ "Nhấn Enter để đóng…"
+    – cửa sổ test cũ còn mở không chặn lần bấm Chạy tiếp theo."""
+    try:
+        import ctypes
+        k32 = ctypes.windll.kernel32
+        if hold and not _RUN_MUTEX:
+            k32.CreateMutexW.restype = ctypes.c_void_p
+            h = k32.CreateMutexW(None, False, "AQAutotestRunMutex")
+            if h:
+                _RUN_MUTEX.append(h)
+        elif not hold:
+            while _RUN_MUTEX:
+                k32.CloseHandle(ctypes.c_void_p(_RUN_MUTEX.pop()))
+    except Exception:
+        pass
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     upd_file = None
@@ -6390,7 +6415,10 @@ def main():
         if "--ben-trong" in args:
             probe_inside(args[args.index("--ben-trong") + 1])
         else:
-            probe_hidden_desktop()
+            try:
+                probe_hidden_desktop()
+            finally:
+                run_mutex(False)
             input("Nhấn Enter để đóng…")
         return
     try:
@@ -6399,11 +6427,7 @@ def main():
         pass
     if "--cap-nhat" in args:
         return
-    try:                                        # báo cho Agent: đang có lượt test chạy (lệnh mới sẽ xếp hàng)
-        import ctypes
-        _run_mutex = ctypes.windll.kernel32.CreateMutexW(None, False, "AQAutotestRunMutex")  # noqa: F841 – giữ tới khi thoát
-    except Exception:
-        pass
+    run_mutex(True)                             # báo cho Agent: đang có lượt test chạy (lệnh mới sẽ xếp hàng)
     want = set()
     for a in args:
         if a.lower().startswith("aqautotest:"):          # chạy từ nút trên AQ Autotest Console
@@ -6481,6 +6505,7 @@ def main():
                 os.startfile(str(BASE / "results"))
         except Exception:
             pass
+    run_mutex(False)
     input("Nhấn Enter để đóng…")
 
 
@@ -9210,7 +9235,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.05-03';
+  var KITVER='2026.11.06-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -9330,6 +9355,8 @@ QUAY VIDEO (TÙY CHỌN)
       var me=myRunner();if(SC.rnCol&&SC.me&&BR.info&&BR.info.kitDir&&(!me||me.kitDir!==BR.info.kitDir)){SC.rnCol.doc(SC.me).update({kitDir:BR.info.kitDir,kitComputer:BR.info.computer||'',updatedAt:new Date().toISOString()}).catch(function(){});}}
     catch(e){BR.state='off';BR.code=brErr(e);}
     renderRunner();if(BR.state==='ok')brSync(false);}
+  /* làm mới trạng thái máy (nhật ký Agent) không hiện "Đang kết nối…" – dùng khi đang chờ kết quả */
+  async function brInfo(){try{var r=await MCP.callTool(BRS,'status',{},{cache:false});if(r&&r.payload){BR.info=r.payload;renderRunner();}}catch(e){}}
   function b64Blob(b64,type){var bin=atob(b64),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new Blob([u],{type:type||'application/octet-stream'});}
   async function brSync(manual){if(BR.state!=='ok'||BR.busy)return 0;BR.busy=true;var n=0,bugs=0,notes=[];
     try{var l=(await MCP.callTool(BRS,'list_results',{limit:30},{cache:false})).payload||{};
@@ -9346,7 +9373,7 @@ QUAY VIDEO (TÙY CHỌN)
     BR.busy=false;KIT.prog='';renderRunner();if(n){renderAll();renderBugs();renderRelease();}return n;}
   function brWatch(codes,since){if(BR.watch)clearInterval(BR.watch);var t0=Date.now();
     BR.watch=setInterval(function(){if(Date.now()-t0>25*60*1000||BR.state!=='ok'){clearInterval(BR.watch);BR.watch=null;renderRunner();return;}
-      brSync(false).then(function(n){var done=SC.runs.some(function(x){return codes.indexOf(x.scenarioCode)>=0&&String(x.finishedAt||'')>since;});
+      brInfo().then(function(){return brSync(false);}).then(function(n){var done=SC.runs.some(function(x){return codes.indexOf(x.scenarioCode)>=0&&String(x.finishedAt||'')>since;});
         if(done){clearInterval(BR.watch);BR.watch=null;renderRunner();}});},15000);}
   /* trạng thái cài đặt Edusoft trên máy của người đang xem: 1 khai báo · 2 cài bộ test · 3 test đăng nhập */
   function esSetup(){var r=myRunner()||{},c=r.check||{},i=BR.info||{},ag=!!(i.agent&&i.agent.running);
@@ -9354,6 +9381,10 @@ QUAY VIDEO (TÙY CHỌN)
     var s2=BR.state==='ok'?(ag?'ok':'warn'):BR.code?'warn':(r.kitDir||c.via==='script'?'ok':'');
     var s3=c.status==='ok'?'ok':c.status==='fail'?'fail':c.status==='pending'?'warn':'';
     return {r:r,c:c,i:i,ag:ag,s1:s1,s2:s2,s3:s3,cur:!s1?1:s2!=='ok'?2:s3!=='ok'?3:0};}
+  /* vài dòng cuối agent.log khi đang chờ kết quả – lệnh xếp hàng vì cửa sổ test cũ còn mở thì nói rõ cách gỡ */
+  function agLog(l){var last=l.slice(-4),q=/xếp hàng/.test(last[last.length-1]||'');
+    return (q?'<p class="rn-msg warn">Lệnh đang xếp hàng sau lượt test trước. Đóng cửa sổ test cũ (cửa sổ đen chờ “Nhấn Enter để đóng…” hoặc đang hỏi Edusoft) – lệnh sẽ chạy ngay.</p>':'')+
+      '<p class="hint">Nhật ký Agent:</p><pre class="mono hint" style="white-space:pre-wrap;margin:2px 0 6px">'+esc(last.join('\n'))+'</pre>';}
   function brLine(S){var i=S.i,dir=i.kitDir||S.r.kitDir||'';
     var t=BR.state==='ok'?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
         :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy lại cai-dat.bat (quyền admin).'])
@@ -9366,6 +9397,7 @@ QUAY VIDEO (TÙY CHỌN)
       (window.AQ_LOCAL?'<div class="br-dir"><label for="brKitDir">Thư mục bộ test trên máy này</label><div class="br-dir-row"><input id="brKitDir" class="mono" value="'+esc(dir)+'" placeholder="VD: D:\\AQ-Autotest" spellcheck="false">'+
         '<button type="button" class="btn sm" data-br="dir">Lưu thư mục</button><button type="button" class="btn sm" data-br="install" title="Chép mã bộ test mới nhất (thư mục kit/ của dự án) vào thư mục này – dùng khi cài máy mới">Cài bộ test vào đây</button></div></div>'
       :(dir?'<p class="hint">Thư mục bộ test: <span class="mono">'+esc(dir)+'</span></p>':''))+
+      (BR.watch&&i.agent&&(i.agent.log||[]).length?agLog(i.agent.log):'')+
       (i.kitVersion&&i.kitVersion!==KITVER?'<p class="hint">Bộ test trên máy bản '+esc(i.kitVersion)+', tự lên '+KITVER+' ở lần Chạy tới.</p>':'');}
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}
