@@ -9861,19 +9861,13 @@ QUAY VIDEO (TÙY CHỌN)
     var s2=BR.state==='ok'?(ag?'ok':'warn'):(r.kitDir||c.via==='script'||c.status==='ok')?'ok':(BR.code&&BR.ecode!=='server_not_connected')?'warn':'';
     var s3=c.status==='ok'?'ok':c.status==='fail'?'fail':c.status==='pending'?'warn':'';
     return {r:r,c:c,i:i,ag:ag,s1:s1,s2:s2,s3:s3,cur:!s1?1:s2!=='ok'?2:s3!=='ok'?3:0};}
-<<<<<<< web/console-claudeai.html
-  function brLine(S){var i=S.i,ok=BR.state==='ok',dir=ok?(i.kitDir||''):(KIT.dir!=null?KIT.dir:(S.r.installDir||'')),nb=BR.ecode==='server_not_connected';
-    var t=ok?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
-        :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy cai-dat.bat (quyền admin) trong thư mục bộ test.'])
-=======
   /* vài dòng cuối agent.log khi đang chờ kết quả – lệnh xếp hàng vì cửa sổ test cũ còn mở thì nói rõ cách gỡ */
   function agLog(l){var last=l.slice(-4),q=/xếp hàng/.test(last[last.length-1]||'');
     return (q?'<p class="rn-msg warn">Lệnh đang xếp hàng sau lượt test trước. Đóng cửa sổ test cũ (cửa sổ đen chờ “Nhấn Enter để đóng…” hoặc đang hỏi Edusoft) – lệnh sẽ chạy ngay.</p>':'')+
       '<p class="hint">Nhật ký Agent:</p><pre class="mono hint" style="white-space:pre-wrap;margin:2px 0 6px">'+esc(last.join('\n'))+'</pre>';}
-  function brLine(S){var i=S.i,dir=i.kitDir||S.r.kitDir||'';
-    var t=BR.state==='ok'?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
-        :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy lại cai-dat.bat (quyền admin).'])
->>>>>>> web/index.html
+  function brLine(S){var i=S.i,ok=BR.state==='ok',dir=ok?(i.kitDir||''):(KIT.dir!=null?KIT.dir:(S.r.installDir||'')),nb=BR.ecode==='server_not_connected';
+    var t=ok?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
+        :['warn','Đã kết nối nhưng AQ Autotest Agent chưa chạy. Chạy cai-dat.bat (quyền admin) trong thư mục bộ test.'])
       :BR.state==='checking'?['','Đang kết nối máy chạy test…']
       :BR.code&&!nb?['warn',BR.code]
       :[S.s2==='ok'?'ok':'',(S.s2==='ok'?'Máy này chạy test qua file: ':'Chạy test qua file, không cần cầu nối: ')+'bấm Chạy → lưu file lệnh vào Tải về → chạy xong bấm Nhập kết quả… chọn file AQ-ket-qua-….zip.'];
@@ -9883,9 +9877,8 @@ QUAY VIDEO (TÙY CHỌN)
         (KIT.kn?'<p class="rn-msg '+(KIT.kn.err?'warn':KIT.kn.ok?'ok':'')+'" style="margin-top:6px">'+esc(KIT.kn.t)+'</p>':'')+
         '<p class="hint" style="margin-top:6px">'+(ok?'Đang đọc trực tiếp thư mục này'+(i.kitVersion?' · bộ test '+esc(i.kitVersion)+(i.kitVersion!==KITVER?', tự lên '+KITVER+' ở lần Chạy tới':''):'')+'. Đổi thư mục: sửa ô trên, tải lại file kết nối.'
           :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';
-    if(ok)return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+dirHtml;
+    if(ok)return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+(BR.watch&&i.agent&&(i.agent.log||[]).length?agLog(i.agent.log):'')+dirHtml;
     return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+
-<<<<<<< web/console-claudeai.html
       '<div class="br-alt"><b>Chạy test qua file (không cần cầu nối):</b><ol>'+
         '<li>Bấm <b>Chạy test đăng nhập</b>, hoặc nút máy chạy test ở kịch bản / menu Phân công test → lưu file lệnh vào thư mục <b>Tải về</b> (Downloads).</li>'+
         '<li>AQ Autotest Agent trên máy tự mở cửa sổ test sau vài giây. Chưa cài Agent: chạy <code>chay-test.bat</code> trong thư mục bộ test.</li>'+
@@ -9929,13 +9922,6 @@ QUAY VIDEO (TÙY CHỌN)
     catch(e){var c=e&&e.code;KIT.kn={t:c==='declined'?'Bạn đã hủy lưu file.':c==='not_granted'?'Trang chưa được cho phép tải file – bấm Cho phép khi Claude app hỏi rồi thử lại.':'Không tải được ('+(c||(e&&e.message)||'lỗi')+').',err:1};}
     renderRunner();}
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='brDir')KIT.dir=e.target.value;});
-=======
-      (window.AQ_LOCAL?'<div class="br-dir"><label for="brKitDir">Thư mục bộ test trên máy này</label><div class="br-dir-row"><input id="brKitDir" class="mono" value="'+esc(dir)+'" placeholder="VD: D:\\AQ-Autotest" spellcheck="false">'+
-        '<button type="button" class="btn sm" data-br="dir">Lưu thư mục</button><button type="button" class="btn sm" data-br="install" title="Chép mã bộ test mới nhất (thư mục kit/ của dự án) vào thư mục này – dùng khi cài máy mới">Cài bộ test vào đây</button></div></div>'
-      :(dir?'<p class="hint">Thư mục bộ test: <span class="mono">'+esc(dir)+'</span></p>':''))+
-      (BR.watch&&i.agent&&(i.agent.log||[]).length?agLog(i.agent.log):'')+
-      (i.kitVersion&&i.kitVersion!==KITVER?'<p class="hint">Bộ test trên máy bản '+esc(i.kitVersion)+', tự lên '+KITVER+' ở lần Chạy tới.</p>':'');}
->>>>>>> web/index.html
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}else if(a==='kn'){knDownload();}});
   async function importRun(res,getFile){var notes=[];
