@@ -62,7 +62,7 @@ def python_exe():
     return exe
 
 
-RUNNING = {"p": None}
+RUNNING = {"p": None, "t": 0}
 DONE = BASE / "lenh-da-xu-ly"          # file lệnh đã nhận, tên kèm thời gian nên không bao giờ trùng
 WAIT_F = BASE / "lenh-cho.json"        # hàng chờ, giữ lại khi Agent tự khởi động lại sau cập nhật
 PENDING = []                            # file lệnh đã nhận, chờ tới lượt (mỗi lần bấm Chạy là một lượt)
@@ -86,9 +86,11 @@ def archive(f, tag):
 
 
 def run_busy():
-    """Đang có lượt test chạy: do Agent này mở, hoặc aqrun.py đang giữ mutex (VD mở từ chay-test.bat)."""
+    """Đang có lượt test chạy = aqrun.py đang giữ mutex AQAutotestRunMutex (Agent mở hay chay-test.bat đều vậy).
+    aqrun nhả mutex khi chạy xong – kể cả lúc cửa sổ test còn chờ "Nhấn Enter để đóng…" – nên cửa sổ cũ để mở
+    không chặn lệnh mới. Tiến trình vừa mở (chưa kịp tạo mutex) tính là bận trong 90 giây đầu."""
     p = RUNNING["p"]
-    if p is not None and p.poll() is None:
+    if p is not None and p.poll() is None and time.time() - RUNNING.get("t", 0) < 90:
         return True
     try:
         h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestRunMutex")
@@ -105,6 +107,7 @@ def start_run(codes, why=""):
              for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
+    RUNNING["t"] = time.time()
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
 
 

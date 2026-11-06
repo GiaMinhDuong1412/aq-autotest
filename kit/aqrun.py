@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.05-03"
+KIT_VERSION = "2026.11.06-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -4197,6 +4197,7 @@ def probe_hidden_desktop():
     print("Chỉ mở Edusoft, đăng nhập và chọn tab Sinh viên – không thêm/sửa/xóa dữ liệu.")
     while edusoft_running():
         input("Edusoft đang mở trên máy (bản nào cũng tính). Hãy đóng Edusoft rồi nhấn Enter để tiếp tục (Ctrl+C để thôi)… ")
+    run_mutex(True)
     out = BASE / "results" / ("desktop-an-%s" % time.strftime("%y%m%d-%H%M%S"))
     out.mkdir(parents=True, exist_ok=True)
     hdesk = u32.CreateDesktopW(HD_NAME, None, None, 0, 0x10000000, None)      # GENERIC_ALL
@@ -4290,6 +4291,27 @@ def probe_hidden_desktop():
         pass
 
 
+_RUN_MUTEX = []
+
+
+def run_mutex(hold):
+    """Giữ mutex AQAutotestRunMutex trong lúc chạy test để Agent xếp hàng lệnh mới; nhả ra trước khi chờ "Nhấn Enter để đóng…"
+    – cửa sổ test cũ còn mở không chặn lần bấm Chạy tiếp theo."""
+    try:
+        import ctypes
+        k32 = ctypes.windll.kernel32
+        if hold and not _RUN_MUTEX:
+            k32.CreateMutexW.restype = ctypes.c_void_p
+            h = k32.CreateMutexW(None, False, "AQAutotestRunMutex")
+            if h:
+                _RUN_MUTEX.append(h)
+        elif not hold:
+            while _RUN_MUTEX:
+                k32.CloseHandle(ctypes.c_void_p(_RUN_MUTEX.pop()))
+    except Exception:
+        pass
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     upd_file = None
@@ -4323,7 +4345,10 @@ def main():
         if "--ben-trong" in args:
             probe_inside(args[args.index("--ben-trong") + 1])
         else:
-            probe_hidden_desktop()
+            try:
+                probe_hidden_desktop()
+            finally:
+                run_mutex(False)
             input("Nhấn Enter để đóng…")
         return
     try:
@@ -4332,11 +4357,7 @@ def main():
         pass
     if "--cap-nhat" in args:
         return
-    try:                                        # báo cho Agent: đang có lượt test chạy (lệnh mới sẽ xếp hàng)
-        import ctypes
-        _run_mutex = ctypes.windll.kernel32.CreateMutexW(None, False, "AQAutotestRunMutex")  # noqa: F841 – giữ tới khi thoát
-    except Exception:
-        pass
+    run_mutex(True)                             # báo cho Agent: đang có lượt test chạy (lệnh mới sẽ xếp hàng)
     want = set()
     for a in args:
         if a.lower().startswith("aqautotest:"):          # chạy từ nút trên AQ Autotest Console
@@ -4414,6 +4435,7 @@ def main():
                 os.startfile(str(BASE / "results"))
         except Exception:
             pass
+    run_mutex(False)
     input("Nhấn Enter để đóng…")
 
 
