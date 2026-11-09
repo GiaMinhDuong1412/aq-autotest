@@ -1366,6 +1366,12 @@ td.subtext{display:table-cell;margin:0}
    Theme mặc định = "AQ Xanh" (sáng); các theme cũ vẫn chọn được ở nút bảng màu. */
 :root{--display:"Be Vietnam Pro","Segoe UI",sans-serif;--body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   --sb-bg:#0b1324;--sb-bg2:#111c33;--sb-line:#1c2944;--sb-fg:#c9d3e6;--sb-mute:#8391ab;--sb-act:#1f3a75;--sb-acc:#60a5fa}
+/* theme khác "AQ Xanh": thanh bên đậm pha theo màu chính của theme (xanh lá, cam, hồng…) thay vì xanh navy cố định */
+:root[data-theme]{
+  --sb-bg:color-mix(in srgb,var(--accent-deep) 30%,#05070c);--sb-bg2:color-mix(in srgb,var(--accent) 18%,#0b0e16);
+  --sb-line:color-mix(in srgb,var(--accent) 22%,#141823);--sb-fg:color-mix(in srgb,var(--accent) 12%,#d3d8e2);
+  --sb-mute:color-mix(in srgb,var(--accent) 22%,#8a91a0);--sb-act:color-mix(in srgb,var(--accent) 42%,#0b0e16);
+  --sb-acc:color-mix(in srgb,var(--accent) 55%,#fff)}
 :root:not([data-theme]){
   --bg:#f2f5fa; --bg-2:#ffffff; --bg-3:#f6f8fc; --raise:#eef2f9;
   --line:#e1e7f0; --line-2:#cfd8e6;
@@ -1384,7 +1390,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .sidebar-brand{padding:6px 8px 18px;margin-bottom:6px;border-bottom:1px solid var(--sb-line)}
 .sidebar-brand strong{color:#fff;font-size:.98rem;font-weight:700}
 .sidebar-brand span.sub{color:var(--sb-mute);font-family:var(--body);font-size:.68rem;letter-spacing:0}
-.sidebar .brand-mark.sm{background:linear-gradient(145deg,#3b82f6,#1d4ed8);border-radius:10px}
+.sidebar .brand-mark.sm{background:linear-gradient(145deg,color-mix(in srgb,var(--sb-acc) 45%,var(--accent)),var(--accent-deep));border-radius:10px}
 .sidebar-close{color:#fff}
 .main-nav{gap:2px}
 .nav-label{margin:16px 12px 6px;color:var(--sb-mute);font-family:var(--body);font-size:.64rem;font-weight:700;letter-spacing:.1em}
@@ -1396,7 +1402,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .nav-item.active .ic{background:transparent;color:var(--sb-acc)}
 .nav-item.active::before{display:block;left:-12px;top:8px;bottom:8px;width:3px;background:var(--sb-acc)}
 .nav-item .meta{color:var(--sb-mute);font-family:var(--body);font-size:.7rem}
-.nav-item.active .meta{color:#c7dbff}
+.nav-item.active .meta{color:color-mix(in srgb,var(--sb-acc) 45%,#fff)}
 .nav-item .meta.hot,.nav-item .bugmeta.hot{color:#fca5a5}
 .nav-item.sub{padding:6px 10px 6px 46px;font-size:.8rem}
 .nav-group{color:var(--sb-fg)}
@@ -1405,7 +1411,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .sidebar-bottom{border-top:1px solid var(--sb-line);padding-top:10px}
 .user-card{border-top:0;color:#fff;padding:6px 6px 2px}
 .user-card small{color:var(--sb-mute);font-family:var(--body)}
-.sidebar .avatar{background:#1f3a75;color:#dbe7ff}
+.sidebar .avatar{background:var(--sb-act);color:color-mix(in srgb,var(--sb-acc) 35%,#fff)}
 
 /* thanh trên */
 .topbar{height:60px;background:var(--bg-2);border-bottom:1px solid var(--line);gap:14px}
