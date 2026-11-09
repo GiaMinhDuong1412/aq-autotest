@@ -1266,6 +1266,14 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .mp-none{padding:0 18px 10px 48px;font-size:.74rem;color:var(--muted)}
 .mp-q{flex:1 1 220px;min-width:0;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:.8rem}
 .mod-rest{display:flex;flex-wrap:wrap;gap:8px;padding:12px 18px 16px}
+.mod-add{margin-top:4px;padding:14px 16px;border:1px dashed var(--line-2);border-radius:12px}
+.mod-add-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:10px}
+.mod-add-h b{font-size:.86rem;font-weight:600}
+.mod-chips{display:flex;flex-wrap:wrap;gap:6px}
+.mod-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 6px;border:1px solid var(--line);border-radius:999px;background:var(--bg-2);color:var(--fg-dim);font:inherit;font-size:.78rem;cursor:pointer}
+.mod-chip:hover{border-color:var(--accent);color:var(--fg)}
+.mod-chip .mc{padding:1px 6px;border-radius:999px;background:var(--bg-3);color:var(--muted);font-family:var(--mono);font-size:.62rem;font-weight:600}
+.mod-chip i{font-style:normal;min-width:18px;padding:0 5px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.68rem;font-weight:600;text-align:center}
 .mod-rest .pick-mod{flex:1 1 200px;max-width:280px}
 .fix-filter{flex-wrap:wrap;align-self:flex-start}
 .fix-filter b{margin-left:4px;font-weight:600}
@@ -8015,12 +8023,16 @@ QUAY VIDEO (TÙY CHỌN)
       if(rel&&mine.length){
         h+='<details class="card sec" data-sec="testers"'+(secOpen('testers',false)?' open':'')+'><summary><div><h3>Người test</h3><p>Bấm tên để lọc menu của người đó</p></div>'+(RL.f.tester!=='all'?'<button type="button" class="btn sm" data-rlt="all">Bỏ lọc người test</button>':'')+'</summary>'+testerTable()+'</details>';
         var used=mods.filter(function(m){return !m.soon&&relItems(p,m.c).length;}),groups=used.map(function(m){return grpHtml(p,m,all);}).filter(Boolean);
+        var anyOpen=used.some(function(m){return RL.grp[p+':'+m.c];});
         h+='<div class="grp-head"><h3>Phân hệ đang phân công</h3><span class="bmeta">'+used.length+' phân hệ · '+mine.length+' menu</span>'+
-          '<span class="grp-acts"><button type="button" class="linkish" data-grpall="1">Mở tất cả</button><button type="button" class="linkish" data-grpall="0">Thu gọn</button></span></div>'+flashHtml();
+          (used.length>1?'<span class="grp-acts"><button type="button" class="linkish" data-grpall="'+(anyOpen?'0':'1')+'">'+(anyOpen?'Thu gọn tất cả':'Mở tất cả')+'</button></span>':'')+'</div>'+flashHtml();
         h+=groups.length?'<div class="grp-list">'+groups.join('')+'</div>':'<div class="card">'+emptyHtml('Không có menu nào khớp bộ lọc.','',false)+'</div>';}
       if(rel&&RL.itemsLoaded&&!(rlFiltering()||filtering())){var rest=mods.filter(function(m){return !m.soon&&!relItems(p,m.c).length;});
-        if(rest.length)h+='<div class="card"><div class="list-head"><div><h3>'+(mine.length?'Phân hệ chưa phân công':'Chọn phân hệ để phân công')+'</h3><p>Bấm phân hệ → <b>Chọn menu & kịch bản</b> để đưa menu cần test và kịch bản sẽ chạy vào release '+esc(rel.version)+'.</p></div></div>'+
-          '<div class="mod-rest">'+rest.map(function(m){var n=ofMod(all,m.c).length;return '<button type="button" class="pick-mod" data-mod-open="'+m.c+'"><span class="mcode">'+m.c+'</span><b>'+esc(m.n)+'</b><span class="bmeta">'+(n?n+' kịch bản':'chưa có kịch bản')+'</span></button>';}).join('')+'</div></div>';}
+        /* phân hệ chưa phân công: một dòng chip gọn (mã + tên, số kịch bản nếu có) thay cho lưới thẻ */
+        if(rest.length)h+='<div class="mod-add"><div class="mod-add-h"><b>'+(mine.length?'Thêm phân hệ':'Chọn phân hệ để phân công')+'</b>'+
+            '<span class="bmeta">bấm phân hệ → Chọn menu & kịch bản</span></div><div class="mod-chips">'+
+          rest.map(function(m){var n=ofMod(all,m.c).length;return '<button type="button" class="mod-chip" data-mod-open="'+m.c+'" title="'+esc(m.c+' · '+m.n)+(n?' · '+n+' kịch bản':' · chưa có kịch bản')+'">'+
+            '<span class="mc">'+m.c+'</span>'+esc(m.n)+(n?'<i>'+n+'</i>':'')+'</button>';}).join('')+'</div></div>';}
       return h;
     }
     var m=modMeta(p,SC.mod),mine=ofMod(all,m.c),cc=counts(mine),rl=relItems(p,m.c),rs=rlStats(rl),rel2=rlCur(),pl=tpOf(p,m.c),cv=tpCov(pl),exn=exCount(mine);
