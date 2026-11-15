@@ -10069,9 +10069,8 @@ QUAY VIDEO (TÙY CHỌN)
         (KIT.kn?'<p class="rn-msg '+(KIT.kn.err?'warn':KIT.kn.ok?'ok':'')+'" style="margin-top:6px">'+esc(KIT.kn.t)+'</p>':'')+
         '<p class="hint" style="margin-top:6px">'+(ok?'Đang đọc trực tiếp thư mục này'+(i.kitVersion?' · bộ test '+esc(i.kitVersion)+(i.kitVersion!==KITVER?', tự lên '+KITVER+' ở lần Chạy tới':''):'')+'. Đổi thư mục: sửa ô trên, tải lại file kết nối.'
           :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';
-    if(ok)return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+(BR.watch&&i.agent&&(i.agent.log||[]).length?agLog(i.agent.log):'')+dirHtml;
+    if(ok)return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+(i.agent&&(i.agent.log||[]).length&&(BR.watch||agFail(i.agent.log))?agLog(i.agent.log):'')+dirHtml;
     return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+
-<<<<<<< web/console-claudeai.html
       '<div class="br-alt"><b>Chạy test qua file (không cần cầu nối):</b><ol>'+
         '<li>Bấm <b>Chạy test đăng nhập</b>, hoặc nút máy chạy test ở kịch bản / menu Phân công test → lưu file lệnh vào thư mục <b>Tải về</b> (Downloads).</li>'+
         '<li>AQ Autotest Agent trên máy tự mở cửa sổ test sau vài giây. Chưa cài Agent: chạy <code>chay-test.bat</code> trong thư mục bộ test.</li>'+
@@ -10115,13 +10114,6 @@ QUAY VIDEO (TÙY CHỌN)
     catch(e){var c=e&&e.code;KIT.kn={t:c==='declined'?'Bạn đã hủy lưu file.':c==='not_granted'?'Trang chưa được cho phép tải file – bấm Cho phép khi Claude app hỏi rồi thử lại.':'Không tải được ('+(c||(e&&e.message)||'lỗi')+').',err:1};}
     renderRunner();}
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='brDir')KIT.dir=e.target.value;});
-=======
-      (window.AQ_LOCAL?'<div class="br-dir"><label for="brKitDir">Thư mục bộ test trên máy này</label><div class="br-dir-row"><input id="brKitDir" class="mono" value="'+esc(dir)+'" placeholder="Để trống = %USERPROFILE%\\AQ-Autotest · hoặc vd D:\\AQ-Autotest" spellcheck="false">'+
-        '<button type="button" class="btn sm" data-br="dir">Lưu thư mục</button><button type="button" class="btn sm" data-br="install" title="Chép mã bộ test mới nhất (thư mục kit/ của dự án) vào thư mục này – dùng khi cài máy mới">Cài bộ test vào đây</button></div></div>'
-      :(dir?'<p class="hint">Thư mục bộ test: <span class="mono">'+esc(dir)+'</span></p>':''))+
-      (i.agent&&(i.agent.log||[]).length&&(BR.watch||agFail(i.agent.log))?agLog(i.agent.log):'')+
-      (i.kitVersion&&i.kitVersion!==KITVER?'<p class="hint">Bộ test trên máy bản '+esc(i.kitVersion)+', tự lên '+KITVER+' ở lần Chạy tới.</p>':'');}
->>>>>>> web/index.html
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}else if(a==='kn'){knDownload();}});
   async function importRun(res,getFile){var notes=[];
