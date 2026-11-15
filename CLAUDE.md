@@ -49,7 +49,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **Cài bộ test tự động** (app/localhost trên Windows): nút "Cài tự động" → `api/kit/auto_setup` chép kit vào thư mục cài (trống =
   `%USERPROFILE%\AQ-Autotest`) rồi chạy `cai-dat.bat --tu-dong` (không hỏi, không pause, tự xin admin – người dùng chỉ bấm Yes; thiếu
   Python thì winget, không có winget thì tải bộ cài python.org) – tiến độ ghi `cai-dat-trang-thai.txt` (`<bước>|<mã>`, lỗi `loi|<mã>`),
-  trang đọc qua `status.setup`. Bước 1 có "Chọn file…" (`aqDesktop.pickFile`) và tự điền bản HVNG - Copy nếu có (`find_edusoft`).
+  trang đọc qua `status.setup`. Bước 1 có "Chọn file…" (`aqDesktop.pickFile`) và gợi ý bản HVNG - Copy nếu máy có (`find_edusoft`); bấm Lưu = ghi
+  `config.json` của bộ test ngay (`api/kit/save_config`), "Cài tự động" cũng gửi kèm cấu hình.
   **Popup app**: màn hình chờ khi mở (`showSplash` trong `desktop/src/main.js`), hộp cập nhật giữ mở có thanh tiến trình, "Có gì mới"
   sau khi cập nhật (`thay-doi.json` = tên các PR, `dong_goi_app.py` tạo lúc build; `aqDesktop.getInfo` → bản trước), hướng dẫn người mới
   (màn chào mừng 4 bước lần đầu, thẻ "Bắt đầu" trên Tổng quan, menu tài khoản: Hướng dẫn sử dụng / Có gì mới).
@@ -102,8 +103,9 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - Tài khoản test `admindh` chỉ dùng cho môi trường demo/test. **Không** ghi mật khẩu vào `data/`, kịch bản, log hay commit;
   mật khẩu Edusoft nằm trong Windows Credential Manager trên máy chạy test (do `aqrun.py` hỏi), mật khẩu Netweb ở `local/`.
 - Không đọc/hiển thị mật khẩu email SMTP trong `client.config` của Edusoft.
-- Chỉ thao tác bản **EDUSOFT - HVNG - Copy** (`E:\AQ - Works\EDUSOFT_ALL_ENV\EDUSOFT - HVNG - Copy\Edusoft.NET.exe`), không đụng
-  các môi trường Edusoft khác. Dữ liệu test có tiền tố rõ ràng (`AUTO…`, `TEST_…`) và có luồng dọn dữ liệu; xóa chỉ khi hộp
+- Chỉ thao tác bản Edusoft **test/demo** mà người dùng khai báo ở bước 1 trang Máy chạy thử – **mỗi người/máy một đường dẫn**
+  (vd máy gốc `E:\AQ - Works\EDUSOFT_ALL_ENV\EDUSOFT - HVNG - Copy\Edusoft.NET.exe`), không cứng một đường dẫn; không đụng
+  môi trường Edusoft thật (production). Dữ liệu test có tiền tố rõ ràng (`AUTO…`, `TEST_…`) và có luồng dọn dữ liệu; xóa chỉ khi hộp
   thoại xác nhận nêu đúng mã dữ liệu test (hoặc danh sách xác nhận xóa "Danh sách đang chọn để xóa" chỉ có dòng mang mã test).
 - Hỏi người dùng trước khi thêm thao tác làm thay đổi dữ liệu ngoài phạm vi kịch bản. Không sửa file Excel gốc trừ khi được yêu cầu.
 - Source Edusoft trên TFS (`$TFS_URL` = https://portal.aqtech.vn:1443/tfs/AQ, repo Git `Source.NET`, token ở biến môi trường `TFS_TOKEN`,

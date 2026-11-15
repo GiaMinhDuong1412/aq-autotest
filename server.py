@@ -299,6 +299,15 @@ def setup_state(base):
         try:
             d = (base / "chan-doan.txt").read_text("utf-8", errors="replace").splitlines()
             st["diag"] = [x for x in d if x.startswith(("[ OK ]", "[ !! ]", "[LỖI]"))][:30]
+            exe = ""                            # đường dẫn Edusoft sửa/lưu sau lần kiểm tra → cập nhật dòng đó theo config.json hiện tại
+            try:
+                exe = str(json.loads((base / "config.json").read_text("utf-8-sig")).get("exe") or "")
+            except Exception:
+                pass
+            ok = bool(exe) and (os.name != "nt" or Path(exe).is_file())
+            st["diag"] = [("[ OK ] Edusoft.NET.exe – " + exe if ok else "[LỖI] Edusoft.NET.exe – " + (exe or "chưa khai báo") +
+                           " – không thấy file; sửa đường dẫn ở bước 1 rồi bấm Lưu") if " Edusoft.NET.exe" in x[:24] else x
+                          for x in st["diag"]]
         except Exception:
             pass
         if st["error"] == "thu-vien":
@@ -317,6 +326,7 @@ def k_auto_setup(a):
     d = str(a.get("dir") or CFG.get("kitDir") or "").strip().strip('"') or str(Path.home() / "AQ-Autotest")
     r = k_install({"dir": d})
     base = Path(r["kitDir"])
+    write_kit_config(base, a.get("config"))       # đường dẫn Edusoft đã khai báo ở bước 1 → bước "Kiểm tra cài đặt" thấy ngay
     (base / "thu-muc-cai.txt").write_text(str(base) + "\r\n", "utf-8")
     for n in ("cai-dat-trang-thai.txt", "cai-dat.log"):
         try:
@@ -327,8 +337,36 @@ def k_auto_setup(a):
     return {"ok": True, "kitDir": str(base)}
 
 
+CFG_KEYS = ("exe", "account", "runnerId", "machine", "env", "version", "stopOnError", "demo", "loginNegatives", "closeAfter",
+            "openResults", "obs", "console")
+
+
+def write_kit_config(base, cfg):
+    """Ghi cấu hình máy chạy test (đường dẫn Edusoft.NET.exe của từng người, tài khoản…) vào <bộ test>/config.json – gộp với bản cũ."""
+    if not isinstance(cfg, dict) or not cfg.get("exe"):
+        return False
+    f = Path(base) / "config.json"
+    try:
+        cur = json.loads(f.read_text("utf-8-sig"))
+    except Exception:
+        cur = {}
+    cur.update({k: cfg[k] for k in CFG_KEYS if k in cfg})
+    f.write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
+    return True
+
+
+def k_save_config(a):
+    """Nút Lưu ở bước 1 (Máy chạy thử): ghi ngay đường dẫn Edusoft + tài khoản xuống bộ test trên máy này."""
+    base = kit_dir()
+    if not base.is_dir():
+        return {"ok": False, "reason": "Chưa cài bộ test"}
+    write_kit_config(base, a.get("config"))
+    exe = str((a.get("config") or {}).get("exe") or "")
+    return {"ok": True, "kitDir": str(base), "exeFound": os.name != "nt" or Path(exe).is_file()}
+
+
 def k_find_edusoft(a):
-    """Gợi ý đường dẫn Edusoft.NET.exe: chỉ bản EDUSOFT - HVNG - Copy (quy tắc an toàn) – có trên máy thì trả về."""
+    """Chỉ là GỢI Ý khi bước 1 còn trống: bản EDUSOFT - HVNG - Copy ở máy gốc nếu có. Mỗi người tự khai báo đường dẫn của mình."""
     p = Path(r"E:\AQ - Works\EDUSOFT_ALL_ENV\EDUSOFT - HVNG - Copy\Edusoft.NET.exe")
     q = str(a.get("path") or "").strip().strip('"')
     return {"default": str(p) if os.name == "nt" and p.is_file() else "", "exists": bool(q) and Path(q).is_file()}
@@ -437,7 +475,8 @@ def k_install(a):
 
 
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
-             "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft}
+             "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft,
+             "save_config": k_save_config}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)
