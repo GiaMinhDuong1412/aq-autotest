@@ -2014,8 +2014,28 @@ def start_run(codes, why=""):
              for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
-    RUNNING["t"] = time.time()
+    RUNNING["t"], RUNNING["seen"] = time.time(), False
+    try:
+        (BASE / "loi-chay.txt").unlink()
+    except Exception:
+        pass
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
+
+
+def check_run_end():
+    """Lượt test vừa thoát có lỗi → ghi vào agent.log (console hiện mấy dòng cuối) kèm dòng lỗi trong loi-chay.txt."""
+    p = RUNNING["p"]
+    if p is None or RUNNING.get("seen") or p.poll() is None:
+        return
+    RUNNING["seen"] = True
+    if p.returncode:
+        why = ""
+        try:
+            lines = [x.strip() for x in (BASE / "loi-chay.txt").read_text("utf-8").splitlines() if x.strip()]
+            why = " – " + lines[-1][:200] if lines else ""
+        except Exception:
+            pass
+        log("Lượt test thoát có lỗi (mã %s, sau %d giây)%s" % (p.returncode, time.time() - RUNNING.get("t", 0), why))
 
 
 def process(g):
@@ -2091,6 +2111,7 @@ def main():
                     for f in sorted(d.glob(pat), key=lambda x: x.stat().st_mtime):
                         if ".da-" not in f.name:
                             receive(f)
+            check_run_end()
             if PENDING and not run_busy():
                 process(PENDING.pop(0))
             if me.stat().st_mtime != mtime and digest() == mine:   # chép lại y nguyên – không cần khởi động lại
@@ -2530,7 +2551,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.15-01"
+KIT_VERSION = "2026.11.15-02"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -2548,7 +2569,21 @@ if os.name == "nt":
                 ctypes.windll.user32.SetProcessDPIAware()
             except Exception:
                 pass
-CFG = json.loads((BASE / "config.json").read_text("utf-8"))
+
+
+def load_cfg():
+    """config.json do console gửi kèm lệnh chạy. Máy vừa "Cài tự động" chưa có file này – coi như rỗng để lần cập nhật
+    đầu tiên (aqrun.py --cap-nhat) vẫn ghi được cấu hình, thay vì chết ngay khi nạp script (cửa sổ test tắt liền)."""
+    try:
+        return json.loads((BASE / "config.json").read_text("utf-8-sig"))
+    except FileNotFoundError:
+        return {}
+    except Exception as e:
+        print("(config.json lỗi, bỏ qua: %s)" % e)
+        return {}
+
+
+CFG = load_cfg()
 DEMO = CFG.get("demo", {})
 STEP_DELAY = float(DEMO.get("stepDelay", 1.0))         # nghỉ giữa các bước test (~1 giây, người dùng yêu cầu 03/11)
 TYPE_PAUSE = float(DEMO.get("typePause", 0.03))
@@ -2559,7 +2594,7 @@ try:
     from pywinauto.timings import TimeoutError as PwTimeout
     from PIL import ImageGrab
 except Exception:  # pragma: no cover
-    if "--chan-doan" not in sys.argv:      # kiểm tra cài đặt vẫn chạy được khi thiếu thư viện
+    if "--chan-doan" not in sys.argv and "--cap-nhat" not in sys.argv:   # kiểm tra / cập nhật vẫn chạy được khi thiếu thư viện
         print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
         input("Nhấn Enter để thoát…")
         sys.exit(1)
@@ -6159,7 +6194,7 @@ def apply_update(path=None):
                     old.unlink()
         cfg = data.get("config") or {}
         if cfg:
-            cur = json.loads((BASE / "config.json").read_text("utf-8"))
+            cur = load_cfg()
             cur.update(cfg)
             (BASE / "config.json").write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
         stamp_f.write_text(gen or now_iso(), "utf-8")
@@ -6926,6 +6961,21 @@ def run_mutex(hold):
         pass
 
 
+def stop_run(msg):
+    """Dừng lượt chạy vì thiếu cấu hình: in lý do, ghi loi-chay.txt (Agent đưa vào agent.log → console), chờ Enter."""
+    print("\n" + msg)
+    try:
+        (BASE / "loi-chay.txt").write_text(stamp() + " · bộ test " + KIT_VERSION + "\n" + msg + "\n", "utf-8")
+    except Exception:
+        pass
+    run_mutex(False)
+    try:
+        input("Nhấn Enter để đóng…")
+    except Exception:
+        pass
+    sys.exit(2)
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     upd_file = None
@@ -6984,8 +7034,12 @@ def main():
     scs = [json.loads(p.read_text("utf-8")) for p in files]
     scs = [s for s in scs if not want or s["code"].upper() in want]
     if not scs:
-        print("Không có kịch bản nào để chạy.")
-        return
+        stop_run("Không có kịch bản nào để chạy (thư mục scenarios trống) – bấm Chạy trên console để gửi kịch bản.")
+    if not CFG.get("exe") or not CFG.get("account"):
+        stop_run("Chưa có cấu hình Edusoft (đường dẫn Edusoft.NET.exe, tài khoản test) – khai báo ở Máy chạy thử → bước 1,"
+                 " bấm Lưu rồi Chạy lại.")
+    if not Path(CFG["exe"]).is_file():
+        stop_run("Không thấy file Edusoft: %s – sửa đường dẫn ở Máy chạy thử → bước 1 rồi Chạy lại." % CFG["exe"])
     print("AQ Autotest – %d kịch bản · %s" % (len(scs), CFG["exe"]))
     pw = ask_password("edusoft", CFG["account"])
     try:                                    # thu nhỏ cửa sổ đen để không che Edusoft khi script thao tác
@@ -7054,7 +7108,27 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (SystemExit, KeyboardInterrupt):
+        raise
+    except BaseException:                      # lỗi bất ngờ: không để cửa sổ test tắt liền – in lỗi, ghi loi-chay.txt cho Agent/console
+        tb = traceback.format_exc()
+        print(tb)
+        try:
+            (BASE / "loi-chay.txt").write_text(stamp() + " · bộ test " + KIT_VERSION + "\n" + tb, "utf-8")
+        except Exception:
+            pass
+        try:
+            run_mutex(False)
+        except Exception:
+            pass
+        if not any(a in sys.argv for a in ("--cap-nhat", "--chan-doan", "--ben-trong")):
+            try:
+                input("Có lỗi – chụp màn hình gửi Claude. Nhấn Enter để đóng…")
+            except Exception:
+                pass
+        sys.exit(1)
 </script>
 <script type="text/plain" id="kit-caidat">
 @echo off
@@ -9829,7 +9903,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.15-01';
+  var KITVER='2026.11.15-02';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -9969,7 +10043,7 @@ QUAY VIDEO (TÙY CHỌN)
     BR.busy=false;KIT.prog='';renderRunner();if(n){renderAll();renderBugs();renderRelease();}return n;}
   function brWatch(codes,since){if(BR.watch)clearInterval(BR.watch);var t0=Date.now();
     BR.watch=setInterval(function(){if(Date.now()-t0>25*60*1000||BR.state!=='ok'){clearInterval(BR.watch);BR.watch=null;renderRunner();return;}
-      brInfo().then(function(){return brSync(false);}).then(function(n){var done=SC.runs.some(function(x){return codes.indexOf(x.scenarioCode)>=0&&String(x.finishedAt||'')>since;});
+      brInfo().then(function(){return brSync(false);}).then(function(n){var done=SC.runs.some(function(x){return codes.indexOf(x.scenarioCode)>=0&&String(x.finishedAt||'')>since;})||!!agFail(((BR.info||{}).agent||{}).log);
         if(done){clearInterval(BR.watch);BR.watch=null;renderRunner();}});},15000);}
   /* trạng thái cài đặt Edusoft trên máy của người đang xem: 1 khai báo · 2 cài bộ test · 3 test đăng nhập */
   function esSetup(){var r=myRunner()||{},c=r.check||{},i=BR.info||{},ag=!!(i.agent&&i.agent.running);
@@ -9978,8 +10052,10 @@ QUAY VIDEO (TÙY CHỌN)
     var s3=c.status==='ok'?'ok':c.status==='fail'?'fail':c.status==='pending'?'warn':'';
     return {r:r,c:c,i:i,ag:ag,s1:s1,s2:s2,s3:s3,cur:!s1?1:s2!=='ok'?2:s3!=='ok'?3:0};}
   /* vài dòng cuối agent.log khi đang chờ kết quả – lệnh xếp hàng vì cửa sổ test cũ còn mở thì nói rõ cách gỡ */
-  function agLog(l){var last=l.slice(-4),q=/xếp hàng/.test(last[last.length-1]||'');
-    return (q?'<p class="rn-msg warn">Lệnh đang xếp hàng sau lượt test trước. Đóng cửa sổ test cũ (cửa sổ đen chờ “Nhấn Enter để đóng…” hoặc đang hỏi Edusoft) – lệnh sẽ chạy ngay.</p>':'')+
+  function agFail(l){var x=(l||[])[(l||[]).length-1]||'';return /thoát có lỗi/.test(x)?x:'';}
+  function agLog(l){var last=l.slice(-4),q=/xếp hàng/.test(last[last.length-1]||''),f=agFail(l);
+    return (f?'<p class="rn-msg bad">Lượt test vừa dừng vì lỗi: '+esc(f.replace(/^.*?thoát có lỗi\s*/,''))+'. Sửa theo gợi ý rồi bấm Chạy lại; chưa rõ thì chụp cửa sổ test gửi Claude.</p>':'')+
+      (q?'<p class="rn-msg warn">Lệnh đang xếp hàng sau lượt test trước. Đóng cửa sổ test cũ (cửa sổ đen chờ “Nhấn Enter để đóng…” hoặc đang hỏi Edusoft) – lệnh sẽ chạy ngay.</p>':'')+
       '<p class="hint">Nhật ký Agent:</p><pre class="mono hint" style="white-space:pre-wrap;margin:2px 0 6px">'+esc(last.join('\n'))+'</pre>';}
   function brLine(S){var i=S.i,ok=BR.state==='ok',dir=ok?(i.kitDir||''):(KIT.dir!=null?KIT.dir:(S.r.installDir||'')),nb=BR.ecode==='server_not_connected';
     var t=ok?(S.ag?['ok','Đã kết nối máy '+(i.computer||'chạy test')+' · Agent đang chạy. Bấm Chạy là lệnh đi thẳng vào máy, kết quả tự về console'+(BR.watch?' (đang chờ kết quả…)':'')+'.']
@@ -9995,6 +10071,7 @@ QUAY VIDEO (TÙY CHỌN)
           :'Đã cài bộ test ở đâu thì nhập đúng thư mục đó (nơi có aqrun.py). Chưa cài: dùng Tải bộ cài (.zip), cai-dat.bat sẽ cài vào thư mục này.'+(S.r.kitDir?' Lần kết nối trước'+(S.r.kitComputer?' trên máy '+esc(S.r.kitComputer):'')+': '+esc(S.r.kitDir)+'.':''))+'</p></div>';
     if(ok)return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+(BR.watch&&i.agent&&(i.agent.log||[]).length?agLog(i.agent.log):'')+dirHtml;
     return '<p class="rn-msg '+t[0]+'">'+esc(t[1])+'</p>'+
+<<<<<<< web/console-claudeai.html
       '<div class="br-alt"><b>Chạy test qua file (không cần cầu nối):</b><ol>'+
         '<li>Bấm <b>Chạy test đăng nhập</b>, hoặc nút máy chạy test ở kịch bản / menu Phân công test → lưu file lệnh vào thư mục <b>Tải về</b> (Downloads).</li>'+
         '<li>AQ Autotest Agent trên máy tự mở cửa sổ test sau vài giây. Chưa cài Agent: chạy <code>chay-test.bat</code> trong thư mục bộ test.</li>'+
@@ -10038,6 +10115,13 @@ QUAY VIDEO (TÙY CHỌN)
     catch(e){var c=e&&e.code;KIT.kn={t:c==='declined'?'Bạn đã hủy lưu file.':c==='not_granted'?'Trang chưa được cho phép tải file – bấm Cho phép khi Claude app hỏi rồi thử lại.':'Không tải được ('+(c||(e&&e.message)||'lỗi')+').',err:1};}
     renderRunner();}
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='brDir')KIT.dir=e.target.value;});
+=======
+      (window.AQ_LOCAL?'<div class="br-dir"><label for="brKitDir">Thư mục bộ test trên máy này</label><div class="br-dir-row"><input id="brKitDir" class="mono" value="'+esc(dir)+'" placeholder="Để trống = %USERPROFILE%\\AQ-Autotest · hoặc vd D:\\AQ-Autotest" spellcheck="false">'+
+        '<button type="button" class="btn sm" data-br="dir">Lưu thư mục</button><button type="button" class="btn sm" data-br="install" title="Chép mã bộ test mới nhất (thư mục kit/ của dự án) vào thư mục này – dùng khi cài máy mới">Cài bộ test vào đây</button></div></div>'
+      :(dir?'<p class="hint">Thư mục bộ test: <span class="mono">'+esc(dir)+'</span></p>':''))+
+      (i.agent&&(i.agent.log||[]).length&&(BR.watch||agFail(i.agent.log))?agLog(i.agent.log):'')+
+      (i.kitVersion&&i.kitVersion!==KITVER?'<p class="hint">Bộ test trên máy bản '+esc(i.kitVersion)+', tự lên '+KITVER+' ở lần Chạy tới.</p>':'');}
+>>>>>>> web/index.html
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}else if(a==='kn'){knDownload();}});
   async function importRun(res,getFile){var notes=[];

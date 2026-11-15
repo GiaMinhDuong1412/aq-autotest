@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.15-01"
+KIT_VERSION = "2026.11.15-02"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -30,7 +30,21 @@ if os.name == "nt":
                 ctypes.windll.user32.SetProcessDPIAware()
             except Exception:
                 pass
-CFG = json.loads((BASE / "config.json").read_text("utf-8"))
+
+
+def load_cfg():
+    """config.json do console gửi kèm lệnh chạy. Máy vừa "Cài tự động" chưa có file này – coi như rỗng để lần cập nhật
+    đầu tiên (aqrun.py --cap-nhat) vẫn ghi được cấu hình, thay vì chết ngay khi nạp script (cửa sổ test tắt liền)."""
+    try:
+        return json.loads((BASE / "config.json").read_text("utf-8-sig"))
+    except FileNotFoundError:
+        return {}
+    except Exception as e:
+        print("(config.json lỗi, bỏ qua: %s)" % e)
+        return {}
+
+
+CFG = load_cfg()
 DEMO = CFG.get("demo", {})
 STEP_DELAY = float(DEMO.get("stepDelay", 1.0))         # nghỉ giữa các bước test (~1 giây, người dùng yêu cầu 03/11)
 TYPE_PAUSE = float(DEMO.get("typePause", 0.03))
@@ -41,7 +55,7 @@ try:
     from pywinauto.timings import TimeoutError as PwTimeout
     from PIL import ImageGrab
 except Exception:  # pragma: no cover
-    if "--chan-doan" not in sys.argv:      # kiểm tra cài đặt vẫn chạy được khi thiếu thư viện
+    if "--chan-doan" not in sys.argv and "--cap-nhat" not in sys.argv:   # kiểm tra / cập nhật vẫn chạy được khi thiếu thư viện
         print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
         input("Nhấn Enter để thoát…")
         sys.exit(1)
@@ -3641,7 +3655,7 @@ def apply_update(path=None):
                     old.unlink()
         cfg = data.get("config") or {}
         if cfg:
-            cur = json.loads((BASE / "config.json").read_text("utf-8"))
+            cur = load_cfg()
             cur.update(cfg)
             (BASE / "config.json").write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
         stamp_f.write_text(gen or now_iso(), "utf-8")
@@ -4312,6 +4326,21 @@ def run_mutex(hold):
         pass
 
 
+def stop_run(msg):
+    """Dừng lượt chạy vì thiếu cấu hình: in lý do, ghi loi-chay.txt (Agent đưa vào agent.log → console), chờ Enter."""
+    print("\n" + msg)
+    try:
+        (BASE / "loi-chay.txt").write_text(stamp() + " · bộ test " + KIT_VERSION + "\n" + msg + "\n", "utf-8")
+    except Exception:
+        pass
+    run_mutex(False)
+    try:
+        input("Nhấn Enter để đóng…")
+    except Exception:
+        pass
+    sys.exit(2)
+
+
 def main():
     args = [a for a in sys.argv[1:]]
     upd_file = None
@@ -4370,8 +4399,12 @@ def main():
     scs = [json.loads(p.read_text("utf-8")) for p in files]
     scs = [s for s in scs if not want or s["code"].upper() in want]
     if not scs:
-        print("Không có kịch bản nào để chạy.")
-        return
+        stop_run("Không có kịch bản nào để chạy (thư mục scenarios trống) – bấm Chạy trên console để gửi kịch bản.")
+    if not CFG.get("exe") or not CFG.get("account"):
+        stop_run("Chưa có cấu hình Edusoft (đường dẫn Edusoft.NET.exe, tài khoản test) – khai báo ở Máy chạy thử → bước 1,"
+                 " bấm Lưu rồi Chạy lại.")
+    if not Path(CFG["exe"]).is_file():
+        stop_run("Không thấy file Edusoft: %s – sửa đường dẫn ở Máy chạy thử → bước 1 rồi Chạy lại." % CFG["exe"])
     print("AQ Autotest – %d kịch bản · %s" % (len(scs), CFG["exe"]))
     pw = ask_password("edusoft", CFG["account"])
     try:                                    # thu nhỏ cửa sổ đen để không che Edusoft khi script thao tác
@@ -4440,4 +4473,24 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (SystemExit, KeyboardInterrupt):
+        raise
+    except BaseException:                      # lỗi bất ngờ: không để cửa sổ test tắt liền – in lỗi, ghi loi-chay.txt cho Agent/console
+        tb = traceback.format_exc()
+        print(tb)
+        try:
+            (BASE / "loi-chay.txt").write_text(stamp() + " · bộ test " + KIT_VERSION + "\n" + tb, "utf-8")
+        except Exception:
+            pass
+        try:
+            run_mutex(False)
+        except Exception:
+            pass
+        if not any(a in sys.argv for a in ("--cap-nhat", "--chan-doan", "--ben-trong")):
+            try:
+                input("Có lỗi – chụp màn hình gửi Claude. Nhấn Enter để đóng…")
+            except Exception:
+                pass
+        sys.exit(1)
