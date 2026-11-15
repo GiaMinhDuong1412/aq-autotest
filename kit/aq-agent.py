@@ -107,8 +107,28 @@ def start_run(codes, why=""):
              for c in (codes or []) if str(c).replace("-", "").isalnum()]
     log("Chạy test %s %s" % (", ".join(codes) or "tất cả", why))
     env = dict(os.environ, AQ_UPDATED="1")      # đã cập nhật ở bước trước – aqrun không tự tìm file lệnh (tránh "ăn" lệnh mới)
-    RUNNING["t"] = time.time()
+    RUNNING["t"], RUNNING["seen"] = time.time(), False
+    try:
+        (BASE / "loi-chay.txt").unlink()
+    except Exception:
+        pass
     RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
+
+
+def check_run_end():
+    """Lượt test vừa thoát có lỗi → ghi vào agent.log (console hiện mấy dòng cuối) kèm dòng lỗi trong loi-chay.txt."""
+    p = RUNNING["p"]
+    if p is None or RUNNING.get("seen") or p.poll() is None:
+        return
+    RUNNING["seen"] = True
+    if p.returncode:
+        why = ""
+        try:
+            lines = [x.strip() for x in (BASE / "loi-chay.txt").read_text("utf-8").splitlines() if x.strip()]
+            why = " – " + lines[-1][:200] if lines else ""
+        except Exception:
+            pass
+        log("Lượt test thoát có lỗi (mã %s, sau %d giây)%s" % (p.returncode, time.time() - RUNNING.get("t", 0), why))
 
 
 def process(g):
@@ -184,6 +204,7 @@ def main():
                     for f in sorted(d.glob(pat), key=lambda x: x.stat().st_mtime):
                         if ".da-" not in f.name:
                             receive(f)
+            check_run_end()
             if PENDING and not run_busy():
                 process(PENDING.pop(0))
             if me.stat().st_mtime != mtime and digest() == mine:   # chép lại y nguyên – không cần khởi động lại
