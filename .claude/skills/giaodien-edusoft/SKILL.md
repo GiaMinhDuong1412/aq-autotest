@@ -376,6 +376,13 @@ BSM kho học liệu · HRM nhân sự · PMS lương · JMS tài sản · DMS c
 STM đào tạo ngắn hạn · EVA đánh giá viên chức · ILS lưu học sinh · NET lõi chung (phân quyền, nhập điểm…) ·
 AQDataTools khung dùng chung (`AQControls.v3`, `AQViewers`).
 
+**Bản trích 15/11/2026 (`trich-tat-ca.zip`, 4 504 form, 3 087 chỉ có `SourceViewBase`) đã ghép vào danh mục** bằng
+`python tools/gan_form_tay.py <trich-tat-ca.zip>` → `web/edusoft-catalog.json` thêm `forms` + `menus[].fm`: 708 menu có phần
+vẽ tay (565 trong đó không có lưới từ CSDL), 489 form · 1 373 ô · 228 nút. Trang Màn hình Edusoft hiện khối "Phần vẽ tay
+trên form" (ô `#tên control`, kiểu, nhãn cạnh ô **đoán** theo vùng, nút, câu thông báo trong mã). Thường là thanh lọc phía
+trên lưới (vd `#lockKhoaHoc` "Chọn khóa học", `#dat_TuNgay`/`#dat_DenNgay`, nút "Tìm"). Lập lại danh mục từ CSDL
+(`lap_danh_muc.py --json`) thì chạy lại `gan_form_tay.py` sau đó.
+
 **Điều quan trọng rút ra:**
 - Màn hình chức năng phần lớn **dựng theo cấu hình trong CSDL**, không vẽ trong source: user control kế thừa
   `AQViewers.AQViewCommonCtr` chỉ chứa một `SourceViewBase` (3 087 chỗ dùng) → bên trong `SplitControlView` (AQSplitContainer)
