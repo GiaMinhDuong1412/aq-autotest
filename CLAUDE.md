@@ -46,6 +46,13 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   Dữ liệu console claude.ai (DB artifact + ảnh) **không** tự sang app: chuyển bằng gói `.zip` (`<collection>/<id>.json` + `assets/<id>.<đuôi>`)
   → menu tài khoản **Nhập dữ liệu (.zip)…** (`POST api/data/import`, gộp theo `updatedAt`, chỉ quản trị); **Xuất dữ liệu (.zip)** = `GET api/data/export`.
   App chỉ chép sẵn từ repo các collection mẫu (`DATA_MAU` trong `tools/dong_goi_app.py`), không có lượt chạy/lỗi/ảnh.
+  **Cài bộ test tự động** (app/localhost trên Windows): nút "Cài tự động" → `api/kit/auto_setup` chép kit vào thư mục cài (trống =
+  `%USERPROFILE%\AQ-Autotest`) rồi chạy `cai-dat.bat --tu-dong` (không hỏi, không pause, tự xin admin – người dùng chỉ bấm Yes; thiếu
+  Python thì winget, không có winget thì tải bộ cài python.org) – tiến độ ghi `cai-dat-trang-thai.txt` (`<bước>|<mã>`, lỗi `loi|<mã>`),
+  trang đọc qua `status.setup`. Bước 1 có "Chọn file…" (`aqDesktop.pickFile`) và tự điền bản HVNG - Copy nếu có (`find_edusoft`).
+  **Popup app**: màn hình chờ khi mở (`showSplash` trong `desktop/src/main.js`), hộp cập nhật giữ mở có thanh tiến trình, "Có gì mới"
+  sau khi cập nhật (`thay-doi.json` = tên các PR, `dong_goi_app.py` tạo lúc build; `aqDesktop.getInfo` → bản trước), hướng dẫn người mới
+  (màn chào mừng 4 bước lần đầu, thẻ "Bắt đầu" trên Tổng quan, menu tài khoản: Hướng dẫn sử dụng / Có gì mới).
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút) ghép từ bản trích source: `tools/gan_form_tay.py <trich-tat-ca.zip>` (chạy sau `lap_danh_muc.py`).

@@ -10,8 +10,12 @@ Tạo trong thư mục --ra:
 Chỉ thư viện chuẩn.
 """
 import argparse
+import datetime
 import io
+import json
+import re
 import shutil
+import subprocess
 import sys
 import urllib.request
 import zipfile
@@ -41,6 +45,26 @@ def ds_ma():
     return out
 
 
+def thay_doi(n=80):
+    """Nhật ký thay đổi cho popup "Có gì mới" sau khi cập nhật: tên các PR đã merge vào main (mới nhất trước)."""
+    try:
+        out = subprocess.run(["git", "log", "--first-parent", "--merges", "-n", str(n), "--pretty=%cI%x1f%s%x1f%b%x1e"],
+                             cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=60).stdout
+    except Exception as e:
+        print("(Không đọc được git log: %s)" % e)
+        out = ""
+    items = []
+    for rec in out.split("\x1e"):
+        p = rec.strip("\n").split("\x1f")
+        if len(p) < 3 or not p[1].startswith("Merge pull request"):
+            continue
+        title = next((x.strip() for x in p[2].splitlines() if x.strip()), "")
+        m = re.search(r"#(\d+)", p[1])
+        if title:
+            items.append({"at": p[0], "pr": int(m.group(1)) if m else None, "t": title})
+    return {"builtAt": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "items": items}
+
+
 def lay_python(nguon):
     if nguon.startswith(("http://", "https://")):
         print("Tải Python nhúng:", nguon)
@@ -63,7 +87,9 @@ def main():
         f = app / n
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_bytes(b)
-    print("Mã:", app, "(%d file)" % len(files))
+    td = thay_doi()
+    (app / "web" / "thay-doi.json").write_text(json.dumps(td, ensure_ascii=False), "utf-8")
+    print("Mã:", app, "(%d file) · nhật ký thay đổi: %d mục" % (len(files), len(td["items"])))
     if a.khong_python:
         return 0
     py = ra / "python"

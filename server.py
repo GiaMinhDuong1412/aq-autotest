@@ -19,7 +19,7 @@ Chỉ dùng thư viện chuẩn của Python 3.8+. Server:
     thư mục bộ test (AQ Autotest Agent nhận và chạy), kết quả đọc thẳng từ results\\.
 Dữ liệu riêng của máy (cấu hình, mật khẩu Netweb nếu có) nằm ở local/ – KHÔNG đưa lên git.
 """
-import json, os, re, sys, time, uuid, base64, mimetypes, threading, webbrowser, argparse, shutil, hmac, hashlib, secrets, ssl
+import json, os, re, sys, time, datetime, subprocess, uuid, base64, mimetypes, threading, webbrowser, argparse, shutil, hmac, hashlib, secrets, ssl
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
@@ -278,6 +278,62 @@ def agent_running():
     return False
 
 
+SETUP_STEPS = {"uac": 0, "chep": 1, "python": 2, "thu-vien": 3, "agent": 4, "kiem-tra": 5, "xong": 9}
+
+
+def setup_state(base):
+    """Tiến độ cài tự động (cai-dat.bat --tu-dong ghi cai-dat-trang-thai.txt: mỗi dòng "<bước>|<mã>", lỗi = "loi|<mã>")."""
+    f = base / "cai-dat-trang-thai.txt"
+    if not f.exists():
+        return None
+    try:
+        lines = [x.strip() for x in f.read_text("utf-8", errors="replace").splitlines() if "|" in x]
+    except Exception:
+        return None
+    if not lines:
+        return None
+    k, code = lines[-1].split("|", 1)
+    st = {"code": code.strip(), "step": SETUP_STEPS.get(code.strip(), 0), "done": k == "9", "error": code.strip() if k == "loi" else "",
+          "at": datetime.datetime.fromtimestamp(f.stat().st_mtime).isoformat(timespec="seconds")}
+    if st["done"] or st["error"]:
+        try:
+            d = (base / "chan-doan.txt").read_text("utf-8", errors="replace").splitlines()
+            st["diag"] = [x for x in d if x.startswith(("[ OK ]", "[ !! ]", "[LỖI]"))][:30]
+        except Exception:
+            pass
+        if st["error"] == "thu-vien":
+            try:
+                st["log"] = (base / "cai-dat.log").read_text("utf-8", errors="replace").splitlines()[-8:]
+            except Exception:
+                pass
+    return st
+
+
+def k_auto_setup(a):
+    """Nút "Cài tự động" (app trên Windows): chép bộ test vào thư mục cài rồi chạy cai-dat.bat --tu-dong – tự xin quyền admin
+    (người dùng chỉ bấm Yes), tự cài Python + thư viện + Agent, ghi tiến độ vào cai-dat-trang-thai.txt (xem k_status → setup)."""
+    if os.name != "nt":
+        raise RuntimeError("Cài tự động chỉ chạy trên Windows.")
+    d = str(a.get("dir") or CFG.get("kitDir") or "").strip().strip('"') or str(Path.home() / "AQ-Autotest")
+    r = k_install({"dir": d})
+    base = Path(r["kitDir"])
+    (base / "thu-muc-cai.txt").write_text(str(base) + "\r\n", "utf-8")
+    for n in ("cai-dat-trang-thai.txt", "cai-dat.log"):
+        try:
+            (base / n).unlink()
+        except FileNotFoundError:
+            pass
+    subprocess.Popen(["cmd", "/c", str(base / "cai-dat.bat"), "--tu-dong"], cwd=str(base), creationflags=0x08000000)
+    return {"ok": True, "kitDir": str(base)}
+
+
+def k_find_edusoft(a):
+    """Gợi ý đường dẫn Edusoft.NET.exe: chỉ bản EDUSOFT - HVNG - Copy (quy tắc an toàn) – có trên máy thì trả về."""
+    p = Path(r"E:\AQ - Works\EDUSOFT_ALL_ENV\EDUSOFT - HVNG - Copy\Edusoft.NET.exe")
+    q = str(a.get("path") or "").strip().strip('"')
+    return {"default": str(p) if os.name == "nt" and p.is_file() else "", "exists": bool(q) and Path(q).is_file()}
+
+
 def k_status(a):
     base = kit_dir()
     log = []
@@ -292,7 +348,7 @@ def k_status(a):
     except Exception:
         pass
     return {"kitDir": str(base), "kitVersion": kit_version(base), "config": cfg, "agent": {"running": agent_running(), "log": log},
-            "computer": os.environ.get("COMPUTERNAME", ""), "local": True,
+            "computer": os.environ.get("COMPUTERNAME", ""), "local": True, "setup": setup_state(base),
             "scenarios": sorted(p.stem for p in (base / "scenarios").glob("*.json")) if (base / "scenarios").is_dir() else []}
 
 
@@ -381,7 +437,7 @@ def k_install(a):
 
 
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
-             "set_kit_dir": k_set_kit_dir, "install": k_install}
+             "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)
@@ -769,6 +825,9 @@ class H(BaseHTTPRequestHandler):
                     import gzip
                     return self.send(200, gzip.compress(b, 6), "application/json; charset=utf-8", {"Content-Encoding": "gzip"})
                 return self.send(200, b, "application/json; charset=utf-8")
+            if u.path == "/thay-doi.json":                 # nhật ký thay đổi (tools/dong_goi_app.py tạo lúc build app)
+                f = WEB / "thay-doi.json"
+                return self.send(200, f.read_bytes() if f.exists() else b'{"items":[]}', "application/json; charset=utf-8")
             if u.path == "/claude-shim.js":
                 return self.send(200, (WEB / "claude-shim.js").read_bytes(), "text/javascript; charset=utf-8")
             if u.path.startswith("/_blob/"):

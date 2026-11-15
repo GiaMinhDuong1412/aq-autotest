@@ -40,6 +40,8 @@ let server = null;
 let port = 0;
 let quitting = false;
 let updater = null;
+let splash = null;
+let launch = { version: '', prev: null, fresh: false };
 
 function log(...a) {
   try { fs.appendFileSync(LOG, new Date().toISOString().replace('T', ' ').slice(0, 19) + ' ' + a.join(' ') + '\n'); } catch { /* bỏ qua */ }
@@ -155,6 +157,29 @@ function waitServer(ms) {
   });
 }
 
+// ---------------- màn hình chờ khi mở app ----------------
+const SPLASH_HTML = (ver, note) => `<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
+html,body{margin:0;height:100%;background:#0b1324;color:#e2e8f0;font:14px "Segoe UI",system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px solid #1c2944;box-sizing:border-box;-webkit-app-region:drag}
+.m{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#3b82f6,#1d4ed8);font-weight:800;font-size:22px;color:#fff;box-shadow:0 12px 30px rgba(37,99,235,.45)}
+h1{margin:0;font-size:19px;font-weight:700}.v{color:#8391ab;font-size:12px}.n{color:#93c5fd;font-size:12px;min-height:16px}
+.bar{width:220px;height:4px;border-radius:4px;background:#1c2944;overflow:hidden}.bar i{display:block;width:40%;height:100%;border-radius:4px;background:#60a5fa;animation:go 1.1s ease-in-out infinite}
+@keyframes go{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}#s{color:#c9d3e6;font-size:12.5px}
+</style></head><body><div class="m">AQ</div><h1>AQ Auto Test</h1><div class="v">Phiên bản ${ver}</div><div class="n">${note}</div>
+<div class="bar"><i></i></div><div id="s">Đang khởi động…</div></body></html>`;
+
+function showSplash() {
+  if (SMOKE) return;
+  const note = launch.prev && launch.prev !== launch.version ? `Vừa cập nhật từ bản ${launch.prev}` : (launch.fresh ? 'Chào mừng bạn đến với AQ Auto Test' : '');
+  splash = new BrowserWindow({ width: 420, height: 270, frame: false, resizable: false, maximizable: false, center: true, show: false,
+    icon: ICON, title: APP_NAME, backgroundColor: '#0b1324', webPreferences: { contextIsolation: true, nodeIntegration: false } });
+  splash.once('ready-to-show', () => splash && splash.show());
+  splash.on('closed', () => { splash = null; });
+  splash.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(SPLASH_HTML(launch.version, note)));
+}
+function splashText(t) { if (splash && !splash.isDestroyed()) splash.webContents.executeJavaScript(`document.getElementById('s').textContent=${JSON.stringify(t)}`).catch(() => {}); }
+function closeSplash() { if (splash && !splash.isDestroyed()) splash.close(); splash = null; }
+
 // ---------------- cửa sổ ----------------
 const isLocal = (u) => { try { const x = new URL(u); return (x.hostname === 'localhost' || x.hostname === '127.0.0.1') && Number(x.port) === port; } catch { return false; } };
 const send = (ch, p) => { if (win && !win.isDestroyed()) win.webContents.send(ch, p); };
@@ -176,7 +201,7 @@ function createWindow() {
   });
   if (cfg.maximized) win.maximize();
   win.on('page-title-updated', (e) => e.preventDefault());   // tiêu đề cửa sổ luôn là "AQ Auto Test"
-  win.once('ready-to-show', () => { if (!SMOKE) win.show(); });
+  win.once('ready-to-show', () => { if (!SMOKE) { win.show(); closeSplash(); } });
   const keep = () => { if (!win.isMaximized() && !win.isMinimized()) cfg.bounds = win.getBounds(); cfg.maximized = win.isMaximized(); };
   win.on('resize', keep);
   win.on('move', keep);
@@ -237,15 +262,21 @@ async function init() {
   fs.mkdirSync(HOME, { recursive: true });
   try { if (fs.statSync(LOG).size > 4 * 1024 * 1024) fs.writeFileSync(LOG, ''); } catch { /* chưa có */ }
   loadCfg();
+  launch = { version: app.getVersion(), prev: cfg.lastVersion || null, fresh: !fs.existsSync(DATA) };
+  if (!SMOKE) { cfg.lastVersion = launch.version; saveCfg(); }
+  showSplash();
   chuyenDuLieuCu();
   gopDuLieuMau();
   fs.mkdirSync(RIENG, { recursive: true });
   try {
     port = await choosePort();
+    splashText('Đang chạy máy chủ nội bộ…');
     startServer();
     await waitServer(60000);
+    splashText('Đang mở giao diện…');
   } catch (e) {
     log('Lỗi khởi động:', e.message);
+    closeSplash();
     if (SMOKE) { console.error('SMOKE FAIL', e.message); app.exit(1); return; }
     dialog.showErrorBox(APP_NAME, 'Không khởi động được AQ Auto Test.\n' + e.message + '\n\nNhật ký: ' + LOG);
     app.exit(1);
@@ -255,6 +286,12 @@ async function init() {
   ipcMain.handle('update-get', () => (updater ? updater.getState() : null));
   ipcMain.on('update-act', () => { if (updater) updater.act(); });
   ipcMain.on('quit', () => app.quit());
+  ipcMain.handle('app-info', () => launch);
+  ipcMain.handle('pick-file', async (_e, o) => {
+    const r = await dialog.showOpenDialog(win, { title: o.title || 'Chọn file', defaultPath: o.defaultPath || undefined,
+      filters: Array.isArray(o.filters) ? o.filters : undefined, properties: [o.dir ? 'openDirectory' : 'openFile'] });
+    return r.canceled || !r.filePaths.length ? '' : r.filePaths[0];
+  });
   createWindow();
   if (SMOKE) return smoke();
   updater = createUpdater({ send, notify, beforeInstall: () => { quitting = true; stopServer(); } });
