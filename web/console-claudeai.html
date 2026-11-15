@@ -1130,6 +1130,17 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .rn-st span{font-size:.74rem;color:var(--muted)}
 .rn-body{display:flex;flex-direction:column;gap:12px;margin-top:12px}
 .rn-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.as-box{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg-3)}
+.as-steps{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.as-steps li{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
+.as-steps li b{font-weight:500}.as-steps li em{margin-left:8px;font-style:normal;font-size:.72rem;color:var(--muted)}
+.as-dot{display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line-2);font-size:.66rem;font-weight:700}
+.as-steps li.ok{color:var(--fg-dim)}.as-steps li.ok .as-dot{background:var(--pass);border-color:var(--pass);color:#fff}
+.as-steps li.cur{color:var(--fg)}.as-steps li.cur .as-dot{border-color:var(--accent);border-top-color:transparent;animation:as-spin .8s linear infinite}
+.as-steps li.err{color:var(--fail)}.as-steps li.err .as-dot{background:var(--fail);border-color:var(--fail);color:#fff}
+@keyframes as-spin{to{transform:rotate(360deg)}}
+.as-hint{font-size:.76rem;color:var(--muted)}
+.as-log{margin:0;padding:8px 10px;border-radius:8px;background:var(--bg);white-space:pre-wrap;font-size:.7rem;max-height:160px;overflow:auto}
 .rn-msg{margin:0;font-size:.78rem;line-height:1.5;color:var(--fg-dim);overflow-wrap:anywhere}
 .rn-msg.ok{color:var(--pass)}.rn-msg.bad{color:var(--fail)}.rn-msg.warn{color:var(--run)}
 .rn-pad{display:flex;flex-direction:column;gap:12px;padding:16px 18px}
@@ -1368,6 +1379,39 @@ td.subtext{display:table-cell;margin:0}
 #appUpd.newer{background:var(--accent);border-color:var(--accent);color:#fff}
 .upd-body{margin:14px 0 0;font-size:.86rem;color:var(--fg-dim)}.upd-body p{margin:0}
 .upd-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.upd-box,.wn-box{width:min(480px,100%)}
+.upd-hero{display:flex;align-items:center;gap:14px}.upd-hero h3{font-size:1.02rem}.upd-hero p{margin:3px 0 0;font-size:.76rem;color:var(--muted)}
+.upd-ic{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:13px;background:var(--accent-soft);color:var(--accent);font-size:1.2rem;font-weight:700}
+.upd-steps{list-style:none;display:flex;gap:6px;margin:18px 0 10px;padding:0}
+.upd-steps li{flex:1;display:flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted)}
+.upd-steps li span{display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line-2);font-size:.64rem;font-weight:700}
+.upd-steps li.cur{color:var(--fg)}.upd-steps li.cur span{border-color:var(--accent);color:var(--accent)}
+.upd-steps li.ok{color:var(--fg-dim)}.upd-steps li.ok span{background:var(--pass);border-color:var(--pass);color:#fff}
+.upd-prog{height:6px;border-radius:6px;background:var(--bg-3);overflow:hidden}.upd-prog i{display:block;height:100%;background:var(--accent);border-radius:6px;transition:width .3s}
+.upd-prog.idle{opacity:.5}.upd-note{margin:8px 0 0;font-size:.78rem;color:var(--fg-dim)}
+.start-card{margin-bottom:16px}
+.start-card .sc-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.start-card h3{font-size:.98rem}.start-card p{margin:3px 0 0;font-size:.76rem;color:var(--muted)}
+.sc-acts{display:flex;gap:12px;flex:none}
+.sc-bar{height:5px;margin:12px 0 6px;border-radius:5px;background:var(--bg-3);overflow:hidden}.sc-bar i{display:block;height:100%;background:var(--pass);border-radius:5px}
+.sc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.sc-list li{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--bg)}
+.sc-list li.cur{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.sc-list li.ok{opacity:.7}
+.sc-list li>div{flex:1;min-width:0}.sc-list b{display:block;font-size:.82rem;font-weight:600}.sc-list li>div span{display:block;margin-top:2px;font-size:.72rem;color:var(--muted)}
+.sc-list .btn{margin-top:8px}
+.sc-n{display:grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);font-size:.68rem;font-weight:700;color:var(--muted)}
+.sc-list li.ok .sc-n{background:var(--pass);border-color:var(--pass);color:#fff}.sc-list li.cur .sc-n{border-color:var(--accent);color:var(--accent)}
+.tour-box{width:min(520px,100%);padding:26px 26px 20px}
+.tour-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:var(--accent-soft);color:var(--accent)}.tour-ic svg{width:26px;height:26px}
+.tour-k{display:block;margin-top:16px;font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+.tour-box h3{margin-top:4px;font-size:1.2rem}.tour-d{margin:8px 0 0;font-size:.86rem;color:var(--fg-dim);line-height:1.5}
+.tour-pts{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.tour-pts li{position:relative;padding:9px 12px 9px 32px;border-radius:10px;background:var(--bg-3);font-size:.84rem;line-height:1.45}
+.tour-pts li::before{content:'';position:absolute;left:13px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.tour-foot{display:flex;align-items:center;gap:10px;margin-top:22px}.tour-foot .linkish{margin-left:auto}
+.tour-dots{display:flex;gap:6px}.tour-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--line-2);cursor:pointer}.tour-dots button.on{width:22px;border-radius:5px;background:var(--accent)}
+.wn-list{list-style:none;margin:16px 0 0;padding:0;max-height:50vh;overflow:auto;border-top:1px solid var(--line)}
+.wn-list li{display:flex;gap:12px;padding:9px 2px;border-bottom:1px solid var(--line);font-size:.84rem}
+.wn-d{flex:none;width:44px;color:var(--muted);font-family:var(--mono);font-size:.72rem;padding-top:2px}
 
 /* ================= v2 – giao diện AQ Auto Test mới (2026.11) =================
    Thanh bên xanh đậm cố định · màu chính xanh dương · font Be Vietnam Pro (hiển thị tiếng Việt chuẩn) · trang Tổng quan · tìm nhanh Ctrl K.
@@ -1646,6 +1690,8 @@ a.nav-item{text-decoration:none}
       <button class="account-item" data-page-go="runner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5H9.4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4.2l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.6c.1-.3.1-.7.1-1Z"/></svg>Cấu hình runner</button>
       <button class="account-item hidden" id="dataImportBtn" type="button" data-own><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>Nhập dữ liệu (.zip)…</button>
       <button class="account-item hidden" id="dataExportBtn" type="button" data-own><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 0 4 4m-4-4-4 4M5 21h14"/></svg>Xuất dữ liệu (.zip)</button>
+      <button class="account-item" id="tourBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>Hướng dẫn sử dụng</button>
+      <button class="account-item" id="wnBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.2L20 9l-4.4 3.8L17 18.5 12 15.6 7 18.5l1.4-5.7L4 9l5.8-.8z"/></svg>Có gì mới</button>
       <button class="account-item hidden" id="appQuitBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/></svg>Thoát app AQ Auto Test</button>
       <div class="account-sep"></div>
       <button class="account-item danger" id="logoutBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12H4m0 0 4-4m-4 4 4 4M14 5h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/></svg>Đăng xuất</button>
@@ -1670,7 +1716,13 @@ a.nav-item{text-decoration:none}
             <li>Claude app (bản desktop) đã đăng nhập. Nhờ đó console gửi lệnh và lấy kết quả trực tiếp. Không có Claude app vẫn chạy được, chỉ phải lưu file lệnh và nhập kết quả bằng tay.</li>
             <li>Mạng Internet ở lần cài đầu (tải Python và thư viện).</li>
           </ul>
-          <h4>Các bước cài đặt (một lần cho mỗi máy)</h4>
+          <h4>Dùng app AQ Auto Test: cài tự động</h4>
+          <ol class="help-steps">
+            <li><b>Chọn Edusoft</b>Bước 1 bấm <b>Chọn file…</b>, chọn <code>Edusoft.NET.exe</code> của bản EDUSOFT - HVNG - Copy (máy có sẵn bản này thì app tự điền), nhập tài khoản test, bấm <b>Lưu</b>.</li>
+            <li><b>Cài tự động</b>Bước 2 bấm <b>Cài tự động</b>, chọn <b>Yes</b> khi Windows hỏi quyền admin. App tự chép bộ test, cài Python (nếu máy chưa có), thư viện và Agent, rồi kiểm tra – tiến độ hiện ngay trên thẻ, mất 2–5 phút.</li>
+            <li><b>Chạy test đăng nhập</b>Bước 3 bấm <b>Chạy test đăng nhập</b>. Đăng nhập được là máy sẵn sàng.</li>
+          </ol>
+          <h4>Cài bằng tay (console trên claude.ai hoặc khi cài tự động lỗi)</h4>
           <ol class="help-steps">
             <li><b>Khai báo trên console</b>Ở thẻ Edusoft, dán đường dẫn đầy đủ tới <code>Edusoft.NET.exe</code> và nhập tài khoản test, rồi bấm <b>Lưu</b>.<div class="help-note">Lấy đường dẫn nhanh: trong File Explorer giữ <kbd>Shift</kbd>, chuột phải vào file <code>Edusoft.NET.exe</code> → <b>Copy as path</b>, dán vào ô rồi xóa hai dấu ngoặc kép.</div></li>
             <li><b>Tải bộ cài</b>Bấm <b>Tải bộ cài (.zip)</b> rồi giải nén ở đâu cũng được (vd thư mục Tải về). Không chạy thẳng trong file .zip.<div class="help-note">Thư mục cài lấy từ ô <b>Thư mục bộ test trên máy này</b> ở bước 2 (để trống = <code>C:\Users\&lt;tên bạn&gt;\AQ-Autotest</code>). Mỗi máy có thể cài một thư mục khác; <code>cai-dat.bat</code> hỏi lại khi cài, gõ thư mục khác nếu muốn.</div></li>
@@ -2478,7 +2530,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.06-01"
+KIT_VERSION = "2026.11.15-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -7007,18 +7059,31 @@ if __name__ == "__main__":
 <script type="text/plain" id="kit-caidat">
 @echo off
 chcp 65001 >nul
+rem --tu-dong: app AQ Auto Test goi (nut "Cai tu dong") - khong hoi, khong dung cho, ghi tien do vao cai-dat-trang-thai.txt
+set "AUTO="
+if /i "%~1"=="--tu-dong" set "AUTO=1"
+set "STF=%~dp0cai-dat-trang-thai.txt"
 net session >nul 2>&1
 if not errorlevel 1 goto :admin
+if defined AUTO (>"%STF%" echo 0^|uac)
 rem Chua co quyen admin: ghi lai ho so nguoi dang dung may roi tu mo lai voi quyen admin
 > "%PUBLIC%\aq-autotest-user.txt" echo %APPDATA%
 >> "%PUBLIC%\aq-autotest-user.txt" echo %LOCALAPPDATA%
 >> "%PUBLIC%\aq-autotest-user.txt" echo %USERPROFILE%
 echo Dang xin quyen admin - chon Yes khi Windows hoi...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+if defined AUTO (
+  powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -ArgumentList '--tu-dong' -Verb RunAs -WindowStyle Minimized"
+) else (
+  powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+)
 if errorlevel 1 goto :noadmin
 exit /b 0
 
 :noadmin
+if defined AUTO (
+  >>"%STF%" echo loi^|uac
+  exit /b 1
+)
 echo.
 echo Khong tu xin duoc quyen admin.
 echo Hay chuot phai vao cai-dat.bat, chon "Run as administrator".
@@ -7041,56 +7106,76 @@ if "%SRC:~-1%"=="\" set "SRC=%SRC:~0,-1%"
 set "DEST="
 if exist "%SRC%\thu-muc-cai.txt" set /p DEST=<"%SRC%\thu-muc-cai.txt"
 if not defined DEST set "DEST=%AQ_USER_USERPROFILE%\AQ-Autotest"
+if defined AUTO set "DEST=%SRC%"
+call :st 1 chep
 echo.
 echo Thu muc cai bo test: %DEST%
 set "ANS="
-set /p "ANS=Nhan Enter de dong y, hoac go thu muc khac (vd D:\AQ-Autotest): "
+if not defined AUTO set /p "ANS=Nhan Enter de dong y, hoac go thu muc khac (vd D:\AQ-Autotest): "
 if defined ANS set "DEST=%ANS:"=%"
 if "%DEST:~-1%"=="\" set "DEST=%DEST:~0,-1%"
 if /i not "%SRC%"=="%DEST%" (
   if not exist "%DEST%" mkdir "%DEST%"
   if not exist "%DEST%" (
     echo LOI: khong tao duoc thu muc %DEST%
-    pause
+    call :st loi thu-muc
+    if not defined AUTO pause
     exit /b 1
   )
   echo Chep bo test vao %DEST% ...
   robocopy "%SRC%" "%DEST%" /E /XD results /XF python-path.txt /NFL /NDL /NJH /NJS /NP >nul
   if errorlevel 8 (
     echo LOI: khong chep duoc bo test vao %DEST%
-    pause
+    call :st loi thu-muc
+    if not defined AUTO pause
     exit /b 1
   )
 )
 if not exist "%DEST%\results" mkdir "%DEST%\results"
 (echo %DEST%)>"%DEST%\thu-muc-cai.txt"
 set "K=%DEST%\"
+set "STF=%K%cai-dat-trang-thai.txt"
 cd /d "%DEST%"
 echo Da cai vao: %DEST%   (tu gio chi dung thu muc nay; thu muc giai nen .zip xoa duoc)
 
 rem ---- 2. Python va thu vien
+call :st 2 python
 call :findpy
 if not defined PY (
-  echo Chua co Python tren may. Dang cai Python 3.12 bang winget...
+  echo Chua co Python tren may. Dang cai Python 3.12...
   where winget >nul 2>nul
-  if errorlevel 1 goto :manual
-  winget install -e --id Python.Python.3.12 --scope user --accept-package-agreements --accept-source-agreements
+  if not errorlevel 1 winget install -e --id Python.Python.3.12 --scope user --silent --accept-package-agreements --accept-source-agreements
+  call :findpy
+)
+if not defined PY (
+  echo Tai bo cai Python 3.12 tu python.org...
+  powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol='Tls12';Invoke-WebRequest 'https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe' -OutFile '%TEMP%\aq-python-setup.exe' -UseBasicParsing"
+  if exist "%TEMP%\aq-python-setup.exe" "%TEMP%\aq-python-setup.exe" /quiet InstallAllUsers=0 PrependPath=0 Include_test=0 Include_launcher=0 Shortcuts=0
+  del "%TEMP%\aq-python-setup.exe" >nul 2>&1
   call :findpy
 )
 if not defined PY goto :manual
 echo Dung Python: %PY%
-"%PY%" -m pip install --upgrade pip
-"%PY%" -m pip install --upgrade pywinauto pillow keyboard keyring obsws-python openpyxl
+call :st 3 thu-vien
+if defined AUTO (
+  "%PY%" -m pip install --upgrade pip >>"%K%cai-dat.log" 2>&1
+  "%PY%" -m pip install --upgrade pywinauto pillow keyboard keyring obsws-python openpyxl >>"%K%cai-dat.log" 2>&1
+) else (
+  "%PY%" -m pip install --upgrade pip
+  "%PY%" -m pip install --upgrade pywinauto pillow keyboard keyring obsws-python openpyxl
+)
 if errorlevel 1 (
   echo.
   echo LOI: khong cai duoc thu vien. Kiem tra mang Internet roi chay lai cai-dat.bat.
-  pause
+  call :st loi thu-vien
+  if not defined AUTO pause
   exit /b 1
 )
 set "PYW=%PY:python.exe=pythonw.exe%"
 if not exist "%PYW%" set "PYW=%PY%"
 
 rem ---- 3. Agent chay nen
+call :st 4 agent
 echo.
 echo Cai AQ Autotest Agent (chay nen, nhan lenh "Chay test" va "Cap nhat bo test" tu console)...
 reg delete "HKCU\Software\Classes\aqautotest" /f >nul 2>&1
@@ -7104,15 +7189,28 @@ if errorlevel 1 (
 )
 
 rem ---- 4. Cau noi + kiem tra cai dat (bang ket qua o cuoi; neu can se hoi khoi dong lai Claude app)
+call :st 5 kiem-tra
 echo.
 "%PY%" "%K%aqrun.py" --cap-nhat
-"%PY%" "%K%aqrun.py" --chan-doan --khoi-dong-claude
+if defined AUTO (
+  "%PY%" "%K%aqrun.py" --chan-doan
+) else (
+  "%PY%" "%K%aqrun.py" --chan-doan --khoi-dong-claude
+)
+call :st 9 xong
 echo.
 echo Xong. Ket qua kiem tra luu o %K%chan-doan.txt
-pause
+if not defined AUTO pause
+exit /b 0
+
+:st
+rem ghi tien do cho app: <buoc>|<ma>
+>>"%STF%" echo %~1^|%~2
 exit /b 0
 
 :manual
+call :st loi python
+if defined AUTO exit /b 1
 echo.
 echo Khong tu cai duoc Python. Hay cai tay:
 echo   1. Mo https://www.python.org/downloads/ va tai Python 3.12
@@ -7793,7 +7891,7 @@ QUAY VIDEO (TÙY CHỌN)
             '<td class="mono">'+n+'</td></tr>';}).join('')+'</tbody></table></div>'
         :'<div class="sc-empty">Chưa có ai khai báo máy chạy thử.</div>')+'</details>';}
   function renderRunner(){
-    var el=$('#rnMain');if(!el)return;
+    var el=$('#rnMain');if(!el)return;if(SC.rnLoaded&&SC.me&&typeof asFindEdu==='function')asFindEdu();
     if(!SC.rnLoaded){el.innerHTML='<div class="card"><div class="sc-empty">Đang tải…</div></div>';return;}
     if(!SC.me){el.innerHTML='<div class="card"><div class="sc-empty">Cần mở trang khi đã đăng nhập claude.ai để khai báo máy chạy thử.</div></div>';return;}
     if(el.querySelector('#rnPath'))rnCollect();   // giữ nội dung đang gõ khi dữ liệu khác cập nhật
@@ -9731,7 +9829,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.06-01';
+  var KITVER='2026.11.15-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -10001,7 +10099,9 @@ QUAY VIDEO (TÙY CHỌN)
     var step=function(n,st,title,sub,body){return '<li class="rn-step'+(st==='ok'?' done':st==='fail'?' err':'')+(cur===n?' cur':'')+'"><span class="rn-dot">'+(st==='ok'?'✓':st==='fail'?'!':n)+'</span>'+
       '<div><div class="rn-st"><b>'+title+'</b><span>'+sub+'</span></div><div class="rn-body">'+body+'</div></div></li>';};
     var b1='<div class="form-grid">'+
-        '<div class="fld full'+(SC.rn.bad==='path'?' bad':'')+'"><label for="rnPath">Đường dẫn Edusoft.NET.exe</label><input id="rnPath" class="mono" value="'+esc(dv.path||'')+'" placeholder="E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe" spellcheck="false"></div>'+
+        '<div class="fld full'+(SC.rn.bad==='path'?' bad':'')+'"><label for="rnPath">Đường dẫn Edusoft.NET.exe</label><div class="br-dir-row"><input id="rnPath" class="mono" value="'+esc(dv.path||AS.edu||'')+'" placeholder="E:\\AQ - Works\\EDUSOFT_ALL_ENV\\EDUSOFT - HVNG - Copy\\Edusoft.NET.exe" spellcheck="false">'+
+          (window.aqDesktop&&window.aqDesktop.pickFile?'<button type="button" class="btn sm" data-as="pick">Chọn file…</button>':'')+'</div>'+
+          (!dv.path&&AS.edu?'<p class="hint" style="margin:4px 0 0">Đã tìm thấy Edusoft HVNG - Copy trên máy – bấm Lưu để dùng.</p>':'')+'</div>'+
         '<div class="fld"><label for="rnAccount">Tài khoản test</label><input id="rnAccount" class="mono" value="'+esc(dv.account||'')+'" placeholder="admindh" autocomplete="off"></div>'+
         '<div class="fld"><label for="rnAlias">Tên trong bảng phân công release</label><input id="rnAlias" value="'+esc(dv.alias||'')+'" placeholder="Minh"></div></div>'+
       '<details class="rn-more" data-rnfold="more"'+(SC.rn.more?' open':'')+'><summary>Thêm: tên máy, môi trường, quay video</summary><div class="form-grid">'+
@@ -10009,8 +10109,8 @@ QUAY VIDEO (TÙY CHỌN)
         '<div class="fld"><label for="rnEnv">Môi trường</label><input id="rnEnv" value="'+esc(dv.env||'')+'" placeholder="DEMO HVNG"></div>'+
         '<label class="kit-chk fld full"><span><input type="checkbox" id="kitObs"'+(KIT.obs?' checked':'')+'> Quay video bằng OBS khi chạy</span></label></div></details>'+
       '<div class="rn-row"><button type="button" class="btn sm'+(cur===1?' primary':'')+'" data-rn="save"'+(SC.rn.saving?' disabled':'')+'>Lưu</button>'+msgHtml('es')+'</div>';
-    var b2=brLine(S)+'<div class="rn-row">'+
-        '<button type="button" class="btn sm'+(cur===2&&BR.state!=='ok'?' primary':'')+'" data-kit="dl"'+(KIT.busy||!DL?' disabled title="Cần mở trang trong claude.ai"':' title="Chỉ cần khi cài trên máy mới"')+'>'+IC.down+'Tải bộ cài (.zip)</button>'+
+    var b2=asHtml(S)+brLine(S)+'<div class="rn-row">'+
+        '<button type="button" class="btn sm'+(cur===2&&BR.state!=='ok'&&!asOn()?' primary':'')+'" data-kit="dl"'+(KIT.busy||!DL?' disabled title="Cần mở trang trong claude.ai"':' title="Chỉ cần khi cài trên máy mới"')+'>'+IC.down+'Tải bộ cài (.zip)</button>'+
         '<button type="button" class="btn sm" data-br="check"'+(BR.state==='checking'?' disabled':'')+'>'+(BR.state==='ok'?'Kiểm tra lại':'Kết nối')+'</button>'+
         '<button type="button" class="linkish" data-help="es">Xem cách cài đặt</button></div>';
     var t3=c.status==='ok'?['ok','Đăng nhập thành công'+(c.at?' · '+fmt(c.at):'')+(c.version?' · '+c.version:'')]
@@ -10033,6 +10133,49 @@ QUAY VIDEO (TÙY CHỌN)
         (can?'<button type="button" class="btn sm" data-kit="imp"'+(KIT.busy?' disabled':'')+' title="Chọn file AQ-ket-qua-….zip bộ test tạo trong thư mục Tải về sau mỗi lần chạy">'+IC.up+'Nhập kết quả…</button>'+
           '<button type="button" class="linkish" data-kit="impdir"'+(KIT.busy?' disabled':'')+' title="Chọn thư mục results trong thư mục bộ test">hoặc thư mục</button>':'')+
         '<button type="button" class="btn sm" data-kit="xls"'+(KIT.busy||!DL||!SC.runs.length?' disabled':'')+' title="Xuất mọi lượt chạy, từng bước và lỗi ra Excel">'+IC.ext+'Xuất Excel</button></div></div>';}
+  /* ===== Cài bộ test tự động (app AQ Auto Test / console localhost trên Windows) =====
+     server chép bộ test vào thư mục cài rồi chạy cai-dat.bat --tu-dong: tự xin quyền admin (bấm Yes), cài Python + thư viện + Agent,
+     ghi tiến độ vào cai-dat-trang-thai.txt – trang đọc qua status → setup. */
+  var AS={poll:null,t0:0,edu:'',eduAsked:false};
+  var AS_STEPS=[[0,'Xin quyền admin','bấm Yes khi Windows hỏi'],[1,'Chép bộ test vào thư mục cài',''],[2,'Python','máy chưa có thì tự tải và cài'],
+    [3,'Thư viện pywinauto, pillow…','cần mạng Internet, 1–3 phút'],[4,'Agent chạy nền','nhận lệnh Chạy từ app'],[5,'Kiểm tra cài đặt','']];
+  var AS_ERR={uac:'Chưa cấp quyền admin (bấm No hoặc đóng hộp hỏi). Bấm Cài tự động lần nữa và chọn Yes.',
+    python:'Không tự cài được Python (máy không có mạng hoặc bị chặn tải). Cài Python 3.12 từ python.org rồi bấm Cài tự động lại.',
+    'thu-vien':'Không cài được thư viện – kiểm tra mạng Internet rồi bấm Cài tự động lại.','thu-muc':'Không tạo hoặc chép được vào thư mục cài – chọn thư mục khác.'};
+  function asOn(){return !!(window.AQ_LOCAL&&!window.AQ_SERVER);}
+  function asHtml(S){if(!asOn())return '';var se=(BR.info&&BR.info.setup)||null,run=!!AS.poll,h='';
+    if(se&&!run&&!se.done&&!se.error&&se.code!=='uac'&&Date.now()-Date.parse(se.at)<10*60*1000){setTimeout(asWatch,0);run=true;}   // mở lại trang giữa lúc cài
+    var stale=se&&se.code==='uac'&&!run;
+    if(se||run){var cur=se?se.step:0,err=se&&se.error,errStep=err?(err==='uac'?0:err==='python'?2:err==='thu-vien'?3:1):-1;
+      h+='<ol class="as-steps">'+AS_STEPS.map(function(x){var n=x[0],st=se&&se.done?'ok':n===errStep?'err':n<cur||(err&&n<errStep)?'ok':n===cur&&run?'cur':'';
+        return '<li class="'+st+'"><span class="as-dot">'+(st==='ok'?'✓':st==='err'?'!':st==='cur'?'':n+1)+'</span><span><b>'+x[1]+'</b>'+(x[2]&&st==='cur'?'<em>'+x[2]+'</em>':'')+'</span></li>';}).join('')+'</ol>';
+      if(err)h+='<p class="rn-msg bad">'+esc(AS_ERR[err]||('Cài không xong ('+err+').'))+'</p>'+(se.log&&se.log.length?'<pre class="mono hint as-log">'+esc(se.log.join('\n'))+'</pre>':'');
+      else if(stale&&!se.done)h+='<p class="rn-msg warn">Đang chờ bạn bấm Yes trên hộp hỏi quyền admin của Windows (có thể nằm sau cửa sổ app).</p>';
+      if(se&&se.done){var d=se.diag||[],bad=d.filter(function(x){return x.indexOf('[ OK ]')!==0;});
+        h+='<p class="rn-msg '+(bad.length?'warn':'ok')+'">Cài xong'+(d.length?' · kiểm tra '+(d.length-bad.length)+'/'+d.length+' mục đạt':'')+'.</p>'+
+          (bad.length?'<pre class="mono hint as-log">'+esc(bad.join('\n'))+'</pre>':'');}}
+    h+='<div class="rn-row"><button type="button" class="btn sm'+(S.s2!=='ok'&&!run?' primary':'')+'" data-as="go"'+(run?' disabled':'')+'>'+(run?'Đang cài…':S.s2==='ok'?'Cài lại tự động':'Cài tự động')+'</button>'+
+      '<span class="as-hint">'+(run?'Đừng tắt app trong lúc cài (2–5 phút).':'App tự cài Python, thư viện và Agent – bạn chỉ bấm Yes khi Windows hỏi quyền admin.')+'</span></div>';
+    return '<div class="as-box">'+h+'</div>';}
+  async function asGo(){if(AS.poll)return;var el=document.getElementById('brKitDir'),dir=el?el.value.trim():'';
+    try{var r=(await MCP.callTool(BRS,'auto_setup',{dir:dir},{cache:false})).payload||{};toast('Đang cài vào '+(r.kitDir||dir)+' – bấm Yes khi Windows hỏi quyền admin','',9000);}
+    catch(e){toast('Không bắt đầu cài được: '+brErr(e),'err',10000);return;}
+    AS.t0=Date.now();BR.info=Object.assign({},BR.info||{},{setup:{code:'uac',step:0}});
+    await brCheck(false);asWatch();}
+  function asWatch(){if(AS.poll)return;if(!AS.t0)AS.t0=Date.now();
+    AS.poll=setInterval(function(){brInfo().then(function(){var se=BR.info&&BR.info.setup;
+      if((se&&(se.done||se.error))||Date.now()-AS.t0>15*60*1000){clearInterval(AS.poll);AS.poll=null;brCheck(false);
+        if(se&&se.done)toast('Đã cài xong bộ test – bước tiếp theo: Chạy test đăng nhập','ok',8000);}
+      else if(se&&se.code==='uac'&&Date.now()-AS.t0>3*60*1000){clearInterval(AS.poll);AS.poll=null;renderRunner();}});},2000);
+    renderRunner();}
+  function asFindEdu(){if(AS.eduAsked||!asOn()||!MCP)return;AS.eduAsked=true;var r=myRunner()||{};if(r.path)return;
+    MCP.callTool(BRS,'find_edusoft',{},{cache:false}).then(function(x){var p=x&&x.payload&&x.payload.default;if(p){AS.edu=p;renderRunner();}}).catch(function(){});}
+  document.addEventListener('click',function(e){var b=e.target.closest('button[data-as]');if(!b||b.disabled)return;var a=b.getAttribute('data-as');
+    if(a==='go')asGo();
+    else if(a==='pick'){var cur=(document.getElementById('rnPath')||{}).value||'';
+      window.aqDesktop.pickFile({title:'Chọn file Edusoft.NET.exe',defaultPath:cur,filters:[{name:'Edusoft.NET.exe',extensions:['exe']}]}).then(function(f){if(!f)return;
+        var i=document.getElementById('rnPath');if(i){i.value=f;i.dispatchEvent(new Event('input',{bubbles:true}));}
+        if(!/edusoft\.net\.exe$/i.test(f))toast('File đã chọn không phải Edusoft.NET.exe – kiểm tra lại','err',8000);});}});
   var HELP={tab:'es'};
   function openHelp(t){HELP.tab=t||HELP.tab;var o=$('#rnHelp');
     $$('#rnHelp [data-hp]').forEach(function(p){p.classList.toggle('hidden',p.getAttribute('data-hp')!==HELP.tab);});
@@ -10183,6 +10326,55 @@ QUAY VIDEO (TÙY CHỌN)
     l.sort(function(a,b){return String(b.createdAt||'').localeCompare(String(a.createdAt||''));});return l[0];}
   function hmName(){var n=(window.AQ_AUTH&&window.AQ_LOCAL&&window.AQ_LOCAL.userName)||(window.AQ_SERVER&&window.AQ_SERVER.userName)||(window.AQ_LOCAL&&window.AQ_LOCAL.userName)||'';
     return n&&n!=='Tôi'?n:(window.AQ_AUTH&&window.AQ_AUTH.login)||'';}
+  /* ===== Hướng dẫn người mới: thẻ "Bắt đầu" trên Tổng quan (tự đánh dấu theo tiến độ) + màn chào mừng nhiều bước ===== */
+  function startSteps(){var S=esSetup();
+    return [{t:'Khai báo Edusoft',d:'Chọn file Edusoft.NET.exe và tài khoản test',ok:S.s1==='ok',go:'runner'},
+      {t:'Cài bộ test tự động',d:'Một nút – app tự cài Python, thư viện, Agent',ok:S.s2==='ok',go:'runner'},
+      {t:'Chạy test đăng nhập',d:'Xác nhận máy mở và đăng nhập được Edusoft',ok:S.s3==='ok',go:'runner'},
+      {t:'Chọn kịch bản cho release',d:'Phân công release → chọn menu & kịch bản',ok:SC.items.some(function(it){return it.scriptReady;})&&!!hmRel(),go:'scenarios'},
+      {t:'Chạy kịch bản & xem kết quả',d:'Kết quả, ảnh từng bước, lỗi tự về app',ok:SC.runs.length>0,go:'runner'}];}
+  function startCardHtml(){if(lsGet('aq-bat-dau-an')==='1')return '';var st=startSteps(),n=st.filter(function(x){return x.ok;}).length;if(n===st.length)return '';
+    var next=st.filter(function(x){return !x.ok;})[0];
+    return '<div class="hm-card start-card"><div class="sc-hd"><div><h3>Bắt đầu với AQ Auto Test</h3><p>'+n+'/'+st.length+' bước · làm lần lượt, mỗi bước vài phút</p></div>'+
+      '<div class="sc-acts"><button type="button" class="linkish" data-tour>Xem hướng dẫn</button><button type="button" class="linkish" data-start-hide>Ẩn</button></div></div>'+
+      '<div class="sc-bar"><i style="width:'+Math.round(n*100/st.length)+'%"></i></div><ol class="sc-list">'+st.map(function(x,i){var cur=x===next;
+        return '<li class="'+(x.ok?'ok':cur?'cur':'')+'"><span class="sc-n">'+(x.ok?'✓':i+1)+'</span><div><b>'+x.t+'</b><span>'+x.d+'</span>'+
+          (cur?'<button type="button" class="btn sm primary" data-page-go="'+x.go+'">Làm ngay</button>':'')+'</div></li>';}).join('')+'</ol></div>';}
+  var TOUR={i:0,slides:[
+    {ic:'<path d="M4 6h16M4 12h16M4 18h10"/>',t:'Chào mừng đến AQ Auto Test',d:'Nơi quản lý kịch bản test Edusoft / Netweb, phân công test theo từng phiên bản release, chạy kịch bản tự động trên Edusoft và theo dõi lỗi.',
+      pts:['Kịch bản: các bước test và kết quả mong đợi','Script tự mở Edusoft, thao tác, chụp ảnh từng bước','Lỗi ghi kèm ảnh, theo dõi tới khi dev sửa xong']},
+    {ic:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',t:'Thiết lập máy chạy test – một lần',d:'Vào Máy chạy thử, làm 3 bước:',
+      pts:['1. Chọn file Edusoft.NET.exe (bản EDUSOFT - HVNG - Copy) và tài khoản test','2. Bấm Cài tự động – app tự cài mọi thứ, bạn chỉ bấm Yes khi Windows hỏi','3. Bấm Chạy test đăng nhập để kiểm tra']},
+    {ic:'<path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/>',t:'Phân công và chạy kịch bản',d:'Mỗi phiên bản release có danh sách menu cần test.',
+      pts:['Phân công release: chọn phân hệ → Chọn menu & kịch bản','Bấm Chạy ở kịch bản: lệnh đi thẳng tới máy, Edusoft tự chạy','Chạy xong kết quả và ảnh tự về app']},
+    {ic:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',t:'Mẹo dùng nhanh',d:'',
+      pts:['Ctrl K: tìm nhanh menu, màn hình Edusoft, kịch bản, lỗi','Nút ? trên mỗi thẻ: hướng dẫn chi tiết của phần đó','Bảng màu (góc trên): đổi giao diện; menu tài khoản: mở lại hướng dẫn này']}]};
+  function tourOpen(){TOUR.i=0;var m=$('#tourModal');if(!m){m=document.createElement('div');m.id='tourModal';m.className='sync-ov';document.body.appendChild(m);
+      m.addEventListener('click',function(e){var b=e.target.closest('[data-tv]');
+        if(e.target===m||(b&&b.getAttribute('data-tv')==='skip')){tourClose();return;}
+        if(!b)return;var v=b.getAttribute('data-tv');
+        if(v==='next'){if(TOUR.i<TOUR.slides.length-1){TOUR.i++;tourFill();}else{tourClose();showPage('runner');}}
+        else if(v==='prev'&&TOUR.i>0){TOUR.i--;tourFill();}else if(/^\d+$/.test(v)){TOUR.i=+v;tourFill();}});}
+    tourFill();}
+  function tourClose(){lsSet('aq-tour-xong','1');var m=$('#tourModal');if(m)m.remove();}
+  function tourFill(){var m=$('#tourModal'),x=TOUR.slides[TOUR.i],last=TOUR.i===TOUR.slides.length-1;if(!m)return;
+    m.innerHTML='<div class="sy-box tour-box" role="dialog" aria-modal="true" aria-labelledby="tourT"><div class="tour-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+x.ic+'</svg></div>'+
+      '<span class="tour-k">Bước '+(TOUR.i+1)+'/'+TOUR.slides.length+'</span><h3 id="tourT">'+x.t+'</h3>'+(x.d?'<p class="tour-d">'+x.d+'</p>':'')+
+      '<ul class="tour-pts">'+x.pts.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>'+
+      '<div class="tour-foot"><div class="tour-dots">'+TOUR.slides.map(function(_,i){return '<button type="button" data-tv="'+i+'" class="'+(i===TOUR.i?'on':'')+'" aria-label="Bước '+(i+1)+'"></button>';}).join('')+'</div>'+
+      '<button type="button" class="linkish" data-tv="skip">Bỏ qua</button>'+(TOUR.i?'<button type="button" class="btn" data-tv="prev">Quay lại</button>':'')+
+      '<button type="button" class="btn primary" data-tv="next">'+(last?'Thiết lập máy ngay':'Tiếp')+'</button></div></div>';
+    var nb=m.querySelector('[data-tv="next"]');if(nb)nb.focus();}
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-tour]')||e.target.closest('#tourBtn')){$('#accountMenu').classList.add('hidden');tourOpen();return;}
+    if(e.target.closest('#wnBtn')){$('#accountMenu').classList.add('hidden');wnOpen();return;}
+    if(e.target.closest('[data-start-hide]')){lsSet('aq-bat-dau-an','1');renderHome();toast('Đã ẩn thẻ Bắt đầu – mở lại hướng dẫn ở menu tài khoản','',6000);}});
+  document.addEventListener('keydown',function(e){if(!$('#tourModal'))return;if(e.key==='Escape')tourClose();
+    else if(e.key==='ArrowRight'){var b=$('#tourModal [data-tv="next"]');if(b)b.click();}else if(e.key==='ArrowLeft'){var p=$('#tourModal [data-tv="prev"]');if(p)p.click();}});
+  /* lần đầu vào app: màn chào mừng; các lần sau: "Có gì mới" nếu vừa cập nhật */
+  (function(){var t0=Date.now(),iv=setInterval(function(){var v=$('#appView');if(Date.now()-t0>120000){clearInterval(iv);return;}
+    if(!v||v.classList.contains('hidden')||!SC.me)return;clearInterval(iv);
+    setTimeout(function(){if(lsGet('aq-tour-xong')!=='1'){tourOpen();wnLoad().then(function(d){if(d.items&&d.items[0])lsSet('aq-thay-doi-seen',d.items[0].at);});}else wnAuto();},700);},1000);})();
   function renderHome(){var el=$('#hmMain');if(!el)return;
     if(!$('#page-home').classList.contains('active')){HM.dirty=true;return;}HM.dirty=false;
     var items=SC.items,runs=SC.runs.slice().sort(function(a,b){return String(b.startedAt||'').localeCompare(String(a.startedAt||''));});
@@ -10196,6 +10388,7 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="hm-acts"><button type="button" class="btn" data-page-go="screens">'+hmIc('<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 9v9"/>')+'Màn hình Edusoft</button>'+
       '<button type="button" class="btn" data-page-go="catalog">'+hmIc('<path d="M12 5v14M5 12h14"/>')+'Kịch bản</button>'+
       '<button type="button" class="btn primary" data-page-go="runner">'+hmIc('<path d="M7 4v16l13-8z"/>')+'Chạy kịch bản</button></div></div>';
+    h+=startCardHtml();
     h+='<div class="hm-kpis">'+
       '<button type="button" class="hm-kpi" data-page-go="catalog"><span class="k">'+hmIc('<path d="M4 5h16M4 10h16M4 15h10M4 20h7"/>')+'Kịch bản</span><b>'+(SC.loaded?items.length:'…')+'</b><span class="s">'+ready+' chạy bằng script</span></button>'+
       '<button type="button" class="hm-kpi" data-page-go="runner"><span class="k">'+hmIc('<path d="M7 4v16l13-8z"/>')+'Lượt chạy</span><b>'+(SC.runsLoaded?runs.length:'…')+'</b><span class="s"><span style="color:var(--pass)">'+cnt.pass+' đạt</span> · <span style="color:var(--fail)">'+cnt.fail+' lỗi</span> · <span style="color:var(--run)">'+cnt.blocked+' dừng</span></span></button>'+
@@ -10285,14 +10478,37 @@ QUAY VIDEO (TÙY CHỌN)
   function appRender(u){var b=$('#appUpd');if(!b)return;b.classList.remove('hidden');b.textContent=appLabel(u);
     b.classList.toggle('newer',!!u&&(u.status==='available'||u.status==='downloaded'));
     b.title=u&&u.status==='error'?(u.error||''):'Phiên bản app AQ Auto Test – bấm để kiểm tra / cập nhật';}
-  function appModal(u){var old=$('#appUpdModal');if(old)old.remove();var m=document.createElement('div');m.id='appUpdModal';m.className='sync-ov';
-    var done=u.status==='downloaded';
-    m.innerHTML='<div class="sy-box upd-box" role="dialog" aria-modal="true"><div class="sy-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg><div><h3>'+(done?'Đã tải xong bản '+esc(u.version):'Có phiên bản mới: '+esc(u.version))+'</h3>'+
-      '<p>Đang dùng: '+esc(u.current||'')+'</p></div></div><div class="upd-body"><p>'+(done?'Bấm <b>Khởi động lại</b> để cài bản mới (vài giây). Dữ liệu trên máy giữ nguyên.':
-        u.portable?'Bản không cài (portable) không tự cập nhật được: bấm <b>Tải bản mới</b> để mở trang tải.':'Bấm <b>Cập nhật</b> để tải bản mới, xong app hỏi khởi động lại. Dữ liệu trên máy giữ nguyên.')+'</p></div>'+
-      '<div class="upd-foot"><button class="btn" data-x>Để sau</button><button class="btn primary" data-go>'+(done?'Khởi động lại':u.portable?'Tải bản mới':'Cập nhật')+'</button></div></div>';
-    document.body.appendChild(m);
-    m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();else if(e.target.closest('[data-go]')){m.remove();window.aqDesktop.updateAct();}});}
+  /* hộp cập nhật: mở khi có bản mới, giữ mở suốt lúc tải (thanh tiến trình) tới khi bấm Khởi động lại */
+  function appModal(u){var m=$('#appUpdModal');if(!m){m=document.createElement('div');m.id='appUpdModal';m.className='sync-ov';document.body.appendChild(m);
+      m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();else if(e.target.closest('[data-go]')&&!e.target.closest('[data-go]').disabled)window.aqDesktop.updateAct();});}
+    appModalFill(m,u);}
+  function appModalFill(m,u){var st=u.status,dl=st==='downloading',done=st==='downloaded',err=st==='error',pc=dl?(u.percent||0):done?100:0;
+    var steps=[['Tải bản mới',dl?'cur':done?'ok':''],['Cài đặt (vài giây)',done?'cur':''],['Mở lại app',done?'':'']];
+    m.innerHTML='<div class="sy-box upd-box" role="dialog" aria-modal="true" aria-labelledby="updT"><div class="upd-hero"><span class="upd-ic">'+(done?'✓':'⬆')+'</span><div><h3 id="updT">'+
+        (done?'Bản '+esc(u.version)+' đã sẵn sàng':'Có phiên bản mới '+esc(u.version||''))+'</h3><p>Đang dùng bản '+esc(u.current||'')+' · dữ liệu trên máy giữ nguyên</p></div></div>'+
+      (u.portable?'<div class="upd-body"><p>Bản không cài (portable) không tự cập nhật được: bấm <b>Tải bản mới</b> để mở trang tải, chạy file Setup một lần là từ sau app tự cập nhật.</p></div>':
+       '<ol class="upd-steps">'+steps.map(function(x,i){return '<li class="'+x[1]+'"><span>'+(x[1]==='ok'?'✓':i+1)+'</span>'+x[0]+'</li>';}).join('')+'</ol>'+
+       '<div class="upd-prog'+(dl||done?'':' idle')+'"><i style="width:'+pc+'%"></i></div><p class="upd-note">'+
+        (dl?'Đang tải '+pc+'% – vẫn dùng app bình thường trong lúc tải.':done?'Bấm <b>Khởi động lại</b>: app đóng, cài bản mới rồi tự mở lại.':err?'<span style="color:var(--fail)">Lỗi: '+esc(u.error||'')+'</span>':'Tải về chạy nền, xong app hỏi khởi động lại. Có gì mới sẽ hiện sau khi mở lại.')+'</p>')+
+      '<div class="upd-foot"><button class="btn" data-x>'+(done?'Để sau':dl?'Ẩn':'Để sau')+'</button><button class="btn primary" data-go'+(dl?' disabled':'')+'>'+
+        (done?'Khởi động lại':dl?'Đang tải…':u.portable?'Tải bản mới':err?'Thử lại':'Cập nhật ngay')+'</button></div></div>';}
+  /* ===== Có gì mới: sau khi cập nhật (thay-doi.json do tools/dong_goi_app.py tạo lúc build) ===== */
+  var WN={data:null};
+  function wnLoad(){return WN.data?Promise.resolve(WN.data):fetch('thay-doi.json').then(function(r){return r.ok?r.json():{items:[]};}).catch(function(){return {items:[]};}).then(function(d){WN.data=d;return d;});}
+  function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+  function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  function wnShow(items,title,sub){var m=document.createElement('div');m.className='sync-ov';m.id='wnModal';
+    m.innerHTML='<div class="sy-box wn-box" role="dialog" aria-modal="true" aria-labelledby="wnT"><div class="upd-hero"><span class="upd-ic">✦</span><div><h3 id="wnT">'+esc(title)+'</h3><p>'+esc(sub)+'</p></div></div>'+
+      (items.length?'<ul class="wn-list">'+items.map(function(x){return '<li><span class="wn-d">'+esc(new Date(x.at).toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit'}))+'</span><span>'+esc(x.t)+'</span></li>';}).join('')+'</ul>':'<p class="hint">Chưa có ghi chép thay đổi.</p>')+
+      '<div class="upd-foot"><button class="btn primary" data-x>Đã hiểu</button></div></div>';
+    document.body.appendChild(m);m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();});}
+  function wnAuto(){if($('#wnModal'))return;var info=window.aqDesktop&&window.aqDesktop.getInfo?window.aqDesktop.getInfo():Promise.resolve(null);
+    Promise.all([wnLoad(),info]).then(function(r){var d=r[0],i=r[1]||{},items=d.items||[];if(!items.length)return;
+      var seen=lsGet('aq-thay-doi-seen'),newest=items[0].at;lsSet('aq-thay-doi-seen',newest);
+      if(!seen)return;                                     // lần đầu dùng: không hiện (người mới xem hướng dẫn)
+      var fresh=items.filter(function(x){return x.at>seen;}).slice(0,12);if(!fresh.length)return;
+      wnShow(fresh,'Đã cập nhật'+(i.version?' lên bản '+i.version:''),(i.prev&&i.prev!==i.version?'Từ bản '+i.prev+' · ':'')+fresh.length+' thay đổi mới');});}
+  function wnOpen(){wnLoad().then(function(d){var v=(window.AQ_APP&&window.AQ_APP.version)||'';wnShow((d.items||[]).slice(0,15),'Có gì mới'+(v?' · bản '+v:''),'Các thay đổi gần đây của AQ Auto Test');});}
   /* ===== Nhập / xuất toàn bộ dữ liệu (.zip) – chuyển dữ liệu từ console claude.ai hoặc máy khác sang app (chỉ quản trị) ===== */
   if(window.AQ_LOCAL&&!window.AQ_SERVER&&(!window.AQ_AUTH||window.AQ_AUTH.admin)){
     $('#dataImportBtn').classList.remove('hidden');$('#dataExportBtn').classList.remove('hidden');
@@ -10308,8 +10524,8 @@ QUAY VIDEO (TÙY CHỌN)
       if(confirm('Thoát app AQ Auto Test? (Đóng cửa sổ app cũng là thoát.)')){if(window.aqDesktop)window.aqDesktop.quit();else fetch('api/app/quit',{method:'POST',headers:{'X-AQ':'1'}});}});
     appRender(null);
     if(window.aqDesktop){
-      $('#appUpd').addEventListener('click',function(){var u=APPU.st;if(u&&(u.status==='available'||u.status==='downloaded'))appModal(u);else window.aqDesktop.updateAct();});
-      window.aqDesktop.onUpdate(function(u){var prev=APPU.st;APPU.st=u;appRender(u);
+      $('#appUpd').addEventListener('click',function(){var u=APPU.st;if(u&&(u.status==='available'||u.status==='downloaded'||u.status==='downloading'))appModal(u);else window.aqDesktop.updateAct();});
+      window.aqDesktop.onUpdate(function(u){var prev=APPU.st;APPU.st=u;appRender(u);var om=$('#appUpdModal');if(om)appModalFill(om,u);
         if((u.status==='available'||u.status==='downloaded')&&APPU.asked!==u.status+u.version){APPU.asked=u.status+u.version;appModal(u);}
         if(u.status==='error'&&prev&&prev.status==='downloading')toast('Cập nhật lỗi: '+(u.error||''),'err',12000);});
       window.aqDesktop.getUpdate().then(function(u){if(u){APPU.st=u;appRender(u);if(u.status==='available'||u.status==='downloaded'){APPU.asked=u.status+u.version;appModal(u);}}});}}

@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.06-01"
+KIT_VERSION = "2026.11.15-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
