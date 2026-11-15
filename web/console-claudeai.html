@@ -2551,7 +2551,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.15-02"
+KIT_VERSION = "2026.11.16-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -6066,7 +6066,7 @@ def diagnose():
     add("fail" if miss else "ok", "Thư viện", ("thiếu " + ", ".join(miss) + " – chạy lại cai-dat.bat, kiểm tra mạng") if miss else "đủ")
     exe = CFG.get("exe") or ""
     add("ok" if exe and Path(exe).exists() else "fail", "Edusoft.NET.exe",
-        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi tải lại bộ cài")
+        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi bấm Lưu")
     add("ok" if agent_running() else "warn", "AQ Autotest Agent",
         "đang chạy" if agent_running() else "chưa chạy – chạy lại cai-dat.bat (chọn Yes khi hỏi quyền admin)")
     try:
@@ -8008,7 +8008,8 @@ QUAY VIDEO (TÙY CHỌN)
     body.updatedAt=now;
     var secBody={edusoft:{password:(sec.edusoft||{}).password||''},netweb:{sv:{password:((sec.netweb||{}).sv||{}).password||''},gv:{password:((sec.netweb||{}).gv||{}).password||''}},updatedAt:now};
     var done=function(){SC.rn.saving=false;SC.rn.draft=null;SC.rn.secDraft=null;SC.secrets=secBody;
-      SC.rn.msg[mk]={t:requestCheck?'Đã gửi yêu cầu kiểm tra — nhắn Claude "'+(kind==='netweb'?'kiểm tra đăng nhập Netweb':'kiểm tra khởi động Edusoft')+'".':'Đã lưu cấu hình.'};renderRunner();renderMeta();};
+      SC.rn.msg[mk]={t:requestCheck?'Đã gửi yêu cầu kiểm tra — nhắn Claude "'+(kind==='netweb'?'kiểm tra đăng nhập Netweb':'kiểm tra khởi động Edusoft')+'".':'Đã lưu cấu hình.'};renderRunner();renderMeta();
+      if(kind==='edusoft')kitPushCfg(body,mk);};
     if(!SC.rnCol){SC.runners[SC.me]=body;done();return;}
     SC.rn.saving=true;renderRunner();
     var secChangedAny=JSON.stringify(secBody.edusoft)!==JSON.stringify((oldSec.edusoft)||{password:''})||JSON.stringify(secBody.netweb)!==JSON.stringify(oldSec.netweb||{sv:{password:''},gv:{password:''}});
@@ -9903,7 +9904,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.15-02';
+  var KITVER='2026.11.16-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -10026,7 +10027,9 @@ QUAY VIDEO (TÙY CHỌN)
     catch(e){BR.state='off';BR.ecode=(e&&e.code)||'';BR.code=brErr(e)+(e&&e.code?' [mã lỗi: '+e.code+']':'')+(!/Electron|Claude\//i.test(navigator.userAgent||'')?' — Có vẻ bạn đang mở console trên trình duyệt web: cầu nối chỉ dùng được trong Claude app bản desktop trên máy chạy test.':'');}
     renderRunner();if(BR.state==='ok')brSync(false);}
   /* làm mới trạng thái máy (nhật ký Agent) không hiện "Đang kết nối…" – dùng khi đang chờ kết quả */
-  async function brInfo(){try{var r=await MCP.callTool(BRS,'status',{},{cache:false});if(r&&r.payload){BR.info=r.payload;renderRunner();}}catch(e){}}
+  async function brInfo(){try{var r=await MCP.callTool(BRS,'status',{},{cache:false});if(r&&r.payload){BR.info=r.payload;renderRunner();
+    var me=myRunner()||{},c=r.payload.config||{};       /* máy chưa có / lệch đường dẫn Edusoft so với bước 1 → ghi lại một lần */
+    if(window.AQ_LOCAL&&me.path&&c.exe!==me.path&&!KIT.cfgSync&&(r.payload.scenarios||r.payload.kitVersion)){KIT.cfgSync=1;kitPushCfg(me,'es');}}}catch(e){}}
   function b64Blob(b64,type){var bin=atob(b64),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new Blob([u],{type:type||'application/octet-stream'});}
   async function brSync(manual){if(BR.state!=='ok'||BR.busy)return 0;BR.busy=true;var n=0,bugs=0,notes=[];
     try{var l=(await MCP.callTool(BRS,'list_results',{limit:30},{cache:false})).payload||{};
@@ -10233,8 +10236,13 @@ QUAY VIDEO (TÙY CHỌN)
     h+='<div class="rn-row"><button type="button" class="btn sm'+(S.s2!=='ok'&&!run?' primary':'')+'" data-as="go"'+(run?' disabled':'')+'>'+(run?'Đang cài…':S.s2==='ok'?'Cài lại tự động':'Cài tự động')+'</button>'+
       '<span class="as-hint">'+(run?'Đừng tắt app trong lúc cài (2–5 phút).':'App tự cài Python, thư viện và Agent – bạn chỉ bấm Yes khi Windows hỏi quyền admin.')+'</span></div>';
     return '<div class="as-box">'+h+'</div>';}
-  async function asGo(){if(AS.poll)return;var el=document.getElementById('brKitDir'),dir=el?el.value.trim():'';
-    try{var r=(await MCP.callTool(BRS,'auto_setup',{dir:dir},{cache:false})).payload||{};toast('Đang cài vào '+(r.kitDir||dir)+' – bấm Yes khi Windows hỏi quyền admin','',9000);}
+  /* Lưu bước 1 trên app/localhost: ghi luôn đường dẫn Edusoft (mỗi người một chỗ) + tài khoản xuống config.json của bộ test máy này */
+  function kitPushCfg(r,mk){if(!window.AQ_LOCAL||!MCP||BR.state!=='ok'||!r||!r.path)return;
+    MCP.callTool(BRS,'save_config',{config:kitCfg(r)},{cache:false}).then(function(x){var p=(x&&x.payload)||{};if(!p.ok)return;
+      SC.rn.msg[mk]={t:p.exeFound?'Đã lưu cấu hình – bộ test trên máy này đã nhận đường dẫn Edusoft.':'Đã lưu, nhưng máy này không thấy file '+r.path+' – kiểm tra lại đường dẫn (bấm Chọn file…).',err:p.exeFound?0:1};
+      return brInfo();}).then(function(){renderRunner();}).catch(function(){});}
+  async function asGo(){if(AS.poll)return;var el=document.getElementById('brKitDir'),dir=el?el.value.trim():'',me=myRunner()||{};
+    try{var r=(await MCP.callTool(BRS,'auto_setup',me.path?{dir:dir,config:kitCfg(me)}:{dir:dir},{cache:false})).payload||{};toast('Đang cài vào '+(r.kitDir||dir)+' – bấm Yes khi Windows hỏi quyền admin','',9000);}
     catch(e){toast('Không bắt đầu cài được: '+brErr(e),'err',10000);return;}
     AS.t0=Date.now();BR.info=Object.assign({},BR.info||{},{setup:{code:'uac',step:0}});
     await brCheck(false);asWatch();}

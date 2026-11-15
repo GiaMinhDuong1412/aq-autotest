@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.15-02"
+KIT_VERSION = "2026.11.16-01"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -3527,7 +3527,7 @@ def diagnose():
     add("fail" if miss else "ok", "Thư viện", ("thiếu " + ", ".join(miss) + " – chạy lại cai-dat.bat, kiểm tra mạng") if miss else "đủ")
     exe = CFG.get("exe") or ""
     add("ok" if exe and Path(exe).exists() else "fail", "Edusoft.NET.exe",
-        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi tải lại bộ cài")
+        exe if exe and Path(exe).exists() else (exe or "chưa khai báo") + " – không thấy file; sửa đường dẫn ở bước 1 trên console rồi bấm Lưu")
     add("ok" if agent_running() else "warn", "AQ Autotest Agent",
         "đang chạy" if agent_running() else "chưa chạy – chạy lại cai-dat.bat (chọn Yes khi hỏi quyền admin)")
     try:
