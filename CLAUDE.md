@@ -48,6 +48,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   App chỉ chép sẵn từ repo các collection mẫu (`DATA_MAU` trong `tools/dong_goi_app.py`), không có lượt chạy/lỗi/ảnh.
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
+  Phần vẽ tay của form (ô lọc, nút) ghép từ bản trích source: `tools/gan_form_tay.py <trich-tat-ca.zip>` (chạy sau `lap_danh_muc.py`).
   Bản claude.ai publish kèm file này (`files: {"edusoft-catalog.json": "web/edusoft-catalog.json"}`).
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;
