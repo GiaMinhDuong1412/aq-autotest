@@ -104,9 +104,10 @@ Người dùng không muốn dạy thủ công → Claude tự rút nghiệp v�
    **Ô bắt buộc của màn hình dựng từ CSDL** lấy từ metadata (`AQFileField.AllowNull = 0` của bảng chính, bỏ trường hệ thống) –
    `tools/gan_bat_buoc.py <aqdata>` ghi `bb` (ô bắt buộc) và `dai` (số ký tự tối đa) vào từng lưới; đã kiểm khớp dấu * thật
    (QĐ vào mới: Số QĐ, Lý do, Ngày lập; SV: Mã SV, Họ lót, Tên). Trang Màn hình Edusoft hiện * và "tối đa N ký tự".
-   Lưu đồ: dùng bản **PDF mới nhất** người dùng gửi (bản Visio trên SharePoint có thể cũ, sai quy trình).
+   Lưu đồ: dùng bản **PDF mới nhất** người dùng gửi (bản Visio trên SharePoint có thể cũ, sai quy trình) – đã chép thành
+   `luu-do/<PH>.md` (14 lưu đồ: thứ tự bước + menu từng bước + chuỗi giữa các phân hệ ở `luu-do/README.md`).
 3. **Lần chạy thật** (`ui-*.txt`, ảnh) → hành vi runtime; dump cũ nằm ở asset artifact (Artifact read `path` = id trong `dumps`).
-Đã có: `nghiep-vu/QLSV.md` (QĐ vào/ra, DS SV học kỳ, dọn dữ liệu – nguyên nhân bước 12 QLSV-001).
+Đã có: `luu-do/` (13 phân hệ), `nghiep-vu/QLSV.md` (QĐ vào/ra, DS SV học kỳ, dọn dữ liệu – nguyên nhân bước 12 QLSV-001).
 
 ## Dựng kịch bản test từ tài liệu
 1. Xác định chức năng cần test → tìm phân hệ trong bảng → liệt kê thư mục → đọc bản Word của tài liệu (MỤC LỤC trước, rồi đúng mục). Đối chiếu `*_menu.pdf` để lấy đúng cây menu.

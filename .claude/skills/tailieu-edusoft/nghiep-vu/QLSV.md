@@ -3,21 +3,35 @@
 Nguồn đã đọc (SharePoint, connector Microsoft 365):
 - `ALL DOCS/1. Tài liệu Edusoft/QLSV/QLSV_CapNhatQuyetDinhVaoRa.pdf` (7 trang, 2014 – sơ sài, nhiều chỗ "tương tự").
 - `5. Con rùa - TortoiseSVN/QuickGuide/PDF/QLSV/QLSV_QuanLyDanhSachSinhVienHocKy.pdf` (32 trang, 2016 – **đầy đủ nhất**).
-- `ALL DOCS/1. Tài liệu Edusoft/QuiTrinhMotTrangViSio/QLSV.pdf` – lưu đồ (chỉ đọc được chữ trong ô, mất mũi tên).
-  Người dùng: bản Visio có thể cũ/sai quy trình – dùng lưu đồ **PDF mới nhất** họ gửi; sơ đồ vòng đời dưới đây là tạm. `QLSV_CapNhatQuyetDinhVaoRa_LuuDo.pdf` là ảnh – không đọc được chữ.
+- **Lưu đồ mới nhất** `LuuDo_NEW/QLSV.pdf` (người dùng gửi 16/11/2026 – thay bản Visio cũ trên SharePoint). Các lưu đồ khác: `../luu-do/`.
 Chưa đọc: Bảo hiểm SV, Lý lịch, Tốt nghiệp & in bằng, Cố vấn học tập, Khen thưởng KL, Ngành hai, Điểm rèn luyện, Đoàn thể,
 Hồ sơ văn bằng, Thông tin khác, Trợ cấp/miễn giảm, Xét học bổng (thư mục `ALL DOCS/1. Tài liệu Edusoft/QLSV`).
 
-## Vòng đời sinh viên (lưu đồ QLSV)
+## Lưu đồ QLSV (bản mới nhất – số = số trên lưu đồ; menu đều ở `Sinh viên/ Sinh viên học kỳ/ …`)
 ```
-DS trúng tuyển ─┐
-Chuyển trường ──┴─► QĐ vào mới ──► DS SV học kỳ ◄── QĐ học lại (sau tạm dừng / nghỉ hết hiệu lực)
-                                     │
-                                     ├─ QĐ đổi lớp      (chuyển lớp / chuyển ngành – chọn "Mã lớp mới", ô đỏ)
-                                     ├─ QĐ tạm dừng     (bảo lưu, tạm nghỉ – nhập thêm SỐ HỌC KỲ tạm dừng)
-                                     ├─ QĐ nghỉ học     (thôi học, rút hồ sơ, buộc thôi học → xóa khỏi DS SV học kỳ)
-                                     └─ QĐ tốt nghiệp   (sau xét tốt nghiệp → xóa khỏi DS SV học kỳ các học kỳ sau)
+1 SV trúng tuyển ──Thêm──► 2 QĐ vào mới ──Thêm──► 3 Danh mục sinh viên (tất cả SV của trường)
+   (kết quả xét tuyển, QĐ công nhận    │
+    trúng tuyển – từ phân hệ Tuyển sinh)│ Tổng hợp
+                                       ▼
+   6 QĐ tạm dừng ◄─Tổng hợp── 4 DS SV học kỳ ──Tổng hợp─► 5 QĐ đổi lớp (chuyển ngành, chuyển lớp)
+   (bảo lưu, thai sản, tai nạn) ▲    │   ▲  │
+     │ └─► Xóa tên kỳ sau ──────┘    │   │  └──Tổng hợp─► 9 QĐ nghỉ học (bỏ học / đuổi học) ─► Xóa tên kỳ sau ─► 4
+     ▼ Tổng hợp                      │   │
+   7 QĐ học lại ─────────────────────┼───┘ (SV học lại vào lại DS SV học kỳ)
+                                     ▼ Tổng hợp
+                          8 QĐ tốt nghiệp (DS SV có kết quả xét đạt tốt nghiệp – từ phân hệ Tốt nghiệp)
 ```
+Menu: 2 `QĐ vào/ra sinh viên/ Quyết định vào mới` · 3 `Danh mục sinh viên` · 4 `Danh sách sinh viên học kỳ` ·
+5 `QĐ vào/ra sinh viên/ Quyết định đổi lớp` · 6 `…/ Quyết định tạm dừng` · 7 `…/ Quyết định học lại` · 8 `…/ Quyết định tốt nghiệp` ·
+9 `…/ Quyết định nghỉ học`.
+- **Thứ tự đúng theo lưu đồ**: SV mới được thêm **trong QĐ vào mới** rồi mới sang Danh mục sinh viên (không nhập SV tạm ở danh mục trước
+  như tài liệu HDSD 2016) – QLSV-001 làm đúng thứ tự này (nút "Thêm mới 1 SV" trong QĐ).
+- DS SV học kỳ được **tổng hợp** từ các quyết định; QĐ tạm dừng / nghỉ học → **xóa tên kỳ sau** (SV vẫn còn trong học kỳ hiện tại,
+  hết từ học kỳ sau). Học lại đưa SV vào lại DS SV học kỳ. Kiểm tra "dữ liệu sang màn hình nhận" của mỗi QĐ là ở DS SV học kỳ
+  (đúng học kỳ / học kỳ sau tùy loại QĐ).
+- Câu hỏi còn mở: "Tổng hợp" là tự động khi lưu QĐ hay cần bấm chức năng tổng hợp trên DS SV học kỳ? (QLSV-001 bước 9 đã thấy SV
+  trong DS SV học kỳ ngay sau khi lưu → nhiều khả năng tự động với QĐ vào mới.)
+
 - **Danh mục sinh viên** = toàn bộ SV trường quản lý, *không theo học kỳ*. **DS SV học kỳ** = SV có hiệu lực trong học kỳ
   (đang học, có QĐ tạm dừng / nghỉ / tốt nghiệp trong học kỳ). SV chỉ vào DS SV học kỳ qua **quyết định** (vào mới / học lại).
 - Mọi QĐ vào/ra: Menu `Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định <loại>`; cùng khuôn:
