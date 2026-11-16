@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.16-01"
+KIT_VERSION = "2026.11.16-02"
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
@@ -1946,6 +1946,9 @@ class Run:
                                          tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì chỉ xem các dòng đang hiện
           delete_row: giá trị @ Cột      xóa dòng; form "Danh sách đang chọn để xóa" chỉ được có dòng mang giá trị → tick → Thực hiện;
                                          hộp "Xác nhận xóa…?" chỉ bấm Có khi nêu đúng giá trị hoặc đã kiểm form
+          delete_row: giá trị @ Cột => Nút @ Vùng   gỡ dòng khỏi LƯỚI CON bằng nút riêng (vd "{MSSV} @ Mã SV => Xóa sinh viên
+                                         @ Danh sách sinh viên" trong QĐ đang Sửa): cùng các bước xác nhận an toàn nhưng không đòi
+                                         thanh trạng thái báo xóa thành công – sau đó phải "save: Lưu"
           cancel                         hủy thao tác đang nhập (không lưu)
           dump: tên                      ghi cây giao diện ra file ui-tên.txt
           unique: BIẾN @ Cột             giá trị {BIẾN} không được có sẵn trong lưới đang mở – có thì tự đổi
@@ -2110,10 +2113,11 @@ class Run:
                 es.click(el)
                 notes.append("Thấy dòng " + arg)
             elif verb == "delete_row":
-                arg, col = split_col(arg)
+                arg, _, btn = arg.partition("=>")
+                arg, col = split_col(arg.strip())
                 el = self.locate_row(arg, col)
                 es.click(el)
-                notes += self.delete_flow(arg)
+                notes += self.delete_flow(arg, btn.strip())
                 self.clear_filter()
             elif verb == "cancel":
                 es.snap = es.handles()
@@ -2242,14 +2246,16 @@ class Run:
                 continue
         return rows
 
-    def delete_flow(self, code):
+    def delete_flow(self, code, btn=""):
         """Bấm Xóa rồi đi hết các bước xác nhận của Edusoft (lượt QLSV-001 03/11 01:22):
           1. form "Danh sách đang chọn để xóa, vui lòng kiểm tra và chọn xác thực lại" (lưới có ô check, nút Thực hiện):
              MỌI dòng trong lưới phải mang mã `code` (không thì Đóng, không xóa) → tick ô check các dòng đó → Thực hiện;
           2. hộp "Xác nhận xóa dữ liệu đang chọn?" Có/Không → Có khi hộp nêu đúng mã HOẶC đã kiểm ở bước 1;
           3. CHỜ Edusoft xử lý như người test: không bấm Đóng form khi đang xóa; xong khi thanh trạng thái báo
              "Xóa … thành công" (tối đa 40 giây). Thông báo kết quả → OK.
-        Mọi việc ghi vào nhật ký có mốc thời gian (`trace`) – báo lỗi kèm nhật ký để biết Edusoft dừng ở đâu."""
+        Mọi việc ghi vào nhật ký có mốc thời gian (`trace`) – báo lỗi kèm nhật ký để biết Edusoft dừng ở đâu.
+        `btn` = "Nút @ Vùng" (vd "Xóa sinh viên @ Danh sách sinh viên"): gỡ dòng khỏi lưới con của bản ghi đang sửa – vẫn chỉ
+        bấm Có khi hộp/forms nêu đúng mã, nhưng không chờ thanh trạng thái (dữ liệu ghi khi bấm Lưu sau đó)."""
         es = self.es
         es.snap = es.handles()
         st0 = es.status_msg()
@@ -2259,8 +2265,13 @@ class Run:
         def log(msg):
             trace.append("+%.1fs %s" % (time.time() - t0, msg))
 
-        es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
-        log("bấm Xóa (thanh trạng thái trước: %s)" % (st0 or "trống"))
+        soft = bool(btn)
+        if soft:
+            name, area = split_col(btn)
+            es.click(es.find_in_area(name, area, timeout=10) if area else es.find_any(name, timeout=10))
+        else:
+            es.click(es.find_any("Xóa|Xoá", types=("Button", "MenuItem", "SplitButton", "Custom", "Text", "ListItem"), timeout=10))
+        log("bấm " + (btn or "Xóa") + " (thanh trạng thái trước: %s)" % (st0 or "trống"))
         time.sleep(1.5)
         notes, seen, forms = [], set(), []
         verified = confirmed = False
@@ -2295,7 +2306,7 @@ class Run:
             ds = [d for d in es.new_windows(es.snap) if d.handle not in seen]
             if not ds:
                 idle += 1
-                if confirmed:
+                if confirmed and not soft:
                     st = es.status_msg()
                     if st and st != st0:
                         log("thanh trạng thái: " + st)
@@ -2384,6 +2395,14 @@ class Run:
                 pkb.send_keys("{ENTER}")
             time.sleep(0.8)
         self._form_gone = False
+        if soft:                                          # gỡ khỏi lưới con: có hỏi thì đã kiểm mã ở trên; ghi khi Lưu
+            close_forms()
+            es.close_dialogs(6)
+            st = es.status_msg()
+            if st and st != st0:
+                notes.append("Thanh trạng thái: " + st[:150])
+            notes.append("Đã gỡ %s bằng %s (%s)" % (code, btn, "; ".join(trace[-3:])))
+            return notes
         if not confirmed:
             refuse("Bấm Xóa nhưng không thấy hộp thoại xác nhận xóa %s" % code)
         if st and ERR_PAT.search(st) and not OK_PAT.search(st):

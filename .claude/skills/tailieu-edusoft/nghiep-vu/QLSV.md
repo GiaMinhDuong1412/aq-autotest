@@ -29,8 +29,8 @@ Menu: 2 `QĐ vào/ra sinh viên/ Quyết định vào mới` · 3 `Danh mục si
 - DS SV học kỳ được **tổng hợp** từ các quyết định; QĐ tạm dừng / nghỉ học → **xóa tên kỳ sau** (SV vẫn còn trong học kỳ hiện tại,
   hết từ học kỳ sau). Học lại đưa SV vào lại DS SV học kỳ. Kiểm tra "dữ liệu sang màn hình nhận" của mỗi QĐ là ở DS SV học kỳ
   (đúng học kỳ / học kỳ sau tùy loại QĐ).
-- Câu hỏi còn mở: "Tổng hợp" là tự động khi lưu QĐ hay cần bấm chức năng tổng hợp trên DS SV học kỳ? (QLSV-001 bước 9 đã thấy SV
-  trong DS SV học kỳ ngay sau khi lưu → nhiều khả năng tự động với QĐ vào mới.)
+- "Tổng hợp" sang DS SV học kỳ là **tự động** khi lưu QĐ (người dùng xác nhận 16/11/2026) – kịch bản không cần bấm chức năng
+  tổng hợp, chỉ kiểm tra SV có/không ở DS SV học kỳ sau khi lưu.
 
 - **Danh mục sinh viên** = toàn bộ SV trường quản lý, *không theo học kỳ*. **DS SV học kỳ** = SV có hiệu lực trong học kỳ
   (đang học, có QĐ tạm dừng / nghỉ / tốt nghiệp trong học kỳ). SV chỉ vào DS SV học kỳ qua **quyết định** (vào mới / học lại).
@@ -68,8 +68,10 @@ Hai cách đưa SV mới vào:
   Báo cáo đối chiếu: `Sinh viên/ Sinh viên học kỳ/ In kiểm tra sinh viên/ Có trong danh sách & không có q/định`.
 
 ## Xóa / dọn dữ liệu test (ảnh hưởng bước xóa của QLSV-001)
-- Xóa SV khỏi **Danh mục sinh viên**: chương trình *truy vấn toàn bộ dữ liệu liên quan* rồi hỏi xác nhận → SV còn nằm trong QĐ /
-  DS SV học kỳ thì phải gỡ các chỗ đó trước (thứ tự dọn: SV khỏi QĐ → QĐ → SV khỏi danh mục).
+- **Gỡ SV khỏi QĐ vào mới thì Edusoft tự xóa SV khỏi Danh mục sinh viên** (người dùng xác nhận 16/11/2026) – thứ tự dọn:
+  Sửa QĐ → "Xóa sinh viên" ở lưới SV → Lưu → Xóa QĐ; **không** cần xóa SV ở danh mục, chỉ kiểm tra `absent:` ở đó.
+- Xóa SV trực tiếp ở **Danh mục sinh viên**: chương trình *truy vấn toàn bộ dữ liệu liên quan* rồi hỏi xác nhận → SV còn trong QĐ /
+  DS SV học kỳ thì phải gỡ các chỗ đó trước.
 - **Hủy SV trong DSSV học kỳ** (khi chưa có QĐ ra): `Sinh viên/ Danh sách sinh viên/ Hủy sinh viên trong DSSV học kỳ` –
   chọn SV → Hủy → kiểm tra dữ liệu liên quan → xác nhận.
 - QLSV-001 (03/11, bộ test 2026.11.03-9) dừng ở bước 12: Xóa QĐ → Thực hiện → Có nhưng **không** báo "Xóa dữ liệu thành công".
@@ -79,8 +81,8 @@ Hai cách đưa SV mới vào:
   lưới "Danh sách sinh viên" của QĐ vẫn còn `TEST030209` (Mã lớp mới HKH49B1); không có hộp thoại lỗi.
   Danh mục màn hình (S15.04, lớp `Edusoft.SMS.S02.UCQDSV`): lưới SV của QĐ có nút riêng **"Xóa sinh viên"** (btnDelete),
   danh sách QĐ có **"Xóa quyết định"** (btnDelete) / **"Lưu quyết định"** (btnSave) – khác nút "Xóa" chung trên thanh dưới.
-  Đề xuất luồng dọn: Sửa QĐ → chọn SV TEST… → "Xóa sinh viên" → Lưu → Xóa QĐ → mở Danh mục sinh viên xóa SV TEST…
-  (chưa chạy thử – xác nhận bằng lần chạy tới).
+  **Đã sửa QLSV-001 (16/11, bộ test 2026.11.16-02)**: bước 12 = Sửa QĐ → `delete_row: {MSSV} @ Mã SV => Xóa sinh viên @ Danh sách
+  sinh viên` → Lưu → Xóa QĐ; bước 14 = Danh mục sinh viên `absent: {MSSV}` (SV tự mất theo). Chưa chạy thử trên Windows.
 
 ## Danh mục sinh viên – chức năng trên màn hình
 In · In lý lịch SV (tick SV) · Import / Cập nhật từ file (excel, dbf, clipboard) · Xem khen thưởng – KL · Export (tick dòng
