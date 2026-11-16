@@ -68,21 +68,22 @@ Hai cách đưa SV mới vào:
   Báo cáo đối chiếu: `Sinh viên/ Sinh viên học kỳ/ In kiểm tra sinh viên/ Có trong danh sách & không có q/định`.
 
 ## Xóa / dọn dữ liệu test (ảnh hưởng bước xóa của QLSV-001)
-- **Gỡ SV khỏi QĐ vào mới thì Edusoft tự xóa SV khỏi Danh mục sinh viên** (người dùng xác nhận 16/11/2026) – thứ tự dọn:
-  Sửa QĐ → "Xóa sinh viên" ở lưới SV → Lưu → Xóa QĐ; **không** cần xóa SV ở danh mục, chỉ kiểm tra `absent:` ở đó.
+- **Xóa QĐ vào mới thì Edusoft tự xóa SV khỏi Danh mục sinh viên** (người dùng xác nhận 16/11/2026) – dọn chỉ cần: chọn QĐ
+  (tick ô chọn dòng) → nút **Xóa** dưới lưới Danh sách quyết định → form xác nhận → Có; **không** gỡ SV khỏi QĐ trước,
+  không xóa SV ở danh mục, chỉ kiểm tra `absent:` ở đó. Lưới SV của QĐ trên HVNG **không** có nút "Xóa sinh viên"
+  (danh mục màn hình ghi btnDelete "Xóa sinh viên" nhưng thực tế thanh dưới lưới SV chỉ có Import · Thêm · Thêm mới 1 SV · Xóa).
 - Xóa SV trực tiếp ở **Danh mục sinh viên**: chương trình *truy vấn toàn bộ dữ liệu liên quan* rồi hỏi xác nhận → SV còn trong QĐ /
   DS SV học kỳ thì phải gỡ các chỗ đó trước.
 - **Hủy SV trong DSSV học kỳ** (khi chưa có QĐ ra): `Sinh viên/ Danh sách sinh viên/ Hủy sinh viên trong DSSV học kỳ` –
   chọn SV → Hủy → kiểm tra dữ liệu liên quan → xác nhận.
 - QLSV-001 (03/11, bộ test 2026.11.03-9) dừng ở bước 12: Xóa QĐ → Thực hiện → Có nhưng **không** báo "Xóa dữ liệu thành công".
-  Giả thuyết theo tài liệu: QĐ đang chứa SV (đã sinh dữ liệu DS SV học kỳ) → cần gỡ SV khỏi lưới QĐ (Lưu) rồi mới xóa QĐ;
-  sau đó xóa SV `TEST…` khỏi Danh mục sinh viên (hiện kịch bản **chưa dọn SV tạm** – để lại rác).
+  (Giả thuyết cũ "phải gỡ SV khỏi QĐ trước" là **SAI** – người dùng 16/11: xóa thẳng QĐ, SV tự mất khỏi danh mục.)
   Bằng chứng (`ui-buoc-12-loi.txt`, asset e3745dbe… trên artifact): sau khi Xóa → Có, QĐ `TEST_QD_030209` vẫn trong lưới và
   lưới "Danh sách sinh viên" của QĐ vẫn còn `TEST030209` (Mã lớp mới HKH49B1); không có hộp thoại lỗi.
   Danh mục màn hình (S15.04, lớp `Edusoft.SMS.S02.UCQDSV`): lưới SV của QĐ có nút riêng **"Xóa sinh viên"** (btnDelete),
   danh sách QĐ có **"Xóa quyết định"** (btnDelete) / **"Lưu quyết định"** (btnSave) – khác nút "Xóa" chung trên thanh dưới.
-  **Đã sửa QLSV-001 (16/11, bộ test 2026.11.16-02)**: bước 12 = Sửa QĐ → `delete_row: {MSSV} @ Mã SV => Xóa sinh viên @ Danh sách
-  sinh viên` → Lưu → Xóa QĐ; bước 14 = Danh mục sinh viên `absent: {MSSV}` (SV tự mất theo). Chưa chạy thử trên Windows.
+  **16/11**: lượt 03/11 01:35 và 01:50 bước 12 (xóa QĐ trực tiếp) đã ĐẠT – giữ nguyên cách này; bước 14 mới kiểm tra SV tự mất
+  khỏi Danh mục sinh viên. (Thử gỡ SV trước bằng "Xóa sinh viên" ngày 16/11 thất bại – không có nút đó.)
 
 ## Danh mục sinh viên – chức năng trên màn hình
 In · In lý lịch SV (tick SV) · Import / Cập nhật từ file (excel, dbf, clipboard) · Xem khen thưởng – KL · Export (tick dòng

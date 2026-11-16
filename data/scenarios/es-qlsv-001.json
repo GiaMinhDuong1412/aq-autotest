@@ -81,12 +81,6 @@
    "shot: kiem-tra-sua"
   ],
   [
-   "find_row: {SOQD} @ Số quyết định|Số QĐ",
-   "click?: Sửa @ Danh sách quyết định",
-   "delete_row: {MSSV} @ Mã SV|Mã sinh viên => Xóa sinh viên @ Danh sách sinh viên",
-   "shot: da-go-sinh-vien",
-   "save: Lưu",
-   "find_row: {SOQD} @ Số quyết định|Số QĐ",
    "delete_row: {SOQD} @ Số quyết định|Số QĐ"
   ],
   [
@@ -107,9 +101,9 @@
  "dataFlow": {
   "in": "Đăng nhập Edusoft (CHUNG-001); mã/tên test chưa có trong Danh mục sinh viên và Danh sách sinh viên học kỳ (tự đổi nếu trùng); lớp {LOP} lấy từ Danh sách sinh viên học kỳ; lý do {LYDO} chọn ngẫu nhiên trong Danh mục lý do quyết định (loại vào mới) – chỉ đọc, không sửa",
   "next": [],
-  "out": "Quyết định {SOQD} (sinh viên {MSSV} – {HOLOT} {TEN}, lớp {LOP}) – được dọn ở bước 12 (gỡ SV → xóa QĐ), bước 14 kiểm tra SV không còn ở Danh mục sinh viên."
+  "out": "Quyết định {SOQD} (sinh viên {MSSV} – {HOLOT} {TEN}, lớp {LOP}) – được xóa ở bước 12; bước 14 kiểm tra SV không còn ở Danh mục sinh viên."
  },
- "expected": "Thêm: quyết định {SOQD} lưu được, có sinh viên {MSSV} (lớp {LOP}); sinh viên mới hiển thị trong Danh sách sinh viên học kỳ. Sửa: Tên quyết định đổi thành {TENQD2}. Xóa: gỡ sinh viên {MSSV} khỏi quyết định rồi xóa quyết định {SOQD} – không còn trên màn hình, xóa thành công; sinh viên {MSSV} không còn trong Danh mục sinh viên (không để lại rác). Mỗi màn hình test xong được tắt bằng nút X trên tab. (Theo hướng dẫn người dùng 03/11/2026; QLSV_CapNhatQuyetDinhVaoRa.)",
+ "expected": "Thêm: quyết định {SOQD} lưu được, có sinh viên {MSSV} (lớp {LOP}); sinh viên mới hiển thị trong Danh sách sinh viên học kỳ. Sửa: Tên quyết định đổi thành {TENQD2}. Xóa: quyết định {SOQD} không còn trên màn hình, xóa thành công; sinh viên {MSSV} không còn trong Danh mục sinh viên (không để lại rác). Mỗi màn hình test xong được tắt bằng nút X trên tab. (Theo hướng dẫn người dùng 03/11/2026; QLSV_CapNhatQuyetDinhVaoRa.)",
  "lastRun": {
   "at": "2026-11-02T18:44:24.081055Z",
   "by": "u_L8VJITzyuU54eIqCAl0PKQ",
@@ -141,12 +135,12 @@
   "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có là Đạt, không có là Lỗi. Xong tắt màn hình.",
   "Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.",
   "KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.",
-  "Xóa quyết định {SOQD} (theo lưu đồ QLSV + người dùng 16/11: gỡ SV khỏi QĐ trước): mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa → ở lưới Danh sách sinh viên chọn dòng {MSSV} → bấm \"Xóa sinh viên\" (chỉ xác nhận khi hộp/danh sách nêu đúng {MSSV}) → Lưu quyết định. Sau đó chọn quyết định, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick dòng {SOQD} → Thực hiện → \"Xác nhận xóa dữ liệu đang chọn?\" → Có. Thanh trạng thái báo \"Xóa dữ liệu thành công\". Danh sách có dòng khác hoặc hộp hỏi lạ thì KHÔNG xóa.",
+  "Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick ô chọn dòng {SOQD} → Thực hiện → \"Xác nhận xóa dữ liệu đang chọn?\" → Có. Thanh trạng thái dưới đáy báo \"Xóa dữ liệu thành công\". Danh sách có dòng khác hoặc hộp hỏi lạ thì KHÔNG xóa.",
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới (xóa thành công). Nếu vẫn thấy (lưới chưa nạp lại) → tắt màn hình bằng X, mở lại menu, kiểm tra lần nữa: không còn = Đạt. Xong tắt màn hình.",
-  "KIỂM TRA DỌN DỮ LIỆU: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MSSV} → không còn là Đạt (Edusoft tự xóa SV khỏi danh mục khi gỡ khỏi QĐ vào mới). Xong tắt màn hình."
+  "KIỂM TRA DỌN DỮ LIỆU: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MSSV} → không còn là Đạt (xóa QĐ vào mới thì Edusoft tự xóa SV khỏi danh mục). Xong tắt màn hình."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-11-16T10:00:00.000Z",
+ "updatedAt": "2026-11-16T10:30:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",
