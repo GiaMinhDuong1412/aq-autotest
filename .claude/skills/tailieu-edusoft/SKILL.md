@@ -95,6 +95,15 @@ Kịch bản **bắt buộc** thuộc một phân hệ (trường `module`). Ch�
   - QLSV: tài liệu văn bằng ghi nhầm menu (Quyết định nghỉ học); không có mục riêng cho Quyết định vào mới (dùng QLSV-001). DIEM: tài liệu Xét chứng chỉ đặt menu dưới nhánh Tốt nghiệp. DKMH: thời gian ĐK nguyện vọng, hiệu chỉnh/hủy/phục hồi KQĐK chưa có tài liệu.
   - Chưa có tài liệu: QLHT Cấm SV xem vì nợ học phí; QLSV Danh mục SV, DSSV học kỳ, thời gian cập nhật online, điểm danh (in vắng, tạo ngày, xóa KQ SV hủy ĐK), nhập/hủy điểm rèn luyện 1 SV; KHGD DS lớp học kỳ, Netweb CTĐT & môn tiên quyết; DKMH 103, 108–113; LTHI ghép phòng, đánh số báo danh, phân công coi thi khác; DIEM 145, 146, 148, 149, 162, 163; QLTV import phiếu thu, thu vãng lai; QKTX xem hợp đồng từng đối tượng.
 
+## Nghiệp vụ theo phân hệ (`nghiep-vu/<PH>.md`) – đọc trước khi dựng/sửa kịch bản
+Người dùng không muốn dạy thủ công → Claude tự rút nghiệp vụ, gộp 3 nguồn:
+1. **Tài liệu HDSD + lưu đồ** trên SharePoint (đọc bằng connector) → vòng đời, thứ tự, danh mục phải có trước, cách dọn dữ liệu.
+   Lưu đồ Visio `QuiTrinhMotTrangViSio/*.vsdx` (66 file) connector KHÔNG đọc được – cần người dùng tải thư mục (.zip) gửi vào chat.
+2. **Bản trích source** (`tools/trich_source.py --tat-ca`, từ 16/11 có mục "Ràng buộc": ô bị kiểm tra rỗng / so sánh / trùng + câu báo)
+   → `tools/gan_form_tay.py` ghép vào danh mục (`forms[].rb`, ô bắt buộc = phần tử thứ 4 của `o`) → luồng thay thế "bỏ trống ô bắt buộc".
+3. **Lần chạy thật** (`ui-*.txt`, ảnh) → hành vi runtime; dump cũ nằm ở asset artifact (Artifact read `path` = id trong `dumps`).
+Đã có: `nghiep-vu/QLSV.md` (QĐ vào/ra, DS SV học kỳ, dọn dữ liệu – nguyên nhân bước 12 QLSV-001).
+
 ## Dựng kịch bản test từ tài liệu
 1. Xác định chức năng cần test → tìm phân hệ trong bảng → liệt kê thư mục → đọc bản Word của tài liệu (MỤC LỤC trước, rồi đúng mục). Đối chiếu `*_menu.pdf` để lấy đúng cây menu.
 2. Dựng cả phân hệ "từ đầu đến chân": đi đúng thứ tự tài liệu (chỉnh định thông số → danh mục → khai báo → chuẩn bị dữ liệu → tính/xử lý → xem/khóa/in), mỗi mục có thao tác kiểm chứng được → một kịch bản (gộp các mục tài liệu ghi "tương tự"), cuối cùng thêm một kịch bản **dọn dữ liệu test** và khôi phục cấu hình. Kiểm tra kịch bản đã có để không tạo trùng. Khi có release đang chạy, ưu tiên dựng kịch bản cho các menu trong phân công release và gắn `scenarioIds` vào menu release tương ứng; hạng mục trong danh mục kế hoạch thì điền `scenarioCode`.

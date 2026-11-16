@@ -11,6 +11,10 @@ Cách dùng (PowerShell, trong thư mục repo aq-autotest):
   python tools\\trich_source.py D:\\Source.NET.zip --tim "class SourceViewBase" --trong AQViewers
   python tools\\trich_source.py D:\\Source.NET.zip --tat-ca                    -> trich-tat-ca.zip (mọi module)
 Từ khóa so khớp không dấu, không phân biệt hoa thường, với đường dẫn file, tên lớp hoặc tiêu đề form.
+
+Mỗi form có thêm mục "Ràng buộc": các chỗ code kiểm tra ô nhập rồi báo lỗi / dừng (vd ô bỏ trống → "Chưa nhập số quyết định"),
+luật DXValidationProvider và thuộc tính bắt buộc trên designer – để Claude biết ô nào bắt buộc, khi nào bị chặn, câu báo gì.
+Chỉ ghi: tên ô | loại kiểm tra | câu báo (điều kiện rút gọn ≤ 100 ký tự), không chép thân hàm.
 """
 import argparse
 import os
@@ -102,6 +106,95 @@ def thong_tin_form(nguon, p):
     return src, lop, cha, (t.group(1) if t else "")
 
 
+RE_IF = re.compile(r"\bif\s*\(")
+RE_O = re.compile(r"\b(?:this\.)?(\w+)\.(?:Properties\.)?(?:Text|EditValue|DateTime|Value|Checked|SelectedIndex|SelectedValue|"
+                  r"EditText|Time|ItemIndex|CheckState|OldEditValue)\b")
+RE_VR_SET = re.compile(r"\.SetValidationRule\(this\.(\w+),\s*this\.(\w+)\)")
+RE_VR_PROP = re.compile(r"(?:this\.)?\b(\w+)\.(ErrorText|ConditionOperator)\s*=\s*([^;]+);")
+RE_BB = re.compile(r"this\.(\w+)\.(?:Properties\.)?(\w*(?:Required|AllowNull\w*|NotNull|BatBuoc|AllowBlank|IsNull\w*|KiemTra\w*))"
+                   r"\s*=\s*(true|false)\b", re.I)
+RE_MAXLEN = re.compile(r"this\.(\w+)\.Properties\.MaxLength\s*=\s*(\d+)")
+
+
+def ngoac(src, i, mo="(", dong=")"):
+    """src[i] là dấu mở – trả về vị trí dấu đóng tương ứng (bỏ qua chuỗi), -1 nếu không thấy trong 4000 ký tự."""
+    d, j, n = 0, i, min(len(src), i + 4000)
+    while j < n:
+        c = src[j]
+        if c == '"':
+            j += 1
+            while j < n and src[j] != '"':
+                j += 2 if src[j] == "\\" else 1
+        elif c == mo:
+            d += 1
+        elif c == dong:
+            d -= 1
+            if d == 0:
+                return j
+        j += 1
+    return -1
+
+
+def loai_kiem_tra(dk):
+    k = re.sub(r"\s+", "", dk)
+    if re.search(r"IsNullOrEmpty|IsNullOrWhiteSpace|==\"\"|==null|==string\.Empty|Trim\(\)\.Length==0|Length==0|==DBNull|"
+                 r"is DBNull|Equals\(\"\"\)|\.ToString\(\)==\"\"", k):
+        return "rỗng"
+    if re.search(r"[<>]=?", k) and re.search(r"Date|Ngay|Time", k, re.I):
+        return "so sánh ngày"
+    if re.search(r"[<>]=?", k):
+        return "so sánh"
+    if re.search(r"Exist|Trung|Contains|Count\s*>|Rows\.Count", k, re.I):
+        return "trùng/tồn tại"
+    return "điều kiện"
+
+
+def trich_rang_buoc(src_cs, src_designer, ten_ctl):
+    """[(dòng, ô, loại, câu báo, điều kiện rút gọn)] – kiểm tra ô rồi báo lỗi trong .cs + luật validation trên designer."""
+    out = []
+    for m in RE_IF.finditer(src_cs or ""):
+        a = m.end() - 1
+        b = ngoac(src_cs, a)
+        if b < 0:
+            continue
+        dk = src_cs[a + 1:b]
+        o = [x for x in RE_O.findall(dk) if x in ten_ctl]
+        if not o:
+            continue
+        j = b + 1
+        while j < len(src_cs) and src_cs[j] in " \t\r\n":
+            j += 1
+        if j < len(src_cs) and src_cs[j] == "{":
+            e = ngoac(src_cs, j, "{", "}")
+            than = src_cs[j:e if e > 0 else j + 1500]
+        else:
+            e = src_cs.find(";", j)
+            than = src_cs[j:e + 1 if e > 0 else j + 400]
+        than = than[:1500]
+        if not re.search(r"\breturn\b|Show\(|Message|ThongBao|SetError|throw\b|Cancel\s*=\s*true", than):
+            continue
+        cau = [x for x in RE_LIT.findall(than) if len(x) >= 6 and any(ord(c) > 127 for c in x) and an_toan(x)]
+        if not cau:
+            continue
+        dong = src_cs.count("\n", 0, m.start()) + 1
+        rg = re.sub(r"\s+", " ", dk).strip()
+        out.append((dong, ", ".join(dict.fromkeys(o)), loai_kiem_tra(dk), cau[0].replace("\\n", " ").strip(),
+                    (rg[:100] + "…") if len(rg) > 100 else rg))
+    luat = {}
+    for n, k, v in RE_VR_PROP.findall(src_designer or ""):
+        v = v.strip()
+        luat.setdefault(n, {})[k] = v.strip('"') if k == "ErrorText" else v.split(".")[-1]
+    for ctl, r in RE_VR_SET.findall(src_designer or ""):
+        x = luat.get(r, {})
+        if an_toan(x.get("ErrorText", "")):
+            out.append((0, ctl, "rỗng" if "Blank" in x.get("ConditionOperator", "") else "luật " + x.get("ConditionOperator", ""),
+                        x.get("ErrorText", ""), "DXValidationProvider"))
+    for ctl, k, v in RE_BB.findall(src_designer or ""):
+        if ctl in ten_ctl and ((v.lower() == "true") != bool(re.search(r"AllowNull|AllowBlank|IsNull", k, re.I))):
+            out.append((0, ctl, "rỗng", "", "designer " + k + " = " + v))
+    return out
+
+
 def trich_form(nguon, p, out):
     src, lop, cha, tieu_de = thong_tin_form(nguon, p)
     goc = re.sub(r"\.designer\.cs$", "", p, flags=re.I)
@@ -140,7 +233,8 @@ def trich_form(nguon, p, out):
     out.append("  -- Điều khiển (tên | loại | nhãn/caption | thuộc vùng) --")
     for n, t in loai.items():
         if n in la_cot or t in ("GridColumn", "BandedGridColumn", "LayoutControlItem", "EmptySpaceItem",
-                                "SplitterItem", "LayoutControlGroup"):
+                                "SplitterItem", "LayoutControlGroup", "ConditionValidationRule", "CompareAgainstControlValidationRule",
+                                "DXValidationProvider", "DXErrorProvider"):
             continue
         pr = props.get(n, {})
         nhan = nhan_cua.get(n) or pr.get("Text") or pr.get("Caption") or ""
@@ -167,6 +261,12 @@ def trich_form(nguon, p, out):
             pr = props.get(c, {})
             out.append(f"    {c}: {pr.get('Caption', '')} [{pr.get('FieldName', '')}]")
     code = nguon.doc(goc + ".cs")
+    rb = trich_rang_buoc(code, src, set(loai))
+    if rb:
+        out.append("  -- Ràng buộc (dòng: ô | loại | câu báo | điều kiện) --")
+        for dong, o, lk, cau, dk in rb:
+            if not BO_QUA.search(dk):
+                out.append(f"    {dong}: {o} | {lk} | {cau} | {dk}")
     if code:
         out.append("  -- Câu thông báo / chuỗi tiếng Việt trong " + goc + ".cs (dòng: chuỗi) --")
         for i, dong in enumerate(code.splitlines(), 1):

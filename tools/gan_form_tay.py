@@ -6,7 +6,8 @@
 Đầu vào là kết quả `tools/trich_source.py <source.zip> --tat-ca` (chỉ tên điều khiển, caption, cột lưới, câu thông báo –
 không phải source). Mỗi menu có lớp màn hình khớp một form trong bản trích được thêm khóa "fm" trỏ vào "forms":
   forms[<lớp>] = {"td": tiêu đề form, "o": [[tên control, kiểu, nhãn]], "nut": [[tên, chữ trên nút]],
-                  "luoi": [{"ten": tên lưới, "cot": [[caption, FieldName]]}], "tb": [câu thông báo]}
+                  "luoi": [{"ten": tên lưới, "cot": [[caption, FieldName]]}], "tb": [câu thông báo],
+                  "rb": [[tên ô, loại kiểm tra, câu báo]]}   (ràng buộc: ô bắt buộc / so sánh / trùng – bản trích từ 16/11/2026)
 Phần dựng từ CSDL (SourceViewBase) đã nằm trong "views" do lap_danh_muc.py lập; ở đây chỉ thêm các ô lọc/nút/lưới vẽ tay
 (vd ô "Chọn khóa học:" phía trên lưới) – kit tìm được bằng `#tên control` (automationId của WinForms = Name).
 """
@@ -56,7 +57,7 @@ def tach_form(text):
     for line in text.splitlines():
         m = re.match(r"FORM (\w+)\s+\(kế thừa ([\w\.]+)\)\s+file (\S+)", line)
         if m:
-            cur = {"lop": m.group(1), "base": m.group(2), "file": m.group(3), "td": "", "ctl": [], "luoi": [], "tb": []}
+            cur = {"lop": m.group(1), "base": m.group(2), "file": m.group(3), "td": "", "ctl": [], "luoi": [], "tb": [], "rb": []}
             forms.append(cur)
             phan = ""
             continue
@@ -72,6 +73,15 @@ def tach_form(text):
             phan = "luoi"
         elif line.startswith("  -- Câu thông báo"):
             phan = "tb"
+        elif line.startswith("  -- Ràng buộc"):
+            phan = "rb"
+        elif phan == "rb":
+            m = re.match(r"\s+\d+: (.+)$", line)
+            if m:
+                p = [x.strip() for x in m.group(1).split(" | ")]
+                if len(p) >= 3:
+                    for o in p[0].split(", "):        # chỉ tên ô, loại, câu báo – không đưa điều kiện (code) vào danh mục
+                        cur["rb"].append([o, p[1], p[2]])
         elif phan == "ctl" and line.startswith("  ") and " | " in line:
             p = [x.strip() for x in line.split("|")]
             cur["ctl"].append({"ten": p[0], "loai": p[1], "chu": p[2] if len(p) > 2 else "", "vung": p[3] if len(p) > 3 else "",
@@ -111,11 +121,18 @@ def gon(f):
             for r, t in zip(cho, nh):
                 r[2] = t.rstrip(": ").strip()
     luoi = [g for g in f["luoi"] if g["cot"]]
-    if not (o or nut or luoi):
+    if not (o or nut or luoi or f.get("rb")):
         return None
     out = {"o": o, "nut": nut, "luoi": luoi}
     if f["td"] and not TEN_MA.match(f["td"]):
         out["td"] = f["td"]
+    rb = [list(x) for x in dict.fromkeys(tuple(r) for r in f.get("rb", []))][:60]
+    if rb:
+        out["rb"] = rb
+        bb = {r[0] for r in rb if r[1] == "rỗng"}
+        for r in o:                             # ô bị kiểm tra rỗng = bắt buộc (phần tử thứ 4 của "o")
+            if r[0] in bb:
+                r.append(1)
     tb = list(dict.fromkeys(f["tb"]))[:40]
     if tb:
         out["tb"] = tb
@@ -165,7 +182,8 @@ def main():
         json.dump(cat, w, ensure_ascii=False, separators=(",", ":"))
     print("Menu:", len(cat["menus"]), dict(dem))
     print("Form vẽ tay đã ghép:", len(cat["forms"]), "· ô", sum(len(x["o"]) for x in cat["forms"].values()),
-          "· nút", sum(len(x["nut"]) for x in cat["forms"].values()), "· lưới", sum(len(x["luoi"]) for x in cat["forms"].values()))
+          "· nút", sum(len(x["nut"]) for x in cat["forms"].values()), "· lưới", sum(len(x["luoi"]) for x in cat["forms"].values()),
+          "· ràng buộc", sum(len(x.get("rb", [])) for x in cat["forms"].values()))
 
 
 if __name__ == "__main__":
