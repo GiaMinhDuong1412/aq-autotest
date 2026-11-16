@@ -101,6 +101,10 @@ Người dùng không muốn dạy thủ công → Claude tự rút nghiệp v�
    Lưu đồ Visio `QuiTrinhMotTrangViSio/*.vsdx` (66 file) connector KHÔNG đọc được – cần người dùng tải thư mục (.zip) gửi vào chat.
 2. **Bản trích source** (`tools/trich_source.py --tat-ca`, từ 16/11 có mục "Ràng buộc": ô bị kiểm tra rỗng / so sánh / trùng + câu báo)
    → `tools/gan_form_tay.py` ghép vào danh mục (`forms[].rb`, ô bắt buộc = phần tử thứ 4 của `o`) → luồng thay thế "bỏ trống ô bắt buộc".
+   **Ô bắt buộc của màn hình dựng từ CSDL** lấy từ metadata (`AQFileField.AllowNull = 0` của bảng chính, bỏ trường hệ thống) –
+   `tools/gan_bat_buoc.py <aqdata>` ghi `bb` (ô bắt buộc) và `dai` (số ký tự tối đa) vào từng lưới; đã kiểm khớp dấu * thật
+   (QĐ vào mới: Số QĐ, Lý do, Ngày lập; SV: Mã SV, Họ lót, Tên). Trang Màn hình Edusoft hiện * và "tối đa N ký tự".
+   Lưu đồ: dùng bản **PDF mới nhất** người dùng gửi (bản Visio trên SharePoint có thể cũ, sai quy trình).
 3. **Lần chạy thật** (`ui-*.txt`, ảnh) → hành vi runtime; dump cũ nằm ở asset artifact (Artifact read `path` = id trong `dumps`).
 Đã có: `nghiep-vu/QLSV.md` (QĐ vào/ra, DS SV học kỳ, dọn dữ liệu – nguyên nhân bước 12 QLSV-001).
 
