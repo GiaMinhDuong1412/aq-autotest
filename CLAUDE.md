@@ -85,7 +85,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `unique:` (giá trị test có sẵn thì tự đổi), `pick:` (chọn ngẫu nhiên một dòng danh mục, ghi vào biến), `absent:`, `shot:`;
   lệnh tìm dòng (`find_row`/`delete_row`/`unique`/`absent`) ghi cột sau `@` để gõ vào ô tìm kiếm (dòng lọc) của cột đó;
   ô tra cứu phải **chọn** dòng trong danh sách thả xuống: `choose: #Ô = giá trị` (mở rồi chọn) / `select: #Ô = giá trị` (gõ rồi chọn);
-  nhập trên lưới `cell: Cột = giá trị @ Lưới`, nút "…" của ô `cellbtn: Cột @ Lưới`; nút trùng tên ghi vùng `click: Thêm @ Danh sách sinh viên`;
+  gỡ dòng khỏi lưới con bằng nút riêng `delete_row: {MSSV} @ Mã SV => Xóa sinh viên @ Danh sách sinh viên` (vẫn kiểm mã khi xác nhận,
+  không đòi thanh trạng thái – sau đó `save: Lưu`); nhập trên lưới `cell: Cột = giá trị @ Lưới`, nút "…" của ô `cellbtn: Cột @ Lưới`; nút trùng tên ghi vùng `click: Thêm @ Danh sách sinh viên`;
   test xong chức năng nào tắt màn hình đó bằng nút X trên tab: `close: Tên màn hình`;
   thêm `?` sau tên lệnh (vd `select?:`) để bỏ qua khi không thấy phần tử. Nhiều tên thay thế cách nhau `|`.
 - Mỗi bước tự mở menu của nó (`menu:`) – có `menu:` trong `auto` thì không mở trước menu chính; quy trình chuẩn thêm–sửa–xóa
