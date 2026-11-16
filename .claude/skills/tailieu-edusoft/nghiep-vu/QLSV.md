@@ -3,8 +3,8 @@
 Nguồn đã đọc (SharePoint, connector Microsoft 365):
 - `ALL DOCS/1. Tài liệu Edusoft/QLSV/QLSV_CapNhatQuyetDinhVaoRa.pdf` (7 trang, 2014 – sơ sài, nhiều chỗ "tương tự").
 - `5. Con rùa - TortoiseSVN/QuickGuide/PDF/QLSV/QLSV_QuanLyDanhSachSinhVienHocKy.pdf` (32 trang, 2016 – **đầy đủ nhất**).
-- `ALL DOCS/1. Tài liệu Edusoft/QuiTrinhMotTrangViSio/QLSV.pdf` – lưu đồ (chỉ đọc được chữ trong ô, mất mũi tên;
-  cần file `.vsdx` gốc để có quan hệ). `QLSV_CapNhatQuyetDinhVaoRa_LuuDo.pdf` là ảnh – không đọc được chữ.
+- `ALL DOCS/1. Tài liệu Edusoft/QuiTrinhMotTrangViSio/QLSV.pdf` – lưu đồ (chỉ đọc được chữ trong ô, mất mũi tên).
+  Người dùng: bản Visio có thể cũ/sai quy trình – dùng lưu đồ **PDF mới nhất** họ gửi; sơ đồ vòng đời dưới đây là tạm. `QLSV_CapNhatQuyetDinhVaoRa_LuuDo.pdf` là ảnh – không đọc được chữ.
 Chưa đọc: Bảo hiểm SV, Lý lịch, Tốt nghiệp & in bằng, Cố vấn học tập, Khen thưởng KL, Ngành hai, Điểm rèn luyện, Đoàn thể,
 Hồ sơ văn bằng, Thông tin khác, Trợ cấp/miễn giảm, Xét học bổng (thư mục `ALL DOCS/1. Tài liệu Edusoft/QLSV`).
 
@@ -34,6 +34,13 @@ Chuyển trường ──┴─► QĐ vào mới ──► DS SV học kỳ ◄
 | Tên quyết định | Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục tên quyết định |
 | Người ký quyết định | Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh sách người ký quyết định |
 Kịch bản chỉ **đọc** các danh mục này (`pick:`), không thêm – trừ khi kịch bản test chính danh mục đó.
+
+## Ô bắt buộc (metadata CSDL, đã đối chiếu dấu * trên màn hình)
+- QĐ vào/ra (bảng SDSQD): **Số quyết định** (SoQDSV, tối đa 500 ký tự), **Lý do QĐ** (IDLDQDSV), **Ngày lập** (NgayLapQDSV).
+  Không bắt buộc: Tên QĐ, Ngày hiệu lực, Người ký, Ghi chú, Nội dung.
+- Sinh viên (SDMSV / lưới SV của QĐ): **Mã SV**, **Họ lót**, **Tên**. Mã lớp mới, Phái, Ngày sinh, Nơi sinh không bắt buộc ở DB
+  (tài liệu: QĐ đổi lớp phải chọn "Mã lớp mới" – ô đỏ trên lưới, kiểm tra trong code).
+- Luồng thay thế nên có: bỏ trống từng ô bắt buộc → không lưu được; trùng Số QĐ / Mã SV → báo trùng.
 
 ## Quyết định vào mới (QLSV-001)
 Hai cách đưa SV mới vào:

@@ -10322,10 +10322,11 @@ QUAY VIDEO (TÙY CHỌN)
       h+='<div class="mh-grid"><div class="gt"><b>«'+esc(td)+'»</b>'+mhCopyBtn('@ '+td,'chép @ lưới')+'<span class="hint mono">'+esc(x.view)+(g.bang?' · bảng '+esc(g.bang):'')+'</span>'+btn+
         g.nut.map(function(b){return '<span class="mh-chip" data-mhcopy="'+esc('click: '+(b[1]||b[0])+' @ '+td)+'" title="'+esc(b[0]+(b[2]?' · phím '+b[2]:''))+'">'+esc(b[1]||b[0])+(b[2]?' ('+esc(b[2])+')':'')+'</span>';}).join('')+
         (g.tat.length?'<span class="hint">tắt: '+esc(g.tat.join(', '))+'</span>':'')+'</div>';
-      if(g.o.length)h+='<div style="margin-bottom:8px"><span class="hint">Ô trên form sửa:</span> '+g.o.map(function(f){return '<span class="mh-chip" data-mhcopy="'+esc('type: #'+f+' = ')+'">#'+esc(f)+'</span>';}).join('')+'</div>';
+      var bb=g.bb||[],dai=g.dai||{},req=function(f){return bb.indexOf(f)>=0?' <b class="mh-req" title="Bắt buộc (dấu * đỏ trên Edusoft) – bỏ trống thì không lưu được">*</b>':'';};
+      if(g.o.length)h+='<div style="margin-bottom:8px"><span class="hint">Ô trên form sửa'+(bb.length?' (<b class="mh-req">*</b> = bắt buộc)':'')+':</span> '+g.o.map(function(f){return '<span class="mh-chip" data-mhcopy="'+esc('type: #'+f+' = ')+'"'+(dai[f]?' title="Tối đa '+dai[f]+' ký tự"':'')+'>#'+esc(f)+req(f)+'</span>';}).join('')+'</div>';
       if(g.cot.length)h+='<table class="mh-tbl"><thead><tr><th>Cột (nhãn)</th><th>MaField</th><th>Kiểu</th><th>Ghi chú</th></tr></thead><tbody>'+vis.concat(an).map(function(c){
-        var note=[c[3].indexOf('a')>=0?'ẩn':'',c[3].indexOf('r')>=0?'chỉ đọc':'',c[3].indexOf('t')>=0?'trường đổi nhãn':''].filter(Boolean).join(', ');
-        return '<tr class="'+(c[3].indexOf('a')>=0?'an':'')+'"><td><span class="mh-chip" data-mhcopy="'+esc('find_row: {} @ '+c[0])+'" title="Chép lệnh tìm dòng theo cột này">'+esc(c[0])+'</span></td><td class="f" data-mhcopy="'+esc('#'+c[1])+'">'+esc(c[1])+'</td><td>'+esc(c[2])+'</td><td class="hint">'+esc(note)+'</td></tr>';}).join('')+'</tbody></table>';
+        var note=[bb.indexOf(c[1])>=0?'bắt buộc':'',c[3].indexOf('a')>=0?'ẩn':'',c[3].indexOf('r')>=0?'chỉ đọc':'',c[3].indexOf('t')>=0?'trường đổi nhãn':'',dai[c[1]]?'tối đa '+dai[c[1]]+' ký tự':''].filter(Boolean).join(', ');
+        return '<tr class="'+(c[3].indexOf('a')>=0?'an':'')+'"><td><span class="mh-chip" data-mhcopy="'+esc('find_row: {} @ '+c[0])+'" title="Chép lệnh tìm dòng theo cột này">'+esc(c[0])+'</span>'+req(c[1])+'</td><td class="f" data-mhcopy="'+esc('#'+c[1])+'">'+esc(c[1])+'</td><td>'+esc(c[2])+'</td><td class="hint">'+esc(note)+'</td></tr>';}).join('')+'</tbody></table>';
       h+='</div>';});
     if(fm)h+=mhFormHtml(fm);
     return h+'</div>';}
