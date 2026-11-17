@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Khối không có môn ở Nhập môn thi cho khối",
+   "expected": "Chương trình cảnh báo / không cộng được điểm khối này ở QLTS-014. Cần xác nhận.",
+   "name": "Khối chưa có môn thi",
+   "steps": [
+    "Gán ngành với một khối chưa có môn → Lưu."
+   ]
+  },
+  {
+   "condition": "Thêm lại {NGANH} – {KHOI}",
+   "expected": "Báo trùng, không lưu.",
+   "name": "Trùng ngành – khối",
+   "steps": [
+    "Thêm lại cặp đã có → Lưu."
+   ]
+  }
+ ],
+ "code": "QLTS-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ {KYTS}, ngành {NGANH}, khối {KHOI} + môn thi",
+  "next": [
+   "QLTS-010",
+   "QLTS-011",
+   "QLTS-013"
+  ],
+  "out": "Ngành/khối {NGANH}–{KHOI} của kỳ {KYTS}, chỉ tiêu 12"
+ },
+ "expected": "Ngành – khối của kỳ tuyển sinh lưu được; thí sinh chọn được ngành {NGANH} khối {KHOI} khi nhập/đăng ký hồ sơ. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.3.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Chuẩn bị/ Nhập ngành/khối tuyển sinh",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.3 Chuẩn bị dữ liệu kỳ tuyển sinh (Nhập ngành/khối tuyển sinh)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; kỳ {KYTS} (QLTS-001), ngành {NGANH} (QLTS-004), khối {KHOI} có môn thi (QLTS-006, QLTS-007); kỳ đã có Danh sách khối / ngành / môn thi tuyển sinh.",
+  "Mở Tuyển sinh/ Chuẩn bị/ Nhập ngành/khối tuyển sinh, chọn kỳ {KYTS}.",
+  "Thêm: ngành {NGANH} – khối {KHOI}, chỉ tiêu (vd 10) → Lưu.",
+  "KIỂM TRA THÊM: dòng {NGANH} – {KHOI} hiển thị đúng chỉ tiêu.",
+  "Sửa chỉ tiêu 10 → 12 → Lưu; KIỂM TRA SỬA.",
+  "Tắt màn hình (giữ cho QLTS-010–QLTS-015)."
+ ],
+ "title": "Nhập ngành/khối tuyển sinh cho kỳ tuyển sinh test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "TEST_KH{ddHHMM}",
+  "KYTS": "TEST_KY{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

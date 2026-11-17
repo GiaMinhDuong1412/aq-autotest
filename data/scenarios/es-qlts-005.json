@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Phương thức không gán mã bộ đếm",
+   "expected": "Phiếu không được đánh số / chương trình báo thiếu bộ đếm. Cần xác nhận.",
+   "name": "Phương thức chưa có bộ đếm",
+   "steps": [
+    "Thí sinh đăng ký theo phương thức đó (QLTS-011)."
+   ]
+  }
+ ],
+ "code": "QLTS-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Bộ đếm phiếu ĐKXT (danh mục hệ thống)",
+  "next": [
+   "QLTS-011"
+  ],
+  "out": "Không đổi (trả lại cờ hiển thị)"
+ },
+ "expected": "Phương thức có bộ đếm thì phiếu đăng ký đánh số theo bộ đếm; cờ Không hiển thị online ẩn/hiện phương thức trên form đăng ký. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.2.9, III.3.3.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục phương thức xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.2.9 Bộ đếm phiếu ĐKXT; III.3.3 Ẩn/Hiện phương thức tuyển sinh",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có bộ đếm phiếu ĐKXT (Hệ thống/ Quản trị hệ thống/ Quản lý danh mục/ Quản lý hệ thống/ Danh mục bộ đếm, Loại đối tượng = Mã số thí sinh nộp hồ sơ).",
+  "Mở Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phương thức xét tuyển; ghi lại mã bộ đếm và cờ 'Không hiển thị online' của {PT}.",
+  "KIỂM TRA: {PT} đã gán mã bộ đếm phiếu ĐKXT (thiếu thì gán → Lưu).",
+  "Tick 'Không hiển thị online' cho {PT} → Lưu.",
+  "KIỂM TRA: trang Đăng ký xét tuyển trên Netweb test không còn {PT}.",
+  "Bỏ tick → Lưu; KIỂM TRA {PT} hiện lại trên Netweb. Tắt màn hình."
+ ],
+ "title": "Danh mục phương thức xét tuyển: gán bộ đếm phiếu, ẩn/hiện phương thức trên Netweb",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PT": "(một phương thức xét tuyển đang dùng, vd Học bạ)"
+ },
+ "version": "v2026.10H.00"
+}

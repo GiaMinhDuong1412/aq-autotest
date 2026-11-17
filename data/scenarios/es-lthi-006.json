@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SV không có KQĐK/ghép thi",
+   "expected": "Không có trong danh sách để chọn.",
+   "name": "Thêm SV không đăng ký môn",
+   "steps": [
+    "Thêm SV khác không học môn."
+   ]
+  }
+ ],
+ "code": "LTHI-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm thi (LTHI-005)",
+  "next": [
+   "LTHI-011"
+  ],
+  "out": "Không đổi"
+ },
+ "expected": "Danh sách SV của nhóm thi thêm/xóa được (chỉ SV có đăng ký môn hoặc ghép thi). Mức nhóm thi cần xác nhận. (Theo LTHI_ToChucThi, mục III.10.2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Hiệu chỉnh SV trong nhóm thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.10.2 (Hiệu chỉnh SV – tài liệu mô tả ở mức tổ thi)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm thi {NT} (LTHI-005); {MSSV} có đăng ký môn.",
+  "Mở Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Hiệu chỉnh SV trong nhóm thi; chọn {NT} → Tiếp tục.",
+  "Xóa {MSSV} khỏi {NT} → Lưu; KIỂM TRA danh sách không còn {MSSV}, sĩ số giảm 1.",
+  "Thêm lại {MSSV} (SV có đăng ký môn) → Lưu; KIỂM TRA có lại.",
+  "Tắt màn hình."
+ ],
+ "title": "Hiệu chỉnh sinh viên trong nhóm thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

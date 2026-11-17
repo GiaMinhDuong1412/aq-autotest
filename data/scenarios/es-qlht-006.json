@@ -1,0 +1,48 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tick 'Biến phụ thuộc học kỳ'",
+   "expected": "Lưới chỉ còn các biến theo học kỳ, giá trị theo học kỳ đang chọn.",
+   "name": "Biến phụ thuộc học kỳ",
+   "steps": [
+    "Tick ô Biến phụ thuộc học kỳ, chọn học kỳ test."
+   ]
+  }
+ ],
+ "code": "QLHT-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "QLHT-009"
+  ],
+  "out": "Không thay đổi dữ liệu"
+ },
+ "expected": "Màn hình mở được, tìm được các biến cấu hình Netweb; không có dữ liệu nào bị thay đổi. (Theo NETWEB-QuanTriChung, mục III.8–9.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.8 Mật khẩu dùng chung; III.9 Cấu hình hộp mail tự động",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ xem; KHÔNG đọc/ghi ra kết quả giá trị mật khẩu.",
+  "Mở Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống; lưới 'Chỉnh định thông số' hiện các cột Mã Setting, Tên Setting, Giá trị AQ, Giá trị trường.",
+  "Tìm GH_MASTERPASSEDUWEB ở ô tìm kiếm cột Mã Setting → KIỂM TRA biến tồn tại (không chụp/ghi giá trị).",
+  "Tìm GH_MAILSERVER → KIỂM TRA có cấu hình server mail (chỉ ghi có/không, không mở mật khẩu).",
+  "Lọc theo Nhóm chức năng / Phân hệ (vd Đăng ký MH) → KIỂM TRA danh sách lọc đúng phân hệ.",
+  "Tắt màn hình, KHÔNG bấm Lưu."
+ ],
+ "title": "Chỉnh định thông số hệ thống – kiểm tra biến Netweb/mail (chỉ xem)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

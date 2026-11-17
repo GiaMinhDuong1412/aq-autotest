@@ -19,7 +19,7 @@
    "kind": "setup",
    "menu": "Tốt nghiệp / Xét tốt nghiệp / Tiêu chuẩn / Định nghĩa tiêu chuẩn (TN)",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-001",
    "source": "sheet",
    "steps": [
     "Mở menu Tốt nghiệp / Xét tốt nghiệp / Tiêu chuẩn / Định nghĩa tiêu chuẩn (TN).",
@@ -38,7 +38,7 @@
    "kind": "main",
    "menu": "Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách SV xét (TN)",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-002",
    "source": "sheet",
    "steps": [
     "Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách đợt xét (TN): Thêm đợt TEST_ → Lưu.",
@@ -55,7 +55,7 @@
    "kind": "main",
    "menu": "Tốt nghiệp / Xét tốt nghiệp / Xét tốt nghiệp / Xét theo đợt và tiêu chuẩn (TN)",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-003",
    "source": "sheet",
    "steps": [
     "Mở menu Tốt nghiệp / Xét tốt nghiệp / Xét tốt nghiệp / Xét theo đợt và tiêu chuẩn (TN).",
@@ -72,7 +72,7 @@
    "kind": "main",
    "menu": "Tốt nghiệp / Xét tốt nghiệp / Xem kết quả tốt nghiệp / Danh sách sinh viên không tốt nghiệp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-004",
    "source": "sheet",
    "steps": [
     "Mở menu Tốt nghiệp / Xét tốt nghiệp / Xem kết quả tốt nghiệp / Danh sách sinh viên không tốt nghiệp.",
@@ -90,7 +90,7 @@
    "kind": "main",
    "menu": "Tốt nghiệp / Xét tốt nghiệp / In danh sách tốt nghiệp / In danh sách tốt nghiệp kèm quyết định",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-005",
    "source": "sheet",
    "steps": [
     "Mở menu Tốt nghiệp / Xét tốt nghiệp / In danh sách tốt nghiệp / In danh sách tốt nghiệp kèm quyết định.",
@@ -107,7 +107,7 @@
    "menu": "NetWEB sinh viên: Xem kết quả xét tốt nghiệp",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLTN-006",
    "source": "sheet",
    "steps": [
     "Chỉ xem (không sửa) trạng thái công bố ở Tốt nghiệp / Xét tốt nghiệp / Đợt và danh sách xét / Danh sách đợt xét (TN)",
@@ -122,6 +122,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 6 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 5 khớp, 1 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

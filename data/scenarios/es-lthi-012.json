@@ -1,0 +1,66 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiệm ý 'Xếp lịch thi không cần tìm phòng'",
+   "expected": "Có ngày/tiết, phòng trống để gán sau.",
+   "name": "Không cần tìm phòng",
+   "steps": [
+    "Xếp lại với nhiệm ý này cho {DOT}."
+   ]
+  },
+  {
+   "condition": "Đợt không đủ phòng cho số tổ cùng giờ",
+   "expected": "Tổ không xếp được có lý do.",
+   "name": "Thiếu phòng",
+   "steps": [
+    "Gỡ bớt phòng khỏi đợt rồi xếp."
+   ]
+  }
+ ],
+ "code": "LTHI-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tổ thi (LTHI-011), phòng đợt (LTHI-009)",
+  "next": [
+   "LTHI-013",
+   "LTHI-018",
+   "LTHI-019",
+   "LTHI-026",
+   "DIEM-017"
+  ],
+  "out": "Lịch thi {TO} (ngày, tiết, phòng)"
+ },
+ "expected": "Lịch thi xếp trong đợt, đúng phòng/cụm tiết, không trùng lịch SV và phòng. (Theo LTHI_ToChucThi, mục III.8–9.1; lưu đồ LTHI bước 7–8.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo đợt thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.9.1 Xếp lịch thi theo đợt thi (III.8 tài nguyên ràng buộc)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tổ thi {TO} (LTHI-011); phòng trong đợt (LTHI-009); (tùy chọn) ràng buộc: ngày & tiết ưu tiên, phòng ưu tiên, nhóm thi chung thời gian.",
+  "Mở Tổ chức thi/ Xếp lịch thi/ Xếp lịch thi theo đợt thi; chọn {DOT} và nhóm môn trong đợt → Thực hiện.",
+  "KIỂM TRA: {TO} có ngày thi trong khoảng đợt, tiết BĐ theo cụm tiết SL_CUMTIETXEPLICHTHI, phòng thuộc đợt với sức chứa thi ≥ sĩ số tổ.",
+  "KIỂM TRA không trùng: {MSSV} không có 2 môn thi cùng ngày – tiết; phòng không có 2 tổ cùng giờ (đối chiếu LTHI-022, LTHI-023).",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Netweb SV {MSSV} Xem lịch thi (LTHI-026) có môn với đúng ngày/giờ/phòng. Tắt màn hình."
+ ],
+ "title": "Xếp lịch thi theo đợt thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})",
+  "PHONG": "(phòng test trong học kỳ – KHGD-005)",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

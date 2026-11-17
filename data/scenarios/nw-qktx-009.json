@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{PH} tick Không đăng ký online (QKTX-001)",
+   "expected": "Không thấy phòng.",
+   "name": "Phòng tick Không đăng ký online",
+   "steps": [
+    "Tìm {PH} trên Netweb."
+   ]
+  }
+ ],
+ "code": "QKTX-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phòng (QKTX-001)",
+  "next": [
+   "QKTX-004"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "SV đăng ký phòng online, đơn về Edusoft chờ xét duyệt; chỉ một đơn đang xử lý. (Theo QKTX_DangKyTrucTuyen_GiaHan, mục III.1.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Đăng ký ký túc xá",
+ "module": "QKTX",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_DangKyTrucTuyen_GiaHan, mục III.1 Đăng ký phòng ký túc xá, III.2 Gia hạn",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; phòng {PH} cho phép đăng ký online, đang trong thời gian đăng ký (chỉ xem setting).",
+  "Menu Đăng ký ký túc xá → Đối tượng lưu trú = Sinh viên (Từ ngày – Đến ngày không sửa được) → Tìm → nhập {PH} ở cột Phòng → Đăng ký.",
+  "KIỂM TRA: chuyển sang Xem phòng ký túc xá đã đăng ký, trạng thái 'Đang xử lý'; Edusoft Đăng ký lưu trú/ Danh sách đơn đăng ký có đơn.",
+  "Đăng ký phòng khác khi đơn đang xử lý → KIỂM TRA bị chặn.",
+  "Dọn: hủy phòng đã đăng ký → KIỂM TRA đơn biến mất/đã hủy."
+ ],
+ "title": "Netweb SV: đăng ký phòng ký túc xá",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,46 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chọn SV không có trong danh sách tốt nghiệp",
+   "expected": "Không in / báo SV chưa có thông tin tốt nghiệp.",
+   "name": "SV chưa tốt nghiệp",
+   "steps": [
+    "Chọn SV đang học → In."
+   ]
+  }
+ ],
+ "code": "QLSV-037",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thông tin tốt nghiệp (QLSV-036)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Giấy chứng nhận tốt nghiệp in đúng dữ liệu tốt nghiệp. (Theo QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.2.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận 1 sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.2.1 In giấy chứng nhận 1 sinh viên",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có thông tin tốt nghiệp (QLSV-036).",
+  "Mở Sinh viên/ Thông tin tốt nghiệp/ In chứng nhận tốt nghiệp/ In giấy chứng nhận 1 sinh viên; chọn {MSSV} → In.",
+  "KIỂM TRA: giấy chứng nhận đúng họ tên, ngày sinh, ngành, xếp loại, Số vào sổ và Ngày cấp của QLSV-036.",
+  "Tắt màn hình."
+ ],
+ "title": "In giấy chứng nhận tốt nghiệp 1 sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV xét tốt nghiệp đạt – QLTN-003)"
+ },
+ "version": "v2026.10H.00"
+}

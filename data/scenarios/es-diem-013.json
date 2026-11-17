@@ -1,0 +1,72 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập 11 hoặc -1",
+   "expected": "Không nhận, báo điểm không hợp lệ.",
+   "name": "Điểm ngoài thang",
+   "steps": [
+    "Nhập điểm 11 cho {MSSV} → Lưu."
+   ]
+  },
+  {
+   "condition": "Khóa sổ nhập điểm / khóa nhóm {NH} (QLHT_KhoaSoDuLieu)",
+   "expected": "Không cho sửa; mở khóa lại.",
+   "name": "Nhóm đã khóa nhập điểm",
+   "steps": [
+    "Khóa nhập điểm {NH}, sửa điểm."
+   ]
+  },
+  {
+   "condition": "Nhập ký hiệu điểm đặc biệt (vắng thi, rút môn – GD_DIEMDACBIET)",
+   "expected": "TKHP xử lý theo quy định ký hiệu (vd vắng = 0). Cần xác nhận.",
+   "name": "Điểm đặc biệt",
+   "steps": [
+    "Nhập ký hiệu vắng thi cho {MSSV2} → Cộng điểm."
+   ]
+  }
+ ],
+ "code": "DIEM-013",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH), trọng số (DIEM-003)",
+  "next": [
+   "DIEM-004"
+  ],
+  "out": "Không để lại (xóa điểm cuối kịch bản)"
+ },
+ "expected": "Điểm nhập theo lớp lưu đúng; Cộng điểm tính TKHP = Σ(thành phần × trọng số) và quy đổi theo bảng điểm. Với dữ liệu test: 6,6 (C+) và 3,6 (F); sau sửa 7,3. (Theo DIEM_QuanLyNhapDiem, mục III.1.1; lưu đồ DIEM bước 3.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo lớp",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyNhapDiem, mục III.1.1 Nhập điểm theo lớp",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV}, {MSSV2} có KQĐK nhóm {NH} (DKMH DKMH-006/DKMH-008); trọng số {NH}: quá trình 30%, thi 70% (DIEM-003).",
+  "Tính sẵn: {MSSV} QT 8, thi 6 → TKHP = 0,3×8 + 0,7×6 = 6,6 (quy đổi theo bảng điểm của trường, vd 6,5–6,9 = C+ = 2,5); {MSSV2} QT 5, thi 3 → TKHP = 3,6 → F (không đạt).",
+  "Mở Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập điểm từ danh sách/ Nhập điểm theo lớp; chọn lớp {LOP} – môn {MH} → Nhập điểm.",
+  "Chỉnh thông số: tick nhiệm ý phân loại dữ liệu SV → Chọn; chọn loại điểm Quá trình và Thi → Chọn.",
+  "Nhập {MSSV}: QT 8, thi 6; {MSSV2}: QT 5, thi 3 → Lưu → Cộng điểm.",
+  "KIỂM TRA THÊM: mở lại thấy đúng điểm; TKHP {MSSV} = 6,6 (C+), {MSSV2} = 3,6 (F).",
+  "Sửa thi {MSSV} 6 → 7 → Lưu → Cộng điểm; KIỂM TRA SỬA TKHP = 0,3×8 + 0,7×7 = 7,3.",
+  "Xóa điểm test (để trống) → Lưu → Cộng điểm; KIỂM TRA XÓA không còn điểm. Tắt màn hình."
+ ],
+ "title": "Nhập điểm theo lớp (tính TKHP theo trọng số)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "MSSV2": "(SV test 2 cùng nhóm)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chỉ tính 1 SV",
+   "expected": "Chỉ {MSSV} được tính lại.",
+   "name": "Tính theo từng sinh viên",
+   "steps": [
+    "Tính học phí theo SV: nhập {MSSV}, học kỳ test."
+   ]
+  },
+  {
+   "condition": "Thêm 1 môn 3 TCHP cho {MSSV} rồi không tính lại",
+   "expected": "Phiếu chưa thu chưa đổi cho đến khi tính lại / tick 'Có tính học phí khi thu'.",
+   "name": "SV đổi đăng ký sau khi tính",
+   "steps": [
+    "Đăng ký thêm môn, mở Thu học phí 1 SV."
+   ]
+  }
+ ],
+ "code": "QLTV-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-008), đơn giá (QLTV-001, QLTV-002), khoản thu (QLTV-004), diện chính sách (QLSV-017)",
+  "next": [
+   "QLTV-006",
+   "QLTV-003",
+   "QLTV-012"
+  ],
+  "out": "Học phí phải đóng của {MSSV}"
+ },
+ "expected": "Học phí = Σ(TCHP × đơn giá) (+ hệ số học lại) + phụ thu/khoản thu khác − miễn giảm chính sách; SV có KQĐK mới được tính (lưu đồ CSHP bước 10 → 12 → 13). (Theo QLTV_KhaiBaoChinhSachThuHocPhi, mục III.14.2.)",
+ "lastRun": null,
+ "menu": "Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính theo lớp",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.14.2 Tính học phí theo lớp",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK {MH1}, {MH2} (DKMH DKMH-008); TCHP (QLTV-001), đơn giá {DG} (QLTV-002), khoản thu khác (QLTV-004); CHỈ tính lớp test (không tính toàn trường).",
+  "Tính sẵn: học phí = (3 + 2) × 500.000 = 2.500.000; + khoản thu khác 100.000 (QLTV-004); nếu diện chính sách 50% (QLSV-017) thì miễn giảm 1.250.000 trên học phí → phải đóng 1.350.000 (miễn giảm có áp lên khoản thu khác không – cần xác nhận).",
+  "Mở Chính sách HP/ Tính và In học phí/ Tính học phí/ Tính theo lớp; chọn {LOP} → Tính học phí.",
+  "KIỂM TRA: học phí {MSSV} đúng giá trị tính sẵn (2.500.000 + 100.000, trừ miễn giảm nếu có); môn học lại nhân hệ số SP_HeSoHocPhiHocLai.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Thu học phí 1 SV (QLTV-006) hiện phiếu chưa thu đúng số tiền; Netweb Xem học phí (QLTV-012).",
+  "Tắt màn hình."
+ ],
+ "title": "Tính học phí theo lớp (đơn giá, khoản thu khác, miễn giảm)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DG": "500.000",
+  "LOP": "(lớp của {MSSV})",
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

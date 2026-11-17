@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thu lại khoản đã thu của {TS1}",
+   "expected": "Chương trình báo đã thu / không cho thu hai lần. Cần xác nhận.",
+   "name": "Thu trùng",
+   "steps": [
+    "Chọn khoản đã thu → Thu."
+   ]
+  }
+ ],
+ "code": "QLTS-021",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} đã nhập học (QLTS-019)",
+  "next": [
+   "QLTV-006"
+  ],
+  "out": "Phiếu thu học phí nhập học của {TS1} (chuyển sang Thu/chi HP)"
+ },
+ "expected": "Học phí nhập học tính đúng theo đối tượng, phiếu đánh số theo bộ đếm; hủy được phiếu test. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Tiếp sinh/ Nhập hồ sơ & học phí nhập học/ Nhập học phí nhập học",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 (Nhập học phí nhập học)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} đã nhập học (QLTS-019); đã Chuẩn bị khoản thu nhập học và Phân loại khoản thu theo đối tượng.",
+  "Mở Tuyển sinh/ Tiếp sinh/ Nhập hồ sơ & học phí nhập học/ Nhập học phí nhập học; chọn {TS1}.",
+  "KIỂM TRA: các khoản phải thu đúng theo đối tượng của {TS1}; ghi lại tổng tiền.",
+  "Thu: chọn các khoản → Lưu/Thu.",
+  "KIỂM TRA: phiếu thu có số theo bộ đếm số phiếu học phí, số tiền = tổng các khoản.",
+  "Hủy phiếu thu test (luồng hủy) → KIỂM TRA phiếu ở trạng thái hủy / không còn; thu lại nếu cần cho QLTS-022. Tắt màn hình."
+ ],
+ "title": "Tiếp sinh: thu học phí nhập học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TS1": "Thi sinh Mot (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

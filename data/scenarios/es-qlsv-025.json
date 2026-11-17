@@ -1,0 +1,47 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chọn môn chưa điểm danh",
+   "expected": "Báo cáo rỗng / báo không có dữ liệu.",
+   "name": "Môn không có điểm danh",
+   "steps": [
+    "Chọn môn khác → In."
+   ]
+  }
+ ],
+ "code": "QLSV-025",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả điểm danh (QLSV-023, QLSV-026)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Thống kê vắng theo môn khớp dữ liệu điểm danh. Chưa có tài liệu – cần xác nhận tiêu chí lọc. ",
+ "lastRun": null,
+ "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / In thống kê sinh viên vắng theo môn học",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; môn {MH} có kết quả điểm danh (QLSV-023 hoặc QLSV-026).",
+  "Mở Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ In thống kê sinh viên vắng theo môn học.",
+  "Chọn học kỳ test, môn {MH} → In/Xem.",
+  "KIỂM TRA: báo cáo mở được; số buổi vắng (có phép / không phép) của SV test khớp kết quả điểm danh đã nhập.",
+  "Tắt màn hình."
+ ],
+ "title": "In thống kê sinh viên vắng theo môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn có dữ liệu điểm danh test)"
+ },
+ "version": "v2026.10H.00"
+}

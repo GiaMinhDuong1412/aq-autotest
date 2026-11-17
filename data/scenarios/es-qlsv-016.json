@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn tiêu chuẩn / khối",
+   "expected": "Chương trình nhắc chọn tiêu chuẩn / khối, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn tiêu chuẩn / khối nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tiêu chuẩn {MATC} (QLSV-015)",
+  "next": [],
+  "out": "QĐ khen thưởng lớp (đã xóa)"
+ },
+ "expected": "Lớp thỏa tiêu chuẩn được xét đạt và nhận quyết định khen thưởng. (Theo QLSV_KhenThuongKyLuatSV, mục III.4.2–4.5.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Xét khen thưởng lớp theo tiêu chuẩn",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_KhenThuongKyLuatSV, mục III.4.2–4.5 Xét lớp theo tiêu chuẩn … Nhập quyết định khen thưởng lớp",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tiêu chuẩn {MATC} (QLSV-015).",
+  "Mở Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Xét khen thưởng lớp theo tiêu chuẩn; chọn {MATC}, khối {KHOI} → Thực hiện.",
+  "KIỂM TRA: Xem danh sách đạt tiêu chuẩn chỉ có lớp thỏa điều kiện (đối chiếu tỷ lệ SV khá giỏi của 1 lớp đạt và 1 lớp không đạt).",
+  "In danh sách dự kiến khen thưởng → KIỂM TRA.",
+  "Nhập quyết định khen thưởng lớp được xét: Thêm → Số QĐ {SOQDKT}, lý do, ngày ký → thêm 1 lớp đạt → Lưu; KIỂM TRA.",
+  "Dọn: xóa {SOQDKT} và kết quả xét; tắt màn hình."
+ ],
+ "title": "Xét khen thưởng lớp sinh viên theo tiêu chuẩn và nhập quyết định khen thưởng lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "MATC": "(tiêu chuẩn lớp của QLSV-015)",
+  "SOQDKT": "TEST_QDKTL{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

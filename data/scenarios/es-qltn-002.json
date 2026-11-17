@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiệm ý 'xóa và tạo lại'",
+   "expected": "Danh sách SV xét tạo lại, sửa tay trước đó mất.",
+   "name": "Tạo lại danh sách",
+   "steps": [
+    "Tạo DS xét lại với nhiệm ý xóa và tạo lại."
+   ]
+  }
+ ],
+ "code": "QLTN-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tiêu chuẩn (QLTN-001), ĐTB (DIEM-004)",
+  "next": [
+   "QLTN-003"
+  ],
+  "out": "DS SV xét {DOT}"
+ },
+ "expected": "Đợt + tiêu chuẩn tổng hợp thành DS lớp xét rồi DS SV xét (lưu đồ QLTN bước 2–4). (Theo DIEM_QuanLyTotNghiep, mục 2.5.3.)",
+ "lastRun": null,
+ "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách SV xét (TN)",
+ "module": "QLTN",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.3 Đợt và danh sách xét (theo 2.1.2)",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tiêu chuẩn {MATC} (QLTN-001); {LOP} đã cộng điểm TB (DIEM-004).",
+  "Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách đợt xét (TN): Thêm {DOT} → Lưu; KIỂM TRA.",
+  "… / Danh sách lớp xét (TN): Đồng bộ → chọn {LOP} → Đợt chung {DOT}, Tiêu chuẩn chung {MATC} → Tạo DS xét (nhiệm ý: chỉ tạo SV chưa có).",
+  "Mở Tốt nghiệp/ Xét tốt nghiệp/ Đợt và danh sách xét/ Danh sách SV xét (TN).",
+  "KIỂM TRA: SV của {LOP} có trong danh sách với đúng {DOT}, {MATC} (sheet ghi #REF! ở dòng này – đối chiếu kỹ).",
+  "Sửa tiêu chuẩn của 1 SV → Lưu → KIỂM TRA SỬA; trả lại. Tắt màn hình."
+ ],
+ "title": "Đợt xét, lớp xét và danh sách SV xét tốt nghiệp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DTN{ddHHMM}",
+  "LOP": "(lớp năm cuối test)",
+  "MATC": "TEST_TN{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

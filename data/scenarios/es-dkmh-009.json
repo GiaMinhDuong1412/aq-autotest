@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{NHB} đầy hoặc trùng giờ với lịch khác của {MSSV}",
+   "expected": "Chặn / cảnh báo. Cần xác nhận.",
+   "name": "Nhóm đích hết chỗ / trùng TKB",
+   "steps": [
+    "Chuyển sang nhóm đầy."
+   ]
+  }
+ ],
+ "code": "DKMH-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-006/DKMH-008)",
+  "next": [],
+  "out": "Không đổi (chuyển về)"
+ },
+ "expected": "KQĐK chuyển đúng SV chọn sang nhóm đích, sĩ số cập nhật. Không có tài liệu – cần xác nhận kiểm tra trùng TKB khi chuyển.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK từ 1 nhóm đến 1 nhóm",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đăng ký {MHA}/{NHA} (DKMH-008 bước 3 hoặc DKMH-006); {NHB} cùng môn còn chỗ, không trùng TKB với lịch khác của {MSSV}.",
+  "Ghi lại sĩ số đã ĐK của {NHA} và {NHB}.",
+  "Mở Đăng ký MH/ Hiệu chỉnh đăng ký/ Hiệu chỉnh dữ liệu đăng ký/ Chuyển KQĐK từ 1 nhóm đến 1 nhóm; nhóm nguồn {NHA}, nhóm đích {NHB}, chọn chỉ {MSSV} → Thực hiện.",
+  "KIỂM TRA: {MSSV} ở {NHB}, không còn ở {NHA}; sĩ số {NHA} giảm 1, {NHB} tăng 1; điểm/điểm danh đã có (nếu có) theo SV sang nhóm mới (cần xác nhận).",
+  "Dọn: chuyển {MSSV} về {NHA} → KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Chuyển KQĐK từ 1 nhóm đến 1 nhóm",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})",
+  "NHB": "(nhóm 02 của {MHA}, còn chỗ)"
+ },
+ "version": "v2026.10H.00"
+}

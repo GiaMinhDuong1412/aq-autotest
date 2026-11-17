@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Tiết BĐ, Số tiết, Lý do sử dụng",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Tiết BĐ…) ở lịch sử dụng phòng.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  }
+ ],
+ "code": "KHGD-019",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phòng HK (KHGD-005), TKB/lịch thi",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Tìm phòng rảnh theo thời gian/sĩ số; lượt đặt chặn phòng ở giờ đó cho đến khi xóa. (Theo KHGD_SuDungPhongDotXuatVaTimKiemPhongRanh, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Quản lý sử dụng phòng/ Sử dụng phòng đột xuất",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_SuDungPhongDotXuatVaTimKiemPhongRanh, mục III.1 Nhập và lưu thông tin tìm kiếm phòng đột xuất; III.2 Tìm phòng rảnh",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; phòng {PHONG} trong học kỳ (KHGD-005).",
+  "Mở Kế hoạch/ Quản lý sử dụng phòng/ Sử dụng phòng đột xuất → Thêm: ngày {NGAY}, Tiết BĐ 1, Số tiết 3, sĩ số 30, Lý do sử dụng → Tìm.",
+  "KIỂM TRA: 'Danh sách phòng rảnh' chỉ gồm phòng sức chứa ≥ 30 và không có TKB/lịch thi giờ đó.",
+  "Chọn {PHONG} → Thêm Phòng → Lưu; KIỂM TRA THÊM: lượt có trong 'Danh sách lịch sử dụng phòng đột xuất'.",
+  "Tìm lại cùng thời gian → KIỂM TRA {PHONG} không còn trong danh sách rảnh.",
+  "Xóa lượt test → KIỂM TRA không còn; {PHONG} rảnh lại. Tắt màn hình."
+ ],
+ "title": "Sử dụng phòng đột xuất: tìm phòng rảnh và đặt phòng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NGAY": "(ngày trong học kỳ)",
+  "PHONG": "(phòng test trong học kỳ)"
+ },
+ "version": "v2026.10H.00"
+}

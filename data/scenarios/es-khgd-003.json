@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Khối chưa có CTĐT kế hoạch",
+   "expected": "Không có môn để đồng bộ / báo thiếu CTĐT kế hoạch.",
+   "name": "Chưa có CTĐT kế hoạch",
+   "steps": [
+    "Chọn khối mới (chưa có kế hoạch) → Đồng bộ."
+   ]
+  },
+  {
+   "condition": "Thêm {MH} lần hai cùng học kỳ",
+   "expected": "Báo trùng môn trong CTĐT.",
+   "name": "Thêm trùng môn",
+   "steps": [
+    "Thêm lại {MH}."
+   ]
+  }
+ ],
+ "code": "KHGD-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "CTĐT chuẩn, kế hoạch của {KHOI}; môn {MH} (KHGD-002)",
+  "next": [
+   "KHGD-008",
+   "KHGD-009",
+   "KHGD-022"
+  ],
+  "out": "{MH} trong CTĐT thực hiện học kỳ test của {KHOI}"
+ },
+ "expected": "CTĐT thực hiện sinh từ CTĐT kế hoạch (thứ tự chuẩn → kế hoạch → thực hiện), dùng để mở lớp/nhóm học; thêm/xóa môn được và báo cáo khác biệt phản ánh đúng. (Theo KHGD_QuanLyCTDT3Cap, mục III.2–5; lưu đồ CTDT bước 10.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT thực hiện",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_QuanLyCTDT3Cap, mục III.4 Chương trình đào tạo thực hiện (III.2–3 chuẩn, kế hoạch; III.5 kiểm tra khác biệt)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; khối {KHOI} đã có CTĐT chuẩn và CTĐT kế hoạch (lưu đồ CTDT 8 → 9); môn {MH} (KHGD-002).",
+  "Mở Kế hoạch/ Chương trình đào tạo/ Cập nhật chương trình đào tạo/ CTĐT thực hiện, chọn khối {KHOI} → Đồng bộ (chỉ cho học kỳ đang xét).",
+  "KIỂM TRA: Danh sách môn học của học kỳ (Mã môn, Tên, Số TC, Số tiết, Niên học học kỳ) khớp CTĐT kế hoạch của học kỳ đó.",
+  "Thêm: Thêm → Danh sách môn học → chọn {MH} → học kỳ, năm học = học kỳ test → Lưu; KIỂM TRA THÊM: {MH} có trong CTĐT thực hiện.",
+  "Kiểm tra khác biệt: Kế hoạch/ Khai thác báo biểu/ Chương trình đào tạo/ Khác biệt chuẩn với kế hoạch (và kế hoạch với thực hiện) cho {KHOI} → KIỂM TRA {MH} được báo là môn thêm ở thực hiện.",
+  "Giữ {MH} cho KHGD-009; dọn ở cuối chuỗi KHGD: Xóa {MH} khỏi CTĐT thực hiện → KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "CTĐT thực hiện: đồng bộ từ CTĐT kế hoạch, thêm – xóa môn, kiểm tra khác biệt",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "MH": "TEST_MH{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

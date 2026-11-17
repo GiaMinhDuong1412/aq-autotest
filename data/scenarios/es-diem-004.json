@@ -1,0 +1,56 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn lớp",
+   "expected": "Chương trình nhắc chọn lớp, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn lớp nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "DIEM-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm thành phần (DIEM-013–DIEM-021), trọng số (DIEM-003)",
+  "next": [
+   "DIEM-005",
+   "DIEM-006",
+   "DIEM-008",
+   "QLTN-002"
+  ],
+  "out": "ĐTB học kỳ/tích lũy {MSSV}"
+ },
+ "expected": "Cộng điểm TB tổng hợp điểm nhập, bảo lưu, phúc khảo, phách, môn thay thế theo công thức và biến quy chế (lưu đồ DIEM bước 11). Nhiệm ý màn hình cần xác nhận. (Theo DIEM_QuanLyNhapDiem, mục III.1.1.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm TB - theo lớp",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyNhapDiem, mục (III.1.1 nút Cộng điểm – menu riêng chưa có tài liệu)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} thuộc {LOP} có điểm thành phần các môn học kỳ (DIEM-013/DIEM-014); ghi lại biến xử lý điểm (Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục – chỉ xem).",
+  "Tính sẵn ĐTB học kỳ {MSSV} = Σ(điểm hệ 4 × TC)/Σ TC của các môn đạt/học trong học kỳ (theo quy chế ở biến).",
+  "Mở Quản lý điểm/ Quản lý điểm tổng kết học phần/ Tổng kết điểm thi/ Cộng điểm TB - theo lớp; chọn {LOP} → Thực hiện.",
+  "KIỂM TRA: TKHP từng môn và ĐTB học kỳ, ĐTB tích lũy, TC tích lũy của {MSSV} đúng giá trị tính sẵn; môn trong 'Không quản lý điểm' không tính vào TB.",
+  "Tắt màn hình."
+ ],
+ "title": "Cộng điểm trung bình theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

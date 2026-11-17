@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thiếu cột DiemRLHK",
+   "expected": "Báo sai cấu trúc, không import.",
+   "name": "File sai cấu trúc",
+   "steps": [
+    "Import file thiếu cột."
+   ]
+  }
+ ],
+ "code": "QLSV-030",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV}",
+  "next": [
+   "QLSV-033"
+  ],
+  "out": "Điểm RL {MSSV} = 90 (trả lại)"
+ },
+ "expected": "Import nhận dòng hợp lệ, báo dòng sai mã SV; điểm sau import đúng file. (Theo QLSV_QuanLyDiemRenLuyen, mục III.6.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Import điểm rèn luyện",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.6 Import điểm rèn luyện theo file",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} thuộc học kỳ test.",
+  "Mở Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Import điểm rèn luyện → Xuất cấu trúc import.",
+  "Chuẩn bị file: MaSV = {MSSV}, DiemRLHK = 90; thêm 1 dòng mã SV không tồn tại TESTXX.",
+  "Chọn tập tin → Tiếp tục → Xem chi tiết: KIỂM TRA dòng TESTXX bị báo lỗi, dòng {MSSV} hợp lệ → Thực hiện.",
+  "KIỂM TRA: Nhập điểm rèn luyện (QLSV-029) lớp của {MSSV} hiện 90.",
+  "Trả lại điểm cũ. Tắt màn hình."
+ ],
+ "title": "Import điểm rèn luyện theo file",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

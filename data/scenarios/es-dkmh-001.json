@@ -1,0 +1,73 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Hai dòng cùng ký hiệu cột OR (tiên quyết {MHB} hoặc môn C)",
+   "expected": "Được đăng ký (chỉ cần đạt một trong nhóm OR).",
+   "name": "Điều kiện OR",
+   "steps": [
+    "Thêm 2 dòng OR cho {MHA}; {MSSV} đạt môn C, chưa đạt {MHB} → đăng ký {MHA}."
+   ]
+  },
+  {
+   "condition": "Loại = Song hành",
+   "expected": "Bị chặn, phải đăng ký đồng thời {MHB}.",
+   "name": "Song hành",
+   "steps": [
+    "Đăng ký {MHA} mà không đăng ký {MHB} cùng học kỳ."
+   ]
+  },
+  {
+   "condition": "cặp MH – MHTQ nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng cặp MH – MHTQ và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng cặp MH – MHTQ",
+   "steps": [
+    "Bấm Thêm, nhập cặp MH – MHTQ giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DKMH-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Môn {MHA}, {MHB}; điểm của {MSSV} (DIEM)",
+  "next": [
+   "DKMH-008",
+   "DKMH-015",
+   "KHGD-023"
+  ],
+  "out": "Không để lại (đã xóa)"
+ },
+ "expected": "Định nghĩa tiên quyết/học trước/song hành có hiệu lực khi đăng ký (chặn SV chưa đạt/chưa học); hậu kiểm liệt kê vi phạm; điều kiện OR và nhánh hoạt động theo ký hiệu cột OR/Nhánh. (Theo DKMH_DinhNghiaMonTienQuyet, mục III.1–5.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_DinhNghiaMonTienQuyet, mục III.1–2 Chỉnh định tiên quyết; Định nghĩa môn tiên quyết, học trước, song hành (III.4 hậu kiểm, III.5 bỏ qua xét)",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; biến Cấm đăng ký khi vi phạm tiên quyết / học trước / song hành = Cấm (Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống, phân hệ ĐKMH – chỉ xem); {MSSV} chưa đạt {MHB}.",
+  "Mở Đăng ký MH/ Đăng ký môn học/ Tài nguyên và ràng buộc/ Định nghĩa môn tiên quyết, học trước, song hành; tìm {MHA} → ghi lại dòng có sẵn.",
+  "Thêm: MH = {MHA}, MHTQ = {MHB}, Loại = Tiên quyết, giới hạn khối của {MSSV} → Lưu.",
+  "KIỂM TRA THÊM: dòng {MHA} – {MHB} – Tiên quyết hiện đúng.",
+  "KIỂM TRA ràng buộc: ĐKMH từng sinh viên (DKMH-008) đăng ký {MHA} cho {MSSV} → báo vi phạm tiên quyết, không lưu.",
+  "Sửa Loại = Học trước → Lưu; KIỂM TRA SỬA; (học trước: SV đã học {MHB} dù chưa đạt thì được đăng ký).",
+  "Hậu kiểm: Đăng ký MH/ Khai thác báo biểu/ KQĐK không hợp lệ/ Kiểm tra tiên quyết/ học trước/ song hành → KIỂM TRA liệt kê SV đã đăng ký vi phạm (nếu có).",
+  "Xóa dòng test → KIỂM TRA XÓA. Tắt màn hình."
+ ],
+ "title": "Định nghĩa môn tiên quyết, học trước, song hành (và hậu kiểm)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MHB": "(môn B SV chưa đạt)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

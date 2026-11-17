@@ -1,0 +1,71 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã form, Tên form, Loại đánh giá",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã form…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã form nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã form và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã form",
+   "steps": [
+    "Bấm Thêm, nhập Mã form giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "form đã được dùng ở câu hỏi / kỳ đánh giá",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng form đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KSDG-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục loại đánh giá",
+  "next": [
+   "KSDG-003",
+   "KSDG-004"
+  ],
+  "out": "Form {FORM}"
+ },
+ "expected": "Form đánh giá theo loại là khung phiếu khảo sát (lưu đồ KSDG bước 1). (Theo KSDG_QuyTrinhKhaoSat, mục III.4.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục form đánh giá",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.4 Tạo form đánh giá (phiếu khảo sát)",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; loại đánh giá có trong danh mục.",
+  "Mở Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục form đánh giá; tìm {FORM} → chưa có.",
+  "Thêm: Mã form {FORM}, Tên form, Viết tắt, Thứ tự, Loại đánh giá (các ô *).",
+  "Tiêu đề form: Sửa → soạn tiêu đề trong trình soạn thảo → Lưu vào hệ thống → Lưu.",
+  "KIỂM TRA THÊM: {FORM} trong danh mục đúng loại đánh giá và tiêu đề.",
+  "Sửa Tên form → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho KSDG-003–KSDG-006; dọn cuối chuỗi (sau khi xóa câu hỏi, kỳ đánh giá): xóa {FORM}."
+ ],
+ "title": "Danh mục form đánh giá: thêm form test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "FORM": "TEST_FORM{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiệm ý 'Tính nợ tích lũy cuối cùng'",
+   "expected": "Nợ cuối gồm cả học kỳ cũ.",
+   "name": "Nợ tích lũy",
+   "steps": [
+    "Chạy lại với nhiệm ý này."
+   ]
+  }
+ ],
+ "code": "QLTV-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Học phí (QLTV-005), phiếu thu (QLTV-006)",
+  "next": [
+   "QLHT-010",
+   "DKMH-008",
+   "LTHI-016"
+  ],
+  "out": "Tồn nợ {MSSV}"
+ },
+ "expected": "Tồn nợ tính theo nhiệm ý; danh sách tồn nợ là đầu vào ràng buộc ĐKMH (SV nợ không được đăng ký) và cấm thi. (Theo QLTV_QuanLyDuNoThoiDiemCanThiet, mục III.1–2; lưu đồ CSHP bước 13.)",
+ "lastRun": null,
+ "menu": "Chính sách HP/ Chính sách học phí/ Nợ học phí/ Cập nhật tồn nợ",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_QuanLyDuNoThoiDiemCanThiet, mục III.1 Đồng bộ danh sách nợ; III.2 Các mẫu in kiểm tra nợ",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đã tính học phí (QLTV-005) và thu một phần (QLTV-006).",
+  "Mở Chính sách HP/ Chính sách học phí/ Nợ học phí/ Cập nhật tồn nợ; nhiệm ý 'Tính đến học kỳ hiện tại' → Thực hiện.",
+  "Mở Chính sách HP/ Chính sách học phí/ Nợ học phí/ Danh sách SV tồn nợ HP; tìm {MSSV}.",
+  "KIỂM TRA: nợ học kỳ hiện tại, nợ cũ, đã đóng, nợ cuối cùng = phải đóng − đã đóng (vd 1.350.000 − 1.000.000 = 350.000); xuất excel được.",
+  "In Thu/chi HP/ Khai thác báo biểu/ Tồn nợ học phí/ In danh sách tồn nợ học phí → KIỂM TRA số dương là nợ, số âm là dư.",
+  "Tắt màn hình."
+ ],
+ "title": "Cập nhật tồn nợ và danh sách SV tồn nợ học phí",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

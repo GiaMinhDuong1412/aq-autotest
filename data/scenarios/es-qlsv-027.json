@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-027",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm danh (QLSV-026), hủy KQĐK (DKMH-011)",
+  "next": [],
+  "out": "Kết quả điểm danh của {MSSV} bị xóa"
+ },
+ "expected": "Chỉ kết quả điểm danh của SV đã hủy ĐKMH bị xóa; SV còn đăng ký không ảnh hưởng. Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Xóa kết quả SV Đã Hủy DKMH",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có kết quả điểm danh ở {NHOM} (QLSV-026) rồi bị hủy ĐKMH nhóm đó (DKMH-011); SV khác vẫn đăng ký {NHOM}.",
+  "Mở Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Xóa kết quả SV Đã Hủy DKMH; chọn học kỳ test.",
+  "KIỂM TRA: lưới 'Danh sách sinh viên điểm danh đã hủy KQĐK' có {MSSV} – {NHOM} và chỉ những SV đã hủy.",
+  "Chọn chỉ dòng {MSSV} → Thực hiện xóa (xác nhận chỉ khi nêu đúng {MSSV}/{NHOM}).",
+  "KIỂM TRA: kết quả điểm danh của {MSSV} ở {NHOM} không còn; SV còn đăng ký {NHOM} giữ nguyên kết quả.",
+  "Tắt màn hình."
+ ],
+ "title": "Xóa kết quả điểm danh của SV đã hủy ĐKMH",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test)",
+  "NHOM": "(nhóm test)"
+ },
+ "version": "v2026.10H.00"
+}

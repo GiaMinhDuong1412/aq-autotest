@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập -1 hoặc 'abc'",
+   "expected": "Không nhận giá trị.",
+   "name": "Số TCHP âm / chữ",
+   "steps": [
+    "Nhập số TCHP không hợp lệ → Lưu."
+   ]
+  }
+ ],
+ "code": "QLTV-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục môn học (KHGD)",
+  "next": [
+   "QLTV-002",
+   "QLTV-005"
+  ],
+  "out": "{MH1} 3 TCHP, {MH2} 2 TCHP"
+ },
+ "expected": "Mức đơn giá và số TCHP của môn là đầu vào tính học phí (nhóm môn khác nhau → mức thu khác cho cùng số TC – lưu đồ CSHP bước 5). (Theo QLTV_KhaiBaoChinhSachThuHocPhi, mục III.7.)",
+ "lastRun": null,
+ "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN mức đơn giá và số TCHP môn học",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.7 Định nghĩa mức đơn giá học phí và tín chỉ học phí",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; ghi lại (không sửa) GP_CoPhanQuyenCSHP, GP_NHHKTINHHPTUDONG (Chỉnh định toàn cục) và SP_HinhThucTinhHocPhi, SP_CoDonGiaMonHoc, SP_ThuHocLai, SP_HeSoHocPhiHocLai, SP_PhanBietHLCT (Chỉnh định học kỳ).",
+  "Mở Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN mức đơn giá và số TCHP môn học → Gán mức đơn giá 0 cho môn mới.",
+  "KIỂM TRA: môn mới (vd môn test KHGD KHGD-002) được thêm với mức 0.",
+  "Sửa {MH1}: mức đơn giá test, số TCHP = 3; {MH2}: số TCHP = 2 → Lưu; KIỂM TRA SỬA mở lại thấy giá trị.",
+  "Đồng bộ số TC lý thuyết: chọn môn có TC lý thuyết ≠ TC học phí → gán lại → KIỂM TRA TCHP = TC lý thuyết.",
+  "Giữ cho QLTV-005; trả lại giá trị cũ cuối chuỗi. Tắt màn hình."
+ ],
+ "title": "ĐN mức đơn giá và số tín chỉ học phí môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)"
+ },
+ "version": "v2026.10H.00"
+}

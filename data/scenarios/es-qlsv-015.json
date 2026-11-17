@@ -1,0 +1,70 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã tiêu chuẩn, Tên tiêu chuẩn",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã tiêu chuẩn…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã tiêu chuẩn nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã tiêu chuẩn và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã tiêu chuẩn",
+   "steps": [
+    "Bấm Thêm, nhập Mã tiêu chuẩn giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "tiêu chuẩn đã được dùng ở kết quả xét khen thưởng",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng tiêu chuẩn đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLSV-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục đánh giá (DIEM)",
+  "next": [
+   "QLSV-016"
+  ],
+  "out": "Tiêu chuẩn {MATC}"
+ },
+ "expected": "Tiêu chuẩn khen thưởng lớp lưu đủ bậc – tiêu chí – điều kiện, dùng được khi xét. (Theo QLSV_KhenThuongKyLuatSV, mục III.4.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Định nghĩa tiêu chuẩn xét",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_KhenThuongKyLuatSV, mục III.4.1 Định nghĩa tiêu chuẩn xét (khen thưởng lớp)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Quản lý điểm/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục đánh giá có bảng đánh giá nhóm Khen thưởng (chỉ xem).",
+  "Mở Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng lớp sinh viên/ Định nghĩa tiêu chuẩn xét; tìm {MATC} → có thì đổi.",
+  "Thêm: Mã tiêu chuẩn = {MATC}, Tên tiêu chuẩn, Loại = học kỳ, Bảng ĐG (nhóm Khen thưởng) → Lưu.",
+  "Chọn {MATC} → Tiêu chí: chọn một bậc xếp loại (vd Giỏi) → Thêm tiêu chí; Danh sách tiêu chí → thêm điều kiện (vd tỷ lệ SV khá giỏi của lớp ≥ 50%) → Lưu.",
+  "KIỂM TRA THÊM: mở lại {MATC} thấy đủ bậc, tiêu chí, điều kiện.",
+  "Sửa ngưỡng điều kiện → Lưu; KIỂM TRA SỬA.",
+  "Giữ {MATC} cho QLSV-016; dọn sau đó: xóa điều kiện → tiêu chí → tiêu chuẩn; KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "Định nghĩa tiêu chuẩn xét khen thưởng lớp (bậc, tiêu chí, điều kiện)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MATC": "TEST_KTL{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

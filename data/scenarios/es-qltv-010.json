@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Người nộp, Khoản thu, Số tiền",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Người nộp…) ở phiếu vãng lai.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  }
+ ],
+ "code": "QLTV-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục khoản thu",
+  "next": [
+   "QLTV-011"
+  ],
+  "out": "Phiếu vãng lai (đã hủy)"
+ },
+ "expected": "Thu vãng lai cho người ngoài danh sách SV, có trong bảng kê; hủy được. Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh sách thu vãng lai học kỳ",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; có khoản thu vãng lai trong danh mục.",
+  "Mở Thu/chi HP/ Quản lý thu vãng lai/ Thu vãng lai/ Danh sách thu vãng lai học kỳ → Thêm: người nộp {NN} (ngoài DS SV), khoản thu, 200.000 → Lưu.",
+  "KIỂM TRA THÊM: phiếu có số theo bộ đếm; hiện ở Bảng kê thu/chi (QLTV-011).",
+  "Sửa nội dung → Lưu; KIỂM TRA SỬA.",
+  "Hủy phiếu test → KIỂM TRA ở trạng thái hủy, không còn trong tổng thu. Tắt màn hình."
+ ],
+ "title": "Danh sách thu vãng lai học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NN": "TEST Nguoi nop {ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

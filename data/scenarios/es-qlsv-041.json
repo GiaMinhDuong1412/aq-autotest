@@ -1,0 +1,46 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Cán bộ từ chối",
+   "expected": "Netweb hiện trạng thái từ chối và lý do. Cần xác nhận.",
+   "name": "Từ chối yêu cầu",
+   "steps": [
+    "Từ chối yêu cầu TEST_ với lý do."
+   ]
+  }
+ ],
+ "code": "QLSV-041",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Yêu cầu GCN online (QLSV-038)",
+  "next": [],
+  "out": "Lượt cấp GCN online"
+ },
+ "expected": "Yêu cầu online được duyệt/cấp trên Edusoft và trạng thái cập nhật về Netweb. Tài liệu không có mục online – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận online",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapVaInGiayChungNhan, mục (không có mục riêng cho bản online)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV Netweb test đã gửi yêu cầu GCN (QLSV-038).",
+  "Mở Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cấp và in giấy chứng nhận online.",
+  "KIỂM TRA: thấy yêu cầu TEST_ của SV với loại GCN, ngày gửi.",
+  "Duyệt / cấp và in yêu cầu → KIỂM TRA số GCN theo bộ đếm.",
+  "KIỂM TRA Netweb: trạng thái yêu cầu của SV đổi sang đã xử lý.",
+  "Dọn: hủy lượt cấp test (nếu được). Tắt màn hình."
+ ],
+ "title": "Cấp và in giấy chứng nhận online (xử lý yêu cầu từ Netweb)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

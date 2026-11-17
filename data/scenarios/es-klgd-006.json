@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chốt lần hai cùng đợt",
+   "expected": "Cảnh báo ghi đè dữ liệu đã sửa. Cần xác nhận.",
+   "name": "Chốt lại",
+   "steps": [
+    "Chốt lại {DOT}."
+   ]
+  }
+ ],
+ "code": "KLGD-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), KQĐK",
+  "next": [
+   "KLGD-005",
+   "KLGD-008"
+  ],
+  "out": "Dữ liệu đã chốt {DOT}"
+ },
+ "expected": "Chốt dữ liệu lấy nhóm học từ kế hoạch (TKB, sĩ số) vào đợt tính khối lượng. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 4.1–4.4.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Dữ liệu đã chốt từ kế hoạch",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.4 Chốt dữ liệu từ kế hoạch (cần 4.1 Định nghĩa đợt, 4.2 Bổ sung CBGD, 4.3 Gán đợt cho nhóm học)",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; CHỈ đợt/nhóm test; TKB nhóm {NH} đã xếp (KHGD-011).",
+  "Định nghĩa đợt tính khối lượng {DOT} (mã, thứ tự, tuần kết thúc, ngày thanh toán) → Lưu; gán đợt {DOT} cho nhóm {NH} (mục 4.3).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Chốt dữ liệu từ kế hoạch/ Dữ liệu đã chốt từ kế hoạch; chọn cách chốt theo tuần kết thúc cho {DOT}.",
+  "KIỂM TRA: danh sách đã chốt có {NH} (CB, số tiết, sĩ số) đúng TKB/KQĐK.",
+  "Sửa số tiết 1 dòng → Lưu; KIỂM TRA SỬA giữ thay đổi.",
+  "Giữ cho KLGD-008–KLGD-010; dọn cuối chuỗi: xóa dữ liệu đã chốt {DOT}, bỏ gán đợt, xóa {DOT}."
+ ],
+ "title": "Chốt dữ liệu từ kế hoạch theo đợt tính khối lượng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "MH": "(môn test cán bộ dạy)",
+  "NH": "(nhóm tổ của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

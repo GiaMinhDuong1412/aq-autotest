@@ -1,0 +1,41 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DKMH-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK + điểm học kỳ trước",
+  "next": [
+   "QLTV-005"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Tính chất học lại của KQĐK sửa được (0/1/rỗng theo setting) và ảnh hưởng học phí/điểm theo quy chế. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH / Hiệu chỉnh đăng ký / Tính chất học lại / Cập nhật tính chất học lại",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đăng ký lại môn {MHB} đã rớt ở học kỳ trước (có điểm không đạt – DIEM).",
+  "Mở Đăng ký MH/ Hiệu chỉnh đăng ký/ Tính chất học lại/ Cập nhật tính chất học lại; học kỳ test, lọc {MSSV}.",
+  "KIỂM TRA: lưới 'Tính chất đăng ký (0: Học lần đầu; 1: Học lại; Rỗng: Theo setting)' có dòng {MSSV}–{MHB}; ghi lại giá trị cột Học lại.",
+  "Sửa Học lại = 1, Ghi chú TEST → Lưu; KIỂM TRA SỬA mở lại thấy 1; (nối CSHP) học phí tạm tính theo đơn giá học lại.",
+  "Trả lại giá trị cũ → Lưu. Tắt màn hình."
+ ],
+ "title": "Cập nhật tính chất học lại của kết quả đăng ký",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHB": "(môn B SV chưa đạt)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

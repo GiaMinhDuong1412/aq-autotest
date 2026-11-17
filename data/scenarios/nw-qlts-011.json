@@ -1,0 +1,63 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Hôm nay ngoài khoảng Từ ngày – Đến ngày ĐKXT của {DOT}",
+   "expected": "Trang báo hết/chưa đến thời gian đăng ký, không cho gửi.",
+   "name": "Ngoài thời gian đăng ký",
+   "steps": [
+    "Đổi tạm Đến ngày ĐKXT về hôm qua (QLTS-002), mở lại trang đăng ký.",
+    "Trả lại ngày cũ."
+   ]
+  },
+  {
+   "condition": "xl_cho_phep_dk_nhanh_pthuc = Không (QLTS-003)",
+   "expected": "Form chỉ cho chọn một phương thức.",
+   "name": "Chọn nhiều phương thức khi không cho phép",
+   "steps": [
+    "Chọn hai phương thức trên form."
+   ]
+  }
+ ],
+ "code": "QLTS-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ/đợt/ngành test, cấu hình form và mail (QLTS-002, QLTS-003, QLTS-005)",
+  "next": [
+   "QLTS-012",
+   "QLTS-010"
+  ],
+  "out": "Đơn đăng ký online {TS3} + mail xác nhận"
+ },
+ "expected": "Thí sinh đăng ký được trong thời gian ĐKXT; trường bắt buộc bị chặn khi trống, trường Không hiệu chỉnh không sửa được; đơn sang Edusoft và gửi mail xác nhận. Thao tác form cần xác nhận (tài liệu chỉ mô tả cấu hình). (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.3.)",
+ "lastRun": null,
+ "menu": "NetWEB: Đăng ký xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh; 3_ChamSocThiSinhXetTuyenTrucTuyen, mục III.3 Chỉnh định giao diện Đăng ký xét tuyển và Template mail (1_ChuanBi…)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò khách (thí sinh – trang Đăng ký xét tuyển, không cần đăng nhập) bằng tài khoản test; đợt {DOT} đang trong thời gian ĐKXT (QLTS-002); phương thức hiển thị online (QLTS-005); template mail 'Thư thông báo ĐK xét tuyển thành công' đã có.",
+  "Mở trang Đăng ký xét tuyển trên Netweb test → KIỂM TRA tiêu đề = Tên kỳ TS / Tên đợt của {KYTS}/{DOT}.",
+  "Bỏ trống một trường Bắt buộc nhập → Gửi → KIỂM TRA bị chặn, báo trường bắt buộc.",
+  "Nhập đủ thông tin {TS3} (email test), chọn phương thức, nguyện vọng {NGANH} (số nguyện vọng ≤ xl_sl_dk_nv_pthuc) → Gửi.",
+  "KIỂM TRA: trang báo đăng ký thành công; mail xác nhận có đúng @HOTEN, @NOIDUNGPT và mật khẩu tra cứu (không ghi mật khẩu vào kết quả).",
+  "KIỂM TRA dữ liệu sang Edusoft: Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ Nhập hồ sơ đăng ký xét tuyển có đơn {TS3} với số phiếu theo bộ đếm."
+ ],
+ "title": "Netweb: thí sinh đăng ký xét tuyển trực tuyến",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "KYTS": "TEST_KY{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}",
+  "TS3": "Thi sinh Ba (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

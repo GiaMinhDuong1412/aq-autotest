@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "CHUNG-105",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Quy chế (QTRI-001)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Quy chế chỉ hiện cho người đã đăng nhập. (Theo NETWEB-QuanTriChung, mục III.2.10.)",
+ "lastRun": null,
+ "menu": "NetWEB: Xem Quy chế / Quy định",
+ "module": "CHUNG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.2.10 Quy chế quy định",
+  "plan": "netweb-CHUNG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; admin thêm quy chế {QC} (QTRI-001 – mục 2.10 Quy chế quy định).",
+  "Netweb test: mở trang quản trị (thêm /admin vào địa chỉ Netweb test), đăng nhập tài khoản admin test → Quy chế quy định → Thêm {QC} → Lưu.",
+  "Mở Netweb khi CHƯA đăng nhập → KIỂM TRA không xem được quy chế.",
+  "Đăng nhập SV test → Quy chế/Quy định → KIỂM TRA thấy và mở được {QC}.",
+  "Dọn: admin xóa {QC}."
+ ],
+ "title": "Netweb: xem quy chế / quy định",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "QC": "TEST_QuyChe {ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

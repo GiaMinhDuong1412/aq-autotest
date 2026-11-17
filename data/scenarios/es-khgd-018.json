@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Ngày nghỉ không trùng buổi dạy của {CB}",
+   "expected": "Báo không có lịch dạy vào ngày đó. Cần xác nhận.",
+   "name": "Ngày nghỉ không có lịch dạy",
+   "steps": [
+    "Nhập ngày không có lịch → Lưu."
+   ]
+  }
+ ],
+ "code": "KHGD-018",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Lịch nghỉ dạy và dạy bù lưu được, dạy bù chỉ chọn phòng rảnh, báo biểu phản ánh. (Theo KHGD_QuanLyNghiDayVaDayBu, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_QuanLyNghiDayVaDayBu, mục III.1 Lịch nghỉ dạy và dạy bù; III.2 Báo biểu",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011).",
+  "Mở Kế hoạch/ Nghỉ dạy và dạy bù/ Lịch nghỉ dạy và dạy bù → Thêm: Mã giảng viên {CB}, ngày nghỉ {NGAYNGHI}, tiết bắt đầu nghỉ, số tiết nghỉ → Lưu.",
+  "KIỂM TRA THÊM: dòng nghỉ dạy hiện trong danh sách.",
+  "Nhập lịch dạy bù: sĩ số, thời gian → Tìm → chọn phòng rảnh → Lưu; KIỂM TRA dòng dạy bù và phòng được giữ.",
+  "Báo biểu: In nghỉ dạy và dạy bù / Thống kê chi tiết có dòng vừa tạo.",
+  "Sửa số tiết nghỉ → Lưu; KIỂM TRA SỬA.",
+  "Xóa lịch nghỉ/dạy bù test → KIỂM TRA không còn; phòng dạy bù rảnh lại. Tắt màn hình."
+ ],
+ "title": "Lịch nghỉ dạy và dạy bù",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test trong học kỳ)",
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NGAYNGHI": "(một buổi dạy của {CB} trong TKB)",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

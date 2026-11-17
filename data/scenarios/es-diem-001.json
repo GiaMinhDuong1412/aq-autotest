@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SV rút môn (DKMH-017)",
+   "expected": "SV rút hiện ký hiệu rút hoặc không có. Cần xác nhận.",
+   "name": "SV đã rút môn",
+   "steps": [
+    "In lại bảng ghi điểm."
+   ]
+  }
+ ],
+ "code": "DIEM-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK nhóm (DKMH)",
+  "next": [
+   "DIEM-013",
+   "DIEM-016"
+  ],
+  "out": "File bảng ghi điểm (dùng cho DIEM-016)"
+ },
+ "expected": "Bảng ghi điểm dựa trên danh sách học của nhóm (lưu đồ DIEM bước 2); file xuất dùng được cho import điểm. (Theo DIEM_DinhNghia&InBangDiem, mục III.1–2.1.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm theo nhóm học",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_DinhNghia&InBangDiem, mục III.1 Định nghĩa mẫu in; III.2.1 In bảng ghi điểm theo nhóm môn học",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV}, {MSSV2} có KQĐK nhóm {NH} (DKMH DKMH-006/DKMH-008); Danh sách mẫu bảng ghi điểm có mẫu in.",
+  "Mở Quản lý điểm/ Bảng ghi điểm/ In bảng ghi điểm/ In bảng ghi điểm theo nhóm học; chọn mẫu, thông số in, nhóm {NH} → In.",
+  "KIỂM TRA: bảng ghi điểm có đúng SV đăng ký {NH} (có {MSSV}, {MSSV2}), không có SV đã hủy ĐK/rút môn, đúng các cột điểm thành phần.",
+  "Xuất tập tin (excel cho cán bộ nhập điểm) → KIỂM TRA file mở được, đủ danh sách, có cột cho từng thành phần.",
+  "Tắt màn hình."
+ ],
+ "title": "In bảng ghi điểm theo nhóm học (và xuất file nhập điểm)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "MSSV2": "(SV test 2 cùng nhóm)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

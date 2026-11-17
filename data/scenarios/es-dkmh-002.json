@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập giờ kết thúc 24:00",
+   "expected": "Không hợp lệ / SV bị chặn sai giờ; phải dùng 23:59.",
+   "name": "Giờ kết thúc 24:00",
+   "steps": [
+    "Nhập 24:00 → Lưu."
+   ]
+  }
+ ],
+ "code": "DKMH-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Base Url Netweb (QLHT-009)",
+  "next": [
+   "DKMH-015",
+   "DKMH-016"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Các biến chỉnh định chung điều khiển nghiệp vụ trên trang ĐKMH Netweb (đăng ký mới / xóa / đổi nhóm, danh sách gợi ý, giờ đăng ký). (Theo DKMH_HuongDanDangKyMonHocOnline, mục III.2, III.7.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục III.2 (Giờ đăng ký trong ngày); III.7 Chỉnh định ràng buộc đăng ký môn học",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ ghi lại; đổi tạm phải trả lại.",
+  "Mở Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Chỉnh định chung.",
+  "KIỂM TRA giờ đăng ký trong ngày (nguyên ngày thì kết thúc 23:59, không phải 24:00).",
+  "Ghi lại xl_nghiep_vu_dang_ky (Chỉ cho đăng ký mới / Chỉ cho xóa đăng ký / Thêm, xóa và đổi nhóm), vw_ds_mac_dinh_trang_dkmh, xl_so_ngay_gv_duyet_sau_ngay_svdk, xl_cho_cvht_dk.",
+  "Đổi tạm xl_nghiep_vu_dang_ky = Chỉ cho đăng ký mới → Lưu (Base Url ở QLHT-009 tự clear cache Netweb).",
+  "KIỂM TRA Netweb SV test: không xóa/đổi nhóm được, có thông báo tương ứng.",
+  "Trả lại giá trị cũ → Lưu; KIỂM TRA Netweb trở lại bình thường. Tắt màn hình."
+ ],
+ "title": "Chỉnh định chung đăng ký online (giờ đăng ký, nghiệp vụ đăng ký)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

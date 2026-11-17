@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "File thiếu cột loại điểm đã chọn",
+   "expected": "Báo sai cấu trúc, không import.",
+   "name": "Sai cấu trúc cột",
+   "steps": [
+    "Import file thiếu cột Thi."
+   ]
+  }
+ ],
+ "code": "DIEM-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK, file bảng ghi điểm (DIEM-001)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Import ghi điểm dòng hợp lệ, báo dòng sai cấu trúc/mã/giá trị. (Theo DIEM_ImportDiemDangExcel, mục III.3.1.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Import điểm môn học / Import từ file excel",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyNhapDiem; DIEM_ImportDiemDangExcel, mục III.3.1 Import theo file excel",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV}, {MSSV2} có KQĐK nhóm {NH} (DKMH DKMH-006/DKMH-008); trọng số {NH}: quá trình 30%, thi 70% (DIEM-003).",
+  "Mở Quản lý nhập điểm/ Quản lý nhập điểm/ Import điểm môn học/ Import từ file excel; tick loại điểm QT, Thi → Chọn; nhiệm ý import → Chọn → Xuất cấu trúc import.",
+  "Chuẩn bị file (hoặc dùng file xuất ở DIEM-001): {MSSV} QT 8 thi 6; {MSSV2} QT 5 thi 3; 1 dòng mã SV không thuộc nhóm; 1 dòng điểm 'abc'.",
+  "Chọn file → Import.",
+  "KIỂM TRA: điểm {MSSV}, {MSSV2} đúng file (Nhập điểm theo nhóm học); 2 dòng sai được báo lỗi, không ghi.",
+  "Xóa điểm test. Tắt màn hình."
+ ],
+ "title": "Import điểm môn học từ file excel",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "MSSV2": "(SV test 2 cùng nhóm)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

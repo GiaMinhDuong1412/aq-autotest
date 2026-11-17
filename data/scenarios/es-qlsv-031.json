@@ -1,0 +1,41 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-031",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV}",
+  "next": [
+   "QLSV-033"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Điểm RL nhập theo 1 SV lưu được và đồng nhất với màn hình theo lớp. Chưa có tài liệu riêng – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện 1 sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} thuộc học kỳ test.",
+  "Mở …/ Điểm rèn luyện/ Nhập điểm rèn luyện 1 sinh viên; nhập {MSSV}.",
+  "KIỂM TRA: lưới Thông tin điểm rèn luyện hiện các học kỳ (Niên học học kỳ, Điểm rèn luyện học kỳ) của {MSSV}.",
+  "Nhập điểm học kỳ test = 82 → Lưu; KIỂM TRA mở lại thấy 82 và Nhập điểm rèn luyện theo lớp (QLSV-029) cũng 82.",
+  "Trả lại điểm cũ. Tắt màn hình."
+ ],
+ "title": "Nhập điểm rèn luyện 1 sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

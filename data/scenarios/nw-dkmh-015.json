@@ -1,0 +1,94 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} đã đăng ký nhóm khác cùng thứ – tiết với {NHA}",
+   "expected": "Bị chặn, báo trùng thời khóa biểu (theo biến cấm trùng TKB).",
+   "name": "Trùng TKB",
+   "steps": [
+    "Đăng ký thêm nhóm trùng giờ cho {MSSV}."
+   ]
+  },
+  {
+   "condition": "{MHA} có tiên quyết {MHB} mà {MSSV} chưa đạt (DKMH-001)",
+   "expected": "Bị chặn, báo vi phạm tiên quyết (user không có quyền bỏ qua).",
+   "name": "Vi phạm tiên quyết",
+   "steps": [
+    "Đăng ký {MHA} cho {MSSV}."
+   ]
+  },
+  {
+   "condition": "Tổng TC đăng ký > bộ tín chỉ tối đa của {MSSV}",
+   "expected": "Bị chặn, báo vượt số tín chỉ tối đa.",
+   "name": "Vượt tín chỉ tối đa",
+   "steps": [
+    "Đăng ký thêm nhóm làm vượt TC tối đa."
+   ]
+  },
+  {
+   "condition": "Sĩ số đã ĐK = Sĩ số cho phép đk của nhóm",
+   "expected": "Bị chặn, báo nhóm hết chỗ.",
+   "name": "Nhóm hết chỗ",
+   "steps": [
+    "Đặt tạm Sĩ số cho phép đk = sĩ số hiện tại (KHGD-010), đăng ký thêm.",
+    "Trả lại sĩ số."
+   ]
+  },
+  {
+   "condition": "{MSSV} trong Danh sách SV tồn nợ HP",
+   "expected": "Bị chặn nếu cấu hình cấm đăng ký khi nợ học phí.",
+   "name": "SV nợ học phí",
+   "steps": [
+    "Đưa {MSSV} vào danh sách tồn nợ (QLTV-003), đăng ký."
+   ]
+  },
+  {
+   "condition": "Thời gian lớp đã hết (DKMH-003)",
+   "expected": "Báo không trong thời gian đăng ký (Lý do không được truy cập).",
+   "name": "Ngoài thời gian đăng ký",
+   "steps": [
+    "Mở Đăng ký học phần."
+   ]
+  }
+ ],
+ "code": "DKMH-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thời gian (DKMH-003), ràng buộc (DKMH-001, DKMH-002), nhóm/TKB (KHGD-011)",
+  "next": [
+   "DKMH-016"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "SV đăng ký được trong thời gian và ràng buộc; vi phạm bị chặn trên web (lưu đồ DKMH online bước 4–6). (Theo Netweb_TaiLieuHuongDanSinhVien, mục 9.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Đăng ký môn học",
+ "module": "DKMH",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 9 Đăng ký học phần",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; lớp SV đang trong thời gian đăng ký (DKMH-003); nhóm {NHA} mở, còn chỗ; SV chưa đăng ký {MHA}.",
+  "Menu Đăng ký học phần → lọc theo môn học / lớp SV / CTĐT kế hoạch → tìm {MHA}.",
+  "Tick {NHA} → (Lưu/Đăng ký).",
+  "KIỂM TRA: {NHA} có trong kết quả đăng ký trên trang; Edusoft Xem file MH đã đăng ký có SV–{NHA}; TKB tuần Netweb có {NHA}.",
+  "Thử đăng ký nhóm trùng giờ / hết chỗ → KIỂM TRA bị chặn kèm thông báo.",
+  "Dọn: bỏ chọn (hủy) {NHA} → KIỂM TRA không còn ở Edusoft."
+ ],
+ "title": "Netweb SV: đăng ký học phần trực tuyến (kèm ràng buộc)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MHB": "(môn B SV chưa đạt)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})"
+ },
+ "version": "v2026.10H.00"
+}

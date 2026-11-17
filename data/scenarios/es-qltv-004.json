@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "khoản thu đã được dùng ở phiếu thu đã thu",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng khoản thu đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLTV-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục khoản thu",
+  "next": [
+   "QLTV-005"
+  ],
+  "out": "{KT} 100.000 cho {LOP}"
+ },
+ "expected": "Khoản thu khác gán cho cả lớp và cộng vào học phí khi tính. Bước nhập theo lớp theo tên menu – cần xác nhận. (Theo QLTV_QuanLyCacKhoanThuTuDinhNghia, mục III.13.)",
+ "lastRun": null,
+ "menu": "Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập khoản thu khác theo lớp",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi; QLTV_QuanLyCacKhoanThuTuDinhNghia, mục III.13 Quản lý loại thu khác",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Chính sách HP/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khoản thu tự định nghĩa có khoản {KT} (tạo nếu chưa có, chọn Loại thu kèm).",
+  "Mở Chính sách HP/ Chính sách các khoản thu khác/ Khoản thu khác/ Nhập khoản thu khác theo lớp; chọn {LOP}, khoản {KT}, số tiền 100.000 → Lưu.",
+  "KIỂM TRA THÊM: SV của {LOP} (có {MSSV}) có khoản {KT} 100.000.",
+  "Sửa 100.000 → 120.000 → Lưu; KIỂM TRA SỬA; trả lại 100.000.",
+  "Giữ cho QLTV-005; dọn cuối chuỗi: xóa khoản {KT} của lớp và khỏi danh mục."
+ ],
+ "title": "Nhập khoản thu khác theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KT": "TEST_KT{ddHHMM}",
+  "LOP": "(lớp của {MSSV})",
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

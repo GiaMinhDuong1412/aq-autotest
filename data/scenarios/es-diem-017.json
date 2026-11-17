@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Cần sửa số phách",
+   "expected": "Số phách mới không trùng.",
+   "name": "Sửa phách",
+   "steps": [
+    "Sửa phách môn thi cho 1 SV."
+   ]
+  }
+ ],
+ "code": "DIEM-017",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tổ thi, SBD (LTHI LTHI-012, LTHI-018)",
+  "next": [
+   "DIEM-018",
+   "DIEM-019"
+  ],
+  "out": "Điểm theo phách của {NP}"
+ },
+ "expected": "Phách ẩn danh SV khi nhập điểm; đối chiếu phách – SBD khớp; khóa nhóm chặn sửa. (Theo DIEM_QuanLyPhach, mục III.2; lưu đồ DIEM bước 6.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo số phách",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyPhach, mục III.2 Tạo phách từ danh sách thi (2.1–2.8, tương tự III.1)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tổ thi {TO} đã có lịch và SBD (LTHI-012, LTHI-018).",
+  "Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Tạo nhóm phách môn thi: chọn {TO} → Tạo nhóm → chọn cột nhóm → Chọn → Tạo nhóm phách → Lưu.",
+  "… / Tạo phách môn thi: chọn {NP} → Tạo phách → KIỂM TRA mỗi SV có số phách ngẫu nhiên, không trùng.",
+  "Mở Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Nhập điểm theo số phách; chọn {NP} → Nhập điểm theo từng số phách (không thấy tên SV) → Lưu.",
+  "KIỂM TRA: In bảng đối chiếu phách – SBD và In kết quả thi khớp điểm đã nhập.",
+  "Khóa nhóm phách → KIỂM TRA không sửa được; Mở khóa. Tắt màn hình (giữ cho DIEM-018)."
+ ],
+ "title": "Tạo phách và nhập điểm theo số phách",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NP": "(nhóm phách tạo từ {TO})",
+  "TO": "(tổ thi test – LTHI-011)"
+ },
+ "version": "v2026.10H.00"
+}

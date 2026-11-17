@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Mã đợt thi nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã đợt thi và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã đợt thi",
+   "steps": [
+    "Bấm Thêm, nhập Mã đợt thi giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "{NT} đã thuộc đợt khác",
+   "expected": "Báo nhóm đã thuộc đợt khác. Cần xác nhận.",
+   "name": "Gán nhóm thi vào hai đợt",
+   "steps": [
+    "Gán {NT} vào đợt thứ hai."
+   ]
+  }
+ ],
+ "code": "LTHI-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm thi (LTHI-005)",
+  "next": [
+   "LTHI-009",
+   "LTHI-011",
+   "LTHI-012"
+  ],
+  "out": "Đợt {DOT} gồm {NT}"
+ },
+ "expected": "Đợt thi có thời gian và nhóm thi được gán; là đơn vị xếp lịch thi. (Theo LTHI_ToChucThi, mục III.6.1–6.2; lưu đồ LTHI bước 4.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Định nghĩa đợt thi/ Định nghĩa đợt thi & gán nhóm thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.6.1 Định nghĩa đợt thi (6.2 Gán đợt thi cho nhóm thi)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm thi {NT} (LTHI-005).",
+  "Mở Tổ chức thi/ Định nghĩa đợt thi/ Định nghĩa đợt thi & gán nhóm thi; tìm {DOT} → chưa có.",
+  "Thêm đợt {DOT}: học kỳ test, từ ngày – đến ngày thi (trong tuần thi theo SL_TUANTHISOVOITUANHOC) → Lưu.",
+  "Chi tiết danh sách đợt thi → Thêm → chọn {NT} → Lưu.",
+  "KIỂM TRA THÊM: {DOT} có {NT}.",
+  "Sửa đến ngày thi (+1) → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho LTHI-009–LTHI-021; dọn ở LTHI-017 (hủy lịch) rồi xóa đợt."
+ ],
+ "title": "Định nghĩa đợt thi test và gán nhóm thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

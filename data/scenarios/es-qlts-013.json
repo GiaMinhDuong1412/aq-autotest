@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập chữ hoặc số âm",
+   "expected": "Không nhận giá trị, báo sai định dạng.",
+   "name": "Điểm chuẩn không hợp lệ",
+   "steps": [
+    "Nhập 'abc' / -1 vào điểm chuẩn → Lưu."
+   ]
+  },
+  {
+   "condition": "Phương thức năng lực / HS giỏi",
+   "expected": "Lưu theo ngành, không cần khối.",
+   "name": "Phương thức không tổ hợp",
+   "steps": [
+    "Mở Nhập điểm chuẩn năng lực (không tổ hợp), nhập cho {NGANH}."
+   ]
+  }
+ ],
+ "code": "QLTS-013",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Ngành/khối {NGANH}–{KHOI} (QLTS-008)",
+  "next": [
+   "QLTS-015"
+  ],
+  "out": "Điểm chuẩn 24,00 cho {NGANH}–{KHOI} đợt {DOT}"
+ },
+ "expected": "Điểm chuẩn lưu theo đợt – ngành – khối – phương thức; là ngưỡng xét trúng tuyển ở QLTS-015. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.4.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Điểm chuẩn/ Nhập điểm chuẩn xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.4 Chuẩn bị dữ liệu điểm chuẩn cho các phương thức",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; ngành/khối {NGANH}–{KHOI} của kỳ test (QLTS-008).",
+  "Mở Tuyển sinh/ Điểm chuẩn/ Nhập điểm chuẩn xét tuyển; lưới có Đợt XT, Ngành tuyển sinh, Khối tuyển sinh, Điểm chuẩn theo Tổ hợp XT, Phương thức.",
+  "Nhập điểm chuẩn = {DC} cho đợt {DOT}, ngành {NGANH}, khối {KHOI}, phương thức học bạ/THPT → Lưu.",
+  "KIỂM TRA THÊM: dòng hiện điểm chuẩn {DC}.",
+  "Sửa {DC} → 24,50 → Lưu; KIỂM TRA SỬA; rồi trả lại 24,00 → Lưu (giá trị dùng cho QLTS-015).",
+  "Tắt màn hình."
+ ],
+ "title": "Nhập điểm chuẩn xét tuyển cho ngành/khối test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DC": "24,00",
+  "DOT": "TEST_DOT{ddHHMM}",
+  "KHOI": "TEST_KH{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

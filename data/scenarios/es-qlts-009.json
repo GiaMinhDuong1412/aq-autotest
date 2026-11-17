@@ -1,0 +1,41 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTS-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phương thức xét tuyển (QLTS-005)",
+  "next": [
+   "QLTS-010"
+  ],
+  "out": "Không đổi (trả về như cũ)"
+ },
+ "expected": "Phương án nhập điểm quyết định các ô điểm của hồ sơ theo phương thức. Tài liệu chỉ có một câu – chi tiết cột cần xác nhận. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.5.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Chuẩn bị/ Định nghĩa phương án nhập điểm",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.5 Định nghĩa phương thức nhập điểm đăng ký xét tuyển",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ sửa phương án của phương thức test hoặc ghi lại để trả về.",
+  "Mở Tuyển sinh/ Chuẩn bị/ Định nghĩa phương án nhập điểm; lưới hiện Mã phương thức, Tên phương thức.",
+  "Chọn phương thức {PT}, xem phương án nhập điểm hiện có (môn/điểm học kỳ cần nhập); ghi lại.",
+  "Thêm một cột điểm vào phương án (hoặc đổi thứ tự) → Lưu.",
+  "KIỂM TRA: mở Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ Nhập hồ sơ đăng ký xét tuyển, chọn phương thức {PT} → các ô điểm hiện đúng phương án.",
+  "Trả phương án về như cũ → Lưu; tắt màn hình."
+ ],
+ "title": "Định nghĩa phương án nhập điểm cho phương thức xét tuyển",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PT": "Học bạ"
+ },
+ "version": "v2026.10H.00"
+}

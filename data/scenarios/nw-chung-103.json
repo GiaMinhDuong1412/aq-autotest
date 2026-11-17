@@ -1,0 +1,46 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Hai ô mật khẩu mới khác nhau",
+   "expected": "Báo không khớp.",
+   "name": "Mật khẩu xác nhận không khớp",
+   "steps": [
+    "Nhập khác nhau → Gửi."
+   ]
+  }
+ ],
+ "code": "CHUNG-103",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Email SV test, cấu hình mail (QLHT-006)",
+  "next": [],
+  "out": "Mật khẩu trả lại như cũ"
+ },
+ "expected": "Khôi phục mật khẩu qua mã xác minh email (mail server GH_MAILSERVER – QLHT-006). (Theo NETWEB_SinhVienQuenMatKhau, mục 3.)",
+ "lastRun": null,
+ "menu": "NetWEB SV +GV: Quên mật khẩu",
+ "module": "CHUNG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NETWEB_SinhVienQuenMatKhau, mục 3 Quên mật khẩu",
+  "plan": "netweb-CHUNG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên (chưa đăng nhập) bằng tài khoản test; SV test có email người test đọc được; KHÔNG ghi mật khẩu vào kịch bản/log.",
+  "Màn hình đăng nhập → Quên mật khẩu → nhập thông tin tài khoản SV test.",
+  "KIỂM TRA: hệ thống gửi mã xác minh tới email.",
+  "Nhập mã sai → KIỂM TRA bị từ chối.",
+  "Nhập mã đúng, mật khẩu mới + xác nhận → KIỂM TRA đăng nhập được bằng mật khẩu mới.",
+  "Dọn: đổi về mật khẩu đang lưu ở Máy chạy thử (secrets) qua CHUNG-104."
+ ],
+ "title": "Netweb SV + GV: quên mật khẩu (mã xác minh qua email)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

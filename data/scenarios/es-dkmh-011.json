@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "KQĐK có điểm hoặc đã đóng học phí",
+   "expected": "Cảnh báo/chặn. Cần xác nhận.",
+   "name": "SV đã có điểm / đã đóng HP",
+   "steps": [
+    "Hủy KQĐK của SV đã có điểm."
+   ]
+  }
+ ],
+ "code": "DKMH-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-006/DKMH-008)",
+  "next": [
+   "DKMH-014",
+   "QLSV-027"
+  ],
+  "out": "KQĐK {MSSV}–{NHA} bị hủy"
+ },
+ "expected": "Chỉ KQĐK của SV chọn trong nhóm bị hủy và có thể phục hồi. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - 1 nhóm học/một số SV",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK {NHA} (DKMH-006/DKMH-008); nhóm có SV khác.",
+  "Mở Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - 1 nhóm học/một số SV; chọn {NHA}, tick chỉ {MSSV}.",
+  "Hủy → chỉ xác nhận khi hộp thoại nêu đúng {MSSV}/{NHA}.",
+  "KIỂM TRA: KQĐK {MSSV}–{NHA} không còn; SV khác của {NHA} giữ nguyên; {MSSV} có ở Phục hồi kết quả đăng ký (DKMH-014).",
+  "Tắt màn hình (phục hồi ở DKMH-014)."
+ ],
+ "title": "Hủy KQĐKMH 1 nhóm học / một số SV",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} thu đủ ở QLTV-006",
+   "expected": "SV hết nợ không bị cấm (nếu cấm theo danh sách nợ). Cần xác nhận.",
+   "name": "SV đã đóng đủ học phí",
+   "steps": [
+    "Thu học phí {MSSV} (QLTV-006).",
+    "Đăng nhập Netweb SV {MSSV}."
+   ]
+  }
+ ],
+ "code": "QLHT-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} nợ học phí (QLTV-005)",
+  "next": [
+   "DIEM-022"
+  ],
+  "out": "Không đổi (gỡ cuối kịch bản)"
+ },
+ "expected": "SV trong danh sách cấm bị chặn các chức năng cấu hình trên Netweb; gỡ khỏi danh sách thì xem lại được. Chưa có tài liệu – các bước theo tên menu, cần xác nhận.",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản trị NetWEB/ Cấm SV xem vì nợ học phí",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; có SV test {MSSV} đang nợ học phí (QLTV-005 tính HP, chưa thu) và có tài khoản Netweb SV test.",
+  "Mở Hệ thống/ Quản trị NetWEB/ Cấm SV xem vì nợ học phí; xem các chức năng bị cấm (điểm, kết quả…) đang cấu hình.",
+  "Thêm {MSSV} vào danh sách cấm (hoặc bật cấm theo danh sách nợ) → Lưu.",
+  "KIỂM TRA: {MSSV} có trong danh sách cấm.",
+  "KIỂM TRA Netweb: đăng nhập SV {MSSV} → các chức năng bị cấm (vd Xem điểm) báo không được xem vì nợ học phí.",
+  "Gỡ {MSSV} khỏi danh sách (hoặc tắt cấm) → Lưu; KIỂM TRA SV xem lại được. Tắt màn hình."
+ ],
+ "title": "Cấm sinh viên nợ học phí xem thông tin trên Netweb",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test đang nợ học phí – QLTV-005)"
+ },
+ "version": "v2026.10H.00"
+}

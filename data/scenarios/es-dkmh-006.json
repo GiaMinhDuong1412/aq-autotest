@@ -1,0 +1,71 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SM01_LOPDKTDCTDT = Không cho {LOP}",
+   "expected": "Không đăng ký / báo lớp không thuộc diện. Cần xác nhận.",
+   "name": "Lớp không được đăng ký tự động",
+   "steps": [
+    "Chạy đăng ký tự động cho lớp không bật."
+   ]
+  },
+  {
+   "condition": "Chỉ đăng ký vài môn",
+   "expected": "Chỉ {MHA} được đăng ký.",
+   "name": "Theo lớp một số môn",
+   "steps": [
+    "Đăng ký tự động/ Theo lớp một số môn học: chọn {LOP} + {MHA}."
+   ]
+  },
+  {
+   "condition": "{MSSV} đã đăng ký nhóm khác cùng thứ – tiết với {NHA}",
+   "expected": "Bị chặn, báo trùng thời khóa biểu (theo biến cấm trùng TKB).",
+   "name": "Trùng TKB",
+   "steps": [
+    "Đăng ký thêm nhóm trùng giờ cho {MSSV}."
+   ]
+  }
+ ],
+ "code": "DKMH-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), DS SV học kỳ (QLSV-003)",
+  "next": [
+   "DKMH-009",
+   "DKMH-011",
+   "LTHI-005",
+   "QLTV-005"
+  ],
+  "out": "KQĐK của SV {LOP}"
+ },
+ "expected": "Đăng ký tự động gán nhóm mở cho lớp cho từng SV, kiểm tra ràng buộc; đạt → KQĐK, không đạt → KQĐK không hợp lệ kèm lý do. (Theo DKMH_DangKyMonHocOFFLINE, mục III.2.1; lưu đồ DKMH offline bước 3–5.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.1 Đăng ký tự động",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; TKB nhóm của {LOP} đã xếp, không trùng (KHGD-011); DS SV học kỳ ổn định (QLSV-003); SM01_LOPDKTDCTDT = Có cho {LOP}; CHỈ chọn lớp test.",
+  "Mở Đăng ký MH/ Đăng ký môn học/ Đăng ký tự động/ Theo lớp; Danh sách lớp chọn chỉ {LOP} → Đăng ký môn học (Thực hiện).",
+  "KIỂM TRA: màn hình kết quả có bảng thống kê chung, danh sách thành công, danh sách thất bại kèm lý do.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Đăng ký MH/ Khai thác báo biểu/ Kết quả đăng ký/ Xem file MH đã đăng ký – {MSSV} có các nhóm mở cho {LOP} (có {MHA}); SV thất bại xuất hiện ở KQĐK không hợp lệ.",
+  "Dọn (nếu không dùng tiếp): Hủy KQ ĐKMH theo sinh viên (DKMH-012) cho SV test."
+ ],
+ "title": "Đăng ký môn học tự động theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của {MSSV})",
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})"
+ },
+ "version": "v2026.10H.00"
+}

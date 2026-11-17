@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DKMH-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Thời gian nguyện vọng quyết định SV thấy/đăng ký nguyện vọng trên Netweb. Không có tài liệu cho màn hình – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký nguyện vọng online/ Thời gian đăng ký nguyện vọng",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ xem thời gian hiện tại; nếu thêm đợt test thì xóa cuối kịch bản.",
+  "Mở Đăng ký MH/ Đăng ký nguyện vọng online/ Thời gian đăng ký nguyện vọng; ghi lại thời gian của học kỳ test.",
+  "Thêm đợt {DOT}: học kỳ test, từ hôm nay đến hôm nay + 2 → Lưu; KIỂM TRA THÊM.",
+  "KIỂM TRA Netweb SV test: thấy menu Đăng ký môn nguyện vọng trong khoảng này.",
+  "Xóa {DOT} → KIỂM TRA XÓA; Netweb không còn menu (nếu không có đợt khác). Tắt màn hình."
+ ],
+ "title": "Thời gian đăng ký nguyện vọng online",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_NV{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

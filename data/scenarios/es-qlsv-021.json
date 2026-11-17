@@ -1,0 +1,41 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-021",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLSV-020)",
+  "next": [
+   "QLSV-022"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Danh sách xét hiển thị đúng SV đạt và số tiền theo mức × số tháng; chỉnh sửa lưu được. (Theo QLSV_XetHocBongKhuyenKhich, mục III.8.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xem/sửa danh sách xét học bổng",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.8 Kiểm tra và chỉnh sửa kết quả xét",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có kết quả xét học bổng khối {KHOI} (QLSV-020).",
+  "Mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xem/sửa danh sách xét học bổng, chọn {KHOI}.",
+  "KIỂM TRA: danh sách SV đạt khớp QLSV-020; số tiền = SS_TIENHB (theo mức) × SS_SOTHANGHUONGHBKK.",
+  "Sửa số tiền của {MSSV} → Lưu; KIỂM TRA SỬA mở lại thấy giá trị mới.",
+  "Trả lại số tiền cũ → Lưu. Tắt màn hình."
+ ],
+ "title": "Xem / sửa danh sách xét học bổng: kiểm tra số tiền và chỉnh sửa",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối học bổng có SV đủ điều kiện)",
+  "MSSV": "(SV đạt học bổng ở QLSV-020)"
+ },
+ "version": "v2026.10H.00"
+}

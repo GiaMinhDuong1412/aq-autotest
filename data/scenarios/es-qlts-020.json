@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTS-020",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} đã nhập học (QLTS-019)",
+  "next": [
+   "QLTS-022"
+  ],
+  "out": "Hồ sơ nhập học của {TS1}"
+ },
+ "expected": "Hồ sơ nhập học của thí sinh ghi nhận theo phân loại; thêm/bỏ hồ sơ lưu được. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Tiếp sinh/ Nhập hồ sơ & học phí nhập học/ Nhập hồ sơ nhập học",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 Tiếp sinh và chuyển dữ liệu",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} đã xác nhận nhập học (QLTS-019); đã có Bộ đếm số phiếu học phí, Chuẩn bị hồ sơ nhập học, Phân loại hồ sơ nhập học diện trúng tuyển.",
+  "Mở Tuyển sinh/ Tiếp sinh/ Nhập hồ sơ & học phí nhập học/ Nhập hồ sơ nhập học; chọn {TS1}.",
+  "KIỂM TRA: danh sách hồ sơ cần nộp hiện đúng theo phân loại diện trúng tuyển.",
+  "Đánh dấu 2 hồ sơ đã nộp → Lưu; KIỂM TRA mở lại thấy đúng 2 hồ sơ đã nộp.",
+  "Sửa: bỏ đánh dấu 1 hồ sơ → Lưu; KIỂM TRA còn 1. Tắt màn hình."
+ ],
+ "title": "Tiếp sinh: nhập hồ sơ nhập học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TS1": "Thi sinh Mot (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

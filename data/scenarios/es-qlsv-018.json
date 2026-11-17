@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-018",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Chỉnh định học bổng; khối học bổng (QLSV-019)",
+  "next": [
+   "QLSV-020"
+  ],
+  "out": "Bảng thông số học bổng (ghi chú) dùng tính kết quả mong đợi ở QLSV-020"
+ },
+ "expected": "Danh sách khối học bổng học kỳ đủ khối theo cấu hình, có mức học bổng và ngưỡng dùng cho xét. (Theo QLSV_XetHocBongKhuyenKhich, mục III.1–3.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.1–3 Thông số; Kiểm tra danh sách khối học bổng",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ ghi lại thông số, không sửa.",
+  "Mở Sinh viên/ Quản trị phân hệ/ Chỉnh định thông số học kỳ: ghi lại SS_SOTINCHIHBMIN, GS_NguonDiemTBHB, SS_DIEMTBHB, SS_KHOIHB, SS_MUCDIEMRL, SS_NGUONGHB, SS_SOLUONGSVCAPHB, SS_TIENHB, SS_SOTHANGHUONGHBKK, SS_CUNGDIEMHBHETCHITIEU.",
+  "Mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Danh sách khối học bổng học kỳ.",
+  "KIỂM TRA: có đủ khối cần xét (theo SS_KHOIHB); lưới Danh sách mức học bổng có Mức, Số tiền giới hạn, Ngưỡng TB, Ngưỡng TBRL, Số lượng giới hạn.",
+  "Thiếu khối thì bấm Đồng bộ → KIỂM TRA khối xuất hiện, mức học bổng cũ không bị đổi.",
+  "Tắt màn hình."
+ ],
+ "title": "Danh sách khối học bổng học kỳ: kiểm tra thông số và đồng bộ khối",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,75 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Sĩ số {NHOM} > sức chứa mọi phòng rảnh",
+   "expected": "{NHOM} thất bại, lý do thiếu phòng; trả lại sĩ số.",
+   "name": "Không có phòng đủ sức chứa",
+   "steps": [
+    "Tăng tạm Sĩ số cho phép đk của {NHOM} = 200 → xếp."
+   ]
+  },
+  {
+   "condition": "{CB} bận toàn bộ buổi sáng",
+   "expected": "{NHOM} không xếp vào buổi sáng; xóa dữ liệu bận giờ test.",
+   "name": "CBGD bận giờ",
+   "steps": [
+    "Khai {CB} bận buổi sáng (Quản lý dữ liệu cán bộ bận giờ) → xếp lại."
+   ]
+  },
+  {
+   "condition": "Xếp tay một tổ",
+   "expected": "Thành công thì tổ rời danh sách trái; trùng thì hiện lý do.",
+   "name": "Xếp thủ công",
+   "steps": [
+    "Xếp thời khóa biểu thủ công: chọn tổ, nhập thứ – tiết BĐ – phòng → xử lý."
+   ]
+  }
+ ],
+ "code": "KHGD-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm (KHGD-010), phòng HK (KHGD-005), viên chức HK (KHGD-006), loại TG (KHGD-007)",
+  "next": [
+   "KHGD-013",
+   "KHGD-014",
+   "KHGD-016",
+   "KHGD-020",
+   "DKMH-006"
+  ],
+  "out": "TKB của {NHOM} (thứ, tiết, phòng, CB)"
+ },
+ "expected": "Xếp TKB tự động tuân theo ràng buộc (tiết nghỉ, bận giờ, sức chứa, tính chất phòng, số tiết tối đa/ngày); nhóm không xếp được có lý do. TKB là đầu vào ĐKMH và tổ chức thi. (Theo KHGD_CacBuocXepTKB, mục III.2.1; lưu đồ TKB bước 12–14.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Xếp thời khóa biểu tự động",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.1 Xếp thời khóa biểu (tự động); III.1.1 thông số; III.1.4 tài nguyên và ràng buộc",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} (KHGD-010); phòng {PHONG} sức chứa 60 trong học kỳ (KHGD-005); ghi lại thông số SK1_STMAXNGAY_CB/_LOP, GK_KHONGXEPTKBVAOBUOITOI, SK1_SUDUNGTIETNGHICHUNG, SK1_sotietsang, SK1_SOTIETCHIEU, SK2_SOTIETTOI.",
+  "Xem (không sửa) tài nguyên/ràng buộc: tiết nghỉ chung, ngày nghỉ chung, {CB}/{LOP}/{PHONG} bận giờ, phòng/buổi ưu tiên lớp.",
+  "Mở Kế hoạch/ Thời khóa biểu/ Xếp thời khoá biểu/ Xếp thời khóa biểu tự động; chọn đối tượng = chỉ {NHOM} (hoặc lớp {LOP}) → xử lý.",
+  "KIỂM TRA: màn hình báo số TKB thành công/thất bại; {NHOM} xếp được: thứ – tiết không rơi vào tiết nghỉ chung/bận giờ, phòng có Sức chứa ≥ sĩ số nhóm, buổi tối không xếp nếu GK_KHONGXEPTKBVAOBUOITOI.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Xem thời khóa biểu/ Dạng tuần (KHGD-016) của {LOP} và {CB} có {NHOM}; nhóm thất bại có lý do ở Xem thời khóa biểu/ Lý do không xếp được TKB.",
+  "Tắt màn hình (giữ TKB cho KHGD-013–KHGD-017)."
+ ],
+ "title": "Xếp thời khóa biểu tự động cho nhóm test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test trong học kỳ)",
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})",
+  "PHONG": "(phòng test trong học kỳ)"
+ },
+ "version": "v2026.10H.00"
+}

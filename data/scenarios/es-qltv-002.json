@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhóm học có đơn giá đặc biệt: đơn giá nhóm 600.000, số SV nhóm 40, SV ĐK 20",
+   "expected": "Đơn giá áp = 600.000 × 40 / Min(40, 20) = 1.200.000/TC. Cần xác nhận.",
+   "name": "Đơn giá đặc biệt nhóm học",
+   "steps": [
+    "Khai đơn giá đặc biệt nhóm học cho nhóm test, tính HP."
+   ]
+  }
+ ],
+ "code": "QLTV-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Cấu hình loại thu, hình thức thu",
+  "next": [
+   "QLTV-005"
+  ],
+  "out": "Đơn giá {DG} cho {LOP}"
+ },
+ "expected": "Đơn giá theo phân cấp (trường → khối → lớp → SV) áp cho đối tượng gần nhất. Đơn giá đặc biệt nhóm học = (Đơn giá nhóm × Số SV nhóm) / Min(Số SV nhóm, Số SV ĐK). (Theo QLTV_KhaiBaoChinhSachThuHocPhi, mục III.6.1; lưu đồ CSHP bước 61, 7.)",
+ "lastRun": null,
+ "menu": "Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_KhaiBaoChinhSachThuHocPhi, mục III.6.1 Khai báo đơn giá học phí (cây phân cấp)",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; DM loại hình thu học phí, ĐN nhóm công thức thu, ĐN hình thức thu theo đối tượng/lớp/SV đã có (lưu đồ CSHP 1–4 – chỉ xem).",
+  "Mở Chính sách HP/ Chính sách học phí/ Qui hoạch học phí/ ĐN đơn giá học phí; chọn loại thu, trên cây phân cấp chọn {LOP} (hoặc khối test); ghi lại đơn giá hiện tại.",
+  "Nhập đơn giá = {DG}/TCHP → Lưu.",
+  "KIỂM TRA: mở lại thấy {DG}; ĐN đơn giá học phí (danh sách) hiện cùng giá trị cho {LOP}.",
+  "Giữ cho QLTV-005; trả lại đơn giá cũ cuối chuỗi. Tắt màn hình."
+ ],
+ "title": "ĐN đơn giá học phí theo cây phân cấp (lớp/khối test)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DG": "500.000",
+  "LOP": "(lớp của {MSSV})",
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

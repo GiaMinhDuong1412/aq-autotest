@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SV có trong DS học kỳ nhưng chưa có QĐ ra",
+   "expected": "Chương trình kiểm tra dữ liệu liên quan trước khi hủy; không xác nhận thì SV vẫn còn.",
+   "name": "Hủy SV trong DSSV học kỳ",
+   "steps": [
+    "Mở Sinh viên/ Danh sách sinh viên/ Hủy sinh viên trong DSSV học kỳ, chọn {MSSV} → Hủy, đọc danh sách dữ liệu liên quan, chọn Không."
+   ]
+  }
+ ],
+ "code": "QLSV-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001); dữ liệu học kỳ (QLHT-002)",
+  "next": [
+   "QLSV-004",
+   "QLSV-005",
+   "QLSV-006",
+   "DKMH-006"
+  ],
+  "out": "Không thay đổi dữ liệu"
+ },
+ "expected": "DS SV học kỳ chỉ gồm SV có hiệu lực trong học kỳ, được tổng hợp tự động từ quyết định (vào mới / học lại); SV không xuất hiện ở học kỳ trước học kỳ vào. Chưa có tài liệu riêng – trạng thái hiện diện cần xác nhận. (Theo lưu đồ QLSV bước 4.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ (học kỳ test), lọc Mã lớp = lớp của {MSSV}.",
+  "KIỂM TRA: {MSSV} có trong danh sách, đúng Mã lớp, Mã khối, Mã ngành, Mã khoa, Hiện diện SV = đang học.",
+  "Chọn {MSSV} → Xem QĐ vào – ra sinh viên → KIỂM TRA có QĐ vào mới.",
+  "Đổi học kỳ làm việc sang học kỳ TRƯỚC học kỳ test → KIỂM TRA {MSSV} không có (SV vào từ học kỳ test).",
+  "Đối chiếu: Sinh viên/ Sinh viên học kỳ/ In kiểm tra sinh viên/ Có trong danh sách & không có q/định → KIỂM TRA {MSSV} không bị liệt kê (đã có QĐ).",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Danh sách sinh viên học kỳ: SV có hiệu lực trong học kỳ theo quyết định",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

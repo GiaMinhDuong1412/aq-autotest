@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Sau khi hủy, nhóm đã đủ sĩ số",
+   "expected": "Cảnh báo/chặn. Cần xác nhận.",
+   "name": "Nhóm đã đầy khi phục hồi",
+   "steps": [
+    "Phục hồi khi nhóm đầy."
+   ]
+  }
+ ],
+ "code": "DKMH-014",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK đã hủy (DKMH-011–DKMH-013)",
+  "next": [],
+  "out": "KQĐK được phục hồi"
+ },
+ "expected": "Phục hồi đưa KQĐK về đúng như trước khi hủy. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Hủy KQ ĐKMH/ Phục hồi kết quả đăng ký",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK đã hủy (DKMH-011/DKMH-012/DKMH-013).",
+  "Mở Đăng ký MH/ Hủy KQ ĐKMH/ Phục hồi kết quả đăng ký; lọc {MSSV}.",
+  "KIỂM TRA: 'Danh sách kết quả đăng ký hủy' có dòng {MSSV}–{MHA} kèm học phí, điểm (nếu có).",
+  "Chọn dòng → Phục hồi.",
+  "KIỂM TRA: KQĐK {MSSV}–{MHA} trở lại như trước khi hủy (nhóm, tổ TH, học phí); dòng không còn trong danh sách hủy.",
+  "Dọn chuỗi ĐKMH: hủy hẳn KQĐK test nếu không dùng tiếp. Tắt màn hình."
+ ],
+ "title": "Phục hồi kết quả đăng ký đã hủy",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,57 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Rút làm tổng TC < mức tối thiểu",
+   "expected": "Bị chặn. Cần xác nhận.",
+   "name": "Dưới tín chỉ tối thiểu",
+   "steps": [
+    "Rút đến khi dưới TC min."
+   ]
+  },
+  {
+   "condition": "Thời gian rút đã hết (DKMH-005)",
+   "expected": "Không cho rút.",
+   "name": "Ngoài thời gian rút",
+   "steps": [
+    "Mở Rút môn học."
+   ]
+  }
+ ],
+ "code": "DKMH-017",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thời gian rút (DKMH-005), KQĐK",
+  "next": [
+   "DIEM-016"
+  ],
+  "out": "KQĐK {MHA} đã rút (điểm đặc biệt)"
+ },
+ "expected": "SV rút được môn trong thời gian rút; môn rút chuyển thành điểm đặc biệt ký hiệu rút, không còn trên TKB. (Theo DKMH_RutMonHoc, mục III.2.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Rút môn học",
+ "module": "DKMH",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_RutMonHoc, mục III.2 Dành cho sinh viên (2.1–2.2)",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; lớp SV trong thời gian rút môn (DKMH-005); SV có KQĐK {MHA}.",
+  "Menu Rút môn học đã đăng ký → chọn {MHA} → Hủy → hộp thoại xác nhận → bấm Đóng.",
+  "KIỂM TRA: {MHA} không bị rút.",
+  "Chọn lại {MHA} → Hủy → Xác Nhận.",
+  "KIỂM TRA: {MHA} trạng thái Đã rút; TKB SV không còn {MHA}; Edusoft Đăng ký MH/ Rút môn học online/ Xem kết quả Rút môn học có dòng; Nhập điểm đặc biệt có ký hiệu rút (GD_DIEMDACBIET)."
+ ],
+ "title": "Netweb SV: rút môn học đã đăng ký",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)"
+ },
+ "version": "v2026.10H.00"
+}

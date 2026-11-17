@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTV-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phiếu thu (QLTV-006, QLTV-010)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Bảng kê thu/chi tổng hợp đúng phiếu thu trong kỳ (lưu đồ CSHP bước 15). (Theo QLTV_ThuHocPhiTheoPhieuBao, mục III.2.2.)",
+ "lastRun": null,
+ "menu": "Thu / chi HP / Khai thác báo biểu / Thu / Chi học phí / In bảng kê thu / chi học phí",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.2 Bảng kê thu/chi học phí",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; có phiếu thu test trong ngày (QLTV-006, QLTV-010).",
+  "Mở Thu/chi HP/ Khai thác báo biểu/ Thu/Chi học phí/ In bảng kê thu/chi học phí; khoảng ngày = hôm nay → In.",
+  "KIỂM TRA: bảng kê có phiếu {MSSV} và phiếu vãng lai đúng số tiền; tổng thu = tổng Danh sách phiếu thu học kỳ (QLTV-008) cùng ngày; phiếu hủy không tính.",
+  "Tắt màn hình."
+ ],
+ "title": "In bảng kê thu/chi học phí",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

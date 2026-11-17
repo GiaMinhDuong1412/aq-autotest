@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Import lại cùng file",
+   "expected": "Báo trùng số chứng từ / không tạo phiếu lần hai. Cần xác nhận.",
+   "name": "Import trùng chứng từ",
+   "steps": [
+    "Import file lần hai."
+   ]
+  }
+ ],
+ "code": "QLTV-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Học phí (QLTV-005)",
+  "next": [
+   "QLTV-008"
+  ],
+  "out": "Phiếu import (đã hủy)"
+ },
+ "expected": "Import tạo phiếu thu cho dòng hợp lệ (kênh chuyển khoản – lưu đồ CSHP bước 14). Chưa có tài liệu – cần xác nhận cấu trúc file.",
+ "lastRun": null,
+ "menu": "Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import phiếu thu",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có học phí phải đóng (QLTV-005).",
+  "Mở Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Import phiếu thu → Xuất cấu trúc.",
+  "Chuẩn bị file: {MSSV}, số tiền 500.000, ngày, số chứng từ TEST; thêm 1 dòng mã SV không tồn tại.",
+  "Chọn file → Import; KIỂM TRA dòng sai được báo.",
+  "KIỂM TRA: phiếu {MSSV} 500.000 có ở Danh sách phiếu thu học kỳ (QLTV-008); nợ giảm 500.000.",
+  "Dọn: hủy phiếu import test. Tắt màn hình."
+ ],
+ "title": "Import phiếu thu (chuyển khoản)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

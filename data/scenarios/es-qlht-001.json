@@ -1,0 +1,72 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: NHHK, Tên năm học học kỳ, Ngày bắt đầu",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (NHHK…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "NHHK nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng NHHK và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng NHHK",
+   "steps": [
+    "Bấm Thêm, nhập NHHK giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "học kỳ đã được dùng ở dữ liệu học kỳ (đã khởi tạo / có sinh viên học kỳ)",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng học kỳ đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLHT-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần dữ liệu trước (chỉ đọc học kỳ cuối trong danh mục)",
+  "next": [
+   "QLHT-002"
+  ],
+  "out": "Học kỳ {NHHK} (nếu giữ lại để khởi tạo)"
+ },
+ "expected": "Học kỳ mới lưu được với đúng ngày bắt đầu / tuần bắt đầu / số tuần; sửa số tuần lưu được; xóa được học kỳ chưa phát sinh dữ liệu. (Theo QLHT_ThongTinHocKy, mục III.1.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Thông tin học kỳ/ Danh mục năm học học kỳ",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_ThongTinHocKy, mục III.1 Tạo danh mục năm học học kỳ",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tài khoản admin hệ thống; KHÔNG sửa các học kỳ đang dùng.",
+  "Mở Hệ thống/ Thông tin học kỳ/ Danh mục năm học học kỳ; ghi lại học kỳ cuối cùng trong danh sách → chọn {NHHK} = học kỳ kế tiếp chưa có (tìm ở cột NHHK).",
+  "Thêm: bấm Thêm, nhập NHHK = {NHHK}, Tên năm học học kỳ, Ngày bắt đầu = {NGAYBD}, Tuần bắt đầu, Số tuần học kỳ (vd 20) → Lưu.",
+  "KIỂM TRA THÊM: dòng {NHHK} hiển thị đúng Ngày bắt đầu, Tuần bắt đầu, Số tuần học kỳ đã nhập; thanh học kỳ (chọn học kỳ làm việc) có {NHHK}.",
+  "Sửa: chọn {NHHK}, đổi Số tuần học kỳ (vd 20 → 21) → Lưu.",
+  "KIỂM TRA SỬA: tắt, mở lại màn hình → {NHHK} có Số tuần học kỳ mới.",
+  "Xóa (dọn): nếu {NHHK} chỉ dùng cho test và CHƯA khởi tạo dữ liệu (QLHT-002) → chọn {NHHK} → Xóa → xác nhận đúng {NHHK}. Đã khởi tạo thì giữ lại, ghi chú để QLHT-002 dùng.",
+  "KIỂM TRA XÓA: {NHHK} không còn trong danh mục (hoặc ghi rõ lý do giữ lại). Tắt màn hình."
+ ],
+ "title": "Danh mục năm học học kỳ: thêm – sửa – xóa học kỳ test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NGAYBD": "(ngày đầu học kỳ, dd/mm/yyyy)",
+  "NHHK": "(học kỳ kế tiếp học kỳ cuối trong danh mục, vd 20271)"
+ },
+ "version": "v2026.10H.00"
+}

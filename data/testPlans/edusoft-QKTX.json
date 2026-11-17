@@ -31,7 +31,7 @@
    "kind": "setup",
    "menu": "Ký túc xá / Định nghĩa dữ liệu / Danh mục phòng lưu trú",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-001",
    "source": "sheet",
    "steps": [
     "Chỉ xem (không sửa) danh mục khu/cơ sở, dãy/tòa nhà ở Ký túc xá / Quản trị phân hệ / Quản lý danh mục; chọn 1 dãy có sẵn",
@@ -49,7 +49,7 @@
    "kind": "setup",
    "menu": "Ký túc xá / Định nghĩa dịch vụ và giá / Đơn giá phòng",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-002",
    "source": "sheet",
    "steps": [
     "Mở menu Ký túc xá / Định nghĩa dịch vụ và giá → Đơn giá phòng",
@@ -66,7 +66,7 @@
    "kind": "setup",
    "menu": "Ký túc xá / Định nghĩa dịch vụ và giá / Đơn giá hạng mục dịch vụ",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-003",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: Danh mục dịch vụ TEST_DV01 (cách tính theo đối tượng hoặc theo phòng), Hạng mục dịch vụ TEST_HM01 thuộc TEST_DV01",
@@ -86,7 +86,7 @@
    "kind": "main",
    "menu": "Ký túc xá / Quản lý hợp đồng / Quản lý vào / Hợp đồng theo phòng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-004",
    "source": "sheet",
    "steps": [
     "Mở menu Ký túc xá / Quản lý hợp đồng / Quản lý vào → Hợp đồng theo phòng",
@@ -104,7 +104,7 @@
    "kind": "main",
    "menu": "Ký túc xá / Quản lý thanh toán / Thu tiền lưu trú tháng / Thu phí lưu trú",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-005",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: Quản lý thanh toán / Hóa đơn lưu trú / Tính phí ký túc xá: chọn SV test (hợp đồng TEST_HD01) → Thực hiện; KIỂM TRA có hóa đơn tháng",
@@ -123,7 +123,7 @@
    "kind": "main",
    "menu": "Ký túc xá / Quản lý thanh toán / Thu tiền lưu trú tháng / Danh sách phiếu thu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-006",
    "source": "sheet",
    "steps": [
     "Mở menu Ký túc xá / Quản lý thanh toán / Thu tiền lưu trú tháng → Danh sách phiếu thu",
@@ -142,7 +142,7 @@
    "kind": "main",
    "menu": "Ký túc xá / Quản lý hợp đồng / Quản lý vào / Xem danh sách hợp đồng của từng đối tượng",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-007",
    "source": "sheet",
    "steps": [
     "Mở menu Ký túc xá / Quản lý hợp đồng / Quản lý vào → Xem danh sách hợp đồng của từng đối tượng",
@@ -159,7 +159,7 @@
    "kind": "main",
    "menu": "Ký túc xá / Quản lý hợp đồng / Quản lý ra / Thanh lý hợp đồng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-008",
    "source": "sheet",
    "steps": [
     "Mở menu Ký túc xá / Quản lý hợp đồng / Quản lý ra → Thanh lý hợp đồng",
@@ -177,7 +177,7 @@
    "menu": "NetWEB sinh viên: Đăng ký ký túc xá",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QKTX-009",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: phòng TEST_P01 cho phép đăng ký online, đang trong thời gian đăng ký (chỉ xem setting)",
@@ -195,6 +195,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 9 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 5 khớp, 3 khớp một phần, 1 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

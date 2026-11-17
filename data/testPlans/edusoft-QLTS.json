@@ -23,7 +23,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Chuẩn bị / Danh sách kỳ tuyển sinh",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-001",
    "source": "sheet",
    "steps": [
     "Chọn đúng năm học học kỳ đang tuyển sinh.",
@@ -42,7 +42,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Chuẩn bị / Danh sách đợt tuyển sinh",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-002",
    "source": "sheet",
    "steps": [
     "Điều kiện: đã có kỳ tuyển sinh TEST_ (bước 1).",
@@ -60,7 +60,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số toàn cục",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-003",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Quản trị phân hệ / Chỉnh định thông số toàn cục.",
@@ -78,7 +78,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục ngành tuyển sinh",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-004",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục ngành tuyển sinh.",
@@ -95,7 +95,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục phương thức xét tuyển",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-005",
    "source": "sheet",
    "steps": [
     "Điều kiện: đã có bộ đếm phiếu đăng ký xét tuyển (Hệ thống / Quản trị hệ thống / Quản lý danh mục / Quản lý hệ thống / Danh mục bộ đếm, Loại đối tượng = Mã số thí sinh nộp hồ sơ).",
@@ -113,7 +113,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-006",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh.",
@@ -129,7 +129,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục môn thi tuyển sinh",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-007",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục môn thi tuyển sinh.",
@@ -145,7 +145,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Chuẩn bị / Nhập ngành / khối tuyển sinh",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-008",
    "source": "sheet",
    "steps": [
     "Điều kiện: kỳ tuyển sinh đã có khối (Chuẩn bị / Danh sách khối tuyển sinh), ngành (Danh sách ngành tuyển sinh), môn thi (Danh sách môn thi tuyển sinh).",
@@ -163,7 +163,7 @@
    "kind": "setup",
    "menu": "Tuyển sinh / Chuẩn bị / Định nghĩa phương án nhập điểm",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-009",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Chuẩn bị / Định nghĩa phương án nhập điểm.",
@@ -180,7 +180,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh / Nhập hồ sơ đăng ký xét tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-010",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Nhập liệu hồ sơ / Nhập hồ sơ thí sinh / Nhập hồ sơ đăng ký xét tuyển.",
@@ -199,7 +199,7 @@
    "menu": "NetWEB: Đăng ký xét tuyển",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-011",
    "source": "sheet",
    "steps": [
     "Điều kiện: kỳ/đợt TS TEST_ đang trong thời gian Từ ngày – Đến ngày ĐKXT; form đã định nghĩa (Định nghĩa nhóm HSTS trên web, Chỉnh định thông tin tuyển sinh trên web); phương thức không bị “Không hiển thị online”; template mail “Thư thông báo ĐK xét tuyển thành công” đã có.",
@@ -219,7 +219,7 @@
    "menu": "NetWEB: Tra cứu thông tin xét tuyển",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-012",
    "source": "sheet",
    "steps": [
     "Mở Netweb test → menu Tra cứu thông tin xét tuyển; tra cứu hồ sơ thí sinh TEST_ (thông tin + mật khẩu tra cứu trong mail).",
@@ -237,7 +237,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Điểm chuẩn / Nhập điểm chuẩn xét tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-013",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Điểm chuẩn / Nhập điểm chuẩn xét tuyển.",
@@ -254,7 +254,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Danh sách xét tuyển / Danh sách thí sinh / đợt xét tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-014",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Danh sách xét tuyển / Danh sách thí sinh/đợt xét tuyển.",
@@ -272,7 +272,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Xét tuyển / Xét tuyển theo đợt / Xét trúng tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-015",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Xét tuyển / Xét tuyển theo đợt / Xét trúng tuyển.",
@@ -289,7 +289,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Hồ sơ nhập học / Danh sách trúng tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-016",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Hồ sơ nhập học / Danh sách trúng tuyển.",
@@ -305,7 +305,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Hồ sơ nhập học / Tên lớp cho thì sinh trúng tuyển / Gán tên lớp cho thí sinh trúng tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-017",
    "source": "sheet",
    "steps": [
     "Mở Tuyển sinh / Hồ sơ nhập học / Tên lớp cho thí sinh trúng tuyển / Phân bổ sĩ số các lớp trúng tuyển: chia sĩ số lớp.",
@@ -322,7 +322,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Hồ sơ nhập học / Mã SV cho thí sinh trúng tuyển / Gán mã cho sinh viên trúng tuyển",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-018",
    "source": "sheet",
    "steps": [
     "Mở Tuyển sinh / Hồ sơ nhập học / Mã SV cho thí sinh trúng tuyển / Nhập mã số sinh viên theo đối tượng: nhập số bắt đầu.",
@@ -340,7 +340,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Hồ sơ nhập học / Xác nhận nhập học / Nhập thí sinh nhập học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-019",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Hồ sơ nhập học / Xác nhận nhập học / Nhập thí sinh nhập học.",
@@ -356,7 +356,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập hồ sơ nhập học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-020",
    "source": "sheet",
    "steps": [
     "Điều kiện: Tiếp sinh / Bộ đếm số phiếu học phí; Chuẩn bị hồ sơ nhập học; Phân loại hồ sơ nhập học diện trúng tuyển đã khai báo.",
@@ -373,7 +373,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Tiếp sinh / Nhập hồ sơ & học phí nhập học / Nhập học phí nhập học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-021",
    "source": "sheet",
    "steps": [
     "Điều kiện: Tiếp sinh / Chuẩn bị khoản thu nhập học; Phân loại khoản thu theo đối tượng.",
@@ -391,7 +391,7 @@
    "kind": "main",
    "menu": "Tuyển sinh / Tiếp sinh / Chuyển danh sách trúng tuyển sang phân hệ QLSV",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTS-022",
    "source": "sheet",
    "steps": [
     "Mở menu Tuyển sinh / Tiếp sinh / Chuyển danh sách trúng tuyển sang phân hệ QLSV.",
@@ -406,6 +406,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 22 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 20 khớp, 2 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

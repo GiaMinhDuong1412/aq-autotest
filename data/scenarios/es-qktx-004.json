@@ -1,0 +1,70 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{PH} đã đủ 2 người",
+   "expected": "Bị chặn, báo phòng đã đủ.",
+   "name": "Vượt số lượng được ở",
+   "steps": [
+    "Thêm hợp đồng thứ ba vào {PH}."
+   ]
+  },
+  {
+   "condition": "SV Nữ vào phòng Nam",
+   "expected": "Bị chặn, báo không đúng phái.",
+   "name": "Khác phái",
+   "steps": [
+    "Thêm hợp đồng SV Nữ vào {PH}."
+   ]
+  },
+  {
+   "condition": "Số hợp đồng nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Số hợp đồng và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Số hợp đồng",
+   "steps": [
+    "Bấm Thêm, nhập Số hợp đồng giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "QKTX-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phòng, đơn giá (QKTX-001, QKTX-002)",
+  "next": [
+   "QKTX-005",
+   "QKTX-007",
+   "QKTX-008"
+  ],
+  "out": "Hợp đồng {HD} của {MSSV}"
+ },
+ "expected": "Hợp đồng lưu trú theo phòng tăng số đang ở; chặn vượt sức chứa và khác phái. Tài liệu không có màn hình này (suy từ Danh sách chuẩn bị lập hợp đồng / QĐ vào KTX) – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng theo phòng",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_XetDuyetHopDongKTX; QKTX_ThongTinLuuTru, mục Xét duyệt 2 Chuẩn bị lập hợp đồng; Lưu trú 1 Quyết định vào KTX",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; phòng {PH} 2 chỗ Nam (QKTX-001), có đơn giá (QKTX-002); {MSSV} phái Nam.",
+  "Mở Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng theo phòng; chọn {PH} → Thêm hợp đồng: {MSSV}, Số hợp đồng {HD}, ngày hợp đồng, thời hạn từ đầu tháng đến cuối học kỳ → Lưu.",
+  "KIỂM TRA THÊM: {HD} dưới {PH}; Số lượng đang ở của {PH} = 1.",
+  "Sửa thời hạn → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho QKTX-005–QKTX-008."
+ ],
+ "title": "Hợp đồng lưu trú theo phòng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "HD": "TEST_HD{ddHHMM}",
+  "MSSV": "(SV test)",
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

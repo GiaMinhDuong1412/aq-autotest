@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "NHHK kết thúc < học kỳ test",
+   "expected": "{MSSV} không có diện ở học kỳ test.",
+   "name": "Học kỳ ngoài khoảng áp dụng",
+   "steps": [
+    "Khai diện cho học kỳ trước, đồng bộ ở học kỳ test."
+   ]
+  }
+ ],
+ "code": "QLSV-017",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001); danh mục diện chính sách",
+  "next": [
+   "QLTV-005"
+  ],
+  "out": "Diện chính sách học kỳ của {MSSV} (đã dọn)"
+ },
+ "expected": "SV có diện chính sách trong khoảng NHHK được đồng bộ vào diện chính sách học kỳ và hưởng % miễn giảm khi tính học phí. (Theo QLSV_TroCapXaHoi&MienGiamChinhSach, mục III.2.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên học kỳ",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_TroCapXaHoi&MienGiamChinhSach, mục III.2 Miễn giảm chính sách (2.1–2.6)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa); Danh mục diện chính sách và Nhập phần trăm miễn giảm DCS đã có (chỉ xem).",
+  "Ghi lại % miễn giảm của diện {DCS} (Sinh viên diện chính sách/ Nhập phần trăm miễn giảm DCS).",
+  "Mở Sinh viên diện chính sách/ Diện chính sách sinh viên chung: thêm {MSSV}, diện {DCS}, NHHK áp dụng = học kỳ test, NHHK kết thúc = học kỳ test → Lưu.",
+  "KIỂM TRA THÊM: dòng {MSSV} – {DCS} đúng khoảng học kỳ.",
+  "Mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Sinh viên diện chính sách/ Diện chính sách sinh viên học kỳ → Đồng bộ.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: {MSSV} có diện {DCS} ở học kỳ test; In DSSV miễn giảm có {MSSV}; (nối CSHP) miễn giảm học phí = % của diện khi tính HP (QLTV-005).",
+  "Dọn: xóa dòng diện chính sách chung của {MSSV} → Đồng bộ lại → KIỂM TRA {MSSV} không còn ở diện học kỳ.",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Diện chính sách sinh viên học kỳ: khai diện chung rồi đồng bộ vào học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DCS": "(diện chính sách có % miễn giảm)",
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập 11 hoặc -1",
+   "expected": "Không nhận, báo điểm không hợp lệ.",
+   "name": "Điểm ngoài thang",
+   "steps": [
+    "Nhập điểm 11 cho {MSSV} → Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK các học kỳ",
+  "next": [],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Nhập điểm toàn khóa cho 1 SV ghi được ở mọi môn đã đăng ký. (Theo DIEM_QuanLyNhapDiem, mục III.2.3.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác/ Nhập điểm toàn khóa/sinh viên",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyNhapDiem, mục III.2.3 Nhập điểm toàn khóa sinh viên",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có các môn đăng ký trong khóa.",
+  "Mở Quản lý nhập điểm/ Quản lý nhập điểm/ Nhập hình thức Khác/ Nhập điểm toàn khóa/sinh viên; chọn {MSSV}.",
+  "KIỂM TRA: hiện mọi môn đã đăng ký trong suốt khóa (các học kỳ).",
+  "Nhập thành phần điểm của {MH} (QT 9) → Lưu; KIỂM TRA mở lại thấy 9; Xem điểm toàn khóa 1 sinh viên đúng.",
+  "Trả lại giá trị cũ → Lưu. Tắt màn hình."
+ ],
+ "title": "Nhập điểm toàn khóa một sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

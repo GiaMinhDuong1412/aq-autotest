@@ -1,0 +1,59 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thời gian lớp đã hết hạn (QLSV-009)",
+   "expected": "Không cho sửa/lưu, báo hết thời gian.",
+   "name": "Ngoài thời gian cập nhật",
+   "steps": [
+    "Mở Cập nhật thông tin lý lịch."
+   ]
+  },
+  {
+   "condition": "Đăng nhập Netweb vai trò sinh viên với mật khẩu sai",
+   "expected": "Netweb báo sai tài khoản/mật khẩu, không vào được trang chức năng.",
+   "name": "Sai mật khẩu Netweb",
+   "steps": [
+    "Nhập mã sinh viên test và một mật khẩu sai.",
+    "Bấm Đăng nhập."
+   ]
+  }
+ ],
+ "code": "QLSV-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thời gian cập nhật của lớp (QLSV-009)",
+  "next": [
+   "QLSV-008"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "SV cập nhật được lý lịch trong thời gian cho phép; dữ liệu về Edusoft (trực tiếp hoặc qua duyệt – cần xác nhận). (Theo NetWEB_NhapLyLichSVTrucTuyen, mục 18.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Cập nhật thông tin lý lịch",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_NhapLyLichSVTrucTuyen, mục 18 Cập nhật thông tin lý lịch",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; đang trong thời gian cho phép cập nhật lý lịch của lớp (QLSV-009).",
+  "Menu Cập nhật thông tin lý lịch → ghi lại giá trị trường địa chỉ liên lạc.",
+  "Sửa địa chỉ liên lạc = {DIACHI} → Lưu.",
+  "KIỂM TRA: báo lưu thành công; tải lại trang thấy {DIACHI}.",
+  "KIỂM TRA Edusoft: Cập nhật lý lịch sinh viên (QLSV-008) của SV này hiện {DIACHI} (hoặc chờ duyệt – ghi nhận).",
+  "Dọn: trả địa chỉ về giá trị cũ → Lưu."
+ ],
+ "title": "Netweb SV: cập nhật thông tin lý lịch trực tuyến",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DIACHI": "TEST_dia chi {ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

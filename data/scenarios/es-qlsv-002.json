@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} còn trong QĐ vào mới / DS SV học kỳ",
+   "expected": "Chương trình truy vấn dữ liệu liên quan và cảnh báo trước khi xóa; không xác nhận thì SV vẫn còn.",
+   "name": "Xóa SV đang có quyết định",
+   "steps": [
+    "Chọn {MSSV} ở Danh mục sinh viên → Xóa, đọc hộp thoại, chọn Không."
+   ]
+  },
+  {
+   "condition": "Bấm Thêm ở Danh mục sinh viên (SV tạm, không có QĐ)",
+   "expected": "SV tạm có trong danh mục nhưng KHÔNG có trong DS SV học kỳ cho tới khi lập QĐ vào mới.",
+   "name": "Thêm SV trực tiếp ở danh mục",
+   "steps": [
+    "Thêm SV tạm TEST, để trống Mã lớp/Số QĐ → Lưu.",
+    "Mở Danh sách sinh viên học kỳ tìm SV đó.",
+    "Xóa SV tạm."
+   ]
+  }
+ ],
+ "code": "QLSV-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001)",
+  "next": [
+   "QLSV-003",
+   "QLSV-008"
+  ],
+  "out": "Điện thoại của {MSSV} (dọn cùng SV)"
+ },
+ "expected": "SV vào qua QĐ vào mới có ở Danh mục sinh viên với đúng thông tin; chỉ sửa được các ô cho phép; xóa QĐ vào mới thì SV tự mất khỏi danh mục. Danh mục SV không theo học kỳ. Chưa có tài liệu riêng – cần xác nhận các ô khóa. (Theo nghiệp vụ QLSV, lưu đồ QLSV bước 2–3.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa).",
+  "Mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MSSV} ở ô tìm kiếm cột Mã SV.",
+  "KIỂM TRA: {MSSV} có đúng Họ lót, Tên, Ngày sinh, Mã lớp, NHHK vào = học kỳ test.",
+  "Chọn {MSSV} → Xem QĐ vào – ra sinh viên → KIỂM TRA có quyết định vào mới của QLSV-001.",
+  "Sửa (chỉ các ô cho phép: Họ lót, Tên, Ngày sinh, Phái, Nơi sinh, Điện thoại): đổi Điện thoại 1 = 0900000000 → Lưu.",
+  "KIỂM TRA SỬA: tắt, mở lại, tìm {MSSV} → Điện thoại 1 mới.",
+  "KIỂM TRA ô khóa: thử sửa Mã lớp / Số QĐ → không sửa được.",
+  "Export: tick {MSSV} → Export → KIỂM TRA file chỉ có dòng {MSSV}.",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Danh mục sinh viên: SV mới từ QĐ vào mới hiển thị, sửa thông tin cho phép",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

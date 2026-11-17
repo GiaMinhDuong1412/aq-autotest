@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Loại ý kiến, Nội dung",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Loại ý kiến…) ở form góp ý.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  }
+ ],
+ "code": "CHUNG-101",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Loại ý kiến (QTRI-001)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Ý kiến gửi tới đúng loại/phòng ban, admin trả lời và người gửi thấy (có thể kèm mail theo GH_MAILSERVER). Bước gửi phía SV cần xác nhận theo tài liệu SV. (Theo NETWEB-QuanTriChung, mục III.4.2–4.3.)",
+ "lastRun": null,
+ "menu": "NetWEB SV +GV: Góp ý kiến",
+ "module": "CHUNG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.4.2 DS phân loại ý kiến; III.4.3 Ý kiến người dùng",
+  "plan": "netweb-CHUNG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; admin tạo loại ý kiến {LOAI} (QTRI-001 – DS phân loại ý kiến, phòng ban nhận).",
+  "Netweb test: mở trang quản trị (thêm /admin vào địa chỉ Netweb test), đăng nhập tài khoản admin test → DS phân loại ý kiến → Thêm {LOAI} → Lưu.",
+  "SV test: Góp ý kiến → chọn {LOAI}, nội dung 'TEST gop y' → Gửi → KIỂM TRA báo gửi thành công.",
+  "Admin: Ý kiến người dùng → KIỂM TRA thấy ý kiến → Trả lời → Lưu.",
+  "SV: KIỂM TRA thấy câu trả lời. Lặp với GV test.",
+  "Dọn: admin xóa ý kiến test và {LOAI}."
+ ],
+ "title": "Netweb SV + GV: góp ý kiến và admin trả lời",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOAI": "TEST_LoaiYK{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

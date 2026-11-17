@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Điểm {MH} của {MSSV} vượt ngưỡng cho phép cải thiện",
+   "expected": "Bị chặn khi đăng ký cải thiện.",
+   "name": "Không thỏa điều kiện cải thiện",
+   "steps": [
+    "Đăng ký cải thiện cho SV không đủ điều kiện."
+   ]
+  }
+ ],
+ "code": "LTHI-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm môn (DIEM), đăng ký cải thiện",
+  "next": [
+   "LTHI-024"
+  ],
+  "out": "{MSSV} cải thiện trong {NT} (đã gỡ)"
+ },
+ "expected": "SV đăng ký cải thiện hợp lệ được ghép vào danh sách thi. Bước ghép cần xác nhận (tài liệu chỉ mô tả đăng ký). (Theo LTHI_ToChucThi, mục III.3.2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý thi cải thiện/ Ghép sinh viên cải thiện vào kỳ thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.3.2 Thi cải thiện",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đã có điểm {MH} và thỏa điều kiện cải thiện (Điều kiện đăng ký cải thiện – DKMH), đã đăng ký ở Tổ chức thi/ Quản lý thi cải thiện/ Sinh viên đăng ký thi cải thiện.",
+  "Mở Tổ chức thi/ Quản lý thi cải thiện/ Ghép sinh viên cải thiện vào kỳ thi; chọn kỳ thi/môn {MH} → Thực hiện ghép.",
+  "KIỂM TRA: {NT} có {MSSV} (diện cải thiện).",
+  "KIỂM TRA In kiểm tra dữ liệu/ Khác biệt giữa ĐKMH và DS thi (LTHI-024) ghi nhận {MSSV} là SV thi không có ĐKMH học kỳ này (cải thiện).",
+  "Dọn: gỡ {MSSV}, xóa đăng ký cải thiện test. Tắt màn hình."
+ ],
+ "title": "Ghép sinh viên thi cải thiện vào kỳ thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

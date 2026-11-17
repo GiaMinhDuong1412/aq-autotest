@@ -1,0 +1,71 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Cần xét lại sau khi đổi điểm chuẩn",
+   "expected": "Kết quả xét bị xóa, xét lại cho kết quả như cũ.",
+   "name": "Hủy kết quả trúng tuyển",
+   "steps": [
+    "Mở Tuyển sinh/ Xét tuyển/ Hủy kết quả trúng tuyển theo đợt, chọn {DOT} → Hủy kết quả đã xét.",
+    "KIỂM TRA Danh sách trúng tuyển không còn {TS1}.",
+    "Xét lại."
+   ]
+  },
+  {
+   "condition": "Chỉ xét một thí sinh",
+   "expected": "Chỉ {TS1} được xét, thí sinh khác không đổi.",
+   "name": "Xét theo thí sinh",
+   "steps": [
+    "Mở Xét tuyển/ Xét tuyển theo thí sinh, chọn {TS1} → Thực hiện."
+   ]
+  },
+  {
+   "condition": "{TS1} có NV1 và NV2 đều ≥ điểm chuẩn",
+   "expected": "Chỉ trúng NV1 (STT nhỏ nhất), NV2 không trúng.",
+   "name": "Hai nguyện vọng cùng đạt",
+   "steps": [
+    "Thêm NV2 cho {TS1} (QLTS-010), cộng điểm, xét lại."
+   ]
+  }
+ ],
+ "code": "QLTS-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm cộng XT (QLTS-014), điểm chuẩn (QLTS-013)",
+  "next": [
+   "QLTS-016"
+  ],
+  "out": "{TS1} trúng tuyển {NGANH}; {TS2} không trúng"
+ },
+ "expected": "Thí sinh có Điểm cộng XT ≥ điểm chuẩn trúng nguyện vọng cao nhất đạt; thấp hơn thì không trúng; người trúng xuất hiện ở Danh sách trúng tuyển. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.8.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh / Xét tuyển / Xét tuyển theo đợt / Xét trúng tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.8 Xét tuyển cho thí sinh (8.1–8.3)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã duyệt và cộng điểm {TS1} 24,60, {TS2} 21,75 (QLTS-014); điểm chuẩn 24,00 (QLTS-013).",
+  "Mở Tuyển sinh/ Xét tuyển/ Xét tuyển theo đợt/ Xét trúng tuyển, chọn đợt {DOT} → Thực hiện (xét toàn bộ phương thức, lấy 1 nguyện vọng cao nhất theo STT).",
+  "KIỂM TRA: {TS1} trúng tuyển nguyện vọng {NGANH} (24,60 ≥ 24,00).",
+  "KIỂM TRA: {TS2} không trúng (21,75 < 24,00).",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Tuyển sinh/ Hồ sơ nhập học/ Danh sách trúng tuyển có {TS1}, không có {TS2}.",
+  "Tắt màn hình."
+ ],
+ "title": "Xét trúng tuyển theo đợt (thí sinh đạt và không đạt điểm chuẩn)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}",
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLHT-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "DKMH-015"
+  ],
+  "out": "Không thay đổi"
+ },
+ "expected": "Base Url trỏ đúng Netweb test (dùng để tự gọi API clear cache khi Edusoft đổi setting ĐKMH); học kỳ đăng ký đúng học kỳ test. (Theo DKMH_HuongDanDangKyMonHocOnline, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định chung",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_HuongDanDangKyMonHocOnline, mục III.1 Setting URL; III.2 Thời gian cho phép đăng ký môn học",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ xem, không đổi Base Url của môi trường dùng chung.",
+  "Mở Hệ thống/ Quản trị NetWEB/ Chỉnh định chung.",
+  "KIỂM TRA Base Url = địa chỉ Netweb test của máy chạy thử (trang Máy chạy thử).",
+  "KIỂM TRA năm học học kỳ đăng ký (NHHK dùng cho Netweb) = học kỳ test.",
+  "Ghi lại giá trị vào ghi chú lượt chạy; tắt màn hình không Lưu."
+ ],
+ "title": "Chỉnh định chung Netweb: kiểm tra Base Url và học kỳ đăng ký (chỉ xem)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KLGD-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KL đã tính (KLGD-008)",
+  "next": [
+   "KLGD-010"
+  ],
+  "out": "Không thay đổi"
+ },
+ "expected": "Khối lượng chi tiết khớp dữ liệu chốt và hệ số. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 5.4.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Tính khối lượng/ Tính khối lượng/ Xem khối lượng chi tiết đã tính",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.4 Xem khối lượng chi tiết",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã tính {DOT} (KLGD-008).",
+  "Mở Khối lượng/ Tính khối lượng/ Tính khối lượng/ Xem khối lượng chi tiết đã tính; chọn {DOT}, lọc {CB}.",
+  "KIỂM TRA: dòng khối lượng từng nhóm của {CB}, số tiết = dữ liệu đã chốt × hệ số; tổng = giá trị tính sẵn ở KLGD-008.",
+  "Tắt màn hình."
+ ],
+ "title": "Xem khối lượng chi tiết đã tính",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)",
+  "DOT": "TEST_DOT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

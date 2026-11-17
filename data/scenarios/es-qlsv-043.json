@@ -1,0 +1,48 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn lớp",
+   "expected": "Chương trình nhắc chọn lớp, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn lớp nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-043",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Cố vấn lớp (QLSV-042)",
+  "next": [],
+  "out": "Cố vấn {LOP} được trả lại như cũ"
+ },
+ "expected": "Hủy mã cố vấn xóa cố vấn của toàn lớp, lớp khác không ảnh hưởng. (Theo QLSV_CoVanHocTap, mục III.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Hủy mã cố vấn học tập cho toàn lớp",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CoVanHocTap, mục III.1 (Hủy mã cố vấn học tập cho toàn lớp)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {LOP} đã gán cố vấn {CVHT} (QLSV-042).",
+  "Mở Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Hủy mã cố vấn học tập cho toàn lớp; chọn {LOP} → Lưu.",
+  "KIỂM TRA: SV trong {LOP} không còn mã cố vấn (DS SV học kỳ cột Mã cố vấn trống); In DSSV theo cố vấn không còn {LOP} dưới {CVHT}.",
+  "Trả lại cố vấn cũ của {LOP} (gán lại như ghi ở QLSV-042). Tắt màn hình."
+ ],
+ "title": "Hủy mã cố vấn học tập cho toàn lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CVHT": "(GV cố vấn test)",
+  "LOP": "(lớp test)"
+ },
+ "version": "v2026.10H.00"
+}

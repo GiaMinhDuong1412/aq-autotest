@@ -100,7 +100,14 @@
  "createdBy": null,
  "dataFlow": {
   "in": "Đăng nhập Edusoft (CHUNG-001); mã/tên test chưa có trong Danh mục sinh viên và Danh sách sinh viên học kỳ (tự đổi nếu trùng); lớp {LOP} lấy từ Danh sách sinh viên học kỳ; lý do {LYDO} chọn ngẫu nhiên trong Danh mục lý do quyết định (loại vào mới) – chỉ đọc, không sửa",
-  "next": [],
+  "next": [
+   "QLSV-002",
+   "QLSV-003",
+   "QLSV-004",
+   "QLSV-005",
+   "QLSV-006",
+   "QLSV-007"
+  ],
   "out": "Quyết định {SOQD} (sinh viên {MSSV} – {HOLOT} {TEN}, lớp {LOP}) – được xóa ở bước 12; bước 14 kiểm tra SV không còn ở Danh mục sinh viên."
  },
  "expected": "Thêm: quyết định {SOQD} lưu được, có sinh viên {MSSV} (lớp {LOP}); sinh viên mới hiển thị trong Danh sách sinh viên học kỳ. Sửa: Tên quyết định đổi thành {TENQD2}. Xóa: quyết định {SOQD} không còn trên màn hình, xóa thành công; sinh viên {MSSV} không còn trong Danh mục sinh viên (không để lại rác). Mỗi màn hình test xong được tắt bằng nút X trên tab. (Theo hướng dẫn người dùng 03/11/2026; QLSV_CapNhatQuyetDinhVaoRa.)",
@@ -140,7 +147,7 @@
   "KIỂM TRA DỌN DỮ LIỆU: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MSSV} → không còn là Đạt (xóa QĐ vào mới thì Edusoft tự xóa SV khỏi danh mục). Xong tắt màn hình."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-11-16T10:30:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",

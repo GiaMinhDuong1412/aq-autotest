@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "phòng học kỳ đã được dùng ở TKB / lịch thi / sử dụng phòng đột xuất",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng phòng học kỳ đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KHGD-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục phòng học",
+  "next": [
+   "KHGD-011",
+   "KHGD-014",
+   "KHGD-019",
+   "LTHI-009"
+  ],
+  "out": "Phòng {PHONG} trong học kỳ test"
+ },
+ "expected": "Chỉ phòng có trong DS phòng học kỳ mới dùng được khi xếp TKB/lịch thi; xếp TKB chỉ chọn phòng có Sức chứa ≥ sĩ số nhóm và đúng tính chất. (Theo KHGD_CacBuocXepTKB, mục III.1; lưu đồ TKB bước 11.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.1 Chuẩn bị chung (tự điển phòng)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục phòng học có phòng {PHONG} (Sức chứa 60, Sức chứa thi 30, tính chất phòng để trống = lý thuyết) – tạo nếu chưa có.",
+  "Mở Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách phòng học kỳ, học kỳ test; tìm {PHONG} → chưa có.",
+  "Thêm {PHONG} từ Danh sách phòng vào 'Danh sách phòng được sử dụng trong học kỳ' → Lưu.",
+  "KIỂM TRA THÊM: {PHONG} có Mã phòng học kỳ, Sức chứa 60, Sức chứa thi 30.",
+  "Sửa Sức chứa thi 30 → 25 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho KHGD-011/KHGD-014/KHGD-019/LTHI-009; dọn cuối chuỗi: gỡ {PHONG} khỏi học kỳ (chỉ khi không còn TKB/lịch thi) rồi xóa khỏi danh mục."
+ ],
+ "title": "Danh sách phòng học kỳ: đưa phòng test vào học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PHONG": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiều môn",
+   "expected": "Các môn chọn nhận {LH}.",
+   "name": "Gán theo loại hình",
+   "steps": [
+    "Gán theo loại hình cho nhiều môn test."
+   ]
+  }
+ ],
+ "code": "KLGD-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Loại hình (KLGD-002)",
+  "next": [
+   "KLGD-008"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Môn học mang loại hình và số tiết KL dùng tính khối lượng. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 3.14.)",
+ "lastRun": null,
+ "menu": "Khối lượng / Khai báo thông số / Danh sách môn học & loại hình / Nhập thông tin loại hình cho môn học",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.14 Nhập thông tin loại hình cho môn học",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; loại hình {LH} (KLGD-002); ghi lại loại hình hiện tại của {MH}.",
+  "Mở Khối lượng/ Khai báo thông số/ Danh sách môn học & loại hình/ Nhập thông tin loại hình cho môn học; học kỳ test, chọn {MH} → gán {LH}.",
+  "Gán số tiết KL theo tiết thành phần (LT/TH) → Lưu.",
+  "KIỂM TRA: {MH} đúng loại hình và số tiết KL.",
+  "Dọn: trả loại hình cũ cho {MH} → KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Nhập thông tin loại hình cho môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LH": "TEST_LH{ddHHMM}",
+  "MH": "(môn test cán bộ dạy)"
+ },
+ "version": "v2026.10H.00"
+}

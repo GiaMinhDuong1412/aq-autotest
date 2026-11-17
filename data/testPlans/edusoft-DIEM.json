@@ -55,7 +55,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Bảng ghi điểm / In bảng ghi điểm / In bảng ghi điểm theo nhóm học",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-001",
    "source": "sheet",
    "steps": [
     "Điều kiện: Quản lý điểm / Bảng ghi điểm / Định nghĩa mẫu bảng ghi điểm / Danh sách mẫu bảng ghi điểm có mẫu in (chọn loại → Tiếp tục; mã phiên bản tự gán, tên phiên bản tự đặt).",
@@ -74,7 +74,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý môn thay thế / Chỉnh sửa môn thay thế sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-002",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý điểm / Quản lý môn thay thế / Chỉnh sửa môn thay thế sinh viên.",
@@ -91,7 +91,7 @@
    "kind": "setup",
    "menu": "Quản lý điểm / Quản lý điểm tổng kết học phần / Công thức tính điểm / Trọng số % điểm thành phần theo nhóm",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-003",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý điểm / Quản lý điểm tổng kết học phần / Công thức tính điểm / Trọng số % điểm thành phần theo nhóm.",
@@ -108,7 +108,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý điểm tổng kết học phần / Tổng kết điểm thi / Cộng điểm TB - theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-004",
    "source": "sheet",
    "steps": [
     "Điều kiện: lớp test đã có điểm thành phần.",
@@ -126,7 +126,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý điểm trung bình / In phiếu điểm sinh viên / In phiếu điểm sinh viên - Từng sinh viên",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-005",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý điểm / Quản lý điểm trung bình / In phiếu điểm sinh viên / In phiếu điểm sinh viên - Từng sinh viên.",
@@ -143,7 +143,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý điểm trung bình / In bảng tổng hợp / In bảng điểm tổng hợp TB các học kỳ",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-006",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý điểm / Quản lý điểm trung bình / In bảng tổng hợp / In bảng điểm tổng hợp TB các học kỳ.",
@@ -160,7 +160,7 @@
    "kind": "setup",
    "menu": "Quản lý điểm / Xử lý học vụ học kỳ / Tiêu chuẩn / Định nghĩa tiêu chuẩn (HK)",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-007",
    "source": "sheet",
    "steps": [
     "Điều kiện: Quản lý điểm / Quản trị phân hệ / Quản lý danh mục / Danh mục đánh giá có bảng nhóm “Nhóm học vụ”, Thứ tự đạt đúng, các bậc đánh giá thứ tự giảm dần (chỉ kiểm tra).",
@@ -179,7 +179,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Xử lý học vụ học kỳ / Xét học kỳ / Xét theo lớp (HK)",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-008",
    "source": "sheet",
    "steps": [
     "Quản lý điểm / Xử lý học vụ học kỳ / Đợt và danh sách xét / Danh sách đợt xét (HK): tạo đợt TEST_.",
@@ -197,7 +197,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý chứng chỉ / Chứng chỉ ngoài / Chứng chỉ ngoài của SV học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-009",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý điểm / Quản lý chứng chỉ / Chứng chỉ ngoài / Chứng chỉ ngoài của SV học kỳ.",
@@ -214,7 +214,7 @@
    "kind": "setup",
    "menu": "Quản lý điểm / Quản lý chứng chỉ / Tiêu chuẩn / Định nghĩa tiêu chuẩn (CC)",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-010",
    "source": "sheet",
    "steps": [
     "Kiểm tra danh mục (chỉ xem): Danh mục đánh giá (nhóm “Nhóm học lực”), Danh mục xếp hạng (Mã PL, Thứ tự đạt, Hệ điểm, Ngưỡng xếp loại), Quản lý chứng chỉ / Tiêu chuẩn / Phân loại chứng chỉ, Danh mục chứng chỉ (PL chứng chỉ, Bảng phân loại).",
@@ -233,7 +233,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Quản lý chứng chỉ / Xét chứng chỉ / Xét theo đợt và tiêu chuẩn (CC)",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-011",
    "source": "sheet",
    "steps": [
     "Quản lý điểm / Quản lý chứng chỉ / Đợt và danh sách xét / Danh sách đợt xét (CC): tạo đợt TEST_.",
@@ -253,7 +253,7 @@
    "kind": "main",
    "menu": "Quản lý điểm / Khai thác báo biểu / In bảng điểm tổng hợp / In bảng điểm đã nhập - Theo nhóm MH",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-012",
    "source": "sheet",
    "steps": [
     "Điều kiện: nhóm MH TEST đã nhập điểm (Nhập điểm theo nhóm học).",
@@ -270,7 +270,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-013",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo lớp.",
@@ -288,7 +288,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo nhóm học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-014",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý nhập điểm / Nhập điểm từ danh sách / Nhập điểm theo nhóm học.",
@@ -306,7 +306,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Nhập hình thức Khác / Nhập điểm toàn khóa / sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-015",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý nhập điểm / Nhập hình thức Khác / Nhập điểm toàn khóa/sinh viên.",
@@ -324,7 +324,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý nhập điểm / Import điểm môn học / Import từ file excel",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-016",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý nhập điểm / Import điểm môn học / Import từ file excel.",
@@ -342,7 +342,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý phách / Tạo phách từ danh sách thi / Nhập điểm theo số phách",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-017",
    "source": "sheet",
    "steps": [
     "Điều kiện: tổ thi TEST đã tạo (Tổ chức thi).",
@@ -361,7 +361,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý phách / Tạo phách từ danh sách thi / Hồi phách vào file điểm",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-018",
    "source": "sheet",
    "steps": [
     "Điều kiện: đã nhập đủ điểm theo số phách và kiểm tra lần cuối (bước 17).",
@@ -379,7 +379,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý phách / Tạo phách từ danh sách thi / Phân quyền nhập điểm phách online",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-019",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý phách / Tạo phách từ danh sách thi / Phân quyền nhập điểm phách online.",
@@ -396,7 +396,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý điểm bảo lưu / Điểm bảo lưu / Nhập điểm bảo lưu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-020",
    "source": "sheet",
    "steps": [
     "Mở menu Quản lý nhập điểm / Quản lý điểm bảo lưu / Điểm bảo lưu / Nhập điểm bảo lưu.",
@@ -412,7 +412,7 @@
    "kind": "main",
    "menu": "Quản lý nhập điểm / Quản lý điểm phúc khảo / Nhập điểm theo sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-021",
    "source": "sheet",
    "steps": [
     "Quản lý nhập điểm / Quản lý điểm phúc khảo / Nhập đơn xin phúc khảo: Thêm sinh viên TEST (mã SV, ngày nộp đơn, ngày hẹn) → Lưu; chọn sinh viên → chọn nhóm môn → tick cột PK cho loại điểm cần phúc khảo → Lưu.",
@@ -431,7 +431,7 @@
    "menu": "NetWEB sinh viên: Xem điểm",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-022",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem điểm",
@@ -449,7 +449,7 @@
    "menu": "NetWEB giảng viên: Nhập điểm theo nhóm học / tổ thi / phách thi",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-023",
    "source": "sheet",
    "steps": [
     "Chuẩn bị (Edusoft, chỉ cho nhóm học test): xem hk_cho_phep_nhap_diem; Phân công cán bộ nhập điểm nhóm học/thi; Gán thời gian nhập điểm nhóm học/thi",
@@ -470,7 +470,7 @@
    "menu": "NetWEB giảng viên: Xem điểm môn giảng dạy",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DIEM-024",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng GV test → menu Xem điểm môn giảng dạy",
@@ -485,6 +485,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 24 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 16 khớp, 2 khớp một phần, 6 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

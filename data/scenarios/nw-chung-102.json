@@ -1,0 +1,35 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "CHUNG-102",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thông báo (QTRI-001)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Thông báo hiển thị đúng đối tượng; ẩn bài thì mất. (Theo NETWEB-QuanTriChung, mục III.2.4, III.4.4.)",
+ "lastRun": null,
+ "menu": "NetWEB SV + GV: Xem thông báo từ ban quản trị",
+ "module": "CHUNG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.2.4 Đăng tin bài viết (loại Thông báo), III.4.4 Gửi thông báo",
+  "plan": "netweb-CHUNG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; admin đã đăng bài loại Thông báo / gửi thông báo cho SV test (QTRI-001).",
+  "KIỂM TRA: thấy thông báo ở trang chủ / mục thông báo, mở được đúng nội dung.",
+  "Đăng nhập GV test → KIỂM TRA thấy thông báo chung (thông báo riêng SV thì GV không thấy).",
+  "Admin ẩn bài → KIỂM TRA SV không còn thấy."
+ ],
+ "title": "Netweb SV + GV: xem thông báo từ ban quản trị",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

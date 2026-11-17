@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiệm ý xét môn tự chọn dư",
+   "expected": "Môn dư xử lý theo nhiệm ý. Cần xác nhận.",
+   "name": "Xét môn tự chọn dư",
+   "steps": [
+    "Xét lại với nhiệm ý này cho SV có TC tự chọn vượt max."
+   ]
+  }
+ ],
+ "code": "DIEM-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tiêu chuẩn (DIEM-010), điểm TB (DIEM-004), chứng chỉ ngoài (DIEM-009)",
+  "next": [
+   "QLTN-003"
+  ],
+  "out": "Kết quả CC (đã hủy)"
+ },
+ "expected": "Xét chứng chỉ cho kết quả Đạt/Rớt đúng điều kiện; hủy kết quả theo lớp được. (Theo DIEM_XetChungChi, mục III.2.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý chứng chỉ/ Xét chứng chỉ/ Xét theo đợt và tiêu chuẩn (CC)",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_XetChungChi, mục III.2 Tạo đợt và danh sách; 2.4 Xét chứng chỉ; 2.5–2.6 Xem / Hủy kết quả",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tiêu chuẩn {MATC} (DIEM-010); {LOP} có 1 SV đủ điều kiện và 1 SV thiếu TC; tài liệu đặt menu dưới nhánh Tốt nghiệp – dùng menu của sheet.",
+  "Quản lý điểm/ Quản lý chứng chỉ/ Đợt và danh sách xét/ Danh sách đợt xét (CC): tạo {DOT}.",
+  "… / Danh sách lớp xét (CC): Đồng bộ → mã tiêu chuẩn {MATC} cho {LOP} → Gán đợt chung, Gán tiêu chuẩn chung → Tạo DS xét; … / Danh sách SV xét (CC) KIỂM TRA.",
+  "Mở Quản lý điểm/ Quản lý chứng chỉ/ Xét chứng chỉ/ Xét theo đợt và tiêu chuẩn (CC); chọn {DOT} + {MATC}, nhiệm ý cộng lại điểm, có lưu → Thực hiện.",
+  "KIỂM TRA: SV đủ điều kiện Đạt, SV thiếu TC Rớt (kèm lý do); SV có chứng chỉ ngoài (DIEM-009) tính đạt; In kết quả xét (CC).",
+  "Hủy kết quả chứng chỉ/ Hủy theo lớp: xóa kết quả {LOP} → KIỂM TRA không còn; dọn đợt, tiêu chuẩn. Tắt màn hình."
+ ],
+ "title": "Xét chứng chỉ theo đợt và tiêu chuẩn",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DXCC{ddHHMM}",
+  "LOP": "(lớp thuộc khối test)",
+  "MATC": "(tiêu chuẩn DIEM-010)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ tick Duyệt hồ sơ của {TS2}",
+   "expected": "{TS2} không được xét / không có kết quả. Cần xác nhận.",
+   "name": "Hồ sơ chưa duyệt",
+   "steps": [
+    "Bỏ duyệt {TS2} → Lưu → Cộng điểm → Xét (QLTS-015)."
+   ]
+  },
+  {
+   "condition": "Phương thức thi năng lực",
+   "expected": "Ưu tiên tính theo [(1200 − Tổng)/300] × Mức.",
+   "name": "Thí sinh năng lực",
+   "steps": [
+    "Bấm Cộng điểm thi năng lực."
+   ]
+  }
+ ],
+ "code": "QLTS-014",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đơn {TS1}, {TS2} (QLTS-010); ngưỡng ưu tiên (QLTS-003)",
+  "next": [
+   "QLTS-015"
+  ],
+  "out": "Điểm cộng XT: {TS1} 24,60, {TS2} 21,75 (với mức 0,75)"
+ },
+ "expected": "Chỉ hồ sơ đã duyệt mới vào xét; Điểm cộng XT = tổng điểm môn + điểm ưu tiên (đối tượng + khu vực), ưu tiên khu vực giảm dần khi tổng ≥ ngưỡng theo công thức [(30 − Tổng)/7,5] × Mức. Với dữ liệu test: {TS1} = 24,60; {TS2} = 21,75 (mức KV1 0,75 – đổi theo giá trị thực ở QLTS-003). (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.6.4, III.7.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Danh sách xét tuyển/ Danh sách thí sinh/đợt xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.6.4 Duyệt nhanh đơn; III.7 Cộng điểm tổng cho thí sinh",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; có đơn {TS1} (tổng 24) và {TS2} (tổng 21), cùng KV1 (QLTS-010); đã ghi ngưỡng ưu tiên ST_DIEMTONGUTKV (QLTS-003).",
+  "Mở Tuyển sinh/ Danh sách xét tuyển/ Danh sách thí sinh/đợt xét tuyển, chọn đợt {DOT}; KIỂM TRA mỗi nguyện vọng của thí sinh là một dòng.",
+  "Tick Duyệt hồ sơ cho {TS1}, {TS2} → Lưu; KIỂM TRA cột Duyệt hồ sơ đã tick sau khi mở lại.",
+  "Bấm Cộng điểm (học bạ/THPT).",
+  "KIỂM TRA {TS1}: tổng 24 ≥ ngưỡng 22,5 → Điểm ưu tiên = [(30 − 24)/7,5] × {MUC} (= 0,60 nếu mức 0,75) → Điểm cộng XT = 24,60.",
+  "KIỂM TRA {TS2}: tổng 21 < ngưỡng → cộng đủ mức ưu tiên → Điểm cộng XT = 21 + {MUC} (= 21,75).",
+  "Tắt màn hình."
+ ],
+ "title": "Danh sách thí sinh/đợt xét tuyển: duyệt hồ sơ và cộng điểm xét tuyển",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "MUC": "(mức ưu tiên KV1, vd 0,75)",
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,77 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Họ tên, Ngày sinh, Phương thức, Nguyện vọng",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Họ tên…) ở đơn đăng ký.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Nhập đơn thứ ba trùng CCCD {TS1}",
+   "expected": "Chương trình báo thí sinh đã có hồ sơ / gộp vào hồ sơ cũ. Cần xác nhận.",
+   "name": "Trùng CCCD trong cùng kỳ",
+   "steps": [
+    "Thêm đơn mới cùng CCCD → Lưu."
+   ]
+  },
+  {
+   "condition": "Số nguyện vọng > xl_sl_dk_nv_pthuc (QLTS-003)",
+   "expected": "Chương trình chặn, báo vượt số nguyện vọng cho phép.",
+   "name": "Vượt số nguyện vọng",
+   "steps": [
+    "Thêm nguyện vọng vượt giới hạn → Lưu."
+   ]
+  }
+ ],
+ "code": "QLTS-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ/đợt/ngành/khối test (QLTS-001–QLTS-008)",
+  "next": [
+   "QLTS-012",
+   "QLTS-014"
+  ],
+  "out": "Đơn {TS1} (tổng 24, KV1) và {TS2} (tổng 21, KV1)"
+ },
+ "expected": "Hai đơn lưu được, đánh số phiếu tăng dần theo bộ đếm, mỗi nguyện vọng là một dòng ở Danh sách thí sinh/đợt xét tuyển. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.6.1.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ Nhập hồ sơ đăng ký xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.6 Nhập – kiểm tra thông tin (6.1, 6.4)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; kỳ {KYTS}, đợt {DOT}, ngành/khối {NGANH}–{KHOI} (QLTS-008); phương thức có bộ đếm phiếu (QLTS-005).",
+  "Mở Tuyển sinh/ Nhập liệu hồ sơ/ Nhập hồ sơ thí sinh/ Nhập hồ sơ đăng ký xét tuyển (bản trước lỗi EX case 64361 – gặp EX thì ghi Ctrl+Shift+E).",
+  "Thêm đơn {TS1}: họ tên, ngày sinh, CCCD giả TEST, khu vực {KV}, phương thức học bạ/THPT, nguyện vọng 1 = {NGANH} khối {KHOI}, điểm 3 môn {DIEM1} → Lưu.",
+  "KIỂM TRA THÊM: đơn {TS1} có số phiếu theo bộ đếm (vd TS000nn) và đúng nguyện vọng.",
+  "Thêm đơn {TS2} tương tự, điểm {DIEM2}, cùng {KV} → Lưu; KIỂM TRA có số phiếu kế tiếp.",
+  "Sửa: đổi ngày sinh {TS2} → Lưu; KIỂM TRA SỬA mở lại thấy giá trị mới.",
+  "Tắt màn hình (giữ hai đơn cho QLTS-014)."
+ ],
+ "title": "Nhập hồ sơ đăng ký xét tuyển cho 2 thí sinh test (một đạt, một trượt)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DIEM1": "8 / 8 / 8 (tổng 24)",
+  "DIEM2": "7 / 7 / 7 (tổng 21)",
+  "DOT": "TEST_DOT{ddHHMM}",
+  "KHOI": "TEST_KH{ddHHMM}",
+  "KV": "KV1",
+  "KYTS": "TEST_KY{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}",
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

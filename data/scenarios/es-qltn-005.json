@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTN-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLTN-003)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Danh sách tốt nghiệp in kèm quyết định cho SV đạt. Phần mẫu in kèm quyết định chưa đọc hết tài liệu – cần xác nhận. (Theo DIEM_QuanLyTotNghiep, mục 2.5.6–2.5.7.)",
+ "lastRun": null,
+ "menu": "Tốt nghiệp/ Xét tốt nghiệp/ In danh sách tốt nghiệp/ In danh sách tốt nghiệp kèm quyết định",
+ "module": "QLTN",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.6–2.5.7 In kết quả, In danh sách tốt nghiệp",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {SVD} tốt nghiệp ở {DOT} (QLTN-003).",
+  "Mở Tốt nghiệp/ Xét tốt nghiệp/ In danh sách tốt nghiệp/ In danh sách tốt nghiệp kèm quyết định; chọn {DOT}/lớp test, nhập số quyết định {SOQD}, ngày → In.",
+  "KIỂM TRA: danh sách chỉ gồm SV Đạt (có {SVD}, không có {SVK}), kèm {SOQD}, xếp loại.",
+  "Tắt màn hình."
+ ],
+ "title": "In danh sách tốt nghiệp kèm quyết định",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DTN{ddHHMM}",
+  "SOQD": "TEST_QDTN{ddHHMM}",
+  "SVD": "(SV đủ điều kiện)",
+  "SVK": "(SV thiếu tín chỉ / nợ môn)"
+ },
+ "version": "v2026.10H.00"
+}

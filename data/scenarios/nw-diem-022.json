@@ -1,0 +1,44 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SV trong danh sách cấm (QLHT-010)",
+   "expected": "Bị chặn, báo nợ học phí.",
+   "name": "SV bị cấm xem vì nợ học phí",
+   "steps": [
+    "Mở Xem điểm."
+   ]
+  }
+ ],
+ "code": "DIEM-022",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm (DIEM-004)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Điểm trên Netweb khớp Edusoft, có chi tiết trọng số. (Theo Netweb_TaiLieuHuongDanSinhVien, mục 14.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Xem điểm",
+ "module": "DIEM",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 14 Xem điểm",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; SV có điểm đã cộng TB (DIEM-004).",
+  "Menu Xem điểm.",
+  "KIỂM TRA: điểm từng môn, ĐTB hệ 4, TC tích lũy theo học kỳ khớp Edusoft.",
+  "Bấm biểu tượng chi tiết của môn test → KIỂM TRA trọng số các đầu điểm (30/70) đúng."
+ ],
+ "title": "Netweb SV: xem điểm",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

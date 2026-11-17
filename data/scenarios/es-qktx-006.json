@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QKTX-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phiếu thu (QKTX-005)",
+  "next": [],
+  "out": "Phiếu hủy"
+ },
+ "expected": "Danh sách phiếu thu khớp các lần thu; in và hủy được. (Theo QKTX_ThanhToanKTX, mục III.2.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Danh sách phiếu thu",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_ThanhToanKTX, mục III.2 Danh sách phiếu thu",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có phiếu thu (QKTX-005).",
+  "Mở Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Danh sách phiếu thu; lọc {MSSV}.",
+  "KIỂM TRA: phiếu đúng số tiền, ngày, số phiếu.",
+  "Check chọn phiếu → In → KIỂM TRA mẫu in mở được.",
+  "Dọn: hủy phiếu test → KIỂM TRA trạng thái hủy, khoản trở lại chưa thu (cần xác nhận chức năng hủy). Tắt màn hình."
+ ],
+ "title": "Danh sách phiếu thu lưu trú (in, hủy phiếu test)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

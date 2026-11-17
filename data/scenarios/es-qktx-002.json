@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thêm đơn giá thứ hai hiệu lực tháng sau",
+   "expected": "Cả hai tồn tại, tháng sau tính theo giá mới.",
+   "name": "Hai đơn giá khác ngày hiệu lực",
+   "steps": [
+    "Thêm đơn giá 1.200.000 từ tháng sau."
+   ]
+  }
+ ],
+ "code": "QKTX-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phòng (QKTX-001)",
+  "next": [
+   "QKTX-005"
+  ],
+  "out": "Đơn giá {PH} = {DG}"
+ },
+ "expected": "Đơn giá phòng theo đối tượng và ngày hiệu lực; tiền phòng chia theo số SV ở thực tế. (Theo QKTX_QuanLyPhongTang, mục III.2.1.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_QuanLyPhongTang, mục III.2.1 Định nghĩa đơn giá phòng",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; phòng {PH} (QKTX-001).",
+  "Mở Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá phòng; chọn {PH} → Thêm: đối tượng lưu trú Sinh viên, đơn giá {DG}/tháng/phòng, ngày hiệu lực = đầu tháng → Lưu.",
+  "KIỂM TRA THÊM: đơn giá đúng phòng, đối tượng, ngày hiệu lực. Tính sẵn: 1 SV ở → {DG}/tháng; 2 SV ở → 500.000/SV/tháng (đơn giá × số tháng / số SV ở thực tế).",
+  "Sửa đơn giá → Lưu; KIỂM TRA SỬA; trả lại {DG}.",
+  "Giữ cho QKTX-005; dọn cuối chuỗi: xóa đơn giá {PH}."
+ ],
+ "title": "Đơn giá phòng lưu trú",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DG": "1.000.000",
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

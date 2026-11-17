@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Khoảng ngày ngược",
+   "expected": "Chặn, báo khoảng ngày không hợp lệ. Cần xác nhận.",
+   "name": "Đến ngày trước Từ ngày",
+   "steps": [
+    "Nhập Đến ngày < Từ ngày → Lưu."
+   ]
+  }
+ ],
+ "code": "QLSV-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lớp {LOP} có SV Netweb test",
+  "next": [
+   "QLSV-010"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "SV chỉ cập nhật được lý lịch online trong khoảng thời gian cấu hình cho lớp; ngoài khoảng bị chặn. Menu chưa có tài liệu – cần xác nhận. (Theo NetWEB_NhapLyLichSVTrucTuyen – cần đối chiếu.)",
+ "lastRun": null,
+ "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lớp {LOP} có SV Netweb test; ghi lại thời gian đang cấu hình của lớp.",
+  "Mở Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Thời gian cập nhật thông tin SV theo lớp online.",
+  "Thêm/sửa dòng lớp {LOP}: Từ ngày = hôm qua, Đến ngày = hôm nay + 3 → Lưu.",
+  "KIỂM TRA: dòng {LOP} hiện đúng khoảng ngày; SV lớp {LOP} vào Netweb Cập nhật thông tin lý lịch sửa được (QLSV-010).",
+  "Sửa Đến ngày = hôm qua → Lưu; KIỂM TRA SV bị chặn cập nhật trên Netweb (hết thời gian).",
+  "Trả lại thời gian cũ (hoặc xóa dòng test) → Lưu; tắt màn hình."
+ ],
+ "title": "Thời gian cập nhật thông tin SV theo lớp online",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV Netweb test)"
+ },
+ "version": "v2026.10H.00"
+}

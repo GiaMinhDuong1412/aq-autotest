@@ -1,0 +1,44 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KHGD-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), ngày nghỉ chung",
+  "next": [
+   "KHGD-016"
+  ],
+  "out": "TKB {NHOM} đã xử lý ngày lễ (khôi phục khi dọn)"
+ },
+ "expected": "Buổi học rơi vào ngày nghỉ lễ được bỏ/dời theo xử lý của chương trình. Tài liệu không có bước cho menu này – cần xác nhận cách xử lý (bỏ buổi hay dời buổi).",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Xử lý TKB trùng ngày nghỉ lễ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.1.4 (Quản lý ngày nghỉ chung)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011).",
+  "Khai ngày nghỉ lễ test {NGAYLE}: Kế hoạch/ Tài nguyên và ràng buộc/ Ràng buộc xếp TKB/ Quản lý ngày nghỉ chung → Thêm {NGAYLE} → Lưu.",
+  "Mở Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Xử lý TKB trùng ngày nghỉ lễ; chọn đối tượng {LOP}/{NHOM} → Thực hiện.",
+  "KIỂM TRA: Xem TKB dạng tuần chứa {NGAYLE} – {NHOM} không còn lịch vào {NGAYLE}; các tuần khác giữ nguyên.",
+  "Dọn: xóa ngày nghỉ lễ test; khôi phục buổi học (chạy lại xếp/khôi phục nếu có) – ghi nhận cách khôi phục. Tắt màn hình."
+ ],
+ "title": "Xử lý TKB trùng ngày nghỉ lễ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NGAYLE": "(một ngày có lịch học của {NHOM})",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

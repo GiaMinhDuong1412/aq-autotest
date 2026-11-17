@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "File có SV không đăng ký nhóm đó",
+   "expected": "Dòng đó được báo, không ảnh hưởng dòng khác.",
+   "name": "Dòng không có KQĐK",
+   "steps": [
+    "Thêm dòng không tồn tại vào file."
+   ]
+  }
+ ],
+ "code": "DKMH-013",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK",
+  "next": [
+   "DKMH-014"
+  ],
+  "out": "KQĐK test bị hủy"
+ },
+ "expected": "Chỉ các dòng trong file bị hủy. Không có tài liệu, cần file mẫu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo tập tin",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK {MHA}/{NHA}; file CHỈ chứa SV/nhóm test.",
+  "Mở Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo tập tin; chuẩn bị file 1 dòng {MSSV}–{MHA}–{NHA}.",
+  "Chọn file → KIỂM TRA danh sách đọc vào chỉ có dòng test → Hủy.",
+  "KIỂM TRA: chỉ KQĐK trong file bị hủy.",
+  "Tắt màn hình (phục hồi ở DKMH-014)."
+ ],
+ "title": "Hủy KQĐKMH theo tập tin",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,46 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đăng nhập Netweb vai trò sinh viên với mật khẩu sai",
+   "expected": "Netweb báo sai tài khoản/mật khẩu, không vào được trang chức năng.",
+   "name": "Sai mật khẩu Netweb",
+   "steps": [
+    "Nhập mã sinh viên test và một mật khẩu sai.",
+    "Bấm Đăng nhập."
+   ]
+  }
+ ],
+ "code": "QLSV-024",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả điểm danh (QLSV-023)",
+  "next": [],
+  "out": "Feedback TEST"
+ },
+ "expected": "SV xem đúng kết quả điểm danh theo học kỳ và gửi phản hồi được. (Theo Netweb_TaiLieuHuongDanSinhVien, mục 12.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Xem kết quả điểm danh",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 12 Xem kết quả điểm danh",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; GV đã điểm danh SV này (QLSV-023).",
+  "Menu Xem kết quả điểm danh → chọn học kỳ hiện tại.",
+  "KIỂM TRA: buổi GV vừa điểm danh hiện đúng trạng thái (Vắng có phép) và ghi chú.",
+  "Chọn học kỳ trước → KIỂM TRA hiện dữ liệu học kỳ đó (hoặc trống).",
+  "Gửi feedback cho buổi đó (nội dung TEST) → KIỂM TRA feedback được ghi nhận (hiện ở buổi / GV thấy)."
+ ],
+ "title": "Netweb SV: xem kết quả điểm danh và gửi phản hồi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,42 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Hoãn thi (LTHI-001), nhóm thi (LTHI-005)",
+  "next": [
+   "LTHI-006"
+  ],
+  "out": "{MSSV} trong {NT} (đã gỡ)"
+ },
+ "expected": "SV hoãn thi được đưa vào danh sách dự thi kỳ sau (nguồn DS thi theo lưu đồ LTHI). Tài liệu không có mục này – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý hoãn thi/ Ghép SV hoãn vào kỳ thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} hoãn thi {MH} ở kỳ trước (LTHI-001); kỳ thi này có nhóm thi {NT} của {MH} (LTHI-005).",
+  "Mở Tổ chức thi/ Quản lý hoãn thi/ Ghép SV hoãn vào kỳ thi; chọn kỳ thi/môn {MH}.",
+  "KIỂM TRA: danh sách SV hoãn có {MSSV}; ghép vào {NT} → Thực hiện.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Hiệu chỉnh SV trong nhóm thi (LTHI-006) – {NT} có {MSSV}.",
+  "Dọn: gỡ {MSSV} khỏi {NT} (LTHI-006), xóa hoãn thi test. Tắt màn hình."
+ ],
+ "title": "Ghép sinh viên hoãn thi vào kỳ thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

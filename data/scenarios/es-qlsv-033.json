@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn lớp",
+   "expected": "Chương trình nhắc chọn lớp, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn lớp nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-033",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm RL học kỳ (QLSV-029–QLSV-031)",
+  "next": [
+   "QLSV-020",
+   "QLSV-014"
+  ],
+  "out": "Điểm RL tổng kết (dùng cho học bổng QLSV-020, khen thưởng QLSV-014)"
+ },
+ "expected": "Tổng kết RL cho điểm học kỳ cuối và điểm toàn khóa theo công thức R = Σ(rᵢ·nᵢ)/N với hệ số GS_HESOTBRLNH. (Theo QLSV_QuanLyDiemRenLuyen, mục III.7.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Tổng kết điểm rèn luyện",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.7 Tổng kết điểm rèn luyện",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có điểm RL các học kỳ (QLSV-029/QLSV-030/QLSV-028); ghi GS_HESOTBRLNH.",
+  "Ghi lại điểm RL từng học kỳ rᵢ và số tín chỉ/hệ số nᵢ của {MSSV}; tính sẵn R = Σ(rᵢ·nᵢ)/N.",
+  "Mở …/ Điểm rèn luyện/ Tổng kết điểm rèn luyện; chọn {LOP} → Thực hiện.",
+  "KIỂM TRA: điểm tổng kết học kỳ (điểm cuối cùng) của {MSSV} đúng; điểm toàn khóa = R đã tính.",
+  "Tắt màn hình."
+ ],
+ "title": "Tổng kết điểm rèn luyện (học kỳ và toàn khóa)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

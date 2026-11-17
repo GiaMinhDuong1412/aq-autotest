@@ -1,0 +1,60 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Mã loại thời gian nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã loại thời gian và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã loại thời gian",
+   "steps": [
+    "Bấm Thêm, nhập Mã loại thời gian giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "loại thời gian đã được dùng ở biến SK_LOAITGDUNGTRONGTKB / TKB",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng loại thời gian đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KHGD-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Loại thời gian lưu đủ chi tiết giờ/phút; loại đang được biến SK_LOAITG… dùng thì không xóa được (cần xác nhận). (Theo KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Định nghĩa thời gian/ ĐN loại thời gian",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_DinhNghiaThoiGianDungTrongTKB, mục III.1 Định nghĩa thời gian; III.2 Chỉnh định biến",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ ghi lại các biến SK_LOAITG… (không sửa).",
+  "Mở Kế hoạch/ Định nghĩa thời gian/ ĐN loại thời gian; tìm {MA} → chưa có.",
+  "Thêm: Mã = {MA}, Tên, số đơn vị thời gian sáng 5, chiều 5, tối 3 → Lưu.",
+  "Chi tiết giờ/phút: nhập giờ bắt đầu từng tiết (tiết 1 07:00, mỗi tiết 50 phút) → Lưu.",
+  "KIỂM TRA THÊM: {MA} có đủ 13 đơn vị với giờ/phút đúng.",
+  "Sửa giờ tiết 1 → 07:30 → Lưu; KIỂM TRA SỬA.",
+  "Ghi lại SK_LOAITGDUNGTRONGSUDUNGPHONG, SK_LOAITGDUNGTRONGTKB, SK_LOAITGDUNGTRONGBANGIO, SK_LOAITGDUNGTRONGTIETNGHICHUNG (Chỉnh định thông số học kỳ) – KHÔNG trỏ sang {MA}.",
+  "Xóa {MA} → KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "Định nghĩa loại thời gian (buổi, tiết, giờ/phút) – thêm – xóa loại test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MA": "TEST_TG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

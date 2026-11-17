@@ -1,0 +1,57 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập điểm > tối đa",
+   "expected": "Bị chặn, báo vượt điểm tối đa.",
+   "name": "Vượt điểm tối đa tiêu chí",
+   "steps": [
+    "Nhập điểm vượt khung một tiêu chí → Lưu."
+   ]
+  },
+  {
+   "condition": "Đợt đã đóng",
+   "expected": "Chỉ xem, không sửa được.",
+   "name": "Ngoài đợt đánh giá",
+   "steps": [
+    "Mở Đánh giá điểm rèn luyện học kỳ đã đóng."
+   ]
+  }
+ ],
+ "code": "QLSV-028",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đợt đánh giá rèn luyện; cố vấn lớp (QLSV-042)",
+  "next": [
+   "QLSV-029",
+   "QLSV-033"
+  ],
+  "out": "Điểm rèn luyện tự đánh giá + duyệt"
+ },
+ "expected": "SV tự đánh giá, cố vấn duyệt; điểm tổng tính đúng và về Edusoft. Phần GV chưa đọc chi tiết tài liệu – cần xác nhận. (Theo NetWEB_NhapDRLTrucTuyen, mục 15.)",
+ "lastRun": null,
+ "menu": "NetWEB SV + GV: Đánh giá điểm rèn luyên",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_NhapDRLTrucTuyen, mục 15 Đánh giá điểm rèn luyện",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; đợt đánh giá rèn luyện học kỳ test đang mở (chỉ xem setting); SV thuộc lớp có cố vấn GV test (QLSV-042).",
+  "Menu Đánh giá điểm rèn luyện → chọn học kỳ test.",
+  "Nhập điểm tự đánh giá theo từng tiêu chí (không vượt điểm tối đa) → Lưu.",
+  "KIỂM TRA: điểm tổng = tổng các tiêu chí; tải lại vẫn giữ.",
+  "Đăng nhập GV cố vấn → đánh giá/duyệt điểm của SV đó → Lưu; KIỂM TRA SV thấy điểm GV.",
+  "KIỂM TRA Edusoft: Nhập điểm rèn luyện (QLSV-029) của SV hiện điểm đã duyệt (cần xác nhận thời điểm đồng bộ)."
+ ],
+ "title": "Netweb SV + GV: đánh giá điểm rèn luyện (tự đánh giá và cố vấn duyệt)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

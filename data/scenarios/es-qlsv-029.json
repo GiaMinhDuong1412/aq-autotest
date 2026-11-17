@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập 120 hoặc -5",
+   "expected": "Không nhận, báo điểm không hợp lệ. Cần xác nhận.",
+   "name": "Điểm ngoài khoảng 0–100",
+   "steps": [
+    "Nhập 120 cho {MSSV} → Lưu."
+   ]
+  },
+  {
+   "condition": "Học kỳ test đang bị khóa sổ phân hệ (QLHT-007)",
+   "expected": "Chương trình không cho thêm/sửa/xóa trong học kỳ đã khóa sổ (báo khóa sổ); dữ liệu không đổi. Cần xác nhận câu thông báo.",
+   "name": "Học kỳ đã khóa sổ",
+   "steps": [
+    "Khóa sổ phân hệ của học kỳ test (QLHT-007).",
+    "Thực hiện lại thao tác ghi dữ liệu của kịch bản.",
+    "Mở khóa lại sau khi kiểm tra."
+   ]
+  }
+ ],
+ "code": "QLSV-029",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Cấu hình rèn luyện; SV {MSSV} trong {LOP}",
+  "next": [
+   "QLSV-031",
+   "QLSV-033"
+  ],
+  "out": "Điểm RL học kỳ {MSSV} = 78"
+ },
+ "expected": "Điểm rèn luyện học kỳ theo lớp lưu và hiện thống nhất ở màn hình 1 SV. (Theo QLSV_QuanLyDiemRenLuyen, mục III.5.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_QuanLyDiemRenLuyen, mục III.5 Nhập điểm rèn luyện theo lớp",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; GS_HESOTBRLNH, Danh mục phân loại, nhóm câu hỏi, câu hỏi rèn luyện đã khai báo (chỉ xem); {MSSV} thuộc {LOP}.",
+  "Mở Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Nhập điểm rèn luyện; chọn {LOP}; ghi lại điểm hiện có của {MSSV}.",
+  "Nhập Điểm rèn luyện học kỳ của {MSSV} = 85 → Lưu.",
+  "KIỂM TRA THÊM: tắt, mở lại {LOP} thấy 85.",
+  "Sửa 85 → 78 → Lưu; KIỂM TRA SỬA thấy 78; Nhập điểm rèn luyện 1 sinh viên (QLSV-031) cũng hiện 78.",
+  "Trả lại điểm cũ (hoặc giữ cho QLSV-033). Tắt màn hình."
+ ],
+ "title": "Nhập điểm rèn luyện theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

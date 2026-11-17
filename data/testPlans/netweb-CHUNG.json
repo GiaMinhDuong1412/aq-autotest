@@ -24,7 +24,7 @@
    "kind": "main",
    "menu": "NetWEB SV +GV: Góp ý kiến",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "CHUNG-101",
    "source": "sheet",
    "steps": [
     "Admin: trang quản trị → DS phân loại ý kiến → Thêm loại ý kiến TEST_ (phòng ban nhận) → Lưu.",
@@ -42,7 +42,7 @@
    "kind": "main",
    "menu": "NetWEB SV + GV: Xem thông báo từ ban quản trị",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "CHUNG-102",
    "source": "sheet",
    "steps": [
     "Điều kiện: admin đã đăng bài loại Thông báo hoặc gửi thông báo cho sinh viên test (mục NETWEB ADMIN).",
@@ -60,7 +60,7 @@
    "kind": "main",
    "menu": "NetWEB SV +GV: Quên mật khẩu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "CHUNG-103",
    "source": "sheet",
    "steps": [
     "Màn hình đăng nhập Netweb → Quên mật khẩu",
@@ -78,7 +78,7 @@
    "kind": "main",
    "menu": "NetWEB SV +GV: Đổi mật khẩu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "CHUNG-104",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → bấm avatar → Đổi mật khẩu",
@@ -96,7 +96,7 @@
    "kind": "main",
    "menu": "NetWEB: Xem Quy chế / Quy định",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "CHUNG-105",
    "source": "sheet",
    "steps": [
     "Admin: trang quản trị → Quy chế quy định → thêm một quy chế TEST_ → Lưu.",
@@ -112,6 +112,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 5 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 3 khớp, 2 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "netweb",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

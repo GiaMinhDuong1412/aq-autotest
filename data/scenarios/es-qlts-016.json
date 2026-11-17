@@ -1,0 +1,44 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTS-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLTS-015)",
+  "next": [
+   "QLTS-017",
+   "QLTS-018"
+  ],
+  "out": "{TS1} trong DS trúng tuyển (thông tin đã cập nhật)"
+ },
+ "expected": "Danh sách trúng tuyển chỉ gồm thí sinh trúng, đúng ngành/phương thức; thông tin cập nhật lưu được. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.9.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Hồ sơ nhập học/ Danh sách trúng tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.9 Kiểm tra danh sách thí sinh trúng tuyển",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} đã trúng tuyển (QLTS-015).",
+  "Mở Tuyển sinh/ Hồ sơ nhập học/ Danh sách trúng tuyển; tìm {TS1}.",
+  "KIỂM TRA: {TS1} có đúng ngành {NGANH}, phương thức, điểm xét; {TS2} không có.",
+  "Sửa: cập nhật số điện thoại / địa chỉ của {TS1} → Lưu.",
+  "KIỂM TRA SỬA: tắt, mở lại thấy giá trị mới.",
+  "Tắt màn hình."
+ ],
+ "title": "Danh sách trúng tuyển: kiểm tra và cập nhật thông tin thí sinh",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NGANH": "TEST_NG{ddHHMM}",
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

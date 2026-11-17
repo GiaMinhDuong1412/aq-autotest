@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn môn",
+   "expected": "Chương trình nhắc chọn môn, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn môn nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "DKMH-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-006)",
+  "next": [
+   "DKMH-014"
+  ],
+  "out": "KQĐK {MSSV}–{MHA} bị hủy"
+ },
+ "expected": "Hủy theo SV chỉ hủy môn được chọn. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo sinh viên",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK ≥ 2 môn (DKMH-006).",
+  "Mở Đăng ký MH/ Hủy KQ ĐKMH/ Hủy KQ ĐKMH - theo sinh viên; nhập {MSSV}.",
+  "KIỂM TRA: lưới Danh sách môn học đăng ký có các môn kèm Sĩ số đã ĐK, Đã có điểm, Đã đóng HP.",
+  "Tick chỉ {MHA} → Hủy kết quả đăng ký → xác nhận đúng {MSSV}/{MHA}.",
+  "KIỂM TRA: {MHA} không còn trong KQĐK của {MSSV}; môn khác giữ nguyên.",
+  "Tắt màn hình (phục hồi ở DKMH-014)."
+ ],
+ "title": "Hủy KQĐKMH theo sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

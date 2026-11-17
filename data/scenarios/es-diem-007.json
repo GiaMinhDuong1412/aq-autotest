@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã tiêu chuẩn, Bảng ĐG",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã tiêu chuẩn…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã tiêu chuẩn nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã tiêu chuẩn và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã tiêu chuẩn",
+   "steps": [
+    "Bấm Thêm, nhập Mã tiêu chuẩn giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục đánh giá",
+  "next": [
+   "DIEM-008"
+  ],
+  "out": "Tiêu chuẩn {MATC}"
+ },
+ "expected": "Tiêu chuẩn học vụ lưu đủ kết quả, thứ tự xét và tiêu chí điều kiện (lưu đồ QXHV bước 1). (Theo DIEM_XuLyHocVu, mục III.1.1.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Xử lý học vụ học kỳ/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (HK)",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_XuLyHocVu, mục III.1.1 Định nghĩa tiêu chuẩn (HK)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Danh mục đánh giá có bảng nhóm 'Nhóm học vụ', thứ tự đạt đúng, bậc đánh giá giảm dần (chỉ xem); bản trước lỗi BF case 63523.",
+  "Mở Quản lý điểm/ Xử lý học vụ học kỳ/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (HK); tìm {MATC} → chưa có.",
+  "Thêm {MATC}, chọn Bảng ĐG nhóm học vụ → Lưu.",
+  "Tiêu chí: TT xét Buộc thôi học = 1, Cảnh cáo = 2, Đúng tiến độ = 3; Cảnh cáo: Thêm (1) nhóm tiêu chí → Thêm (2) tiêu chí: biến ĐTB học kỳ < 1,0 → Lưu; Buộc thôi học: ĐTB tích lũy < 1,2 → Lưu.",
+  "KIỂM TRA THÊM: mở lại thấy đủ tiêu chí và thứ tự xét.",
+  "Sửa ngưỡng Cảnh cáo 1,0 → 1,2 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho DIEM-008; dọn sau đó: xóa tiêu chí rồi tiêu chuẩn."
+ ],
+ "title": "Định nghĩa tiêu chuẩn xét học vụ học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MATC": "TEST_HV{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

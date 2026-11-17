@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục tính chất thi",
+  "next": [
+   "LTHI-005"
+  ],
+  "out": "{MH} tính chất Viết"
+ },
+ "expected": "Tính chất thi gán cho môn, là thông tin đồng bộ với DS thi để tạo nhóm thi (môn tiểu luận có thể không xếp lịch). (Theo LTHI_ToChucThi, mục III.4.1; lưu đồ LTHI bước 2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Nhập tính chất thi môn học",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.4.1 Khai báo hình thức thi môn học",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Danh mục tính chất thi môn học có Tiểu luận, Viết, Vấn đáp… (chỉ xem); ghi lại tính chất hiện tại của {MH}.",
+  "Mở Tổ chức thi/ Chính sách lịch thi/ Tính chất thi môn học/ Nhập tính chất thi môn học; tìm {MH} trong DS MH chưa gán tính chất thi.",
+  "Gán {MH} = Viết, số phút thi 90 → Lưu.",
+  "KIỂM TRA: {MH} không còn trong DS MH chưa gán; hiện tính chất Viết.",
+  "Sửa = Vấn đáp → Lưu; KIỂM TRA SỬA; trả lại Viết (cho xếp lịch thi). Tắt màn hình."
+ ],
+ "title": "Nhập tính chất thi môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}
