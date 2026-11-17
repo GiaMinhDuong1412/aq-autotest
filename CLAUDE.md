@@ -54,6 +54,14 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **Popup app**: màn hình chờ khi mở (`showSplash` trong `desktop/src/main.js`), hộp cập nhật giữ mở có thanh tiến trình, "Có gì mới"
   sau khi cập nhật (`thay-doi.json` = tên các PR, `dong_goi_app.py` tạo lúc build; `aqDesktop.getInfo` → bản trước), hướng dẫn người mới
   (màn chào mừng 4 bước lần đầu, thẻ "Bắt đầu" trên Tổng quan, menu tài khoản: Hướng dẫn sử dụng / Có gì mới).
+- Trang **Test sau sửa lỗi** (`page-retest`, khối JS `RT`, collection `retests/c<caseId>-<lần>`): lấy case coder đã xử lý từ ACS theo
+  Query của người dùng → giao máy test (máy chạy thử / máy ảo khai báo ở Máy chạy thử) → chạy kịch bản (script: `kitRunReq`, tay: `startRun`,
+  lượt chạy gắn phiếu qua `SC.run.retest` / `rtLink`) → duyệt ảnh từng bước → **Đạt**: điền nội dung test vào case; **Không đạt**: mở lại case,
+  gán `tiepnhanadmin`, điền nội dung test lỗi. Kết nối ACS "cách 2" như app `aq-case-widget`: `desktop/src/acs.js` mở cửa sổ ACS (partition
+  `persist:acs`), người dùng tự đăng nhập, app gọi API cùng phiên (`/auth/me`, `/cs/lookups`, `/cs/query`…) qua `aqDesktop.acs.call`
+  (chỉ đường dẫn `/auth/me`, `/cs/…`). Cách ghi kết quả (`settings/acs.write`: method, path `{id}`, tên trường, giá trị) và đường dẫn Query đã lưu
+  (`settings/acs.queriesPath`) cấu hình ở tab Thiết lập ACS, có **Khảo sát ACS** ghi lại lời gọi khi người dùng tự thao tác; chỉ ghi thẳng lên ACS
+  khi `write.verified` (chưa xác nhận thì chép nội dung + mở case để dán tay). Bản claude.ai/không có app: chỉ xem phiếu.
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút, **ràng buộc**: ô bắt buộc / điều kiện chặn + câu báo) ghép từ bản trích source:

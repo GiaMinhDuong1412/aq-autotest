@@ -4,6 +4,7 @@
  * App chạy server.py (Python nhúng ở resources/python, mã ở resources/app) trên 127.0.0.1 rồi mở console trong cửa sổ riêng.
  * Dữ liệu của máy ở %APPDATA%\AQ Auto Test: du-lieu\ (kịch bản, lượt chạy…), rieng\ (cấu hình, tài khoản), nhat-ky.txt.
  * Đóng cửa sổ = thoát app (server tắt theo). Cập nhật: updater.js (repo public aq-autotest-releases, không cần token).
+ * ACS (AQ Support Hub): acs.js – người dùng đăng nhập ACS trong cửa sổ của app, console gọi API ACS qua aqDesktop.acs.
  *
  * Chạy thử từ mã nguồn (không đóng gói): cd desktop && npm install && npm start  – dùng server.py ở thư mục repo và python3/python.
  * Kiểm tra nhanh bản build: "AQ Auto Test.exe" --smoke  (mở server + trang đăng nhập rồi thoát, mã 0 = đạt).
@@ -16,6 +17,7 @@ const http = require('http');
 const net = require('net');
 const { spawn, execFileSync } = require('child_process');
 const { createUpdater } = require('./updater');
+const setupAcs = require('./acs');
 
 const APP_ID = 'vn.aqtech.autotest';
 const APP_NAME = 'AQ Auto Test';
@@ -42,6 +44,7 @@ let quitting = false;
 let updater = null;
 let splash = null;
 let launch = { version: '', prev: null, fresh: false };
+let acs = null;
 
 function log(...a) {
   try { fs.appendFileSync(LOG, new Date().toISOString().replace('T', ' ').slice(0, 19) + ' ' + a.join(' ') + '\n'); } catch { /* bỏ qua */ }
@@ -252,7 +255,7 @@ if (!app.requestSingleInstanceLock()) {
   app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
   app.whenReady().then(init);
 }
-app.on('before-quit', () => { quitting = true; });
+app.on('before-quit', () => { quitting = true; if (acs) acs.shutdown(); });
 app.on('will-quit', () => stopServer());
 app.on('window-all-closed', () => app.quit());
 
@@ -292,6 +295,7 @@ async function init() {
       filters: Array.isArray(o.filters) ? o.filters : undefined, properties: [o.dir ? 'openDirectory' : 'openFile'] });
     return r.canceled || !r.filePaths.length ? '' : r.filePaths[0];
   });
+  acs = setupAcs({ BrowserWindow, ipcMain, session, ICON, getWin: () => win, log, RIENG });   // đăng nhập & gọi API ACS (module Test sau sửa lỗi)
   createWindow();
   if (SMOKE) return smoke();
   updater = createUpdater({ send, notify, beforeInstall: () => { quitting = true; stopServer(); } });

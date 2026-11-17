@@ -147,6 +147,16 @@ với giá trị chưa kiểm tra); người chạy thấy popup lỗi và chọ
 2. **Lỗi EX – hệ thống** (`type: "ex"`): trong Edusoft nhấn **Ctrl+Shift+E** để hiện chi tiết lỗi → chụp ảnh menu đang thao tác (kèm cửa sổ chi tiết) → nhấn **Ctrl+Shift+F** để hiện menu code. Ghi: `exDetail` (nguyên văn chi tiết lỗi), `menuCode`, ảnh (bắt buộc). Kịch bản có lỗi EX đang mở hiển thị đỏ trên trang.
 Một luồng thay thế cho kết quả khác `expected` (vd chương trình không chặn trùng TKB) cũng là lỗi chức năng, ghi `kind: "alt"`. Lỗi có mã case hỗ trợ (ACS) thì ghi `caseNo`; Claude cập nhật `caseStatus`, `caseCheckedAt` sau khi đọc case trên ACS bằng phiên đăng nhập của người dùng trong trình duyệt app. Link case dựng từ `settings/acs` (`{baseUrl, caseUrl chứa {case}, newCaseUrl}`).
 
+## Test sau sửa lỗi (case ACS coder đã xử lý)
+- ACS = AQ Support Hub (https://acs.aqtech.io.vn). API mà giao diện ACS dùng (đã thấy trong app `aq-case-widget`): `GET /auth/me`,
+  `GET /cs/lookups` (`people[]`: `value` dạng `AQ\\tên`, `username` email, `queue`), `POST /cs/query` `{clauses:[{op,conj,field,value}], columns, sort, desc, offset, limit}`
+  (op: eq, neq, in, not_in; giá trị đặc biệt `@Today`, `@None`), `GET /cs/cases/{id}/history`; link xem case `/cs-case/{id}`.
+  Trường case: `case_id, title, school_code, module, status (Mở Case, Đang xử lý, Đã xử lý, Đóng case), assignee_raw (DEV), analyst_raw (BA),
+  tester_raw, test_state (Đúng…), resolved_at, changed`. "Cần test" của tôi = tester_raw là tôi, status Đã xử lý, test_state ≠ Đúng.
+- Chưa biết chắc (cần Khảo sát ACS trong app): API Query đã lưu của người dùng và cách lưu nội dung test / mở lại case – mặc định đoán
+  `PATCH /cs/cases/{id}` với `test_note`, `test_state`, `status`, `assignee_raw`; chỉ ghi thật khi quản trị đánh dấu đã xác nhận.
+- Không đạt: status → Mở Case, gán `tiepnhanadmin` (tra `value` trong `/cs/lookups`), điền nội dung test lỗi (bước lỗi, lỗi EX, kết quả thực tế).
+
 ## Máy chạy thử & kiểm tra khởi động (bắt buộc trước khi test)
 - Mỗi người chạy khai báo trên trang **Máy chạy thử**: collection `runners`, `doc_id` = id người dùng (`u_…`): `{path (đường dẫn đầy đủ tới Edusoft.NET.exe trên máy họ), machine, env, account (tài khoản Edusoft test), alias (tên trong bảng phân công release), hasPw: {edusoft, sv, gv}, netweb: {url, defaultRole: "sv"|"gv", sv: {code}, gv: {code}, check: {status, at, message, role, account, shots}}, check: {status: "none"|"pending"|"ok"|"fail", at, message, version, shots: [assetId]}, updatedAt}`.
 - **Mật khẩu test** nằm trong vùng riêng của từng người: `ArtifactData` `get` collection `data/users/me`, doc `secrets` → `{edusoft: {password}, netweb: {sv: {password}, gv: {password}}}` (chỉ đọc được của chính người đang trò chuyện). Không bao giờ ghi mật khẩu ra cuộc trò chuyện, `process`, mô tả lỗi hay document dùng chung nào.
