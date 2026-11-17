@@ -48,7 +48,7 @@
    "kind": "setup",
    "menu": "Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục khối lớp",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-001",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục khối lớp.",
@@ -65,7 +65,7 @@
    "kind": "setup",
    "menu": "Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục môn học",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-002",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục môn học.",
@@ -81,7 +81,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Chương trình đào tạo / Cập nhật chương trình đào tạo / CTĐT thực hiện",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-003",
    "source": "sheet",
    "steps": [
     "Điều kiện: CTĐT chuẩn (Kế hoạch / Chương trình đào tạo / Cập nhật chương trình đào tạo / Chương trình đào tạo chuẩn) và CTĐT kế hoạch của khối test đã có.",
@@ -101,7 +101,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách lớp học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-004",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách lớp học kỳ.",
@@ -118,7 +118,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Danh sách dữ liệu học kỳ / Danh sách phòng học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-005",
    "source": "sheet",
    "steps": [
     "Điều kiện: Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục phòng học có phòng TEST_ (Sức chứa, Tính chất phòng; phòng lý thuyết để trống tính chất).",
@@ -135,7 +135,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thông tin viên chức / Danh sách viên chức học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-006",
    "source": "sheet",
    "steps": [
     "Điều kiện: viên chức test có trong Kế hoạch / Thông tin viên chức / Danh mục viên chức; đơn vị có trong Danh mục đơn vị.",
@@ -152,7 +152,7 @@
    "kind": "setup",
    "menu": "Kế hoạch / Định nghĩa thời gian / ĐN loại thời gian",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-007",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Định nghĩa thời gian / ĐN loại thời gian (tài liệu: Định nghĩa thời gian).",
@@ -171,7 +171,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Biểu đồ kế hoạch học tập / Biểu đồ kế hoạch học tập lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-008",
    "source": "sheet",
    "steps": [
     "Điều kiện: Biểu đồ kế hoạch học tập khối đã nhập (Kế hoạch / Biểu đồ kế hoạch học tập / Biểu đồ kế hoạch học tập khối).",
@@ -189,7 +189,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Qui hoạch nhóm học phần / Tạo file nhóm học phần tự động / Hệ tín chỉ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-009",
    "source": "sheet",
    "steps": [
     "Điều kiện: CTĐT chuẩn / kế hoạch / thực hiện đã có; (tùy chọn) Xem sửa các lớp ghép.",
@@ -206,7 +206,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thông tin nhóm học phần / Danh sách nhóm tổ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-010",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Thông tin nhóm học phần / Danh sách nhóm tổ.",
@@ -224,7 +224,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Xếp thời khoá biểu / Xếp thời khóa biểu tự động",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-011",
    "source": "sheet",
    "steps": [
     "Kiểm tra thông số chung (chỉ ghi lại): SK1_STMAXNGAY_CB / _LOP, GK_KHONGXEPTKBVAOBUOITOI, SK1_SUDUNGTIETNGHICHUNG, SK1_sotietsang, SK1_SOTIETCHIEU, SK2_SOTIETTOI…",
@@ -244,7 +244,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Import từ file / Import nhóm / tổ học & TKB",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-012",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Thời khóa biểu / Import từ file / Import nhóm/ tổ học & TKB.",
@@ -261,7 +261,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế CBGD",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-013",
    "source": "sheet",
    "steps": [
     "Điều kiện: nhóm tổ test đã xếp TKB.",
@@ -278,7 +278,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế phòng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-014",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Thay thế phòng.",
@@ -295,7 +295,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Hiệu chỉnh thời khoá biểu / Xử lý TKB trùng ngày nghỉ lễ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-015",
    "source": "sheet",
    "steps": [
     "Điều kiện: Kế hoạch / Tài nguyên và ràng buộc / Ràng bu ộc xếp TKB / Quản lý ngày nghỉ chung có ngày nghỉ lễ trùng với buổi học của lớp test.",
@@ -313,7 +313,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Xem thời khóa biểu / Dạng tuần",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-016",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Thời khóa biểu / Xem thời khóa biểu / Dạng tuần.",
@@ -330,7 +330,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Thời khóa biểu / Xóa thời khóa biểu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-017",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Thời khóa biểu / Xóa thời khóa biểu.",
@@ -347,7 +347,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Nghỉ dạy và dạy bù / Lịch nghỉ dạy và dạy bù",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-018",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Nghỉ dạy và dạy bù / Lịch nghỉ dạy và dạy bù.",
@@ -365,7 +365,7 @@
    "kind": "main",
    "menu": "Kế hoạch / Quản lý sử dụng phòng / Sử dụng phòng đột xuất",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-019",
    "source": "sheet",
    "steps": [
     "Mở menu Kế hoạch / Quản lý sử dụng phòng / Sử dụng phòng đột xuất.",
@@ -384,7 +384,7 @@
    "menu": "NetWEB SV + GV: Xem TKB dạng tuần",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-020",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Thời khóa biểu dạng tuần",
@@ -402,7 +402,7 @@
    "menu": "NetWEB SV + GV: Xem TKB dạng học kỳ",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-021",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Thời khóa biểu dạng học kỳ, chọn học kỳ hiện tại và 1 học kỳ cũ",
@@ -420,7 +420,7 @@
    "menu": "NetWEB sinh viên: Xem chương trình đào tạo",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-022",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem chương trình đào tạo",
@@ -437,7 +437,7 @@
    "menu": "NetWEB sinh viên: Xem môn tiên quyết",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KHGD-023",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem môn tiên quyết",
@@ -451,6 +451,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 23 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 15 khớp, 5 khớp một phần, 3 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

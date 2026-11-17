@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tạo lại ngày {NGAY} cho {NHOM}",
+   "expected": "Báo trùng ngày điểm danh.",
+   "name": "Ngày trùng",
+   "steps": [
+    "Tạo ngày đã có."
+   ]
+  }
+ ],
+ "code": "QLSV-026",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK nhóm {NHOM} (DKMH)",
+  "next": [
+   "QLSV-025",
+   "QLSV-024"
+  ],
+  "out": "Ngày điểm danh {NGAY} (đã xóa)"
+ },
+ "expected": "Tạo ngày điểm danh, nhập/sửa kết quả và xóa ngày test được; kết quả đồng bộ lên Netweb. Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập và tạo ngày điểm danh",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} có SV test đã đăng ký (DKMH).",
+  "Mở Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm danh/ Nhập và tạo ngày điểm danh; chọn học kỳ, bấm Chọn → nhóm {NHOM}.",
+  "Tạo ngày điểm danh {NGAY} → nhập Vắng không phép cho SV test → Lưu.",
+  "KIỂM TRA THÊM: mở lại {NHOM} thấy ngày {NGAY} và kết quả; Netweb SV (QLSV-024) thấy buổi {NGAY}.",
+  "Sửa: đổi kết quả thành Có mặt → Lưu; KIỂM TRA SỬA.",
+  "Xóa ngày {NGAY} (xác nhận đúng ngày/nhóm test) → KIỂM TRA XÓA không còn. Tắt màn hình."
+ ],
+ "title": "Nhập và tạo ngày điểm danh cho nhóm học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NGAY": "{ddmmyyyy}",
+  "NHOM": "(nhóm học có SV test)"
+ },
+ "version": "v2026.10H.00"
+}

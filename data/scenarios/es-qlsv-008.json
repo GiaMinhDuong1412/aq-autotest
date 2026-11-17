@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Họ lót, Tên",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Họ lót…) ở tab Lý lịch.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "File ảnh > 200 KB hoặc tên khác mã SV",
+   "expected": "Ảnh không được nhận, báo lỗi dung lượng/không khớp mã SV.",
+   "name": "Ảnh quá dung lượng",
+   "steps": [
+    "Import ảnh 500 KB / tên sai."
+   ]
+  }
+ ],
+ "code": "QLSV-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001)",
+  "next": [
+   "QLSV-010"
+  ],
+  "out": "Lý lịch đã sửa của {MSSV} (dọn cùng SV)"
+ },
+ "expected": "Lý lịch cập nhật lưu được ở các tab và hiện trên mẫu in lý lịch. (Theo QLSV_CapNhatLyLichSinhVien, mục III.1.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatLyLichSinhVien, mục III.1.1 Cập nhật thông tin sinh viên",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa).",
+  "Mở Sinh viên/ Thông tin sinh viên/ Lý lịch sinh viên/ Cập nhật lý lịch sinh viên; nhập mã {MSSV} → Load data.",
+  "KIỂM TRA: hiện đúng Họ lót, Tên, Ngày sinh, Phái, Lớp sinh viên của {MSSV}.",
+  "Sửa tab Lý lịch: Dân tộc, Tôn giáo; tab Liên lạc: địa chỉ 'TEST dia chi' → Lưu.",
+  "KIỂM TRA SỬA: Hủy/đóng, nhập lại {MSSV} → Load data → thấy giá trị mới.",
+  "In lý lịch: Sinh viên/ Thông tin sinh viên/ In lý lịch sinh viên cho {MSSV} → KIỂM TRA mẫu in có giá trị mới.",
+  "(Tùy chọn) Import ảnh SV: file tên = {MSSV}.jpg ≤ 200 KB → KIỂM TRA ảnh hiện ở Hình sinh viên.",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Cập nhật lý lịch sinh viên (các tab lý lịch, liên lạc, hồ sơ)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

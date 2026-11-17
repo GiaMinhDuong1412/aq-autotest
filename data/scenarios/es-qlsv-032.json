@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn lớp / sinh viên",
+   "expected": "Chương trình nhắc chọn lớp / sinh viên, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn lớp / sinh viên nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-032",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm RL (QLSV-029)",
+  "next": [],
+  "out": "Điểm RL {MSSV} (nhập lại)"
+ },
+ "expected": "Chỉ điểm RL của đối tượng chọn bị hủy. Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Sinh viên/ Điểm danh và Điểm rèn luyện/ Quản lý điểm rèn luyện/ Điểm rèn luyện/ Hủy điểm rèn luyện",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có điểm RL học kỳ test (QLSV-029); chỉ hủy trên SV/lớp test.",
+  "Mở …/ Điểm rèn luyện/ Hủy điểm rèn luyện; chọn {LOP}, chọn chỉ {MSSV}.",
+  "Thực hiện hủy → chỉ xác nhận khi hộp thoại nêu đúng {MSSV}/{LOP}.",
+  "KIỂM TRA: Nhập điểm rèn luyện (QLSV-029) – {MSSV} không còn điểm; SV khác của lớp giữ nguyên.",
+  "Nhập lại điểm cũ cho {MSSV}. Tắt màn hình."
+ ],
+ "title": "Hủy điểm rèn luyện theo lớp/sinh viên test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

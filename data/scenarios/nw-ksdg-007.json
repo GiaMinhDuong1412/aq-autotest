@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Kỳ {KDG} đã hết hạn",
+   "expected": "Không còn phiếu để đánh giá.",
+   "name": "Ngoài thời gian kỳ",
+   "steps": [
+    "Mở Khảo sát đánh giá."
+   ]
+  }
+ ],
+ "code": "KSDG-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ + đáp viên (KSDG-004, KSDG-005)",
+  "next": [
+   "KSDG-008"
+  ],
+  "out": "Trả lời của SV test"
+ },
+ "expected": "Đáp viên đánh giá trên web, kết quả về Edusoft (lưu đồ KSDG bước 10–11). (Theo NetWEB_SinhVienKhaoSatDanhGia, mục III.13.)",
+ "lastRun": null,
+ "menu": "NetWEB SV + GV + GUEST: Khảo sát đánh giá",
+ "module": "KSDG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat; NetWEB_SinhVienKhaoSatDanhGia, mục III.13 Lấy ý kiến khảo sát trên netweb",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên (phiếu vãng lai: không đăng nhập) bằng tài khoản test; kỳ {KDG} còn hiệu lực, SV test là đáp viên (KSDG-005); ghi lại GH_NHHKDG, SY_CAMXEMDIEMEDUWEBCHUADANHGIA (không sửa).",
+  "Menu Khảo sát đánh giá → KIỂM TRA danh sách phiếu/môn cần đánh giá có nhóm tổ của {KDG}.",
+  "Nếu SY_CAMXEMDIEMEDUWEBCHUADANHGIA bật: mở Xem điểm → KIỂM TRA bị nhắc đánh giá trước.",
+  "Chọn môn → chọn mức độ từng câu, ý kiến khác TEST → Lưu/Gửi.",
+  "KIỂM TRA: môn đánh dấu đã đánh giá; Edusoft đáp viên hiện đã trả lời.",
+  "Lặp với GV test và khách nếu có phiếu tương ứng."
+ ],
+ "title": "Netweb SV + GV + khách: trả lời khảo sát đánh giá",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KDG": "TEST_KDG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,74 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã môn học, Tên môn học, Số TC",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã môn học…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã môn học nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã môn học và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã môn học",
+   "steps": [
+    "Bấm Thêm, nhập Mã môn học giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "môn học đã được dùng ở CTĐT / nhóm học phần / điểm",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng môn học đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KHGD-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đơn vị (danh mục nền)",
+  "next": [
+   "KHGD-003",
+   "KHGD-009"
+  ],
+  "out": "Môn {MA} (= {MH} cho các kịch bản KHGD)"
+ },
+ "expected": "Môn học lưu với số tín chỉ/tiết; dùng được trong CTĐT; môn đã dùng (CTĐT, nhóm học, điểm) không xóa được. (Theo QLHT_ThaoTacDanhMuc; KHGD_QuanLyCTDT3Cap.)",
+ "lastRun": null,
+ "menu": "Kế hoạch / Quản trị phân hệ / Quản lý danh mục / Danh mục môn học",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_ThaoTacDanhMuc; KHGD_QuanLyCTDT3Cap, mục (danh mục môn học dùng cho CTĐT)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đơn vị quản lý môn có trong danh mục đơn vị.",
+  "Kiểm tra trùng: mở Kế hoạch/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục môn học, tìm {MA} ở ô tìm kiếm cột Mã môn học → đã có thì đổi mã test khác. Ghi lại số dòng hiện có.",
+  "Thêm: bấm Thêm, nhập Mã môn học = {MA}, Tên môn học = {TEN}, Số tín chỉ = 3, Số tiết LT = 30, TH = 30, đơn vị quản lý → Lưu.",
+  "KIỂM TRA THÊM: dòng {MA} hiển thị đúng Tên môn học và các giá trị vừa nhập; chọn được {MA} khi thêm môn vào CTĐT thực hiện (KHGD-003).",
+  "Sửa: chọn dòng {MA}, đổi Số tiết TH 30 → 15 → Lưu.",
+  "KIỂM TRA SỬA: tắt màn hình (X), mở lại menu, tìm {MA} → thấy giá trị mới, không còn giá trị cũ.",
+  "Xóa: chọn dòng {MA} → Xóa → chỉ xác nhận khi hộp thoại nêu đúng {MA} (xóa sau khi dọn CTĐT/nhóm học test; môn đang dùng phải bị chặn).",
+  "KIỂM TRA XÓA: tìm {MA} → không còn dòng nào (nếu lưới chưa nạp lại thì tắt, mở lại menu rồi kiểm tra). Tắt màn hình."
+ ],
+ "title": "Danh mục môn học: thêm môn test dùng cho CTĐT",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MA": "TEST_MH{ddHHMM}",
+  "MH": "TEST_MH{ddHHMM}",
+  "TEN": "TEST Mon hoc"
+ },
+ "version": "v2026.10H.00"
+}

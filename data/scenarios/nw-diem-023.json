@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thời gian nhập của {NH} đã hết",
+   "expected": "{NH} ở trạng thái 'Xem'.",
+   "name": "Ngoài thời gian nhập điểm",
+   "steps": [
+    "Mở Nhập điểm theo nhóm học."
+   ]
+  }
+ ],
+ "code": "DIEM-023",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phân công + thời gian nhập điểm, phách (DIEM-019)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "GV nhập điểm online trong thời gian và nhóm được phân công; điểm về Edusoft; nhóm khóa thì chỉ xem. Nhập theo phách không có trong tài liệu – cần xác nhận. (Theo NetWEB_GiangVienNhapDiemOnline, mục 1–3.)",
+ "lastRun": null,
+ "menu": "NetWEB giảng viên: Nhập điểm theo nhóm học / tổ thi / phách thi",
+ "module": "DIEM",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NetWEB_GiangVienNhapDiemOnline, mục 1 Học kỳ nhập điểm online, 2 Theo nhóm học, 3 Theo tổ thi",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò giảng viên bằng tài khoản test; chỉ cho nhóm test: hk_cho_phep_nhap_diem (xem), Phân công cán bộ nhập điểm nhóm học/thi và Gán thời gian nhập điểm cho {NH} (Edusoft).",
+  "Menu Nhập điểm theo nhóm học, chọn học kỳ → KIỂM TRA {NH} hiện 'Nhập' (ngoài thời gian là 'Xem').",
+  "Tích cột điểm QT → Nhập → nhập điểm SV test → Lưu.",
+  "KIỂM TRA: Edusoft Nhập điểm theo nhóm học hiện điểm vừa nhập.",
+  "Khóa nhóm trên Edusoft → KIỂM TRA GV không sửa được.",
+  "Lặp với Nhập điểm theo tổ thi (cột Điểm thi) / theo phách (DIEM-019) nếu có phân công.",
+  "Dọn: xóa điểm test, trả thời gian/phân công."
+ ],
+ "title": "Netweb GV: nhập điểm theo nhóm học / tổ thi / phách thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NH": "(nhóm học test)"
+ },
+ "version": "v2026.10H.00"
+}

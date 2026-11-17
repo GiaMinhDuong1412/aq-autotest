@@ -100,7 +100,7 @@
    "kind": "setup",
    "menu": "Sinh viên / Sinh viên học kỳ / Danh mục sinh viên",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-002",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Sinh viên học kỳ / Danh mục sinh viên.",
@@ -118,7 +118,7 @@
    "kind": "main",
    "menu": "Sinh viên / Sinh viên học kỳ / Danh sách sinh viên học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-003",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Sinh viên học kỳ / Danh sách sinh viên học kỳ.",
@@ -134,7 +134,7 @@
    "kind": "main",
    "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định đổi lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-004",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định đổi lớp.",
@@ -152,7 +152,7 @@
    "kind": "main",
    "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định nghỉ học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-005",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định nghỉ học.",
@@ -168,7 +168,7 @@
    "kind": "main",
    "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định tạm dừng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-006",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Sinh viên học kỳ / QĐ vào/ra sinh viên / Quyết định tạm dừng.",
@@ -184,7 +184,7 @@
    "kind": "main",
    "menu": "Sinh viên / Sinh viên học kỳ / QĐ vào / ra sinh viên / Quyết định học lại",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-007",
    "source": "sheet",
    "steps": [
     "Điều kiện: sinh viên TEST đang nghỉ học / tạm dừng (bước 5–6).",
@@ -201,7 +201,7 @@
    "kind": "main",
    "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Cập nhật lý lịch sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-008",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Cập nhật lý lịch sinh viên (tài liệu: Sinh viên / Thông tin sinh viên / Cập nhật lý lịch sinh viên).",
@@ -220,7 +220,7 @@
    "kind": "main",
    "menu": "Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-009",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Thông tin sinh viên / Lý lịch sinh viên / Thời gian cập nhật thông tin SV theo lớp online.",
@@ -237,7 +237,7 @@
    "menu": "NetWEB sinh viên: Cập nhật thông tin lý lịch",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-010",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: đang trong thời gian cho phép cập nhật lý lịch (chỉ xem setting)",
@@ -256,7 +256,7 @@
    "kind": "main",
    "menu": "Sinh viên / Hồ sơ và Văn bằng / Hồ sơ sinh viên / Cập nhật hồ sơ sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-011",
    "source": "sheet",
    "steps": [
     "Điều kiện: Sinh viên / Hồ sơ và văn bằng / Hồ sơ sinh viên / Danh mục hồ sơ có các loại hồ sơ (Thêm tại detailright hoặc Import).",
@@ -275,7 +275,7 @@
    "kind": "main",
    "menu": "Sinh viên / Hồ sơ và Văn bằng / Văn bằng sinh viên / Cập nhật văn bằng sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-012",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Hồ sơ và Văn bằng / Văn bằng sinh viên / Cập nhật văn bằng sinh viên.",
@@ -291,7 +291,7 @@
    "kind": "setup",
    "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Định nghĩa tiêu chuẩn xét",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-013",
    "source": "sheet",
    "steps": [
     "Điều kiện: Quản lý điểm / Quản trị phân hệ / Quản lý danh mục / Danh mục đánh giá có bảng đánh giá nhóm “Khen thưởng” phù hợp (chỉ kiểm tra).",
@@ -309,7 +309,7 @@
    "kind": "main",
    "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Xét khen thưởng theo tiêu chuẩn",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-014",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng sinh viên / Xét khen thưởng theo tiêu chuẩn.",
@@ -327,7 +327,7 @@
    "kind": "setup",
    "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-015",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Định nghĩa tiêu chuẩn xét.",
@@ -344,7 +344,7 @@
    "kind": "main",
    "menu": "Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Xét khen thưởng lớp theo tiêu chuẩn",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-016",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Khen thưởng và Kỷ luật / Xét khen thưởng lớp sinh viên / Xét khen thưởng lớp theo tiêu chuẩn.",
@@ -361,7 +361,7 @@
    "kind": "main",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Sinh viên diện chính sách / Diện chính sách sinh viên học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-017",
    "source": "sheet",
    "steps": [
     "Điều kiện: Sinh viên diện chính sách / Danh mục diện chính sách (Thêm → Lưu) và Nhập phần trăm miễn giảm DCS (tỷ lệ % theo diện).",
@@ -379,7 +379,7 @@
    "kind": "main",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Danh sách khối học bổng học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-018",
    "source": "sheet",
    "steps": [
     "Kiểm tra thông số ở Sinh viên / Quản trị phân hệ / Chỉnh định thông số học kỳ (chỉ ghi lại): SS_SOTINCHIHBMIN, GS_NguonDiemTBHB, SS_DIEMTBHB, SS_KHOIHB, SS_MUCDIEMRL, SS_NGUONGHB, SS_SOLUONGSVCAPHB, SS_TIENHB, SS_SOTHANGHUONGHBKK, SS_CUNGDIEMHBHETCHITIEU…",
@@ -395,7 +395,7 @@
    "kind": "setup",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Định nghĩa khối học bổng học kỳ",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-019",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Định nghĩa khối học bổng học kỳ.",
@@ -411,7 +411,7 @@
    "kind": "main",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Xét học bổng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-020",
    "source": "sheet",
    "steps": [
     "(Tùy chọn) Học bổng / Danh sách không xét học bổng: thêm sinh viên TEST + lý do.",
@@ -429,7 +429,7 @@
    "kind": "main",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / Xem / sửa danh sách xét học bổng",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-021",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / Xem/sửa danh sách xét học bổng.",
@@ -445,7 +445,7 @@
    "kind": "main",
    "menu": "Sinh viên / Miễn giảm hoc phí và Học bổng / Học bổng / In bảng tổng hợp xét học bổng",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-022",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Miễn giảm học phí và Học bổng / Học bổng / In bảng tổng hợp xét học bổng.",
@@ -463,7 +463,7 @@
    "menu": "NetWEB giảng viên: Điểm danh môn giảng dạy",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-023",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng GV test → menu Điểm danh môn giảng dạy, tìm ngày theo lịch giảng dạy",
@@ -482,7 +482,7 @@
    "menu": "NetWEB sinh viên: Xem kết quả điểm danh",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-024",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem kết quả điểm danh",
@@ -500,7 +500,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / In thống kê sinh viên vắng theo môn học",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-025",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh → In thống kê sinh viên vắng theo môn học",
@@ -517,7 +517,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / Nhập và tạo ngày điểm danh",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-026",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh → Nhập và tạo ngày điểm danh",
@@ -535,7 +535,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm danh / Xóa kết quả SV Đã Hủy DKMH",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-027",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: SV test có kết quả điểm danh ở nhóm học đã hủy ĐKMH",
@@ -554,7 +554,7 @@
    "menu": "NetWEB SV + GV: Đánh giá điểm rèn luyên",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-028",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: đợt đánh giá rèn luyện đang mở cho học kỳ test (chỉ xem setting)",
@@ -572,7 +572,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-029",
    "source": "sheet",
    "steps": [
     "Điều kiện (mục 1–2): GS_HESOTBRLNH (Chỉnh định thông số toàn cục, nhóm Điểm rèn luyện), Danh mục phân loại, Danh sách nhóm câu hỏi, Danh sách câu hỏi đã khai báo (chỉ kiểm tra).",
@@ -589,7 +589,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Import điểm rèn luyện",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-030",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Import điểm rèn luyện.",
@@ -607,7 +607,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện 1 sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-031",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Nhập điểm rèn luyện 1 sinh viên.",
@@ -624,7 +624,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Hủy điểm rèn luyện",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-032",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Hủy điểm rèn luyện.",
@@ -641,7 +641,7 @@
    "kind": "main",
    "menu": "Sinh viên / Điểm danh và Điểm rèn luyện / Quản lý điểm rèn luyện / Điểm rèn luyện / Tổng kết điểm rèn luyện",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-033",
    "source": "sheet",
    "steps": [
     "Điều kiện: đã có điểm rèn luyện học kỳ (nhập / import / đánh giá online).",
@@ -659,7 +659,7 @@
    "menu": "NetWEB: Tra cứu thông tin tốt nghiệp",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-034",
    "source": "sheet",
    "steps": [
     "Mở Netweb (không cần đăng nhập) → menu Tra cứu thông tin tốt nghiệp",
@@ -677,7 +677,7 @@
    "kind": "main",
    "menu": "Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Đồng bộ thông tin tốt nghiệp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-035",
    "source": "sheet",
    "steps": [
     "Điều kiện: sinh viên TEST đã được xét tốt nghiệp đạt (phân hệ Tốt nghiệp).",
@@ -694,7 +694,7 @@
    "kind": "main",
    "menu": "Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Cập nhật thông tin tốt nghiệp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-036",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Cập nhật thông tin tốt nghiệp.",
@@ -710,7 +710,7 @@
    "kind": "main",
    "menu": "Sinh viên / Thông tin tốt nghiệp / In chứng nhận tốt nghiệp / In giấy chứng nhận 1 sinh viên",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-037",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Thông tin tốt nghiệp / In chứng nhận tốt nghiệp / In giấy chứng nhận 1 sinh viên.",
@@ -728,7 +728,7 @@
    "menu": "NetWEB: Đăng ký cấp giấy chứng nhận / bảng điểm",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-038",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Hỗ trợ hành chính một cửa",
@@ -745,7 +745,7 @@
    "kind": "setup",
    "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Danh mục giấy chứng nhận",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-039",
    "source": "sheet",
    "steps": [
     "Điều kiện: Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Danh sách mẫu giấy chứng nhận (Tiếp tục → có mẫu in, tab Thông số trang in) và Định nghĩa bộ đếm GCN sinh viên đã có.",
@@ -762,7 +762,7 @@
    "kind": "main",
    "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-040",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận.",
@@ -780,7 +780,7 @@
    "kind": "main",
    "menu": "Sinh viên / Quản lý dịch vụ / Cấp giấy chứng nhận / Cấp và in giấy chứng nhận online",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-041",
    "source": "sheet",
    "steps": [
     "Điều kiện: sinh viên TEST đã đăng ký cấp giấy chứng nhận trên Netweb (bước NetWEB: Đăng ký cấp giấy chứng nhận / bảng điểm).",
@@ -796,7 +796,7 @@
    "kind": "main",
    "menu": "Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-042",
    "source": "sheet",
    "steps": [
     "Mở menu Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Gán cố vấn học tập theo lớp.",
@@ -814,7 +814,7 @@
    "kind": "main",
    "menu": "Sinh viên / Cố vấn và Chủ nhiệm / Cố vấn học tập / Hủy mã cố vấn học tập cho toàn lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-043",
    "source": "sheet",
    "steps": [
     "Điều kiện: lớp test đã gán cố vấn (bước 42).",
@@ -832,7 +832,7 @@
    "menu": "NetWEB giảng viên: Xem danh sách sinh viên quản lý",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLSV-044",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng GV cố vấn test → menu Xem DS sinh viên quản lý",
@@ -848,6 +848,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 44 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 32 khớp, 4 khớp một phần, 8 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

@@ -1,0 +1,72 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã kỳ TS, Tên kỳ TS",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã kỳ TS…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã kỳ TS nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã kỳ TS và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã kỳ TS",
+   "steps": [
+    "Bấm Thêm, nhập Mã kỳ TS giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "kỳ tuyển sinh đã được dùng ở đợt tuyển sinh / hồ sơ thí sinh",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng kỳ tuyển sinh đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLTS-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần dữ liệu trước",
+  "next": [
+   "QLTS-002",
+   "QLTS-003",
+   "QLTS-008"
+  ],
+  "out": "Kỳ tuyển sinh {KYTS}"
+ },
+ "expected": "Kỳ tuyển sinh lưu và sửa được; Tên kỳ TS là tiêu đề trang đăng ký xét tuyển trên Netweb. (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.1.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Chuẩn bị/ Danh sách kỳ tuyển sinh",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.1 Khởi tạo kỳ và đợt tuyển sinh",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đang chọn đúng năm học học kỳ tuyển sinh.",
+  "Kiểm tra trùng: mở Tuyển sinh/ Chuẩn bị/ Danh sách kỳ tuyển sinh, tìm {KYTS} ở cột Mã kỳ TS → có thì đổi mã.",
+  "Thêm: bấm Thêm, Mã kỳ TS = {KYTS}, Tên kỳ TS = 'TEST Ky tuyen sinh' (là tiêu đề form Đăng ký xét tuyển trên Netweb), Viết tắt, Bậc hệ tuyển sinh → Lưu.",
+  "KIỂM TRA THÊM: {KYTS} hiển thị đúng Tên kỳ TS, Viết tắt, Bậc hệ.",
+  "Sửa: đổi Tên kỳ TS thành 'TEST Ky tuyen sinh sua' → Lưu.",
+  "KIỂM TRA SỬA: tắt, mở lại → {KYTS} có tên mới. Giữ {KYTS} cho các kịch bản tuyển sinh sau (xóa ở cuối chuỗi, sau QLTS-022).",
+  "Tắt màn hình."
+ ],
+ "title": "Danh sách kỳ tuyển sinh: thêm – sửa kỳ tuyển sinh test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KYTS": "TEST_KY{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

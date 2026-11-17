@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tiết dạy thay > tổng tiết nhóm",
+   "expected": "Chặn/cảnh báo. Cần xác nhận.",
+   "name": "Vượt số tiết nhóm",
+   "steps": [
+    "Nhập 999 tiết."
+   ]
+  }
+ ],
+ "code": "KLGD-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Dữ liệu đã chốt (KLGD-006)",
+  "next": [
+   "KLGD-008"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Tiết dạy thay chuyển khối lượng từ CB chính sang CB thay. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 4.6.)",
+ "lastRun": null,
+ "menu": "Khối lượng / Chuẩn bị dữ liệu / Hiệu chỉnh khối lượng giảng dạy / CBGD thay thế dạy dùm / Chọn 1 mẫu tin / Sửa",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.6 CBGD thay thế (dạy dùm)",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NH} của {CB} đã chốt (KLGD-006).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Hiệu chỉnh khối lượng giảng dạy/ CBGD thay thế dạy dùm; chọn mẫu tin {NH} → Sửa.",
+  "Thêm CBGD thay thế {CB2}, số tiết dạy thay 6 → Lưu.",
+  "KIỂM TRA: {NH} hiện {CB2} 6 tiết; sau khi tính (KLGD-008) KL của {CB} giảm 6 tiết, {CB2} tăng 6 tiết.",
+  "Dọn: xóa {CB2} → Lưu; KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "CBGD thay thế dạy dùm (chọn 1 mẫu tin – sửa)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)",
+  "CB2": "(cán bộ dạy thay)",
+  "MH": "(môn test cán bộ dạy)",
+  "NH": "(nhóm tổ của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

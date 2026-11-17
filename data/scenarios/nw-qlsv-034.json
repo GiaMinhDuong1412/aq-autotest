@@ -1,0 +1,37 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-034",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thông tin tốt nghiệp (QLSV-036)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Tra cứu văn bằng trả đúng thông tin tốt nghiệp; số không tồn tại báo không tìm thấy. (Theo NetWEB_Guest_TraCuuLuanVan_VanBangChungChi, mục 2.)",
+ "lastRun": null,
+ "menu": "NetWEB: Tra cứu thông tin tốt nghiệp",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NetWEB_Guest_TraCuuLuanVan_VanBangChungChi, mục 2 Kiểm tra văn bằng chứng chỉ trực tuyến",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò khách (không đăng nhập) bằng tài khoản test; có SV đã tốt nghiệp với số văn bằng {SOVB} (QLSV-036).",
+  "Menu Tra cứu thông tin tốt nghiệp → nhập {SOVB} → Tìm.",
+  "KIỂM TRA: hiện đúng họ tên, ngành, xếp loại, số hiệu văn bằng.",
+  "Nhập số văn bằng không tồn tại (TESTKHONGCO) → KIỂM TRA báo không tìm thấy."
+ ],
+ "title": "Netweb: tra cứu thông tin tốt nghiệp theo số văn bằng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "SOVB": "(số văn bằng của SV đã tốt nghiệp – QLSV-036)"
+ },
+ "version": "v2026.10H.00"
+}

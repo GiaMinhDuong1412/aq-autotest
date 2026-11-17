@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thêm lại {HS} cho {MSSV}",
+   "expected": "Báo trùng / không tạo dòng thứ hai.",
+   "name": "Nộp trùng hồ sơ",
+   "steps": [
+    "Thêm hồ sơ {HS} lần hai."
+   ]
+  }
+ ],
+ "code": "QLSV-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001); Danh mục hồ sơ",
+  "next": [],
+  "out": "Hồ sơ của {MSSV} (đã xóa)"
+ },
+ "expected": "Hồ sơ đã nộp ghi nhận theo SV, phản ánh ở báo cáo tình trạng hồ sơ; xóa được. (Theo QLSV_QuanLyHoSoVanBangSinhVien, mục III.1.1–1.2.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục III.1.1–1.2 Danh mục hồ sơ, Cập nhật hồ sơ sinh viên",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa); Danh mục hồ sơ (Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Danh mục hồ sơ) có loại hồ sơ.",
+  "Mở Sinh viên/ Hồ sơ và Văn bằng/ Hồ sơ sinh viên/ Cập nhật hồ sơ sinh viên (bản trước lỗi case 63527); nhập {MSSV}.",
+  "Chọn loại hồ sơ {HS}, Ngày nộp hồ sơ = hôm nay, Ghi chú TEST → Thêm hồ sơ → Lưu.",
+  "KIỂM TRA THÊM: lưới Danh sách hồ sơ có {HS} với ngày nộp.",
+  "Sửa Ghi chú → Lưu; KIỂM TRA SỬA mở lại thấy ghi chú mới.",
+  "KIỂM TRA báo cáo: In DSSV theo tình trạng hồ sơ có {MSSV} đã nộp {HS}.",
+  "Xóa hồ sơ {HS} của {MSSV} → KIỂM TRA XÓA không còn.",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Cập nhật hồ sơ sinh viên: thêm – xóa hồ sơ đã nộp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "HS": "(loại hồ sơ trong Danh mục hồ sơ)",
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

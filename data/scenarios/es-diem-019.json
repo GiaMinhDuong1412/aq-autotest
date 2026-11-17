@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DIEM-019",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm phách (DIEM-017)",
+  "next": [
+   "DIEM-023"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "GV chỉ nhập điểm phách online cho nhóm được phân quyền. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm / Quản lý phách / Tạo phách từ danh sách thi / Phân quyền nhập điểm phách online",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm phách {NP} (DIEM-017).",
+  "Mở Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Phân quyền nhập điểm phách online; chọn {NP}, gán {GV} → Lưu.",
+  "KIỂM TRA: dòng phân quyền hiện; Netweb GV {GV} – Nhập điểm theo phách thi (DIEM-023) thấy {NP} và nhập được.",
+  "Gỡ phân quyền → KIỂM TRA GV không còn thấy {NP}. Tắt màn hình."
+ ],
+ "title": "Phân quyền nhập điểm phách online cho giảng viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "GV": "(GV Netweb test)",
+  "NP": "(nhóm phách test)"
+ },
+ "version": "v2026.10H.00"
+}

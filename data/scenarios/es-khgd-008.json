@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Cần làm lại biểu đồ",
+   "expected": "Giá trị tuần của {LOP} bị xóa.",
+   "name": "Hủy BĐKH",
+   "steps": [
+    "Hủy BĐKH cho {LOP}."
+   ]
+  }
+ ],
+ "code": "KHGD-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "CTĐT thực hiện (KHGD-003), lớp học kỳ (KHGD-004)",
+  "next": [
+   "KHGD-009"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Biểu đồ KHHT lớp (tuần học) lấy từ khối và chỉnh được theo lớp; là đầu vào quy hoạch nhóm học và xếp TKB theo tuần. (Theo KHGD_CacBuocXepTKB, mục III.1.2; lưu đồ TKB bước 3.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.1.2 Quy hoạch nhóm học phần (Biểu đồ kế hoạch học tập)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Biểu đồ kế hoạch học tập khối {KHOI} đã nhập; ghi lại biểu đồ hiện tại của {LOP}.",
+  "Mở Kế hoạch/ Biểu đồ kế hoạch học tập/ Biểu đồ kế hoạch học tập lớp; Lọc theo {KHOI}.",
+  "Đồng bộ từ khối: chọn {KHOI} → gán giá trị cho các lớp thuộc khối (chỉ {LOP} nếu chọn được) → Lưu biểu đồ kế hoạch.",
+  "KIỂM TRA: {LOP} có Tuần bắt đầu/kết thúc và ký hiệu 'x' các tuần học giống khối.",
+  "Sửa: bỏ 'x' tuần 9 (tuần thi/nghỉ) → Lưu; KIỂM TRA SỬA mở lại thấy tuần 9 trống; In BĐKH đúng.",
+  "Trả lại biểu đồ cũ (hoặc Hủy BĐKH lớp rồi đồng bộ lại) → KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Biểu đồ kế hoạch học tập lớp: đồng bộ từ khối, sửa tuần học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})"
+ },
+ "version": "v2026.10H.00"
+}

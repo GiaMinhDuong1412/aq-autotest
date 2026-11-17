@@ -1,0 +1,55 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "môn gốc nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng môn gốc và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng môn gốc",
+   "steps": [
+    "Bấm Thêm, nhập môn gốc giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm {MHTT}, CTĐT",
+  "next": [
+   "DIEM-004"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Môn thay thế theo SV làm điểm môn mới tính cho môn gốc khi xét (lưu đồ DIEM bước 7). Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sinh viên",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đã đạt {MHTT}; {MHGOC} thuộc CTĐT của khối {MSSV}.",
+  "Mở Quản lý điểm/ Quản lý môn thay thế/ Chỉnh sửa môn thay thế sinh viên; chọn {MSSV}.",
+  "Thêm: môn gốc {MHGOC} → môn thay thế {MHTT} → Lưu; KIỂM TRA THÊM dòng hiện đúng.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: phiếu điểm / Xem điểm toàn khóa – {MHGOC} được tính bằng điểm {MHTT}; tiêu chuẩn tốt nghiệp coi {MHGOC} là đạt (QLTN-003).",
+  "Sửa môn thay thế sang môn khác → Lưu; KIỂM TRA SỬA.",
+  "Xóa dòng test → KIỂM TRA XÓA; {MHGOC} trở lại chưa đạt. Tắt màn hình."
+ ],
+ "title": "Chỉnh sửa môn thay thế sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MHGOC": "(môn trong CTĐT không còn đào tạo)",
+  "MHTT": "(môn thay thế {MSSV} đã đạt)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

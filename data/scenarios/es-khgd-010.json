@@ -1,0 +1,57 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đưa {NHOM} vào Nhóm tổ không xét thời khóa biểu",
+   "expected": "Bỏ qua kiểm tra trùng TKB lớp/phòng/CB cho {NHOM}.",
+   "name": "Nhóm không xét TKB",
+   "steps": [
+    "Thêm {NHOM} vào danh sách không xét → xếp TKB."
+   ]
+  }
+ ],
+ "code": "KHGD-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm (KHGD-009), viên chức học kỳ (KHGD-006)",
+  "next": [
+   "KHGD-011",
+   "DKMH-006",
+   "LTHI-005"
+  ],
+  "out": "Nhóm {NHOM}: sĩ số 40, CBGD {CB}"
+ },
+ "expected": "Thông tin nhóm/tổ (sĩ số, công thức thời gian, CBGD, lớp) chỉnh được; là dữ liệu xếp TKB và đăng ký môn học. (Theo KHGD_CacBuocXepTKB, mục III.1.3; lưu đồ TKB bước 6.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thông tin nhóm học phần/ Danh sách nhóm tổ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.1.3 Thông tin nhóm môn học",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của {MH} (KHGD-009).",
+  "Mở Kế hoạch/ Thông tin nhóm học phần/ Danh sách nhóm tổ; tìm {MH}.",
+  "Dạng chi tiết: chọn {NHOM} → Sửa nhóm/tổ: Sĩ số cho phép đk = 40, Mã công thức thời gian học, gán CBGD {CB} → Lưu; KIỂM TRA SỬA.",
+  "Thêm tổ TH cho {NHOM} (sĩ số 20) → Lưu; KIỂM TRA tổ TH xuất hiện dưới {NHOM}.",
+  "Thêm tổ hợp / thêm lớp {LOP} cho tổ → Lưu; KIỂM TRA.",
+  "Dạng danh sách: sửa Ghi chú nhiều nhóm {MH} cùng lúc → Lưu; KIỂM TRA.",
+  "Xóa tổ TH vừa thêm → KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "Danh sách nhóm tổ: sửa nhóm, thêm tổ thực hành, tổ hợp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test trong học kỳ)",
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

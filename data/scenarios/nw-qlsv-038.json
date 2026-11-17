@@ -1,0 +1,47 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Yêu cầu đã được cán bộ duyệt",
+   "expected": "Không cho xóa.",
+   "name": "Xóa yêu cầu đã xử lý",
+   "steps": [
+    "Thử xóa yêu cầu đã duyệt."
+   ]
+  }
+ ],
+ "code": "QLSV-038",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục GCN (QLSV-039)",
+  "next": [
+   "QLSV-041"
+  ],
+  "out": "Yêu cầu GCN online TEST_"
+ },
+ "expected": "SV gửi được yêu cầu cấp GCN/bảng điểm; trạng thái theo dõi được và cán bộ thấy trên Edusoft. (Theo NETWEB_QuanLyDonTuTrucTuyen, mục 17.)",
+ "lastRun": null,
+ "menu": "NetWEB: Đăng ký cấp giấy chứng nhận / bảng điểm",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NETWEB_QuanLyDonTuTrucTuyen, mục 17 Hỗ trợ hành chính một cửa",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; loại giấy chứng nhận có trong Danh mục giấy chứng nhận (QLSV-039).",
+  "Menu Hỗ trợ hành chính một cửa → chọn loại GCN (vd Giấy xác nhận sinh viên), lý do 'TEST_' → Gửi yêu cầu.",
+  "KIỂM TRA: yêu cầu hiện trong danh sách, trạng thái 'chưa xử lý'.",
+  "KIỂM TRA Edusoft: Cấp và in giấy chứng nhận online (QLSV-041) thấy yêu cầu.",
+  "Dọn (nếu không chạy tiếp QLSV-041): xóa yêu cầu khi chưa xử lý → KIỂM TRA biến mất."
+ ],
+ "title": "Netweb SV: đăng ký cấp giấy chứng nhận / bảng điểm (hành chính một cửa)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

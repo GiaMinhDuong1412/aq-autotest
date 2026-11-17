@@ -1,0 +1,60 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã thang đo, Tên thang đo",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã thang đo…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "thang đo đã được dùng ở câu hỏi",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng thang đo đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KSDG-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "KSDG-003"
+  ],
+  "out": "Thang đo {TD}"
+ },
+ "expected": "Thang đo có các bậc và hệ số dùng tính điểm trung bình câu hỏi (lưu đồ KSDG bước 2). (Theo KSDG_QuyTrinhKhaoSat, mục III.5.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục thang đo đánh giá",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.5 Tạo danh mục thang đo đánh giá",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test.",
+  "Mở Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh mục thang đo đánh giá → Thêm: Mã {TD}, Tên thang đo.",
+  "Danh sách câu trả lời chi tiết: 'Click here to add a new row' × 5: Thứ tự 1–5, câu trả lời (Rất không đồng ý … Rất đồng ý), hệ số 0–4 → Lưu.",
+  "KIỂM TRA THÊM: {TD} có 5 bậc, hệ số đúng thứ tự.",
+  "Sửa hệ số bậc 5 = 5 → Lưu; KIỂM TRA SỬA; trả lại 4.",
+  "Giữ cho KSDG-003; dọn cuối chuỗi: xóa {TD} khi không còn câu hỏi dùng."
+ ],
+ "title": "Danh mục thang đo đánh giá (5 bậc có hệ số điểm)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TD": "TEST_TD{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

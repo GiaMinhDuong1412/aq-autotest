@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{SVD} chưa có chứng chỉ ngoài",
+   "expected": "{SVD} Không đạt, lý do thiếu chứng chỉ.",
+   "name": "Thiếu chứng chỉ",
+   "steps": [
+    "Xóa chứng chỉ ngoài (DIEM-009), xét lại."
+   ]
+  },
+  {
+   "condition": "{SVK} có môn thay thế cho môn thiếu (DIEM-002)",
+   "expected": "{SVK} Đạt.",
+   "name": "Môn thay thế",
+   "steps": [
+    "Khai môn thay thế, xét lại."
+   ]
+  }
+ ],
+ "code": "QLTN-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "DS SV xét (QLTN-002), điểm (DIEM), chứng chỉ (DIEM-009)",
+  "next": [
+   "QLTN-004",
+   "QLTN-005",
+   "QLTN-006",
+   "QLSV-035"
+  ],
+  "out": "{SVD} tốt nghiệp; {SVK} không đạt"
+ },
+ "expected": "Xét tốt nghiệp kiểm tra môn bắt buộc/tự chọn, chứng chỉ, TC và ĐTB tích lũy: đủ → DS tốt nghiệp (sau đó lập QĐ tốt nghiệp bên QLSV, xóa tên kỳ sau), thiếu → DS không tốt nghiệp (lưu đồ QLTN bước 5–7). (Theo DIEM_QuanLyTotNghiep, mục 2.5.4.)",
+ "lastRun": null,
+ "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo đợt và tiêu chuẩn (TN)",
+ "module": "QLTN",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.4 Xét tốt nghiệp (theo 2.1.3 Xét thi)",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; DS SV xét {DOT} (QLTN-002) có {SVD} (đủ TC, ĐTB ≥ 2,0, có chứng chỉ – DIEM-009) và {SVK} (thiếu 1 môn bắt buộc).",
+  "Mở Tốt nghiệp/ Xét tốt nghiệp/ Xét tốt nghiệp/ Xét theo đợt và tiêu chuẩn (TN); chọn {DOT}, {MATC} → Xử lý.",
+  "Nhiệm ý: cộng lại điểm (có thay đổi), đối tượng = lớp test, có lưu kết quả → Chọn.",
+  "KIỂM TRA: cửa sổ Đạt/Không đạt; {SVD} Đạt; {SVK} Không đạt.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Xem kết quả tốt nghiệp/ Danh sách sinh viên tốt nghiệp có {SVD}; Danh sách sinh viên không tốt nghiệp có {SVK} (QLTN-004).",
+  "Tắt màn hình."
+ ],
+ "title": "Xét tốt nghiệp theo đợt và tiêu chuẩn",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DTN{ddHHMM}",
+  "MATC": "TEST_TN{ddHHMM}",
+  "SVD": "(SV đủ điều kiện)",
+  "SVK": "(SV thiếu tín chỉ / nợ môn)"
+ },
+ "version": "v2026.10H.00"
+}

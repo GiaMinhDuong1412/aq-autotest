@@ -1,0 +1,43 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QKTX-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục dịch vụ",
+  "next": [
+   "QKTX-005"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Đơn giá dịch vụ theo thời điểm áp dụng; dịch vụ gán theo đối tượng/phòng mới vào hóa đơn. (Theo QKTX_QuanLyPhongTang, mục III.2.2–2.4, 3.1–3.2.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá hạng mục dịch vụ",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_QuanLyPhongTang, mục III.2.4 Định nghĩa đơn giá dịch vụ (cần 2.2 Danh mục dịch vụ, 2.3 Hạng mục dịch vụ; sau: 3.1/3.2 gán dịch vụ)",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tạo Danh mục dịch vụ {DVU} (cách tính theo phòng) và Hạng mục dịch vụ {HM} thuộc {DVU}.",
+  "Mở Ký túc xá/ Định nghĩa dịch vụ và giá/ Đơn giá hạng mục dịch vụ; chọn {HM} → Thêm đơn giá 3.500, ngày áp dụng đầu tháng → Lưu.",
+  "KIỂM TRA THÊM: đơn giá đúng hạng mục và thời điểm.",
+  "Thêm đơn giá thời điểm khác (tháng sau 4.000) → KIỂM TRA cả hai cùng tồn tại.",
+  "(Tùy chọn) Gán dịch vụ theo phòng cho {PH} (bắt buộc với phí điện nước) → KIỂM TRA.",
+  "Dọn: xóa đơn giá, {HM}, {DVU}. Tắt màn hình."
+ ],
+ "title": "Đơn giá hạng mục dịch vụ (điện nước…)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DVU": "TEST_DV{ddHHMM}",
+  "HM": "TEST_HM{ddHHMM}",
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

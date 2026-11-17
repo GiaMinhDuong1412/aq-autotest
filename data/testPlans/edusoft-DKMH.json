@@ -43,7 +43,7 @@
    "kind": "setup",
    "menu": "Đăng ký MH / Đăng ký môn học / Tài nguyên và ràng buộc / Định nghĩa môn tiên quyết, học trước, song hành",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-001",
    "source": "sheet",
    "steps": [
     "Kiểm tra (không sửa trên dữ liệu chung): Hệ thống / Quản trị hệ thống / Chỉnh định thông số hệ thống → phân hệ Quản lý đăng ký môn học: các biến Cấm đăng ký khi vi phạm tiên quyết / học trước / song hành = Cấm.",
@@ -63,7 +63,7 @@
    "kind": "setup",
    "menu": "Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Chỉnh định chung",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-002",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Chỉnh định chung.",
@@ -83,7 +83,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Thời gian đăng ký theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-003",
    "source": "sheet",
    "steps": [
     "Điều kiện: SM00_CAMDKTT_DIEN = Không; SM00_TGCPDK = Có giới hạn; NHHK đăng ký ở Hệ thống / Quản trị NetWEB / Chỉnh định chung = học kỳ test.",
@@ -102,7 +102,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Đăng ký nguyện vọng online / Thời gian đăng ký nguyện vọng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-004",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Đăng ký nguyện vọng online → Thời gian đăng ký nguyện vọng",
@@ -119,7 +119,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Rút môn học online / Thời gian rút môn học theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-005",
    "source": "sheet",
    "steps": [
     "Kiểm tra (không sửa) ký tự điểm rút: Quản lý điểm / Quản trị phân hệ / Chỉnh định thông số toàn cục, biến GD_DIEMDACBIET.",
@@ -137,7 +137,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Đăng ký môn học / Đăng ký tự động / Theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-006",
    "source": "sheet",
    "steps": [
     "Điều kiện: TKB nhóm môn học của lớp test đã xếp, không trùng; DSSV học kỳ ổn định; SM01_LOPDKTDCTDT = Có cho lớp test.",
@@ -155,7 +155,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Đăng ký môn học / Đăng ký theo tập tin / Theo sinh viên - môn học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-007",
    "source": "sheet",
    "steps": [
     "Chuẩn bị file sinh viên – môn học cho sinh viên TEST (cấu trúc theo Xuất cấu trúc).",
@@ -173,7 +173,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Đăng ký môn học / ĐKMH từng sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-008",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Đăng ký môn học / ĐKMH từng sinh viên.",
@@ -192,7 +192,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hiệu chỉnh đăng ký / Hiệu chỉnh dữ liệu đăng ký / Chuyển KQĐK từ 1 nhóm đến 1 nhóm",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-009",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: SV test đã đăng ký nhóm A của môn test, môn có nhóm B còn chỗ",
@@ -211,7 +211,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hiệu chỉnh đăng ký / Tính chất học lại / Cập nhật tính chất học lại",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-010",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Hiệu chỉnh đăng ký / Tính chất học lại → Cập nhật tính chất học lại",
@@ -228,7 +228,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hủy KQ ĐKMH / Hủy KQ ĐKMH - 1 nhóm học / một số SV",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-011",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Hủy KQ ĐKMH → Hủy KQ ĐKMH - 1 nhóm học/một số SV",
@@ -245,7 +245,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hủy KQ ĐKMH / Hủy KQ ĐKMH - theo sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-012",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Hủy KQ ĐKMH → Hủy KQ ĐKMH - theo sinh viên",
@@ -262,7 +262,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hủy KQ ĐKMH / Hủy KQ ĐKMH - theo tập tin",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-013",
    "source": "sheet",
    "steps": [
     "Chuẩn bị file chỉ chứa SV/nhóm test",
@@ -280,7 +280,7 @@
    "kind": "main",
    "menu": "Đăng ký MH / Hủy KQ ĐKMH / Phục hồi kết quả đăng ký",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-014",
    "source": "sheet",
    "steps": [
     "Mở menu Đăng ký MH / Hủy KQ ĐKMH → Phục hồi kết quả đăng ký",
@@ -297,7 +297,7 @@
    "menu": "NetWEB sinh viên: Đăng ký môn học",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-015",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: đang trong đợt đăng ký online cho SV test (chỉ xem thời gian/ràng buộc)",
@@ -316,7 +316,7 @@
    "menu": "NetWEB giảng viên: Duyệt đăng ký môn học",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-016",
    "source": "sheet",
    "steps": [
     "Chỉ xem (không sửa) setting xl_so_ngay_gv_duyet_sau_ngay_svdk, xl_cho_cvht_dk ở Đăng ký MH / Đăng ký môn học / Ràng buộc đăng ký online / Chỉnh định chung",
@@ -335,7 +335,7 @@
    "menu": "NetWEB sinh viên: Rút môn học",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "DKMH-017",
    "source": "sheet",
    "steps": [
     "Điều kiện: lớp của sinh viên TEST đang trong Thời gian rút môn học theo lớp; SV đã có môn đăng ký.",
@@ -352,6 +352,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 17 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 10 khớp, 0 khớp một phần, 7 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đăng nhập Netweb vai trò sinh viên với mật khẩu sai",
+   "expected": "Netweb báo sai tài khoản/mật khẩu, không vào được trang chức năng.",
+   "name": "Sai mật khẩu Netweb",
+   "steps": [
+    "Nhập mã sinh viên test và một mật khẩu sai.",
+    "Bấm Đăng nhập."
+   ]
+  }
+ ],
+ "code": "KHGD-020",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), KQĐK",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "TKB tuần trên Netweb khớp Edusoft cho SV và GV. (Theo Netweb_TaiLieuHuongDanSinhVien mục 10; NetWEB_GiangVienXemThongTinCaNhan mục 3.)",
+ "lastRun": null,
+ "menu": "NetWEB SV + GV: Xem TKB dạng tuần",
+ "module": "KHGD",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_GiangVienXemThongTinCaNhan, mục SV 10 / GV 3 Thời khóa biểu dạng tuần",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; SV đã đăng ký {NHOM} (DKMH) và {NHOM} đã xếp TKB (KHGD-011).",
+  "Menu Thời khóa biểu dạng tuần → TKB cá nhân, chuyển tuần có lịch.",
+  "KIỂM TRA: {NHOM} hiện đúng thứ, tiết bắt đầu, phòng như Edusoft (KHGD-016).",
+  "Thử TKB lớp, TKB môn học, TKB khoa → KIỂM TRA hiển thị được.",
+  "Đăng nhập GV dạy {NHOM} → Xem thời khóa biểu tuần → KIỂM TRA lịch dạy đúng, mở được danh sách SV học phần."
+ ],
+ "title": "Netweb SV + GV: xem TKB dạng tuần",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

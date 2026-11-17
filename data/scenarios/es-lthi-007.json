@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm thi (LTHI-005)",
+  "next": [],
+  "out": "Không đổi"
+ },
+ "expected": "Thông tin cho phép của nhóm thi sửa được. (Theo LTHI_ToChucThi, mục III.5.2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin nhóm thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.5.2 Cập nhật thông tin nhóm thi",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm thi {NT} (LTHI-005).",
+  "Mở Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Cập nhật thông tin nhóm thi; chọn {NT} → Sửa (vd số phút thi, ghi chú) → Lưu.",
+  "KIỂM TRA SỬA: mở lại thấy giá trị mới.",
+  "Trả lại giá trị cũ. Tắt màn hình."
+ ],
+ "title": "Cập nhật thông tin nhóm thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

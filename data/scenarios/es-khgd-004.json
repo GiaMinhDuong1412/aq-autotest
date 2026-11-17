@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Lớp mới chưa có trong học kỳ",
+   "expected": "Lớp vào danh sách lớp học kỳ.",
+   "name": "Thêm lớp vào học kỳ",
+   "steps": [
+    "Bấm Add, chọn một lớp chưa có → Lưu, rồi xóa lại."
+   ]
+  }
+ ],
+ "code": "KHGD-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Dữ liệu học kỳ (QLHT-002), DS SV học kỳ (QLSV-003)",
+  "next": [
+   "KHGD-008",
+   "KHGD-011"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Lớp học kỳ có đủ thông tin và sĩ số; sĩ số là đầu vào quy hoạch nhóm học/xếp phòng. Chưa có tài liệu – cần xác nhận cột 'Không đồng bộ lại sĩ số'. (Lưu đồ TKB bước 2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách lớp học kỳ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; học kỳ test đã khởi tạo dữ liệu (QLHT-002).",
+  "Mở Kế hoạch/ Danh sách dữ liệu học kỳ/ Danh sách lớp học kỳ, học kỳ test; tìm {LOP}.",
+  "KIỂM TRA: {LOP} có Mã khối, Mã bậc hệ, NHHK vào, Sĩ số lớp (= số SV ở DS SV học kỳ).",
+  "Sửa: tick 'Không đồng bộ lại sĩ số' và đổi Sỉ số lớp (+1) → Lưu; KIỂM TRA SỬA mở lại thấy giá trị mới.",
+  "Trả lại sĩ số và bỏ tick → Lưu. Tắt màn hình."
+ ],
+ "title": "Danh sách lớp học kỳ: lớp test có trong học kỳ, sửa sĩ số",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})"
+ },
+ "version": "v2026.10H.00"
+}

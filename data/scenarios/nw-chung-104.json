@@ -1,0 +1,36 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "CHUNG-104",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tài khoản Netweb test",
+  "next": [],
+  "out": "Mật khẩu trả lại như cũ"
+ },
+ "expected": "Đổi mật khẩu yêu cầu đúng mật khẩu cũ, mật khẩu mới có hiệu lực ngay. (Theo Netweb_TaiLieuHuongDanSinhVien, mục 2.)",
+ "lastRun": null,
+ "menu": "NetWEB SV +GV: Đổi mật khẩu",
+ "module": "CHUNG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien, mục 2 Đổi mật khẩu",
+  "plan": "netweb-CHUNG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; mật khẩu test lấy từ nơi lưu bí mật, không ghi vào kịch bản.",
+  "Bấm avatar → Đổi mật khẩu → nhập mật khẩu cũ sai → KIỂM TRA bị từ chối.",
+  "Nhập đúng mật khẩu cũ, mật khẩu mới, xác nhận → Thay đổi mật khẩu.",
+  "KIỂM TRA: đăng xuất, đăng nhập bằng mật khẩu mới được; mật khẩu cũ bị từ chối.",
+  "Dọn: đổi lại mật khẩu cũ. Lặp với GV test."
+ ],
+ "title": "Netweb SV + GV: đổi mật khẩu",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

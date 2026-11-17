@@ -1,0 +1,73 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã GCN, Tên giấy CN",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã GCN…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã GCN nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã GCN và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã GCN",
+   "steps": [
+    "Bấm Thêm, nhập Mã GCN giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "loại GCN đã được dùng ở lượt cấp giấy chứng nhận",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng loại GCN đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLSV-039",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Mẫu GCN, bộ đếm GCN",
+  "next": [
+   "QLSV-040",
+   "QLSV-038"
+  ],
+  "out": "Loại GCN {MA}"
+ },
+ "expected": "Loại GCN lưu với bộ đếm và mẫu in, dùng khi cấp GCN. (Theo QLSV_CapVaInGiayChungNhan, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh mục giấy chứng nhận",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapVaInGiayChungNhan, mục III.1 Định nghĩa dữ liệu; III.2 Danh mục giấy chứng nhận",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có Danh sách mẫu giấy chứng nhận và Định nghĩa bộ đếm GCN sinh viên.",
+  "Kiểm tra trùng: mở Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Danh mục giấy chứng nhận, tìm {MA} ở ô tìm kiếm cột Mã GCN → đã có thì đổi mã test khác. Ghi lại số dòng hiện có.",
+  "Thêm: bấm Thêm, nhập Mã GCN = {MA}, Tên giấy CN = {TEN}, Tên viết tắt, Bộ đếm GCN, Mã mẫu in → Lưu.",
+  "KIỂM TRA THÊM: dòng {MA} hiển thị đúng Tên giấy CN và các giá trị vừa nhập.",
+  "Sửa: chọn dòng {MA}, đổi Tên viết tắt → Lưu.",
+  "KIỂM TRA SỬA: tắt màn hình (X), mở lại menu, tìm {MA} → thấy giá trị mới, không còn giá trị cũ.",
+  "Xóa: chọn dòng {MA} → Xóa → chỉ xác nhận khi hộp thoại nêu đúng {MA} (giữ đến hết QLSV-040 thì xóa).",
+  "KIỂM TRA XÓA: tìm {MA} → không còn dòng nào (nếu lưới chưa nạp lại thì tắt, mở lại menu rồi kiểm tra). Tắt màn hình."
+ ],
+ "title": "Danh mục giấy chứng nhận: thêm loại GCN test với bộ đếm và mẫu in",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MA": "TEST_GCN{ddHHMM}",
+  "TEN": "TEST Giay chung nhan"
+ },
+ "version": "v2026.10H.00"
+}

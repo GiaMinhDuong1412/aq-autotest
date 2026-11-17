@@ -27,7 +27,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý hoãn thi / Sinh viên đăng ký hoãn thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-001",
    "source": "sheet",
    "steps": [
     "Kiểm tra (chỉ ghi lại) Tổ chức thi / Quản trị phân hệ / Chỉnh định thông số học kỳ: GL_DOITUONGPHANNHOMTHI, SL_CUMTIETXEPLICHTHI, SL_LOAITGDUNGTRONGTHI, SL_TUANTHISOVOITUANHOC, SL_TUANTRABAITHISOVOITUANHOC.",
@@ -45,7 +45,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý hoãn thi / Ghép SV hoãn vào kỳ thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-002",
    "source": "sheet",
    "steps": [
     "Điều kiện: sinh viên TEST đã đăng ký hoãn thi ở kỳ trước (bước 1).",
@@ -63,7 +63,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý thi cải thiện / Ghép sinh viên cải thiện vào kỳ thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-003",
    "source": "sheet",
    "steps": [
     "Điều kiện: Tổ chức thi / Quản lý thi cải thiện / Sinh viên đăng ký thi cải thiện có sinh viên TEST (đã có điểm môn và thỏa điều kiện cải thiện).",
@@ -80,7 +80,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Chính sách lịch thi / Tính chất thi môn học / Nhập tính chất thi môn học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-004",
    "source": "sheet",
    "steps": [
     "Điều kiện: Tổ chức thi / Chính sách lịch thi / Tính chất thi môn học / Danh mục tính chất thi môn học có các tính chất (Tiểu luận, Viết, Vấn đáp…).",
@@ -97,7 +97,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Danh sách nhóm thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-005",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Danh sách nhóm thi.",
@@ -116,7 +116,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Hiệu chỉnh SV trong nhóm thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-006",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Hiệu chỉnh SV trong nhóm thi.",
@@ -133,7 +133,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Cập nhật thông tin nhóm thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-007",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Quản lý nhóm thi / Tạo nhóm thi / Cập nhật thông tin nhóm thi.",
@@ -149,7 +149,7 @@
    "kind": "setup",
    "menu": "Tổ chức thi / Định nghĩa đợt thi / Định nghĩa đợt thi & gán nhóm thi",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-008",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Định nghĩa đợt thi / Định nghĩa đợt thi & gán nhóm thi.",
@@ -166,7 +166,7 @@
    "kind": "setup",
    "menu": "Tổ chức thi / Định nghĩa đợt thi / Nhập phòng sử dụng trong đợt",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-009",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Định nghĩa đợt thi / Nhập phòng sử dụng trong đợt.",
@@ -182,7 +182,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hủy danh sách dự thi / Hủy theo môn học",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-010",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hủy danh sách dự thi / Hủy theo môn học.",
@@ -198,7 +198,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Quản lý tổ thi / Tạo danh sách tổ thi / Phân tổ thi tự động",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-011",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Quản lý tổ thi / Tạo danh sách tổ thi / Phân tổ thi tự động.",
@@ -215,7 +215,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Xếp lịch thi / Xếp lịch thi theo đợt thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-012",
    "source": "sheet",
    "steps": [
     "(Tùy chọn) Khai báo tài nguyên/ràng buộc: Ngày & tiết bắt đầu thi ưu tiên, Phòng thi ưu tiên, Nhóm thi thi chung thời gian, Tổ thi thi chung phòng.",
@@ -233,7 +233,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh lịch thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-013",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh lịch thi.",
@@ -251,7 +251,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hiệu chỉnh lịch thi / Ghép phòng thi cùng Ngày & Tiết",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-014",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hiệu chỉnh lịch thi / Ghép phòng thi cùng Ngày & Tiết.",
@@ -267,7 +267,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh SV trong tổ thi - theo sinh viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-015",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hiệu chỉnh lịch thi / Hiệu chỉnh SV trong tổ thi - theo sinh viên (hoặc theo tổ thi).",
@@ -285,7 +285,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hiệu chỉnh lịch thi / Danh sách sinh viên trong tổ thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-016",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hiệu chỉnh lịch thi / Danh sách sinh viên trong tổ thi.",
@@ -302,7 +302,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hủy lịch thi / Hủy theo đợt - nhóm thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-017",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hủy lịch thi / Hủy theo đợt - nhóm thi.",
@@ -321,7 +321,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Đánh số báo danh / Đánh số báo danh",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-018",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Đánh số báo danh / Đánh số báo danh.",
@@ -337,7 +337,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hoạt động coi thi / Phân công coi thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-019",
    "source": "sheet",
    "steps": [
     "Điều kiện: lịch thi đợt TEST_ đã xếp xong.",
@@ -357,7 +357,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hoạt động coi thi / Phân công coi thi khác / Nhập phân công coi thi khác",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-020",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hoạt động coi thi / Phân công coi thi khác / Nhập phân công coi thi khác.",
@@ -373,7 +373,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Hoạt động coi thi / In danh sách coi thi / Theo đợt thi",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-021",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Hoạt động coi thi / In danh sách coi thi / Theo đợt thi.",
@@ -390,7 +390,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / SV - Trùng TKB học với lịch thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-022",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / SV - Trùng TKB học với lịch thi.",
@@ -406,7 +406,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Phòng - Trùng lịch thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-023",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Phòng - Trùng lịch thi.",
@@ -422,7 +422,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Khác biệt giữa ĐKMH và DS thi",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-024",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / Khác biệt giữa ĐKMH và DS thi.",
@@ -439,7 +439,7 @@
    "kind": "main",
    "menu": "Tổ chức thi / Khai thác báo biểu / In bảng ghi điểm / Theo tổ thi",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-025",
    "source": "sheet",
    "steps": [
     "Mở menu Tổ chức thi / Khai thác báo biểu / In bảng ghi điểm / Theo tổ thi.",
@@ -456,7 +456,7 @@
    "menu": "NetWEB SV +GV: Xem lịch thi",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-026",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem lịch thi (theo môn học / khoa / ngày thi)",
@@ -473,7 +473,7 @@
    "menu": "NetWEB giảng viên: Xem lịch coi thi",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "LTHI-027",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng GV test → menu Xem lịch coi thi",
@@ -487,6 +487,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 27 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 17 khớp, 7 khớp một phần, 3 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

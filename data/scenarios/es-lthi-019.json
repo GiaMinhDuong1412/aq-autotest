@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{CB} có TKB cùng giờ thi",
+   "expected": "Chặn/cảnh báo trùng lịch dạy.",
+   "name": "Cán bộ trùng lịch dạy",
+   "steps": [
+    "Phân công {CB} vào tổ trùng giờ dạy."
+   ]
+  },
+  {
+   "condition": "{CB} cấp 3 phân vào vị trí cấp 1",
+   "expected": "Không cho / báo vượt cấp.",
+   "name": "Sai cấp coi thi",
+   "steps": [
+    "Đổi {CB} thành cấp 3, phân làm CB1."
+   ]
+  }
+ ],
+ "code": "LTHI-019",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lịch thi (LTHI-012), viên chức HK (KHGD-006)",
+  "next": [
+   "LTHI-021",
+   "LTHI-027"
+  ],
+  "out": "Phân công coi thi {TO}"
+ },
+ "expected": "Phân công coi thi tôn trọng cấp coi thi (cấp 1 coi được 1–3, cấp 2 coi 2–3, cấp 3 chỉ 3) và các ràng buộc; tự động báo tổ không phân công kèm lý do. (Theo LTHI_PhanCongCoiThi, mục III.1–4.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_PhanCongCoiThi, mục III.1–4 Danh sách thi; Nhập DS cán bộ coi thi; Nhập SL CB coi thi; Phân công coi thi",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lịch thi đợt {DOT} đã xếp cho tổ {TO} (LTHI-012); {CB} trong DS viên chức học kỳ (KHGD-006).",
+  "Tổ chức thi/ Hoạt động coi thi/ Nhập danh sách cán bộ coi thi: thêm {CB}, Mã đợt thi {DOT}, Cấp coi thi 2 → Lưu.",
+  "Nhập SL cán bộ coi thi cho tổ thi: đợt {DOT}, SL coi thi của {TO} = 2 → Lưu.",
+  "Mở Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi; chọn {TO} → […] lọc viên chức → chọn {CB} và 1 CB khác → Chọn → Lưu.",
+  "KIỂM TRA: {TO} đủ 2 cán bộ; {CB} không có lịch dạy/lịch coi khác cùng giờ.",
+  "Tự động: chọn tổ khác của đợt → Phân công lịch coi thi tự động → tick ràng buộc (khác cơ sở cùng buổi, liên tục 2 buổi, trùng lịch dạy, đúng cấp, có CB nam và nữ khi > 2 CB) → Tiếp tục → KIỂM TRA chương trình báo số tổ đã/không phân công, lý do màu đỏ.",
+  "Giữ cho LTHI-021/LTHI-027; dọn sau đó: xóa phân công và {CB} khỏi danh sách coi thi."
+ ],
+ "title": "Phân công cán bộ coi thi (thủ công và tự động)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ coi thi test)",
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

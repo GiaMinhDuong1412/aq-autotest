@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Số văn bằng nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Số văn bằng và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Số văn bằng",
+   "steps": [
+    "Bấm Thêm, nhập Số văn bằng giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "QLSV-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001)",
+  "next": [],
+  "out": "Không để lại (đã xóa)"
+ },
+ "expected": "Văn bằng (đầu vào) của SV thêm/sửa/xóa được. Tài liệu ghi nhầm menu, không có bước – cần xác nhận. (Theo QLSV_QuanLyHoSoVanBangSinhVien, mục III.2.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Cập nhật văn bằng sinh viên",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_QuanLyHoSoVanBangSinhVien, mục III.2 Văn bằng sinh viên",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa).",
+  "Mở Sinh viên/ Hồ sơ và Văn bằng/ Văn bằng sinh viên/ Cập nhật văn bằng sinh viên; nhập {MSSV}.",
+  "Thêm văn bằng: Số văn bằng = {SOVB}, Tên bậc đào tạo, Hệ đào tạo, Nơi cấp, Quốc gia cấp, Ngày cấp VB → Lưu.",
+  "KIỂM TRA THÊM: lưới Danh sách văn bằng có {SOVB} đúng thông tin.",
+  "Sửa Nơi cấp → Lưu; KIỂM TRA SỬA.",
+  "Xóa {SOVB} → KIỂM TRA XÓA không còn.",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Cập nhật văn bằng sinh viên: thêm – sửa – xóa",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV test tạo theo QLSV-001)",
+  "SOVB": "TEST_VB{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

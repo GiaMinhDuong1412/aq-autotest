@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLSV-035",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét tốt nghiệp (QLTN-003)",
+  "next": [
+   "QLSV-036"
+  ],
+  "out": "{MSSV} trong danh sách thông tin tốt nghiệp"
+ },
+ "expected": "Đồng bộ chỉ bổ sung/cập nhật SV có thay đổi, không xóa thông tin đã nhập. (Theo QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên / Thông tin tốt nghiệp / Thông tin tốt nghiệp / Đồng bộ thông tin tốt nghiệp",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.1 Đồng bộ danh sách tốt nghiệp",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đã xét tốt nghiệp đạt (QLTN-003); KHÔNG dùng 'Đồng bộ tất cả (xóa hết thông tin cũ)'.",
+  "Mở Sinh viên/ Thông tin tốt nghiệp/ Thông tin tốt nghiệp/ Đồng bộ thông tin tốt nghiệp.",
+  "Chọn 'Đồng bộ sinh viên có thay đổi', bậc hệ / đợt của {MSSV} → Thực hiện.",
+  "KIỂM TRA: Cập nhật thông tin tốt nghiệp (QLSV-036) có {MSSV}; SV đã có thông tin trước đó giữ nguyên Số vào sổ/Ngày cấp.",
+  "Tắt màn hình."
+ ],
+ "title": "Đồng bộ thông tin tốt nghiệp (chỉ SV có thay đổi)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV xét tốt nghiệp đạt – QLTN-003)"
+ },
+ "version": "v2026.10H.00"
+}

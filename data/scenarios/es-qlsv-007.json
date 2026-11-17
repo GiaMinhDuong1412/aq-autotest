@@ -1,0 +1,109 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Số quyết định, Lý do QĐ, Ngày lập QĐ",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Số quyết định…) ở khung quyết định.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Số quyết định nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Số quyết định và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Số quyết định",
+   "steps": [
+    "Bấm Thêm, nhập Số quyết định giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "Chọn lý do thuộc loại quyết định khác",
+   "expected": "Danh sách lý do chỉ có lý do đúng loại của màn hình (hoặc chặn khi lưu). Cần xác nhận.",
+   "name": "Lý do sai loại quyết định",
+   "steps": [
+    "Mở danh sách Lý do, tìm lý do loại vào mới."
+   ]
+  },
+  {
+   "condition": "Chọn mã SV không có trong học kỳ test",
+   "expected": "Không chọn được / báo SV không thuộc học kỳ.",
+   "name": "SV không có trong DS SV học kỳ",
+   "steps": [
+    "Thêm SV bằng cách gõ mã không thuộc học kỳ."
+   ]
+  },
+  {
+   "condition": "Học kỳ test đang bị khóa sổ phân hệ (QLHT-007)",
+   "expected": "Chương trình không cho thêm/sửa/xóa trong học kỳ đã khóa sổ (báo khóa sổ); dữ liệu không đổi. Cần xác nhận câu thông báo.",
+   "name": "Học kỳ đã khóa sổ",
+   "steps": [
+    "Khóa sổ phân hệ của học kỳ test (QLHT-007).",
+    "Thực hiện lại thao tác ghi dữ liệu của kịch bản.",
+    "Mở khóa lại sau khi kiểm tra."
+   ]
+  },
+  {
+   "condition": "SV không có QĐ tạm dừng/nghỉ học",
+   "expected": "Chương trình không cho chọn / báo SV không thuộc diện học lại. Cần xác nhận.",
+   "name": "SV đang học xin học lại",
+   "steps": [
+    "Thêm một SV đang học (SV test khác) vào QĐ học lại."
+   ]
+  },
+  {
+   "condition": "Nhiều SV học lại",
+   "expected": "Các SV hợp lệ vào lưới, SV không nghỉ bị báo lỗi.",
+   "name": "Import theo file",
+   "steps": [
+    "Thêm sinh viên từ file có Masv, MaLopMoi, MaLopCu."
+   ]
+  }
+ ],
+ "code": "QLSV-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001) + QĐ tạm dừng (QLSV-006)",
+  "next": [
+   "QLSV-003"
+  ],
+  "out": "QĐ học lại {SOQD2} (đã dọn)"
+ },
+ "expected": "Chỉ SV đang nghỉ/tạm dừng mới được học lại; QĐ học lại đưa SV vào lại DS SV học kỳ đúng lớp mới. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục III.2.1; lưu đồ QLSV bước 7.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định học lại",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.1 Quyết định học lại",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa); học kỳ sau học kỳ test đã có trong Danh mục năm học học kỳ.",
+  "Tạo QĐ tạm dừng {SOQDTD} cho {MSSV} (Số học kỳ nghỉ = 1) như QLSV-006 bước 3–5; KIỂM TRA SV hiện diện tạm dừng.",
+  "Thu thập: Danh mục lý do quyết định → một lý do loại học lại {LYDO2}.",
+  "Chọn học kỳ làm việc = học kỳ SV quay lại. Mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định học lại → Thêm: Số QĐ {SOQD2}, Lý do {LYDO2}, Ngày lập, Ngày hiệu lực.",
+  "Thêm SV đang nghỉ {MSSV} vào lưới (Mã lớp mới = lớp quay lại) → Lưu quyết định.",
+  "KIỂM TRA THÊM: {SOQD2} có {MSSV}, đúng Mã lớp (mới).",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Danh sách sinh viên học kỳ (học kỳ quay lại) có {MSSV} đúng lớp mới, hiện diện đang học.",
+  "Sửa Ngày hiệu lực → Lưu → KIỂM TRA SỬA.",
+  "Xóa {SOQD2} (xác nhận đúng số) → KIỂM TRA XÓA: không còn QĐ; {MSSV} không còn ở DS SV học kỳ quay lại.",
+  "Dọn: trả học kỳ làm việc, xóa {SOQDTD}, rồi QĐ vào mới của {MSSV} (QLSV-001 bước 12); KIỂM TRA SV không còn ở Danh mục sinh viên."
+ ],
+ "title": "Quyết định học lại: SV đang tạm dừng/nghỉ học vào lại DS SV học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LYDO2": "(lý do loại học lại, lấy ở bước 3)",
+  "MSSV": "(SV test tạo theo QLSV-001)",
+  "SOQD2": "TEST_QDHL{ddHHMM}",
+  "SOQDTD": "TEST_QDTD{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

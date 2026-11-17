@@ -1,0 +1,34 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KHGD-023",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Định nghĩa môn tiên quyết (DKMH-001)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Ràng buộc môn trên Netweb khớp khai báo Edusoft. Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Xem môn tiên quyết",
+ "module": "KHGD",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; có môn tiên quyết/học trước/song hành khai báo (DKMH-001).",
+  "Menu Xem môn tiên quyết.",
+  "KIỂM TRA: môn tiên quyết/học trước/song hành của các môn trong CTĐT hiện đúng như Định nghĩa môn tiên quyết, học trước, song hành."
+ ],
+ "title": "Netweb SV: xem môn tiên quyết",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

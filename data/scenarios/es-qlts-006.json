@@ -1,0 +1,74 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã khối, Tên khối",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã khối…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã khối nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã khối và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã khối",
+   "steps": [
+    "Bấm Thêm, nhập Mã khối giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "khối tuyển sinh đã được dùng ở ngành/khối tuyển sinh",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng khối tuyển sinh đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLTS-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "QLTS-007",
+   "QLTS-008"
+  ],
+  "out": "Khối {MA} (= {KHOI})"
+ },
+ "expected": "Khối tuyển sinh thêm/sửa/xóa được; khối mới gán được môn thi (QLTS-007) và ngành (QLTS-008). (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục khối tuyển sinh",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2 Chuẩn bị dữ liệu danh mục (Danh mục khối tuyển sinh)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test.",
+  "Kiểm tra trùng: mở Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục khối tuyển sinh, tìm {MA} ở ô tìm kiếm cột Mã khối → đã có thì đổi mã test khác. Ghi lại số dòng hiện có.",
+  "Thêm: bấm Thêm, nhập Mã khối = {MA}, Tên khối = {TEN} → Lưu.",
+  "KIỂM TRA THÊM: dòng {MA} hiển thị đúng Tên khối và các giá trị vừa nhập.",
+  "Sửa: chọn dòng {MA}, đổi Tên khối thành 'TEST Khoi sua' → Lưu.",
+  "KIỂM TRA SỬA: tắt màn hình (X), mở lại menu, tìm {MA} → thấy giá trị mới, không còn giá trị cũ.",
+  "Xóa: chọn dòng {MA} → Xóa → chỉ xác nhận khi hộp thoại nêu đúng {MA} (giữ lại nếu dùng cho QLTS-007/QLTS-008).",
+  "KIỂM TRA XÓA: tìm {MA} → không còn dòng nào (nếu lưới chưa nạp lại thì tắt, mở lại menu rồi kiểm tra). Tắt màn hình."
+ ],
+ "title": "Danh mục khối tuyển sinh: thêm – sửa – xóa",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "TEST_KH{ddHHMM}",
+  "MA": "TEST_KH{ddHHMM}",
+  "TEN": "TEST Khoi"
+ },
+ "version": "v2026.10H.00"
+}

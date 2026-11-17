@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiều SV",
+   "expected": "SV trong file/lớp có chứng chỉ.",
+   "name": "Import / theo lớp",
+   "steps": [
+    "Import (1) file chứng chỉ ngoài hoặc Thêm theo lớp (3)."
+   ]
+  },
+  {
+   "condition": "chứng chỉ của SV nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng chứng chỉ của SV và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng chứng chỉ của SV",
+   "steps": [
+    "Bấm Thêm, nhập chứng chỉ của SV giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục chứng chỉ",
+  "next": [
+   "DIEM-011",
+   "QLTN-003"
+  ],
+  "out": "Chứng chỉ ngoài {CC} của {MSSV}"
+ },
+ "expected": "Chứng chỉ ngoài được ghi nhận và tính đạt khi xét chứng chỉ/tốt nghiệp. (Theo DIEM_XetChungChi, mục III.3.1–3.2.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý chứng chỉ/ Chứng chỉ ngoài/ Chứng chỉ ngoài của SV học kỳ",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_XetChungChi, mục III.3.2 Chứng chỉ ngoài của sinh viên (3.1 SV miễn chứng chỉ)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} thuộc học kỳ test; Danh mục chứng chỉ có {CC}.",
+  "Mở Quản lý điểm/ Quản lý chứng chỉ/ Chứng chỉ ngoài/ Chứng chỉ ngoài của SV học kỳ → Thêm (2): {MSSV}, {CC}, ngày cấp, số hiệu TEST → Lưu.",
+  "KIỂM TRA THÊM: {MSSV} có {CC}.",
+  "Sửa số hiệu → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho DIEM-011 (xét CC tính đạt); dọn sau đó: xóa → KIỂM TRA không còn."
+ ],
+ "title": "Chứng chỉ ngoài của sinh viên học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CC": "(loại chứng chỉ trường không đào tạo, vd ngoại ngữ)",
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Loại GCN không gán Mã mẫu in",
+   "expected": "Báo thiếu mẫu in. Cần xác nhận.",
+   "name": "Loại GCN chưa có mẫu in",
+   "steps": [
+    "Cấp GCN với loại đó → In."
+   ]
+  }
+ ],
+ "code": "QLSV-040",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001), loại GCN (QLSV-039)",
+  "next": [],
+  "out": "Lượt cấp GCN (đã xóa)"
+ },
+ "expected": "Cấp GCN sinh số theo bộ đếm, in đúng mẫu; thống kê ghi nhận lượt cấp. (Theo QLSV_CapVaInGiayChungNhan, mục III.3–4.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cấp và in giấy chứng nhận",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapVaInGiayChungNhan, mục III.3 Cấp và in giấy chứng nhận; III.4 Thống kê",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa); loại {GCN} (QLSV-039).",
+  "Mở Sinh viên/ Quản lý dịch vụ/ Cấp giấy chứng nhận/ Cấp và in giấy chứng nhận → Thêm, chọn mẫu {GCN}, nhập {MSSV} → Lưu và In.",
+  "KIỂM TRA: GCN in đúng thông tin SV, số GCN theo bộ đếm (tăng 1 so với lần cấp trước); dòng cấp hiện trong danh sách.",
+  "In thống kê cấp giấy chứng nhận → KIỂM TRA có lượt vừa cấp.",
+  "Xóa lượt cấp test → KIỂM TRA không còn; xóa {GCN} (QLSV-039).",
+  "Dọn: xóa quyết định vừa tạo (tick QĐ → Xóa → xác nhận đúng số QĐ → Có), rồi xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên."
+ ],
+ "title": "Cấp và in giấy chứng nhận cho SV test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "GCN": "(loại GCN của QLSV-039)",
+  "MSSV": "(SV test tạo theo QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

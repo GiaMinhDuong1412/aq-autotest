@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Còn số phách chưa nhập điểm",
+   "expected": "Cảnh báo thiếu điểm. Cần xác nhận.",
+   "name": "Hồi khi thiếu điểm",
+   "steps": [
+    "Hồi phách khi thiếu điểm."
+   ]
+  }
+ ],
+ "code": "DIEM-018",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm phách (DIEM-017)",
+  "next": [
+   "DIEM-004"
+  ],
+  "out": "Điểm thi trong file điểm"
+ },
+ "expected": "Hồi phách đưa điểm thi về đúng SV trong file điểm. (Theo DIEM_QuanLyPhach, mục III.2.11.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Hồi phách vào file điểm",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyPhach, mục III.1.11 / 2.11 Hồi phách vào file điểm",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã nhập đủ điểm theo phách {NP} và kiểm tra lần cuối (DIEM-017).",
+  "Mở Quản lý nhập điểm/ Quản lý phách/ Tạo phách từ danh sách thi/ Hồi phách vào file điểm; chọn {NP} → Hồi phách.",
+  "KIỂM TRA: điểm thi của từng SV ở Nhập điểm theo nhóm học/lớp đúng điểm theo phách (đối chiếu bảng phách – SBD).",
+  "Cộng điểm → KIỂM TRA TKHP tính với điểm thi vừa hồi.",
+  "Dọn: xóa điểm hồi phách test. Tắt màn hình."
+ ],
+ "title": "Hồi phách vào file điểm",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NP": "(nhóm phách của DIEM-017)"
+ },
+ "version": "v2026.10H.00"
+}

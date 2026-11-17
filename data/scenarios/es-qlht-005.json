@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{USER} thuộc {NHOM} (QLHT-003) và nhóm được cấp quyền Sửa",
+   "expected": "{USER} có quyền Sửa do thừa kế từ nhóm (cột Thừa kế). Cần xác nhận.",
+   "name": "Thừa kế quyền từ nhóm",
+   "steps": [
+    "Cấp quyền Sửa cho nhóm {NHOM} ở {CN}.",
+    "Đăng nhập {USER}."
+   ]
+  }
+ ],
+ "code": "QLHT-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tài khoản {USER}, nhóm {NHOM} (QLHT-003)",
+  "next": [],
+  "out": "Không để lại quyền nào (gỡ cuối kịch bản)"
+ },
+ "expected": "Quyền theo chức năng áp đúng cho tài khoản: chỉ thao tác được các nút đã cấp; đổi quyền có hiệu lực sau khi đăng nhập lại; gỡ quyền thì không vào được chức năng. (Theo QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.3–4.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo chức năng",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.3 Phân quyền theo chức năng (mục 4: Phân quyền theo người dùng)",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có tài khoản {USER} (QLHT-003) chưa có quyền chức năng {CN}.",
+  "Mở Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền theo chức năng; bấm + mở cây phân hệ Sinh viên tới chức năng {CN}.",
+  "Chọn {CN} → Sửa; bên phải bấm Thêm, chọn {USER}.",
+  "Tick {USER} → Sửa → tick [v] chỉ quyền Xem (không tick Thêm/Sửa/Xóa) → Lưu.",
+  "KIỂM TRA: lưới 'Danh sách tài khoản' của {CN} có {USER} với cột Quyền = Xem.",
+  "KIỂM TRA đăng nhập {USER}: mở {CN} xem được; nút Thêm/Sửa/Xóa bị mờ hoặc báo không có quyền.",
+  "Sửa quyền: tick thêm quyền Thêm → Lưu; KIỂM TRA đăng nhập lại thấy nút Thêm dùng được (không lưu dữ liệu).",
+  "Gỡ: xóa {USER} khỏi danh sách tài khoản của {CN} → Lưu; KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "Phân quyền theo chức năng: cấp quyền xem/thêm/sửa/xóa cho tài khoản test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CN": "Danh mục lý do quyết định",
+  "NHOM": "(nhóm tài khoản test của QLHT-003)",
+  "USER": "(tài khoản test của QLHT-003)"
+ },
+ "version": "v2026.10H.00"
+}

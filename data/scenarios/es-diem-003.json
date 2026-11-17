@@ -1,0 +1,43 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DIEM-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Nhóm học (KHGD)",
+  "next": [
+   "DIEM-013",
+   "DIEM-014",
+   "DIEM-004"
+  ],
+  "out": "Trọng số {NH} = 30/70"
+ },
+ "expected": "Trọng số theo nhóm quyết định TKHP = Σ(điểm thành phần × trọng số) (lưu đồ DIEM bước 9). Tài liệu không mô tả màn hình – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % điểm thành phần theo nhóm",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_ChinhDinhQuanLyDiem, mục (III.3 biến setting quản lý điểm – không có mục trọng số theo nhóm)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ sửa nhóm test {NH}; ghi lại trọng số hiện tại.",
+  "Mở Quản lý điểm/ Quản lý điểm tổng kết học phần/ Công thức tính điểm/ Trọng số % điểm thành phần theo nhóm; chọn {NH}.",
+  "Nhập Quá trình 30%, Thi 70% → Lưu; KIỂM TRA mở lại thấy đúng.",
+  "Nhập tổng ≠ 100% (30% + 60%) → Lưu → KIỂM TRA bị chặn (cần xác nhận).",
+  "Giữ 30/70 cho DIEM-013/DIEM-014; trả lại trọng số cũ ở cuối chuỗi DIEM. Tắt màn hình."
+ ],
+ "title": "Trọng số % điểm thành phần theo nhóm học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

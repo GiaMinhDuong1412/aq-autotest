@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tick 'Tạo nhóm tổ học lại tương ứng với các môn học được chọn'",
+   "expected": "Sinh thêm nhóm học lại cho {MH}. Cần xác nhận.",
+   "name": "Tạo nhóm học lại",
+   "steps": [
+    "Tick ô rồi Tạo File cho {MH}."
+   ]
+  },
+  {
+   "condition": "Bấm thực hiện khi chưa chọn khối / môn học",
+   "expected": "Chương trình nhắc chọn khối / môn học, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn khối / môn học nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "KHGD-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "CTĐT thực hiện (KHGD-003), BĐKH (KHGD-008)",
+  "next": [
+   "KHGD-010"
+  ],
+  "out": "Nhóm {NHOM} của {MH}"
+ },
+ "expected": "Nhóm học phần sinh từ CTĐT thực hiện theo khối/lớp, số nhóm theo sĩ số và SL trung bình nhóm. (Theo KHGD_CacBuocXepTKB, mục III.1.2; lưu đồ TKB bước 4.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ tín chỉ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.1.2 (Tạo file nhóm học phần tự động – Hệ tín chỉ)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MH} trong CTĐT thực hiện học kỳ test của {KHOI} (KHGD-003); BĐKH lớp (KHGD-008); CHỈ chọn khối/môn test.",
+  "Mở Kế hoạch/ Qui hoạch nhóm học phần/ Tạo file nhóm học phần tự động/ Hệ tín chỉ.",
+  "Danh sách khối… → chọn {KHOI}; Danh sách môn học… → chỉ {MH}; ghi lại 'Tổng số SV' và 'SL trung bình nhóm' ở lưới 'Danh sách nhóm môn học dự kiến mở lớp'.",
+  "Chỉnh định ghép/tách nhóm (vd SL trung bình nhóm 40) → Tạo File.",
+  "KIỂM TRA: Kế hoạch/ Thông tin nhóm học phần/ Danh sách nhóm tổ có nhóm {MH} cho {LOP}; số nhóm = trần(Tổng số SV / SL trung bình nhóm).",
+  "Tắt màn hình (giữ nhóm cho KHGD-010)."
+ ],
+ "title": "Tạo file nhóm học phần tự động (hệ tín chỉ) cho lớp test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,48 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} còn hóa đơn chưa thu",
+   "expected": "Cảnh báo còn nợ. Cần xác nhận.",
+   "name": "Còn nợ phí",
+   "steps": [
+    "Thanh lý khi còn nợ."
+   ]
+  }
+ ],
+ "code": "QKTX-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Hợp đồng (QKTX-004)",
+  "next": [],
+  "out": "Chuỗi KTX được dọn"
+ },
+ "expected": "Thanh lý kết thúc hợp đồng và giải phóng chỗ. Tài liệu chỉ có 'Quyết định ra KTX' (menu cũ) – cần xác nhận màn hình. (Theo QKTX_ThongTinLuuTru, mục III.3.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thanh lý hợp đồng",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_ThongTinLuuTru, mục III.3 Tạo quyết định ra",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có hợp đồng {HD} (QKTX-004), phiếu thu đã xử lý (QKTX-006).",
+  "Mở Ký túc xá/ Quản lý hợp đồng/ Quản lý ra/ Thanh lý hợp đồng → Thêm: thông tin quyết định, ngày thanh lý = hôm nay, chọn {MSSV}/{HD} → Lưu.",
+  "KIỂM TRA: {HD} hết hiệu lực; Số lượng đang ở của {PH} = 0; {MSSV} không còn trong In danh sách thành viên ký túc xá.",
+  "Dọn chuỗi KTX: xóa thanh lý/hợp đồng test (nếu được), đơn giá, phòng {PH}. Tắt màn hình."
+ ],
+ "title": "Thanh lý hợp đồng lưu trú (quản lý ra)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "HD": "TEST_HD{ddHHMM}",
+  "MSSV": "(SV test)",
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTN-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLTN-003)",
+  "next": [],
+  "out": "Không đổi (hủy đạt vớt)"
+ },
+ "expected": "DS không tốt nghiệp nêu môn còn nợ; xét đạt vớt chuyển SV sang DS tốt nghiệp. (Theo DIEM_QuanLyTotNghiep, mục 2.5.5.)",
+ "lastRun": null,
+ "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp",
+ "module": "QLTN",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.5 Xem kết quả tốt nghiệp",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {SVK} không đạt ở {DOT} (QLTN-003).",
+  "Mở Tốt nghiệp/ Xét tốt nghiệp/ Xem kết quả tốt nghiệp/ Danh sách sinh viên không tốt nghiệp.",
+  "KIỂM TRA: {SVK} có trong danh sách; Xem môn nợ hiện đúng môn bắt buộc còn thiếu.",
+  "In danh sách / In bảng điểm → KIỂM TRA.",
+  "Xét đạt vớt cho {SVK} → KIỂM TRA chuyển sang Danh sách sinh viên tốt nghiệp; hủy đạt vớt → trở lại. Tắt màn hình."
+ ],
+ "title": "Danh sách sinh viên không tốt nghiệp (môn nợ, xét đạt vớt)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DTN{ddHHMM}",
+  "SVK": "(SV thiếu tín chỉ / nợ môn)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã tiêu chuẩn, Khối xét",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã tiêu chuẩn…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã tiêu chuẩn nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã tiêu chuẩn và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã tiêu chuẩn",
+   "steps": [
+    "Bấm Thêm, nhập Mã tiêu chuẩn giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục chứng chỉ, CTĐT",
+  "next": [
+   "DIEM-011"
+  ],
+  "out": "Tiêu chuẩn {MATC}"
+ },
+ "expected": "Tiêu chuẩn chứng chỉ gồm điều kiện TC, ĐTB, môn bắt buộc và tự chọn. (Theo DIEM_XetChungChi, mục III.1.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Quản lý chứng chỉ/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (CC)",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_XetChungChi, mục III.1 Tạo tiêu chuẩn chứng chỉ (1.1–1.5)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; Danh mục đánh giá (Nhóm học lực), Danh mục xếp hạng, Phân loại chứng chỉ, Danh mục chứng chỉ có dữ liệu (chỉ xem).",
+  "Mở Quản lý điểm/ Quản lý chứng chỉ/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (CC) → Thêm (1) {MATC}: khối {KHOI}, loại chứng chỉ, hệ điểm 4, TC tích lũy ≥ 10, ĐTB ≥ 2,0 → Lưu.",
+  "Đồng bộ danh sách môn bắt buộc/tự chọn; Môn bắt buộc: thêm 2 môn; Môn tự chọn: Số TC min 3 – max 6 theo nhóm → Lưu.",
+  "KIỂM TRA THÊM: mở lại thấy đủ môn và điều kiện.",
+  "Sửa ĐTB 2,0 → 2,5 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho DIEM-011; dọn sau đó: xóa tiêu chuẩn."
+ ],
+ "title": "Định nghĩa tiêu chuẩn xét chứng chỉ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối test)",
+  "MATC": "TEST_CC{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

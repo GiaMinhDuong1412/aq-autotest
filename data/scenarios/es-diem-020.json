@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "môn bảo lưu của SV nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng môn bảo lưu của SV và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng môn bảo lưu của SV",
+   "steps": [
+    "Bấm Thêm, nhập môn bảo lưu của SV giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "DIEM-020",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV, CTĐT",
+  "next": [
+   "DIEM-004"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Điểm bảo lưu được tính như điểm môn khi tổng kết (lưu đồ DIEM bước 4). Chưa có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Nhập điểm bảo lưu",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} thuộc học kỳ test.",
+  "Mở Quản lý nhập điểm/ Quản lý điểm bảo lưu/ Điểm bảo lưu/ Nhập điểm bảo lưu → Thêm: {MSSV}, môn {MH}, điểm 7,5, học kỳ gốc, nơi học 'TEST' → Lưu.",
+  "KIỂM TRA THÊM: dòng bảo lưu hiện; Xem điểm toàn khóa 1 sinh viên có {MH} = 7,5 (bảo lưu); Cộng điểm TB (DIEM-004) tính {MH} đạt.",
+  "Sửa điểm 7,5 → 8 → Lưu; KIỂM TRA SỬA.",
+  "Xóa → KIỂM TRA XÓA. Tắt màn hình."
+ ],
+ "title": "Nhập điểm bảo lưu (chuyển trường)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn trong CTĐT của {MSSV})",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

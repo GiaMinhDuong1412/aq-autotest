@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DIEM-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm nhóm (DIEM-014)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Bảng điểm đã nhập khớp dữ liệu nhập. Tài liệu chỉ mô tả bảng ghi điểm trống – cần xác nhận mẫu.",
+ "lastRun": null,
+ "menu": "Quản lý điểm / Khai thác báo biểu / In bảng điểm tổng hợp / In bảng điểm đã nhập - Theo nhóm MH",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_DinhNghia&InBangDiem, mục (tương tự III.2 In bảng ghi điểm)",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NH} đã nhập điểm (DIEM-014).",
+  "Mở Quản lý điểm/ Khai thác báo biểu/ In bảng điểm tổng hợp/ In bảng điểm đã nhập - Theo nhóm MH; chọn {NH} → In.",
+  "KIỂM TRA: điểm từng thành phần và TKHP của {MSSV}, {MSSV2} đúng như đã nhập.",
+  "Tắt màn hình."
+ ],
+ "title": "In bảng điểm đã nhập theo nhóm môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "MSSV2": "(SV test 2 cùng nhóm)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

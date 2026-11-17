@@ -1,0 +1,64 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tick Thu ngân hàng",
+   "expected": "Phiếu ghi ngân hàng (GV_NganHangMacDinh nếu không chọn).",
+   "name": "Thu ngân hàng",
+   "steps": [
+    "Thu với tick Thu ngân hàng, chọn ngân hàng."
+   ]
+  },
+  {
+   "condition": "SV có ĐK mới chưa tính",
+   "expected": "Chương trình tính lại trước khi thu.",
+   "name": "Thu khi chưa tính học phí",
+   "steps": [
+    "Tick 'Có tính học phí khi thu' rồi thu."
+   ]
+  }
+ ],
+ "code": "QLTV-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Học phí (QLTV-005)",
+  "next": [
+   "QLTV-003",
+   "QLTV-008",
+   "QLTV-009",
+   "QLTV-011"
+  ],
+  "out": "Phiếu thu test (đã hủy)"
+ },
+ "expected": "Thu theo phiếu báo: phiếu đánh số theo bộ đếm, thu thiếu cân vào các môn, thu dư vào tiền chờ phân bổ; hủy phiếu khôi phục nợ (lưu đồ CSHP bước 14). (Theo QLTV_ThuHocPhiTheoPhieuBao, mục III.1–2.1.)",
+ "lastRun": null,
+ "menu": "Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí 1 SV",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.1 Chỉnh định thông số; III.2.1 Thu học phí theo phiếu báo",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có học phí phải đóng (QLTV-005); ghi lại GH_NHHKTHUHPEDUWEB, GV_PhanBietNganHangThuHP, GV_NganHangMacDinh, SV_LOAIBODEMTHUHP, GV_SVDONGHPTRONGSSVHK, GV_COTHUNOHPHKH (chỉ xem).",
+  "Mở Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Thu học phí 1 SV; nhập {MSSV} → Enter.",
+  "KIỂM TRA: Phiếu chưa thu đúng số phải đóng (QLTV-005).",
+  "Thêm → Số tiền thu 1.000.000, Số chứng từ TEST → Lưu và in.",
+  "KIỂM TRA: phiếu có số theo bộ đếm (SV_LOAIBODEMTHUHP), có trong Danh sách phiếu đã thu; còn nợ = phải đóng − 1.000.000, phân bổ vào các môn.",
+  "Thu thêm số tiền vượt nợ 50.000 → KIỂM TRA phần dư vào tiền chờ phân bổ.",
+  "Dọn: Danh sách phiếu đã thu → Hủy 2 phiếu test → KIỂM TRA chỉ hiện khi tick Hiển thị phiếu thu đã hủy; nợ trở lại như trước. Tắt màn hình."
+ ],
+ "title": "Thu học phí 1 sinh viên (thu thiếu, thu dư, hủy phiếu)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

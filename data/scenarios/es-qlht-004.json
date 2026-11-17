@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đăng nhập bằng {USER} sau khi gỡ quyền",
+   "expected": "Không thấy phân hệ / chức năng quản trị của {PH}.",
+   "name": "Tài khoản không được phân quyền",
+   "steps": [
+    "Đăng nhập {USER}, tìm phân hệ {PH}."
+   ]
+  }
+ ],
+ "code": "QLHT-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tài khoản {USER} (QLHT-003)",
+  "next": [
+   "QLHT-005"
+  ],
+  "out": "Quyền quản trị phân hệ {PH} của {USER} (gỡ lại cuối kịch bản)"
+ },
+ "expected": "Tài khoản được thêm làm quản trị phân hệ thì thấy và dùng được phân hệ; gỡ quyền thì mất. (Theo QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.2.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.2 Phân quyền quản trị phân hệ",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có tài khoản {USER} (QLHT-003, trạng thái Đang hoạt động).",
+  "Mở Hệ thống/ Quản lý người dùng/ Phân quyền khai thác/ Phân quyền quản trị phân hệ, chọn phân hệ {PH} → Sửa.",
+  "Bên phải bấm Thêm, chọn {USER} → Lưu.",
+  "KIỂM TRA: {USER} hiện trong danh sách quản trị của phân hệ {PH}.",
+  "KIỂM TRA đăng nhập bằng {USER}: thấy phân hệ {PH} trên ribbon và vào được các màn hình quản trị phân hệ đó.",
+  "Gỡ quyền: chọn {USER} trong danh sách quản trị → Xóa → Lưu; KIỂM TRA {USER} không còn trong danh sách. Tắt màn hình."
+ ],
+ "title": "Phân quyền quản trị phân hệ cho tài khoản test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PH": "Sinh viên",
+  "USER": "(tài khoản test của QLHT-003)"
+ },
+ "version": "v2026.10H.00"
+}

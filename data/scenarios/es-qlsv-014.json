@@ -1,0 +1,59 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chọn 'Xét tất cả' sau lần xét đầu",
+   "expected": "Kết quả cũ được xét lại theo ngưỡng mới.",
+   "name": "Xét tất cả",
+   "steps": [
+    "Đổi ngưỡng tiêu chuẩn, chọn Xét tất cả → Thực hiện."
+   ]
+  },
+  {
+   "condition": "Bấm thực hiện khi chưa chọn tiêu chuẩn / khối",
+   "expected": "Chương trình nhắc chọn tiêu chuẩn / khối, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn tiêu chuẩn / khối nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-014",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tiêu chuẩn {MATC} (QLSV-013); điểm TB và rèn luyện",
+  "next": [],
+  "out": "QĐ khen thưởng {SOQDKT} (đã xóa)"
+ },
+ "expected": "Chỉ SV thỏa đủ điều kiện của tiêu chuẩn có trong danh sách đạt; 'Chỉ xét đối tượng chưa xét' không xét lại SV đã có kết quả; quyết định khen thưởng ghi nhận SV. (Theo QLSV_KhenThuongKyLuatSV, mục III.3.2–3.5.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng sinh viên/ Xét khen thưởng theo tiêu chuẩn",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_KhenThuongKyLuatSV, mục III.3.2–3.5 Xét theo tiêu chuẩn, Xem DS đạt, In dự kiến, Quyết định khen thưởng",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tiêu chuẩn {MATC} (QLSV-013); khối {KHOI} có SV có ĐTB học kỳ và điểm rèn luyện (DIEM, QLSV-033).",
+  "Mở Sinh viên/ Khen thưởng và Kỷ luật/ Xét khen thưởng sinh viên/ Xét khen thưởng theo tiêu chuẩn; chọn 'Chỉ xét đối tượng chưa xét', tiêu chuẩn {MATC}, khối {KHOI} → Thực hiện.",
+  "KIỂM TRA: hiện danh sách kết quả; Xem danh sách đạt tiêu chuẩn ({MATC}, {KHOI} → Tiếp tục) chỉ có SV thỏa điều kiện; đối chiếu 2 SV: một đạt (đủ ngưỡng), một không (thiếu ngưỡng).",
+  "In danh sách dự kiến khen thưởng → KIỂM TRA mẫu in đúng danh sách đạt.",
+  "Quyết định khen thưởng: Thêm → Số QĐ {SOQDKT}, lý do, ngày ký → thêm 1 SV đạt → Lưu; KIỂM TRA QĐ có SV đó (Danh mục sinh viên → Xem khen thưởng – KL).",
+  "Dọn: xóa {SOQDKT}; hủy kết quả xét của {MATC} (Xét tất cả lại sau khi xóa tiêu chuẩn hoặc chức năng hủy) – KIỂM TRA; tắt màn hình."
+ ],
+ "title": "Xét khen thưởng sinh viên theo tiêu chuẩn và lập quyết định khen thưởng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp có SV đủ điểm)",
+  "MATC": "(tiêu chuẩn của QLSV-013)",
+  "SOQDKT": "TEST_QDKT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,72 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Mã môn thi nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã môn thi và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã môn thi",
+   "steps": [
+    "Bấm Thêm, nhập Mã môn thi giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "môn thi đã được dùng ở Nhập môn thi cho khối",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng môn thi đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  },
+  {
+   "condition": "Thêm {MA} lần hai vào khối {KHOI}",
+   "expected": "Chương trình báo trùng, không thêm dòng thứ hai.",
+   "name": "Gán trùng môn cho khối",
+   "steps": [
+    "Thêm lại {MA} vào {KHOI} → Lưu."
+   ]
+  }
+ ],
+ "code": "QLTS-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Khối {KHOI} (QLTS-006)",
+  "next": [
+   "QLTS-008",
+   "QLTS-013"
+  ],
+  "out": "Môn {MA} gán cho khối {KHOI}"
+ },
+ "expected": "Môn thi thêm được và gán vào khối; khối có tổ hợp môn dùng cho cộng điểm xét tuyển. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh / Quản trị phân hệ / Quản lý danh mục / Danh mục môn thi tuyển sinh",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.2 Chuẩn bị dữ liệu danh mục (Danh mục môn thi tuyển sinh, Nhập môn thi cho khối)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có khối {KHOI} (QLTS-006).",
+  "Kiểm tra trùng: mở Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Danh mục môn thi tuyển sinh, tìm {MA} → có thì đổi.",
+  "Thêm môn thi {MA} – {TEN} → Lưu; KIỂM TRA THÊM: {MA} có trong danh mục.",
+  "Mở Tuyển sinh/ Quản trị phân hệ/ Quản lý danh mục/ Nhập môn thi cho khối: chọn khối {KHOI}, thêm môn {MA} (và 2 môn có sẵn cho đủ tổ hợp 3 môn) → Lưu.",
+  "KIỂM TRA: khối {KHOI} có đúng 3 môn đã gán.",
+  "Sửa: đổi tên môn {MA} → Lưu; KIỂM TRA tên mới hiện ở cả Nhập môn thi cho khối.",
+  "Tắt màn hình (giữ dữ liệu cho chuỗi; dọn ở cuối chuỗi: gỡ môn khỏi khối rồi xóa môn)."
+ ],
+ "title": "Danh mục môn thi tuyển sinh và gán môn thi cho khối",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối test của QLTS-006)",
+  "MA": "TEST_MT{ddHHMM}",
+  "TEN": "TEST Mon thi"
+ },
+ "version": "v2026.10H.00"
+}

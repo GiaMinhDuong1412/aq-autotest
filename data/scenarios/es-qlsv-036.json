@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Số vào sổ nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Số vào sổ và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Số vào sổ",
+   "steps": [
+    "Bấm Thêm, nhập Số vào sổ giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "Nhiều SV",
+   "expected": "SV trong file được cập nhật, dòng sai báo lỗi.",
+   "name": "Cập nhật theo file",
+   "steps": [
+    "Cập nhật theo file có MaSV, số vào sổ."
+   ]
+  }
+ ],
+ "code": "QLSV-036",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{MSSV} (QLSV-035)",
+  "next": [
+   "QLSV-037",
+   "QLSV-034"
+  ],
+  "out": "Số vào sổ {SOVS}, ngày cấp của {MSSV}"
+ },
+ "expected": "Thông tin văn bằng tốt nghiệp lưu theo SV, dùng in giấy chứng nhận và tra cứu Netweb. (Theo QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.2.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Thông tin tốt nghiệp/ Thông tin tốt nghiệp/ Cập nhật thông tin tốt nghiệp",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatThongTinTotNghiepVaInBangCNTotNghiepSV, mục III.1.2 Cập nhật thông tin tốt nghiệp",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có trong danh sách tốt nghiệp (QLSV-035).",
+  "Mở Sinh viên/ Thông tin tốt nghiệp/ Thông tin tốt nghiệp/ Cập nhật thông tin tốt nghiệp; tìm {MSSV}.",
+  "Nhập Số vào sổ = {SOVS}, Ngày vào sổ, Ngày cấp, Ngày thanh toán → Lưu.",
+  "KIỂM TRA: mở lại thấy đúng giá trị.",
+  "Sửa Ngày cấp → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho QLSV-037/QLSV-034; dọn sau đó: xóa trắng các ô test → Lưu."
+ ],
+ "title": "Cập nhật thông tin tốt nghiệp: số vào sổ, ngày cấp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV xét tốt nghiệp đạt – QLTN-003)",
+  "SOVS": "TEST_VS{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

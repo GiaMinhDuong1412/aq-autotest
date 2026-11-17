@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-020",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh sách CB coi thi (LTHI-019)",
+  "next": [],
+  "out": "Không để lại"
+ },
+ "expected": "Phân công coi thi khác (ngoài tổ thi) lưu được; có thể tính vào thù lao coi thi – cần xác nhận (tài liệu không mô tả).",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác/ Nhập phân công coi thi khác",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {CB} trong danh sách cán bộ coi thi đợt {DOT} (LTHI-019).",
+  "Mở Tổ chức thi/ Hoạt động coi thi/ Phân công coi thi khác/ Nhập phân công coi thi khác → Thêm: {CB}, đợt {DOT}, ngày, nhiệm vụ (vd giám sát) → Lưu.",
+  "KIỂM TRA THÊM: dòng phân công hiện trong danh sách.",
+  "Sửa nhiệm vụ → Lưu; KIỂM TRA SỬA.",
+  "Xóa dòng test → KIỂM TRA XÓA. Tắt màn hình."
+ ],
+ "title": "Nhập phân công coi thi khác",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ coi thi test)",
+  "DOT": "TEST_DT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Biến thể gán mã CVHT cho toàn lớp",
+   "expected": "Mọi SV trong {LOP} có cố vấn {CVHT}.",
+   "name": "Gán toàn lớp",
+   "steps": [
+    "Gán mã cố vấn học tập cho toàn lớp: chọn {LOP}, Mã CVHT = {CVHT} → Lưu."
+   ]
+  }
+ ],
+ "code": "QLSV-042",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lớp {LOP}, viên chức {CVHT}",
+  "next": [
+   "QLSV-043",
+   "QLSV-044",
+   "QLSV-028"
+  ],
+  "out": "Cố vấn {CVHT} của {MSSV}/{LOP}"
+ },
+ "expected": "Cố vấn gán theo SV trong lớp, phản ánh ở báo cáo, DS SV học kỳ và Netweb GV. (Theo QLSV_CoVanHocTap, mục III.1.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Gán cố vấn học tập theo lớp",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CoVanHocTap, mục III.1 Nhập cố vấn học tập (Gán cố vấn học tập theo lớp)",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {LOP} có SV {MSSV}; GV {CVHT} có trong danh sách viên chức; ghi lại cố vấn hiện tại của {LOP}.",
+  "Mở Sinh viên/ Cố vấn và Chủ nhiệm/ Cố vấn học tập/ Gán cố vấn học tập theo lớp; chọn {LOP} → Tiếp tục.",
+  "Chọn {MSSV}, chọn cố vấn {CVHT} → Lưu.",
+  "KIỂM TRA: In DSSV theo cố vấn học tập có {MSSV} dưới {CVHT}; Danh sách sinh viên học kỳ cột Mã cố vấn học tập = {CVHT}.",
+  "KIỂM TRA Netweb GV {CVHT}: Xem danh sách sinh viên quản lý có {MSSV} (QLSV-044).",
+  "Giữ cho QLSV-043/QLSV-044; tắt màn hình."
+ ],
+ "title": "Gán cố vấn học tập theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CVHT": "(GV cố vấn test)",
+  "LOP": "(lớp test)",
+  "MSSV": "(SV test thuộc {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

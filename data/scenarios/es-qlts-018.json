@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Số bắt đầu trùng mã SV đã có trong Danh mục sinh viên",
+   "expected": "Chương trình báo trùng mã SV, không lưu.",
+   "name": "Mã trùng SV đã có",
+   "steps": [
+    "Nhập tay mã trùng một SV có sẵn ở Nhập mã số cho thí sinh trúng tuyển → Lưu."
+   ]
+  }
+ ],
+ "code": "QLTS-018",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} có lớp (QLTS-017)",
+  "next": [
+   "QLTS-019",
+   "QLTS-022"
+  ],
+  "out": "{TS1} có mã SV {MASV}, số GBTT"
+ },
+ "expected": "Mã SV sinh theo đối tượng và cấu hình độ dài, không trùng mã đã có; hủy/gán lại được; phiếu báo trúng tuyển có mã và số giấy báo. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh / Hồ sơ nhập học / Mã SV cho thí sinh trúng tuyển / Gán mã cho sinh viên trúng tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Mã SV cho thí sinh trúng tuyển)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} trúng tuyển, có lớp (QLTS-017).",
+  "Mở Tuyển sinh/ Hồ sơ nhập học/ Mã SV cho thí sinh trúng tuyển/ Nhập mã số sinh viên theo đối tượng: ghi lại số bắt đầu của đối tượng (không đổi nếu dùng chung).",
+  "Mở …/ Gán mã cho sinh viên trúng tuyển → chọn {TS1} (phạm vi hẹp nhất) → Thực hiện.",
+  "KIỂM TRA: {TS1} có mã SV {MASV} đúng quy tắc ST_TTGANSV / độ dài ST_CHIEUDAITT, tiếp theo số bắt đầu.",
+  "Hủy mã: …/ Hủy mã số cho thí sinh trúng tuyển → KIỂM TRA mất mã; gán lại → KIỂM TRA có lại mã.",
+  "Gán số giấy báo: Tuyển sinh/ Hồ sơ nhập học/ Gán số giấy báo trúng tuyển → Thực hiện; In phiếu báo trúng tuyển cho {TS1} → KIỂM TRA phiếu có mã SV, số GBTT. Tắt màn hình."
+ ],
+ "title": "Gán mã sinh viên cho thí sinh trúng tuyển, gán số giấy báo",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MASV": "(mã sinh ra theo đối tượng)",
+  "TS1": "Thi sinh Mot (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

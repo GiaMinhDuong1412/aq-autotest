@@ -1,0 +1,89 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} đã đăng ký nhóm khác cùng thứ – tiết với {NHA}",
+   "expected": "Bị chặn, báo trùng thời khóa biểu (theo biến cấm trùng TKB).",
+   "name": "Trùng TKB",
+   "steps": [
+    "Đăng ký thêm nhóm trùng giờ cho {MSSV}."
+   ]
+  },
+  {
+   "condition": "{MHA} có tiên quyết {MHB} mà {MSSV} chưa đạt (DKMH-001)",
+   "expected": "Bị chặn, báo vi phạm tiên quyết (user không có quyền bỏ qua).",
+   "name": "Vi phạm tiên quyết",
+   "steps": [
+    "Đăng ký {MHA} cho {MSSV}."
+   ]
+  },
+  {
+   "condition": "Tổng TC đăng ký > bộ tín chỉ tối đa của {MSSV}",
+   "expected": "Bị chặn, báo vượt số tín chỉ tối đa.",
+   "name": "Vượt tín chỉ tối đa",
+   "steps": [
+    "Đăng ký thêm nhóm làm vượt TC tối đa."
+   ]
+  },
+  {
+   "condition": "Sĩ số đã ĐK = Sĩ số cho phép đk của nhóm",
+   "expected": "Bị chặn, báo nhóm hết chỗ.",
+   "name": "Nhóm hết chỗ",
+   "steps": [
+    "Đặt tạm Sĩ số cho phép đk = sĩ số hiện tại (KHGD-010), đăng ký thêm.",
+    "Trả lại sĩ số."
+   ]
+  },
+  {
+   "condition": "{MSSV} trong Danh sách SV tồn nợ HP",
+   "expected": "Bị chặn nếu cấu hình cấm đăng ký khi nợ học phí.",
+   "name": "SV nợ học phí",
+   "steps": [
+    "Đưa {MSSV} vào danh sách tồn nợ (QLTV-003), đăng ký."
+   ]
+  }
+ ],
+ "code": "DKMH-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV (QLSV-003), nhóm/TKB (KHGD-010, KHGD-011), ràng buộc (DKMH-001)",
+  "next": [
+   "DKMH-011",
+   "DKMH-012"
+  ],
+  "out": "Không để lại (đã bỏ đăng ký)"
+ },
+ "expected": "Đăng ký từng SV lưu KQĐK, tạm tính học phí đúng; đổi/bỏ nhóm được; mọi ràng buộc (trùng TKB, tiên quyết, TC tối đa, hết chỗ, nợ HP) bị chặn kèm thông báo ở lưới 'Lỗi đăng ký'. (Theo DKMH_DangKyMonHocOFFLINE, mục III.2.3; lưu đồ DKMH bước 2–5.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_DangKyMonHocOFFLINE, mục III.2.3 Đăng ký môn học từng sinh viên",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV {MSSV} có trong DS SV học kỳ test (QLSV-003); nhóm {NHA} của {MHA} đã xếp TKB, còn chỗ (KHGD-011).",
+  "Mở Đăng ký MH/ Đăng ký môn học/ ĐKMH từng sinh viên; chọn {MSSV}; tick 'tam tinh hoc phi khi chon mon dang ky', 'kiem tra trung lich thi'.",
+  "Lọc theo Môn học = {MHA} (hoặc Hiển thị các môn trong CTĐT) → tick {NHA} → Lưu.",
+  "KIỂM TRA THÊM: 'Danh sách môn học đã chọn' có {MHA}/{NHA}, Số TC, Học phí, Số tiền miễn giảm, Phải đóng (= Học phí − miễn giảm); Xem TKB của SV có {NHA}.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Xem file MH đã đăng ký có {MSSV}–{NHA}; sĩ số đã ĐK của {NHA} tăng 1.",
+  "Sửa: đổi sang {NHB} (bỏ {NHA}, tick {NHB}) → Lưu; KIỂM TRA SỬA chỉ còn {NHB}.",
+  "Xóa: bỏ tick {NHB} → Lưu; KIỂM TRA XÓA không còn {MHA} trong KQĐK của {MSSV}. Tắt màn hình."
+ ],
+ "title": "ĐKMH từng sinh viên (kèm kiểm tra ràng buộc và tạm tính học phí)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MHB": "(môn B SV chưa đạt)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})",
+  "NHB": "(nhóm 02 của {MHA}, còn chỗ)"
+ },
+ "version": "v2026.10H.00"
+}

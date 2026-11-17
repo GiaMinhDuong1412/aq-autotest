@@ -15,7 +15,7 @@
    "kind": "main",
    "menu": "NetWEB GUEST: Tra cứu thông tin văn bằng chứng chỉ",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "KHACH-001",
    "source": "sheet",
    "steps": [
     "Mở Netweb không đăng nhập (GUEST) → menu Tra cứu thông tin tốt nghiệp",
@@ -30,6 +30,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 1 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 1 khớp, 0 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "netweb",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

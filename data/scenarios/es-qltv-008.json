@@ -1,0 +1,42 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTV-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phiếu thu (QLTV-006)",
+  "next": [
+   "QLTV-011"
+  ],
+  "out": "Không thay đổi"
+ },
+ "expected": "Danh sách phiếu thu học kỳ khớp các lần thu; phiếu hủy tách riêng. (Theo QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1.)",
+ "lastRun": null,
+ "menu": "Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu học kỳ",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1 (Danh sách phiếu đã thu)",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có phiếu thu (QLTV-006/QLTV-007).",
+  "Mở Thu/chi HP/ Hoạt động thu/chi/ Thu học phí/ Danh sách phiếu thu học kỳ; lọc {MSSV}.",
+  "KIỂM TRA: phiếu đúng số phiếu, số tiền, ngày thu, người thu.",
+  "Tick hiển thị phiếu hủy → KIỂM TRA phiếu đã hủy chỉ hiện khi tick.",
+  "Tắt màn hình."
+ ],
+ "title": "Danh sách phiếu thu học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

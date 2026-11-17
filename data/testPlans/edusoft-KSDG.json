@@ -24,7 +24,7 @@
    "kind": "setup",
    "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục form đánh giá",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-001",
    "source": "sheet",
    "steps": [
     "Mở menu Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi → Danh mục form đánh giá",
@@ -43,7 +43,7 @@
    "kind": "setup",
    "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh mục thang đo đánh giá",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-002",
    "source": "sheet",
    "steps": [
     "Mở menu Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi → Danh mục thang đo đánh giá",
@@ -62,7 +62,7 @@
    "kind": "setup",
    "menu": "Khảo sát đánh giá / Chuẩn bị form / Định nghĩa form và câu hỏi / Danh sách câu hỏi",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-003",
    "source": "sheet",
    "steps": [
     "(Chuẩn bị) Menu … / Định nghĩa form và câu hỏi / Nhóm câu hỏi: chọn form TEST_FORM01 → Thêm nhóm TEST_NHOM01, kiểu kiểm tra trả lời → Lưu",
@@ -82,7 +82,7 @@
    "kind": "main",
    "menu": "Khảo sát đánh giá / Đánh giá học kỳ / Form đánh giá học kỳ / Tạo kỳ đánh giá",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-004",
    "source": "sheet",
    "steps": [
     "Mở menu Khảo sát đánh giá / Đánh giá học kỳ / Form đánh giá học kỳ → Tạo kỳ đánh giá",
@@ -99,7 +99,7 @@
    "kind": "main",
    "menu": "Khảo sát đánh giá / Danh sách đánh giá / Tạo và cập nhật danh sách / Tạo và cập nhật danh sách đáp viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-005",
    "source": "sheet",
    "steps": [
     "(Chuẩn bị) Tạo và cập nhật danh sách được đánh giá: chọn kỳ TEST_KDG01, chuyển đối tượng từ khung trái sang phải → Lưu",
@@ -118,7 +118,7 @@
    "kind": "main",
    "menu": "Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form / Nhập trả lời từng đáp viên",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-006",
    "source": "sheet",
    "steps": [
     "Mở menu Khảo sát đánh giá / Trả lời đánh giá / Trả lời thủ công từ form → Nhập trả lời từng đáp viên",
@@ -137,7 +137,7 @@
    "menu": "NetWEB SV + GV + GUEST: Khảo sát đánh giá",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-007",
    "source": "sheet",
    "steps": [
     "Chuẩn bị: kỳ đánh giá test còn hiệu lực, có SV/GV test trong danh sách đáp viên; chỉ xem setting GH_NHHKDG, SY_CAMXEMDIEMEDUWEBCHUADANHGIA (không sửa)",
@@ -157,7 +157,7 @@
    "menu": "NetWEB giảng viên: Kết quả khảo sát giảng viên",
    "priority": "cao",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "KSDG-008",
    "source": "sheet",
    "steps": [
     "Điều kiện: GH_HIENTHIMENUKQDG đang công bố kết quả, GV test đạt GH_SLTOITHIEUXEMKQDG phiếu (chỉ xem, không sửa setting)",
@@ -174,6 +174,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 8 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 8 khớp, 0 khớp một phần, 0 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

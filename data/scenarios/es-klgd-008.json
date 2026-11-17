@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đợt khóa sổ theo đợt (5.3)",
+   "expected": "Không cho tính lại.",
+   "name": "Đợt đã khóa sổ",
+   "steps": [
+    "Tính lại đợt đã khóa."
+   ]
+  }
+ ],
+ "code": "KLGD-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đã chốt (KLGD-006), hệ số (KLGD-001, KLGD-002, KLGD-004), CB (KLGD-003), KL khác (KLGD-007)",
+  "next": [
+   "KLGD-009",
+   "KLGD-010"
+  ],
+  "out": "Khối lượng đã tính {DOT}"
+ },
+ "expected": "Khối lượng tính theo dữ liệu chốt × hệ số, cộng khối lượng khác, trừ phần dạy thay, phân bổ nghĩa vụ theo biến. Tên menu sheet ≠ tài liệu – cần xác nhận. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 5.1–5.2.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Tính khối lượng/ Tính khối lượng/ Tính khối lượng theo đợt",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.2 Tính khối lượng giảng dạy (trước: 5.1 Phân bổ nghĩa vụ & tạm ứng; sau: 5.3 Khóa sổ theo đợt)",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; dữ liệu đã chốt {DOT} (KLGD-006), loại hình (KLGD-002, KLGD-004), thông tin CB (KLGD-003); ghi lại SG_HinhThucPhanBoTietNghiaVu (không sửa).",
+  "Tính sẵn KL {CB} = Σ(số tiết nhóm × hệ số loại hình × hệ số lớp đông) + KL khác (KLGD-007) − tiết dạy thay (KLGD-005).",
+  "Mở Khối lượng/ Tính khối lượng/ Tính khối lượng/ Tính khối lượng theo đợt; chọn {DOT} → Thực hiện.",
+  "KIỂM TRA: thông báo tính xong, lưu thời gian và người tính.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Xem khối lượng chi tiết đã tính (KLGD-009) – {CB} đúng giá trị tính sẵn.",
+  "KHÔNG khóa sổ đợt test (5.3) trừ khi người dùng đồng ý. Tắt màn hình."
+ ],
+ "title": "Tính khối lượng giảng dạy theo đợt",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)",
+  "DOT": "TEST_DOT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

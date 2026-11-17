@@ -1,0 +1,46 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Số phiếu < GH_SLTOITHIEUXEMKQDG",
+   "expected": "Không hiện kết quả / báo chưa đủ phiếu.",
+   "name": "Chưa đủ số phiếu",
+   "steps": [
+    "Xem kết quả khi chỉ có 1 phiếu."
+   ]
+  }
+ ],
+ "code": "KSDG-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Trả lời (KSDG-006, KSDG-007)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "GV xem kết quả khảo sát của mình khi được công bố và đủ số phiếu tối thiểu. (Theo NetWEB_GiangVienXemKhaoSatDanhGia, mục III.14.)",
+ "lastRun": null,
+ "menu": "NetWEB giảng viên: Kết quả khảo sát giảng viên",
+ "module": "KSDG",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat; NetWEB_GiangVienXemKhaoSatDanhGia, mục III.14 Xem kết quả ykph online đối với giảng viên",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò giảng viên bằng tài khoản test; GH_HIENTHIMENUKQDG đang công bố, GV đạt GH_SLTOITHIEUXEMKQDG phiếu (chỉ xem setting); có trả lời ở KSDG-006/KSDG-007.",
+  "Menu Kết quả khảo sát giảng viên → chọn học kỳ → mã đợt {KDG}.",
+  "In thống kê biểu đồ; In thống kê tổng hợp.",
+  "KIỂM TRA: điểm TB từng câu (theo hệ số thang đo) và ý kiến khác khớp Edusoft (Khảo sát đánh giá/ Khai thác báo biểu/ In kết quả)."
+ ],
+ "title": "Netweb GV: xem kết quả khảo sát giảng viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KDG": "TEST_KDG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

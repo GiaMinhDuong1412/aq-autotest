@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thời gian đăng ký sinh viên cho SV đặc biệt",
+   "expected": "SV đó vẫn đăng ký được.",
+   "name": "Thời gian riêng cho SV",
+   "steps": [
+    "Khai thời gian riêng còn hạn cho 1 SV của {LOP} khi lớp đã hết hạn."
+   ]
+  }
+ ],
+ "code": "DKMH-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Chỉnh định NHHK Netweb (QLHT-009)",
+  "next": [
+   "DKMH-015"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "SV chỉ đăng ký online trong khoảng thời gian của lớp. (Theo DKMH_ChinhDinhThoiGianDangKyOnline, mục III.2, III.5.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo lớp",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_HuongDanDangKyMonHocOnline; DKMH_ChinhDinhThoiGianDangKyOnline, mục III.2 Thời gian cho phép đăng ký; III.5 Quy định về thời gian",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SM00_CAMDKTT_DIEN = Không, SM00_TGCPDK = Có giới hạn (chỉ xem); NHHK đăng ký Netweb = học kỳ test (QLHT-009); ghi lại thời gian hiện tại của {LOP}.",
+  "Mở Đăng ký MH/ Đăng ký môn học/ Ràng buộc đăng ký online/ Thời gian đăng ký theo lớp; lọc khóa/ngành/bậc hệ, chọn {LOP}.",
+  "Gán chung thời gian: từ hôm qua 00:00 đến hôm nay + 2 ngày 23:59 → Lưu.",
+  "KIỂM TRA: {LOP} hiện đúng khoảng; SV lớp {LOP} vào được trang Đăng ký học phần Netweb (DKMH-015).",
+  "Sửa khoảng thành đã qua (đến hôm qua) → Lưu; KIỂM TRA SV bị chặn, báo ngoài thời gian đăng ký (có thể cần restart IIS/clear cache để áp dụng ngay).",
+  "Trả lại thời gian cũ → Lưu. Tắt màn hình."
+ ],
+ "title": "Thời gian đăng ký online theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của {MSSV})",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

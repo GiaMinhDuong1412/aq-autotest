@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Dòng import trùng phòng/tiết với {NHOM} (KHGD-011)",
+   "expected": "Báo trùng TKB, không nhận dòng đó.",
+   "name": "Trùng TKB với dữ liệu đã có",
+   "steps": [
+    "Import dòng cùng phòng – thứ – tiết với {NHOM}."
+   ]
+  }
+ ],
+ "code": "KHGD-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục môn, lớp, phòng, CB học kỳ",
+  "next": [],
+  "out": "Nhóm/TKB {MH2} (đã dọn)"
+ },
+ "expected": "Import tạo nhóm/tổ và TKB đúng file, dòng sai được báo trước khi thực hiện. Cấu trúc file theo hướng dẫn import riêng – cần xác nhận. (Theo KHGD_CacBuocXepTKB, mục III.2.1.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học & TKB",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.1 (Import từ file – tài liệu chỉ tham chiếu “hướng dẫn import TKB”)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; môn {MH2} có trong danh mục môn học (tạo như KHGD-002); lớp {LOP}; phòng/CB test trong học kỳ.",
+  "Mở Kế hoạch/ Thời khóa biểu/ Import từ file/ Import nhóm/tổ học & TKB → Xuất cấu trúc.",
+  "Chuẩn bị file 1 dòng: Mã môn học {MH2}, Nhóm/tổ 01, Mã viên chức, Mã lớp {LOP}, SL trung bình nhóm 40, Số tiết 3, Thứ 2, Tiết BĐ 1, Mã phòng, tuần 1–10; thêm 1 dòng phòng không tồn tại.",
+  "Chọn file → kiểm tra dữ liệu: KIỂM TRA dòng phòng sai bị báo lỗi → Thực hiện.",
+  "KIỂM TRA: Danh sách nhóm tổ có {MH2} nhóm 01; Xem TKB dạng tuần {LOP} có thứ 2 tiết 1 đúng phòng.",
+  "Dọn: Xóa thời khóa biểu (KHGD-017) của {MH2} và xóa nhóm. Tắt màn hình."
+ ],
+ "title": "Import nhóm/tổ học & TKB từ file",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "MH2": "TEST_MHI{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

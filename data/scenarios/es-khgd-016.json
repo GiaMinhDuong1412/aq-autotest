@@ -1,0 +1,55 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tuần trống trong BĐKH (KHGD-008)",
+   "expected": "Không có lịch {NHOM} ở tuần đó.",
+   "name": "Tuần không học",
+   "steps": [
+    "Chuyển tới tuần bỏ 'x'."
+   ]
+  }
+ ],
+ "code": "KHGD-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011)",
+  "next": [
+   "KHGD-020"
+  ],
+  "out": "Không thay đổi"
+ },
+ "expected": "TKB dạng tuần thống nhất theo lớp/cán bộ/phòng và in được. (Theo KHGD_CacBuocXepTKB, mục III.2.2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Xem thời khóa biểu dạng tuần)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011).",
+  "Mở Kế hoạch/ Thời khóa biểu/ Xem thời khóa biểu/ Dạng tuần; đối tượng = lớp {LOP}, chọn tuần có lịch (Tuần đầu / Tuần kế).",
+  "KIỂM TRA: ô thứ – tiết của {NHOM} hiện đúng môn, phòng {PHONG}, CB {CB}.",
+  "Đổi đối tượng = cán bộ {CB}, rồi phòng {PHONG} → KIỂM TRA cùng buổi học.",
+  "In TKB Tuần → KIỂM TRA mẫu in đúng dữ liệu.",
+  "Tắt màn hình (không đổi thông số)."
+ ],
+ "title": "Xem thời khóa biểu dạng tuần theo lớp / cán bộ / phòng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test trong học kỳ)",
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})",
+  "PHONG": "(phòng test trong học kỳ)"
+ },
+ "version": "v2026.10H.00"
+}

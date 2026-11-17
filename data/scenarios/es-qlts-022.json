@@ -1,0 +1,63 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{TS1} bỏ xác nhận nhập học (QLTS-019)",
+   "expected": "{TS1} không được chuyển.",
+   "name": "Thí sinh chưa nhập học",
+   "steps": [
+    "Chuyển với {TS1} chưa nhập học."
+   ]
+  },
+  {
+   "condition": "{TS1} đã chuyển",
+   "expected": "Chương trình báo đã có sinh viên, không tạo trùng.",
+   "name": "Chuyển lần hai",
+   "steps": [
+    "Chuyển lại {TS1}."
+   ]
+  }
+ ],
+ "code": "QLTS-022",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} nhập học, mã SV, lớp, hồ sơ (QLTS-017–QLTS-020)",
+  "next": [
+   "QLSV-001",
+   "QLSV-003"
+  ],
+  "out": "Sinh viên {MASV} ở QLSV (được dọn cuối kịch bản)"
+ },
+ "expected": "Thí sinh đã nhập học được chuyển thành sinh viên (Danh mục SV, QĐ vào mới, DS SV học kỳ) đúng mã và lớp; dọn được toàn bộ dữ liệu test. Cách QLSV nhận dữ liệu (tự tạo QĐ vào mới hay chỉ vào danh mục) cần xác nhận. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8; lưu đồ QLTSTS bước 11.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Tiếp sinh/ Chuyển danh sách trúng tuyển sang phân hệ QLSV",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.8 (Chuyển danh sách trúng tuyển sang phân hệ QLSV)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} đã nhập học, có mã SV và lớp, đã nộp hồ sơ (QLTS-017–QLTS-020); lớp {LOPTS} có trong Danh mục lớp QLSV.",
+  "Kiểm tra trùng: Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MASV} → chưa có.",
+  "Mở Tuyển sinh/ Tiếp sinh/ Chuyển danh sách trúng tuyển sang phân hệ QLSV; chọn chỉ {TS1} → Thực hiện.",
+  "KIỂM TRA: Danh mục sinh viên có {MASV} đúng họ tên, ngày sinh, lớp {LOPTS}.",
+  "KIỂM TRA: Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới có quyết định chứa {MASV}; Danh sách sinh viên học kỳ có {MASV} (tổng hợp tự động).",
+  "Dọn: xóa quyết định vào mới chứa {MASV} (như QLSV-001 bước 12) → KIỂM TRA {MASV} không còn ở Danh mục sinh viên; xóa dữ liệu tuyển sinh test ({TS1}, {TS2}, {TS3}, điểm chuẩn, ngành/khối, môn, đợt, kỳ – thứ tự ngược) và trả biến chỉnh định (QLTS-003)."
+ ],
+ "title": "Chuyển danh sách trúng tuyển sang phân hệ QLSV",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOPTS": "(lớp của QLTS-017)",
+  "MASV": "(mã SV của {TS1} – QLTS-018)",
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)",
+  "TS3": "(thí sinh đăng ký online – QLTS-011)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{CB2} đã có lịch cùng thứ – tiết",
+   "expected": "Chương trình báo trùng TKB cán bộ, không lưu (cần xác nhận câu báo).",
+   "name": "CB mới trùng lịch",
+   "steps": [
+    "Thay bằng CB đang dạy cùng giờ → Lưu."
+   ]
+  }
+ ],
+ "code": "KHGD-013",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), viên chức HK (KHGD-006)",
+  "next": [
+   "KHGD-016"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "CBGD được thay trên TKB; CB mới trùng lịch thì bị chặn trừ khi tick 'Không kiểm tra thời khóa biểu CBGD'. (Theo KHGD_CacBuocXepTKB, mục III.2.2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế CBGD",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 Khai thác và hiệu chỉnh TKB (Thay thế CBGD)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011).",
+  "Mở Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế CBGD; chọn {NHOM}, chọn chi tiết mã viên chức {CB}.",
+  "Nhập Mã NV mới = {CB2} (không tick 'Không kiểm tra thời khóa biểu CBGD') → Lưu.",
+  "KIỂM TRA: Xem TKB dạng tuần của {NHOM} có {CB2}, không còn {CB}; TKB của {CB} không còn {NHOM}.",
+  "Trả lại {CB} → Lưu; KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Thay thế CBGD của nhóm đã xếp TKB",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test trong học kỳ)",
+  "CB2": "(viên chức khác trong học kỳ, rảnh giờ dạy của {NHOM})",
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Cache Netweb chưa làm mới",
+   "expected": "Nếu menu vẫn hiện: kiểm tra Base Url (QLHT-009) và chờ/clear cache; ghi nhận thời gian trễ. Cần xác nhận.",
+   "name": "Netweb chưa nhận thay đổi",
+   "steps": [
+    "Sau khi Lưu, tải lại Netweb ngay."
+   ]
+  }
+ ],
+ "code": "QLHT-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Netweb test (Máy chạy thử)",
+  "next": [
+   "QTRI-001"
+  ],
+  "out": "Không đổi (trả lại trạng thái)"
+ },
+ "expected": "Menu đánh dấu ẩn không hiện trên Netweb; bỏ đánh dấu thì hiện lại (có thể cần chờ cache – Base Url ở QLHT-009 dùng để xóa cache). (Theo NETWEB-QuanTriChung, mục III.7.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Quản trị NetWEB/ Chỉnh định menu",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.7 Quản lý ẩn/hiện menu chức năng",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; có Netweb test đã kiểm tra đăng nhập; chọn menu ít dùng để ẩn ngắn.",
+  "Mở Hệ thống/ Quản trị NetWEB/ Chỉnh định menu; tìm mã chức năng của menu {MENU}; ghi lại trạng thái Ẩn menu.",
+  "Tick cột Ẩn menu của {MENU} → Lưu.",
+  "KIỂM TRA: đăng nhập Netweb test (tải lại trang) → menu {MENU} không còn hiển thị.",
+  "Bỏ tick Ẩn menu → Lưu.",
+  "KIỂM TRA: tải lại Netweb → {MENU} hiện lại. Tắt màn hình."
+ ],
+ "title": "Chỉnh định menu Netweb: ẩn rồi hiện một menu",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MENU": "Xem quy chế / quy định"
+ },
+ "version": "v2026.10H.00"
+}

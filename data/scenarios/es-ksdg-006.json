@@ -1,0 +1,42 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KSDG-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đáp viên (KSDG-005)",
+  "next": [
+   "KSDG-008"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Trả lời thủ công ghi nhận như đáp viên tự trả lời; bắt buộc trả lời hết khi kỳ có tùy chọn này. (Theo KSDG_QuyTrinhKhaoSat, mục III.10.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Trả lời đánh giá/ Trả lời thủ công từ form/ Nhập trả lời từng đáp viên",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.10 Thực hiện đánh giá",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {DV} là đáp viên {KDG} (KSDG-005); phần nhập mở trang web – bộ test pywinauto có thể không điều khiển được, chạy tay.",
+  "Mở Khảo sát đánh giá/ Trả lời đánh giá/ Trả lời thủ công từ form/ Nhập trả lời từng đáp viên; chọn {KDG}, {DV} → Nhập trả lời.",
+  "Bỏ trống câu 1 → Gửi → KIỂM TRA bị chặn (kỳ bắt buộc trả lời hết).",
+  "Chọn bậc 4 cho câu 1, nhập ý kiến khác TEST → Lưu/Gửi.",
+  "KIỂM TRA: {DV} đánh dấu đã trả lời; In kết quả có câu 1 điểm = hệ số bậc 4 (= 3).",
+  "Dọn: xóa kết quả trả lời của {DV}."
+ ],
+ "title": "Nhập trả lời thủ công cho từng đáp viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DV": "(SV/GV test làm đáp viên)",
+  "KDG": "TEST_KDG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

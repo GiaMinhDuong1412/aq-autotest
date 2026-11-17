@@ -1,0 +1,42 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-013",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lịch thi (LTHI-012)",
+  "next": [],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Hiệu chỉnh ngày/tiết/phòng qua F1 chỉ chọn giá trị thỏa ràng buộc. (Theo LTHI_ToChucThi, mục III.10.1.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh lịch thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.10.1 Hiệu chỉnh lịch thi đã xếp",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lịch thi đợt {DOT} đã xếp cho tổ {TO} (LTHI-012).",
+  "Mở Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh lịch thi; chọn {DOT} → tải nhóm/tổ đã xếp; ghi lại lịch {TO}.",
+  "Ô Ngày thi của {TO} → F1 → chọn ngày khác thỏa điều kiện → Lưu.",
+  "KIỂM TRA: lịch {TO} đổi ngày mới; danh sách F1 chỉ đưa giá trị không gây trùng.",
+  "Đổi phòng thi (Chọn phòng thi → F1) → Lưu; KIỂM TRA.",
+  "Trả lại lịch cũ → Lưu. Tắt màn hình."
+ ],
+ "title": "Hiệu chỉnh lịch thi đã xếp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

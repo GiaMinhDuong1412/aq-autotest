@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn đợt / nhóm thi",
+   "expected": "Chương trình nhắc chọn đợt / nhóm thi, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn đợt / nhóm thi nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "LTHI-011",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đợt, nhóm thi (LTHI-008)",
+  "next": [
+   "LTHI-012",
+   "LTHI-015"
+  ],
+  "out": "Tổ thi {TO}"
+ },
+ "expected": "Phân tổ tự động chia SV nhóm thi thành tổ không vượt sĩ số; ghép/tách tổ được. (Theo LTHI_ToChucThi, mục III.7.1–7.3; lưu đồ LTHI bước 6.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi tự động",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.7.1 Phân tổ thi tự động (7.2–7.3 ghép / tách tổ)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đợt {DOT} có {NT} (LTHI-008) và phòng (LTHI-009).",
+  "Mở Tổ chức thi/ Quản lý tổ thi/ Tạo danh sách tổ thi/ Phân tổ thi tự động; chọn {DOT}/{NT}, sĩ số tối đa tổ = sức chứa thi phòng (vd 25), nhiệm ý phân tổ (theo tên/lớp) → Thực hiện.",
+  "KIỂM TRA: Danh sách tổ thi đã tạo có các tổ của {NT}; mỗi tổ ≤ 25 SV; tổng SV các tổ = sĩ số {NT}; mỗi SV đúng 1 tổ.",
+  "Ghép tổ thi tự động (giới hạn sĩ số 50) → KIỂM TRA số tổ giảm; tách lại như cũ. Tắt màn hình."
+ ],
+ "title": "Phân tổ thi tự động",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

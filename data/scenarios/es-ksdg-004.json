@@ -1,0 +1,59 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Khoảng ngày ngược",
+   "expected": "Chặn. Cần xác nhận.",
+   "name": "Ngày kết thúc trước ngày bắt đầu",
+   "steps": [
+    "Nhập ngày kết thúc < ngày bắt đầu → Lưu."
+   ]
+  },
+  {
+   "condition": "Mã kỳ nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã kỳ và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã kỳ",
+   "steps": [
+    "Bấm Thêm, nhập Mã kỳ giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "KSDG-004",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Form + câu hỏi (KSDG-003)",
+  "next": [
+   "KSDG-005"
+  ],
+  "out": "Kỳ {KDG}"
+ },
+ "expected": "Kỳ đánh giá gắn form và thời gian; tùy chọn 'Có kiểm tra học phí', 'Trả lời hết các câu hỏi' áp dụng khi trả lời (lưu đồ KSDG bước 5). (Theo KSDG_QuyTrinhKhaoSat, mục III.8.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.8 Tạo kỳ đánh giá",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; form {FORM} có câu hỏi (KSDG-003).",
+  "Mở Khảo sát đánh giá/ Đánh giá học kỳ/ Form đánh giá học kỳ/ Tạo kỳ đánh giá → Thêm: Mã kỳ {KDG}, Mã form {FORM}, Ngày bắt đầu = hôm nay, Ngày kết thúc = hôm nay + 7, tick Trả lời hết các câu hỏi → Lưu.",
+  "KIỂM TRA THÊM: {KDG} đúng form và khoảng ngày.",
+  "Sửa Ngày kết thúc +10 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho KSDG-005–KSDG-008; dọn cuối chuỗi: xóa {KDG} sau khi xóa đáp viên/trả lời."
+ ],
+ "title": "Tạo kỳ đánh giá học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "FORM": "TEST_FORM{ddHHMM}",
+  "KDG": "TEST_KDG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

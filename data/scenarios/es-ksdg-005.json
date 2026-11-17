@@ -1,0 +1,43 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KSDG-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ (KSDG-004), nhóm tổ HK (KHGD)",
+  "next": [
+   "KSDG-006",
+   "KSDG-007"
+  ],
+  "out": "Đáp viên {DV} của {KDG}"
+ },
+ "expected": "Danh sách được đánh giá = dữ liệu ĐG (nhóm tổ, GV) trừ ngoại lệ; đáp viên gán theo kỳ (lưu đồ KSDG bước 6–9). (Theo KSDG_QuyTrinhKhaoSat, mục III.9.1–9.3.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Danh sách đánh giá/ Tạo và cập nhật danh sách/ Tạo và cập nhật danh sách đáp viên",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.9.1 Danh sách được đánh giá, III.9.2 Danh sách đáp viên",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; kỳ {KDG} (KSDG-004); nhóm tổ/GV học kỳ test (TKB); có nhóm ngoại lệ không đánh giá (chỉ xem).",
+  "Tạo và cập nhật danh sách được đánh giá: chọn {KDG}, chuyển 1 nhóm tổ (GV) test từ khung trái sang phải → Lưu; KIỂM TRA nhóm ngoại lệ không có để chọn.",
+  "Mở Khảo sát đánh giá/ Danh sách đánh giá/ Tạo và cập nhật danh sách/ Tạo và cập nhật danh sách đáp viên; chọn {KDG}; thêm {DV} (thêm một) → Lưu.",
+  "KIỂM TRA THÊM: Xem danh sách đánh giá đã tạo có {DV} với nhóm tổ được đánh giá.",
+  "Loại bỏ 1 đáp viên → KIỂM TRA biến mất; thêm lại.",
+  "Giữ cho KSDG-006/KSDG-007; dọn cuối chuỗi: loại bỏ toàn bộ đáp viên/đối tượng của {KDG}."
+ ],
+ "title": "Tạo danh sách được đánh giá và danh sách đáp viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DV": "(SV/GV test làm đáp viên)",
+  "KDG": "TEST_KDG{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

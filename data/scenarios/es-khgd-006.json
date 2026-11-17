@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Khoa/ Đơn vị",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Khoa/ Đơn vị…) ở dòng viên chức.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "viên chức học kỳ đã được dùng ở TKB / phân công coi thi",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng viên chức học kỳ đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KHGD-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục viên chức; dữ liệu học kỳ (QLHT-002)",
+  "next": [
+   "KHGD-010",
+   "KHGD-013",
+   "LTHI-019"
+  ],
+  "out": "Viên chức {CB} trong học kỳ test"
+ },
+ "expected": "Viên chức chỉ dùng được cho TKB/coi thi/khối lượng khi có trong DS viên chức học kỳ với đơn vị. (Theo KHGD_QuanLyNhanSuCoBan, mục III.3; lưu đồ TKB bước 5.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_QuanLyNhanSuCoBan, mục III.3 Danh sách viên chức học kỳ",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {CB} có trong Kế hoạch/ Thông tin viên chức/ Danh mục viên chức; đơn vị có trong Danh mục đơn vị.",
+  "Mở Kế hoạch/ Thông tin viên chức/ Danh sách viên chức học kỳ; tìm {CB} → chưa có.",
+  "Bấm Thêm → chương trình tải viên chức chưa có trong học kỳ; tick {CB}, chọn Khoa/Đơn vị (bắt buộc) → Lưu.",
+  "KIỂM TRA THÊM: {CB} có trong danh sách học kỳ đúng đơn vị; chọn được ở Thay thế CBGD (KHGD-013).",
+  "Sửa đơn vị/bộ môn → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho chuỗi TKB; dọn cuối: xóa {CB} khỏi học kỳ (khi không còn TKB) → KIỂM TRA."
+ ],
+ "title": "Danh sách viên chức học kỳ: thêm viên chức test vào học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(viên chức test có trong Danh mục viên chức, chưa có trong học kỳ)"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Phòng chưa có trong DS phòng học kỳ",
+   "expected": "Không chọn được.",
+   "name": "Phòng không thuộc học kỳ",
+   "steps": [
+    "Tìm phòng ngoài học kỳ."
+   ]
+  }
+ ],
+ "code": "LTHI-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đợt (LTHI-008), phòng HK (KHGD-005)",
+  "next": [
+   "LTHI-012"
+  ],
+  "out": "{PHONG} trong đợt {DOT}"
+ },
+ "expected": "Chỉ phòng trong đợt mới được dùng khi xếp lịch thi; sức chứa thi quyết định sĩ số tổ. (Theo LTHI_ToChucThi, mục III.6.3; lưu đồ LTHI bước 5.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Định nghĩa đợt thi/ Nhập phòng sử dụng trong đợt",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.6.3 Danh sách phòng thi sử dụng trong đợt",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đợt {DOT} (LTHI-008); phòng {PHONG} trong DS phòng học kỳ (KHGD-005).",
+  "Mở Tổ chức thi/ Định nghĩa đợt thi/ Nhập phòng sử dụng trong đợt; chọn {DOT} → Sửa → Danh sách phòng thi → Thêm {PHONG} → Lưu.",
+  "KIỂM TRA: {PHONG} có trong đợt với sức chứa thi (không phải sức chứa học).",
+  "Tắt màn hình (giữ cho LTHI-012)."
+ ],
+ "title": "Nhập phòng sử dụng trong đợt thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "PHONG": "(phòng test trong học kỳ – KHGD-005)"
+ },
+ "version": "v2026.10H.00"
+}

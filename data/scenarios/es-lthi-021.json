@@ -1,0 +1,49 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn đợt thi",
+   "expected": "Chương trình nhắc chọn đợt thi, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn đợt thi nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "LTHI-021",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Phân công (LTHI-019)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Danh sách coi thi in đúng phân công; báo cáo kiểm tra phát hiện phân công sai. (Theo LTHI_PhanCongCoiThi, mục III.5.1, 5.3.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hoạt động coi thi/ In danh sách coi thi/ Theo đợt thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_PhanCongCoiThi, mục III.5.1 In danh sách coi thi (5.3 In kiểm tra dữ liệu)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã phân công coi thi đợt {DOT} (LTHI-019).",
+  "Mở Tổ chức thi/ Hoạt động coi thi/ In danh sách coi thi/ Theo đợt thi; chọn {DOT} → In.",
+  "KIỂM TRA: mẫu Danh sách phân công CB coi thi có {CB} đúng tổ/ngày/phòng như LTHI-019.",
+  "In kiểm tra dữ liệu (cán bộ không có trong đợt, vượt cấp, trùng lịch coi thi, giảng dạy môn thi) → KIỂM TRA không có lỗi với phân công hợp lệ.",
+  "Tắt màn hình."
+ ],
+ "title": "In danh sách coi thi theo đợt thi và in kiểm tra dữ liệu coi thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ coi thi test)",
+  "DOT": "TEST_DT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,58 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "File chỉ có masv",
+   "expected": "{MSSV} được đăng ký các nhóm mở cho lớp của SV.",
+   "name": "Theo mã sinh viên",
+   "steps": [
+    "Đăng ký môn học theo mã sinh viên với file {MSSV}."
+   ]
+  },
+  {
+   "condition": "Thiếu cột",
+   "expected": "Báo sai cấu trúc, không import.",
+   "name": "File sai cấu trúc",
+   "steps": [
+    "Import file thiếu cột nhóm."
+   ]
+  }
+ ],
+ "code": "DKMH-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV, nhóm (QLSV-003, KHGD-011)",
+  "next": [],
+  "out": "KQĐK {MSSV}–{MHA} (đã hủy)"
+ },
+ "expected": "Đăng ký theo file nhận dòng hợp lệ (vẫn kiểm ràng buộc), báo dòng lỗi. (Theo DKMH_DangKyMonHocTuFileSV-MH, mục III.2.2.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo sinh viên - môn học",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_DangKyMonHocOFFLINE; DKMH_DangKyMonHocTuFileSV-MH, mục III.2.2 Đăng ký theo file",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV {MSSV} có trong DS SV học kỳ test (QLSV-003); nhóm {NHA} của {MHA} đã xếp TKB, còn chỗ (KHGD-011).",
+  "Mở Đăng ký MH/ Đăng ký môn học/ Đăng ký theo tập tin/ Theo sinh viên - môn học → Xuất cấu trúc.",
+  "Chuẩn bị file: {MSSV} – {MHA} – {NHA}; thêm 1 dòng mã SV không tồn tại và 1 dòng nhóm không tồn tại.",
+  "Chọn file → chương trình kiểm tra file và hiển thị thông báo: KIỂM TRA 2 dòng sai được báo rõ lý do → Import.",
+  "KIỂM TRA: Xem file MH đã đăng ký – {MSSV} có {MHA}/{NHA}; dòng lỗi không tạo KQĐK.",
+  "Dọn: hủy KQĐK {MSSV}–{MHA} (DKMH-012)."
+ ],
+ "title": "Đăng ký theo tập tin: sinh viên – môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MHA": "(môn test A có nhóm mở, đã xếp TKB – KHGD-011)",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)",
+  "NHA": "(nhóm 01 của {MHA})"
+ },
+ "version": "v2026.10H.00"
+}

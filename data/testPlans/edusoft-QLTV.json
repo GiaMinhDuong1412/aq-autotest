@@ -31,7 +31,7 @@
    "kind": "setup",
    "menu": "Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN mức đơn giá và số TCHP môn học",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-001",
    "source": "sheet",
    "steps": [
     "Kiểm tra (chỉ ghi lại) thông số: Chính sách HP / Quản trị phân hệ / Chỉnh định thông số toàn cục (GP_CoPhanQuyenCSHP, GP_NHHKTINHHPTUDONG) và Chỉnh định thông số học kỳ (SP_HinhThucTinhHocPhi, SP_CoDonGiaMonHoc, SP_ThuHocLai, SP_HeSoHocPhiHocLai, SP_PhanBietHLCT…).",
@@ -49,7 +49,7 @@
    "kind": "setup",
    "menu": "Chính sách HP / Chính sách học phí / Qui hoạch học phí / ĐN đơn giá học phí",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-002",
    "source": "sheet",
    "steps": [
     "Điều kiện: DM loại hình thu học phí, ĐN nhóm công thức thu, ĐN hình thức thu theo đối tượng / lớp / SV đã có (mục 3–5).",
@@ -67,7 +67,7 @@
    "kind": "main",
    "menu": "Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-003",
    "source": "sheet",
    "steps": [
     "Mở menu Chính sách HP / Chính sách học phí / Nợ học phí / Cập nhật tồn nợ.",
@@ -86,7 +86,7 @@
    "kind": "main",
    "menu": "Chính sách HP / Chính sách các khoản thu khác / Khoản thu khác / Nhập khoản thu khác theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-004",
    "source": "sheet",
    "steps": [
     "Điều kiện: Chính sách HP / Quản trị phân hệ / Quản lý danh mục / Danh mục khoản thu tự định nghĩa có khoản TEST_ (vd phí khám sức khỏe), chọn Loại thu kèm.",
@@ -103,7 +103,7 @@
    "kind": "main",
    "menu": "Chính sách HP / Tính và In học phí / Tính học phí / Tính theo lớp",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-005",
    "source": "sheet",
    "steps": [
     "Điều kiện: đơn giá đã khai (bước 1–2), sinh viên TEST đã đăng ký môn.",
@@ -121,7 +121,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Thu học phí 1 SV",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-006",
    "source": "sheet",
    "steps": [
     "Kiểm tra (chỉ ghi lại) Thu/chi HP / Quản trị phân hệ / Chỉnh định thông số toàn cục: GH_NHHKTHUHPEDUWEB, GV_PhanBietNganHangThuHP, GV_NganHangMacDinh, SV_LOAIBODEMTHUHP, GV_SVDONGHPTRONGSSVHK, GV_COTHUNOHPHKH.",
@@ -141,7 +141,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Import phiếu thu",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-007",
    "source": "sheet",
    "steps": [
     "Mở menu Thu/chi HP / Hoạt động thu/chi / Thu học phí / Import phiếu thu.",
@@ -157,7 +157,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Hoạt động thu / chi / Thu học phí / Danh sách phiếu thu học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-008",
    "source": "sheet",
    "steps": [
     "Mở menu Thu/chi HP / Hoạt động thu/chi / Thu học phí / Danh sách phiếu thu học kỳ.",
@@ -173,7 +173,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Hoạt động thu / chi / In học phí / In chi tiết học phí 1 SV",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-009",
    "source": "sheet",
    "steps": [
     "Mở menu Thu/chi HP / Hoạt động thu/chi / In học phí / In chi tiết học phí 1 SV.",
@@ -190,7 +190,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Quản lý thu vãng lai / Thu vãng lai / Danh sách thu vãng lai học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-010",
    "source": "sheet",
    "steps": [
     "Mở menu Thu/chi HP / Quản lý thu vãng lai / Thu vãng lai / Danh sách thu vãng lai học kỳ.",
@@ -206,7 +206,7 @@
    "kind": "main",
    "menu": "Thu / chi HP / Khai thác báo biểu / Thu / Chi học phí / In bảng kê thu / chi học phí",
    "priority": "thấp",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-011",
    "source": "sheet",
    "steps": [
     "Mở menu Thu/chi HP / Khai thác báo biểu / Thu/Chi học phí / In bảng kê thu/chi học phí.",
@@ -223,7 +223,7 @@
    "menu": "NetWEB sinh viên: Xem học phí",
    "priority": "thấp",
    "product": "netweb",
-   "scenarioCode": "",
+   "scenarioCode": "QLTV-012",
    "source": "sheet",
    "steps": [
     "Đăng nhập Netweb bằng SV test → menu Xem học phí",
@@ -237,6 +237,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 12 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 6 khớp, 4 khớp một phần, 2 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

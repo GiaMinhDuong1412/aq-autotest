@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTN-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLTN-003)",
+  "next": [],
+  "out": "Không đổi"
+ },
+ "expected": "SV chỉ xem kết quả khi đợt được công bố; nội dung khớp Edusoft. (Theo NETWEB_XemKetQuaXetTotNghiep, mục 1–2.)",
+ "lastRun": null,
+ "menu": "NetWEB sinh viên: Xem kết quả xét tốt nghiệp",
+ "module": "QLTN",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB_XemKetQuaXetTotNghiep, mục 1 Mở công bố kết quả, 2 SV xem kết quả",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên ({SVD} hoặc {SVK}) bằng tài khoản test; đợt {DOT} đã xét (QLTN-003); ghi lại trạng thái công bố ở Danh sách đợt xét (TN).",
+  "Khi đợt CHƯA công bố: menu Xem kết quả xét tốt nghiệp → KIỂM TRA thông báo chưa công bố.",
+  "Mở công bố đợt {DOT} (Edusoft) → tải lại → KIỂM TRA {SVD} thấy Đạt; {SVK} thấy Chưa đạt kèm điều kiện chưa đạt (môn nợ) khớp Edusoft.",
+  "Trả lại trạng thái công bố cũ."
+ ],
+ "title": "Netweb SV: xem kết quả xét tốt nghiệp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DTN{ddHHMM}",
+  "SVD": "(SV đủ điều kiện)",
+  "SVK": "(SV thiếu tín chỉ / nợ môn)"
+ },
+ "version": "v2026.10H.00"
+}

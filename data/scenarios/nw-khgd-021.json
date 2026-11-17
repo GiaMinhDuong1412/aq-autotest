@@ -1,0 +1,35 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KHGD-021",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB, KQĐK",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "TKB học kỳ trên Netweb đủ học phần và khớp Edusoft. (Theo Netweb_TaiLieuHuongDanSinhVien mục 11; NetWEB_GiangVienXemThongTinCaNhan mục 4.)",
+ "lastRun": null,
+ "menu": "NetWEB SV + GV: Xem TKB dạng học kỳ",
+ "module": "KHGD",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "Netweb_TaiLieuHuongDanSinhVien; NetWEB_GiangVienXemThongTinCaNhan, mục SV 11 / GV 4 Thời khóa biểu dạng học kỳ",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò sinh viên bằng tài khoản test; SV có KQĐK học kỳ test và học kỳ trước.",
+  "Menu Thời khóa biểu dạng học kỳ → học kỳ hiện tại → KIỂM TRA đủ học phần đã đăng ký, thời gian khớp Edusoft.",
+  "Chọn 1 học kỳ cũ → KIỂM TRA hiển thị dữ liệu học kỳ đó.",
+  "Đăng nhập GV → Xem thời khóa biểu học kỳ → KIỂM TRA đủ học phần GV dạy, xem được danh sách SV."
+ ],
+ "title": "Netweb SV + GV: xem TKB dạng học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

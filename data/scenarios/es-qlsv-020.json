@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhiều SV cùng ĐTB ở mức cuối chỉ tiêu",
+   "expected": "Xử lý theo biến (lấy hết hay loại) đúng cấu hình. Cần xác nhận.",
+   "name": "Cùng điểm khi hết chỉ tiêu",
+   "steps": [
+    "Xem SS_CUNGDIEMHBHETCHITIEU, xét khối có SV cùng điểm."
+   ]
+  }
+ ],
+ "code": "QLSV-020",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thông số (QLSV-018), điểm TB (DIEM), điểm rèn luyện (QLSV-033)",
+  "next": [
+   "QLSV-021",
+   "QLSV-022"
+  ],
+  "out": "Kết quả xét học bổng khối {KHOI}"
+ },
+ "expected": "Xét học bổng chọn đúng SV đủ ngưỡng điểm/rèn luyện/tín chỉ, không vượt chỉ tiêu, loại SV trong danh sách không xét. (Theo QLSV_XetHocBongKhuyenKhich, mục III.5–7.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xét học bổng",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.5–7 Không xét học bổng; Kiểm tra SL; Xét học bổng",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã ghi thông số học bổng (QLSV-018); khối {KHOI} có ĐTB học bổng và điểm rèn luyện (QLSV-033); CHỈ xét khối test.",
+  "Học bổng/ Danh sách không xét học bổng: thêm {MSSV} lý do 'TEST' → Lưu.",
+  "Học bổng/ Kiểm tra và in SL xét học bổng: chọn {KHOI} → Thực hiện → ghi lại số lượng diện được xét.",
+  "Mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Xét học bổng, chọn {KHOI} → Thực hiện.",
+  "KIỂM TRA: có kết quả; {MSSV} (danh sách không xét) KHÔNG có học bổng; số SV đạt ≤ SS_SOLUONGSVCAPHB; mọi SV đạt có ĐTB ≥ SS_NGUONGHB, rèn luyện ≥ SS_MUCDIEMRL, tín chỉ ≥ SS_SOTINCHIHBMIN.",
+  "Dọn: xóa {MSSV} khỏi danh sách không xét; xét lại khối để trả kết quả như trước (nếu là dữ liệu dùng chung)."
+ ],
+ "title": "Xét học bổng khuyến khích theo khối (kèm danh sách không xét)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối học bổng có SV đủ điều kiện)",
+  "MSSV": "(SV có ĐTB đủ ngưỡng trong khối)"
+ },
+ "version": "v2026.10H.00"
+}

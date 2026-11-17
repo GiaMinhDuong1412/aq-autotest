@@ -1,0 +1,74 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: UserName",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (UserName…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "UserName nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng UserName và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng UserName",
+   "steps": [
+    "Bấm Thêm, nhập UserName giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "Password khác Nhập lại mật khẩu",
+   "expected": "Chương trình báo mật khẩu không khớp, không lưu. Cần xác nhận.",
+   "name": "Mật khẩu nhập lại không khớp",
+   "steps": [
+    "Thêm tài khoản, nhập hai ô mật khẩu khác nhau → Lưu."
+   ]
+  }
+ ],
+ "code": "QLHT-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần dữ liệu trước",
+  "next": [
+   "QLHT-004",
+   "QLHT-005"
+  ],
+  "out": "Nhóm {NHOM}, tài khoản {USER} (dùng cho QLHT-004/005 trước khi xóa)"
+ },
+ "expected": "Nhóm và tài khoản tạo được, tài khoản thuộc đúng nhóm; trạng thái Phải thay đổi mật khẩu bắt đổi mật khẩu khi đăng nhập, Khóa tài khoản thì không đăng nhập được; xóa được dữ liệu test. (Theo QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.1.)",
+ "lastRun": null,
+ "menu": "Hệ thống / Quản lý người dùng / Quản lý người dùng / Danh sách tài khoản & nhóm tài khoản",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_TaoTaiKhoanVaPhanQuyenNguoiDung, mục III.1 Thêm tài khoản và nhóm tài khoản",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; tài khoản admin hệ thống.",
+  "Kiểm tra trùng: mở Hệ thống/ Quản lý người dùng/ Quản lý người dùng/ Danh sách tài khoản & nhóm tài khoản, tìm {NHOM} và {USER} ở cột UserName → có thì đổi tên khác.",
+  "Thêm nhóm: bấm Thêm nhóm, UserName = {NHOM}, Tên đầy đủ = 'Nhom kiem thu', Trạng thái = Đang hoạt động, Mã khoa để trống → Lưu.",
+  "KIỂM TRA: {NHOM} hiện trong danh sách là nhóm tài khoản.",
+  "Thêm tài khoản: bấm Thêm tài khoản, UserName = {USER}, Tên đầy đủ, Password (mật khẩu tạm, không ghi vào kết quả), Trạng thái = Phải thay đổi mật khẩu → Lưu.",
+  "Gán nhóm: tab Thuộc nhóm người dùng của {USER} → thêm {NHOM} → Lưu.",
+  "KIỂM TRA: {USER} hiển thị cột Nhóm tài khoản = {NHOM}.",
+  "KIỂM TRA đăng nhập: mở Edusoft lần hai (hoặc đăng xuất) đăng nhập {USER} → bị yêu cầu đổi mật khẩu.",
+  "Sửa: đổi Trạng thái {USER} thành Khóa tài khoản → Lưu; KIỂM TRA đăng nhập {USER} bị từ chối.",
+  "Xóa (dọn): xóa {USER} rồi {NHOM} (xác nhận đúng tên); KIỂM TRA không còn trong danh sách. Tắt màn hình."
+ ],
+ "title": "Tạo nhóm tài khoản và tài khoản người dùng, gán vào nhóm",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NHOM": "TEST_NHOM{ddHHMM}",
+  "USER": "test{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

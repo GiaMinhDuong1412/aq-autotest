@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Viên chức, Khối lượng quy đổi",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Viên chức…) ở dòng khối lượng khác.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  }
+ ],
+ "code": "KLGD-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Thông tin KL (KLGD-003)",
+  "next": [
+   "KLGD-008"
+  ],
+  "out": "KL khác {ND} = 12"
+ },
+ "expected": "Khối lượng khác (ngoài giảng dạy) cộng vào tổng khối lượng của CB. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 4.7.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Chuẩn bị dữ liệu/ Khối lượng giảng dạy khác/ Nhập dạng danh sách",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 4.7 Khối lượng giảng dạy khác",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {CB} có thông tin khối lượng (KLGD-003).",
+  "Mở Khối lượng/ Chuẩn bị dữ liệu/ Khối lượng giảng dạy khác/ Nhập dạng danh sách → Thêm: {CB}, thời gian quy đổi, khối lượng quy đổi 10, nội dung {ND} → Lưu.",
+  "KIỂM TRA THÊM: dòng {ND} đúng; bỏ trống ô bắt buộc thì báo lỗi.",
+  "Sửa khối lượng 10 → 12 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho KLGD-008 (KL của {CB} cộng 12); dọn cuối chuỗi: xóa {ND}."
+ ],
+ "title": "Khối lượng giảng dạy khác – nhập dạng danh sách",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)",
+  "ND": "TEST_KLK{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

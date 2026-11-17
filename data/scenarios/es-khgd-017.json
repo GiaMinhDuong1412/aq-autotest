@@ -1,0 +1,59 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn đối tượng",
+   "expected": "Chương trình nhắc chọn đối tượng, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn đối tượng nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  },
+  {
+   "condition": "{NHOM} đã có KQĐK (DKMH)",
+   "expected": "Chương trình cảnh báo dữ liệu liên quan. Cần xác nhận.",
+   "name": "Nhóm đã có đăng ký môn học",
+   "steps": [
+    "Xóa TKB {NHOM} khi còn SV đăng ký."
+   ]
+  }
+ ],
+ "code": "KHGD-017",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011)",
+  "next": [],
+  "out": "TKB {NHOM} bị xóa; chuỗi KHGD được dọn"
+ },
+ "expected": "Chỉ TKB của đối tượng chọn bị xóa; dữ liệu khác không ảnh hưởng. (Theo KHGD_CacBuocXepTKB, mục III.2.2, lời khuyên 2.3.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Xóa thời khóa biểu",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Xóa thời khóa biểu)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011); chạy SAU các kịch bản dùng TKB (KHGD-013–KHGD-016, DKMH, LTHI).",
+  "Mở Kế hoạch/ Thời khóa biểu/ Xóa thời khóa biểu; chọn theo đối tượng ở danh sách bên trái → CHỈ {NHOM} (không chọn Xóa tất cả).",
+  "Thực hiện xóa; chỉ xác nhận khi hộp thoại nêu đúng {MH}/{NHOM}.",
+  "KIỂM TRA XÓA: Xem TKB dạng tuần không còn {NHOM}; nhóm khác cùng lớp vẫn còn TKB.",
+  "Dọn chuỗi KHGD: xóa nhóm {NHOM}, gỡ {MH} khỏi CTĐT thực hiện (KHGD-003), xóa môn (KHGD-002), gỡ phòng/viên chức test (KHGD-005, KHGD-006)."
+ ],
+ "title": "Xóa thời khóa biểu của nhóm test (không xóa tất cả)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTV-009",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Học phí, phiếu thu",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Bản in chi tiết học phí khớp dữ liệu tính và thu. (Theo QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1.)",
+ "lastRun": null,
+ "menu": "Thu/chi HP/ Hoạt động thu/chi/ In học phí/ In chi tiết học phí 1 SV",
+ "module": "QLTV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTV_ThuHocPhiTheoPhieuBao, mục III.2.1 (In chi tiết phiếu đã thu)",
+  "plan": "edusoft-QLTV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} đã tính và thu một phần học phí (QLTV-005, QLTV-006).",
+  "Mở Thu/chi HP/ Hoạt động thu/chi/ In học phí/ In chi tiết học phí 1 SV; nhập {MSSV} → In.",
+  "KIỂM TRA: chi tiết từng môn (TCHP × đơn giá), khoản thu khác, miễn giảm, đã đóng, còn nợ khớp phiếu báo và Thu học phí 1 SV.",
+  "Tắt màn hình."
+ ],
+ "title": "In chi tiết học phí 1 sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH1": "(môn test 1)",
+  "MH2": "(môn test 2)",
+  "MSSV": "(SV test có KQĐK 2 môn: {MH1} 3 TCHP, {MH2} 2 TCHP)"
+ },
+ "version": "v2026.10H.00"
+}

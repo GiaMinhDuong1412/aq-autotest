@@ -31,7 +31,7 @@
    "kind": "setup",
    "menu": "Hệ thống / Thông tin học kỳ / Danh mục năm học học kỳ",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-001",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Thông tin học kỳ / Danh mục năm học học kỳ.",
@@ -50,7 +50,7 @@
    "kind": "main",
    "menu": "Hệ thống / Thông tin học kỳ / Khởi tạo dữ liệu học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-002",
    "source": "sheet",
    "steps": [
     "Điều kiện: đã có năm học học kỳ mới (mục 1).",
@@ -68,7 +68,7 @@
    "kind": "main",
    "menu": "Hệ thống / Quản lý người dùng / Quản lý người dùng / Danh sách tài khoản & nhóm tài khoản",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-003",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản lý người dùng / Quản lý người dùng / Danh sách tài khoản & nhóm tài khoản.",
@@ -87,7 +87,7 @@
    "kind": "setup",
    "menu": "Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền quản trị phân hệ",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-004",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền quản trị phân hệ.",
@@ -104,7 +104,7 @@
    "kind": "main",
    "menu": "Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền theo chức năng",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-005",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản lý người dùng / Phân quyền khai thác / Phân quyền theo chức năng.",
@@ -124,7 +124,7 @@
    "kind": "setup",
    "menu": "Hệ thống / Quản trị hệ thống / Chỉnh định thông số hệ thống",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-006",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản trị hệ thống / Chỉnh định thông số hệ thống.",
@@ -142,7 +142,7 @@
    "kind": "main",
    "menu": "Hệ thống / An toàn dữ liệu / Khóa sổ phân hệ theo học kỳ",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-007",
    "source": "sheet",
    "steps": [
     "Điều kiện: học kỳ test đã hoàn tất dữ liệu (chỉ khai thác).",
@@ -160,7 +160,7 @@
    "kind": "setup",
    "menu": "Hệ thống / Quản trị NetWEB / Chỉnh định menu",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-008",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản trị NetWEB / Chỉnh định menu.",
@@ -177,7 +177,7 @@
    "kind": "setup",
    "menu": "Hệ thống / Quản trị NetWEB / Chỉnh định chung",
    "priority": "trung bình",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-009",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản trị NetWEB / Chỉnh định chung.",
@@ -195,7 +195,7 @@
    "kind": "main",
    "menu": "Hệ thống / Quản trị NetWEB / Cấm SV xem vì nợ học phí",
    "priority": "cao",
-   "scenarioCode": "",
+   "scenarioCode": "QLHT-010",
    "source": "sheet",
    "steps": [
     "Mở menu Hệ thống / Quản trị NetWEB / Cấm SV xem vì nợ học phí.",
@@ -211,6 +211,6 @@
  "objective": "Theo sheet release Menu_NEW (Release(TestMenu).xlsx): 10 menu, đúng thứ tự sheet. Đối chiếu tài liệu: 8 khớp, 1 khớp một phần, 1 chưa có tài liệu — xem từng hạng mục để kiểm tra thao tác.",
  "product": "edusoft",
  "status": "draft",
- "updatedAt": "2026-10-30T09:00:00.000Z",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ"
 }

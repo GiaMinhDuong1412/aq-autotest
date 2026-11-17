@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{TO2} trùng giờ một môn thi khác của {MSSV}",
+   "expected": "Cảnh báo trùng lịch thi SV. Cần xác nhận.",
+   "name": "Chuyển vào tổ trùng lịch",
+   "steps": [
+    "Chuyển {MSSV} vào tổ trùng giờ."
+   ]
+  }
+ ],
+ "code": "LTHI-015",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Tổ thi, lịch thi (LTHI-011, LTHI-012)",
+  "next": [],
+  "out": "Không đổi (chuyển về)"
+ },
+ "expected": "SV thêm/xóa/chuyển giữa các tổ thi được; lịch thi của SV theo tổ mới. (Theo LTHI_ToChucThi, mục III.10.2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo sinh viên",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.10.2 Hiệu chỉnh sinh viên trong tổ thi",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lịch thi đợt {DOT} đã xếp cho tổ {TO} (LTHI-012); {MSSV} thuộc {TO}.",
+  "Mở Tổ chức thi/ Hiệu chỉnh lịch thi/ Hiệu chỉnh SV trong tổ thi - theo sinh viên; chọn {TO} → Tiếp tục.",
+  "Chuyển tổ: Tổ thi cần chuyển = {TO}, Tổ thi chuyển đến = {TO2}, tick {MSSV} → Thực hiện.",
+  "KIỂM TRA: {MSSV} ở {TO2}, không còn ở {TO}; sĩ số hai tổ cập nhật; Netweb lịch thi của {MSSV} đổi phòng/giờ theo {TO2}.",
+  "Chuyển {MSSV} về {TO} → KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Hiệu chỉnh SV trong tổ thi theo sinh viên (thêm, xóa, chuyển tổ)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})",
+  "TO2": "(tổ thi khác cùng nhóm)"
+ },
+ "version": "v2026.10H.00"
+}

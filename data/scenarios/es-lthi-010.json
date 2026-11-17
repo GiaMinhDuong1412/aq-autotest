@@ -1,0 +1,47 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MH} đã xếp lịch",
+   "expected": "Cảnh báo/chặn, phải hủy lịch trước. Cần xác nhận.",
+   "name": "Môn đã có lịch thi",
+   "steps": [
+    "Hủy danh sách dự thi khi còn lịch."
+   ]
+  }
+ ],
+ "code": "LTHI-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "DS dự thi (LTHI-005)",
+  "next": [],
+  "out": "DS dự thi {MH} (tạo lại)"
+ },
+ "expected": "Hủy theo môn chỉ làm mới dữ liệu thi của môn chọn. (Theo LTHI_ToChucThi, mục III.2.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo môn học",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.2 Làm mới dữ liệu lịch thi (Hủy theo môn học)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MH} có danh sách dự thi (LTHI-005) nhưng CHƯA xếp lịch (hoặc đã hủy lịch – LTHI-017); chỉ môn test.",
+  "Mở Tổ chức thi/ Hủy danh sách dự thi/ Hủy theo môn học; chọn {MH} → Xóa; chỉ xác nhận khi hộp thoại nêu đúng {MH}.",
+  "KIỂM TRA: danh sách dự thi/nhóm thi của {MH} bị xóa; môn khác không đổi.",
+  "Tạo lại: Danh sách nhóm thi → Đồng bộ (LTHI-005) → KIỂM TRA {NT} có lại. Tắt màn hình."
+ ],
+ "title": "Hủy danh sách dự thi theo môn học",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

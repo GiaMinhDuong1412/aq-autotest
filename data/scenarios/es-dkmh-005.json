@@ -1,0 +1,41 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DKMH-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "DKMH-017"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "SV rút môn được trong thời gian của lớp; kết quả rút vào Xem kết quả Rút môn học và điểm đặc biệt ký hiệu rút. (Theo DKMH_RutMonHoc, mục III.1.)",
+ "lastRun": null,
+ "menu": "Đăng ký MH/ Rút môn học online/ Thời gian rút môn học theo lớp",
+ "module": "DKMH",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DKMH_RutMonHoc, mục III.1.1 Định nghĩa thời gian rút môn học (1.2 Xem kết quả, 1.3 Nguồn dữ liệu)",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; ghi lại ký tự điểm rút GD_DIEMDACBIET (Quản lý điểm/ Quản trị phân hệ/ Chỉnh định thông số toàn cục – chỉ xem) và thời gian rút hiện tại của {LOP}.",
+  "Mở Đăng ký MH/ Rút môn học online/ Thời gian rút môn học theo lớp; chọn {LOP}, nhập thời gian rút đang trong hạn → Gán Chung → Lưu.",
+  "KIỂM TRA: {LOP} hiện đúng khoảng; SV {LOP} thấy menu Rút môn học đã đăng ký trên Netweb (DKMH-017).",
+  "Sửa khoảng đã qua → KIỂM TRA SV bị chặn rút.",
+  "Trả lại thời gian cũ. Tắt màn hình."
+ ],
+ "title": "Thời gian rút môn học online theo lớp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của {MSSV})",
+  "MSSV": "(SV test trong DS SV học kỳ – QLSV-001)"
+ },
+ "version": "v2026.10H.00"
+}

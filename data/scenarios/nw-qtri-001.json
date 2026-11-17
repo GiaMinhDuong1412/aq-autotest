@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đăng nhập /admin bằng SV test",
+   "expected": "Không vào được trang quản trị.",
+   "name": "Tài khoản không phải admin",
+   "steps": [
+    "Mở /admin, đăng nhập SV."
+   ]
+  }
+ ],
+ "code": "QTRI-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Netweb test, tài khoản admin",
+  "next": [
+   "CHUNG-102",
+   "CHUNG-101",
+   "CHUNG-105"
+  ],
+  "out": "Không để lại"
+ },
+ "expected": "Các cài đặt quản trị (ẩn/hiện, menu header, tin bài, thông báo, banner…) có hiệu lực ngay trên trang chủ và gỡ được. (Theo NETWEB-QuanTriChung, mục III.1–2, III.4.4.)",
+ "lastRun": null,
+ "menu": "NetWEB ADMIN: Quản trị chung (test các chức năng ẩn / hiện, đăng tin bài viết, thông báo chung,...)",
+ "module": "QTRI",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NETWEB-QuanTriChung, mục III.1–2 Trang quản trị Admin, Tính năng và cài đặt (2.1–2.10), III.4.4 Gửi thông báo",
+  "plan": "netweb-QTRI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò admin bằng tài khoản test; chỉ thao tác dữ liệu TEST, trả lại cài đặt sau khi kiểm tra.",
+  "Netweb test: mở trang quản trị (thêm /admin vào địa chỉ Netweb test), đăng nhập tài khoản admin test.",
+  "2.1 Thiết lập chung: xem Tên trường, Logo, Theme; Ẩn/hiện nội dung trang chủ → tắt một khu vực → Lưu → KIỂM TRA trang chủ không còn khu vực; bật lại → KIỂM TRA.",
+  "2.2 Header: Thêm menu (Thứ tự, Hiển thị, Icon, Tên 'TEST menu', Liên kết) → Lưu → KIỂM TRA hiện trên trang chủ → Xóa → KIỂM TRA mất.",
+  "2.4 Đăng tin: Thêm bài loại Thông báo, Tiêu đề {TIN}, Mô tả ngắn, Nội dung, Hiển thị → Lưu & thoát → KIỂM TRA bài trên trang chủ → sửa tiêu đề → KIỂM TRA.",
+  "4.4 Gửi thông báo: Thêm thông báo cho SV test → KIỂM TRA SV thấy thông báo (CHUNG-102).",
+  "Banner, Thư viện, Đối tác, Quảng cáo, Footer (2.3–2.8): Thêm → Ẩn/Hiện → Xóa mục TEST.",
+  "Dọn: xóa {TIN} và thông báo test → KIỂM TRA không còn."
+ ],
+ "title": "Netweb admin: quản trị chung (ẩn/hiện, header, đăng tin, thông báo)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TIN": "TEST_Tin {ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

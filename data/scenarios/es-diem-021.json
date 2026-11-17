@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "SV không có đơn/không tick PK",
+   "expected": "Không có dòng để nhập.",
+   "name": "Không có đơn phúc khảo",
+   "steps": [
+    "Nhập điểm theo sinh viên cho SV không có đơn."
+   ]
+  }
+ ],
+ "code": "DIEM-021",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Điểm (DIEM-014)",
+  "next": [
+   "DIEM-004"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Điểm phúc khảo thay điểm cũ của thành phần được phúc khảo và đổ vào tính TB (lưu đồ DIEM bước 5). (Theo DIEM_QuanLyPhucKhao, mục III.1, III.4.)",
+ "lastRun": null,
+ "menu": "Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập điểm theo sinh viên",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyPhucKhao, mục III.1 Nhập đơn xin phúc khảo; III.4 Nhập điểm theo sinh viên",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có điểm thi nhóm {NH} = 6 (DIEM-014).",
+  "Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập đơn xin phúc khảo: Thêm {MSSV} (ngày nộp, ngày hẹn) → Lưu; chọn {MSSV} → nhóm {NH} → tick PK cột Thi → Lưu.",
+  "Mở Quản lý nhập điểm/ Quản lý điểm phúc khảo/ Nhập điểm theo sinh viên; lọc {MSSV}; nhập Đ. Mới = 7 → Lưu.",
+  "KIỂM TRA: điểm thi {MSSV} ở Nhập điểm theo lớp = 7; sau Cộng điểm TKHP = 0,3×8 + 0,7×7 = 7,3.",
+  "Dọn: trả điểm về 6 (hoặc xóa đơn/điểm test). Tắt màn hình."
+ ],
+ "title": "Phúc khảo: nhập đơn và nhập điểm phúc khảo theo sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

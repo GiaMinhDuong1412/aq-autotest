@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhóm học của {MH} nằm trong Nhóm môn học không tổ chức thi",
+   "expected": "Không sinh nhóm thi cho nhóm đó; trả lại.",
+   "name": "Nhóm không tổ chức thi",
+   "steps": [
+    "Đưa nhóm vào danh sách không thi → Đồng bộ."
+   ]
+  }
+ ],
+ "code": "LTHI-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-006), tính chất thi (LTHI-004), nhóm học (KHGD-010)",
+  "next": [
+   "LTHI-006",
+   "LTHI-008"
+  ],
+  "out": "Nhóm thi {NT}"
+ },
+ "expected": "Nhóm thi sinh từ DS thi + tính chất thi + nhóm học; các nhóm cùng mã ghép thi thi chung. (Theo LTHI_ToChucThi, mục III.5.1; lưu đồ LTHI bước 3.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.5.1 Quản lý danh sách nhóm thi",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MH} có KQĐK (DKMH) và tính chất thi (LTHI-004); nhóm học không thuộc 'Nhóm môn học không tổ chức thi'.",
+  "Mở Tổ chức thi/ Quản lý nhóm thi/ Tạo nhóm thi/ Danh sách nhóm thi → Đồng bộ (bổ sung nhóm thi còn thiếu).",
+  "KIỂM TRA: có nhóm thi {NT} của {MH}, sĩ số = số SV đăng ký (trừ SV hoãn, cộng SV ghép).",
+  "Gán Mã ghép thi = '01' cho các nhóm {MH} (thi chung thời gian, chung đề) → Lưu; KIỂM TRA mở lại thấy mã ghép.",
+  "Đồng bộ sĩ số dự thi (Tổ chức thi/ Quản lý nhóm thi/ Đồng bộ sĩ số dự thi) cho {NT} → KIỂM TRA sĩ số đúng. Tắt màn hình."
+ ],
+ "title": "Danh sách nhóm thi: đồng bộ và gán mã ghép thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "NT": "(nhóm thi của {MH})"
+ },
+ "version": "v2026.10H.00"
+}

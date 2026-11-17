@@ -1,0 +1,70 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn file dữ liệu cần khởi tạo",
+   "expected": "Chương trình nhắc chọn file dữ liệu cần khởi tạo, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn file dữ liệu cần khởi tạo nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  },
+  {
+   "condition": "{NHHK} đã có trong 'Danh sách học kỳ đã khởi tạo'",
+   "expected": "Chương trình cảnh báo học kỳ đã có dữ liệu và hỏi xác nhận/không cho chép đè. Cần xác nhận.",
+   "name": "Khởi tạo lại học kỳ đã khởi tạo",
+   "steps": [
+    "Chọn lại {NHHK}, bấm Thực hiện."
+   ]
+  },
+  {
+   "condition": "Có file chưa chép ở lần khởi tạo",
+   "expected": "File bổ sung được chép sang, dữ liệu đã có không bị nhân đôi.",
+   "name": "Bổ sung dữ liệu học kỳ",
+   "steps": [
+    "Mở Hệ thống/ Thông tin học kỳ/ Bổ sung dữ liệu học kỳ, chọn {NHHK}, chọn file còn thiếu → Thực hiện."
+   ]
+  }
+ ],
+ "code": "QLHT-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Học kỳ {NHHK} (QLHT-001); dữ liệu học kỳ liền trước (DS SV học kỳ – QLSV, viên chức học kỳ – KHGD)",
+  "next": [
+   "QLSV-003",
+   "KHGD-006"
+  ],
+  "out": "Dữ liệu học kỳ {NHHK} (SV học kỳ, viên chức học kỳ…)"
+ },
+ "expected": "Khởi tạo xong: học kỳ mới có dữ liệu được chép từ học kỳ liền trước cho các file đã chọn; sinh viên đang học được mang sang DS SV học kỳ mới, SV bị xóa tên kỳ sau thì không. (Theo QLHT_ThongTinHocKy, mục III.2–3.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ Thông tin học kỳ/ Khởi tạo dữ liệu học kỳ",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_ThongTinHocKy, mục III.2 Khởi tạo dữ liệu học kỳ",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có học kỳ {NHHK} trong Danh mục năm học học kỳ (QLHT-001); CHỈ chạy trên CSDL test vì thao tác chép dữ liệu cả học kỳ.",
+  "Mở Hệ thống/ Thông tin học kỳ/ Khởi tạo dữ liệu học kỳ; xem lưới 'Danh sách học kỳ đã khởi tạo' → {NHHK} chưa có.",
+  "Chọn học kỳ cần khởi tạo = {NHHK}, kiểm tra Ngày bắt đầu / Tuần bắt đầu / Số tuần học kỳ hiện đúng như QLHT-001.",
+  "Ở lưới 'Check chọn file học kỳ muốn khởi tạo' ghi lại 'Số mẫu tin hk liền trước' của vài file (vd danh sách sinh viên học kỳ, viên chức học kỳ); tick các file cần chép.",
+  "Bấm Thực hiện, chờ chương trình báo xong.",
+  "KIỂM TRA: {NHHK} xuất hiện ở 'Danh sách học kỳ đã khởi tạo'; 'Số mẫu tin hk đang chọn' của các file đã tick bằng số mẫu tin học kỳ liền trước.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: chọn học kỳ làm việc {NHHK}, mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ → có sinh viên (SV đang học của học kỳ trước); SV đã có QĐ nghỉ học/tạm dừng ở học kỳ trước không còn (QLSV-005, QLSV-006).",
+  "Trả học kỳ làm việc về học kỳ test. Tắt màn hình."
+ ],
+ "title": "Khởi tạo dữ liệu học kỳ mới từ học kỳ liền trước",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "NHHK": "(học kỳ mới từ QLHT-001)"
+ },
+ "version": "v2026.10H.00"
+}

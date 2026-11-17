@@ -1,0 +1,50 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "cán bộ nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng cán bộ và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng cán bộ",
+   "steps": [
+    "Bấm Thêm, nhập cán bộ giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "KLGD-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Viên chức HK (KHGD-006)",
+  "next": [
+   "KLGD-008"
+  ],
+  "out": "Thông tin KL của {CB}"
+ },
+ "expected": "Thông tin khối lượng cán bộ quyết định giờ nghĩa vụ và hệ số khi tính KLGD. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 3.13.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Khai báo thông số/ Danh sách CBGD/ Thông tin khối lượng cho cán bộ",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.13 Thông tin khối lượng cho cán bộ",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {CB} trong DS viên chức học kỳ (KHGD-006).",
+  "Mở Khối lượng/ Khai báo thông số/ Danh sách CBGD/ Thông tin khối lượng cho cán bộ → Thêm → {CB}: loại CBGD, hệ số 1,0, % giờ nghĩa vụ 100 → Lưu.",
+  "KIỂM TRA THÊM: {CB} đúng loại, hệ số, % nghĩa vụ.",
+  "Sửa % nghĩa vụ 100 → 80 → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho KLGD-008; dọn cuối chuỗi: xóa dòng {CB}."
+ ],
+ "title": "Thông tin khối lượng cho cán bộ (loại CBGD, hệ số, % nghĩa vụ)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)"
+ },
+ "version": "v2026.10H.00"
+}

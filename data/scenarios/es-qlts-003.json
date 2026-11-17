@@ -1,0 +1,43 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QLTS-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ {KYTS}, đợt {DOT} (QLTS-001, QLTS-002)",
+  "next": [
+   "QLTS-011",
+   "QLTS-014"
+  ],
+  "out": "Bảng giá trị biến tuyển sinh (ghi chú); nếu đổi tạm: kỳ/đợt hiện hành = {KYTS}/{DOT}"
+ },
+ "expected": "Đọc được đủ các biến; giá trị ghi lại dùng tính điểm ưu tiên ở QLTS-014; không biến nào bị đổi ngoài ý muốn (đổi tạm thì đã trả lại). (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.2.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.2 Chỉnh định các biến setting (2.1–2.8)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ kiểm tra & ghi nhận; nếu phải đổi kỳ/đợt hiện hành sang {KYTS}/{DOT} thì ghi giá trị cũ để trả lại.",
+  "Mở Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số toàn cục; ghi lại ST_KYTUYENSINH, ST_DOT_TSINH, ST_NAMTNKVDT, ST_DIEMTONGUTKV, ST_DIEMTONGNLUTKV, ST_DIEMTONGTTUTKV.",
+  "Mở Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số học kỳ: ghi lại ST_DIEMUUDT, ST_DIEMUUKV, ST_DIEMUUDTNL, ST_DIEMUUKVNL.",
+  "Mở Tuyển sinh/ Quản trị phân hệ/ Chỉnh định thông số NETWEB (QLTS): ghi lại xl_cho_phep_dk_nhanh_pthuc, xl_sl_dk_nv_pthuc, xl_sl_max_nv.",
+  "(Chỉ khi cần cho chuỗi test) đặt ST_KYTUYENSINH = {KYTS}, ST_DOT_TSINH = {DOT} → Lưu; KIỂM TRA mở lại thấy giá trị mới. Trả lại giá trị cũ ở cuối chuỗi tuyển sinh.",
+  "Tính sẵn kết quả mong đợi cho QLTS-014: với ngưỡng THPT ST_DIEMTONGUTKV (thường 22,5) – tổng ≥ ngưỡng thì Điểm ưu tiên = [(30 − Tổng)/7,5] × Mức ưu tiên; tổng < ngưỡng thì cộng đủ mức ưu tiên. Ghi vào ghi chú lượt chạy."
+ ],
+ "title": "Chỉnh định thông số toàn cục tuyển sinh – ghi nhận ngưỡng ưu tiên, kỳ/đợt hiện hành",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "KYTS": "TEST_KY{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

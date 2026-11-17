@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Thu ít hơn hóa đơn",
+   "expected": "Khoản còn nợ phần chênh. Cần xác nhận.",
+   "name": "Thu thiếu",
+   "steps": [
+    "Thu 500.000."
+   ]
+  }
+ ],
+ "code": "QKTX-005",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Hợp đồng (QKTX-004), đơn giá (QKTX-002, QKTX-003)",
+  "next": [
+   "QKTX-006"
+  ],
+  "out": "Phiếu thu lưu trú {MSSV}"
+ },
+ "expected": "Hóa đơn lưu trú tính theo đơn giá/số SV ở thực tế + dịch vụ; thu phí chuyển khoản sang đã thu và tạo phiếu. Tên menu sheet ≠ tài liệu ('Thu phí lưu trú'). (Theo QKTX_ThanhToanKTX, mục III.1–2.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Thu phí lưu trú",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_ThanhToanKTX, mục III.1 Tạo hóa đơn (Tính phí ký túc xá), III.2 Thu phí lưu trú",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có hợp đồng {HD} (QKTX-004); thu tiền tạo phiếu thật – chỉ SV test, có hủy phiếu.",
+  "Quản lý thanh toán/ Hóa đơn lưu trú/ Tính phí ký túc xá: chọn {MSSV} → Thực hiện → KIỂM TRA hóa đơn tháng = {DG} (1 SV ở) + dịch vụ (nếu gán).",
+  "Mở Ký túc xá/ Quản lý thanh toán/ Thu tiền lưu trú tháng/ Thu phí lưu trú; Bước 1 nhập mã đối tượng {MSSV}; Bước 2 tab Hóa đơn thanh toán chọn khoản chưa thu.",
+  "Bước 3 Thêm, số tiền thu = hóa đơn; Bước 4 Lưu và in phiếu thu.",
+  "KIỂM TRA: khoản chuyển sang đã thu, phiếu thu tạo; Danh sách phiếu thu (QKTX-006) có phiếu.",
+  "Giữ phiếu cho QKTX-006 (hủy ở đó)."
+ ],
+ "title": "Tính phí và thu phí lưu trú tháng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DG": "1.000.000",
+  "HD": "TEST_HD{ddHHMM}",
+  "MSSV": "(SV test)"
+ },
+ "version": "v2026.10H.00"
+}

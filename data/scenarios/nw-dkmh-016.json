@@ -1,0 +1,45 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Quá xl_so_ngay_gv_duyet_sau_ngay_svdk ngày sau khi SV đăng ký",
+   "expected": "Không cho duyệt. Cần xác nhận.",
+   "name": "Quá hạn duyệt",
+   "steps": [
+    "Duyệt KQĐK quá hạn."
+   ]
+  }
+ ],
+ "code": "DKMH-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK online (DKMH-015), cố vấn (QLSV-042)",
+  "next": [],
+  "out": "Trạng thái duyệt KQĐK"
+ },
+ "expected": "GV cố vấn duyệt được KQĐK của SV mình quản lý trong số ngày cho phép; trạng thái và thống kê cập nhật. (Theo NetWEB_GiangVienDuyetKQDK, mục 1–3.)",
+ "lastRun": null,
+ "menu": "NetWEB giảng viên: Duyệt đăng ký môn học",
+ "module": "DKMH",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NetWEB_GiangVienDuyetKQDK, mục 1 Chỉnh định thông số, 2 GV duyệt KQĐK, 3 Thống kê",
+  "plan": "edusoft-DKMH"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò giảng viên cố vấn bằng tài khoản test; SV test thuộc lớp GV cố vấn (QLSV-042) đã đăng ký online (DKMH-015); ghi lại xl_so_ngay_gv_duyet_sau_ngay_svdk, xl_cho_cvht_dk (DKMH-002).",
+  "Menu Duyệt kết quả đăng ký sinh viên → KIỂM TRA SV test có trạng thái 'Chưa duyệt' và nút Duyệt.",
+  "Bấm Đăng nhập ở dòng SV → xem KQĐK → chọn Đồng ý, ghi lời khuyên TEST → Duyệt.",
+  "KIỂM TRA: trạng thái 'Đồng ý', nút Duyệt ẩn; SV thấy lời khuyên.",
+  "KIỂM TRA Edusoft: Thống kê GV duyệt KQDK online có dòng này."
+ ],
+ "title": "Netweb GV cố vấn: duyệt kết quả đăng ký của sinh viên",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {},
+ "version": "v2026.10H.00"
+}

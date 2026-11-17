@@ -1,0 +1,60 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Chọn ngày GV không có lịch",
+   "expected": "Không có buổi để điểm danh.",
+   "name": "Ngày không có lịch dạy",
+   "steps": [
+    "Chọn một ngày ngoài lịch giảng dạy."
+   ]
+  },
+  {
+   "condition": "Đăng nhập Netweb vai trò giảng viên với mật khẩu sai",
+   "expected": "Netweb báo sai tài khoản/mật khẩu, không vào được trang chức năng.",
+   "name": "Sai mật khẩu Netweb",
+   "steps": [
+    "Nhập mã giảng viên test và một mật khẩu sai.",
+    "Bấm Đăng nhập."
+   ]
+  }
+ ],
+ "code": "QLSV-023",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB học kỳ (KHGD-011), KQĐK nhóm học (DKMH)",
+  "next": [
+   "QLSV-024",
+   "QLSV-025"
+  ],
+  "out": "Kết quả điểm danh của {MSSV} (trả lại)"
+ },
+ "expected": "GV điểm danh được theo buổi của lịch dạy; kết quả lưu và hiện cho SV; điểm danh QR ghi Có mặt và khóa sửa tay. (Theo NetWEB_GiangVienDiemDanhSVTrucTuyen, mục 1–2.)",
+ "lastRun": null,
+ "menu": "NetWEB giảng viên: Điểm danh môn giảng dạy",
+ "module": "QLSV",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "NetWEB_GiangVienDiemDanhSVTrucTuyen, mục 1 Điểm danh QR CODE, 2 Điểm danh thủ công",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò giảng viên bằng tài khoản test; GV có lịch giảng dạy trong học kỳ test (TKB – KHGD) với nhóm có SV {MSSV}.",
+  "Menu Điểm danh môn giảng dạy → chọn ngày theo lịch giảng dạy; ghi lại kết quả hiện có của {MSSV}.",
+  "Bấm biểu tượng cột Điểm danh → chọn trạng thái Vắng có phép cho {MSSV}, ghi chú TEST → Lưu.",
+  "KIỂM TRA: tải lại, {MSSV} vẫn Vắng có phép; SV {MSSV} thấy buổi này ở Xem kết quả điểm danh (QLSV-024).",
+  "(Tùy chọn – cần điện thoại) bấm Link cột QRCODE → mã QR hiện và làm mới mỗi 30 giây; SV quét → 'Có mặt' và bị khóa sửa thủ công.",
+  "Dọn: trả kết quả điểm danh của {MSSV} về như cũ → Lưu."
+ ],
+ "title": "Netweb GV: điểm danh thủ công (và QR) môn giảng dạy",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MSSV": "(SV Netweb test có trong nhóm GV dạy)"
+ },
+ "version": "v2026.10H.00"
+}

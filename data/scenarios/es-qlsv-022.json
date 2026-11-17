@@ -1,0 +1,47 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn khối",
+   "expected": "Chương trình nhắc chọn khối, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn khối nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "QLSV-022",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kết quả xét (QLSV-020, QLSV-021)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Bảng tổng hợp in đúng danh sách và số tiền học bổng. (Theo QLSV_XetHocBongKhuyenKhich, mục III.9.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ In bảng tổng hợp xét học bổng",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.9 In kết quả xét học bổng",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có kết quả xét học bổng khối {KHOI} (QLSV-020).",
+  "Mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ In bảng tổng hợp xét học bổng; chọn {KHOI} → In.",
+  "KIỂM TRA: mẫu in liệt kê đúng SV đạt, mức và số tiền như ở Xem/sửa (QLSV-021); tổng tiền = tổng các dòng.",
+  "Tắt màn hình."
+ ],
+ "title": "In bảng tổng hợp xét học bổng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối học bổng có SV đủ điều kiện)"
+ },
+ "version": "v2026.10H.00"
+}

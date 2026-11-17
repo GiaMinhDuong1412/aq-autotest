@@ -1,0 +1,52 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bấm thực hiện khi chưa chọn đợt thi",
+   "expected": "Chương trình nhắc chọn đợt thi, không chạy xử lý; dữ liệu không đổi.",
+   "name": "Không chọn dữ liệu",
+   "steps": [
+    "Không tick/chọn đợt thi nào.",
+    "Bấm nút thực hiện (Thực hiện / Xét / Tính / In)."
+   ]
+  }
+ ],
+ "code": "LTHI-022",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lịch thi (LTHI-012)",
+  "next": [],
+  "out": "Không thay đổi (gỡ tình huống)"
+ },
+ "expected": "Báo cáo phát hiện đúng SV có lịch thi trùng TKB học. (Theo LTHI_ToChucThi, mục III.12.1.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi / Khai thác báo biểu / In kiểm tra dữ liệu / SV - Trùng TKB học với lịch thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.12.1 Kiểm tra trùng lịch thi (cụm In kiểm tra dữ liệu)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lịch thi đợt {DOT} đã xếp cho tổ {TO} (LTHI-012).",
+  "Tạo trước tình huống đối chiếu: dời ngày/tiết thi của tổ có {MSSV} (LTHI-013) vào đúng buổi học của {MSSV} trong TKB.",
+  "Mở Tổ chức thi/ Khai thác báo biểu/ In kiểm tra dữ liệu/ SV - Trùng TKB học với lịch thi; chọn đợt {DOT} → In.",
+  "KIỂM TRA: báo cáo liệt kê {MSSV} với môn thi trùng giờ học; SV không trùng không xuất hiện.",
+  "Gỡ tình huống đã tạo; In lại → KIỂM TRA không còn dòng đó. Tắt màn hình."
+ ],
+ "title": "In kiểm tra: SV trùng TKB học với lịch thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

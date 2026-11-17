@@ -1,0 +1,48 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Khóa {PH} ở học kỳ test",
+   "expected": "Học kỳ không khóa vẫn thêm được.",
+   "name": "Học kỳ khác không bị ảnh hưởng",
+   "steps": [
+    "Đổi học kỳ làm việc sang học kỳ khác (không khóa), mở Quyết định vào mới → Thêm."
+   ]
+  }
+ ],
+ "code": "QLHT-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [],
+  "out": "Không đổi (trả lại trạng thái khóa cũ)"
+ },
+ "expected": "Khóa sổ thì các màn hình nhập liệu của phân hệ trong học kỳ đó không cho thêm/sửa/xóa; mở khóa thì nhập lại được. Chi tiết màn hình cần xác nhận (tài liệu chỉ ghi menu). (Theo QLHT_KhoaSoDuLieu, mục III.4.)",
+ "lastRun": null,
+ "menu": "Hệ thống/ An toàn dữ liệu/ Khóa sổ phân hệ theo học kỳ",
+ "module": "QLHT",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLHT_KhoaSoDuLieu, mục III.4 Khóa sổ toàn học kỳ",
+  "plan": "edusoft-QLHT"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; học kỳ test KHÔNG có người khác đang nhập liệu; ghi lại trạng thái khóa hiện tại để trả về.",
+  "Mở Hệ thống/ An toàn dữ liệu/ Khóa sổ phân hệ theo học kỳ; ghi lại trạng thái khóa của phân hệ {PH} trong học kỳ test.",
+  "Chọn học kỳ test, tick khóa phân hệ {PH} → Lưu.",
+  "KIỂM TRA: mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định vào mới, bấm Thêm → chương trình không cho thêm (báo học kỳ đã khóa sổ); không có dữ liệu mới.",
+  "Mở khóa: bỏ tick phân hệ {PH} → Lưu.",
+  "KIỂM TRA: Quyết định vào mới bấm Thêm được (bấm Đóng, không lưu). Tắt các màn hình."
+ ],
+ "title": "Khóa sổ phân hệ theo học kỳ rồi mở khóa",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PH": "Sinh viên"
+ },
+ "version": "v2026.10H.00"
+}

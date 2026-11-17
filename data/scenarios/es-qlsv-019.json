@@ -1,0 +1,63 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Mã khối nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã khối và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã khối",
+   "steps": [
+    "Bấm Thêm, nhập Mã khối giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "khối học bổng đã được dùng ở kết quả xét học bổng",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng khối học bổng đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QLSV-019",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "QLSV-018"
+  ],
+  "out": "Khối {MA} (đã xóa)"
+ },
+ "expected": "Khối học bổng thêm/sửa/xóa được và hiện ở Danh sách khối học bổng học kỳ. (Theo QLSV_XetHocBongKhuyenKhich, mục III.4.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_XetHocBongKhuyenKhich, mục III.4 Định nghĩa khối học bổng học kỳ",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test.",
+  "Kiểm tra trùng: mở Sinh viên/ Miễn giảm hoc phí và Học bổng/ Học bổng/ Định nghĩa khối học bổng học kỳ, tìm {MA} ở ô tìm kiếm cột Mã khối → đã có thì đổi mã test khác. Ghi lại số dòng hiện có.",
+  "Thêm: bấm Thêm, nhập Mã khối = {MA}, Tên khối = {TEN}, Nguồn TBHB, Loại đối tượng HB → Lưu.",
+  "KIỂM TRA THÊM: dòng {MA} hiển thị đúng Tên khối và các giá trị vừa nhập.",
+  "Sửa: chọn dòng {MA}, đổi Tên khối → Lưu.",
+  "KIỂM TRA SỬA: tắt màn hình (X), mở lại menu, tìm {MA} → thấy giá trị mới, không còn giá trị cũ.",
+  "Xóa: chọn dòng {MA} → Xóa → chỉ xác nhận khi hộp thoại nêu đúng {MA} (trước khi xóa KIỂM TRA Danh sách khối học bổng học kỳ (QLSV-018) thấy {MA}).",
+  "KIỂM TRA XÓA: tìm {MA} → không còn dòng nào (nếu lưới chưa nạp lại thì tắt, mở lại menu rồi kiểm tra). Tắt màn hình."
+ ],
+ "title": "Định nghĩa khối học bổng học kỳ: thêm – sửa – xóa khối test",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MA": "TEST_KHB{ddHHMM}",
+  "TEN": "TEST Khoi hoc bong"
+ },
+ "version": "v2026.10H.00"
+}

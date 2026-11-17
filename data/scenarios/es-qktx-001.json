@@ -1,0 +1,71 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã phòng, Mã dãy, Số lượng được ở",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã phòng…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã phòng nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã phòng và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã phòng",
+   "steps": [
+    "Bấm Thêm, nhập Mã phòng giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "phòng đã được dùng ở hợp đồng lưu trú",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng phòng đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "QKTX-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Danh mục khu, dãy, chất lượng phòng",
+  "next": [
+   "QKTX-002",
+   "QKTX-004",
+   "QKTX-009"
+  ],
+  "out": "Phòng {PH} (2 chỗ, Nam)"
+ },
+ "expected": "Phòng lưu trú có sức chứa và phái, là đơn vị lập hợp đồng và tính tiền. (Theo QKTX_QuanLyPhongTang, mục III.1.5.)",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QKTX_QuanLyPhongTang, mục III.1.5 Định nghĩa danh mục phòng (cần 1.1–1.4 khu, dãy, chất lượng phòng, mẫu hợp đồng)",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; chỉ xem khu/cơ sở, dãy/tòa nhà, chất lượng phòng, mẫu hợp đồng (Ký túc xá/ Quản trị phân hệ/ Quản lý danh mục); chọn 1 dãy có sẵn.",
+  "Mở Ký túc xá/ Định nghĩa dữ liệu/ Danh mục phòng lưu trú; tìm {PH} → chưa có.",
+  "Thêm: Mã phòng {PH}, Tên phòng, Mã dãy, Tầng, Chất lượng phòng, Diện tích, Phái được ở = Nam, Số lượng được ở = 2 → Lưu.",
+  "KIỂM TRA THÊM: {PH} có trong danh sách, Số lượng đang ở = 0.",
+  "Sửa Diện tích → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho chuỗi KTX; dọn cuối (sau thanh lý QKTX-008 và xóa đơn giá): xóa {PH}."
+ ],
+ "title": "Danh mục phòng lưu trú: thêm phòng test 2 chỗ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

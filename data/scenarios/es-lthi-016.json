@@ -1,0 +1,44 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "LTHI-016",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Lịch thi (LTHI-012), nợ HP (QLTV-005)",
+  "next": [
+   "LTHI-025"
+  ],
+  "out": "Trạng thái cấm thi (đồng bộ lại)"
+ },
+ "expected": "Danh sách SV trong tổ xem/cập nhật được; đồng bộ cấm thi gán mã 7 cho SV nợ học phí. (Theo LTHI_ToChucThi, mục III.10.3.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.10.3 Danh sách sinh viên trong tổ thi",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; lịch thi đợt {DOT} đã xếp cho tổ {TO} (LTHI-012); có SV test nợ học phí (QLTV QLTV-005, chưa thu).",
+  "Mở Tổ chức thi/ Hiệu chỉnh lịch thi/ Danh sách sinh viên trong tổ thi; chọn kỳ thi → KIỂM TRA {MSSV} trong {TO}.",
+  "Cập nhật thông tin danh sách (vd ghi chú) → KIỂM TRA lưu.",
+  "Đồng bộ DS cấm thi vì nợ học phí → KIỂM TRA SV nợ có Cấm thi mã 7; SV không nợ không bị cấm.",
+  "Gỡ trạng thái cấm của SV test (sau khi thu HP QLTV-006 và đồng bộ lại) → KIỂM TRA. Tắt màn hình."
+ ],
+ "title": "Danh sách sinh viên trong tổ thi và đồng bộ cấm thi vì nợ học phí",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DT{ddHHMM}",
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})",
+  "NT": "(nhóm thi của {MH})",
+  "TO": "(tổ thi của {NT})"
+ },
+ "version": "v2026.10H.00"
+}

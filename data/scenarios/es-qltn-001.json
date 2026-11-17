@@ -1,0 +1,61 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Mã tiêu chuẩn, Tên tiêu chuẩn, Khối xét",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Mã tiêu chuẩn…) ở khung nhập.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Mã tiêu chuẩn nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã tiêu chuẩn và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã tiêu chuẩn",
+   "steps": [
+    "Bấm Thêm, nhập Mã tiêu chuẩn giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "QLTN-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "CTĐT, danh mục chứng chỉ",
+  "next": [
+   "QLTN-002"
+  ],
+  "out": "Tiêu chuẩn {MATC}"
+ },
+ "expected": "Tiêu chuẩn tốt nghiệp gồm môn bắt buộc, tự chọn, chứng chỉ và tiêu chí điểm/tín chỉ tích lũy (lưu đồ QLTN bước 1). (Theo DIEM_QuanLyTotNghiep, mục 2.5.1.)",
+ "lastRun": null,
+ "menu": "Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN)",
+ "module": "QLTN",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_QuanLyTotNghiep, mục 2.5.1 Tiêu chuẩn (theo 2.1.1 Tiêu chuẩn xét thi)",
+  "plan": "edusoft-QLTN"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; CTĐT khối test có môn bắt buộc/tự chọn; danh mục chứng chỉ có dữ liệu.",
+  "Mở Tốt nghiệp/ Xét tốt nghiệp/ Tiêu chuẩn/ Định nghĩa tiêu chuẩn (TN); tìm {MATC} → chưa có.",
+  "Thêm {MATC}: khối xét, Chứng chỉ xét từ chương trình, Chứng chỉ ngoài bổ sung (vd ngoại ngữ), Số tín chỉ chung = tổng TC CTĐT, ĐTB tích lũy ≥ 2,0, Tín chỉ cho nợ 0 → Lưu.",
+  "Môn bắt buộc: thêm từ CTĐT khối; Môn tự chọn: nhóm/nhánh, điều kiện đạt (hoặc Đồng bộ / Copy từ tiêu chuẩn khác) → Lưu.",
+  "KIỂM TRA THÊM: mở lại thấy đủ điều kiện, môn bắt buộc, tự chọn.",
+  "Sửa ĐTB 2,0 → 2,5 → Lưu; KIỂM TRA SỬA; trả lại 2,0.",
+  "Xem sửa môn TN của lớp (Tốt nghiệp/ Xét tốt nghiệp/ Môn tốt nghiệp): KIỂM TRA cột tính ĐTBTL đánh 'x' cho môn tính TB tốt nghiệp. Giữ {MATC} cho QLTN-002."
+ ],
+ "title": "Định nghĩa tiêu chuẩn xét tốt nghiệp",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MATC": "TEST_TN{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

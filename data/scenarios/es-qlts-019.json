@@ -1,0 +1,51 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Tìm {TS2}",
+   "expected": "{TS2} không có trong danh sách để xác nhận.",
+   "name": "Thí sinh không trúng tuyển",
+   "steps": [
+    "Tìm {TS2} ở màn hình xác nhận nhập học."
+   ]
+  }
+ ],
+ "code": "QLTS-019",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} có mã SV (QLTS-018)",
+  "next": [
+   "QLTS-020",
+   "QLTS-021"
+  ],
+  "out": "{TS1} đã nhập học"
+ },
+ "expected": "Trạng thái nhập học ghi nhận đúng; chỉ thí sinh đã xác nhận nhập học mới tiếp sinh và chuyển sang QLSV. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Hồ sơ nhập học/ Xác nhận nhập học/ Nhập thí sinh nhập học",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Xác nhận nhập học)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} có mã SV (QLTS-018).",
+  "Mở Tuyển sinh/ Hồ sơ nhập học/ Xác nhận nhập học/ Nhập thí sinh nhập học; tìm {TS1}.",
+  "Xác nhận nhập học cho {TS1} → Lưu.",
+  "KIỂM TRA: {TS1} có trạng thái đã nhập học.",
+  "Bỏ xác nhận → Lưu → KIỂM TRA trạng thái chưa nhập học; xác nhận lại → Lưu (cho QLTS-020). Tắt màn hình."
+ ],
+ "title": "Xác nhận nhập học cho thí sinh trúng tuyển",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TS1": "Thi sinh Mot (TEST)",
+  "TS2": "Thi sinh Hai (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

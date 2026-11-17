@@ -1,0 +1,60 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "{MSSV} không có KQĐK môn chọn",
+   "expected": "Báo SV không có trong danh sách học/thi môn. Cần xác nhận.",
+   "name": "SV không đăng ký môn",
+   "steps": [
+    "Nhập hoãn thi môn {MSSV} không học."
+   ]
+  },
+  {
+   "condition": "SV – môn hoãn thi nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng SV – môn hoãn thi và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng SV – môn hoãn thi",
+   "steps": [
+    "Bấm Thêm, nhập SV – môn hoãn thi giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "LTHI-001",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KQĐK (DKMH-006)",
+  "next": [
+   "LTHI-002"
+  ],
+  "out": "Hoãn thi {MSSV}–{MH}"
+ },
+ "expected": "SV hoãn thi được ghi nhận theo môn; SV hoãn không có trong danh sách dự thi kỳ này và được ghép vào kỳ thi sau. (Theo LTHI_ToChucThi, mục III.1, III.3.1.)",
+ "lastRun": null,
+ "menu": "Tổ chức thi/ Quản lý hoãn thi/ Sinh viên đăng ký hoãn thi",
+ "module": "LTHI",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "LTHI_ToChucThi, mục III.3.1 Hoãn thi (III.1 thông số học kỳ)",
+  "plan": "edusoft-LTHI"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có KQĐK {MH} (DKMH); ghi lại GL_DOITUONGPHANNHOMTHI, SL_CUMTIETXEPLICHTHI, SL_LOAITGDUNGTRONGTHI, SL_TUANTHISOVOITUANHOC, SL_TUANTRABAITHISOVOITUANHOC (Chỉnh định thông số học kỳ – chỉ xem).",
+  "Mở Tổ chức thi/ Quản lý hoãn thi/ Sinh viên đăng ký hoãn thi; tìm {MSSV} – {MH} → chưa có.",
+  "Thêm: {MSSV}, môn {MH}, lý do 'TEST' → Lưu.",
+  "KIỂM TRA THÊM: {MSSV} có trong danh sách hoãn thi của {MH}.",
+  "Sửa lý do → Lưu; KIỂM TRA SỬA.",
+  "Giữ cho LTHI-002 (ghép vào kỳ thi sau); nếu không chạy tiếp thì xóa → KIỂM TRA không còn. Tắt màn hình."
+ ],
+ "title": "Sinh viên đăng ký hoãn thi",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "MH": "(môn test có KQĐK – DKMH-006)",
+  "MSSV": "(SV test có KQĐK môn {MH})"
+ },
+ "version": "v2026.10H.00"
+}

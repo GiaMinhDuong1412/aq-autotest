@@ -1,0 +1,60 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Mã loại hình nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã loại hình và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã loại hình",
+   "steps": [
+    "Bấm Thêm, nhập Mã loại hình giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "loại hình đã được dùng ở môn học (KLGD-004)",
+   "expected": "Chương trình chặn xóa hoặc hiện danh sách dữ liệu liên quan trước khi xác nhận; dòng vẫn còn. Cần xác nhận.",
+   "name": "Xóa dữ liệu đang được dùng",
+   "steps": [
+    "Chọn một dòng loại hình đang được dùng (không phải dòng TEST vừa tạo).",
+    "Bấm Xóa, đọc hộp thoại rồi chọn Không / Đóng (không xác nhận xóa)."
+   ]
+  }
+ ],
+ "code": "KLGD-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Không cần",
+  "next": [
+   "KLGD-004"
+  ],
+  "out": "Loại hình {LH}"
+ },
+ "expected": "Loại hình học kỳ định nghĩa cách quy đổi tiết và đơn giá theo loại CBGD. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 3.10.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Khai báo thông số/ Công thức loại hình/ Danh sách loại hình học kỳ",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 3.10 Định nghĩa loại hình học kỳ",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; học kỳ test; tài liệu gọi 'Định nghĩa loại hình học kỳ'.",
+  "Mở Khối lượng/ Khai báo thông số/ Công thức loại hình/ Danh sách loại hình học kỳ; học kỳ test → Thêm {LH}: đơn vị tính KL, số SV/nhóm, gộp khối lượng, hệ số thành phần, số tiết KL, đơn giá KLGD.",
+  "Tab theo loại CBGD: nhập công thức đơn giá và hệ số tham gia → Lưu.",
+  "KIỂM TRA THÊM: {LH} đúng thông số; mở lại vẫn giữ công thức.",
+  "Đối tượng và hệ số loại hình: gán hệ số cho {LH} → Lưu; KIỂM TRA.",
+  "Giữ {LH} cho KLGD-004; dọn cuối chuỗi KLGD: xóa {LH}."
+ ],
+ "title": "Danh sách loại hình học kỳ (công thức loại hình)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LH": "TEST_LH{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

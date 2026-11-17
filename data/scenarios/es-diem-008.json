@@ -1,0 +1,55 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ nhiệm ý cộng lại điểm sau khi sửa điểm",
+   "expected": "Kết quả theo điểm cũ (chưa tính lại).",
+   "name": "Không cộng lại điểm",
+   "steps": [
+    "Sửa điểm {MSSV2}, xét không cộng lại."
+   ]
+  }
+ ],
+ "code": "DIEM-008",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "ĐTB (DIEM-004), tiêu chuẩn (DIEM-007)",
+  "next": [],
+  "out": "Kết quả học vụ (đã hủy)"
+ },
+ "expected": "Xét học vụ theo đúng thứ tự tiêu chí: SV thỏa tiêu chí vi phạm vào danh sách vi phạm, còn lại đúng tiến độ (lưu đồ QXHV 2–6). (Theo DIEM_XuLyHocVu, mục III.1.2–1.7.)",
+ "lastRun": null,
+ "menu": "Quản lý điểm/ Xử lý học vụ học kỳ/ Xét học kỳ/ Xét theo lớp (HK)",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "DIEM_XuLyHocVu, mục III.1.2–1.7 Tạo đợt, DS lớp xét, DS SV xét, Xét học vụ, Xem / In kết quả",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {LOP} đã cộng điểm TB (DIEM-004); {MSSV} ĐTB học kỳ ≥ 2,0, {MSSV2} ĐTB học kỳ < 1,0; tiêu chuẩn {MATC}.",
+  "Quản lý điểm/ Xử lý học vụ học kỳ/ Đợt và danh sách xét/ Danh sách đợt xét (HK): tạo {DOT}.",
+  "… / Danh sách lớp xét (HK): Thêm {LOP} → Gán tiêu chuẩn chung {MATC}, Gán đợt chung {DOT} → Tạo DS xét.",
+  "… / Danh sách SV xét (HK): KIỂM TRA SV của {LOP} có trong danh sách.",
+  "Mở Quản lý điểm/ Xử lý học vụ học kỳ/ Xét học kỳ/ Xét theo lớp (HK); chọn {LOP}, nhiệm ý cộng lại điểm + có lưu → Thực hiện (bản trước lỗi EX case 63525).",
+  "KIỂM TRA: Xem kết quả/ Kết quả xét học kỳ hiện tại – {MSSV} Đúng tiến độ, {MSSV2} Cảnh cáo (danh sách SV vi phạm); In kết quả xét theo lớp (HK) đúng.",
+  "Dọn: hủy kết quả xét {LOP}, xóa lớp xét, đợt {DOT}, tiêu chuẩn {MATC}. Tắt màn hình."
+ ],
+ "title": "Xét học vụ học kỳ theo lớp (đợt, lớp xét, SV xét, kết quả)",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DXHV{ddHHMM}",
+  "LOP": "(lớp của SV test)",
+  "MATC": "(tiêu chuẩn DIEM-007)",
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "MSSV2": "(SV test 2 cùng nhóm)",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

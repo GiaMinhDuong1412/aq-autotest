@@ -1,0 +1,40 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "DIEM-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "ĐTB (DIEM-004)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Bảng tổng hợp TB các học kỳ khớp phiếu điểm. Chưa có tài liệu.",
+ "lastRun": null,
+ "menu": "Quản lý điểm / Quản lý điểm trung bình / In bảng tổng hợp / In bảng điểm tổng hợp TB các học kỳ",
+ "module": "DIEM",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-DIEM"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {LOP} đã cộng điểm TB (DIEM-004).",
+  "Mở Quản lý điểm/ Quản lý điểm trung bình/ In bảng tổng hợp/ In bảng điểm tổng hợp TB các học kỳ; chọn {LOP} → In.",
+  "KIỂM TRA: ĐTB từng học kỳ của {MSSV} trùng phiếu điểm (DIEM-005); ĐTB tích lũy đúng.",
+  "Tắt màn hình."
+ ],
+ "title": "In bảng điểm tổng hợp TB các học kỳ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOP": "(lớp của SV test)",
+  "MH": "(môn test)",
+  "MSSV": "(SV test 1 có KQĐK {NH})",
+  "NH": "(nhóm học test của {MH} – DKMH-006)"
+ },
+ "version": "v2026.10H.00"
+}

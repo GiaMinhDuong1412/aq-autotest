@@ -1,0 +1,54 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Nội dung câu hỏi, Nhóm câu hỏi, Kiểu trả lời",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Nội dung câu hỏi…) ở câu hỏi.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  }
+ ],
+ "code": "KSDG-003",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Form (KSDG-001), thang đo (KSDG-002)",
+  "next": [
+   "KSDG-004"
+  ],
+  "out": "2 câu hỏi của {FORM}"
+ },
+ "expected": "Form + thang đo + nhóm kết hợp thành danh sách câu hỏi (lưu đồ KSDG bước 3–4). (Theo KSDG_QuyTrinhKhaoSat, mục III.6–7.)",
+ "lastRun": null,
+ "menu": "Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi",
+ "module": "KSDG",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KSDG_QuyTrinhKhaoSat, mục III.6 Tạo nhóm câu hỏi, III.7 Tạo danh mục câu hỏi",
+  "plan": "edusoft-KSDG"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; form {FORM} (KSDG-001), thang đo {TD} (KSDG-002).",
+  "Nhóm câu hỏi: chọn {FORM} → Thêm {NHOMCH}, kiểu kiểm tra trả lời → Lưu; KIỂM TRA.",
+  "Mở Khảo sát đánh giá/ Chuẩn bị form/ Định nghĩa form và câu hỏi/ Danh sách câu hỏi; chọn {FORM} → Thêm câu 1: Thứ tự, Nội dung 'TEST cau hoi 1', Nhóm {NHOMCH}, Kiểu trả lời = thang đo {TD}, Loại thống kê → Lưu.",
+  "Thêm câu 2 kiểu chuỗi (ý kiến khác) → Lưu.",
+  "KIỂM TRA THÊM: 2 câu thuộc {FORM}, đúng nhóm và kiểu trả lời; thiếu ô * thì cảnh báo.",
+  "Kéo thả đổi thứ tự 2 câu → KIỂM TRA thứ tự mới.",
+  "Giữ cho KSDG-004–KSDG-007; dọn cuối chuỗi: xóa câu hỏi rồi {NHOMCH}."
+ ],
+ "title": "Nhóm câu hỏi và danh sách câu hỏi của form",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "FORM": "TEST_FORM{ddHHMM}",
+  "NHOMCH": "TEST_NHOM{ddHHMM}",
+  "TD": "TEST_TD{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

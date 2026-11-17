@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Đến ngày ĐKXT < Từ ngày ĐKXT",
+   "expected": "Chương trình chặn, báo khoảng ngày không hợp lệ. Cần xác nhận.",
+   "name": "Đến ngày trước Từ ngày",
+   "steps": [
+    "Nhập Đến ngày ĐKXT sớm hơn Từ ngày → Lưu."
+   ]
+  },
+  {
+   "condition": "Mã đợt nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Mã đợt và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Mã đợt",
+   "steps": [
+    "Bấm Thêm, nhập Mã đợt giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  }
+ ],
+ "code": "QLTS-002",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Kỳ tuyển sinh {KYTS} (QLTS-001)",
+  "next": [
+   "QLTS-003",
+   "QLTS-011",
+   "QLTS-014"
+  ],
+  "out": "Đợt {DOT} (ĐKXT từ hôm nay đến +10 ngày)"
+ },
+ "expected": "Đợt tuyển sinh lưu được trong kỳ {KYTS}; khoảng Từ ngày – Đến ngày ĐKXT quyết định thời gian thí sinh đăng ký trên Netweb. Lưu ý: sheet ghi dòng này từng có lỗi EX – lỗi EX thì ghi chi tiết (Ctrl+Shift+E). (Theo 1_ChuanBiDuLieuTuyenSinh, mục III.1.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Chuẩn bị/ Danh sách đợt tuyển sinh",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "1_ChuanBiDuLieuTuyenSinh, mục III.1 Khởi tạo kỳ và đợt tuyển sinh",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã có kỳ tuyển sinh {KYTS} (QLTS-001).",
+  "Mở Tuyển sinh/ Chuẩn bị/ Danh sách đợt tuyển sinh, chọn kỳ {KYTS}; tìm {DOT} → có thì đổi mã.",
+  "Thêm: Mã/Tên đợt = {DOT} (tiêu đề trên form đăng ký), Từ ngày ĐKXT = hôm nay, Đến ngày ĐKXT = hôm nay + 7 ngày → Lưu.",
+  "KIỂM TRA THÊM: {DOT} hiển thị đúng khoảng ngày ĐKXT.",
+  "Sửa: đổi Đến ngày ĐKXT = hôm nay + 10 ngày → Lưu; KIỂM TRA SỬA: mở lại thấy ngày mới.",
+  "Tắt màn hình (giữ {DOT} cho các kịch bản sau)."
+ ],
+ "title": "Danh sách đợt tuyển sinh: thêm đợt có thời gian đăng ký xét tuyển",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "DOT": "TEST_DOT{ddHHMM}",
+  "KYTS": "TEST_KY{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

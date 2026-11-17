@@ -1,0 +1,102 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Bỏ trống lần lượt từng ô có dấu * đỏ: Số quyết định, Lý do QĐ, Ngày lập QĐ",
+   "expected": "Không lưu được: chương trình báo thiếu dữ liệu / tô đỏ ô bị trống; danh sách không có dòng mới.",
+   "name": "Bỏ trống ô bắt buộc",
+   "steps": [
+    "Bấm Thêm, nhập đủ các ô trừ một ô bắt buộc (Số quyết định…) ở khung quyết định.",
+    "Bấm Lưu; lặp lại với từng ô bắt buộc còn lại."
+   ]
+  },
+  {
+   "condition": "Số quyết định nhập trùng một dòng đã có trên màn hình",
+   "expected": "Chương trình báo trùng Số quyết định và không lưu; dữ liệu cũ không đổi.",
+   "name": "Trùng Số quyết định",
+   "steps": [
+    "Bấm Thêm, nhập Số quyết định giống một dòng đang có, các ô khác hợp lệ.",
+    "Bấm Lưu."
+   ]
+  },
+  {
+   "condition": "Chọn lý do thuộc loại quyết định khác",
+   "expected": "Danh sách lý do chỉ có lý do đúng loại của màn hình (hoặc chặn khi lưu). Cần xác nhận.",
+   "name": "Lý do sai loại quyết định",
+   "steps": [
+    "Mở danh sách Lý do, tìm lý do loại vào mới."
+   ]
+  },
+  {
+   "condition": "Chọn mã SV không có trong học kỳ test",
+   "expected": "Không chọn được / báo SV không thuộc học kỳ.",
+   "name": "SV không có trong DS SV học kỳ",
+   "steps": [
+    "Thêm SV bằng cách gõ mã không thuộc học kỳ."
+   ]
+  },
+  {
+   "condition": "Học kỳ test đang bị khóa sổ phân hệ (QLHT-007)",
+   "expected": "Chương trình không cho thêm/sửa/xóa trong học kỳ đã khóa sổ (báo khóa sổ); dữ liệu không đổi. Cần xác nhận câu thông báo.",
+   "name": "Học kỳ đã khóa sổ",
+   "steps": [
+    "Khóa sổ phân hệ của học kỳ test (QLHT-007).",
+    "Thực hiện lại thao tác ghi dữ liệu của kịch bản.",
+    "Mở khóa lại sau khi kiểm tra."
+   ]
+  },
+  {
+   "condition": "Nhập 0 hoặc số âm",
+   "expected": "Không nhận giá trị / báo lỗi. Cần xác nhận.",
+   "name": "Số học kỳ nghỉ không hợp lệ",
+   "steps": [
+    "Nhập Số học kỳ nghỉ = -1 → Lưu."
+   ]
+  }
+ ],
+ "code": "QLSV-006",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "SV {MSSV} (QLSV-001)",
+  "next": [
+   "QLSV-007",
+   "QLSV-003"
+  ],
+  "out": "QĐ tạm dừng {SOQD2} (đã xóa)"
+ },
+ "expected": "QĐ tạm dừng lưu đúng số học kỳ nghỉ; SV xóa tên từ kỳ sau, quay lại bằng QĐ học lại. (Theo QLSV_CapNhatQuyetDinhVaoRa, mục III.2.4; lưu đồ QLSV bước 6.)",
+ "lastRun": null,
+ "menu": "Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tạm dừng",
+ "module": "QLSV",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLSV_CapNhatQuyetDinhVaoRa, mục III.2.4 Quyết định tạm dừng",
+  "plan": "edusoft-QLSV"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; SV test {MSSV} đã vào học kỳ test bằng Quyết định vào mới (QLSV-001 bước 1–9, chưa chạy bước xóa).",
+  "Thu thập (chỉ xem): mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Danh mục lý do quyết định, chọn ngẫu nhiên một lý do loại tạm dừng (bảo lưu, thai sản, tai nạn) → {LYDO2}. Tắt màn hình.",
+  "Kiểm tra trùng: mở Sinh viên/ Sinh viên học kỳ/ QĐ vào/ra sinh viên/ Quyết định tạm dừng, tìm {SOQD2} ở cột Số quyết định → có thì đổi số.",
+  "Thêm QĐ: bấm Thêm ở danh sách quyết định, Số quyết định = {SOQD2}, Lý do = CHỌN {LYDO2}, Ngày lập = hôm nay, Ngày hiệu lực = hôm nay, Người ký (chọn trong Danh sách người ký quyết định).",
+  "Thêm SV vào QĐ: ở lưới Danh sách sinh viên bấm Thêm, chọn {MSSV}; nhập Số học kỳ nghỉ = 2 → Lưu quyết định.",
+  "KIỂM TRA THÊM: {SOQD2} có {MSSV}, Số học kỳ nghỉ = 2.",
+  "KIỂM TRA dữ liệu sang màn hình nhận: Danh sách sinh viên học kỳ (học kỳ test): {MSSV} còn, hiện diện tạm dừng; học kỳ sau (khi khởi tạo) không có {MSSV}.",
+  "Sửa: chọn {SOQD2} → Sửa, đổi Số học kỳ nghỉ 2 → 1 → Lưu; KIỂM TRA SỬA: mở lại thấy giá trị mới.",
+  "Xóa: chọn {SOQD2} → Xóa → form 'Danh sách đang chọn để xóa' chỉ có {SOQD2} → tick → Thực hiện → Có.",
+  "KIỂM TRA XÓA: {SOQD2} không còn; {MSSV} trở lại hiện diện đang học.",
+  "Dọn: xóa QĐ vào mới của {MSSV} như QLSV-001 bước 12; KIỂM TRA {MSSV} không còn ở Danh mục sinh viên. Tắt các màn hình."
+ ],
+ "title": "Quyết định tạm dừng (bảo lưu) với số học kỳ nghỉ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LYDO2": "(lý do loại tạm dừng (bảo lưu, thai sản, tai nạn), lấy ở bước 2)",
+  "MSSV": "(SV test tạo theo QLSV-001)",
+  "SOQD2": "TEST_QDTD{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

@@ -1,0 +1,62 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Phòng mới sức chứa < sĩ số {NHOM}",
+   "expected": "Báo không đủ sức chứa; chỉ lưu được khi tick 'Không kiểm tra sỉ số phòng'.",
+   "name": "Phòng mới thiếu sức chứa",
+   "steps": [
+    "Thay bằng phòng nhỏ → Lưu."
+   ]
+  },
+  {
+   "condition": "Phòng mới có TKB/lịch thi/đột xuất cùng giờ",
+   "expected": "Báo trùng lịch sử dụng phòng.",
+   "name": "Phòng mới đang bận",
+   "steps": [
+    "Thay bằng phòng bận → Lưu."
+   ]
+  }
+ ],
+ "code": "KHGD-014",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "TKB (KHGD-011), phòng HK (KHGD-005)",
+  "next": [
+   "KHGD-016"
+  ],
+  "out": "Không đổi (trả lại)"
+ },
+ "expected": "Phòng được thay khi phòng mới đủ sức chứa, đúng tính chất và rảnh (TKB, lịch thi, sử dụng đột xuất). (Theo KHGD_CacBuocXepTKB, mục III.2.2.)",
+ "lastRun": null,
+ "menu": "Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế phòng",
+ "module": "KHGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KHGD_CacBuocXepTKB, mục III.2.2 (Thay thế phòng)",
+  "plan": "edusoft-KHGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; nhóm {NHOM} của môn {MH} cho lớp {LOP} đã xếp TKB (KHGD-011).",
+  "Mở Kế hoạch/ Thời khóa biểu/ Hiệu chỉnh thời khoá biểu/ Thay thế phòng; chọn {NHOM}.",
+  "Nhập Mã PH mới = {PHONG2} (KHÔNG tick các ô bỏ kiểm tra sĩ số / lịch sử dụng phòng / tính chất phòng) → Lưu.",
+  "KIỂM TRA: TKB dạng tuần {NHOM} hiện {PHONG2}; TKB phòng {PHONG} không còn {NHOM}.",
+  "Trả lại {PHONG} → Lưu. Tắt màn hình."
+ ],
+ "title": "Thay thế phòng của nhóm đã xếp TKB",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "KHOI": "(khối lớp test)",
+  "LOP": "(lớp test thuộc {KHOI})",
+  "MH": "TEST_MH{ddHHMM}",
+  "NHOM": "(nhóm/tổ của {MH} cho {LOP})",
+  "PHONG": "(phòng test trong học kỳ)",
+  "PHONG2": "(phòng khác rảnh, sức chứa ≥ sĩ số)"
+ },
+ "version": "v2026.10H.00"
+}

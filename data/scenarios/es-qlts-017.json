@@ -1,0 +1,53 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Số thí sinh của ngành > tổng sĩ số đã phân bổ",
+   "expected": "Thí sinh không được gán lớp / chương trình báo thiếu sĩ số. Cần xác nhận.",
+   "name": "Vượt sĩ số",
+   "steps": [
+    "Phân bổ sĩ số 0 rồi gán lớp."
+   ]
+  }
+ ],
+ "code": "QLTS-017",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "{TS1} trúng tuyển (QLTS-016)",
+  "next": [
+   "QLTS-018",
+   "QLTS-022"
+  ],
+  "out": "{TS1} thuộc lớp {LOPTS}"
+ },
+ "expected": "Thí sinh trúng tuyển được chia lớp theo sĩ số đã phân bổ; hủy và gán lại được. (Theo QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7.)",
+ "lastRun": null,
+ "menu": "Tuyển sinh/ Hồ sơ nhập học/ Tên lớp cho thì sinh trúng tuyển/ Gán tên lớp cho thí sinh trúng tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "QLTS_QuyTrinhXetTuyenVaTiepSinh, mục III.7 (Tên lớp cho thí sinh trúng tuyển)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {TS1} trong DS trúng tuyển (QLTS-016).",
+  "Mở Tuyển sinh/ Hồ sơ nhập học/ Tên lớp cho thí sinh trúng tuyển/ Phân bổ sĩ số các lớp trúng tuyển: tạo lớp {LOPTS} cho ngành {NGANH}, sĩ số 5 → Lưu.",
+  "Mở …/ Gán tên lớp cho thí sinh trúng tuyển → chọn ngành {NGANH} → Thực hiện.",
+  "KIỂM TRA: {TS1} có tên lớp {LOPTS} (xem ở …/ Nhập tên lớp cho thí sinh trúng tuyển).",
+  "Hủy: …/ Hủy tên lớp cho thí sinh trúng tuyển, chọn {TS1} → Thực hiện; KIỂM TRA {TS1} không còn tên lớp.",
+  "Gán tay: …/ Nhập tên lớp cho thí sinh trúng tuyển, nhập {LOPTS} cho {TS1} → Lưu; KIỂM TRA có lớp. Tắt màn hình."
+ ],
+ "title": "Phân bổ sĩ số và gán tên lớp cho thí sinh trúng tuyển",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "LOPTS": "TEST_LOP{ddHHMM}",
+  "NGANH": "TEST_NG{ddHHMM}",
+  "TS1": "Thi sinh Mot (TEST)"
+ },
+ "version": "v2026.10H.00"
+}

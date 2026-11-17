@@ -1,0 +1,38 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "KLGD-010",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "KL đã tính (KLGD-008)",
+  "next": [],
+  "out": "Chuỗi KLGD được dọn"
+ },
+ "expected": "Bản in thù lao khớp khối lượng chi tiết. (Theo KLGD_QuanLyKhoiLuongGiangDay, mục 5.8.)",
+ "lastRun": null,
+ "menu": "Khối lượng/ Tính khối lượng/ In chi tiết thù lao CBGD/ Theo đợt / CBGD",
+ "module": "KLGD",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "KLGD_QuanLyKhoiLuongGiangDay, mục 5.8 In chi tiết thù lao CBGD",
+  "plan": "edusoft-KLGD"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; đã tính {DOT} (KLGD-008).",
+  "Mở Khối lượng/ Tính khối lượng/ In chi tiết thù lao CBGD/ Theo đợt/ CBGD; chọn {DOT}, {CB} → In/Xem.",
+  "KIỂM TRA: tên CB, số tiết, thù lao = (tiết vượt nghĩa vụ) × đơn giá KLGD khớp Xem khối lượng chi tiết (KLGD-009).",
+  "Dọn chuỗi KLGD (thứ tự ngược: dữ liệu tính, chốt, đợt, KL khác, thông tin CB, loại hình). Tắt màn hình."
+ ],
+ "title": "In chi tiết thù lao CBGD theo đợt / CBGD",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "CB": "(cán bộ test có nhóm dạy đã xếp TKB)",
+  "DOT": "TEST_DOT{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

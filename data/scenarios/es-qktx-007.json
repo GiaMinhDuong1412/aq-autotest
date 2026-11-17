@@ -1,0 +1,39 @@
+{
+ "actual": "",
+ "altFlows": [],
+ "code": "QKTX-007",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Hợp đồng (QKTX-004)",
+  "next": [],
+  "out": "Không thay đổi"
+ },
+ "expected": "Lịch sử hợp đồng của đối tượng hiển thị đầy đủ. Không có tài liệu – cần xác nhận.",
+ "lastRun": null,
+ "menu": "Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Xem danh sách hợp đồng của từng đối tượng",
+ "module": "QKTX",
+ "process": "",
+ "product": "edusoft",
+ "scriptReady": false,
+ "source": {
+  "docRef": "",
+  "plan": "edusoft-QKTX"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: đã mở Edusoft và đăng nhập theo CHUNG-001; đang chọn năm học/học kỳ test; {MSSV} có hợp đồng {HD} (QKTX-004).",
+  "Mở Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Xem danh sách hợp đồng của từng đối tượng; chọn {MSSV}.",
+  "KIỂM TRA: hiện {HD} với phòng {PH}, thời hạn, trạng thái còn hiệu lực; sau thanh lý (QKTX-008) trạng thái hết hiệu lực.",
+  "Tắt màn hình."
+ ],
+ "title": "Xem danh sách hợp đồng của từng đối tượng",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "HD": "TEST_HD{ddHHMM}",
+  "MSSV": "(SV test)",
+  "PH": "TEST_P{ddHHMM}"
+ },
+ "version": "v2026.10H.00"
+}

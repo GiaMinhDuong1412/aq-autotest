@@ -1,0 +1,58 @@
+{
+ "actual": "",
+ "altFlows": [
+  {
+   "condition": "Nhập sai mật khẩu tra cứu",
+   "expected": "Không hiện hồ sơ, báo sai thông tin tra cứu.",
+   "name": "Sai mật khẩu tra cứu",
+   "steps": [
+    "Tra cứu {TS3} với mật khẩu sai."
+   ]
+  },
+  {
+   "condition": "Cán bộ chăm sóc không được gán {TS3}",
+   "expected": "Không thấy ý kiến của {TS3}.",
+   "name": "Cán bộ chưa được gán thí sinh",
+   "steps": [
+    "Đăng nhập /admin bằng cán bộ khác."
+   ]
+  }
+ ],
+ "code": "QLTS-012",
+ "createdAt": "2026-11-17T09:00:00.000Z",
+ "createdBy": null,
+ "dataFlow": {
+  "in": "Đơn {TS3} (QLTS-011)",
+  "next": [
+   "QLTS-014"
+  ],
+  "out": "Ý kiến, thông báo, file hồ sơ của {TS3}"
+ },
+ "expected": "Thí sinh tra cứu đúng hồ sơ; ý kiến – trả lời – thông báo hai chiều giữa thí sinh và cán bộ chăm sóc; hiệu chỉnh và file upload về Edusoft. (Theo 3_ChamSocThiSinhXetTuyenTrucTuyen, mục III.3–4.)",
+ "lastRun": null,
+ "menu": "NetWEB: Tra cứu thông tin xét tuyển",
+ "module": "QLTS",
+ "process": "",
+ "product": "netweb",
+ "scriptReady": false,
+ "source": {
+  "docRef": "3_ChamSocThiSinhXetTuyenTrucTuyen, mục III.3–4 (Gửi thông báo, trả lời ý kiến; Thí sinh hiệu chỉnh, upload hồ sơ)",
+  "plan": "edusoft-QLTS"
+ },
+ "status": "notrun",
+ "steps": [
+  "Điều kiện đầu vào: Netweb test đã kiểm tra đăng nhập ở trang Máy chạy thử (CHUNG-001 phần Netweb); đăng nhập Netweb vai trò thí sinh (mã hồ sơ + mật khẩu tra cứu trong mail) bằng tài khoản test; đã có đơn {TS3} (QLTS-011); cán bộ chăm sóc đã được bật Quản trị chăm sóc và gán thí sinh.",
+  "Mở Netweb → Tra cứu thông tin xét tuyển, tra cứu {TS3} → KIỂM TRA đúng hồ sơ, nguyện vọng, trạng thái.",
+  "Gửi ý kiến cho nhà trường; KIỂM TRA cán bộ (trang /admin → Quản trị chăm sóc → Ý kiến của thí sinh) thấy ý kiến → Trả lời; KIỂM TRA thí sinh thấy câu trả lời.",
+  "Cán bộ gửi thông báo cho {TS3} (cột Thông báo → Lưu) → KIỂM TRA thí sinh thấy thông báo khi tra cứu.",
+  "Thí sinh bấm Hiệu chỉnh → tab Đăng ký sửa một thông tin → Lưu; KIỂM TRA giá trị mới ở Edusoft.",
+  "Tab Upload → chọn file ảnh TEST → Upload; KIỂM TRA cán bộ mở chi tiết hồ sơ thấy file, cột Hồ sơ đổi trạng thái đã xem; cập nhật Trạng thái hồ sơ → Cập nhật."
+ ],
+ "title": "Netweb: thí sinh tra cứu thông tin xét tuyển, gửi ý kiến, upload hồ sơ",
+ "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedBy": null,
+ "vars": {
+  "TS3": "(thí sinh đăng ký online ở QLTS-011)"
+ },
+ "version": "v2026.10H.00"
+}
