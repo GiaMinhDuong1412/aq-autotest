@@ -67,6 +67,10 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **tối đa 5** (`RT_QMAX`, `rtShownQ`): Query ghim (☆, localStorage `aq-rt-qpin:<user>`) trước, còn lại tự chọn theo `rtQScore` (của tôi, có tên tôi,
   tester_raw/test_state, "Đã xử lý"); Query đang chọn luôn có mặt; còn lại ở nút "Query khác" (tìm + nhóm Của tôi / Chia sẻ / Dựng sẵn).
   Danh sách case (`rtCaseList`): ô lọc, sắp xếp (mới xử lý / hạn gần / mã), nhóm theo trạng thái ACS (Đã xử lý trước), dòng gọn `rtTicket`, 40 dòng rồi "Xem thêm".
+  Cột phải **chi tiết case** (`rtDetailPane`, chọn ở mục "Case đang test" / hàng đợi máy / Vừa kết luận – `RT.sel`): 1 Yêu cầu KH (đọc
+  `GET ACS.casePath` – mặc định dò `/cs/cases/{id}`, lấy trường `RT_REQK`/dài nhất, chọn được trường khác, lưu vào phiếu `request`), 2 Phiên bản
+  Edusoft của máy test (`runners.check.version`, cảnh báo nếu ghi nhận trước khi coder xử lý xong), 3 Plan test (bước kịch bản, đổi kịch bản khi
+  chờ chạy), 4 Kết quả (trạng thái, ảnh, kết luận, nút Chạy / Duyệt ảnh).
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút, **ràng buộc**: ô bắt buộc / điều kiện chặn + câu báo) ghép từ bản trích source:
