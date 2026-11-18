@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.18-01"
+KIT_VERSION = "2026.11.18-02"
 from pathlib import Path
 
 
@@ -1975,7 +1975,7 @@ class Run:
           expect_dialog: mẫu|mẫu         phải có thông báo khớp mẫu; ghi lại nội dung rồi đóng
           find_row: giá trị @ Cột|Cột    tìm dòng: gõ giá trị vào Ô TÌM KIẾM của cột (dòng lọc có icon phễu ngay dưới
                                          tiêu đề cột) rồi chọn dòng khớp; không ghi cột thì chỉ xem các dòng đang hiện
-          delete_row: giá trị @ Cột      xóa dòng; form "Danh sách đang chọn để xóa" chỉ được có dòng mang giá trị → tick → Thực hiện;
+          delete_row: giá trị @ Cột      xóa dòng (lưới có cột ô chọn: tick ô của dòng trước khi bấm Xóa); form "Danh sách đang chọn để xóa" chỉ được có dòng mang giá trị → tick → Thực hiện;
                                          hộp "Xác nhận xóa…?" chỉ bấm Có khi nêu đúng giá trị hoặc đã kiểm form
           delete_row: giá trị @ Cột => Nút @ Vùng   gỡ dòng khỏi LƯỚI CON bằng nút riêng (vd "{MSSV} @ Mã SV => Xóa sinh viên
                                          @ Danh sách sinh viên" trong QĐ đang Sửa): cùng các bước xác nhận an toàn nhưng không đòi
@@ -2148,6 +2148,14 @@ class Run:
                 arg, col = split_col(arg.strip())
                 el = self.locate_row(arg, col)
                 es.click(el)
+                if not btn.strip():
+                    # màn hình có cột ô chọn (vd Quyết định vào mới): Edusoft chỉ xóa dòng ĐÃ TICK – chọn dòng thôi chưa đủ
+                    box = self.row_checkbox(el)
+                    if box is not None:
+                        v = self.tick_box(box, el)
+                        if v == "Unchecked":
+                            raise RuntimeError("Không tick được ô chọn của dòng %s trên lưới (ô vẫn Unchecked) – chưa bấm Xóa" % arg)
+                        notes.append("Tick ô chọn dòng %s: %s" % (arg, v or "không đọc được"))
                 notes += self.delete_flow(arg, btn.strip())
                 self.clear_filter()
             elif verb == "cancel":
@@ -2516,6 +2524,38 @@ class Run:
             log("hộp hỏi đóng")
             return True
         return False
+
+    def row_checkbox(self, el):
+        """Ô chọn (cột check đầu dòng, giá trị Checked/Unchecked) cùng dòng với ô `el` trên lưới đang mở; không có → None."""
+        try:
+            r0 = el.rectangle()
+            cy, left = (r0.top + r0.bottom) // 2, r0.left
+            m = re.search(r"\brow\s*(-?\d+)$", norm(el.element_info.name or ""))
+        except Exception:
+            return None
+        best = None
+        for root in self.es.roots():
+            nodes = uia_scan(root)
+            if not nodes:
+                continue
+            for nd in nodes:
+                if not nd.visible or nd.ct not in ("DataItem", "CheckBox"):
+                    continue
+                l, t, r, b = nd.rect
+                if not (t <= cy <= b) or l >= left:
+                    continue                              # phải cùng hàng và nằm bên trái ô vừa tìm
+                nm = norm(nd.name or "")
+                if re.search(r"filter|lọc", nm, re.I) or (m and nd.ct == "DataItem" and not re.search(r"\brow\s*%s$" % m.group(1), nm)):
+                    continue
+                if (nd.val or "") in ("Checked", "Unchecked") or nd.ct == "CheckBox" or re.match(r"^(#|chọn|check)", nm, re.I):
+                    if best is None or l < best.rect[0]:
+                        best = nd
+            if best is not None:
+                break
+        try:
+            return best.wrap() if best is not None else None
+        except Exception:
+            return None
 
     def tick_box(self, box, other=None):
         """Tick ô chọn (cột "#") của một dòng lưới DevExpress, CHẮC CHẮN ô thành Checked:
