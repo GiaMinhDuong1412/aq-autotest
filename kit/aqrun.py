@@ -12,8 +12,22 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.16-02"
+KIT_VERSION = "2026.11.18-01"
 from pathlib import Path
+
+
+def con_show(on=True):
+    """Cửa sổ đen (console) của lượt test: ẩn trong lúc chạy (popup tiến trình đã hiện đủ), chỉ hiện khi cần nhập
+    (mật khẩu, bước làm tay khi không có popup) hoặc khi có lỗi. Không phải Windows / không có console thì bỏ qua."""
+    try:
+        import ctypes
+        h = ctypes.windll.kernel32.GetConsoleWindow()
+        if h:
+            ctypes.windll.user32.ShowWindow(h, 9 if on else 0)      # 9 = hiện lại, 0 = ẩn
+            if on:
+                ctypes.windll.user32.SetForegroundWindow(h)
+    except Exception:
+        pass
 
 BASE = Path(__file__).resolve().parent
 
@@ -57,6 +71,7 @@ try:
 except Exception:  # pragma: no cover
     if "--chan-doan" not in sys.argv and "--cap-nhat" not in sys.argv:   # kiểm tra / cập nhật vẫn chạy được khi thiếu thư viện
         print("Thiếu thư viện. Hãy chạy cai-dat.bat trước (cài pywinauto, pillow, keyboard, keyring).")
+        con_show(True)
         input("Nhấn Enter để thoát…")
         sys.exit(1)
 
@@ -175,12 +190,26 @@ class Caption:
         r.configure(bg=self.C["acc"])
         self._build()
 
+        jobs = {}
+
+        def stop():
+            for j in list(jobs.values()):           # huỷ hẹn giờ trước khi đóng – tránh lỗi "invalid command name …tick"
+                try:
+                    r.after_cancel(j)
+                except Exception:
+                    pass
+            jobs.clear()
+            try:
+                r.destroy()
+            except Exception:
+                pass
+
         def pump():
             try:
                 while True:
                     a, b = self.q.get_nowait()
                     if a is None:
-                        r.destroy()
+                        stop()
                         return
                     if a == "__state__":
                         self._render()
@@ -200,15 +229,17 @@ class Caption:
                 self._hold = time.time() + self.HOLD
                 self.st["status"] = (a + (": " + b if b else ""))[:150]
                 self._render()
-            r.after(120, pump)
+            jobs["pump"] = r.after(120, pump)
 
         def tick():
+            if "tick" not in jobs:
+                return
             self._render()
-            r.after(500, tick)
+            jobs["tick"] = r.after(500, tick)
 
-        r.after(120, pump)
-        r.after(500, tick)
-        r.after(60, lambda: self._style(False))
+        jobs["pump"] = r.after(120, pump)
+        jobs["tick"] = r.after(500, tick)
+        jobs["style"] = r.after(60, lambda: self._style(False))
         threading.Thread(target=self._run, args=(worker,), daemon=True).start()
         r.mainloop()
 
@@ -2759,6 +2790,7 @@ class Run:
             time.sleep(ACTION_DELAY)
             return res
         if hotkeys is None:
+            con_show(True)
             k = input("   %s – nhập 8 (Đạt) / 9 (Lỗi) / 0 (Bỏ qua): " % label).strip()
             return {"8": "ok", "9": "bad"}.get(k, "skip")
         while True:
@@ -2777,13 +2809,7 @@ class Run:
             self.add_bug(rec, kind, idx, text, CAP.ask("__bug__", label, self.expand(text)) or {})
             time.sleep(ACTION_DELAY)
             return
-        try:                                          # không có tkinter: hỏi trong cửa sổ đen – đưa nó lên trước
-            import ctypes
-            h = ctypes.windll.kernel32.GetConsoleWindow()
-            ctypes.windll.user32.ShowWindow(h, 9)
-            ctypes.windll.user32.SetForegroundWindow(h)
-        except Exception:
-            pass
+        con_show(True)                                # không có tkinter: hỏi trong cửa sổ đen – đưa nó lên trước
         print("\n   %s bị lỗi – nhập thông tin cho support:" % label)
         t = input("   Loại lỗi [1] chức năng/dữ liệu, [2] EX hệ thống: ").strip()
         if t == "2":
@@ -3439,6 +3465,7 @@ def get_secret(kind, user, ask):
                 return v
         except Exception:
             pass
+    con_show(True)
     v = getpass.getpass("   " + ask)
     if keyring and v:
         try:
@@ -3460,6 +3487,7 @@ def ask_password(kind, user, reask=False):
                 return v
         except Exception:
             pass
+    con_show(True)
     for _ in range(3):
         a = getpass.getpass("   Mật khẩu Edusoft của tài khoản %s (môi trường test, gõ không hiện chữ): " % user)
         b = getpass.getpass("   Nhập lại mật khẩu để xác nhận: ")
@@ -4229,6 +4257,7 @@ def probe_hidden_desktop():
     print("Cửa sổ \"xem desktop ẩn\" hiện ở màn hình phụ (nếu có) để theo dõi – chỉ xem, đóng lúc nào cũng được.")
     print("Chỉ mở Edusoft, đăng nhập và chọn tab Sinh viên – không thêm/sửa/xóa dữ liệu.")
     while edusoft_running():
+        con_show(True)
         input("Edusoft đang mở trên máy (bản nào cũng tính). Hãy đóng Edusoft rồi nhấn Enter để tiếp tục (Ctrl+C để thôi)… ")
     run_mutex(True)
     out = BASE / "results" / ("desktop-an-%s" % time.strftime("%y%m%d-%H%M%S"))
@@ -4353,6 +4382,7 @@ def stop_run(msg):
     except Exception:
         pass
     run_mutex(False)
+    con_show(True)
     try:
         input("Nhấn Enter để đóng…")
     except Exception:
@@ -4426,11 +4456,7 @@ def main():
         stop_run("Không thấy file Edusoft: %s – sửa đường dẫn ở Máy chạy thử → bước 1 rồi Chạy lại." % CFG["exe"])
     print("AQ Autotest – %d kịch bản · %s" % (len(scs), CFG["exe"]))
     pw = ask_password("edusoft", CFG["account"])
-    try:                                    # thu nhỏ cửa sổ đen để không che Edusoft khi script thao tác
-        import ctypes
-        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 6)
-    except Exception:
-        pass
+    con_show(False)                         # ẩn cửa sổ đen: popup tiến trình đã hiện đủ; lỗi script thì hiện lại
     summary = []
     t0 = time.time()
 
@@ -4488,7 +4514,17 @@ def main():
         except Exception:
             pass
     run_mutex(False)
-    input("Nhấn Enter để đóng…")
+    crashed = [c for c, st in summary if str(st).startswith("error")]
+    if crashed:                             # lỗi script (không phải kịch bản không đạt): hiện cửa sổ để đọc / chụp gửi Claude
+        con_show(True)
+        print("\nLỗi script ở: %s – đọc chi tiết phía trên (chụp màn hình gửi Claude nếu cần)." % ", ".join(crashed))
+        try:
+            input("Nhấn Enter để đóng…")
+        except Exception:
+            pass
+    else:                                   # chạy xong: tự đóng (kết quả đã ở popup, file .zip và console)
+        print("\nXong – cửa sổ tự đóng.")
+        time.sleep(2)
 
 
 if __name__ == "__main__":
@@ -4508,6 +4544,7 @@ if __name__ == "__main__":
         except Exception:
             pass
         if not any(a in sys.argv for a in ("--cap-nhat", "--chan-doan", "--ben-trong")):
+            con_show(True)
             try:
                 input("Có lỗi – chụp màn hình gửi Claude. Nhấn Enter để đóng…")
             except Exception:
