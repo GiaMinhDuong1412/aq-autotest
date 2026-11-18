@@ -842,21 +842,51 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt-dot{width:9px;height:9px;border-radius:50%;background:var(--skip);flex:0 0 9px}.rt-dot.ok{background:var(--pass)}.rt-dot.bad{background:var(--fail)}
 .rt-flash{margin:0 0 14px}
 .rt-grid{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
-.rt-inbox{flex:1 1 340px;max-width:430px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.rt-inbox{flex:1 1 440px;max-width:640px;min-width:0;display:flex;flex-direction:column;gap:8px}
 .rt-stations{flex:999 1 560px;min-width:0}
 .rt-h{font-family:var(--display);font-weight:700;font-size:.95rem;display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
 .rt-qtabs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .rt-qtabs .lbl{font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-right:2px}
 .seg-b{height:30px;padding:0 11px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-2);color:var(--fg-dim);font-size:.74rem;font-weight:500}
 .seg-b.on{border-color:var(--accent);background:var(--accent-soft);color:var(--fg)}
-.rt-ticket{position:relative;display:flex;flex-direction:column;gap:5px;width:100%;padding:13px 15px 13px 27px;border:0;border-radius:7px;background:#f3eee2;color:#1c1a16;text-align:left;
-  -webkit-mask:radial-gradient(circle at 0 50%,transparent 9px,#000 9.5px);mask:radial-gradient(circle at 0 50%,transparent 9px,#000 9.5px)}
-.rt-ticket:hover{background:#fbf7ec}.rt-ticket.on{background:#fff;box-shadow:inset 0 0 0 3px var(--accent)}
-.rt-ticket .perf{position:absolute;left:15px;top:10px;bottom:10px;border-left:2px dashed #c9bfa8}
-.rt-ticket .r1{display:flex;align-items:center;gap:8px}.rt-ticket .when{margin-left:auto;font-size:.68rem;color:#6b6457}
-.rt-ticket .tt{font-weight:600;font-size:.84rem;line-height:1.35}.rt-ticket .sub{font-size:.7rem;color:#5d574b}
-.rt-ticket .stamp,.rt-stamp b{display:inline-flex;align-items:center;height:19px;padding:0 6px;border:1.5px solid currentColor;border-radius:4px;font:700 .64rem var(--mono);letter-spacing:.04em;color:#5a47e6}
-.rt-ticket .stamp.red{color:#c2410c}
+.rt-stamp b{display:inline-flex;align-items:center;height:19px;padding:0 6px;border:1.5px solid currentColor;border-radius:4px;font:700 .64rem var(--mono);letter-spacing:.04em}
+.rt-qbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px}
+.rt-qbar .lbl{font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-right:4px}
+.rt-qc{display:inline-flex;align-items:center;gap:6px;max-width:260px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-2);color:var(--fg-dim);font-size:.76rem;font-weight:500;cursor:pointer}
+.rt-qc .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rt-qc:hover{border-color:var(--accent);color:var(--fg)}
+.rt-qc.on{border-color:var(--accent);background:var(--accent-soft);color:var(--fg);font-weight:600}
+.rt-qc .ct{flex:0 0 auto;min-width:20px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:#fff;font-size:.64rem;display:inline-flex;align-items:center;justify-content:center}
+.rt-qc.more{border-style:dashed}
+.rt-qk{flex:0 0 auto;font:600 .58rem var(--mono);letter-spacing:.04em;padding:1px 5px;border-radius:4px;background:var(--bg-3);color:var(--muted)}.rt-qk.me{background:var(--pass-soft);color:var(--pass)}
+.rt-qpanel{margin:0 0 14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;max-width:640px}
+.rt-qph{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.rt-qph input{flex:1 1 220px}
+.rt-qph input,.rt-ctools input,.rt-ctools select{height:36px;padding:0 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:.8rem;outline:none}
+.rt-qph input:focus,.rt-ctools input:focus,.rt-ctools select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.rt-qpanel .rt-qlist{max-height:360px;overflow:auto;display:flex;flex-direction:column;gap:2px}.rt-qpanel>p.hint{margin:0}
+.rt-qg>summary{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--fg-dim);padding:4px 0}
+.rt-qr{display:flex;align-items:center;gap:6px;border-radius:8px}.rt-qr:hover{background:var(--bg-3)}.rt-qr.on{background:var(--accent-soft)}
+.rt-qr .nm{flex:1;min-width:0;text-align:left;border:0;background:none;color:var(--fg);font-size:.78rem;padding:6px 8px;cursor:pointer}
+.rt-qr .pin{flex:0 0 30px;height:28px;border:0;background:none;color:var(--muted);font-size:.95rem;cursor:pointer}.rt-qr .pin.on{color:var(--run)}
+.linkbtn{border:0;background:none;padding:0;color:var(--accent-2);font:inherit;text-decoration:underline;cursor:pointer}
+.rt-ctools{display:flex;gap:8px;flex-wrap:wrap}.rt-ctools input{flex:1 1 200px;min-width:0}.rt-ctools select{flex:0 0 auto;width:auto}
+.rt-clist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);overflow:hidden}
+.rt-cg{padding:7px 12px;font:600 .66rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);border-top:1px solid var(--line)}
+.rt-clist>.rt-cg:first-child{border-top:0}
+.rt-crow{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px 12px;border:0;border-top:1px solid var(--line);background:none;color:var(--fg);text-align:left;cursor:pointer}
+.rt-clist>.rt-crow:first-child{border-top:0}.rt-crow:hover{background:var(--bg-3)}
+.rt-crow.on{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.rt-crow .id{flex:0 0 62px;font-size:.72rem;font-weight:600;color:var(--accent-2);padding-top:1px}
+.rt-crow .mn{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.rt-crow .tt{font-size:.8rem;font-weight:600;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rt-crow .mt{font-size:.68rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rt-crow .mt b{color:var(--fg-dim);font-weight:600}
+.rt-crow .md{color:var(--accent-2);font-weight:600}
+.rt-crow .sd{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px;max-width:120px}
+.rt-crow .when,.rt-crow .due{font-size:.66rem;color:var(--muted);white-space:nowrap}.rt-crow .due.late{color:var(--fail);font-weight:600}
+.rt-crow .tg{display:inline-block;margin-right:6px;font:600 .6rem var(--mono);padding:0 5px;border-radius:4px;border:1px solid var(--line-2);color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.rt-crow .tg.red{border-color:var(--fail);color:var(--fail)}.rt-crow .tg.soft{border-color:transparent;background:var(--bg-3)}
+.rt-clist .rt-asg{margin:0 10px 10px;border-radius:10px}
+.rt-cmore{align-self:center}
+@media (max-width:560px){.rt-crow{flex-wrap:wrap}.rt-crow .id{flex-basis:auto}.rt-crow .sd{flex-direction:row;flex-wrap:wrap;max-width:none;width:100%;align-items:center}}
 .rt-asg{padding:14px;border:1px solid var(--accent);border-radius:12px;background:var(--bg-2);display:flex;flex-direction:column;gap:10px}
 .rt-asg select{width:100%}
 .rt-stgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
@@ -9127,22 +9157,68 @@ QUAY VIDEO (TÙY CHỌN)
     RT.users=RT.people.filter(function(p){return p&&!p.queue&&String(p.username||'').toLowerCase()===u;}).map(function(p){return p.value;});
     if(!RT.users.length&&u)RT.users=['AQ\\'+u.split('@')[0]];
     RT.probed=false;await rtLoadQueries();}
-  function rtNormQ(d){var a=Array.isArray(d)?d:d&&(d.queries||d.items||d.rows||d.data);if(!Array.isArray(a))return [];
-    return a.map(function(q){if(!q||typeof q!=='object')return null;
+  /* Query đã lưu trên ACS: chuẩn hoá + nhận ra Query CỦA TÔI (người tạo/chủ sở hữu, cờ mine, nhóm "mine"/"shared" trong phản hồi) */
+  var RT_QOWN=['owner','owner_username','owner_name','owner_id','owner_raw','created_by','createdBy','created_by_username','creator','author','user','username','user_id','userId','account'];
+  function rtMeKeys(){var me=RT.acs.me||{},s={},add=function(v){v=String(v==null?'':v).trim().toLowerCase();if(v){s[v]=1;s[rtShort(v)]=1;s[v.split('@')[0]]=1;}};
+    add(me.username);add(me.id);RT.users.forEach(add);return s;}
+  function rtNormQ(d){var a=[],grp=function(arr,mine){arr.forEach(function(q){if(q&&typeof q==='object')a.push({q:q,g:mine});});};
+    if(Array.isArray(d))grp(d,null);
+    else if(d&&typeof d==='object'){var one=d.queries||d.items||d.rows||d.data||d.results;
+      if(Array.isArray(one))grp(one,null);
+      else Object.keys(d).forEach(function(k){if(!Array.isArray(d[k]))return;var lk=k.toLowerCase();
+        grp(d[k],/^(mine|my|own|owned|personal|private|user)/.test(lk)?true:/shared|public|other|team|group|common/.test(lk)?false:null);});}
+    var me=rtMeKeys();
+    return a.map(function(x){var q=x.q;
       var cl=q.clauses||(q.definition&&q.definition.clauses)||(q.query&&typeof q.query==='object'&&q.query.clauses)||(q.filter&&q.filter.clauses);
-      if(!cl&&typeof q.query==='string'){try{cl=JSON.parse(q.query).clauses;}catch(x){}}
-      if(!cl&&typeof q.definition==='string'){try{cl=JSON.parse(q.definition).clauses;}catch(x){}}
+      if(!cl&&typeof q.query==='string'){try{cl=JSON.parse(q.query).clauses;}catch(e){}}
+      if(!cl&&typeof q.definition==='string'){try{cl=JSON.parse(q.definition).clauses;}catch(e){}}
       if(!Array.isArray(cl))return null;var id=q.id!=null?q.id:(q.query_id!=null?q.query_id:q.name);
-      return {id:'acs-'+id,name:String(q.name||q.title||('Query '+id)),shared:!!(q.shared||q.is_shared||q.public||q.scope==='shared'),clauses:cl,src:'acs'};}).filter(Boolean);}
+      var own=[];RT_QOWN.forEach(function(k){var v=q[k];if(v==null||v==='')return;
+        if(typeof v==='object'){['username','value','name','email','id','login'].forEach(function(s){if(v[s]!=null&&v[s]!=='')own.push(String(v[s]));});}else own.push(String(v));});
+      var flag=q.mine!=null?q.mine:q.is_mine!=null?q.is_mine:q.is_owner!=null?q.is_owner:q.owned!=null?q.owned:q.own;
+      var mine=flag!=null?!!flag:x.g!=null?x.g:own.length?own.some(function(v){v=v.toLowerCase();return me[v]||me[rtShort(v)]||me[v.split('@')[0]];}):null;
+      return {id:'acs-'+id,name:String(q.name||q.title||('Query '+id)),shared:!!(q.shared||q.is_shared||q.public||q.scope==='shared'),
+        owner:own[0]||'',mine:mine,clauses:cl,src:'acs'};}).filter(Boolean);}
+  /* điểm "đúng việc test lại" – dùng xếp thứ tự và chọn 5 Query hiện sẵn khi chưa ghim */
+  function rtQScore(q){var s=0,cl=JSON.stringify(q.clauses||[]).toLowerCase(),n=String(q.name||'').toLowerCase();
+    if(q.mine===true)s+=100;if(q.mine===false)s-=40;if(q.id==='aq-mine')s+=35;if(q.id==='aq-all')s-=5;
+    if(RT.users.some(function(u){u=rtShort(u).toLowerCase();return u&&cl.indexOf(u)>=0;})||/@me\b|@current/.test(cl))s+=40;
+    if(/tester_raw|test_state/.test(cl))s+=15;if(cl.indexOf('đã xử lý')>=0)s+=10;if(/test/.test(n))s+=8;if(/xử lý|xu ly/.test(n))s+=4;
+    return s;}
+  var RT_QMAX=5;
+  function rtPinKey(){return 'aq-rt-qpin:'+String((RT.acs.me&&RT.acs.me.username)||'');}
+  function rtPins(){try{var v=JSON.parse(localStorage.getItem(rtPinKey())||'null');return Array.isArray(v)?v:null;}catch(e){return null;}}
+  function rtSetPins(v){try{localStorage.setItem(rtPinKey(),JSON.stringify(v));}catch(e){}}
+  function rtMineKnown(){return RT.qs.some(function(q){return q.src==='acs'&&q.mine!=null;});}
+  /* 5 Query hiện thành nút: ghim của người dùng, không có thì Query của tôi / gần việc test nhất; Query đang chọn luôn có mặt */
+  function rtShownQ(){var by={};RT.qs.forEach(function(q){by[q.id]=q;});var pins=rtPins(),out;
+    out=(pins||[]).map(function(id){return by[id];}).filter(Boolean);
+    var pool=RT.qs.filter(function(q){return out.indexOf(q)<0;});if(rtMineKnown()&&pool.some(function(q){return q.mine===true;}))pool=pool.filter(function(q){return q.mine===true||q.src==='aq';});
+    out=out.concat(pool.map(function(q,i){return {q:q,s:rtQScore(q),i:i};}).sort(function(a,b){return b.s-a.s||a.i-b.i;}).map(function(x){return x.q;}));
+    out=out.slice(0,RT_QMAX);var cur=by[RT.qk];
+    if(cur&&out.indexOf(cur)<0){if(out.length>=RT_QMAX)out[RT_QMAX-1]=cur;else out.push(cur);}
+    return out;}
   function rtBuiltin(){var me=RT.users,c=function(f,o,v){return {op:o,conj:'AND',field:f,value:v};};
     var role=me.length===1?c('tester_raw','eq',me[0]):c('tester_raw','in',me.join(', '));
     return [{id:'aq-mine',name:'Cần test – của tôi',shared:false,src:'aq',clauses:[role,c('status','eq','Đã xử lý'),c('test_state','neq','Đúng')]},
       {id:'aq-all',name:'Đã xử lý, chưa test đạt – mọi người',shared:true,src:'aq',clauses:[c('status','eq','Đã xử lý'),c('test_state','neq','Đúng')]}];}
-  async function rtLoadQueries(){RT.qErr='';var got=[],from='',paths=ACS.queriesPath?[ACS.queriesPath]:(RT.probed?[]:RT_QPROBE);
-    for(var i=0;i<paths.length&&!got.length;i++){try{got=rtNormQ(await rtCall('GET',paths[i]));if(got.length)from=paths[i];}catch(e){if(RT.acs.st==='login'){renderRetest();return;}}}
-    RT.probed=true;RT.qs=got.concat(rtBuiltin());RT.qsFrom=from;
-    if(!RT.qk||!RT.qs.some(function(q){return q.id===RT.qk;}))RT.qk=(got[0]||RT.qs[0]).id;
+  async function rtLoadQueries(){RT.qErr='';var paths=ACS.queriesPath?[ACS.queriesPath]:(RT.probed?[]:RT_QPROBE),res=[];
+    for(var i=0;i<paths.length;i++){try{var l=rtNormQ(await rtCall('GET',paths[i]));if(l.length)res.push({p:paths[i],l:l});}catch(e){if(RT.acs.st==='login'){renderRetest();return;}}}
+    if(!res.length&&RT.probed&&!ACS.queriesPath&&RT.qs.some(function(q){return q.src==='acs';})){RT.qs=RT.qs.filter(function(q){return q.src==='acs';}).concat(rtBuiltin());}
+    else{
+      res.sort(function(a,b){return b.l.length-a.l.length;});var got=res.length?res[0].l:[],from=res.length?res[0].p:'';
+      /* đường dẫn dạng "của tôi" trả ít hơn danh sách đầy đủ → đánh dấu các Query đó là của tôi */
+      var mineIds={},hasMine=false;res.slice(1).forEach(function(r){if(/mine|my-|\/my\b/i.test(r.p)&&r.l.length<got.length){hasMine=true;r.l.forEach(function(q){mineIds[q.id]=1;});}});
+      if(!rtMineKnownIn(got)&&!hasMine&&from&&!ACS.queriesPath){
+        for(var j=0;j<RT_QMINE.length&&!hasMine;j++){try{var l2=rtNormQ(await rtCall('GET',from+(from.indexOf('?')>=0?'&':'?')+RT_QMINE[j]));
+          if(l2.length&&l2.length<got.length&&l2.every(function(q){return got.some(function(g){return g.id===q.id;});})){hasMine=true;l2.forEach(function(q){mineIds[q.id]=1;});}}catch(e){}}}
+      if(hasMine)got.forEach(function(q){if(q.mine==null)q.mine=!!mineIds[q.id];});
+      RT.qs=got.concat(rtBuiltin());RT.qsFrom=from;}
+    RT.probed=true;
+    if(!RT.qk||!RT.qs.some(function(q){return q.id===RT.qk;}))RT.qk=(rtShownQ()[0]||RT.qs[0]).id;
     renderRetest();rtRun();}
+  var RT_QMINE=['mine=true','scope=mine','owner=me'];
+  function rtMineKnownIn(l){return l.some(function(q){return q.mine!=null;});}
   async function rtRun(){var q=RT.qs.filter(function(x){return x.id===RT.qk;})[0];if(!q||RT.qLoading)return;RT.qLoading=true;RT.qErr='';renderRetest();
     try{var rows=[];for(var off=0;off<600;off+=200){var j=await rtCall('POST','/cs/query',{clauses:q.clauses,columns:RT_COLS,sort:'case_id',desc:true,offset:off,limit:200});
         var pg=(j&&Array.isArray(j.rows))?j.rows:[];rows=rows.concat(pg);if(pg.length<200||(j.total!=null&&rows.length>=j.total))break;}
@@ -9266,13 +9342,18 @@ QUAY VIDEO (TÙY CHỌN)
     if(a.st==='checking'||a.st==='idle')return '<div class="rt-acs">'+dot+'<span>Đang kiểm tra phiên ACS…</span></div>';
     return '<div class="rt-acs warn">'+dot+'<span>'+(a.st==='err'?'Không kết nối được ACS: '+esc(a.err):'Chưa đăng nhập ACS – đăng nhập bằng tài khoản ACS của bạn để lấy Query.')+'</span>'+
       '<button type="button" class="btn sm primary" data-rt="login">Đăng nhập ACS</button>'+(a.st==='err'?'<button type="button" class="btn sm" data-rt="recheck">Thử lại</button>':'')+'</div>';}
-  function rtTicket(row,on){var last=rtLatest(row.case_id),again=last&&!rtActive(last);
-    return '<button type="button" class="rt-ticket'+(on?' on':'')+'" data-rtpick="'+esc(row.case_id)+'" aria-pressed="'+on+'"><span class="perf"></span>'+
-      '<span class="r1"><b class="mono">#'+esc(row.case_id)+'</b>'+(row.module?'<span class="stamp">'+esc(row.module)+'</span>':'')+(again?'<span class="stamp red">LẦN '+((last.round||1)+1)+'</span>':'')+
-        '<span class="when mono">'+esc(row.resolved_at?fmt(row.resolved_at):(row.changed||''))+'</span></span>'+
-      '<span class="tt">'+esc(row.title||'(không tiêu đề)')+'</span>'+
-      '<span class="sub mono">'+esc([row.school_code,row.status,row.test_state].filter(Boolean).join(' · '))+'</span>'+
-      '<span class="sub">Coder '+esc(rtShort(row.assignee_raw)||'—')+' · Tester '+esc(rtShort(row.tester_raw)||'—')+'</span></button>';}
+  function rtWhen(v){var d=v?new Date(v):null;if(!d||isNaN(d.getTime()))return '';var p=function(n){return (n<10?'0':'')+n;};
+    return p(d.getDate())+'/'+p(d.getMonth()+1)+(d.getFullYear()!==new Date().getFullYear()?'/'+d.getFullYear():'')+(d.getHours()||d.getMinutes()?' '+p(d.getHours())+':'+p(d.getMinutes()):'');}
+  function rtTicket(row,on){var last=rtLatest(row.case_id),again=last&&!rtActive(last),due=rtTime(row.due_date),late=due&&due<Date.now(),
+      prio=String(row.priority||''),hi=/cao|gấp|khẩn|high|urgent/i.test(prio);
+    return '<button type="button" class="rt-crow'+(on?' on':'')+'" data-rtpick="'+esc(row.case_id)+'" aria-pressed="'+on+'">'+
+      '<span class="id mono">#'+esc(row.case_id)+'</span>'+
+      '<span class="mn"><span class="tt">'+esc(row.title||'(không tiêu đề)')+'</span>'+
+        '<span class="mt">'+(again?'<span class="tg red">Lần '+((last.round||1)+1)+'</span>':'')+(prio&&hi?'<span class="tg red">'+esc(prio)+'</span>':'')+
+          (row.test_state?'<span class="tg soft">'+esc(row.test_state)+'</span>':'')+[row.school_code?'<b>'+esc(row.school_code)+'</b>':'',row.module?'<span class="md">'+esc(row.module)+'</span>':'','Coder '+esc(rtShort(row.assignee_raw)||'—'),
+          row.tester_raw&&RT.users.indexOf(row.tester_raw)<0?'Tester '+esc(rtShort(row.tester_raw)):''].filter(Boolean).join(' · ')+'</span></span>'+
+      '<span class="sd"><span class="when mono" title="Xử lý xong">'+esc(rtWhen(row.resolved_at||row.changed))+'</span>'+
+        (due?'<span class="due mono'+(late?' late':'')+'" title="Hạn">hạn '+esc(rtWhen(row.due_date))+'</span>':'')+'</span></button>';}
   function rtAssignBox(){var row=RT.rows.filter(function(r){return String(r.case_id)===String(RT.pick);})[0];if(!row)return '';
     var sc=rtScenFor(row),rn=rtRunners();if(!RT.asg.sc&&sc.length&&sc[0].s>0)RT.asg.sc=sc[0].it.id;if(!RT.asg.runner)RT.asg.runner=SC.me||'';
     return '<div class="rt-asg"><div class="rt-h">Giao case #'+esc(row.case_id)+'</div>'+
@@ -9293,12 +9374,47 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="q"><span class="lbl">HÀNG ĐỢI</span>'+(mine.length?mine.map(function(x){
         var act=x.state==='review'?'<button type="button" class="btn sm primary" data-rtopen="'+esc(x.id)+'">Duyệt ảnh</button>':(r.uid===SC.me&&x.state==='queued'?'<button type="button" class="btn sm primary" data-rtstart="'+esc(x.id)+'">Chạy</button>':(r.uid===SC.me&&x.state==='running'?'<button type="button" class="btn sm" data-rtstart="'+esc(x.id)+'">Chạy lại</button>':''));
         return '<div class="qi"><span class="pill mono">#'+esc(x.caseId)+'</span><span class="qt">'+esc(short(x.title))+'<br><span class="hint">'+esc(x.scenarioCode||'')+' · lần '+(x.round||1)+'</span></span>'+rtChip(x.state)+act+'</div>';}).join(''):'<span class="empty-txt">trống</span>')+'</div></div>';}
-  function rtRoom(){var q=RT.qs,inbox=RT.rows.filter(function(r){return !rtActive(rtLatest(r.case_id));}),done=RT.list.filter(function(x){return x.state==='pass'||x.state==='fail';}).slice(0,8);
-    var tabs=q.length?'<div class="rt-qtabs"><span class="lbl">QUERY</span>'+q.map(function(x){return '<button type="button" class="seg-b'+(x.id===RT.qk?' on':'')+'" data-rtq="'+esc(x.id)+'">'+esc(x.name)+(x.src==='aq'?' <span class="hint">(dựng sẵn)</span>':'')+'</button>';}).join('')+'</div>'+
-      (RT.acs.st==='ok'&&!RT.qsFrom?'<p class="hint">Chưa đọc được Query đã lưu của bạn trên ACS – đang dùng Query dựng sẵn. Quản trị cấu hình ở tab Thiết lập ACS (khảo sát 1 lần).</p>':''):'';
-    return '<div class="rt-grid"><section class="rt-inbox"><div class="rt-h">Phiếu chờ test <span class="hint">'+inbox.length+' case'+(RT.qLoading?' · đang tải…':'')+'</span></div>'+tabs+
-        (RT.qErr?'<p class="save-err">'+esc(RT.qErr)+'</p>':'')+
-        (inbox.length?inbox.map(function(r){var on=String(r.case_id)===String(RT.pick);return rtTicket(r,on)+(on?rtAssignBox():'');}).join(''):'<p class="empty-txt">'+(RT.acs.st==='ok'?(RT.qLoading?'Đang chạy Query…':'Query không có case nào chờ test.'):'Đăng nhập ACS để lấy case.')+'</p>')+'</section>'+
+  /* ---------- thanh Query: tối đa 5 nút + "Query khác" (tìm, ghim) ---------- */
+  function rtQBar(){var q=RT.qs;if(!q.length)return '';var shown=rtShownQ(),pins=rtPins()||[],known=rtMineKnown();
+    var chip=function(x){return '<button type="button" class="rt-qc'+(x.id===RT.qk?' on':'')+'" data-rtq="'+esc(x.id)+'" title="'+esc(x.name+(x.owner?' · tạo bởi '+rtShort(x.owner):'')+(x.src==='aq'?' · Query dựng sẵn của AQ Auto Test':''))+'">'+
+      (x.src==='aq'?'<span class="rt-qk">AQ</span>':x.mine===true?'<span class="rt-qk me">Của tôi</span>':'')+'<span class="nm">'+esc(x.name)+'</span>'+
+      (x.id===RT.qk&&!RT.qLoading&&RT.rowsAt?'<span class="ct mono">'+RT.rows.length+'</span>':'')+'</button>';};
+    var more='';
+    if(RT.qPanel){var f=String(RT.qFind||'').trim().toLowerCase(),m=function(x){return !f||String(x.name).toLowerCase().indexOf(f)>=0||String(x.owner).toLowerCase().indexOf(f)>=0;};
+      var row=function(x){var pin=pins.indexOf(x.id)>=0;return '<div class="rt-qr'+(x.id===RT.qk?' on':'')+'"><button type="button" class="nm" data-rtq="'+esc(x.id)+'">'+esc(x.name)+
+          (x.owner&&x.mine!==true?' <span class="hint">· '+esc(rtShort(x.owner))+'</span>':'')+'</button>'+
+        '<button type="button" class="pin'+(pin?' on':'')+'" data-rtpin="'+esc(x.id)+'" aria-pressed="'+pin+'" title="'+(pin?'Bỏ ghim':'Ghim lên thanh Query (tối đa '+RT_QMAX+')')+'">'+(pin?'★':'☆')+'</button></div>';};
+      var grp=function(t,l,open){l=l.filter(m);if(!l.length)return '';return '<details class="rt-qg"'+(open||f?' open':'')+'><summary>'+esc(t)+' <span class="hint">'+l.length+'</span></summary>'+l.map(row).join('')+'</details>';};
+      var mine=q.filter(function(x){return x.src==='acs'&&x.mine===true;}),other=q.filter(function(x){return x.src==='acs'&&x.mine!==true;}),aq=q.filter(function(x){return x.src==='aq';});
+      var byScore=function(l){return l.map(function(x,i){return {x:x,s:rtQScore(x),i:i};}).sort(function(a,b){return b.s-a.s||a.i-b.i;}).map(function(o){return o.x;});};
+      more='<div class="rt-qpanel card"><div class="rt-qph"><input id="rtQFind" type="search" placeholder="Tìm Query theo tên…" value="'+esc(RT.qFind||'')+'" autocomplete="off">'+
+          '<span class="hint">★ ghim Query luôn hiện trên thanh (tối đa '+RT_QMAX+'), chỗ còn lại app tự chọn'+(pins.length?' · <button type="button" class="linkbtn" data-rt="unpinall">bỏ ghim hết</button>':'')+'</span></div>'+
+        '<div class="rt-qlist">'+(known?grp('Query của tôi',mine,true)+grp('Query chia sẻ / của người khác',other,false):grp('Query trên ACS (xếp theo mức gần việc test)',byScore(other),true))+
+        grp('Dựng sẵn của AQ Auto Test',aq,!known&&!other.length)+'</div>'+
+        (!known&&other.length?'<p class="hint">ACS không cho biết ai tạo Query nên app tự chọn 5 Query gần việc test nhất – ghim (☆) đúng Query của bạn để giữ cố định.</p>':'')+'</div>';}
+    return '<div class="rt-qbar"><span class="lbl">QUERY</span>'+shown.map(chip).join('')+
+      (q.length>shown.length||RT.qPanel?'<button type="button" class="rt-qc more'+(RT.qPanel?' on':'')+'" data-rt="qpanel" aria-expanded="'+!!RT.qPanel+'">'+(RT.qPanel?'Đóng':'Query khác ('+(q.length-shown.length)+')')+' ▾</button>':'')+'</div>'+more+
+      (RT.acs.st==='ok'&&!RT.qsFrom?'<p class="hint">Chưa đọc được Query đã lưu của bạn trên ACS – đang dùng Query dựng sẵn. Quản trị cấu hình ở tab Thiết lập ACS (khảo sát 1 lần).</p>':'');}
+  /* ---------- danh sách case: lọc, sắp xếp, nhóm theo trạng thái ACS ---------- */
+  var RT_SORT={resolved:'Mới xử lý trước',due:'Hạn gần nhất',id:'Mã case giảm dần'};
+  function rtTime(v){var t=v?new Date(v).getTime():NaN;return isNaN(t)?0:t;}
+  function rtCaseList(inbox){var f=String(RT.cf||'').trim().toLowerCase(),srt=RT.csort||'resolved';
+    var l=inbox.filter(function(r){return !f||[r.case_id,r.title,r.school_code,r.module,r.assignee_raw,r.tester_raw,r.status,r.test_state].join(' ').toLowerCase().indexOf(f)>=0;});
+    l.sort(srt==='due'?function(a,b){return (rtTime(a.due_date)||9e15)-(rtTime(b.due_date)||9e15);}:srt==='id'?function(a,b){return (+b.case_id||0)-(+a.case_id||0);}
+      :function(a,b){return (rtTime(b.resolved_at)||rtTime(b.changed))-(rtTime(a.resolved_at)||rtTime(a.changed));});
+    var groups={},order=[];l.forEach(function(r){var k=r.status||'(không trạng thái)';if(!groups[k]){groups[k]=[];order.push(k);}groups[k].push(r);});
+    order.sort(function(a,b){return (b==='Đã xử lý')-(a==='Đã xử lý');});
+    var lim=RT.cmore?1e9:40,n=0,tools='<div class="rt-ctools"><input id="rtCF" type="search" placeholder="Lọc: mã, tiêu đề, trường, coder…" value="'+esc(RT.cf||'')+'" autocomplete="off">'+
+      '<select id="rtCSort" aria-label="Sắp xếp case">'+Object.keys(RT_SORT).map(function(k){return '<option value="'+k+'"'+(k===srt?' selected':'')+'>'+RT_SORT[k]+'</option>';}).join('')+'</select></div>';
+    if(!inbox.length)return '<p class="empty-txt">'+(RT.acs.st==='ok'?(RT.qLoading?'Đang chạy Query…':'Query không có case nào chờ test.'):'Đăng nhập ACS để lấy case.')+'</p>';
+    var body=order.map(function(k){var rows=groups[k],h=order.length>1?'<div class="rt-cg">'+esc(k)+' <span class="hint">'+rows.length+'</span></div>':'';
+      return h+rows.map(function(r){if(n++>=lim)return '';var on=String(r.case_id)===String(RT.pick);return rtTicket(r,on)+(on?rtAssignBox():'');}).join('');}).join('');
+    return tools+(l.length?'<div class="rt-clist">'+body+'</div>'+(l.length>lim?'<button type="button" class="btn sm rt-cmore" data-rt="cmore">Xem thêm '+(l.length-lim)+' case</button>':'')
+      :'<p class="empty-txt">Không có case khớp "'+esc(RT.cf)+'".</p>');}
+  function rtRoom(){var inbox=RT.rows.filter(function(r){return !rtActive(rtLatest(r.case_id));}),done=RT.list.filter(function(x){return x.state==='pass'||x.state==='fail';}).slice(0,8),
+      busyN=RT.rows.length-inbox.length;
+    return rtQBar()+'<div class="rt-grid"><section class="rt-inbox"><div class="rt-h">Case chờ test <span class="hint">'+inbox.length+' case'+(busyN?' · '+busyN+' đang ở máy test':'')+(RT.qLoading?' · đang tải…':'')+'</span></div>'+
+        (RT.qErr?'<p class="save-err">'+esc(RT.qErr)+'</p>':'')+rtCaseList(inbox)+'</section>'+
       '<section class="rt-stations"><div class="rt-h">Máy test <span class="hint">máy chạy thử / máy ảo đã khai báo</span></div><div class="rt-stgrid">'+
         (rtRunners().length?rtRunners().map(rtStation).join(''):'<p class="empty-txt">Chưa có máy chạy thử – khai báo ở trang Máy chạy thử.</p>')+'</div>'+
         '<div class="rt-h" style="margin-top:18px">Vừa kết luận</div>'+(done.length?'<div class="rt-done">'+done.map(function(x){
@@ -9333,7 +9449,8 @@ QUAY VIDEO (TÙY CHỌN)
         '<div class="rt-pad">'+(d?'<p>Trạng thái: <b>'+esc(a.st==='ok'?'đã đăng nhập – '+(a.me.name||a.me.username):a.st==='login'?'chưa đăng nhập':a.st==='err'?'lỗi – '+a.err:'đang kiểm tra')+'</b></p>'+
           '<div class="rt-btns"><button type="button" class="btn sm primary" data-rt="login">'+(a.st==='ok'?'Đăng nhập lại':'Đăng nhập ACS')+'</button><button type="button" class="btn sm" data-rt="logout">Đăng xuất ACS</button><button type="button" class="btn sm" data-rt="recheck">Kiểm tra lại</button></div>'
           :'<p class="empty-txt">Chỉ có trong app AQ Auto Test.</p>')+'</div></section>'+
-      '<section class="card"><div class="list-head"><div><h3>Query của người dùng</h3><p>'+(RT.qsFrom?'Đang đọc Query đã lưu trên ACS từ <span class="mono">'+esc(RT.qsFrom)+'</span>.':'Chưa đọc được Query đã lưu trên ACS – đang dùng Query dựng sẵn ("Cần test – của tôi").')+'</p></div></div>'+
+      '<section class="card"><div class="list-head"><div><h3>Query của người dùng</h3><p>'+(RT.qsFrom?'Đang đọc Query đã lưu trên ACS từ <span class="mono">'+esc(RT.qsFrom)+'</span>: '+RT.qs.filter(function(q){return q.src==='acs';}).length+' Query'+
+        (rtMineKnown()?', của bạn '+RT.qs.filter(function(q){return q.mine===true;}).length+'.':' – ACS không cho biết ai tạo Query, ghim (☆) Query của bạn ở nút "Query khác".'):'Chưa đọc được Query đã lưu trên ACS – đang dùng Query dựng sẵn ("Cần test – của tôi").')+'</p></div></div>'+
         '<div class="rt-pad form-grid">'+inp('rtQPath','ĐƯỜNG DẪN API LẤY QUERY CỦA TÔI',ACS.queriesPath,'vd /cs/queries (để trống = dò tự động)')+
           '<div class="fld"><span class="lbl">&nbsp;</span><div class="rt-btns"><button type="button" class="btn sm" data-rt="saveq"'+ro+'>Lưu &amp; tải lại Query</button></div></div></div></section>'+
       '<section class="card"><div class="list-head"><div><h3>Ghi kết quả về ACS</h3><p>Trường của case được ghi khi kết luận. Chỉ ghi thật khi đã đánh dấu "Đã xác nhận" (sau khi khảo sát hoặc thử trên một case TEST).</p></div></div>'+
@@ -9358,10 +9475,14 @@ QUAY VIDEO (TÙY CHỌN)
         (RT.flash?'<div class="flash rt-flash">'+esc(RT.flash)+'</div>':'');
       el.innerHTML=top+(RT.tab==='setup'?rtSetup():(RT.open?rtReview():rtRoom()));});}
   (function(){var pg=$('#page-retest');if(!pg)return;
-    pg.addEventListener('click',function(e){var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab]');if(!b||b.disabled)return;var a=rtA();
+    pg.addEventListener('click',function(e){var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab]');if(!b||b.disabled)return;var a=rtA();
       if(b.hasAttribute('data-rttab')){RT.tab=b.getAttribute('data-rttab');renderRetest();return;}
       if(b.hasAttribute('data-rtpick')){var id=b.getAttribute('data-rtpick');RT.pick=String(RT.pick)===id?null:id;RT.asg={sc:'',runner:''};RT.err='';renderRetest();return;}
-      if(b.hasAttribute('data-rtq')){RT.qk=b.getAttribute('data-rtq');RT.pick=null;rtRun();return;}
+      if(b.hasAttribute('data-rtq')){RT.qk=b.getAttribute('data-rtq');RT.pick=null;RT.cmore=false;RT.qPanel=false;rtRun();return;}
+      if(b.hasAttribute('data-rtpin')){var pid=b.getAttribute('data-rtpin'),pins=(rtPins()||[]).filter(function(x){return RT.qs.some(function(q){return q.id===x;});}),pi=pins.indexOf(pid);
+        if(pi>=0)pins.splice(pi,1);
+        if(pi<0){if(pins.length>=RT_QMAX){notice('Chỉ ghim tối đa '+RT_QMAX+' Query – bỏ ghim một Query trước.');return;}pins.push(pid);}
+        rtSetPins(pins);renderRetest();return;}
       if(b.hasAttribute('data-rtstart')){rtStart(b.getAttribute('data-rtstart'));return;}
       if(b.hasAttribute('data-rtopen')){rtOpen(b.getAttribute('data-rtopen'));return;}
       if(b.hasAttribute('data-rtkind')){var k=b.getAttribute('data-rtkind');if(k!==RT.kind){RT.kind=k;if(!RT.noteEdited){var rt=rtById(RT.open);RT.note=rtDraft(rt,rtRunOf(rt),k);}}renderRetest();return;}
@@ -9370,6 +9491,9 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='logout'&&a){a.logout().then(function(s){RT.rows=[];RT.qs=[];rtSetStatus(s);});return;}
       if(act==='recheck'){rtStatus();return;}
       if(act==='refresh'){rtRun();return;}
+      if(act==='qpanel'){RT.qPanel=!RT.qPanel;renderRetest();if(RT.qPanel){var fi=document.getElementById('rtQFind');if(fi)fi.focus();}return;}
+      if(act==='unpinall'){try{localStorage.removeItem(rtPinKey());}catch(err){}renderRetest();return;}
+      if(act==='cmore'){RT.cmore=true;renderRetest();return;}
       if(act==='unpick'){RT.pick=null;renderRetest();return;}
       if(act==='assign'){rtAssign();return;}
       if(act==='close'){RT.open=null;RT.err='';renderRetest();return;}
@@ -9389,8 +9513,11 @@ QUAY VIDEO (TÙY CHỌN)
     pg.addEventListener('change',function(e){var t=e.target;
       if(t.id==='rtSc'){RT.asg.sc=t.value;return;}
       if(t.id==='rtRn'){RT.asg.runner=t.value;return;}
-      if(t.id==='rtSeen'){RT.seen=t.checked;return;}});
-    pg.addEventListener('input',function(e){if(e.target.id==='rtNote'){RT.note=e.target.value;RT.noteEdited=true;}});
+      if(t.id==='rtSeen'){RT.seen=t.checked;return;}
+      if(t.id==='rtCSort'){RT.csort=t.value;renderRetest();return;}});
+    pg.addEventListener('input',function(e){var t=e.target;if(t.id==='rtNote'){RT.note=t.value;RT.noteEdited=true;}
+      if(t.id==='rtQFind'){RT.qFind=t.value;renderRetest();}
+      if(t.id==='rtCF'){RT.cf=t.value;RT.cmore=false;renderRetest();}});
     if(rtA()){rtA().onEvent(function(p){if(!p)return;if(p.status){rtSetStatus(p.status);return;}
       if(p.survey==='call'){RT.sv.n=p.n;RT.sv.last=p.last||'';if(RT.tab==='setup')renderRetest();}});
       rtStatus();}

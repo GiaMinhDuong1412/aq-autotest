@@ -6,7 +6,7 @@
  * cookie của người dùng) – chỉ thấy/sửa được những gì tài khoản đó được phép. App không lưu mật khẩu.
  *
  * IPC cho trang console (chỉ cửa sổ chính được gọi):
- *   acs-status            → { ok, me:{name,username} } | { needLogin } | { error }
+ *   acs-status            → { ok, me:{name,username,id} } | { needLogin } | { error }
  *   acs-login             → mở cửa sổ đăng nhập, chờ tới khi đăng nhập xong hoặc đóng cửa sổ → như acs-status
  *   acs-logout            → xoá phiên
  *   acs-call {method,path,body} → { status, data }   (path phải bắt đầu bằng /auth/me hoặc /cs/)
@@ -92,7 +92,7 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
       const r = await call('GET', '/auth/me');
       if (r.status === 401 || r.status === 403) return { needLogin: true };
       if (r.status !== 200 || !r.data) return { error: 'ACS trả về mã ' + r.status };
-      return { ok: true, me: { name: r.data.display_name || r.data.username || '', username: r.data.username || '' } };
+      return { ok: true, me: { name: r.data.display_name || r.data.username || '', username: r.data.username || '', id: r.data.id != null ? String(r.data.id) : (r.data.user_id != null ? String(r.data.user_id) : '') } };
     } catch (e) { return { error: String((e && e.message) || e) }; }
   }
 
