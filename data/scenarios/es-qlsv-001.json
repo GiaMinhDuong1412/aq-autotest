@@ -142,12 +142,12 @@
   "KIỂM TRA THÊM (dữ liệu sang màn hình nhận): mở Sinh viên/ Sinh viên học kỳ/ Danh sách sinh viên học kỳ, tìm {MSSV} → có là Đạt, không có là Lỗi. Xong tắt màn hình.",
   "Sửa quyết định {SOQD}: mở lại Quyết định vào mới, chọn {SOQD}, bấm Sửa, đổi Tên quyết định thành {TENQD2}. Bấm Lưu.",
   "KIỂM TRA SỬA: quyết định {SOQD} hiển thị Tên quyết định {TENQD2}.",
-  "Xóa quyết định {SOQD}: chọn quyết định, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick ô chọn dòng {SOQD} → Thực hiện → \"Xác nhận xóa dữ liệu đang chọn?\" → Có. Thanh trạng thái dưới đáy báo \"Xóa dữ liệu thành công\". Danh sách có dòng khác hoặc hộp hỏi lạ thì KHÔNG xóa.",
+  "Xóa quyết định {SOQD}: chọn quyết định, TICK ô chọn đầu dòng {SOQD} trên lưới, bấm Xóa → cửa sổ \"Danh sách đang chọn để xóa\" (chỉ được có {SOQD}) → tick ô chọn dòng {SOQD} → Thực hiện → \"Xác nhận xóa dữ liệu đang chọn?\" → Có. Thanh trạng thái dưới đáy báo \"Xóa dữ liệu thành công\". Danh sách có dòng khác hoặc hộp hỏi lạ thì KHÔNG xóa.",
   "KIỂM TRA XÓA: quyết định {SOQD} không còn trong danh sách Quyết định vào mới (xóa thành công). Nếu vẫn thấy (lưới chưa nạp lại) → tắt màn hình bằng X, mở lại menu, kiểm tra lần nữa: không còn = Đạt. Xong tắt màn hình.",
   "KIỂM TRA DỌN DỮ LIỆU: mở Sinh viên/ Sinh viên học kỳ/ Danh mục sinh viên, tìm {MSSV} → không còn là Đạt (xóa QĐ vào mới thì Edusoft tự xóa SV khỏi danh mục). Xong tắt màn hình."
  ],
  "title": "Thêm sinh viên mới nhập học bằng Quyết định vào mới (thêm – sửa – xóa)",
- "updatedAt": "2026-11-17T09:00:00.000Z",
+ "updatedAt": "2026-11-18T09:25:27.740Z",
  "updatedBy": "u_L8VJITzyuU54eIqCAl0PKQ",
  "vars": {
   "HOLOT": "Kiem Thu",

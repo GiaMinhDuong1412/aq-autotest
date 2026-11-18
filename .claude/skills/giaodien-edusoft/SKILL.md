@@ -354,6 +354,16 @@ Nguồn #1–#12: tài liệu "Giao diện Edusoft" (docx) người dùng gửi 
 - Quy tắc chung: **không bao giờ gửi Space/Enter vào hộp hỏi khi chưa chắc con trỏ ở đúng nút** – nút mặc định của Edusoft
   thường là nút an toàn (Không).
 
+### #27 – Phải TICK ô chọn của dòng trên lưới chính trước khi bấm Xóa (người dùng chỉ 18/11, kit 11.18-02)
+- Màn hình "Quyết định vào mới" (và lưới có cột ô check đầu dòng): Edusoft chỉ xóa **dòng đã tick ô chọn** ở lưới danh sách
+  (cột check đầu dòng, cạnh "Ngày lập QĐ"). Chỉ bấm chọn dòng (dòng sáng) rồi bấm Xóa → form "Danh sách đang chọn để xóa" vẫn hiện
+  và tick được ở form, Thực hiện → Có nhưng **không xóa** (thanh trạng thái không báo, lượt 18/11 hết 40 giây chờ).
+- Thao tác đúng: lọc cột → thấy dòng → **tick ô chọn của dòng đó trên lưới chính** → Xóa → (form xác nhận: tick lại nếu cần) →
+  Thực hiện → Có → thanh trạng thái "Xóa dữ liệu thành công".
+- Kit 11.18-02: `delete_row` (không có `=> Nút`) tìm ô chọn cùng hàng, bên trái ô vừa tìm (`row_checkbox`: DataItem cùng "row N"
+  có giá trị Checked/Unchecked hoặc CheckBox) → `tick_box`; không tick được → báo lỗi, không bấm Xóa; lưới không có cột check → như cũ.
+  Form xác nhận vẫn kiểm mọi dòng phải mang mã test (dòng test cũ còn tick sót → không xóa).
+
 ## 5. Quy trình khi được dạy
 
 1. Nhận ảnh chụp / mô tả / file `ui-*.txt`; hỏi lại nếu chưa rõ phần tử nằm ở đâu. Lưu ảnh vào `anh/`.
