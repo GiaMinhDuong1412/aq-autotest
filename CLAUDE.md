@@ -71,6 +71,9 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `GET ACS.casePath` – mặc định dò `/cs/cases/{id}`, lấy trường `RT_REQK`/dài nhất, chọn được trường khác, lưu vào phiếu `request`), 2 Phiên bản
   Edusoft của máy test (`runners.check.version`, cảnh báo nếu ghi nhận trước khi coder xử lý xong), 3 Plan test (bước kịch bản, đổi kịch bản khi
   chờ chạy), 4 Kết quả (trạng thái, ảnh, kết luận, nút Chạy / Duyệt ảnh).
+  Mục 1 **Nội dung case**: trường chia nhóm theo tên (`RT_SEC`/`rtSecOf`: Khách hàng yêu cầu / BA phân tích / Coder xử lý / Ghi chú test trước /
+  trường khác – "dùng làm yêu cầu KH"); yêu cầu KH làm gọn bằng `rtCleanMail` (bỏ lời chào, chữ ký sau "Trân trọng…", thư trích dẫn From:/On … wrote:;
+  nút "xem nguyên văn"); "Diễn biến case" từ `/cs/cases/{id}/history` (`rtHistRows`).
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút, **ràng buộc**: ô bắt buộc / điều kiện chặn + câu báo) ghép từ bản trích source:
