@@ -62,6 +62,11 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   (chỉ đường dẫn `/auth/me`, `/cs/…`). Cách ghi kết quả (`settings/acs.write`: method, path `{id}`, tên trường, giá trị) và đường dẫn Query đã lưu
   (`settings/acs.queriesPath`) cấu hình ở tab Thiết lập ACS, có **Khảo sát ACS** ghi lại lời gọi khi người dùng tự thao tác; chỉ ghi thẳng lên ACS
   khi `write.verified` (chưa xác nhận thì chép nội dung + mở case để dán tay). Bản claude.ai/không có app: chỉ xem phiếu.
+  **Query của tôi** (`rtNormQ`): nhận người tạo từ các trường `RT_QOWN` (owner, created_by…), cờ `mine/is_owner`, nhóm `mine`/`shared` trong
+  phản hồi, đường dẫn dò dạng `…/mine` trả ít hơn, hoặc thử `?mine=true|scope=mine|owner=me` – so với `RT.users` + `/auth/me`. Thanh Query chỉ hiện
+  **tối đa 5** (`RT_QMAX`, `rtShownQ`): Query ghim (☆, localStorage `aq-rt-qpin:<user>`) trước, còn lại tự chọn theo `rtQScore` (của tôi, có tên tôi,
+  tester_raw/test_state, "Đã xử lý"); Query đang chọn luôn có mặt; còn lại ở nút "Query khác" (tìm + nhóm Của tôi / Chia sẻ / Dựng sẵn).
+  Danh sách case (`rtCaseList`): ô lọc, sắp xếp (mới xử lý / hạn gần / mã), nhóm theo trạng thái ACS (Đã xử lý trước), dòng gọn `rtTicket`, 40 dòng rồi "Xem thêm".
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút, **ràng buộc**: ô bắt buộc / điều kiện chặn + câu báo) ghép từ bản trích source:
