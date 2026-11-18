@@ -112,7 +112,15 @@ def start_run(codes, why=""):
         (BASE / "loi-chay.txt").unlink()
     except Exception:
         pass
-    RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE, env=env)
+    si = None
+    try:                                        # cửa sổ đen mở ẨN – aqrun tự hiện khi cần nhập mật khẩu / gặp lỗi
+        si = subprocess.STARTUPINFO()
+        si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        si.wShowWindow = 0
+    except Exception:
+        si = None
+    RUNNING["p"] = subprocess.Popen([python_exe(), str(BASE / "aqrun.py")] + codes, cwd=str(BASE), creationflags=CREATE_NEW_CONSOLE,
+                                    env=env, startupinfo=si)
 
 
 def check_run_end():
