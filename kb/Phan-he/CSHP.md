@@ -49,6 +49,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[DKMH]], [[KHGD]], [[QLHT]], [
 
 ## Phần trên Edusoft
 `Chính sách HP/ Chính sách học phí/ …`, `Chính sách HP/ Tính và In học phí/ …`, `Chính sách HP/ Chính sách các khoản thu khác/ …`.
+Menu: [[Menu/CSHP|93 menu của CSHP]] – menu tạo dữ liệu: [[Menu/Cập nhật tồn nợ (D27.01)|Cập nhật tồn nợ]], [[Menu/Danh sách SV tồn nợ HP (D27.03)|Danh sách SV tồn nợ HP]], [[Menu/Tính theo lớp (P21.03)|Tính theo lớp]], [[Menu/Tính theo từng sinh viên (P21.01)|Tính theo từng sinh viên]].
 
 ## Phần trên web / app
 NetWEB SV: **xem học phí** (summary + bảng chi tiết, miễn giảm), học phí tạm tính khi ĐKMH; đóng học phí trực tuyến ([[EDUBILL]]).

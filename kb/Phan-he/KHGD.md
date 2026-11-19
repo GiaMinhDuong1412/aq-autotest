@@ -41,7 +41,7 @@ CTĐT (chuẩn → kế hoạch → thực hiện), DS lớp / phòng / viên ch
 - [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]]
 - [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]]
 - [[Phong hoc|Phòng học kỳ]]
-- [[Nhom hoc|Nhóm học (nhóm tổ)]]
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]]
 - [[Thoi khoa bieu|Thời khóa biểu]]
 
 ## Đưa sang
@@ -49,7 +49,7 @@ CTĐT (chuẩn → kế hoạch → thực hiện), DS lớp / phòng / viên ch
 - [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]] → [[QLSV]], [[DIEM]], [[NETWEB-UI]]
 - [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]] → [[QLTN]], [[DKMH]]
 - [[Phong hoc|Phòng học kỳ]] → [[LTHI]]
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] → [[DKMH]], [[LTHI]], [[KSDG]], [[KLGD]], [[DIEM]]
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] → [[DKMH]], [[LTHI]], [[KSDG]], [[KLGD]], [[DIEM]]
 - [[Thoi khoa bieu|Thời khóa biểu]] → [[DKMH]], [[LTHI]], [[KLGD]]
 
 ## Sửa ở đây → kiểm lại
@@ -58,6 +58,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[QLHT]], [[QLNS]], [[QLSV]] �
 
 ## Phần trên Edusoft
 `Kế hoạch/ Chương trình đào tạo/ …`, `Kế hoạch/ Qui hoạch nhóm học phần/ …`, `Kế hoạch/ Thời khóa biểu/ …`.
+Menu: [[Menu/KHGD|213 menu của KHGD]] – menu tạo dữ liệu: [[Menu/CTĐT chuẩn (K41.02)|CTĐT chuẩn]], [[Menu/CTĐT kế hoạch (K41.03)|CTĐT kế hoạch]], [[Menu/CTĐT thực hiện (K41.04)|CTĐT thực hiện]], [[Menu/Danh mục môn học (K4_DMMH)|Danh mục môn học]], [[Menu/Danh sách phòng học kỳ (K0.2)|Danh sách phòng học kỳ]], [[Menu/Danh sách nhóm tổ (K81_1)|Danh sách nhóm tổ]], [[Menu/Xếp thời khóa biểu tự động (K112)|Xếp thời khóa biểu tự động]], [[Menu/Xếp thời khóa biểu tự động (K.105)|Xếp thời khóa biểu tự động]].
 
 ## Phần trên web / app
 SV + GV xem TKB dạng tuần / học kỳ, SV xem CTĐT và môn tiên quyết, GV đăng ký nghỉ dạy – dạy bù online.

@@ -1,0 +1,113 @@
+---
+loai: danh-sach-menu
+phan_he: "[[QLTV]]"
+so_menu: 101
+nguon: danh-muc-menu
+---
+# Menu QLTV – Thu / chi học phí
+
+101 menu Edusoft (từ `web/edusoft-catalog.json`). Tên **có liên kết** = menu **tạo** dữ liệu (có ghi chú riêng); → [[…]] = dữ liệu menu đó đụng tới.
+Phân hệ: [[QLTV]].
+
+## chi HP
+- chi sau ngày <small>(An toàn dữ liệu / Khóa & mở khóa dữ liệu / Khóa sổ nhập phiếu thu)</small> `VAT13` → [[Phieu thu]]
+- chi toàn học kỳ <small>(An toàn dữ liệu / Khóa & mở khóa dữ liệu / Khóa sổ nhập phiếu thu)</small> `VAT11` → [[Phieu thu]]
+- chi trước ngày <small>(An toàn dữ liệu / Khóa & mở khóa dữ liệu / Khóa sổ nhập phiếu thu)</small> `VAT12` → [[Phieu thu]]
+- Nhật ký thu vãng lai 1 sinh viên <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV7`
+- Nhật ký hủy ĐKMH đã thu HP <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV2` → [[KQ DKMH]]
+- Nhật ký phiếu thu vãng lai đã hủy <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV8` → [[Phieu thu]]
+- Nhật ký thay đổi kết quả đăng ký <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV3` → [[KQ DKMH]]
+- Nhật ký thu học phí của sinh viên <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV1` → [[Hoc phi]], [[Phieu thu]]
+- Nhật ký thu-chi theo ngày <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV6`
+- Phục hồi phiếu thu học phí <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV4` → [[Hoc phi]], [[Phieu thu]]
+- Phục hồi phiếu thu vãng lai <small>(An toàn dữ liệu / Truy vết dữ liệu)</small> `VTV5` → [[Phieu thu]]
+- Bảng kê hóa đơn - chứng từ hàng hóa <small>(Báo cáo / Báo cáo doanh thu)</small> `VR01.01` → [[Phieu thu]]
+- In DSSV nợ các học kỳ <small>(Báo cáo / Báo cáo nợ)</small> `VR02.02`
+- In DSSV nợ học kỳ hiện tại <small>(Báo cáo / Báo cáo nợ)</small> `VR01.02`
+- In DSSV nợ học phí <small>(Báo cáo / Báo cáo nợ)</small> `VR02.04` → [[Hoc phi]], [[No hoc phi]]
+- In sổ chi tiết thu <small>(Báo cáo / Báo cáo nợ)</small> `VR02.03`
+- Báo cáo chi tiết thu học phí tháng <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.04` → [[Hoc phi]], [[Phieu thu]]
+- Báo cáo chi tiết thu theo ngày <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.06` → [[Hoc phi]], [[Phieu thu]]
+- Báo cáo chi tiết đóng học phí <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.01` → [[Hoc phi]], [[Phieu thu]]
+- Báo cáo tổng hợp đóng học phí <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.02` → [[Hoc phi]], [[Phieu thu]]
+- In tổng hợp thu học phí năm <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.03` → [[Hoc phi]], [[Phieu thu]]
+- In tổng hợp thu học phí theo ngày <small>(Báo cáo / Báo cáo thu học phí)</small> `VR03.05` → [[Hoc phi]], [[Phieu thu]]
+- Học phí sinh viên đăng ký môn học <small>(Báo cáo / Học phí sinh viên đăng ký)</small> `VR05.01` → [[KQ DKMH]], [[Hoc phi]]
+- Báo cáo doanh thu năm <small>(Báo cáo / Sổ theo dõi học phí)</small> `VR04.03` → [[Hoc phi]]
+- Sổ theo dõi học phí theo lớp <small>(Báo cáo / Sổ theo dõi học phí)</small> `VR04.01` → [[Hoc phi]]
+- Sổ tổng hợp học phí <small>(Báo cáo / Sổ theo dõi học phí)</small> `VR04.02` → [[Hoc phi]]
+- Báo cáo thu học phí học kỳ <small>(Báo cáo / Tổng hợp thu chi)</small> `V4102` → [[Hoc phi]], [[Phieu thu]]
+- Tổng hợp thu chi học phí học kỳ <small>(Báo cáo / Tổng hợp thu chi)</small> `V4101` → [[Hoc phi]]
+- Cập nhật hóa đơn điện tử từ EduWEB <small>(Hoạt động thu / chi / Hóa đơn điện tử)</small> `V0.01.18`
+- Import hóa đơn điện tử <small>(Hoạt động thu / chi / Hóa đơn điện tử)</small> `V0.01.28`
+- Khai báo mẫu số HDDT theo lớp <small>(Hoạt động thu / chi / Hóa đơn điện tử)</small> `V0.01.27`
+- Xem sửa thông tin hóa đơn điện tử <small>(Hoạt động thu / chi / Hóa đơn điện tử)</small> `V0.01.20`
+- Xuất hóa đơn điện tử <small>(Hoạt động thu / chi / Hóa đơn điện tử)</small> `V0.01.17`
+- In chi tiết hóa đơn thu học phí <small>(Hoạt động thu / chi / In học phí)</small> `V0.02.01` → [[Hoc phi]], [[Phieu thu]]
+- In chi tiết học phí 1 SV <small>(Hoạt động thu / chi / In học phí)</small> `V11` → [[Hoc phi]]
+- In chi tiết học phí 1 SV (Mẫu 2) <small>(Hoạt động thu / chi / In học phí)</small> `V11A` → [[Hoc phi]]
+- In chi tiết học phí 1 SV theo file <small>(Hoạt động thu / chi / In học phí)</small> `V13` → [[Hoc phi]]
+- In chi tiết học phí 1 SV theo file (Mẫu 2) <small>(Hoạt động thu / chi / In học phí)</small> `V13A` → [[Hoc phi]]
+- In chi tiết học phí 1 SV theo lớp <small>(Hoạt động thu / chi / In học phí)</small> `V16` → [[Hoc phi]]
+- In chi tiết học phí 1 SV theo lớp (Mẫu 2) <small>(Hoạt động thu / chi / In học phí)</small> `V16A` → [[Hoc phi]]
+- In phiếu hoàn theo file SV <small>(Hoạt động thu / chi / In học phí)</small> `V07` → [[Hoc phi]]
+- In phiếu nộp tiền <small>(Hoạt động thu / chi / In học phí)</small> `V03` → [[Hoc phi]]
+- In phiếu thu <small>(Hoạt động thu / chi / In học phí)</small> `V02` → [[Hoc phi]], [[Phieu thu]]
+- In tổng hợp học phí 1 SV <small>(Hoạt động thu / chi / In học phí)</small> `V08` → [[Hoc phi]]
+- In tổng hợp học phí 1 SV theo file <small>(Hoạt động thu / chi / In học phí)</small> `V14` → [[Hoc phi]]
+- In tổng hợp học phí 1 SV theo lớp <small>(Hoạt động thu / chi / In học phí)</small> `V15` → [[Hoc phi]]
+- Chuyển học phí thu dư vào tạm ứng <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V0.0302` → [[Hoc phi]]
+- Kiểm dò phiếu thu <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V10` → [[Hoc phi]], [[Phieu thu]]
+- Kiểm tra KQĐK chưa tính học phí <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V0.0304` → [[Hoc phi]]
+- Kiểm tra tính học phí theo file <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V0.03.03` → [[Hoc phi]]
+- Xem DS nợ chi tiết trong học kỳ <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V0.0305` → [[Hoc phi]]
+- Xem danh sách nợ học kỳ <small>(Hoạt động thu / chi / Kiểm tra học phí)</small> `V0.0306` → [[Hoc phi]]
+- DS phiếu thu sau khi sv nghỉ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.21` → [[Hoc phi]], [[Phieu thu]]
+- DSSV gia hạn đóng học phí <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.16` → [[Hoc phi]], [[Phieu thu]]
+- Danh sách SV đóng HP theo MH <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.24` → [[Hoc phi]], [[Phieu thu]]
+- Danh sách hóa đơn học bổng <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.19` → [[Dien chinh sach]], [[Hoc phi]], [[Phieu thu]]
+- Danh sách phiếu phân bổ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.22` → [[Hoc phi]], [[Phieu thu]]
+- Danh sách phiếu thu chưa gán mã SV <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.17` → [[Hoc phi]], [[Phieu thu]]
+- Danh sách phiếu thu học kỳ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.07` → [[Hoc phi]], [[Phieu thu]]
+- Gán số chứng từ chưa nhập <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.08` → [[Hoc phi]], [[Phieu thu]]
+- Gán số chứng từ phiếu HP, KTX và Vãng lai <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.23` → [[Hoc phi]], [[Phieu thu]]
+- Import học phí và vãng lai <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.23` → [[Hoc phi]], [[Phieu thu]]
+- Import phiếu hoàn <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.10` → [[Hoc phi]], [[Phieu thu]]
+- [[Menu/Import phiếu thu (V04)|Import phiếu thu]] <small>(Hoạt động thu / chi / Thu học phí)</small> `V04` → [[Hoc phi]], [[Phieu thu]]
+- Lọc phiếu thu trùng chứng từ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.11` → [[Hoc phi]], [[Phieu thu]]
+- Nhập DS sinh viên nộp voucher <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.13` → [[Hoc phi]], [[Phieu thu]]
+- Phân bổ học phí theo môn <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.18` → [[Hoc phi]], [[Phieu thu]]
+- Phân bổ học phí tạm ứng <small>(Hoạt động thu / chi / Thu học phí)</small> `V09A` → [[Hoc phi]], [[Phieu thu]]
+- Phân bổ học phí tự động <small>(Hoạt động thu / chi / Thu học phí)</small> `V09` → [[Hoc phi]], [[Phieu thu]]
+- Thu học phí theo giấy báo <small>(Hoạt động thu / chi / Thu học phí)</small> `V05.02` → [[Hoc phi]], [[Phieu thu]]
+- [[Menu/Thu học phí 1 SV (V05)|Thu học phí 1 SV]] <small>(Hoạt động thu / chi / Thu học phí)</small> `V05` → [[Hoc phi]], [[Phieu thu]]
+- Thu học phí không đối chiếu nợ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.02` → [[Hoc phi]], [[Phieu thu]]
+- Thu học phí tổng hợp <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.03` → [[Hoc phi]], [[Phieu thu]]
+- Trích xuất SV từ file ngân hàng <small>(Hoạt động thu / chi / Thu học phí)</small> `H90.14` → [[Hoc phi]], [[Phieu thu]]
+- Tách phiếu báo sinh viên <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.25` → [[Hoc phi]], [[Phieu thu]]
+- Xem chi tiết phiếu thu các học kỳ <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.32` → [[Hoc phi]], [[Phieu thu]]
+- Xóa phiếu báo đã hủy (HK hiện tại) <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.26` → [[Hoc phi]], [[Phieu thu]]
+- Xóa phiếu báo học phí <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.01.35` → [[Hoc phi]], [[Phieu thu]]
+- Đối soát phiếu thu online <small>(Hoạt động thu / chi / Thu học phí)</small> `V0.1.12` → [[Hoc phi]], [[Phieu thu]]
+- Chuyển dữ liệu <small>(Hoạt động thu / chi / Trao đổi với Fast)</small> `V005.03`
+- Nhập mã Bộ phận và Vụ việc <small>(Hoạt động thu / chi / Trao đổi với Fast)</small> `V005.01`
+- Xem các phiếu đã chuyển <small>(Hoạt động thu / chi / Trao đổi với Fast)</small> `V005.04`
+- Tỷ giá ngoại tệ <small>(Hoạt động thu / chi / Tỷ giá)</small> `V0.04.2`
+- Cập nhật hóa đơn điện tử vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.08` → [[Phieu thu]]
+- Danh mục loại thu vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.00A` → [[Phieu thu]]
+- Danh mục nhóm thu vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.00` → [[Phieu thu]]
+- Danh sách thu vãng lai học kỳ <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.03` → [[Phieu thu]]
+- In bảng kê theo loại thu <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.09` → [[Phieu thu]]
+- In bảng kê thu vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.02.01` → [[Phieu thu]]
+- In bảng tổng hợp thu vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.06` → [[Phieu thu]]
+- In chi tiết hóa đơn thu tiền <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.05` → [[Phieu thu]]
+- Phải thu vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.02` → [[Phieu thu]]
+- Xuất hóa đơn điện tử vãng lai <small>(Quản lý thu vãng lai / Thu vãng lai)</small> `V90.01.07` → [[Phieu thu]]
+- Chỉnh định thông số học kỳ <small>(Quản trị phân hệ)</small> `VQT3`
+- Chỉnh định thông số toàn cục <small>(Quản trị phân hệ)</small> `VQT2`
+- Phân quyền nhập phiếu thu theo user <small>(Quản trị phân hệ / Phân quyền phân hệ)</small> `PQT6` → [[Phieu thu]]
+- Loại thu vãng lai <small>(Quản trị phân hệ / Quản lý danh mục)</small> `VQT0.02` → [[Phieu thu]]
+- Nhóm thu vãng lai <small>(Quản trị phân hệ / Quản lý danh mục)</small> `VQT0.01` → [[Phieu thu]]
+- Gán bộ đếm theo đối tượng <small>(Quản trị phân hệ / Quản lý mẫu và bộ đếm thu học phí)</small> `P001.06` → [[Hoc phi]], [[Phieu thu]]
+- Định nghĩa mẫu thu học phí <small>(Quản trị phân hệ / Quản lý mẫu và bộ đếm thu học phí)</small> `VQT4.01` → [[Hoc phi]], [[Phieu thu]]
+- Tài liệu hướng dẫn EduSoft.NET <small>(Xem file hướng dẫn)</small> `VHD1`

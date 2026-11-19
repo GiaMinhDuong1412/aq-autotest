@@ -36,6 +36,12 @@ try:
     json.loads((ROOT / "desktop" / "package.json").read_text("utf-8"))
 except Exception as e:  # noqa: BLE001
     loi.append("desktop/package.json lỗi: %s" % e)
+_h = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
+_m = __import__("re").search(r'<script type="application/json" id="kb-graph">(.*?)</script>', _h, __import__("re").S)
+try:
+    assert _m and __import__("json").loads(_m.group(1))["data"]
+except Exception:
+    loi.append("Thiếu / hỏng bản đồ nghiệp vụ kb-graph trong web/index.html (python tools/kb_lien_ket.py kb)")
 if not (ROOT / "web" / "edusoft-catalog.json").exists():
     loi.append("Thiếu web/edusoft-catalog.json (tools/lap_danh_muc.py --json)")
 print("\n".join(loi) or "Kiểm tra: OK")

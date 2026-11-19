@@ -41,6 +41,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[DIEM]], [[KHGD]], [[QLSV]] �
 
 ## Phần trên Edusoft
 `Tốt nghiệp/ Xét tốt nghiệp/ …`.
+Menu: [[Menu/QLTN|272 menu của QLTN]] – menu tạo dữ liệu: [[Menu/Chuyển điểm luận văn vào môn học (QLV04.06)|Chuyển điểm luận văn vào môn học]], [[Menu/Nhập điểm bảo vệ luận văn (QLV04.04)|Nhập điểm bảo vệ luận văn]], [[Menu/Danh sách sinh viên tốt nghiệp (Q56.01)|Danh sách sinh viên tốt nghiệp]].
 
 ## Phần trên web / app
 NetWEB SV: xem kết quả xét tốt nghiệp / tiền tốt nghiệp; đăng ký đề tài tốt nghiệp (tuỳ trường).

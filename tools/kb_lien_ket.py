@@ -1,7 +1,9 @@
 """python tools/kb_lien_ket.py kb  – GHI ĐÈ kb/Phan-he, kb/Du-lieu, kb/00 Bản đồ phân hệ.md (mất phần người test sửa tay: chạy rồi so git diff). Dựng KB liên kết phân hệ: Du-lieu/ (dữ liệu chảy giữa phân hệ) + Phan-he/ (nhận từ / đưa sang / sửa ở đây kiểm lại) + bản đồ."""
-import os, re, sys
+import json, os, re, sys
 KB = sys.argv[1]
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+CATALOG = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, 'web', 'edusoft-catalog.json')
 exec(open(os.path.join(HERE, 'kb_phan_he_data.py'), encoding='utf-8').read())   # PH: mã -> (tên, sp, test_tren, tab, dấu hiệu, là gì, edusoft, web, lưu ý)
 
 def w(path, props, body):
@@ -112,7 +114,59 @@ E = [
  ('Hop dong KTX', 'Hợp đồng ký túc xá', 'QKTX', 'Ký túc xá/ Quản lý hợp đồng/ Quản lý vào/ Hợp đồng theo phòng',
    [('QKTX', 'thu phí lưu trú, thanh lý')], 'SV đăng ký ký túc xá trên web.'),
 ]
+# ---- lớp LOGIC: muốn có X phải có Y, menu Edusoft ↔ dữ liệu ----
+exec(open(os.path.join(HERE, 'kb_logic_data.py'), encoding='utf-8').read())
+E += E_ADD
+E = [(fn, TITLE_FIX.get(fn, t), s, mn, u, wb) for fn, t, s, mn, u, wb in E]
 ENT = {e[0]: e for e in E}
+assert set(REQ) == set(ENT), set(REQ) ^ set(ENT)
+LV = {}
+def lv(fn, path=()):
+    assert fn not in path, 'vòng lặp: ' + ' → '.join(path + (fn,))
+    if fn not in LV:
+        LV[fn] = 1 + max([lv(r, path + (fn,)) for r, _ in REQ[fn]] or [-1])
+    return LV[fn]
+for fn in ENT: lv(fn)
+def anc(fn):  # mọi dữ liệu phải có trước, theo thứ tự chuẩn bị (tầng thấp trước)
+    s, st = set(), [fn]
+    while st:
+        for r, _ in REQ[st.pop()]:
+            if r not in s: s.add(r); st.append(r)
+    return sorted(s, key=lambda x: (LV[x], x))
+NEXT = {fn: sorted([x for x in ENT if any(r == fn for r, _ in REQ[x])], key=lambda x: (LV[x], x)) for fn in ENT}
+def desc(fn):
+    s, st = set(), [fn]
+    while st:
+        for x in NEXT[st.pop()]:
+            if x not in s: s.add(x); st.append(x)
+    return sorted(s, key=lambda x: (LV[x], x))
+TANG = {0: 'nền, khai báo đầu tiên'}
+
+# menu Edusoft (web/edusoft-catalog.json) → phân hệ kb + dữ liệu
+CAT = json.load(open(CATALOG, encoding='utf-8'))
+KWR = {fn: (ph, re.compile(rx, re.I)) for fn, (ph, rx) in KW.items()}
+def segs(s): return {x.strip().lower() for x in re.split(r'/|·|→|\(|\)|…', s) if len(x.strip()) > 3}
+KEYSEG = {fn: segs(ENT[fn][3]) for fn in ENT}
+MENUS = []  # (ma, ph kb, path, [dữ liệu], [dữ liệu tạo ở menu này])
+for m in CAT['menus']:
+    ph = CAT_PH.get(m['ph'], m['ph'])
+    if ph not in PH: continue
+    p = m['path']; leaf = p.split('/')[-1].strip(); low = p.lower()
+    hit = [fn for fn, (phs, rx) in KWR.items() if (not phs or m['ph'] in phs) and rx.search(low)]
+    key = [fn for fn in hit if ENT[fn][2] == ph and leaf.lower() in KEYSEG[fn]] + [fn for fn, mas in KEYMA.items() if m['ma'] in mas]
+    hit = hit + [fn for fn in key if fn not in hit]
+    MENUS.append((m['ma'], ph, p, hit, key))
+KEYM = {}
+for ma, ph, p, hit, key in MENUS:
+    for fn in key: KEYM.setdefault(fn, []).append((ma, ph, p))
+def _ord(fn, x):
+    mas = KEYMA.get(fn, [])
+    if x[0] in mas: return mas.index(x[0]) - 100
+    i = ENT[fn][3].lower().find(x[2].split('/')[-1].strip().lower())
+    return i if i >= 0 else 999
+for fn in KEYM: KEYM[fn].sort(key=lambda x: _ord(fn, x))
+def mfile(ma, p): return 'Menu/' + re.sub(r'[\\/:*?"<>|#^\[\]]', ' ', p.split('/')[-1].strip()).strip() + f' ({ma})'
+
 # module -> produced / consumed
 prod, cons = {}, {}
 for fn, title, src, menu, uses, web in E:
@@ -124,21 +178,85 @@ WEB_OF = {'DKMHUI': 'DKMH', 'NETWEB-UI': None, 'NETWEB-API': None}
 # ---- ghi Du-lieu/ ----
 for fn, title, src, menu, uses, web in E:
     users = sorted({m for m, _ in uses if m != src})
-    w(f'Du-lieu/{fn}.md', {'loai': 'du-lieu', 'ten': title, 'tao_o': f'"[[{src}]]"', 'dung_o': [f'"[[{m}]]"' for m in users],
+    need, a, nx = REQ[fn], anc(fn), NEXT[fn]
+    km = KEYM.get(fn, [])
+    prep = [f'{i + 1}. [[{x}|{ENT[x][1]}]] – tạo ở [[{ENT[x][2]}]]' + (f' · menu [[{mfile(*KEYM[x][0][:1], KEYM[x][0][2])}|{KEYM[x][0][2].split("/")[-1].strip()}]]' if KEYM.get(x) else '') for i, x in enumerate(a)]
+    w(f'Du-lieu/{fn}.md', {'loai': 'du-lieu', 'ten': title, 'tang': LV[fn], 'tao_o': f'"[[{src}]]"', 'dung_o': [f'"[[{m}]]"' for m in users],
+                          'can_co': [f'"[[{r}]]"' for r, _ in need], 'la_dieu_kien_cho': [f'"[[{x}]]"' for x in nx],
                           'nguon': 'luu-do', 'trang_thai': 'tu-tai-lieu'}, f"""
     # {title}
 
-    **Tạo ở** [[{src}]] – `{menu}`
+    **Tạo ở** [[{src}]] – `{menu}` · tầng {LV[fn]} trong [[00 Logic nghiệp vụ]] (cần {len(anc(fn))} loại dữ liệu có trước)
+
+    ## Muốn có {title.split(' (')[0].split(' –')[0]} thì phải có trước
+    {chr(10).join(f'- [[{r}|{ENT[r][1]}]] – {why}' for r, why in need) if need else '- Không cần dữ liệu nào trước – đây là dữ liệu **nền**, khai báo đầu tiên.'}
+
+    ## Chuẩn bị dữ liệu test (theo thứ tự)
+    {chr(10).join(prep) if prep else 'Không cần chuẩn bị gì trước.'}
+    {len(prep) + 1 if prep else 1}. **{title}** – tạo ở [[{src}]]
+
+    ## Là điều kiện cho (có dữ liệu này mới có)
+    {chr(10).join(f'- [[{x}|{ENT[x][1]}]]' for x in nx) if nx else '- (không có dữ liệu nào phụ thuộc trực tiếp)'}
 
     ## Dùng ở
     {chr(10).join(f'- [[{m}]] – {why}' for m, why in uses) if uses else '- (chỉ dùng trong phân hệ tạo ra)'}
+
+    ## Menu Edusoft
+    {chr(10).join(f'- [[{mfile(ma, p)}|{p}]]' for ma, ph, p in km) if km else '- (chưa nối được menu tạo – xem `' + menu + '`)'}
+    {f'- Còn {sum(1 for x in MENUS if fn in x[3]) - len(km)} menu khác có dùng / xem dữ liệu này – xem danh sách menu của phân hệ.' if sum(1 for x in MENUS if fn in x[3]) > len(km) else ''}
 
     ## Trên web
     {web or '—'}
 
     ## Khi dữ liệu này bị sửa / lỗi
     Kiểm lại: {', '.join(f'[[{m}]]' for m in users) if users else '[[' + src + ']]'}{' và trang web liên quan' if web else ''}.
+    Dữ liệu sinh ra từ nó (kiểm lại nếu số liệu đổi): {', '.join(f'[[{x}|{ENT[x][1].split(" (")[0]}]]' for x in desc(fn)) or '—'}.
     """)
+
+# ---- ghi Menu/: menu tạo dữ liệu (1 ghi chú / menu) + danh sách menu từng phân hệ ----
+for fn, km in KEYM.items():
+    for ma, ph, p in km:
+        hit = next(x[3] for x in MENUS if x[0] == ma)
+        need = REQ[fn]
+        w(mfile(ma, p) + '.md', {'loai': 'menu', 'ma': ma, 'phan_he': f'"[[{ph}]]"', 'duong_dan': f'"{p}"', 'tao': [f'"[[{fn}]]"'],
+                                 'nguon': 'danh-muc-menu', 'trang_thai': 'tu-tai-lieu'}, f"""
+        # {p.split('/')[-1].strip()}
+
+        `{p}` · mã `{ma}` · phân hệ [[{ph}]] · [[Menu/{ph}|các menu khác của {ph}]]
+
+        ## Tạo dữ liệu
+        - [[{fn}|{ENT[fn][1]}]]
+
+        ## Trước khi dùng menu này phải có
+        {chr(10).join(f'- [[{r}|{ENT[r][1]}]] – {why}' + (f' (menu [[{mfile(*KEYM[r][0][:1], KEYM[r][0][2])}|{KEYM[r][0][2].split("/")[-1].strip()}]])' if KEYM.get(r) else '') for r, why in need) if need else '- Không cần dữ liệu nào trước.'}
+
+        ## Lưu ở đây → ảnh hưởng tới
+        {chr(10).join(f'- [[{m}]] – {why}' for m, why in ENT[fn][4] if m != ph) or '- chỉ trong ' + ph}
+        {('- Dữ liệu phụ thuộc: ' + ', '.join(f'[[{x}|{ENT[x][1].split(" (")[0]}]]' for x in NEXT[fn])) if NEXT[fn] else ''}
+
+        ## Dữ liệu liên quan khác trên menu
+        {', '.join(f'[[{x}]]' for x in hit if x != fn) or '—'}
+        """)
+for ph in PH:
+    ms = [x for x in MENUS if x[1] == ph]
+    if not ms: continue
+    by = {}
+    for ma, _, p, hit, key in ms:
+        parts = [x.strip() for x in p.split('/')]
+        by.setdefault(' / '.join(parts[1:2]) or parts[0], []).append((ma, p, hit, key, parts[-1]))
+    L = []
+    for g in sorted(by):
+        L.append(f'\n## {g}')
+        for ma, p, hit, key, leaf in sorted(by[g], key=lambda x: x[1]):
+            mid = ' / '.join(x.strip() for x in p.split('/')[2:-1])
+            name = f'[[{mfile(ma, p)}|{leaf}]]' if key else leaf
+            L.append(f'- {name}' + (f' <small>({mid})</small>' if mid else '') + f' `{ma}`' + (' → ' + ', '.join(f'[[{x}]]' for x in hit) if hit else ''))
+    w(f'Menu/{ph}.md', {'loai': 'danh-sach-menu', 'phan_he': f'"[[{ph}]]"', 'so_menu': len(ms), 'nguon': 'danh-muc-menu'}, f"""
+    # Menu {ph} – {PH[ph][0]}
+
+    {len(ms)} menu Edusoft (từ `web/edusoft-catalog.json`). Tên **có liên kết** = menu **tạo** dữ liệu (có ghi chú riêng); → [[…]] = dữ liệu menu đó đụng tới.
+    Phân hệ: [[{ph}]].
+    """ + '\n'.join(L))
 
 # ---- ghi Phan-he/ ----
 for ma, (ten, sp, tt, tab, dh, lagi, ed, web, luuy) in PH.items():
@@ -172,6 +290,7 @@ for ma, (ten, sp, tt, tab, dh, lagi, ed, web, luuy) in PH.items():
 
     ## Phần trên Edusoft
     {ed or '—'}
+    {('Menu: [[Menu/' + ma + '|' + str(sum(1 for x in MENUS if x[1] == ma)) + ' menu của ' + ma + ']]' + (' – menu tạo dữ liệu: ' + ', '.join(f'[[{mfile(x[0], x[2])}|{x[2].split("/")[-1].strip()}]]' for x in MENUS if x[1] == ma and x[4]) if any(x[1] == ma and x[4] for x in MENUS) else '') + '.') if any(x[1] == ma for x in MENUS) else ''}
 
     ## Phần trên web / app
     {web or '—'}
@@ -224,4 +343,59 @@ lỗi ở một phân hệ → kiểm dữ liệu đầu vào từ các phân h�
 
 Xem dạng mạng: mở **Graph view** (biểu tượng ở thanh trái) – mỗi chấm là một ghi chú, đường nối là liên kết.
 """)
+
+# ---- 00 Logic nghiệp vụ ----
+byl = {}
+for fn in ENT: byl.setdefault(LV[fn], []).append(fn)
+ass = []
+for l in sorted(byl):
+    ass.append(f'\n### Tầng {l}' + (' – ' + TANG[l] if l in TANG else ''))
+    for fn in sorted(byl[l]):
+        t = ENT[fn][1]; need = REQ[fn]
+        ass.append(f'- Muốn có **[[{fn}|{t}]]** ([[{ENT[fn][2]}]]) ' + ('thì phải có: ' + '; '.join(f'[[{r}|{ENT[r][1].split(" (")[0]}]] ({why})' for r, why in need) if need else '– không cần gì trước (dữ liệu nền).'))
+idd = {fn: 'D' + str(i) for i, fn in enumerate(sorted(ENT))}
+mer2 = ['```mermaid', 'flowchart TD']
+for fn in sorted(ENT, key=lambda x: (LV[x], x)):
+    mer2.append(f'  {idd[fn]}["{ENT[fn][1].split(" (")[0]}<br/><small>{ENT[fn][2]}</small>"]')
+for fn in sorted(ENT):
+    for r, _ in REQ[fn]: mer2.append(f'  {idd[r]} --> {idd[fn]}')
+mer2.append('```')
+w('00 Logic nghiệp vụ.md', {'loai': 'logic'}, f"""
+# Logic nghiệp vụ – muốn có X thì phải có Y
+
+Mọi dữ liệu trong Edusoft / Netweb nằm trên một **chuỗi điều kiện**: phải khai báo dữ liệu tầng dưới thì mới tạo được dữ liệu tầng trên.
+Ví dụ: muốn có **sinh viên** thì phải **tuyển sinh** (hồ sơ → trúng tuyển → quyết định vào mới); có **sinh viên + giảng viên + CTĐT**
+thì mới có **kế hoạch giảng dạy** (nhóm học) → **thời khóa biểu** → SV **đăng ký môn học** → **học phí, lịch thi, điểm** → **học vụ, tốt nghiệp**.
+
+Tầng = số bước dữ liệu phải đi qua trước (tầng 0 khai báo đầu tiên). Dùng khi đọc case ACS:
+1. Case nói tới menu / dữ liệu nào → tìm ghi chú dữ liệu đó (tầng mấy, phân hệ nào).
+2. **Chuẩn bị dữ liệu test** = các dữ liệu tầng dưới nó (mục "Chuẩn bị dữ liệu test" trong ghi chú) – phải có sẵn trên môi trường test.
+3. **Kiểm tra không ảnh hưởng** = dữ liệu tầng trên sinh ra từ nó + các phân hệ dùng nó.
+4. Hai case cùng chạm một dữ liệu (hoặc dữ liệu cha – con) là **case liên quan** – test cùng nhau, dùng chung dữ liệu chuẩn bị.
+
+## Khẳng định theo tầng
+{chr(10).join(ass)}
+
+## Sơ đồ điều kiện (mũi tên: phải có trước → mới có sau)
+{chr(10).join(mer2)}
+
+Menu Edusoft của từng phân hệ: thư mục `Menu/` (menu **tạo** dữ liệu có ghi chú riêng, nối tới dữ liệu cần có trước). Liên kết phân hệ: [[00 Bản đồ phân hệ]].
+""")
+
+# ---- đồ thị cho app (nhúng vào web/index.html: <script type="application/json" id="kb-graph">) ----
+G = {'ver': 1,
+     'mods': {ma: [v[0], v[2]] for ma, v in PH.items()},
+     'data': {fn: {'t': ENT[fn][1], 'src': ENT[fn][2], 'menu': ENT[fn][3], 'use': [[m, why] for m, why in ENT[fn][4]], 'web': ENT[fn][5],
+                   'req': [[r, why] for r, why in REQ[fn]], 'lv': LV[fn], 'kw': KW[fn][1], 'kwph': KW[fn][0]} for fn in ENT},
+     'catph': CAT_PH,
+     'tang': TANG}
+js = json.dumps(G, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+for hp in [os.path.join(ROOT, 'web', 'index.html')]:
+    h = open(hp, encoding='utf-8').read()
+    blk = '<script type="application/json" id="kb-graph">' + js + '</script>'
+    h2, n = re.subn(r'<script type="application/json" id="kb-graph">.*?</script>', lambda m: blk, h, flags=re.S)
+    if not n: h2 = h.replace('<script type="text/plain" id="kit-', blk + '\n<script type="text/plain" id="kit-', 1)
+    open(hp, 'w', encoding='utf-8').write(h2)
+print('menu', len(MENUS), 'menu tao', sum(len(v) for v in KEYM.values()), 'json', len(js))
+
 print('ok', len(E), 'du lieu,', len(PH), 'phan he,', len(edges), 'canh')

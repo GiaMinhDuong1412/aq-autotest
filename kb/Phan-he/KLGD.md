@@ -25,7 +25,7 @@ Khai báo hệ số / loại hình / thông tin CBGD → chốt dữ liệu từ
 - [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – khối lượng theo đợt
 - [[Mon hoc|Môn học]] từ [[KHGD]] – loại hình cho môn học
 - [[Vien chuc|Viên chức / cán bộ giảng dạy]] từ [[QLNS]] – thông tin khối lượng cho cán bộ
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – chốt dữ liệu từ kế hoạch
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] từ [[KHGD]] – chốt dữ liệu từ kế hoạch
 - [[Thoi khoa bieu|Thời khóa biểu]] từ [[KHGD]] – khối lượng giảng dạy
 
 ## Tạo ra
@@ -40,6 +40,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[KHGD]], [[QLHT]], [[QLNS]] �
 
 ## Phần trên Edusoft
 `Khối lượng/ Khai báo thông số/ …`, `Khối lượng/ Chuẩn bị dữ liệu/ …`, `Khối lượng/ Tính khối lượng/ …` (tài liệu ghi "Tính KLGD"; sheet ghi "Tính khối lượng theo đợt").
+Menu: [[Menu/KLGD|108 menu của KLGD]] – menu tạo dữ liệu: [[Menu/Tính khối lượng theo đợt (G4.02.1)|Tính khối lượng theo đợt]].
 
 ## Phần trên web / app
 Không có phần web riêng trong sheet release.

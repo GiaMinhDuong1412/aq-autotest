@@ -1,0 +1,438 @@
+---
+loai: danh-sach-menu
+phan_he: "[[DIEM]]"
+so_menu: 394
+nguon: danh-muc-menu
+---
+# Menu DIEM – Quản lý điểm
+
+394 menu Edusoft (từ `web/edusoft-catalog.json`). Tên **có liên kết** = menu **tạo** dữ liệu (có ghi chú riêng); → [[…]] = dữ liệu menu đó đụng tới.
+Phân hệ: [[DIEM]].
+
+## An toàn dữ liệu
+- Công bố điểm tổng kết <small>(Công bố điểm)</small> `DCB.02` → [[Diem mon hoc]]
+- Gán thời gian nhập điểm phúc khảo `DTG` → [[Diem mon hoc]]
+- Khóa - mở khóa điểm bảo lưu <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.09` → [[Diem mon hoc]]
+- Khóa - mở khóa điểm bảo lưu học kỳ <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.12` → [[Diem mon hoc]]
+- Khóa - mở khóa điểm phúc khảo <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.10` → [[Diem mon hoc]]
+- Khóa - mở khóa điểm đặc biệt <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.11` → [[Diem mon hoc]]
+- Khóa nhập điểm học kỳ hiện tại theo phân cấp sinh viên <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.01` → [[Diem mon hoc]]
+- Khóa học kỳ theo nhóm tổ cụ thể <small>(Khóa và mở khóa dữ liệu / Khóa sổ nhập điểm theo nhóm / tổ học)</small> `DAT1.04.3` → [[Nhom hoc]], [[Diem mon hoc]]
+- Khóa học kỳ theo đối tượng học <small>(Khóa và mở khóa dữ liệu / Khóa sổ nhập điểm theo nhóm / tổ học)</small> `DAT1.04.1` → [[Diem mon hoc]]
+- Khóa kỳ thi theo nhóm tổ cụ thể <small>(Khóa và mở khóa dữ liệu / Khóa sổ nhập điểm theo nhóm / tổ học)</small> `DAT1.04.4` → [[Nhom hoc]], [[Diem mon hoc]]
+- Khóa kỳ thi theo đối tượng học <small>(Khóa và mở khóa dữ liệu / Khóa sổ nhập điểm theo nhóm / tổ học)</small> `DAT1.04.2` → [[Diem mon hoc]]
+- Nhập điểm theo lớp kế hoạch <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.07` → [[Diem mon hoc]]
+- Đồng bộ điểm hoãn thi đã nhập <small>(Khóa và mở khóa dữ liệu)</small> `DAT1.13` → [[Diem mon hoc]]
+- In kiểm tra hợp lệ file điểm thành phần <small>(Kiểm tra dữ liệu phân hệ)</small> `DKT2.01` → [[Diem mon hoc]]
+- Kiểm tra điểm đã nhập không có trọng số % <small>(Kiểm tra dữ liệu phân hệ)</small> `DKT2.07` → [[Diem mon hoc]]
+- Nhật ký nhập điểm <small>(Lưu vết dữ liệu)</small> `DTV1` → [[Diem mon hoc]]
+- Truy vết nhóm phách <small>(Lưu vết dữ liệu)</small> `DVT4` → [[Diem mon hoc]]
+- Truy vết môn bảo lưu <small>(Lưu vết dữ liệu)</small> `DVT3` → [[Diem mon hoc]]
+- Truy vết điểm <small>(Lưu vết dữ liệu)</small> `DTV2` → [[Diem mon hoc]]
+- In kiểm tra số tín chỉ đạt chung <small>(In kiểm tra số tín chỉ đạt)</small> `DKT3.01`
+- In kiểm tra số tín chỉ đạt học kỳ <small>(In kiểm tra số tín chỉ đạt)</small> `DKT3.02`
+- Khóa - mở khóa chứng chỉ ngoài <small>(Khóa & mở khóa dữ liệu)</small> `DKS.01`
+- Kiểm tra theo 1 sinh viên <small>(Kiểm tra bảng điểm theo học kỳ)</small> `DKT501` → [[Diem mon hoc]]
+- Kiểm tra theo lớp <small>(Kiểm tra bảng điểm theo học kỳ)</small> `DKT502` → [[Diem mon hoc]]
+- Kiểm tra theo tập tin mã sinh viên <small>(Kiểm tra bảng điểm theo học kỳ)</small> `DKT503` → [[Diem mon hoc]]
+- In Kiểm Tra Bảng Điểm Theo Học Kỳ Học <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.08` → [[Diem mon hoc]]
+- In kiểm tra cộng điểm trung bình chung <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.02` → [[Diem trung binh]]
+- In kiểm tra cộng điểm trung bình học bổng <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.05` → [[Dien chinh sach]], [[Diem trung binh]]
+- In kiểm tra cộng điểm trung bình học kỳ <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.03` → [[Diem trung binh]]
+- In kiểm tra cộng điểm trung bình năm học <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.04` → [[Diem trung binh]]
+- In kiểm tra môn nợ xét hạ bậc <small>(Kiểm tra dữ liệu điểm)</small> `DKT2.06`
+- Danh sách nhật ký cấp bảng in <small>(Nhật ký cấp bảng in điểm)</small> `DKT4.02`
+- Xem nhật ký cấp bảng in <small>(Nhật ký cấp bảng in điểm)</small> `DKT4.01`
+- Truy vết MHTT khối <small>(Truy vết dữ liệu)</small> `DTV08`
+- Truy vết MHTT sinh viên <small>(Truy vết dữ liệu)</small> `DTV7`
+- Truy vết thay đổi % nhóm học <small>(Truy vết dữ liệu)</small> `DTV6` → [[Nhom hoc]]
+
+## Bảng ghi điểm
+- In bảng ghi điểm học lại - học vượt <small>(In bảng ghi điểm)</small> `D12.02` → [[Diem mon hoc]]
+- In bảng ghi điểm theo lớp <small>(In bảng ghi điểm)</small> `D12.01` → [[Diem mon hoc]]
+- In bảng ghi điểm theo môn học <small>(In bảng ghi điểm)</small> `D12.05` → [[Diem mon hoc]]
+- In bảng ghi điểm theo nhóm học <small>(In bảng ghi điểm)</small> `D12.03` → [[Nhom hoc]], [[Diem mon hoc]]
+- In bảng ghi điểm theo nhóm thi <small>(In bảng ghi điểm)</small> `D12.04` → [[Diem mon hoc]]
+- In bảng ghi điểm theo tổ TH <small>(In bảng ghi điểm)</small> `D12.06` → [[Diem mon hoc]]
+- In bảng ghi điểm theo tổ thi <small>(In bảng ghi điểm)</small> `D12.07` → [[Diem mon hoc]]
+- In bảng ghi điểm theo tổ thi (phụ thuộc) <small>(In bảng ghi điểm)</small> `D12.08` → [[Diem mon hoc]]
+- Nhập thứ tự danh sách <small>(Thứ tự sinh viên)</small> `D13.02` → [[Diem mon hoc]]
+- Tạo thứ tự danh sách <small>(Thứ tự sinh viên)</small> `D13.01` → [[Diem mon hoc]]
+- Xem mã ghi điểm của lớp <small>(Xem mã bảng ghi điểm)</small> `D14.01` → [[Diem mon hoc]]
+- Xem mã ghi điểm của môn học <small>(Xem mã bảng ghi điểm)</small> `D14.07` → [[Diem mon hoc]]
+- Xem mã ghi điểm của nhóm học <small>(Xem mã bảng ghi điểm)</small> `D14.03` → [[Nhom hoc]], [[Diem mon hoc]]
+- Xem mã ghi điểm của nhóm thi <small>(Xem mã bảng ghi điểm)</small> `D14.05` → [[Diem mon hoc]]
+- Xem mã ghi điểm của tổ TH <small>(Xem mã bảng ghi điểm)</small> `D14.04` → [[Diem mon hoc]]
+- Xem mã ghi điểm của tổ thi <small>(Xem mã bảng ghi điểm)</small> `D14.06` → [[Diem mon hoc]]
+- Xem mã ghi điểm học lại - học vượt <small>(Xem mã bảng ghi điểm)</small> `D14.02` → [[Diem mon hoc]]
+- Danh sách mẫu bảng ghi điểm <small>(Định nghĩa mẫu bảng ghi điểm)</small> `D11.01` → [[Diem mon hoc]]
+
+## Học bổng
+- In DSSV hoãn và đã nhận học bổng `D10.06` → [[Dien chinh sach]]
+- Nhập DS sinh viên đăng ký xét học bổng `D10.07` → [[Dien chinh sach]]
+- Nhập danh sách học bổng khác `D10.03` → [[Dien chinh sach]]
+- Nhập danh sách học bổng tuyển sinh `D10.02` → [[Dien chinh sach]]
+- Nhập sinh viên duy trì học bổng `D10.04` → [[Dien chinh sach]]
+- Nhập sinh viên hoãn nhận học bổng `D10.05` → [[Dien chinh sach]]
+- sửa học bổng đã tính <small>(Xem)</small> `D10.09` → [[Dien chinh sach]]
+- Xét học bổng `D10.08` → [[Dien chinh sach]]
+- Định nghĩa thông số học bổng khối `D10.01` → [[Dien chinh sach]]
+
+## Quản lý chứng chỉ
+- Chứng chỉ ngoài của SV học kỳ <small>(Chứng chỉ ngoài)</small> `D97.01`
+- Chứng chỉ ngoài từng sinh viên <small>(Chứng chỉ ngoài)</small> `D97.05`
+- In DSSV hết hạn chứng chỉ ngoài <small>(Chứng chỉ ngoài)</small> `D97.06`
+- In chứng chỉ ngoài <small>(Chứng chỉ ngoài)</small> `D97.03`
+- In chứng nhận chứng chỉ <small>(Cấp phát chứng chỉ)</small> `D96.03`
+- In chứng nhận chứng chỉ theo đợt <small>(Cấp phát chứng chỉ)</small> `D96.04`
+- Định nghĩa mẫu chứng nhận chứng chỉ <small>(Cấp phát chứng chỉ)</small> `D96.01`
+- Hủy theo lớp <small>(Hủy kết quả chứng chỉ)</small> `D98.01`
+- In danh sách nợ môn (CC) <small>(In kết quả)</small> `D94.04`
+- In kết quả xét (CC) <small>(In kết quả)</small> `D94.02`
+- In điểm môn học CC chung các lớp <small>(In kết quả)</small> `D94.05` → [[Diem mon hoc]]
+- In điểm môn học CC từng lớp <small>(In kết quả)</small> `D94.01` → [[Diem mon hoc]]
+- Xem DS-SV theo chứng chỉ <small>(Kết quả xét)</small> `D99.03`
+- Xem DS-SV xét chứng chỉ chưa đạt <small>(Kết quả xét)</small> `D99.04`
+- Xem chứng chỉ tất cả học kỳ 1 SV <small>(Kết quả xét)</small> `D99.02`
+- Xem danh sách chứng chỉ học kỳ <small>(Kết quả xét)</small> `D99.01`
+- Cập nhật thông tin VB chứng chỉ <small>(Thông tin văn bằng chứng chỉ)</small> `D95.02`
+- In DSSV hoàn thành chứng chỉ <small>(Thông tin văn bằng chứng chỉ)</small> `D95.04`
+- In danh sách cấp phát chứng chỉ <small>(Thông tin văn bằng chứng chỉ)</small> `D95.03`
+- Đồng bộ danh sách chứng chỉ <small>(Thông tin văn bằng chứng chỉ)</small> `D95.01`
+- Sinh viên miễn chứng chỉ <small>(Tiêu chuẩn)</small> `D97.04`
+- Định nghĩa tiêu chuẩn (CC) <small>(Tiêu chuẩn)</small> `D91.01`
+- Xét 1 sinh viên (CC) <small>(Xét chứng chỉ)</small> `D93.04`
+- Xét file mã SV (CC) <small>(Xét chứng chỉ)</small> `D93.05`
+- Xét theo lớp (CC) <small>(Xét chứng chỉ)</small> `D93.03`
+- Xét theo đợt (CC) <small>(Xét chứng chỉ)</small> `D93.01`
+- Xét theo đợt và tiêu chuẩn (CC) <small>(Xét chứng chỉ)</small> `D93.02`
+- Chuyển SV chưa đạt ở học kỳ trước <small>(Đợt và danh sách xét)</small> `D92.04`
+- Danh sách SV xét (CC) <small>(Đợt và danh sách xét)</small> `D92.03`
+- Danh sách lớp xét (CC) <small>(Đợt và danh sách xét)</small> `D92.02`
+- Danh sách đợt xét (CC) <small>(Đợt và danh sách xét)</small> `D92.01`
+- In SV đã có điểm bảo lưu <small>(Đợt và danh sách xét)</small> `D92.08` → [[Diem mon hoc]]
+- In danh sách xét theo khoa (CC) <small>(Đợt và danh sách xét)</small> `D92.06`
+- In danh sách xét theo tiêu chuẩn (CC) <small>(Đợt và danh sách xét)</small> `D92.05`
+- Thời gian xét chứng chỉ <small>(Đợt và danh sách xét)</small> `D92.09`
+- Tạo SV xét do tạm dừng ở  học kỳ trước <small>(Đợt và danh sách xét)</small> `D97.07`
+
+## Quản lý hồ sơ điểm
+- Ghi đã nhận và kiểm dò bảng điểm <small>(Hồ sơ điểm)</small> `DHS.01.01` → [[Diem mon hoc]]
+- In danh sách ký nhận hồ sơ điểm <small>(Hồ sơ điểm)</small> `DHS.01.02` → [[Diem mon hoc]]
+- In hồ sơ điểm chưa nộp <small>(Hồ sơ điểm)</small> `DHS.01.03` → [[Diem mon hoc]]
+- In sổ giao nhận bảng điểm tổng hợp <small>(Hồ sơ điểm)</small> `DHS.01.04` → [[Diem mon hoc]]
+- Thống kê giao nhận bảng điểm <small>(Hồ sơ điểm)</small> `DHS.01.05` → [[Diem mon hoc]]
+- Ghi nhận đã điều chỉnh điểm <small>(Kiểm dò điểm)</small> `DHS.02.02` → [[Diem mon hoc]]
+- Kiểm dò điểm <small>(Kiểm dò điểm)</small> `DHS.02.01` → [[Diem mon hoc]]
+- Thống kê sai điểm theo GV <small>(Kiểm dò điểm)</small> `DHS.02.04` → [[Diem mon hoc]]
+- Thống kê sai điểm theo GV + lớp <small>(Kiểm dò điểm)</small> `DHS.02.03` → [[Diem mon hoc]]
+
+## Quản lý môn thay thế
+- Chỉnh sửa môn thay thế khối `DQT31.02` → [[Mon hoc]]
+- Chỉnh sửa môn thay thế sinh viên `DQT31.01` → [[Mon hoc]]
+- Chỉnh sửa môn thay thế sv ngành 2 `DQT31.05` → [[Mon hoc]]
+- Hủy điểm không đạt SV - theo SV `DQT31.07` → [[Mon hoc]]
+- Hủy điểm không đạt SV - theo file `DQT31.06` → [[Mon hoc]]
+- In danh sách sinh viên tạm dừng chưa xử lý NULL `DQT31.03` → [[Mon hoc]]
+- Môn học thay thế cho ĐK môn học học kỳ `DQT31.00` → [[Mon hoc]]
+- Tạo môn thay thế từ khai báo tương đương `DQT31.00A` → [[Mon hoc]]
+
+## Quản lý nhập điểm
+- Sinh viên bổ túc môn học <small>(Bổ túc môn học)</small> `D24.02` → [[Diem mon hoc]]
+- Điểm TG -> Chính (theo nhóm học) <small>(Chuyển điểm trung gian vào điểm chính)</small> `D21.11` → [[Diem mon hoc]]
+- Điểm TG -> Chính (theo nhóm thi) <small>(Chuyển điểm trung gian vào điểm chính)</small> `D21.12` → [[Diem mon hoc]]
+- Download điểm từ EduWEB <small>(Import điểm môn học)</small> `D25.10` → [[Diem mon hoc]]
+- File Excel dạng hàng dọc <small>(Import điểm môn học)</small> `D25.01` → [[Diem mon hoc]]
+- Import Excel nhiều file <small>(Import điểm môn học)</small> `D25.03` → [[Diem mon hoc]]
+- Import ghi chú điểm <small>(Import điểm môn học)</small> `D25.13` → [[Diem mon hoc]]
+- Import từ file excel <small>(Import điểm môn học)</small> `D25.02` → [[Diem mon hoc]]
+- Import điểm + nhóm học <small>(Import điểm môn học)</small> `D25.09` → [[Nhom hoc]], [[Diem mon hoc]]
+- Import điểm + ĐKMH + Tạo nhóm học <small>(Import điểm môn học)</small> `D25.12` → [[Nhom hoc]], [[KQ DKMH]], [[Diem mon hoc]]
+- Import điểm nhiều học kỳ <small>(Import điểm môn học)</small> `D25.08` → [[Diem mon hoc]]
+- Import điểm quá trình <small>(Import điểm môn học)</small> `D25.11` → [[Diem mon hoc]]
+- Từ phần mềm McScanner <small>(Import điểm môn học)</small> `D25.07` → [[Diem mon hoc]]
+- Xem ảnh file scan <small>(Import điểm môn học)</small> `D25.30` → [[Diem mon hoc]]
+- sửa lý do vào sai điểm <small>(Import điểm môn học / Xem)</small> `D25.31` → [[Diem mon hoc]]
+- Khóa theo nhóm học <small>(Khóa dữ liệu điểm)</small> `D23.03` → [[Nhom hoc]], [[Diem mon hoc]]
+- Mở khóa nhập điểm thành phần <small>(Khóa dữ liệu điểm)</small> `D23.09` → [[Diem mon hoc]]
+- Mở khóa theo nhóm học <small>(Khóa dữ liệu điểm)</small> `D23.05` → [[Nhom hoc]], [[Diem mon hoc]]
+- Nhóm được phép cộng điểm <small>(Khóa dữ liệu điểm)</small> `D23.04` → [[Diem mon hoc]]
+- sinh viên <small>(Nhập hình thức Khác / Nhập điểm 1 môn học)</small> `D26.01` → [[Diem mon hoc]]
+- Nhập điểm học kỳ 1 sinh viên <small>(Nhập hình thức Khác)</small> `D26.03` → [[Diem mon hoc]]
+- sinh viên <small>(Nhập hình thức Khác / Nhập điểm toàn khóa)</small> `D26.02` → [[Diem mon hoc]]
+- Nhập điểm từ bảng ghi điểm <small>(Nhập hình thức Khác)</small> `D24.01` → [[Diem mon hoc]]
+- Sửa điểm toàn học kỳ <small>(Nhập hình thức Khác / Xem)</small> `D26.05` → [[Diem mon hoc]]
+- Gán thời gian nhập điểm nhóm học <small>(Nhập điểm online)</small> `D20_00A` → [[Nhom hoc]], [[Diem mon hoc]]
+- Gán thời gian nhập điểm thi <small>(Nhập điểm online)</small> `D20_02` → [[Diem mon hoc]]
+- mở khóa nhập điểm nhóm học <small>(Nhập điểm online / Khóa)</small> `D20_03` → [[Nhom hoc]], [[Diem mon hoc]]
+- Phân công cán bộ nhập điểm nhóm học <small>(Nhập điểm online)</small> `D20_00` → [[Vien chuc]], [[Nhom hoc]], [[Diem mon hoc]]
+- Phân công cán bộ nhập điểm thi <small>(Nhập điểm online)</small> `D20_01` → [[Vien chuc]], [[Diem mon hoc]]
+- Cộng và lưu điểm môn Mô-đun <small>(Nhập điểm từ danh sách)</small> `D21.09` → [[Diem mon hoc]]
+- DS môn Mô-đun đã tạo bảo lưu <small>(Nhập điểm từ danh sách)</small> `D21.20` → [[Diem mon hoc]]
+- Nhập điểm SV chuyển lịch thi <small>(Nhập điểm từ danh sách)</small> `D21.21` → [[Diem mon hoc]]
+- Nhập điểm SV có hoãn thi <small>(Nhập điểm từ danh sách)</small> `D21.10` → [[Diem mon hoc]]
+- Nhập điểm học lại -  học vượt <small>(Nhập điểm từ danh sách)</small> `D21.02` → [[Diem mon hoc]]
+- [[Menu/Nhập điểm theo lớp (D21.01)|Nhập điểm theo lớp]] <small>(Nhập điểm từ danh sách)</small> `D21.01` → [[Diem mon hoc]]
+- Nhập điểm theo môn học <small>(Nhập điểm từ danh sách)</small> `D21.05` → [[Diem mon hoc]]
+- [[Menu/Nhập điểm theo nhóm học (D21.03)|Nhập điểm theo nhóm học]] <small>(Nhập điểm từ danh sách)</small> `D21.03` → [[Nhom hoc]], [[Diem mon hoc]]
+- Nhập điểm theo nhóm thi <small>(Nhập điểm từ danh sách)</small> `D21.04` → [[Diem mon hoc]]
+- Nhập điểm theo sv hoãn thi đk dự thi <small>(Nhập điểm từ danh sách)</small> `D21.08` → [[Diem mon hoc]]
+- Nhập điểm theo tổ thi <small>(Nhập điểm từ danh sách)</small> `D21.07` → [[Diem mon hoc]]
+- Nhập điểm theo tổ thực hành <small>(Nhập điểm từ danh sách)</small> `D21.06` → [[Diem mon hoc]]
+- NP theo môn học <small>(Nhập điểm đặc biệt / Chuyển điểm P)</small> `D2802` → [[Diem mon hoc]]
+- NP theo sinh viên <small>(Nhập điểm đặc biệt / Chuyển điểm P)</small> `D2803` → [[Diem mon hoc]]
+- Gán Zero cho môn chưa có điểm quá hạn <small>(Nhập điểm đặc biệt)</small> `D2807` → [[Diem mon hoc]]
+- Gán Zero cho điểm hoãn thi quá hạn <small>(Nhập điểm đặc biệt)</small> `D2804` → [[Diem mon hoc]]
+- Gán cấm thi theo điều kiện điểm <small>(Nhập điểm đặc biệt)</small> `D2806` → [[Diem mon hoc]]
+- Nhập điểm hoãn thi <small>(Nhập điểm đặc biệt)</small> `D2805` → [[Diem mon hoc]]
+- Nhập điểm đặc biệt <small>(Nhập điểm đặc biệt)</small> `D2801` → [[Diem mon hoc]]
+- Trả điểm cho loại điểm chưa có điểm <small>(Nhập điểm đặc biệt)</small> `D2808` → [[Diem mon hoc]]
+- Khóa nhập điểm online của nhóm <small>(Quản lý nhập điểm online)</small> `D29.04` → [[Diem mon hoc]]
+- Quyền nhập điểm thành phần <small>(Quản lý nhập điểm online)</small> `D29.02` → [[Diem mon hoc]]
+- Thời gian nhập điểm nhóm học <small>(Quản lý nhập điểm online)</small> `D29.01` → [[Nhom hoc]], [[Diem mon hoc]]
+- Ủy quyền cán bộ nhập điểm <small>(Quản lý nhập điểm online)</small> `D29.03` → [[Vien chuc]], [[Diem mon hoc]]
+- Điểm thưởng môn học <small>(Điểm thưởng)</small> `D30.01` → [[Diem mon hoc]]
+- Điểm thưởng tích lũy <small>(Điểm thưởng)</small> `D30.02` → [[Diem mon hoc]]
+- Import từ phần mềm McScanner <small>(Điểm danh môn học)</small> `D22.01` → [[Diem mon hoc]], [[Diem ren luyen]]
+- Nhập điểm danh theo nhóm học <small>(Điểm danh môn học)</small> `D22.02` → [[Nhom hoc]], [[Diem mon hoc]], [[Diem ren luyen]]
+
+## Quản lý phách
+- Hồi phách vào file điểm <small>(Tạo phách từ danh sách học)</small> `DQP1.10` → [[Diem mon hoc]]
+- In bảng đối chiếu số phách - SBD <small>(Tạo phách từ danh sách học)</small> `DQP1.06` → [[Diem mon hoc]]
+- In danh sách thí sinh <small>(Tạo phách từ danh sách học)</small> `DQP1.04` → [[Diem mon hoc]]
+- In hướng dẫn ghi phách <small>(Tạo phách từ danh sách học)</small> `DQP1.05` → [[Diem mon hoc]]
+- In kết quả thi <small>(Tạo phách từ danh sách học)</small> `DQP1.09` → [[Diem mon hoc]]
+- Mở khóa nhóm <small>(Tạo phách từ danh sách học / Khóa)</small> `DQP1.03` → [[Diem mon hoc]]
+- Nhập điểm theo DS thí sinh <small>(Tạo phách từ danh sách học)</small> `DQP1.08` → [[Diem mon hoc]]
+- Nhập điểm theo số phách <small>(Tạo phách từ danh sách học)</small> `DQP1.07` → [[Diem mon hoc]]
+- Phân quyền nhập điểm phách online <small>(Tạo phách từ danh sách học)</small> `DQT1.11` → [[Diem mon hoc]]
+- Sửa phách môn học <small>(Tạo phách từ danh sách học)</small> `DQP1.11` → [[Diem mon hoc]]
+- Tạo nhóm phách môn học <small>(Tạo phách từ danh sách học)</small> `DQP1.01` → [[Diem mon hoc]]
+- Tạo phách môn học <small>(Tạo phách từ danh sách học)</small> `DQP1.02` → [[Diem mon hoc]]
+- Gán thời gian nhập phách thi online <small>(Tạo phách từ danh sách thi)</small> `DQT2.13` → [[Diem mon hoc]]
+- Hồi phách vào file điểm <small>(Tạo phách từ danh sách thi)</small> `DQP2.10` → [[Diem mon hoc]]
+- In bảng đối chiếu số phách - SBD <small>(Tạo phách từ danh sách thi)</small> `DQP2.06` → [[Diem mon hoc]]
+- In danh sách thí sinh <small>(Tạo phách từ danh sách thi)</small> `DQP2.04` → [[Diem mon hoc]]
+- In hướng dẫn ghi phách <small>(Tạo phách từ danh sách thi)</small> `DQP2.05` → [[Diem mon hoc]]
+- In kết quả thi <small>(Tạo phách từ danh sách thi)</small> `DQP2.09` → [[Diem mon hoc]]
+- Mở khóa <small>(Tạo phách từ danh sách thi / Khóa)</small> `DQP2.03` → [[Diem mon hoc]]
+- Nhập điểm theo DS thí sinh <small>(Tạo phách từ danh sách thi)</small> `DQP2.08` → [[Diem mon hoc]]
+- Nhập điểm theo số phách <small>(Tạo phách từ danh sách thi)</small> `DQP2.07` → [[Diem mon hoc]]
+- Phân công cán bộ nhập điểm phách thi online <small>(Tạo phách từ danh sách thi)</small> `DQT2.12` → [[Vien chuc]], [[Diem mon hoc]]
+- Phân quyền nhập điểm phách online <small>(Tạo phách từ danh sách thi)</small> `DQT2.11` → [[Diem mon hoc]]
+- Sửa phách môn thi <small>(Tạo phách từ danh sách thi)</small> `DQP2.11` → [[Diem mon hoc]]
+- Tạo nhóm phách môn thi <small>(Tạo phách từ danh sách thi)</small> `DQP2.01` → [[Diem mon hoc]]
+- Tạo phách môn thi <small>(Tạo phách từ danh sách thi)</small> `DQP2.02` → [[Diem mon hoc]]
+
+## Quản lý điểm bảo lưu
+- Chuyển điểm vào bảo lưu từ SV khác mã <small>(Điểm bảo lưu)</small> `D31.02` → [[Diem mon hoc]]
+- Danh sách bảo lưu (chuẩn bị) <small>(Điểm bảo lưu)</small> `D31.11` → [[Diem mon hoc]]
+- Danh sách đợt bảo lưu (chuẩn bị) <small>(Điểm bảo lưu)</small> `D31.12` → [[Diem mon hoc]]
+- Hủy điểm bảo lưu hết hạn <small>(Điểm bảo lưu)</small> `D31.06` → [[Diem mon hoc]]
+- In DS bảo lưu được hoàn học phí trong học kỳ <small>(Điểm bảo lưu)</small> `D31.10` → [[Diem mon hoc]]
+- In điểm bảo lưu 1 sinh viên <small>(Điểm bảo lưu)</small> `D31.05` → [[Diem mon hoc]]
+- In điểm bảo lưu sinh viên - theo file <small>(Điểm bảo lưu)</small> `D31.05.1` → [[Diem mon hoc]]
+- In điểm bảo lưu theo lớp <small>(Điểm bảo lưu)</small> `D31.05.2` → [[Diem mon hoc]]
+- In điểm bảo lưu theo số quyết định <small>(Điểm bảo lưu)</small> `D31.07` → [[Diem mon hoc]]
+- Kiểm tra sinh viên vi phạm tín chỉ tối đa <small>(Điểm bảo lưu)</small> `D31.37` → [[Diem mon hoc]]
+- Kiểm tra lỗi điểm bảo lưu <small>(Điểm bảo lưu)</small> `D31.04` → [[Diem mon hoc]]
+- Nhập điểm bảo lưu <small>(Điểm bảo lưu)</small> `D31.01` → [[Diem mon hoc]]
+- Tạo file import từ Bộ bảo lưu <small>(Điểm bảo lưu)</small> `D31.36` → [[Diem mon hoc]]
+- Xem nhật ký điểm bảo lưu hết hạn <small>(Điểm bảo lưu)</small> `D31.06.1` → [[Diem mon hoc]]
+- Xem điểm bảo lưu hủy <small>(Điểm bảo lưu)</small> `D31.08` → [[Diem mon hoc]]
+- Định nghĩa Bộ bảo lưu <small>(Điểm bảo lưu)</small> `D31.35` → [[Diem mon hoc]]
+
+## Quản lý điểm phúc khảo
+- Cập nhật điểm theo file `D41.07` → [[Diem mon hoc]]
+- In bảng ghi điểm phúc khảo `D41.02` → [[Diem mon hoc]]
+- In bảng ghi điểm phúc khảo Mẫu 2 `D41.02.A` → [[Diem mon hoc]]
+- In bảng điểm phúc khảo theo MH - tổng hợp `D41.06` → [[Diem mon hoc]]
+- In phúc khảo từng SV theo tập tin `D4202` → [[Diem mon hoc]]
+- In phúc khảo từng sinh viên `D4201` → [[Diem mon hoc]]
+- Nhập điểm theo môn học `D41.03` → [[Diem mon hoc]]
+- Nhập điểm theo sinh viên `D41.04` → [[Diem mon hoc]]
+- Nhập đơn xin phúc khảo `D41.01` → [[Diem mon hoc]]
+- Thống kê tình hình phúc khảo theo năm học `D41.08` → [[Diem mon hoc]]
+
+## Quản lý điểm trung bình
+- Cập nhật danh sách ĐK bảng điểm Online <small>(In bảng tổng hợp)</small> `D63.03` → [[Diem mon hoc]], [[Diem trung binh]]
+- In bảng tổng hợp ĐTB các học kỳ <small>(In bảng tổng hợp)</small> `D63.01` → [[Diem trung binh]]
+- In điểm tích lũy theo file sinh viên <small>(In bảng tổng hợp)</small> `D63.06` → [[Diem trung binh]]
+- Xem bảng điểm tổng hợp TB các học kỳ <small>(In bảng tổng hợp)</small> `D63.02` → [[Diem mon hoc]], [[Diem trung binh]]
+- Xem bảng điểm tổng hợp TB các năm học <small>(In bảng tổng hợp)</small> `D63.04` → [[Diem mon hoc]], [[Diem trung binh]]
+- Xem bảng điểm tổng kết <small>(In bảng tổng hợp)</small> `D63.07` → [[Diem mon hoc]], [[Diem trung binh]]
+- Xuất kết quả điểm môn đã học <small>(In bảng tổng hợp)</small> `D63.05` → [[Diem mon hoc]], [[Diem trung binh]]
+- In giấy xác nhận 1 sinh viên <small>(In giấy xác nhận hoàn thành giai đoạn học tập)</small> `D68.01` → [[Diem trung binh]]
+- In giấy xác nhận theo file <small>(In giấy xác nhận hoàn thành giai đoạn học tập)</small> `D68.03` → [[Diem trung binh]]
+- In giấy xác nhận theo lớp <small>(In giấy xác nhận hoàn thành giai đoạn học tập)</small> `D68.02` → [[Diem trung binh]]
+- In phiếu điểm ngành 2 -  Theo lớp <small>(In phiếu điểm SV ngành 2)</small> `D67.03` → [[Diem trung binh]]
+- In phiếu điểm ngành 2 - Một số SV trong lớp <small>(In phiếu điểm SV ngành 2)</small> `D67.02` → [[Diem trung binh]]
+- In phiếu điểm ngành 2 - Từng sinh viên <small>(In phiếu điểm SV ngành 2)</small> `D67.01` → [[Diem trung binh]]
+- In phiếu điểm từ danh sách chưa tốt nghiệp <small>(In phiếu điểm sinh viên chưa tốt nghiệp)</small> `D65.01` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN -  Một số SV trong lớp <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.02` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Theo file <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.07` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Theo lớp <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.03` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Theo đợt <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.05` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Theo đợt + tiêu chuẩn <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.06` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Từ danh mục <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.04` → [[Diem trung binh]]
+- In phiếu điểm sinh viên TN - Từng sinh viên <small>(In phiếu điểm sinh viên tốt nghiệp)</small> `D64.01` → [[Diem trung binh]]
+- In phiếu điểm sinh viên - Một số SV trong lớp <small>(In phiếu điểm sinh viên)</small> `D62.02` → [[Diem trung binh]]
+- In phiếu điểm sinh viên - Theo file <small>(In phiếu điểm sinh viên)</small> `D62.04` → [[Diem trung binh]]
+- In phiếu điểm sinh viên - Theo lớp <small>(In phiếu điểm sinh viên)</small> `D62.03` → [[Diem trung binh]]
+- In phiếu điểm sinh viên - Từng sinh viên <small>(In phiếu điểm sinh viên)</small> `D62.01` → [[Diem trung binh]]
+- In phiếu điểm sinh viên - từ danh mục <small>(In phiếu điểm sinh viên)</small> `D62.05` → [[Diem trung binh]]
+- Xét điểm tích lũy kỳ vọng <small>(Kiểm tra điểm tích lũy)</small> `D66.02` → [[Diem trung binh]]
+- Sửa CTĐT của 1 lớp <small>(Sửa CTĐT các lớp niên chế thuần / Xem)</small> `DQT6.03` → [[CTDT]], [[Diem trung binh]]
+- sửa CTĐT của các lớp <small>(Sửa CTĐT các lớp niên chế thuần / Xem)</small> `DQT6.02` → [[CTDT]], [[Diem trung binh]]
+- tách <small>(Sửa CTĐT các lớp niên chế thuần / Định nghĩa các lớp ghép)</small> `DQT6.01` → [[CTDT]], [[Diem trung binh]]
+- Định nghĩa mẫu thành tích học tập <small>(Định nghĩa mẫu thành tích học tập)</small> `D61.01` → [[Diem trung binh]]
+
+## Quản lý điểm tổng kết học phần
+- Bảng qui đổi theo sinh viên <small>(Bảng qui đổi điểm)</small> `D53.07` → [[Diem trung binh]]
+- Nhập hệ nhập chung <small>(Bảng qui đổi điểm)</small> `D53.04` → [[Diem trung binh]]
+- Nhập hệ điểm nhập cho nhóm <small>(Bảng qui đổi điểm)</small> `D53.02` → [[Diem trung binh]]
+- Nhập hệ điểm nhập theo môn <small>(Bảng qui đổi điểm)</small> `D53.03` → [[Diem trung binh]]
+- Định nghĩa bảng qui đổi điểm <small>(Bảng qui đổi điểm)</small> `D53.01` → [[Diem trung binh]]
+- Trọng số % điểm thành phần riêng cho KQĐK <small>(Công thức tính điểm)</small> `D51.04` → [[Diem trung binh]]
+- nhóm học <small>(Công thức tính điểm / Trọng số % môn học)</small> `D51.01` → [[Nhom hoc]], [[Diem trung binh]]
+- Trọng số % điểm thành phần theo nhóm <small>(Công thức tính điểm)</small> `D51.03` → [[Diem mon hoc]], [[Diem trung binh]]
+- Tính theo trung bình cộng <small>(Công thức tính điểm)</small> `D51.02` → [[Diem trung binh]]
+- Cộng điểm học bổng - DSSV học kỳ <small>(Cộng điểm học bổng)</small> `D58.01` → [[Diem trung binh]]
+- Môn học có điểm thành phần 0 vẫn tính điểm tổng kết <small>(Không quản lý điểm)</small> `D56.05` → [[Diem trung binh]]
+- Môn học SV không tính điểm TB <small>(Không quản lý điểm)</small> `D56.02` → [[Diem trung binh]]
+- Môn học SV không tính điểm TB (Ngành 2) <small>(Không quản lý điểm)</small> `D56.04` → [[Diem trung binh]]
+- Môn học khối không quản lý điểm <small>(Không quản lý điểm)</small> `D56.03` → [[Diem trung binh]]
+- Nhóm học không quản lý điểm <small>(Không quản lý điểm)</small> `D56.01` → [[Nhom hoc]], [[Diem trung binh]]
+- Làm tròn chung theo môn học <small>(Làm tròn điểm theo môn học)</small> `D55.01` → [[Diem trung binh]]
+- Làm tròn theo nhóm học <small>(Làm tròn điểm theo môn học)</small> `D55.02` → [[Nhom hoc]], [[Diem trung binh]]
+- Nhập điểm đạt theo khối <small>(Nhập điểm đạt đặc biệt môn học)</small> `DQT8.04` → [[Diem mon hoc]], [[Diem trung binh]]
+- Nhập điểm đạt đặc biệt môn học - Qui chế <small>(Nhập điểm đạt đặc biệt môn học)</small> `DQT8.03` → [[Diem mon hoc]], [[Diem trung binh]]
+- Nhập điểm đạt đặc biệt môn học <small>(Nhập điểm đạt đặc biệt môn học)</small> `DQT8.01` → [[Diem mon hoc]], [[Diem trung binh]]
+- Nhập điểm đạt đặc biệt môn học - khối <small>(Nhập điểm đạt đặc biệt môn học)</small> `DQT8.02` → [[Diem mon hoc]], [[Diem trung binh]]
+- sửa số điểm thành phần con <small>(Quản lý thành phần con / Xem)</small> `D57.01` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - mở  khóa số theo file SV <small>(Tổng kết điểm thi)</small> `D52.12` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - mở khóa sổ 1 SV <small>(Tổng kết điểm thi)</small> `D52.13` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - theo file sinh viên <small>(Tổng kết điểm thi)</small> `D52.05` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - theo khối <small>(Tổng kết điểm thi)</small> `D52.07` → [[Diem mon hoc]], [[Diem trung binh]]
+- [[Menu/Cộng điểm TB - theo lớp (D52.06)|Cộng điểm TB - theo lớp]] <small>(Tổng kết điểm thi)</small> `D52.06` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - theo nhóm MH <small>(Tổng kết điểm thi)</small> `D52.08` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - theo tổ thi <small>(Tổng kết điểm thi)</small> `D52.14` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TB - từ danh sách học kỳ <small>(Tổng kết điểm thi)</small> `D52.04` → [[Diem mon hoc]], [[Diem trung binh]]
+- [[Menu/Cộng điểm TB - từng sinh viên (D52.03)|Cộng điểm TB - từng sinh viên]] <small>(Tổng kết điểm thi)</small> `D52.03` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm TP B và C học kỳ hiện tại <small>(Tổng kết điểm thi)</small> `D52.01` → [[Diem mon hoc]], [[Diem trung binh]]
+- Cộng điểm toàn trường <small>(Tổng kết điểm thi)</small> `D52.09` → [[Diem mon hoc]], [[Diem trung binh]]
+- Khối chưa cộng điểm <small>(Tổng kết điểm thi)</small> `D52.02` → [[Diem mon hoc]], [[Diem trung binh]]
+- công bố điểm <small>(Tổng kết điểm thi / Nhóm MH chưa tính điểm)</small> `D52.15` → [[Diem mon hoc]], [[Diem trung binh]]
+- Nhật ký cộng điểm <small>(Tổng kết điểm thi)</small> `D52.11` → [[Diem mon hoc]], [[Diem trung binh]]
+- Xem khối lớp cộng điểm <small>(Tổng kết điểm thi)</small> `D52.20` → [[Khoi lop]], [[Diem mon hoc]], [[Diem trung binh]]
+- Đối tượng công bố điểm lên web <small>(Tổng kết điểm thi)</small> `D52.10` → [[Diem mon hoc]], [[Diem trung binh]]
+
+## Quản trị phân hệ
+- Bổ sung dữ liệu học kỳ mang sang `RBS` → [[Diem mon hoc]]
+- Chỉnh định thông số toàn cục `RQT3` → [[Diem mon hoc]]
+- Khóa sổ toàn khóa <small>(Khóa sổ điểm)</small> `RQT2.04` → [[Diem mon hoc]]
+- Nhập điểm theo diện sinh viên <small>(Phân quyền phân hệ)</small> `DQY1.01` → [[Diem mon hoc]]
+- Nhập điểm theo lớp học phần <small>(Phân quyền phân hệ)</small> `DQY1.07` → [[Nhom hoc]], [[Diem mon hoc]]
+- Nhập điểm theo lớp kế hoạch <small>(Phân quyền phân hệ)</small> `DQY1.02` → [[Diem mon hoc]]
+- Nhập điểm theo môn học <small>(Phân quyền phân hệ)</small> `DQY1.03` → [[Diem mon hoc]]
+- tổ học <small>(Phân quyền phân hệ / Nhập điểm theo nhóm)</small> `DQY1.04` → [[Diem mon hoc]]
+- tổ học <small>(Phân quyền phân hệ / Nhập điểm theo nhóm)</small> `DQY1.10` → [[Diem mon hoc]]
+- tổ thi <small>(Phân quyền phân hệ / Nhập điểm theo nhóm)</small> `DQY1.05` → [[Diem mon hoc]]
+- Phân quyền nhập điểm bảo lưu <small>(Phân quyền phân hệ)</small> `DQY.09` → [[Diem mon hoc]]
+- Sao lưu điểm <small>(Sao lưu và so sánh)</small> `RQT4.1` → [[Diem mon hoc]]
+- So sánh với điểm sao lưu <small>(Sao lưu và so sánh)</small> `RQT4.2` → [[Diem mon hoc]]
+- Bổ sung dữ liệu học kỳ mang sang `DBS`
+- Bộ ký tên report <small>(Bộ chữ ký)</small> `DQT7.04`
+- Danh mục nhóm chữ ký <small>(Bộ chữ ký)</small> `DQT7.02`
+- Nhóm chữ ký <small>(Bộ chữ ký / Danh sách ký tên)</small> `DQT7.03`
+- Chỉnh định CTĐT tính điểm theo khối <small>(Chỉnh định phân hệ)</small> `DQT5.08` → [[CTDT]]
+- Phân quyền nhập chứng chỉ ngoài <small>(Chỉnh định phân hệ)</small> `DQT5.03`
+- Thành phần con môn học theo học kỳ <small>(Chỉnh định phân hệ)</small> `DQT5.06`
+- Định nghĩa nhãn điểm môn đặc biệt <small>(Chỉnh định phân hệ)</small> `DQT5.04` → [[Diem mon hoc]]
+- Định nghĩa phổ điểm in <small>(Chỉnh định phân hệ)</small> `DQT5.07`
+- Định nghĩa thành phần con môn học <small>(Chỉnh định phân hệ)</small> `DQT5.05`
+- Định nghĩa tên nhãn điểm chung <small>(Chỉnh định phân hệ)</small> `DQT5.01`
+- Chỉnh định thông số học kỳ `DQT4`
+- Chỉnh định thông số toàn cục `DQT2`
+- Giải phóng bớt bảng ghi điểm quá cũ `DQT11` → [[Diem mon hoc]]
+- Phiên bản report <small>(Phiên bản report)</small> `DQT9.01`
+
+## Xem file hướng dẫn
+- Tài liệu hướng dẫn EduSoft.NET `RHD1` → [[Diem mon hoc]]
+- Tài liệu hướng dẫn EduSoft.NET `DHD1`
+
+## Xử lý học vụ học kỳ
+- In DSSV buộc thôi học <small>(In kết quả)</small> `D74.17` → [[Ket qua hoc vu]]
+- In DSSV cảnh báo <small>(In kết quả)</small> `D74.16` → [[Ket qua hoc vu]]
+- In DSSV thử thách lại <small>(In kết quả)</small> `D74.18` → [[Ket qua hoc vu]]
+- In bảng tổng hợp sv vi phạm <small>(In kết quả)</small> `D74.10` → [[Ket qua hoc vu]]
+- In kết quả cảnh báo học vụ theo Ngành - Khóa <small>(In kết quả)</small> `D74.12` → [[Ket qua hoc vu]]
+- In kết quả xét theo lớp (HK) <small>(In kết quả)</small> `D74.01` → [[Ket qua hoc vu]]
+- In kết quả xét theo đợt (HK) <small>(In kết quả)</small> `D74.08` → [[Ket qua hoc vu]]
+- In thống kê kết quả (HK) <small>(In kết quả)</small> `D74.02` → [[Ket qua hoc vu]]
+- In thống kê kết quả theo Khối lớp <small>(In kết quả)</small> `D74.09` → [[Khoi lop]], [[Ket qua hoc vu]]
+- In thống kê kết quả theo Ngành Khóa <small>(In kết quả)</small> `D74.05` → [[Ket qua hoc vu]]
+- In thống kê kết quả theo lớp <small>(In kết quả)</small> `D74.13` → [[Ket qua hoc vu]]
+- In thống kê theo hộ khẩu (HK) <small>(In kết quả)</small> `D74.03` → [[Ket qua hoc vu]]
+- In tổng hợp kết quả theo khóa <small>(In kết quả)</small> `D74.11` → [[Ket qua hoc vu]]
+- In tổng hợp số liệu xét (HK) <small>(In kết quả)</small> `D74.07` → [[Ket qua hoc vu]]
+- In tổng hợp tiến độ học tập của lớp <small>(In kết quả)</small> `D74.14` → [[Ket qua hoc vu]]
+- In tổng hợp tiến độ học tập theo sinh viên <small>(In kết quả)</small> `D74.15` → [[Ket qua hoc vu]]
+- Định nghĩa tiêu chuẩn (HK) <small>(Tiêu chuẩn)</small> `D71.01` → [[Ket qua hoc vu]]
+- Kết quả xét học kỳ hiện tại <small>(Xem kết quả)</small> `D75.01` → [[Ket qua hoc vu]]
+- Kết quả xét tất cả học kỳ <small>(Xem kết quả)</small> `D75.02` → [[Ket qua hoc vu]]
+- Xem danh sách sinh viên vi phạm <small>(Xét BTH không theo điều kiện điểm)</small> `D77.06` → [[Ket qua hoc vu]]
+- sửa SV không ĐKMH có lý do <small>(Xét BTH không theo điều kiện điểm / Xem)</small> `D77.07` → [[KQ DKMH]], [[Ket qua hoc vu]]
+- sửa SV ngoại lệ không xét CCHV <small>(Xét BTH không theo điều kiện điểm / Xem)</small> `D77.08` → [[Ket qua hoc vu]]
+- Xử lý học vượt thời gian qui định <small>(Xét BTH không theo điều kiện điểm)</small> `D77.01` → [[Ket qua hoc vu]]
+- Xử lý sinh viên không đăng ký môn học <small>(Xét BTH không theo điều kiện điểm)</small> `D77.03` → [[KQ DKMH]], [[Ket qua hoc vu]]
+- Xử lý sinh viên nghỉ quá thời gian qui định <small>(Xét BTH không theo điều kiện điểm)</small> `D77.04` → [[Ket qua hoc vu]]
+- Xử lý sinh viên nợ học phí <small>(Xét BTH không theo điều kiện điểm)</small> `D77.02` → [[No hoc phi]], [[Ket qua hoc vu]]
+- Xử lý sinh viên quá 2 lần Cảnh cáo <small>(Xét BTH không theo điều kiện điểm)</small> `D77.05` → [[Ket qua hoc vu]]
+- Xét 1 sinh viên (HK) <small>(Xét học kỳ)</small> `D73.04` → [[Ket qua hoc vu]]
+- Xét file mã SV (HK) <small>(Xét học kỳ)</small> `D73.05` → [[Ket qua hoc vu]]
+- [[Menu/Xét theo lớp (HK) (D73.03)|Xét theo lớp (HK)]] <small>(Xét học kỳ)</small> `D73.03` → [[Ket qua hoc vu]]
+- [[Menu/Xét theo đợt (HK) (D73.01)|Xét theo đợt (HK)]] <small>(Xét học kỳ)</small> `D73.01` → [[Ket qua hoc vu]]
+- Xét theo đợt và tiêu chuẩn (HK) <small>(Xét học kỳ)</small> `D73.02` → [[Ket qua hoc vu]]
+- In thống kê dữ liệu xét <small>(Xét điều kiện bổ sung)</small> `D76.03` → [[Ket qua hoc vu]]
+- Kết quả xét theo điều kiện bổ sung <small>(Xét điều kiện bổ sung)</small> `D76.02` → [[Ket qua hoc vu]]
+- Xét theo điều kiện bổ sung <small>(Xét điều kiện bổ sung)</small> `D76.01` → [[Ket qua hoc vu]]
+- Danh sách SV xét (HK) <small>(Đợt và danh sách xét)</small> `D72.03` → [[Ket qua hoc vu]]
+- Danh sách lớp xét (HK) <small>(Đợt và danh sách xét)</small> `D72.02` → [[Ket qua hoc vu]]
+- Danh sách đợt xét (HK) <small>(Đợt và danh sách xét)</small> `D72.01` → [[Ket qua hoc vu]]
+
+## Xử lý học vụ ngành 2
+- In kết quả xét theo lớp (HK) <small>(In kết quả)</small> `D1004.01` → [[Ket qua hoc vu]]
+- In kết quả xét theo đợt (HK) <small>(In kết quả)</small> `D1004.08` → [[Ket qua hoc vu]]
+- In thống kê kết quả (HK) <small>(In kết quả)</small> `D1004.02` → [[Ket qua hoc vu]]
+- In thống kê kết quả theo Khối lớp <small>(In kết quả)</small> `D1004.09` → [[Khoi lop]], [[Ket qua hoc vu]]
+- In thống kê kết quả theo Ngành Khóa <small>(In kết quả)</small> `D1004.05` → [[Ket qua hoc vu]]
+- In thống kê theo hộ khẩu (HK) <small>(In kết quả)</small> `D1004.03` → [[Ket qua hoc vu]]
+- In tổng hợp số liệu xét (HK) <small>(In kết quả)</small> `D1004.07` → [[Ket qua hoc vu]]
+- Định nghĩa tiêu chuẩn (HK) <small>(Tiêu chuẩn)</small> `D1001.01` → [[Ket qua hoc vu]]
+- Kết quả xét học kỳ hiện tại <small>(Xem kết quả)</small> `D1005.01` → [[Ket qua hoc vu]]
+- Kết quả xét tất cả học kỳ <small>(Xem kết quả)</small> `D1005.02` → [[Ket qua hoc vu]]
+- Xét 1 sinh viên (HK) <small>(Xét học kỳ)</small> `D1003.04` → [[Ket qua hoc vu]]
+- Xét file mã SV (HK) <small>(Xét học kỳ)</small> `D1003.05` → [[Ket qua hoc vu]]
+- Xét theo lớp (HK) <small>(Xét học kỳ)</small> `D1003.03` → [[Ket qua hoc vu]]
+- Xét theo đợt (HK) <small>(Xét học kỳ)</small> `D1003.01` → [[Ket qua hoc vu]]
+- Xét theo đợt và tiêu chuẩn (HK) <small>(Xét học kỳ)</small> `D1003.02` → [[Ket qua hoc vu]]
+- Danh sách SV xét (HK) <small>(Đợt và danh sách xét)</small> `D1002.03` → [[Ket qua hoc vu]]
+- Danh sách lớp xét (HK) <small>(Đợt và danh sách xét)</small> `D1002.02` → [[Ket qua hoc vu]]
+- Danh sách đợt xét (HK) <small>(Đợt và danh sách xét)</small> `D1002.01` → [[Ket qua hoc vu]]
+
+## Xử lý học vụ năm học
+- In kết quả xét (NH) <small>(In kết quả)</small> `D84.01` → [[Ket qua hoc vu]]
+- In thống kê kết quả (NH) <small>(In kết quả)</small> `D84.02` → [[Ket qua hoc vu]]
+- In thống kê theo hộ khẩu (NH) <small>(In kết quả)</small> `D84.03` → [[Ket qua hoc vu]]
+- Định nghĩa tiêu chuẩn (NH) <small>(Tiêu chuẩn)</small> `D81.01` → [[Ket qua hoc vu]]
+- Kết quả xét năm học hiện tại <small>(Xem kết quả)</small> `D85.01` → [[Ket qua hoc vu]]
+- Kết quả xét tất cả năm học <small>(Xem kết quả)</small> `D85.02` → [[Ket qua hoc vu]]
+- Xét 1 sinh viên (NH) <small>(Xét năm học)</small> `D83.04` → [[Ket qua hoc vu]]
+- Xét file mã SV (NH) <small>(Xét năm học)</small> `D83.05` → [[Ket qua hoc vu]]
+- Xét theo lớp (NH) <small>(Xét năm học)</small> `D83.03` → [[Ket qua hoc vu]]
+- Xét theo đợt (NH) <small>(Xét năm học)</small> `D83.01` → [[Ket qua hoc vu]]
+- Xét theo đợt và tiêu chuẩn (NH) <small>(Xét năm học)</small> `D83.02` → [[Ket qua hoc vu]]
+- Danh sách SV xét (NH) <small>(Đợt và danh sách xét)</small> `D82.03` → [[Ket qua hoc vu]]
+- Danh sách lớp xét (NH) <small>(Đợt và danh sách xét)</small> `D82.02` → [[Ket qua hoc vu]]
+- Danh sách đợt xét (NH) <small>(Đợt và danh sách xét)</small> `D82.01` → [[Ket qua hoc vu]]
