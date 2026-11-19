@@ -27,7 +27,7 @@ Hoãn thi / thi cải thiện, tính chất thi, nhóm thi, đợt thi, tổ thi
 - [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – đợt thi
 - [[Vien chuc|Viên chức / cán bộ giảng dạy]] từ [[QLNS]] – phân công coi thi
 - [[Phong hoc|Phòng học kỳ]] từ [[KHGD]] – nhập phòng sử dụng trong đợt thi
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – tạo nhóm thi
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] từ [[KHGD]] – tạo nhóm thi
 - [[Thoi khoa bieu|Thời khóa biểu]] từ [[KHGD]] – kiểm trùng TKB học với lịch thi
 - [[KQ DKMH|Kết quả đăng ký môn học]] từ [[DKMH]] – nguồn danh sách thi
 
@@ -43,6 +43,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[DKMH]], [[KHGD]], [[QLHT]], [
 
 ## Phần trên Edusoft
 `Tổ chức thi/ …`.
+Menu: [[Menu/LTHI|125 menu của LTHI]] – menu tạo dữ liệu: [[Menu/Xếp lịch thi theo đợt thi (L39.03)|Xếp lịch thi theo đợt thi]].
 
 ## Phần trên web / app
 NetWEB SV + GV: xem lịch thi; GV: xem lịch coi thi; CBCNV đăng ký coi thi (tuỳ trường).

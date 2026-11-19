@@ -48,6 +48,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[CSHP]] – kiểm dữ liệu
 
 ## Phần trên Edusoft
 `Hệ thống/ Thông tin học kỳ/ …`, `Hệ thống/ Quản lý người dùng/ …`, `Hệ thống/ Quản trị hệ thống/ Chỉnh định thông số hệ thống`, `Hệ thống/ An toàn dữ liệu/ Khóa sổ phân hệ theo học kỳ`.
+Menu: [[Menu/QLHT|75 menu của QLHT]] – menu tạo dữ liệu: [[Menu/Khóa sổ phân hệ theo học kỳ (H2.3)|Khóa sổ phân hệ theo học kỳ]], [[Menu/Phân quyền theo chức năng (H62)|Phân quyền theo chức năng]], [[Menu/Phân quyền theo người dùng (H67)|Phân quyền theo người dùng]], [[Menu/Chỉnh định chung (H101.3)|Chỉnh định chung]], [[Menu/Chỉnh định menu (H101.1)|Chỉnh định menu]], [[Menu/Cấm SV xem vì nợ học phí (H101.4)|Cấm SV xem vì nợ học phí]], [[Menu/Danh mục năm học học kỳ (H31)|Danh mục năm học học kỳ]], [[Menu/Khởi tạo dữ liệu học kỳ (H32)|Khởi tạo dữ liệu học kỳ]], [[Menu/Chỉnh định menu (HTI01)|Chỉnh định menu]].
 
 ## Phần trên web / app
 `Hệ thống/ Quản trị NetWEB/ Chỉnh định menu | Chỉnh định chung | Cấm SV xem vì nợ học phí` – **chỉnh trên Edusoft, kiểm kết quả trên web** (menu/chức năng ẩn-hiện, SV nợ HP không xem được…). Phân quyền quản trị trên web (PhanQuyenQuanTriTrenWeb).

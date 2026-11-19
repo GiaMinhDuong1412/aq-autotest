@@ -34,6 +34,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[QLSV]] – kiểm dữ liệu
 
 ## Phần trên Edusoft
 `Ký túc xá/ Định nghĩa dữ liệu/ …`, `Ký túc xá/ Quản lý hợp đồng/ …`, `Ký túc xá/ Quản lý thanh toán/ …` (tài liệu còn menu cũ "Lưu trú / Quyết định vào|ra KTX").
+Menu: [[Menu/QKTX|103 menu của QKTX]] – menu tạo dữ liệu: [[Menu/Hợp đồng theo phòng (X20.10.12)|Hợp đồng theo phòng]].
 
 ## Phần trên web / app
 NetWEB SV: đăng ký ký túc xá (đăng ký trực tuyến / gia hạn).

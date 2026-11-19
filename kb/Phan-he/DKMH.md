@@ -33,7 +33,7 @@ Ràng buộc (tiên quyết / học trước / song hành, tín chỉ tối đa,
 - [[Lop sinh vien|Lớp sinh viên]] từ [[QLSV]] – thời gian / đối tượng đăng ký theo lớp
 - [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]] từ [[KHGD]] – môn được đăng ký theo chương trình
 - [[DS SV hoc ky|Danh sách sinh viên học kỳ]] từ [[QLSV]] – SV được đăng ký môn học (phải có trong DS SV học kỳ)
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – nhóm học + số chỗ để đăng ký
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] từ [[KHGD]] – nhóm học + số chỗ để đăng ký
 - [[Thoi khoa bieu|Thời khóa biểu]] từ [[KHGD]] – nhóm học có lịch để SV chọn
 - [[No hoc phi|Nợ học phí]] từ [[CSHP]] – ràng buộc: SV nợ HP không được đăng ký
 
@@ -51,6 +51,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[CSHP]], [[KHGD]], [[QLHT]], [
 
 ## Phần trên Edusoft
 Khai báo & đăng ký offline: `Đăng ký MH/ Đăng ký môn học/ …`, `Đăng ký MH/ Ràng buộc đăng ký online/ …`, `Đăng ký MH/ Rút môn học online/ Thời gian rút môn học theo lớp`, `Đăng ký MH/ Hủy KQ ĐKMH/ …`.
+Menu: [[Menu/DKMH|131 menu của DKMH]] – menu tạo dữ liệu: [[Menu/Chỉnh định chung (M10.50)|Chỉnh định chung]], [[Menu/Thời gian đăng ký theo lớp (M10.21)|Thời gian đăng ký theo lớp]], [[Menu/ĐKMH từng sinh viên (M13)|ĐKMH từng sinh viên]], [[Menu/Theo lớp (M11.01)|Theo lớp]].
 
 ## Phần trên web / app
 NetWEB SV: đăng ký môn học, rút môn học; NetWEB GV (CVHT): duyệt đăng ký môn học. Nhiều trường dùng **trang ĐKMH riêng** (vd dkmh.hitu.edu.vn, dkmh.tdmu.edu.vn) – xem [[DKMHUI]].

@@ -63,6 +63,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[DIEM]], [[DKMH]], [[KHGD]], [
 
 ## Phần trên Edusoft
 `Sinh viên/ Sinh viên học kỳ/ …`, `Sinh viên/ Thông tin sinh viên/ …`, `Sinh viên/ Hồ sơ và Văn bằng/ …`, `Sinh viên/ Miễn giảm hoc phí và Học bổng/ …`, `Sinh viên/ Điểm danh và Điểm rèn luyện/ …`.
+Menu: [[Menu/QLSV|332 menu của QLSV]] – menu tạo dữ liệu: [[Menu/Diện chính sách sinh viên học kỳ (S163)|Diện chính sách sinh viên học kỳ]], [[Menu/Danh mục lớp (S13)|Danh mục lớp]], [[Menu/Danh mục sinh viên (S11)|Danh mục sinh viên]], [[Menu/Danh sách sinh viên học kỳ (S12)|Danh sách sinh viên học kỳ]], [[Menu/Quyết định vào mới (S15.04)|Quyết định vào mới]], [[Menu/Nhập điểm rèn luyện (S83.05)|Nhập điểm rèn luyện]], [[Menu/Tổng kết điểm rèn luyện (S83.06)|Tổng kết điểm rèn luyện]].
 
 ## Phần trên web / app
 NetWEB SV: cập nhật lý lịch (theo thời gian mở ở Edusoft), xem kết quả điểm danh, đánh giá điểm rèn luyện, tra cứu tốt nghiệp, đăng ký cấp giấy chứng nhận / bảng điểm. NetWEB GV: điểm danh môn giảng dạy, xem DS SV quản lý (CVHT).

@@ -32,7 +32,7 @@ KQ ĐKMH → bảng ghi điểm → nhập điểm (danh sách / import / phách
 - [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – điểm, xét học vụ học kỳ
 - [[Mon hoc|Môn học]] từ [[KHGD]] – môn thay thế
 - [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]] từ [[KHGD]] – môn thay thế theo khối
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – bảng ghi điểm / nhập điểm theo nhóm học
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] từ [[KHGD]] – bảng ghi điểm / nhập điểm theo nhóm học
 - [[KQ DKMH|Kết quả đăng ký môn học]] từ [[DKMH]] – bảng ghi điểm, nhập điểm
 - [[Danh sach thi|Danh sách thi – lịch thi]] từ [[LTHI]] – tạo phách, bảng ghi điểm theo tổ thi
 - [[Diem luan van|Điểm luận văn]] từ [[BVLV]] – thành điểm môn học
@@ -51,6 +51,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[BVLV]], [[DKMH]], [[KHGD]], [
 
 ## Phần trên Edusoft
 `Quản lý điểm/ …`, `Quản lý nhập điểm/ …`.
+Menu: [[Menu/DIEM|394 menu của DIEM]] – menu tạo dữ liệu: [[Menu/Cộng điểm TB - theo lớp (D52.06)|Cộng điểm TB - theo lớp]], [[Menu/Cộng điểm TB - từng sinh viên (D52.03)|Cộng điểm TB - từng sinh viên]], [[Menu/Xét theo lớp (HK) (D73.03)|Xét theo lớp (HK)]], [[Menu/Xét theo đợt (HK) (D73.01)|Xét theo đợt (HK)]], [[Menu/Nhập điểm theo lớp (D21.01)|Nhập điểm theo lớp]], [[Menu/Nhập điểm theo nhóm học (D21.03)|Nhập điểm theo nhóm học]].
 
 ## Phần trên web / app
 NetWEB SV: xem điểm; NetWEB GV: nhập điểm theo nhóm học / tổ thi / phách, xem điểm môn giảng dạy. Phúc tra điểm trực tuyến: [[GAM]].

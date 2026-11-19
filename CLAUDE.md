@@ -90,7 +90,14 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - `kb/` – **knowledge base nghiệp vụ** (vault Obsidian): phân hệ **liên kết qua dữ liệu** – `00 Bản đồ phân hệ.md` (chuỗi + sơ đồ mermaid),
   `Phan-he/<mã ACS>.md` (Properties `nhan_tu`/`dua_sang`, mục Nhận dữ liệu từ / Tạo ra / Đưa sang / Sửa ở đây → kiểm lại, phần Edusoft / web),
   `Du-lieu/<tên>.md` (`tao_o`, `dung_o`, menu, trên web), `San-pham/`, `Truong/`, `Repo-coder/`, `Cach-test/`; `test_tren`: web|edusoft|app|api|mau-in;
-  `trang_thai`: can-xac-nhan < tu-tai-lieu < da-xac-nhan. Sinh lại phần phân hệ/dữ liệu bằng script khi lưu đồ đổi (giữ phần người test đã sửa).
+  `trang_thai`: can-xac-nhan < tu-tai-lieu < da-xac-nhan. Sinh lại phần phân hệ/dữ liệu bằng script khi lưu đồ đổi (ghi đè – sửa ở file nguồn).
+  **Logic "muốn có X phải có Y"**: `Du-lieu/` có `can_co` / `la_dieu_kien_cho` / `tang`, trang `00 Logic nghiệp vụ.md`; `Menu/<phân hệ>.md` = menu Edusoft (từ catalog)
+  nối tới dữ liệu, menu tạo dữ liệu có ghi chú riêng. Nguồn: `tools/kb_phan_he_data.py` (phân hệ), `tools/kb_logic_data.py` (REQ = phải có trước, KW = nhận ra
+  dữ liệu trong menu / lời KH, KEYMA = menu tạo dữ liệu); `python tools/kb_lien_ket.py kb` sinh lại kb/ (ghi đè Phan-he, Du-lieu, Menu, 2 trang 00) **và** nhúng
+  bản đồ vào `web/index.html` (`<script type="application/json" id="kb-graph">`). Trang Test sau sửa lỗi đọc bản đồ này (`kbG`, `rtMap`): case → menu (catalog) →
+  dữ liệu (focus; dữ liệu là đầu vào của dữ liệu khác trong case thì bỏ) → **phải có trước** (mục Chuẩn bị của plan) / **ảnh hưởng tới** (mục Không ảnh hưởng khi sửa
+  số liệu; sửa giao diện web thì kiểm trang web khác hiện cùng dữ liệu) / **case liên quan** (cùng dữ liệu hoặc dữ liệu cha – con); sửa số liệu của dữ liệu tạo ở phân hệ
+  Edusoft mà KH không nhắc web → nghiêng về test trên Edusoft. Bước 1 hiện **Thông tin case trên ACS** (`rtAcsGrid`, nhãn `RT_CL` theo cột `RT_COLS`).
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục case. Không ghi mật khẩu vào kb/.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;

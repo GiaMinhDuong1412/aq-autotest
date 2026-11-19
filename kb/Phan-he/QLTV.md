@@ -38,6 +38,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[CSHP]], [[QLTS]] – kiểm d
 
 ## Phần trên Edusoft
 `Thu/chi HP/ Hoạt động thu/chi/ …`, `Thu/chi HP/ Khai thác báo biểu/ …`.
+Menu: [[Menu/QLTV|101 menu của QLTV]] – menu tạo dữ liệu: [[Menu/Import phiếu thu (V04)|Import phiếu thu]], [[Menu/Thu học phí 1 SV (V05)|Thu học phí 1 SV]].
 
 ## Phần trên web / app
 NetWEB SV: xem học phí; đóng học phí trực tuyến ([[EDUBILL]], tuỳ trường).

@@ -31,6 +31,7 @@ Không có phân hệ nào nhận dữ liệu trực tiếp.
 
 ## Phần trên Edusoft
 Tab NC khoa học.
+Menu: [[Menu/NCKH|110 menu của NCKH]].
 
 ## Phần trên web / app
 CBCNV nhập lý lịch khoa học trực tuyến (tuỳ trường).

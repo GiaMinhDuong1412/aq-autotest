@@ -27,6 +27,7 @@ Chuẩn bị kỳ/đợt, danh mục ngành – phương thức – khối; nh�
 ## Tạo ra
 - [[Ho so thi sinh|Hồ sơ thí sinh]]
 - [[DS trung tuyen|Danh sách trúng tuyển]]
+- [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]]
 
 ## Đưa sang
 - [[DS trung tuyen|Danh sách trúng tuyển]] → [[QLSV]], [[QLTV]]
@@ -37,6 +38,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[QLSV]] – kiểm dữ liệu
 
 ## Phần trên Edusoft
 `Tuyển sinh/ Chuẩn bị/ …`, `Tuyển sinh/ Nhập liệu hồ sơ/ …`, `Tuyển sinh/ Xét tuyển/ …`, `Tuyển sinh/ Tiếp sinh/ …`.
+Menu: [[Menu/QLTS|234 menu của QLTS]] – menu tạo dữ liệu: [[Menu/Danh sách khối tuyển sinh (T1.02)|Danh sách khối tuyển sinh]], [[Menu/Danh sách kỳ tuyển sinh (T1.01)|Danh sách kỳ tuyển sinh]], [[Menu/Danh sách ngành tuyển sinh (T1.03)|Danh sách ngành tuyển sinh]], [[Menu/Danh sách đợt tuyển sinh (T1.09)|Danh sách đợt tuyển sinh]], [[Menu/Định nghĩa phương thức hồ sơ XT (T1.12)|Định nghĩa phương thức hồ sơ XT]], [[Menu/Danh sách trúng tuyển (T9.00)|Danh sách trúng tuyển]], [[Menu/Nhập hồ sơ đăng ký thi tuyển (T2.03.01)|Nhập hồ sơ đăng ký thi tuyển]], [[Menu/Nhập hồ sơ đăng ký xét tuyển (T2.03.00A)|Nhập hồ sơ đăng ký xét tuyển]], [[Menu/Chuyển danh sách trúng tuyển sang phân hệ QLSV (T10.06)|Chuyển danh sách trúng tuyển sang phân hệ QLSV]].
 
 ## Phần trên web / app
 NetWEB: Đăng ký xét tuyển, Tra cứu thông tin xét tuyển, Nhập học online (thí sinh), Chăm sóc thí sinh xét tuyển.

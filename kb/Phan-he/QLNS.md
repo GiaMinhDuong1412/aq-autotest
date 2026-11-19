@@ -36,6 +36,7 @@ Các phân hệ nhận dữ liệu của QLNS: [[KHGD]], [[KLGD]], [[KSDG]], [[L
 
 ## Phần trên Edusoft
 Tab **Nhân sự**.
+Menu: [[Menu/QLNS|169 menu của QLNS]] – menu tạo dữ liệu: [[Menu/Danh sách viên chức học kỳ (N02)|Danh sách viên chức học kỳ]].
 
 ## Phần trên web / app
 GV xem thông tin cá nhân; CBCNV đăng ký nghỉ phép, nhập lý lịch khoa học trực tuyến (tuỳ trường).

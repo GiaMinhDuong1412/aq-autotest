@@ -28,7 +28,7 @@ Chuẩn bị form (form, thang đo, nhóm câu hỏi, câu hỏi) → kỳ đán
 - [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – kỳ đánh giá
 - [[DS SV hoc ky|Danh sách sinh viên học kỳ]] từ [[QLSV]] – đáp viên
 - [[Vien chuc|Viên chức / cán bộ giảng dạy]] từ [[QLNS]] – giảng viên được đánh giá
-- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – dữ liệu đánh giá (nhóm tổ, GV)
+- [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] từ [[KHGD]] – dữ liệu đánh giá (nhóm tổ, GV)
 
 ## Tạo ra
 - [[Ket qua khao sat|Kết quả khảo sát]]
@@ -42,6 +42,7 @@ Lỗi có thể do dữ liệu đầu vào từ: [[KHGD]], [[QLHT]], [[QLNS]], [
 
 ## Phần trên Edusoft
 `Khảo sát đánh giá/ Chuẩn bị form/ …`, `Khảo sát đánh giá/ Danh sách đánh giá/ …`, `Khảo sát đánh giá/ Khai thác báo biểu/ In kết quả`.
+Menu: [[Menu/KSDG|42 menu của KSDG]] – menu tạo dữ liệu: [[Menu/Tạo và cập nhật danh sách đáp viên (Z3.01.02)|Tạo và cập nhật danh sách đáp viên]], [[Menu/Nhập trả lời từng đáp viên (Z4.01.01)|Nhập trả lời từng đáp viên]].
 
 ## Phần trên web / app
 NetWEB SV + GV + khách: làm khảo sát; GV: xem kết quả khảo sát; DHNT: **đánh giá GV trước khi xem điểm**.

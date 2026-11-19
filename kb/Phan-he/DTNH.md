@@ -31,6 +31,7 @@ Không có phân hệ nào nhận dữ liệu trực tiếp.
 
 ## Phần trên Edusoft
 —
+Menu: [[Menu/DTNH|25 menu của DTNH]].
 
 ## Phần trên web / app
 —
