@@ -43,3 +43,8 @@ aqdata.rar
 # gói dữ liệu chuyển từ console claude.ai sang app (Nhập dữ liệu .zip) – có ảnh, không đưa lên git
 AQ-du-lieu-*.zip
 web/thay-doi.json
+
+# Obsidian (kb/): trạng thái cửa sổ riêng từng máy
+kb/.obsidian/workspace*.json
+kb/.obsidian/plugins/*/data.json
+kb/.trash/
