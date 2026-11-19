@@ -7,6 +7,13 @@ test_tren:
   - edusoft
   - web
 tab_edusoft: Tổ chức thi
+nhan_tu:
+  - "[[DKMH]]"
+  - "[[KHGD]]"
+  - "[[QLHT]]"
+  - "[[QLNS]]"
+dua_sang:
+  - "[[DIEM]]"
 dau_hieu: hoãn thi, nhóm thi, đợt thi, tổ thi, lịch thi, số báo danh, coi thi, trùng lịch
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -16,6 +23,24 @@ trang_thai: tu-tai-lieu
 ## Là gì
 Hoãn thi / thi cải thiện, tính chất thi, nhóm thi, đợt thi, tổ thi, xếp & hiệu chỉnh lịch thi, số báo danh, phân công coi thi, báo biểu kiểm tra trùng (lưu đồ LTHI).
 
+## Nhận dữ liệu từ
+- [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – đợt thi
+- [[Vien chuc|Viên chức / cán bộ giảng dạy]] từ [[QLNS]] – phân công coi thi
+- [[Phong hoc|Phòng học kỳ]] từ [[KHGD]] – nhập phòng sử dụng trong đợt thi
+- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – tạo nhóm thi
+- [[Thoi khoa bieu|Thời khóa biểu]] từ [[KHGD]] – kiểm trùng TKB học với lịch thi
+- [[KQ DKMH|Kết quả đăng ký môn học]] từ [[DKMH]] – nguồn danh sách thi
+
+## Tạo ra
+- [[Danh sach thi|Danh sách thi – lịch thi]]
+
+## Đưa sang
+- [[Danh sach thi|Danh sách thi – lịch thi]] → [[DIEM]]
+
+## Sửa ở đây → kiểm lại
+Các phân hệ nhận dữ liệu của LTHI: [[DIEM]].
+Lỗi có thể do dữ liệu đầu vào từ: [[DKMH]], [[KHGD]], [[QLHT]], [[QLNS]] – kiểm dữ liệu đó trước khi kết luận.
+
 ## Phần trên Edusoft
 `Tổ chức thi/ …`.
 
@@ -23,10 +48,10 @@ Hoãn thi / thi cải thiện, tính chất thi, nhóm thi, đợt thi, tổ thi
 NetWEB SV + GV: xem lịch thi; GV: xem lịch coi thi; CBCNV đăng ký coi thi (tuỳ trường).
 
 ## Test ở đâu
-Tuỳ case: edusoft / web – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
+## Lưu ý
 —
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

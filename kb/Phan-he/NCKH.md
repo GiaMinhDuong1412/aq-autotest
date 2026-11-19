@@ -6,6 +6,8 @@ san_pham: "[[Edusoft]]"
 test_tren:
   - edusoft
 tab_edusoft: NC khoa học
+nhan_tu: []
+dua_sang: []
 dau_hieu: đề tài, lý lịch khoa học
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -14,6 +16,18 @@ trang_thai: tu-tai-lieu
 
 ## Là gì
 Nhập dữ liệu NCKH của giảng viên.
+
+## Nhận dữ liệu từ
+—
+
+## Tạo ra
+—
+
+## Đưa sang
+—
+
+## Sửa ở đây → kiểm lại
+Không có phân hệ nào nhận dữ liệu trực tiếp.
 
 ## Phần trên Edusoft
 Tab NC khoa học.
@@ -24,8 +38,8 @@ CBCNV nhập lý lịch khoa học trực tuyến (tuỳ trường).
 ## Test ở đâu
 Chỉ edusoft.
 
-## Lưu ý khi test
+## Lưu ý
 —
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

@@ -6,6 +6,10 @@ san_pham: "[[Netweb]]"
 test_tren:
   - web
 tab_edusoft: —
+nhan_tu:
+  - "[[KHGD]]"
+  - "[[QLHT]]"
+dua_sang: []
 dau_hieu: trang, giao diện, hiển thị, menu web, banner, đơn vị phân cấp / điều hướng cơ sở, demo NetWEB
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -14,6 +18,21 @@ trang_thai: tu-tai-lieu
 
 ## Là gì
 Giao diện cổng web của trường cho SV / GV / phụ huynh / khách (link dạng `https://<site>/#/home`). Tài liệu: thư mục NETWEB (QuanTriChung, TaiLieuHuongDanSinhVien, GiangVien…, PhuHuynh, Guest…).
+
+## Nhận dữ liệu từ
+- [[Tai khoan va phan quyen|Tài khoản & phân quyền]] từ [[QLHT]] – phân quyền quản trị trên web
+- [[Cau hinh NetWEB|Cấu hình NetWEB]] từ [[QLHT]] – menu / chức năng ẩn-hiện, chặn SV nợ học phí
+- [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]] từ [[KHGD]] – điều hướng theo khối lớp / cơ sở (DHNT)
+
+## Tạo ra
+—
+
+## Đưa sang
+—
+
+## Sửa ở đây → kiểm lại
+Không có phân hệ nào nhận dữ liệu trực tiếp.
+Lỗi có thể do dữ liệu đầu vào từ: [[KHGD]], [[QLHT]] – kiểm dữ liệu đó trước khi kết luận.
 
 ## Phần trên Edusoft
 Cấu hình web nằm ở `Hệ thống/ Quản trị NetWEB/ …` trên Edusoft ([[QLHT]]).
@@ -24,8 +43,8 @@ Test trên **cổng web test** của trường, đăng nhập đúng vai trò. T
 ## Test ở đâu
 Chỉ web.
 
-## Lưu ý khi test
-Case [[64852]], [[64705]], [[63697]]. Không chạy kịch bản Edusoft cho case UI web.
+## Lưu ý
+Không chạy kịch bản Edusoft cho sửa giao diện web.
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

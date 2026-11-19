@@ -1,38 +1,35 @@
 ---
 loai: trang-chu
 ---
-# Knowledge base test case (AQ Auto Test)
+# Knowledge base nghiệp vụ (AQ Auto Test)
 
-Kho kiến thức để **Claude và app AQ Auto Test hiểu đúng nghiệp vụ** khi test case coder đã xử lý trên ACS:
-case này test ở đâu (Web / Edusoft / App / API / Mẫu in), khách hàng cần gì, test thế nào.
+Kho kiến thức để **Claude và app AQ Auto Test hiểu đúng nghiệp vụ**: các phân hệ Edusoft / web **liên kết với nhau qua dữ liệu** –
+phân hệ này tạo dữ liệu, phân hệ khác dùng. Sửa / lỗi ở đâu thì biết phải kiểm lại những phân hệ nào, test trên Edusoft hay web.
+
+**Bắt đầu từ [[00 Bản đồ phân hệ]]** – chuỗi dữ liệu chính và sơ đồ toàn bộ liên kết.
 
 ## Các ngăn
-| Thư mục | Ghi gì | Mẫu |
-|---|---|---|
-| `San-pham/` | Từng sản phẩm: là gì, test ở đâu, dấu hiệu nhận biết trong case | `_templates/San pham` |
-| `Phan-he/` | **Mỗi mã phân hệ trên ACS một ghi chú** (CSHP, DKMHUI, NETWEB-UI…): thuộc sản phẩm nào, test trên đâu | `_templates/Phan he` |
-| `Truong/` | Môi trường test của từng trường: link web test, bản Edusoft test – **không ghi mật khẩu** | `_templates/Truong` |
-| `Repo-coder/` | Quy ước repo / nhánh coder (vd `VersionSchool/<trường>/…`) → sửa ở web hay Edusoft | `_templates/Repo coder` |
-| `Cach-test/` | Cách test theo loại case (sửa hiển thị web, sửa số liệu, mẫu in…) | `_templates/Cach test` |
-| `Case/` | **Mỗi case đã test một ghi chú**: yêu cầu KH → hiểu đúng là → test ở đâu → plan → kết quả → bài học | `_templates/Case` |
+| Thư mục | Ghi gì |
+|---|---|
+| `Phan-he/` | Mỗi phân hệ (mã như trên ACS): là gì, **nhận dữ liệu từ**, **tạo ra**, **đưa sang**, sửa ở đây → kiểm lại đâu, phần Edusoft / phần web |
+| `Du-lieu/` | Mỗi loại dữ liệu chảy giữa phân hệ (DS SV học kỳ, KQ ĐKMH, nhóm học, điểm TB…): tạo ở đâu (menu), dùng ở đâu, hiện trên web ra sao |
+| `San-pham/` | Edusoft, Netweb, App: là gì, test ở đâu |
+| `Truong/` | Từng trường: tên, link Netweb thật, chức năng web trường có, môi trường test |
+| `Repo-coder/` | Quy ước repo / nhánh coder → sửa ở web hay Edusoft |
+| `Cach-test/` | Cách test theo loại sửa (lỗi EX, số liệu, mẫu in, web theo trường, API / bảo mật, hiển thị web) |
 
 ## Quy tắc
-- Mỗi ghi chú có phần **Properties** (đầu file, giữa hai dòng `---`) – app đọc các trường này, **giữ đúng tên trường**.
-- `test_tren` chỉ dùng: `web`, `edusoft`, `app`, `api`, `mau-in` (nhiều giá trị thì viết dạng danh sách).
-- `trang_thai`: `can-xac-nhan` (đoán / thiếu thông tin) → `tu-tai-lieu` (Claude điền từ tài liệu, người test liếc lại) → `da-xac-nhan` (người test đã kiểm).
-  Claude coi `da-xac-nhan` là chắc chắn, hai mức còn lại chỉ là gợi ý.
-- Nối các ghi chú bằng `[[...]]` (gõ `[[` rồi chọn) – vd case nối tới `[[KTTC]]`, `[[CSHP]]`.
+- Mỗi ghi chú có **Properties** (đầu file) – app đọc các trường này, **giữ đúng tên trường**:
+  `nhan_tu` / `dua_sang` (phân hệ), `tao_o` / `dung_o` (dữ liệu), `test_tren`: `web` | `edusoft` | `app` | `api` | `mau-in`.
+- `trang_thai`: `can-xac-nhan` (đoán / thiếu) → `tu-tai-lieu` (Claude điền từ tài liệu) → `da-xac-nhan` (người test đã kiểm). Claude chỉ coi `da-xac-nhan` là chắc chắn.
+- Thêm liên kết mới: ghi vào `Du-lieu/` (tạo ở `[[…]]`, dùng ở `[[…]]`) và mục "Nhận dữ liệu từ / Đưa sang" của hai phân hệ.
 - **Không** ghi mật khẩu, token, chuỗi kết nối vào kho này (kho nằm trong git).
 
-## Đã điền sẵn (Claude, 19/11/2026)
-Nguồn: tài liệu HDSD trên SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skill `tailieu-edusoft`), sheet Release(TestMenu)
-(Menu_NEW, ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC, NetWeb_DKMH, các sheet "(case)").
-- `Phan-he/`: 24 mã – phân hệ Edusoft + NETWEB-UI, NETWEB-API, DKMHUI, CSHP, EDUGO, EDUBILL, GAM; mỗi mã tách **phần Edusoft / phần web**.
-- `Truong/`: 21 trường theo sheet (tên, link Netweb thật, chức năng web trường có) + HVNG (môi trường test mặc định).
-- `Case/`: 6 case lấy từ sheet release (có menu + kết quả test) + 15 case từ danh sách ACS (mới có tiêu đề – Claude đoán nơi test) + 64457.
-- `Cach-test/`: lỗi EX Edusoft, sửa số liệu Edusoft, mẫu in, chức năng web theo trường, API & bảo mật web, sửa hiển thị web.
+## Nguồn đã dùng (Claude, 19/11/2026)
+Tài liệu HDSD SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), nghiệp vụ QLSV, sheet Release(TestMenu)
+(Menu_NEW, ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC, NetWeb_DKMH).
 
 ## Việc người test cần làm
-- [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP) – đúng thì đổi `trang_thai: da-xac-nhan`
-- [ ] Điền **web test / Edusoft test** cho các trường hay test trong `Truong/` (hiện mới có link trang thật)
-- [ ] Mở các case trong `Case/` có "(chưa có – chép từ ACS)": dán yêu cầu KH, sửa phần "Test ở đâu" nếu Claude đoán sai, ghi **Bài học**
+- [ ] Mở [[00 Bản đồ phân hệ]] và Graph view – thấy liên kết nào sai / thiếu thì sửa ghi chú `Du-lieu/` tương ứng
+- [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP, QXHV, BVLV) – đúng thì đổi `trang_thai: da-xac-nhan`
+- [ ] Điền **web test / Edusoft test** trong `Truong/` cho các trường hay test
