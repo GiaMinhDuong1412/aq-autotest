@@ -68,13 +68,19 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **tối đa 5** (`RT_QMAX`, `rtShownQ`): Query ghim (☆, localStorage `aq-rt-qpin:<user>`) trước, còn lại tự chọn theo `rtQScore` (của tôi, có tên tôi,
   tester_raw/test_state, "Đã xử lý"); Query đang chọn luôn có mặt; còn lại ở nút "Query khác" (tìm + nhóm Của tôi / Chia sẻ / Dựng sẵn).
   Danh sách case (`rtCaseList`): ô lọc, sắp xếp (mới xử lý / hạn gần / mã), nhóm theo trạng thái ACS (Đã xử lý trước), dòng gọn `rtTicket`, 40 dòng rồi "Xem thêm".
-  Cột phải **chi tiết case** (`rtDetailPane`, chọn ở mục "Case đang test" / hàng đợi máy / Vừa kết luận – `RT.sel`): 1 Yêu cầu KH (đọc
-  `GET ACS.casePath` – mặc định dò `/cs/cases/{id}`, lấy trường `RT_REQK`/dài nhất, chọn được trường khác, lưu vào phiếu `request`), 2 Phiên bản
-  Edusoft của máy test (`runners.check.version`, cảnh báo nếu ghi nhận trước khi coder xử lý xong), 3 Plan test (bước kịch bản, đổi kịch bản khi
-  chờ chạy), 4 Kết quả (trạng thái, ảnh, kết luận, nút Chạy / Duyệt ảnh).
-  Mục 1 **Nội dung case**: trường chia nhóm theo tên (`RT_SEC`/`rtSecOf`: Khách hàng yêu cầu / BA phân tích / Coder xử lý / Ghi chú test trước /
-  trường khác – "dùng làm yêu cầu KH"); yêu cầu KH làm gọn bằng `rtCleanMail` (bỏ lời chào, chữ ký sau "Trân trọng…", thư trích dẫn From:/On … wrote:;
-  nút "xem nguyên văn"); "Diễn biến case" từ `/cs/cases/{id}/history` (`rtHistRows`).
+  **Bố cục**: trái = danh sách case (tab Chờ test / Đang test / Đã xong), phải = bàn làm việc 4 bước (`rtWork`, chọn case → `RT.cur`):
+  **1 Hiểu yêu cầu** (`rtW1`): nội dung case từ `GET ACS.casePath` (mặc định dò `/cs/cases/{id}`; trường chia nhóm `RT_SEC`: KH yêu cầu / BA / coder;
+  `rtCleanMail` bỏ chào, chữ ký, thư trích dẫn; diễn biến từ `/history`) + khung **"AQ hiểu case này"** (`rtAnalyze`): **cần test trên** Web / Edusoft /
+  App / API / Mẫu in – chấm điểm theo `RT_PFR` (phân hệ ACS, lời KH, ghi chú coder) kèm lý do, người test đổi được, lựa chọn khi nhận test cộng vào
+  `settings/retest.pf[phân hệ]` để lần sau đoán đúng hơn; **loại sửa** (`RT_KR`); **KH cần** = câu yêu cầu trích từ lời KH. Nguyên tắc nghiệp vụ: case
+  sửa giao diện web thì test trên web – **không** gán kịch bản Edusoft chỉ vì trùng phân hệ.
+  **2 Plan test** (`rtGenPlan`, nháp `RT.draft`): Chuẩn bị (môi trường theo nền tảng + trường + bản sửa trích từ ghi chú coder) → Tái hiện như KH (menu/bước
+  KH nêu) → Kiểm tra theo yêu cầu KH (mỗi câu yêu cầu một mục) → Kiểm tra không ảnh hưởng (theo loại sửa); sửa/thêm/bỏ được; kịch bản có sẵn chỉ gợi ý khi
+  cùng nền tảng và khớp thật (`rtScenRel`: trùng tên menu hoặc nhiều từ khoá) – tuỳ chọn chạy kèm. **Nhận test** (`rtTake`) tạo phiếu `state:'testing'`,
+  `platform`, `kind`, `build`, `plan:{env,items:[{g,t,res,note,shots}]}`.
+  **3 Test** (`rtW3`): từng mục Đạt / Lỗi / Bỏ qua + ghi chú + ảnh (chọn file hoặc Ctrl+V vào mục đang chọn, `rtAddShots`); kịch bản chạy kèm (nếu có) chọn máy
+  rồi chạy như cũ (`rtStart`); đủ kết quả → `review`. **4 Kết luận** (`rtW4`): tổng hợp + ảnh, tự đề xuất Đạt/Không đạt, nội dung test soạn từ checklist
+  (`rtDraft2`), ghi về ACS như trên (`rtVerdict`).
 - Trang **Màn hình Edusoft** (`page-screens`, khối JS `MH`): tra menu → lưới → cột/ô/nút từ `web/edusoft-catalog.json` và kiểm tra
   lệnh `auto` của kịch bản; sinh lại bằng `tools/lap_danh_muc.py <aqdata> --lien-ket … --truong … --ra .claude/skills/giaodien-edusoft/man-hinh --json web/edusoft-catalog.json`.
   Phần vẽ tay của form (ô lọc, nút, **ràng buộc**: ô bắt buộc / điều kiện chặn + câu báo) ghép từ bản trích source:
