@@ -14,6 +14,8 @@ can_co:
 la_dieu_kien_cho:
   - "[[KQ DKMH]]"
   - "[[Khoi luong giang day]]"
+tu_khoa: "thời khóa biểu|thời khoá biểu|tkb|lịch học|dạy bù|nghỉ dạy"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

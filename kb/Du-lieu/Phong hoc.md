@@ -10,6 +10,10 @@ can_co:
 la_dieu_kien_cho:
   - "[[Thoi khoa bieu]]"
   - "[[Danh sach thi]]"
+tu_khoa: "phòng học|danh sách phòng|phòng thi|phòng ưu tiên"
+tu_khoa_ph:
+  - KHGD
+  - LTHI
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

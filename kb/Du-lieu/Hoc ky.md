@@ -20,6 +20,9 @@ la_dieu_kien_cho:
   - "[[Quyet dinh sinh vien]]"
   - "[[DS SV hoc ky]]"
   - "[[Nhom hoc]]"
+tu_khoa: "thông tin học kỳ|năm học học kỳ|khởi tạo dữ liệu học kỳ|khóa sổ"
+tu_khoa_ph:
+  - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

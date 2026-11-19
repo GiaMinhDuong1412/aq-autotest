@@ -8,6 +8,9 @@ dung_o:
 can_co:
   - "[[Tai khoan va phan quyen]]"
 la_dieu_kien_cho: []
+tu_khoa: "netweb|chỉnh định menu|cấm sv xem"
+tu_khoa_ph:
+  - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

@@ -15,6 +15,8 @@ la_dieu_kien_cho:
   - "[[CTDT]]"
   - "[[Rang buoc DKMH]]"
   - "[[Hoc phi]]"
+tu_khoa: "danh mục môn học|thông tin môn học|môn (học )?(tương đương|thay thế|tiên quyết|học trước|song hành)"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

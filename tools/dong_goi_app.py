@@ -5,7 +5,7 @@ GitHub Actions gọi khi merge vào main (và khi kiểm tra PR); chạy tay đ�
     python tools/dong_goi_app.py [--ra desktop/res] [--python <zip Python nhúng | URL>] [--khong-python]
 
 Tạo trong thư mục --ra:
-  app/      mã server: server.py, app_update.py, web/ (index.html, claude-shim.js, edusoft-catalog.json), kit/, data/ mẫu
+  app/      mã server: server.py, app_update.py, kb_graph.py, mcp_server.py, aq_mcp.py (MCP cho Claude Desktop), kb/ (ghi chú .md), web/ (index.html, claude-shim.js, edusoft-catalog.json), kit/, data/ mẫu
   python/   Python nhúng (python.org, bản embed amd64) – app chạy app/server.py bằng python/pythonw.exe
 Chỉ thư viện chuẩn.
 """
@@ -29,11 +29,20 @@ DATA_MAU = ("scenarios", "testPlans", "releases", "releaseItems", "members", "se
 def ds_ma():
     """[(đường dẫn trong app/, bytes)]."""
     out = []
-    for f in ("server.py", "app_update.py"):
+    for f in ("server.py", "app_update.py", "kb_graph.py", "mcp_server.py", "aq_mcp.py"):
         out.append((f, (ROOT / f).read_bytes()))
+    for p in sorted((ROOT / "kb").rglob("*.md")):           # KB chỉ đọc đi kèm app (người dùng chọn vault của mình để sửa)
+        if not any(x.startswith(".") for x in p.relative_to(ROOT / "kb").parts):
+            out.append(("kb/" + p.relative_to(ROOT / "kb").as_posix(), p.read_bytes()))
+    sys.path.insert(0, str(ROOT))
+    import kb_graph
     for f in ("index.html", "claude-shim.js", "edusoft-catalog.json"):
         if (ROOT / "web" / f).exists():
-            out.append(("web/" + f, (ROOT / "web" / f).read_bytes()))
+            b = (ROOT / "web" / f).read_bytes()
+            if f == "index.html":                                # bản đồ nghiệp vụ lấy từ ghi chú kb/ mới nhất (người test có thể vừa sửa trong Obsidian)
+                blk = kb_graph.as_block(kb_graph.build(ROOT / "kb"))
+                b = kb_graph.BLOCK.sub(lambda m: blk, b.decode("utf-8")).encode("utf-8")
+            out.append(("web/" + f, b))
     for p in sorted((ROOT / "kit").rglob("*")):
         if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc":
             out.append(("kit/" + p.relative_to(ROOT / "kit").as_posix(), p.read_bytes()))

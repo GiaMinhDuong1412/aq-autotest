@@ -10,6 +10,10 @@ can_co:
   - "[[Vien chuc]]"
   - "[[DS SV hoc ky]]"
 la_dieu_kien_cho: []
+tu_khoa: "khảo sát|đánh giá|câu hỏi|form|đáp viên|thang đo"
+tu_khoa_ph:
+  - KSDG
+  - DGGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

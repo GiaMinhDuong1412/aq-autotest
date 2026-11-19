@@ -7,6 +7,9 @@ dung_o: []
 can_co:
   - "[[Danh muc sinh vien]]"
 la_dieu_kien_cho: []
+tu_khoa: "ký túc xá|ktx|lưu trú|hợp đồng|phòng ở|điện nước"
+tu_khoa_ph:
+  - QKTX
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

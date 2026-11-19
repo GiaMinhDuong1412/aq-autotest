@@ -17,6 +17,8 @@ la_dieu_kien_cho:
   - "[[Thoi khoa bieu]]"
   - "[[Khoi luong giang day]]"
   - "[[Danh sach thi]]"
+tu_khoa: "viên chức|cbcnv|cán bộ|cbgd|giảng viên"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

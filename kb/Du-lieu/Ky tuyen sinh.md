@@ -8,6 +8,9 @@ can_co:
   - "[[Danh muc dao tao]]"
 la_dieu_kien_cho:
   - "[[Ho so thi sinh]]"
+tu_khoa: "kỳ tuyển sinh|đợt tuyển sinh|ngành tuyển sinh|khối tuyển sinh|phương thức"
+tu_khoa_ph:
+  - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

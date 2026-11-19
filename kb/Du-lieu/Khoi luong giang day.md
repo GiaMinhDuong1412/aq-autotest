@@ -9,6 +9,9 @@ can_co:
   - "[[Thoi khoa bieu]]"
   - "[[Vien chuc]]"
 la_dieu_kien_cho: []
+tu_khoa: "khối lượng|thù lao|hệ số|giờ chuẩn|thanh toán giảng"
+tu_khoa_ph:
+  - KLGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

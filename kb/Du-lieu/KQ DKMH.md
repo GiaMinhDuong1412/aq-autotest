@@ -17,6 +17,8 @@ la_dieu_kien_cho:
   - "[[Danh sach thi]]"
   - "[[Hoc phi]]"
   - "[[Diem mon hoc]]"
+tu_khoa: "đăng ký môn|kết quả đăng ký|kq đkmh|đkmh|môn học đã đăng ký|hủy kq|rút môn|đăng ký học phần"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

@@ -18,6 +18,7 @@ const net = require('net');
 const { spawn, execFileSync } = require('child_process');
 const { createUpdater } = require('./updater');
 const setupAcs = require('./acs');
+const startRelay = require('./mcp-relay');
 
 const APP_ID = 'vn.aqtech.autotest';
 const APP_NAME = 'AQ Auto Test';
@@ -45,6 +46,7 @@ let updater = null;
 let splash = null;
 let launch = { version: '', prev: null, fresh: false };
 let acs = null;
+let relay = null;   // cầu nối ACS chỉ đọc cho MCP (Claude Desktop)
 
 function log(...a) {
   try { fs.appendFileSync(LOG, new Date().toISOString().replace('T', ' ').slice(0, 19) + ' ' + a.join(' ') + '\n'); } catch { /* bỏ qua */ }
@@ -121,6 +123,7 @@ async function choosePort() {
 function startServer() {
   const out = fs.openSync(LOG, 'a');
   const env = { ...process.env, AQ_APP_HOME: HOME, AQ_APP_VERSION: app.getVersion(), PYTHONIOENCODING: 'utf-8', PYTHONUTF8: '1' };
+  if (relay) { env.AQ_ACS_RELAY = relay.url; env.AQ_ACS_TOKEN = relay.token; }
   const args = [path.join(CODE, 'server.py'), '--port', String(port), '--data', DATA, '--local', RIENG, '--no-browser'];
   log('Chạy server', PYTHON, 'cổng', port, 'bản', app.getVersion());
   server = spawn(PYTHON, args, { cwd: CODE, env, windowsHide: true, stdio: ['ignore', out, out] });
@@ -255,7 +258,7 @@ if (!app.requestSingleInstanceLock()) {
   app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
   app.whenReady().then(init);
 }
-app.on('before-quit', () => { quitting = true; if (acs) acs.shutdown(); });
+app.on('before-quit', () => { quitting = true; if (acs) acs.shutdown(); if (relay) relay.close(); });
 app.on('will-quit', () => stopServer());
 app.on('window-all-closed', () => app.quit());
 
@@ -271,6 +274,8 @@ async function init() {
   chuyenDuLieuCu();
   gopDuLieuMau();
   fs.mkdirSync(RIENG, { recursive: true });
+  acs = setupAcs({ BrowserWindow, ipcMain, session, ICON, getWin: () => win, log, RIENG });   // đăng nhập & gọi API ACS (module Test sau sửa lỗi)
+  if (!SMOKE) relay = await startRelay({ acs, log });
   try {
     port = await choosePort();
     splashText('Đang chạy máy chủ nội bộ…');
@@ -295,7 +300,6 @@ async function init() {
       filters: Array.isArray(o.filters) ? o.filters : undefined, properties: [o.dir ? 'openDirectory' : 'openFile'] });
     return r.canceled || !r.filePaths.length ? '' : r.filePaths[0];
   });
-  acs = setupAcs({ BrowserWindow, ipcMain, session, ICON, getWin: () => win, log, RIENG });   // đăng nhập & gọi API ACS (module Test sau sửa lỗi)
   createWindow();
   if (SMOKE) return smoke();
   updater = createUpdater({ send, notify, beforeInstall: () => { quitting = true; stopServer(); } });

@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 loi = []
-for f in ["server.py", "app_update.py", "aq-console-server.py", "kit/aqrun.py", "kit/aq-agent.py"] + \
+for f in ["server.py", "app_update.py", "aq-console-server.py", "kit/aqrun.py", "kit/aq-agent.py", "kb_graph.py", "mcp_server.py", "aq_mcp.py"] + \
         [p.relative_to(ROOT).as_posix() for p in (ROOT / "tools").glob("*.py")]:
     try:
         py_compile.compile(str(ROOT / f), doraise=True)
@@ -42,6 +42,16 @@ try:
     assert _m and __import__("json").loads(_m.group(1))["data"]
 except Exception:
     loi.append("Thiếu / hỏng bản đồ nghiệp vụ kb-graph trong web/index.html (python tools/kb_lien_ket.py kb)")
+try:                                                    # MCP: trả lời initialize / tools/list, công cụ có schema
+    sys.path.insert(0, str(ROOT))
+    import kb_graph, mcp_server
+    _r = mcp_server.handle(None, {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
+    assert len(_r["result"]["tools"]) == len(mcp_server.HANDLERS)
+    assert mcp_server.handle(None, {"jsonrpc": "2.0", "id": 2, "method": "initialize", "params": {}})["result"]["serverInfo"]["name"] == "aq-auto-test"
+    if kb_graph.embedded(ROOT / "web" / "index.html") != kb_graph.build(ROOT / "kb"):
+        print("Lưu ý: bản đồ nhúng trong web/index.html khác ghi chú kb/ (bản app tự nhúng lại khi build) – chạy python kb_graph.py kb --nhung web/index.html")
+except Exception as e:
+    loi.append("MCP / bản đồ KB lỗi: %r" % e)
 if not (ROOT / "web" / "edusoft-catalog.json").exists():
     loi.append("Thiếu web/edusoft-catalog.json (tools/lap_danh_muc.py --json)")
 print("\n".join(loi) or "Kiểm tra: OK")

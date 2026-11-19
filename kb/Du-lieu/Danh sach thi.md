@@ -12,6 +12,9 @@ can_co:
   - "[[Vien chuc]]"
 la_dieu_kien_cho:
   - "[[Diem mon hoc]]"
+tu_khoa: "lịch thi|nhóm thi|đợt thi|tổ thi|danh sách thi|coi thi|số báo danh|hoãn thi|trùng lịch"
+tu_khoa_ph:
+  - LTHI
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

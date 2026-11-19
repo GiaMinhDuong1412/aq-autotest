@@ -8,6 +8,9 @@ can_co:
   - "[[Ky tuyen sinh]]"
 la_dieu_kien_cho:
   - "[[DS trung tuyen]]"
+tu_khoa: "hồ sơ (thí sinh|xét tuyển|đăng ký)|nhập liệu hồ sơ|nguyện vọng|thí sinh"
+tu_khoa_ph:
+  - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

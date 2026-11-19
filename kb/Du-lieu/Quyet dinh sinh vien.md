@@ -11,6 +11,9 @@ can_co:
 la_dieu_kien_cho:
   - "[[DS SV hoc ky]]"
   - "[[Danh muc sinh vien]]"
+tu_khoa: "quyết định|qđ (vào|ra)|tạm dừng|nghỉ học|học lại|thôi học"
+tu_khoa_ph:
+  - QLSV
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

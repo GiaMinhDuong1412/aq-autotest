@@ -33,6 +33,11 @@ APP = None                                      # app AQ Auto Test (desktop/, El
 if os.environ.get("AQ_APP_HOME"):
     sys.path.insert(0, str(ROOT))               # Python nhúng không tự thêm thư mục script vào sys.path
     import app_update as APP
+try:
+    import kb_graph, mcp_server                 # bản đồ nghiệp vụ từ ghi chú kb/ + MCP cho Claude Desktop (aq_mcp.py)
+except ImportError:                             # bản server cũ chưa có 2 file này
+    kb_graph = mcp_server = None
+MCP = {"token": None}
 DEFAULT_USER = "u_L8VJITzyuU54eIqCAl0PKQ"     # người dùng trên console claude.ai (giữ nguyên để dữ liệu cũ khớp)
 SEG = re.compile(r"^[A-Za-z0-9_\-.~:@+]{1,200}$")
 RUN_ID = re.compile(r"^sc-[a-z0-9][a-z0-9-]{3,80}$")
@@ -474,9 +479,85 @@ def k_install(a):
     return {"ok": True, "kitDir": str(base)}
 
 
+def claude_cfg_dirs():
+    """Thư mục cấu hình Claude Desktop (bản cài thường và bản Microsoft Store)."""
+    dirs = []
+    ad, la = os.environ.get("APPDATA"), os.environ.get("LOCALAPPDATA")
+    if ad and (Path(ad) / "Claude").is_dir():
+        dirs.append(Path(ad) / "Claude")
+    if la:
+        dirs += [d for d in (Path(la) / "Packages").glob("Claude*/LocalCache/Roaming/Claude") if d.is_dir()]
+    return dirs
+
+
+def mcp_entry():
+    py = Path(sys.executable)
+    if py.name.lower() == "pythonw.exe" and py.with_name("python.exe").exists():
+        py = py.with_name("python.exe")          # Claude nói chuyện qua stdin/stdout – cần python.exe
+    return {"command": str(py), "args": [str(ROOT / "aq_mcp.py"), "--cau-hinh", str(LOCAL / "mcp.json")]}
+
+
+def k_mcp_status(a):
+    kb, writable = mcp_server.kb_dir(sys.modules[__name__]) if mcp_server else (ROOT / "kb", False)
+    reg = []
+    for d in claude_cfg_dirs():
+        try:
+            cur = json.loads((d / "claude_desktop_config.json").read_text("utf-8-sig") or "{}")
+            e = (cur.get("mcpServers") or {}).get("aq-auto-test")
+            reg.append({"file": str(d / "claude_desktop_config.json"), "ok": e == mcp_entry(), "co": bool(e)})
+        except Exception:
+            reg.append({"file": str(d / "claude_desktop_config.json"), "ok": False, "co": False})
+    return {"windows": os.name == "nt", "claude": bool(claude_cfg_dirs()), "registered": reg, "kbDir": str(kb), "kbWritable": writable,
+            "kbChosen": bool(CFG.get("kbDir")), "acs": bool(os.environ.get("AQ_ACS_RELAY")), "ready": bool(MCP["token"])}
+
+
+def k_mcp_register(a):
+    """Ghi mục "aq-auto-test" vào claude_desktop_config.json (giữ nguyên mục khác, sao lưu file cũ) – người dùng bấm nút trên trang."""
+    if os.name != "nt":
+        raise RuntimeError("Kết nối Claude Desktop chỉ làm trên Windows.")
+    if not mcp_server:
+        raise RuntimeError("Bản app này chưa có MCP.")
+    dirs = claude_cfg_dirs()
+    if not dirs:
+        raise RuntimeError("Chưa thấy Claude Desktop trên máy (thư mục %APPDATA%\\Claude). Cài Claude Desktop, mở một lần rồi thử lại.")
+    done = []
+    for d in dirs:
+        f = d / "claude_desktop_config.json"
+        cur = {}
+        if f.exists():
+            raw = f.read_text("utf-8-sig")
+            try:
+                cur = json.loads(raw or "{}")
+            except ValueError:
+                raise RuntimeError("File %s đang lỗi cú pháp JSON – sửa tay trước rồi bấm lại." % f)
+            bak = f.with_name("claude_desktop_config.json.bak-aq")
+            if not bak.exists():
+                bak.write_text(raw, "utf-8")
+        cur.setdefault("mcpServers", {})["aq-auto-test"] = mcp_entry()
+        f.write_text(json.dumps(cur, ensure_ascii=False, indent=2), "utf-8")
+        done.append(str(f))
+    return {"ok": True, "files": done}
+
+
+def k_set_kb_dir(a):
+    d = str(a.get("dir") or "").strip()
+    if not d:
+        CFG["kbDir"] = ""
+        save_cfg(CFG)
+        return {"ok": True, "kbDir": ""}
+    p = Path(d)
+    if p.is_dir() and (p / "kb").is_dir() and not (p / "Du-lieu").is_dir():
+        p = p / "kb"                              # chọn nhầm thư mục repo → lấy kb/ bên trong
+    if not p.is_dir() or not ((p / "Du-lieu").is_dir() or (p / "Phan-he").is_dir()):
+        raise ValueError("Thư mục này không phải vault KB (cần có Du-lieu/ và Phan-he/) – chọn thư mục kb trong repo aq-autotest.")
+    CFG["kbDir"] = str(p.resolve())
+    save_cfg(CFG)
+    return {"ok": True, "kbDir": CFG["kbDir"]}
+
+
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
              "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft,
-             "save_config": k_save_config}
+             "save_config": k_save_config, "mcp_status": k_mcp_status, "mcp_register": k_mcp_register, "set_kb_dir": k_set_kb_dir}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)
@@ -819,9 +900,15 @@ class H(BaseHTTPRequestHandler):
             if host not in ("localhost", "127.0.0.1"):
                 self.send(403, {"error": "forbidden"})
                 return False
-            if not MODE["auth"]:
+            if not MODE["auth"] and urlparse(self.path).path != "/api/mcp":
                 return True
         path = urlparse(self.path).path
+        if path == "/api/mcp" and not MODE["public"]:      # aq_mcp.py (Claude Desktop): token trong <local>/mcp.json thay cho đăng nhập
+            tok = (self.headers.get("Authorization") or "")[7:]
+            if MCP["token"] and hmac.compare_digest(tok.encode(), MCP["token"].encode()):
+                return True
+            self.send(401, {"error": "token MCP không đúng"})
+            return False
         try:
             c = SimpleCookie(self.headers.get("Cookie") or "")
             CUR.uid = check_token(c[COOKIE].value) if COOKIE in c else None
@@ -887,6 +974,12 @@ class H(BaseHTTPRequestHandler):
                 b, n = export_zip()
                 fn = "AQ-du-lieu-%s.zip" % time.strftime("%Y%m%d-%H%M")
                 return self.send(200, b, "application/zip", {"Content-Disposition": 'attachment; filename="%s"' % fn})
+            if u.path == "/api/kb/graph":                  # bản đồ nghiệp vụ dựng từ ghi chú kb/ (vault đã chọn) – trang Test sau sửa lỗi
+                if not kb_graph:
+                    return self.send(404, {"error": "not found"})
+                kb = mcp_server.kb_dir(sys.modules[__name__])[0] if mcp_server else ROOT / "kb"
+                g = kb_graph.build(kb)
+                return self.send(200, g if g["data"] else {"error": "Không có ghi chú Du-lieu/ trong " + kb.name})
             if u.path == "/api/rev":
                 return self.send(200, {"rev": data_signature()})
             if u.path == "/api/db":
@@ -915,6 +1008,15 @@ class H(BaseHTTPRequestHandler):
                 return self.send(200, {"ok": True}, extra={"Set-Cookie": self.cookie("", 0)})
             if MODE["auth"] and u.path == "/api/account":
                 return a_account(self, self.jbody())
+            if u.path == "/api/mcp":                      # Claude Desktop qua aq_mcp.py (đã kiểm token ở guard)
+                if not mcp_server or MODE["public"]:
+                    return self.send(404, {"error": "not found"})
+                try:
+                    msg = self.jbody()
+                except ValueError:
+                    return self.send(200, {"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "Parse error"}})
+                res = mcp_server.handle(sys.modules[__name__], msg, os.environ.get("AQ_APP_VERSION", ""))
+                return self.send(202, b"", "text/plain") if res is None else self.send(200, res)
             if u.path == "/api/db":                       # add
                 doc_id = uuid.uuid4().hex[:20]
                 with LOCK:
@@ -1024,6 +1126,11 @@ def main():
         load_auth()
     host = a.host or ("0.0.0.0" if a.public else "127.0.0.1")
     srv = ThreadingHTTPServer((host, a.port), H)
+    if mcp_server and not a.public:
+        try:
+            MCP["token"] = mcp_server.write_conn_file(sys.modules[__name__], a.port)
+        except OSError as e:
+            print("Không ghi được mcp.json:", e)
     if a.cert:
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         ctx.load_cert_chain(a.cert, a.key or None)

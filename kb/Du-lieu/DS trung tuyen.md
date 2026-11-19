@@ -10,6 +10,9 @@ can_co:
   - "[[Ho so thi sinh]]"
 la_dieu_kien_cho:
   - "[[Quyet dinh sinh vien]]"
+tu_khoa: "trúng tuyển|điểm chuẩn|xét tuyển|tiếp sinh|nhập học"
+tu_khoa_ph:
+  - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

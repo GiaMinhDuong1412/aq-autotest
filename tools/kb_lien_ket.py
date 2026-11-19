@@ -1,4 +1,4 @@
-"""python tools/kb_lien_ket.py kb  – GHI ĐÈ kb/Phan-he, kb/Du-lieu, kb/00 Bản đồ phân hệ.md (mất phần người test sửa tay: chạy rồi so git diff). Dựng KB liên kết phân hệ: Du-lieu/ (dữ liệu chảy giữa phân hệ) + Phan-he/ (nhận từ / đưa sang / sửa ở đây kiểm lại) + bản đồ."""
+"""python tools/kb_lien_ket.py kb  – DỰNG LẦN ĐẦU (bootstrap) – sau đó ghi chú Obsidian là nguồn, sửa trong Obsidian; script này GHI ĐÈ kb/Phan-he, kb/Du-lieu, kb/00 Bản đồ phân hệ.md (mất phần người test sửa tay: chạy rồi so git diff). Dựng KB liên kết phân hệ: Du-lieu/ (dữ liệu chảy giữa phân hệ) + Phan-he/ (nhận từ / đưa sang / sửa ở đây kiểm lại) + bản đồ."""
 import json, os, re, sys
 KB = sys.argv[1]
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -183,6 +183,7 @@ for fn, title, src, menu, uses, web in E:
     prep = [f'{i + 1}. [[{x}|{ENT[x][1]}]] – tạo ở [[{ENT[x][2]}]]' + (f' · menu [[{mfile(*KEYM[x][0][:1], KEYM[x][0][2])}|{KEYM[x][0][2].split("/")[-1].strip()}]]' if KEYM.get(x) else '') for i, x in enumerate(a)]
     w(f'Du-lieu/{fn}.md', {'loai': 'du-lieu', 'ten': title, 'tang': LV[fn], 'tao_o': f'"[[{src}]]"', 'dung_o': [f'"[[{m}]]"' for m in users],
                           'can_co': [f'"[[{r}]]"' for r, _ in need], 'la_dieu_kien_cho': [f'"[[{x}]]"' for x in nx],
+                          'tu_khoa': json.dumps(KW[fn][1], ensure_ascii=False), 'tu_khoa_ph': list(KW[fn][0]),
                           'nguon': 'luu-do', 'trang_thai': 'tu-tai-lieu'}, f"""
     # {title}
 
@@ -382,20 +383,11 @@ Tầng = số bước dữ liệu phải đi qua trước (tầng 0 khai báo đ
 Menu Edusoft của từng phân hệ: thư mục `Menu/` (menu **tạo** dữ liệu có ghi chú riêng, nối tới dữ liệu cần có trước). Liên kết phân hệ: [[00 Bản đồ phân hệ]].
 """)
 
-# ---- đồ thị cho app (nhúng vào web/index.html: <script type="application/json" id="kb-graph">) ----
-G = {'ver': 1,
-     'mods': {ma: [v[0], v[2]] for ma, v in PH.items()},
-     'data': {fn: {'t': ENT[fn][1], 'src': ENT[fn][2], 'menu': ENT[fn][3], 'use': [[m, why] for m, why in ENT[fn][4]], 'web': ENT[fn][5],
-                   'req': [[r, why] for r, why in REQ[fn]], 'lv': LV[fn], 'kw': KW[fn][1], 'kwph': KW[fn][0]} for fn in ENT},
-     'catph': CAT_PH,
-     'tang': TANG}
-js = json.dumps(G, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
-for hp in [os.path.join(ROOT, 'web', 'index.html')]:
-    h = open(hp, encoding='utf-8').read()
-    blk = '<script type="application/json" id="kb-graph">' + js + '</script>'
-    h2, n = re.subn(r'<script type="application/json" id="kb-graph">.*?</script>', lambda m: blk, h, flags=re.S)
-    if not n: h2 = h.replace('<script type="text/plain" id="kit-', blk + '\n<script type="text/plain" id="kit-', 1)
-    open(hp, 'w', encoding='utf-8').write(h2)
-print('menu', len(MENUS), 'menu tao', sum(len(v) for v in KEYM.values()), 'json', len(js))
+# ---- đồ thị cho app: dựng lại TỪ GHI CHÚ vừa ghi (ghi chú là nguồn) rồi nhúng vào web/index.html ----
+sys.path.insert(0, ROOT)
+import kb_graph
+G = kb_graph.build(KB)
+kb_graph.embed(G, os.path.join(ROOT, 'web', 'index.html'))
+print('menu', len(MENUS), 'menu tao', sum(len(v) for v in KEYM.values()), 'du lieu trong ban do', len(G['data']))
 
 print('ok', len(E), 'du lieu,', len(PH), 'phan he,', len(edges), 'canh')

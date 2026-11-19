@@ -9,6 +9,9 @@ can_co:
   - "[[Hoc phi]]"
 la_dieu_kien_cho:
   - "[[No hoc phi]]"
+tu_khoa: "phiếu thu|thu học phí|bảng kê|thu vãng lai|đóng học phí|thanh toán"
+tu_khoa_ph:
+  - QLTV
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

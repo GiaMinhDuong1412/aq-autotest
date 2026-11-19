@@ -12,6 +12,9 @@ can_co:
 la_dieu_kien_cho:
   - "[[Ket qua hoc vu]]"
   - "[[Ket qua tot nghiep]]"
+tu_khoa: "điểm trung bình|điểm tb|tích lũy|phiếu điểm|tổng kết|xếp loại"
+tu_khoa_ph:
+  - DIEM
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

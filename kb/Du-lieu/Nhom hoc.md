@@ -21,6 +21,8 @@ la_dieu_kien_cho:
   - "[[KQ DKMH]]"
   - "[[Khoi luong giang day]]"
   - "[[Danh sach thi]]"
+tu_khoa: "nhóm học|nhóm tổ|nhóm môn|lớp môn học|lớp học phần|phân công (cbgd|giảng)|kế hoạch giảng dạy"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

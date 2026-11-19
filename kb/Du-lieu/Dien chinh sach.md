@@ -9,6 +9,8 @@ can_co:
   - "[[DS SV hoc ky]]"
 la_dieu_kien_cho:
   - "[[Hoc phi]]"
+tu_khoa: "diện chính sách|miễn giảm|học bổng"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---
