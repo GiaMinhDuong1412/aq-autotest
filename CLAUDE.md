@@ -90,7 +90,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - `kb/` – **knowledge base nghiệp vụ** (vault Obsidian): phân hệ **liên kết qua dữ liệu** – `00 Bản đồ phân hệ.md` (chuỗi + sơ đồ mermaid),
   `Phan-he/<mã ACS>.md` (Properties `nhan_tu`/`dua_sang`, mục Nhận dữ liệu từ / Tạo ra / Đưa sang / Sửa ở đây → kiểm lại, phần Edusoft / web),
   `Du-lieu/<tên>.md` (`tao_o`, `dung_o`, menu, trên web), `San-pham/`, `Truong/`, `Repo-coder/`, `Cach-test/`; `test_tren`: web|edusoft|app|api|mau-in;
-  `trang_thai`: can-xac-nhan < tu-tai-lieu < da-xac-nhan. Sinh lại phần phân hệ/dữ liệu bằng script khi lưu đồ đổi (ghi đè – sửa ở file nguồn).
+  `trang_thai`: can-xac-nhan < tu-tai-lieu < da-xac-nhan. Ghi chú là nguồn (sửa trong Obsidian); script `tools/kb_lien_ket.py` chỉ để dựng lần đầu.
   **Logic "muốn có X phải có Y"**: `Du-lieu/` có `can_co` / `la_dieu_kien_cho` / `tang`, trang `00 Logic nghiệp vụ.md`; `Menu/<phân hệ>.md` = menu Edusoft (từ catalog)
   nối tới dữ liệu, menu tạo dữ liệu có ghi chú riêng. Nguồn: `tools/kb_phan_he_data.py` (phân hệ), `tools/kb_logic_data.py` (REQ = phải có trước, KW = nhận ra
   dữ liệu trong menu / lời KH, KEYMA = menu tạo dữ liệu); `python tools/kb_lien_ket.py kb` sinh lại kb/ (ghi đè Phan-he, Du-lieu, Menu, 2 trang 00) **và** nhúng
@@ -98,6 +98,15 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   dữ liệu (focus; dữ liệu là đầu vào của dữ liệu khác trong case thì bỏ) → **phải có trước** (mục Chuẩn bị của plan) / **ảnh hưởng tới** (mục Không ảnh hưởng khi sửa
   số liệu; sửa giao diện web thì kiểm trang web khác hiện cùng dữ liệu) / **case liên quan** (cùng dữ liệu hoặc dữ liệu cha – con); sửa số liệu của dữ liệu tạo ở phân hệ
   Edusoft mà KH không nhắc web → nghiêng về test trên Edusoft. Bước 1 hiện **Thông tin case trên ACS** (`rtAcsGrid`, nhãn `RT_CL` theo cột `RT_COLS`).
+  **Ghi chú là nguồn** (từ PR MCP): `kb_graph.py` (gốc repo) dựng bản đồ từ Properties + mục "Muốn có… / Dùng ở / Trên web" của `Du-lieu/*.md`
+  (`tu_khoa` = regex nhận ra dữ liệu, `tu_khoa_ph`) và `Phan-he/*.md`; `python kb_graph.py kb --nhung web/index.html` nhúng lại; app/localhost đọc thẳng vault
+  qua `GET api/kb/graph` (`kbLive`, thư mục `kbDir` trong config – chọn ở Thiết lập ACS); build app tự nhúng từ ghi chú. `tools/kb_lien_ket.py` chỉ để dựng lần đầu (ghi đè).
+  **MCP cho Claude Desktop**: `aq_mcp.py` (stdio, Claude Desktop chạy bằng python.exe của app) → `POST api/mcp` (token trong `<local>/mcp.json`, server ghi lúc
+  khởi động; `mcp-tools.json` để trả lời khi app tắt) → `mcp_server.py`: `kb_tim/kb_doc/kb_ghi/kb_phan_tich/kb_du_lieu`, `acs_toi/acs_tim_case/acs_case`
+  (**chỉ đọc**, qua cầu nối `desktop/src/mcp-relay.js` – GET /auth/me, GET /cs/…, POST /cs/query; env `AQ_ACS_RELAY/AQ_ACS_TOKEN`),
+  `retest_ds/retest_doc_plan/retest_ghi_plan` (plan nháp → collection `retestDrafts/c<caseId>`, trang hiện "Plan do Claude soạn", xoá khi Nhận test).
+  Đăng ký: nút "Kết nối Claude Desktop" (tab Thiết lập ACS) → `api/kit/mcp_register` ghi mục `aq-auto-test` vào `claude_desktop_config.json` (sao lưu `.bak-aq`).
+  `kb_ghi` chỉ ghi `.md` trong vault, từ chối nội dung giống mật khẩu/token/chuỗi kết nối; không có công cụ ghi lên ACS – giữ nguyên như vậy.
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục case. Không ghi mật khẩu vào kb/.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;

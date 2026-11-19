@@ -10,6 +10,9 @@ can_co:
   - "[[CTDT]]"
   - "[[DS SV hoc ky]]"
 la_dieu_kien_cho: []
+tu_khoa: "tốt nghiệp|xét tn"
+tu_khoa_ph:
+  - QLTN
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

@@ -9,6 +9,9 @@ dung_o:
 can_co: []
 la_dieu_kien_cho:
   - "[[Cau hinh NetWEB]]"
+tu_khoa: "người dùng|phân quyền|nhóm quyền|tài khoản|đăng nhập|mật khẩu"
+tu_khoa_ph:
+  - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

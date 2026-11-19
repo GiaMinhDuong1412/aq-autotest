@@ -9,6 +9,8 @@ can_co:
   - "[[Diem trung binh]]"
   - "[[DS SV hoc ky]]"
 la_dieu_kien_cho: []
+tu_khoa: "học vụ|cảnh báo học tập|buộc thôi học"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

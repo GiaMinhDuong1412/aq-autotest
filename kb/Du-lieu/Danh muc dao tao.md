@@ -9,6 +9,10 @@ la_dieu_kien_cho:
   - "[[Khoi lop]]"
   - "[[Ky tuyen sinh]]"
   - "[[Mon hoc]]"
+tu_khoa: "danh mục (bậc|hệ|ngành|chuyên ngành|khoa)|bậc hệ"
+tu_khoa_ph:
+  - KHGD
+  - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

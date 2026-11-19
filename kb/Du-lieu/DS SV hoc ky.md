@@ -22,6 +22,8 @@ la_dieu_kien_cho:
   - "[[KQ DKMH]]"
   - "[[Ket qua hoc vu]]"
   - "[[Ket qua tot nghiep]]"
+tu_khoa: "(danh sách )?sinh viên học kỳ|ds sv học kỳ"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

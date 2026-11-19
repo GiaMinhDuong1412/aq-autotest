@@ -9,6 +9,10 @@ can_co:
   - "[[Danh sach thi]]"
 la_dieu_kien_cho:
   - "[[Diem trung binh]]"
+tu_khoa: "nhập điểm|bảng ghi điểm|phách|phúc khảo|phúc tra|bảo lưu|điểm thi|điểm (môn|thành phần|quá trình)|xem điểm|bảng điểm"
+tu_khoa_ph:
+  - DIEM
+  - DMKT
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

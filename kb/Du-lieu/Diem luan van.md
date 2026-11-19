@@ -9,6 +9,9 @@ can_co:
   - "[[DS SV hoc ky]]"
   - "[[Vien chuc]]"
 la_dieu_kien_cho: []
+tu_khoa: "luận văn|đề tài|đề cương|hội đồng"
+tu_khoa_ph:
+  - QLTN
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

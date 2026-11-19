@@ -28,8 +28,9 @@ App AQ Auto Test (trang Test sau sửa lỗi) làm đúng việc này tự độ
 - Mỗi ghi chú có **Properties** (đầu file) – app đọc các trường này, **giữ đúng tên trường**:
   `nhan_tu` / `dua_sang` (phân hệ), `tao_o` / `dung_o` / `can_co` / `la_dieu_kien_cho` (dữ liệu), `test_tren`: `web` | `edusoft` | `app` | `api` | `mau-in`.
 - `trang_thai`: `can-xac-nhan` (đoán / thiếu) → `tu-tai-lieu` (Claude điền từ tài liệu) → `da-xac-nhan` (người test đã kiểm). Claude chỉ coi `da-xac-nhan` là chắc chắn.
-- `Phan-he/`, `Du-lieu/`, `Menu/`, hai trang `00 Bản đồ…` / `00 Logic…` do script `tools/kb_lien_ket.py` sinh (nguồn: `tools/kb_phan_he_data.py`, `tools/kb_logic_data.py`,
-  danh mục menu `web/edusoft-catalog.json`) và nhúng bản đồ vào app. Sửa logic (phải có trước, dùng ở đâu) → báo Claude sửa file nguồn rồi sinh lại – sửa tay trong ghi chú sẽ bị ghi đè.
+- **Ghi chú là nguồn**: sửa thẳng trong Obsidian (Properties `can_co`, `tao_o`, `dung_o`, `tu_khoa`… và các dòng `- [[…]] – vì sao`). App đọc lại khi bạn quay về cửa sổ app
+  (đã chọn vault ở Test sau sửa lỗi → Thiết lập ACS → Kết nối Claude Desktop → Chọn vault…). Claude Desktop cũng sửa được qua MCP khi bạn dạy kiến thức mới.
+  Chạy `dong-bo.bat` để chia sẻ cho máy khác. (`tools/kb_lien_ket.py` chỉ dùng để dựng lần đầu – chạy lại sẽ ghi đè.)
 - **Không** ghi mật khẩu, token, chuỗi kết nối vào kho này (kho nằm trong git).
 
 ## Nguồn đã dùng (Claude, 19/11/2026)
@@ -37,7 +38,7 @@ Tài liệu HDSD SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skil
 (Menu_NEW, ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC, NetWeb_DKMH).
 
 ## Việc người test cần làm
-- [ ] Đọc [[00 Logic nghiệp vụ]] – khẳng định nào sai ("muốn có X phải có Y") thì ghi lại để Claude sửa nguồn
+- [ ] Đọc [[00 Logic nghiệp vụ]] – khẳng định nào sai ("muốn có X phải có Y") thì sửa `can_co` trong ghi chú `Du-lieu/` tương ứng
 - [ ] Mở [[00 Bản đồ phân hệ]] và Graph view – liên kết nào sai / thiếu thì ghi lại
 - [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP, QXHV, BVLV) – đúng thì đổi `trang_thai: da-xac-nhan`
 - [ ] Điền **web test / Edusoft test** trong `Truong/` cho các trường hay test

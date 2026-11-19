@@ -197,6 +197,8 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
   ipcMain.handle('acs-survey-stop', (e) => (fromMain(e) ? surveyStop() : null));
 
   return {
+    call,                                         // cầu nối MCP (mcp-relay.js) – chỉ đọc, lọc ở đó
+    status,
     shutdown() { quitting = true; try { if (acsWin && !acsWin.isDestroyed()) acsWin.destroy(); } catch { /* bỏ qua */ } },
   };
 };

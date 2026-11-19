@@ -12,6 +12,8 @@ can_co:
 la_dieu_kien_cho:
   - "[[Nhom hoc]]"
   - "[[Ket qua tot nghiep]]"
+tu_khoa: "chương trình đào tạo|ctđt|kế hoạch học tập|khung chương trình"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

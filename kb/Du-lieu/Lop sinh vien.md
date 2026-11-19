@@ -15,6 +15,10 @@ la_dieu_kien_cho:
   - "[[Rang buoc DKMH]]"
   - "[[Quyet dinh sinh vien]]"
   - "[[Nhom hoc]]"
+tu_khoa: "danh mục lớp|danh sách lớp|lớp sinh viên|đổi lớp"
+tu_khoa_ph:
+  - QLSV
+  - KHGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

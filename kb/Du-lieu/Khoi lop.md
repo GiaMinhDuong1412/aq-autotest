@@ -12,6 +12,8 @@ can_co:
 la_dieu_kien_cho:
   - "[[CTDT]]"
   - "[[Lop sinh vien]]"
+tu_khoa: "khối lớp"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

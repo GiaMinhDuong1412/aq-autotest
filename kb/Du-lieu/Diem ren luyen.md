@@ -7,6 +7,8 @@ dung_o: []
 can_co:
   - "[[DS SV hoc ky]]"
 la_dieu_kien_cho: []
+tu_khoa: "rèn luyện|điểm danh"
+tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

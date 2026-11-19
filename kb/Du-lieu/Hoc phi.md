@@ -13,6 +13,10 @@ can_co:
 la_dieu_kien_cho:
   - "[[Phieu thu]]"
   - "[[No hoc phi]]"
+tu_khoa: "học phí|đơn giá|công thức thu|loại hình thu|phụ thu|khoản thu"
+tu_khoa_ph:
+  - CSHP
+  - QLTV
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

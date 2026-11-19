@@ -11,6 +11,9 @@ can_co:
   - "[[Hoc ky]]"
 la_dieu_kien_cho:
   - "[[KQ DKMH]]"
+tu_khoa: "ràng buộc|thời gian (đăng ký|rút)|chỉnh định chung|tài nguyên"
+tu_khoa_ph:
+  - DKMH
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---

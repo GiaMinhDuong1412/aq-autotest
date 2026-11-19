@@ -9,6 +9,9 @@ can_co:
   - "[[Quyet dinh sinh vien]]"
 la_dieu_kien_cho:
   - "[[Hop dong KTX]]"
+tu_khoa: "danh mục sinh viên|lý lịch|hồ sơ (sinh viên|sv)|thông tin sinh viên|văn bằng"
+tu_khoa_ph:
+  - QLSV
 nguon: luu-do
 trang_thai: tu-tai-lieu
 ---
