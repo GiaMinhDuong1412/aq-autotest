@@ -21,7 +21,6 @@ trang_thai: can-xac-nhan
 - GV nhập điểm online
 
 ## Ghi chú
-Case demo NetWEB/EduGO/EduONE trước triển khai: [[63697]].
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: Chưa mua NetWeb (2021).

@@ -7,6 +7,8 @@ test_tren:
   - edusoft
   - web
 tab_edusoft: Hoạt động cộng đồng
+nhan_tu: []
+dua_sang: []
 dau_hieu: hoạt động ngoại khóa, điểm rèn luyện tự động
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -16,6 +18,18 @@ trang_thai: tu-tai-lieu
 ## Là gì
 Hoạt động ngoại khóa, tính tự động điểm rèn luyện.
 
+## Nhận dữ liệu từ
+—
+
+## Tạo ra
+—
+
+## Đưa sang
+—
+
+## Sửa ở đây → kiểm lại
+Không có phân hệ nào nhận dữ liệu trực tiếp.
+
 ## Phần trên Edusoft
 Tab Hoạt động cộng đồng.
 
@@ -23,10 +37,10 @@ Tab Hoạt động cộng đồng.
 Nhập / đánh giá điểm rèn luyện trên web (tuỳ trường).
 
 ## Test ở đâu
-Tuỳ case: edusoft / web – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
+## Lưu ý
 —
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

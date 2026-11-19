@@ -6,6 +6,8 @@ san_pham: "[[Edusoft]]"
 test_tren:
   - edusoft
 tab_edusoft: —
+nhan_tu: []
+dua_sang: []
 dau_hieu: thống kê, báo cáo lãnh đạo
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -14,6 +16,18 @@ trang_thai: tu-tai-lieu
 
 ## Là gì
 Thông tin quản lý hỗ trợ lãnh đạo.
+
+## Nhận dữ liệu từ
+—
+
+## Tạo ra
+—
+
+## Đưa sang
+—
+
+## Sửa ở đây → kiểm lại
+Không có phân hệ nào nhận dữ liệu trực tiếp.
 
 ## Phần trên Edusoft
 —
@@ -24,8 +38,8 @@ Thông tin quản lý hỗ trợ lãnh đạo.
 ## Test ở đâu
 Chỉ edusoft.
 
-## Lưu ý khi test
+## Lưu ý
 —
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

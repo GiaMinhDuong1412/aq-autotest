@@ -7,6 +7,9 @@ test_tren:
   - edusoft
   - web
 tab_edusoft: Ký túc xá
+nhan_tu:
+  - "[[QLSV]]"
+dua_sang: []
 dau_hieu: phòng lưu trú, đơn giá, hợp đồng, thanh lý, thu phí lưu trú, điện nước
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -16,6 +19,19 @@ trang_thai: tu-tai-lieu
 ## Là gì
 Danh mục phòng, đơn giá phòng / dịch vụ, hợp đồng theo phòng, thanh lý, thu tiền lưu trú, chỉ số điện nước.
 
+## Nhận dữ liệu từ
+- [[DS SV hoc ky|Danh sách sinh viên học kỳ]] từ [[QLSV]] – SV ở ký túc xá
+
+## Tạo ra
+- [[Hop dong KTX|Hợp đồng ký túc xá]]
+
+## Đưa sang
+—
+
+## Sửa ở đây → kiểm lại
+Không có phân hệ nào nhận dữ liệu trực tiếp.
+Lỗi có thể do dữ liệu đầu vào từ: [[QLSV]] – kiểm dữ liệu đó trước khi kết luận.
+
 ## Phần trên Edusoft
 `Ký túc xá/ Định nghĩa dữ liệu/ …`, `Ký túc xá/ Quản lý hợp đồng/ …`, `Ký túc xá/ Quản lý thanh toán/ …` (tài liệu còn menu cũ "Lưu trú / Quyết định vào|ra KTX").
 
@@ -23,10 +39,10 @@ Danh mục phòng, đơn giá phòng / dịch vụ, hợp đồng theo phòng, t
 NetWEB SV: đăng ký ký túc xá (đăng ký trực tuyến / gia hạn).
 
 ## Test ở đâu
-Tuỳ case: edusoft / web – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
+## Lưu ý
 Thu phí là dữ liệu tiền – chỉ dùng SV test.
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

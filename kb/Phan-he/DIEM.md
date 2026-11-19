@@ -8,6 +8,17 @@ test_tren:
   - web
   - mau-in
 tab_edusoft: Quản lý điểm, Quản lý nhập điểm
+nhan_tu:
+  - "[[BVLV]]"
+  - "[[DKMH]]"
+  - "[[KHGD]]"
+  - "[[KSDG]]"
+  - "[[LTHI]]"
+  - "[[QLHT]]"
+dua_sang:
+  - "[[QLSV]]"
+  - "[[QLTN]]"
+  - "[[QXHV]]"
 dau_hieu: bảng ghi điểm, nhập điểm, phách, phúc khảo, điểm TB, phiếu điểm, xét học vụ, chứng chỉ
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -17,6 +28,27 @@ trang_thai: tu-tai-lieu
 ## Là gì
 KQ ĐKMH → bảng ghi điểm → nhập điểm (danh sách / import / phách / bảo lưu / phúc khảo) → tính điểm TB → phiếu điểm; xét học vụ, xét chứng chỉ (lưu đồ DIEM, QXHV).
 
+## Nhận dữ liệu từ
+- [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – điểm, xét học vụ học kỳ
+- [[Mon hoc|Môn học]] từ [[KHGD]] – môn thay thế
+- [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]] từ [[KHGD]] – môn thay thế theo khối
+- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – bảng ghi điểm / nhập điểm theo nhóm học
+- [[KQ DKMH|Kết quả đăng ký môn học]] từ [[DKMH]] – bảng ghi điểm, nhập điểm
+- [[Danh sach thi|Danh sách thi – lịch thi]] từ [[LTHI]] – tạo phách, bảng ghi điểm theo tổ thi
+- [[Diem luan van|Điểm luận văn]] từ [[BVLV]] – thành điểm môn học
+- [[Ket qua khao sat|Kết quả khảo sát]] từ [[KSDG]] – DHNT: phải khảo sát xong mới xem điểm (web)
+
+## Tạo ra
+- [[Diem mon hoc|Điểm môn học]]
+- [[Diem trung binh|Điểm trung bình – tích lũy]]
+
+## Đưa sang
+- [[Diem trung binh|Điểm trung bình – tích lũy]] → [[QXHV]], [[QLTN]], [[QLSV]]
+
+## Sửa ở đây → kiểm lại
+Các phân hệ nhận dữ liệu của DIEM: [[QLSV]], [[QLTN]], [[QXHV]].
+Lỗi có thể do dữ liệu đầu vào từ: [[BVLV]], [[DKMH]], [[KHGD]], [[KSDG]], [[LTHI]], [[QLHT]] – kiểm dữ liệu đó trước khi kết luận.
+
 ## Phần trên Edusoft
 `Quản lý điểm/ …`, `Quản lý nhập điểm/ …`.
 
@@ -24,10 +56,10 @@ KQ ĐKMH → bảng ghi điểm → nhập điểm (danh sách / import / phách
 NetWEB SV: xem điểm; NetWEB GV: nhập điểm theo nhóm học / tổ thi / phách, xem điểm môn giảng dạy. Phúc tra điểm trực tuyến: [[GAM]].
 
 ## Test ở đâu
-Tuỳ case: edusoft / web / mau-in – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
-EX đã gặp: [[63520]] (In phiếu điểm – từng SV), [[63525]] (Xét học vụ theo lớp); sửa lỗi [[63523]].
+## Lưu ý
+Điểm TB là đầu vào của xét học vụ, tốt nghiệp, học bổng – sửa cách tính điểm phải kiểm lại các phân hệ đó.
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

@@ -8,6 +8,13 @@ test_tren:
   - web
   - mau-in
 tab_edusoft: Khảo sát đánh giá
+nhan_tu:
+  - "[[KHGD]]"
+  - "[[QLHT]]"
+  - "[[QLNS]]"
+  - "[[QLSV]]"
+dua_sang:
+  - "[[DIEM]]"
 dau_hieu: form đánh giá, câu hỏi, thang đo, kỳ đánh giá, đáp viên, khảo sát trước khi xem điểm, mẫu in KS
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -17,6 +24,22 @@ trang_thai: tu-tai-lieu
 ## Là gì
 Chuẩn bị form (form, thang đo, nhóm câu hỏi, câu hỏi) → kỳ đánh giá → DS được đánh giá → DS đáp viên → **đáp viên trả lời trên web** → in kết quả (lưu đồ KSDG).
 
+## Nhận dữ liệu từ
+- [[Hoc ky|Năm học – học kỳ]] từ [[QLHT]] – kỳ đánh giá
+- [[DS SV hoc ky|Danh sách sinh viên học kỳ]] từ [[QLSV]] – đáp viên
+- [[Vien chuc|Viên chức / cán bộ giảng dạy]] từ [[QLNS]] – giảng viên được đánh giá
+- [[Nhom hoc|Nhóm học (nhóm tổ)]] từ [[KHGD]] – dữ liệu đánh giá (nhóm tổ, GV)
+
+## Tạo ra
+- [[Ket qua khao sat|Kết quả khảo sát]]
+
+## Đưa sang
+- [[Ket qua khao sat|Kết quả khảo sát]] → [[DIEM]]
+
+## Sửa ở đây → kiểm lại
+Các phân hệ nhận dữ liệu của KSDG: [[DIEM]].
+Lỗi có thể do dữ liệu đầu vào từ: [[KHGD]], [[QLHT]], [[QLNS]], [[QLSV]] – kiểm dữ liệu đó trước khi kết luận.
+
 ## Phần trên Edusoft
 `Khảo sát đánh giá/ Chuẩn bị form/ …`, `Khảo sát đánh giá/ Danh sách đánh giá/ …`, `Khảo sát đánh giá/ Khai thác báo biểu/ In kết quả`.
 
@@ -24,10 +47,10 @@ Chuẩn bị form (form, thang đo, nhóm câu hỏi, câu hỏi) → kỳ đán
 NetWEB SV + GV + khách: làm khảo sát; GV: xem kết quả khảo sát; DHNT: **đánh giá GV trước khi xem điểm**.
 
 ## Test ở đâu
-Tuỳ case: edusoft / web / mau-in – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
-Case [[63722]] (cảnh báo khảo sát trước khi xem điểm → web), [[63195]] (mẫu in KS06 → mẫu in), [[63602]].
+## Lưu ý
+Phần form / mẫu in kết quả trên Edusoft, phần trả lời trên web; DHNT bắt khảo sát trước khi xem điểm (liên quan [[DIEM]] trên web).
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

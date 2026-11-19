@@ -7,6 +7,11 @@ test_tren:
   - edusoft
   - web
 tab_edusoft: Tuyển sinh
+nhan_tu:
+  - "[[QLSV]]"
+dua_sang:
+  - "[[QLSV]]"
+  - "[[QLTV]]"
 dau_hieu: kỳ/đợt tuyển sinh, hồ sơ thí sinh, xét tuyển, điểm chuẩn, trúng tuyển, nhập học online, tiếp sinh
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
@@ -16,6 +21,20 @@ trang_thai: tu-tai-lieu
 ## Là gì
 Chuẩn bị kỳ/đợt, danh mục ngành – phương thức – khối; nhập hồ sơ; điểm chuẩn; xét trúng tuyển; gán lớp / mã SV; xác nhận nhập học; tiếp sinh (hồ sơ + học phí nhập học) → chuyển sang QLSV (lưu đồ QLTS).
 
+## Nhận dữ liệu từ
+- [[Lop sinh vien|Lớp sinh viên]] từ [[QLSV]] – gán tên lớp cho thí sinh trúng tuyển
+
+## Tạo ra
+- [[Ho so thi sinh|Hồ sơ thí sinh]]
+- [[DS trung tuyen|Danh sách trúng tuyển]]
+
+## Đưa sang
+- [[DS trung tuyen|Danh sách trúng tuyển]] → [[QLSV]], [[QLTV]]
+
+## Sửa ở đây → kiểm lại
+Các phân hệ nhận dữ liệu của QLTS: [[QLSV]], [[QLTV]].
+Lỗi có thể do dữ liệu đầu vào từ: [[QLSV]] – kiểm dữ liệu đó trước khi kết luận.
+
 ## Phần trên Edusoft
 `Tuyển sinh/ Chuẩn bị/ …`, `Tuyển sinh/ Nhập liệu hồ sơ/ …`, `Tuyển sinh/ Xét tuyển/ …`, `Tuyển sinh/ Tiếp sinh/ …`.
 
@@ -23,10 +42,10 @@ Chuẩn bị kỳ/đợt, danh mục ngành – phương thức – khối; nh�
 NetWEB: Đăng ký xét tuyển, Tra cứu thông tin xét tuyển, Nhập học online (thí sinh), Chăm sóc thí sinh xét tuyển.
 
 ## Test ở đâu
-Tuỳ case: edusoft / web – xem lời KH nói về màn hình Edusoft hay trang web (bảng trên).
+Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 
-## Lưu ý khi test
-EX đã gặp: [[64361]] (Nhập hồ sơ đăng ký xét tuyển).
+## Lưu ý
+Kết thúc tuyển sinh là bước **chuyển** sang QLSV và Thu/chi HP – kiểm dữ liệu đã sang đủ.
 
 ---
-Nguồn: Tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW, sheet Release(TestMenu) – Menu_NEW. Mã ACS ↔ phân hệ tài liệu là suy ra – người test xác nhận rồi đổi `trang_thai: da-xac-nhan`.
+Nguồn: tài liệu HDSD (SharePoint "1. Tài liệu Edusoft"), lưu đồ LuuDo_NEW (skill `tailieu-edusoft/luu-do`), sheet Release(TestMenu). Liên kết dữ liệu theo lưu đồ.

@@ -24,7 +24,7 @@ trang_thai: can-xac-nhan
 - SV xin bảng điểm online
 
 ## Ghi chú
-Có phiên bản riêng – coder sửa ở `VersionSchool/KTTC/…` (xem [[VersionSchool]], case [[64457]]).
+Có phiên bản riêng – coder sửa ở `VersionSchool/KTTC/…` (xem [[VersionSchool]]).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: Chưa nghiệm thu NetWeb (2021).

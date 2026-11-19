@@ -32,7 +32,6 @@ Mã trên ACS: `DHNTDHCQ` (ĐH chính quy – ftugate.ftu.edu.vn), `DHNTCHCQ` (c
 Điều hướng (sheet "DHNT Điều hướng DVPC"): đăng nhập ở trang chính rồi **chuyển sang site theo cơ sở** của SV / GV / khối lớp
 – DHNTDHCQ: Hà Nội / Quảng Ninh; DHNTDHTC: Feretco / Trực tuyến. Bảng thử có cột "Login / Logout có chuyển đúng không (Y/N)" cho SV và GV.
 Bản thử trên máy chủ `http://edusoft.net.vn:12344/<site>` (vd `dhntdhcq.netweb`, `dhntdhcq.hanoi`, `dhntdhtc.feretco`) – **cần xác nhận** đây có phải môi trường test hiện tại.
-Case liên quan: [[64705]], [[63602]], [[63195]].
 
 ## Ghi chú
 —

@@ -87,9 +87,11 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `tools/gan_form_tay.py <trich-tat-ca.zip>` (chạy sau `lap_danh_muc.py`); ô bắt buộc (*) + độ dài tối đa của lưới dựng từ CSDL:
   `tools/gan_bat_buoc.py <aqdata>` (AQFileField.AllowNull = 0). Nghiệp vụ từng phân hệ: skill `tailieu-edusoft/nghiep-vu/`.
   Bản claude.ai publish kèm file này (`files: {"edusoft-catalog.json": "web/edusoft-catalog.json"}`).
-- `kb/` – **knowledge base test case** (vault Obsidian, người test tự viết): `San-pham/`, `Phan-he/<mã ACS>.md`, `Truong/`, `Repo-coder/`,
-  `Cach-test/`, `Case/<số case>.md`; mỗi ghi chú có Properties (`loai`, `test_tren`: web|edusoft|app|api|mau-in, `trang_thai: can-xac-nhan`…).
-  **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS**; ghi chú `can-xac-nhan` chưa chắc chắn. Không ghi mật khẩu vào kb/.
+- `kb/` – **knowledge base nghiệp vụ** (vault Obsidian): phân hệ **liên kết qua dữ liệu** – `00 Bản đồ phân hệ.md` (chuỗi + sơ đồ mermaid),
+  `Phan-he/<mã ACS>.md` (Properties `nhan_tu`/`dua_sang`, mục Nhận dữ liệu từ / Tạo ra / Đưa sang / Sửa ở đây → kiểm lại, phần Edusoft / web),
+  `Du-lieu/<tên>.md` (`tao_o`, `dung_o`, menu, trên web), `San-pham/`, `Truong/`, `Repo-coder/`, `Cach-test/`; `test_tren`: web|edusoft|app|api|mau-in;
+  `trang_thai`: can-xac-nhan < tu-tai-lieu < da-xac-nhan. Sinh lại phần phân hệ/dữ liệu bằng script khi lưu đồ đổi (giữ phần người test đã sửa).
+  **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục case. Không ghi mật khẩu vào kb/.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;
   đọc trước khi viết/sửa `auto`, ghi thêm mỗi khi người dùng dạy.
