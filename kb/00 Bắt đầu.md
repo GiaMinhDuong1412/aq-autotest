@@ -19,11 +19,20 @@ case này test ở đâu (Web / Edusoft / App / API / Mẫu in), khách hàng c�
 ## Quy tắc
 - Mỗi ghi chú có phần **Properties** (đầu file, giữa hai dòng `---`) – app đọc các trường này, **giữ đúng tên trường**.
 - `test_tren` chỉ dùng: `web`, `edusoft`, `app`, `api`, `mau-in` (nhiều giá trị thì viết dạng danh sách).
-- Chưa chắc thì ghi `trang_thai: can-xac-nhan` – Claude sẽ không coi là chắc chắn.
+- `trang_thai`: `can-xac-nhan` (đoán / thiếu thông tin) → `tu-tai-lieu` (Claude điền từ tài liệu, người test liếc lại) → `da-xac-nhan` (người test đã kiểm).
+  Claude coi `da-xac-nhan` là chắc chắn, hai mức còn lại chỉ là gợi ý.
 - Nối các ghi chú bằng `[[...]]` (gõ `[[` rồi chọn) – vd case nối tới `[[KTTC]]`, `[[CSHP]]`.
 - **Không** ghi mật khẩu, token, chuỗi kết nối vào kho này (kho nằm trong git).
 
-## Việc cần làm trước
-- [ ] Điền đủ `Phan-he/` cho các mã phân hệ hay gặp trên ACS
-- [ ] Điền `Truong/` cho các trường hay test
-- [ ] Chép 5–10 case test "đúng nghiệp vụ" vào `Case/`
+## Đã điền sẵn (Claude, 19/11/2026)
+Nguồn: tài liệu HDSD trên SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skill `tailieu-edusoft`), sheet Release(TestMenu)
+(Menu_NEW, ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC, NetWeb_DKMH, các sheet "(case)").
+- `Phan-he/`: 24 mã – phân hệ Edusoft + NETWEB-UI, NETWEB-API, DKMHUI, CSHP, EDUGO, EDUBILL, GAM; mỗi mã tách **phần Edusoft / phần web**.
+- `Truong/`: 21 trường theo sheet (tên, link Netweb thật, chức năng web trường có) + HVNG (môi trường test mặc định).
+- `Case/`: 6 case lấy từ sheet release (có menu + kết quả test) + 15 case từ danh sách ACS (mới có tiêu đề – Claude đoán nơi test) + 64457.
+- `Cach-test/`: lỗi EX Edusoft, sửa số liệu Edusoft, mẫu in, chức năng web theo trường, API & bảo mật web, sửa hiển thị web.
+
+## Việc người test cần làm
+- [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP) – đúng thì đổi `trang_thai: da-xac-nhan`
+- [ ] Điền **web test / Edusoft test** cho các trường hay test trong `Truong/` (hiện mới có link trang thật)
+- [ ] Mở các case trong `Case/` có "(chưa có – chép từ ACS)": dán yêu cầu KH, sửa phần "Test ở đâu" nếu Claude đoán sai, ghi **Bài học**

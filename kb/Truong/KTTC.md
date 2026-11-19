@@ -1,18 +1,30 @@
 ---
 loai: truong
 ma: KTTC
-ten: 
+ten: ĐH Kinh tế - Tài chính TP.HCM
+netweb_that: 
 web_test: 
 edusoft_test: 
-ban_hien_tai: 
-tai_khoan_test: 
+trang_thai_hd: Chưa nghiệm thu NetWeb (2021)
+nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
-# KTTC
+# KTTC – ĐH Kinh tế - Tài chính TP.HCM
 
-## Môi trường test
-- Web test: (điền link)
-- Edusoft test: (điền đường dẫn)
+## Netweb của trường
+- Trang thật (KH dùng): (chưa có trong sheet) – **chỉ để nhận ra trường trong case, KHÔNG thử / ghi dữ liệu trên trang thật.**
+- Web test: (điền) · Edusoft test: (điền)
 
-## Đặc thù của trường
-Có phiên bản riêng – coder sửa ở repo `VersionSchool/KTTC/…` (xem [[VersionSchool]]).
+## Chức năng web trường có (sheet ChuyenDoiNetWeb, 2021 – có thể đã đổi)
+- DKMH online
+- Khảo sát trực tuyến
+- SV xem học phí
+- SV xem CTĐT
+- Kết quả xét tốt nghiệp (web)
+- SV xin bảng điểm online
+
+## Ghi chú
+Có phiên bản riêng – coder sửa ở `VersionSchool/KTTC/…` (xem [[VersionSchool]], case [[64457]]).
+
+---
+Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: Chưa nghiệm thu NetWeb (2021).
