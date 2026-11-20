@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.18-02"
+KIT_VERSION = "2026.11.20-01"
 from pathlib import Path
 
 
@@ -1243,9 +1243,9 @@ class Edusoft:
             raise RuntimeError("Đăng nhập không vào được màn hình chính (sai tài khoản/mật khẩu hoặc lỗi máy chủ)")
 
     # --- menu
-    def open_menu(self, path):
+    def open_menu(self, path, settle=True):
         """Mở menu theo đường dẫn tài liệu "A/ B/ C": mỗi cấp tìm trên mọi cửa sổ của Edusoft
-        (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp."""
+        (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp. settle=False: không chờ thêm sau cú bấm cuối (đo thời gian)."""
         segs = menu_segs(path)
         if not segs:
             return
@@ -1265,8 +1265,32 @@ class Edusoft:
                 self.expand_node(el)              # nhóm trên cây chức năng: mở nhóm để thấy mục con
             else:
                 self.click(el, double=(last and ct in ("TreeItem", "DataItem", "ListItem")))
-            time.sleep(0.8)
-        time.sleep(1.5)                            # chờ màn hình chức năng mở xong
+            if not last or settle:
+                time.sleep(0.8)
+        if settle:
+            time.sleep(1.5)                        # chờ màn hình chức năng mở xong
+
+    def wait_idle(self, timeout=600, quiet=2.0):
+        """Chờ Edusoft xong việc: cửa sổ chính không treo (IsHungAppWindow) và danh sách cửa sổ / số phần tử của màn hình đang mở
+        không đổi trong `quiet` giây. → thời điểm thay đổi cuối cùng (dùng để đo thời gian mở menu)."""
+        end, last, since = time.time() + timeout, None, time.time()
+        while time.time() < end:
+            try:
+                import ctypes
+                hung = bool(ctypes.windll.user32.IsHungAppWindow(self.main.handle))
+            except Exception:
+                hung = False
+            try:
+                sig = (tuple(sorted(self.handles())), len(self.main.descendants(control_type="DataItem")) if not hung else -1)
+            except Exception:
+                sig = None
+            now = time.time()
+            if hung or sig != last:
+                last, since = sig, now
+            elif now - since >= quiet:
+                return since
+            time.sleep(0.3)
+        return time.time()
 
     def expand_node(self, el):
         """Bấm chọn nhóm trên cây rồi mở nhóm (ExpandCollapse); không được thì bấm đúp – chỉ khi nhóm đang đóng,
@@ -1958,6 +1982,7 @@ class Run:
     def do_actions(self, actions, label=""):
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
+          menu_time: A/ B/ C            mở menu và đo thời gian tới khi màn hình hiện xong (ghi "Mở menu C: N giây" vào ghi chú)
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -2010,6 +2035,11 @@ class Run:
                 continue
             if verb == "menu":
                 es.open_menu(arg)
+            elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
+                t0 = time.time()
+                es.open_menu(arg, settle=False)
+                secs = es.wait_idle() - t0
+                notes.append("Mở menu %s: %.1f giây" % ((menu_segs(arg) or [arg])[-1], secs))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)

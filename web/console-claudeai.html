@@ -991,6 +991,7 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt2-sec>.hint,.rt2-sec>p.hint{margin:6px 0 0;font-size:.76rem}.rt2-sec .rt2-ingrid{margin-top:2px}
 .rt2-ready{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;padding:10px 12px;border-radius:12px;background:var(--bg-2);border:1px solid var(--line)}
 .rt2-ready span{font-size:.8rem;font-weight:600}.rt2-ready span.ok{color:var(--pass)}.rt2-ready span.no{color:var(--muted)}.rt2-ready .btn{margin-left:auto}
+.rt2-runbar{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--hi,var(--accent)) 8%,var(--bg-2));border:1px solid color-mix(in srgb,var(--hi,var(--accent)) 40%,var(--line))}.rt2-runbar .hint{flex:1 1 260px}
 .rt2-scen{display:flex;flex-direction:column;gap:6px;font-size:.82rem}.rt2-scen label{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .rt2-env{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font-size:.8rem;padding:8px 12px;border-radius:10px;background:var(--bg-2)}.rt2-env .k{color:var(--muted);font-size:.74rem}
 .rt2-prog{font-size:.8rem;color:var(--fg-dim)}
@@ -2878,7 +2879,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.18-02"
+KIT_VERSION = "2026.11.20-01"
 from pathlib import Path
 
 
@@ -4109,9 +4110,9 @@ class Edusoft:
             raise RuntimeError("Đăng nhập không vào được màn hình chính (sai tài khoản/mật khẩu hoặc lỗi máy chủ)")
 
     # --- menu
-    def open_menu(self, path):
+    def open_menu(self, path, settle=True):
         """Mở menu theo đường dẫn tài liệu "A/ B/ C": mỗi cấp tìm trên mọi cửa sổ của Edusoft
-        (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp."""
+        (menu thả xuống là cửa sổ riêng), mục cuối là cây/danh sách thì bấm đúp. settle=False: không chờ thêm sau cú bấm cuối (đo thời gian)."""
         segs = menu_segs(path)
         if not segs:
             return
@@ -4131,8 +4132,32 @@ class Edusoft:
                 self.expand_node(el)              # nhóm trên cây chức năng: mở nhóm để thấy mục con
             else:
                 self.click(el, double=(last and ct in ("TreeItem", "DataItem", "ListItem")))
-            time.sleep(0.8)
-        time.sleep(1.5)                            # chờ màn hình chức năng mở xong
+            if not last or settle:
+                time.sleep(0.8)
+        if settle:
+            time.sleep(1.5)                        # chờ màn hình chức năng mở xong
+
+    def wait_idle(self, timeout=600, quiet=2.0):
+        """Chờ Edusoft xong việc: cửa sổ chính không treo (IsHungAppWindow) và danh sách cửa sổ / số phần tử của màn hình đang mở
+        không đổi trong `quiet` giây. → thời điểm thay đổi cuối cùng (dùng để đo thời gian mở menu)."""
+        end, last, since = time.time() + timeout, None, time.time()
+        while time.time() < end:
+            try:
+                import ctypes
+                hung = bool(ctypes.windll.user32.IsHungAppWindow(self.main.handle))
+            except Exception:
+                hung = False
+            try:
+                sig = (tuple(sorted(self.handles())), len(self.main.descendants(control_type="DataItem")) if not hung else -1)
+            except Exception:
+                sig = None
+            now = time.time()
+            if hung or sig != last:
+                last, since = sig, now
+            elif now - since >= quiet:
+                return since
+            time.sleep(0.3)
+        return time.time()
 
     def expand_node(self, el):
         """Bấm chọn nhóm trên cây rồi mở nhóm (ExpandCollapse); không được thì bấm đúp – chỉ khi nhóm đang đóng,
@@ -4824,6 +4849,7 @@ class Run:
     def do_actions(self, actions, label=""):
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
+          menu_time: A/ B/ C            mở menu và đo thời gian tới khi màn hình hiện xong (ghi "Mở menu C: N giây" vào ghi chú)
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -4876,6 +4902,11 @@ class Run:
                 continue
             if verb == "menu":
                 es.open_menu(arg)
+            elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
+                t0 = time.time()
+                es.open_menu(arg, settle=False)
+                secs = es.wait_idle() - t0
+                notes.append("Mở menu %s: %.1f giây" % ((menu_segs(arg) or [arg])[-1], secs))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)
@@ -9552,7 +9583,12 @@ QUAY VIDEO (TÙY CHỌN)
   function rtLink(){if(!SC.runs)return;RT.list.forEach(function(rt){if(rt.state!=='running'||rt.runId)return;var t0=String(rt.startedAt||rt.assignedAt||'');
     var r=SC.runs.filter(function(x){return x.scenarioId===rt.scenarioId&&x.runnerId===rt.runnerId&&x.finishedAt&&String(x.startedAt||'')>=t0;})
       .sort(function(a,b){return String(a.startedAt).localeCompare(String(b.startedAt));})[0];
-    if(r)rtSave(rt.id,{state:rtNextSt(rt),runId:r.id,runStatus:r.status||'',version:r.version||'',ranAt:r.finishedAt}).catch(function(){});});}
+    if(!r)return;var patch={runId:r.id,runStatus:r.status||'',version:r.version||'',ranAt:r.finishedAt};
+    if(rt.adhoc&&rt.plan){var items=rtItemsOf(rt).map(function(x,i){var st=(r.steps||[])[i]||{},y=Object.assign({},x);
+        if(!y.res&&st.res)y.res=st.res;if(st.note&&!y.note)y.note=String(st.note);if(st.shots&&st.shots.length)y.shots=(y.shots||[]).concat(st.shots);return y;});
+      patch.plan=Object.assign({},rt.plan,{items:items});patch.state=items.length&&items.every(function(x){return x.res;})?'review':'testing';}
+    else patch.state=rtNextSt(rt);
+    rtSave(rt.id,patch).catch(function(){});});}
   function rtNextSt(rt){var it=rtItemsOf(rt);return it.length&&!it.every(function(x){return x.res;})?'testing':'review';}
   function rtAfterRun(id,runId,st,ver){rtSave(id,{state:rtNextSt(rtById(id)),runId:runId,runStatus:st,version:ver,ranAt:new Date().toISOString()}).catch(function(e){notice('Không cập nhật được phiếu test lại: '+errMsg(e));});}
 
@@ -9568,6 +9604,25 @@ QUAY VIDEO (TÙY CHỌN)
     rtSave(id,{state:'running',startedAt:new Date().toISOString(),runId:null}).catch(function(){});
     if(scriptReady(it)){kitRunReq([it.code]);RT.flash='Đã gửi lệnh chạy '+it.code+' tới máy chạy test – có kết quả (nhập file .zip hoặc qua cầu nối) thì phiếu tự sang "Chờ duyệt ảnh".';renderRetest();return;}
     startRun([it.id]);if(SC.run)SC.run.retest=id;}
+
+  /* ---------- chạy plan: Edusoft qua bộ test (kịch bản tạm ACS-<case>), web mở trang test ---------- */
+  function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);}),steps=[],auto=[];
+    items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^(?:mở|vào)\s+menu\s+(.+?)(?:\s+[–-]\s+bấm giờ.*|:.*)?\.?$/i);
+      steps.push((x.g==='check'?'Đầu ra: ':'')+t);
+      auto.push(m&&x.g!=='check'?[(perf?'menu_time: ':'menu: ')+m[1].trim(),'shot: buoc-'+(i+1)]:[]);});
+    return {id:'acs-'+rt.caseId+'-'+(rt.round||1),code:'ACS-'+rt.caseId,title:'Test case ACS #'+rt.caseId+' – '+(rt.title||''),product:'edusoft',module:rt.module||'',menu:'',version:DEFAULT_VERSION,
+      steps:steps,auto:auto,expected:'',vars:{},altFlows:[],release:null};}
+  async function rtRunPlan(id){var rt=rtById(id);if(!rt)return;RT.err='';
+    if(rt.platform==='web'){var u=rt.envUrl||'';if(!/^https?:\/\//i.test(u)){RT.err='Plan chưa có địa chỉ trang web test – bấm Sửa plan để nhập.';renderRetest();return;}
+      window.open(u,'_blank','noopener');RT.flash='Đã mở trang web test – làm theo thao tác, đánh dấu Đạt / Lỗi từng mục và dán ảnh (Ctrl+V).';RT.step[rt.caseId]=3;renderRetest();return;}
+    if(rt.platform!=='edusoft'){RT.step[rt.caseId]=3;renderRetest();return;}
+    var sc=rtAdhoc(rt),f={};f['scenarios/'+sc.code+'.json']=JSON.stringify(sc,null,1);
+    await rtSave(id,{state:'running',startedAt:new Date().toISOString(),runId:null,scenarioId:sc.id,scenarioCode:sc.code,adhoc:true}).catch(function(){});
+    try{await brTry();}catch(e){}
+    await kitRunReq([sc.code],{files:f,runner:Object.assign({},rt.envPath?{path:rt.envPath}:{},rt.acct?{account:rt.acct}:{})});
+    RT.step[rt.caseId]=3;if(KIT.err)RT.err=KIT.err;else RT.flash=KIT.msg+' Mục tự động (mở menu, đo thời gian, chụp ảnh) tự có kết quả; mục cần nhìn bằng mắt thì bộ test hiện hộp hỏi Đạt / Lỗi.';renderRetest();}
+  function rtRunBtn(rt){if(!rt||rt.state==='pass'||rt.state==='fail')return '';var es=rt.platform==='edusoft',web=rt.platform==='web';if(!es&&!web)return '';
+    return '<button type="button" class="btn primary" data-rtrun="'+esc(rt.id)+'"'+(rt.state==='running'?' title="Đang chạy – bấm để chạy lại"':'')+'>'+(es?(rt.state==='running'?'↻ Chạy lại trên Edusoft':'▶ Chạy test trên Edusoft'):'▶ Mở trang web test')+'</button>';}
 
   /* ---------- duyệt & kết luận ---------- */
   function rtRunOf(rt){if(!rt||!rt.runId)return null;for(var i=0;i<SC.runs.length;i++)if(SC.runs[i].id===rt.runId)return SC.runs[i];return null;}
@@ -9986,11 +10041,11 @@ QUAY VIDEO (TÙY CHỌN)
     var last=rtLatest(id0),cur=rtCurDoc(),round=cur?(cur.round||1):(last?(last.round||1)+1:1),id='c'+id0+'-'+round,now=new Date().toISOString(),q=RT.qs.filter(function(x){return x.id===RT.qk;})[0];
     var it=dr.scen?byId(dr.scen):null,a=rtAnalyze(id0);
     var doc={caseId:id0,round:round,title:c.title,school:c.school,module:c.module,coder:c.coder,tester:c.tester,acsStatus:c.status,testState:c.testState,resolvedAt:c.resolvedAt,
-      query:q?q.name:'',platform:dr.pf,kind:dr.kind,build:a?a.build:'',inputs:vals,plan:{env:dr.env,items:items.map(function(x){return {g:x.g,t:x.t,res:'',note:'',shots:[]};})},
+      query:q?q.name:'',platform:dr.pf,kind:dr.kind,build:a?a.build:'',inputs:vals,envPath:E.es?String(E.path).trim():'',acct:E.es?String(E.acc).trim():'',envUrl:E.web?String(E.url).trim():'',plan:{env:dr.env,items:items.map(function(x){return {g:x.g,t:x.t,res:'',note:'',shots:[]};})},
       scenarioId:it?it.id:null,scenarioCode:it?it.code||'':'',runnerId:SC.me||null,state:'testing',runId:null,assignedAt:now,assignedBy:SC.me||null,createdAt:now};
     var d=RT.det[id0];if(d&&d.key){doc.request=d.fields[d.key].slice(0,6000);doc.requestField=d.key;}
     RT.busy=true;renderRetest();
-    var p=cur?rtSave(cur.id,{platform:doc.platform,kind:doc.kind,build:doc.build,inputs:doc.inputs,plan:doc.plan,scenarioId:doc.scenarioId,scenarioCode:doc.scenarioCode,state:'testing'}):rtSave(id,doc,true);
+    var p=cur?rtSave(cur.id,{platform:doc.platform,kind:doc.kind,build:doc.build,inputs:doc.inputs,envPath:doc.envPath,acct:doc.acct,envUrl:doc.envUrl,plan:doc.plan,scenarioId:doc.scenarioId,scenarioCode:doc.scenarioCode,state:'testing'}):rtSave(id,doc,true);
     if(dr.cd&&RT.cdCol)RT.cdCol.doc('c'+id0).delete().catch(function(){});
     p.then(function(){RT.busy=false;RT.step[id0]=3;RT.ltab='doing';RT.replan=false;RT.flash='Đã nhận test case #'+id0+' – làm theo plan, đánh dấu Đạt/Lỗi từng mục, dán ảnh chụp (Ctrl+V).';rtLearn(c.module,dr.pf);renderRetest();})
       .catch(function(e){RT.busy=false;RT.err=errMsg(e);renderRetest();});}
@@ -10194,7 +10249,7 @@ QUAY VIDEO (TÙY CHỌN)
     var scen=edit&&(src.pf==='edusoft'||src.pf==='web')&&rel.length?'<details class="rt2-blk rt2-scenbox"'+(src.scen?' open':'')+'><summary class="rt2-bh">Kịch bản có sẵn chạy kèm <span class="hint">(tuỳ chọn · '+rel.length+')</span></summary><div class="rt2-scen">'+
       '<label><input type="radio" name="rtscen" value=""'+(!src.scen?' checked':'')+'> Không chạy kịch bản</label>'+rel.map(function(o){return '<label><input type="radio" name="rtscen" value="'+esc(o.it.id)+'"'+(src.scen===o.it.id?' checked':'')+'> <b class="mono">'+esc(o.it.code||'')+'</b> '+esc(short(o.it.title||o.it.menu||''))+'</label>';}).join('')+'</div></details>':'';
     var nChk=(by.check||[]).filter(function(i){return String(src.items[i].t||'').trim();}).length,ready=E.envOk&&E.accOk&&nChk>0;
-    var foot=view?'<div class="rt2-foot">'+(!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+'<button type="button" class="btn primary" data-rtstep="3">Tiếp: Test →</button></div>':
+    var foot=view?'<div class="rt2-foot">'+(!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+'<button type="button" class="btn" data-rtstep="3">Tiếp: Test →</button>'+rtRunBtn(rt)+'</div>':
       '<div class="rt2-ready">'+[['Môi trường',E.envOk],['Tài khoản',E.accOk],['Đầu ra',nChk>0]].map(function(x){return '<span class="'+(x[1]?'ok':'no')+'">'+(x[1]?'✓':'○')+' '+x[0]+'</span>';}).join('')+
         '<button type="button" class="btn primary" data-rt="take"'+(RT.busy||!SC.canWrite||!ready?' disabled':'')+' title="'+(ready?'':'Điền đủ môi trường, tài khoản và ít nhất một đầu ra')+'">'+(rt?'Lưu plan':'Bắt đầu test →')+'</button></div>';
     return cl+'<div class="rt2-ph"><b>Plan test</b><span class="hint">'+(view?'đã chốt khi nhận test':'đủ môi trường + tài khoản → vào menu làm thao tác → so với đầu ra')+'</span>'+(edit&&!rt?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+'</div>'+
@@ -10213,6 +10268,7 @@ QUAY VIDEO (TÙY CHỌN)
       (run?'<p class="hint">'+esc(ST[run.status]||run.status||'')+' · '+(run.steps||[]).filter(function(x){return x&&x.res==='ok';}).length+'/'+(run.steps||[]).length+' bước đạt · '+esc(fmt(run.finishedAt||run.startedAt))+'</p><div class="shots">'+thumbs([].concat.apply([],(run.steps||[]).map(function(x){return (x&&x.shots)||[];})).slice(-8),null,false)+'</div>'
         :'<div class="rt2-runrow"><select id="rtRn">'+rtRunners().map(function(r){var cs=(r.check&&r.check.status)||'none';return '<option value="'+esc(r.uid)+'"'+(r.uid===(rt.runnerId||SC.me)?' selected':'')+'>'+esc(nameOf(r.uid)+(r.machine?' · '+r.machine:'')+' · '+(RNSTL[cs]||cs))+'</option>';}).join('')+'</select>'+
           '<button type="button" class="btn sm primary" data-rtstart="'+esc(rt.id)+'"'+(done?' disabled':'')+'>'+(rt.state==='running'?'Chạy lại':'Chạy kịch bản')+'</button>'+(rt.state==='running'?'<span class="hint">đang chạy – có kết quả thì tự cập nhật</span>':'')+'</div>')+'</div>':'';
+    var rb=rtRunBtn(rt);if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?', đo thời gian mở menu':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
     return env+'<div class="rt2-prog"><b>'+n+'/'+items.length+'</b> mục đã có kết quả'+(RT.up?' · đang tải '+RT.up+' ảnh…':'')+'</div><div class="rt2-test">'+rows+'</div>'+scr+
       '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="4"'+(n<items.length&&!done?' title="Còn mục chưa có kết quả"':'')+'>Tiếp: Kết luận →</button></div>';}
   function rtW4(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),w=rtW(),done=rt.state==='pass'||rt.state==='fail';
@@ -10373,7 +10429,7 @@ QUAY VIDEO (TÙY CHỌN)
     pg.addEventListener('click',function(e){
       var fc=e.target.closest('[data-rtfocus]');if(fc){var fi=+fc.getAttribute('data-rtfocus');
         if(RT.focus!==fi){RT.focus=fi;if(e.target.closest('input,textarea,label,button')){$$('#rtMain .rt2-ti.focus').forEach(function(x){x.classList.remove('focus');});fc.classList.add('focus');}else{renderRetest();return;}}}
-      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd]');if(!b||b.disabled)return;var a=rtA();
+      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd],[data-rtrun]');if(!b||b.disabled)return;var a=rtA();
       if(b.getAttribute('data-rt')==='sheetkeys'){var tx=rtSheetKeys(RT.cur);try{navigator.clipboard.writeText(tx);toast('Đã chép cấu trúc case (không kèm nội dung) – dán gửi cho Claude để chỉnh phiếu');}catch(e){prompt('Chép nội dung này:',tx);}return;}
       if(b.hasAttribute('data-rtimg')){rtImgOpen(RT.cur,+b.getAttribute('data-rtimg'));return;}
       if(b.hasAttribute('data-rtreqf')){var rf=b.getAttribute('data-rtreqf'),dq=RT.cur&&RT.det[RT.cur],sq=RT.cur&&rtLatest(RT.cur);try{localStorage.setItem('aq-rt-reqf',rf);}catch(x){}
@@ -10388,6 +10444,7 @@ QUAY VIDEO (TÙY CHỌN)
       if(b.hasAttribute('data-rtkd')){var d2=dr();if(d2){d2.kind=b.getAttribute('data-rtkd');d2.kindSet=true;if(!d2.edited)rtRegen(RT.cur);}renderRetest();return;}
       if(b.hasAttribute('data-rtres')){var pr=b.getAttribute('data-rtres').split(':'),ri=+pr[0],cur=rtItemsOf(rtCurDoc())[ri];RT.focus=ri;if(cur)rtSetItem(ri,{res:cur.res===pr[1]?'':pr[1]});return;}
       if(b.hasAttribute('data-rtpdel')){var d3=dr();if(d3){d3.items.splice(+b.getAttribute('data-rtpdel'),1);d3.edited=true;}RT.pe=null;renderRetest();return;}
+      if(b.hasAttribute('data-rtrun')){rtRunPlan(b.getAttribute('data-rtrun'));return;}
       if(b.hasAttribute('data-rtpe')){var pe=b.getAttribute('data-rtpe');rtPEdit(pe==='env'?'env':+pe);return;}
       if(b.hasAttribute('data-rtpadd')){var d7=dr(),gs7=b.getAttribute('data-rtpadd');if(d7){var at7=-1,ord7=Object.keys(RT_G),gi7=ord7.indexOf(gs7);d7.items.forEach(function(x,i){if(x.g===gs7)at7=i;});
           if(at7<0)d7.items.forEach(function(x,i){if(ord7.indexOf(x.g)<gi7)at7=i;});d7.items.splice(at7+1,0,{g:gs7,t:''});d7.edited=true;rtPEdit(at7+1);}return;}
@@ -11379,7 +11436,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.18-02';
+  var KITVER='2026.11.20-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -11396,11 +11453,11 @@ QUAY VIDEO (TÙY CHỌN)
      đã biết là không có cầu nối thì đi thẳng cách tải file lệnh – không bao giờ để nút chạy bị treo */
   function withTimeout(p,ms){return Promise.race([Promise.resolve(p).catch(function(){}),new Promise(function(res){setTimeout(res,ms);})]);}
   async function brTry(){if(!MCP||BR.state==='ok'||BR.state==='off'||BR.state==='checking')return;await withTimeout(brCheck(false),5000);}
-  async function kitRunReq(codes){codes=codes&&codes.length?codes:['CHUNG-001'];KIT.err='';KIT.msg='';var hd=codes[0]==='--thu-desktop-an';
-    var r=myRunner()||{};if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
-    if(!kitScens().length){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
+  async function kitRunReq(codes,opts){codes=codes&&codes.length?codes:['CHUNG-001'];opts=opts||{};KIT.err='';KIT.msg='';var hd=codes[0]==='--thu-desktop-an';
+    var r=Object.assign({},myRunner()||{},opts.runner||{});if(!r.path){KIT.err='Nhập đường dẫn Edusoft.NET.exe và bấm Lưu cấu hình trước.';renderRunner();return;}
+    if(!kitScens().length&&!opts.files){KIT.err='Không tìm thấy kịch bản CHUNG-001 (đăng nhập).';renderRunner();return;}
     var cfg=kitCfg(r);delete cfg.generatedAt;var now=new Date().toISOString();
-    var body={format:'aq-autotest-update/1',kitVersion:KITVER,generatedAt:now,replaceScenarios:true,files:Object.assign({},kitCodeFiles(),kitScenFiles(codes)),config:cfg,
+    var body={format:'aq-autotest-update/1',kitVersion:KITVER,generatedAt:now,replaceScenarios:true,files:Object.assign({},kitCodeFiles(),kitScenFiles(codes),opts.files||{}),config:cfg,
       run:{codes:codes,requestedAt:now,requestedBy:SC.me||null}};
     if(BR.state==='ok'){KIT.busy=true;KIT.prog='Đang gửi lệnh tới máy chạy test…';renderRunner();
       try{var sr=(await MCP.callTool(BRS,'send',{payload:body},{cache:false})).payload||{};
