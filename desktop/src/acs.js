@@ -87,6 +87,38 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
     }
   }
 
+  // ---------- ảnh trong case (KH / BA / Dev chụp) – chỉ GET cùng origin, chỉ nhận image/* ----------
+  const IMG_PATH = /^\/[A-Za-z0-9_\-./?=&%,@:+~]*$/;
+  /** buffer ảnh → JPEG/PNG thu nhỏ (cạnh dài ≤ max) để gửi cho Claude / hiện trên trang */
+  function shrink(buf, mime, max) {
+    max = max || 1568;
+    try {
+      const { nativeImage } = require('electron');
+      let im = nativeImage.createFromBuffer(buf);
+      if (im.isEmpty()) return { mime, b64: buf.toString('base64') };
+      const { width: w, height: h } = im.getSize();
+      if (Math.max(w, h) > max) im = w >= h ? im.resize({ width: max, quality: 'good' }) : im.resize({ height: max, quality: 'good' });
+      const s = im.getSize();
+      if (buf.length < 700000 && Math.max(w, h) <= max && /png|jpe?g/.test(mime)) return { mime, b64: buf.toString('base64'), w: s.width, h: s.height };
+      return { mime: 'image/jpeg', b64: im.toJPEG(82).toString('base64'), w: s.width, h: s.height };
+    } catch { return { mime, b64: buf.toString('base64') }; }
+  }
+  async function image(p, max) {
+    p = String(p || '');
+    if (p.startsWith(BASE)) p = p.slice(BASE.length);
+    if (!IMG_PATH.test(p) || p.includes('..')) throw new Error('Ảnh không thuộc ACS: ' + p.slice(0, 120));
+    if (!(await ensureWorker())) throw new Error('Không mở được trang ACS');
+    const code = `(async()=>{const r=await fetch(${JSON.stringify(p)},{credentials:'same-origin',cache:'no-store'});
+      const ct=(r.headers.get('content-type')||'').split(';')[0].trim();
+      if(r.status!==200||!/^image\\//i.test(ct))return {status:r.status,mime:ct};
+      const b=new Uint8Array(await r.arrayBuffer());if(b.length>15e6)return {status:413,mime:ct};
+      let s='';for(let i=0;i<b.length;i+=32768)s+=String.fromCharCode.apply(null,b.subarray(i,i+32768));
+      return {status:200,mime:ct,b64:btoa(s)};})()`;
+    const r = await acsWin.webContents.executeJavaScript(code, true);
+    if (r.status !== 200 || !r.b64) return { status: r.status, mime: r.mime, error: r.status === 200 ? 'Không phải ảnh' : 'ACS trả mã ' + r.status };
+    return Object.assign({ status: 200 }, shrink(Buffer.from(r.b64, 'base64'), r.mime, max));
+  }
+
   async function status() {
     try {
       const r = await call('GET', '/auth/me');
@@ -181,6 +213,11 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
     a = a || {};
     try { return await call(a.method, a.path, a.body); } catch (x) { return { status: 0, error: String((x && x.message) || x) }; }
   });
+  ipcMain.handle('acs-image', async (e, a) => {
+    if (!fromMain(e)) return null;
+    a = a || {};
+    try { return await image(a.path, a.max); } catch (x) { return { status: 0, error: String((x && x.message) || x) }; }
+  });
   ipcMain.handle('acs-open', (e, a) => {
     if (!fromMain(e)) return false;
     const id = String((a && a.caseId) || '');
@@ -198,6 +235,8 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
 
   return {
     call,                                         // cầu nối MCP (mcp-relay.js) – chỉ đọc, lọc ở đó
+    image,                                        // ảnh trong case (chỉ GET, chỉ image/*)
+    shrink,
     status,
     shutdown() { quitting = true; try { if (acsWin && !acsWin.isDestroyed()) acsWin.destroy(); } catch { /* bỏ qua */ } },
   };

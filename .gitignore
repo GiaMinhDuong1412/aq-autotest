@@ -48,3 +48,11 @@ web/thay-doi.json
 kb/.obsidian/workspace*.json
 kb/.obsidian/plugins/*/data.json
 kb/.trash/
+
+# Ảnh case lưu vào KB (có thể có dữ liệu thật của trường) – chỉ ở máy, không đưa lên git
+kb/Anh/*.png
+kb/Anh/*.jpg
+kb/Anh/*.jpeg
+kb/Anh/*.gif
+kb/Anh/*.webp
+kb/Anh/*.bmp

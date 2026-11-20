@@ -2,6 +2,7 @@
 /**
  * Cầu nối ACS cho MCP (Claude Desktop → aq_mcp.py → server.py → đây): server.py gọi POST http://127.0.0.1:<cổng>/acs
  * kèm X-AQ-Token để đọc ACS bằng phiên người dùng đã đăng nhập trong app (acs.js). CHỈ ĐỌC: GET /auth/me, GET /cs/…, POST /cs/query.
+ * Ảnh: {image:true, path} = GET ảnh trong case (chỉ image/*, thu nhỏ); {image:true, data:<base64>} = chỉ thu nhỏ ảnh của KB.
  * Cổng ngẫu nhiên, token ngẫu nhiên mỗi lần mở app – truyền cho server.py qua biến môi trường AQ_ACS_RELAY / AQ_ACS_TOKEN.
  */
 const http = require('http');
@@ -24,10 +25,16 @@ module.exports = function startRelay({ acs, log }) {
     const tok = String(req.headers['x-aq-token'] || '');
     if (req.method !== 'POST' || req.url !== '/acs' || tok.length !== token.length || !crypto.timingSafeEqual(Buffer.from(tok), Buffer.from(token))) return end(403, { error: 'forbidden' });
     let raw = '';
-    req.on('data', (c) => { raw += c; if (raw.length > 200000) req.destroy(); });
+    req.on('data', (c) => { raw += c; if (raw.length > 30000000) req.destroy(); });
     req.on('end', async () => {
       let a;
       try { a = JSON.parse(raw || '{}'); } catch { return end(400, { error: 'JSON lỗi' }); }
+      if (a.image) {
+        try {
+          if (a.data) return end(200, Object.assign({ status: 200 }, acs.shrink(Buffer.from(String(a.data), 'base64'), String(a.mime || 'image/png'), a.max)));
+          return end(200, await acs.image(a.path, a.max));
+        } catch (e) { return end(200, { status: 0, error: String((e && e.message) || e) }); }
+      }
       if (!allowed(a.method, a.path)) return end(403, { error: 'MCP chỉ được ĐỌC ACS (GET /cs/…, POST /cs/query) – không ghi lên ACS.' });
       try { end(200, await acs.call(a.method, a.path, a.body)); } catch (e) { end(200, { status: 0, error: String((e && e.message) || e) }); }
     });
