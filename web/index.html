@@ -946,6 +946,32 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt2-pi .t{flex:1 1 auto;font-size:.84rem;line-height:1.45;padding-top:5px}
 .rt2-add{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px}.rt2-add select{max-width:100%}
 #rtEnv{width:100%;font:inherit;font-size:.84rem;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:inherit;box-sizing:border-box}
+.rt2-ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.rt2-ph b{font-size:.92rem}.rt2-ph .linkbtn{margin-left:auto;font-size:.76rem}
+.rt2-envbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 10px;border-radius:10px;background:var(--bg-2);border:1px solid var(--line);font-size:.84rem}
+.rt2-envbar .pf{font:700 .66rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--fg);color:var(--bg)}
+.rt2-envbar .e{flex:1 1 200px;min-width:0;padding:2px 4px;border-radius:5px}.rt2-envbar .e.can{cursor:text}.rt2-envbar .e.can:hover{background:var(--bg)}
+.rt2-envbar #rtEnv{flex:1 1 200px;width:auto}
+.rt2-plan2{counter-reset:st;display:flex;flex-direction:column;gap:14px}
+.rt2-sec{position:relative;padding-left:36px;min-width:0}
+.rt2-sec::before{content:'';position:absolute;left:11px;top:28px;bottom:-12px;width:2px;background:var(--line)}.rt2-sec:last-child::before{display:none}
+.rt2-sh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:24px;margin-bottom:6px}
+.rt2-sh .no{position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:700 .72rem var(--mono);background:var(--bg-2);border:2px solid var(--line-2);color:var(--fg);box-sizing:border-box}
+.rt2-sh b{font-size:.86rem}.rt2-sh .hint{font-size:.74rem}.rt2-sh .linkbtn{margin-left:auto;font-size:.76rem}
+.rt2-sec.g-check .no{background:var(--hi,var(--accent));border-color:var(--hi,var(--accent));color:var(--hi-ink,#fff)}
+.rt2-sec.empty .rt2-sh{margin-bottom:0;opacity:.7}
+.rt2-pst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.rt2-pst li{display:flex;align-items:flex-start;gap:10px;padding:8px 8px 8px 10px;border-radius:8px;background:var(--bg-2);border:1px solid transparent;font-size:.86rem;line-height:1.5}
+.rt2-pst li::before{counter-increment:st;content:counter(st);flex:0 0 18px;font:600 .72rem/1.9 var(--mono);color:var(--muted);text-align:right}
+.rt2-pst li .t{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+.rt2-pst li.can{cursor:text}.rt2-pst li.can:hover,.rt2-pst li.can:focus{border-color:var(--line-2);outline:none}
+.rt2-sec.g-check .rt2-pst li{background:color-mix(in srgb,var(--hi,var(--accent)) 9%,var(--bg-2))}
+.rt2-pst li .x{flex:0 0 auto;opacity:0;border:0;background:none;color:var(--muted);font-size:1.05rem;line-height:1;cursor:pointer;padding:2px 6px;border-radius:5px}
+.rt2-pst li .x:hover{background:var(--bg);color:var(--fg)}.rt2-pst li:hover .x,.rt2-pst li:focus-within .x{opacity:1}@media (hover:none){.rt2-pst li .x{opacity:.6}}
+.rt2-pst li.ed{padding:4px 4px 4px 10px;border-color:var(--hi,var(--accent))}
+.rt2-pst li.ed textarea{flex:1 1 auto;min-width:0;resize:none;overflow:hidden;font:inherit;line-height:1.5;padding:4px 6px;border:0;background:transparent;color:inherit;outline:none}
+.rt2-var{font:600 .78rem var(--mono);padding:0 6px;border-radius:5px;border:1px dashed var(--warn,#b45309);color:var(--warn,#b45309);white-space:nowrap}
+.rt2-var.on{border-style:solid;border-color:color-mix(in srgb,var(--accent) 50%,transparent);background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--fg)}
+.rt2-scenbox summary{cursor:pointer;list-style:revert}.rt2-scenbox[open] summary{margin-bottom:6px}
 .rt2-scen{display:flex;flex-direction:column;gap:6px;font-size:.82rem}.rt2-scen label{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .rt2-env{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font-size:.8rem;padding:8px 12px;border-radius:10px;background:var(--bg-2)}.rt2-env .k{color:var(--muted);font-size:.74rem}
 .rt2-prog{font-size:.8rem;color:var(--fg-dim)}
@@ -9636,25 +9662,34 @@ QUAY VIDEO (TÙY CHỌN)
     if(app)rtRelAcs(id);
     return rtCtx(id,c,a)+rtSheetHtml(id,c,a)+'<div class="rt2-read"><div class="rt2-uh">Đọc case <span class="hint">khách hàng yêu cầu → BA phân tích → dev xử lý</span></div>'+req+rtImgHtml(id)+more+det+'</div>'+
       rtAnHtml(id)+und+'<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="2">Tiếp: Plan test →</button></div>';}
+  var RT_GV={prep:['Chuẩn bị','môi trường, tài khoản, dữ liệu'],repro:['Làm như KH','thao tác lại đúng chỗ KH báo'],check:['Kết quả phải đúng','theo yêu cầu KH'],reg:['Không ảnh hưởng','phần liên quan vẫn chạy đúng']};
+  function rtPTxt(t,vals){return esc(t).replace(/\{([^{}]{1,40})\}/g,function(m,k){var v=vals[k];return '<span class="rt2-var'+(v?' on':'')+'" title="'+(v?esc(k):'Nhập ở khung Tài khoản test')+'">'+esc(v||k)+'</span>';});}
+  function rtPEdit(i){RT.pe=i;renderRetest();var el=i==='env'?document.getElementById('rtEnv'):document.querySelector('#rtMain textarea[data-rtpi="'+i+'"]');
+    if(el){el.focus();var L=el.value.length;try{el.setSelectionRange(L,L);}catch(_){}if(el.tagName==='TEXTAREA'){el.style.height='auto';el.style.height=el.scrollHeight+'px';}}}
   function rtW2(id,c,a,dr,rt){var lock=rt&&rt.state!=='testing'&&rt.state!=='queued',src=rt&&rt.plan&&!RT.replan?{env:rt.plan.env,items:rt.plan.items,pf:rt.platform,scen:rt.scenarioId}:{env:dr.env,items:dr.items,pf:dr.pf,scen:dr.scen};
-    var ro=lock||(rt&&!RT.replan)?' readonly':'',edit=!ro,g=null;
-    var rows=src.items.map(function(x,i){var h='';if(x.g!==g){g=x.g;h='<div class="rt2-g">'+esc(RT_G[g]||g)+'</div>';}
-      return h+'<div class="rt2-pi"><span class="n mono">'+(i+1)+'</span>'+(edit?'<textarea rows="'+Math.max(1,Math.ceil(String(x.t).length/90))+'" data-rtpi="'+i+'">'+esc(x.t)+'</textarea><button type="button" class="mini-btn" data-rtpdel="'+i+'" aria-label="Bỏ mục '+(i+1)+'">×</button>':'<span class="t">'+esc(x.t)+'</span>')+'</div>';}).join('');
+    var ro=lock||(rt&&!RT.replan)?' readonly':'',edit=!ro;
+    var insL=rt&&!RT.replan?Object.keys(rt.inputs||{}).map(function(k){return {k:k,v:rt.inputs[k]};}):(dr.inputs||[]),vals={};insL.forEach(function(x){if(String(x.v||'').trim())vals[x.k]=String(x.v).trim();});
+    var by={},gk=Object.keys(RT_G),n=src.items.length;src.items.forEach(function(x,i){(by[x.g]=by[x.g]||[]).push(i);if(gk.indexOf(x.g)<0)gk.push(x.g);});
+    var plan='<div class="rt2-plan2">'+gk.filter(function(k){return by[k]||edit;}).map(function(k,gi){var v=RT_GV[k]||[RT_G[k]||k,''],ids=by[k]||[];
+      return '<section class="rt2-sec g-'+esc(k)+(ids.length?'':' empty')+'"><div class="rt2-sh"><span class="no">'+(gi+1)+'</span><b>'+esc(v[0])+'</b><span class="hint">'+esc(v[1])+'</span>'+
+        (edit?'<button type="button" class="linkbtn" data-rtpadd="'+esc(k)+'">+ thêm bước</button>':'')+'</div>'+
+        (ids.length?'<ol class="rt2-pst">'+ids.map(function(i){var x=src.items[i];
+          if(edit&&RT.pe===i)return '<li class="ed"><textarea data-rtpi="'+i+'" rows="2" placeholder="Viết bước test… (Enter để xong)">'+esc(x.t)+'</textarea></li>';
+          return '<li'+(edit?' class="can" data-rtpe="'+i+'" tabindex="0" title="Bấm để sửa"':'')+'><span class="t">'+(String(x.t||'').trim()?rtPTxt(x.t,vals):'<span class="hint">(trống – bấm để viết)</span>')+'</span>'+
+            (edit?'<button type="button" class="x" data-rtpdel="'+i+'" aria-label="Bỏ bước" title="Bỏ bước">×</button>':'')+'</li>';}).join('')+'</ol>':'')+'</section>';}).join('')+'</div>';
     var rel=rtScenRel(Object.assign({},a,{pf:src.pf}));
-    var scen=src.pf==='edusoft'||src.pf==='web'?'<div class="rt2-blk"><div class="rt2-bh">Kịch bản có sẵn để chạy kèm <span class="hint">(tuỳ chọn – chỉ hiện kịch bản '+esc(RT_PFS[src.pf])+' khớp nội dung case)</span></div>'+
-        (rel.length?'<div class="rt2-scen">'+(edit?'<label><input type="radio" name="rtscen" value=""'+(!src.scen?' checked':'')+'> Không chạy kịch bản – test theo plan</label>':'')+rel.map(function(o){
-          return '<label><input type="radio" name="rtscen" value="'+esc(o.it.id)+'"'+(src.scen===o.it.id?' checked':'')+(edit?'':' disabled')+'> <b class="mono">'+esc(o.it.code||'')+'</b> '+esc(short(o.it.title||o.it.menu||''))+' <span class="hint">khớp: '+esc(o.hit.join(', '))+(scriptReady(o.it)?' · script':'')+'</span></label>';}).join('')+'</div>'
-          :'<p class="hint">Không có kịch bản '+esc(RT_PFS[src.pf])+' nào khớp nội dung case – test theo plan bên trên.</p>')+'</div>':'';
+    var scen=(src.pf==='edusoft'||src.pf==='web')&&rel.length?'<details class="rt2-blk rt2-scenbox"'+(src.scen?' open':'')+'><summary class="rt2-bh">Kịch bản có sẵn để chạy kèm <span class="hint">(tuỳ chọn · '+rel.length+' kịch bản '+esc(RT_PFS[src.pf])+' khớp case)</span></summary>'+
+        '<div class="rt2-scen">'+(edit?'<label><input type="radio" name="rtscen" value=""'+(!src.scen?' checked':'')+'> Không chạy kịch bản – test theo plan</label>':'')+rel.map(function(o){
+          return '<label><input type="radio" name="rtscen" value="'+esc(o.it.id)+'"'+(src.scen===o.it.id?' checked':'')+(edit?'':' disabled')+'> <b class="mono">'+esc(o.it.code||'')+'</b> '+esc(short(o.it.title||o.it.menu||''))+' <span class="hint">khớp: '+esc(o.hit.join(', '))+(scriptReady(o.it)?' · script':'')+'</span></label>';}).join('')+'</div></details>':'';
     var cl=!rt&&dr.claude?'<div class="rt2-claude"><b>Plan do Claude soạn</b> <span class="hint">qua Claude Desktop · '+esc(fmt(dr.claude.at))+'</span>'+
         (dr.claude.why?'<p>'+esc(dr.claude.why)+'</p>':'')+'<span class="hint">Xem lại từng mục trước khi Nhận test.</span><button type="button" class="linkbtn" data-rt="dropclaude">dùng plan AQ tự soạn</button></div>':'';
-    var insL=rt&&!RT.replan?Object.keys(rt.inputs||{}).map(function(k){return {k:k,v:rt.inputs[k]};}):(dr.inputs||[]);
     var inH=insL.length?'<div class="rt2-ins"><div class="rt2-bh">Tài khoản test cần có'+(dr.flow&&!rt?' <span class="hint">luồng: '+esc(dr.flow)+'</span>':'')+'</div>'+
-        '<p class="hint">Nhập <b>mã tài khoản</b> (không nhập mật khẩu). Các bước dùng <span class="mono">{Tên}</span> sẽ được thay bằng giá trị này khi nhận test.</p><div class="rt2-ingrid">'+
+        (edit?'<p class="hint">Chỉ nhập <b>mã tài khoản</b>, không nhập mật khẩu – mã được điền vào các bước bên dưới.</p>':'')+'<div class="rt2-ingrid">'+
         insL.map(function(x,i){return '<label><span>'+esc(x.k)+(x.why?' <span class="hint">· '+esc(x.why)+'</span>':'')+'</span>'+(edit?'<input data-rtin="'+i+'" value="'+esc(x.v||'')+'" placeholder="vd '+esc(/GV|CVHT/.test(x.k)?'GV00123':/MSSV/.test(x.k)?'2312345':'mã tài khoản')+'" autocomplete="off">':'<b class="mono">'+esc(x.v||'—')+'</b>')+'</label>';}).join('')+'</div></div>':'';
-    return cl+inH+'<div class="rt2-blk"><div class="rt2-bh">Môi trường test</div>'+(edit?'<input id="rtEnv" value="'+esc(src.env)+'">':'<p>'+esc(src.env)+'</p>')+'</div>'+
-      '<div class="rt2-blk"><div class="rt2-bh">Các bước <span class="hint">sinh từ yêu cầu KH và ghi chú coder – sửa, thêm, bỏ cho đúng</span>'+(edit&&!rt?'<button type="button" class="linkbtn" data-rt="regen">soạn lại</button>':'')+'</div>'+
-        '<div class="rt2-plan">'+rows+'</div>'+(edit?'<div class="rt2-add"><select id="rtAddG">'+Object.keys(RT_G).map(function(k){return '<option value="'+k+'"'+(k==='check'?' selected':'')+'>'+RT_G[k]+'</option>';}).join('')+'</select><button type="button" class="btn sm" data-rt="padd">+ Thêm mục</button></div>':'')+'</div>'+
-      scen+'<div class="rt2-foot">'+(rt&&!RT.replan&&!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+
+    var env='<div class="rt2-envbar"><span class="pf">'+esc(RT_PFS[src.pf]||src.pf||'?')+'</span>'+(edit&&RT.pe==='env'?'<input id="rtEnv" value="'+esc(src.env)+'" placeholder="Môi trường test…">':
+        '<span class="e'+(edit?' can" data-rtpe="env" tabindex="0" title="Bấm để sửa môi trường':'')+'">'+esc(src.env||'(chưa ghi môi trường test)')+'</span>')+'</div>';
+    return cl+inH+'<div class="rt2-ph"><b>Các bước test</b><span class="hint">'+n+' bước'+(edit?' · bấm vào một bước để sửa':'')+'</span>'+(edit&&!rt?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+'</div>'+
+      env+plan+scen+'<div class="rt2-foot">'+(rt&&!RT.replan&&!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+
         (edit?'<button type="button" class="btn primary" data-rt="take"'+(RT.busy||!SC.canWrite?' disabled':'')+'>'+(rt?'Lưu plan':'Nhận test case này')+'</button>':'<button type="button" class="btn primary" data-rtstep="3">Tiếp: Test →</button>')+'</div>';}
   function rtW3(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),done=rt.state==='pass'||rt.state==='fail',it=rt.scenarioId?byId(rt.scenarioId):null,run=rtRunOf(rt);
     if(!items.length)return '<p class="hint">Phiếu này chưa có plan (giao theo cách cũ) – vào bước 2 bấm "Sửa plan" để soạn.</p>';
@@ -9816,7 +9851,7 @@ QUAY VIDEO (TÙY CHỌN)
     pg.addEventListener('click',function(e){
       var fc=e.target.closest('[data-rtfocus]');if(fc){var fi=+fc.getAttribute('data-rtfocus');
         if(RT.focus!==fi){RT.focus=fi;if(e.target.closest('input,textarea,label,button')){$$('#rtMain .rt2-ti.focus').forEach(function(x){x.classList.remove('focus');});fc.classList.add('focus');}else{renderRetest();return;}}}
-      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg]');if(!b||b.disabled)return;var a=rtA();
+      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd]');if(!b||b.disabled)return;var a=rtA();
       if(b.getAttribute('data-rt')==='sheetkeys'){var tx=rtSheetKeys(RT.cur);try{navigator.clipboard.writeText(tx);toast('Đã chép cấu trúc case (không kèm nội dung) – dán gửi cho Claude để chỉnh phiếu');}catch(e){prompt('Chép nội dung này:',tx);}return;}
       if(b.hasAttribute('data-rtimg')){rtImgOpen(RT.cur,+b.getAttribute('data-rtimg'));return;}
       if(b.hasAttribute('data-rtreqf')){var rf=b.getAttribute('data-rtreqf'),dq=RT.cur&&RT.det[RT.cur],sq=RT.cur&&rtLatest(RT.cur);try{localStorage.setItem('aq-rt-reqf',rf);}catch(x){}
@@ -9824,13 +9859,16 @@ QUAY VIDEO (TÙY CHỌN)
       if(b.hasAttribute('data-rttab')){RT.tab=b.getAttribute('data-rttab');renderRetest();return;}
       if(b.hasAttribute('data-rtltab')){RT.ltab=b.getAttribute('data-rtltab');renderRetest();return;}
       if(b.hasAttribute('data-rtacs')){if(a)a.open(b.getAttribute('data-rtacs'));return;}
-      if(b.hasAttribute('data-rtpick')){var id=b.getAttribute('data-rtpick');if(RT.cur!==id){RT.cur=id;RT.err='';RT.focus=null;RT.replan=false;RT.vfor=null;}renderRetest();
+      if(b.hasAttribute('data-rtpick')){var id=b.getAttribute('data-rtpick');if(RT.cur!==id){RT.cur=id;RT.err='';RT.focus=null;RT.pe=null;RT.replan=false;RT.vfor=null;}renderRetest();
         var w=document.querySelector('#rtMain .rt2-work');if(w&&w.getBoundingClientRect().top<0)w.scrollIntoView({block:'start'});return;}
       if(b.hasAttribute('data-rtstep')){RT.step[RT.cur]=+b.getAttribute('data-rtstep');RT.err='';renderRetest();return;}
       if(b.hasAttribute('data-rtpf')){var d1=dr();if(d1){d1.pf=b.getAttribute('data-rtpf');d1.pfSet=true;if(!d1.edited)rtRegen(RT.cur);else d1.scen='';}renderRetest();return;}
       if(b.hasAttribute('data-rtkd')){var d2=dr();if(d2){d2.kind=b.getAttribute('data-rtkd');d2.kindSet=true;if(!d2.edited)rtRegen(RT.cur);}renderRetest();return;}
       if(b.hasAttribute('data-rtres')){var pr=b.getAttribute('data-rtres').split(':'),ri=+pr[0],cur=rtItemsOf(rtCurDoc())[ri];RT.focus=ri;if(cur)rtSetItem(ri,{res:cur.res===pr[1]?'':pr[1]});return;}
-      if(b.hasAttribute('data-rtpdel')){var d3=dr();if(d3){d3.items.splice(+b.getAttribute('data-rtpdel'),1);d3.edited=true;}renderRetest();return;}
+      if(b.hasAttribute('data-rtpdel')){var d3=dr();if(d3){d3.items.splice(+b.getAttribute('data-rtpdel'),1);d3.edited=true;}RT.pe=null;renderRetest();return;}
+      if(b.hasAttribute('data-rtpe')){var pe=b.getAttribute('data-rtpe');rtPEdit(pe==='env'?'env':+pe);return;}
+      if(b.hasAttribute('data-rtpadd')){var d7=dr(),gs7=b.getAttribute('data-rtpadd');if(d7){var at7=-1,ord7=Object.keys(RT_G),gi7=ord7.indexOf(gs7);d7.items.forEach(function(x,i){if(x.g===gs7)at7=i;});
+          if(at7<0)d7.items.forEach(function(x,i){if(ord7.indexOf(x.g)<gi7)at7=i;});d7.items.splice(at7+1,0,{g:gs7,t:''});d7.edited=true;rtPEdit(at7+1);}return;}
       if(b.hasAttribute('data-rtq')){RT.qk=b.getAttribute('data-rtq');RT.cmore=false;RT.qPanel=false;rtRun();return;}
       if(b.hasAttribute('data-rtpin')){var pid=b.getAttribute('data-rtpin'),pins=(rtPins()||[]).filter(function(x){return RT.qs.some(function(q){return q.id===x;});}),pi=pins.indexOf(pid);
         if(pi>=0)pins.splice(pi,1);
@@ -9883,6 +9921,12 @@ QUAY VIDEO (TÙY CHỌN)
       if(t.name==='rtscen'){var d=dr();if(d){d.scen=t.value;}return;}
       if(t.hasAttribute('data-rtfile')){rtAddShots(+t.getAttribute('data-rtfile'),t.files);t.value='';return;}
       if(t.hasAttribute('data-rtnote')){var i=+t.getAttribute('data-rtnote'),cur=rtItemsOf(rtCurDoc())[i];if(cur&&cur.note!==t.value)rtSetItem(i,{note:t.value});return;}});
+    pg.addEventListener('focusout',function(e){var t=e.target;if(!(t.hasAttribute&&(t.hasAttribute('data-rtpi')||t.id==='rtEnv'))||RT.pe==null)return;
+      var to=e.relatedTarget;if(to&&pg.contains(to)&&to.closest('#rtMain'))return;RT.pe=null;
+      if(t.hasAttribute('data-rtpi')){var d=dr(),i=+t.getAttribute('data-rtpi');if(d&&d.items[i]&&!String(d.items[i].t||'').trim())d.items.splice(i,1);}renderRetest();});
+    pg.addEventListener('keydown',function(e){var t=e.target;if(!t.hasAttribute)return;
+      if(t.hasAttribute('data-rtpe')&&(e.key==='Enter'||e.key===' ')&&e.target===t){e.preventDefault();t.click();return;}
+      if((t.hasAttribute('data-rtpi')||t.id==='rtEnv')&&(e.key==='Escape'||(e.key==='Enter'&&!e.shiftKey))){e.preventDefault();t.blur();}});
     pg.addEventListener('input',function(e){var t=e.target;if(t.id==='rtNote'){RT.note=t.value;RT.noteEdited=true;return;}
       if(t.hasAttribute('data-rtpi')){var d=dr(),i=+t.getAttribute('data-rtpi');if(d&&d.items[i]){d.items[i].t=t.value;d.edited=true;}t.style.height='auto';t.style.height=t.scrollHeight+'px';return;}
       if(t.id==='rtEnv'){var d2=dr();if(d2){d2.env=t.value;d2.edited=true;}return;}
