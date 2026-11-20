@@ -70,11 +70,18 @@ Tìm trên ACS (MCP `acs_case_lien_quan`, hoặc khung Case liên quan trong app
 - **Dữ liệu cha – con**: case đang chờ test chạm dữ liệu phải có trước / sinh ra sau → dùng chung dữ liệu chuẩn bị.
 Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước / test chung / hỏi BA).
 
-## 9. Chỉ khi 0–8 rõ mới soạn plan test
-- Plan = **luồng thao tác thật, ngắn**: ai đăng nhập → làm gì → kết quả đúng là gì → kiểm từng ý KH. Luồng có sẵn ở `Luong-test/` (vd [[Diem danh QR]]).
-- **Nhờ người dùng cung cấp tài khoản test theo ngữ cảnh** (chỉ mã, không mật khẩu): điểm danh QR → mã GV có lớp đang dạy + MSSV thuộc lớp đó;
-  trang học phí → MSSV có miễn giảm… Bước ghi `{Mã GV}`, app thay bằng giá trị người dùng nhập.
-- Không thêm mục chung chung hay dữ liệu không liên quan (vd case điểm danh không phải "điểm rèn luyện").
+## 9. Đọc xong → xác định ĐẦU RA, rồi mới soạn plan test
+Đọc case + **ảnh** để chốt **đầu ra cần đạt sau khi Dev xử lý** – đây là thứ duy nhất phải so khi test. Ví dụ:
+- Case **mở menu lâu** (vd #63652) → đầu ra: *mở menu X, đo thời gian từ lúc bấm tới khi hiện đủ dữ liệu – mở nhanh, không treo*. Xong, không cần kiểm "ảnh hưởng".
+- Case **ô bị khoá / làm mờ trên web** (vd #64755) → đầu ra: *sau khi SV quét mã, ô ghi chú vẫn sửa được*.
+- Case **báo lỗi** → đầu ra: *làm lại đúng thao tác, không còn câu báo lỗi; dữ liệu lưu / hiện đúng*. Case **số liệu sai** → *số X = giá trị đúng (đối chiếu)*.
+
+**Plan test chỉ có 4 phần** (app: bước 2):
+1. **Môi trường test** – Edusoft: file `Edusoft.NET.exe` bản test (lấy từ Máy chạy thử); web: địa chỉ trang web **test** của trường; kèm bản sửa của Dev.
+2. **Tài khoản đăng nhập** – Edusoft: tài khoản test (mật khẩu do bộ test giữ); web: nhờ người dùng cung cấp **mã** tài khoản theo ngữ cảnh (điểm danh QR → mã GV có lớp đang dạy + MSSV thuộc lớp đó). Không hỏi mật khẩu. Bước ghi `{Mã GV}`, app thay giá trị.
+3. **Thao tác** – vào menu / trang nào, làm gì (như KH làm). Luồng có sẵn ở `Luong-test/` (vd [[Diem danh QR]]).
+4. **Đầu ra cần đạt** – như trên, so với kết quả sau khi Dev xử lý.
+Đủ 1–2–4 → **Bắt đầu test**. Không thêm mục chung chung ("không ảnh hưởng", chuẩn bị dữ liệu không liên quan) trừ khi case thật sự cần.
 
 ## Phiếu phân tích (mẫu)
 | Mục | Ghi |

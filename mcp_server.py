@@ -50,9 +50,11 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
  Ảnh case đáng giữ làm mẫu (không lộ thông tin cá nhân SV/GV) → kb_luu_anh kèm mô tả.
  Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
  Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
- PLAN TEST = luồng thao tác thật, NGẮN: ai đăng nhập → làm gì → kết quả đúng là gì → kiểm từng ý KH. Dùng luồng trong kb/Luong-test (acs_case trả 'luong_test')
- nếu khớp. LUÔN nhờ người dùng cung cấp tài khoản test theo ngữ cảnh (can_cung_cap) – vd điểm danh QR: mã GV có lớp đang dạy + MSSV thuộc lớp đó;
- chỉ mã tài khoản, KHÔNG hỏi mật khẩu. Bước dùng {Tên} (vd {Mã GV}) – app thay bằng giá trị người dùng nhập. Không thêm mục chung chung / dữ liệu không liên quan.
+ ĐẦU RA: đọc case + ảnh để chốt "đầu ra cần đạt sau khi Dev xử lý" (vd case mở menu lâu → đo thời gian mở menu, mở nhanh không treo – không cần kiểm ảnh hưởng).
+ PLAN TEST chỉ 4 phần: (1) môi trường test (Edusoft.NET.exe bản test / trang web TEST của trường + bản sửa) – moi_truong; (2) tài khoản đăng nhập – can_cung_cap
+ (web: mã GV / MSSV… theo ngữ cảnh, KHÔNG hỏi mật khẩu; Edusoft dùng tài khoản test ở Máy chạy thử); (3) thao tác: nhom 'repro' – vào menu / trang nào, làm gì;
+ (4) đầu ra: nhom 'check' – mỗi đầu ra một mục. Chỉ thêm 'prep' / 'reg' khi case thật sự cần. Dùng luồng kb/Luong-test (acs_case trả 'luong_test') nếu khớp.
+ Bước dùng {Tên} (vd {Mã GV}) – app thay bằng giá trị người dùng nhập.
  Người dùng mô tả luồng test mới → ghi kb/Luong-test/<tên>.md (Properties: loai: luong-test, dau_hieu, phan_he, nen_tang, can_cung_cap, buoc, khong_anh_huong).
 Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
 Không ghi mật khẩu, token, chuỗi kết nối vào KB. Liên kết Netweb trong Truong/ là site THẬT – chỉ để nhận biết trường, không thao tác.
@@ -132,8 +134,8 @@ TOOLS = [
     {"name": "retest_doc_plan", "description": "Đọc plan test của một case trong app: plan nháp (Claude ghi) và phiếu đang test (nếu đã nhận test).",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case")}, "required": ["ma_case"]}},
     {"name": "retest_ghi_plan", "description": "Ghi plan test NHÁP cho một case vào app (trang Test case ACS) – người test xem, sửa rồi bấm Nhận test. "
-                                               "Không thay phiếu đã nhận test. nhom: prep (chuẩn bị: môi trường, dữ liệu phải có trước) | repro (tái hiện như KH) | "
-                                               "check (mỗi yêu cầu KH một mục) | reg (không ảnh hưởng).",
+                                               "Không thay phiếu đã nhận test. Plan gọn: nhom repro (thao tác: vào menu / trang, làm gì) + check (ĐẦU RA cần đạt sau khi Dev xử lý, mỗi đầu ra một mục); "
+                                               "prep / reg chỉ khi thật sự cần. Môi trường + tài khoản: moi_truong, can_cung_cap.",
      "inputSchema": {"type": "object", "properties": {
          "ma_case": _s("mã case"), "nen_tang": _s("nơi test", list(PLATFORMS)), "loai_sua": _s("ui=giao diện, data=xử lý/số liệu, report=mẫu in, perm=tài khoản/quyền, add=thêm chức năng", list(KINDS)),
          "moi_truong": _s("môi trường test, vd 'Edusoft bản test của trường KTTC – bản 2026.11J.18'"),

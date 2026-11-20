@@ -141,7 +141,7 @@ def build(kb):
             if k.strip():
                 pc[k.strip().upper()] = v.strip()
         schools[ma] = {'ten': str(p.get('ten') or ''), 'phan_cap': pc, 'xac_nhan': p.get('trang_thai') == 'da-xac-nhan',
-                       'web_that': str(p.get('netweb_that') or '')}
+                       'web_that': str(p.get('netweb_that') or ''), 'web_test': str(p.get('web_test') or '')}
     for f in sorted((kb / 'Case-truong').glob('*.md')) if (kb / 'Case-truong').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
         ma = str(p.get('ma') or f.stem)
