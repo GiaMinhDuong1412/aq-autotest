@@ -43,6 +43,11 @@ Menu: [[Menu/QLTS|234 menu của QLTS]] – menu tạo dữ liệu: [[Menu/Danh 
 ## Phần trên web / app
 NetWEB: Đăng ký xét tuyển, Tra cứu thông tin xét tuyển, Nhập học online (thí sinh), Chăm sóc thí sinh xét tuyển.
 
+
+## Dạng case thường gặp
+[[Loi EX Edusoft]], [[Luu cap nhat khong duoc]], [[Xu ly du lieu]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

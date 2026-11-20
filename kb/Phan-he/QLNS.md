@@ -41,6 +41,11 @@ Menu: [[Menu/QLNS|169 menu của QLNS]] – menu tạo dữ liệu: [[Menu/Danh 
 ## Phần trên web / app
 GV xem thông tin cá nhân; CBCNV đăng ký nghỉ phép, nhập lý lịch khoa học trực tuyến (tuỳ trường).
 
+
+## Dạng case thường gặp
+(chưa ghi – thêm khi gặp)
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

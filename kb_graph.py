@@ -89,7 +89,7 @@ def why_map(sec):
 
 def _sig(kb):
     s = []
-    for sub in ('Du-lieu', 'Phan-he'):
+    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case'):
         d = kb / sub
         if d.is_dir():
             for f in d.glob('*.md'):
@@ -131,6 +131,18 @@ def build(kb):
                     'web': '' if web in ('—', '-') else web.split('\n')[0].strip(),
                     'req': [[r, rw.get(r, '')] for r in links(p.get('can_co'))],
                     'kw': str(p.get('tu_khoa') or ''), 'kwph': kwph if isinstance(kwph, list) else [kwph], 'lv': 0}
+    schools, pats = {}, {}
+    for f in sorted((kb / 'Truong').glob('*.md')) if (kb / 'Truong').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        ma = str(p.get('ma') or f.stem)
+        acs = p.get('ma_acs') or [ma]
+        tt = str(p.get('ten') or '')
+        schools[ma] = {'ten': tt, 'ma_acs': acs if isinstance(acs, list) else [acs], 'xac_nhan': p.get('trang_thai') == 'da-xac-nhan',
+                       'web_that': str(p.get('netweb_that') or '')}
+    for f in sorted((kb / 'Dang-case').glob('*.md')) if (kb / 'Dang-case').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        pats[f.stem] = {'ten': str(p.get('ten') or f.stem), 'kh': str(p.get('dau_hieu_kh') or ''), 'ba': str(p.get('dau_hieu_ba') or ''),
+                        'dev': str(p.get('dau_hieu_dev') or ''), 'ph': links(p.get('phan_he_hay_gap'))}
     for d in data.values():                       # bỏ liên kết tới dữ liệu không có ghi chú
         d['req'] = [r for r in d['req'] if r[0] in data]
     lv = {}
@@ -144,7 +156,7 @@ def build(kb):
         return lv[fn]
     for fn in data:
         data[fn]['lv'] = depth(fn)
-    g = {'ver': 2, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
+    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
     _CACHE[str(kb)] = (sig, g)
     return g
 
@@ -190,6 +202,40 @@ def query_text(g, text, mod=''):
         s = 3 * min(3, len(hits)) + (2 if mod and d['src'] == mod else 0)
         out.append((fn, s, hits[0] if isinstance(hits[0], str) else ''))
     out.sort(key=lambda x: (-x[1], -g['data'][x[0]]['lv']))
+    return out
+
+
+def school_of(g, code):
+    """school_code trên ACS → (mã ghi chú Truong/, thông tin) hoặc (None, None)."""
+    c = str(code or '').strip().upper()
+    for ma, x in (g.get('schools') or {}).items():
+        if c == ma.upper() or c in [str(a).upper() for a in x['ma_acs']]:
+            return ma, x
+    return None, None
+
+
+def patterns_of(g, kh='', ba='', dev='', mod=''):
+    """Gợi ý dạng case từ dấu hiệu trong lời KH / BA / Dev → [(tên, điểm, lý do)] (chỉ là gợi ý – người / Claude chốt)."""
+    out = []
+    for fn, p in (g.get('patterns') or {}).items():
+        sc, why = 0, []
+        for key, txt, w in (('kh', kh, 3), ('ba', ba, 2), ('dev', dev, 2)):
+            if not p.get(key) or not txt:
+                continue
+            try:
+                m = re.search(p[key], str(txt), re.I)
+            except re.error:
+                continue
+            if m:
+                sc += w
+                why.append(key.upper() + ' "' + m.group(0)[:40] + '"')
+        if sc and not any(w.startswith(('KH', 'BA')) for w in why):   # chỉ khớp ghi chú dev → quá yếu
+            continue
+        if sc and mod and mod in p.get('ph', []):
+            sc += 1
+        if sc:
+            out.append((fn, sc, why))
+    out.sort(key=lambda x: -x[1])
     return out
 
 

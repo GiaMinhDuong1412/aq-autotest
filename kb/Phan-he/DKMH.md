@@ -56,6 +56,11 @@ Menu: [[Menu/DKMH|131 menu của DKMH]] – menu tạo dữ liệu: [[Menu/Chỉ
 ## Phần trên web / app
 NetWEB SV: đăng ký môn học, rút môn học; NetWEB GV (CVHT): duyệt đăng ký môn học. Nhiều trường dùng **trang ĐKMH riêng** (vd dkmh.hitu.edu.vn, dkmh.tdmu.edu.vn) – xem [[DKMHUI]].
 
+
+## Dạng case thường gặp
+[[Hieu nang]], [[Loi EX Edusoft]], [[Thiet lap khong hieu luc]], [[Xu ly du lieu]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

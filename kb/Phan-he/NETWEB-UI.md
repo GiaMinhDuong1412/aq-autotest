@@ -40,6 +40,11 @@ Cấu hình web nằm ở `Hệ thống/ Quản trị NetWEB/ …` trên Edusoft
 ## Phần trên web / app
 Test trên **cổng web test** của trường, đăng nhập đúng vai trò. Trường nhiều cơ sở có **điều hướng theo cơ sở / đơn vị phân cấp (DVPC)**: SV/GV đăng nhập ở trang chính rồi được chuyển sang site của cơ sở (xem [[DHNT]]).
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[Tai khoan phan quyen]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Chỉ web.
 

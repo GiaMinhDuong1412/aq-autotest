@@ -45,6 +45,11 @@ Menu: [[Menu/KLGD|108 menu của KLGD]] – menu tạo dữ liệu: [[Menu/Tính
 ## Phần trên web / app
 Không có phần web riêng trong sheet release.
 
+
+## Dạng case thường gặp
+[[Mau in bao cao]], [[So lieu tinh sai]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / mau-in – xem KH nói về màn hình Edusoft hay trang web.
 

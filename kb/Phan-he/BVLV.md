@@ -37,6 +37,11 @@ Các phân hệ nhận dữ liệu của BVLV: [[DIEM]].
 ## Phần trên web / app
 Đăng ký đề tài tốt nghiệp trực tuyến (tuỳ trường); khách tra cứu luận văn được công bố (DHNT).
 
+
+## Dạng case thường gặp
+(chưa ghi – thêm khi gặp)
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

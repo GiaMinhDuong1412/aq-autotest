@@ -43,6 +43,11 @@ Menu: [[Menu/QLTV|101 menu của QLTV]] – menu tạo dữ liệu: [[Menu/Impor
 ## Phần trên web / app
 NetWEB SV: xem học phí; đóng học phí trực tuyến ([[EDUBILL]], tuỳ trường).
 
+
+## Dạng case thường gặp
+[[Mau in bao cao]], [[So lieu tinh sai]], [[Tich hop thanh toan]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

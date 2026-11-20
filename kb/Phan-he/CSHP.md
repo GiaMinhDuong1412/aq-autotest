@@ -54,6 +54,11 @@ Menu: [[Menu/CSHP|93 menu của CSHP]] – menu tạo dữ liệu: [[Menu/Cập 
 ## Phần trên web / app
 NetWEB SV: **xem học phí** (summary + bảng chi tiết, miễn giảm), học phí tạm tính khi ĐKMH; đóng học phí trực tuyến ([[EDUBILL]]).
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[So lieu tinh sai]], [[Thiet lap khong hieu luc]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

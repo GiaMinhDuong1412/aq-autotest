@@ -40,6 +40,11 @@ Dữ liệu gốc nằm ở Edusoft – kiểm lại kết quả ghi xuống (vd
 ## Phần trên web / app
 Test **qua trang web** (thao tác đúng chức năng) + kiểm dữ liệu ghi xuống Edusoft.
 
+
+## Dạng case thường gặp
+[[Tai khoan phan quyen]], [[Tich hop thanh toan]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: web / api – xem KH nói về màn hình Edusoft hay trang web.
 

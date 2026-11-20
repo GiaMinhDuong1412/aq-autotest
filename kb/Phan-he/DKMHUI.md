@@ -37,6 +37,11 @@ Cài đặt nằm ở [[DKMH]] trên Edusoft (thời gian, ràng buộc).
 ## Phần trên web / app
 Test trên **trang ĐKMH / cổng SV test** của trường, tài khoản SV (và GV-CVHT nếu duyệt).
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[Hieu nang]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Chỉ web.
 

@@ -56,6 +56,11 @@ Menu: [[Menu/DIEM|394 menu của DIEM]] – menu tạo dữ liệu: [[Menu/Cộn
 ## Phần trên web / app
 NetWEB SV: xem điểm; NetWEB GV: nhập điểm theo nhóm học / tổ thi / phách, xem điểm môn giảng dạy. Phúc tra điểm trực tuyến: [[GAM]].
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[Hieu nang]], [[Loi EX Edusoft]], [[Luu cap nhat khong duoc]], [[Mau in bao cao]], [[So lieu tinh sai]], [[Thiet lap khong hieu luc]], [[Xu ly du lieu]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
 
