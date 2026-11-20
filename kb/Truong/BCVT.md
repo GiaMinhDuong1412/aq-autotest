@@ -6,6 +6,8 @@ netweb_that:
 web_test: 
 edusoft_test: 
 trang_thai_hd: 
+ma_acs:
+  - BCVT
 nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
@@ -21,6 +23,13 @@ trang_thai: can-xac-nhan
 
 ## Ghi chú
 Trên ACS có mã con BCVTVTHN.
+
+
+## Khi đọc case của trường này
+- Mã trên ACS: `BCVT` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Coder sửa `VersionSchool/BCVT/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
+- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
+- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: —.

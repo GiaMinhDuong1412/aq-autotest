@@ -6,6 +6,12 @@ netweb_that: http://ftugate.ftu.edu.vn/#/home
 web_test: 
 edusoft_test: 
 trang_thai_hd: Actived
+ma_acs:
+  - DHNT
+  - DHNTDHCQ
+  - DHNTCHCQ
+  - DHNTDHTC
+  - DHNTNTC2
 nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
@@ -35,6 +41,13 @@ Bản thử trên máy chủ `http://edusoft.net.vn:12344/<site>` (vd `dhntdhcq.
 
 ## Ghi chú
 —
+
+
+## Khi đọc case của trường này
+- Mã trên ACS: `DHNT`, `DHNTDHCQ`, `DHNTCHCQ`, `DHNTDHTC`, `DHNTNTC2` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Coder sửa `VersionSchool/DHNT/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
+- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
+- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC. Trạng thái hợp đồng ghi theo sheet: Actived.

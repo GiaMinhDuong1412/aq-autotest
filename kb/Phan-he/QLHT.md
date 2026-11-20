@@ -53,6 +53,11 @@ Menu: [[Menu/QLHT|75 menu của QLHT]] – menu tạo dữ liệu: [[Menu/Khóa 
 ## Phần trên web / app
 `Hệ thống/ Quản trị NetWEB/ Chỉnh định menu | Chỉnh định chung | Cấm SV xem vì nợ học phí` – **chỉnh trên Edusoft, kiểm kết quả trên web** (menu/chức năng ẩn-hiện, SV nợ HP không xem được…). Phân quyền quản trị trên web (PhanQuyenQuanTriTrenWeb).
 
+
+## Dạng case thường gặp
+[[Tai khoan phan quyen]], [[Thiet lap khong hieu luc]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

@@ -63,6 +63,11 @@ Menu: [[Menu/KHGD|213 menu của KHGD]] – menu tạo dữ liệu: [[Menu/CTĐT
 ## Phần trên web / app
 SV + GV xem TKB dạng tuần / học kỳ, SV xem CTĐT và môn tiên quyết, GV đăng ký nghỉ dạy – dạy bù online.
 
+
+## Dạng case thường gặp
+[[Loi EX Edusoft]], [[Luu cap nhat khong duoc]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

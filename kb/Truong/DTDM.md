@@ -6,6 +6,8 @@ netweb_that: https://dkmh.tdmu.edu.vn/#/home
 web_test: 
 edusoft_test: 
 trang_thai_hd: Actived
+ma_acs:
+  - DTDM
 nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
@@ -22,6 +24,13 @@ trang_thai: can-xac-nhan
 
 ## Ghi chú
 Có trang ĐKMH riêng.
+
+
+## Khi đọc case của trường này
+- Mã trên ACS: `DTDM` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Coder sửa `VersionSchool/DTDM/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
+- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
+- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: Actived.

@@ -38,6 +38,11 @@ Công nợ / phiếu thu ở [[QLTV]].
 ## Phần trên web / app
 Có **môi trường test EduBILL riêng** (theo tài liệu khởi tạo môi trường test) – không thanh toán thật.
 
+
+## Dạng case thường gặp
+[[Tich hop thanh toan]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: web / api – xem KH nói về màn hình Edusoft hay trang web.
 

@@ -47,6 +47,11 @@ Menu: [[Menu/KSDG|42 menu của KSDG]] – menu tạo dữ liệu: [[Menu/Tạo 
 ## Phần trên web / app
 NetWEB SV + GV + khách: làm khảo sát; GV: xem kết quả khảo sát; DHNT: **đánh giá GV trước khi xem điểm**.
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[Mau in bao cao]], [[Thiet lap khong hieu luc]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
 

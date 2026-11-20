@@ -36,6 +36,11 @@ Menu: [[Menu/DTNH|25 menu của DTNH]].
 ## Phần trên web / app
 —
 
+
+## Dạng case thường gặp
+(chưa ghi – thêm khi gặp)
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Chỉ edusoft.
 

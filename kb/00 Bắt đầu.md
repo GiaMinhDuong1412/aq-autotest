@@ -6,7 +6,9 @@ loai: trang-chu
 Kho kiến thức để **Claude và app AQ Auto Test hiểu đúng nghiệp vụ**: các phân hệ Edusoft / web **liên kết với nhau qua dữ liệu** –
 phân hệ này tạo dữ liệu, phân hệ khác dùng. Sửa / lỗi ở đâu thì biết phải kiểm lại những phân hệ nào, test trên Edusoft hay web.
 
-**Bắt đầu từ [[00 Logic nghiệp vụ]]** – *muốn có X thì phải có Y*: muốn có sinh viên phải tuyển sinh; có sinh viên + giảng viên + CTĐT mới có
+**Đọc case: [[00 Cách phân tích case]]** – trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case (`Dang-case/`) → dữ liệu → case liên quan. Phải đúng trước, test sau.
+
+**Nghiệp vụ: [[00 Logic nghiệp vụ]]** – *muốn có X thì phải có Y*: muốn có sinh viên phải tuyển sinh; có sinh viên + giảng viên + CTĐT mới có
 kế hoạch giảng dạy → TKB → đăng ký môn học → học phí, lịch thi, điểm → học vụ, tốt nghiệp. Sau đó xem [[00 Bản đồ phân hệ]] (phân hệ nào đưa dữ liệu sang phân hệ nào).
 
 Cách đọc một case ACS bằng KB: case nói tới **menu / dữ liệu** nào → mở ghi chú dữ liệu đó → *Chuẩn bị dữ liệu test* = các dữ liệu phải có trước;
@@ -19,10 +21,11 @@ App AQ Auto Test (trang Test sau sửa lỗi) làm đúng việc này tự độ
 | `Phan-he/` | Mỗi phân hệ (mã như trên ACS): là gì, **nhận dữ liệu từ**, **tạo ra**, **đưa sang**, sửa ở đây → kiểm lại đâu, phần Edusoft / phần web |
 | `Du-lieu/` | Mỗi loại dữ liệu (DS SV học kỳ, KQ ĐKMH, nhóm học, điểm TB…): **phải có trước** gì (`can_co`), **là điều kiện cho** gì, tầng, tạo ở đâu (menu), dùng ở đâu, trên web, chuẩn bị dữ liệu test theo thứ tự |
 | `Menu/` | `Menu/<phân hệ>.md` = toàn bộ menu Edusoft của phân hệ, mỗi menu nối tới dữ liệu nó đụng tới; menu **tạo** dữ liệu có ghi chú riêng (trước khi dùng phải có gì, lưu xong ảnh hưởng tới đâu) |
+| `Dang-case/` | Mô hình case (hiển thị web, lỗi EX, số liệu sai, thiết lập, mẫu in, yêu cầu bổ sung, case tiếp nối…): nhận biết qua lời KH / BA / Dev, phải trả lời gì, case liên quan là gì, hay nhầm gì |
 | `San-pham/` | Edusoft, Netweb, App: là gì, test ở đâu |
-| `Truong/` | Từng trường: tên, link Netweb thật, chức năng web trường có, môi trường test |
+| `Truong/` | Từng trường: tên, **mã trên ACS** (`ma_acs` – DHNT có 5 mã), bản riêng VersionSchool, link Netweb thật, chức năng web; `AQ` = case nội bộ |
 | `Repo-coder/` | Quy ước repo / nhánh coder → sửa ở web hay Edusoft |
-| `Cach-test/` | Cách test theo loại sửa (lỗi EX, số liệu, mẫu in, web theo trường, API / bảo mật, hiển thị web) |
+| `Cach-test/` (Test - …) | Cách test theo loại sửa (lỗi EX, số liệu, mẫu in, web theo trường, API / bảo mật, hiển thị web) |
 
 ## Quy tắc
 - Mỗi ghi chú có **Properties** (đầu file) – app đọc các trường này, **giữ đúng tên trường**:
@@ -42,3 +45,6 @@ Tài liệu HDSD SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skil
 - [ ] Mở [[00 Bản đồ phân hệ]] và Graph view – liên kết nào sai / thiếu thì ghi lại
 - [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP, QXHV, BVLV) – đúng thì đổi `trang_thai: da-xac-nhan`
 - [ ] Điền **web test / Edusoft test** trong `Truong/` cho các trường hay test
+
+- [ ] `Truong/`: bổ sung `ma_acs` cho trường có nhiều mã trên ACS; điền tên trường cho `NNHN`; xác nhận `DHMOTX` có thuộc DHMO không
+- [ ] `Dang-case/`: sửa dấu hiệu / thêm case mẫu khi gặp case thật

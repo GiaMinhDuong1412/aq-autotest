@@ -107,6 +107,12 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `retest_ds/retest_doc_plan/retest_ghi_plan` (plan nháp → collection `retestDrafts/c<caseId>`, trang hiện "Plan do Claude soạn", xoá khi Nhận test).
   Đăng ký: nút "Kết nối Claude Desktop" (tab Thiết lập ACS) → `api/kit/mcp_register` ghi mục `aq-auto-test` vào `claude_desktop_config.json` (sao lưu `.bak-aq`).
   `kb_ghi` chỉ ghi `.md` trong vault, từ chối nội dung giống mật khẩu/token/chuỗi kết nối; không có công cụ ghi lên ACS – giữ nguyên như vậy.
+  **Phân tích case – đúng trước, test sau** (`kb/00 Cách phân tích case.md`): trường (`Truong/` theo `ma_acs`; `AQ` = nội bộ; mã chưa có → không đoán)
+  → phân hệ → yêu cầu KH → BA chốt → Dev xử lý (VersionSchool/<trường> = bản riêng) → đối chiếu → dạng case (`Dang-case/`, Properties `dau_hieu_kh/ba/dev`
+  = regex gợi ý, chỉ gợi ý khi có dấu hiệu ở KH/BA) → dữ liệu → case liên quan (case gốc `[mã]` trong tiêu đề, cùng trường + phân hệ, cùng dữ liệu / dạng ở trường khác).
+  MCP: `acs_case` tách KH / BA / Dev + trường / phân hệ / bản sửa / case gốc / gợi ý dạng; `acs_case_lien_quan`; `case_ghi_phan_tich` → `caseAnalyses/c<id>` (bước 1 hiện
+  "Phiếu phân tích"). Bước 1 (`rtW1`): `rtCtx` (Trường / Phân hệ / Dạng case) → Thông tin ACS (thu gọn) → Đọc case 1-2-3 → Phiếu phân tích → Nơi test (AQ đoán nhanh
+  khi chưa có phiếu) → Sơ đồ; case liên quan lấy thêm từ ACS (`rtRelAcs`). `Cach-test/` (đổi tên "Test - …") để dành cho phần test.
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục case. Không ghi mật khẩu vào kb/.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;

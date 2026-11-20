@@ -41,6 +41,11 @@ Lỗi có thể do dữ liệu đầu vào từ: [[DIEM]], [[QLSV]] – kiểm d
 ## Phần trên web / app
 —
 
+
+## Dạng case thường gặp
+[[So lieu tinh sai]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Chỉ edusoft.
 

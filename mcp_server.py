@@ -24,18 +24,22 @@ KINDS = ('ui', 'data', 'report', 'perm', 'add')
 SECRET = re.compile(r'(mật\s*khẩu|password|passwd|pwd|token|secret|api[_\- ]?key)\s*[:=]\s*\S{4,}|data source\s*=|initial catalog\s*=|;\s*password\s*=', re.I)
 
 INSTRUCTIONS = """Bạn đang nối với app AQ Auto Test (máy người test của AQTech) – kiểm thử phần mềm Edusoft.NET (Windows) và Netweb (cổng web SV/GV).
-Khi được nhờ đọc / phân tích case ACS hoặc dựng plan test:
-1. acs_case lấy nội dung case (lời khách hàng, BA, ghi chú coder, diễn biến). Không đọc được thì nhờ người dùng đăng nhập ACS trong app.
-2. kb_phan_tich trên tiêu đề + lời khách hàng (+ menu nếu có) → dữ liệu case đụng tới, dữ liệu PHẢI CÓ TRƯỚC, dữ liệu / phân hệ BỊ ẢNH HƯỞNG.
-   Đọc thêm ghi chú bằng kb_doc (Phan-he/<mã>.md, Du-lieu/<tên>.md, Cach-test/…, Truong/<mã trường>.md).
-3. Chọn nơi test theo NGHIỆP VỤ, không theo mã phân hệ: sửa giao diện / hiển thị web → test trên web (không gán kịch bản Edusoft);
-   sửa cách tính / lưu số liệu của dữ liệu tạo ở Edusoft → test trên Edusoft rồi kiểm nơi hiển thị; mẫu in → in / xuất trên bản test.
-4. retest_ghi_plan ghi plan NHÁP vào app: prep = môi trường + dữ liệu phải có trước (ghi rõ menu tạo); repro = các bước khách hàng làm;
-   check = mỗi yêu cầu của khách hàng một mục, viết thành điều kiện kiểm được; reg = dữ liệu / phân hệ bị ảnh hưởng cần kiểm lại.
-   Báo người dùng mở trang Test sau sửa lỗi trong app để duyệt rồi bấm Nhận test.
-Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ dùng môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
+VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau. Không đoán từ tiêu đề hay mã phân hệ.
+Đọc kb_doc '00 Cách phân tích case.md' một lần, rồi làm theo thứ tự:
+ 0. Trường: acs_case trả 'truong' (school_code → ghi chú Truong/ theo ma_acs; 'AQ' = case nội bộ / sản phẩm chung). Mã chưa có ghi chú → nói rõ, không đoán tên trường.
+ 1. Phân hệ: đọc Phan-he/<mã>.md (phần Edusoft / web, dạng case thường gặp). Mã phân hệ là nơi xếp case, không phải nơi lỗi xảy ra.
+ 2. Yêu cầu KH (yeu_cau_kh): hiện trạng (ở đâu, ai gặp), từng mong muốn, dữ liệu cụ thể (MSSV, lớp, học kỳ), loại (lỗi / yêu cầu mới / hỏi / xử lý dữ liệu).
+ 3. BA (ba): BA chốt lỗi hay yêu cầu mới, phạm vi, quy tắc nghiệp vụ. BA khác KH → theo BA. Không có BA → ghi rõ, đánh dấu câu hỏi mở.
+ 4. Dev (dev): sửa ở đâu (VersionSchool/<trường> = bản riêng trường, Source.NET/store = Edusoft, report = mẫu in), bản build, sửa gì / không sửa gì.
+ 5. Đối chiếu từng ý KH ↔ BA ↔ Dev → ý thiếu / chưa rõ = câu hỏi mở.
+ 6. Dạng case: chọn trong Dang-case/ (gợi ý 'goi_y_dang_case' chỉ là gợi ý – đọc ghi chú dạng case để kiểm).
+ 7. Dữ liệu: kb_phan_tich → dữ liệu case đụng, phải có trước, ảnh hưởng tới.
+ 8. Case liên quan / tương tự: acs_case_lien_quan → case gốc ([mã] trong tiêu đề), cùng trường + phân hệ, cùng mô hình ở trường khác; nói VÌ SAO và NÊN LÀM GÌ.
+ Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
+ Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
+Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
 Không ghi mật khẩu, token, chuỗi kết nối vào KB. Liên kết Netweb trong Truong/ là site THẬT – chỉ để nhận biết trường, không thao tác.
-Sửa KB (kb_ghi) khi người dùng dạy kiến thức mới hoặc xác nhận / sửa một liên kết: giữ đúng Properties (can_co, tao_o, dung_o, tu_khoa…), viết tiếng Việt."""
+Khi người dùng sửa / dạy kiến thức (mã trường trên ACS, quy tắc nghiệp vụ, dấu hiệu dạng case): ghi vào KB bằng kb_ghi, giữ đúng Properties, viết tiếng Việt."""
 
 
 def _s(o, n=None):
@@ -66,8 +70,29 @@ TOOLS = [
          "dieu_kien": {"type": "array", "items": {"type": "object", "properties": {"truong": {"type": "string"}, "phep": {"type": "string", "enum": ["eq", "neq", "in"]},
                                                                                    "gia_tri": {"type": "string"}}, "required": ["truong", "phep", "gia_tri"]}},
          "gioi_han": {"type": "integer", "description": "tối đa (mặc định 50, tối đa 200)"}}}},
-    {"name": "acs_case", "description": "Đọc đầy đủ một case ACS (chỉ đọc): các trường, lời khách hàng, BA, ghi chú coder, diễn biến.",
+    {"name": "acs_case", "description": "Đọc đầy đủ một case ACS (chỉ đọc), đã tách: trường (theo KB), phân hệ, YÊU CẦU KH, BA PHÂN TÍCH, DEV XỬ LÝ, bản sửa, case gốc, "
+                                        "gợi ý dạng case, diễn biến. Bước đầu của mọi phân tích case.",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case, vd 64501")}, "required": ["ma_case"]}},
+    {"name": "acs_case_lien_quan", "description": "Tìm case LIÊN QUAN / TƯƠNG TỰ với một case trên ACS (chỉ đọc): case gốc ([mã] trong tiêu đề, 'lần 2'), "
+                                                  "cùng trường + cùng phân hệ, cùng phân hệ / cùng dữ liệu / cùng dạng case ở trường khác – kèm lý do và gợi ý nên làm gì.",
+     "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case"), "gioi_han": {"type": "integer", "description": "số case trả về (mặc định 15)"}},
+                     "required": ["ma_case"]}},
+    {"name": "case_ghi_phan_tich", "description": "Lưu PHIẾU PHÂN TÍCH case vào app (người test xem ở bước 1 trang Test sau sửa lỗi). Ghi theo 00 Cách phân tích case.md.",
+     "inputSchema": {"type": "object", "properties": {
+         "ma_case": _s("mã case"), "truong": _s("mã ACS → trường, hệ / cơ sở, có bản riêng không"), "phan_he": _s("mã → tên, phần Edusoft hay web"),
+         "kh_thay": _s("hiện trạng KH thấy: ở đâu, ai gặp"), "kh_muon": {"type": "array", "items": {"type": "string"}, "description": "từng mong muốn của KH"},
+         "du_lieu_kh": _s("dữ liệu cụ thể KH đưa (MSSV, lớp, học kỳ…)"), "loai": _s("loại yêu cầu", ["loi", "yeu-cau-moi", "hoi-dap", "xu-ly-du-lieu"]),
+         "ba_chot": _s("BA chốt gì ('chưa có BA' nếu không có)"), "dev_da_lam": _s("Dev sửa ở đâu, bản nào, sửa gì"),
+         "doi_chieu": {"type": "array", "items": {"type": "object", "properties": {"y": {"type": "string"}, "ba": {"type": "string"}, "dev": {"type": "string"},
+                                                                                  "trang_thai": {"type": "string", "enum": ["du", "thieu", "chua-ro"]}}, "required": ["y", "trang_thai"]}},
+         "dang_case": {"type": "array", "items": {"type": "string"}, "description": "tên ghi chú Dang-case/, vd 'Hien thi web'"},
+         "du_lieu": _s("dữ liệu case đụng tới, phải có trước, ảnh hưởng tới"),
+         "case_lien_quan": {"type": "array", "items": {"type": "object", "properties": {"ma": {"type": "string"}, "ly_do": {"type": "string"}, "nen": {"type": "string"}},
+                                                     "required": ["ma", "ly_do"]}},
+         "cau_hoi_mo": {"type": "array", "items": {"type": "string"}, "description": "điều chưa rõ cần hỏi BA / Dev / KH"}},
+         "required": ["ma_case", "truong", "phan_he", "kh_muon", "ba_chot", "dev_da_lam"]}},
+    {"name": "case_doc_phan_tich", "description": "Đọc phiếu phân tích đã lưu của một case (nếu có).",
+     "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case")}, "required": ["ma_case"]}},
     {"name": "retest_ds", "description": "Danh sách phiếu test sau sửa lỗi trong app (case, trạng thái, nền tảng, tiến độ) và các plan nháp Claude đã ghi.",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "retest_doc_plan", "description": "Đọc plan test của một case trong app: plan nháp (Claude ghi) và phiếu đang test (nếu đã nhận test).",
@@ -343,21 +368,73 @@ def t_acs_tim_case(S, a):
     return {"tong": d.get("total", len(rows)) if isinstance(d, dict) else len(rows), "case": [{k: x.get(k) for k in keep if x.get(k) not in (None, "")} for x in rows]}
 
 
-def t_acs_case(S, a):
-    cid = str(a.get("ma_case") or "").strip()
-    if not re.match(r'^\d{1,10}$', cid):
-        raise ToolError("Mã case phải là số")
+SEC = [("yeu_cau_kh", re.compile(r'customer|request|yeu_?cau|khach|description|desc$|^content|noi_?dung|mo_?ta|problem|issue|question|body|message', re.I)),
+       ("ba", re.compile(r'analy|phan_?tich|^ba_|_ba$|requirement|spec|nghiep_?vu', re.I)),
+       ("dev", re.compile(r'dev|coder|solution|resolution|resolve|fix|xu_?ly|giai_?phap|reply|answer|tra_?loi|change_?log|cach_?sua|assignee', re.I)),
+       ("test_truoc", re.compile(r'test|kiem_?tra', re.I))]
+META = ("case_id", "title", "school_code", "module", "case_type", "priority", "status", "assignee_raw", "analyst_raw", "req_state", "tester_raw",
+        "test_state", "received_at", "due_date", "resolved_at", "changed")
+
+
+def clean_mail(t):
+    out = []
+    for ln in str(t or "").replace("\r", "").split("\n"):
+        l = ln.strip()
+        if re.match(r'^(-{2,}\s*original message|-{2,}\s*thư gốc|_{6,}|from:|từ:|sent:|đã gửi:|on .{4,120} wrote:|vào .{4,120} đã viết:)', l, re.I) or re.match(r'^(--|—)\s*$', l):
+            break
+        if re.match(r'^(trân trọng|tran trong|thân ái|kính thư|best regards|kind regards|regards|sincerely)\b[^a-z0-9]{0,4}$', l, re.I):
+            break
+        out.append(l)
+    while out and len(out[0]) < 80 and re.match(r'^(chào|kính gửi|kính chào|xin chào|dear|hi|hello)\b', out[0], re.I):
+        out.pop(0)
+    return re.sub(r'\n{3,}', '\n\n', "\n".join(out)).strip()
+
+
+def get_case(S, cid):
     st = acs_settings(S)
     paths = [st["casePath"]] if st.get("casePath") else ["/cs/cases/{id}", "/cs/case/{id}", "/cs/cases/{id}/detail"]
-    det, last = None, None
+    last = None
     for p in paths:
         r = acs("GET", p.replace("{id}", cid))
         last = r.get("status")
         if r.get("status") == 200 and isinstance(r.get("data"), dict):
-            det = r["data"]
-            break
-    if det is None:
-        raise ToolError("Không đọc được chi tiết case %s (mã %s). Quản trị khai báo 'đường dẫn API chi tiết case' ở tab Thiết lập ACS." % (cid, last))
+            return r["data"]
+    raise ToolError("Không đọc được chi tiết case %s (mã %s). Quản trị khai báo 'đường dẫn API chi tiết case' ở tab Thiết lập ACS." % (cid, last))
+
+
+def split_case(det):
+    """chi tiết case ACS → (meta, {yeu_cau_kh, ba, dev, test_truoc, khac})"""
+    flat = _flat(det, dep=0)
+    meta, sec = {}, {k: [] for k, _ in SEC}
+    sec["khac"] = []
+    for k, v in flat.items():
+        b = k.split(".")[-1]
+        if b in META or b.replace("_html", "") in META:
+            meta.setdefault(b, v)
+            continue
+        if re.match(r'^(title|tieu_de|subject|name)$', b, re.I):
+            meta.setdefault("title", v)
+            continue
+        if len(v) < 12 or re.match(r'^\d{4}-\d\d-\d\d', v) or re.match(r'^[\w.\\@-]+$', v):
+            continue
+        for name, rx in SEC:
+            if rx.search(b):
+                sec[name].append(("[%s]\n" % k if name != "yeu_cau_kh" else "") + v)
+                break
+        else:
+            sec["khac"].append("[%s] %s" % (k, v[:600]))
+    out = {k: "\n\n".join(v) for k, v in sec.items() if k != "khac"}
+    out["khac"] = sec["khac"]
+    out["yeu_cau_kh"] = clean_mail(out["yeu_cau_kh"])
+    return meta, out
+
+
+def t_acs_case(S, a):
+    cid = str(a.get("ma_case") or "").strip()
+    if not re.match(r'^\d{1,10}$', cid):
+        raise ToolError("Mã case phải là số")
+    det = get_case(S, cid)
+    meta, sec = split_case(det)
     hist = []
     try:
         h = acs("GET", "/cs/cases/%s/history" % cid)
@@ -368,8 +445,135 @@ def t_acs_case(S, a):
                 hist.append({"luc": x.get("changed_at"), "boi": x.get("changed_by"), "thay_doi": _flat(x.get("changes") or {})})
     except ToolError:
         pass
-    return {"ma_case": cid, "truong": _flat(det), "dien_bien": hist,
-            "nhac": "Lời khách hàng thường ở trường customer/description/content; ghi chú coder ở dev_comment/resolution. Không ghi gì lên ACS."}
+    base, _ = kb_dir(S)
+    g = kb_graph.build(base)
+    sma, sx = kb_graph.school_of(g, meta.get("school_code"))
+    mod = kb_graph.CAT_PH.get(str(meta.get("module") or "").upper(), str(meta.get("module") or "").upper())
+    title = meta.get("title") or ""
+    allt = title + "\n" + sec["yeu_cau_kh"] + "\n" + sec["ba"] + "\n" + sec["dev"]
+    refs = sorted({x for x in re.findall(r'\[(\d{5,6})\]', title + " " + sec["yeu_cau_kh"]) if x != cid})
+    build = re.search(r'\bv?(20\d\d\.\d{1,2}[A-Z]{0,2}\.\d{1,3})\b', sec["dev"] + "\n" + json.dumps(hist, ensure_ascii=False))
+    repo = re.search(r'VersionSchool/[\w.-]+/[\w./-]+|Source\.NET[\w./-]*', allt)
+    pats = kb_graph.patterns_of(g, title + "\n" + sec["yeu_cau_kh"], sec["ba"], sec["dev"], mod)
+    return {
+        "ma_case": cid, "tieu_de": title,
+        "truong": {"school_code": meta.get("school_code"), "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]} if sma else
+                  {"school_code": meta.get("school_code"), "ghi_chu": None, "luu_y": "Chưa có ghi chú Truong/ cho mã này – không đoán tên trường; hỏi người dùng rồi thêm vào ma_acs."},
+        "phan_he": {"ma": mod, "ten": g["mods"].get(mod, [""])[0], "ghi_chu": "Phan-he/%s.md" % mod if mod in g["mods"] else None},
+        "thong_tin": {k: v for k, v in meta.items() if k not in ("title",)},
+        "yeu_cau_kh": sec["yeu_cau_kh"] or "(không đọc được nội dung KH – xem 'khac')",
+        "ba": sec["ba"] or "(chưa có phần BA phân tích)",
+        "dev": sec["dev"] or "(chưa có ghi chú dev)",
+        "ghi_chu_test_truoc": sec["test_truoc"], "khac": sec["khac"][:20],
+        "ban_sua": build.group(1) if build else None, "repo": repo.group(0) if repo else None,
+        "case_goc": refs, "goi_y_dang_case": [{"dang": p, "ghi_chu": "Dang-case/%s.md" % p, "vi": w} for p, _, w in pats[:3]],
+        "dien_bien": hist,
+        "tiep_theo": "Phân tích theo '00 Cách phân tích case.md': trường → phân hệ → KH → BA → Dev → đối chiếu → dạng case → dữ liệu (kb_phan_tich) → acs_case_lien_quan → case_ghi_phan_tich.",
+    }
+
+
+def _query(cl, lim):
+    r = acs("POST", "/cs/query", {"clauses": cl, "columns": list(META), "sort": "case_id", "desc": True, "offset": 0, "limit": lim})
+    d = r.get("data") or {}
+    rows = d.get("rows") if isinstance(d, dict) else d
+    return rows if r.get("status") == 200 and isinstance(rows, list) else []
+
+
+STOPW = set("các của cho trong không được hiển thị khi với những này đã đang theo từ một hai lần như vào thì nên phải cần bên trường sinh viên chức năng màn hình thông tin dữ liệu danh sách kiểm tra lỗi sửa xem thêm xóa lưu bấm mở chọn giúp nhờ sau trước menu bản cập nhật đúng sai vẫn nhưng rồi lại và hoặc là có bị ở".split())
+
+
+def _words(t):
+    return {w for w in re.findall(r'[0-9a-zà-ỹđ]{3,}', str(t or "").lower()) if w not in STOPW}
+
+
+def t_acs_case_lien_quan(S, a):
+    cid = str(a.get("ma_case") or "").strip()
+    if not re.match(r'^\d{1,10}$', cid):
+        raise ToolError("Mã case phải là số")
+    lim = max(3, min(40, int(a.get("gioi_han") or 15)))
+    det = get_case(S, cid)
+    meta, sec = split_case(det)
+    base, _ = kb_dir(S)
+    g = kb_graph.build(base)
+    title, sc, mod = meta.get("title") or "", str(meta.get("school_code") or ""), str(meta.get("module") or "")
+    sma, sx = kb_graph.school_of(g, sc)
+    codes = (sx["ma_acs"] if sx else [sc]) if sc else []
+    refs = sorted({x for x in re.findall(r'\[(\d{5,6})\]', title + " " + sec["yeu_cau_kh"]) if x != cid})
+    me_w = _words(title + " " + sec["yeu_cau_kh"][:600])
+    kmod = kb_graph.CAT_PH.get(mod.upper(), mod.upper())
+    me_d = {x[0] for x in kb_graph.query_text(g, title + "\n" + sec["yeu_cau_kh"], kmod)[:3]}
+    me_p = {x[0] for x in kb_graph.patterns_of(g, title + "\n" + sec["yeu_cau_kh"], sec["ba"], sec["dev"], kmod)[:2]}
+    rows = {}
+    def add(lst, tag):
+        for x in lst:
+            k = str(x.get("case_id"))
+            if k and k != cid:
+                rows.setdefault(k, (x, set()))[1].add(tag)
+    if refs:
+        add(_query([{"op": "in", "conj": "AND", "field": "case_id", "value": ", ".join(refs)}], 20), "goc")
+    if codes and mod:
+        add(_query([{"op": "in" if len(codes) > 1 else "eq", "conj": "AND", "field": "school_code", "value": ", ".join(codes)},
+                    {"op": "eq", "conj": "AND", "field": "module", "value": mod}], 100), "truong_ph")
+    if mod:
+        add(_query([{"op": "eq", "conj": "AND", "field": "module", "value": mod}], 200), "ph")
+    out = []
+    for k, (x, tags) in rows.items():
+        t = str(x.get("title") or "")
+        w = _words(t)
+        sim = len(w & me_w) / max(1, len(w | me_w))
+        same_school = str(x.get("school_code") or "") in codes
+        d = {y[0] for y in kb_graph.query_text(g, t, kmod)[:3]}
+        p = {y[0] for y in kb_graph.patterns_of(g, t, "", "", kmod)[:2]}
+        refd = cid in re.findall(r'\[(\d{5,6})\]', t)
+        score = 10 * sim + (12 if "goc" in tags or refd else 0) + (3 if same_school else 0) + 2 * len(d & me_d) + 2 * len(p & me_p)
+        why, nen = [], ""
+        if "goc" in tags:
+            why.append("case gốc (tiêu đề case này có [%s])" % k); nen = "đọc trước: lần trước sửa gì, kết luận test thế nào"
+        if refd:
+            why.append("case tiếp nối của case này"); nen = nen or "xem lần sau còn yêu cầu gì"
+        if same_school:
+            why.append("cùng trường" + (" + cùng phân hệ" if "truong_ph" in tags else ""))
+        if d & me_d:
+            why.append("cùng dữ liệu: " + ", ".join(sorted(d & me_d)))
+        if p & me_p:
+            why.append("cùng dạng: " + ", ".join(sorted(p & me_p)))
+        if sim >= 0.2:
+            why.append("tiêu đề giống %d%%" % round(sim * 100))
+        if not nen:
+            nen = ("test cùng lúc / dùng chung dữ liệu" if same_school and str(x.get("status") or "") == "Đã xử lý" else
+                   "xem cùng đợt KH gửi" if same_school else "tham khảo cách sửa; nếu sửa phần dùng chung thì kiểm ảnh hưởng trường này")
+        if score < 3 and not same_school:
+            continue
+        if score < 2:
+            continue
+        out.append({"ma": k, "tieu_de": t, "truong": x.get("school_code"), "phan_he": x.get("module"), "trang_thai": x.get("status"),
+                    "test": x.get("test_state"), "xu_ly_luc": x.get("resolved_at"), "diem": round(score, 1), "vi": why or ["cùng phân hệ"], "nen": nen})
+    out.sort(key=lambda o: -o["diem"])
+    return {"case": {"ma": cid, "tieu_de": title, "truong": sc, "phan_he": mod}, "da_quet": len(rows), "lien_quan": out[:lim],
+            "nhac": "Đây là xếp hạng theo dấu hiệu (tiêu đề, trường, phân hệ, dữ liệu, dạng case). Mở acs_case các case đầu danh sách để xác nhận trước khi gợi ý cho người dùng."}
+
+
+def t_case_ghi_phan_tich(S, a):
+    cid = str(a.get("ma_case") or "").strip()
+    if not re.match(r'^\d{1,10}$', cid):
+        raise ToolError("Mã case phải là số")
+    if SECRET.search(json.dumps(a, ensure_ascii=False)):
+        raise ToolError("Nội dung có vẻ chứa mật khẩu / token – bỏ ra rồi ghi lại.")
+    keep = ("truong", "phan_he", "kh_thay", "kh_muon", "du_lieu_kh", "loai", "ba_chot", "dev_da_lam", "doi_chieu", "dang_case", "du_lieu", "case_lien_quan", "cau_hoi_mo")
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    doc = {k: a[k] for k in keep if a.get(k) not in (None, "", [])}
+    doc.update({"caseId": cid, "by": "claude", "at": now, "updatedAt": now})
+    if len(json.dumps(doc, ensure_ascii=False)) > 60000:
+        raise ToolError("Phiếu quá dài – viết gọn lại.")
+    with S.LOCK:
+        S.write_doc(S.doc_file("caseAnalyses", "c" + cid), doc)
+    return {"ok": True, "thong_bao": "Đã lưu phiếu phân tích case #%s – người test xem ở app: Test sau sửa lỗi → case #%s → bước 1." % (cid, cid)}
+
+
+def t_case_doc_phan_tich(S, a):
+    cid = str(a.get("ma_case") or "").strip()
+    f = S.doc_file("caseAnalyses", "c" + cid)
+    return S.read_doc(f) if f.exists() else {"co": False, "nhac": "Chưa có phiếu phân tích – làm theo 00 Cách phân tích case.md rồi case_ghi_phan_tich."}
 
 
 # ------------------------------------------------------------------ plan test nháp
@@ -433,14 +637,18 @@ def t_retest_ghi_plan(S, a):
     with S.LOCK:
         S.write_doc(S.doc_file("retestDrafts", "c" + cid), doc)
     cur = latest_retest(S, cid)
+    has_an = S.doc_file("caseAnalyses", "c" + cid).exists()
     note = "Đã ghi plan nháp cho case #%s (%d mục). Người test mở app → Test sau sửa lỗi → chọn case #%s → bước 2 Plan test để duyệt rồi Nhận test." % (cid, len(items), cid)
     if cur and cur["data"].get("state") in ("testing", "queued", "running", "review"):
         note += " Lưu ý: case đang có phiếu test (" + str(cur["data"].get("state")) + ") – plan nháp không thay phiếu đang test; nói người test đối chiếu và sửa plan của phiếu nếu cần."
+    if not has_an:
+        note += " CHÚ Ý: chưa có phiếu phân tích case này – nên phân tích (case_ghi_phan_tich) trước để plan đúng nghiệp vụ."
     return {"ok": True, "thong_bao": note}
 
 
 HANDLERS = {"kb_tim": t_kb_tim, "kb_doc": t_kb_doc, "kb_ghi": t_kb_ghi, "kb_phan_tich": t_kb_phan_tich, "kb_du_lieu": t_kb_du_lieu,
-            "acs_toi": t_acs_toi, "acs_tim_case": t_acs_tim_case, "acs_case": t_acs_case,
+            "acs_toi": t_acs_toi, "acs_tim_case": t_acs_tim_case, "acs_case": t_acs_case, "acs_case_lien_quan": t_acs_case_lien_quan,
+            "case_ghi_phan_tich": t_case_ghi_phan_tich, "case_doc_phan_tich": t_case_doc_phan_tich,
             "retest_ds": t_retest_ds, "retest_doc_plan": t_retest_doc_plan, "retest_ghi_plan": t_retest_ghi_plan}
 
 

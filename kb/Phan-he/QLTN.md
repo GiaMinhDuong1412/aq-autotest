@@ -46,6 +46,11 @@ Menu: [[Menu/QLTN|272 menu của QLTN]] – menu tạo dữ liệu: [[Menu/Chuy�
 ## Phần trên web / app
 NetWEB SV: xem kết quả xét tốt nghiệp / tiền tốt nghiệp; đăng ký đề tài tốt nghiệp (tuỳ trường).
 
+
+## Dạng case thường gặp
+[[Mau in bao cao]], [[So lieu tinh sai]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 

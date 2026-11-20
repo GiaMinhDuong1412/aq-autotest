@@ -68,6 +68,11 @@ Menu: [[Menu/QLSV|332 menu của QLSV]] – menu tạo dữ liệu: [[Menu/Diệ
 ## Phần trên web / app
 NetWEB SV: cập nhật lý lịch (theo thời gian mở ở Edusoft), xem kết quả điểm danh, đánh giá điểm rèn luyện, tra cứu tốt nghiệp, đăng ký cấp giấy chứng nhận / bảng điểm. NetWEB GV: điểm danh môn giảng dạy, xem DS SV quản lý (CVHT).
 
+
+## Dạng case thường gặp
+[[Hien thi web]], [[Loi EX Edusoft]], [[Luu cap nhat khong duoc]], [[Xu ly du lieu]]
+Đọc case theo [[00 Cách phân tích case]]: trường → phân hệ → yêu cầu KH → BA → Dev → đối chiếu → dạng case → dữ liệu → case liên quan.
+
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
 
