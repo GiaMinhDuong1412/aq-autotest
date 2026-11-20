@@ -23,7 +23,7 @@ App AQ Auto Test (trang Test sau sửa lỗi) làm đúng việc này tự độ
 | `Menu/` | `Menu/<phân hệ>.md` = toàn bộ menu Edusoft của phân hệ, mỗi menu nối tới dữ liệu nó đụng tới; menu **tạo** dữ liệu có ghi chú riêng (trước khi dùng phải có gì, lưu xong ảnh hưởng tới đâu) |
 | `Dang-case/` | Mô hình case (hiển thị web, lỗi EX, số liệu sai, thiết lập, mẫu in, yêu cầu bổ sung, case tiếp nối…): nhận biết qua lời KH / BA / Dev, phải trả lời gì, case liên quan là gì, hay nhầm gì |
 | `San-pham/` | Edusoft, Netweb, App: là gì, test ở đâu |
-| `Truong/` | Từng trường: tên, **mã trên ACS** (`ma_acs` – DHNT có 5 mã), bản riêng VersionSchool, link Netweb thật, chức năng web; `AQ` = case nội bộ |
+| `Truong/` | Từng trường: tên, **mã trên ACS**: 4 ký tự = trường, dài hơn = phân cấp (`phan_cap`, vd DHMOTX = DHMO từ xa), bản riêng VersionSchool, link Netweb thật, chức năng web; `AQ` = case nội bộ |
 | `Repo-coder/` | Quy ước repo / nhánh coder → sửa ở web hay Edusoft |
 | `Cach-test/` (Test - …) | Cách test theo loại sửa (lỗi EX, số liệu, mẫu in, web theo trường, API / bảo mật, hiển thị web) |
 
@@ -46,5 +46,5 @@ Tài liệu HDSD SharePoint "1. Tài liệu Edusoft", lưu đồ LuuDo_NEW (skil
 - [ ] Liếc `Phan-he/` (nhất là NETWEB-UI, NETWEB-API, DKMHUI, CSHP, QXHV, BVLV) – đúng thì đổi `trang_thai: da-xac-nhan`
 - [ ] Điền **web test / Edusoft test** trong `Truong/` cho các trường hay test
 
-- [ ] `Truong/`: bổ sung `ma_acs` cho trường có nhiều mã trên ACS; điền tên trường cho `NNHN`; xác nhận `DHMOTX` có thuộc DHMO không
+- [ ] `Truong/`: thêm `phan_cap` khi gặp mã phân cấp mới (mã > 4 ký tự)
 - [ ] `Dang-case/`: sửa dấu hiệu / thêm case mẫu khi gặp case thật

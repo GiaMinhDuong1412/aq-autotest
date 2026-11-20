@@ -4,6 +4,7 @@ ma: HVNG
 ten: 
 web_test: 
 edusoft_test: EDUSOFT - HVNG - Copy (máy chạy thử)
+phan_cap: []
 trang_thai: can-xac-nhan
 ---
 # HVNG
@@ -14,7 +15,8 @@ trang_thai: can-xac-nhan
 - Danh mục màn hình Edusoft của AQ Auto Test (`web/edusoft-catalog.json`) dựng từ bản HVNG.
 
 ## Khi đọc case của trường này
-- Mã trên ACS: `HVNG` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Mã trường trên ACS: **`HVNG`** (4 ký tự) = case chung của trường. Mã **dài hơn 4 ký tự** bắt đầu bằng `HVNG` = **phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường.
+- Case làm theo phân cấp thì **chỉ có hiệu lực trên phân cấp đó**: test trên đúng phân cấp (site / dữ liệu của phân cấp), phân cấp khác của cùng trường thường không bị ảnh hưởng – trừ khi sửa phần chung của trường.
+- Gặp mã phân cấp mới → thêm vào `phan_cap` (dạng `"MÃ: tên phân cấp"`).
 - Coder sửa `VersionSchool/HVNG/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
-- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
-- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
+- Case cùng trường (cùng phân cấp) gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).

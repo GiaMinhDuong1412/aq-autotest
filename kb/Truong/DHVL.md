@@ -6,8 +6,7 @@ netweb_that:
 web_test: 
 edusoft_test: 
 trang_thai_hd: Hết hạn bảo trì
-ma_acs:
-  - DHVL
+phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
@@ -32,10 +31,11 @@ trang_thai: can-xac-nhan
 
 
 ## Khi đọc case của trường này
-- Mã trên ACS: `DHVL` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Mã trường trên ACS: **`DHVL`** (4 ký tự) = case chung của trường. Mã **dài hơn 4 ký tự** bắt đầu bằng `DHVL` = **phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường.
+- Case làm theo phân cấp thì **chỉ có hiệu lực trên phân cấp đó**: test trên đúng phân cấp (site / dữ liệu của phân cấp), phân cấp khác của cùng trường thường không bị ảnh hưởng – trừ khi sửa phần chung của trường.
+- Gặp mã phân cấp mới → thêm vào `phan_cap` (dạng `"MÃ: tên phân cấp"`).
 - Coder sửa `VersionSchool/DHVL/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
-- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
-- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
+- Case cùng trường (cùng phân cấp) gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB. Trạng thái hợp đồng ghi theo sheet: Hết hạn bảo trì.

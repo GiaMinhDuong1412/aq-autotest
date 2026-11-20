@@ -6,12 +6,11 @@ netweb_that: http://ftugate.ftu.edu.vn/#/home
 web_test: 
 edusoft_test: 
 trang_thai_hd: Actived
-ma_acs:
-  - DHNT
-  - DHNTDHCQ
-  - DHNTCHCQ
-  - DHNTDHTC
-  - DHNTNTC2
+phan_cap:
+  - "DHNTDHCQ: Đại học chính quy – ftugate.ftu.edu.vn"
+  - "DHNTCHCQ: Cao học – qlsdh.ftu.edu.vn"
+  - "DHNTDHTC: Đại học tại chức – dttt.ftu.edu.vn"
+  - "DHNTNTC2: Cơ sở 2 – qldt.cs2.ftu.edu.vn"
 nguon: sheet-release
 trang_thai: can-xac-nhan
 ---
@@ -44,10 +43,11 @@ Bản thử trên máy chủ `http://edusoft.net.vn:12344/<site>` (vd `dhntdhcq.
 
 
 ## Khi đọc case của trường này
-- Mã trên ACS: `DHNT`, `DHNTDHCQ`, `DHNTCHCQ`, `DHNTDHTC`, `DHNTNTC2` (school_code). Mã khác chưa có ở đây → ghi thêm vào `ma_acs` khi đã xác nhận.
+- Mã trường trên ACS: **`DHNT`** (4 ký tự) = case chung của trường. Mã **dài hơn 4 ký tự** bắt đầu bằng `DHNT` = **phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường – đã biết: `DHNTDHCQ` (Đại học chính quy), `DHNTCHCQ` (Cao học), `DHNTDHTC` (Đại học tại chức), `DHNTNTC2` (Cơ sở 2).
+- Case làm theo phân cấp thì **chỉ có hiệu lực trên phân cấp đó**: test trên đúng phân cấp (site / dữ liệu của phân cấp), phân cấp khác của cùng trường thường không bị ảnh hưởng – trừ khi sửa phần chung của trường.
+- Gặp mã phân cấp mới → thêm vào `phan_cap` (dạng `"MÃ: tên phân cấp"`).
 - Coder sửa `VersionSchool/DHNT/…` = bản riêng của trường → kiểm tra trên bản / trang test của chính trường này.
-- Chức năng web trường có (mục trên) quyết định case web có thuộc chức năng trường dùng không.
-- Case cùng trường gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
+- Case cùng trường (cùng phân cấp) gửi gần nhau thường cùng đợt / cùng bản sửa → xem chung (MCP `acs_case_lien_quan`).
 
 ---
 Nguồn: sheet Release(TestMenu) – ChuyenDoiNetWeb, Port NetWEB, DHNT Điều hướng DVPC. Trạng thái hợp đồng ghi theo sheet: Actived.

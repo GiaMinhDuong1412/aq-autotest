@@ -26,7 +26,8 @@ SECRET = re.compile(r'(mật\s*khẩu|password|passwd|pwd|token|secret|api[_\- ]
 INSTRUCTIONS = """Bạn đang nối với app AQ Auto Test (máy người test của AQTech) – kiểm thử phần mềm Edusoft.NET (Windows) và Netweb (cổng web SV/GV).
 VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau. Không đoán từ tiêu đề hay mã phân hệ.
 Đọc kb_doc '00 Cách phân tích case.md' một lần, rồi làm theo thứ tự:
- 0. Trường: acs_case trả 'truong' (school_code → ghi chú Truong/ theo ma_acs; 'AQ' = case nội bộ / sản phẩm chung). Mã chưa có ghi chú → nói rõ, không đoán tên trường.
+ 0. Trường: school_code 4 ký tự = trường (case chung của trường); dài hơn 4 ký tự = PHÂN CẤP của trường đó (vd DHMOTX = DHMO – từ xa, DHMODH = DHMO – đại học):
+    case theo phân cấp chỉ hiệu lực trên phân cấp đó. 'AQ' = case nội bộ / sản phẩm chung. Mã chưa có ghi chú Truong/ → nói rõ, không đoán tên trường.
  1. Phân hệ: đọc Phan-he/<mã>.md (phần Edusoft / web, dạng case thường gặp). Mã phân hệ là nơi xếp case, không phải nơi lỗi xảy ra.
  2. Yêu cầu KH (yeu_cau_kh): hiện trạng (ở đâu, ai gặp), từng mong muốn, dữ liệu cụ thể (MSSV, lớp, học kỳ), loại (lỗi / yêu cầu mới / hỏi / xử lý dữ liệu).
  3. BA (ba): BA chốt lỗi hay yêu cầu mới, phạm vi, quy tắc nghiệp vụ. BA khác KH → theo BA. Không có BA → ghi rõ, đánh dấu câu hỏi mở.
@@ -447,7 +448,7 @@ def t_acs_case(S, a):
         pass
     base, _ = kb_dir(S)
     g = kb_graph.build(base)
-    sma, sx = kb_graph.school_of(g, meta.get("school_code"))
+    sma, sx, pcc, pcn = kb_graph.school_of(g, meta.get("school_code"))
     mod = kb_graph.CAT_PH.get(str(meta.get("module") or "").upper(), str(meta.get("module") or "").upper())
     title = meta.get("title") or ""
     allt = title + "\n" + sec["yeu_cau_kh"] + "\n" + sec["ba"] + "\n" + sec["dev"]
@@ -457,8 +458,12 @@ def t_acs_case(S, a):
     pats = kb_graph.patterns_of(g, title + "\n" + sec["yeu_cau_kh"], sec["ba"], sec["dev"], mod)
     return {
         "ma_case": cid, "tieu_de": title,
-        "truong": {"school_code": meta.get("school_code"), "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]} if sma else
-                  {"school_code": meta.get("school_code"), "ghi_chu": None, "luu_y": "Chưa có ghi chú Truong/ cho mã này – không đoán tên trường; hỏi người dùng rồi thêm vào ma_acs."},
+        "truong": dict({"school_code": meta.get("school_code"), "truong": sma, "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]},
+                       **({"phan_cap": pcc, "ten_phan_cap": pcn or "(chưa có trong phan_cap – hỏi người dùng)",
+                           "luu_y": "Case theo phân cấp – chỉ hiệu lực trên phân cấp này, test đúng site / dữ liệu của phân cấp."} if pcc else
+                          {"luu_y": "Mã 4 ký tự = case chung của trường."})) if sma else
+                  {"school_code": meta.get("school_code"), "ghi_chu": None,
+                   "luu_y": "Chưa có ghi chú Truong/ cho mã này (4 ký tự đầu = mã trường) – không đoán tên trường; hỏi người dùng rồi thêm ghi chú."},
         "phan_he": {"ma": mod, "ten": g["mods"].get(mod, [""])[0], "ghi_chu": "Phan-he/%s.md" % mod if mod in g["mods"] else None},
         "thong_tin": {k: v for k, v in meta.items() if k not in ("title",)},
         "yeu_cau_kh": sec["yeu_cau_kh"] or "(không đọc được nội dung KH – xem 'khac')",
@@ -496,8 +501,8 @@ def t_acs_case_lien_quan(S, a):
     base, _ = kb_dir(S)
     g = kb_graph.build(base)
     title, sc, mod = meta.get("title") or "", str(meta.get("school_code") or ""), str(meta.get("module") or "")
-    sma, sx = kb_graph.school_of(g, sc)
-    codes = (sx["ma_acs"] if sx else [sc]) if sc else []
+    sma, sx, pcc, _ = kb_graph.school_of(g, sc)
+    prefix = (sma or sc[:4]).upper() if sc else ""
     refs = sorted({x for x in re.findall(r'\[(\d{5,6})\]', title + " " + sec["yeu_cau_kh"]) if x != cid})
     me_w = _words(title + " " + sec["yeu_cau_kh"][:600])
     kmod = kb_graph.CAT_PH.get(mod.upper(), mod.upper())
@@ -511,9 +516,8 @@ def t_acs_case_lien_quan(S, a):
                 rows.setdefault(k, (x, set()))[1].add(tag)
     if refs:
         add(_query([{"op": "in", "conj": "AND", "field": "case_id", "value": ", ".join(refs)}], 20), "goc")
-    if codes and mod:
-        add(_query([{"op": "in" if len(codes) > 1 else "eq", "conj": "AND", "field": "school_code", "value": ", ".join(codes)},
-                    {"op": "eq", "conj": "AND", "field": "module", "value": mod}], 100), "truong_ph")
+    if sc and mod:
+        add(_query([{"op": "eq", "conj": "AND", "field": "school_code", "value": sc}, {"op": "eq", "conj": "AND", "field": "module", "value": mod}], 100), "truong_ph")
     if mod:
         add(_query([{"op": "eq", "conj": "AND", "field": "module", "value": mod}], 200), "ph")
     out = []
@@ -521,18 +525,22 @@ def t_acs_case_lien_quan(S, a):
         t = str(x.get("title") or "")
         w = _words(t)
         sim = len(w & me_w) / max(1, len(w | me_w))
-        same_school = str(x.get("school_code") or "") in codes
+        xsc = str(x.get("school_code") or "").upper()
+        same_unit = bool(sc) and xsc == sc.upper()                       # cùng mã ACS (cùng trường chung hoặc cùng phân cấp)
+        same_school = bool(prefix) and xsc[:4] == prefix                 # cùng trường (có thể khác phân cấp)
         d = {y[0] for y in kb_graph.query_text(g, t, kmod)[:3]}
         p = {y[0] for y in kb_graph.patterns_of(g, t, "", "", kmod)[:2]}
         refd = cid in re.findall(r'\[(\d{5,6})\]', t)
-        score = 10 * sim + (12 if "goc" in tags or refd else 0) + (3 if same_school else 0) + 2 * len(d & me_d) + 2 * len(p & me_p)
+        score = 10 * sim + (12 if "goc" in tags or refd else 0) + (3 if same_unit else 1 if same_school else 0) + 2 * len(d & me_d) + 2 * len(p & me_p)
         why, nen = [], ""
         if "goc" in tags:
             why.append("case gốc (tiêu đề case này có [%s])" % k); nen = "đọc trước: lần trước sửa gì, kết luận test thế nào"
         if refd:
             why.append("case tiếp nối của case này"); nen = nen or "xem lần sau còn yêu cầu gì"
-        if same_school:
-            why.append("cùng trường" + (" + cùng phân hệ" if "truong_ph" in tags else ""))
+        if same_unit:
+            why.append(("cùng phân cấp " + xsc if len(xsc) > 4 else "cùng trường") + (" + cùng phân hệ" if str(x.get("module") or "") == mod else ""))
+        elif same_school:
+            why.append("cùng trường, KHÁC phân cấp (%s) – thường không ảnh hưởng nhau trừ khi sửa phần chung" % xsc)
         if d & me_d:
             why.append("cùng dữ liệu: " + ", ".join(sorted(d & me_d)))
         if p & me_p:
@@ -540,9 +548,10 @@ def t_acs_case_lien_quan(S, a):
         if sim >= 0.2:
             why.append("tiêu đề giống %d%%" % round(sim * 100))
         if not nen:
-            nen = ("test cùng lúc / dùng chung dữ liệu" if same_school and str(x.get("status") or "") == "Đã xử lý" else
-                   "xem cùng đợt KH gửi" if same_school else "tham khảo cách sửa; nếu sửa phần dùng chung thì kiểm ảnh hưởng trường này")
-        if score < 3 and not same_school:
+            nen = ("test cùng lúc / dùng chung dữ liệu" if same_unit and str(x.get("status") or "") == "Đã xử lý" else
+                   "xem cùng đợt KH gửi" if same_unit else
+                   "tham khảo – phân cấp khác của cùng trường" if same_school else "tham khảo cách sửa; nếu sửa phần dùng chung thì kiểm ảnh hưởng trường này")
+        if score < 3 and not same_unit:
             continue
         if score < 2:
             continue

@@ -6,11 +6,13 @@ trang_thai: tu-tai-lieu
 
 Không đoán từ tiêu đề hay mã phân hệ. Đọc **theo thứ tự**, mỗi bước trả lời được câu hỏi của nó rồi mới sang bước sau.
 
-## 0. Trường – case của ai?
-- Lấy `school_code` trên ACS → tìm ghi chú `Truong/` có `ma_acs` chứa mã đó (DHNT có 5 mã ACS theo hệ / cơ sở: DHNTDHCQ, DHNTCHCQ…).
-- Trả lời: trường nào, hệ / cơ sở nào; trường có **bản riêng** không (coder sửa `VersionSchool/<trường>` → [[VersionSchool]]); trường có những chức năng web nào.
+## 0. Trường – case của ai, phân cấp nào?
+- `school_code` trên ACS: **4 ký tự = trường** (case chung của trường), **dài hơn 4 ký tự = phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường có 4 ký tự đầu đó.
+  Ví dụ `DHMO` = ĐH Mở (chung); `DHMOTX` = DHMO – đào tạo từ xa; `DHMODH` = DHMO – đại học; `DHNTCHCQ` = Ngoại Thương – cao học.
+- **Case làm theo phân cấp chỉ có hiệu lực trên phân cấp đó**: test trên đúng site / dữ liệu của phân cấp; phân cấp khác của cùng trường thường không bị ảnh hưởng (trừ khi sửa phần chung).
+- Mở ghi chú `Truong/<4 ký tự>`: tên trường, `phan_cap` đã biết, bản riêng (coder sửa `VersionSchool/<trường>` → [[VersionSchool]]), chức năng web.
 - Mã `AQ` = case nội bộ / sản phẩm chung (không phải trường) → [[AQ]].
-- Mã chưa có ghi chú → ghi lại "chưa biết trường", **không đoán tên trường**.
+- Mã chưa có ghi chú → ghi "chưa biết trường", **không đoán tên trường**; phân cấp chưa có tên → hỏi rồi thêm vào `phan_cap`.
 
 ## 1. Phân hệ – case thuộc nghiệp vụ nào?
 - `module` trên ACS → `Phan-he/<mã>`: phân hệ làm gì, phần Edusoft / phần web, nhận dữ liệu từ đâu, đưa sang đâu, **dạng case thường gặp**.
@@ -47,7 +49,7 @@ Case đụng dữ liệu nào (`Du-lieu/`) → **muốn tái hiện phải có d
 ## 8. Case liên quan / tương tự → gợi ý cho người test
 Tìm trên ACS (MCP `acs_case_lien_quan`, hoặc khung Case liên quan trong app):
 - **Case gốc / lần trước**: tiêu đề có `[mã]` (vd `[64184]: Hiển thị miễn giảm – lần 2`) → đọc case gốc trước: lần 1 sửa gì, lần này còn thiếu gì.
-- **Cùng trường + cùng phân hệ / cùng dữ liệu**: thường cùng đợt KH gửi, cùng bản sửa → test cùng lúc.
+- **Cùng trường (cùng phân cấp) + cùng phân hệ / cùng dữ liệu**: thường cùng đợt KH gửi, cùng bản sửa → test cùng lúc. Cùng trường nhưng **khác phân cấp** → chỉ tham khảo.
 - **Cùng mô hình ở trường khác**: cùng dạng case + cùng dữ liệu (vd hiển thị miễn giảm trên trang học phí) → cách sửa / lỗi có thể lặp lại; nếu là phần dùng chung (không phải VersionSchool) thì sửa ở đây có thể ảnh hưởng trường khác.
 - **Dữ liệu cha – con**: case đang chờ test chạm dữ liệu phải có trước / sinh ra sau → dùng chung dữ liệu chuẩn bị.
 Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước / test chung / hỏi BA).
@@ -57,7 +59,7 @@ Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước /
 ## Phiếu phân tích (mẫu)
 | Mục | Ghi |
 |---|---|
-| Trường | mã ACS → trường, hệ / cơ sở, bản riêng? |
+| Trường | mã ACS → trường (4 ký tự) + phân cấp (nếu có), bản riêng? |
 | Phân hệ | mã → tên, phần nào (Edusoft / web) |
 | KH thấy | ở đâu, ai, hiện trạng |
 | KH muốn | từng ý |
