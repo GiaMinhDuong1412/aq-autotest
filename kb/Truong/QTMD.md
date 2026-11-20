@@ -9,6 +9,8 @@ trang_thai_hd: Actived
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Quốc tế Miền Đông"
 ---
 # QTMD – ĐH Quốc tế Miền Đông
 

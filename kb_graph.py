@@ -89,7 +89,7 @@ def why_map(sec):
 
 def _sig(kb):
     s = []
-    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test'):
+    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test', 'Case-truong', 'Quy-trinh'):
         d = kb / sub
         if d.is_dir():
             for f in d.glob('*.md'):
@@ -142,6 +142,17 @@ def build(kb):
                 pc[k.strip().upper()] = v.strip()
         schools[ma] = {'ten': str(p.get('ten') or ''), 'phan_cap': pc, 'xac_nhan': p.get('trang_thai') == 'da-xac-nhan',
                        'web_that': str(p.get('netweb_that') or '')}
+    for f in sorted((kb / 'Case-truong').glob('*.md')) if (kb / 'Case-truong').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        ma = str(p.get('ma') or f.stem)
+        if ma in schools and p.get('loai') == 'case-truong':
+            L2 = lambda v: [str(x) for x in v][:5] if isinstance(v, list) else []
+            schools[ma]['mh'] = {'n': int(str(p.get('tong_case') or 0)) if str(p.get('tong_case') or '0').isdigit() else 0,
+                                 'ph': L2(p.get('phan_he_nhieu')), 'dang': L2(p.get('dang_nhieu')), 'den': str(p.get('den_ngay') or '')}
+    qts = {}
+    for f in sorted((kb / 'Quy-trinh').glob('[0-9][0-9] *.md')) if (kb / 'Quy-trinh').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        qts[f.stem] = {'ten': str(p.get('ten') or f.stem), 'ph': links(p.get('phan_he'))[:3]}
     for f in sorted((kb / 'Dang-case').glob('*.md')) if (kb / 'Dang-case').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
         pats[f.stem] = {'ten': str(p.get('ten') or f.stem), 'kh': str(p.get('dau_hieu_kh') or ''), 'ba': str(p.get('dau_hieu_ba') or ''),
@@ -167,7 +178,7 @@ def build(kb):
         return lv[fn]
     for fn in data:
         data[fn]['lv'] = depth(fn)
-    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
+    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'qts': qts, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
     _CACHE[str(kb)] = (sig, g)
     return g
 

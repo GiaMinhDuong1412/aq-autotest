@@ -19,6 +19,8 @@ tu_khoa_ph:
   - QLTV
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Học phí phải thu (đã tính)"
 ---
 # Học phí phải thu (đã tính)
 

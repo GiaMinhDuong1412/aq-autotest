@@ -1,0 +1,30 @@
+filters:
+  and:
+    - file.inFolder("Du-lieu")
+properties:
+  ten:
+    displayName: "Tên"
+  tang:
+    displayName: "Tầng"
+  tao_o:
+    displayName: "Tạo ở"
+  can_co:
+    displayName: "Phải có trước"
+  dung_o:
+    displayName: "Dùng ở"
+  trang_thai:
+    displayName: "Trạng thái"
+views:
+  - type: table
+    name: "Du lieu"
+    order:
+      - file.name
+      - ten
+      - tang
+      - tao_o
+      - can_co
+      - dung_o
+      - trang_thai
+    sort:
+      - property: tang
+        direction: ASC

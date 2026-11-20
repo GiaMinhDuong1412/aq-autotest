@@ -13,6 +13,8 @@ tu_khoa_ph:
   - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Kỳ / đợt tuyển sinh (ngành, khối, phương thức)"
 ---
 # Kỳ / đợt tuyển sinh (ngành, khối, phương thức)
 

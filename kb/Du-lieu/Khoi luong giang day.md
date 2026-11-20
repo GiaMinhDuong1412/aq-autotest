@@ -14,6 +14,8 @@ tu_khoa_ph:
   - KLGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Khối lượng giảng dạy"
 ---
 # Khối lượng giảng dạy
 

@@ -16,6 +16,8 @@ tu_khoa_ph:
   - LTHI
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Phòng học kỳ"
 ---
 # Phòng học kỳ
 

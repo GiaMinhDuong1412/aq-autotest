@@ -13,6 +13,8 @@ tu_khoa_ph:
   - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Hồ sơ thí sinh"
 ---
 # Hồ sơ thí sinh
 

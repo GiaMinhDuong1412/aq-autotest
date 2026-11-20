@@ -15,6 +15,24 @@ Cách đọc một case ACS bằng KB: case nói tới **menu / dữ liệu** n�
 *Kiểm tra không ảnh hưởng* = dữ liệu sinh ra từ nó + phân hệ dùng nó; case khác chạm cùng dữ liệu (hoặc dữ liệu cha – con) là **case liên quan**.
 App AQ Auto Test (trang Test case ACS) làm đúng việc này tự động: Claude đọc KB để phân tích case và soạn plan test ở bước 2 (bản đồ KB không hiện cho người dùng).
 
+## Bắt đầu từ đâu
+| Muốn | Mở |
+|---|---|
+| Đọc một case ACS | [[00 Cách phân tích case]] |
+| Biết một năm học đi qua phân hệ nào, bước nào cần gì | [[00 Quy trình xuyên phân hệ]] · Canvas [[00 Vòng đời đào tạo.canvas\|vòng đời đào tạo]] |
+| Phân hệ nào đưa dữ liệu cho phân hệ nào | [[00 Bản đồ phân hệ]] · Canvas [[00 Bản đồ phân hệ.canvas\|bản đồ phân hệ]] |
+| Muốn có dữ liệu X phải có gì trước | [[00 Logic nghiệp vụ]] |
+| Trường này hay có case gì, làm khác bản chung ra sao | [[00 Mô hình trường]] (`Case-truong/`) |
+| Tài liệu gốc ở đâu (HDSD, lưu đồ, source, ACS) | [[00 Tài liệu nguồn]] |
+
+## Dùng Obsidian cho hiệu quả
+- **Bases** (bảng lọc / sắp xếp theo Properties, có sẵn trong Obsidian ≥ 1.9): `_bases/` – Phân hệ, Dữ liệu, Trường, Tài liệu, Quy trình, Case theo trường; đã nhúng vào các trang 00.
+- **Canvas**: [[00 Vòng đời đào tạo.canvas]] (quy trình theo thời gian một năm học), [[00 Bản đồ phân hệ.canvas]] (cột = tầng dữ liệu, mũi tên = dữ liệu đưa sang) – kéo thả, mở thẻ để đọc.
+- **Aliases**: gõ `[[Đăng ký môn học` hay `[[ĐKMH` đều ra ghi chú DKMH; tên dữ liệu / trường có dấu cũng tìm được.
+- **Backlinks** (khung phải): mở một dữ liệu / phân hệ / quy trình → thấy mọi tài liệu, quy trình, mô hình trường nhắc tới nó.
+- **Graph view** – nhóm màu gợi ý (Graph → Groups, thêm 1 lần trên máy bạn): `path:Phan-he` · `path:Du-lieu` · `path:Quy-trinh` · `path:Truong OR path:Case-truong` · `path:Tai-lieu` · `path:Dang-case`; lọc bỏ menu: `-path:Menu`.
+- **Callout** `[!warning] Hay gây case` trong quy trình = chỗ cài đặt / dữ liệu hay làm người test kết luận sai.
+
 ## Các ngăn
 | Thư mục | Ghi gì |
 |---|---|
@@ -25,6 +43,9 @@ App AQ Auto Test (trang Test case ACS) làm đúng việc này tự động: Cla
 | `San-pham/` | Edusoft, Netweb, App: là gì, test ở đâu |
 | `Truong/` | Từng trường: tên, **mã trên ACS**: 4 ký tự = trường, dài hơn = phân cấp (`phan_cap`, vd DHMOTX = DHMO từ xa), bản riêng VersionSchool, link Netweb thật, chức năng web; `AQ` = case nội bộ |
 | `Repo-coder/` | Quy ước repo / nhánh coder → sửa ở web hay Edusoft |
+| `Quy-trinh/` | Quy trình xuyên phân hệ (mở học kỳ, tuyển sinh, CTĐT – TKB, ĐKMH, học phí, thi, điểm, tốt nghiệp…): bảng bước – phân hệ – menu – phải có trước, cài đặt hay gây case, sửa thì kiểm gì |
+| `Tai-lieu/` | Tài liệu nguồn: HDSD SharePoint theo phân hệ (từng file nói gì), lưu đồ, sheet, danh mục màn hình, source, ACS – độ tin cậy |
+| `Case-truong/` | Mô hình từng trường học từ case ACS (tự động + nhận xét) |
 | `Cach-test/` (Test - …) | Cách test theo loại sửa (lỗi EX, số liệu, mẫu in, web theo trường, API / bảo mật, hiển thị web) |
 
 ## Quy tắc

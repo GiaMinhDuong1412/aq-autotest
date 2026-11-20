@@ -6,6 +6,7 @@
 Công cụ:
   kb_tim, kb_doc, kb_ghi, kb_phan_tich, kb_du_lieu   – knowledge base (vault Obsidian, thư mục kbDir hoặc kb/ cạnh server.py)
   kb_anh, kb_luu_anh                                 – ảnh trong KB (xem / lưu ảnh case kèm mô tả để tra lại)
+  truong_hoc_case                                    – học mô hình trường từ case ACS → kb/Case-truong/
   acs_toi, acs_tim_case, acs_case, acs_anh           – ACS CHỈ ĐỌC (phiên người dùng đã đăng nhập trong app); không có công cụ ghi lên ACS
   retest_ds, retest_doc_plan, retest_ghi_plan        – plan test NHÁP (collection retestDrafts) – người test duyệt trên trang Test case ACS
 An toàn: chỉ nghe 127.0.0.1 + token trong <local>/mcp.json; kb_ghi chỉ ghi .md trong thư mục KB, từ chối nội dung giống mật khẩu / token / chuỗi kết nối.
@@ -31,6 +32,9 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
     và 'kiem_tra_du' – mục nào thiếu (BA chưa phân tích, chưa có bản sửa, chưa có hạn…) nói ngay cho người dùng.
  0. Trường: school_code 4 ký tự = trường (case chung của trường); dài hơn 4 ký tự = PHÂN CẤP của trường đó (vd DHMOTX = DHMO – từ xa, DHMODH = DHMO – đại học):
     case theo phân cấp chỉ hiệu lực trên phân cấp đó. 'AQ' = case nội bộ / sản phẩm chung. Mã chưa có ghi chú Truong/ → nói rõ, không đoán tên trường.
+ 0b. Mô hình trường: đọc Case-truong/<mã 4 ký tự>.md (nếu có) – trường này hay có case gì, dạng gì, case tiếp nối, nhận xét. Chưa có / cũ → truong_hoc_case.
+ 0c. Quy trình: đọc Quy-trinh/ của phân hệ (00 Quy trình xuyên phân hệ.md) – bước trước cung cấp gì, cài đặt nào hay gây case, bước sau phải kiểm.
+     Cần cách thao tác / biến chỉnh định → Tai-lieu/ (HDSD theo phân hệ, nơi lưu trên SharePoint).
  1. Phân hệ: đọc Phan-he/<mã>.md (phần Edusoft / web, dạng case thường gặp). Mã phân hệ là nơi xếp case, không phải nơi lỗi xảy ra.
  2. Yêu cầu KH (yeu_cau_kh): hiện trạng (ở đâu, ai gặp), từng mong muốn, dữ liệu cụ thể (MSSV, lớp, học kỳ), loại (lỗi / yêu cầu mới / hỏi / xử lý dữ liệu).
     ẢNH: acs_case trả 'anh' (ảnh KH / BA / Dev chụp, '[ảnh]' trong lời KH là chỗ chèn ảnh) → LUÔN xem bằng acs_anh trước khi kết luận.
@@ -139,6 +143,12 @@ TOOLS = [
          "can_cung_cap": {"type": "array", "description": "tài khoản / dữ liệu test cần người dùng nhập (chỉ mã, không mật khẩu) – vd [{ten:'Mã GV', vi_sao:'GV có lớp đang dạy'}, {ten:'MSSV', vi_sao:'SV thuộc lớp đó'}]; bước dùng {ten}",
                           "items": {"type": "object", "properties": {"ten": {"type": "string"}, "vi_sao": {"type": "string"}}, "required": ["ten"]}}},
          "required": ["ma_case", "nen_tang", "cac_muc"]}},
+    {"name": "truong_hoc_case", "description": "HỌC MÔ HÌNH TRƯỜNG từ case ACS (chỉ đọc ACS): đọc các case của một trường (mọi phân cấp) hoặc 'tat-ca', "
+                                               "gom theo phân hệ / phân cấp / dạng case / dữ liệu / chủ đề lặp lại / case tiếp nối → ghi kb/Case-truong/<mã>.md "
+                                               "(+ tóm tắt trong Truong/<mã>.md). Tiêu đề được che email, SĐT, mã ≥ 7 số. Sau đó đọc vài case tiêu biểu và viết mục 'Nhận xét'.",
+     "inputSchema": {"type": "object", "properties": {"ma_truong": _s("mã trường 4 ký tự (vd KTTC, DHMO) hoặc 'tat-ca'"),
+                                                      "gioi_han": {"type": "integer", "description": "số case mới nhất đọc tối đa (mặc định 600, tối đa 3000)"}},
+                     "required": ["ma_truong"]}},
 ]
 
 
@@ -868,7 +878,9 @@ def t_acs_case(S, a):
            {"muc": "Người test", "du": bool(F.get("Kiểm thử"))}]
     return {
         "ma_case": cid, "tieu_de": title,
-        "truong": dict({"school_code": meta.get("school_code"), "truong": sma, "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]},
+        "truong": dict({"school_code": meta.get("school_code"), "truong": sma, "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"],
+                       "mo_hinh": ({"ghi_chu": "Case-truong/%s.md" % sma, **sx["mh"]} if sx.get("mh") else
+                                   "chưa có Case-truong/%s.md – chạy truong_hoc_case '%s' để học các case cũ của trường" % (sma, sma))},
                        **({"phan_cap": pcc, "ten_phan_cap": pcn or "(chưa có trong phan_cap – hỏi người dùng)",
                            "luu_y": "Case theo phân cấp – chỉ hiệu lực trên phân cấp này, test đúng site / dữ liệu của phân cấp."} if pcc else
                           {"luu_y": "Mã 4 ký tự = case chung của trường."})) if sma else
@@ -1073,10 +1085,288 @@ def t_retest_ghi_plan(S, a):
     return {"ok": True, "thong_bao": note}
 
 
+# ------------------------------------------------------------------ mô hình trường (học từ case ACS)
+PII = [(re.compile(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)+'), '[email]'), (re.compile(r'(?<!\d)(?:\+?84|0)\d{9,10}(?!\d)'), '[sđt]'),
+       (re.compile(r'(?<!\d)\d{7,}(?!\d)'), '[mã]'), (re.compile(r'\b(?:SV|sinh viên|GV|giảng viên)\s*:?\s*([A-ZĐ][a-zà-ỹ]+(?:\s+[A-ZĐ][a-zà-ỹ]+){1,4})'), lambda m: m.group(0).replace(m.group(1), '[tên]'))]
+MH_A, MH_B = "<!-- tu-dong:bat-dau – phần dưới do công cụ truong_hoc_case ghi lại mỗi lần học case, đừng sửa tay -->", "<!-- tu-dong:het -->"
+
+
+def mask(t):
+    """che dữ liệu cá nhân trong tiêu đề case trước khi ghi vào KB (KB lên git): email, số điện thoại, mã ≥ 7 số (MSSV…), tên sau SV/GV"""
+    t = str(t or "").replace("|", "/").replace("\n", " ").strip()
+    for rx, rep in PII:
+        t = rx.sub(rep, t)
+    return t[:160]
+
+
+def _day(v):
+    m = re.match(r'(\d{4})-(\d{2})-(\d{2})', str(v or ""))
+    return "%s-%s-%s" % m.groups() if m else ""
+
+
+def _qt_of(base, g=None):
+    """→ (phân hệ → quy trình, dữ liệu → quy trình). Dữ liệu thuộc quy trình có phân hệ chính là nơi TẠO dữ liệu đó."""
+    by_mod, by_data, cand = {}, {}, {}
+    d = Path(base) / "Quy-trinh"
+    D = (g or {}).get("data") or {}
+    for f in sorted(d.glob("[0-9][0-9] *.md")) if d.is_dir() else []:
+        p, _ = kb_graph.parse_note(f.read_text("utf-8", errors="replace"))
+        ph = kb_graph.links(p.get("phan_he"))
+        for m in ph[:3]:                                    # 3 phân hệ đầu = phân hệ chính của quy trình
+            by_mod.setdefault(m, f.stem)
+        for x in kb_graph.links(p.get("du_lieu")):
+            cand.setdefault(x, []).append((f.stem, ph[:3]))
+    for x, lst in cand.items():
+        src = (D.get(x) or {}).get("src")
+        best = [q for q, ph in lst if src and src in ph]
+        by_data[x] = (best or [lst[0][0]])[0]
+    return by_mod, by_data
+
+
+TERMS = ("học phí miễn giảm đăng ký môn học học kỳ điểm danh ghi chú tín chỉ thời gian nhập học tuyển sinh tốt nghiệp học vụ học bổng rèn luyện lịch thi "
+         "khóa biểu thời khóa giảng viên nhóm học phân quyền tài khoản báo cáo mẫu in phiếu thu công nợ chính sách quét mã chương trình đào tạo "
+         "kế hoạch giảng dạy khảo sát đánh giá ký túc cải thiện thi lại phúc khảo luận văn đề tài trúng tuyển xét tuyển hồ sơ học phần tiên quyết "
+         "rút môn số liệu tổng kết trung bình tích lũy bảng điểm phiếu điểm ngân hàng thanh toán hóa đơn biên lai điểm thi nhập điểm cố vấn "
+         "phụ huynh quyết định văn bằng chứng chỉ phòng học lớp học diện chính sách thu chi khối lượng thời hạn trang web").split()
+TERMS = {TERMS[i] + " " + TERMS[i + 1] for i in range(0, len(TERMS) - 1, 2)}
+
+
+def topics(titles):
+    """chủ đề lặp lại trong tiêu đề: cụm nghiệp vụ quen (TERMS) trước, rồi cụm 2 tiếng khác không chồng lên cụm đã nhận"""
+    cnt = {}
+    for t in titles:
+        toks = re.findall(r'[a-zà-ỹđ]+', re.sub(r'\[\d+\]|\d+', ' ', str(t or "").lower()).replace("khoá", "khóa").replace("hoá", "hóa"))
+        used, seen = set(), set()
+        for i in range(len(toks) - 1):
+            k = toks[i] + " " + toks[i + 1]
+            if k in TERMS and i not in used and k not in seen:
+                used |= {i, i + 1}
+                seen.add(k)
+                cnt[k] = cnt.get(k, 0) + 1
+        for i in range(len(toks) - 1):
+            a, b = toks[i], toks[i + 1]
+            if i in used or i + 1 in used or a in STOPW or b in STOPW or len(a) < 2 or len(b) < 2:
+                continue
+            k = a + " " + b
+            if k not in seen:
+                seen.add(k)
+                cnt["~" + k] = cnt.get("~" + k, 0) + 1
+    return {k.lstrip("~"): v for k, v in cnt.items() if not k.startswith("~") or v >= 3}
+
+
+def school_key(g, code):
+    sma, _, pcc, _ = kb_graph.school_of(g, code)
+    c = str(code or "").strip().upper()
+    return sma or (c[:4] if len(c) >= 4 else c), (pcc or (c if len(c) > 4 else ""))
+
+
+def school_model(S, g, base, ma, rows, analyses=None, retests=None):
+    """→ (nội dung ghi chú Case-truong/<ma>.md, tóm tắt). rows = case ACS của trường (mọi phân cấp)."""
+    qt, qtd = _qt_of(base, g)
+    sx = (g.get("schools") or {}).get(ma) or {}
+    by_mod, by_pc, by_dang, by_data, chains = {}, {}, {}, {}, []
+    items = []
+    for x in rows:
+        cid, t = str(x.get("case_id") or ""), str(x.get("title") or "")
+        mod = str(x.get("module") or "").upper() or "?"
+        kmod = kb_graph.CAT_PH.get(mod, mod)
+        pc = str(x.get("school_code") or "").upper()
+        dang = [p[0] for p in kb_graph.patterns_of(g, t, "", "", kmod)[:1]]
+        an = (analyses or {}).get(cid) or {}
+        if an.get("dang_case"):
+            dang = [str(d) for d in an["dang_case"]][:2]
+        data = [d[0] for d in kb_graph.query_text(g, t, kmod)[:2]]
+        by_mod.setdefault(mod, []).append(cid)
+        by_pc[pc] = by_pc.get(pc, 0) + 1
+        for d in dang:
+            by_dang[d] = by_dang.get(d, 0) + 1
+        for d in data:
+            by_data[d] = by_data.get(d, 0) + 1
+        for r in re.findall(r'\[(\d{5,6})\]', t):
+            chains.append((r, cid))
+        rt = (retests or {}).get(cid) or {}
+        q = qtd.get(data[0]) if data else None
+        items.append({"q": q or qt.get(kmod), "id": cid, "ngay": _day(x.get("received_at") or x.get("resolved_at")), "pc": pc, "mod": mod, "t": mask(t),
+                      "dang": dang, "data": data, "st": str(x.get("status") or ""), "test": str(x.get("test_state") or rt.get("state") or ""),
+                      "an": bool(an)})
+    items.sort(key=lambda o: (o["ngay"], o["id"]), reverse=True)
+    ngay = [o["ngay"] for o in items if o["ngay"]]
+    top = lambda d, n: sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))[:n]
+    mods = sorted(by_mod.items(), key=lambda kv: -len(kv[1]))
+    today = datetime.date.today().isoformat()
+    L = lambda v: '"%s"' % str(v).replace('"', "'")
+    fm = ["---", "loai: case-truong", "ma: " + ma, "truong: \"[[%s]]\"" % ma, "tong_case: %d" % len(items),
+          "tu_ngay: " + (min(ngay) if ngay else ""), "den_ngay: " + (max(ngay) if ngay else ""),
+          "phan_cap:"] + ["  - " + L("%s (%d)" % (k or ma, v)) for k, v in sorted(by_pc.items(), key=lambda kv: -kv[1])] + \
+         ["phan_he_nhieu:"] + ["  - " + L("%s (%d)" % (k, len(v))) for k, v in mods[:6]] + \
+         ["dang_nhieu:"] + (["  - " + L("%s (%d)" % kv) for kv in top(by_dang, 5)] or []) + \
+         ["du_lieu_nhieu:"] + (["  - " + L("%s (%d)" % kv) for kv in top(by_data, 6)] or []) + \
+         ["cap_nhat: " + today, "nguon: acs", "tags: [case-truong]", "---"]
+    A = []
+    A.append("## Tổng quan (%d case%s)" % (len(items), (" · %s → %s" % (min(ngay), max(ngay))) if ngay else ""))
+    A.append("| Phân hệ | Số case | Quy trình | Dạng hay gặp | Case gần nhất |")
+    A.append("|---|---|---|---|---|")
+    for mod, ids in mods:
+        dd = {}
+        for o in items:
+            if o["mod"] == mod:
+                for d in o["dang"]:
+                    dd[d] = dd.get(d, 0) + 1
+        k = kb_graph.CAT_PH.get(mod, mod)
+        qs = []
+        for o in items:
+            if o["mod"] == mod and o["q"] and o["q"] not in qs:
+                qs.append(o["q"])
+        A.append("| %s | %d | %s | %s | %s |" % ("[[%s]]" % k if k in (g.get("mods") or {}) else mod, len(ids), ", ".join("[[%s]]" % q for q in qs[:3]) or "—",
+                                               ", ".join("[[%s]] (%d)" % kv for kv in top(dd, 3)) or "—", ", ".join("#" + i for i in ids[:4])))
+    if len(by_pc) > 1 or any(k and k != ma for k in by_pc):
+        A += ["", "**Theo phân cấp** (case theo phân cấp chỉ hiệu lực trên phân cấp đó): " +
+              ", ".join("%s %d%s" % (k or ma, v, (" (%s)" % sx.get("phan_cap", {}).get(k)) if sx.get("phan_cap", {}).get(k) else "") for k, v in sorted(by_pc.items(), key=lambda kv: -kv[1]))]
+    if by_data:
+        A += ["", "**Dữ liệu hay đụng tới:** " + ", ".join("[[%s]] (%d)" % kv for kv in top(by_data, 8))]
+    rep = [(w, n) for w, n in top(topics([x.get("title") for x in rows]), 14) if n >= 2]
+    if rep:
+        A += ["", "**Chủ đề lặp lại trong tiêu đề:** " + ", ".join("%s (%d)" % kv for kv in rep)]
+    if chains:
+        A += ["", "**Case tiếp nối** (case gốc → case sau): " + ", ".join("#%s → #%s" % c for c in chains[:20])]
+    A += ["", "## Danh sách case (mới nhất trước, tối đa 150)", "| Case | Ngày | Phân cấp | Phân hệ | Tiêu đề | Dạng | Trạng thái | Test |", "|---|---|---|---|---|---|---|---|"]
+    for o in items[:150]:
+        A.append("| #%s%s | %s | %s | %s | %s | %s | %s | %s |" % (o["id"], " 📝" if o["an"] else "", o["ngay"], o["pc"] or ma, o["mod"], o["t"],
+                                                                 ", ".join("[[%s]]" % d for d in o["dang"]) or "—", o["st"], o["test"] or ""))
+    A += ["", "📝 = đã có phiếu phân tích trong app (MCP `case_doc_phan_tich`). Tiêu đề đã che email / số điện thoại / mã ≥ 7 số / tên sau SV, GV."]
+    auto = "\n".join(A)
+    summ = {"ma": ma, "tong_case": len(items), "phan_he_nhieu": ["%s (%d)" % (k, len(v)) for k, v in mods[:6]],
+            "dang_nhieu": ["%s (%d)" % kv for kv in top(by_dang, 5)], "phan_cap": dict(by_pc), "den_ngay": max(ngay) if ngay else ""}
+    return fm, auto, summ
+
+
+def write_school_model(S, base, g, ma, rows, analyses=None, retests=None):
+    fm, auto, summ = school_model(S, g, base, ma, rows, analyses, retests)
+    d = Path(base) / "Case-truong"
+    d.mkdir(parents=True, exist_ok=True)
+    f = d / ("%s.md" % ma)
+    keep = ""
+    if f.exists():
+        cur = f.read_text("utf-8", errors="replace")
+        m = re.search(r'\n## Nhận xét.*?(?=\n' + re.escape(MH_A) + r'|\Z)', cur, re.S)
+        keep = m.group(0).strip("\n") if m else ""
+    if not keep:
+        keep = ("## Nhận xét – mô hình trường (người test / Claude viết, công cụ không ghi đè)\n"
+                "- Trường dùng phần mềm thế nào (quy chế, cách tính học phí / điểm, trang web riêng, phân cấp)…\n"
+                "- Hay yêu cầu gì, BA thường chốt thế nào, Dev hay sửa ở đâu (VersionSchool/%s?)…\n"
+                "- Điều dễ nhầm khi đọc case của trường này…" % ma)
+    sx = (g.get("schools") or {}).get(ma) or {}
+    head = "# %s – mô hình trường từ case ACS\n\nTrường: [[%s]]%s · quy trình: [[00 Quy trình xuyên phân hệ]] · cách đọc case: [[00 Cách phân tích case]]\n" % (
+        ma, ma, (" – " + sx.get("ten")) if sx.get("ten") else "")
+    if SECRET.search(auto):
+        raise ToolError("Nội dung có vẻ chứa mật khẩu / token – không ghi.")
+    f.write_text("\n".join(fm) + "\n\n" + head + "\n" + keep + "\n\n" + MH_A + "\n" + auto + "\n" + MH_B + "\n", "utf-8")
+    # gắn tóm tắt vào ghi chú trường
+    tf = Path(base) / "Truong" / ("%s.md" % ma)
+    if tf.exists():
+        t = tf.read_text("utf-8", errors="replace")
+        blk = ("## Mô hình trường (từ case ACS)\n[[Case-truong/%s|%d case]]%s – phân hệ hay có case: %s; dạng hay gặp: %s.\n" %
+               (ma, summ["tong_case"], (" tới " + summ["den_ngay"]) if summ["den_ngay"] else "", ", ".join(summ["phan_he_nhieu"][:4]) or "—",
+                ", ".join(summ["dang_nhieu"][:3]) or "—"))
+        if "## Mô hình trường (từ case ACS)" in t:
+            t = re.sub(r'## Mô hình trường \(từ case ACS\)\n.*?(?=\n## |\n---\n|\Z)', lambda m: blk.rstrip("\n"), t, count=1, flags=re.S)
+        else:
+            k = t.find("\n## Khi đọc case")
+            t = (t[:k] + "\n" + blk + t[k:]) if k > 0 else t.rstrip("\n") + "\n\n" + blk
+        tf.write_text(t, "utf-8")
+    return summ
+
+
+def learn_cases(S, rows, only=None):
+    """rows = case ACS (cột META) → ghi Case-truong/<trường>.md cho từng trường (gom mọi phân cấp)."""
+    base, writable = kb_dir(S)
+    if not writable:
+        raise ToolError("KB đang là bản chỉ đọc đi kèm app – chọn thư mục vault (thư mục kb của repo) ở Test case ACS → Thiết lập ACS → Thư mục KB.")
+    g = kb_graph.build(base)
+    groups = {}
+    for x in rows or []:
+        if not isinstance(x, dict) or not x.get("case_id"):
+            continue
+        ma, _ = school_key(g, x.get("school_code"))
+        if not ma or not re.match(r'^[A-Z0-9]{2,12}$', ma) or (only and ma != only):
+            continue
+        groups.setdefault(ma, {})[str(x["case_id"])] = x
+    an = {}
+    for d in S.list_docs("caseAnalyses"):
+        an[str(d["data"].get("caseId") or "")] = d["data"]
+    rts = {}
+    for d in S.list_docs("retests"):
+        v = d["data"]
+        k = str(v.get("caseId") or "")
+        if k and (k not in rts or (v.get("round") or 1) > (rts[k].get("round") or 1)):
+            rts[k] = v
+    out = []
+    for ma, cs in sorted(groups.items()):
+        out.append(write_school_model(S, base, g, ma, list(cs.values()), an, rts))
+    return out
+
+
+def _codes_for(g, ma):
+    codes = {ma}
+    codes |= set(((g.get("schools") or {}).get(ma) or {}).get("phan_cap", {}).keys())
+    try:
+        lk = acs("GET", "/cs/lookups").get("data")
+    except ToolError:
+        lk = None
+    def walk(o, dep=0):
+        if dep > 4:
+            return
+        if isinstance(o, dict):
+            for v in o.values():
+                walk(v, dep + 1)
+        elif isinstance(o, list):
+            for v in o[:5000]:
+                walk(v, dep + 1)
+        elif isinstance(o, str) and re.match(r'^%s[A-Z0-9]{1,8}$' % re.escape(ma), o.strip().upper()):
+            codes.add(o.strip().upper())
+    walk(lk)
+    return sorted(codes)
+
+
+def t_truong_hoc_case(S, a):
+    ma = str(a.get("ma_truong") or "").strip().upper()
+    lim = max(20, min(3000, int(a.get("gioi_han") or 600)))
+    base, _ = kb_dir(S)
+    g = kb_graph.build(base)
+    if ma in ("", "TAT-CA", "TATCA", "*"):
+        cl, only = [{"op": "neq", "conj": "AND", "field": "case_id", "value": "0"}], None
+    else:
+        if not re.match(r'^[A-Z0-9]{2,12}$', ma):
+            raise ToolError("Mã trường không hợp lệ")
+        ma, _ = school_key(g, ma)
+        codes = _codes_for(g, ma)
+        cl, only = [{"op": "in", "conj": "AND", "field": "school_code", "value": ", ".join(codes)}], ma
+    rows, off = [], 0
+    while off < lim:
+        n = min(200, lim - off)
+        r = acs("POST", "/cs/query", {"clauses": cl, "columns": list(META), "sort": "case_id", "desc": True, "offset": off, "limit": n})
+        d = r.get("data") or {}
+        part = d.get("rows") if isinstance(d, dict) else d
+        if r.get("status") != 200 or not isinstance(part, list):
+            if not rows:
+                raise ToolError("ACS trả về mã %s" % r.get("status"))
+            break
+        rows += part
+        if len(part) < n:
+            break
+        off += n
+    res = learn_cases(S, rows, only)
+    return {"da_doc": len(rows), "truong": res,
+            "nhac": "Đã ghi Case-truong/<mã>.md (+ mục 'Mô hình trường' trong Truong/<mã>.md). Đọc lại ghi chú, mở acs_case vài case tiêu biểu "
+                    "(nhiều nhất / case tiếp nối) rồi viết mục 'Nhận xét – mô hình trường' bằng kb_ghi: trường dùng phần mềm thế nào, hay yêu cầu gì, "
+                    "dễ nhầm gì. Không chép dữ liệu cá nhân SV/GV."}
+
+
 HANDLERS = {"kb_tim": t_kb_tim, "kb_doc": t_kb_doc, "kb_anh": t_kb_anh, "kb_luu_anh": t_kb_luu_anh, "acs_anh": t_acs_anh, "kb_ghi": t_kb_ghi, "kb_phan_tich": t_kb_phan_tich, "kb_du_lieu": t_kb_du_lieu,
             "acs_toi": t_acs_toi, "acs_tim_case": t_acs_tim_case, "acs_case": t_acs_case, "acs_case_lien_quan": t_acs_case_lien_quan,
             "case_ghi_phan_tich": t_case_ghi_phan_tich, "case_doc_phan_tich": t_case_doc_phan_tich,
-            "retest_ds": t_retest_ds, "retest_doc_plan": t_retest_doc_plan, "retest_ghi_plan": t_retest_ghi_plan}
+            "retest_ds": t_retest_ds, "retest_doc_plan": t_retest_doc_plan, "retest_ghi_plan": t_retest_ghi_plan,
+            "truong_hoc_case": t_truong_hoc_case}
 
 
 # ------------------------------------------------------------------ JSON-RPC

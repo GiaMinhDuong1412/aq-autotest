@@ -14,6 +14,11 @@ dua_sang: []
 dau_hieu: request, API, đăng nhập, bảo mật 2 lớp, token, rút môn online, gọi từ CVHT, edusoft-api
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "API của Netweb"
+quy_trinh:
+  - "[[12 Tai khoan - phan quyen - web]]"
+tags: [phan-he]
 ---
 # NETWEB-API – API của Netweb
 
@@ -47,6 +52,21 @@ Test **qua trang web** (thao tác đúng chức năng) + kiểm dữ liệu ghi 
 
 ## Test ở đâu
 Tuỳ yêu cầu: web / api – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được NETWEB-API phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]], [[Tai khoan va phan quyen|Tài khoản & phân quyền]]
+3. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+4. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[Danh muc sinh vien|Danh mục sinh viên (mọi SV của trường)]]
+5. **NETWEB-API** – dùng dữ liệu trên
+
+## Nằm trong quy trình
+- [[12 Tai khoan - phan quyen - web|Tài khoản, phân quyền, cấu hình web (dùng chung)]]
+
+## Tài liệu
+- [[HDSD NETWEB]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Đăng nhập / bảo mật: thử cả trường hợp sai (sai mật khẩu, hết phiên, không đủ quyền).

@@ -13,6 +13,14 @@ dua_sang: []
 dau_hieu: phòng lưu trú, đơn giá, hợp đồng, thanh lý, thu phí lưu trú, điện nước
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Ký túc xá"
+  - "Ký túc xá"
+  - "KTX"
+quy_trinh:
+  - "[[05 Hoc phi - thu - thanh toan]]"
+  - "[[11 Ky tuc xa]]"
+tags: [phan-he]
 ---
 # QKTX – Ký túc xá
 
@@ -46,6 +54,24 @@ NetWEB SV: đăng ký ký túc xá (đăng ký trực tuyến / gia hạn).
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được QKTX phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+4. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]], [[Danh muc sinh vien|Danh mục sinh viên (mọi SV của trường)]]
+5. **QKTX** – [[Hop dong KTX|Hợp đồng ký túc xá]]
+
+**Sửa dữ liệu của QKTX → kiểm lại:** phân hệ dùng trực tiếp —.
+
+## Nằm trong quy trình
+- [[05 Hoc phi - thu - thanh toan|Học phí: tính → nợ → thu → thanh toán online]]
+- [[11 Ky tuc xa|Ký túc xá]]
+
+## Tài liệu
+- [[HDSD QKTX]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Thu phí là dữ liệu tiền – chỉ dùng SV test.

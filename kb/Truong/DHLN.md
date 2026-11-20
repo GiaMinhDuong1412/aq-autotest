@@ -9,6 +9,8 @@ trang_thai_hd: Actived
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "Phân hiệu ĐH Lâm nghiệp tại Đồng Nai"
 ---
 # DHLN – Phân hiệu ĐH Lâm nghiệp tại Đồng Nai
 

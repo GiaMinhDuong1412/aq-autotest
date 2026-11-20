@@ -21,6 +21,8 @@ tu_khoa_ph:
   - KHGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Lớp sinh viên"
 ---
 # Lớp sinh viên
 

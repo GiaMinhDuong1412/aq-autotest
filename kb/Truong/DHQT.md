@@ -9,6 +9,8 @@ trang_thai_hd: Chưa mua NetWeb (2021)
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Quốc tế"
 ---
 # DHQT – ĐH Quốc tế
 

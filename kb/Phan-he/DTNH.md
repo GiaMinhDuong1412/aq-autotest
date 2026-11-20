@@ -11,6 +11,10 @@ dua_sang: []
 dau_hieu: khóa ngắn hạn
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Đào tạo ngắn hạn"
+quy_trinh: []
+tags: [phan-he]
 ---
 # DTNH – Đào tạo ngắn hạn
 
@@ -43,6 +47,16 @@ Menu: [[Menu/DTNH|25 menu của DTNH]].
 
 ## Test ở đâu
 Chỉ edusoft.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- (chưa gắn quy trình)
+
+## Tài liệu
+- [[HDSD DTNH]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

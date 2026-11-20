@@ -13,6 +13,12 @@ dua_sang:
 dau_hieu: đề tài, đề cương, hội đồng, bảo vệ luận văn, điểm luận văn
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Bảo vệ luận văn"
+quy_trinh:
+  - "[[07 Diem - hoc vu - hoc bong]]"
+  - "[[08 Tot nghiep - luan van]]"
+tags: [phan-he]
 ---
 # BVLV – Bảo vệ luận văn
 
@@ -44,6 +50,24 @@ Các phân hệ nhận dữ liệu của BVLV: [[DIEM]].
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được BVLV phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. **BVLV** – [[Diem luan van|Điểm luận văn]]
+
+**Sửa dữ liệu của BVLV → kiểm lại:** phân hệ dùng trực tiếp [[DIEM]].
+
+## Nằm trong quy trình
+- [[07 Diem - hoc vu - hoc bong|Điểm → điểm TB → học vụ, học bổng]]
+- [[08 Tot nghiep - luan van|Luận văn → xét tốt nghiệp → quyết định tốt nghiệp]]
+
+## Tài liệu
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Nằm trong tab Tốt nghiệp – mã ACS có thể là QLTN.

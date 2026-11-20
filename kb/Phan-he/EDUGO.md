@@ -11,6 +11,14 @@ dua_sang: []
 dau_hieu: app, điện thoại, EduGO, EduONE, xóa bộ nhớ đệm
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "App AQ EduGO / EduONE"
+  - "EduGO"
+  - "App"
+quy_trinh:
+  - "[[09 Hoat dong tren lop]]"
+  - "[[12 Tai khoan - phan quyen - web]]"
+tags: [phan-he]
 ---
 # EDUGO – App AQ EduGO / EduONE
 
@@ -42,6 +50,17 @@ Test trên điện thoại test; nhiều lỗi hiển thị hết khi xóa bộ 
 
 ## Test ở đâu
 Chỉ app.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- [[09 Hoat dong tren lop|Hoạt động trên lớp: điểm danh, nghỉ dạy – dạy bù, khảo sát]]
+- [[12 Tai khoan - phan quyen - web|Tài khoản, phân quyền, cấu hình web (dùng chung)]]
+
+## Tài liệu
+- [[HDSD EDUGO]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

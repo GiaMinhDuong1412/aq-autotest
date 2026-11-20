@@ -15,6 +15,11 @@ dua_sang: []
 dau_hieu: hệ số lớp đông, loại hình, thù lao, tính khối lượng, CBGD thay thế, biểu mẫu thanh toán
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Khối lượng giảng dạy"
+quy_trinh:
+  - "[[10 Nhan su - khoi luong giang day]]"
+tags: [phan-he]
 ---
 # KLGD – Khối lượng giảng dạy
 
@@ -52,6 +57,26 @@ Không có phần web riêng trong sheet release.
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / mau-in – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được KLGD phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[Phong hoc|Phòng học kỳ]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]], [[Thoi khoa bieu|Thời khóa biểu]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. **KLGD** – [[Khoi luong giang day|Khối lượng giảng dạy]]
+
+**Sửa dữ liệu của KLGD → kiểm lại:** phân hệ dùng trực tiếp —.
+
+## Nằm trong quy trình
+- [[10 Nhan su - khoi luong giang day|Nhân sự → phân công giảng dạy → khối lượng giảng dạy]]
+
+## Tài liệu
+- [[HDSD KHGD]]
+- [[HDSD KLGD]]
+- [[HDSD QLNS]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Biểu mẫu thanh toán / thù lao là **mẫu in** của KLGD – test bằng in/xuất trên Edusoft, đối chiếu số liệu đã tính.

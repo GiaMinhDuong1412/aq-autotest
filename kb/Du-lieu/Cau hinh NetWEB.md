@@ -13,6 +13,8 @@ tu_khoa_ph:
   - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Cấu hình NetWEB"
 ---
 # Cấu hình NetWEB
 

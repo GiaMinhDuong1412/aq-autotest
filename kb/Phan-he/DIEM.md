@@ -22,6 +22,13 @@ dua_sang:
 dau_hieu: bảng ghi điểm, nhập điểm, phách, phúc khảo, điểm TB, phiếu điểm, xét học vụ, chứng chỉ
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Quản lý điểm"
+  - "Quản lý điểm"
+quy_trinh:
+  - "[[07 Diem - hoc vu - hoc bong]]"
+  - "[[08 Tot nghiep - luan van]]"
+tags: [phan-he]
 ---
 # DIEM – Quản lý điểm
 
@@ -63,6 +70,30 @@ NetWEB SV: xem điểm; NetWEB GV: nhập điểm theo nhóm học / tổ thi / 
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được DIEM phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[Phong hoc|Phòng học kỳ]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]], [[Thoi khoa bieu|Thời khóa biểu]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. [[DKMH]] – [[Rang buoc DKMH|Ràng buộc & thời gian đăng ký]], [[KQ DKMH|Kết quả đăng ký môn học]]
+7. [[BVLV]] – [[Diem luan van|Điểm luận văn]]
+8. [[KSDG]] – [[Ket qua khao sat|Kết quả khảo sát]]
+9. [[LTHI]] – [[Danh sach thi|Danh sách thi – lịch thi]]
+10. [[NETWEB-UI]] – [[Diem danh|Điểm danh (chuyên cần)]]
+11. **DIEM** – [[Diem mon hoc|Điểm môn học]], [[Diem trung binh|Điểm trung bình – tích lũy]]
+
+**Sửa dữ liệu của DIEM → kiểm lại:** phân hệ dùng trực tiếp [[QLSV]], [[QLTN]], [[QXHV]]; dữ liệu sinh ra từ đó (theo thứ tự): [[Ket qua hoc vu|Kết quả xét học vụ]] (QXHV), [[Ket qua tot nghiep|Kết quả xét tốt nghiệp]] (QLTN).
+
+## Nằm trong quy trình
+- [[07 Diem - hoc vu - hoc bong|Điểm → điểm TB → học vụ, học bổng]]
+- [[08 Tot nghiep - luan van|Luận văn → xét tốt nghiệp → quyết định tốt nghiệp]]
+
+## Tài liệu
+- [[HDSD DIEM]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Điểm TB là đầu vào của xét học vụ, tốt nghiệp, học bổng – sửa cách tính điểm phải kiểm lại các phân hệ đó.

@@ -3,6 +3,8 @@ loai: truong
 ma: AQ
 ten: AQTech – case nội bộ / sản phẩm chung
 trang_thai: tu-tai-lieu
+aliases:
+  - "AQTech – case nội bộ / sản phẩm chung"
 ---
 # AQ – case nội bộ / sản phẩm chung
 

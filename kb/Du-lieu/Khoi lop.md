@@ -16,6 +16,8 @@ tu_khoa: "khối lớp"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Khối lớp (khóa đào tạo của 1 ngành)"
 ---
 # Khối lớp (khóa đào tạo của 1 ngành)
 

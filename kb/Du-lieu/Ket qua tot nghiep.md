@@ -15,6 +15,8 @@ tu_khoa_ph:
   - QLTN
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Kết quả xét tốt nghiệp"
 ---
 # Kết quả xét tốt nghiệp
 

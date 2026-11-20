@@ -17,6 +17,14 @@ dua_sang:
 dau_hieu: hoãn thi, nhóm thi, đợt thi, tổ thi, lịch thi, số báo danh, coi thi, trùng lịch
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Tổ chức thi"
+  - "Lịch thi"
+  - "Tổ chức thi"
+quy_trinh:
+  - "[[06 To chuc thi]]"
+  - "[[10 Nhan su - khoi luong giang day]]"
+tags: [phan-he]
 ---
 # LTHI – Tổ chức thi
 
@@ -55,6 +63,26 @@ NetWEB SV + GV: xem lịch thi; GV: xem lịch coi thi; CBCNV đăng ký coi thi
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được LTHI phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[Phong hoc|Phòng học kỳ]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]], [[Thoi khoa bieu|Thời khóa biểu]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. [[DKMH]] – [[Rang buoc DKMH|Ràng buộc & thời gian đăng ký]], [[KQ DKMH|Kết quả đăng ký môn học]]
+7. **LTHI** – [[Danh sach thi|Danh sách thi – lịch thi]]
+
+**Sửa dữ liệu của LTHI → kiểm lại:** phân hệ dùng trực tiếp [[DIEM]]; dữ liệu sinh ra từ đó (theo thứ tự): [[Diem mon hoc|Điểm môn học]] (DIEM), [[Diem trung binh|Điểm trung bình – tích lũy]] (DIEM), [[Ket qua hoc vu|Kết quả xét học vụ]] (QXHV), [[Ket qua tot nghiep|Kết quả xét tốt nghiệp]] (QLTN).
+
+## Nằm trong quy trình
+- [[06 To chuc thi|Tổ chức thi]]
+- [[10 Nhan su - khoi luong giang day|Nhân sự → phân công giảng dạy → khối lượng giảng dạy]]
+
+## Tài liệu
+- [[HDSD LTHI]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

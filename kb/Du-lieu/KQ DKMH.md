@@ -21,6 +21,8 @@ tu_khoa: "đăng ký môn|kết quả đăng ký|kq đkmh|đkmh|môn học đã 
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Kết quả đăng ký môn học"
 ---
 # Kết quả đăng ký môn học
 

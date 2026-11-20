@@ -12,6 +12,10 @@ dua_sang: []
 dau_hieu: hoạt động ngoại khóa, điểm rèn luyện tự động
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Hoạt động cộng đồng / điểm rèn luyện"
+quy_trinh: []
+tags: [phan-he]
 ---
 # SAE – Hoạt động cộng đồng / điểm rèn luyện
 
@@ -43,6 +47,15 @@ Nhập / đánh giá điểm rèn luyện trên web (tuỳ trường).
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- (chưa gắn quy trình)
+
+## Tài liệu
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

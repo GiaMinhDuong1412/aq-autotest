@@ -1,0 +1,30 @@
+filters:
+  and:
+    - file.inFolder("Phan-he")
+properties:
+  ten:
+    displayName: "Tên"
+  test_tren:
+    displayName: "Test trên"
+  nhan_tu:
+    displayName: "Nhận từ"
+  dua_sang:
+    displayName: "Đưa sang"
+  quy_trinh:
+    displayName: "Quy trình"
+  trang_thai:
+    displayName: "Trạng thái"
+views:
+  - type: table
+    name: "Phan he"
+    order:
+      - file.name
+      - ten
+      - test_tren
+      - nhan_tu
+      - dua_sang
+      - quy_trinh
+      - trang_thai
+    sort:
+      - property: file.name
+        direction: ASC

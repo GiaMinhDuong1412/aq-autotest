@@ -555,9 +555,27 @@ def k_set_kb_dir(a):
     return {"ok": True, "kbDir": CFG["kbDir"]}
 
 
+def k_kb_hoc_case(a):
+    """Trang Test case ACS (app) đã đọc case trên ACS bằng phiên người dùng → ghi mô hình trường vào kb/Case-truong/ (chỉ ghi KB, không ghi ACS)."""
+    if not mcp_server:
+        raise RuntimeError("Bản app này chưa có MCP / KB.")
+    rows = a.get("rows")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("Chưa có case nào để học.")
+    if len(rows) > 5000:
+        raise ValueError("Quá nhiều case một lần (tối đa 5000).")
+    try:
+        res = mcp_server.learn_cases(sys.modules[__name__], rows, (str(a.get("only") or "").upper() or None))
+    except mcp_server.ToolError as e:
+        raise RuntimeError(str(e))
+    return {"ok": True, "truong": res}
+
+
+
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
              "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft,
-             "save_config": k_save_config, "mcp_status": k_mcp_status, "mcp_register": k_mcp_register, "set_kb_dir": k_set_kb_dir}
+             "save_config": k_save_config, "mcp_status": k_mcp_status, "mcp_register": k_mcp_register, "set_kb_dir": k_set_kb_dir,
+             "kb_hoc_case": k_kb_hoc_case}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)

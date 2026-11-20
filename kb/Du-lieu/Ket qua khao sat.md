@@ -16,6 +16,8 @@ tu_khoa_ph:
   - DGGD
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Kết quả khảo sát"
 ---
 # Kết quả khảo sát
 

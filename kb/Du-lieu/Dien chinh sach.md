@@ -13,6 +13,8 @@ tu_khoa: "diện chính sách|miễn giảm|học bổng"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Diện chính sách / miễn giảm"
 ---
 # Diện chính sách / miễn giảm
 

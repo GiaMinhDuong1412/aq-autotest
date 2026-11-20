@@ -13,6 +13,8 @@ tu_khoa: "điểm danh|chuyên cần|vắng mặt|quét mã|mã qr|qr code"
 tu_khoa_ph: []
 nguon: nguoi-dung
 trang_thai: can-xac-nhan
+aliases:
+  - "Điểm danh (chuyên cần)"
 ---
 # Điểm danh (chuyên cần)
 

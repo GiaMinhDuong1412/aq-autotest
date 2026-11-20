@@ -11,6 +11,8 @@ tu_khoa: "rèn luyện"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Điểm rèn luyện"
 ---
 # Điểm rèn luyện
 
