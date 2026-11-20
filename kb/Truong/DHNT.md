@@ -7,7 +7,7 @@ web_test:
 edusoft_test: 
 trang_thai_hd: Actived
 phan_cap:
-  - "DHNTDHCQ: Đại học chính quy – ftugate.ftu.edu.vn"
+  - "DHNTDHCQ: Đại học chính quy (Hà Nội) – ftugate.ftu.edu.vn"
   - "DHNTCHCQ: Cao học – qlsdh.ftu.edu.vn"
   - "DHNTDHTC: Đại học tại chức – dttt.ftu.edu.vn"
   - "DHNTNTC2: Cơ sở 2 – qldt.cs2.ftu.edu.vn"
