@@ -135,9 +135,12 @@ def build(kb):
     for f in sorted((kb / 'Truong').glob('*.md')) if (kb / 'Truong').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
         ma = str(p.get('ma') or f.stem)
-        acs = p.get('ma_acs') or [ma]
-        tt = str(p.get('ten') or '')
-        schools[ma] = {'ten': tt, 'ma_acs': acs if isinstance(acs, list) else [acs], 'xac_nhan': p.get('trang_thai') == 'da-xac-nhan',
+        pc = {}
+        for it in (p.get('phan_cap') or []) if isinstance(p.get('phan_cap'), list) else []:
+            k, _, v = str(it).partition(':')
+            if k.strip():
+                pc[k.strip().upper()] = v.strip()
+        schools[ma] = {'ten': str(p.get('ten') or ''), 'phan_cap': pc, 'xac_nhan': p.get('trang_thai') == 'da-xac-nhan',
                        'web_that': str(p.get('netweb_that') or '')}
     for f in sorted((kb / 'Dang-case').glob('*.md')) if (kb / 'Dang-case').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
@@ -206,12 +209,19 @@ def query_text(g, text, mod=''):
 
 
 def school_of(g, code):
-    """school_code trên ACS → (mã ghi chú Truong/, thông tin) hoặc (None, None)."""
+    """school_code trên ACS → (mã trường 4 ký tự, thông tin, mã phân cấp | None, tên phân cấp).
+    Quy ước AQ: mã trường 4 ký tự; dài hơn = phân cấp (hệ / cơ sở) của trường đó, vd DHMOTX = DHMO – từ xa."""
     c = str(code or '').strip().upper()
-    for ma, x in (g.get('schools') or {}).items():
-        if c == ma.upper() or c in [str(a).upper() for a in x['ma_acs']]:
-            return ma, x
-    return None, None
+    S = g.get('schools') or {}
+    if not c:
+        return None, None, None, ''
+    for ma, x in S.items():
+        if c == ma.upper():
+            return ma, x, None, ''
+    for ma, x in S.items():
+        if len(ma) == 4 and c.startswith(ma.upper()):
+            return ma, x, c, x.get('phan_cap', {}).get(c, '')
+    return None, None, (c if len(c) > 4 else None), ''
 
 
 def patterns_of(g, kh='', ba='', dev='', mod=''):

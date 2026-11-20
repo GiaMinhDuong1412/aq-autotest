@@ -1,11 +1,10 @@
 ---
 loai: truong
 ma: NNHN
-ten: (chưa rõ – cần xác nhận)
-ma_acs:
-  - NNHN
-trang_thai: can-xac-nhan
+ten: ĐH Nông nghiệp Hà Nội
+phan_cap: []
+trang_thai: da-xac-nhan
 ---
-# NNHN – chưa rõ trường
+# NNHN – ĐH Nông nghiệp Hà Nội
 
-Mã `NNHN` thấy trên ACS (case 64852 "Lỗi UI rút MH"). **Chưa biết tên trường** – người test điền `ten`, link Netweb, chức năng web khi đã xác nhận. Không đoán.
+Người dùng xác nhận tên trường (20/11/2026). Mã `NNHN` thấy trên ACS (case 64852 "Lỗi UI rút MH"). Link Netweb, chức năng web, phân cấp: điền khi biết.

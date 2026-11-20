@@ -107,7 +107,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   `retest_ds/retest_doc_plan/retest_ghi_plan` (plan nháp → collection `retestDrafts/c<caseId>`, trang hiện "Plan do Claude soạn", xoá khi Nhận test).
   Đăng ký: nút "Kết nối Claude Desktop" (tab Thiết lập ACS) → `api/kit/mcp_register` ghi mục `aq-auto-test` vào `claude_desktop_config.json` (sao lưu `.bak-aq`).
   `kb_ghi` chỉ ghi `.md` trong vault, từ chối nội dung giống mật khẩu/token/chuỗi kết nối; không có công cụ ghi lên ACS – giữ nguyên như vậy.
-  **Phân tích case – đúng trước, test sau** (`kb/00 Cách phân tích case.md`): trường (`Truong/` theo `ma_acs`; `AQ` = nội bộ; mã chưa có → không đoán)
+  **Phân tích case – đúng trước, test sau** (`kb/00 Cách phân tích case.md`): trường (`school_code` 4 ký tự = trường, dài hơn = **phân cấp** của trường đó – vd DHMOTX = DHMO từ xa – case theo phân cấp chỉ hiệu lực trên phân cấp đó; `Truong/<4 ký tự>` có `phan_cap: ["MÃ: tên"]`; `AQ` = nội bộ; mã chưa có → không đoán)
   → phân hệ → yêu cầu KH → BA chốt → Dev xử lý (VersionSchool/<trường> = bản riêng) → đối chiếu → dạng case (`Dang-case/`, Properties `dau_hieu_kh/ba/dev`
   = regex gợi ý, chỉ gợi ý khi có dấu hiệu ở KH/BA) → dữ liệu → case liên quan (case gốc `[mã]` trong tiêu đề, cùng trường + phân hệ, cùng dữ liệu / dạng ở trường khác).
   MCP: `acs_case` tách KH / BA / Dev + trường / phân hệ / bản sửa / case gốc / gợi ý dạng; `acs_case_lien_quan`; `case_ghi_phan_tich` → `caseAnalyses/c<id>` (bước 1 hiện

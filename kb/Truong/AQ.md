@@ -2,8 +2,6 @@
 loai: truong
 ma: AQ
 ten: AQTech – case nội bộ / sản phẩm chung
-ma_acs:
-  - AQ
 trang_thai: tu-tai-lieu
 ---
 # AQ – case nội bộ / sản phẩm chung
