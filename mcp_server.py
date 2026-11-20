@@ -46,6 +46,10 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
  Ảnh case đáng giữ làm mẫu (không lộ thông tin cá nhân SV/GV) → kb_luu_anh kèm mô tả.
  Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
  Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
+ PLAN TEST = luồng thao tác thật, NGẮN: ai đăng nhập → làm gì → kết quả đúng là gì → kiểm từng ý KH. Dùng luồng trong kb/Luong-test (acs_case trả 'luong_test')
+ nếu khớp. LUÔN nhờ người dùng cung cấp tài khoản test theo ngữ cảnh (can_cung_cap) – vd điểm danh QR: mã GV có lớp đang dạy + MSSV thuộc lớp đó;
+ chỉ mã tài khoản, KHÔNG hỏi mật khẩu. Bước dùng {Tên} (vd {Mã GV}) – app thay bằng giá trị người dùng nhập. Không thêm mục chung chung / dữ liệu không liên quan.
+ Người dùng mô tả luồng test mới → ghi kb/Luong-test/<tên>.md (Properties: loai: luong-test, dau_hieu, phan_he, nen_tang, can_cung_cap, buoc, khong_anh_huong).
 Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
 Không ghi mật khẩu, token, chuỗi kết nối vào KB. Liên kết Netweb trong Truong/ là site THẬT – chỉ để nhận biết trường, không thao tác.
 Khi người dùng sửa / dạy kiến thức (mã trường trên ACS, quy tắc nghiệp vụ, dấu hiệu dạng case): ghi vào KB bằng kb_ghi, giữ đúng Properties, viết tiếng Việt."""
@@ -131,7 +135,9 @@ TOOLS = [
          "moi_truong": _s("môi trường test, vd 'Edusoft bản test của trường KTTC – bản 2026.11J.18'"),
          "cac_muc": {"type": "array", "items": {"type": "object", "properties": {"nhom": {"type": "string", "enum": list(GROUPS)}, "noi_dung": {"type": "string"}},
                                                 "required": ["nhom", "noi_dung"]}},
-         "ly_do": _s("vì sao chọn nền tảng / các mục này (ngắn) – hiện cho người test")},
+         "ly_do": _s("vì sao chọn nền tảng / các mục này (ngắn) – hiện cho người test"),
+         "can_cung_cap": {"type": "array", "description": "tài khoản / dữ liệu test cần người dùng nhập (chỉ mã, không mật khẩu) – vd [{ten:'Mã GV', vi_sao:'GV có lớp đang dạy'}, {ten:'MSSV', vi_sao:'SV thuộc lớp đó'}]; bước dùng {ten}",
+                          "items": {"type": "object", "properties": {"ten": {"type": "string"}, "vi_sao": {"type": "string"}}, "required": ["ten"]}}},
          "required": ["ma_case", "nen_tang", "cac_muc"]}},
 ]
 
@@ -877,6 +883,8 @@ def t_acs_case(S, a):
         "ban_sua": build.group(1) if build else None, "repo": repo.group(0) if repo else None,
         "case_goc": refs, "goi_y_dang_case": [{"dang": p, "ghi_chu": "Dang-case/%s.md" % p, "vi": w} for p, _, w in pats[:3]],
         "phieu_acs": sheet, "kiem_tra_du": chk,
+        "luong_test": (lambda fl: {"ghi_chu": "Luong-test/%s.md" % fl[0], "ten": fl[1]["ten"], "can_cung_cap": fl[1]["can"], "buoc": fl[1]["buoc"]} if fl[0] else None)(
+            kb_graph.flow_of(g, title + "\n" + sec["yeu_cau_kh"], mod)),
         "anh": [{"so": i + 1, "nguon": f["nguon"], "ten": f["ten"], "xem_duoc": f["loai"] != "ngoai"} for i, f in enumerate(ims)],
         "dinh_kem_khac": [{"ten": f["ten"], "nguon": f["nguon"]} for f in files if not f["anh"]][:20],
         "dien_bien": hist,
@@ -1049,7 +1057,10 @@ def t_retest_ghi_plan(S, a):
     items.sort(key=lambda i: order.index(i["g"]))
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
     doc = {"caseId": cid, "platform": pf, "kind": kind, "env": str(a.get("moi_truong") or "")[:400], "items": items,
-           "why": str(a.get("ly_do") or "")[:1200], "by": "claude", "at": now, "updatedAt": now}
+           "why": str(a.get("ly_do") or "")[:1200], "by": "claude", "at": now, "updatedAt": now,
+           "inputs": [{"k": str(x.get("ten") or "")[:40], "why": str(x.get("vi_sao") or "")[:200]} for x in (a.get("can_cung_cap") or []) if isinstance(x, dict) and x.get("ten")][:8]}
+    if any(re.search(r'mật\s*khẩu|password', x["k"], re.I) for x in doc["inputs"]):
+        raise ToolError("can_cung_cap chỉ hỏi mã tài khoản / dữ liệu – không hỏi mật khẩu.")
     with S.LOCK:
         S.write_doc(S.doc_file("retestDrafts", "c" + cid), doc)
     cur = latest_retest(S, cid)
