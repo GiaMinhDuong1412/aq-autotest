@@ -25,6 +25,12 @@ Tách thành 4 ý (bỏ chào hỏi, chữ ký, thư trích dẫn):
 3. **Dữ liệu cụ thể**: MSSV, mã lớp, học kỳ, đợt, số tiền, ảnh chụp – để tái hiện đúng trường hợp.
 4. **Loại**: lỗi phần mềm / yêu cầu thay đổi – bổ sung / hỏi cách dùng / nhờ xử lý dữ liệu → chọn [[#6. Dạng case|dạng case]].
 
+**Ảnh – xem trước khi kết luận.** Ảnh KH / BA / Dev chụp nói nhiều hơn lời: đúng màn hình / menu / trang web nào, cột nào, số liệu nào, câu báo lỗi, chỗ khoanh đỏ.
+- MCP: `acs_case` trả danh sách `anh` (chỗ `[ảnh]` trong lời KH là nơi chèn ảnh) → `acs_anh` để xem. App: bước 1 có khung **Ảnh trong case**.
+- Lời KH và ảnh khác nhau → **tin ảnh**, ghi rõ chỗ khác. Ảnh cho biết nơi lỗi (trang web hay màn hình Edusoft) → quyết định test ở đâu.
+- Ghi điều thấy trong từng ảnh vào phiếu (mục **Ảnh**) để lần sau tra được (`kb_tim` tìm cả mô tả ảnh của phiếu cũ).
+- Ảnh đáng giữ làm mẫu (không lộ thông tin cá nhân) → `kb_luu_anh` (ảnh vào `Anh/`, chỉ ở máy – không lên git; mô tả trong ghi chú .md).
+
 ## 3. BA đã phân tích gì?
 - BA chốt: **lỗi hay yêu cầu mới**, phạm vi (màn hình / trang nào, trường nào, đối tượng nào), **quy tắc nghiệp vụ đúng** (vd thứ tự ưu tiên miễn giảm).
 - BA chốt khác cách KH viết → **theo BA** (BA đã thống nhất với KH); ghi rõ chỗ khác.
@@ -62,6 +68,7 @@ Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước /
 | Trường | mã ACS → trường (4 ký tự) + phân cấp (nếu có), bản riêng? |
 | Phân hệ | mã → tên, phần nào (Edusoft / web) |
 | KH thấy | ở đâu, ai, hiện trạng |
+| Ảnh | từng ảnh: thấy gì (màn hình, cột, số liệu, câu báo) |
 | KH muốn | từng ý |
 | Dữ liệu KH đưa | MSSV, lớp, học kỳ… |
 | BA chốt | lỗi / yêu cầu mới, phạm vi, quy tắc |

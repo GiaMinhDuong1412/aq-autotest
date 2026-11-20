@@ -5,12 +5,13 @@
                                                                    └─▶ ACS qua cầu nối của app Electron (AQ_ACS_RELAY, chỉ đọc)
 Công cụ:
   kb_tim, kb_doc, kb_ghi, kb_phan_tich, kb_du_lieu   – knowledge base (vault Obsidian, thư mục kbDir hoặc kb/ cạnh server.py)
-  acs_toi, acs_tim_case, acs_case                    – ACS CHỈ ĐỌC (phiên người dùng đã đăng nhập trong app); không có công cụ ghi lên ACS
+  kb_anh, kb_luu_anh                                 – ảnh trong KB (xem / lưu ảnh case kèm mô tả để tra lại)
+  acs_toi, acs_tim_case, acs_case, acs_anh           – ACS CHỈ ĐỌC (phiên người dùng đã đăng nhập trong app); không có công cụ ghi lên ACS
   retest_ds, retest_doc_plan, retest_ghi_plan        – plan test NHÁP (collection retestDrafts) – người test duyệt trên trang Test sau sửa lỗi
 An toàn: chỉ nghe 127.0.0.1 + token trong <local>/mcp.json; kb_ghi chỉ ghi .md trong thư mục KB, từ chối nội dung giống mật khẩu / token / chuỗi kết nối.
 Chỉ thư viện chuẩn.
 """
-import json, os, re, time, datetime, urllib.request, urllib.error
+import base64, json, os, re, time, datetime, urllib.parse, urllib.request, urllib.error
 from pathlib import Path
 
 import kb_graph
@@ -30,12 +31,17 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
     case theo phân cấp chỉ hiệu lực trên phân cấp đó. 'AQ' = case nội bộ / sản phẩm chung. Mã chưa có ghi chú Truong/ → nói rõ, không đoán tên trường.
  1. Phân hệ: đọc Phan-he/<mã>.md (phần Edusoft / web, dạng case thường gặp). Mã phân hệ là nơi xếp case, không phải nơi lỗi xảy ra.
  2. Yêu cầu KH (yeu_cau_kh): hiện trạng (ở đâu, ai gặp), từng mong muốn, dữ liệu cụ thể (MSSV, lớp, học kỳ), loại (lỗi / yêu cầu mới / hỏi / xử lý dữ liệu).
+    ẢNH: acs_case trả 'anh' (ảnh KH / BA / Dev chụp, '[ảnh]' trong lời KH là chỗ chèn ảnh) → LUÔN xem bằng acs_anh trước khi kết luận.
+    Ảnh nói nhiều hơn lời: đúng màn hình / menu / trang web, cột, số liệu, câu báo lỗi, chỗ khoanh đỏ. Lời KH và ảnh khác nhau → tin ảnh, ghi rõ.
+    Ghi điều thấy trong từng ảnh vào phiếu (case_ghi_phan_tich → anh: [{so, nguon, mo_ta}]) để lần sau tra được.
  3. BA (ba): BA chốt lỗi hay yêu cầu mới, phạm vi, quy tắc nghiệp vụ. BA khác KH → theo BA. Không có BA → ghi rõ, đánh dấu câu hỏi mở.
  4. Dev (dev): sửa ở đâu (VersionSchool/<trường> = bản riêng trường, Source.NET/store = Edusoft, report = mẫu in), bản build, sửa gì / không sửa gì.
  5. Đối chiếu từng ý KH ↔ BA ↔ Dev → ý thiếu / chưa rõ = câu hỏi mở.
  6. Dạng case: chọn trong Dang-case/ (gợi ý 'goi_y_dang_case' chỉ là gợi ý – đọc ghi chú dạng case để kiểm).
  7. Dữ liệu: kb_phan_tich → dữ liệu case đụng, phải có trước, ảnh hưởng tới.
  8. Case liên quan / tương tự: acs_case_lien_quan → case gốc ([mã] trong tiêu đề), cùng trường + phân hệ, cùng mô hình ở trường khác; nói VÌ SAO và NÊN LÀM GÌ.
+ KB có ảnh (màn hình mẫu, ảnh case cũ): kb_doc trả kèm ảnh; kb_tim tìm cả ảnh và phiếu phân tích case cũ (kể cả mô tả ảnh).
+ Ảnh case đáng giữ làm mẫu (không lộ thông tin cá nhân SV/GV) → kb_luu_anh kèm mô tả.
  Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
  Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
 Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
@@ -48,11 +54,22 @@ def _s(o, n=None):
 
 
 TOOLS = [
-    {"name": "kb_tim", "description": "Tìm ghi chú trong knowledge base nghiệp vụ (vault Obsidian) theo từ khoá – trả đường dẫn, tiêu đề, dòng khớp.",
+    {"name": "kb_tim", "description": "Tìm trong knowledge base nghiệp vụ (vault Obsidian) theo từ khoá – ghi chú (dòng khớp, ảnh trong ghi chú), "
+                                      "file ảnh, và phiếu phân tích case cũ (kể cả mô tả ảnh của case).",
      "inputSchema": {"type": "object", "properties": {"tu_khoa": _s("từ khoá, vd 'học phí', 'đăng ký môn học', 'DHNT'"),
                                                       "gioi_han": {"type": "integer", "description": "số ghi chú tối đa (mặc định 12)"}}, "required": ["tu_khoa"]}},
-    {"name": "kb_doc", "description": "Đọc nguyên văn một ghi chú KB, vd '00 Logic nghiệp vụ.md', 'Du-lieu/KQ DKMH.md', 'Phan-he/CSHP.md', 'Menu/DKMH.md'.",
+    {"name": "kb_doc", "description": "Đọc nguyên văn một ghi chú KB, vd '00 Logic nghiệp vụ.md', 'Du-lieu/KQ DKMH.md', 'Phan-he/CSHP.md', 'Menu/DKMH.md'. "
+                                      "Ghi chú có ảnh (![[…]]) thì trả kèm ảnh (tối đa 4).",
      "inputSchema": {"type": "object", "properties": {"duong_dan": _s("đường dẫn tương đối trong KB, đuôi .md")}, "required": ["duong_dan"]}},
+    {"name": "kb_anh", "description": "Xem một ảnh trong KB (png/jpg/gif/webp) – đường dẫn lấy từ kb_tim / kb_doc.",
+     "inputSchema": {"type": "object", "properties": {"duong_dan": _s("đường dẫn tương đối trong KB, vd 'Anh/64457-trang-hoc-phi.jpg'")}, "required": ["duong_dan"]}},
+    {"name": "kb_luu_anh", "description": "Lưu một ảnh của case ACS vào KB kèm MÔ TẢ (điều ảnh cho thấy) để sau này tra được bằng kb_tim. "
+                                          "Chỉ lưu ảnh không lộ thông tin cá nhân (tên, MSSV, số tiền của SV cụ thể) hoặc đã được người dùng đồng ý. "
+                                          "Ảnh vào thư mục Anh/ (không đưa lên git), mô tả vào ghi chú .md.",
+     "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case"), "so": {"type": "integer", "description": "số thứ tự ảnh trong acs_case.anh"},
+                                                      "ten": _s("tên ngắn, vd 'trang-hoc-phi-mien-giam'"), "mo_ta": _s("ảnh cho thấy gì: màn hình/trang nào, chỗ nào, lỗi gì"),
+                                                      "ghi_chu": _s("tuỳ chọn: thêm ảnh vào ghi chú có sẵn, vd 'Phan-he/CSHP.md'; trống = tạo Anh/<ten>.md")},
+                     "required": ["ma_case", "so", "ten", "mo_ta"]}},
     {"name": "kb_ghi", "description": "Ghi / sửa một ghi chú KB (.md) – khi người dùng dạy kiến thức mới, xác nhận hoặc sửa liên kết. "
                                       "che_do 'thay' = thay toàn bộ nội dung, 'them' = thêm vào cuối. Giữ Properties ở đầu file. Không ghi mật khẩu/token.",
      "inputSchema": {"type": "object", "properties": {"duong_dan": _s("đường dẫn tương đối trong KB, đuôi .md"), "noi_dung": _s("nội dung Markdown"),
@@ -74,6 +91,10 @@ TOOLS = [
     {"name": "acs_case", "description": "Đọc đầy đủ một case ACS (chỉ đọc), đã tách: trường (theo KB), phân hệ, YÊU CẦU KH, BA PHÂN TÍCH, DEV XỬ LÝ, bản sửa, case gốc, "
                                         "gợi ý dạng case, diễn biến. Bước đầu của mọi phân tích case.",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case, vd 64501")}, "required": ["ma_case"]}},
+    {"name": "acs_anh", "description": "XEM ảnh trong một case ACS (ảnh KH / BA / Dev chụp, chỉ đọc). so = số thứ tự trong acs_case.anh; "
+                                       "không truyền = các ảnh đầu (tối đa 4). Ảnh thu nhỏ để đọc được chữ trên màn hình.",
+     "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case"), "so": {"type": "array", "items": {"type": "integer"}, "description": "vd [1, 2]"}},
+                     "required": ["ma_case"]}},
     {"name": "acs_case_lien_quan", "description": "Tìm case LIÊN QUAN / TƯƠNG TỰ với một case trên ACS (chỉ đọc): case gốc ([mã] trong tiêu đề, 'lần 2'), "
                                                   "cùng trường + cùng phân hệ, cùng phân hệ / cùng dữ liệu / cùng dạng case ở trường khác – kèm lý do và gợi ý nên làm gì.",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case"), "gioi_han": {"type": "integer", "description": "số case trả về (mặc định 15)"}},
@@ -90,7 +111,9 @@ TOOLS = [
          "du_lieu": _s("dữ liệu case đụng tới, phải có trước, ảnh hưởng tới"),
          "case_lien_quan": {"type": "array", "items": {"type": "object", "properties": {"ma": {"type": "string"}, "ly_do": {"type": "string"}, "nen": {"type": "string"}},
                                                      "required": ["ma", "ly_do"]}},
-         "cau_hoi_mo": {"type": "array", "items": {"type": "string"}, "description": "điều chưa rõ cần hỏi BA / Dev / KH"}},
+         "cau_hoi_mo": {"type": "array", "items": {"type": "string"}, "description": "điều chưa rõ cần hỏi BA / Dev / KH"},
+         "anh": {"type": "array", "description": "điều thấy trong từng ảnh của case (acs_anh)",
+                 "items": {"type": "object", "properties": {"so": {"type": "integer"}, "nguon": {"type": "string"}, "mo_ta": {"type": "string"}}, "required": ["so", "mo_ta"]}}},
          "required": ["ma_case", "truong", "phan_he", "kh_muon", "ba_chot", "dev_da_lam"]}},
     {"name": "case_doc_phan_tich", "description": "Đọc phiếu phân tích đã lưu của một case (nếu có).",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case")}, "required": ["ma_case"]}},
@@ -160,13 +183,172 @@ def t_kb_tim(S, a):
         lines = [ln.strip() for ln in t.split("\n") if any(w in ln.lower() for w in words) and not ln.startswith("---")][:3]
         res.append((sc, f.relative_to(base).as_posix(), lines))
     res.sort(key=lambda x: -x[0])
-    return {"ket_qua": [{"duong_dan": r[1], "dong_khop": [x[:220] for x in r[2]]} for r in res[:lim]], "tong": len(res)}
+    out = []
+    for r in res[:lim]:
+        it = {"duong_dan": r[1], "dong_khop": [x[:220] for x in r[2]]}
+        try:
+            ims = note_images(base, base / r[1], (base / r[1]).read_text("utf-8", errors="replace"))
+        except OSError:
+            ims = []
+        if ims:
+            it["anh"] = [{"duong_dan": i["duong_dan"], "chu_thich": i["chu_thich"]} for i in ims[:6]]
+        out.append(it)
+    imgs = []                                   # file ảnh có tên khớp
+    for f in base.rglob("*"):
+        if f.suffix.lower() in IMG_MIME and not any(x.startswith(".") for x in f.relative_to(base).parts):
+            n = kb_graph_slug(f.stem).replace("-", " ").replace("_", " ")
+            if all(kb_graph_slug(w) in n for w in words):
+                imgs.append(f.relative_to(base).as_posix())
+    cases = []                                  # phiếu phân tích case cũ (kể cả mô tả ảnh)
+    for x in S.list_docs("caseAnalyses"):
+        d = x["data"]
+        low = json.dumps(d, ensure_ascii=False).lower()
+        if all(w in low for w in words):
+            hit = [a.get("mo_ta", "")[:200] for a in (d.get("anh") or []) if any(w in str(a.get("mo_ta", "")).lower() for w in words)]
+            cases.append({"ma_case": d.get("caseId"), "truong": str(d.get("truong", ""))[:80], "phan_he": str(d.get("phan_he", ""))[:60],
+                          "kh_muon": (d.get("kh_muon") or [])[:3], "anh_khop": hit[:3]})
+    return {"ket_qua": out, "tong": len(res), "file_anh": imgs[:20], "phieu_case": cases[:15],
+            "nhac": "Ảnh: kb_anh <đường dẫn> để xem. Phiếu case cũ: case_doc_phan_tich, acs_anh để xem lại ảnh của case đó."}
+
+
+IMG_MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif", ".webp": "image/webp", ".bmp": "image/bmp"}
+IMG_RX = r'\.(png|jpe?g|gif|webp|bmp)'
+
+
+def note_images(base, note, text):
+    """ảnh nhúng trong ghi chú: ![[a.png|300]] (Obsidian, tìm theo tên trong cả vault) và ![chú thích](a.png)"""
+    out, seen = [], set()
+    cands = [(m.group(1).strip(), "") for m in re.finditer(r'!\[\[([^\]|#]+?' + IMG_RX + r')(?:[|#][^\]]*)?\]\]', text, re.I)]
+    cands += [(urllib.parse.unquote(m.group(2).strip().strip('<>')), m.group(1)) for m in re.finditer(r'!\[([^\]]*)\]\(([^)]+?' + IMG_RX + r')\s*\)', text, re.I)]
+    for ref, cap in cands:
+        if re.match(r'^[a-z]+:', ref, re.I):
+            continue
+        f = None
+        for c in (note.parent / ref, base / ref):
+            try:
+                c = c.resolve()
+            except OSError:
+                continue
+            if c.is_file() and base in c.parents:
+                f = c
+                break
+        if f is None:
+            f = next((x for x in base.rglob(Path(ref).name) if x.is_file()), None)
+        if f is None or f in seen:
+            continue
+        seen.add(f)
+        if not cap:                              # chú thích = dòng ngay sau ảnh
+            i = text.find(ref)
+            nxt = text[i:].split("\n", 2)
+            cap = nxt[1].strip() if len(nxt) > 1 and not nxt[1].strip().startswith("!") else ""
+        out.append({"file": f, "duong_dan": f.relative_to(base).as_posix(), "chu_thich": cap[:200]})
+    return out
+
+
+def acs_image(path=None, data=None, mime=None, mx=1568):
+    """ảnh qua cầu nối app: path = ảnh trong ACS; data = chỉ thu nhỏ ảnh có sẵn"""
+    url, tok = os.environ.get("AQ_ACS_RELAY"), os.environ.get("AQ_ACS_TOKEN")
+    if not url or not tok:
+        raise ToolError("Xem ảnh ACS chỉ có khi chạy trong app AQ Auto Test (máy cá nhân).")
+    body = {"image": True, "max": mx}
+    body.update({"data": data, "mime": mime} if data else {"path": path})
+    req = urllib.request.Request(url.rstrip("/") + "/acs", data=json.dumps(body).encode("utf-8"),
+                                 headers={"Content-Type": "application/json", "X-AQ-Token": tok}, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r:
+            res = json.loads(r.read().decode("utf-8") or "{}")
+    except (OSError, ValueError) as e:
+        raise ToolError("Không lấy được ảnh qua app: %s" % e)
+    if res.get("status") in (401, 403):
+        raise ToolError("Chưa đăng nhập ACS – mở app AQ Auto Test → Test sau sửa lỗi → Đăng nhập ACS.")
+    if res.get("status") != 200 or not res.get("b64"):
+        raise ToolError(res.get("error") or "Không lấy được ảnh (mã %s)" % res.get("status"))
+    return res
+
+
+def img_block(raw, mime):
+    """bytes ảnh → khối image của MCP (thu nhỏ qua app khi lớn)"""
+    b64 = base64.b64encode(raw).decode("ascii")
+    if len(raw) > 700000 and os.environ.get("AQ_ACS_RELAY"):
+        try:
+            r = acs_image(data=b64, mime=mime)
+            b64, mime = r["b64"], r.get("mime") or mime
+        except ToolError:
+            pass
+    if len(b64) > 5000000:
+        raise ToolError("Ảnh quá lớn để gửi (%d KB) – thu nhỏ ảnh rồi thử lại." % (len(raw) // 1024))
+    return {"type": "image", "data": b64, "mimeType": mime}
 
 
 def t_kb_doc(S, a):
     p = kb_path(S, a.get("duong_dan"))
     t = p.read_text("utf-8", errors="replace")
-    return t if len(t) < 60000 else t[:60000] + "\n…(cắt bớt)"
+    t = t if len(t) < 60000 else t[:60000] + "\n…(cắt bớt)"
+    base, _ = kb_dir(S)
+    ims = note_images(base, p, t)
+    if not ims:
+        return t
+    content = [{"type": "text", "text": t}]
+    for i in ims[:4]:
+        try:
+            content += [{"type": "text", "text": "Ảnh %s%s" % (i["duong_dan"], (" – " + i["chu_thich"]) if i["chu_thich"] else "")},
+                        img_block(i["file"].read_bytes(), IMG_MIME.get(i["file"].suffix.lower(), "image/png"))]
+        except (OSError, ToolError) as e:
+            content.append({"type": "text", "text": "Không mở được ảnh %s: %s" % (i["duong_dan"], e)})
+    if len(ims) > 4:
+        content.append({"type": "text", "text": "Còn %d ảnh: %s – xem bằng kb_anh." % (len(ims) - 4, ", ".join(i["duong_dan"] for i in ims[4:]))})
+    return {"_content": content}
+
+
+def t_kb_anh(S, a):
+    base, _ = kb_dir(S)
+    rel = str(a.get("duong_dan") or "").replace("\\", "/").strip().lstrip("/")
+    p = (base / rel).resolve()
+    if base not in p.parents or p.suffix.lower() not in IMG_MIME or not p.is_file():
+        raise ToolError("Không có ảnh " + rel + " trong KB (png/jpg/gif/webp/bmp) – dùng kb_tim để tìm")
+    return {"_content": [{"type": "text", "text": "Ảnh " + p.relative_to(base).as_posix()}, img_block(p.read_bytes(), IMG_MIME[p.suffix.lower()])]}
+
+
+def t_kb_luu_anh(S, a):
+    base, writable = kb_dir(S)
+    if not writable:
+        raise ToolError("KB đang là bản chỉ đọc đi kèm app – người dùng chọn thư mục vault ở Thiết lập ACS → Kết nối Claude Desktop → Thư mục KB.")
+    cid = str(a.get("ma_case") or "").strip()
+    if not re.match(r'^\d{1,10}$', cid):
+        raise ToolError("Mã case phải là số")
+    desc = re.sub(r'\s+', ' ', str(a.get("mo_ta") or "")).strip()
+    if len(desc) < 10:
+        raise ToolError("Cần mô tả ảnh cho thấy gì (để sau này tra được)")
+    if SECRET.search(desc):
+        raise ToolError("Mô tả có vẻ chứa mật khẩu / token – bỏ ra rồi ghi lại.")
+    det = get_case(S, cid)
+    ims = [f for f in find_files(det) if f["anh"]]
+    try:
+        im = ims[int(a.get("so")) - 1]
+    except (ValueError, TypeError, IndexError):
+        raise ToolError("Case #%s có %d ảnh – so phải từ 1 tới %d" % (cid, len(ims), len(ims)))
+    raw, mime = fetch_case_image(im, 1600)
+    slug = re.sub(r'[^A-Za-z0-9_-]+', '-', kb_graph_slug(str(a.get("ten") or "anh"))).strip('-')[:60] or "anh"
+    ext = ".jpg" if mime == "image/jpeg" else (".png" if mime == "image/png" else IMG_MIME_EXT.get(mime, ".png"))
+    d = base / "Anh"
+    d.mkdir(parents=True, exist_ok=True)
+    name, n = "%s-%s" % (cid, slug), 1
+    while (d / (name + ext)).exists():
+        n += 1
+        name = "%s-%s-%d" % (cid, slug, n)
+    (d / (name + ext)).write_bytes(raw)
+    line = "![[%s%s]]\n%s _(case #%s, ảnh %s – %s)_\n" % (name, ext, desc, cid, a.get("so"), im["nguon"])
+    gc = str(a.get("ghi_chu") or "").strip()
+    if gc:
+        p = kb_path(S, gc, must_exist=False)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        cur = p.read_text("utf-8", errors="replace") if p.exists() else ""
+        p.write_text(cur.rstrip("\n") + ("\n\n" if cur else "") + line, "utf-8")
+    else:
+        p = d / (name + ".md")
+        p.write_text("---\nloai: anh\ncase: \"%s\"\nnguon: %s\n---\n# %s\n\n%s" % (cid, im["nguon"], re.sub(r'\s+', ' ', str(a.get("ten") or slug))[:80], line), "utf-8")
+    return {"ok": True, "anh": "Anh/" + name + ext, "ghi_chu": p.relative_to(base).as_posix(),
+            "nhac": "Ảnh nằm trong KB/Anh (không đưa lên git – có thể có dữ liệu thật); mô tả trong ghi chú .md thì đồng bộ được."}
 
 
 def t_kb_ghi(S, a):
@@ -317,6 +499,7 @@ def html_text(v):
     if not re.search(r'<[a-z!/][^>]*>', v, re.I):
         return v.strip()
     v = re.sub(r'(?is)<(script|style)[^>]*>.*?</\1>', ' ', v)
+    v = re.sub(r'(?i)<img\b[^>]*>', ' [ảnh] ', v)
     v = re.sub(r'(?i)<br\s*/?>|</(p|div|li|tr|h\d)>', '\n', v)
     v = re.sub(r'<[^>]+>', ' ', v)
     for k, x in (("&nbsp;", " "), ("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"'), ("&#39;", "'"), ("&amp;", "&")):
@@ -344,6 +527,130 @@ def _flat(o, pre="", dep=0, out=None):
 def acs_settings(S):
     f = S.doc_file("settings", "acs")
     return (S.read_doc(f) if f.exists() else None) or {}
+
+
+IMG_MIME_EXT = {v: k for k, v in IMG_MIME.items() if k != ".jpeg"}
+ACS_ORIGIN = "https://acs.aqtech.io.vn"
+NGUON = {"yeu_cau_kh": "KH", "ba": "BA", "dev": "Dev", "test_truoc": "Test trước", "khac": "Khác"}
+
+
+def kb_graph_slug(t):
+    import unicodedata
+    t = str(t).replace("đ", "d").replace("Đ", "D")
+    return unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode("ascii").lower()
+
+
+def _sec_of(key):
+    for part in reversed([x for x in key.split(".") if x and not x.isdigit()]):
+        for name, rx in SEC:
+            if rx.search(part):
+                return name
+    return "khac"
+
+
+def _add_file(out, url, name, mime, key):
+    url = str(url or "").strip()
+    if not url or url.lower().startswith("cid:") or any(x["url"] == url for x in out):
+        return
+    if url.startswith("data:"):
+        loai = "data"
+        mime = mime or url[5:].split(";")[0]
+    elif url.startswith(ACS_ORIGIN) or url.startswith("/"):
+        loai = "acs"
+    elif re.match(r'^https?://', url, re.I):
+        loai = "ngoai"
+    elif re.match(r'^[\w./-]+$', url) and "/" in url:
+        loai, url = "acs", "/" + url.lstrip("./")
+    else:
+        return
+    path = urllib.parse.urlparse(url).path if loai != "data" else ""
+    is_img = mime.lower().startswith("image/") or bool(re.search(IMG_RX + r'$', path, re.I))
+    ten = name or (Path(path).name if path else "ảnh dán") or "tệp"
+    sec = _sec_of(key)
+    nguon = "Đính kèm" if sec == "khac" and re.search(r'attach|file|dinh_?kem|upload', key, re.I) else NGUON[sec]
+    out.append({"url": url, "ten": ten[:120], "mime": mime, "nguon": nguon, "anh": is_img, "loai": loai,
+                "trong": key or ""})
+
+
+def find_files(o, key="", dep=0, out=None):
+    """ảnh / file đính kèm trong chi tiết case: <img src> trong nội dung HTML, ![](…), link ảnh, và các object đính kèm (url + tên + loại)"""
+    out = [] if out is None else out
+    if dep > 7:
+        return out
+    if isinstance(o, dict):
+        ks = list(o.keys())
+        url = next((o[k] for k in ks if isinstance(o[k], str) and o[k].strip() and re.search(r'url|path|href|link|src|download|location|uri', k, re.I)
+                    and not re.search(r'avatar|icon|logo', k, re.I)), None)
+        name = next((str(o[k]) for k in ks if isinstance(o[k], str) and re.match(r'^(file_?name|original_?name|name|title|ten|ten_?file)$', k, re.I)), "")
+        mime = next((str(o[k]) for k in ks if isinstance(o[k], str) and re.search(r'content_?type|mime', k, re.I)), "")
+        if not mime:
+            mime = next((str(o[k]) for k in ks if k.lower() == "type" and isinstance(o[k], str) and "/" in o[k]), "")
+        if url and (re.search(r'attach|file|image|img|anh|dinh_?kem|upload|media|photo|screenshot', key, re.I)
+                    or re.search(IMG_RX, url, re.I) or mime.startswith("image/")):
+            _add_file(out, url, name, mime, key)
+        for k, v in o.items():
+            if not re.search(r'pass|token|secret|cookie|avatar', k, re.I):
+                find_files(v, (key + "." + k) if key else k, dep + 1, out)
+    elif isinstance(o, list):
+        for v in o:
+            find_files(v, key, dep + 1, out)
+    elif isinstance(o, str) and re.match(r'^/?[\w./%-]+' + IMG_RX + r'$', o.strip(), re.I) and re.search(r'attach|file|image|img|anh|dinh_?kem|upload|media|photo|screenshot', key, re.I):
+        _add_file(out, o.strip(), "", "", key)
+    elif isinstance(o, str) and len(o) > 8:
+        for m in re.finditer(r'(?is)<img\b[^>]*?\bsrc\s*=\s*["\']([^"\']+)["\'][^>]*>', o):
+            alt = re.search(r'(?i)\balt\s*=\s*["\']([^"\']*)', m.group(0))
+            _add_file(out, m.group(1), alt.group(1) if alt else "", "", key)
+        for m in re.finditer(r'!\[([^\]]*)\]\(([^)\s]+)', o):
+            _add_file(out, m.group(2), m.group(1), "", key)
+        for m in re.finditer(r'(?i)\bhttps?://[^\s"\'<>]+?' + IMG_RX + r'\b[^\s"\'<>]*', o):
+            _add_file(out, m.group(0), "", "", key)
+    return out
+
+
+def fetch_case_image(im, mx=1568):
+    """→ (bytes, mime)"""
+    if im["loai"] == "data":
+        try:
+            head, b64 = im["url"].split(",", 1)
+            raw = base64.b64decode(b64)
+        except ValueError:
+            raise ToolError("Ảnh dán trong nội dung bị hỏng")
+        mime = head[5:].split(";")[0] or "image/png"
+        if len(raw) > 700000 and os.environ.get("AQ_ACS_RELAY"):
+            r = acs_image(data=b64, mime=mime, mx=mx)
+            return base64.b64decode(r["b64"]), r.get("mime") or mime
+        return raw, mime
+    if im["loai"] == "ngoai":
+        raise ToolError("Ảnh nằm ngoài ACS (%s) – không tải (MCP chỉ đọc ACS). Mở case trên ACS để xem." % urllib.parse.urlparse(im["url"]).netloc)
+    r = acs_image(path=im["url"], mx=mx)
+    return base64.b64decode(r["b64"]), r.get("mime") or "image/jpeg"
+
+
+def t_acs_anh(S, a):
+    cid = str(a.get("ma_case") or "").strip()
+    if not re.match(r'^\d{1,10}$', cid):
+        raise ToolError("Mã case phải là số")
+    det = get_case(S, cid)
+    ims = [f for f in find_files(det) if f["anh"]]
+    if not ims:
+        return "Case #%s không có ảnh đọc được trong nội dung / đính kèm." % cid
+    so = [int(x) for x in (a.get("so") or []) if str(x).isdigit()] or list(range(1, min(4, len(ims)) + 1))
+    content = []
+    for n in so[:4]:
+        if not 1 <= n <= len(ims):
+            content.append({"type": "text", "text": "Không có ảnh số %d (case có %d ảnh)." % (n, len(ims))})
+            continue
+        im = ims[n - 1]
+        try:
+            raw, mime = fetch_case_image(im)
+            content += [{"type": "text", "text": "Ảnh %d/%d – %s – %s" % (n, len(ims), im["nguon"], im["ten"])}, img_block(raw, mime)]
+        except ToolError as e:
+            content.append({"type": "text", "text": "Ảnh %d (%s – %s): %s" % (n, im["nguon"], im["ten"], e)})
+    rest = [i for i in range(1, len(ims) + 1) if i not in so[:4]]
+    if rest:
+        content.append({"type": "text", "text": "Còn ảnh %s – acs_anh với so=[…] để xem." % ", ".join(map(str, rest))})
+    content.append({"type": "text", "text": "Ghi điều thấy trong ảnh vào phiếu (case_ghi_phan_tich, mục anh). Ảnh khác lời KH → tin ảnh, ghi rõ chỗ khác."})
+    return {"_content": content}
 
 
 def t_acs_toi(S, a):
@@ -456,6 +763,8 @@ def t_acs_case(S, a):
     build = re.search(r'\bv?(20\d\d\.\d{1,2}[A-Z]{0,2}\.\d{1,3})\b', sec["dev"] + "\n" + json.dumps(hist, ensure_ascii=False))
     repo = re.search(r'VersionSchool/[\w.-]+/[\w./-]+|Source\.NET[\w./-]*', allt)
     pats = kb_graph.patterns_of(g, title + "\n" + sec["yeu_cau_kh"], sec["ba"], sec["dev"], mod)
+    files = find_files(det)
+    ims = [f for f in files if f["anh"]]
     return {
         "ma_case": cid, "tieu_de": title,
         "truong": dict({"school_code": meta.get("school_code"), "truong": sma, "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]},
@@ -472,8 +781,10 @@ def t_acs_case(S, a):
         "ghi_chu_test_truoc": sec["test_truoc"], "khac": sec["khac"][:20],
         "ban_sua": build.group(1) if build else None, "repo": repo.group(0) if repo else None,
         "case_goc": refs, "goi_y_dang_case": [{"dang": p, "ghi_chu": "Dang-case/%s.md" % p, "vi": w} for p, _, w in pats[:3]],
+        "anh": [{"so": i + 1, "nguon": f["nguon"], "ten": f["ten"], "xem_duoc": f["loai"] != "ngoai"} for i, f in enumerate(ims)],
+        "dinh_kem_khac": [{"ten": f["ten"], "nguon": f["nguon"]} for f in files if not f["anh"]][:20],
         "dien_bien": hist,
-        "tiep_theo": "Phân tích theo '00 Cách phân tích case.md': trường → phân hệ → KH → BA → Dev → đối chiếu → dạng case → dữ liệu (kb_phan_tich) → acs_case_lien_quan → case_ghi_phan_tich.",
+        "tiep_theo": ("Case có %d ảnh – XEM bằng acs_anh trước khi kết luận hiện trạng (ảnh cho thấy đúng màn hình / chỗ lỗi). " % len(ims) if ims else "") + "Phân tích theo '00 Cách phân tích case.md': trường → phân hệ → KH → BA → Dev → đối chiếu → dạng case → dữ liệu (kb_phan_tich) → acs_case_lien_quan → case_ghi_phan_tich.",
     }
 
 
@@ -568,7 +879,7 @@ def t_case_ghi_phan_tich(S, a):
         raise ToolError("Mã case phải là số")
     if SECRET.search(json.dumps(a, ensure_ascii=False)):
         raise ToolError("Nội dung có vẻ chứa mật khẩu / token – bỏ ra rồi ghi lại.")
-    keep = ("truong", "phan_he", "kh_thay", "kh_muon", "du_lieu_kh", "loai", "ba_chot", "dev_da_lam", "doi_chieu", "dang_case", "du_lieu", "case_lien_quan", "cau_hoi_mo")
+    keep = ("truong", "phan_he", "kh_thay", "kh_muon", "du_lieu_kh", "loai", "ba_chot", "dev_da_lam", "doi_chieu", "dang_case", "du_lieu", "case_lien_quan", "cau_hoi_mo", "anh")
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
     doc = {k: a[k] for k in keep if a.get(k) not in (None, "", [])}
     doc.update({"caseId": cid, "by": "claude", "at": now, "updatedAt": now})
@@ -655,7 +966,7 @@ def t_retest_ghi_plan(S, a):
     return {"ok": True, "thong_bao": note}
 
 
-HANDLERS = {"kb_tim": t_kb_tim, "kb_doc": t_kb_doc, "kb_ghi": t_kb_ghi, "kb_phan_tich": t_kb_phan_tich, "kb_du_lieu": t_kb_du_lieu,
+HANDLERS = {"kb_tim": t_kb_tim, "kb_doc": t_kb_doc, "kb_anh": t_kb_anh, "kb_luu_anh": t_kb_luu_anh, "acs_anh": t_acs_anh, "kb_ghi": t_kb_ghi, "kb_phan_tich": t_kb_phan_tich, "kb_du_lieu": t_kb_du_lieu,
             "acs_toi": t_acs_toi, "acs_tim_case": t_acs_tim_case, "acs_case": t_acs_case, "acs_case_lien_quan": t_acs_case_lien_quan,
             "case_ghi_phan_tich": t_case_ghi_phan_tich, "case_doc_phan_tich": t_case_doc_phan_tich,
             "retest_ds": t_retest_ds, "retest_doc_plan": t_retest_doc_plan, "retest_ghi_plan": t_retest_ghi_plan}
@@ -688,6 +999,8 @@ def handle(S, msg, version=""):
             return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32602, "message": "Không có công cụ " + str(name)}}
         try:
             res = fn(S, args)
+            if isinstance(res, dict) and "_content" in res:          # có ảnh
+                return ok({"content": res["_content"], "isError": False})
             txt = res if isinstance(res, str) else json.dumps(res, ensure_ascii=False, indent=1)
             return ok({"content": [{"type": "text", "text": txt}], "isError": False})
         except ToolError as e:

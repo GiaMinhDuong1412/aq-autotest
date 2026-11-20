@@ -104,6 +104,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **MCP cho Claude Desktop**: `aq_mcp.py` (stdio, Claude Desktop chạy bằng python.exe của app) → `POST api/mcp` (token trong `<local>/mcp.json`, server ghi lúc
   khởi động; `mcp-tools.json` để trả lời khi app tắt) → `mcp_server.py`: `kb_tim/kb_doc/kb_ghi/kb_phan_tich/kb_du_lieu`, `acs_toi/acs_tim_case/acs_case`
   (**chỉ đọc**, qua cầu nối `desktop/src/mcp-relay.js` – GET /auth/me, GET /cs/…, POST /cs/query; env `AQ_ACS_RELAY/AQ_ACS_TOKEN`),
+  **ảnh**: `acs_anh` (ảnh trong case – `<img>` trong nội dung, đính kèm; app tải bằng phiên ACS qua `image()` trong `acs.js`, chỉ GET, chỉ image/*, thu nhỏ bằng nativeImage), `kb_doc` trả kèm ảnh nhúng của ghi chú, `kb_anh`,
+  `kb_luu_anh` (ảnh case → `kb/Anh/` – file ảnh gitignore, mô tả .md lên git), `kb_tim` tìm cả file ảnh + phiếu `caseAnalyses` (mục `anh` = Claude mô tả từng ảnh); bước 1 có khung **Ảnh trong case** (`rtImgs`/`rtImgHtml`, `aqDesktop.acs.image`),
   `retest_ds/retest_doc_plan/retest_ghi_plan` (plan nháp → collection `retestDrafts/c<caseId>`, trang hiện "Plan do Claude soạn", xoá khi Nhận test).
   Đăng ký: nút "Kết nối Claude Desktop" (tab Thiết lập ACS) → `api/kit/mcp_register` ghi mục `aq-auto-test` vào `claude_desktop_config.json` (sao lưu `.bak-aq`).
   `kb_ghi` chỉ ghi `.md` trong vault, từ chối nội dung giống mật khẩu/token/chuỗi kết nối; không có công cụ ghi lên ACS – giữ nguyên như vậy.
