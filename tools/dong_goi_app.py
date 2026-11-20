@@ -31,9 +31,11 @@ def ds_ma():
     out = []
     for f in ("server.py", "app_update.py", "kb_graph.py", "mcp_server.py", "aq_mcp.py"):
         out.append((f, (ROOT / f).read_bytes()))
-    for p in sorted((ROOT / "kb").rglob("*.md")):           # KB chỉ đọc đi kèm app (người dùng chọn vault của mình để sửa)
-        if not any(x.startswith(".") for x in p.relative_to(ROOT / "kb").parts):
-            out.append(("kb/" + p.relative_to(ROOT / "kb").as_posix(), p.read_bytes()))
+    for p in sorted((ROOT / "kb").rglob("*")):              # KB đi kèm app – server.app_kb() chép ra KB ghi được của app
+        rel = p.relative_to(ROOT / "kb").as_posix()
+        if p.is_file() and (p.suffix in (".md", ".canvas", ".base") and not any(x.startswith(".") for x in rel.split("/"))
+                            or rel in (".obsidian/app.json", ".obsidian/templates.json")):
+            out.append(("kb/" + rel, p.read_bytes()))
     sys.path.insert(0, str(ROOT))
     import kb_graph
     for f in ("index.html", "claude-shim.js", "edusoft-catalog.json"):

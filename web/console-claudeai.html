@@ -10294,12 +10294,14 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rt-pad"><p>Trạng thái: <b>'+esc(st)+'</b>'+(m?' · ACS: '+(m.acs?'đọc qua phiên trong app':'chỉ có trong app')+'':'')+'</p>'+
       (m&&m.windows&&m.claude?'<div class="rt-btns"><button type="button" class="btn sm primary" data-rt="mcpreg">'+(reg?'Kết nối lại':'Kết nối Claude Desktop')+'</button></div>':'')+
       '<p class="hint">Sau khi kết nối: thoát hẳn Claude Desktop rồi mở lại – trong ô chat có mục công cụ <b>aq-auto-test</b>. Giữ app AQ Auto Test đang mở (và đăng nhập ACS) khi hỏi Claude.</p>'+
-      '<div class="rt-mcp-kb"><span class="k">Thư mục KB</span><span class="mono">'+esc(m?m.kbDir:'')+'</span>'+(m?(m.kbWritable?' <span class="tg soft">Claude sửa được</span>':' <span class="tg soft">chỉ đọc</span>'):'')+
+      '<div class="rt-mcp-kb"><span class="k">Thư mục KB</span><span class="mono">'+esc(m?m.kbDir:'')+'</span>'+(m?(m.kbApp?' <span class="tg soft">KB của app – ghi được</span>':m.kbWritable?' <span class="tg soft">Claude sửa được</span>':' <span class="tg soft">chỉ đọc</span>'):'')+
         '<span class="rt-btns">'+(window.aqDesktop&&aqDesktop.pickFile?'<button type="button" class="btn sm" data-rt="kbpick">Chọn vault…</button>':'')+(m&&m.kbChosen?'<button type="button" class="btn sm" data-rt="kbclear">Bỏ chọn</button>':'')+
-        '<button type="button" class="btn sm" data-rt="kbreload">Đọc lại bản đồ</button></span></div>'+
+        (m&&m.windows?'<button type="button" class="btn sm" data-rt="kbopen">Mở thư mục</button>':'')+'<button type="button" class="btn sm" data-rt="kbreload">Đọc lại bản đồ</button></span></div>'+
+      (m&&m.kbApp?'<p class="hint">Chưa chọn vault nên app dùng <b>KB của app</b> (chép từ KB đi kèm, ghi được: Học case, Claude dạy thêm kiến thức). Xem bằng Obsidian: <i>Open folder as vault</i> → thư mục trên. Muốn chia sẻ cho người khác qua git thì bấm Chọn vault… → thư mục kb của repo aq-autotest.</p>':'')+
       (window.aqDesktop&&aqDesktop.acs?'<div class="rt-mcp-kb"><span class="k">Mô hình trường</span><span>Đọc case trên ACS (chỉ đọc) → ghi <span class="mono">kb/Case-truong/&lt;trường&gt;.md</span>: phân hệ, phân cấp, dạng case, chủ đề lặp lại, case tiếp nối của từng trường.</span>'+
         '<span class="rt-btns"><label class="hint">số case mới nhất <input id="rtHocN" type="number" min="50" max="5000" step="50" value="'+esc(String((RT.hoc&&RT.hoc.n)||1000))+'" style="width:84px"></label>'+
-        '<button type="button" class="btn sm" data-rt="hoccase"'+((RT.hoc&&RT.hoc.busy)||!(m&&m.kbWritable)?' disabled':'')+' title="'+(m&&m.kbWritable?'':'Chọn vault KB trước')+'">Học case → KB</button></span>'+
+        '<button type="button" class="btn sm" data-rt="hoccase"'+((RT.hoc&&RT.hoc.busy)||!(m&&m.kbWritable)?' disabled':'')+' title="'+(m&&m.kbWritable?'':'KB đang chỉ đọc – chọn vault KB trước')+'">Học case → KB</button></span>'+
+        (m&&!m.kbWritable?'<span class="hint">KB đang chỉ đọc – bấm <b>Chọn vault…</b> (thư mục kb của repo) để học case.</span>':'')+
         (RT.hoc&&(RT.hoc.msg||RT.hoc.err)?'<span class="'+(RT.hoc.err?'save-err':'hint')+'">'+esc(RT.hoc.err||RT.hoc.msg)+'</span>':'')+'</div>':'')+
       '<p class="hint">Chọn thư mục <span class="mono">kb</span> trong repo aq-autotest (vault bạn mở bằng Obsidian) để app dùng ghi chú bạn vừa sửa và Claude ghi được kiến thức mới; chạy dong-bo.bat để chia sẻ cho máy khác.</p>'+
       '<details class="rt-hist"><summary>Câu hỏi mẫu cho Claude</summary><ul class="rt-ol"><li>Lấy các case cần test của tôi trên ACS, case nào liên quan nhau?</li><li>Đọc case 64501, phân tích theo KB rồi ghi plan test vào app.</li>'+
@@ -10385,6 +10387,7 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='kbpick'){if(window.aqDesktop&&aqDesktop.pickFile)aqDesktop.pickFile({dir:true,title:'Chọn thư mục kb (vault Obsidian) trong repo aq-autotest'}).then(function(v){if(v)rtMcpAct('set_kb_dir',{dir:v});});return;}
       if(act==='kbclear'){rtMcpAct('set_kb_dir',{dir:''});return;}
       if(act==='hoccase'){rtHocCase();return;}
+      if(act==='kbopen'){rtKit('open_kb',{}).catch(function(e){RT.mcpErr=errMsg(e);renderRetest();});return;}
       if(act==='kbreload'){kbLive(true);RT.flash='Đã đọc lại bản đồ từ ghi chú KB.';renderRetest();return;}
       if(act==='regen'){var d4=dr();if(d4){d4.edited=false;rtRegen(RT.cur);}renderRetest();return;}
       if(act==='replan'){var r5=rtCurDoc(),d5=dr();if(r5&&d5&&r5.plan){d5.items=r5.plan.items.map(function(x){return {g:x.g,t:x.t};});d5.env=r5.plan.env;d5.pf=r5.platform||d5.pf;d5.kind=r5.kind||d5.kind;
