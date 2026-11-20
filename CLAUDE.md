@@ -124,6 +124,8 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   "Ràng buộc quay ngược" = dữ liệu sinh sau nhưng chặn lại, vd nợ học phí → ĐKMH), **Nằm trong quy trình**, **Tài liệu**; **mô hình trường** `Case-truong/<mã 4 ký tự>.md`
   (`00 Mô hình trường.md`): phần *Nhận xét* viết tay + phần tự động giữa `<!-- tu-dong:… -->` (theo phân hệ / phân cấp / dạng / dữ liệu / chủ đề `TERMS` / case tiếp nối / danh sách,
   tiêu đề che PII bằng `mask`) – MCP `truong_hoc_case` (ACS chỉ đọc, `learn_cases`) hoặc nút **Học case → KB** (thẻ Kết nối Claude Desktop, `rtHocCase` → `api/kit/kb_hoc_case`);
+  **KB của app** (`server.app_kb`, `KB_APP`): app / bản không có git và chưa chọn vault → KB ghi được ở `<thư mục dữ liệu>/../kb` (vd `%APPDATA%\AQ Auto Test\kb`), chép từ KB đi kèm,
+  manifest `.aq-goc.json` (file chưa sửa thì cập nhật theo app, đã sửa thì giữ); `mcp_server.kb_dir`: kbDir đã chọn > repo `kb/` > KB của app > chỉ đọc; nút "Mở thư mục" (`api/kit/open_kb`); app đóng gói cả `.canvas`/`.base`.
   kb_graph đọc `Case-truong` vào `schools[ma].mh` → bước 1 hiện "Trường hay có case…", `acs_case.truong.mo_hinh`. Obsidian: `_bases/*.base` (Bases), `00 Vòng đời đào tạo.canvas`,
   `00 Bản đồ phân hệ.canvas`, template `_templates/{Quy trinh,Tai lieu,Case truong}.md`; **không** commit `.obsidian/graph.json` (máy người dùng có sẵn → xung đột) – nhóm màu hướng dẫn trong `00 Bắt đầu.md`.
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục từng case (chỉ `Case-truong/` gom theo trường, không chép dữ liệu cá nhân). Không ghi mật khẩu vào kb/.

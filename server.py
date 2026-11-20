@@ -508,7 +508,7 @@ def k_mcp_status(a):
         except Exception:
             reg.append({"file": str(d / "claude_desktop_config.json"), "ok": False, "co": False})
     return {"windows": os.name == "nt", "claude": bool(claude_cfg_dirs()), "registered": reg, "kbDir": str(kb), "kbWritable": writable,
-            "kbChosen": bool(CFG.get("kbDir")), "acs": bool(os.environ.get("AQ_ACS_RELAY")), "ready": bool(MCP["token"])}
+            "kbChosen": bool(CFG.get("kbDir")), "kbApp": bool(KB_APP) and not CFG.get("kbDir"), "acs": bool(os.environ.get("AQ_ACS_RELAY")), "ready": bool(MCP["token"])}
 
 
 def k_mcp_register(a):
@@ -555,6 +555,54 @@ def k_set_kb_dir(a):
     return {"ok": True, "kbDir": CFG["kbDir"]}
 
 
+KB_APP = None                                      # KB ghi được của app (khi không phải repo và chưa chọn vault) – xem app_kb()
+
+
+def app_kb():
+    """App / bản không có git, chưa chọn vault: dùng KB ghi được ở <thư mục dữ liệu>/../kb (vd %APPDATA%\\AQ Auto Test\\kb), chép từ KB đi kèm.
+    Mỗi lần mở: file đi kèm mới / đổi mà người dùng chưa sửa → cập nhật; file người dùng (hoặc Claude, Học case) đã sửa → giữ nguyên.
+    Mở thư mục này bằng Obsidian (Open folder as vault) để xem; muốn chia sẻ qua git thì chọn vault là thư mục kb của repo."""
+    src = ROOT / "kb"
+    if (ROOT / ".git").exists() or MODE["public"] or not src.is_dir():
+        return None
+    dst = DATA.parent / "kb"
+    man_f = dst / ".aq-goc.json"
+    try:
+        man = json.loads(man_f.read_text("utf-8")) if man_f.exists() else {}
+    except ValueError:
+        man = {}
+    new = {}
+    for f in sorted(src.rglob("*")):
+        if not f.is_file():
+            continue
+        rel = f.relative_to(src).as_posix()
+        if rel.startswith(".obsidian/") and rel not in (".obsidian/app.json", ".obsidian/templates.json"):
+            continue
+        b = f.read_bytes()
+        h = hashlib.sha1(b).hexdigest()
+        new[rel] = h
+        t = dst / rel
+        if t.exists():
+            cur = hashlib.sha1(t.read_bytes()).hexdigest()
+            if cur == h or (rel in man and cur != man[rel]):       # đã giống, hoặc người dùng đã sửa → giữ
+                if cur != h and rel in man:
+                    new[rel] = man[rel]                              # vẫn nhớ bản gốc cũ để lần sau còn nhận ra "đã sửa"
+                continue
+        t.parent.mkdir(parents=True, exist_ok=True)
+        t.write_bytes(b)
+    dst.mkdir(parents=True, exist_ok=True)
+    man_f.write_text(json.dumps(new, ensure_ascii=False, indent=0), "utf-8")
+    return dst
+
+
+def k_open_kb(a):
+    kb = mcp_server.kb_dir(sys.modules[__name__])[0] if mcp_server else ROOT / "kb"
+    if os.name != "nt":
+        raise RuntimeError("Chỉ mở thư mục được trên Windows – thư mục: %s" % kb)
+    os.startfile(str(kb))                                            # noqa – mở Explorer ở thư mục KB
+    return {"ok": True, "kbDir": str(kb)}
+
+
 def k_kb_hoc_case(a):
     """Trang Test case ACS (app) đã đọc case trên ACS bằng phiên người dùng → ghi mô hình trường vào kb/Case-truong/ (chỉ ghi KB, không ghi ACS)."""
     if not mcp_server:
@@ -575,7 +623,7 @@ def k_kb_hoc_case(a):
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
              "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft,
              "save_config": k_save_config, "mcp_status": k_mcp_status, "mcp_register": k_mcp_register, "set_kb_dir": k_set_kb_dir,
-             "kb_hoc_case": k_kb_hoc_case}
+             "kb_hoc_case": k_kb_hoc_case, "open_kb": k_open_kb}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)
@@ -1116,7 +1164,7 @@ class H(BaseHTTPRequestHandler):
 
 
 def main():
-    global DATA, LOCAL, ASSETS, CFG_FILE, CFG
+    global DATA, LOCAL, ASSETS, CFG_FILE, CFG, KB_APP
     ap = argparse.ArgumentParser(description="AQ Autotest Console")
     ap.add_argument("--port", type=int, default=int(CFG.get("port") or 8787))
     ap.add_argument("--no-browser", action="store_true")
@@ -1142,6 +1190,10 @@ def main():
         save_cfg(CFG)
     if MODE["auth"]:
         load_auth()
+    try:
+        KB_APP = app_kb()
+    except OSError as e:
+        print("Không chuẩn bị được KB của app:", e)
     host = a.host or ("0.0.0.0" if a.public else "127.0.0.1")
     srv = ThreadingHTTPServer((host, a.port), H)
     if mcp_server and not a.public:

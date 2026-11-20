@@ -162,7 +162,12 @@ def kb_dir(S):
     if d and Path(d).is_dir():
         return Path(d).resolve(), True
     p = S.ROOT / "kb"
-    return p.resolve(), (S.ROOT / ".git").exists()       # repo: ghi được; bản app chưa chọn vault: chỉ đọc
+    if (S.ROOT / ".git").exists():                       # repo: ghi thẳng vào kb/ (lên git bằng dong-bo.bat)
+        return p.resolve(), True
+    ka = getattr(S, "KB_APP", None)                      # app chưa chọn vault: KB ghi được của app (server.app_kb)
+    if ka and Path(ka).is_dir():
+        return Path(ka).resolve(), True
+    return p.resolve(), False
 
 
 def kb_path(S, rel, must_exist=True):
@@ -1281,7 +1286,7 @@ def learn_cases(S, rows, only=None):
     """rows = case ACS (cột META) → ghi Case-truong/<trường>.md cho từng trường (gom mọi phân cấp)."""
     base, writable = kb_dir(S)
     if not writable:
-        raise ToolError("KB đang là bản chỉ đọc đi kèm app – chọn thư mục vault (thư mục kb của repo) ở Test case ACS → Thiết lập ACS → Thư mục KB.")
+        raise ToolError("KB đang là bản chỉ đọc – mở lại app AQ Auto Test bản mới (tự tạo KB ghi được) hoặc chọn thư mục vault ở Test case ACS → Thiết lập ACS → Thư mục KB.")
     g = kb_graph.build(base)
     groups = {}
     for x in rows or []:
