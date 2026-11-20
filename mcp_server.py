@@ -7,7 +7,7 @@ Công cụ:
   kb_tim, kb_doc, kb_ghi, kb_phan_tich, kb_du_lieu   – knowledge base (vault Obsidian, thư mục kbDir hoặc kb/ cạnh server.py)
   kb_anh, kb_luu_anh                                 – ảnh trong KB (xem / lưu ảnh case kèm mô tả để tra lại)
   acs_toi, acs_tim_case, acs_case, acs_anh           – ACS CHỈ ĐỌC (phiên người dùng đã đăng nhập trong app); không có công cụ ghi lên ACS
-  retest_ds, retest_doc_plan, retest_ghi_plan        – plan test NHÁP (collection retestDrafts) – người test duyệt trên trang Test sau sửa lỗi
+  retest_ds, retest_doc_plan, retest_ghi_plan        – plan test NHÁP (collection retestDrafts) – người test duyệt trên trang Test case ACS
 An toàn: chỉ nghe 127.0.0.1 + token trong <local>/mcp.json; kb_ghi chỉ ghi .md trong thư mục KB, từ chối nội dung giống mật khẩu / token / chuỗi kết nối.
 Chỉ thư viện chuẩn.
 """
@@ -99,7 +99,7 @@ TOOLS = [
                                                   "cùng trường + cùng phân hệ, cùng phân hệ / cùng dữ liệu / cùng dạng case ở trường khác – kèm lý do và gợi ý nên làm gì.",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case"), "gioi_han": {"type": "integer", "description": "số case trả về (mặc định 15)"}},
                      "required": ["ma_case"]}},
-    {"name": "case_ghi_phan_tich", "description": "Lưu PHIẾU PHÂN TÍCH case vào app (người test xem ở bước 1 trang Test sau sửa lỗi). Ghi theo 00 Cách phân tích case.md.",
+    {"name": "case_ghi_phan_tich", "description": "Lưu PHIẾU PHÂN TÍCH case vào app (người test xem ở bước 1 trang Test case ACS). Ghi theo 00 Cách phân tích case.md.",
      "inputSchema": {"type": "object", "properties": {
          "ma_case": _s("mã case"), "truong": _s("mã ACS → trường, hệ / cơ sở, có bản riêng không"), "phan_he": _s("mã → tên, phần Edusoft hay web"),
          "kh_thay": _s("hiện trạng KH thấy: ở đâu, ai gặp"), "kh_muon": {"type": "array", "items": {"type": "string"}, "description": "từng mong muốn của KH"},
@@ -121,7 +121,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "retest_doc_plan", "description": "Đọc plan test của một case trong app: plan nháp (Claude ghi) và phiếu đang test (nếu đã nhận test).",
      "inputSchema": {"type": "object", "properties": {"ma_case": _s("mã case")}, "required": ["ma_case"]}},
-    {"name": "retest_ghi_plan", "description": "Ghi plan test NHÁP cho một case vào app (trang Test sau sửa lỗi) – người test xem, sửa rồi bấm Nhận test. "
+    {"name": "retest_ghi_plan", "description": "Ghi plan test NHÁP cho một case vào app (trang Test case ACS) – người test xem, sửa rồi bấm Nhận test. "
                                                "Không thay phiếu đã nhận test. nhom: prep (chuẩn bị: môi trường, dữ liệu phải có trước) | repro (tái hiện như KH) | "
                                                "check (mỗi yêu cầu KH một mục) | reg (không ảnh hưởng).",
      "inputSchema": {"type": "object", "properties": {
@@ -260,7 +260,7 @@ def acs_image(path=None, data=None, mime=None, mx=1568):
     except (OSError, ValueError) as e:
         raise ToolError("Không lấy được ảnh qua app: %s" % e)
     if res.get("status") in (401, 403):
-        raise ToolError("Chưa đăng nhập ACS – mở app AQ Auto Test → Test sau sửa lỗi → Đăng nhập ACS.")
+        raise ToolError("Chưa đăng nhập ACS – mở app AQ Auto Test → Test case ACS → Đăng nhập ACS.")
     if res.get("status") != 200 or not res.get("b64"):
         raise ToolError(res.get("error") or "Không lấy được ảnh (mã %s)" % res.get("status"))
     return res
@@ -355,7 +355,7 @@ def t_kb_ghi(S, a):
     base, writable = kb_dir(S)
     if not writable:
         raise ToolError("KB đang là bản chỉ đọc đi kèm app. Người dùng chọn thư mục vault Obsidian (thư mục kb của repo) ở app: "
-                        "Test sau sửa lỗi → Thiết lập ACS → Kết nối Claude Desktop → Thư mục KB.")
+                        "Test case ACS → Thiết lập ACS → Kết nối Claude Desktop → Thư mục KB.")
     body = str(a.get("noi_dung") or "")
     if not body.strip():
         raise ToolError("Nội dung trống")
@@ -490,7 +490,7 @@ def acs(method, path, body=None):
     if res.get("error"):
         raise ToolError(res["error"])
     if res.get("status") in (401, 403):
-        raise ToolError("Chưa đăng nhập ACS – mở app AQ Auto Test → Test sau sửa lỗi → bấm Đăng nhập ACS, rồi thử lại.")
+        raise ToolError("Chưa đăng nhập ACS – mở app AQ Auto Test → Test case ACS → bấm Đăng nhập ACS, rồi thử lại.")
     return res
 
 
@@ -887,7 +887,7 @@ def t_case_ghi_phan_tich(S, a):
         raise ToolError("Phiếu quá dài – viết gọn lại.")
     with S.LOCK:
         S.write_doc(S.doc_file("caseAnalyses", "c" + cid), doc)
-    return {"ok": True, "thong_bao": "Đã lưu phiếu phân tích case #%s – người test xem ở app: Test sau sửa lỗi → case #%s → bước 1." % (cid, cid)}
+    return {"ok": True, "thong_bao": "Đã lưu phiếu phân tích case #%s – người test xem ở app: Test case ACS → case #%s → bước 1." % (cid, cid)}
 
 
 def t_case_doc_phan_tich(S, a):
@@ -958,7 +958,7 @@ def t_retest_ghi_plan(S, a):
         S.write_doc(S.doc_file("retestDrafts", "c" + cid), doc)
     cur = latest_retest(S, cid)
     has_an = S.doc_file("caseAnalyses", "c" + cid).exists()
-    note = "Đã ghi plan nháp cho case #%s (%d mục). Người test mở app → Test sau sửa lỗi → chọn case #%s → bước 2 Plan test để duyệt rồi Nhận test." % (cid, len(items), cid)
+    note = "Đã ghi plan nháp cho case #%s (%d mục). Người test mở app → Test case ACS → chọn case #%s → bước 2 Plan test để duyệt rồi Nhận test." % (cid, len(items), cid)
     if cur and cur["data"].get("state") in ("testing", "queued", "running", "review"):
         note += " Lưu ý: case đang có phiếu test (" + str(cur["data"].get("state")) + ") – plan nháp không thay phiếu đang test; nói người test đối chiếu và sửa plan của phiếu nếu cần."
     if not has_an:

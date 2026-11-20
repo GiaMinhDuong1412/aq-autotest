@@ -55,7 +55,10 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **Popup app**: màn hình chờ khi mở (`showSplash` trong `desktop/src/main.js`), hộp cập nhật giữ mở có thanh tiến trình, "Có gì mới"
   sau khi cập nhật (`thay-doi.json` = tên các PR, `dong_goi_app.py` tạo lúc build; `aqDesktop.getInfo` → bản trước), hướng dẫn người mới
   (màn chào mừng 4 bước lần đầu, thẻ "Bắt đầu" trên Tổng quan, menu tài khoản: Hướng dẫn sử dụng / Có gì mới).
-- Trang **Test sau sửa lỗi** (`page-retest`, khối JS `RT`, collection `retests/c<caseId>-<lần>`): lấy case coder đã xử lý từ ACS theo
+- **Giao diện mặc định = Mẫu A** (theme `:root:not([data-theme])`): thanh bên mực đậm `--sb-*`, nền `#edf0f3`, nhấn cam `--hi` (nút chính, mục menu đang chọn – chữ mực `--hi-ink`),
+  chữ/link xanh lục `--accent`; trang Test case ACS: danh sách case nền tối (thẻ `.rt-crow`), bước đang làm nền mực. Theme cũ "AQ Xanh" = `data-theme="aq-xanh"`; máy cũ tự chuyển sang Mẫu A một lần (localStorage `aq-mau-a`).
+  Bản thảo các mẫu: artifact https://claude.ai/artifact/SdGBW2x1oNZLUGFZPxG6VV.
+- Trang **Test case ACS** (menu, trước đây "Test sau sửa lỗi"; `page-retest`, khối JS `RT`, collection `retests/c<caseId>-<lần>`): lấy case coder đã xử lý từ ACS theo
   Query của người dùng → giao máy test (máy chạy thử / máy ảo khai báo ở Máy chạy thử) → chạy kịch bản (script: `kitRunReq`, tay: `startRun`,
   lượt chạy gắn phiếu qua `SC.run.retest` / `rtLink`) → duyệt ảnh từng bước → **Đạt**: điền nội dung test vào case; **Không đạt**: mở lại case,
   gán `tiepnhanadmin`, điền nội dung test lỗi. Kết nối ACS "cách 2" như app `aq-case-widget`: `desktop/src/acs.js` mở cửa sổ ACS (partition
@@ -114,7 +117,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   = regex gợi ý, chỉ gợi ý khi có dấu hiệu ở KH/BA) → dữ liệu → case liên quan (case gốc `[mã]` trong tiêu đề, cùng trường + phân hệ, cùng dữ liệu / dạng ở trường khác).
   MCP: `acs_case` tách KH / BA / Dev + trường / phân hệ / bản sửa / case gốc / gợi ý dạng; `acs_case_lien_quan`; `case_ghi_phan_tich` → `caseAnalyses/c<id>` (bước 1 hiện
   "Phiếu phân tích"). Bước 1 (`rtW1`): `rtCtx` (Trường / Phân hệ / Dạng case) → Thông tin ACS (thu gọn) → Đọc case 1-2-3 → Phiếu phân tích → Nơi test (AQ đoán nhanh
-  khi chưa có phiếu) → Sơ đồ; case liên quan lấy thêm từ ACS (`rtRelAcs`). `Cach-test/` (đổi tên "Test - …") để dành cho phần test.
+  khi chưa có phiếu); **bản đồ KB không hiện cho người dùng** (Claude dùng ở phía sau); case liên quan lấy thêm từ ACS (`rtRelAcs`). `Cach-test/` (đổi tên "Test - …") để dành cho phần test.
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục case. Không ghi mật khẩu vào kb/.
 - `.claude/skills/tailieu-edusoft/` – kiến thức nghiệp vụ: tài liệu Edusoft, cách dựng kịch bản, schema dữ liệu, release.
 - `.claude/skills/giaodien-edusoft/` – sổ tay nhận diện giao diện Edusoft (button, ô tìm kiếm, lưới…) do người dùng dạy;

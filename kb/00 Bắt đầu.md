@@ -13,7 +13,7 @@ kế hoạch giảng dạy → TKB → đăng ký môn học → học phí, l�
 
 Cách đọc một case ACS bằng KB: case nói tới **menu / dữ liệu** nào → mở ghi chú dữ liệu đó → *Chuẩn bị dữ liệu test* = các dữ liệu phải có trước;
 *Kiểm tra không ảnh hưởng* = dữ liệu sinh ra từ nó + phân hệ dùng nó; case khác chạm cùng dữ liệu (hoặc dữ liệu cha – con) là **case liên quan**.
-App AQ Auto Test (trang Test sau sửa lỗi) làm đúng việc này tự động – khung **Sơ đồ liên kết** ở bước 1, plan test ở bước 2.
+App AQ Auto Test (trang Test case ACS) làm đúng việc này tự động: Claude đọc KB để phân tích case và soạn plan test ở bước 2 (bản đồ KB không hiện cho người dùng).
 
 ## Các ngăn
 | Thư mục | Ghi gì |
@@ -32,7 +32,7 @@ App AQ Auto Test (trang Test sau sửa lỗi) làm đúng việc này tự độ
   `nhan_tu` / `dua_sang` (phân hệ), `tao_o` / `dung_o` / `can_co` / `la_dieu_kien_cho` (dữ liệu), `test_tren`: `web` | `edusoft` | `app` | `api` | `mau-in`.
 - `trang_thai`: `can-xac-nhan` (đoán / thiếu) → `tu-tai-lieu` (Claude điền từ tài liệu) → `da-xac-nhan` (người test đã kiểm). Claude chỉ coi `da-xac-nhan` là chắc chắn.
 - **Ghi chú là nguồn**: sửa thẳng trong Obsidian (Properties `can_co`, `tao_o`, `dung_o`, `tu_khoa`… và các dòng `- [[…]] – vì sao`). App đọc lại khi bạn quay về cửa sổ app
-  (đã chọn vault ở Test sau sửa lỗi → Thiết lập ACS → Kết nối Claude Desktop → Chọn vault…). Claude Desktop cũng sửa được qua MCP khi bạn dạy kiến thức mới.
+  (đã chọn vault ở Test case ACS → Thiết lập ACS → Kết nối Claude Desktop → Chọn vault…). Claude Desktop cũng sửa được qua MCP khi bạn dạy kiến thức mới.
   Chạy `dong-bo.bat` để chia sẻ cho máy khác. (`tools/kb_lien_ket.py` chỉ dùng để dựng lần đầu – chạy lại sẽ ghi đè.)
 - **Không** ghi mật khẩu, token, chuỗi kết nối vào kho này (kho nằm trong git).
 

@@ -1595,13 +1595,27 @@ td.subtext{display:table-cell;margin:0}
   --sb-line:color-mix(in srgb,var(--accent) 22%,#141823);--sb-fg:color-mix(in srgb,var(--accent) 12%,#d3d8e2);
   --sb-mute:color-mix(in srgb,var(--accent) 22%,#8a91a0);--sb-act:color-mix(in srgb,var(--accent) 42%,#0b0e16);
   --sb-acc:color-mix(in srgb,var(--accent) 55%,#fff)}
+/* Mẫu A (mặc định từ 2026.11): thanh bên mực đậm, nền xám xanh sáng, màu nhấn cam hổ phách (nền) + xanh lục đậm (chữ/link) */
 :root:not([data-theme]){
+  --bg:#edf0f3; --bg-2:#ffffff; --bg-3:#f4f6f8; --raise:#eef1f4;
+  --line:#d8dee4; --line-2:#c3ccd4;
+  --fg:#0f1b24; --fg-dim:#33424e; --muted:#4a5966;
+  --accent:#0f6a63; --accent-2:#0b5c56; --accent-deep:#0b4f4a;
+  --pass:#13804f; --fail:#b4321f; --run:#9a5a06; --skip:#7c8a96;
+  --on-pass:#fff; --on-run:#fff;
+  --hi:#f2a33a; --hi-ink:#0b151c;
+  --sb-bg:#0b151c;--sb-bg2:#16242e;--sb-line:#1e2e3a;--sb-fg:#b7c4ce;--sb-mute:#8597a5;--sb-act:#f2a33a;--sb-acc:#f2a33a;
+  --shadow:0 18px 40px rgba(15,27,36,.16); --card-shadow:0 1px 2px rgba(15,27,36,.05);
+  color-scheme:light}
+/* AQ Xanh – giao diện mặc định cũ, vẫn chọn được */
+:root[data-theme="aq-xanh"]{
   --bg:#f2f5fa; --bg-2:#ffffff; --bg-3:#f6f8fc; --raise:#eef2f9;
   --line:#e1e7f0; --line-2:#cfd8e6;
   --fg:#0f172a; --fg-dim:#334155; --muted:#5a6679;
   --accent:#2563eb; --accent-2:#1d4ed8; --accent-deep:#1e40af;
   --pass:#0f8a55; --fail:#d03c3c; --run:#b26b00; --skip:#7d8aa0;
   --on-pass:#fff; --on-run:#fff;
+  --sb-bg:#0b1324;--sb-bg2:#111c33;--sb-line:#1c2944;--sb-fg:#c9d3e6;--sb-mute:#8391ab;--sb-act:#1f3a75;--sb-acc:#60a5fa;
   --shadow:0 18px 40px rgba(15,23,42,.14); --card-shadow:0 1px 2px rgba(15,23,42,.05);
   color-scheme:light}
 body{font-family:var(--body);letter-spacing:0}
@@ -1730,6 +1744,57 @@ a.nav-item{text-decoration:none}
 .qk-hint{display:flex;gap:14px;padding:9px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:.72rem}
 .qk-none{padding:22px 12px;color:var(--muted);font-size:.86rem;text-align:center}
 @media(max-width:760px){.qk-open span,.qk-open kbd{display:none}.qk-open{flex:0 0 auto;margin-left:auto}}
+
+/* ================= Mẫu A – chi tiết (chỉ giao diện mặc định) ================= */
+:root:not([data-theme]) .sidebar .brand-mark.sm,:root:not([data-theme]) .brand-mark{background:var(--hi);color:var(--hi-ink)}
+:root:not([data-theme]) .nav-item.active{background:var(--hi);color:var(--hi-ink);font-weight:700}
+:root:not([data-theme]) .nav-item.active::before{display:none}
+:root:not([data-theme]) .nav-item.active .ic,:root:not([data-theme]) .nav-item.active:hover .ic{color:var(--hi-ink)}
+:root:not([data-theme]) .nav-item.active .meta,:root:not([data-theme]) .nav-item.active .meta b{color:var(--hi-ink)}
+:root:not([data-theme]) .nav-item.active:hover{background:#f5b45a;color:var(--hi-ink)}
+:root:not([data-theme]) .sidebar .avatar{background:var(--sb-bg2);color:var(--hi)}
+:root:not([data-theme]) .btn.primary,:root:not([data-theme]) .primary-button{background:var(--hi);color:var(--hi-ink);border:0}
+:root:not([data-theme]) .btn.primary:hover,:root:not([data-theme]) .primary-button:hover{filter:none;background:#f5b45a}
+:root:not([data-theme]) .run-head .tag{background:var(--hi);color:var(--hi-ink)}
+/* Test case ACS: danh sách case nền tối, thẻ case; bàn làm việc sáng */
+:root:not([data-theme]) .rt2-list{background:#13202a;color:#e6ecf0;border-radius:14px;padding:14px 12px;gap:10px}
+:root:not([data-theme]) .rt2-list input,:root:not([data-theme]) .rt2-list select{background:#0b151c;color:#e6ecf0;border-color:#2a3e4d}
+:root:not([data-theme]) .rt2-list input::placeholder{color:#8597a5}
+:root:not([data-theme]) .rt2-list .hint,:root:not([data-theme]) .rt2-list .muted{color:#9fb0bc}
+:root:not([data-theme]) .rt2-list .linkbtn,:root:not([data-theme]) .rt2-list a{color:#f5c27a}
+:root:not([data-theme]) .rt2-list .btn{background:#172631;color:#e6ecf0;border-color:#2a3e4d}
+:root:not([data-theme]) .rt2-ltabs{background:#0b151c;border-color:#0b151c}
+:root:not([data-theme]) .rt2-ltabs button{color:#9fb0bc}
+:root:not([data-theme]) .rt2-ltabs button.on{background:#2a3e4d;color:#fff;box-shadow:none}
+:root:not([data-theme]) .rt2-ltabs .ct,:root:not([data-theme]) .rt2-ltabs button.on .ct{color:#f5c27a}
+:root:not([data-theme]) .rt-clist{background:transparent;border:0;border-radius:0;gap:8px;overflow:visible}
+:root:not([data-theme]) .rt-cg{background:transparent;border:0;color:#9fb0bc;padding:6px 4px 0}
+:root:not([data-theme]) .rt-crow{background:#172631;border:1px solid #2a3e4d;border-radius:12px;color:#e6ecf0;padding:11px 12px}
+:root:not([data-theme]) .rt-clist>.rt-crow:first-child{border-top:1px solid #2a3e4d}
+:root:not([data-theme]) .rt-crow:hover{background:#1c2c38}
+:root:not([data-theme]) .rt-crow.on{background:#1f3242;border-color:var(--hi);box-shadow:none}
+:root:not([data-theme]) .rt-crow .id{color:#fff;font-weight:700}
+:root:not([data-theme]) .rt-crow .mt,:root:not([data-theme]) .rt-crow .when,:root:not([data-theme]) .rt-crow .due{color:#9fb0bc}
+:root:not([data-theme]) .rt-crow .mt b{color:#c9d4dc}
+:root:not([data-theme]) .rt-crow .due.late{color:#ff9b8a}
+:root:not([data-theme]) .rt-crow .md{color:#f5c27a}
+:root:not([data-theme]) .rt-crow .tg{border-color:#2a3e4d;color:#c9d4dc}
+:root:not([data-theme]) .rt-crow .tg.soft{background:#0b151c}
+:root:not([data-theme]) .rt-crow .tg.red{border-color:#ff9b8a;color:#ff9b8a}
+:root:not([data-theme]) .rt2-work{border-radius:14px}
+:root:not([data-theme]) .rt2-wt .id{color:var(--fg);font-size:1.45rem;font-weight:700;letter-spacing:-.02em}
+:root:not([data-theme]) .rt2-wt h3{font-size:1.2rem}
+:root:not([data-theme]) .rt2-pf{background:var(--hi);color:var(--hi-ink);font-family:var(--mono);text-transform:uppercase}
+:root:not([data-theme]) .rt2-steps{border-bottom:0}
+:root:not([data-theme]) .rt2-steps button{min-height:42px;justify-content:center;background:var(--bg-2)}
+:root:not([data-theme]) .rt2-steps button.on{background:var(--fg);border-color:var(--fg);color:#fff}
+:root:not([data-theme]) .rt2-steps button.on .n{background:var(--hi);color:var(--hi-ink)}
+:root:not([data-theme]) .rt2-steps button.done{background:#e3f1ef;border-color:#e3f1ef;color:#0b4f4a}
+:root:not([data-theme]) .rt2-n{background:var(--fg);border-radius:6px;width:20px;height:20px}
+:root:not([data-theme]) .rt2-cx{background:var(--bg-3);border-color:transparent}
+:root:not([data-theme]) .rt2-read{background:var(--bg-2)}
+:root:not([data-theme]) .rt-req{background:#f7f8fa;border:1px solid #e3e8ec;border-radius:10px;padding:10px 12px}
+:root:not([data-theme]) .rt2-g{color:var(--fg-dim);font-weight:700}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -1816,7 +1881,7 @@ a.nav-item{text-decoration:none}
       </button>
       <button class="nav-item" data-page="retest">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
-        <span>Test sau sửa lỗi</span><span class="meta" id="rtNavCount">—</span>
+        <span>Test case ACS</span><span class="meta" id="rtNavCount">—</span>
       </button>
       <div class="nav-label">EDUSOFT</div>
       <button class="nav-item" data-page="screens">
@@ -2075,7 +2140,7 @@ a.nav-item{text-decoration:none}
       <section class="page" id="page-retest">
         <div class="run-head"><div>
           <span class="tag rntag">✓ CASE ACS</span>
-          <h2>Test sau sửa lỗi</h2>
+          <h2>Test case ACS</h2>
           <p>Case coder đã xử lý trên ACS → hiểu yêu cầu của khách hàng (test ở đâu, cần kiểm tra gì) → plan test → test, chụp ảnh từng mục → Đạt thì điền nội dung test vào case, Không đạt thì mở lại case gán tiepnhanadmin.</p>
         </div></div>
         <div id="rtMain"></div>
@@ -7401,7 +7466,7 @@ QUAY VIDEO (TÙY CHỌN)
   $('#logoutBtn').addEventListener('click',function(){$('#accountMenu').classList.add('hidden');$('#appView').classList.add('hidden');$('#loginView').classList.remove('hidden');});
 
   /* nav */
-  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={home:['AQ Auto Test','Tổng quan'],scenarios:['Kiểm thử','Phân công release'],releases:['Kiểm thử','Danh sách release'],catalog:['Kiểm thử','Danh mục kịch bản'],retest:['Kiểm thử','Test sau sửa lỗi'],screens:['Edusoft','Màn hình Edusoft'],runner:['Máy chạy','Máy chạy thử'],members:['Quản trị','Danh mục user'],bugs:['Kiểm thử','Lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
+  var crumb=$('#crumb'),crumbRoot=$('#crumbRoot'),names={home:['AQ Auto Test','Tổng quan'],scenarios:['Kiểm thử','Phân công release'],releases:['Kiểm thử','Danh sách release'],catalog:['Kiểm thử','Danh mục kịch bản'],retest:['Kiểm thử','Test case ACS'],screens:['Edusoft','Màn hình Edusoft'],runner:['Máy chạy','Máy chạy thử'],members:['Quản trị','Danh mục user'],bugs:['Kiểm thử','Lỗi'],netweb:['suites','netweb-autotest'],edusoft:['suites','edusoft-autotest']};
   $$('.nav-item').forEach(function(b){b.addEventListener('click',function(){
     var p=b.getAttribute('data-page');if(!p||!names[p])return;
     $$('.nav-item').forEach(function(x){x.classList.toggle('active',x===b)});
@@ -7424,7 +7489,8 @@ QUAY VIDEO (TÙY CHỌN)
 
   /* theme: gốc tối/sáng + 5 theme màu; chỉ đổi màu, không đổi font */
   var THEMES=[
-    {id:'',n:'AQ Xanh (mặc định)',d:'Sáng · xanh dương · thanh bên xanh đậm',c:['#f2f5fa','#0b1324','#2563eb']},
+    {id:'',n:'Mẫu A (mặc định)',d:'Sáng · thanh bên mực đậm · nhấn cam',c:['#edf0f3','#0b151c','#f2a33a']},
+    {id:'aq-xanh',n:'AQ Xanh',d:'Sáng · xanh dương · thanh bên xanh đậm',c:['#f2f5fa','#0b1324','#2563eb']},
     {id:'dark',n:'Tối (gốc)',d:'Nền đêm · tím',c:['#0a0e16','#141b2b','#7c6cff']},
     {id:'light',n:'Sáng (gốc)',d:'Nền trắng · tím',c:['#eef1f7','#ffffff','#6a4eff']},
     {id:'ocean',n:'Biển xanh',d:'Sáng · xanh dương',c:['#e9f1fa','#ffffff','#0b6bcb']},
@@ -7444,6 +7510,7 @@ QUAY VIDEO (TÙY CHỌN)
     if(id)document.documentElement.setAttribute('data-theme',id);else document.documentElement.removeAttribute('data-theme');
     try{if(id)localStorage.setItem('aq-theme',id);else localStorage.removeItem('aq-theme');}catch(e){}
     renderThemes();}
+  try{if(!localStorage.getItem('aq-mau-a')){localStorage.removeItem('aq-theme');localStorage.setItem('aq-mau-a','1');}}catch(e){}   /* đổi sang Mẫu A một lần */
   try{var t=localStorage.getItem('aq-theme');if(t&&THEMES.some(function(x){return x.id===t;}))document.documentElement.setAttribute('data-theme',t);}catch(e){}
   $('#themeIcon').innerHTML=palette;renderThemes();
   $('#themeToggle').addEventListener('click',function(e){e.stopPropagation();$('#accountMenu').classList.add('hidden');$('#themeMenu').classList.toggle('hidden');});
@@ -9352,13 +9419,13 @@ QUAY VIDEO (TÙY CHỌN)
     var repo=(dev.match(/VersionSchool\/[\w.-]+\/[\w./-]+|Source\.NET[\w./-]*/)||[])[0]||'',refs=rtRefs(c,a);
     var pats=a?kbPats(c.title+'\n'+a.T.req,a.T.ba,a.T.dev,mod).slice(0,3):[];
     return '<div class="rt2-ctx">'+
-      '<div class="rt2-cx"><span class="k">Trường</span>'+(sc?'<b>'+esc(sc.ma)+'</b> '+esc(sc.ten||'')+(sc.pc?'<div class="rt2-pc">Phân cấp <b class="mono">'+esc(sc.pc)+'</b> '+esc(sc.pcn||'(chưa có tên – thêm vào phan_cap)')+' – case chỉ hiệu lực trên phân cấp này</div>':' <span class="hint">· case chung của trường</span>')+(sc.xac_nhan?'':' <span class="hint">· KB chưa xác nhận</span>')
+      '<div class="rt2-cx"><span class="k">Trường</span>'+(sc?'<b>'+esc(sc.ma)+'</b> '+esc(sc.ten||'')+(sc.pc?'<div class="rt2-pc">Phân cấp <b class="mono">'+esc(sc.pc)+'</b> '+esc(sc.pcn||'(chưa có tên – thêm vào phan_cap)')+' – case chỉ hiệu lực trên phân cấp này</div>':' <span class="hint">· case chung của trường</span>')
         :c.school?'<b>'+esc(c.school)+'</b> <span class="warn-txt">chưa có ghi chú Truong/ cho mã này – không đoán tên trường</span>':'<span class="hint">case không có mã trường</span>')+
         (repo?'<div class="hint">Dev sửa <span class="mono">'+esc(repo)+'</span>'+(/^VersionSchool/.test(repo)?' → bản riêng của trường':'')+'</div>':'')+'</div>'+
       '<div class="rt2-cx"><span class="k">Phân hệ</span>'+(m?'<b>'+esc(mod)+'</b> '+esc(m[0])+' <span class="hint">· '+esc((m[1]||[]).join(' + '))+'</span>':'<b>'+esc(c.module||'—')+'</b> <span class="hint">chưa có ghi chú Phan-he/</span>')+
         (refs.length?'<div class="hint">Tiếp nối case '+refs.map(function(x){return '<b class="mono">#'+esc(x)+'</b>';}).join(', ')+' – đọc case gốc trước</div>':'')+'</div>'+
       '<div class="rt2-cx"><span class="k">Dạng case</span>'+(pats.length?pats.map(function(p){return '<span class="rt2-pt" title="'+esc(p.why.join(' · '))+'">'+esc(p.ten)+'</span>';}).join(''):'<span class="hint">chưa nhận ra</span>')+
-        '<div class="hint">gợi ý theo dấu hiệu trong KB (Dang-case/) – người test / Claude chốt</div></div></div>';}
+        '<div class="hint">gợi ý theo lời KH / BA – người test hoặc Claude chốt</div></div></div>';}
   function rtAnHtml(id){var x=(RT.can||{})[id];if(!x)return '';var L=function(v){return Array.isArray(v)?v:v?[v]:[];},row=function(k,v){return v?'<tr><th>'+k+'</th><td>'+v+'</td></tr>':'';};
     var ST={du:'đủ',thieu:'thiếu','chua-ro':'chưa rõ'};
     return '<div class="rt2-an"><div class="rt2-uh">Phiếu phân tích <span class="hint">Claude Desktop · '+esc(fmt(x.at))+'</span></div><table>'+
@@ -9432,10 +9499,10 @@ QUAY VIDEO (TÙY CHỌN)
     var det=(hr.length?'<details class="rt-hist"><summary>Diễn biến case <span class="hint">'+hr.length+'</span></summary><ol>'+hr.slice(0,15).map(function(x){return '<li><span class="mono hint">'+esc(rtWhen(x.at))+'</span> <b>'+esc(x.by||'?')+'</b> '+esc(x.txt)+'</li>';}).join('')+'</ol></details>':'')+
       (other.length?'<details class="rt-hist"><summary>Trường khác của case <span class="hint">'+other.length+'</span></summary>'+other.map(function(k){var t=rtTidy(d.fields[k]);
         return '<div class="rt-ofld"><div class="rt-clbl">'+esc(rtFieldName(k))+' <button type="button" class="linkbtn" data-rtreqf="'+esc(k)+'">dùng làm yêu cầu KH</button></div><div class="hint rt-otxt">'+esc(t.length>400?t.slice(0,400)+'…':t)+'</div></div>';}).join('')+'</details>':'');
-    var mapH=a?rtMapHtml(id,rtMap(a)):'';
+    /* bản đồ KB (rtMapHtml) không hiện cho người dùng – vẫn dùng để soạn plan */
     if(app)rtRelAcs(id);
     return rtCtx(id,c,a)+rtAcsGrid(id,c)+'<div class="rt2-read"><div class="rt2-uh">Đọc case <span class="hint">khách hàng yêu cầu → BA phân tích → dev xử lý</span></div>'+req+rtImgHtml(id)+more+det+'</div>'+
-      rtAnHtml(id)+und+mapH+'<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="2">Tiếp: Plan test →</button></div>';}
+      rtAnHtml(id)+und+'<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="2">Tiếp: Plan test →</button></div>';}
   function rtW2(id,c,a,dr,rt){var lock=rt&&rt.state!=='testing'&&rt.state!=='queued',src=rt&&rt.plan&&!RT.replan?{env:rt.plan.env,items:rt.plan.items,pf:rt.platform,scen:rt.scenarioId}:{env:dr.env,items:dr.items,pf:dr.pf,scen:dr.scen};
     var ro=lock||(rt&&!RT.replan)?' readonly':'',edit=!ro,g=null;
     var rows=src.items.map(function(x,i){var h='';if(x.g!==g){g=x.g;h='<div class="rt2-g">'+esc(RT_G[g]||g)+'</div>';}
