@@ -1,0 +1,27 @@
+filters:
+  and:
+    - file.inFolder("Truong")
+properties:
+  ten:
+    displayName: "Tên trường"
+  phan_cap:
+    displayName: "Phân cấp"
+  trang_thai_hd:
+    displayName: "Hợp đồng"
+  web_test:
+    displayName: "Web test"
+  trang_thai:
+    displayName: "Trạng thái"
+views:
+  - type: table
+    name: "Truong"
+    order:
+      - file.name
+      - ten
+      - phan_cap
+      - trang_thai_hd
+      - web_test
+      - trang_thai
+    sort:
+      - property: file.name
+        direction: ASC

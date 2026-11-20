@@ -19,6 +19,8 @@ tu_khoa: "danh mục môn học|thông tin môn học|môn (học )?(tương đ�
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Môn học"
 ---
 # Môn học
 

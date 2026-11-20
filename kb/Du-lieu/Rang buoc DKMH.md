@@ -16,6 +16,8 @@ tu_khoa_ph:
   - DKMH
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Ràng buộc & thời gian đăng ký"
 ---
 # Ràng buộc & thời gian đăng ký
 

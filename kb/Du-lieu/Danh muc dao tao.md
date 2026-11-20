@@ -15,6 +15,8 @@ tu_khoa_ph:
   - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Bậc – hệ – ngành đào tạo"
 ---
 # Bậc – hệ – ngành đào tạo
 

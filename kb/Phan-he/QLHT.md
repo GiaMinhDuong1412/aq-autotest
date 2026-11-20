@@ -23,6 +23,15 @@ dua_sang:
 dau_hieu: tài khoản, phân quyền, khóa sổ, học kỳ, biểu in, import, bảo mật, đăng nhập, chatbot, chỉnh định NetWEB
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Quản lý hệ thống"
+  - "Hệ thống"
+quy_trinh:
+  - "[[01 Mo hoc ky moi]]"
+  - "[[04 Dang ky mon hoc]]"
+  - "[[05 Hoc phi - thu - thanh toan]]"
+  - "[[12 Tai khoan - phan quyen - web]]"
+tags: [phan-he]
 ---
 # QLHT – Quản lý hệ thống
 
@@ -60,6 +69,22 @@ Menu: [[Menu/QLHT|75 menu của QLHT]] – menu tạo dữ liệu: [[Menu/Khóa 
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+
+**Ràng buộc quay ngược** (dữ liệu sinh ra *sau* QLHT nhưng quay lại chặn / ảnh hưởng nó, thường từ kỳ trước): [[No hoc phi|Nợ học phí]] (CSHP)
+
+**Sửa dữ liệu của QLHT → kiểm lại:** phân hệ dùng trực tiếp [[CSHP]], [[DIEM]], [[DKMH]], [[KHGD]], [[KLGD]], [[KSDG]], [[LTHI]], [[NETWEB-API]], [[NETWEB-UI]], [[QLSV]]; dữ liệu sinh ra từ đó (theo thứ tự): [[Phong hoc|Phòng học kỳ]] (KHGD), [[Vien chuc|Viên chức / cán bộ giảng dạy]] (QLNS), [[Rang buoc DKMH|Ràng buộc & thời gian đăng ký]] (DKMH), [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]] (QLSV), [[DS SV hoc ky|Danh sách sinh viên học kỳ]] (QLSV), [[Danh muc sinh vien|Danh mục sinh viên (mọi SV của trường)]] (QLSV), [[Diem luan van|Điểm luận văn]] (BVLV), [[Diem ren luyen|Điểm rèn luyện]] (QLSV), [[Dien chinh sach|Diện chính sách / miễn giảm]] (QLSV), [[Hop dong KTX|Hợp đồng ký túc xá]] (QKTX), [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]] (KHGD), [[Ket qua khao sat|Kết quả khảo sát]] (KSDG), [[Thoi khoa bieu|Thời khóa biểu]] (KHGD), [[KQ DKMH|Kết quả đăng ký môn học]] (DKMH), [[Khoi luong giang day|Khối lượng giảng dạy]] (KLGD), [[Danh sach thi|Danh sách thi – lịch thi]] (LTHI), [[Diem danh|Điểm danh (chuyên cần)]] (NETWEB-UI), [[Hoc phi|Học phí phải thu (đã tính)]] (CSHP), [[Diem mon hoc|Điểm môn học]] (DIEM), [[Phieu thu|Phiếu thu học phí]] (QLTV), [[Diem trung binh|Điểm trung bình – tích lũy]] (DIEM), [[No hoc phi|Nợ học phí]] (CSHP), [[Ket qua hoc vu|Kết quả xét học vụ]] (QXHV), [[Ket qua tot nghiep|Kết quả xét tốt nghiệp]] (QLTN).
+
+## Nằm trong quy trình
+- [[01 Mo hoc ky moi|Mở học kỳ mới]]
+- [[04 Dang ky mon hoc|Đăng ký môn học]]
+- [[05 Hoc phi - thu - thanh toan|Học phí: tính → nợ → thu → thanh toán online]]
+- [[12 Tai khoan - phan quyen - web|Tài khoản, phân quyền, cấu hình web (dùng chung)]]
+
+## Tài liệu
+- [[HDSD QLHT]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Thông tin học kỳ, khóa sổ và phân quyền ảnh hưởng **mọi phân hệ** – sửa ở đây phải kiểm lại phân hệ dùng học kỳ đó. Case bảo mật / đăng nhập thường là web + hệ thống – đọc kỹ KH nói trang nào. Không đổi phân quyền tài khoản thật.

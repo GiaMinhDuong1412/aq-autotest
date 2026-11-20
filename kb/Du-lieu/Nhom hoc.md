@@ -25,6 +25,8 @@ tu_khoa: "nhóm học|nhóm tổ|nhóm môn|lớp môn học|lớp học phần|
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)"
 ---
 # Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)
 

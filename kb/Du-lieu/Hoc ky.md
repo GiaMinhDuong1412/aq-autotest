@@ -25,6 +25,8 @@ tu_khoa_ph:
   - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Năm học – học kỳ"
 ---
 # Năm học – học kỳ
 

@@ -11,6 +11,10 @@ dua_sang: []
 dau_hieu: thống kê, báo cáo lãnh đạo
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Hỗ trợ lãnh đạo"
+quy_trinh: []
+tags: [phan-he]
 ---
 # PVLD – Hỗ trợ lãnh đạo
 
@@ -42,6 +46,16 @@ Không có phân hệ nào nhận dữ liệu trực tiếp.
 
 ## Test ở đâu
 Chỉ edusoft.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- (chưa gắn quy trình)
+
+## Tài liệu
+- [[HDSD PVLD]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

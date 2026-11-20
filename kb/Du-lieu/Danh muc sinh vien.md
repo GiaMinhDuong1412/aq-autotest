@@ -14,6 +14,8 @@ tu_khoa_ph:
   - QLSV
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Danh mục sinh viên (mọi SV của trường)"
 ---
 # Danh mục sinh viên (mọi SV của trường)
 

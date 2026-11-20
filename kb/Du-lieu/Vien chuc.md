@@ -21,6 +21,8 @@ tu_khoa: "viên chức|cbcnv|cán bộ|cbgd|giảng viên"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Viên chức / cán bộ giảng dạy"
 ---
 # Viên chức / cán bộ giảng dạy
 

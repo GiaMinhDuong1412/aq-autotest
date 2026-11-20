@@ -1,0 +1,27 @@
+filters:
+  and:
+    - file.inFolder("Tai-lieu")
+properties:
+  ten:
+    displayName: "Tài liệu"
+  nguon_loai:
+    displayName: "Loại"
+  phan_he:
+    displayName: "Phân hệ"
+  so_file:
+    displayName: "Số file"
+  do_tin_cay:
+    displayName: "Tin cậy"
+views:
+  - type: table
+    name: "Tai lieu"
+    order:
+      - file.name
+      - ten
+      - nguon_loai
+      - phan_he
+      - so_file
+      - do_tin_cay
+    sort:
+      - property: file.name
+        direction: ASC

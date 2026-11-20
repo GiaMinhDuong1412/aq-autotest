@@ -1,0 +1,682 @@
+{
+ "nodes": [
+  {
+   "id": "3f5468de0bfbe111",
+   "type": "text",
+   "x": 0,
+   "y": -200,
+   "width": 900,
+   "height": 120,
+   "text": "# Bản đồ phân hệ\nCột trái → phải = tầng dữ liệu (phân hệ bên trái tạo dữ liệu nền). Mũi tên = dữ liệu đưa sang. Cột xanh = web / app."
+  },
+  {
+   "id": "59c77ee8b8645048",
+   "type": "file",
+   "file": "Phan-he/KHGD.md",
+   "x": 0,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "d8e81521007904f4",
+   "type": "file",
+   "file": "Phan-he/QLHT.md",
+   "x": 0,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "d21a6fce26d93b3e",
+   "type": "file",
+   "file": "Phan-he/QLNS.md",
+   "x": 340,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "61bccf2a5691ca75",
+   "type": "file",
+   "file": "Phan-he/QLTS.md",
+   "x": 340,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "121cb87fb8a46360",
+   "type": "file",
+   "file": "Phan-he/QLSV.md",
+   "x": 680,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "f001f223b9a39fe5",
+   "type": "file",
+   "file": "Phan-he/DKMH.md",
+   "x": 1020,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "25e5e09c21ca2f13",
+   "type": "file",
+   "file": "Phan-he/BVLV.md",
+   "x": 1360,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "c3c18078c8727a31",
+   "type": "file",
+   "file": "Phan-he/QKTX.md",
+   "x": 1360,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "0d64362ab1d42bc8",
+   "type": "file",
+   "file": "Phan-he/KSDG.md",
+   "x": 1700,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "217dd0345a67feef",
+   "type": "file",
+   "file": "Phan-he/KLGD.md",
+   "x": 2040,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "807b17b06db12b86",
+   "type": "file",
+   "file": "Phan-he/CSHP.md",
+   "x": 2380,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "e2aa28ae21529ac6",
+   "type": "file",
+   "file": "Phan-he/LTHI.md",
+   "x": 2380,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "3be18181a4dea6f6",
+   "type": "file",
+   "file": "Phan-he/NETWEB-UI.md",
+   "x": 2380,
+   "y": 300,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "c326f43e6fcfd267",
+   "type": "file",
+   "file": "Phan-he/DIEM.md",
+   "x": 2720,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "502b4a91cc0355e6",
+   "type": "file",
+   "file": "Phan-he/QLTV.md",
+   "x": 2720,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "e517ba07b52291df",
+   "type": "file",
+   "file": "Phan-he/QLTN.md",
+   "x": 3060,
+   "y": 0,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "6d45b63ab117e3ee",
+   "type": "file",
+   "file": "Phan-he/QXHV.md",
+   "x": 3060,
+   "y": 150,
+   "width": 260,
+   "height": 110
+  },
+  {
+   "id": "e78b10d5e4c9c33b",
+   "type": "file",
+   "file": "Phan-he/DKMHUI.md",
+   "x": 3400,
+   "y": 0,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "430ad551bb5c1b98",
+   "type": "file",
+   "file": "Phan-he/DTNH.md",
+   "x": 3400,
+   "y": 150,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "b1573049248c3932",
+   "type": "file",
+   "file": "Phan-he/EDUBILL.md",
+   "x": 3400,
+   "y": 300,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "6c18dd555ff11725",
+   "type": "file",
+   "file": "Phan-he/EDUGO.md",
+   "x": 3400,
+   "y": 450,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "d3e77d4a210e5898",
+   "type": "file",
+   "file": "Phan-he/GAM.md",
+   "x": 3400,
+   "y": 600,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "3ad1069816e64a74",
+   "type": "file",
+   "file": "Phan-he/NCKH.md",
+   "x": 3400,
+   "y": 750,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "cd3d522150b9c6d0",
+   "type": "file",
+   "file": "Phan-he/NETWEB-API.md",
+   "x": 3400,
+   "y": 900,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "5ba610a27026a1e2",
+   "type": "file",
+   "file": "Phan-he/PVLD.md",
+   "x": 3400,
+   "y": 1050,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  },
+  {
+   "id": "26b754c9749f8b42",
+   "type": "file",
+   "file": "Phan-he/SAE.md",
+   "x": 3400,
+   "y": 1200,
+   "width": 260,
+   "height": 110,
+   "color": "5"
+  }
+ ],
+ "edges": [
+  {
+   "id": "d6016dc99e59faba",
+   "fromNode": "25e5e09c21ca2f13",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Điểm luận văn"
+  },
+  {
+   "id": "b01bac4465fc8933",
+   "fromNode": "807b17b06db12b86",
+   "fromSide": "right",
+   "toNode": "f001f223b9a39fe5",
+   "toSide": "left",
+   "label": "Nợ học phí"
+  },
+  {
+   "id": "b3466c230d2c1e24",
+   "fromNode": "807b17b06db12b86",
+   "fromSide": "right",
+   "toNode": "b1573049248c3932",
+   "toSide": "left",
+   "label": "Học phí phải thu"
+  },
+  {
+   "id": "e9a1f3bb8d09aea1",
+   "fromNode": "807b17b06db12b86",
+   "fromSide": "right",
+   "toNode": "d8e81521007904f4",
+   "toSide": "left",
+   "label": "Nợ học phí"
+  },
+  {
+   "id": "dd07c15718880b0c",
+   "fromNode": "807b17b06db12b86",
+   "fromSide": "right",
+   "toNode": "502b4a91cc0355e6",
+   "toSide": "left",
+   "label": "Học phí phải thu, Nợ học phí"
+  },
+  {
+   "id": "c0f3c1589b63c28d",
+   "fromNode": "c326f43e6fcfd267",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Điểm trung bình"
+  },
+  {
+   "id": "795c383fad69c238",
+   "fromNode": "c326f43e6fcfd267",
+   "fromSide": "right",
+   "toNode": "e517ba07b52291df",
+   "toSide": "left",
+   "label": "Điểm trung bình"
+  },
+  {
+   "id": "e2e138e5cfbc7f08",
+   "fromNode": "c326f43e6fcfd267",
+   "fromSide": "right",
+   "toNode": "6d45b63ab117e3ee",
+   "toSide": "left",
+   "label": "Điểm trung bình"
+  },
+  {
+   "id": "31ac068a41691c94",
+   "fromNode": "f001f223b9a39fe5",
+   "fromSide": "right",
+   "toNode": "807b17b06db12b86",
+   "toSide": "left",
+   "label": "Kết quả đăng ký môn học"
+  },
+  {
+   "id": "0d32170c51a66082",
+   "fromNode": "f001f223b9a39fe5",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Kết quả đăng ký môn học"
+  },
+  {
+   "id": "bf7a13b4151c9ac6",
+   "fromNode": "f001f223b9a39fe5",
+   "fromSide": "right",
+   "toNode": "e78b10d5e4c9c33b",
+   "toSide": "left",
+   "label": "Ràng buộc & thời gian đăng ký"
+  },
+  {
+   "id": "7a23eb9895e48064",
+   "fromNode": "f001f223b9a39fe5",
+   "fromSide": "right",
+   "toNode": "e2aa28ae21529ac6",
+   "toSide": "left",
+   "label": "Kết quả đăng ký môn học"
+  },
+  {
+   "id": "7e342e524e28b250",
+   "fromNode": "f001f223b9a39fe5",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Kết quả đăng ký môn học"
+  },
+  {
+   "id": "66d65b6a9e619200",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "807b17b06db12b86",
+   "toSide": "left",
+   "label": "Môn học"
+  },
+  {
+   "id": "6efc8ed71ac0e5f8",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Khối lớp, Môn học…"
+  },
+  {
+   "id": "d6ee73be9e1e756e",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "f001f223b9a39fe5",
+   "toSide": "left",
+   "label": "Chương trình đào tạo, Môn học…"
+  },
+  {
+   "id": "8708af4d8bff6fda",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "217dd0345a67feef",
+   "toSide": "left",
+   "label": "Môn học, Nhóm học…"
+  },
+  {
+   "id": "4d1e431f295be216",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "0d64362ab1d42bc8",
+   "toSide": "left",
+   "label": "Nhóm học"
+  },
+  {
+   "id": "1d449cd2eb04934b",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "e2aa28ae21529ac6",
+   "toSide": "left",
+   "label": "Nhóm học, Phòng học kỳ…"
+  },
+  {
+   "id": "10f3ad997d7e3864",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "3be18181a4dea6f6",
+   "toSide": "left",
+   "label": "Khối lớp"
+  },
+  {
+   "id": "2089dfe1b3eee103",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Khối lớp"
+  },
+  {
+   "id": "d0768cab6a3bcbab",
+   "fromNode": "59c77ee8b8645048",
+   "fromSide": "right",
+   "toNode": "e517ba07b52291df",
+   "toSide": "left",
+   "label": "Chương trình đào tạo, Môn học"
+  },
+  {
+   "id": "66149fa7fe3c31d0",
+   "fromNode": "0d64362ab1d42bc8",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Kết quả khảo sát"
+  },
+  {
+   "id": "2a539af24331925e",
+   "fromNode": "e2aa28ae21529ac6",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Danh sách thi"
+  },
+  {
+   "id": "a8e7eec74a5e66ed",
+   "fromNode": "3be18181a4dea6f6",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Điểm danh"
+  },
+  {
+   "id": "ca5d0af8751d76d6",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "807b17b06db12b86",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "f7255a693d18febe",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "c326f43e6fcfd267",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "510077c9dcd7197d",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "f001f223b9a39fe5",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "aae5d9ab265cd4e8",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "59c77ee8b8645048",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "ba3c3fd82c283997",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "217dd0345a67feef",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "edd2d8d847be15cc",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "0d64362ab1d42bc8",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "486dfffd427742e9",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "e2aa28ae21529ac6",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "51738850ba26c4d1",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "cd3d522150b9c6d0",
+   "toSide": "left",
+   "label": "Tài khoản & phân quyền"
+  },
+  {
+   "id": "3945cde70a0de03c",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "3be18181a4dea6f6",
+   "toSide": "left",
+   "label": "Cấu hình NetWEB, Tài khoản & phân quyền"
+  },
+  {
+   "id": "89e849575f9f6945",
+   "fromNode": "d8e81521007904f4",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Năm học"
+  },
+  {
+   "id": "812c07195fb7873a",
+   "fromNode": "d21a6fce26d93b3e",
+   "fromSide": "right",
+   "toNode": "59c77ee8b8645048",
+   "toSide": "left",
+   "label": "Viên chức / cán bộ giảng dạy"
+  },
+  {
+   "id": "7ff374a4ada80121",
+   "fromNode": "d21a6fce26d93b3e",
+   "fromSide": "right",
+   "toNode": "217dd0345a67feef",
+   "toSide": "left",
+   "label": "Viên chức / cán bộ giảng dạy"
+  },
+  {
+   "id": "6d8295c50221a1e8",
+   "fromNode": "d21a6fce26d93b3e",
+   "fromSide": "right",
+   "toNode": "0d64362ab1d42bc8",
+   "toSide": "left",
+   "label": "Viên chức / cán bộ giảng dạy"
+  },
+  {
+   "id": "298aa215aaa5a1e1",
+   "fromNode": "d21a6fce26d93b3e",
+   "fromSide": "right",
+   "toNode": "e2aa28ae21529ac6",
+   "toSide": "left",
+   "label": "Viên chức / cán bộ giảng dạy"
+  },
+  {
+   "id": "eb6dafb9df24ccb6",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "807b17b06db12b86",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ, Diện chính sách / miễn giảm"
+  },
+  {
+   "id": "ebf5aebca0c80927",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "f001f223b9a39fe5",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ, Lớp sinh viên"
+  },
+  {
+   "id": "c19699b6e3fe815f",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "59c77ee8b8645048",
+   "toSide": "left",
+   "label": "Lớp sinh viên"
+  },
+  {
+   "id": "8f9390528e8457f1",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "0d64362ab1d42bc8",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ"
+  },
+  {
+   "id": "46ad637fe127d5af",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "cd3d522150b9c6d0",
+   "toSide": "left",
+   "label": "Danh mục sinh viên"
+  },
+  {
+   "id": "fa193541730e1d1f",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "c3c18078c8727a31",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ"
+  },
+  {
+   "id": "ba5717707aeb06da",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "e517ba07b52291df",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ, Lớp sinh viên"
+  },
+  {
+   "id": "710a64568ea7eed4",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "61bccf2a5691ca75",
+   "toSide": "left",
+   "label": "Lớp sinh viên"
+  },
+  {
+   "id": "59fa13d308d6aa37",
+   "fromNode": "121cb87fb8a46360",
+   "fromSide": "right",
+   "toNode": "6d45b63ab117e3ee",
+   "toSide": "left",
+   "label": "Danh sách sinh viên học kỳ, Lớp sinh viên"
+  },
+  {
+   "id": "5886e1127d87157e",
+   "fromNode": "e517ba07b52291df",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Kết quả xét tốt nghiệp"
+  },
+  {
+   "id": "869c5398d0c1802d",
+   "fromNode": "61bccf2a5691ca75",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Danh sách trúng tuyển"
+  },
+  {
+   "id": "4a2761b2c8277680",
+   "fromNode": "61bccf2a5691ca75",
+   "fromSide": "right",
+   "toNode": "502b4a91cc0355e6",
+   "toSide": "left",
+   "label": "Danh sách trúng tuyển"
+  },
+  {
+   "id": "47ef82e050559661",
+   "fromNode": "502b4a91cc0355e6",
+   "fromSide": "right",
+   "toNode": "807b17b06db12b86",
+   "toSide": "left",
+   "label": "Phiếu thu học phí"
+  },
+  {
+   "id": "df28748df7f3cd53",
+   "fromNode": "6d45b63ab117e3ee",
+   "fromSide": "right",
+   "toNode": "121cb87fb8a46360",
+   "toSide": "left",
+   "label": "Kết quả xét học vụ"
+  }
+ ]
+}

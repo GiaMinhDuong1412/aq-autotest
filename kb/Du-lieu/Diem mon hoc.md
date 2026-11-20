@@ -15,6 +15,8 @@ tu_khoa_ph:
   - DMKT
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Điểm môn học"
 ---
 # Điểm môn học
 

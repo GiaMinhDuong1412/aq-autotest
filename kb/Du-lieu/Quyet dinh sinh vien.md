@@ -16,6 +16,8 @@ tu_khoa_ph:
   - QLSV
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Quyết định vào / ra sinh viên"
 ---
 # Quyết định vào / ra sinh viên
 

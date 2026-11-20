@@ -9,6 +9,8 @@ trang_thai_hd: Default
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Bình Dương"
 ---
 # DHBD – ĐH Bình Dương
 

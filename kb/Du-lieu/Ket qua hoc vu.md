@@ -13,6 +13,8 @@ tu_khoa: "học vụ|cảnh báo học tập|buộc thôi học"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Kết quả xét học vụ"
 ---
 # Kết quả xét học vụ
 

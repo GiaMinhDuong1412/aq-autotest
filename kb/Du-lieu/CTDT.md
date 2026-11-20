@@ -16,6 +16,8 @@ tu_khoa: "chương trình đào tạo|ctđt|kế hoạch học tập|khung chư�
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)"
 ---
 # Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)
 

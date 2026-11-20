@@ -11,6 +11,8 @@ phan_cap:
   - "DHMOTX: Đào tạo từ xa"
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Mở TP.HCM"
 ---
 # DHMO – ĐH Mở TP.HCM
 

@@ -21,6 +21,14 @@ dua_sang:
 dau_hieu: môn tiên quyết, thời gian đăng ký, đăng ký online/offline, rút môn, hủy kết quả, nguyện vọng, CVHT duyệt
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Đăng ký môn học"
+  - "ĐKMH"
+quy_trinh:
+  - "[[04 Dang ky mon hoc]]"
+  - "[[05 Hoc phi - thu - thanh toan]]"
+  - "[[06 To chuc thi]]"
+tags: [phan-he]
 ---
 # DKMH – Đăng ký môn học
 
@@ -63,6 +71,28 @@ NetWEB SV: đăng ký môn học, rút môn học; NetWEB GV (CVHT): duyệt đ�
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được DKMH phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[Phong hoc|Phòng học kỳ]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]], [[Thoi khoa bieu|Thời khóa biểu]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. **DKMH** – [[Rang buoc DKMH|Ràng buộc & thời gian đăng ký]], [[KQ DKMH|Kết quả đăng ký môn học]]
+
+**Ràng buộc quay ngược** (dữ liệu sinh ra *sau* DKMH nhưng quay lại chặn / ảnh hưởng nó, thường từ kỳ trước): [[No hoc phi|Nợ học phí]] (CSHP)
+
+**Sửa dữ liệu của DKMH → kiểm lại:** phân hệ dùng trực tiếp [[CSHP]], [[DIEM]], [[DKMHUI]], [[LTHI]], [[QLSV]]; dữ liệu sinh ra từ đó (theo thứ tự): [[Danh sach thi|Danh sách thi – lịch thi]] (LTHI), [[Diem danh|Điểm danh (chuyên cần)]] (NETWEB-UI), [[Hoc phi|Học phí phải thu (đã tính)]] (CSHP), [[Diem mon hoc|Điểm môn học]] (DIEM), [[Phieu thu|Phiếu thu học phí]] (QLTV), [[Diem trung binh|Điểm trung bình – tích lũy]] (DIEM), [[No hoc phi|Nợ học phí]] (CSHP), [[Ket qua hoc vu|Kết quả xét học vụ]] (QXHV), [[Ket qua tot nghiep|Kết quả xét tốt nghiệp]] (QLTN).
+
+## Nằm trong quy trình
+- [[04 Dang ky mon hoc|Đăng ký môn học]]
+- [[05 Hoc phi - thu - thanh toan|Học phí: tính → nợ → thu → thanh toán online]]
+- [[06 To chuc thi|Tổ chức thi]]
+
+## Tài liệu
+- [[HDSD DKMH]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Sửa về **cài đặt** (thời gian, ràng buộc) → kiểm cả nơi cài (Edusoft) và nơi SV thấy (web). Đợt ĐKMH có tải rất lớn (sheet NetWeb_DKMH: hàng nghìn SV cùng lúc) – sửa hiệu năng cần test riêng.

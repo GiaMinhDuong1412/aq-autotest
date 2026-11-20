@@ -17,6 +17,8 @@ tu_khoa_ph:
   - LTHI
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Danh sách thi – lịch thi"
 ---
 # Danh sách thi – lịch thi
 

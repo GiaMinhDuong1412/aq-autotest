@@ -18,6 +18,8 @@ tu_khoa: "thời khóa biểu|thời khoá biểu|tkb|lịch học|dạy bù|ngh
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Thời khóa biểu"
 ---
 # Thời khóa biểu
 

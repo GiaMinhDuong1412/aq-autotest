@@ -13,6 +13,8 @@ phan_cap:
   - "DHNTNTC2: Cơ sở 2 – qldt.cs2.ftu.edu.vn"
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Ngoại Thương"
 ---
 # DHNT – ĐH Ngoại Thương
 
@@ -42,6 +44,8 @@ Bản thử trên máy chủ `http://edusoft.net.vn:12344/<site>` (vd `dhntdhcq.
 —
 
 
+## Mô hình trường (từ case ACS)
+[[Case-truong/DHNT|1 case]] tới 2026-11-17 – phân hệ hay có case: DKMH (1); dạng hay gặp: —.
 ## Khi đọc case của trường này
 - Mã trường trên ACS: **`DHNT`** (4 ký tự) = case chung của trường. Mã **dài hơn 4 ký tự** bắt đầu bằng `DHNT` = **phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường – đã biết: `DHNTDHCQ` (Đại học chính quy), `DHNTCHCQ` (Cao học), `DHNTDHTC` (Đại học tại chức), `DHNTNTC2` (Cơ sở 2).
 - Case làm theo phân cấp thì **chỉ có hiệu lực trên phân cấp đó**: test trên đúng phân cấp (site / dữ liệu của phân cấp), phân cấp khác của cùng trường thường không bị ảnh hưởng – trừ khi sửa phần chung của trường.

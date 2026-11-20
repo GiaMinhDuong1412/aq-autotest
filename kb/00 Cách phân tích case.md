@@ -20,10 +20,13 @@ Thiếu mục nào → nói ngay, hỏi BA / Dev trước khi phân tích tiếp
 - Mở ghi chú `Truong/<4 ký tự>`: tên trường, `phan_cap` đã biết, bản riêng (coder sửa `VersionSchool/<trường>` → [[VersionSchool]]), chức năng web.
 - Mã `AQ` = case nội bộ / sản phẩm chung (không phải trường) → [[AQ]].
 - Mã chưa có ghi chú → ghi "chưa biết trường", **không đoán tên trường**; phân cấp chưa có tên → hỏi rồi thêm vào `phan_cap`.
+- **Mô hình trường**: mở `Case-truong/<4 ký tự>` ([[00 Mô hình trường]]) – trường này hay có case ở phân hệ nào, dạng gì, chủ đề lặp lại, chuỗi case tiếp nối, *Nhận xét* (cách trường dùng phần mềm, BA hay chốt gì). Case mới giống case cũ → đọc lại case cũ trước.
 
 ## 1. Phân hệ – case thuộc nghiệp vụ nào?
 - `module` trên ACS → `Phan-he/<mã>`: phân hệ làm gì, phần Edusoft / phần web, nhận dữ liệu từ đâu, đưa sang đâu, **dạng case thường gặp**.
 - Mã phân hệ là nơi case được **xếp**, không phải nơi lỗi xảy ra: CSHP có cả trang học phí trên web, DKMH có cả trang đăng ký trên web.
+- Đặt case vào **quy trình** ([[00 Quy trình xuyên phân hệ]], mục *Nằm trong quy trình* của phân hệ): bước trước cung cấp gì (lỗi có thể do đầu vào), **cài đặt / biến chỉnh định hay gây case** ở bước đó (vd thời gian ĐKMH online: 4 biến + restart IIS; EduBILL: học kỳ thanh toán phải trùng học kỳ thu học phí), bước sau phải kiểm.
+- Cần cách thao tác chuẩn / tên biến → [[00 Tài liệu nguồn]] (HDSD theo phân hệ trên SharePoint, lưu đồ LuuDo_NEW).
 
 ## 2. Yêu cầu khách hàng – KH thấy gì, muốn gì?
 Tách thành 4 ý (bỏ chào hỏi, chữ ký, thư trích dẫn):

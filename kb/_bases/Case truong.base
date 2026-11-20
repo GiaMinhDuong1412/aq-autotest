@@ -1,0 +1,30 @@
+filters:
+  and:
+    - file.inFolder("Case-truong")
+properties:
+  tong_case:
+    displayName: "Số case"
+  phan_cap:
+    displayName: "Phân cấp"
+  phan_he_nhieu:
+    displayName: "Phân hệ hay có case"
+  dang_nhieu:
+    displayName: "Dạng hay gặp"
+  den_ngay:
+    displayName: "Case mới nhất"
+  cap_nhat:
+    displayName: "Cập nhật"
+views:
+  - type: table
+    name: "Case truong"
+    order:
+      - file.name
+      - tong_case
+      - phan_cap
+      - phan_he_nhieu
+      - dang_nhieu
+      - den_ngay
+      - cap_nhat
+    sort:
+      - property: file.name
+        direction: ASC

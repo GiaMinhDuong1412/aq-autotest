@@ -17,6 +17,8 @@ tu_khoa_ph:
   - DIEM
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Điểm trung bình – tích lũy"
 ---
 # Điểm trung bình – tích lũy
 

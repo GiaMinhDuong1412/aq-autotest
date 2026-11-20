@@ -9,6 +9,8 @@ trang_thai_hd:
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Sài Gòn"
 ---
 # DHSG – ĐH Sài Gòn
 

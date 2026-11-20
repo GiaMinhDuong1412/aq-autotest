@@ -26,6 +26,8 @@ tu_khoa: "(danh sách )?sinh viên học kỳ|ds sv học kỳ"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Danh sách sinh viên học kỳ"
 ---
 # Danh sách sinh viên học kỳ
 

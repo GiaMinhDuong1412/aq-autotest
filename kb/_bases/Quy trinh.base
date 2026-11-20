@@ -1,0 +1,24 @@
+filters:
+  and:
+    - file.inFolder("Quy-trinh")
+properties:
+  ten:
+    displayName: "Quy trình"
+  phan_he:
+    displayName: "Phân hệ"
+  truoc:
+    displayName: "Trước"
+  sau:
+    displayName: "Sau"
+views:
+  - type: table
+    name: "Quy trinh"
+    order:
+      - file.name
+      - ten
+      - phan_he
+      - truoc
+      - sau
+    sort:
+      - property: thu_tu
+        direction: ASC

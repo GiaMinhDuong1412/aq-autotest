@@ -14,6 +14,8 @@ tu_khoa_ph:
   - HTQL
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Tài khoản & phân quyền"
 ---
 # Tài khoản & phân quyền
 

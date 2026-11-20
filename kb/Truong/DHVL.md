@@ -9,6 +9,8 @@ trang_thai_hd: Hết hạn bảo trì
 phan_cap: []
 nguon: sheet-release
 trang_thai: can-xac-nhan
+aliases:
+  - "ĐH Văn Lang"
 ---
 # DHVL – ĐH Văn Lang
 

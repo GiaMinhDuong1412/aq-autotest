@@ -11,6 +11,10 @@ dua_sang: []
 dau_hieu: phúc tra, phúc khảo trực tuyến
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Phúc tra điểm trực tuyến"
+quy_trinh: []
+tags: [phan-he]
 ---
 # GAM – Phúc tra điểm trực tuyến
 
@@ -42,6 +46,15 @@ Test trên web.
 
 ## Test ở đâu
 Chỉ web.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- (chưa gắn quy trình)
+
+## Tài liệu
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

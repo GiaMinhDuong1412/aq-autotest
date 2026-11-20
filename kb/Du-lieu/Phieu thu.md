@@ -14,6 +14,8 @@ tu_khoa_ph:
   - QLTV
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Phiếu thu học phí"
 ---
 # Phiếu thu học phí
 

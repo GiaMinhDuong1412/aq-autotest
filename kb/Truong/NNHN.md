@@ -4,6 +4,8 @@ ma: NNHN
 ten: ĐH Nông nghiệp Hà Nội
 phan_cap: []
 trang_thai: da-xac-nhan
+aliases:
+  - "ĐH Nông nghiệp Hà Nội"
 ---
 # NNHN – ĐH Nông nghiệp Hà Nội
 

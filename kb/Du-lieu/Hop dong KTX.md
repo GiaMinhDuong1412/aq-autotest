@@ -12,6 +12,8 @@ tu_khoa_ph:
   - QKTX
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Hợp đồng ký túc xá"
 ---
 # Hợp đồng ký túc xá
 

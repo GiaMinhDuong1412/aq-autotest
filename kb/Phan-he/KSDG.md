@@ -18,6 +18,14 @@ dua_sang:
 dau_hieu: form đánh giá, câu hỏi, thang đo, kỳ đánh giá, đáp viên, khảo sát trước khi xem điểm, mẫu in KS
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Khảo sát đánh giá"
+  - "Khảo sát"
+quy_trinh:
+  - "[[07 Diem - hoc vu - hoc bong]]"
+  - "[[09 Hoat dong tren lop]]"
+  - "[[10 Nhan su - khoi luong giang day]]"
+tags: [phan-he]
 ---
 # KSDG – Khảo sát đánh giá
 
@@ -54,6 +62,26 @@ NetWEB SV + GV + khách: làm khảo sát; GV: xem kết quả khảo sát; DHNT
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web / mau-in – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được KSDG phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]]
+6. **KSDG** – [[Ket qua khao sat|Kết quả khảo sát]]
+
+**Sửa dữ liệu của KSDG → kiểm lại:** phân hệ dùng trực tiếp [[DIEM]].
+
+## Nằm trong quy trình
+- [[07 Diem - hoc vu - hoc bong|Điểm → điểm TB → học vụ, học bổng]]
+- [[09 Hoat dong tren lop|Hoạt động trên lớp: điểm danh, nghỉ dạy – dạy bù, khảo sát]]
+- [[10 Nhan su - khoi luong giang day|Nhân sự → phân công giảng dạy → khối lượng giảng dạy]]
+
+## Tài liệu
+- [[HDSD KSDG]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Phần form / mẫu in kết quả trên Edusoft, phần trả lời trên web; DHNT bắt khảo sát trước khi xem điểm (liên quan [[DIEM]] trên web).

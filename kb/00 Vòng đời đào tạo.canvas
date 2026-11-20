@@ -1,0 +1,239 @@
+{
+ "nodes": [
+  {
+   "id": "5d1cb9970fd74ed9",
+   "type": "text",
+   "x": 0,
+   "y": -620,
+   "width": 1000,
+   "height": 140,
+   "text": "# Vòng đời đào tạo – quy trình xuyên phân hệ\nTrái → phải theo thời gian một năm học. Mở từng thẻ để xem bước, menu, cài đặt hay gây case. Đọc kèm [[00 Quy trình xuyên phân hệ]]."
+  },
+  {
+   "id": "1b31b9ee1660db90",
+   "type": "file",
+   "file": "Quy-trinh/01 Mo hoc ky moi.md",
+   "x": 0,
+   "y": 0,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "edc384d466980ce6",
+   "type": "file",
+   "file": "Quy-trinh/02 Tuyen sinh - nhap hoc.md",
+   "x": 0,
+   "y": 300,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "2bdbb77d63278212",
+   "type": "file",
+   "file": "Quy-trinh/03 CTDT - TKB.md",
+   "x": 420,
+   "y": 0,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "117bba797346c235",
+   "type": "file",
+   "file": "Quy-trinh/04 Dang ky mon hoc.md",
+   "x": 840,
+   "y": 150,
+   "width": 340,
+   "height": 200,
+   "color": "4"
+  },
+  {
+   "id": "4ffb76729cd44721",
+   "type": "file",
+   "file": "Quy-trinh/05 Hoc phi - thu - thanh toan.md",
+   "x": 1260,
+   "y": 400,
+   "width": 340,
+   "height": 200,
+   "color": "2"
+  },
+  {
+   "id": "7e278a856bc17325",
+   "type": "file",
+   "file": "Quy-trinh/06 To chuc thi.md",
+   "x": 1260,
+   "y": -100,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "93f6b3418bace419",
+   "type": "file",
+   "file": "Quy-trinh/07 Diem - hoc vu - hoc bong.md",
+   "x": 1680,
+   "y": 0,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "5bcee8010b5c301c",
+   "type": "file",
+   "file": "Quy-trinh/08 Tot nghiep - luan van.md",
+   "x": 2100,
+   "y": 0,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "f99f33f33d34e073",
+   "type": "file",
+   "file": "Quy-trinh/09 Hoat dong tren lop.md",
+   "x": 1260,
+   "y": 150,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "3de069e351766d0d",
+   "type": "file",
+   "file": "Quy-trinh/10 Nhan su - khoi luong giang day.md",
+   "x": 420,
+   "y": -300,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "5ec80301113cd0d5",
+   "type": "file",
+   "file": "Quy-trinh/11 Ky tuc xa.md",
+   "x": 420,
+   "y": 450,
+   "width": 340,
+   "height": 200
+  },
+  {
+   "id": "5ef83a74b801ad93",
+   "type": "file",
+   "file": "Quy-trinh/12 Tai khoan - phan quyen - web.md",
+   "x": 840,
+   "y": -400,
+   "width": 340,
+   "height": 200
+  }
+ ],
+ "edges": [
+  {
+   "id": "fe915f4532f4618d",
+   "fromNode": "edc384d466980ce6",
+   "toNode": "117bba797346c235",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "a3497234109b0451",
+   "fromNode": "edc384d466980ce6",
+   "toNode": "4ffb76729cd44721",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "93a27d3c3d721603",
+   "fromNode": "93f6b3418bace419",
+   "toNode": "5bcee8010b5c301c",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "47a40e115489ccbb",
+   "fromNode": "117bba797346c235",
+   "toNode": "4ffb76729cd44721",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "7fcf9862f6d32105",
+   "fromNode": "117bba797346c235",
+   "toNode": "7e278a856bc17325",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "159fb308f82f608a",
+   "fromNode": "117bba797346c235",
+   "toNode": "93f6b3418bace419",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "20e11db75eedf1f7",
+   "fromNode": "5ec80301113cd0d5",
+   "toNode": "4ffb76729cd44721",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "458bc5e5b54b9d00",
+   "fromNode": "4ffb76729cd44721",
+   "toNode": "117bba797346c235",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "40de5a9756bf86fa",
+   "fromNode": "2bdbb77d63278212",
+   "toNode": "117bba797346c235",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "f9d05963c3b39fcc",
+   "fromNode": "2bdbb77d63278212",
+   "toNode": "7e278a856bc17325",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "4c6258bfb0895387",
+   "fromNode": "2bdbb77d63278212",
+   "toNode": "3de069e351766d0d",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "75c04ca4fe917a52",
+   "fromNode": "7e278a856bc17325",
+   "toNode": "93f6b3418bace419",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "b578c3491d5da830",
+   "fromNode": "1b31b9ee1660db90",
+   "toNode": "2bdbb77d63278212",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "683bd4b669be1a30",
+   "fromNode": "1b31b9ee1660db90",
+   "toNode": "117bba797346c235",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "e30f9dc1372dff33",
+   "fromNode": "1b31b9ee1660db90",
+   "toNode": "4ffb76729cd44721",
+   "fromSide": "right",
+   "toSide": "left"
+  },
+  {
+   "id": "7fa3b767c460b54a",
+   "fromNode": "4ffb76729cd44721",
+   "toNode": "117bba797346c235",
+   "fromSide": "top",
+   "toSide": "bottom",
+   "label": "nợ học phí chặn ĐKMH",
+   "color": "1"
+  }
+ ]
+}

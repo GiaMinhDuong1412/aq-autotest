@@ -15,6 +15,8 @@ tu_khoa: "nợ học phí|tồn nợ|công nợ|nợ hp"
 tu_khoa_ph: []
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Nợ học phí"
 ---
 # Nợ học phí
 

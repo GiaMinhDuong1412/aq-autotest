@@ -11,6 +11,10 @@ dua_sang: []
 dau_hieu: đề tài, lý lịch khoa học
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Nghiên cứu khoa học"
+quy_trinh: []
+tags: [phan-he]
 ---
 # NCKH – Nghiên cứu khoa học
 
@@ -43,6 +47,16 @@ CBCNV nhập lý lịch khoa học trực tuyến (tuỳ trường).
 
 ## Test ở đâu
 Chỉ edusoft.
+
+## Chuỗi phân hệ (bắc cầu)
+(chưa có dữ liệu nối với phân hệ này trong Du-lieu/)
+
+## Nằm trong quy trình
+- (chưa gắn quy trình)
+
+## Tài liệu
+- [[HDSD NCKH]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 —

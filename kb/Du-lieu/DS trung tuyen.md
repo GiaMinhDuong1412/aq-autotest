@@ -15,6 +15,8 @@ tu_khoa_ph:
   - QLTS
 nguon: luu-do
 trang_thai: tu-tai-lieu
+aliases:
+  - "Danh sách trúng tuyển"
 ---
 # Danh sách trúng tuyển
 

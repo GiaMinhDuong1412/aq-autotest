@@ -21,6 +21,15 @@ dua_sang:
 dau_hieu: miễn giảm, đơn giá, tính học phí, công nợ, tồn nợ, phụ thu, khoản thu khác, học phí tạm tính
 nguon: tai-lieu
 trang_thai: tu-tai-lieu
+aliases:
+  - "Chính sách học phí"
+  - "Học phí"
+  - "Chính sách HP"
+quy_trinh:
+  - "[[04 Dang ky mon hoc]]"
+  - "[[05 Hoc phi - thu - thanh toan]]"
+  - "[[11 Ky tuc xa]]"
+tags: [phan-he]
 ---
 # CSHP – Chính sách học phí
 
@@ -61,6 +70,29 @@ NetWEB SV: **xem học phí** (summary + bảng chi tiết, miễn giảm), họ
 
 ## Test ở đâu
 Tuỳ yêu cầu: edusoft / web – xem KH nói về màn hình Edusoft hay trang web.
+
+## Chuỗi phân hệ (bắc cầu)
+**Muốn làm được CSHP phải có trước** (theo tầng dữ liệu – trên xuống dưới):
+1. [[KHGD]] – [[Danh muc dao tao|Bậc – hệ – ngành đào tạo]], [[Khoi lop|Khối lớp (khóa đào tạo của 1 ngành)]], [[Mon hoc|Môn học]], [[Phong hoc|Phòng học kỳ]], [[CTDT|Chương trình đào tạo (chuẩn → kế hoạch → thực hiện)]], [[Nhom hoc|Nhóm học – kế hoạch giảng dạy học kỳ (nhóm tổ)]], [[Thoi khoa bieu|Thời khóa biểu]]
+2. [[QLHT]] – [[Hoc ky|Năm học – học kỳ]]
+3. [[QLNS]] – [[Vien chuc|Viên chức / cán bộ giảng dạy]]
+4. [[QLTS]] – [[Ky tuyen sinh|Kỳ / đợt tuyển sinh (ngành, khối, phương thức)]], [[Ho so thi sinh|Hồ sơ thí sinh]], [[DS trung tuyen|Danh sách trúng tuyển]]
+5. [[QLSV]] – [[Lop sinh vien|Lớp sinh viên]], [[Quyet dinh sinh vien|Quyết định vào / ra sinh viên]], [[DS SV hoc ky|Danh sách sinh viên học kỳ]], [[Dien chinh sach|Diện chính sách / miễn giảm]]
+6. [[DKMH]] – [[Rang buoc DKMH|Ràng buộc & thời gian đăng ký]], [[KQ DKMH|Kết quả đăng ký môn học]]
+7. [[QLTV]] – [[Phieu thu|Phiếu thu học phí]]
+8. **CSHP** – [[Hoc phi|Học phí phải thu (đã tính)]], [[No hoc phi|Nợ học phí]]
+
+**Sửa dữ liệu của CSHP → kiểm lại:** phân hệ dùng trực tiếp [[DKMH]], [[EDUBILL]], [[QLHT]], [[QLTV]]; dữ liệu sinh ra từ đó (theo thứ tự): [[Phieu thu|Phiếu thu học phí]] (QLTV).
+
+## Nằm trong quy trình
+- [[04 Dang ky mon hoc|Đăng ký môn học]]
+- [[05 Hoc phi - thu - thanh toan|Học phí: tính → nợ → thu → thanh toán online]]
+- [[11 Ky tuc xa|Ký túc xá]]
+
+## Tài liệu
+- [[HDSD EDUBILL]]
+- [[HDSD QLTV]]
+- Case thực tế theo trường: [[00 Mô hình trường]]
 
 ## Lưu ý
 Mã CSHP trên ACS gồm cả phần Edusoft lẫn phần SV xem trên web – **đọc lời KH**: nói "trang / summary / bảng hiển thị" → web; nói menu Chính sách HP / tính / đơn giá → Edusoft.
