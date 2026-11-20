@@ -89,7 +89,7 @@ def why_map(sec):
 
 def _sig(kb):
     s = []
-    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case'):
+    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test'):
         d = kb / sub
         if d.is_dir():
             for f in d.glob('*.md'):
@@ -146,6 +146,14 @@ def build(kb):
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
         pats[f.stem] = {'ten': str(p.get('ten') or f.stem), 'kh': str(p.get('dau_hieu_kh') or ''), 'ba': str(p.get('dau_hieu_ba') or ''),
                         'dev': str(p.get('dau_hieu_dev') or ''), 'ph': links(p.get('phan_he_hay_gap'))}
+    flows = {}
+    L = lambda v: [str(x) for x in v] if isinstance(v, list) else ([str(v)] if v else [])
+    for f in sorted((kb / 'Luong-test').glob('*.md')) if (kb / 'Luong-test').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        if p.get('loai') != 'luong-test' or not p.get('dau_hieu'):
+            continue
+        flows[f.stem] = {'ten': str(p.get('ten') or f.stem), 'dh': str(p.get('dau_hieu')), 'ph': links(p.get('phan_he')), 'pf': str(p.get('nen_tang') or ''),
+                         'can': L(p.get('can_cung_cap')), 'buoc': L(p.get('buoc')), 'kt': L(p.get('kiem_tra')), 'kah': L(p.get('khong_anh_huong'))}
     for d in data.values():                       # bỏ liên kết tới dữ liệu không có ghi chú
         d['req'] = [r for r in d['req'] if r[0] in data]
     lv = {}
@@ -159,7 +167,7 @@ def build(kb):
         return lv[fn]
     for fn in data:
         data[fn]['lv'] = depth(fn)
-    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
+    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
     _CACHE[str(kb)] = (sig, g)
     return g
 
@@ -247,6 +255,20 @@ def patterns_of(g, kh='', ba='', dev='', mod=''):
             out.append((fn, sc, why))
     out.sort(key=lambda x: -x[1])
     return out
+
+
+def flow_of(g, text, mod=''):
+    """luồng test (Luong-test/) khớp với tiêu đề + lời KH → (tên file, luồng) hoặc (None, None)"""
+    best = (None, None, 0)
+    for fn, x in (g.get('flows') or {}).items():
+        try:
+            m = re.findall(x['dh'], str(text or ''), re.I)
+        except re.error:
+            continue
+        sc = len(m) + (2 if mod and mod in x.get('ph', []) else 0) if m else 0
+        if sc > best[2]:
+            best = (fn, x, sc)
+    return best[0], best[1]
 
 
 def walk(g, fn, up):

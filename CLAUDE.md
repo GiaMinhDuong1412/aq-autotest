@@ -77,7 +77,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   App / API / Mẫu in – chấm điểm theo `RT_PFR` (phân hệ ACS, lời KH, ghi chú coder) kèm lý do, người test đổi được, lựa chọn khi nhận test cộng vào
   `settings/retest.pf[phân hệ]` để lần sau đoán đúng hơn; **loại sửa** (`RT_KR`); **KH cần** = câu yêu cầu trích từ lời KH. Nguyên tắc nghiệp vụ: case
   sửa giao diện web thì test trên web – **không** gán kịch bản Edusoft chỉ vì trùng phân hệ.
-  **2 Plan test** (`rtGenPlan`, nháp `RT.draft`): Chuẩn bị (môi trường theo nền tảng + trường + bản sửa trích từ ghi chú coder) → Tái hiện như KH (menu/bước
+  **2 Plan test** (`rtGenPlan`, nháp `RT.draft`): **luồng test** `kb/Luong-test/*.md` (Properties `dau_hieu`, `can_cung_cap`, `buoc` có `{Tên}`, `khong_anh_huong`; `kb_graph` → `flows`, `rtFlow`) khớp case → plan ngắn theo luồng; khung **Tài khoản test cần có** (`rtInputsFor`: từ luồng hoặc vai trò GV/SV/CVHT/quản trị trong lời KH – chỉ mã, không mật khẩu, bắt buộc nhập trước khi Nhận test, `rtSub` thay `{Tên}`, lưu `inputs` vào phiếu; MCP `retest_ghi_plan.can_cung_cap`, `acs_case.luong_test`). Không có luồng: Chuẩn bị (môi trường theo nền tảng + trường + bản sửa trích từ ghi chú coder) → Tái hiện như KH (menu/bước
   KH nêu) → Kiểm tra theo yêu cầu KH (mỗi câu yêu cầu một mục) → Kiểm tra không ảnh hưởng (theo loại sửa); sửa/thêm/bỏ được; kịch bản có sẵn chỉ gợi ý khi
   cùng nền tảng và khớp thật (`rtScenRel`: trùng tên menu hoặc nhiều từ khoá) – tuỳ chọn chạy kèm. **Nhận test** (`rtTake`) tạo phiếu `state:'testing'`,
   `platform`, `kind`, `build`, `plan:{env,items:[{g,t,res,note,shots}]}`.

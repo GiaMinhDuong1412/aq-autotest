@@ -68,6 +68,10 @@ Tìm trên ACS (MCP `acs_case_lien_quan`, hoặc khung Case liên quan trong app
 Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước / test chung / hỏi BA).
 
 ## 9. Chỉ khi 0–8 rõ mới soạn plan test
+- Plan = **luồng thao tác thật, ngắn**: ai đăng nhập → làm gì → kết quả đúng là gì → kiểm từng ý KH. Luồng có sẵn ở `Luong-test/` (vd [[Diem danh QR]]).
+- **Nhờ người dùng cung cấp tài khoản test theo ngữ cảnh** (chỉ mã, không mật khẩu): điểm danh QR → mã GV có lớp đang dạy + MSSV thuộc lớp đó;
+  trang học phí → MSSV có miễn giảm… Bước ghi `{Mã GV}`, app thay bằng giá trị người dùng nhập.
+- Không thêm mục chung chung hay dữ liệu không liên quan (vd case điểm danh không phải "điểm rèn luyện").
 
 ## Phiếu phân tích (mẫu)
 | Mục | Ghi |
