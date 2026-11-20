@@ -6,6 +6,13 @@ trang_thai: tu-tai-lieu
 
 Không đoán từ tiêu đề hay mã phân hệ. Đọc **theo thứ tự**, mỗi bước trả lời được câu hỏi của nó rồi mới sang bước sau.
 
+## Trước hết: phiếu case ACS đủ thông tin chưa?
+Đọc đủ các trường như màn hình case trên ACS: **đầu case** (trạng thái, phân công, hạn trả, cổng CST, liên quan), **quy trình 5 bước**
+(Tiếp nhận → BA phân tích → DEV xử lý → Kiểm thử → Gửi email & Đóng: ai, lúc nào, đang ở bước nào), **khách hàng** (khách hàng / đơn vị, phân hệ,
+danh xưng – tên, mail, loại hợp đồng – vd HĐ bảo trì, số / ngày hợp đồng), tab **Gửi mail / Lịch sử / Đính kèm**.
+Kiểm đủ: trường – phân cấp, phân hệ, yêu cầu KH, BA đã phân tích, Dev đã xử lý, **bản sửa**, hạn trả, người test, ảnh / đính kèm.
+Thiếu mục nào → nói ngay, hỏi BA / Dev trước khi phân tích tiếp. (App: khung **Phiếu case ACS** ở bước 1; MCP: `phieu_acs`, `kiem_tra_du` của `acs_case`.)
+
 ## 0. Trường – case của ai, phân cấp nào?
 - `school_code` trên ACS: **4 ký tự = trường** (case chung của trường), **dài hơn 4 ký tự = phân cấp** (đơn vị phân cấp: hệ / cơ sở) của trường có 4 ký tự đầu đó.
   Ví dụ `DHMO` = ĐH Mở (chung); `DHMOTX` = DHMO – đào tạo từ xa; `DHMODH` = DHMO – đại học; `DHNTCHCQ` = Ngoại Thương – cao học.

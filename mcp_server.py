@@ -27,6 +27,8 @@ SECRET = re.compile(r'(mật\s*khẩu|password|passwd|pwd|token|secret|api[_\- ]
 INSTRUCTIONS = """Bạn đang nối với app AQ Auto Test (máy người test của AQTech) – kiểm thử phần mềm Edusoft.NET (Windows) và Netweb (cổng web SV/GV).
 VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau. Không đoán từ tiêu đề hay mã phân hệ.
 Đọc kb_doc '00 Cách phân tích case.md' một lần, rồi làm theo thứ tự:
+ PHIẾU ACS trước tiên: acs_case trả 'phieu_acs' (đầu case, quy trình 5 bước Tiếp nhận → BA → DEV → Kiểm thử → Gửi mail, khách hàng, loại hợp đồng, tab)
+    và 'kiem_tra_du' – mục nào thiếu (BA chưa phân tích, chưa có bản sửa, chưa có hạn…) nói ngay cho người dùng.
  0. Trường: school_code 4 ký tự = trường (case chung của trường); dài hơn 4 ký tự = PHÂN CẤP của trường đó (vd DHMOTX = DHMO – từ xa, DHMODH = DHMO – đại học):
     case theo phân cấp chỉ hiệu lực trên phân cấp đó. 'AQ' = case nội bộ / sản phẩm chung. Mã chưa có ghi chú Truong/ → nói rõ, không đoán tên trường.
  1. Phân hệ: đọc Phan-he/<mã>.md (phần Edusoft / web, dạng case thường gặp). Mã phân hệ là nơi xếp case, không phải nơi lỗi xảy ra.
@@ -322,7 +324,8 @@ def t_kb_luu_anh(S, a):
     if SECRET.search(desc):
         raise ToolError("Mô tả có vẻ chứa mật khẩu / token – bỏ ra rồi ghi lại.")
     det = get_case(S, cid)
-    ims = [f for f in find_files(det) if f["anh"]]
+    ims = [f for f in find_files({"case": det, "attachments": list_endpoint(cid, ("/cs/cases/%s/attachments", "/cs/cases/%s/files")) or [],
+                                  "mails": list_endpoint(cid, ("/cs/cases/%s/mails", "/cs/cases/%s/emails")) or []}) if f["anh"]]
     try:
         im = ims[int(a.get("so")) - 1]
     except (ValueError, TypeError, IndexError):
@@ -631,7 +634,8 @@ def t_acs_anh(S, a):
     if not re.match(r'^\d{1,10}$', cid):
         raise ToolError("Mã case phải là số")
     det = get_case(S, cid)
-    ims = [f for f in find_files(det) if f["anh"]]
+    ims = [f for f in find_files({"case": det, "attachments": list_endpoint(cid, ("/cs/cases/%s/attachments", "/cs/cases/%s/files")) or [],
+                                  "mails": list_endpoint(cid, ("/cs/cases/%s/mails", "/cs/cases/%s/emails")) or []}) if f["anh"]]
     if not ims:
         return "Case #%s không có ảnh đọc được trong nội dung / đính kèm." % cid
     so = [int(x) for x in (a.get("so") or []) if str(x).isdigit()] or list(range(1, min(4, len(ims)) + 1))
@@ -737,6 +741,86 @@ def split_case(det):
     return meta, out
 
 
+
+# ------------------------------------------------------------------ phiếu case ACS (đủ trường như màn hình case trên ACS)
+ACS_FIELDS = [
+    ("dau_case", "Trạng thái", r'^(status|trang_?thai|case_?status|state)$'), ("dau_case", "Phân công", r'^(assignee(_raw|_name)?|assigned_?to|phan_?cong|handler|owner(_name)?)$'),
+    ("dau_case", "Hạn trả", r'^(due_?date|deadline|han(_?tra)?|due_?at)$'), ("dau_case", "Cổng CST", r'cst|portal|cong_?kh|show_?customer|public'),
+    ("dau_case", "Liên quan", r'^(related|lien_?quan|linked?_?cases?|related_?cases?)$'), ("dau_case", "Cập nhật bởi", r'^(updated_?by|changed_?by|modified_?by|last_?editor)$'),
+    ("dau_case", "Cập nhật lúc", r'^(changed|updated_?at|modified_?at|last_?modified)$'),
+    ("quy_trinh", "Tiếp nhận", r'^(received_?by|creator|created_?by|receiver|tiep_?nhan(_by)?|nguoi_?tiep_?nhan)$'), ("quy_trinh", "Tiếp nhận lúc", r'^(received_?at|created_?at|ngay_?tiep_?nhan)$'),
+    ("quy_trinh", "BA phân tích", r'^(analyst(_raw|_name)?|ba(_raw|_name)?|nguoi_?phan_?tich)$'), ("quy_trinh", "Trạng thái BA", r'^(req_?state|analysis_?state|ba_?state)$'),
+    ("quy_trinh", "DEV xử lý", r'^(dev(eloper)?(_raw|_name)?|coder(_raw|_name)?|nguoi_?xu_?ly)$'), ("quy_trinh", "Xử lý xong", r'^(resolved_?at|fixed_?at|dev_?done_?at)$'),
+    ("quy_trinh", "Kiểm thử", r'^(tester(_raw|_name)?|qa(_raw)?|nguoi_?test)$'), ("quy_trinh", "Kết quả test", r'^(test_?state|test_?result|ket_?qua_?test)$'),
+    ("quy_trinh", "Gửi email & Đóng", r'^(mail_?state|email_?state|closed_?at|close_?state|sent_?at|mail_?sent(_at)?)$'),
+    ("khach_hang", "Khách hàng", r'^(customer(_name)?|khach_?hang|school_?name|unit_?name|org(_name)?|don_?vi|customer_?label)$'),
+    ("khach_hang", "Mã trường", r'^(school_?code|customer_?code|ma_?truong)$'), ("khach_hang", "Phân hệ", r'^(module|phan_?he|module_?code)$'),
+    ("khach_hang", "Danh xưng", r'^(salutation|danh_?xung|honorific|prefix)$'), ("khach_hang", "Tên", r'^(contact_?name|requester(_name)?|ten(_?kh|_?lien_?he)?|customer_?contact)$'),
+    ("khach_hang", "Mail To", r'^(mail_?to|email_?to|to|requester_?email|contact_?email)$'), ("khach_hang", "Mail CC", r'^(mail_?cc|email_?cc|cc)$'),
+    ("khach_hang", "Loại hợp đồng", r'^(contract_?type|loai_?hop_?dong|loai_?hd)$'), ("khach_hang", "Số hợp đồng", r'^(contract_?(no|number|code)|so_?hop_?dong|so_?hd)$'),
+    ("khach_hang", "Ngày hợp đồng", r'^(contract_?date|ngay_?hop_?dong|ngay_?hd)$'), ("khach_hang", "Loại case", r'^(case_?type|loai_?case|type)$'),
+    ("khach_hang", "Mức ưu tiên", r'^(priority|uu_?tien|muc_?uu_?tien)$')]
+
+
+def flat_all(o, pre="", dep=0, out=None):
+    """mọi giá trị ngắn của case (kể cả số, ngày, đối tượng có name/label) → {đường dẫn: giá trị}; danh sách đối tượng → 'đường dẫn#': số mục"""
+    out = {} if out is None else out
+    if not isinstance(o, dict) or dep > 4:
+        return out
+    nm = lambda v: next((v[k] for k in ("display_name", "name", "label", "full_name", "username", "email", "code") if isinstance(v, dict) and v.get(k)), None)
+    for k, v in o.items():
+        if re.search(r'pass|token|secret|cookie', k, re.I) or v in (None, ""):
+            continue
+        key = (pre + "." + k) if pre else k
+        if isinstance(v, list):
+            if v and all(not isinstance(z, (dict, list)) for z in v):
+                out[key] = ", ".join(str(z) for z in v)
+            elif v and all(nm(z) for z in v):
+                out[key] = ", ".join(str(nm(z)) for z in v)
+            else:
+                out[key + "#"] = len(v)
+        elif isinstance(v, dict):
+            n = nm(v)
+            if n is not None and len(v) <= 6:
+                out[key] = n
+            else:
+                flat_all(v, key, dep + 1, out)
+        else:
+            out[key] = v
+    return out
+
+
+def case_sheet(det, hist, att, mails):
+    allv = flat_all(det)
+    F, used = {}, set()
+    for sec, lab, rx in ACS_FIELDS:
+        ks = sorted([k for k in allv if re.search(rx, k.split(".")[-1].rstrip("#"), re.I)], key=lambda k: k.count("."))
+        if ks and lab not in F:
+            v = allv[ks[0]]
+            F[lab] = ("%d mục" % v if v else "chưa có") if ks[0].endswith("#") else html_text(v)[:300] if isinstance(v, str) else v
+            used.add(ks[0])
+    out = {sec: {lab: F[lab] for s2, lab, _ in ACS_FIELDS if s2 == sec and lab in F} for sec in ("dau_case", "quy_trinh", "khach_hang")}
+    cnt = lambda rx: next((v for k, v in allv.items() if k.endswith("#") and re.search(rx, k, re.I)), None)
+    out["tab"] = {"gui_mail": len(mails) if mails is not None else cnt(r'mail|email'), "lich_su": len(hist),
+                  "dinh_kem": len(att) if att is not None else cnt(r'attach|file|dinh_?kem')}
+    out["truong_khac"] = {k: v for k, v in allv.items() if k not in used and not k.endswith("#") and not re.search(r'^(title|case_id|id|subject)$', k.split(".")[-1], re.I)
+                          and len(str(v)) <= 80 and "\n" not in str(v)}
+    return out, F
+
+
+def list_endpoint(cid, paths):
+    for p in paths:
+        try:
+            r = acs("GET", p % cid)
+        except ToolError:
+            continue
+        d = r.get("data")
+        L = d if isinstance(d, list) else next((d.get(k) for k in ("items", "rows", "data", "attachments", "files", "mails", "emails") if isinstance(d, dict) and isinstance(d.get(k), list)), None)
+        if r.get("status") == 200 and isinstance(L, list):
+            return L
+    return None
+
+
 def t_acs_case(S, a):
     cid = str(a.get("ma_case") or "").strip()
     if not re.match(r'^\d{1,10}$', cid):
@@ -763,8 +847,19 @@ def t_acs_case(S, a):
     build = re.search(r'\bv?(20\d\d\.\d{1,2}[A-Z]{0,2}\.\d{1,3})\b', sec["dev"] + "\n" + json.dumps(hist, ensure_ascii=False))
     repo = re.search(r'VersionSchool/[\w.-]+/[\w./-]+|Source\.NET[\w./-]*', allt)
     pats = kb_graph.patterns_of(g, title + "\n" + sec["yeu_cau_kh"], sec["ba"], sec["dev"], mod)
-    files = find_files(det)
+    att = list_endpoint(cid, ("/cs/cases/%s/attachments", "/cs/cases/%s/files"))
+    mails = list_endpoint(cid, ("/cs/cases/%s/mails", "/cs/cases/%s/emails"))
+    sheet, F = case_sheet(det, hist, att, mails)
+    files = find_files({"case": det, "attachments": att or [], "mails": mails or []})
     ims = [f for f in files if f["anh"]]
+    chk = [{"muc": "Trường / phân cấp", "du": bool(meta.get("school_code") or F.get("Mã trường"))},
+           {"muc": "Phân hệ", "du": bool(meta.get("module") or F.get("Phân hệ"))},
+           {"muc": "Yêu cầu khách hàng", "du": bool(sec["yeu_cau_kh"])},
+           {"muc": "BA phân tích", "du": bool(sec["ba"]), "ghi_chu": "" if sec["ba"] else "chưa có – hỏi BA trước khi test"},
+           {"muc": "Dev đã xử lý", "du": bool(sec["dev"])},
+           {"muc": "Bản sửa (build)", "du": bool(build), "ghi_chu": "" if build else "hỏi Dev bản nào đã lên môi trường test"},
+           {"muc": "Hạn trả", "du": bool(F.get("Hạn trả"))},
+           {"muc": "Người test", "du": bool(F.get("Kiểm thử"))}]
     return {
         "ma_case": cid, "tieu_de": title,
         "truong": dict({"school_code": meta.get("school_code"), "truong": sma, "ghi_chu": "Truong/%s.md" % sma, "ten": sx["ten"], "xac_nhan": sx["xac_nhan"]},
@@ -781,10 +876,11 @@ def t_acs_case(S, a):
         "ghi_chu_test_truoc": sec["test_truoc"], "khac": sec["khac"][:20],
         "ban_sua": build.group(1) if build else None, "repo": repo.group(0) if repo else None,
         "case_goc": refs, "goi_y_dang_case": [{"dang": p, "ghi_chu": "Dang-case/%s.md" % p, "vi": w} for p, _, w in pats[:3]],
+        "phieu_acs": sheet, "kiem_tra_du": chk,
         "anh": [{"so": i + 1, "nguon": f["nguon"], "ten": f["ten"], "xem_duoc": f["loai"] != "ngoai"} for i, f in enumerate(ims)],
         "dinh_kem_khac": [{"ten": f["ten"], "nguon": f["nguon"]} for f in files if not f["anh"]][:20],
         "dien_bien": hist,
-        "tiep_theo": ("Case có %d ảnh – XEM bằng acs_anh trước khi kết luận hiện trạng (ảnh cho thấy đúng màn hình / chỗ lỗi). " % len(ims) if ims else "") + "Phân tích theo '00 Cách phân tích case.md': trường → phân hệ → KH → BA → Dev → đối chiếu → dạng case → dữ liệu (kb_phan_tich) → acs_case_lien_quan → case_ghi_phan_tich.",
+        "tiep_theo": ("Kiểm tra phiếu ACS: thiếu %s – nêu cho người dùng trước. " % ", ".join(x["muc"] for x in chk if not x["du"]) if any(not x["du"] for x in chk) else "") + ("Case có %d ảnh – XEM bằng acs_anh trước khi kết luận hiện trạng (ảnh cho thấy đúng màn hình / chỗ lỗi). " % len(ims) if ims else "") + "Phân tích theo '00 Cách phân tích case.md': trường → phân hệ → KH → BA → Dev → đối chiếu → dạng case → dữ liệu (kb_phan_tich) → acs_case_lien_quan → case_ghi_phan_tich.",
     }
 
 
