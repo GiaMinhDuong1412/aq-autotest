@@ -2887,7 +2887,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-02"
+KIT_VERSION = "2026.11.23-03"
 from pathlib import Path
 
 
@@ -4147,9 +4147,37 @@ class Edusoft:
 
     TIME_PAT = re.compile(r"\d+(?:[.,]\d+)?\s*(?:ms|mili|giây|giay|phút|s\b|sec)|thời gian|time", re.I)
 
+    FORM_TIME = re.compile(r"thời\s*gian\s*mở\s*form\s*:?\s*[^\n·|]{0,24}", re.I)
+
+    def form_time_label(self):
+        """Chữ "Thời gian mở form: 1s" Edusoft hiện ở thanh dưới đáy cửa sổ chính (cạnh Năm học / Học kỳ) sau khi nhấn
+        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc ""."""
+        try:
+            mr = self.main.rectangle()
+            els = list(self.main.descendants(control_type="StatusBar"))
+            for sb in els[:]:
+                try:
+                    els += sb.descendants()
+                except Exception:
+                    pass
+            try:
+                els += [e for e in self.main.descendants(control_type="Text") if e.rectangle().top > mr.bottom - 90]
+            except Exception:
+                pass
+            for el in els:
+                m = self.FORM_TIME.search(nfc(el.window_text() or ""))
+                if m:
+                    return m.group(0).strip()
+        except Exception:
+            pass
+        return ""
+
     def form_time_text(self, before=()):
-        """Sau Ctrl+Shift+T + mở menu: tìm chữ thời gian mở form Edusoft hiện ra – hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề.
-        → (chữ, hộp thoại chứa nó | None)."""
+        """Sau Ctrl+Shift+T + mở menu / bấm nút: tìm chữ thời gian mở form Edusoft hiện ra – trước hết nhãn "Thời gian mở form"
+        ở thanh dưới đáy, rồi hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề. → (chữ, hộp thoại chứa nó | None)."""
+        t = self.form_time_label()
+        if t:
+            return t, None
         try:
             for d in self.dialogs():
                 t = self.dialog_text(d)
@@ -4708,6 +4736,66 @@ class Edusoft:
         cell.click_input(coords=(max(cr.width() - 8, 1), cr.height() // 2))   # nút "…" vẽ ở mép phải ô
         return "mép phải ô"
 
+    def field_button(self, label, area=""):
+        """Nút "…" của ô nhập trên form (vd ô Mã SV ở khung Thông tin sinh viên của Nhật ký thu học phí): tìm ô theo nhãn / #tên,
+        bấm Button nhỏ nằm sát bên phải ô; không thấy ô thì lấy Button nhỏ đầu tiên (tên "…" / trống) trong vùng `area`."""
+        box = None
+        try:
+            self.last_outer = None
+            inner, _ = self.field_for(label, timeout=4)
+            box = getattr(self, "last_outer", None) or inner
+        except Exception:
+            box = None
+        roots = [self.area_el(area, timeout=3)] if area else self.roots()
+        if box is not None:
+            br = box.rectangle()
+            for root in roots:
+                try:
+                    for b in root.descendants(control_type="Button"):
+                        r = b.rectangle()
+                        if br.left <= r.left <= br.right + 30 and abs((r.top + r.bottom) / 2 - (br.top + br.bottom) / 2) < 10 \
+                                and r.width() < 40 and b.is_visible():
+                            self.mark(b)
+                            b.click_input()
+                            return "nút cạnh ô"
+                except Exception:
+                    continue
+            self.mark(box)
+            box.click_input(coords=(max(br.width() - 8, 1), br.height() // 2))
+            return "mép phải ô"
+        # nhãn Edusoft thường không có trong cây giao diện → lấy ô nhập trên cùng của màn hình đang mở (Mã SV nằm đầu form),
+        # bấm nút nhỏ sát phải ô; nút "…" vẽ liền ô (ButtonEdit) thì bấm mép phải khung ngoài / ngay sau ô
+        from pywinauto import mouse
+        mr = self.main.rectangle()
+        for root in roots:
+            try:
+                eds = [e for e in root.descendants(control_type="Edit") if e.is_visible()]
+                eds = [e for e in eds if e.rectangle().top > mr.top + 140 and e.rectangle().bottom < mr.bottom - 60 and e.rectangle().width() > 30]
+                if not eds:
+                    continue
+                eds.sort(key=lambda e: (e.rectangle().top, e.rectangle().left))
+                e = eds[0]
+                er = e.rectangle()
+                for b in root.descendants(control_type="Button"):
+                    r = b.rectangle()
+                    if er.right - 4 <= r.left <= er.right + 30 and abs((r.top + r.bottom) / 2 - (er.top + er.bottom) / 2) < 10 and r.width() < 40 and b.is_visible():
+                        self.mark(b)
+                        b.click_input()
+                        return "nút cạnh ô đầu form"
+                self.mark(e)
+                try:
+                    pr = e.parent().rectangle()
+                    if 6 <= pr.right - er.right <= 40 and abs(pr.top - er.top) < 8:
+                        mouse.click(coords=(int(pr.right - 8), int((er.top + er.bottom) / 2)))
+                        return "mép phải ô đầu form"
+                except Exception:
+                    pass
+                mouse.click(coords=(int(er.right + 10), int((er.top + er.bottom) / 2)))
+                return "ngay sau ô đầu form"
+            except Exception:
+                continue
+        raise LookupError("Không thấy ô \"%s\" / nút … của ô" % label)
+
     def type_at_label(self, lab, value):
         """Lưới dọc DevExpress: bấm vào ô giá trị bên phải nhãn rồi gõ."""
         from pywinauto import mouse
@@ -4811,6 +4899,7 @@ class Run:
         self._filter = None                             # ô tìm kiếm của lưới đang gõ (để xoá sau)
         self.bugs = []
         self.log = []
+        self.ctrl_t = False        # đã nhấn Ctrl+Shift+T (bật hiện "Thời gian mở form") trong lượt này
         self.halt = False          # người test đã xử lý bước lỗi → dừng luồng đang chạy, test tiếp luồng khác
         self.abort = False         # người test bấm "Dừng test"
         self.started = now_iso()
@@ -4903,6 +4992,8 @@ class Run:
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
           menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
+          fieldbtn: Mã SV|#MaSV @ Vùng   bấm nút "…" của ô nhập trên form → mở danh sách chọn (vd Danh sách sinh viên → find_row → time_click: Chọn)
+          time_click: Chọn               bấm nút rồi chờ dữ liệu hiện xong; đọc "Thời gian mở form: Ns" ở thanh dưới đáy (Ctrl+Shift+T), chụp ảnh
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -4957,12 +5048,8 @@ class Run:
                 es.open_menu(arg)
             elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
                 name = (menu_segs(arg) or [arg])[-1]
-                try:
-                    es.main.set_focus()
-                except Exception:
-                    pass
-                pkb.send_keys("^+t")                    # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
-                time.sleep(0.8)
+                if not self.ctrl_t:
+                    self.press_ctrl_t()                 # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
                 before = es.handles()
                 t0 = time.time()
                 es.open_menu(arg, settle=False)
@@ -4973,6 +5060,30 @@ class Run:
                     es.close_info(dlg)
                 notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
                              "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
+            elif verb == "time_click":                  # bấm nút rồi đo tới khi dữ liệu hiện xong (vd Chọn ở Danh sách sinh viên)
+                arg2, area = split_col(arg)
+                el = es.find_in_area(arg2, area, timeout=15) if area else es.find_any(arg2, timeout=15)
+                if not self.ctrl_t:                     # Ctrl+Shift+T bật hiện thời gian – chỉ nhấn một lần mỗi lượt
+                    self.press_ctrl_t()
+                before = es.handles()
+                t0 = time.time()
+                es.click(el)
+                secs = es.wait_idle() - t0
+                shown, dlg = es.form_time_text(before)
+                self.shot_into(notes, "thoi-gian-mo-form")
+                if dlg is not None:
+                    es.close_info(dlg)
+                nm = alts_of(arg2)[0]
+                notes.append("Bấm %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (nm, shown, secs) if shown else
+                             "Bấm %s: %.1f giây (bộ test đo; chưa đọc được \"Thời gian mở form\" ở thanh dưới đáy)" % (nm, secs))
+            elif verb == "fieldbtn":                    # nút "…" của ô nhập (Mã SV…) → mở danh sách chọn
+                lab, area = split_col(arg)
+                es.snap = es.handles()
+                how = es.field_button(lab, area)
+                time.sleep(1.5)
+                if not es.new_windows(es.snap):
+                    raise RuntimeError("Bấm nút … của ô \"%s\" (%s) nhưng không mở danh sách chọn" % (lab, how))
+                notes.append("Mở danh sách chọn của " + alts_of(lab)[0].lstrip("#"))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)
@@ -5780,6 +5891,17 @@ class Run:
     def summary(self):
         keys = [k for k in (self.sc.get("vars") or {})]
         return ("Dữ liệu test: " + ", ".join("%s = %s" % (k, self.vars[k]) for k in keys) + ".") if keys else ""
+
+    def press_ctrl_t(self):
+        """Ctrl+Shift+T trên cửa sổ chính Edusoft – Edusoft hiện "Thời gian mở form: Ns" ở thanh dưới đáy. Nhấn một lần mỗi lượt
+        (nhấn lại có thể tắt)."""
+        try:
+            self.es.main.set_focus()
+        except Exception:
+            pass
+        pkb.send_keys("^+t")
+        time.sleep(0.8)
+        self.ctrl_t = True
 
     def shot_into(self, notes, name):
         f = self.shot(name)
@@ -9647,7 +9769,7 @@ QUAY VIDEO (TÙY CHỌN)
     return withRetry(function(){return isNew?RT.col.doc(id).set(patch):RT.col.doc(id).update(patch);});}
   /* lượt chạy bằng script về sau (nhập kết quả / cầu nối): gắn vào phiếu đang test trên máy đó */
   function rtLink(){if(!SC.runs)return;RT.list.forEach(function(rt){if(rt.state!=='running'||rt.runId)return;var t0=String(rt.startedAt||rt.assignedAt||'');
-    var r=SC.runs.filter(function(x){return x.scenarioId===rt.scenarioId&&x.runnerId===rt.runnerId&&x.finishedAt&&String(x.startedAt||'')>=t0;})
+    var r=SC.runs.filter(function(x){return (x.scenarioId===rt.scenarioId||(rt.adhoc&&x.scenarioCode===rt.scenarioCode))&&(rt.adhoc||x.runnerId===rt.runnerId)&&x.finishedAt&&String(x.finishedAt||'')>=t0;})
       .sort(function(a,b){return String(a.startedAt).localeCompare(String(b.startedAt));})[0];
     if(!r)return;var patch={runId:r.id,runStatus:r.status||'',version:r.version||'',ranAt:r.finishedAt};
     if(rt.adhoc&&rt.plan){var items=rtItemsOf(rt).map(function(x,i){var st=(r.steps||[])[i]||{},y=Object.assign({},x);
@@ -9675,12 +9797,16 @@ QUAY VIDEO (TÙY CHỌN)
   function rtEnvOfDoc(rt){var e=String((rt.plan&&rt.plan.env)||''),ins=rt.inputs||{};
     var path=rt.envPath||((e.match(/^\s*Edusoft:\s*(.+?\.exe)\b/i)||[])[1]||'').trim(),url=rt.envUrl||((e.match(/^\s*Web:\s*(https?:\/\/\S+)/i)||[])[1]||'');
     return {path:path,acct:rt.acct||ins['Tài khoản Edusoft']||'',url:url.replace(/[)\],.]+$/,'')};}
-  function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);}),steps=[],auto=[];
-    items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^(?:mở|vào)\s+menu\s+(.+?)(?:\s+[–-]\s+bấm giờ.*|:.*)?\.?$/i);
+  function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian|ctrl\+shift\+t/i.test(x.t);}),steps=[],auto=[],vars={};
+    items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^(?:nhấn\s+ctrl\+shift\+t\s*(?:rồi|,|→)\s*)?(?:mở|vào)\s+menu\s+(.+?)(?:\s+[–-]\s+bấm giờ.*|:.*)?\.?$/i),
+        k=x.g!=='check'&&t.match(/nút\s*(?:…|\.\.\.)\s*(?:cạnh|của)\s*(?:ô\s*)?mã\s*sv.*?chọn\s+(?:mã\s*sv\s*)?(\[[^\]]*\]|\{[^}]*\}|\S*)\s*→\s*bấm\s+chọn/i);
       steps.push((x.g==='check'?'Đầu ra: ':'')+t);
+      if(k){var v=String(k[1]||'').replace(/^[\[{].*[\]}]$/,'').trim()||String((rt.inputs||{})['Mã SV']||'').trim(); /* thao tác như người dùng: nút … → chọn SV → Chọn, đo tới khi dữ liệu hiện */
+        if(v)vars.MSSV=v;
+        auto.push(['fieldbtn: Mã SV|Mã sinh viên|MSSV'].concat(v?[]:['pick: MSSV = @ Mã SV']).concat(['find_row: {MSSV} @ Mã SV','time_click: Chọn','shot: buoc-'+(i+1)]));return;}
       auto.push(m&&x.g!=='check'?[(perf?'menu_time: ':'menu: ')+m[1].trim(),'shot: buoc-'+(i+1)]:[]);});
     return {id:'acs-'+rt.caseId+'-'+(rt.round||1),code:'ACS-'+rt.caseId,title:'Test case ACS #'+rt.caseId+' – '+(rt.title||''),product:'edusoft',module:rt.module||'',menu:'',version:DEFAULT_VERSION,
-      steps:steps,auto:auto,expected:'',vars:{},altFlows:[],release:null};}
+      steps:steps,auto:auto,expected:'',vars:vars,altFlows:[],release:null};}
   async function rtRunPlan(id){var rt=rtById(id);if(!rt)return;RT.err='';
     var ed=rtEnvOfDoc(rt);
     if(rt.platform==='web'){var u=ed.url;if(!/^https?:\/\//i.test(u)){RT.err='Plan chưa có địa chỉ trang web test – bấm Sửa plan để nhập.';renderRetest();return;}
@@ -9880,7 +10006,7 @@ QUAY VIDEO (TÙY CHỌN)
       if(/^(mong muốn|kết quả mong muốn|mong đợi)\b/i.test(s)){inSteps=false;need.push(s.replace(/^[^:]*:\s*/,''));return;}
       if(RQ.test(s)&&s.length<400)need.push(s);});
     if(!need.length&&c.title)need.push(c.title.replace(/^\[\d+\]\s*:?\s*/,''));
-    var mp=(T.req.match(/(?:menu|chức năng|vào)\s+((?:[^,.;:\n\/]{2,40}\/\s*){1,5}[^,.;:\n\/]{2,40})/i)||[])[1]||'';mp=mp.replace(/^menu\s+/i,'').replace(/\s+(rồi|thì|và|để|nhưng|mở|bị|không|rất|chậm|load|lâu|hiện|báo|khi|mất)(\s.*)?$/i,'').trim();
+    var mp=(T.req.match(/(?:menu|chức năng|vào)\s+((?:[^,.;:\n\/]{2,40}\/\s*){1,5}[^,.;:\n\/]{2,40})/i)||[])[1]||'';mp=mp.replace(/^menu\s+/i,'').replace(/\s+(rồi|thì|và|để|nhưng|mở|bị|không|rất|chậm|load|lâu|hiện|báo|khi|mất|chọn|bấm|nhấn|click)(\s.*)?$/i,'').trim();
     var codes=(T.req.match(/\b\d{8,12}\b/g)||[]).filter(function(x,i,a){return a.indexOf(x)===i;}).slice(0,4);
     var map=rtMap({c:c,T:T,menu:mp}),G=kbG(); /* logic kb: dữ liệu tính / lưu ở phân hệ Edusoft mà KH không nhắc web → test trên Edusoft */
     if(map&&map.focus.length&&!map.guess&&(kind==='data'||kinds.indexOf('data')>=0)&&!sc.app&&!sc.api){var fe=map.focus.filter(function(e){var m=G.mods[G.data[e.fn].src];return m&&m[1][0]==='edusoft';})[0];
@@ -10079,12 +10205,18 @@ QUAY VIDEO (TÙY CHỌN)
     var env={web:'Trang web test của trường '+(c.school||''),edusoft:'Edusoft bản test',app:'App trên điện thoại test',api:'Môi trường API test',report:'Bản test (mẫu in)'}[pf]+(b?' – bản sửa '+b:'');
     if(fl){fl.buoc.forEach(function(t){add('repro',t);});a.need.forEach(function(t){add('check',rtCheckOf(t));});(fl.kt||[]).forEach(function(t){add('check',t);});
       return {env:env,items:items,inputs:ins,flow:fl.ten};}
-    if(o.menu)add('repro',(pf==='edusoft'?'Mở menu ':'Vào ')+o.menu+(o.perf?(pf==='edusoft'?' – bấm giờ: nhấn Ctrl+Shift+T trước khi mở để Edusoft hiện thời gian mở form':' – bấm giờ từ lúc bấm'):'')+'.');
-    a.repro.forEach(function(s){add('repro',rtCap(s));});
+    var esPerf=o.perf&&pf==='edusoft',sv=esPerf&&RT_SVPICK.test((c.title||'')+'\n'+a.T.req+'\n'+(o.menu||''));
+    if(o.menu)add('repro',esPerf?'Nhấn Ctrl+Shift+T rồi mở menu '+o.menu+'.':(pf==='edusoft'?'Mở menu ':'Vào ')+o.menu+(o.perf?' – bấm giờ từ lúc bấm':'')+'.');
+    if(sv){add('repro',RT_SVSTEP);ins=ins.concat([{k:'Mã SV',why:'SV có nhiều dữ liệu (phiếu thu…) để đo – để trống thì bộ test chọn ngẫu nhiên',opt:true}]);}
+    else if(esPerf)add('repro','Làm thao tác ra dữ liệu như KH (chọn điều kiện → bấm nút) – bấm giờ: đọc "Thời gian mở form" ở thanh dưới đáy.');
+    if(!esPerf)a.repro.forEach(function(s){add('repro',rtCap(s));});
     if(!items.length)add('repro','Vào '+o.where+(o.perf?' – bấm giờ từ lúc bấm':'')+', làm đúng thao tác KH nêu.');
     o.expect.forEach(function(s){add('check',s);});
     return {env:env,items:items,inputs:ins,flow:''};}
-  function rtKeepIn(nw,old){var o={};(old||[]).forEach(function(x){if(x.v)o[x.k]=x.v;});return (nw||[]).map(function(x){return {k:x.k,why:x.why,v:o[x.k]||''};});}
+  /* case chậm trên Edusoft: đo như NGƯỜI DÙNG thao tác (người dùng dạy 23/11, #63652 Nhật ký thu học phí của sinh viên) –
+     Ctrl+Shift+T → mở menu → nút … cạnh Mã SV → chọn SV → Chọn → dữ liệu hiện ra → "Thời gian mở form: Ns" ở thanh dưới đáy */
+  var RT_SVPICK=/mã\s*sv|\bmssv\b|(?:chọn|của|theo|từng|1|một)\s+sinh viên/i,RT_SVSTEP='Bấm nút … cạnh ô Mã SV → chọn mã SV {Mã SV} → bấm Chọn – bấm giờ: dữ liệu hiện ra thì đọc "Thời gian mở form" ở thanh dưới đáy.';
+  function rtKeepIn(nw,old){var o={};(old||[]).forEach(function(x){if(x.v)o[x.k]=x.v;});return (nw||[]).map(function(x){var y={k:x.k,why:x.why,v:o[x.k]||''};if(x.opt)y.opt=true;return y;});}
   function rtDraftOf(caseId){var a=rtAnalyze(caseId);if(!a)return null;var dr=RT.draft[caseId],cd=(RT.cdr||{})[caseId];
     if(cd&&RT.cdSkip[caseId]!==cd.updatedAt&&(!dr||(!dr.edited&&dr.cd!==cd.updatedAt))){ /* plan nháp Claude Desktop ghi qua MCP (retest_ghi_plan) */
       dr=RT.draft[caseId]={pf:RT_PF[cd.platform]?cd.platform:a.pf,kind:RT_KIND[cd.kind]?cd.kind:a.kind,pfSet:true,kindSet:true,env:cd.env||rtGenPlan(a,cd.platform,a.kind).env,
@@ -10106,12 +10238,12 @@ QUAY VIDEO (TÙY CHỌN)
   function rtTake(){var id0=RT.cur,c=rtCase(id0),dr=RT.draft[id0];RT.err='';if(!c||!dr)return;
     var items=dr.items.map(function(x){return {g:x.g,t:String(x.t||'').trim()};}).filter(function(x){return x.t;});
     if(!items.some(function(x){return x.g==='check';})){RT.err='Plan cần ít nhất một "Đầu ra cần đạt".';renderRetest();return;}
-    var E=rtEnvOf(c,dr),ins=dr.inputs||[],miss=ins.filter(function(x){return !String(x.v||'').trim();}),vals={};
+    var E=rtEnvOf(c,dr),ins=dr.inputs||[],miss=ins.filter(function(x){return !x.opt&&!String(x.v||'').trim();}),vals={};
     if(!E.envOk){RT.err=E.es?'Chọn file Edusoft.NET.exe bản test.':E.web?'Nhập địa chỉ trang web test (https://…).':'Ghi môi trường test.';renderRetest();return;}
     if(miss.length||(E.es&&!String(E.acc).trim())){RT.err='Nhập tài khoản đăng nhập: '+(E.es&&!String(E.acc).trim()?['Tài khoản Edusoft']:[]).concat(miss.map(function(x){return x.k;})).join(', ')+' (chưa có thì ghi "chưa có" và hỏi BA / trường).';renderRetest();return;}
     if(ins.concat(E.es?[{v:E.acc}]:[]).some(function(x){return /mật\s*khẩu|password|\bpass\b|pwd/i.test(x.v);})){RT.err='Chỉ nhập mã tài khoản – không nhập mật khẩu.';renderRetest();return;}
     if(E.es)vals['Tài khoản Edusoft']=String(E.acc).trim();
-    ins.forEach(function(x){vals[x.k]=String(x.v).trim();});dr.env=E.envText;items=items.map(function(x){return {g:x.g,t:rtSub(x.t,vals)};});
+    ins.forEach(function(x){var v=String(x.v||'').trim();if(v)vals[x.k]=v;});dr.env=E.envText;items=items.map(function(x){return {g:x.g,t:rtSub(x.t,vals)};});
     var last=rtLatest(id0),cur=rtCurDoc(),round=cur?(cur.round||1):(last?(last.round||1)+1:1),id='c'+id0+'-'+round,now=new Date().toISOString(),q=RT.qs.filter(function(x){return x.id===RT.qk;})[0];
     var it=dr.scen?byId(dr.scen):null,a=rtAnalyze(id0);
     var doc={caseId:id0,round:round,title:c.title,school:c.school,module:c.module,coder:c.coder,tester:c.tester,acsStatus:c.status,testState:c.testState,resolvedAt:c.resolvedAt,
@@ -10264,7 +10396,7 @@ QUAY VIDEO (TÙY CHỌN)
   var RT_PERF=/chậm|lâu|treo|bị đơ|time ?out|quá thời gian|hết thời gian|xoay mãi|load mãi|tải mãi|hiệu năng|tốc độ/i;
   function rtOutcome(a){if(!a)return null;var t=(a.c.title||'')+'\n'+a.T.req,mp=a.menu?null:rtMap(a),menu=a.menu||(mp&&mp.menu?mp.menu.path:'');
     var ttl=String(a.c.title||'').replace(/^\[\d+\]\s*:?\s*/,''),where=menu?'menu '+menu:'chỗ KH phản ánh ('+(ttl.length>70?ttl.slice(0,68)+'…':ttl)+')',perf=RT_PERF.test(t),ex=[];
-    if(perf)ex.push('Mở '+where+': thời gian mở form (Edusoft hiện khi nhấn Ctrl+Shift+T trước khi mở menu) nhanh, màn hình hiện đủ dữ liệu, không treo / không báo hết thời gian – ghi số giây.');
+    if(perf)ex.push((RT_SVPICK.test(t+'\n'+menu)?'Ở '+where+' chọn SV (nút … → Chọn): dữ liệu hiện ra nhanh':'Ở '+where+' thao tác ra dữ liệu nhanh')+' – "Thời gian mở form" ở thanh dưới đáy Edusoft (bật bằng Ctrl+Shift+T) ghi số giây nhỏ, dữ liệu đủ, không treo / không báo hết thời gian.');
     a.need.forEach(function(s){if(perf&&RT_PERF.test(s))return;var x=rtCheckOf(s);if(ex.indexOf(x)<0)ex.push(x);});
     return {perf:perf,menu:menu,where:where,expect:ex.slice(0,4)};}
   function rtOutHtml(id,a,pf){var o=rtOutcome(a);if(!o)return '';
@@ -10281,10 +10413,10 @@ QUAY VIDEO (TÙY CHỌN)
     if(!v){var x=kbSchool(sc);v=x&&x.web_test||'';}return v;}
   function rtEnvOf(c,dr){var r=myRunner()||{},es=dr.pf==='edusoft',web=dr.pf==='web';
     var path=dr.envPath!=null?dr.envPath:(r.path||''),acc=dr.acct!=null?dr.acct:(r.account||''),url=dr.envUrl!=null?dr.envUrl:rtUrlOf(c.school);
-    var ins=dr.inputs||[],insOk=ins.every(function(x){return String(x.v||'').trim();});
+    var ins=dr.inputs||[],insOk=ins.every(function(x){return x.opt||String(x.v||'').trim();}),insReq=ins.filter(function(x){return !x.opt;});
     return {es:es,web:web,path:path,acc:acc,url:url,runner:r,
       envOk:es?!!String(path).trim():web?/^https?:\/\/\S+/i.test(String(url).trim()):!!String(dr.env||'').trim(),
-      accOk:es?!!String(acc).trim()&&insOk:insOk&&(ins.length>0||!web),
+      accOk:es?!!String(acc).trim()&&insOk:insOk&&(insReq.length>0||!web),
       envText:(es?'Edusoft: '+path:web?'Web: '+url:dr.env)+(dr.env&&/bản sửa/.test(dr.env)&&(es||web)?' ('+dr.env.slice(dr.env.indexOf('bản sửa'))+')':'')};}
   function rtReadyUpd(){var bar=document.querySelector('#rtMain .rt2-ready'),c=rtCase(RT.cur),dr=RT.draft[RT.cur];if(!bar||!c||!dr)return;var E=rtEnvOf(c,dr),sp=bar.querySelectorAll('span');
     var nChk=(dr.items||[]).filter(function(x){return x.g==='check'&&String(x.t||'').trim();}).length,ok=[E.envOk,E.accOk,nChk>0];
@@ -10305,7 +10437,7 @@ QUAY VIDEO (TÙY CHỌN)
       :'<div class="rt2-envbar"><span class="pf">'+esc(RT_PFS[src.pf]||'')+'</span><input id="rtEnv" value="'+esc(src.env||'')+'"></div>';
     /* 2 tài khoản */
     var accB=(view?'':E.es?'<div class="rt2-ingrid"><label><span>Tài khoản đăng nhập Edusoft <span class="hint">· mật khẩu do bộ test giữ (Credential Manager)</span></span><input data-rtacct value="'+esc(E.acc)+'" placeholder="vd admindh" autocomplete="off"></label></div>':'')+
-      (insL.length?'<div class="rt2-ingrid">'+insL.map(function(x,i){return '<label><span>'+esc(x.k)+(x.why?' <span class="hint">· '+esc(x.why)+'</span>':'')+'</span>'+(edit?'<input data-rtin="'+i+'" value="'+esc(x.v||'')+'" placeholder="vd '+esc(/GV|CVHT/.test(x.k)?'GV00123':/MSSV/.test(x.k)?'2312345':'mã tài khoản')+'" autocomplete="off">':'<b class="mono">'+esc(x.v||'—')+'</b>')+'</label>';}).join('')+'</div>':'')+
+      (insL.length?'<div class="rt2-ingrid">'+insL.map(function(x,i){return '<label><span>'+esc(x.k)+(x.why?' <span class="hint">· '+esc(x.why)+'</span>':'')+'</span>'+(edit?'<input data-rtin="'+i+'" value="'+esc(x.v||'')+'" placeholder="'+(x.opt?'không bắt buộc – ':'')+'vd '+esc(/GV|CVHT/.test(x.k)?'GV00123':/MSSV|Mã SV/.test(x.k)?'N24DCVT054':'mã tài khoản')+'" autocomplete="off">':'<b class="mono">'+esc(x.v||'—')+'</b>')+'</label>';}).join('')+'</div>':'')+
       (edit?'<p class="hint">Chỉ nhập <b>mã tài khoản</b>, không nhập mật khẩu.</p>':'');
     if(view&&!insL.length)accB='<p class="hint">—</p>';
     /* 3–4 thao tác, đầu ra (+ mục cũ nếu có) */
@@ -10344,7 +10476,7 @@ QUAY VIDEO (TÙY CHỌN)
         :'<div class="rt2-runrow"><select id="rtRn">'+rtRunners().map(function(r){var cs=(r.check&&r.check.status)||'none';return '<option value="'+esc(r.uid)+'"'+(r.uid===(rt.runnerId||SC.me)?' selected':'')+'>'+esc(nameOf(r.uid)+(r.machine?' · '+r.machine:'')+' · '+(RNSTL[cs]||cs))+'</option>';}).join('')+'</select>'+
           '<button type="button" class="btn sm primary" data-rtstart="'+esc(rt.id)+'"'+(done?' disabled':'')+'>'+(rt.state==='running'?'Chạy lại':'Chạy kịch bản')+'</button>'+(rt.state==='running'?'<span class="hint">đang chạy – có kết quả thì tự cập nhật</span>':'')+'</div>')+'</div>':'';
     var rb=rtRunBtn(rt);if(rb&&RT.direct&&RT.direct.id===rt.id)rb+='<button type="button" class="btn" data-rt="rundirect" title="Chạy chay-test.bat '+esc(RT.direct.codes.join(' '))+' – Windows hỏi quyền admin">⚡ Chạy ngay</button>';
-    if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?' (nhấn Ctrl+Shift+T trước để Edusoft hiện thời gian mở form, kèm số giây bộ test đo)':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
+    if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?' (nhấn Ctrl+Shift+T, làm thao tác như người dùng – vd nút … Mã SV → chọn SV → Chọn – rồi đọc "Thời gian mở form" ở thanh dưới đáy, kèm số giây bộ test đo)':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
     return env+'<div class="rt2-prog"><b>'+n+'/'+items.length+'</b> mục đã có kết quả'+(RT.up?' · đang tải '+RT.up+' ảnh…':'')+'</div><div class="rt2-test">'+rows+'</div>'+scr+
       '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="4"'+(n<items.length&&!done?' title="Còn mục chưa có kết quả"':'')+'>Tiếp: Kết luận →</button></div>';}
   function rtW4(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),w=rtW(),done=rt.state==='pass'||rt.state==='fail';
@@ -10556,6 +10688,8 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='kbreload'){kbLive(true);RT.flash='Đã đọc lại bản đồ từ ghi chú KB.';renderRetest();return;}
       if(act==='regen'){var d4=dr();if(d4){d4.edited=false;rtRegen(RT.cur);}renderRetest();return;}
       if(act==='replan'){var r5=rtCurDoc(),d5=dr();if(r5&&d5&&r5.plan){d5.items=r5.plan.items.map(function(x){return {g:x.g,t:x.t};});d5.env=r5.plan.env;d5.pf=r5.platform||d5.pf;d5.kind=r5.kind||d5.kind;
+          var a5=rtAnalyze(RT.cur);if(a5&&d5.pf==='edusoft'&&rtOutcome(a5).perf&&!d5.items.some(function(x){return /nút\s*(?:…|\.\.\.)|thời gian mở form" ở thanh/i.test(x.t);})){
+            var p5=rtGenPlan(a5,'edusoft',d5.kind);d5.items=p5.items;d5.inputs=rtKeepIn(p5.inputs,Object.keys(r5.inputs||{}).map(function(k){return {k:k,v:r5.inputs[k]};}));} /* plan đo cũ (chỉ mở menu) → soạn lại như người dùng thao tác */
           d5.scen=r5.scenarioId||'';d5.edited=true;d5.pfSet=d5.kindSet=true;}RT.replan=true;renderRetest();return;}
       if(act==='padd'){var d6=dr(),gs=(document.getElementById('rtAddG')||{}).value||'check';if(d6){var at=-1;d6.items.forEach(function(x,i){if(x.g===gs)at=i;});
           if(at<0){var ord=Object.keys(RT_G),gi=ord.indexOf(gs);d6.items.forEach(function(x,i){if(ord.indexOf(x.g)<gi)at=i;});}d6.items.splice(at+1,0,{g:gs,t:''});d6.edited=true;renderRetest();
@@ -11514,7 +11648,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.23-02';
+  var KITVER='2026.11.23-03';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -11730,7 +11864,9 @@ QUAY VIDEO (TÙY CHỌN)
   document.addEventListener('click',function(e){var b=e.target.closest('button[data-br]');if(!b||b.disabled)return;var a=b.getAttribute('data-br');
     if(a==='check'){brCheck(true);}else if(a==='sync'){brSync(true);}else if(a==='kn'){knDownload();}});
   async function importRun(res,getFile){var notes=[];
-        var it=byId(res.scenarioId)||SC.items.filter(function(x){return x.product===(res.product||'edusoft')&&x.code===res.scenarioCode;})[0];
+        var it=byId(res.scenarioId)||SC.items.filter(function(x){return x.product===(res.product||'edusoft')&&x.code===res.scenarioCode;})[0],tmp=false;
+        if(!it){var rq=(RT.list||[]).filter(function(x){return x.adhoc&&(x.scenarioId===res.scenarioId||x.scenarioCode===res.scenarioCode);})[0]; /* kịch bản tạm ACS-<case> chạy từ plan test – không nằm trong danh sách kịch bản */
+          if(rq){tmp=true;it={id:rq.scenarioId||res.scenarioId,code:res.scenarioCode||rq.scenarioCode,title:res.scenarioTitle||('Test case ACS #'+rq.caseId),product:'edusoft',module:rq.module||'',menu:'',version:rq.version||DEFAULT_VERSION};}}
         if(!it){return {r:'bad',note:res.scenarioCode+': không còn kịch bản trên console'};}
         var cache={};
         var up=async function(name){if(!name)return null;if(cache[name]!==undefined)return cache[name];var f=null;try{f=await getFile(name);}catch(e){f=null;}
@@ -11753,9 +11889,9 @@ QUAY VIDEO (TÙY CHỌN)
             exDetail:b.type==='ex'?(b.exDetail||''):'',menu:it.menu||'',menuCode:b.menuCode||'',shots:(s.shots||[]).slice(),version:ver,status:'open',source:'script',
             createdAt:now,createdBy:runDoc.runnerId,updatedAt:now,updatedBy:SC.me||null};
           if(rel){d.releaseId=rel.releaseId;d.releaseVersion=rel.version;d.round=rel.round;d.releaseItemId=rel.itemId;}return d;});
-        if(!SC.runCol){SC.runs.push(Object.assign({id:res.runId},runDoc));Object.assign(it,upd);bdocs.forEach(function(b,q){SC.bugs.unshift(Object.assign({id:'local-bug-'+Date.now()+q},b));});}
+        if(!SC.runCol){SC.runs.push(Object.assign({id:res.runId},runDoc));if(!tmp)Object.assign(it,upd);bdocs.forEach(function(b,q){SC.bugs.unshift(Object.assign({id:'local-bug-'+Date.now()+q},b));});}
         else{await withRetry(function(){return SC.runCol.doc(res.runId).set(runDoc);});
-          await withRetry(function(){return SC.col.doc(it.id).update(upd);});
+          if(!tmp)await withRetry(function(){return SC.col.doc(it.id).update(upd);});
           for(var q=0;q<bdocs.length;q++){await withRetry(function(){return SC.bugCol.add(bdocs[q]);});}
           if(rel&&(st==='pass'||st==='fail')&&RL.itemCol){var p={};p['r'+rel.round]={res:st==='pass'?'x':'o',ex:hasEx,note:(st==='pass'?'Đạt theo ':(hasEx?'EX':'Lỗi')+' · ')+(it.code||'')+' (script)',runId:res.runId,at:runDoc.finishedAt,by:runDoc.runnerId};p.updatedAt=now;
             await withRetry(function(){return RL.itemCol.doc(rel.itemId).update(p);}).catch(function(){notes.push(it.code+': không cập nhật được menu release');});}}
