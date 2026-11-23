@@ -2505,7 +2505,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-03"
+KIT_VERSION = "2026.11.23-04"
 from pathlib import Path
 
 
@@ -3769,7 +3769,19 @@ class Edusoft:
 
     def form_time_label(self):
         """Chữ "Thời gian mở form: 1s" Edusoft hiện ở thanh dưới đáy cửa sổ chính (cạnh Năm học / Học kỳ) sau khi nhấn
-        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc ""."""
+        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc "".
+        Nhãn là mục thanh DevExpress (không phải StatusBar/Text – lượt 15:07 23/11 đọc hụt) → quét cả cây một lần (uia_scan),
+        xét tên + Value của mọi phần tử."""
+        try:
+            nodes = uia_scan(self.main)
+            if nodes:
+                for nd in sorted(nodes, key=lambda x: -x.rect[3]):          # ưu tiên phần tử ở dưới đáy
+                    for t in (nd.name, nd.val):
+                        m = self.FORM_TIME.search(t or "")
+                        if m and re.search(r"\d", m.group(0)):
+                            return m.group(0).strip()
+        except Exception:
+            pass
         try:
             mr = self.main.rectangle()
             els = list(self.main.descendants(control_type="StatusBar"))
@@ -3784,7 +3796,7 @@ class Edusoft:
                 pass
             for el in els:
                 m = self.FORM_TIME.search(nfc(el.window_text() or ""))
-                if m:
+                if m and re.search(r"\d", m.group(0)):
                     return m.group(0).strip()
         except Exception:
             pass
@@ -4611,6 +4623,7 @@ class Run:
           menu: A/ B/ C                 mở menu
           menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
           fieldbtn: Mã SV|#MaSV @ Vùng   bấm nút "…" của ô nhập trên form → mở danh sách chọn (vd Danh sách sinh viên → find_row → time_click: Chọn)
+          time_check: 10                 đầu ra case chậm: lần đo gần nhất (Edusoft báo "Thời gian mở form", không có thì số giây bộ test đo) ≤ 10 giây → Đạt
           time_click: Chọn               bấm nút rồi chờ dữ liệu hiện xong; đọc "Thời gian mở form: Ns" ở thanh dưới đáy (Ctrl+Shift+T), chụp ảnh
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
@@ -4673,9 +4686,12 @@ class Run:
                 es.open_menu(arg, settle=False)
                 secs = es.wait_idle() - t0
                 shown, dlg = es.form_time_text(before)
+                self.last_time = (self.secs_of(shown), secs)
                 if shown:
                     self.shot_into(notes, "thoi-gian-mo-form")
                     es.close_info(dlg)
+                else:
+                    self.dump_once("thoi-gian-mo-form")
                 notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
                              "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
             elif verb == "time_click":                  # bấm nút rồi đo tới khi dữ liệu hiện xong (vd Chọn ở Danh sách sinh viên)
@@ -4688,12 +4704,26 @@ class Run:
                 es.click(el)
                 secs = es.wait_idle() - t0
                 shown, dlg = es.form_time_text(before)
+                self.last_time = (self.secs_of(shown), secs)
                 self.shot_into(notes, "thoi-gian-mo-form")
+                if not shown:
+                    self.dump_once("thoi-gian-mo-form")
                 if dlg is not None:
                     es.close_info(dlg)
                 nm = alts_of(arg2)[0]
                 notes.append("Bấm %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (nm, shown, secs) if shown else
                              "Bấm %s: %.1f giây (bộ test đo; chưa đọc được \"Thời gian mở form\" ở thanh dưới đáy)" % (nm, secs))
+            elif verb == "time_check":                  # đầu ra case chậm: thời gian (Edusoft báo, không có thì bộ test đo) ≤ N giây
+                lim = float((re.findall(r"\d+(?:[.,]\d+)?", arg) or ["10"])[0].replace(",", "."))
+                lt = getattr(self, "last_time", None)
+                if not lt:
+                    raise RuntimeError("Chưa có lần đo thời gian nào trước bước này (menu_time / time_click)")
+                shown_s, test_s = lt
+                v, src = (shown_s, "Edusoft báo") if shown_s is not None else (test_s, "bộ test đo")
+                self.shot_into(notes, "dau-ra-thoi-gian")
+                if v > lim:
+                    raise RuntimeError("Thời gian %.1f giây (%s) > %g giây – vẫn chậm" % (v, src, lim))
+                notes.append("Thời gian %.1f giây (%s) ≤ %g giây – đạt" % (v, src, lim))
             elif verb == "fieldbtn":                    # nút "…" của ô nhập (Mã SV…) → mở danh sách chọn
                 lab, area = split_col(arg)
                 es.snap = es.handles()
@@ -5509,6 +5539,28 @@ class Run:
     def summary(self):
         keys = [k for k in (self.sc.get("vars") or {})]
         return ("Dữ liệu test: " + ", ".join("%s = %s" % (k, self.vars[k]) for k in keys) + ".") if keys else ""
+
+    @staticmethod
+    def secs_of(text):
+        """"Thời gian mở form: 2s" / "1,5 giây" / "850 ms" / "1 phút 3s" → số giây (None nếu không đọc được)."""
+        t = (text or "").lower()
+        m = re.search(r"(\d+(?:[.,]\d+)?)\s*(ms|mili)", t)
+        if m:
+            return float(m.group(1).replace(",", ".")) / 1000
+        v, hit = 0.0, False
+        for n, u in re.findall(r"(\d+(?:[.,]\d+)?)\s*(phút|p\b|m\b|giây|giay|s\b|sec)", t):
+            v += float(n.replace(",", ".")) * (60 if u in ("phút", "p", "m") else 1)
+            hit = True
+        return v if hit else None
+
+    def dump_once(self, name):
+        if name in getattr(self, "_dumped", set()):
+            return
+        self._dumped = getattr(self, "_dumped", set()) | {name}
+        try:
+            self.dump(name)
+        except Exception:
+            pass
 
     def press_ctrl_t(self):
         """Ctrl+Shift+T trên cửa sổ chính Edusoft – Edusoft hiện "Thời gian mở form: Ns" ở thanh dưới đáy. Nhấn một lần mỗi lượt
@@ -9320,13 +9372,19 @@ QUAY VIDEO (TÙY CHỌN)
     var path=rt.envPath||((e.match(/^\s*Edusoft:\s*(.+?\.exe)\b/i)||[])[1]||'').trim(),url=rt.envUrl||((e.match(/^\s*Web:\s*(https?:\/\/\S+)/i)||[])[1]||'');
     return {path:path,acct:rt.acct||ins['Tài khoản Edusoft']||'',url:url.replace(/[)\],.]+$/,'')};}
   function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian|ctrl\+shift\+t/i.test(x.t);}),steps=[],auto=[],vars={};
+    var hasSv=items.some(function(x){return /nút\s*(?:…|\.\.\.)\s*(?:cạnh|của)\s*(?:ô\s*)?mã\s*sv/i.test(x.t);}),svDone=false,
+      svOld=perf&&!hasSv&&rt.platform!=='web'&&RT_SVPICK.test((rt.title||'')+'\n'+items.map(function(x){return x.t;}).join('\n')),
+      svAct=function(raw){var v=String(raw||'').replace(/^[\[{].*[\]}]$/,'').trim()||String((rt.inputs||{})['Mã SV']||'').trim(); /* thao tác như người dùng: nút … → chọn SV → Chọn, đo tới khi dữ liệu hiện */
+        if(v)vars.MSSV=v;return ['fieldbtn: Mã SV|Mã sinh viên|MSSV'].concat(v?[]:['pick: MSSV = @ Mã SV']).concat(['find_row: {MSSV} @ Mã SV','time_click: Chọn']);};
     items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^(?:nhấn\s+ctrl\+shift\+t\s*(?:rồi|,|→)\s*)?(?:mở|vào)\s+menu\s+(.+?)(?:\s+[–-]\s+bấm giờ.*|:.*)?\.?$/i),
         k=x.g!=='check'&&t.match(/nút\s*(?:…|\.\.\.)\s*(?:cạnh|của)\s*(?:ô\s*)?mã\s*sv.*?chọn\s+(?:mã\s*sv\s*)?(\[[^\]]*\]|\{[^}]*\}|\S*)\s*→\s*bấm\s+chọn/i);
       steps.push((x.g==='check'?'Đầu ra: ':'')+t);
-      if(k){var v=String(k[1]||'').replace(/^[\[{].*[\]}]$/,'').trim()||String((rt.inputs||{})['Mã SV']||'').trim(); /* thao tác như người dùng: nút … → chọn SV → Chọn, đo tới khi dữ liệu hiện */
-        if(v)vars.MSSV=v;
-        auto.push(['fieldbtn: Mã SV|Mã sinh viên|MSSV'].concat(v?[]:['pick: MSSV = @ Mã SV']).concat(['find_row: {MSSV} @ Mã SV','time_click: Chọn','shot: buoc-'+(i+1)]));return;}
-      auto.push(m&&x.g!=='check'?[(perf?'menu_time: ':'menu: ')+m[1].trim(),'shot: buoc-'+(i+1)]:[]);});
+      if(k){auto.push(svAct(k[1]).concat(['shot: buoc-'+(i+1)]));return;}
+      if(perf&&x.g==='check'){auto.push(['time_check: '+RT_PERF_MAX]);return;} /* đầu ra case chậm: bộ test tự so số giây – không bắt người test bấm tay */
+      if(m&&x.g!=='check'){var a=[(perf?'menu_time: ':'menu: ')+m[1].trim()];
+        if(svOld&&!svDone){svDone=true;a=a.concat(svAct(''));} /* plan đo cũ (chỉ mở menu) của màn hình theo SV → làm luôn thao tác chọn SV như người dùng */
+        auto.push(a.concat(['shot: buoc-'+(i+1)]));return;}
+      auto.push([]);});
     return {id:'acs-'+rt.caseId+'-'+(rt.round||1),code:'ACS-'+rt.caseId,title:'Test case ACS #'+rt.caseId+' – '+(rt.title||''),product:'edusoft',module:rt.module||'',menu:'',version:DEFAULT_VERSION,
       steps:steps,auto:auto,expected:'',vars:vars,altFlows:[],release:null};}
   async function rtRunPlan(id){var rt=rtById(id);if(!rt)return;RT.err='';
@@ -9737,7 +9795,7 @@ QUAY VIDEO (TÙY CHỌN)
     return {env:env,items:items,inputs:ins,flow:''};}
   /* case chậm trên Edusoft: đo như NGƯỜI DÙNG thao tác (người dùng dạy 23/11, #63652 Nhật ký thu học phí của sinh viên) –
      Ctrl+Shift+T → mở menu → nút … cạnh Mã SV → chọn SV → Chọn → dữ liệu hiện ra → "Thời gian mở form: Ns" ở thanh dưới đáy */
-  var RT_SVPICK=/mã\s*sv|\bmssv\b|(?:chọn|của|theo|từng|1|một)\s+sinh viên/i,RT_SVSTEP='Bấm nút … cạnh ô Mã SV → chọn mã SV {Mã SV} → bấm Chọn – bấm giờ: dữ liệu hiện ra thì đọc "Thời gian mở form" ở thanh dưới đáy.';
+  var RT_SVPICK=/mã\s*sv|\bmssv\b|(?:chọn|của|theo|từng|1|một)\s*(?:sinh viên|sv)\b/i,RT_SVSTEP='Bấm nút … cạnh ô Mã SV → chọn mã SV {Mã SV} → bấm Chọn – bấm giờ: dữ liệu hiện ra thì đọc "Thời gian mở form" ở thanh dưới đáy.';
   function rtKeepIn(nw,old){var o={};(old||[]).forEach(function(x){if(x.v)o[x.k]=x.v;});return (nw||[]).map(function(x){var y={k:x.k,why:x.why,v:o[x.k]||''};if(x.opt)y.opt=true;return y;});}
   function rtDraftOf(caseId){var a=rtAnalyze(caseId);if(!a)return null;var dr=RT.draft[caseId],cd=(RT.cdr||{})[caseId];
     if(cd&&RT.cdSkip[caseId]!==cd.updatedAt&&(!dr||(!dr.edited&&dr.cd!==cd.updatedAt))){ /* plan nháp Claude Desktop ghi qua MCP (retest_ghi_plan) */
@@ -9915,6 +9973,7 @@ QUAY VIDEO (TÙY CHỌN)
     if(app)rtRelAcs(id);
     return rtCtx(id,c,a)+rtSheetHtml(id,c,a)+'<div class="rt2-read"><div class="rt2-uh">Đọc case <span class="hint">khách hàng yêu cầu → BA phân tích → dev xử lý</span></div>'+req+rtImgHtml(id)+more+det+'</div>'+
       rtAnHtml(id)+und+rtOutHtml(id,a,pf);}
+  var RT_PERF_MAX=10; /* case chậm: đạt khi thời gian mở form (Edusoft báo) ≤ 10 giây */
   var RT_PERF=/chậm|lâu|treo|bị đơ|time ?out|quá thời gian|hết thời gian|xoay mãi|load mãi|tải mãi|hiệu năng|tốc độ/i;
   function rtOutcome(a){if(!a)return null;var t=(a.c.title||'')+'\n'+a.T.req,mp=a.menu?null:rtMap(a),menu=a.menu||(mp&&mp.menu?mp.menu.path:'');
     var ttl=String(a.c.title||'').replace(/^\[\d+\]\s*:?\s*/,''),where=menu?'menu '+menu:'chỗ KH phản ánh ('+(ttl.length>70?ttl.slice(0,68)+'…':ttl)+')',perf=RT_PERF.test(t),ex=[];
@@ -11170,7 +11229,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.23-03';
+  var KITVER='2026.11.23-04';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

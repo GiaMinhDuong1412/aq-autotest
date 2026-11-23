@@ -38,7 +38,7 @@ Cùng chức năng ở trường lớn khác; đợt ĐKMH sắp tới (sheet Ne
   2. bấm nút **…** cạnh ô **Mã SV** (khung Thông tin sinh viên) → form *Danh sách sinh viên* → chọn mã SV → bấm **Chọn**;
   3. dữ liệu (Nhật ký phiếu thu) hiện ra → đọc **Thời gian mở form** ở thanh dưới đáy → chụp ảnh.
   Đầu ra = số giây đó sau khi Dev sửa (so với lúc KH báo), dữ liệu đủ, không treo.
-- Bộ test (máy test thao tác như người dùng, không phải đo tự động lúc mở menu): `menu_time:` (Ctrl+Shift+T + mở menu) → `fieldbtn: Mã SV` (nút …) → `find_row: {MSSV} @ Mã SV` (hoặc `pick:` chọn ngẫu nhiên) → `time_click: Chọn` (bấm, chờ dữ liệu, đọc "Thời gian mở form", chụp ảnh).
+- Bộ test (máy test thao tác như người dùng, không phải đo tự động lúc mở menu): `menu_time:` (Ctrl+Shift+T + mở menu) → `fieldbtn: Mã SV` (nút …) → `find_row: {MSSV} @ Mã SV` (hoặc `pick:` chọn ngẫu nhiên) → `time_click: Chọn` (bấm, chờ dữ liệu, đọc "Thời gian mở form", chụp ảnh) → đầu ra `time_check: 10` (≤ 10 giây = Đạt, bộ test tự so – người test chỉ xem lại ảnh).
 
 ## Hay nhầm
 Chậm do mạng / máy chủ của trường → không phải lỗi phần mềm.
