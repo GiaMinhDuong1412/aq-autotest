@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-03"
+KIT_VERSION = "2026.11.23-04"
 from pathlib import Path
 
 
@@ -1276,7 +1276,19 @@ class Edusoft:
 
     def form_time_label(self):
         """Chữ "Thời gian mở form: 1s" Edusoft hiện ở thanh dưới đáy cửa sổ chính (cạnh Năm học / Học kỳ) sau khi nhấn
-        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc ""."""
+        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc "".
+        Nhãn là mục thanh DevExpress (không phải StatusBar/Text – lượt 15:07 23/11 đọc hụt) → quét cả cây một lần (uia_scan),
+        xét tên + Value của mọi phần tử."""
+        try:
+            nodes = uia_scan(self.main)
+            if nodes:
+                for nd in sorted(nodes, key=lambda x: -x.rect[3]):          # ưu tiên phần tử ở dưới đáy
+                    for t in (nd.name, nd.val):
+                        m = self.FORM_TIME.search(t or "")
+                        if m and re.search(r"\d", m.group(0)):
+                            return m.group(0).strip()
+        except Exception:
+            pass
         try:
             mr = self.main.rectangle()
             els = list(self.main.descendants(control_type="StatusBar"))
@@ -1291,7 +1303,7 @@ class Edusoft:
                 pass
             for el in els:
                 m = self.FORM_TIME.search(nfc(el.window_text() or ""))
-                if m:
+                if m and re.search(r"\d", m.group(0)):
                     return m.group(0).strip()
         except Exception:
             pass
@@ -2118,6 +2130,7 @@ class Run:
           menu: A/ B/ C                 mở menu
           menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
           fieldbtn: Mã SV|#MaSV @ Vùng   bấm nút "…" của ô nhập trên form → mở danh sách chọn (vd Danh sách sinh viên → find_row → time_click: Chọn)
+          time_check: 10                 đầu ra case chậm: lần đo gần nhất (Edusoft báo "Thời gian mở form", không có thì số giây bộ test đo) ≤ 10 giây → Đạt
           time_click: Chọn               bấm nút rồi chờ dữ liệu hiện xong; đọc "Thời gian mở form: Ns" ở thanh dưới đáy (Ctrl+Shift+T), chụp ảnh
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
@@ -2180,9 +2193,12 @@ class Run:
                 es.open_menu(arg, settle=False)
                 secs = es.wait_idle() - t0
                 shown, dlg = es.form_time_text(before)
+                self.last_time = (self.secs_of(shown), secs)
                 if shown:
                     self.shot_into(notes, "thoi-gian-mo-form")
                     es.close_info(dlg)
+                else:
+                    self.dump_once("thoi-gian-mo-form")
                 notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
                              "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
             elif verb == "time_click":                  # bấm nút rồi đo tới khi dữ liệu hiện xong (vd Chọn ở Danh sách sinh viên)
@@ -2195,12 +2211,26 @@ class Run:
                 es.click(el)
                 secs = es.wait_idle() - t0
                 shown, dlg = es.form_time_text(before)
+                self.last_time = (self.secs_of(shown), secs)
                 self.shot_into(notes, "thoi-gian-mo-form")
+                if not shown:
+                    self.dump_once("thoi-gian-mo-form")
                 if dlg is not None:
                     es.close_info(dlg)
                 nm = alts_of(arg2)[0]
                 notes.append("Bấm %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (nm, shown, secs) if shown else
                              "Bấm %s: %.1f giây (bộ test đo; chưa đọc được \"Thời gian mở form\" ở thanh dưới đáy)" % (nm, secs))
+            elif verb == "time_check":                  # đầu ra case chậm: thời gian (Edusoft báo, không có thì bộ test đo) ≤ N giây
+                lim = float((re.findall(r"\d+(?:[.,]\d+)?", arg) or ["10"])[0].replace(",", "."))
+                lt = getattr(self, "last_time", None)
+                if not lt:
+                    raise RuntimeError("Chưa có lần đo thời gian nào trước bước này (menu_time / time_click)")
+                shown_s, test_s = lt
+                v, src = (shown_s, "Edusoft báo") if shown_s is not None else (test_s, "bộ test đo")
+                self.shot_into(notes, "dau-ra-thoi-gian")
+                if v > lim:
+                    raise RuntimeError("Thời gian %.1f giây (%s) > %g giây – vẫn chậm" % (v, src, lim))
+                notes.append("Thời gian %.1f giây (%s) ≤ %g giây – đạt" % (v, src, lim))
             elif verb == "fieldbtn":                    # nút "…" của ô nhập (Mã SV…) → mở danh sách chọn
                 lab, area = split_col(arg)
                 es.snap = es.handles()
@@ -3016,6 +3046,28 @@ class Run:
     def summary(self):
         keys = [k for k in (self.sc.get("vars") or {})]
         return ("Dữ liệu test: " + ", ".join("%s = %s" % (k, self.vars[k]) for k in keys) + ".") if keys else ""
+
+    @staticmethod
+    def secs_of(text):
+        """"Thời gian mở form: 2s" / "1,5 giây" / "850 ms" / "1 phút 3s" → số giây (None nếu không đọc được)."""
+        t = (text or "").lower()
+        m = re.search(r"(\d+(?:[.,]\d+)?)\s*(ms|mili)", t)
+        if m:
+            return float(m.group(1).replace(",", ".")) / 1000
+        v, hit = 0.0, False
+        for n, u in re.findall(r"(\d+(?:[.,]\d+)?)\s*(phút|p\b|m\b|giây|giay|s\b|sec)", t):
+            v += float(n.replace(",", ".")) * (60 if u in ("phút", "p", "m") else 1)
+            hit = True
+        return v if hit else None
+
+    def dump_once(self, name):
+        if name in getattr(self, "_dumped", set()):
+            return
+        self._dumped = getattr(self, "_dumped", set()) | {name}
+        try:
+            self.dump(name)
+        except Exception:
+            pass
 
     def press_ctrl_t(self):
         """Ctrl+Shift+T trên cửa sổ chính Edusoft – Edusoft hiện "Thời gian mở form: Ns" ở thanh dưới đáy. Nhấn một lần mỗi lượt
