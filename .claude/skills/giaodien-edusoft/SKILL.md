@@ -461,6 +461,10 @@ trên lưới (vd `#lockKhoaHoc` "Chọn khóa học", `#dat_TuNgay`/`#dat_DenNg
   `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).
 
 ### Phím tắt Edusoft hay dùng khi test (người dùng dạy)
-- **Ctrl+Shift+T** (nhấn TRƯỚC khi mở menu): Edusoft hiện **thời gian mở form** – dùng cho case "mở menu / form lâu". Kit: lệnh `menu_time:`
+- **Ctrl+Shift+T** (nhấn TRƯỚC khi mở menu): Edusoft hiện **"Thời gian mở form: Ns"** ở **thanh dưới đáy** cửa sổ chính (cạnh Năm học / Học kỳ),
+  cập nhật mỗi lần form ra dữ liệu – dùng cho case "chậm / mở lâu". Đo **như người dùng thao tác**: vd Nhật ký thu học phí của sinh viên → nút **…** cạnh ô Mã SV
+  → form *Danh sách sinh viên* (lưới Mã SV / Họ và tên…, nút Export / Chọn / Đóng) → chọn SV → **Chọn** → đọc thời gian. Kit: `menu_time:`, `fieldbtn:`, `time_click:`
+  (nhấn Ctrl+Shift+T một lần mỗi lượt – nhấn lại có thể tắt).
+  Lệnh `menu_time:`
   tự nhấn, mở menu, đọc chữ thời gian (hộp thông báo / thanh trạng thái / tiêu đề), chụp `thoi-gian-mo-form.png`, đóng hộp bằng OK/Đóng.
 - **Ctrl+Shift+E**: chi tiết lỗi EX · **Ctrl+Shift+F**: menu code.

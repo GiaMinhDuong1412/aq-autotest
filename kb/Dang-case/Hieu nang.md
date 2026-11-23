@@ -32,8 +32,13 @@ Chức năng chạy được nhưng chậm, treo – thường vào đợt cao �
 Cùng chức năng ở trường lớn khác; đợt ĐKMH sắp tới (sheet NetWeb_DKMH).
 
 ## Đo thời gian mở form trên Edusoft (người dùng dạy 23/11)
-- Nhấn **Ctrl+Shift+T** trước khi mở menu → Edusoft **hiện thời gian mở form**. Case "mở menu lâu" (vd #63652): đầu ra = thời gian mở form sau khi Dev sửa, so với lúc KH báo.
-- Bộ test làm sẵn: lệnh `menu_time:` nhấn Ctrl+Shift+T, mở menu, ghi "Edusoft báo: …" + số giây bộ test tự đo, chụp ảnh.
+- Nhấn **Ctrl+Shift+T** trước khi mở menu → Edusoft hiện **"Thời gian mở form: Ns"** ở **thanh dưới đáy** cửa sổ chính (cạnh Năm học / Học kỳ).
+- **Đo như người dùng thao tác** (người dùng dạy 23/11): chậm thường không phải lúc mở menu mà lúc **ra dữ liệu**. Ví dụ #63652 *Thu/chi HP › An toàn dữ liệu › Nhật ký thu học phí của sinh viên*:
+  1. Ctrl+Shift+T → mở menu;
+  2. bấm nút **…** cạnh ô **Mã SV** (khung Thông tin sinh viên) → form *Danh sách sinh viên* → chọn mã SV → bấm **Chọn**;
+  3. dữ liệu (Nhật ký phiếu thu) hiện ra → đọc **Thời gian mở form** ở thanh dưới đáy → chụp ảnh.
+  Đầu ra = số giây đó sau khi Dev sửa (so với lúc KH báo), dữ liệu đủ, không treo.
+- Bộ test (máy test thao tác như người dùng, không phải đo tự động lúc mở menu): `menu_time:` (Ctrl+Shift+T + mở menu) → `fieldbtn: Mã SV` (nút …) → `find_row: {MSSV} @ Mã SV` (hoặc `pick:` chọn ngẫu nhiên) → `time_click: Chọn` (bấm, chờ dữ liệu, đọc "Thời gian mở form", chụp ảnh).
 
 ## Hay nhầm
 Chậm do mạng / máy chủ của trường → không phải lỗi phần mềm.
