@@ -2887,7 +2887,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-01"
+KIT_VERSION = "2026.11.23-02"
 from pathlib import Path
 
 
@@ -4145,6 +4145,51 @@ class Edusoft:
         if settle:
             time.sleep(1.5)                        # chờ màn hình chức năng mở xong
 
+    TIME_PAT = re.compile(r"\d+(?:[.,]\d+)?\s*(?:ms|mili|giây|giay|phút|s\b|sec)|thời gian|time", re.I)
+
+    def form_time_text(self, before=()):
+        """Sau Ctrl+Shift+T + mở menu: tìm chữ thời gian mở form Edusoft hiện ra – hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề.
+        → (chữ, hộp thoại chứa nó | None)."""
+        try:
+            for d in self.dialogs():
+                t = self.dialog_text(d)
+                if t and self.TIME_PAT.search(t) and not EX_PAT.search(t):
+                    return re.sub(r"\s+", " ", t).strip()[:160], d
+        except Exception:
+            pass
+        try:
+            for w in self.windows():
+                if w.handle in before:
+                    continue
+                t = w.window_text() or ""
+                if self.TIME_PAT.search(t):
+                    return t.strip()[:160], None
+        except Exception:
+            pass
+        try:
+            for el in self.main.descendants(control_type="StatusBar") + self.main.descendants(control_type="Text")[:400]:
+                t = el.window_text() or ""
+                if t and re.search(r"\d", t) and self.TIME_PAT.search(t):
+                    return t.strip()[:160], None
+            t = self.main.window_text() or ""
+            if self.TIME_PAT.search(t) and re.search(r"\d", t):
+                return t.strip()[:160], None
+        except Exception:
+            pass
+        return "", None
+
+    def close_info(self, d):
+        """Đóng hộp thông báo thời gian (OK / Đóng) – không bao giờ bấm Có/Yes."""
+        if d is None:
+            return
+        b = self.dialog_button(d, ("ok",), ("đóng", "close"), ("đồng ý",))
+        if b is not None:
+            try:
+                self.press(b)
+                time.sleep(0.6)
+            except Exception:
+                pass
+
     def wait_idle(self, timeout=600, quiet=2.0):
         """Chờ Edusoft xong việc: cửa sổ chính không treo (IsHungAppWindow) và danh sách cửa sổ / số phần tử của màn hình đang mở
         không đổi trong `quiet` giây. → thời điểm thay đổi cuối cùng (dùng để đo thời gian mở menu)."""
@@ -4857,7 +4902,7 @@ class Run:
     def do_actions(self, actions, label=""):
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
-          menu_time: A/ B/ C            mở menu và đo thời gian tới khi màn hình hiện xong (ghi "Mở menu C: N giây" vào ghi chú)
+          menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -4911,10 +4956,23 @@ class Run:
             if verb == "menu":
                 es.open_menu(arg)
             elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
+                name = (menu_segs(arg) or [arg])[-1]
+                try:
+                    es.main.set_focus()
+                except Exception:
+                    pass
+                pkb.send_keys("^+t")                    # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
+                time.sleep(0.8)
+                before = es.handles()
                 t0 = time.time()
                 es.open_menu(arg, settle=False)
                 secs = es.wait_idle() - t0
-                notes.append("Mở menu %s: %.1f giây" % ((menu_segs(arg) or [arg])[-1], secs))
+                shown, dlg = es.form_time_text(before)
+                if shown:
+                    self.shot_into(notes, "thoi-gian-mo-form")
+                    es.close_info(dlg)
+                notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
+                             "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)
@@ -10021,7 +10079,7 @@ QUAY VIDEO (TÙY CHỌN)
     var env={web:'Trang web test của trường '+(c.school||''),edusoft:'Edusoft bản test',app:'App trên điện thoại test',api:'Môi trường API test',report:'Bản test (mẫu in)'}[pf]+(b?' – bản sửa '+b:'');
     if(fl){fl.buoc.forEach(function(t){add('repro',t);});a.need.forEach(function(t){add('check',rtCheckOf(t));});(fl.kt||[]).forEach(function(t){add('check',t);});
       return {env:env,items:items,inputs:ins,flow:fl.ten};}
-    if(o.menu)add('repro',(pf==='edusoft'?'Mở menu ':'Vào ')+o.menu+(o.perf?' – bấm giờ từ lúc bấm':'')+'.');
+    if(o.menu)add('repro',(pf==='edusoft'?'Mở menu ':'Vào ')+o.menu+(o.perf?(pf==='edusoft'?' – bấm giờ: nhấn Ctrl+Shift+T trước khi mở để Edusoft hiện thời gian mở form':' – bấm giờ từ lúc bấm'):'')+'.');
     a.repro.forEach(function(s){add('repro',rtCap(s));});
     if(!items.length)add('repro','Vào '+o.where+(o.perf?' – bấm giờ từ lúc bấm':'')+', làm đúng thao tác KH nêu.');
     o.expect.forEach(function(s){add('check',s);});
@@ -10206,7 +10264,7 @@ QUAY VIDEO (TÙY CHỌN)
   var RT_PERF=/chậm|lâu|treo|bị đơ|time ?out|quá thời gian|hết thời gian|xoay mãi|load mãi|tải mãi|hiệu năng|tốc độ/i;
   function rtOutcome(a){if(!a)return null;var t=(a.c.title||'')+'\n'+a.T.req,mp=a.menu?null:rtMap(a),menu=a.menu||(mp&&mp.menu?mp.menu.path:'');
     var ttl=String(a.c.title||'').replace(/^\[\d+\]\s*:?\s*/,''),where=menu?'menu '+menu:'chỗ KH phản ánh ('+(ttl.length>70?ttl.slice(0,68)+'…':ttl)+')',perf=RT_PERF.test(t),ex=[];
-    if(perf)ex.push('Mở '+where+': đo thời gian từ lúc bấm tới khi màn hình hiện đủ dữ liệu – mở nhanh, không treo / không báo hết thời gian (ghi số giây đo được).');
+    if(perf)ex.push('Mở '+where+': thời gian mở form (Edusoft hiện khi nhấn Ctrl+Shift+T trước khi mở menu) nhanh, màn hình hiện đủ dữ liệu, không treo / không báo hết thời gian – ghi số giây.');
     a.need.forEach(function(s){if(perf&&RT_PERF.test(s))return;var x=rtCheckOf(s);if(ex.indexOf(x)<0)ex.push(x);});
     return {perf:perf,menu:menu,where:where,expect:ex.slice(0,4)};}
   function rtOutHtml(id,a,pf){var o=rtOutcome(a);if(!o)return '';
@@ -10286,7 +10344,7 @@ QUAY VIDEO (TÙY CHỌN)
         :'<div class="rt2-runrow"><select id="rtRn">'+rtRunners().map(function(r){var cs=(r.check&&r.check.status)||'none';return '<option value="'+esc(r.uid)+'"'+(r.uid===(rt.runnerId||SC.me)?' selected':'')+'>'+esc(nameOf(r.uid)+(r.machine?' · '+r.machine:'')+' · '+(RNSTL[cs]||cs))+'</option>';}).join('')+'</select>'+
           '<button type="button" class="btn sm primary" data-rtstart="'+esc(rt.id)+'"'+(done?' disabled':'')+'>'+(rt.state==='running'?'Chạy lại':'Chạy kịch bản')+'</button>'+(rt.state==='running'?'<span class="hint">đang chạy – có kết quả thì tự cập nhật</span>':'')+'</div>')+'</div>':'';
     var rb=rtRunBtn(rt);if(rb&&RT.direct&&RT.direct.id===rt.id)rb+='<button type="button" class="btn" data-rt="rundirect" title="Chạy chay-test.bat '+esc(RT.direct.codes.join(' '))+' – Windows hỏi quyền admin">⚡ Chạy ngay</button>';
-    if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?', đo thời gian mở menu':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
+    if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?' (nhấn Ctrl+Shift+T trước để Edusoft hiện thời gian mở form, kèm số giây bộ test đo)':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
     return env+'<div class="rt2-prog"><b>'+n+'/'+items.length+'</b> mục đã có kết quả'+(RT.up?' · đang tải '+RT.up+' ảnh…':'')+'</div><div class="rt2-test">'+rows+'</div>'+scr+
       '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="4"'+(n<items.length&&!done?' title="Còn mục chưa có kết quả"':'')+'>Tiếp: Kết luận →</button></div>';}
   function rtW4(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),w=rtW(),done=rt.state==='pass'||rt.state==='fail';
@@ -11456,7 +11514,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.23-01';
+  var KITVER='2026.11.23-02';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}

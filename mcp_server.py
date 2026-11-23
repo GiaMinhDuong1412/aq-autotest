@@ -50,7 +50,7 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
  Ảnh case đáng giữ làm mẫu (không lộ thông tin cá nhân SV/GV) → kb_luu_anh kèm mô tả.
  Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
  Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
- ĐẦU RA: đọc case + ảnh để chốt "đầu ra cần đạt sau khi Dev xử lý" (vd case mở menu lâu → đo thời gian mở menu, mở nhanh không treo – không cần kiểm ảnh hưởng).
+ ĐẦU RA: đọc case + ảnh để chốt "đầu ra cần đạt sau khi Dev xử lý" (vd case mở menu lâu → nhấn Ctrl+Shift+T trước khi mở menu để Edusoft hiện thời gian mở form, mở nhanh không treo – không cần kiểm ảnh hưởng).
  PLAN TEST chỉ 4 phần: (1) môi trường test (Edusoft.NET.exe bản test / trang web TEST của trường + bản sửa) – moi_truong; (2) tài khoản đăng nhập – can_cung_cap
  (web: mã GV / MSSV… theo ngữ cảnh, KHÔNG hỏi mật khẩu; Edusoft dùng tài khoản test ở Máy chạy thử); (3) thao tác: nhom 'repro' – vào menu / trang nào, làm gì;
  (4) đầu ra: nhom 'check' – mỗi đầu ra một mục. Chỉ thêm 'prep' / 'reg' khi case thật sự cần. Dùng luồng kb/Luong-test (acs_case trả 'luong_test') nếu khớp.

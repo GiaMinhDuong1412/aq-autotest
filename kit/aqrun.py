@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-01"
+KIT_VERSION = "2026.11.23-02"
 from pathlib import Path
 
 
@@ -1270,6 +1270,51 @@ class Edusoft:
         if settle:
             time.sleep(1.5)                        # chờ màn hình chức năng mở xong
 
+    TIME_PAT = re.compile(r"\d+(?:[.,]\d+)?\s*(?:ms|mili|giây|giay|phút|s\b|sec)|thời gian|time", re.I)
+
+    def form_time_text(self, before=()):
+        """Sau Ctrl+Shift+T + mở menu: tìm chữ thời gian mở form Edusoft hiện ra – hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề.
+        → (chữ, hộp thoại chứa nó | None)."""
+        try:
+            for d in self.dialogs():
+                t = self.dialog_text(d)
+                if t and self.TIME_PAT.search(t) and not EX_PAT.search(t):
+                    return re.sub(r"\s+", " ", t).strip()[:160], d
+        except Exception:
+            pass
+        try:
+            for w in self.windows():
+                if w.handle in before:
+                    continue
+                t = w.window_text() or ""
+                if self.TIME_PAT.search(t):
+                    return t.strip()[:160], None
+        except Exception:
+            pass
+        try:
+            for el in self.main.descendants(control_type="StatusBar") + self.main.descendants(control_type="Text")[:400]:
+                t = el.window_text() or ""
+                if t and re.search(r"\d", t) and self.TIME_PAT.search(t):
+                    return t.strip()[:160], None
+            t = self.main.window_text() or ""
+            if self.TIME_PAT.search(t) and re.search(r"\d", t):
+                return t.strip()[:160], None
+        except Exception:
+            pass
+        return "", None
+
+    def close_info(self, d):
+        """Đóng hộp thông báo thời gian (OK / Đóng) – không bao giờ bấm Có/Yes."""
+        if d is None:
+            return
+        b = self.dialog_button(d, ("ok",), ("đóng", "close"), ("đồng ý",))
+        if b is not None:
+            try:
+                self.press(b)
+                time.sleep(0.6)
+            except Exception:
+                pass
+
     def wait_idle(self, timeout=600, quiet=2.0):
         """Chờ Edusoft xong việc: cửa sổ chính không treo (IsHungAppWindow) và danh sách cửa sổ / số phần tử của màn hình đang mở
         không đổi trong `quiet` giây. → thời điểm thay đổi cuối cùng (dùng để đo thời gian mở menu)."""
@@ -1982,7 +2027,7 @@ class Run:
     def do_actions(self, actions, label=""):
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
-          menu_time: A/ B/ C            mở menu và đo thời gian tới khi màn hình hiện xong (ghi "Mở menu C: N giây" vào ghi chú)
+          menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -2036,10 +2081,23 @@ class Run:
             if verb == "menu":
                 es.open_menu(arg)
             elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
+                name = (menu_segs(arg) or [arg])[-1]
+                try:
+                    es.main.set_focus()
+                except Exception:
+                    pass
+                pkb.send_keys("^+t")                    # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
+                time.sleep(0.8)
+                before = es.handles()
                 t0 = time.time()
                 es.open_menu(arg, settle=False)
                 secs = es.wait_idle() - t0
-                notes.append("Mở menu %s: %.1f giây" % ((menu_segs(arg) or [arg])[-1], secs))
+                shown, dlg = es.form_time_text(before)
+                if shown:
+                    self.shot_into(notes, "thoi-gian-mo-form")
+                    es.close_info(dlg)
+                notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
+                             "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)

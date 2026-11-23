@@ -31,6 +31,10 @@ Chức năng chạy được nhưng chậm, treo – thường vào đợt cao �
 ## Case liên quan với dạng này là
 Cùng chức năng ở trường lớn khác; đợt ĐKMH sắp tới (sheet NetWeb_DKMH).
 
+## Đo thời gian mở form trên Edusoft (người dùng dạy 23/11)
+- Nhấn **Ctrl+Shift+T** trước khi mở menu → Edusoft **hiện thời gian mở form**. Case "mở menu lâu" (vd #63652): đầu ra = thời gian mở form sau khi Dev sửa, so với lúc KH báo.
+- Bộ test làm sẵn: lệnh `menu_time:` nhấn Ctrl+Shift+T, mở menu, ghi "Edusoft báo: …" + số giây bộ test tự đo, chụp ảnh.
+
 ## Hay nhầm
 Chậm do mạng / máy chủ của trường → không phải lỗi phần mềm.
 
