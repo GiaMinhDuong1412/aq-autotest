@@ -459,3 +459,8 @@ trên lưới (vd `#lockKhoaHoc` "Chọn khóa học", `#dat_TuNgay`/`#dat_DenNg
   Phần hay gặp đã trích ở **`thong-bao.md`** cạnh file này – dùng khi viết `expect:` và khi sửa `ERR_PAT`/`OK_PAT` của kit.
 - Hộp chọn dùng chung (`AQViewers/Controls`): `F_ChonNHHK` (chọn năm học-học kỳ), `F_NhapNgay`/`F_Nhap2Ngay`, `F_NhapMa`,
   `F_NhapNumber`, `F_NhapTextDon`, `UCGridChon`; nhập Excel: `AQViewers/Import` (`FormXuLyImport`, `FormResultImport`…).
+
+### Phím tắt Edusoft hay dùng khi test (người dùng dạy)
+- **Ctrl+Shift+T** (nhấn TRƯỚC khi mở menu): Edusoft hiện **thời gian mở form** – dùng cho case "mở menu / form lâu". Kit: lệnh `menu_time:`
+  tự nhấn, mở menu, đọc chữ thời gian (hộp thông báo / thanh trạng thái / tiêu đề), chụp `thoi-gian-mo-form.png`, đóng hộp bằng OK/Đóng.
+- **Ctrl+Shift+E**: chi tiết lỗi EX · **Ctrl+Shift+F**: menu code.
