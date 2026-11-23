@@ -72,7 +72,7 @@ Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước /
 
 ## 9. Đọc xong → xác định ĐẦU RA, rồi mới soạn plan test
 Đọc case + **ảnh** để chốt **đầu ra cần đạt sau khi Dev xử lý** – đây là thứ duy nhất phải so khi test. Ví dụ:
-- Case **mở menu lâu** (vd #63652) → đầu ra: *nhấn **Ctrl+Shift+T** rồi mở menu X – Edusoft hiện **thời gian mở form**; mở nhanh, không treo*. Xong, không cần kiểm "ảnh hưởng".
+- Case **chậm / mở lâu** (vd #63652) → plan làm **như người dùng thao tác**: *nhấn **Ctrl+Shift+T** rồi mở menu X → làm thao tác ra dữ liệu như KH (vd nút … cạnh Mã SV → chọn SV → Chọn) → đọc **"Thời gian mở form: Ns"** ở thanh dưới đáy*; đầu ra = dữ liệu hiện nhanh, không treo. Xong, không cần kiểm "ảnh hưởng". Xem [[Hieu nang]].
 - Case **ô bị khoá / làm mờ trên web** (vd #64755) → đầu ra: *sau khi SV quét mã, ô ghi chú vẫn sửa được*.
 - Case **báo lỗi** → đầu ra: *làm lại đúng thao tác, không còn câu báo lỗi; dữ liệu lưu / hiện đúng*. Case **số liệu sai** → *số X = giá trị đúng (đối chiếu)*.
 

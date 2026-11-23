@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-02"
+KIT_VERSION = "2026.11.23-03"
 from pathlib import Path
 
 
@@ -1272,9 +1272,37 @@ class Edusoft:
 
     TIME_PAT = re.compile(r"\d+(?:[.,]\d+)?\s*(?:ms|mili|giây|giay|phút|s\b|sec)|thời gian|time", re.I)
 
+    FORM_TIME = re.compile(r"thời\s*gian\s*mở\s*form\s*:?\s*[^\n·|]{0,24}", re.I)
+
+    def form_time_label(self):
+        """Chữ "Thời gian mở form: 1s" Edusoft hiện ở thanh dưới đáy cửa sổ chính (cạnh Năm học / Học kỳ) sau khi nhấn
+        Ctrl+Shift+T – người dùng chỉ (ảnh 23/11, Nhật ký thu học phí của sinh viên). → chữ hoặc ""."""
+        try:
+            mr = self.main.rectangle()
+            els = list(self.main.descendants(control_type="StatusBar"))
+            for sb in els[:]:
+                try:
+                    els += sb.descendants()
+                except Exception:
+                    pass
+            try:
+                els += [e for e in self.main.descendants(control_type="Text") if e.rectangle().top > mr.bottom - 90]
+            except Exception:
+                pass
+            for el in els:
+                m = self.FORM_TIME.search(nfc(el.window_text() or ""))
+                if m:
+                    return m.group(0).strip()
+        except Exception:
+            pass
+        return ""
+
     def form_time_text(self, before=()):
-        """Sau Ctrl+Shift+T + mở menu: tìm chữ thời gian mở form Edusoft hiện ra – hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề.
-        → (chữ, hộp thoại chứa nó | None)."""
+        """Sau Ctrl+Shift+T + mở menu / bấm nút: tìm chữ thời gian mở form Edusoft hiện ra – trước hết nhãn "Thời gian mở form"
+        ở thanh dưới đáy, rồi hộp thoại / cửa sổ mới, thanh trạng thái, tiêu đề. → (chữ, hộp thoại chứa nó | None)."""
+        t = self.form_time_label()
+        if t:
+            return t, None
         try:
             for d in self.dialogs():
                 t = self.dialog_text(d)
@@ -1833,6 +1861,66 @@ class Edusoft:
         cell.click_input(coords=(max(cr.width() - 8, 1), cr.height() // 2))   # nút "…" vẽ ở mép phải ô
         return "mép phải ô"
 
+    def field_button(self, label, area=""):
+        """Nút "…" của ô nhập trên form (vd ô Mã SV ở khung Thông tin sinh viên của Nhật ký thu học phí): tìm ô theo nhãn / #tên,
+        bấm Button nhỏ nằm sát bên phải ô; không thấy ô thì lấy Button nhỏ đầu tiên (tên "…" / trống) trong vùng `area`."""
+        box = None
+        try:
+            self.last_outer = None
+            inner, _ = self.field_for(label, timeout=4)
+            box = getattr(self, "last_outer", None) or inner
+        except Exception:
+            box = None
+        roots = [self.area_el(area, timeout=3)] if area else self.roots()
+        if box is not None:
+            br = box.rectangle()
+            for root in roots:
+                try:
+                    for b in root.descendants(control_type="Button"):
+                        r = b.rectangle()
+                        if br.left <= r.left <= br.right + 30 and abs((r.top + r.bottom) / 2 - (br.top + br.bottom) / 2) < 10 \
+                                and r.width() < 40 and b.is_visible():
+                            self.mark(b)
+                            b.click_input()
+                            return "nút cạnh ô"
+                except Exception:
+                    continue
+            self.mark(box)
+            box.click_input(coords=(max(br.width() - 8, 1), br.height() // 2))
+            return "mép phải ô"
+        # nhãn Edusoft thường không có trong cây giao diện → lấy ô nhập trên cùng của màn hình đang mở (Mã SV nằm đầu form),
+        # bấm nút nhỏ sát phải ô; nút "…" vẽ liền ô (ButtonEdit) thì bấm mép phải khung ngoài / ngay sau ô
+        from pywinauto import mouse
+        mr = self.main.rectangle()
+        for root in roots:
+            try:
+                eds = [e for e in root.descendants(control_type="Edit") if e.is_visible()]
+                eds = [e for e in eds if e.rectangle().top > mr.top + 140 and e.rectangle().bottom < mr.bottom - 60 and e.rectangle().width() > 30]
+                if not eds:
+                    continue
+                eds.sort(key=lambda e: (e.rectangle().top, e.rectangle().left))
+                e = eds[0]
+                er = e.rectangle()
+                for b in root.descendants(control_type="Button"):
+                    r = b.rectangle()
+                    if er.right - 4 <= r.left <= er.right + 30 and abs((r.top + r.bottom) / 2 - (er.top + er.bottom) / 2) < 10 and r.width() < 40 and b.is_visible():
+                        self.mark(b)
+                        b.click_input()
+                        return "nút cạnh ô đầu form"
+                self.mark(e)
+                try:
+                    pr = e.parent().rectangle()
+                    if 6 <= pr.right - er.right <= 40 and abs(pr.top - er.top) < 8:
+                        mouse.click(coords=(int(pr.right - 8), int((er.top + er.bottom) / 2)))
+                        return "mép phải ô đầu form"
+                except Exception:
+                    pass
+                mouse.click(coords=(int(er.right + 10), int((er.top + er.bottom) / 2)))
+                return "ngay sau ô đầu form"
+            except Exception:
+                continue
+        raise LookupError("Không thấy ô \"%s\" / nút … của ô" % label)
+
     def type_at_label(self, lab, value):
         """Lưới dọc DevExpress: bấm vào ô giá trị bên phải nhãn rồi gõ."""
         from pywinauto import mouse
@@ -1936,6 +2024,7 @@ class Run:
         self._filter = None                             # ô tìm kiếm của lưới đang gõ (để xoá sau)
         self.bugs = []
         self.log = []
+        self.ctrl_t = False        # đã nhấn Ctrl+Shift+T (bật hiện "Thời gian mở form") trong lượt này
         self.halt = False          # người test đã xử lý bước lỗi → dừng luồng đang chạy, test tiếp luồng khác
         self.abort = False         # người test bấm "Dừng test"
         self.started = now_iso()
@@ -2028,6 +2117,8 @@ class Run:
         """Ngôn ngữ thao tác (mỗi dòng một lệnh, giá trị có thể dùng biến {TEN_BIEN} của kịch bản):
           menu: A/ B/ C                 mở menu
           menu_time: A/ B/ C            nhấn Ctrl+Shift+T (Edusoft hiện thời gian mở form) rồi mở menu; ghi thời gian Edusoft báo + thời gian bộ test đo
+          fieldbtn: Mã SV|#MaSV @ Vùng   bấm nút "…" của ô nhập trên form → mở danh sách chọn (vd Danh sách sinh viên → find_row → time_click: Chọn)
+          time_click: Chọn               bấm nút rồi chờ dữ liệu hiện xong; đọc "Thời gian mở form: Ns" ở thanh dưới đáy (Ctrl+Shift+T), chụp ảnh
           click: Thêm|Thêm mới          bấm nút / mục (nhiều tên cách nhau |)
           type: Nhãn|Nhãn khác = giá trị   gõ vào ô cạnh nhãn (ô trống: "= ")
           type: #TenControl = giá trị     gõ vào ô theo tên control (automationId trong ui-*.txt, vd #SoQDSV) –
@@ -2082,12 +2173,8 @@ class Run:
                 es.open_menu(arg)
             elif verb == "menu_time":                   # mở menu + đo thời gian tới khi màn hình hiện xong (case "mở menu lâu")
                 name = (menu_segs(arg) or [arg])[-1]
-                try:
-                    es.main.set_focus()
-                except Exception:
-                    pass
-                pkb.send_keys("^+t")                    # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
-                time.sleep(0.8)
+                if not self.ctrl_t:
+                    self.press_ctrl_t()                 # người dùng dạy: Ctrl+Shift+T trước khi mở menu → Edusoft hiện thời gian mở form
                 before = es.handles()
                 t0 = time.time()
                 es.open_menu(arg, settle=False)
@@ -2098,6 +2185,30 @@ class Run:
                     es.close_info(dlg)
                 notes.append("Mở menu %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (name, shown, secs) if shown else
                              "Mở menu %s: %.1f giây (bộ test đo; Edusoft chưa hiện thời gian sau Ctrl+Shift+T)" % (name, secs))
+            elif verb == "time_click":                  # bấm nút rồi đo tới khi dữ liệu hiện xong (vd Chọn ở Danh sách sinh viên)
+                arg2, area = split_col(arg)
+                el = es.find_in_area(arg2, area, timeout=15) if area else es.find_any(arg2, timeout=15)
+                if not self.ctrl_t:                     # Ctrl+Shift+T bật hiện thời gian – chỉ nhấn một lần mỗi lượt
+                    self.press_ctrl_t()
+                before = es.handles()
+                t0 = time.time()
+                es.click(el)
+                secs = es.wait_idle() - t0
+                shown, dlg = es.form_time_text(before)
+                self.shot_into(notes, "thoi-gian-mo-form")
+                if dlg is not None:
+                    es.close_info(dlg)
+                nm = alts_of(arg2)[0]
+                notes.append("Bấm %s – Edusoft báo: %s · bộ test đo: %.1f giây" % (nm, shown, secs) if shown else
+                             "Bấm %s: %.1f giây (bộ test đo; chưa đọc được \"Thời gian mở form\" ở thanh dưới đáy)" % (nm, secs))
+            elif verb == "fieldbtn":                    # nút "…" của ô nhập (Mã SV…) → mở danh sách chọn
+                lab, area = split_col(arg)
+                es.snap = es.handles()
+                how = es.field_button(lab, area)
+                time.sleep(1.5)
+                if not es.new_windows(es.snap):
+                    raise RuntimeError("Bấm nút … của ô \"%s\" (%s) nhưng không mở danh sách chọn" % (lab, how))
+                notes.append("Mở danh sách chọn của " + alts_of(lab)[0].lstrip("#"))
             elif verb in ("click", "dclick"):
                 es.snap = es.handles()
                 arg, area = split_col(arg)
@@ -2905,6 +3016,17 @@ class Run:
     def summary(self):
         keys = [k for k in (self.sc.get("vars") or {})]
         return ("Dữ liệu test: " + ", ".join("%s = %s" % (k, self.vars[k]) for k in keys) + ".") if keys else ""
+
+    def press_ctrl_t(self):
+        """Ctrl+Shift+T trên cửa sổ chính Edusoft – Edusoft hiện "Thời gian mở form: Ns" ở thanh dưới đáy. Nhấn một lần mỗi lượt
+        (nhấn lại có thể tắt)."""
+        try:
+            self.es.main.set_focus()
+        except Exception:
+            pass
+        pkb.send_keys("^+t")
+        time.sleep(0.8)
+        self.ctrl_t = True
 
     def shot_into(self, notes, name):
         f = self.shot(name)
