@@ -9136,6 +9136,9 @@ QUAY VIDEO (TÙY CHỌN)
     startRun([it.id]);if(SC.run)SC.run.retest=id;}
 
   /* ---------- chạy plan: Edusoft qua bộ test (kịch bản tạm ACS-<case>), web mở trang test ---------- */
+  function rtEnvOfDoc(rt){var e=String((rt.plan&&rt.plan.env)||''),ins=rt.inputs||{};
+    var path=rt.envPath||((e.match(/^\s*Edusoft:\s*(.+?\.exe)\b/i)||[])[1]||'').trim(),url=rt.envUrl||((e.match(/^\s*Web:\s*(https?:\/\/\S+)/i)||[])[1]||'');
+    return {path:path,acct:rt.acct||ins['Tài khoản Edusoft']||'',url:url.replace(/[)\],.]+$/,'')};}
   function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);}),steps=[],auto=[];
     items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^(?:mở|vào)\s+menu\s+(.+?)(?:\s+[–-]\s+bấm giờ.*|:.*)?\.?$/i);
       steps.push((x.g==='check'?'Đầu ra: ':'')+t);
@@ -9143,15 +9146,18 @@ QUAY VIDEO (TÙY CHỌN)
     return {id:'acs-'+rt.caseId+'-'+(rt.round||1),code:'ACS-'+rt.caseId,title:'Test case ACS #'+rt.caseId+' – '+(rt.title||''),product:'edusoft',module:rt.module||'',menu:'',version:DEFAULT_VERSION,
       steps:steps,auto:auto,expected:'',vars:{},altFlows:[],release:null};}
   async function rtRunPlan(id){var rt=rtById(id);if(!rt)return;RT.err='';
-    if(rt.platform==='web'){var u=rt.envUrl||'';if(!/^https?:\/\//i.test(u)){RT.err='Plan chưa có địa chỉ trang web test – bấm Sửa plan để nhập.';renderRetest();return;}
+    var ed=rtEnvOfDoc(rt);
+    if(rt.platform==='web'){var u=ed.url;if(!/^https?:\/\//i.test(u)){RT.err='Plan chưa có địa chỉ trang web test – bấm Sửa plan để nhập.';renderRetest();return;}
       window.open(u,'_blank','noopener');RT.flash='Đã mở trang web test – làm theo thao tác, đánh dấu Đạt / Lỗi từng mục và dán ảnh (Ctrl+V).';RT.step[rt.caseId]=3;renderRetest();return;}
     if(rt.platform!=='edusoft'){RT.step[rt.caseId]=3;renderRetest();return;}
     var sc=rtAdhoc(rt),f={};f['scenarios/'+sc.code+'.json']=JSON.stringify(sc,null,1);
     await rtSave(id,{state:'running',startedAt:new Date().toISOString(),runId:null,scenarioId:sc.id,scenarioCode:sc.code,adhoc:true}).catch(function(){});
     try{await brTry();}catch(e){}
     KIT.sent=null;RT.direct=null;
-    await kitRunReq([sc.code],{files:f,runner:Object.assign({},rt.envPath?{path:rt.envPath}:{},rt.acct?{account:rt.acct}:{})});
+    await kitRunReq([sc.code],{files:f,runner:Object.assign({},ed.path?{path:ed.path}:{},ed.acct?{account:ed.acct}:{})});
     if(KIT.sent&&KIT.sent.agent===false)RT.direct={id:id,codes:[sc.code]};
+    if(!ed.path)KIT.msg=(KIT.msg||'')+' (Plan chưa ghi file Edusoft – đã dùng file ở Máy chạy thử: '+((myRunner()||{}).path||'?')+'.)';
+    else KIT.msg=(KIT.msg||'')+' Edusoft chạy: '+ed.path+(ed.acct?' · tài khoản '+ed.acct:'')+'.';
     RT.step[rt.caseId]=3;if(KIT.err)RT.err=KIT.err;else RT.flash=KIT.msg+' Mục tự động (mở menu, đo thời gian, chụp ảnh) tự có kết quả; mục cần nhìn bằng mắt thì bộ test hiện hộp hỏi Đạt / Lỗi.';renderRetest();}
   function rtRunBtn(rt){if(!rt||rt.state==='pass'||rt.state==='fail')return '';var es=rt.platform==='edusoft',web=rt.platform==='web';if(!es&&!web)return '';
     return '<button type="button" class="btn primary" data-rtrun="'+esc(rt.id)+'"'+(rt.state==='running'?' title="Đang chạy – bấm để chạy lại"':'')+'>'+(es?(rt.state==='running'?'↻ Chạy lại trên Edusoft':'▶ Chạy test trên Edusoft'):'▶ Mở trang web test')+'</button>';}
@@ -9788,9 +9794,10 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rt2-plan2">'+sec(1,'g-env','Môi trường test','',envB)+sec(2,'g-acc','Tài khoản đăng nhập',dr.flow&&!rt?'luồng: '+esc(dr.flow):'',accB)+steps+'</div>'+scen+foot;}
   function rtW3(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),done=rt.state==='pass'||rt.state==='fail',it=rt.scenarioId?byId(rt.scenarioId):null,run=rtRunOf(rt);
     if(!items.length)return '<p class="hint">Phiếu này chưa có plan (giao theo cách cũ) – vào bước 2 bấm "Sửa plan" để soạn.</p>';
-    var mv=rt.platform==='edusoft'&&rt.runnerId?rtMachineVer(rt):null,g=null,n=items.filter(function(x){return x.res;}).length;
+    var edp=rtEnvOfDoc(rt).path,rnp=((SC.runners||{})[rt.runnerId]||{}).path||'',same=!edp||!rnp||edp.toLowerCase()===rnp.toLowerCase();
+    var mv=rt.platform==='edusoft'&&rt.runnerId&&same?rtMachineVer(rt):null,g=null,n=items.filter(function(x){return x.res;}).length;
     var env='<div class="rt2-env"><span class="k">Môi trường</span><span>'+esc((rt.plan&&rt.plan.env)||'')+'</span>'+
-      (mv?'<span class="hint">· máy '+esc(mv.name)+': Edusoft <b class="mono">'+esc(mv.cur||'chưa biết')+'</b>'+(mv.stale?' <span class="warn-txt">(ghi nhận trước khi coder xử lý – kiểm tra đã cập nhật bản sửa)</span>':'')+'</span>':'')+'</div>';
+      (mv?'<span class="hint">· máy '+esc(mv.name)+': Edusoft <b class="mono">'+esc(mv.cur||'chưa biết')+'</b>'+(mv.stale?' <span class="warn-txt">(ghi nhận trước khi coder xử lý – kiểm tra đã cập nhật bản sửa)</span>':'')+'</span>':(!same?'<span class="hint">· file Edusoft theo plan (khác Máy chạy thử) – phiên bản ghi theo lượt chạy</span>':''))+'</div>';
     var rows=items.map(function(x,i){var h='';if(x.g!==g){g=x.g;h='<div class="rt2-g">'+esc(RT_G[g]||g)+'</div>';}var on=RT.focus===i;
       return h+'<div class="rt2-ti '+esc(x.res||'')+(on?' focus':'')+'" data-rtfocus="'+i+'"><div class="r1"><span class="n mono">'+(i+1)+'</span><span class="t">'+esc(x.t)+'</span>'+
         '<span class="rt2-res">'+['ok','bad','skip'].map(function(k){return '<button type="button" class="'+k+(x.res===k?' on':'')+'" data-rtres="'+i+':'+k+'"'+(done?' disabled':'')+'>'+RESVN[k]+'</button>';}).join('')+'</span></div>'+
