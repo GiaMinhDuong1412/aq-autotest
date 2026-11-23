@@ -269,18 +269,76 @@ def kit_version(base):
         return ""
 
 
+AGENT_TASK = "AQ Autotest Agent"
+
+
+def agent_heartbeat():
+    """agent-song.json do Agent (bộ test ≥ 2026.11.23) ghi ~10 giây/lần trong thư mục bộ test của nó → (còn sống?, dữ liệu)."""
+    try:
+        f = kit_dir() / "agent-song.json"
+        if f.exists():
+            return time.time() - f.stat().st_mtime < 45, json.loads(f.read_text("utf-8") or "{}")
+    except Exception:
+        pass
+    return False, {}
+
+
 def agent_running():
+    """Agent chạy quyền admin (Task Scheduler, mức highest) – app chạy quyền thường mở mutex của nó thường bị TỪ CHỐI (lỗi 5):
+    từ chối = mutex có = Agent đang chạy. Thêm nhịp tim agent-song.json cho chắc."""
     if os.name != "nt":
         return None
+    if agent_heartbeat()[0]:
+        return True
     try:
         import ctypes
-        h = ctypes.windll.kernel32.OpenMutexW(0x00100000, False, "AQAutotestAgentMutex")
+        k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        h = k32.OpenMutexW(0x00100000, False, "AQAutotestAgentMutex")
         if h:
-            ctypes.windll.kernel32.CloseHandle(h)
+            k32.CloseHandle(h)
             return True
+        return True if ctypes.get_last_error() == 5 else False
     except Exception:
         return None
-    return False
+
+
+def start_agent(wait=8):
+    """Bật lại Agent bằng tác vụ Task Scheduler do cai-dat.bat tạo (người dùng chạy được tác vụ của chính mình, không hỏi UAC)."""
+    if os.name != "nt":
+        return False, "chỉ có trên Windows"
+    try:
+        r = subprocess.run(["schtasks", "/run", "/tn", AGENT_TASK], capture_output=True, text=True, timeout=15, creationflags=0x08000000)
+    except Exception as e:
+        return False, "không gọi được schtasks: %s" % e
+    if r.returncode != 0:
+        msg = (r.stderr or r.stdout or "").strip().splitlines()
+        return False, ("chưa cài tác vụ Agent – bấm Cài tự động ở Máy chạy thử" if "cannot find" in " ".join(msg).lower() or "không tìm" in " ".join(msg).lower()
+                       else "schtasks báo: %s" % (msg[-1] if msg else r.returncode))
+    t = time.time()
+    while time.time() - t < wait:
+        if agent_running():
+            return True, "đã bật lại Agent"
+        time.sleep(0.5)
+    return False, "đã gọi tác vụ Agent nhưng chưa thấy Agent chạy"
+
+
+def k_agent_start(a):
+    ok, why = start_agent()
+    return {"ok": ok, "running": bool(agent_running()), "msg": why}
+
+
+def k_run_direct(a):
+    """Agent không chạy: chạy thẳng chay-test.bat <mã> (tự xin quyền admin – Windows hỏi Yes); aqrun tự áp file lệnh mới nhất rồi chạy mã đó."""
+    if os.name != "nt":
+        raise RuntimeError("Chỉ chạy được trên Windows.")
+    codes = [str(c).upper() for c in (a.get("codes") or []) if re.match(r"^[A-Za-z0-9-]{2,40}$", str(c))]
+    if not codes:
+        raise ValueError("Thiếu mã kịch bản")
+    bat = kit_dir() / "chay-test.bat"
+    if not bat.exists():
+        raise RuntimeError("Không thấy chay-test.bat trong thư mục bộ test – bấm Cài tự động ở Máy chạy thử.")
+    os.startfile(str(bat), "open", " ".join(codes), str(bat.parent))       # noqa – Python ≥ 3.10
+    return {"ok": True, "codes": codes}
 
 
 SETUP_STEPS = {"uac": 0, "chep": 1, "python": 2, "thu-vien": 3, "agent": 4, "kiem-tra": 5, "xong": 9}
@@ -402,10 +460,21 @@ def k_send(a):
         raise ValueError("Lệnh không đúng định dạng")
     stamp = time.strftime("%Y%m%d-%H%M%S") + "-%03d" % (int(time.time() * 1000) % 1000)   # mỗi lần bấm Chạy một file riêng
     name = ("aq-autotest-update-run-%s.json" if payload["format"] == "aq-autotest-update/1" else "aq-autotest-run-%s.json") % stamp
+    hb_ok, hb = agent_heartbeat()
+    try:
+        ab = Path(hb.get("base") or "")
+        if hb_ok and ab.is_dir() and ab.resolve() != base.resolve():
+            base = ab                                    # Agent theo dõi thư mục bộ test khác → ghi vào đúng chỗ nó đọc
+    except Exception:
+        pass
     tmp = base / (name + ".tmp")
     tmp.write_text(json.dumps(payload, ensure_ascii=False), "utf-8")
     os.replace(tmp, base / name)
-    return {"ok": True, "file": str(base / name), "agent": agent_running() is not False}
+    run, started, why = agent_running(), False, ""
+    if run is False:
+        started, why = start_agent()
+        run = started
+    return {"ok": True, "file": str(base / name), "agent": run is not False, "started": started, "why": why}
 
 
 def k_list(a):
@@ -623,7 +692,8 @@ def k_kb_hoc_case(a):
 KIT_TOOLS = {"status": k_status, "send": k_send, "list_results": k_list, "read_result": k_read_result, "read_file": k_read_file,
              "set_kit_dir": k_set_kit_dir, "install": k_install, "auto_setup": k_auto_setup, "find_edusoft": k_find_edusoft,
              "save_config": k_save_config, "mcp_status": k_mcp_status, "mcp_register": k_mcp_register, "set_kb_dir": k_set_kb_dir,
-             "kb_hoc_case": k_kb_hoc_case, "open_kb": k_open_kb}
+             "kb_hoc_case": k_kb_hoc_case, "open_kb": k_open_kb,
+             "agent_start": k_agent_start, "run_direct": k_run_direct}
 
 
 # ------------------------------------------------------------------ tài khoản (chế độ --public)

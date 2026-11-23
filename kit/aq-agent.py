@@ -205,8 +205,16 @@ def main():
         WAIT_F.unlink()
     except Exception:
         pass
+    hb_t = 0
     while True:
         try:
+            if time.time() - hb_t > 10:                 # nhịp tim cho app (app quyền thường không mở được mutex của Agent quyền admin)
+                hb_t = time.time()
+                try:
+                    (BASE / "agent-song.json").write_text(json.dumps({"pid": os.getpid(), "at": datetime.datetime.now().isoformat(timespec="seconds"),
+                                                                     "base": str(BASE), "watch": [str(x) for x in watch_dirs()]}, ensure_ascii=False), "utf-8")
+                except Exception:
+                    pass
             for d in watch_dirs():
                 for pat in ("aq-autotest-update*.json", "aq-autotest-run*.json"):
                     for f in sorted(d.glob(pat), key=lambda x: x.stat().st_mtime):

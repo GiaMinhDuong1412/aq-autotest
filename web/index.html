@@ -2427,8 +2427,16 @@ def main():
         WAIT_F.unlink()
     except Exception:
         pass
+    hb_t = 0
     while True:
         try:
+            if time.time() - hb_t > 10:                 # nhịp tim cho app (app quyền thường không mở được mutex của Agent quyền admin)
+                hb_t = time.time()
+                try:
+                    (BASE / "agent-song.json").write_text(json.dumps({"pid": os.getpid(), "at": datetime.datetime.now().isoformat(timespec="seconds"),
+                                                                     "base": str(BASE), "watch": [str(x) for x in watch_dirs()]}, ensure_ascii=False), "utf-8")
+                except Exception:
+                    pass
             for d in watch_dirs():
                 for pat in ("aq-autotest-update*.json", "aq-autotest-run*.json"):
                     for f in sorted(d.glob(pat), key=lambda x: x.stat().st_mtime):
@@ -2497,7 +2505,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.20-01"
+KIT_VERSION = "2026.11.23-01"
 from pathlib import Path
 
 
@@ -9141,7 +9149,9 @@ QUAY VIDEO (TÙY CHỌN)
     var sc=rtAdhoc(rt),f={};f['scenarios/'+sc.code+'.json']=JSON.stringify(sc,null,1);
     await rtSave(id,{state:'running',startedAt:new Date().toISOString(),runId:null,scenarioId:sc.id,scenarioCode:sc.code,adhoc:true}).catch(function(){});
     try{await brTry();}catch(e){}
+    KIT.sent=null;RT.direct=null;
     await kitRunReq([sc.code],{files:f,runner:Object.assign({},rt.envPath?{path:rt.envPath}:{},rt.acct?{account:rt.acct}:{})});
+    if(KIT.sent&&KIT.sent.agent===false)RT.direct={id:id,codes:[sc.code]};
     RT.step[rt.caseId]=3;if(KIT.err)RT.err=KIT.err;else RT.flash=KIT.msg+' Mục tự động (mở menu, đo thời gian, chụp ảnh) tự có kết quả; mục cần nhìn bằng mắt thì bộ test hiện hộp hỏi Đạt / Lỗi.';renderRetest();}
   function rtRunBtn(rt){if(!rt||rt.state==='pass'||rt.state==='fail')return '';var es=rt.platform==='edusoft',web=rt.platform==='web';if(!es&&!web)return '';
     return '<button type="button" class="btn primary" data-rtrun="'+esc(rt.id)+'"'+(rt.state==='running'?' title="Đang chạy – bấm để chạy lại"':'')+'>'+(es?(rt.state==='running'?'↻ Chạy lại trên Edusoft':'▶ Chạy test trên Edusoft'):'▶ Mở trang web test')+'</button>';}
@@ -9790,7 +9800,8 @@ QUAY VIDEO (TÙY CHỌN)
       (run?'<p class="hint">'+esc(ST[run.status]||run.status||'')+' · '+(run.steps||[]).filter(function(x){return x&&x.res==='ok';}).length+'/'+(run.steps||[]).length+' bước đạt · '+esc(fmt(run.finishedAt||run.startedAt))+'</p><div class="shots">'+thumbs([].concat.apply([],(run.steps||[]).map(function(x){return (x&&x.shots)||[];})).slice(-8),null,false)+'</div>'
         :'<div class="rt2-runrow"><select id="rtRn">'+rtRunners().map(function(r){var cs=(r.check&&r.check.status)||'none';return '<option value="'+esc(r.uid)+'"'+(r.uid===(rt.runnerId||SC.me)?' selected':'')+'>'+esc(nameOf(r.uid)+(r.machine?' · '+r.machine:'')+' · '+(RNSTL[cs]||cs))+'</option>';}).join('')+'</select>'+
           '<button type="button" class="btn sm primary" data-rtstart="'+esc(rt.id)+'"'+(done?' disabled':'')+'>'+(rt.state==='running'?'Chạy lại':'Chạy kịch bản')+'</button>'+(rt.state==='running'?'<span class="hint">đang chạy – có kết quả thì tự cập nhật</span>':'')+'</div>')+'</div>':'';
-    var rb=rtRunBtn(rt);if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?', đo thời gian mở menu':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
+    var rb=rtRunBtn(rt);if(rb&&RT.direct&&RT.direct.id===rt.id)rb+='<button type="button" class="btn" data-rt="rundirect" title="Chạy chay-test.bat '+esc(RT.direct.codes.join(' '))+' – Windows hỏi quyền admin">⚡ Chạy ngay</button>';
+    if(rb)env+='<div class="rt2-runbar">'+rb+'<span class="hint">'+(rt.platform==='edusoft'?(rt.state==='running'?'Đang chạy trên máy test – xong thì kết quả tự điền vào từng mục.':'Bộ test mở Edusoft (file trong plan), đăng nhập, vào menu'+(rtItemsOf(rt).some(function(x){return /bấm giờ|đo thời gian/i.test(x.t);})?', đo thời gian mở menu':'')+', chụp ảnh; mục cần nhìn thì hiện hộp hỏi Đạt / Lỗi.'):'Mở trang web test trong trình duyệt – làm theo thao tác rồi đánh dấu từng mục.')+'</span></div>';
     return env+'<div class="rt2-prog"><b>'+n+'/'+items.length+'</b> mục đã có kết quả'+(RT.up?' · đang tải '+RT.up+' ảnh…':'')+'</div><div class="rt2-test">'+rows+'</div>'+scr+
       '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="4"'+(n<items.length&&!done?' title="Còn mục chưa có kết quả"':'')+'>Tiếp: Kết luận →</button></div>';}
   function rtW4(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),w=rtW(),done=rt.state==='pass'||rt.state==='fail';
@@ -9995,6 +10006,8 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='kbpick'){if(window.aqDesktop&&aqDesktop.pickFile)aqDesktop.pickFile({dir:true,title:'Chọn thư mục kb (vault Obsidian) trong repo aq-autotest'}).then(function(v){if(v)rtMcpAct('set_kb_dir',{dir:v});});return;}
       if(act==='kbclear'){rtMcpAct('set_kb_dir',{dir:''});return;}
       if(act==='hoccase'){rtHocCase();return;}
+      if(act==='rundirect'){var dx=RT.direct;if(!dx)return;rtKit('run_direct',{codes:dx.codes}).then(function(){RT.flash='Đã chạy chay-test.bat '+dx.codes.join(' ')+' – bấm Yes khi Windows hỏi quyền admin; bộ test áp lệnh mới nhất rồi mở Edusoft.';RT.direct=null;renderRetest();})
+        .catch(function(e){RT.err='Không chạy được chay-test.bat: '+errMsg(e);renderRetest();});return;}
       if(act==='envpick'){var d8=dr();if(d8&&window.aqDesktop&&aqDesktop.pickFile)aqDesktop.pickFile({title:'Chọn Edusoft.NET.exe bản test',defaultPath:d8.envPath||'',filters:[{name:'Edusoft.NET.exe',extensions:['exe']}]}).then(function(f){if(f){d8.envPath=f;renderRetest();}});return;}
       if(act==='kbopen'){rtKit('open_kb',{}).catch(function(e){RT.mcpErr=errMsg(e);renderRetest();});return;}
       if(act==='kbreload'){kbLive(true);RT.flash='Đã đọc lại bản đồ từ ghi chú KB.';renderRetest();return;}
@@ -10958,7 +10971,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.20-01';
+  var KITVER='2026.11.23-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
@@ -10983,7 +10996,7 @@ QUAY VIDEO (TÙY CHỌN)
       run:{codes:codes,requestedAt:now,requestedBy:SC.me||null}};
     if(BR.state==='ok'){KIT.busy=true;KIT.prog='Đang gửi lệnh tới máy chạy test…';renderRunner();
       try{var sr=(await MCP.callTool(BRS,'send',{payload:body},{cache:false})).payload||{};
-        KIT.msg=hd?'Đã gửi lệnh thử desktop ẩn tới máy chạy test (bộ test '+KITVER+'). Cửa sổ "xem desktop ẩn" mở ở màn hình phụ sau vài giây; xong sẽ có file AQ-desktop-an-….zip trong Tải về.':'Đã gửi '+codes.join(', ')+' thẳng tới máy chạy test'+(BR.info&&BR.info.computer?' '+BR.info.computer:'')+' (bộ test '+KITVER+'). '+(sr.agent===false?'Agent chưa chạy — chạy cai-dat.bat một lần.':'Cửa sổ test mở sau vài giây; kết quả tự về console khi chạy xong.');
+        KIT.msg=hd?'Đã gửi lệnh thử desktop ẩn tới máy chạy test (bộ test '+KITVER+'). Cửa sổ "xem desktop ẩn" mở ở màn hình phụ sau vài giây; xong sẽ có file AQ-desktop-an-….zip trong Tải về.':'Đã gửi '+codes.join(', ')+' thẳng tới máy chạy test'+(BR.info&&BR.info.computer?' '+BR.info.computer:'')+' (bộ test '+KITVER+'). '+(sr.agent===false?'Agent chưa chạy và không tự bật lại được'+(sr.why?' ('+sr.why+')':'')+' – bấm "Chạy ngay" (Windows hỏi quyền admin) hoặc Cài tự động ở Máy chạy thử.':(sr.started?'Agent vừa được bật lại tự động. ':'')+'Cửa sổ test mở sau vài giây; kết quả tự về console khi chạy xong.');KIT.sent=sr;
         if(!hd)brWatch(codes,now);}
       catch(e){KIT.err='Không gửi được qua cầu nối: '+brErr(e);}
       KIT.busy=false;KIT.prog='';renderRunner();return;}
