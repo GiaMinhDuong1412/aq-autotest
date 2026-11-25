@@ -42,6 +42,12 @@ Kèm ảnh chụp từng bước. **Đạt mà còn mục lỗi / bước kịch
 - Danh sách "Điền vào ACS" theo 4 bước / 3 bước ở trên, tick khi xong.
 - Ghi tự động chỉ khi quản trị đã **xác nhận** ở tab Thiết lập ACS (`settings/acs.write`):
   `n` = lời gọi **Gửi** nội dung tester (method, path `{id}`, trường, HTML, nhúng ảnh), `method/path/f` = lời gọi **Save** (`f.state` = trường Kết quả test, `f.assignee`, `f.status`; `full` = Save gửi cả case → app GET rồi ghép), `v` = Đúng / Mở lại case / Mở Case / tiepnhanadmin.
+- **API thật của ACS** (đọc từ mã giao diện ACS 25/11 – app dùng mặc định, không cần khảo sát / xác nhận):
+  - Gửi nội dung test: `POST /cs/cases/{id}/comments` body `{"html": "<p>…</p>", "kenh": "test"}` (`kenh` mặc định `binh_luan` = Bình luận – phải là `test`).
+    Thiếu `html` → ACS trả **422** (lỗi "trả về mã 422 – [object Object]" ngày 25/11 do app gửi trường `content`).
+  - Ảnh: tải trước `POST /cs/attachments?name=<tên>` (body nhị phân, `Content-Type: application/octet-stream`) → `{id}` → chèn `<img src="/cs/att/<id>"/>`; app: `aqDesktop.acs.upload`.
+  - Lưu case: `PATCH /cs/cases/{id}` body `{"rev": <rev từ GET>, "fields": {"test_state": "Đúng" | "Mở lại case", "assignee_raw": "AQ\\tiepnhanadmin"}, "state": "Mở Case", "reason": "<lý do>"}` –
+    đổi Trạng thái bắt buộc `reason` lấy trong `transitions["Mở Case"]` của GET case (vd "Case chưa đạt, cần thực hiện lại"); sai `rev` (người khác vừa lưu) → đọc lại rồi gửi lại.
 - Lấy cấu hình bằng **Khảo sát ACS**: app cho mã `AQTEST-xxxxx` → người dùng dán mã vào Nội dung Tester test → Gửi → Kết quả test = Đúng → Save → Dừng; app nhận lời gọi chứa mã = Gửi, lời gọi lưu case = Save (`rtSuggest`).
 - Chưa xác nhận: app chép nội dung + mở case để dán tay.
 - Bước merge: app chỉ hiện / mở **link merge** và nhận ảnh (Ctrl+V) rồi gửi vào nội dung tester. **Không** bấm Approve / Complete hay gọi API ghi trên TFS (TFS chỉ đọc với Claude / app).

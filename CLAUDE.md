@@ -70,6 +70,7 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   gán `tiepnhanadmin`, điền nội dung test lỗi.
   **Ghi ACS theo quy trình người dùng (25/11, skill `ghi-ket-qua-acs`, `kb/Cach-test/Test - Ghi ket qua vao ACS.md`; CST = tên cũ ACS)**: Đạt = Nội dung Tester test → Gửi (lời gọi `write.n`),
   Kết quả test = Đúng → Save (`write.method/path/f`, `full` = GET rồi ghép), link merge (pullrequest TFS trong case, `rtPrLinks`), người test tự Complete PR → dán ảnh bước 4 → `rtMergeSend`;
+  **API thật (đọc từ mã giao diện ACS)**: Gửi = `POST /cs/cases/{id}/comments {html, kenh:"test"}` (ảnh: `POST /cs/attachments?name=` octet-stream → `/cs/att/<id>`, IPC `acs-upload`), Save = `PATCH /cs/cases/{id} {rev, fields:{test_state, assignee_raw}, state, reason∈transitions[state]}` – `rtW().api2` tự dùng, không cần xác nhận (`rtSaveCase2`, `rtUpShot`, `rtDetail`; Save lỗi bấm lại không gửi trùng nội dung – `acsWrite.noteKey`).
   Không đạt = Mở lại case + tiepnhanadmin + Mở Case → Save. Khảo sát ACS dùng mã `AQTEST-xxxxx` để nhận lời gọi Gửi (`rtSuggest`). Đạt mà còn mục lỗi / bước kịch bản chưa đạt → `rtPassWarn` chặn,
   phải tick "Vẫn kết luận Đạt". App/Claude **không** thao tác TFS (không Approve / Complete).
   **Claude trên cloud đọc ACS** (`tools/acs_cloud.py`, chỉ GET – không có lệnh ghi): ACS đăng nhập Microsoft (tài khoản ACS của người dùng)

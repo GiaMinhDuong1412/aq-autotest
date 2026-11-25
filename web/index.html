@@ -9433,13 +9433,24 @@ QUAY VIDEO (TÙY CHỌN)
      Không đạt: Kết quả test = Mở lại case, Phân công = tiepnhanadmin, Trạng thái = Mở Case → Save (kèm nội dung test lỗi).
      n = lời gọi "Gửi" nội dung tester, method/path/f = lời gọi Save; full = Save gửi cả case (GET rồi ghép). Tên trường thật lấy từ Khảo sát ACS. */
   var RT_WDEF={method:'PATCH',path:'/cs/cases/{id}',wrap:'',full:false,f:{note:'',state:'test_state',status:'status',assignee:'assignee_raw'},
-    n:{method:'POST',path:'',field:'content',wrap:'',html:true,img:false},
+    n:{method:'POST',path:'/cs/cases/{id}/comments',field:'html',kenh:'test',wrap:'',html:true,img:true},
     v:{pass:'Đúng',fail:'Mở lại case',reopen:'Mở Case',reopenTo:'tiepnhanadmin'},verified:false};
+  /* API thật của ACS (đọc từ mã giao diện ACS 25/11): Gửi nội dung test = POST /cs/cases/{id}/comments {html, kenh:'test'} (ảnh tải trước bằng
+     POST /cs/attachments?name=… → <img src="/cs/att/<id>">); Lưu case = PATCH /cs/cases/{id} {rev, fields:{test_state, assignee_raw…}, state, reason}
+     (đổi Trạng thái phải kèm lý do trong transitions[trạng thái mới] của GET case). Dùng cách này thì không cần khảo sát / xác nhận. */
+  function rtApi2(w){return /^PATCH$/i.test(w.method)&&/^\/cs\/cases\/\{id\}$/.test(w.path);}
+  function rtNote2(n){return !n.path||/^\/cs\/cases\/\{id\}\/comments$/.test(n.path);}
   var RT_QPROBE=['/cs/queries','/cs/saved-queries','/cs/my-queries','/cs/query/saved','/cs/queries/mine'];
   var RTST={testing:'Đang test',queued:'Chờ chạy kịch bản',running:'Đang chạy kịch bản',review:'Chờ kết luận',pass:'Đạt',fail:'Không đạt'};
   function rtA(){return (window.aqDesktop&&window.aqDesktop.acs)||null;}
-  function rtW(){var w=ACS.write||{};return {method:w.method||RT_WDEF.method,path:w.path||RT_WDEF.path,wrap:w.wrap||'',full:!!w.full,
-    f:Object.assign({},RT_WDEF.f,w.f||{}),n:Object.assign({},RT_WDEF.n,w.n||{}),v:Object.assign({},RT_WDEF.v,w.v||{}),verified:!!w.verified};}
+  function rtW(){var w=ACS.write||{},o={method:w.method||RT_WDEF.method,path:w.path||RT_WDEF.path,wrap:w.wrap||'',full:!!w.full,
+    f:Object.assign({},RT_WDEF.f,w.f||{}),n:Object.assign({},RT_WDEF.n,w.n||{}),v:Object.assign({},RT_WDEF.v,w.v||{}),verified:!!w.verified};
+    if(rtNote2(o.n))o.n=Object.assign({},o.n,{method:'POST',path:'/cs/cases/{id}/comments',field:'html',kenh:o.n.kenh||'test',wrap:'',html:true,img:true});
+    o.api2=rtApi2(o)&&rtNote2(o.n);if(o.api2){o.f.state='test_state';o.f.assignee='assignee_raw';o.verified=true;}return o;}
+  /* lỗi ACS (FastAPI): detail là chuỗi hoặc danh sách {loc,msg} */
+  function rtDetail(d){if(d==null)return '';if(typeof d==='string')return d;
+    if(Array.isArray(d))return d.map(function(x){return x&&x.msg?((x.loc||[]).filter(function(k){return k!=='body';}).join('.')+(x.loc&&x.loc.length?': ':'')+x.msg):JSON.stringify(x);}).join('; ');
+    try{return JSON.stringify(d).slice(0,300);}catch(e){return String(d);}}
   /* link merge (PR TFS) coder / TechLead ghi trong case: tìm trong toàn bộ dữ liệu case đã đọc */
   function rtPrLinks(id){var d=RT.det[String(id)];if(!d)return [];var t='';try{t=JSON.stringify(d.raw);}catch(e){}
     var m=t.match(/https?:\/\/[^\s"'<>\\]*?\/pullrequest\/\d+/gi)||[],o=[];m.forEach(function(u){if(o.indexOf(u)<0)o.push(u);});return o.slice(0,4);}
@@ -9448,11 +9459,26 @@ QUAY VIDEO (TÙY CHỌN)
   function rtShotData(id){return fetch(imgUrl(id)).then(function(r){return r.blob();}).then(function(b){return new Promise(function(ok,no){var u=URL.createObjectURL(b),im=new Image();
     im.onload=function(){var k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
       c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',0.8));};im.onerror=function(){URL.revokeObjectURL(u);no(new Error('ảnh lỗi'));};im.src=u;});});}
-  async function rtNoteBody(w,text,shots){var v=text;
-    if(w.n.html){v=rtTxtHtml(text);if(w.n.img&&shots&&shots.length){for(var i=0;i<shots.length&&i<6;i++){try{v+='<p><img src="'+(await rtShotData(shots[i]))+'"></p>';}catch(e){}}}}
-    var b={};b[w.n.field||'content']=v;if(w.n.wrap){var o={};o[w.n.wrap]=b;b=o;}return b;}
-  async function rtSendNote(w,caseId,text,shots){return rtCall(w.n.method,w.n.path.split('{id}').join(encodeURIComponent(caseId)),await rtNoteBody(w,text,shots));}
-  async function rtSaveCase(w,caseId,vals){var body={};Object.keys(vals).forEach(function(k){if(w.f[k]&&vals[k]!=='')body[w.f[k]]=vals[k];});
+  /* ảnh → tải lên ACS (/cs/attachments) → id; app cũ chưa có upload thì bỏ ảnh (RT.imgSkip) */
+  async function rtUpShot(caseId,id,i){var a=rtA();if(!a||!a.upload)return '';var d=await rtShotData(id),b64=d.slice(d.indexOf(',')+1);
+    var r=await a.upload('aqtest-'+caseId+'-'+(i+1)+'.jpg',b64,'image/jpeg');
+    if(!r||r.error||r.status<200||r.status>=300)throw new Error('tải ảnh lên ACS lỗi'+(r&&r.status?' (mã '+r.status+(r.data&&r.data.detail?' – '+rtDetail(r.data.detail):'')+')':r&&r.error?' – '+r.error:''));
+    var aid=r.data&&(r.data.id||r.data.att_id||(r.data.attachment&&r.data.attachment.id));if(!aid)throw new Error('ACS không trả mã ảnh');return String(aid);}
+  async function rtNoteBody(w,text,shots,caseId){var v=text,img=0;
+    if(w.n.html){v=rtTxtHtml(text);if(w.n.img&&shots&&shots.length){var a=rtA();
+      for(var i=0;i<shots.length&&i<8;i++){
+        if(rtNote2(w.n)){if(!a||!a.upload){RT.imgSkip=shots.length;break;}var aid=await rtUpShot(caseId,shots[i],i);if(aid){v+='<p><img src="/cs/att/'+encodeURIComponent(aid)+'"/></p>';img++;}}
+        else{try{v+='<p><img src="'+(await rtShotData(shots[i]))+'"></p>';img++;}catch(e){}}}}}
+    var b={};b[w.n.field||'content']=v;if(rtNote2(w.n))b.kenh=w.n.kenh||'test';if(w.n.wrap){var o={};o[w.n.wrap]=b;b=o;}return b;}
+  async function rtSendNote(w,caseId,text,shots){return rtCall(w.n.method,w.n.path.split('{id}').join(encodeURIComponent(caseId)),await rtNoteBody(w,text,shots,caseId));}
+  /* Lưu case kiểu ACS: GET lấy rev + transitions → PATCH {rev, fields, state, reason}; trùng rev (409) thì đọc lại, thử 1 lần nữa */
+  async function rtSaveCase2(w,caseId,vals,again){var p='/cs/cases/'+encodeURIComponent(caseId),cur=await rtCall('GET',p),cv=(cur&&cur.values)||{},fields={};
+    if(vals.state)fields.test_state=vals.state;if(vals.assignee)fields.assignee_raw=vals.assignee;var body={rev:cur&&cur.rev,fields:fields};
+    if(vals.status&&vals.status!==cv.status){var rs=((cur&&cur.transitions)||{})[vals.status]||[];
+      if(!rs.length)throw new Error('ACS không cho chuyển case #'+caseId+' từ "'+(cv.status||'?')+'" sang "'+vals.status+'" – đổi tay trên ACS.');
+      body.state=vals.status;body.reason=rs.filter(function(x){return /chưa đạt|thực hiện lại|mở lại/i.test(x);})[0]||rs[0];}
+    try{await rtCall('PATCH',p,body);}catch(e){if(!again&&/mã 409/.test(e.message))return rtSaveCase2(w,caseId,vals,true);throw e;}return p;}
+  async function rtSaveCase(w,caseId,vals){if(w.api2)return rtSaveCase2(w,caseId,vals);var body={};Object.keys(vals).forEach(function(k){if(w.f[k]&&vals[k]!=='')body[w.f[k]]=vals[k];});
     var p=w.path.split('{id}').join(encodeURIComponent(caseId));
     if(w.full){var cp=(ACS.casePath||'/cs/cases/{id}').split('{id}').join(encodeURIComponent(caseId)),cur=await rtCall('GET',cp);   /* Save gửi cả case: đọc bản mới nhất rồi ghép, không làm mất trường khác */
       cur=cur&&cur.case&&typeof cur.case==='object'?cur.case:cur;body=Object.assign({},cur||{},body);}
@@ -9462,7 +9488,7 @@ QUAY VIDEO (TÙY CHỌN)
   async function rtCall(m,p,b){var a=rtA();if(!a)throw new Error('Kết nối ACS chỉ có trong app AQ Auto Test.');
     var r=await a.call(m,p,b);if(!r)throw new Error('Không gọi được ACS.');if(r.error)throw new Error(r.error);
     if(r.status===401||r.status===403){RT.acs={st:'login',me:null,err:''};throw new Error('Phiên ACS đã hết – đăng nhập lại.');}
-    if(r.status<200||r.status>=300)throw new Error(String(p).split('?')[0]+' trả về mã '+r.status+(r.data&&typeof r.data==='object'&&r.data.detail?' – '+r.data.detail:''));
+    if(r.status<200||r.status>=300)throw new Error(String(p).split('?')[0]+' trả về mã '+r.status+(r.data&&typeof r.data==='object'&&r.data.detail?' – '+rtDetail(r.data.detail):''));
     return r.data;}
   function rtSetStatus(s){s=s||{};
     if(s.ok){var was=RT.acs.st==='ok'&&RT.acs.me&&RT.acs.me.username===s.me.username;RT.acs={st:'ok',me:s.me,err:''};renderRetest();if(!was)rtAfterLogin();return;}
@@ -9655,16 +9681,20 @@ QUAY VIDEO (TÙY CHỌN)
         RT.flash='Đã chép nội dung test và mở case #'+rt.caseId+' trên ACS – '+(kind==='pass'?'dán vào Nội dung Tester test → Gửi, chọn Kết quả test = '+w.v.pass+' → Save.':
           'dán vào Nội dung Tester test → Gửi, Kết quả test = '+w.v.fail+', Phân công = '+rtShort(rtWho(w.v.reopenTo))+', Trạng thái = '+w.v.reopen+' → Save.')+' (Cách ghi tự động chưa được xác nhận ở Thiết lập ACS.)';}
       else{
-        if(w.n.path){await rtSendNote(w,rt.caseId,note,rtShotsOf(rt));log.note={ok:true,at:new Date().toISOString()};}             /* (1) Nội dung Tester test → Gửi */
+        var nk=kind+'|'+note.length+'|'+note.slice(0,120),ow=rt.acsWrite||{};RT.imgSkip=0;
+        if(w.n.path&&ow.noteKey!==nk){await rtSendNote(w,rt.caseId,note,rtShotsOf(rt));log.note={ok:true,at:new Date().toISOString()};       /* (1) Nội dung Tester test → Gửi */
+          await rtSave(rt.id,{acsWrite:Object.assign({},ow,{noteKey:nk,note:log.note})});}
+        else if(ow.noteKey===nk)log.note=ow.note;                                                                                /* đã gửi ở lần bấm trước (Save lỗi) – không gửi trùng */
         var p=await rtSaveCase(w,rt.caseId,kind==='pass'?{note:w.n.path?'':note,state:w.v.pass}:{note:w.n.path?'':note,state:w.v.fail,status:w.v.reopen,assignee:rtWho(w.v.reopenTo)});   /* (2) Kết quả test → Save */
         log.save={ok:true,at:new Date().toISOString()};
-        await rtSave(rt.id,{state:kind,verdict:verdict,acsWrite:Object.assign({ok:true,at:now,method:w.method,path:p},log)});
+        await rtSave(rt.id,{state:kind,verdict:verdict,acsWrite:Object.assign({ok:true,at:now,method:w.method,path:p,noteKey:nk},log)});
         RT.flash=kind==='pass'?'Đã gửi nội dung test và chọn Kết quả test = '+w.v.pass+' cho case #'+rt.caseId+'. Còn bước merge: mở link merge, Complete rồi dán ảnh vào ô bên dưới.':
-          'Đã chọn '+w.v.fail+', gán '+rtShort(rtWho(w.v.reopenTo))+', trạng thái '+w.v.reopen+' cho case #'+rt.caseId+' và gửi nội dung test lỗi.';
+          'Đã chọn '+w.v.fail+', gán '+rtShort(rtWho(w.v.reopenTo))+', trạng thái '+w.v.reopen+' cho case #'+rt.caseId+' và gửi nội dung test lỗi.'
+        if(RT.imgSkip)RT.flash+=' Ảnh chưa gửi kèm được (cần bản app mới) – mở case và dán ảnh vào Nội dung Tester test.';
         rtRun();}
       RT.vfor=null;RT.passOk=false;}
     catch(e){RT.err='Không ghi được lên ACS: '+(e.message||e)+(log.note?' (nội dung tester ĐÃ gửi – chỉ còn bước Save)':'')+'. Nội dung vẫn còn ở ô bên dưới.';
-      rtSave(rt.id,{acsWrite:Object.assign({ok:false,at:now,err:String(e.message||e)},log)}).catch(function(){});}
+      rtSave(rt.id,{acsWrite:Object.assign({ok:false,at:now,err:String(e.message||e)},log.note&&nk?{noteKey:nk}:{},log)}).catch(function(){});}
     RT.busy=false;renderRetest();}
   /* bước merge (Đạt): người test Complete PR trên TFS (app chỉ mở link, KHÔNG thao tác TFS) → dán ảnh → gửi bổ sung vào Nội dung Tester test */
   function rtMergeShots(i,files){var rt=rtById(i);if(!rt||!SC.assets)return;Array.prototype.forEach.call(files,function(f){if(!/^image\//.test(f.type))return;RT.up=(RT.up||0)+1;

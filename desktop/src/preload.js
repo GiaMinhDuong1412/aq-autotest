@@ -15,6 +15,7 @@ contextBridge.exposeInMainWorld('aqDesktop', {
     logout: () => ipcRenderer.invoke('acs-logout'),
     call: (method, path, body) => ipcRenderer.invoke('acs-call', { method, path, body }),
     image: (path, max) => ipcRenderer.invoke('acs-image', { path, max }),      // ảnh trong case → {status, mime, b64}
+    upload: (name, b64, mime) => ipcRenderer.invoke('acs-upload', { name, b64, mime }),   // ảnh → /cs/attachments → {status, data:{id}}
     open: (caseId) => ipcRenderer.invoke('acs-open', { caseId }),
     surveyStart: () => ipcRenderer.invoke('acs-survey-start'),
     surveyStop: () => ipcRenderer.invoke('acs-survey-stop'),
