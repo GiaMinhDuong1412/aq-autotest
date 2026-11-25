@@ -12,7 +12,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.25-01"
+KIT_VERSION = "2026.11.25-02"
 from pathlib import Path
 
 
@@ -2284,6 +2284,15 @@ class Run:
           absent: giá trị @ Cột          giá trị KHÔNG còn trong lưới (kiểm tra sau khi xóa)
                                          vẫn thấy → tắt màn hình (X), mở lại menu, kiểm tra lần nữa
           shot: tên                      chụp ảnh màn hình vào bước
+          row: mã @ Cột khoá => Cột A|tên khác; Cột B
+                                         tìm hồ sơ theo mã (ô tìm kiếm của cột khoá), ĐỌC giá trị các cột của dòng đó, ghi vào bước;
+                                         lần đọc đầu tiên của mã = DỮ LIỆU ĐẦU VÀO (để so ở row_check). Không có hồ sơ / cột → bước Lỗi
+          row_check: mã @ Cột khoá => Cột A = giữ nguyên; Cột B = 0105; Cột C = trống; Cột D != trống
+                                         đọc lại dòng và SO: giữ nguyên = bằng giá trị đầu vào; sai → tắt, mở lại màn hình đọc lần nữa;
+                                         vẫn sai → bước Lỗi kèm giá trị trước / sau
+          row_base: mã @ Cột khoá => Cột A; …   như row: nhưng GHI ĐÈ giá trị đầu vào (đọc lại ngay trước thao tác sắp kiểm)
+          tay: lời nhắc                  giữa bước: chờ người test tự thao tác trên Edusoft (Lưu, Đồng bộ, Cập nhật theo file…) rồi bấm
+                                         Đạt / Lỗi trên popup – Lỗi thì dừng bước; các lệnh sau (row_check…) tự kiểm dữ liệu
           key / wait / ok / note         như cũ"""
         es = self.es
         notes = []
@@ -2553,6 +2562,15 @@ class Run:
                     if self.row_exists(arg, col):
                         raise RuntimeError("Vẫn còn \"%s\" trong danh sách (đã tắt, mở lại màn hình)" % arg)
                 notes.append("Không còn " + arg)
+            elif verb in ("row", "row_check", "row_base"):
+                notes += self.row_verb(verb, arg)
+            elif verb == "tay":
+                res = self.ask_manual("%s · %s" % (self.sc.get("code", ""), label or "bước"), self.expand(arg))
+                if res == "bad":
+                    raise RuntimeError("Người test báo lỗi khi làm tay: " + arg[:160])
+                notes.append(("Bỏ qua thao tác tay: " if res == "skip" else "Người test đã làm: ") + arg[:120])
+                if res == "skip":
+                    break
             elif verb == "shot":
                 self.shot_into(notes, arg or (label or "anh").lower().replace(" ", "-"))
             elif verb == "note":
@@ -3163,6 +3181,125 @@ class Run:
         if el is None:
             raise LookupError("Không thấy dòng \"%s\" trong các dòng đang hiện (ghi \"@ Tên cột\" để tìm bằng ô tìm kiếm)" % value)
         return el
+
+    @staticmethod
+    def _fold(x):
+        import unicodedata
+        x = unicodedata.normalize("NFD", str(x or "").lower().replace("đ", "d"))
+        return re.sub(r"\s+", " ", "".join(c for c in x if unicodedata.category(c) != "Mn")).strip()
+
+    def row_cells(self, value, col):
+        """Tìm dòng có mã `value` (ô tìm kiếm của cột `col`) → {tên cột: giá trị} của MỌI ô cùng dòng (kể cả cột đang khuất
+        bên phải – ô DevExpress tên "<cột> row N"), cùng danh sách tên cột lưới có."""
+        el = self.locate_row(value, col)
+        nm = str(el.element_info.name or "")
+        m = re.search(r"\s+row\s*(\d+)$", nm, re.I)
+        try:
+            r = el.rectangle()
+            y = (r.top + r.bottom) // 2
+        except Exception:
+            y = None
+        cells, names = {}, set()
+        for root in self.es.roots():
+            nodes = uia_scan(root) or []
+            for nd in nodes:
+                if nd.ct != "DataItem":
+                    continue
+                mm = re.match(r"^(.*?)\s+row\s*(\d+)$", nd.name or "", re.I)
+                if not mm or re.search(r"filter|lọc", mm.group(1), re.I):
+                    continue
+                names.add(mm.group(1).strip())
+                same = (m and mm.group(2) == m.group(1)) or (not m and y is not None and nd.rect[1] <= y <= nd.rect[3])
+                if same:
+                    cells.setdefault(mm.group(1).strip(), (nd.val or "").strip())
+            if cells:
+                break
+        return cells, names
+
+    def row_verb(self, verb, arg):
+        """row: / row_check: – xem docstring do_actions."""
+        left, _, spec = arg.partition("=>")
+        value, col = split_col(left.strip())
+        if not value:
+            raise ValueError("row: thiếu mã hồ sơ")
+        want = []
+        for part in [x.strip() for x in spec.split(";") if x.strip()]:
+            mm = re.match(r"^(.*?)\s*(!=|=)\s*(.*)$", part) if verb == "row_check" else None
+            want.append((mm.group(1).strip(), mm.group(2), mm.group(3).strip()) if mm else (part, "", ""))
+        mem = self.__dict__.setdefault("rowmem", {})
+        F = self._fold
+
+        def pick(cells, names, c):
+            alts = [a.strip() for a in c.split("|") if a.strip()]
+            for a in alts:
+                for k in cells:
+                    if F(k) == F(a):
+                        return k, cells[k]
+            for a in alts:
+                for k in names:
+                    if F(k) == F(a):
+                        return k, ""                    # cột có nhưng ô trống
+            return None, None
+
+        def read():
+            try:
+                return self.row_cells(value, col)
+            except LookupError:
+                raise RuntimeError("Không thấy hồ sơ %s trong danh sách (tìm ở cột %s)" % (value, col or "đang hiện"))
+
+        def judge(cells, names):
+            out, bad = [], []
+            m0 = mem.setdefault(value, {})
+            for c, op, exp in want:
+                k, v = pick(cells, names, c)
+                if k is None:
+                    bad.append("không thấy cột \"%s\" trên lưới (cột ẩn? chuột phải tiêu đề → Column Chooser)" % c.split("|")[0])
+                    continue
+                shown = v or "(trống)"
+                if verb == "row":
+                    m0.setdefault(k, v)
+                elif verb == "row_base":
+                    m0[k] = v
+                if not op:
+                    out.append("%s = %s" % (k, shown))
+                    continue
+                if F(exp) in ("giu nguyen", "nhu cu", "khong doi"):
+                    ref = m0.get(k)
+                    if ref is None:
+                        out.append("%s = %s (chưa có giá trị đầu vào để so)" % (k, shown))
+                        continue
+                    ok = v == ref
+                    txt = "%s = %s (đầu vào %s)" % (k, shown, ref or "(trống)")
+                elif F(exp) in ("trong", "rong", ""):
+                    ok, txt = (not v), "%s = %s (phải trống)" % (k, shown)
+                else:
+                    ok, txt = F(v) == F(exp) or F(v).startswith(F(exp) + " "), "%s = %s (phải %s)" % (k, shown, exp)
+                if op == "!=":
+                    ok, txt = not ok, txt.replace("(phải ", "(phải khác ")
+                (out if ok else bad).append(("✓ " if ok else "✗ ") + txt)
+            return out, bad
+
+        cells, names = read()
+        out, bad = judge(cells, names)
+        if bad and verb == "row_check":
+            path = getattr(self.es, "last_menu", "") or self.sc.get("menu") or ""
+            segs = menu_segs(path)
+            if segs:                                    # lưới có thể chưa nạp lại sau Lưu / cập nhật theo file → mở lại đọc lần nữa
+                try:
+                    self.close_screen(segs[-1])
+                    self.es.open_menu(path)
+                    cells, names = read()
+                    out, bad = judge(cells, names)
+                    out.insert(0, "(đã tắt, mở lại %s)" % segs[-1])
+                except RuntimeError:
+                    raise
+                except Exception:
+                    pass
+        self.clear_filter()
+        line = "Hồ sơ %s: %s" % (value, " · ".join(out + bad) if (out or bad) else "thấy dòng")
+        if bad:
+            raise RuntimeError(line)
+        return [("Dữ liệu đầu vào – " if verb in ("row", "row_base") else "") + line]
 
     def summary(self):
         keys = [k for k in (self.sc.get("vars") or {})]

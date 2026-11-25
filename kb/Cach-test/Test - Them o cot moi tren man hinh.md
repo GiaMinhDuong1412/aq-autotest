@@ -10,7 +10,7 @@ dau_hieu: "bổ sung (thêm )?(thông tin|ô|trường|cột)|thêm (ô|trườn
 buoc:
   - "Mở {Menu}, chọn 1 hồ sơ test (đã có {Ô cũ}) → kiểm có ô {Ô mới} (vị trí như dev ghi)."
   - "Bấm ô {Ô mới}: danh sách giá trị lấy từ {Danh mục} (so với menu danh mục đó)."
-  - "Chọn {Ô mới} khác {Ô cũ} → Lưu → đóng màn hình, mở lại hồ sơ."
+  - "Ở 1 hồ sơ test: chọn {Ô mới} khác {Ô cũ} → Lưu → đóng màn hình, mở lại hồ sơ."
   - "Hồ sơ chưa nhập {Ô mới}: mở, sửa ô khác → Lưu – không báo lỗi, {Ô mới} vẫn trống."
   - "Trên lưới tìm cột của {Ô mới} (không thấy: chuột phải tiêu đề cột → Column Chooser → kéo cột vào → lưu giao diện) → Xuất Excel."
 kiem_tra:
@@ -32,6 +32,11 @@ Dùng cho case **bổ sung một thông tin cần lưu riêng** (ô nhập / com
   Đồng bộ (tất cả / chưa có), màn hình nhập kết quả.
 - Cột thêm sau **bị ẩn** khi lưới đã *Lưu giao diện* riêng → Column Chooser (không phải lỗi code, nhưng phải có trong trả lời KH).
 - Case theo **phân cấp** (view riêng, vd DHMOTX): mở cùng menu ở trường gốc (DHMO) để chắc không lỗi.
+
+## Bộ test tự kiểm dữ liệu
+Khi plan có **hồ sơ test** (mã SV…), app gửi sang bộ test các lệnh đọc lưới: `row:` (tìm hồ sơ theo mã, đọc cột – giá trị đầu vào),
+`row_base:` (đọc lại ngay trước thao tác), `tay:` (chờ người test bấm Lưu / Đồng bộ / Thực hiện), `row_check:` (so: *giữ nguyên* / `= giá trị` / `!= trống`).
+Bước "Hồ sơ test" = mở menu + đọc từng mã; đầu ra "… giữ nguyên" và "Không còn lỗi lần trước" = bộ test tự so, không bắt người test nhìn bằng mắt.
 
 ## Chữ trong `buoc` / `kiem_tra`
 `{Menu}`, `{Ô mới}`, `{Ô cũ}` (ô liên quan / cạnh ô mới), `{Danh mục}` – app thay bằng tên lấy từ ghi chú dev / trả lời KH.
