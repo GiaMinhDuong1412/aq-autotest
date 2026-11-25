@@ -9924,7 +9924,8 @@ QUAY VIDEO (TÙY CHỌN)
   function rtW(){var w=ACS.write||{},o={method:w.method||RT_WDEF.method,path:w.path||RT_WDEF.path,wrap:w.wrap||'',full:!!w.full,
     f:Object.assign({},RT_WDEF.f,w.f||{}),n:Object.assign({},RT_WDEF.n,w.n||{}),v:Object.assign({},RT_WDEF.v,w.v||{}),verified:!!w.verified};
     if(rtNote2(o.n))o.n=Object.assign({},o.n,{method:'POST',path:'/cs/cases/{id}/comments',field:'html',kenh:o.n.kenh||'test',wrap:'',html:true,img:true});
-    o.api2=rtApi2(o)&&rtNote2(o.n);if(o.api2){o.f.state='test_state';o.f.assignee='assignee_raw';o.verified=true;}return o;}
+    /* Gửi dùng API comments của ACS → Lưu luôn là PATCH /cs/cases/{id} (cấu hình cũ từ Khảo sát có thể ghi nhầm Save = …/comments → 422) */
+    o.api2=rtNote2(o.n)&&!w.custom;if(o.api2){o.method='PATCH';o.path='/cs/cases/{id}';o.wrap='';o.full=false;o.f.state='test_state';o.f.assignee='assignee_raw';o.verified=true;}return o;}
   /* lỗi ACS (FastAPI): detail là chuỗi hoặc danh sách {loc,msg} */
   function rtDetail(d){if(d==null)return '';if(typeof d==='string')return d;
     if(Array.isArray(d))return d.map(function(x){return x&&x.msg?((x.loc||[]).filter(function(k){return k!=='body';}).join('.')+(x.loc&&x.loc.length?': ':'')+x.msg):JSON.stringify(x);}).join('; ');
