@@ -72,6 +72,10 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   Kết quả test = Đúng → Save (`write.method/path/f`, `full` = GET rồi ghép), link merge (pullrequest TFS trong case, `rtPrLinks`), người test tự Complete PR → dán ảnh bước 4 → `rtMergeSend`;
   Không đạt = Mở lại case + tiepnhanadmin + Mở Case → Save. Khảo sát ACS dùng mã `AQTEST-xxxxx` để nhận lời gọi Gửi (`rtSuggest`). Đạt mà còn mục lỗi / bước kịch bản chưa đạt → `rtPassWarn` chặn,
   phải tick "Vẫn kết luận Đạt". App/Claude **không** thao tác TFS (không Approve / Complete).
+  **Claude trên cloud đọc ACS** (`tools/acs_cloud.py`, chỉ GET – không có lệnh ghi): ACS đăng nhập Microsoft (tài khoản ACS của người dùng)
+  → `start <email>` in link đăng nhập (10 phút) → người dùng đăng nhập trên trình duyệt, bắt mã ở F12 › Network › `callback` (trang tự chuyển sang
+  `?loi_dang_nhap=het_han`, kệ nó) rồi dán → `finish <code|url>` → phiên `kb_token` ~5 giờ ở `~/.aq-acs/` (ngoài repo); `case <id>` (thông tin, KH, BA, Dev,
+  trao đổi test `/comments`, lịch sử), `att <id>` (ảnh `/cs/att/<id>`). Môi trường cloud phải cho phép host `acs.aqtech.io.vn`. Không in cookie / mã ra log.
   **Case import / cập nhật theo file Excel**: `kb/Cach-test/Test - Import va cap nhat theo file Excel.md` (Tool Import: Xuất cấu trúc import, giữ 2 dòng đầu, cột vàng bắt buộc, map cột,
   các loại lỗi khi Tiếp tục, ma trận dòng test, 87 menu "theo file" từ catalog); bộ test chưa có lệnh import (đề xuất `xlsx:` / `import:`). Kết nối ACS "cách 2" như app `aq-case-widget`: `desktop/src/acs.js` mở cửa sổ ACS (partition
   `persist:acs`), người dùng tự đăng nhập, app gọi API cùng phiên (`/auth/me`, `/cs/lookups`, `/cs/query`…) qua `aqDesktop.acs.call`

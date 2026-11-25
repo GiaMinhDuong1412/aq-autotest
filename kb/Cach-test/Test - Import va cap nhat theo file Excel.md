@@ -61,6 +61,22 @@ Mỗi loại có **Số dòng** + **Xem chi tiết** (lưu ra Excel để sửa 
 6. **Không ảnh hưởng**: import tay 1 dòng (nút Thêm) vẫn chạy; menu import khác của cùng màn hình.
 7. **Dọn dữ liệu**: xóa / khôi phục các dòng test (cập nhật thì ghi lại giá trị cũ trước khi import).
 
+## 5b. Bài học từ case thật – cập nhật theo file làm đè cột liên quan
+Case S38.01 *Xem/sửa thẩm tra văn bằng* (DHMOTX, thêm cột **Nơi cấp VB trước sáp nhập** `MaNCVBTSN` cạnh **Nơi cấp VB** `MaNCVB`):
+sửa tay thì đúng, nhưng **Cập nhật theo file** chỉ có cột mới → chương trình thấy ô `MaNCVB` trống nên **tự điền** Nơi cấp VB theo văn bằng
+của SV (hoặc bằng giá trị cột mới) → hai cột thành một. Mở lại 2 lần vì lỗi này. Áp dụng cho mọi case thêm cột / sửa import:
+- **Ô trống trong file ≠ không đụng tới**: màn hình có thể tự suy ra giá trị (lấy theo dữ liệu gốc, đồng bộ). Luôn có dòng test *chỉ điền cột mới,
+  cột liên quan để trống* trên bản ghi **đã có** giá trị cột liên quan → sau Thực hiện cột liên quan phải giữ nguyên.
+- Trước khi bấm Thực hiện: **Xem chi tiết** nhóm "Dữ liệu có thể cập nhật" (lưới *Thông tin dữ liệu*) – cột nào sẽ được ghi hiện ở đây; cột liên quan
+  hiện giá trị trong khi file để trống = chương trình tự điền → chụp ảnh, đó là lỗi.
+- Ghi giá trị **trước** của từng bản ghi test (ảnh hoặc Xuất Excel) để so và để trả lại khi dọn.
+- Kiểm cả các đường ghi khác cùng cột: **Import** (thêm mới), **Đồng bộ** (tất cả / chưa có), **Sửa** tay, màn hình nhập kết quả liên quan.
+- **Cột mới không hiện khi Xuất Excel**: lưới đã *Lưu giao diện* riêng thì cột thêm sau bị ẩn – mở Column Chooser (chuột phải tiêu đề cột) kéo cột vào,
+  lưu giao diện rồi xuất lại; kiểm cả 2 tuỳ chọn xuất (theo kiểu dữ liệu database / như trên màn hình). Không phải lỗi code nhưng phải ghi vào trả lời KH.
+- Case theo **phân cấp** (view riêng của DHMOTX): mở cùng menu ở trường gốc (DHMO) để chắc không lỗi.
+- Bảng dòng test mẫu (7 dòng A–G: chỉ cột mới / cả hai / chỉ cột cũ / bản ghi trống cột cũ / không có cột mới – hành vi cũ / mã sai danh mục / hai cột trùng nhau)
+  dùng lại được cho case "thêm cột thứ hai cùng danh mục" khác.
+
 ## 6. Bộ test tự động (đề xuất – chưa có lệnh)
 Hiện `aqrun.py` chưa có lệnh import file. Đề xuất: `xlsx:` (openpyxl tạo file từ mẫu Xuất cấu trúc + dòng test), `import: <file> @ <Màn hình>` (bấm Import → hộp chọn file → Tiếp tục), `import_check: hợp lệ=2, sai khóa ngoại=1 …` (đọc Số dòng từng loại), `import_do` (Thực hiện) rồi `find_row:` kiểm từng dòng.
 
