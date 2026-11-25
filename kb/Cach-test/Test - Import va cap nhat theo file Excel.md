@@ -19,6 +19,18 @@ kiem_tra:
   - "Dòng mã sai danh mục báo lỗi, không cập nhật; cột không có trong file không bị đổi."
 khong_anh_huong:
   - "Import thêm mới và Sửa tay trên cùng màn hình vẫn đúng."
+ma_tran:
+  - "A | {Cột cũ} != trống; {Cột mới} = trống | {Cột cũ} = ; {Cột mới} = {Mã 1} | {Cột cũ} = giữ nguyên; {Cột mới} = {Mã 1} | chỉ điền cột mới – lỗi hay gặp: cột cũ bị tự điền / đồng hoá"
+  - "B | {Cột cũ} != trống | {Cột cũ} = {Mã 2}; {Cột mới} = {Mã 1} | {Cột cũ} = {Mã 2}; {Cột mới} = {Mã 1} | hai cột khác nhau – không đè nhau"
+  - "C | {Cột cũ} != trống; {Cột mới} != trống | {Cột cũ} = {Mã 2}; {Cột mới} = | {Cột cũ} = {Mã 2}; {Cột mới} = giữ nguyên | ô cột mới trống trong file = giữ nguyên"
+  - "D | {Cột cũ} = trống | {Cột cũ} = ; {Cột mới} = {Mã 1} | {Cột cũ} = trống; {Cột mới} = {Mã 1} | tuỳ chọn – hồ sơ trống cột cũ: không tự lấy theo dữ liệu gốc"
+  - "E | {Cột cũ} = trống; {Cột mới} = trống | {Cột cũ} = ; {Cột mới} = | {Cột cũ} != trống; {Cột mới} = trống | tuỳ chọn – hành vi cũ: cả hai trống thì vẫn tự lấy cột cũ"
+  - "F |  | {Cột mới} = {Mã sai} | {Cột cũ} = giữ nguyên; {Cột mới} = giữ nguyên | mã không có trong danh mục → nhóm lỗi, không cập nhật"
+  - "G | {Cột cũ} != trống | {Cột cũ} = {Mã 1}; {Cột mới} = {Mã 1} | {Cột cũ} = {Mã 1}; {Cột mới} = {Mã 1} | hai cột trùng nhau vẫn lưu"
+ma_tran_buoc:
+  - "Ở {Menu} bấm Cập nhật theo file → Xuất cấu trúc import → điền file (Mã SV, các cột khoá bắt buộc, {Cột cũ}, {Cột mới}) theo bảng: {Bảng file}."
+  - "Chọn file → Tiếp tục → Xem chi tiết nhóm \"Dữ liệu có thể cập nhật\": {Cột cũ} của các dòng để trống trong file không tự hiện giá trị; dòng mã sai danh mục nằm ở nhóm lỗi – chụp ảnh."
+  - "Bấm Thực hiện."
 aliases:
   - "Import Excel"
   - "Cập nhật theo file"
@@ -74,6 +86,12 @@ Mỗi loại có **Số dòng** + **Xem chi tiết** (lưu ra Excel để sửa 
 5. **Kiểm sau import**: lọc lưới theo khóa từng dòng – giá trị đúng, cột không có trong file **không bị ghi đè**, dòng lỗi **không** vào; kiểm màn hình / báo cáo dùng dữ liệu đó (kb `Du-lieu/` → "Dùng ở") và trang web nếu dữ liệu hiện trên Netweb ([[00 Liên kết Netweb - Edusoft]]).
 6. **Không ảnh hưởng**: import tay 1 dòng (nút Thêm) vẫn chạy; menu import khác của cùng màn hình.
 7. **Dọn dữ liệu**: xóa / khôi phục các dòng test (cập nhật thì ghi lại giá trị cũ trước khi import).
+
+## 5a. Ma trận dòng test (thêm cột thứ hai cùng danh mục)
+Properties `ma_tran` (dòng | điều kiện hồ sơ trước khi cập nhật | giá trị trong file | sau Thực hiện phải đúng | ghi chú) và `ma_tran_buoc`.
+App dùng khi case thêm một cột mới cạnh cột cũ cùng danh mục (`{Cột cũ}` / `{Cột mới}` = tên cột trên lưới): plan hỏi **mã hồ sơ cho từng dòng**
+(`SV dòng A`…) + `Mã 1` / `Mã 2` (mã có trong danh mục) + `Mã sai`; bộ test **tự kiểm điều kiện** từng hồ sơ trước (sai điều kiện = chọn lại hồ sơ),
+người test điền file + Thực hiện, rồi bộ test **tự so** từng hồ sơ với cột "sau Thực hiện" (`giữ nguyên` = bằng giá trị đọc ngay trước khi cập nhật).
 
 ## 5b. Bài học từ case thật – cập nhật theo file làm đè cột liên quan
 Case S38.01 *Xem/sửa thẩm tra văn bằng* (DHMOTX, thêm cột **Nơi cấp VB trước sáp nhập** `MaNCVBTSN` cạnh **Nơi cấp VB** `MaNCVB`):
