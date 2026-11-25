@@ -18,6 +18,7 @@ const net = require('net');
 const { spawn, execFileSync } = require('child_process');
 const { createUpdater } = require('./updater');
 const setupAcs = require('./acs');
+const setupTfs = require('./tfs');   // cửa sổ PR merge: người test tự Complete, app theo dõi + tự chụp (Mức 1)
 const startRelay = require('./mcp-relay');
 
 const APP_ID = 'vn.aqtech.autotest';
@@ -316,6 +317,7 @@ async function init() {
   gopDuLieuMau();
   fs.mkdirSync(RIENG, { recursive: true });
   acs = setupAcs({ BrowserWindow, ipcMain, session, ICON, getWin: () => win, log, RIENG });   // đăng nhập & gọi API ACS (module Test sau sửa lỗi)
+  setupTfs({ BrowserWindow, ipcMain, session, ICON, getWin: () => win, log });
   if (!SMOKE) relay = await startRelay({ acs, log });
   try {
     port = await choosePort();

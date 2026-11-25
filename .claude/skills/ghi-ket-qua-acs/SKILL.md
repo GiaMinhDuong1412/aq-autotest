@@ -50,6 +50,9 @@ Kèm ảnh chụp từng bước. **Đạt mà còn mục lỗi / bước kịch
     đổi Trạng thái bắt buộc `reason` lấy trong `transitions["Mở Case"]` của GET case (vd "Case chưa đạt, cần thực hiện lại"); sai `rev` (người khác vừa lưu) → đọc lại rồi gửi lại.
 - Lấy cấu hình bằng **Khảo sát ACS**: app cho mã `AQTEST-xxxxx` → người dùng dán mã vào Nội dung Tester test → Gửi → Kết quả test = Đúng → Save → Dừng; app nhận lời gọi chứa mã = Gửi, lời gọi lưu case = Save (`rtSuggest`).
 - Chưa xác nhận: app chép nội dung + mở case để dán tay.
+- **Merge – Mức 1 (người dùng chốt 25/11)**: nút **Mở PR trong app** (bước 4, case Đạt) → app mở PR trong cửa sổ riêng (`desktop/src/tfs.js`, phiên `persist:tfs`,
+  đăng nhập Windows tự động, máy chủ hỏi thì hiện hộp nhập – không lưu mật khẩu) → **người test tự bấm Complete** → app chỉ đọc trạng thái PR (GET API TFS cùng phiên, 3 giây/lần)
+  → `completed` thì tự chụp cửa sổ → ảnh merge của phiếu → tự gửi "Đã Complete merge <link> (Completed bởi …, commit …)" + ảnh vào Nội dung Tester test. App **không** bấm Approve / Complete.
 - Bước merge: app chỉ hiện / mở **link merge** và nhận ảnh (Ctrl+V) rồi gửi vào nội dung tester. **Không** bấm Approve / Complete hay gọi API ghi trên TFS (TFS chỉ đọc với Claude / app).
 
 ## Không làm

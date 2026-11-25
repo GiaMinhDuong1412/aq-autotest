@@ -30,6 +30,11 @@ ACS tự: case về Đang xử lý, Số lần mở lại +1.
   - Lưu case: `PATCH /cs/cases/{id}` body `{"rev": <rev từ GET>, "fields": {"test_state": "Đúng" | "Mở lại case", "assignee_raw": "AQ\\tiepnhanadmin"}, "state": "Mở Case", "reason": "<lý do>"}` –
     đổi Trạng thái bắt buộc `reason` lấy trong `transitions["Mở Case"]` của GET case (vd "Case chưa đạt, cần thực hiện lại"); sai `rev` (người khác vừa lưu) → đọc lại rồi gửi lại.
 
+## Merge trong app (Mức 1)
+- **Merge – Mức 1 (người dùng chốt 25/11)**: nút **Mở PR trong app** (bước 4, case Đạt) → app mở PR trong cửa sổ riêng (`desktop/src/tfs.js`, phiên `persist:tfs`,
+  đăng nhập Windows tự động, máy chủ hỏi thì hiện hộp nhập – không lưu mật khẩu) → **người test tự bấm Complete** → app chỉ đọc trạng thái PR (GET API TFS cùng phiên, 3 giây/lần)
+  → `completed` thì tự chụp cửa sổ → ảnh merge của phiếu → tự gửi "Đã Complete merge <link> (Completed bởi …, commit …)" + ảnh vào Nội dung Tester test. App **không** bấm Approve / Complete.
+
 ## Vì sao quan trọng
 - Không có Tester + Kết quả test = Đúng thì không gửi được mail đóng case (bước 05).
 - Link merge là bằng chứng bản sửa đã vào nhánh của trường (VersionSchool/<trường>) – xem [[00 Cách phân tích case]] phần Dev xử lý.
