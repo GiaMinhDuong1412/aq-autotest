@@ -51,6 +51,10 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
  Ghi kết quả bằng case_ghi_phan_tich (người test xem ở app). Trình bày cho người dùng theo đúng các mục trên, nêu câu hỏi mở.
  Chỉ khi người dùng yêu cầu mới soạn plan test (retest_ghi_plan) – và chỉ sau khi đã có phiếu phân tích.
  ĐẦU RA: đọc case + ảnh để chốt "đầu ra cần đạt sau khi Dev xử lý" (vd case chậm / mở lâu → plan làm NHƯ NGƯỜI DÙNG: nhấn Ctrl+Shift+T rồi mở menu, làm thao tác ra dữ liệu như KH – vd nút … cạnh Mã SV → chọn SV → Chọn – rồi đọc "Thời gian mở form: Ns" ở thanh dưới đáy Edusoft; dữ liệu hiện nhanh không treo – không cần kiểm ảnh hưởng).
+ PLAN = BƯỚC THAO TÁC CỤ THỂ (người dùng chốt 25/11): KHÔNG chép yêu cầu KH thành bước, KHÔNG để "làm đúng thao tác KH nêu". Trước khi soạn: đọc KB liên quan
+ (Phan-he, Du-lieu, Cach-test – acs_case trả 'cach_test' kèm bước mẫu {Menu}/{Ô mới}/{Ô cũ}/{Danh mục}), tra case gốc / liên quan (acs_case_lien_quan), đọc hết case:
+ 'dev' (Chi tiết xử lý: "Nội dung: …" từng LẦN = đã sửa gì → mỗi ý một bước kiểm), Trả lời KH (chức năng sau khi sửa), 'trao_doi_test' (lần test trước báo lỗi gì,
+ SV / mã nào → làm lại đúng chỗ đó). Mỗi bước repro = menu cụ thể + thao tác (chọn hồ sơ / điền file / bấm nút) ; mỗi check = điều nhìn thấy được sau thao tác.
  PLAN TEST chỉ 4 phần: (1) môi trường test (Edusoft.NET.exe bản test / trang web TEST của trường + bản sửa) – moi_truong; (2) tài khoản đăng nhập – can_cung_cap
  (web: mã GV / MSSV… theo ngữ cảnh, KHÔNG hỏi mật khẩu; Edusoft dùng tài khoản test ở Máy chạy thử); (3) thao tác: nhom 'repro' – vào menu / trang nào, làm gì;
  (4) đầu ra: nhom 'check' – mỗi đầu ra một mục. Chỉ thêm 'prep' / 'reg' khi case thật sự cần. Dùng luồng kb/Luong-test (acs_case trả 'luong_test') nếu khớp.
@@ -705,8 +709,8 @@ def t_acs_tim_case(S, a):
 
 
 SEC = [("yeu_cau_kh", re.compile(r'customer|request|yeu_?cau|khach|description|desc$|^content|noi_?dung|mo_?ta|problem|issue|question|body|message', re.I)),
-       ("ba", re.compile(r'analy|phan_?tich|^ba_|_ba$|requirement|spec|nghiep_?vu', re.I)),
-       ("dev", re.compile(r'dev|coder|solution|resolution|resolve|fix|xu_?ly|giai_?phap|reply|answer|tra_?loi|change_?log|cach_?sua|assignee', re.I)),
+       ("ba", re.compile(r'analy|phan_?tich|^ba_|_ba$|requirement|spec|nghiep_?vu|symptom|hien_?tuong', re.I)),
+       ("dev", re.compile(r'dev|coder|chi_?tiet|_xl_|response|solution|resolution|resolve|fix|xu_?ly|giai_?phap|reply|answer|tra_?loi|change_?log|cach_?sua|assignee', re.I)),
        ("test_truoc", re.compile(r'test|kiem_?tra', re.I))]
 META = ("case_id", "title", "school_code", "module", "case_type", "priority", "status", "assignee_raw", "analyst_raw", "req_state", "tester_raw",
         "test_state", "received_at", "due_date", "resolved_at", "changed")
@@ -861,6 +865,17 @@ def t_acs_case(S, a):
                 hist.append({"luc": x.get("changed_at"), "boi": x.get("changed_by"), "thay_doi": _flat(x.get("changes") or {})})
     except ToolError:
         pass
+    tdoi = []                                     # trao đổi trên case (kênh test = nội dung tester các lần trước – lỗi lần trước phải kiểm lại)
+    try:
+        r = acs("GET", "/cs/cases/%s/comments" % cid)
+        cl = r.get("data").get("comments") if isinstance(r.get("data"), dict) else None
+        for x in (cl or [])[-20:]:
+            if isinstance(x, dict):
+                h = ((x.get("edits") or [{}])[-1] or {}).get("html") or x.get("html") or ""
+                t = re.sub(r'\n{3,}', '\n\n', re.sub(r'<[^>]+>', '\n', re.sub(r'<img[^>]*>', '[ảnh]', h))).strip()
+                tdoi.append({"luc": x.get("created_at"), "boi": x.get("author"), "kenh": x.get("kenh"), "noi_dung": t[:1500]})
+    except (ToolError, AttributeError):
+        pass
     base, _ = kb_dir(S)
     g = kb_graph.build(base)
     sma, sx, pcc, pcn = kb_graph.school_of(g, meta.get("school_code"))
@@ -905,6 +920,9 @@ def t_acs_case(S, a):
         "phieu_acs": sheet, "kiem_tra_du": chk,
         "luong_test": (lambda fl: {"ghi_chu": "Luong-test/%s.md" % fl[0], "ten": fl[1]["ten"], "can_cung_cap": fl[1]["can"], "buoc": fl[1]["buoc"]} if fl[0] else None)(
             kb_graph.flow_of(g, title + "\n" + sec["yeu_cau_kh"], mod)),
+        "trao_doi_test": tdoi,
+        "cach_test": [{"ghi_chu": "Cach-test/%s.md" % fn, "ten": x["ten"], "buoc": x["buoc"], "kiem_tra": x["kt"], "khong_anh_huong": x["kah"]}
+                      for fn, x in kb_graph.tests_of(g, allt)],
         "trang_web": [{"ghi_chu": "Web/%s.md" % fn, "ten": w["t"], "vai_tro": w["vt"], "doc": w["doc"], "ghi_nguoc": w["ghi"], "chinh_dinh": w["cd"]}
                       for fn, w in kb_graph.webs_of(g, title + "\n" + sec["yeu_cau_kh"])],   # liên kết Netweb ↔ Edusoft: kb/00 Liên kết Netweb - Edusoft.md
         "anh": [{"so": i + 1, "nguon": f["nguon"], "ten": f["ten"], "xem_duoc": f["loai"] != "ngoai"} for i, f in enumerate(ims)],

@@ -79,9 +79,21 @@ Gợi ý ghi rõ **vì sao** liên quan và **nên làm gì** (đọc trước /
 **Plan test chỉ có 4 phần** (app: bước 2):
 1. **Môi trường test** – Edusoft: file `Edusoft.NET.exe` bản test (lấy từ Máy chạy thử); web: địa chỉ trang web **test** của trường; kèm bản sửa của Dev.
 2. **Tài khoản đăng nhập** – Edusoft: tài khoản test (mật khẩu do bộ test giữ); web: nhờ người dùng cung cấp **mã** tài khoản theo ngữ cảnh (điểm danh QR → mã GV có lớp đang dạy + MSSV thuộc lớp đó). Không hỏi mật khẩu. Bước ghi `{Mã GV}`, app thay giá trị.
-3. **Thao tác** – vào menu / trang nào, làm gì (như KH làm). Luồng có sẵn ở `Luong-test/` (vd [[Diem danh QR]]).
+3. **Thao tác** – **bước người test / bộ test làm**: menu cụ thể + thao tác (chọn hồ sơ nào, điền file thế nào, bấm nút gì). Luồng có sẵn ở `Luong-test/` (vd [[Diem danh QR]]),
+   cách test theo loại sửa ở `Cach-test/` (Properties `dau_hieu` / `buoc` / `kiem_tra`, vd [[Test - Them o cot moi tren man hinh]], [[Test - Import va cap nhat theo file Excel]]).
 4. **Đầu ra cần đạt** – như trên, so với kết quả sau khi Dev xử lý.
 Đủ 1–2–4 → **Bắt đầu test**. Không thêm mục chung chung ("không ảnh hưởng", chuẩn bị dữ liệu không liên quan) trừ khi case thật sự cần.
+
+### Soạn kịch bản test – KHÔNG chép yêu cầu KH (người dùng chốt 25/11, case #64781)
+Sai: bước "Vào chỗ KH phản ánh, làm đúng thao tác KH nêu" + đầu ra = các câu KH viết (để người test tự nghĩ cách làm).
+Đúng – làm theo thứ tự:
+1. **Vào KB liên quan**: `Phan-he/` + `Du-lieu/` (dữ liệu nằm ở đâu, chảy đi đâu), `Cach-test/` khớp loại sửa (thêm ô / import / mẫu in / sửa web…), `Truong/` (phân cấp).
+2. **Xem nhu cầu thật**: KH muốn gì → BA chốt gì (`symptom` / Hiện tượng) → Dev làm gì (**Chi tiết xử lý** "Nội dung: …" từng LẦN, **Trả lời KH** = chức năng sau khi sửa).
+3. **Tra case**: case gốc `[mã]` trong tiêu đề và case liên quan (cùng trường + phân hệ) – trước đây đã trả lời gì, đã chốt cách nào.
+4. **Đọc trao đổi test**: các lần test trước báo lỗi gì, **hồ sơ / mã SV nào** → bước "làm lại đúng chỗ đó" + đầu ra "không còn lỗi".
+5. **Ra kịch bản**: mỗi ý dev đã sửa = một bước thao tác cụ thể + một đầu ra nhìn thấy được; thêm mọi **đường ghi khác** vào cùng dữ liệu (sửa tay, import, cập nhật theo file, đồng bộ, xuất Excel)
+   và hồ sơ cũ / trường gốc của phân cấp.
+App (bước 2 trang Test case ACS) tự soạn theo cách này từ Chi tiết xử lý + Trả lời KH + trao đổi test + `Cach-test/` (`rtFixOf` / `rtFixPlan`); phiếu đã nhận test: **Sửa plan → soạn lại từ case**.
 
 ## Phiếu phân tích (mẫu)
 | Mục | Ghi |
