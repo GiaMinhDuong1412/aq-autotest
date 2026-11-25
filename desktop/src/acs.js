@@ -11,6 +11,7 @@
  *   acs-logout            → xoá phiên
  *   acs-call {method,path,body} → { status, data }   (path phải bắt đầu bằng /auth/me hoặc /cs/)
  *   acs-open {caseId}     → mở case trong cửa sổ ACS của app
+ *   acs-upload {name,b64,mime} → tải ảnh lên ACS (/cs/attachments) → { status, data:{id} } – ảnh cho Nội dung Tester test
  *   acs-survey-start / acs-survey-stop → ghi lại các lời gọi /cs/… khi người dùng tự thao tác trên ACS (khảo sát cách
  *     ACS lưu Query và nội dung test) → { calls:[{method,path,status,req,res}] }, đồng thời lưu rieng/acs-khao-sat.json.
  *     Không ghi cookie/header; trường có tên chứa "pass"/"token" bị che.
@@ -85,6 +86,21 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
       if (/Failed to fetch|NetworkError|ERR_/i.test(m)) { workerOk = false; throw new Error('Không kết nối được acs.aqtech.io.vn (kiểm tra mạng/VPN)'); }
       throw e;
     }
+  }
+
+  /** tải ảnh lên ACS (POST /cs/attachments?name=…, octet-stream – như trình soạn thảo của ACS) → { status, data:{id…} }.
+   *  Dùng cho ảnh trong "Nội dung Tester test": nội dung chèn <img src="/cs/att/<id>">. Chỉ nhận ảnh, tối đa 8 MB. */
+  async function upload(name, b64, mime) {
+    if (!/^image\/(png|jpeg|webp|gif)$/.test(String(mime || ''))) throw new Error('Chỉ tải ảnh lên ACS');
+    b64 = String(b64 || '');
+    if (!b64 || b64.length > 11 * 1024 * 1024) throw new Error('Ảnh rỗng hoặc quá 8 MB');
+    name = String(name || 'anh.jpg').replace(/[^\w.\-]+/g, '_').slice(0, 80);
+    if (!(await ensureWorker())) throw new Error('Không mở được trang ACS');
+    const code = `(async()=>{const s=atob(${JSON.stringify(b64)}),u=new Uint8Array(s.length);for(let i=0;i<s.length;i++)u[i]=s.charCodeAt(i);
+      const r=await fetch('/cs/attachments?name='+encodeURIComponent(${JSON.stringify(name)}),{method:'POST',credentials:'same-origin',cache:'no-store',
+        headers:{'Content-Type':'application/octet-stream'},body:u});let t='';try{t=await r.text();}catch(e){}
+      let d=null;try{d=t?JSON.parse(t):null;}catch(e){d=t.slice(0,2000);}return {status:r.status,data:d};})()`;
+    return acsWin.webContents.executeJavaScript(code, true);
   }
 
   // ---------- ảnh trong case (KH / BA / Dev chụp) – chỉ GET cùng origin, chỉ nhận image/* ----------
@@ -217,6 +233,11 @@ module.exports = function setupAcs({ BrowserWindow, ipcMain, session, ICON, getW
     if (!fromMain(e)) return null;
     a = a || {};
     try { return await image(a.path, a.max); } catch (x) { return { status: 0, error: String((x && x.message) || x) }; }
+  });
+  ipcMain.handle('acs-upload', async (e, a) => {
+    if (!fromMain(e)) return null;
+    a = a || {};
+    try { return await upload(a.name, a.b64, a.mime); } catch (x) { return { status: 0, error: String((x && x.message) || x) }; }
   });
   ipcMain.handle('acs-open', (e, a) => {
     if (!fromMain(e)) return false;

@@ -22,6 +22,14 @@ aliases:
 **Kết quả test = Mở lại case** → **Phân công = tiepnhanadmin** → **Trạng thái = Mở Case** → **Save**; Nội dung Tester test ghi lỗi + ảnh → Gửi.
 ACS tự: case về Đang xử lý, Số lần mở lại +1.
 
+## Lời gọi ACS (app tự ghi)
+- **API thật của ACS** (đọc từ mã giao diện ACS 25/11 – app dùng mặc định, không cần khảo sát / xác nhận):
+  - Gửi nội dung test: `POST /cs/cases/{id}/comments` body `{"html": "<p>…</p>", "kenh": "test"}` (`kenh` mặc định `binh_luan` = Bình luận – phải là `test`).
+    Thiếu `html` → ACS trả **422** (lỗi "trả về mã 422 – [object Object]" ngày 25/11 do app gửi trường `content`).
+  - Ảnh: tải trước `POST /cs/attachments?name=<tên>` (body nhị phân, `Content-Type: application/octet-stream`) → `{id}` → chèn `<img src="/cs/att/<id>"/>`; app: `aqDesktop.acs.upload`.
+  - Lưu case: `PATCH /cs/cases/{id}` body `{"rev": <rev từ GET>, "fields": {"test_state": "Đúng" | "Mở lại case", "assignee_raw": "AQ\\tiepnhanadmin"}, "state": "Mở Case", "reason": "<lý do>"}` –
+    đổi Trạng thái bắt buộc `reason` lấy trong `transitions["Mở Case"]` của GET case (vd "Case chưa đạt, cần thực hiện lại"); sai `rev` (người khác vừa lưu) → đọc lại rồi gửi lại.
+
 ## Vì sao quan trọng
 - Không có Tester + Kết quả test = Đúng thì không gửi được mail đóng case (bước 05).
 - Link merge là bằng chứng bản sửa đã vào nhánh của trường (VersionSchool/<trường>) – xem [[00 Cách phân tích case]] phần Dev xử lý.
