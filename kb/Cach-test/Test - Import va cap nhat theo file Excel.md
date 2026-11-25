@@ -5,6 +5,20 @@ trang_thai: tu-tai-lieu
 nguon: tai-lieu
 tai_lieu: "[[HDSD QLHT]]"
 tags: [cach-test, import, excel]
+thu_tu: 2
+dau_hieu: "cập nhật theo file|cap nhat theo file|import|từ file excel|theo file excel"
+buoc:
+  - "Ghi lại giá trị hiện tại của các hồ sơ test ở {Menu} (chụp lưới hoặc Xuất Excel) – để so sau khi cập nhật và để trả lại khi dọn."
+  - "Ở {Menu} bấm Cập nhật theo file / Import → Xuất cấu trúc import (file mẫu đúng bản test, giữ 2 dòng đầu)."
+  - "Điền file test: dòng chỉ có {Ô mới} ({Ô cũ} để trống) trên hồ sơ ĐÃ có {Ô cũ}; dòng có cả hai cột khác nhau; dòng chỉ có {Ô cũ}; dòng mã không có trong {Danh mục}."
+  - "Chọn file → Tiếp tục → Xem chi tiết nhóm \"Dữ liệu có thể cập nhật\": chụp ảnh, kiểm cột nào sẽ được ghi, {Ô cũ} không tự hiện giá trị khi file để trống."
+  - "Bấm Thực hiện → lọc lưới theo từng mã test, mở lại từng hồ sơ."
+kiem_tra:
+  - "Dòng chỉ có {Ô mới}: {Ô mới} = giá trị trong file, {Ô cũ} giữ nguyên giá trị cũ (không tự điền, không bị đồng hoá)."
+  - "Dòng có cả hai cột: mỗi cột đúng giá trị của nó, không ghi đè nhau."
+  - "Dòng mã sai danh mục báo lỗi, không cập nhật; cột không có trong file không bị đổi."
+khong_anh_huong:
+  - "Import thêm mới và Sửa tay trên cùng màn hình vẫn đúng."
 aliases:
   - "Import Excel"
   - "Cập nhật theo file"

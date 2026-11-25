@@ -89,7 +89,7 @@ def why_map(sec):
 
 def _sig(kb):
     s = []
-    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test', 'Case-truong', 'Quy-trinh', 'Web'):
+    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test', 'Case-truong', 'Quy-trinh', 'Web', 'Cach-test'):
         d = kb / sub
         if d.is_dir():
             for f in d.glob('*.md'):
@@ -165,6 +165,14 @@ def build(kb):
             continue
         flows[f.stem] = {'ten': str(p.get('ten') or f.stem), 'dh': str(p.get('dau_hieu')), 'ph': links(p.get('phan_he')), 'pf': str(p.get('nen_tang') or ''),
                          'can': L(p.get('can_cung_cap')), 'buoc': L(p.get('buoc')), 'kt': L(p.get('kiem_tra')), 'kah': L(p.get('khong_anh_huong'))}
+    tests = {}                                    # cách test (Cach-test/*.md có dau_hieu): bước thao tác cụ thể theo loại sửa
+    for f in sorted((kb / 'Cach-test').glob('*.md')) if (kb / 'Cach-test').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        if p.get('loai') != 'cach-test' or not p.get('dau_hieu') or not p.get('buoc'):
+            continue
+        tests[f.stem] = {'ten': str(p.get('ten') or f.stem), 'dh': str(p.get('dau_hieu')), 'pf': str(p.get('test_tren') or ''),
+                         'buoc': L(p.get('buoc')), 'kt': L(p.get('kiem_tra')), 'kah': L(p.get('khong_anh_huong')),
+                         'tt': int(p.get('thu_tu') or 9) if str(p.get('thu_tu') or '9').isdigit() else 9}
     webs = {}                                     # trang Netweb (Web/*.md): đọc / ghi dữ liệu nào, chỉnh định Edusoft nào
     for f in sorted((kb / 'Web').glob('*.md')) if (kb / 'Web').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
@@ -188,7 +196,7 @@ def build(kb):
         return lv[fn]
     for fn in data:
         data[fn]['lv'] = depth(fn)
-    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'qts': qts, 'webs': webs, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
+    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'tests': tests, 'qts': qts, 'webs': webs, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
     _CACHE[str(kb)] = (sig, g)
     return g
 
@@ -304,6 +312,19 @@ def flow_of(g, text, mod=''):
         if sc > best[2]:
             best = (fn, x, sc)
     return best[0], best[1]
+
+
+def tests_of(g, text, n=3):
+    """cách test (Cach-test/ có dau_hieu) khớp với case → [(tên file, cách test)], nhiều dấu hiệu trước"""
+    out = []
+    for fn, x in (g.get('tests') or {}).items():
+        try:
+            m = re.findall(x['dh'], str(text or ''), re.I)
+        except re.error:
+            continue
+        if m:
+            out.append((len(m), fn, x))
+    return [(fn, x) for _, fn, x in sorted(out, key=lambda t: -t[0])[:n]]
 
 
 def walk(g, fn, up):
