@@ -9701,9 +9701,26 @@ QUAY VIDEO (TÙY CHỌN)
   function rtMergeShots(i,files){var rt=rtById(i);if(!rt||!SC.assets)return;Array.prototype.forEach.call(files,function(f){if(!/^image\//.test(f.type))return;RT.up=(RT.up||0)+1;
       SC.assets.upload(f,{type:f.type}).then(function(res){var cur=rtById(rt.id)||rt,m=Object.assign({},(cur.acsWrite||{}).merge||{});m.shots=(m.shots||[]).concat([res.id]);
         return rtSave(rt.id,{acsWrite:Object.assign({},cur.acsWrite||{},{merge:m})});}).catch(function(e){RT.err=assetErr(e);}).then(function(){RT.up--;renderRetest();});});renderRetest();}
+  /* Mức 1 (25/11): app mở PR trong cửa sổ riêng (desktop/src/tfs.js), người test tự Complete; PR completed → ảnh chụp cửa sổ về đây
+     → lưu thành ảnh merge của phiếu → tự gửi "Đã Complete merge <link>" + ảnh vào Nội dung Tester test (rtMergeSend). */
+  function rtMergeOpen(id){var rt=rtById(id),tf=window.aqDesktop&&window.aqDesktop.tfs;if(!rt||!tf)return;var pr=rtPrLinks(rt.caseId);
+    if(!pr[0]){RT.err='Case chưa có link merge (pullrequest) – mở bước 1 để đọc case.';renderRetest();return;}
+    RT.tfs=RT.tfs||{};RT.tfs[String(rt.caseId)]={st:'đang mở',url:pr[0]};
+    tf.openMerge(pr[0],String(rt.caseId)).then(function(r){if(r&&r.error){RT.err=r.error;delete RT.tfs[String(rt.caseId)];}renderRetest();});renderRetest();}
+  function rtTfsEv(p){if(!p||!p.caseId)return;var k=String(p.caseId);RT.tfs=RT.tfs||{};
+    if(p.type==='closed'){if(RT.tfs[k]&&RT.tfs[k].st!=='completed')delete RT.tfs[k];renderRetest();return;}
+    RT.tfs[k]=Object.assign({},RT.tfs[k]||{},{st:p.status||'',url:p.url});
+    if(p.type!=='merged'){renderRetest();return;}
+    var rt=rtLatest(k);if(!rt||!SC.assets||!p.b64){renderRetest();return;}
+    SC.assets.upload(b64Blob(p.b64,p.mime||'image/jpeg'),{type:p.mime||'image/jpeg'}).then(function(res){var cur=rtById(rt.id)||rt,m=Object.assign({},(cur.acsWrite||{}).merge||{});
+        m.shots=(m.shots||[]).concat([res.id]);m.pr={url:p.url,by:p.by||'',at:p.at||'',commit:p.commit||''};
+        return rtSave(rt.id,{acsWrite:Object.assign({},cur.acsWrite||{},{merge:m})});})
+      .then(function(){RT.flash='PR đã Completed – app đã chụp màn hình, đang gửi vào case #'+k+'…';renderRetest();return rtMergeSend(rt.id);})
+      .catch(function(e){RT.err='Đã thấy PR Completed nhưng không lưu được ảnh: '+assetErr(e);renderRetest();});}
   async function rtMergeSend(id){var rt=rtById(id);if(!rt)return;var w=rtW(),a=rtA(),m=(rt.acsWrite||{}).merge||{},pr=rtPrLinks(rt.caseId);RT.err='';
     if(!(m.shots||[]).length){RT.err='Dán ảnh màn hình PR sau khi Complete trước.';renderRetest();return;}
-    var txt='Đã Complete merge'+(pr.length?' '+pr.join(' '):'')+' – ảnh đính kèm. ('+nameOf(SC.me)+' · '+stamp()+')';
+    if(!pr.length&&m.pr&&m.pr.url)pr=[m.pr.url];
+    var txt='Đã Complete merge'+(pr.length?' '+pr.join(' '):'')+(m.pr&&m.pr.by?' (Completed bởi '+m.pr.by+(m.pr.commit?', commit '+String(m.pr.commit).slice(0,10):'')+')':'')+' – ảnh đính kèm. ('+nameOf(SC.me)+' · '+stamp()+')';
     if(!a){RT.err='Chỉ làm được trong app AQ Auto Test.';renderRetest();return;}
     RT.busy=true;renderRetest();
     try{if(w.verified&&w.n.path){await rtSendNote(w,rt.caseId,txt,m.shots);m=Object.assign({},m,{sent:new Date().toISOString()});RT.flash='Đã gửi ảnh merge vào Nội dung Tester test của case #'+rt.caseId+'.';}
@@ -10376,9 +10393,11 @@ QUAY VIDEO (TÙY CHỌN)
         ck(mg.sent||mg.manual,'<b>Complete</b> merge trên TFS (bạn tự bấm) → chụp ảnh → gửi vào Nội dung Tester test',(mg.shots||[]).length?(mg.shots.length+' ảnh'+(mg.sent?' · đã gửi':mg.manual?' · dán tay':'')):'')
       :ck(ok&&(aw.ok||aw.manual),'Kết quả test = <b>'+esc(w.v.fail)+'</b>, Phân công = <b>'+esc(rtShort(rtWho(w.v.reopenTo)))+'</b>, Trạng thái = <b>'+esc(w.v.reopen)+'</b> → <b>Save</b>',aw.manual?'làm tay':'')+
         ck(ok&&(aw.note||aw.manual),'Nội dung test lỗi (ảnh + bước lỗi) → <b>Gửi</b>',''))+'</ol></div>';};
-    var merge=rt.state==='pass'?'<div class="rt2-blk rt-merge"><div class="rt2-bh">Ảnh merge</div><p class="hint">Mở link merge → bấm <b>Complete</b> trên TFS → chụp màn hình → <b>Ctrl+V</b> vào đây hoặc chọn file. App không tự bấm gì trên TFS.</p>'+
+    var tf=window.aqDesktop&&window.aqDesktop.tfs,tw=RT.tfs&&RT.tfs[String(rt.caseId)];
+    var merge=rt.state==='pass'?'<div class="rt2-blk rt-merge"><div class="rt2-bh">Ảnh merge</div><p class="hint">'+(tf?'Bấm <b>Mở PR trong app</b> → trên cửa sổ PR bạn bấm <b>Complete</b> → app tự nhận ra PR đã Completed, tự chụp và gửi vào Nội dung Tester test.':'Mở link merge → bấm <b>Complete</b> trên TFS → chụp màn hình → <b>Ctrl+V</b> vào đây hoặc chọn file.')+' App không tự bấm gì trên TFS.</p>'+
+      (tw?'<p class="hint">Cửa sổ PR: <b>'+esc(tw.st||'đang mở')+'</b>'+(tw.st==='completed'?' – đã chụp':' – chờ bạn bấm Complete…')+'</p>':'')+
       '<div class="shots">'+thumbs(mg.shots||[],null,true)+'<label class="btn sm">Chọn ảnh…<input type="file" accept="image/*" multiple hidden data-rtmerge="'+esc(rt.id)+'"></label></div>'+
-      '<div class="form-actions">'+(pr[0]?'<a class="btn sm" href="'+esc(pr[0])+'" target="_blank" rel="noopener">Mở link merge</a>':'')+
+      '<div class="form-actions">'+(pr[0]?(tf?'<button type="button" class="btn sm" data-rt="mergeopen" data-id="'+esc(rt.id)+'">Mở PR trong app</button>':'<a class="btn sm" href="'+esc(pr[0])+'" target="_blank" rel="noopener">Mở link merge</a>'):'')+
       '<button type="button" class="btn sm primary" data-rt="mergesend" data-id="'+esc(rt.id)+'"'+(RT.busy||!(mg.shots||[]).length?' disabled':'')+'>'+(mg.sent?'Gửi lại ảnh merge':'Gửi ảnh merge vào nội dung tester')+'</button></div></div>':'';
     if(done)return sum+steps(rt.state)+merge+'<div class="rt2-blk"><div class="rt2-bh">Đã kết luận: <b>'+(rt.state==='pass'?'ĐẠT':'KHÔNG ĐẠT')+'</b> <span class="hint">'+esc(nameOf(rt.verdict&&rt.verdict.by))+' · '+esc(fmt(rt.verdict&&rt.verdict.at))+
       (rt.acsWrite?(rt.acsWrite.ok?' · đã ghi ACS':rt.acsWrite.manual?' · dán tay vào ACS':''):'')+'</span></div><div class="rt-req small">'+esc((rt.verdict&&rt.verdict.note)||'')+'</div></div>';
@@ -10606,6 +10625,7 @@ QUAY VIDEO (TÙY CHỌN)
         RT.det={};RT.detErr={};rtSaveCfg({queriesPath:v,casePath:cp});RT.probed=false;if(RT.acs.st==='ok')setTimeout(rtLoadQueries,300);return;}
       if(act==='savew'){var w2=rtCollectW();if(!/^\/cs\//.test(w2.path)||w2.path.indexOf('{id}')<0||(w2.n.path&&(!/^\/cs\//.test(w2.n.path)||w2.n.path.indexOf('{id}')<0))){RT.wErr='Đường dẫn phải bắt đầu bằng /cs/ và có {id}.';renderRetest();return;}rtSaveCfg({write:w2});return;}
       if(act==='mergesend'){rtMergeSend(b.getAttribute('data-id'));return;}
+      if(act==='mergeopen'){rtMergeOpen(b.getAttribute('data-id'));return;}
       if(act==='svstart'){rtSurvey(true);return;}
       if(act==='svstop'){rtSurvey(false);return;}
       if(act==='svapply'){var s=RT.sv.sug||{},patch={};if(s.queriesPath)patch.queriesPath=s.queriesPath;if(s.casePath)patch.casePath=s.casePath;
@@ -10649,6 +10669,7 @@ QUAY VIDEO (TÙY CHỌN)
     if(rtA()){rtA().onEvent(function(p){if(!p)return;if(p.status){rtSetStatus(p.status);return;}
       if(p.survey==='call'){RT.sv.n=p.n;RT.sv.last=p.last||'';if(RT.tab==='setup')renderRetest();}});
       rtStatus();}
+    if(window.aqDesktop&&window.aqDesktop.tfs)window.aqDesktop.tfs.onEvent(rtTfsEv);
     else{RT.acs={st:'off',me:null,err:''};}
     $$('.nav-item[data-page="retest"]').forEach(function(n){n.addEventListener('click',function(){renderRetest();if(RT.acs.st==='ok'&&!RT.rows.length)rtRun();});});
   })();

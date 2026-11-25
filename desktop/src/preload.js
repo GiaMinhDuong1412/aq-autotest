@@ -9,6 +9,10 @@ contextBridge.exposeInMainWorld('aqDesktop', {
   quit: () => ipcRenderer.send('quit'),
   getInfo: () => ipcRenderer.invoke('app-info'),               // { version, prev, fresh } – popup "Có gì mới" / hướng dẫn lần đầu
   pickFile: (o) => ipcRenderer.invoke('pick-file', o || {}),     // hộp chọn file của Windows → đường dẫn ('' = huỷ)
+  tfs: {                                                          // PR merge trên TFS (tfs.js): mở cửa sổ PR, người test tự Complete, app tự chụp
+    openMerge: (url, caseId) => ipcRenderer.invoke('tfs-merge-open', { url, caseId }),
+    onEvent: (cb) => ipcRenderer.on('tfs', (_e, p) => cb(p)),     // {type:'state'|'merged'|'closed', caseId, url, status, b64…}
+  },
   acs: {                                                          // AQ Support Hub – đăng nhập trong app, gọi API cùng phiên (acs.js)
     status: () => ipcRenderer.invoke('acs-status'),
     login: () => ipcRenderer.invoke('acs-login'),
