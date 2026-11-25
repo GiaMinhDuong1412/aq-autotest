@@ -40,6 +40,7 @@ App AQ Auto Test (trang Test case ACS) làm đúng việc này tự động: Cla
 | `Du-lieu/` | Mỗi loại dữ liệu (DS SV học kỳ, KQ ĐKMH, nhóm học, điểm TB…): **phải có trước** gì (`can_co`), **là điều kiện cho** gì, tầng, tạo ở đâu (menu), dùng ở đâu, trên web, chuẩn bị dữ liệu test theo thứ tự |
 | `Menu/` | `Menu/<phân hệ>.md` = toàn bộ menu Edusoft của phân hệ, mỗi menu nối tới dữ liệu nó đụng tới; menu **tạo** dữ liệu có ghi chú riêng (trước khi dùng phải có gì, lưu xong ảnh hưởng tới đâu) |
 | `Dang-case/` | Mô hình case (hiển thị web, lỗi EX, số liệu sai, thiết lập, mẫu in, yêu cầu bổ sung, case tiếp nối…): nhận biết qua lời KH / BA / Dev, phải trả lời gì, case liên quan là gì, hay nhầm gì |
+| `Web/` | Mỗi trang Netweb (SV / GV / phụ huynh / quản trị): đọc dữ liệu gì, **ghi ngược** gì về Edusoft, **chỉnh định** Edusoft nào quyết định trang, cách kiểm liên kết – tổng hợp [[00 Liên kết Netweb - Edusoft]] |
 | `San-pham/` | Edusoft, Netweb, App: là gì, test ở đâu |
 | `Truong/` | Từng trường: tên, **mã trên ACS**: 4 ký tự = trường, dài hơn = phân cấp (`phan_cap`, vd DHMOTX = DHMO từ xa), bản riêng VersionSchool, link Netweb thật, chức năng web; `AQ` = case nội bộ |
 | `Repo-coder/` | Quy ước repo / nhánh coder → sửa ở web hay Edusoft |

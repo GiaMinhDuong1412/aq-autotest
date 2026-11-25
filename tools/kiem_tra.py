@@ -52,6 +52,13 @@ try:                                                    # MCP: trả lời initi
         print("Lưu ý: bản đồ nhúng trong web/index.html khác ghi chú kb/ (bản app tự nhúng lại khi build) – chạy python kb_graph.py kb --nhung web/index.html")
 except Exception as e:
     loi.append("MCP / bản đồ KB lỗi: %r" % e)
+try:                                                    # liên kết KB: trang Netweb (Web/) và các trang 00 không trỏ tới ghi chú không có
+    import subprocess
+    _k = subprocess.run([sys.executable, str(ROOT / "tools" / "kb_kiem_lien_ket.py"), str(ROOT / "kb"), "--strict"], capture_output=True, text=True, encoding="utf-8")
+    if _k.returncode:
+        loi.append("Liên kết KB lỗi (python tools/kb_kiem_lien_ket.py kb):\n" + _k.stdout[-1500:])
+except Exception as e:
+    loi.append("Không chạy được kiểm tra liên kết KB: %r" % e)
 if not (ROOT / "web" / "edusoft-catalog.json").exists():
     loi.append("Thiếu web/edusoft-catalog.json (tools/lap_danh_muc.py --json)")
 print("\n".join(loi) or "Kiểm tra: OK")

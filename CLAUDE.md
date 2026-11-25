@@ -147,6 +147,11 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   tiêu đề che PII bằng `mask`) – MCP `truong_hoc_case` (ACS chỉ đọc, `learn_cases`) hoặc nút **Học case → KB** (thẻ Kết nối Claude Desktop, `rtHocCase` → `api/kit/kb_hoc_case`);
   **KB của app** (`server.app_kb`, `KB_APP`): app / bản không có git và chưa chọn vault → KB ghi được ở `<thư mục dữ liệu>/../kb` (vd `%APPDATA%\AQ Auto Test\kb`), chép từ KB đi kèm,
   manifest `.aq-goc.json` (file chưa sửa thì cập nhật theo app, đã sửa thì giữ); `mcp_server.kb_dir`: kbDir đã chọn > repo `kb/` > KB của app > chỉ đọc; nút "Mở thư mục" (`api/kit/open_kb`); app đóng gói cả `.canvas`/`.base`.
+  **Netweb ↔ Edusoft (25/11)**: `Web/*.md` = từng trang Netweb (Properties `loai: trang-web`, `vai_tro`, `du_lieu` đọc, `ghi` ghi ngược về Edusoft, `chinh_dinh` = biến / menu Edusoft
+  quyết định trang, `tu_khoa` regex) – từ tài liệu triển khai (SharePoint sp › ALL DOCS › TaiLieuTrienKhai_EduSoft.NET › NetWeb) + DOC/NETWEB; tổng hợp `00 Liên kết Netweb - Edusoft.md`
+  (chung 1 CSDL, web chưa đổi = **cache**: `url_netweb`/BaseUrl tự clear, đăng xuất / đăng nhập lại, Clear cache ở `/admin`). kb_graph → `webs`, dữ liệu → `wp`; trang Test case ACS
+  `rtWebLinks` thêm mục **Kiểm thêm** (case Edusoft: trang web đọc dữ liệu đó; case web: trang ghi ngược → kiểm Edusoft, chỉnh định của trang, nhắc cache); MCP `acs_case.trang_web` (`kb_graph.webs_of`).
+  Kiểm liên kết KB: `python tools/kb_kiem_lien_ket.py kb` (liên kết hỏng, Properties của Web/, dữ liệu có "Trên web" chưa có trang) – `kiem_tra.py` chạy kèm `--strict`.
   kb_graph đọc `Case-truong` vào `schools[ma].mh` → bước 1 hiện "Trường hay có case…", `acs_case.truong.mo_hinh`. Obsidian: `_bases/*.base` (Bases), `00 Vòng đời đào tạo.canvas`,
   `00 Bản đồ phân hệ.canvas`, template `_templates/{Quy trinh,Tai lieu,Case truong}.md`; **không** commit `.obsidian/graph.json` (máy người dùng có sẵn → xung đột) – nhóm màu hướng dẫn trong `00 Bắt đầu.md`.
   **Đọc kb/ trước khi phân tích / soạn plan test cho case ACS** (sửa phân hệ nào → kiểm lại phân hệ `dua_sang`). Không có thư mục từng case (chỉ `Case-truong/` gom theo trường, không chép dữ liệu cá nhân). Không ghi mật khẩu vào kb/.

@@ -16,3 +16,7 @@ Trang web **test** của trường (xem ghi chú từng trường ở `Truong/`)
 - KH nói "trang", "cổng", "summary", "bảng hiển thị", gửi link `https://…`.
 - Phân hệ trên ACS có chữ WEB / UI (NETWEB-UI, DKMHUI…) – cần xác nhận ở `Phan-he/`.
 - Coder sửa repo `VersionSchool/<trường>/…` – cần xác nhận ở [[VersionSchool]].
+
+## Liên kết với Edusoft
+Chung 1 CSDL với Edusoft; sửa Edusoft mà web chưa đổi thì nghi **cache** (đăng xuất / đăng nhập lại, Clear cache ở `/admin`).
+Từng trang web đọc / ghi dữ liệu nào, bị biến chỉnh định nào chi phối: [[00 Liên kết Netweb - Edusoft]] và thư mục `Web/`.

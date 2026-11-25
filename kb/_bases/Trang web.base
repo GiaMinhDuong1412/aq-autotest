@@ -1,0 +1,27 @@
+filters:
+  and:
+    - file.inFolder("Web")
+properties:
+  ten:
+    displayName: "Trang"
+  vai_tro:
+    displayName: "Vai trò"
+  du_lieu:
+    displayName: "Đọc dữ liệu"
+  ghi:
+    displayName: "Ghi về Edusoft"
+  phan_he:
+    displayName: "Phân hệ"
+  trang_thai:
+    displayName: "Trạng thái"
+views:
+  - type: table
+    name: "Trang web"
+    order:
+      - file.name
+      - ten
+      - vai_tro
+      - du_lieu
+      - ghi
+      - phan_he
+      - trang_thai

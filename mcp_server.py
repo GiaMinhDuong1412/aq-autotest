@@ -54,6 +54,7 @@ VIỆC CHÍNH: phân tích case ACS cho ĐÚNG nghiệp vụ trước, test sau.
  PLAN TEST chỉ 4 phần: (1) môi trường test (Edusoft.NET.exe bản test / trang web TEST của trường + bản sửa) – moi_truong; (2) tài khoản đăng nhập – can_cung_cap
  (web: mã GV / MSSV… theo ngữ cảnh, KHÔNG hỏi mật khẩu; Edusoft dùng tài khoản test ở Máy chạy thử); (3) thao tác: nhom 'repro' – vào menu / trang nào, làm gì;
  (4) đầu ra: nhom 'check' – mỗi đầu ra một mục. Chỉ thêm 'prep' / 'reg' khi case thật sự cần. Dùng luồng kb/Luong-test (acs_case trả 'luong_test') nếu khớp.
+ Case web hoặc dữ liệu có hiện trên web: acs_case trả 'trang_web' (kb/Web/) – đọc chỉnh định của trang, trang có 'ghi_nguoc' thì kiểm lại Edusoft; Netweb chung CSDL với Edusoft, web chưa đổi = cache (đăng xuất / đăng nhập lại).
  Bước dùng {Tên} (vd {Mã GV}) – app thay bằng giá trị người dùng nhập.
  Người dùng mô tả luồng test mới → ghi kb/Luong-test/<tên>.md (Properties: loai: luong-test, dau_hieu, phan_he, nen_tang, can_cung_cap, buoc, khong_anh_huong).
 Quy tắc: KHÔNG ghi gì lên ACS (không có công cụ ghi). Chỉ môi trường test/demo, dữ liệu test có tiền tố AUTO… / TEST_….
@@ -904,6 +905,8 @@ def t_acs_case(S, a):
         "phieu_acs": sheet, "kiem_tra_du": chk,
         "luong_test": (lambda fl: {"ghi_chu": "Luong-test/%s.md" % fl[0], "ten": fl[1]["ten"], "can_cung_cap": fl[1]["can"], "buoc": fl[1]["buoc"]} if fl[0] else None)(
             kb_graph.flow_of(g, title + "\n" + sec["yeu_cau_kh"], mod)),
+        "trang_web": [{"ghi_chu": "Web/%s.md" % fn, "ten": w["t"], "vai_tro": w["vt"], "doc": w["doc"], "ghi_nguoc": w["ghi"], "chinh_dinh": w["cd"]}
+                      for fn, w in kb_graph.webs_of(g, title + "\n" + sec["yeu_cau_kh"])],   # liên kết Netweb ↔ Edusoft: kb/00 Liên kết Netweb - Edusoft.md
         "anh": [{"so": i + 1, "nguon": f["nguon"], "ten": f["ten"], "xem_duoc": f["loai"] != "ngoai"} for i, f in enumerate(ims)],
         "dinh_kem_khac": [{"ten": f["ten"], "nguon": f["nguon"]} for f in files if not f["anh"]][:20],
         "dien_bien": hist,

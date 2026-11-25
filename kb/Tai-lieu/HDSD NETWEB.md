@@ -54,6 +54,15 @@ Phân hệ: [[NETWEB-UI]], [[NETWEB-API]]
 | `NETWEB_ChamSocThiSinhXetTuyen.docx` | Chăm sóc thí sinh xét tuyển | [[Ho so thi sinh]] |
 | `NetWEB_Guest_TraCuuLuanVan_VanBangChungChi.doc` | Khách tra cứu luận văn, văn bằng | — |
 
+## Bộ tài liệu triển khai (PDF)
+SharePoint **sp** › Shared Documents › ALL DOCS › TaiLieuTrienKhai_EduSoft.NET › **NetWeb**: bản PDF dùng khi triển khai cho trường –
+`NETWEB-QuanTriChung`, `NetWEB_SinhVienXemThongTinCaNhan`, `NetWEB_GiangVienXemThongTinCaNhan`, `NetWEB_GiangVienNhapDiemOnline`,
+`NetWEB_GiangVienDuyetKQDK`, `NetWEB_NhapDRLTrucTuyen`, `NetWEB_NhapLyLichSVTrucTuyen` và **`DKMH_HuongDanDangKyMonHocOnline_chinhthuc`**
+(quy trình tổ chức đợt ĐKMH online: thời gian 3 cấp, ràng buộc `xl_…`, cache, khuyến nghị cấu hình server – chịu ~3000 truy cập đồng thời, ≤1500 SV/ngày).
+
+## Đã đọc vào KB (25/11)
+Từng trang web: `Web/` – tổng hợp ở [[00 Liên kết Netweb - Edusoft]] (dữ liệu đọc / ghi, biến chỉnh định Edusoft, cache, cách kiểm liên kết).
+
 ## Dùng khi nào
 - Đọc case có tên menu / chức năng trong bảng trên → mở đúng tài liệu để biết **cách làm chuẩn** và các **biến chỉnh định** liên quan.
 - Soạn plan test: lấy bước thao tác + điều kiện (menu, biến setting) từ tài liệu, không đoán.
