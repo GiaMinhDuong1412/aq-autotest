@@ -1929,6 +1929,12 @@ a.nav-item{text-decoration:none}
 .upd-logo{display:block;width:132px;height:132px;color:#2b5898}
 .upd-logo .aq-logo{width:100%;height:100%}
 .upd-top h3{font-size:1.06rem;margin:4px 0 0}.upd-top p{margin:0;font-size:.78rem;color:var(--muted)}
+.rt-acsl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px;counter-reset:a}
+.rt-acsl li{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:var(--fg-dim)}
+.rt-acsl li .ck{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff}
+.rt-acsl li.ok .ck{background:var(--pass);border-color:var(--pass)}.rt-acsl li.ok{color:var(--fg)}
+.rt-acsl li small{display:block;color:var(--muted);font-size:.74rem;overflow-wrap:anywhere}
+.rt-merge .shots{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -9421,13 +9427,36 @@ QUAY VIDEO (TÙY CHỌN)
     sel:null,det:{},detBusy:{},detErr:{},
     cur:null,step:{},draft:{},cdr:{},cdSkip:{},ltab:'',focus:null,vfor:null,replan:false,hints:{},hintCol:null,up:0};
   var RT_COLS=['case_id','title','school_code','module','case_type','priority','status','assignee_raw','analyst_raw','req_state','tester_raw','test_state','received_at','due_date','resolved_at','changed'];
-  var RT_WDEF={method:'PATCH',path:'/cs/cases/{id}',wrap:'',f:{note:'test_note',state:'test_state',status:'status',assignee:'assignee_raw'},
-    v:{pass:'Đúng',fail:'Sai',reopen:'Mở Case',reopenTo:'tiepnhanadmin'},verified:false};
+  /* Ghi kết quả về ACS (CST = tên cũ của ACS) theo quy trình người dùng dạy 25/11 (skill ghi-ket-qua-acs, kb/Cach-test/Test - Ghi ket qua vao ACS.md):
+     Đạt: (1) Nội dung Tester test (ảnh + nội dung + quy trình test) → Gửi  (2) Kết quả test = Đúng → Save  (3) link merge ở Nội dung TechLead
+          (4) người test Complete PR trên TFS (app KHÔNG thao tác TFS) → chụp ảnh → Gửi bổ sung vào Nội dung Tester test.
+     Không đạt: Kết quả test = Mở lại case, Phân công = tiepnhanadmin, Trạng thái = Mở Case → Save (kèm nội dung test lỗi).
+     n = lời gọi "Gửi" nội dung tester, method/path/f = lời gọi Save; full = Save gửi cả case (GET rồi ghép). Tên trường thật lấy từ Khảo sát ACS. */
+  var RT_WDEF={method:'PATCH',path:'/cs/cases/{id}',wrap:'',full:false,f:{note:'',state:'test_state',status:'status',assignee:'assignee_raw'},
+    n:{method:'POST',path:'',field:'content',wrap:'',html:true,img:false},
+    v:{pass:'Đúng',fail:'Mở lại case',reopen:'Mở Case',reopenTo:'tiepnhanadmin'},verified:false};
   var RT_QPROBE=['/cs/queries','/cs/saved-queries','/cs/my-queries','/cs/query/saved','/cs/queries/mine'];
   var RTST={testing:'Đang test',queued:'Chờ chạy kịch bản',running:'Đang chạy kịch bản',review:'Chờ kết luận',pass:'Đạt',fail:'Không đạt'};
   function rtA(){return (window.aqDesktop&&window.aqDesktop.acs)||null;}
-  function rtW(){var w=ACS.write||{};return {method:w.method||RT_WDEF.method,path:w.path||RT_WDEF.path,wrap:w.wrap||'',
-    f:Object.assign({},RT_WDEF.f,w.f||{}),v:Object.assign({},RT_WDEF.v,w.v||{}),verified:!!w.verified};}
+  function rtW(){var w=ACS.write||{};return {method:w.method||RT_WDEF.method,path:w.path||RT_WDEF.path,wrap:w.wrap||'',full:!!w.full,
+    f:Object.assign({},RT_WDEF.f,w.f||{}),n:Object.assign({},RT_WDEF.n,w.n||{}),v:Object.assign({},RT_WDEF.v,w.v||{}),verified:!!w.verified};}
+  /* link merge (PR TFS) coder / TechLead ghi trong case: tìm trong toàn bộ dữ liệu case đã đọc */
+  function rtPrLinks(id){var d=RT.det[String(id)];if(!d)return [];var t='';try{t=JSON.stringify(d.raw);}catch(e){}
+    var m=t.match(/https?:\/\/[^\s"'<>\\]*?\/pullrequest\/\d+/gi)||[],o=[];m.forEach(function(u){if(o.indexOf(u)<0)o.push(u);});return o.slice(0,4);}
+  function rtTxtHtml(t){return String(t||'').split('\n').map(function(l){return '<p>'+(esc(l)||'<br>')+'</p>';}).join('');}
+  /* ảnh (asset) → data URL thu nhỏ (≤1280px, JPEG) để nhúng vào nội dung tester khi ACS nhận ảnh trong nội dung (khảo sát thấy data:image) */
+  function rtShotData(id){return fetch(imgUrl(id)).then(function(r){return r.blob();}).then(function(b){return new Promise(function(ok,no){var u=URL.createObjectURL(b),im=new Image();
+    im.onload=function(){var k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+      c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',0.8));};im.onerror=function(){URL.revokeObjectURL(u);no(new Error('ảnh lỗi'));};im.src=u;});});}
+  async function rtNoteBody(w,text,shots){var v=text;
+    if(w.n.html){v=rtTxtHtml(text);if(w.n.img&&shots&&shots.length){for(var i=0;i<shots.length&&i<6;i++){try{v+='<p><img src="'+(await rtShotData(shots[i]))+'"></p>';}catch(e){}}}}
+    var b={};b[w.n.field||'content']=v;if(w.n.wrap){var o={};o[w.n.wrap]=b;b=o;}return b;}
+  async function rtSendNote(w,caseId,text,shots){return rtCall(w.n.method,w.n.path.split('{id}').join(encodeURIComponent(caseId)),await rtNoteBody(w,text,shots));}
+  async function rtSaveCase(w,caseId,vals){var body={};Object.keys(vals).forEach(function(k){if(w.f[k]&&vals[k]!=='')body[w.f[k]]=vals[k];});
+    var p=w.path.split('{id}').join(encodeURIComponent(caseId));
+    if(w.full){var cp=(ACS.casePath||'/cs/cases/{id}').split('{id}').join(encodeURIComponent(caseId)),cur=await rtCall('GET',cp);   /* Save gửi cả case: đọc bản mới nhất rồi ghép, không làm mất trường khác */
+      cur=cur&&cur.case&&typeof cur.case==='object'?cur.case:cur;body=Object.assign({},cur||{},body);}
+    if(w.wrap){var o={};o[w.wrap]=body;body=o;}await rtCall(w.method,p,body);return p;}
   function rtCaseUrl(id){return 'https://acs.aqtech.io.vn/cs-case/'+encodeURIComponent(id);}
   function rtShort(v){v=String(v||'');var i=v.lastIndexOf('\\');return i>=0?v.slice(i+1):v;}
   async function rtCall(m,p,b){var a=rtA();if(!a)throw new Error('Kết nối ACS chỉ có trong app AQ Auto Test.');
@@ -9607,31 +9636,59 @@ QUAY VIDEO (TÙY CHỌN)
   function rtWho(x){x=String(x||'').trim();if(!x)return '';var lx=x.toLowerCase();
     var p=RT.people.filter(function(q){var u=String(q.username||'').toLowerCase(),v=String(q.value||'').toLowerCase();return u===lx||u.split('@')[0]===lx||v===lx||v.slice(v.lastIndexOf('\\')+1)===lx;})[0];
     return p?p.value:(x.indexOf('\\')>=0?x:'AQ\\'+x);}
+  function rtShotsOf(rt){var o=[];rtItemsOf(rt).forEach(function(x){o=o.concat(x.shots||[]);});var run=rtRunOf(rt);if(run)(run.steps||[]).forEach(function(x){if(x&&x.shots)o=o.concat(x.shots);});return o;}
+  /* Đạt mà vẫn còn mục lỗi / bước kịch bản chưa đạt → phải xác nhận lại (vd "Kịch bản ACS-63652: 1/2 bước đạt" mà kết luận Đạt) */
+  function rtPassWarn(rt){var items=rtItemsOf(rt),run=rtRunOf(rt),w=[],bad=items.filter(function(x){return x.res==='bad';}).length,left=items.filter(function(x){return !x.res;}).length;
+    if(bad)w.push(bad+' mục kiểm tra LỖI');if(left)w.push(left+' mục chưa test');
+    if(run){var st=run.steps||[],ok=st.filter(function(x){return x&&x.res==='ok';}).length;if(st.length&&ok<st.length)w.push('kịch bản '+(rt.scenarioCode||'')+' chỉ '+ok+'/'+st.length+' bước đạt');}
+    return w;}
   async function rtVerdict(){var rt=rtById(RT.vfor)||rtCurDoc();if(!rt)return;var kind=RT.kind,note=String(RT.note||'').trim();RT.err='';
     if(!RT.seen){RT.err='Đánh dấu "Tôi đã kiểm tra các ảnh chụp màn hình" trước khi kết luận.';renderRetest();return;}
     if(!note){RT.err='Nhập nội dung test.';renderRetest();return;}
-    var w=rtW(),a=rtA(),now=new Date().toISOString(),verdict={kind:kind,note:note,at:now,by:SC.me||null};
+    if(kind==='pass'&&rtPassWarn(rt).length&&!RT.passOk){RT.err='Kết luận Đạt nhưng '+rtPassWarn(rt).join(', ')+' – xem lại hoặc đánh dấu "Vẫn kết luận Đạt".';renderRetest();return;}
+    var w=rtW(),a=rtA(),now=new Date().toISOString(),verdict={kind:kind,note:note,at:now,by:SC.me||null},log={};
     if(!a){RT.err='Ghi về ACS chỉ làm được trong app AQ Auto Test (đăng nhập ACS trong app).';renderRetest();return;}
     RT.busy=true;renderRetest();
     try{
       if(!w.verified){try{await navigator.clipboard.writeText(note);}catch(x){}a.open(rt.caseId);
         await rtSave(rt.id,{state:kind,verdict:verdict,acsWrite:{manual:true,at:now}});
-        RT.flash='Đã chép nội dung test và mở case #'+rt.caseId+' trên ACS – dán vào ô nội dung test'+(kind==='fail'?', chuyển trạng thái Mở lại và gán tiepnhanadmin':'')+'. (Cách ghi tự động chưa được quản trị xác nhận ở Thiết lập ACS.)';}
-      else{var vals=kind==='pass'?{note:note,state:w.v.pass}:{note:note,state:w.v.fail,status:w.v.reopen,assignee:rtWho(w.v.reopenTo)},body={};
-        Object.keys(vals).forEach(function(k){if(w.f[k]&&vals[k]!=='')body[w.f[k]]=vals[k];});
-        if(w.wrap){var o={};o[w.wrap]=body;body=o;}
-        var p=w.path.split('{id}').join(encodeURIComponent(rt.caseId));
-        await rtCall(w.method,p,body);
-        await rtSave(rt.id,{state:kind,verdict:verdict,acsWrite:{ok:true,at:now,method:w.method,path:p}});
-        RT.flash=kind==='pass'?'Đã điền nội dung test (Đạt) vào case #'+rt.caseId+'.':'Đã mở lại case #'+rt.caseId+', gán '+rtShort(rtWho(w.v.reopenTo))+' và điền nội dung test lỗi.';
+        RT.flash='Đã chép nội dung test và mở case #'+rt.caseId+' trên ACS – '+(kind==='pass'?'dán vào Nội dung Tester test → Gửi, chọn Kết quả test = '+w.v.pass+' → Save.':
+          'dán vào Nội dung Tester test → Gửi, Kết quả test = '+w.v.fail+', Phân công = '+rtShort(rtWho(w.v.reopenTo))+', Trạng thái = '+w.v.reopen+' → Save.')+' (Cách ghi tự động chưa được xác nhận ở Thiết lập ACS.)';}
+      else{
+        if(w.n.path){await rtSendNote(w,rt.caseId,note,rtShotsOf(rt));log.note={ok:true,at:new Date().toISOString()};}             /* (1) Nội dung Tester test → Gửi */
+        var p=await rtSaveCase(w,rt.caseId,kind==='pass'?{note:w.n.path?'':note,state:w.v.pass}:{note:w.n.path?'':note,state:w.v.fail,status:w.v.reopen,assignee:rtWho(w.v.reopenTo)});   /* (2) Kết quả test → Save */
+        log.save={ok:true,at:new Date().toISOString()};
+        await rtSave(rt.id,{state:kind,verdict:verdict,acsWrite:Object.assign({ok:true,at:now,method:w.method,path:p},log)});
+        RT.flash=kind==='pass'?'Đã gửi nội dung test và chọn Kết quả test = '+w.v.pass+' cho case #'+rt.caseId+'. Còn bước merge: mở link merge, Complete rồi dán ảnh vào ô bên dưới.':
+          'Đã chọn '+w.v.fail+', gán '+rtShort(rtWho(w.v.reopenTo))+', trạng thái '+w.v.reopen+' cho case #'+rt.caseId+' và gửi nội dung test lỗi.';
         rtRun();}
-      RT.vfor=null;}
-    catch(e){RT.err='Không ghi được lên ACS: '+(e.message||e)+'. Nội dung vẫn còn ở ô bên dưới.';
-      rtSave(rt.id,{acsWrite:{ok:false,at:now,err:String(e.message||e)}}).catch(function(){});}
+      RT.vfor=null;RT.passOk=false;}
+    catch(e){RT.err='Không ghi được lên ACS: '+(e.message||e)+(log.note?' (nội dung tester ĐÃ gửi – chỉ còn bước Save)':'')+'. Nội dung vẫn còn ở ô bên dưới.';
+      rtSave(rt.id,{acsWrite:Object.assign({ok:false,at:now,err:String(e.message||e)},log)}).catch(function(){});}
+    RT.busy=false;renderRetest();}
+  /* bước merge (Đạt): người test Complete PR trên TFS (app chỉ mở link, KHÔNG thao tác TFS) → dán ảnh → gửi bổ sung vào Nội dung Tester test */
+  function rtMergeShots(i,files){var rt=rtById(i);if(!rt||!SC.assets)return;Array.prototype.forEach.call(files,function(f){if(!/^image\//.test(f.type))return;RT.up=(RT.up||0)+1;
+      SC.assets.upload(f,{type:f.type}).then(function(res){var cur=rtById(rt.id)||rt,m=Object.assign({},(cur.acsWrite||{}).merge||{});m.shots=(m.shots||[]).concat([res.id]);
+        return rtSave(rt.id,{acsWrite:Object.assign({},cur.acsWrite||{},{merge:m})});}).catch(function(e){RT.err=assetErr(e);}).then(function(){RT.up--;renderRetest();});});renderRetest();}
+  async function rtMergeSend(id){var rt=rtById(id);if(!rt)return;var w=rtW(),a=rtA(),m=(rt.acsWrite||{}).merge||{},pr=rtPrLinks(rt.caseId);RT.err='';
+    if(!(m.shots||[]).length){RT.err='Dán ảnh màn hình PR sau khi Complete trước.';renderRetest();return;}
+    var txt='Đã Complete merge'+(pr.length?' '+pr.join(' '):'')+' – ảnh đính kèm. ('+nameOf(SC.me)+' · '+stamp()+')';
+    if(!a){RT.err='Chỉ làm được trong app AQ Auto Test.';renderRetest();return;}
+    RT.busy=true;renderRetest();
+    try{if(w.verified&&w.n.path){await rtSendNote(w,rt.caseId,txt,m.shots);m=Object.assign({},m,{sent:new Date().toISOString()});RT.flash='Đã gửi ảnh merge vào Nội dung Tester test của case #'+rt.caseId+'.';}
+      else{try{await navigator.clipboard.writeText(txt);}catch(x){}a.open(rt.caseId);m=Object.assign({},m,{manual:new Date().toISOString()});RT.flash='Đã chép dòng ghi chú merge và mở case – dán kèm ảnh vào Nội dung Tester test rồi bấm Gửi.';}
+      await rtSave(rt.id,{acsWrite:Object.assign({},rt.acsWrite||{},{merge:m})});}
+    catch(e){RT.err='Không gửi được: '+(e.message||e);}
     RT.busy=false;renderRetest();}
 
   /* ---------- khảo sát ACS (quản trị) ---------- */
-  function rtSuggest(calls){var s={};calls=calls||[];
+  function rtSuggest(calls,mark){var s={};calls=calls||[];
+    var nc=mark?calls.filter(function(c){return /^(POST|PUT|PATCH)$/.test(c.method)&&String(c.req||'').indexOf(mark)>=0;})[0]:null;   /* lời gọi "Gửi" nội dung tester = lời gọi chứa mã đánh dấu */
+    if(nc){var no=null;try{no=JSON.parse(nc.req);}catch(x){}var nw='',fld='';
+      if(no&&typeof no==='object'){var nk=Object.keys(no);if(nk.length===1&&no[nk[0]]&&typeof no[nk[0]]==='object'&&!Array.isArray(no[nk[0]])){nw=nk[0];no=no[nk[0]];}
+        fld=Object.keys(no).filter(function(k){return String(no[k]).indexOf(mark)>=0;})[0]||'';}
+      s.note={method:nc.method,path:nc.path.split('?')[0].replace(/\/(\d+)(?=\/|$)/,'/{id}'),field:fld||'content',wrap:nw,html:/<\w+[^>]*>/.test(String(nc.req)),img:/data:image\//.test(String(nc.req)),ok:!!fld};}
+    calls=calls.filter(function(c){return c!==nc;});
     var q=calls.filter(function(c){return c.method==='GET'&&!/^\/cs\/query(\?|$)/.test(c.path)&&/"clauses"\s*:/.test(c.res||'');})[0];if(q)s.queriesPath=q.path.split('?')[0];
     var cg=calls.filter(function(c){return c.method==='GET'&&/^\/cs\/cases?\/\d+(\?|$)/.test(c.path)&&String(c.res||'').charAt(0)==='{';})[0];if(cg)s.casePath=cg.path.split('?')[0].replace(/\/(\d+)$/,'/{id}');
     var wr=calls.filter(function(c){return /^(PUT|PATCH|POST)$/.test(c.method)&&/^\/cs\/cases?\/\d+/.test(c.path)&&!/history/.test(c.path);}).pop();
@@ -9639,18 +9696,20 @@ QUAY VIDEO (TÙY CHỌN)
       if(obj&&typeof obj==='object'){var ks=Object.keys(obj);if(ks.length===1&&obj[ks[0]]&&typeof obj[ks[0]]==='object'&&!Array.isArray(obj[ks[0]])){wrap=ks[0];obj=obj[ks[0]];}}
       var keys=obj&&typeof obj==='object'?Object.keys(obj):[],find=function(re){return keys.filter(function(k){return re.test(k);})[0]||'';};
       s.write={method:wr.method,path:wr.path.split('?')[0].replace(/\/(\d+)(?=\/|$)/,'/{id}'),wrap:wrap,
-        f:{note:find(/test.*(note|content|noi|result|desc|ghi|comment)|(note|content|comment).*test/i),state:find(/test_?(state|status)/i),status:keys.indexOf('status')>=0?'status':'',assignee:find(/assignee/i)},keys:keys};}
+        f:{note:s.note?'':find(/test.*(note|content|noi|desc|ghi|comment)|(note|content|comment).*test/i),state:find(/test_?(state|status|result)|ket_?qua/i),status:keys.indexOf('status')>=0?'status':find(/trang_?thai|^state$/i),assignee:find(/assignee|phan_?cong/i)},keys:keys,full:wr.method==='PUT'||keys.length>8};}
     return s;}
   async function rtSurvey(on){var a=rtA();if(!a)return;RT.sv.err='';
-    if(on){var r=await a.surveyStart();if(r&&r.error){RT.sv.err=r.error;}else{RT.sv.on=true;RT.sv.n=0;RT.sv.last='';RT.sv.calls=null;RT.sv.sug=null;}}
-    else{var x=await a.surveyStop();RT.sv.on=false;RT.sv.calls=(x&&x.calls)||[];RT.sv.sug=rtSuggest(RT.sv.calls);}
+    if(on){var r=await a.surveyStart();if(r&&r.error){RT.sv.err=r.error;}else{RT.sv.on=true;RT.sv.n=0;RT.sv.last='';RT.sv.calls=null;RT.sv.sug=null;RT.sv.mark='AQTEST-'+Math.random().toString(36).slice(2,7).toUpperCase();}}
+    else{var x=await a.surveyStop();RT.sv.on=false;RT.sv.calls=(x&&x.calls)||[];RT.sv.sug=rtSuggest(RT.sv.calls,RT.sv.mark);}
     renderRetest();}
   function rtSaveCfg(patch){RT.wErr='';RT.wFlash='';var done=function(){Object.assign(ACS,patch);RT.wFlash='Đã lưu thiết lập ACS.';renderRetest();};
     if(!ACS.col){done();return;}
     withRetry(function(){return ACS.col.doc('acs').set(Object.assign({baseUrl:ACS.baseUrl||'',caseUrl:ACS.caseUrl||'',newCaseUrl:ACS.newCaseUrl||'',queriesPath:ACS.queriesPath||'',casePath:ACS.casePath||'',write:ACS.write||null},patch,{updatedAt:new Date().toISOString(),updatedBy:SC.me||null}));})
       .then(done).catch(function(e){RT.wErr=errMsg(e);renderRetest();});}
   function rtCollectW(){var g=function(id){var e=document.getElementById(id);return e?e.value.trim():'';},c=document.getElementById('rtwVer');
-    return {method:(g('rtwMethod')||'PATCH').toUpperCase(),path:g('rtwPath'),wrap:g('rtwWrap'),f:{note:g('rtwFNote'),state:g('rtwFState'),status:g('rtwFStatus'),assignee:g('rtwFAsg')},
+    var ck=function(id){var e=document.getElementById(id);return !!(e&&e.checked);};
+    return {method:(g('rtwMethod')||'PATCH').toUpperCase(),path:g('rtwPath'),wrap:g('rtwWrap'),full:ck('rtwFull'),f:{note:g('rtwFNote'),state:g('rtwFState'),status:g('rtwFStatus'),assignee:g('rtwFAsg')},
+      n:{method:(g('rtwNMethod')||'POST').toUpperCase(),path:g('rtwNPath'),field:g('rtwNField')||'content',wrap:g('rtwNWrap'),html:ck('rtwNHtml'),img:ck('rtwNImg')},
       v:{pass:g('rtwVPass'),fail:g('rtwVFail'),reopen:g('rtwVReopen'),reopenTo:g('rtwVTo')},verified:!!(c&&c.checked)};}
 
   /* ---------- giao diện ---------- */
@@ -10061,7 +10120,9 @@ QUAY VIDEO (TÙY CHỌN)
       meta='Nền tảng: '+pf+(rt.build?' · Bản: '+rt.build:'')+(rt.school?' · Trường '+rt.school:'')+((rt.plan&&rt.plan.env)?'\nMôi trường: '+rt.plan.env:''),
       sc=run?'Kịch bản '+(rt.scenarioCode||'')+': '+(run.steps||[]).filter(function(x){return x&&x.res==='ok';}).length+'/'+(run.steps||[]).length+' bước đạt':'',
       who='Người test: '+nameOf(SC.me)+' · '+stamp();
-    var out=[head,meta,'Kết quả kiểm tra:'].concat(lines.length?lines:['- (chưa có mục kiểm tra)']);if(sc)out.push(sc);out.push(who);
+    var proc=items.filter(function(x){return x.g==='prep'||x.g==='repro';}).map(function(x,i){return (i+1)+'. '+x.t;}),pr=rtPrLinks(rt.caseId);
+    var out=[head,meta].concat(proc.length?['Quy trình test:'].concat(proc):[]).concat(['Kết quả kiểm tra:']).concat(lines.length?lines:['- (chưa có mục kiểm tra)']);if(sc)out.push(sc);
+    if(pr.length)out.push('Link merge: '+pr.join(' '));out.push(who);
     if(kind==='fail')out.push('Trả case về tiếp nhận (tiepnhanadmin) để chuyển lại coder.');return out.join('\n');}
   function rtGoVerdict(rt){var bad=rtItemsOf(rt).some(function(x){return x.res==='bad';})||(rtRunOf(rt)&&rtRunOf(rt).status==='fail');
     RT.kind=bad?'fail':'pass';RT.note=rtDraft2(rt,RT.kind);RT.noteEdited=false;RT.seen=false;RT.vfor=rt.id;}
@@ -10274,14 +10335,28 @@ QUAY VIDEO (TÙY CHỌN)
     var sum='<div class="rt2-sum"><span class="ok">'+cnt('ok')+' đạt</span><span class="bad">'+cnt('bad')+' lỗi</span><span>'+cnt('skip')+' bỏ qua</span>'+(left?'<span class="warn-txt">'+left+' chưa test</span>':'')+'</div>'+
       (items.some(function(x){return x.res==='bad';})?'<ul class="rt2-bad">'+items.filter(function(x){return x.res==='bad';}).map(function(x){return '<li><b>'+esc(x.t)+'</b>'+(x.note?' – '+esc(x.note):'')+'</li>';}).join('')+'</ul>':'')+
       '<div class="rt2-blk"><div class="rt2-bh">Ảnh chụp <span class="hint">'+shots.length+'</span></div><div class="shots">'+(shots.length?thumbs(shots,null,true):'<span class="hint">chưa có ảnh – quay lại bước 3 dán ảnh cho các mục</span>')+'</div></div>';
-    if(done)return sum+'<div class="rt2-blk"><div class="rt2-bh">Đã kết luận: <b>'+(rt.state==='pass'?'ĐẠT':'KHÔNG ĐẠT')+'</b> <span class="hint">'+esc(nameOf(rt.verdict&&rt.verdict.by))+' · '+esc(fmt(rt.verdict&&rt.verdict.at))+
+    var aw=rt.acsWrite||{},pr=rtPrLinks(rt.caseId),mg=aw.merge||{};
+    var ck=function(on,t,sub){return '<li class="'+(on?'ok':'')+'"><span class="ck">'+(on?'✓':'')+'</span><span>'+t+(sub?'<small>'+sub+'</small>':'')+'</span></li>';};
+    var steps=function(kind){var ok=rt.state===kind;return '<div class="rt2-blk"><div class="rt2-bh">Điền vào ACS <span class="hint">quy trình CST/ACS – skill ghi-ket-qua-acs</span></div><ol class="rt-acsl">'+(kind==='pass'?
+        ck(ok&&(aw.note||aw.ok||aw.manual),'Nội dung Tester test: ảnh + nội dung + quy trình test → <b>Gửi</b>',aw.manual?'dán tay':'')+
+        ck(ok&&(aw.save||aw.ok),'Kết quả test = <b>'+esc(w.v.pass)+'</b> → <b>Save</b>',aw.manual?'tự chọn trên ACS':'')+
+        ck(pr.length,'Link merge ở Nội dung TechLead',pr.length?pr.map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(u.replace(/^https?:\/\/[^/]+/,''))+'</a>';}).join(' · '):(RT.det[String(rt.caseId)]?'case chưa có link pullrequest':'mở bước 1 để đọc case'))+
+        ck(mg.sent||mg.manual,'<b>Complete</b> merge trên TFS (bạn tự bấm) → chụp ảnh → gửi vào Nội dung Tester test',(mg.shots||[]).length?(mg.shots.length+' ảnh'+(mg.sent?' · đã gửi':mg.manual?' · dán tay':'')):'')
+      :ck(ok&&(aw.ok||aw.manual),'Kết quả test = <b>'+esc(w.v.fail)+'</b>, Phân công = <b>'+esc(rtShort(rtWho(w.v.reopenTo)))+'</b>, Trạng thái = <b>'+esc(w.v.reopen)+'</b> → <b>Save</b>',aw.manual?'làm tay':'')+
+        ck(ok&&(aw.note||aw.manual),'Nội dung test lỗi (ảnh + bước lỗi) → <b>Gửi</b>',''))+'</ol></div>';};
+    var merge=rt.state==='pass'?'<div class="rt2-blk rt-merge"><div class="rt2-bh">Ảnh merge</div><p class="hint">Mở link merge → bấm <b>Complete</b> trên TFS → chụp màn hình → <b>Ctrl+V</b> vào đây hoặc chọn file. App không tự bấm gì trên TFS.</p>'+
+      '<div class="shots">'+thumbs(mg.shots||[],null,true)+'<label class="btn sm">Chọn ảnh…<input type="file" accept="image/*" multiple hidden data-rtmerge="'+esc(rt.id)+'"></label></div>'+
+      '<div class="form-actions">'+(pr[0]?'<a class="btn sm" href="'+esc(pr[0])+'" target="_blank" rel="noopener">Mở link merge</a>':'')+
+      '<button type="button" class="btn sm primary" data-rt="mergesend" data-id="'+esc(rt.id)+'"'+(RT.busy||!(mg.shots||[]).length?' disabled':'')+'>'+(mg.sent?'Gửi lại ảnh merge':'Gửi ảnh merge vào nội dung tester')+'</button></div></div>':'';
+    if(done)return sum+steps(rt.state)+merge+'<div class="rt2-blk"><div class="rt2-bh">Đã kết luận: <b>'+(rt.state==='pass'?'ĐẠT':'KHÔNG ĐẠT')+'</b> <span class="hint">'+esc(nameOf(rt.verdict&&rt.verdict.by))+' · '+esc(fmt(rt.verdict&&rt.verdict.at))+
       (rt.acsWrite?(rt.acsWrite.ok?' · đã ghi ACS':rt.acsWrite.manual?' · dán tay vào ACS':''):'')+'</span></div><div class="rt-req small">'+esc((rt.verdict&&rt.verdict.note)||'')+'</div></div>';
+    var pw=RT.kind==='pass'?rtPassWarn(rt):[];
     return sum+'<div class="rt2-blk rt-verdict"><label class="rt-seen"><input type="checkbox" id="rtSeen"'+(RT.seen?' checked':'')+'> Tôi đã kiểm tra các ảnh chụp màn hình</label>'+
       '<div class="status-seg rt-kind"><button type="button" class="pass'+(RT.kind==='pass'?' on':'')+'" data-rtkind="pass">Đạt</button><button type="button" class="fail'+(RT.kind==='fail'?' on':'')+'" data-rtkind="fail">Không đạt</button></div>'+
-      '<p class="hint">'+(RT.kind==='pass'?'Đạt: điền nội dung test vào case'+(w.f.state?', '+esc(w.f.state)+' = '+esc(w.v.pass):'')+'.':'Không đạt: mở lại case ('+esc(w.v.reopen)+'), gán '+esc(rtShort(rtWho(w.v.reopenTo)))+', điền nội dung test lỗi.')+'</p>'+
+      steps(RT.kind)+(pw.length?'<p class="save-err">Kết luận Đạt nhưng '+esc(pw.join(', '))+'.</p><label class="rt-seen"><input type="checkbox" id="rtPassOk"'+(RT.passOk?' checked':'')+'> Vẫn kết luận Đạt (đã xem lại, các mục này không ảnh hưởng yêu cầu của case)</label>':'')+
       '<label for="rtNote" class="lbl">NỘI DUNG TEST (điền vào case)</label><textarea id="rtNote" class="mono" rows="9">'+esc(RT.note)+'</textarea>'+
       (!w.verified?'<p class="hint warn-txt">Cách ghi tự động lên ACS chưa được quản trị xác nhận (tab Thiết lập ACS) – bấm nút sẽ chép nội dung và mở case để bạn dán tay.</p>':'')+
-      '<div class="form-actions"><button type="button" class="btn '+(RT.kind==='pass'?'primary':'danger')+'" data-rt="verdict"'+(RT.busy||!SC.canWrite?' disabled':'')+'>'+(RT.busy?'Đang ghi…':RT.kind==='pass'?'Đạt – điền nội dung test vào case':'Không đạt – mở lại case, gán '+esc(rtShort(rtWho(w.v.reopenTo))))+'</button></div></div>';}
+      '<div class="form-actions"><button type="button" class="btn '+(RT.kind==='pass'?'primary':'danger')+'" data-rt="verdict"'+(RT.busy||!SC.canWrite?' disabled':'')+'>'+(RT.busy?'Đang ghi…':RT.kind==='pass'?'Đạt – Gửi nội dung tester, Kết quả test = '+esc(w.v.pass)+', Save':'Không đạt – '+esc(w.v.fail)+', gán '+esc(rtShort(rtWho(w.v.reopenTo)))+', Save')+'</button></div></div>';}
   function rtChip(st){return '<span class="rt-st '+esc(st)+'">'+esc(RTST[st]||st)+'</span>';}
   function rtAcsBar(){var a=RT.acs,d=rtA();
     if(!d)return '<div class="rt-acs off">'+IC.lock+'<span>Kết nối ACS (đăng nhập, Query, ghi kết quả) chỉ có trong <b>app AQ Auto Test</b> trên Windows. Ở đây vẫn xem được các phiếu đã giao.</span></div>';
@@ -10402,16 +10477,20 @@ QUAY VIDEO (TÙY CHỌN)
       '<section class="card"><div class="list-head"><div><h3>Ghi kết quả về ACS</h3><p>Trường của case được ghi khi kết luận. Chỉ ghi thật khi đã đánh dấu "Đã xác nhận" (sau khi khảo sát hoặc thử trên một case TEST).</p></div></div>'+
         '<div class="rt-pad form-grid">'+inp('rtwMethod','PHƯƠNG THỨC',w.method,'PATCH')+inp('rtwPath','ĐƯỜNG DẪN (dùng {id})',w.path,'/cs/cases/{id}')+inp('rtwWrap','BỌC DỮ LIỆU TRONG KHOÁ (nếu có)',w.wrap,'để trống nếu không')+
           inp('rtwFNote','TRƯỜNG NỘI DUNG TEST',w.f.note)+inp('rtwFState','TRƯỜNG TRẠNG THÁI TEST',w.f.state)+inp('rtwFStatus','TRƯỜNG TRẠNG THÁI CASE',w.f.status)+inp('rtwFAsg','TRƯỜNG NGƯỜI XỬ LÝ',w.f.assignee)+
+          inp('rtwNMethod','GỬI NỘI DUNG TESTER – PHƯƠNG THỨC',w.n.method,'POST')+inp('rtwNPath','GỬI NỘI DUNG TESTER – ĐƯỜNG DẪN ({id})',w.n.path,'trống = không gửi riêng, ghi vào trường nội dung test khi Save')+
+          inp('rtwNField','GỬI NỘI DUNG TESTER – TRƯỜNG',w.n.field,'content')+inp('rtwNWrap','GỬI NỘI DUNG TESTER – BỌC TRONG KHOÁ',w.n.wrap,'để trống nếu không')+
+          '<div class="fld"><span class="lbl">NỘI DUNG / SAVE</span><label class="rt-seen"><input type="checkbox" id="rtwNHtml"'+(w.n.html?' checked':'')+ro+'> nội dung dạng HTML</label><label class="rt-seen"><input type="checkbox" id="rtwNImg"'+(w.n.img?' checked':'')+ro+'> nhúng ảnh vào nội dung</label><label class="rt-seen"><input type="checkbox" id="rtwFull"'+(w.full?' checked':'')+ro+'> Save gửi cả case (đọc rồi ghép)</label></div>'+
           inp('rtwVPass','GIÁ TRỊ TEST ĐẠT',w.v.pass)+inp('rtwVFail','GIÁ TRỊ TEST KHÔNG ĐẠT',w.v.fail)+inp('rtwVReopen','TRẠNG THÁI KHI MỞ LẠI',w.v.reopen)+inp('rtwVTo','GÁN VỀ (khi không đạt)',w.v.reopenTo)+
           '</div><div class="rt-pad rt-wfoot"><label class="rt-seen"><input type="checkbox" id="rtwVer"'+(w.verified?' checked':'')+ro+'> Đã xác nhận – cho phép app ghi thẳng lên ACS</label>'+(RT.people.length?'<span class="hint">gán về "'+esc(w.v.reopenTo)+'" = <span class="mono">'+esc(rtWho(w.v.reopenTo))+'</span> trên ACS</span>':'')+
           '<div class="form-actions">'+(RT.wErr?'<span class="save-err">'+esc(RT.wErr)+'</span>':'')+(RT.wFlash?'<span class="flash inline">'+esc(RT.wFlash)+'</span>':'')+'<button type="button" class="btn sm primary" data-rt="savew"'+ro+'>Lưu thiết lập ghi</button></div></div></section>'+
       '<section class="card"><div class="list-head"><div><h3>Khảo sát ACS</h3><p>Ghi lại các lời gọi API khi bạn tự thao tác trên ACS để app biết cách đọc Query và lưu nội dung test (không ghi cookie, che mật khẩu/token).</p></div></div>'+
-        '<div class="rt-pad">'+(d?'<ol class="rt-ol"><li>Bấm <b>Bắt đầu khảo sát</b> – cửa sổ ACS hiện ra.</li><li>Mở danh sách <b>Query của bạn</b>, bấm chạy một Query.</li><li>Mở một case <b>TEST</b>, nhập ô nội dung test rồi <b>Lưu</b> (nếu được: đổi trạng thái / người xử lý như khi test không đạt).</li><li>Quay lại đây bấm <b>Dừng &amp; phân tích</b>.</li></ol>'+
+        '<div class="rt-pad">'+(d?'<ol class="rt-ol"><li>Bấm <b>Bắt đầu khảo sát</b> – cửa sổ ACS hiện ra.</li><li>Mở danh sách <b>Query của bạn</b>, bấm chạy một Query.</li><li>Mở case đang test: dán dòng <b class="mono">'+esc(sv.mark||'AQTEST-…')+'</b> (có thể kèm 1 ảnh) vào <b>Nội dung Tester test</b> → <b>Gửi</b>.</li><li>Chọn <b>Kết quả test = Đúng</b> → <b>Save</b> (case không đạt: Mở lại case, tiepnhanadmin, Mở Case → Save).</li><li>Quay lại đây bấm <b>Dừng &amp; phân tích</b>.</li></ol>'+
           '<div class="rt-btns">'+(sv.on?'<button type="button" class="btn sm primary" data-rt="svstop">Dừng &amp; phân tích ('+sv.n+' lời gọi)</button><span class="hint">'+esc(sv.last)+'</span>':'<button type="button" class="btn sm primary" data-rt="svstart">Bắt đầu khảo sát</button>')+
             (calls&&calls.length?'<button type="button" class="btn sm" data-rt="svdl">'+IC.down+'Tải file khảo sát</button>':'')+'</div>'+(sv.err?'<p class="save-err">'+esc(sv.err)+'</p>':'')+
           (sug?'<div class="rt-sug"><b>Gợi ý:</b> '+(sug.queriesPath?'Query đã lưu ở <span class="mono">'+esc(sug.queriesPath)+'</span>. ':'chưa thấy API Query đã lưu. ')+(sug.casePath?'Chi tiết case ở <span class="mono">'+esc(sug.casePath)+'</span>. ':'')+
-            (sug.write?'Lưu case: <span class="mono">'+esc(sug.write.method+' '+sug.write.path)+'</span>'+(sug.write.wrap?' (bọc trong "'+esc(sug.write.wrap)+'")':'')+' – các trường: <span class="mono">'+esc((sug.write.keys||[]).join(', '))+'</span>.':'chưa thấy lời gọi lưu case.')+
-            ((sug.queriesPath||sug.casePath||sug.write)&&SC.canWrite?' <button type="button" class="btn sm" data-rt="svapply">Điền gợi ý vào thiết lập</button>':'')+'</div>':'')+
+            (sug.note?'Gửi nội dung tester: <span class="mono">'+esc(sug.note.method+' '+sug.note.path)+'</span> – trường <span class="mono">'+esc(sug.note.field)+'</span>'+(sug.note.html?', HTML':'')+(sug.note.img?', có ảnh trong nội dung':'')+'. ':'chưa thấy lời gọi chứa mã '+esc(RT.sv.mark||'')+'. ')+
+            (sug.write?'Save case: <span class="mono">'+esc(sug.write.method+' '+sug.write.path)+'</span>'+(sug.write.wrap?' (bọc trong "'+esc(sug.write.wrap)+'")':'')+' – các trường: <span class="mono">'+esc((sug.write.keys||[]).join(', '))+'</span>.':'chưa thấy lời gọi lưu case.')+
+            ((sug.queriesPath||sug.casePath||sug.write||sug.note)&&SC.canWrite?' <button type="button" class="btn sm" data-rt="svapply">Điền gợi ý vào thiết lập</button>':'')+'</div>':'')+
           (calls?'<div class="rt-calls">'+(calls.length?calls.slice(-60).map(function(c){return '<div><span class="mono m">'+esc(c.method)+'</span><span class="mono">'+esc(c.path)+'</span><span class="hint">'+esc(c.status||'')+'</span>'+(c.req?'<span class="hint mono">'+esc(String(c.req).slice(0,160))+'</span>':'')+'</div>';}).join(''):'<p class="empty-txt">Không ghi được lời gọi nào.</p>')+'</div>':'')
           :'<p class="empty-txt">Chỉ có trong app AQ Auto Test.</p>')+'</div></section></div>';}
   function renderRetest(){var el=$('#rtMain');if(!el)return;
@@ -10488,17 +10567,22 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='saveq'){var v=(document.getElementById('rtQPath')||{}).value||'',cp=(document.getElementById('rtCPath')||{}).value||'';v=v.trim();cp=cp.trim();
         if((v&&!/^\/cs\//.test(v))||(cp&&(!/^\/cs\//.test(cp)||cp.indexOf('{id}')<0))){RT.wErr='Đường dẫn phải bắt đầu bằng /cs/ (chi tiết case phải có {id}).';renderRetest();return;}
         RT.det={};RT.detErr={};rtSaveCfg({queriesPath:v,casePath:cp});RT.probed=false;if(RT.acs.st==='ok')setTimeout(rtLoadQueries,300);return;}
-      if(act==='savew'){var w2=rtCollectW();if(!/^\/cs\//.test(w2.path)||w2.path.indexOf('{id}')<0){RT.wErr='Đường dẫn phải bắt đầu bằng /cs/ và có {id}.';renderRetest();return;}rtSaveCfg({write:w2});return;}
+      if(act==='savew'){var w2=rtCollectW();if(!/^\/cs\//.test(w2.path)||w2.path.indexOf('{id}')<0||(w2.n.path&&(!/^\/cs\//.test(w2.n.path)||w2.n.path.indexOf('{id}')<0))){RT.wErr='Đường dẫn phải bắt đầu bằng /cs/ và có {id}.';renderRetest();return;}rtSaveCfg({write:w2});return;}
+      if(act==='mergesend'){rtMergeSend(b.getAttribute('data-id'));return;}
       if(act==='svstart'){rtSurvey(true);return;}
       if(act==='svstop'){rtSurvey(false);return;}
       if(act==='svapply'){var s=RT.sv.sug||{},patch={};if(s.queriesPath)patch.queriesPath=s.queriesPath;if(s.casePath)patch.casePath=s.casePath;
-        if(s.write){var cw=rtW();patch.write={method:s.write.method,path:s.write.path,wrap:s.write.wrap||'',f:{note:s.write.f.note||cw.f.note,state:s.write.f.state||cw.f.state,status:s.write.f.status||cw.f.status,assignee:s.write.f.assignee||cw.f.assignee},v:cw.v,verified:false};}
+        if(s.write||s.note){var cw=rtW(),sw=s.write||{method:cw.method,path:cw.path,wrap:cw.wrap,f:{},full:cw.full};
+          patch.write={method:sw.method,path:sw.path,wrap:sw.wrap||'',full:!!sw.full,f:{note:s.note?'':(sw.f.note||cw.f.note),state:sw.f.state||cw.f.state,status:sw.f.status||cw.f.status,assignee:sw.f.assignee||cw.f.assignee},
+            n:s.note?{method:s.note.method,path:s.note.path,field:s.note.field,wrap:s.note.wrap,html:s.note.html,img:s.note.img}:cw.n,v:cw.v,verified:false};}
         rtSaveCfg(patch);return;}
       if(act==='svdl'){try{var blob=new Blob([JSON.stringify({at:new Date().toISOString(),calls:RT.sv.calls},null,1)],{type:'application/json'}),u=URL.createObjectURL(blob),x=document.createElement('a');
         x.href=u;x.download='acs-khao-sat.json';document.body.appendChild(x);x.click();setTimeout(function(){URL.revokeObjectURL(u);x.remove();},2000);}catch(err){RT.sv.err='Không tải được file.';renderRetest();}return;}
     });
     pg.addEventListener('change',function(e){var t=e.target;
       if(t.id==='rtSeen'){RT.seen=t.checked;return;}
+      if(t.id==='rtPassOk'){RT.passOk=t.checked;return;}
+      if(t.hasAttribute('data-rtmerge')){rtMergeShots(t.getAttribute('data-rtmerge'),t.files);t.value='';return;}
       if(t.id==='rtCSort'){RT.csort=t.value;renderRetest();return;}
       if(t.name==='rtscen'){var d=dr();if(d){d.scen=t.value;}return;}
       if(t.hasAttribute('data-rtfile')){rtAddShots(+t.getAttribute('data-rtfile'),t.files);t.value='';return;}
@@ -10518,6 +10602,9 @@ QUAY VIDEO (TÙY CHỌN)
       if(t.hasAttribute('data-rtenvu')){var d11=dr(),c11=rtCase(RT.cur);if(d11)d11.envUrl=t.value;try{if(c11&&/^https?:\/\//i.test(t.value.trim()))localStorage.setItem('aq-rt-url:'+String(c11.school||'').toUpperCase(),t.value.trim());}catch(e){}rtReadyUpd();return;}
       if(t.id==='rtQFind'){RT.qFind=t.value;renderRetest();}
       if(t.id==='rtCF'){RT.cf=t.value;RT.cmore=false;renderRetest();}});
+    document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||!RT.cur||rtStepOf(RT.cur)!==4)return;var rt4=rtCurDoc();if(!rt4||rt4.state!=='pass')return;
+      var it4=(e.clipboardData&&e.clipboardData.items)||[],f4=[];for(var j=0;j<it4.length;j++){if(it4[j].kind==='file'&&/^image\//.test(it4[j].type)){var g4=it4[j].getAsFile();if(g4)f4.push(g4);}}
+      if(f4.length){e.preventDefault();rtMergeShots(rt4.id,f4);}});
     document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||RT.focus==null||!RT.cur||rtStepOf(RT.cur)!==3)return;
       var rt=rtCurDoc();if(!rt||rt.state==='pass'||rt.state==='fail')return;var items=(e.clipboardData&&e.clipboardData.items)||[],files=[];
       for(var i=0;i<items.length;i++){if(items[i].kind==='file'&&/^image\//.test(items[i].type)){var f=items[i].getAsFile();if(f)files.push(f);}}
