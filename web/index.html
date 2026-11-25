@@ -10349,7 +10349,7 @@ QUAY VIDEO (TÙY CHỌN)
       return h+'<div class="rt2-ti '+esc(x.res||'')+(on?' focus':'')+'" data-rtfocus="'+i+'"><div class="r1"><span class="n mono">'+(i+1)+'</span><span class="t">'+esc(x.t)+'</span>'+
         '<span class="rt2-res">'+['ok','bad','skip'].map(function(k){return '<button type="button" class="'+k+(x.res===k?' on':'')+'" data-rtres="'+i+':'+k+'"'+(done?' disabled':'')+'>'+RESVN[k]+'</button>';}).join('')+'</span></div>'+
         (x.res==='bad'||x.note||on?'<input class="rt2-note" data-rtnote="'+i+'" placeholder="'+(x.res==='bad'?'Mô tả lỗi: thực tế thấy gì…':'Ghi chú (tuỳ chọn)')+'" value="'+esc(x.note||'')+'"'+(done?' readonly':'')+'>':'')+
-        '<div class="shots">'+thumbs(x.shots||[],null,false)+(done?'':'<label class="rt2-up"><span class="pl">+</span><span>'+(on?'Ctrl+V để dán ảnh · ':'')+'thêm ảnh</span><input type="file" accept="image/*" multiple data-rtfile="'+i+'"></label>')+'</div></div>';}).join('');
+        '<div class="shots">'+thumbs(x.shots||[],done?null:i,false).split('data-unshot=').join('data-rtunshot=')+(done?'':'<label class="rt2-up"><span class="pl">+</span><span>'+(on?'Ctrl+V để dán ảnh · ':'')+'thêm ảnh</span><input type="file" accept="image/*" multiple data-rtfile="'+i+'"></label>')+'</div></div>';}).join('');
     var scr=it?'<div class="rt2-blk"><div class="rt2-bh">Kịch bản chạy kèm · <span class="mono">'+esc(it.code||'')+'</span> '+esc(short(it.title||''))+'</div>'+
       (run?'<p class="hint">'+esc(ST[run.status]||run.status||'')+' · '+(run.steps||[]).filter(function(x){return x&&x.res==='ok';}).length+'/'+(run.steps||[]).length+' bước đạt · '+esc(fmt(run.finishedAt||run.startedAt))+'</p><div class="shots">'+thumbs([].concat.apply([],(run.steps||[]).map(function(x){return (x&&x.shots)||[];})).slice(-8),null,false)+'</div>'
         :'<div class="rt2-runrow"><select id="rtRn">'+rtRunners().map(function(r){var cs=(r.check&&r.check.status)||'none';return '<option value="'+esc(r.uid)+'"'+(r.uid===(rt.runnerId||SC.me)?' selected':'')+'>'+esc(nameOf(r.uid)+(r.machine?' · '+r.machine:'')+' · '+(RNSTL[cs]||cs))+'</option>';}).join('')+'</select>'+
@@ -10364,7 +10364,8 @@ QUAY VIDEO (TÙY CHỌN)
     var shots=[];items.forEach(function(x){shots=shots.concat(x.shots||[]);});var run=rtRunOf(rt);if(run)(run.steps||[]).forEach(function(x){if(x&&x.shots)shots=shots.concat(x.shots);});
     var sum='<div class="rt2-sum"><span class="ok">'+cnt('ok')+' đạt</span><span class="bad">'+cnt('bad')+' lỗi</span><span>'+cnt('skip')+' bỏ qua</span>'+(left?'<span class="warn-txt">'+left+' chưa test</span>':'')+'</div>'+
       (items.some(function(x){return x.res==='bad';})?'<ul class="rt2-bad">'+items.filter(function(x){return x.res==='bad';}).map(function(x){return '<li><b>'+esc(x.t)+'</b>'+(x.note?' – '+esc(x.note):'')+'</li>';}).join('')+'</ul>':'')+
-      '<div class="rt2-blk"><div class="rt2-bh">Ảnh chụp <span class="hint">'+shots.length+'</span></div><div class="shots">'+(shots.length?thumbs(shots,null,true):'<span class="hint">chưa có ảnh – quay lại bước 3 dán ảnh cho các mục</span>')+'</div></div>';
+      '<div class="rt2-blk"><div class="rt2-bh">Ảnh chụp <span class="hint">'+shots.length+'</span></div><div class="shots">'+(shots.length?shots.map(function(sid){var own=!done&&items.some(function(x){return (x.shots||[]).indexOf(sid)>=0;});   /* × chỉ cho ảnh của mục test (ảnh kịch bản giữ nguyên) */
+        return own?thumbs([sid],0,true).replace(/data-unshot="[^"]*"/,'data-rtunshotid="'+esc(sid)+'"'):thumbs([sid],null,true);}).join(''):'<span class="hint">chưa có ảnh – quay lại bước 3 dán ảnh cho các mục</span>')+'</div></div>';
     var aw=rt.acsWrite||{},pr=rtPrLinks(rt.caseId),mg=aw.merge||{};
     var ck=function(on,t,sub){return '<li class="'+(on?'ok':'')+'"><span class="ck">'+(on?'✓':'')+'</span><span>'+t+(sub?'<small>'+sub+'</small>':'')+'</span></li>';};
     var steps=function(kind){var ok=rt.state===kind;return '<div class="rt2-blk"><div class="rt2-bh">Điền vào ACS <span class="hint">quy trình CST/ACS – skill ghi-ket-qua-acs</span></div><ol class="rt-acsl">'+(kind==='pass'?
@@ -10534,7 +10535,12 @@ QUAY VIDEO (TÙY CHỌN)
     pg.addEventListener('click',function(e){
       var fc=e.target.closest('[data-rtfocus]');if(fc){var fi=+fc.getAttribute('data-rtfocus');
         if(RT.focus!==fi){RT.focus=fi;if(e.target.closest('input,textarea,label,button')){$$('#rtMain .rt2-ti.focus').forEach(function(x){x.classList.remove('focus');});fc.classList.add('focus');}else{renderRetest();return;}}}
-      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd],[data-rtrun]');if(!b||b.disabled)return;var a=rtA();
+      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd],[data-rtrun],[data-rtunshot],[data-rtunshotid]');if(!b||b.disabled)return;var a=rtA();
+      if(b.hasAttribute('data-rtunshotid')){var sid=b.getAttribute('data-rtunshotid'),sd=rtCurDoc();
+        if(sd)rtItemsOf(sd).some(function(x,k){var q=(x.shots||[]).indexOf(sid);if(q<0)return false;var sh=x.shots.slice();sh.splice(q,1);rtSetItem(k,{shots:sh});RT.flash='Đã bỏ 1 ảnh khỏi mục '+(k+1)+'.';return true;});
+        renderRetest();return;}
+      if(b.hasAttribute('data-rtunshot')){var us=b.getAttribute('data-rtunshot').split(':'),ui=+us[0],uj=+us[1],ud=rtCurDoc(),ux=ud&&rtItemsOf(ud)[ui];   /* bỏ ảnh dư khỏi mục test */
+        if(ux){var sh=(ux.shots||[]).slice();sh.splice(uj,1);rtSetItem(ui,{shots:sh});RT.flash='Đã bỏ 1 ảnh khỏi mục '+(ui+1)+'.';renderRetest();}return;}
       if(b.getAttribute('data-rt')==='sheetkeys'){var tx=rtSheetKeys(RT.cur);try{navigator.clipboard.writeText(tx);toast('Đã chép cấu trúc case (không kèm nội dung) – dán gửi cho Claude để chỉnh phiếu');}catch(e){prompt('Chép nội dung này:',tx);}return;}
       if(b.hasAttribute('data-rtimg')){rtImgOpen(RT.cur,+b.getAttribute('data-rtimg'));return;}
       if(b.hasAttribute('data-rtreqf')){var rf=b.getAttribute('data-rtreqf'),dq=RT.cur&&RT.det[RT.cur],sq=RT.cur&&rtLatest(RT.cur);try{localStorage.setItem('aq-rt-reqf',rf);}catch(x){}
