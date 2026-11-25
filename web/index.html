@@ -978,6 +978,7 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt2-ctc dl{margin:4px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px 14px}.rt2-ctc dt{color:var(--muted);font-size:.68rem}.rt2-ctc dd{margin:0;overflow-wrap:anywhere}
 .rt2-chk2{border-radius:10px;padding:8px 12px;font-size:.82rem;border:1px solid var(--line)}.rt2-chk2 .hd{display:flex;gap:10px;align-items:baseline}
 .rt2-chk2.ok{background:color-mix(in srgb,var(--pass) 8%,var(--bg-2));border-color:color-mix(in srgb,var(--pass) 30%,var(--line))}.rt2-chk2.ok .hd b{color:var(--pass)}
+.rt-warn{margin:8px 0 10px;padding:9px 12px;border:1px solid color-mix(in srgb,var(--run) 35%,var(--line));border-radius:8px;background:color-mix(in srgb,var(--run) 9%,var(--bg-2));font-size:13px;line-height:1.5}.rt-warn .btn{margin-left:8px;padding:3px 10px}
 .rt2-chk2.warn{background:color-mix(in srgb,var(--run) 9%,var(--bg-2));border-color:color-mix(in srgb,var(--run) 35%,var(--line))}.rt2-chk2.warn .hd b{color:var(--run)}
 .rt2-chk2 .mi{margin-top:3px}.rt2-chk2 details{margin-top:4px}.rt2-chk2 summary{cursor:pointer;color:var(--muted);font-size:.74rem}
 .rt2-chk2 ul{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px 14px;font-size:.8rem}
@@ -10381,7 +10382,8 @@ QUAY VIDEO (TÙY CHỌN)
     var nChk=(dr.items||[]).filter(function(x){return x.g==='check'&&String(x.t||'').trim();}).length,ok=[E.envOk,E.accOk,nChk>0];
     ['Môi trường','Tài khoản','Đầu ra'].forEach(function(k,i){if(sp[i]){sp[i].className=ok[i]?'ok':'no';sp[i].textContent=(ok[i]?'✓ ':'○ ')+k;}});
     var b=bar.querySelector('[data-rt="take"]');if(b)b.disabled=RT.busy||!SC.canWrite||!(ok[0]&&ok[1]&&ok[2]);}
-  function rtW2(id,c,a,dr,rt){var lock=rt&&rt.state!=='testing'&&rt.state!=='queued',view=rt&&!RT.replan;
+  function rtW2(id,c,a,dr,rt){var lock=rt&&(rt.state==='pass'||rt.state==='fail'),view=rt&&!RT.replan; /* sửa plan được cả khi Chờ kết luận – chỉ khoá khi đã kết luận */
+    var oldPlan=view&&rt.plan&&(rt.plan.items||[]).some(function(x){return /làm đúng thao tác KH nêu|^Vào chỗ KH phản ánh/i.test(x.t||'');});
     var src=view&&rt.plan?{env:rt.plan.env,items:rt.plan.items,pf:rt.platform,scen:rt.scenarioId}:{env:dr.env,items:dr.items,pf:dr.pf,scen:dr.scen};
     var edit=!lock&&!view,E=rtEnvOf(c,dr);
     var insL=view?Object.keys(rt.inputs||{}).map(function(k){return {k:k,v:rt.inputs[k]};}):(dr.inputs||[]),vals={};insL.forEach(function(x){if(String(x.v||'').trim())vals[x.k]=String(x.v).trim();});
@@ -10417,7 +10419,9 @@ QUAY VIDEO (TÙY CHỌN)
     var foot=view?'<div class="rt2-foot">'+(!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+'<button type="button" class="btn" data-rtstep="3">Tiếp: Test →</button>'+rtRunBtn(rt)+'</div>':
       '<div class="rt2-ready">'+[['Môi trường',E.envOk],['Tài khoản',E.accOk],['Đầu ra',nChk>0]].map(function(x){return '<span class="'+(x[1]?'ok':'no')+'">'+(x[1]?'✓':'○')+' '+x[0]+'</span>';}).join('')+
         '<button type="button" class="btn primary" data-rt="take"'+(RT.busy||!SC.canWrite||!ready?' disabled':'')+' title="'+(ready?'':'Điền đủ môi trường, tài khoản và ít nhất một đầu ra')+'">'+(rt?'Lưu plan':'Bắt đầu test →')+'</button></div>';
-    return cl+'<div class="rt2-ph"><b>Plan test</b><span class="hint">'+(view?'đã chốt khi nhận test':'đủ môi trường + tài khoản → vào menu làm thao tác → so với đầu ra')+'</span>'+(edit&&(!rt||RT.replan)?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+'</div>'+
+    return cl+'<div class="rt2-ph"><b>Plan test</b><span class="hint">'+(view?'đã chốt khi nhận test':'đủ môi trường + tài khoản → vào menu làm thao tác → so với đầu ra')+'</span>'+(edit&&(!rt||RT.replan)?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+
+        (view&&!lock?'<button type="button" class="linkbtn" data-rt="replan">Sửa plan</button>':'')+'</div>'+
+      (oldPlan&&!lock?'<div class="rt-warn">Plan này soạn theo cách cũ (chép yêu cầu KH, chưa có bước thao tác). Bấm <b>Sửa plan</b> → <b>soạn lại từ case</b> để có bước cụ thể từ ghi chú dev, trả lời KH, các lần test trước và KB. <button type="button" class="btn" data-rt="replan">Sửa plan</button></div>':'')+
       '<div class="rt2-plan2">'+sec(1,'g-env','Môi trường test','',envB)+sec(2,'g-acc','Tài khoản đăng nhập',dr.flow&&!rt?'luồng: '+esc(dr.flow):'',accB)+steps+'</div>'+scen+foot;}
   function rtW3(id,rt){if(!rt)return '<p class="hint">Nhận test ở bước 2 trước.</p>';var items=rtItemsOf(rt),done=rt.state==='pass'||rt.state==='fail',it=rt.scenarioId?byId(rt.scenarioId):null,run=rtRunOf(rt);
     if(!items.length)return '<p class="hint">Phiếu này chưa có plan (giao theo cách cũ) – vào bước 2 bấm "Sửa plan" để soạn.</p>';
@@ -10675,6 +10679,7 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='replan'){var r5=rtCurDoc(),d5=dr();if(r5&&d5&&r5.plan){d5.items=r5.plan.items.map(function(x){return {g:x.g,t:x.t};});d5.env=r5.plan.env;d5.pf=r5.platform||d5.pf;d5.kind=r5.kind||d5.kind;
           var a5=rtAnalyze(RT.cur);if(a5&&d5.pf==='edusoft'&&rtOutcome(a5).perf&&!d5.items.some(function(x){return /nút\s*(?:…|\.\.\.)|thời gian mở form" ở thanh/i.test(x.t);})){
             var p5=rtGenPlan(a5,'edusoft',d5.kind);d5.items=p5.items;d5.inputs=rtKeepIn(p5.inputs,Object.keys(r5.inputs||{}).map(function(k){return {k:k,v:r5.inputs[k]};}));} /* plan đo cũ (chỉ mở menu) → soạn lại như người dùng thao tác */
+          else if(a5&&d5.items.some(function(x){return /làm đúng thao tác KH nêu|^Vào chỗ KH phản ánh/i.test(x.t);})){var p6=rtGenPlan(a5,d5.pf,d5.kind);if(p6.fix)d5.items=p6.items;} /* plan cũ chép yêu cầu KH → soạn lại bước thao tác */
           d5.scen=r5.scenarioId||'';d5.edited=true;d5.pfSet=d5.kindSet=true;}RT.replan=true;renderRetest();return;}
       if(act==='padd'){var d6=dr(),gs=(document.getElementById('rtAddG')||{}).value||'check';if(d6){var at=-1;d6.items.forEach(function(x,i){if(x.g===gs)at=i;});
           if(at<0){var ord=Object.keys(RT_G),gi=ord.indexOf(gs);d6.items.forEach(function(x,i){if(ord.indexOf(x.g)<gi)at=i;});}d6.items.splice(at+1,0,{g:gs,t:''});d6.edited=true;renderRetest();
