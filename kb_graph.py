@@ -89,7 +89,7 @@ def why_map(sec):
 
 def _sig(kb):
     s = []
-    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test', 'Case-truong', 'Quy-trinh'):
+    for sub in ('Du-lieu', 'Phan-he', 'Truong', 'Dang-case', 'Luong-test', 'Case-truong', 'Quy-trinh', 'Web'):
         d = kb / sub
         if d.is_dir():
             for f in d.glob('*.md'):
@@ -165,6 +165,16 @@ def build(kb):
             continue
         flows[f.stem] = {'ten': str(p.get('ten') or f.stem), 'dh': str(p.get('dau_hieu')), 'ph': links(p.get('phan_he')), 'pf': str(p.get('nen_tang') or ''),
                          'can': L(p.get('can_cung_cap')), 'buoc': L(p.get('buoc')), 'kt': L(p.get('kiem_tra')), 'kah': L(p.get('khong_anh_huong'))}
+    webs = {}                                     # trang Netweb (Web/*.md): đọc / ghi dữ liệu nào, chỉnh định Edusoft nào
+    for f in sorted((kb / 'Web').glob('*.md')) if (kb / 'Web').is_dir() else []:
+        p, _ = parse_note(f.read_text('utf-8', errors='replace'))
+        if p.get('loai') != 'trang-web':
+            continue
+        webs[f.stem] = {'t': str(p.get('ten') or f.stem), 'vt': L(p.get('vai_tro')), 'menu': str(p.get('menu_web') or ''),
+                        'doc': [x for x in links(p.get('du_lieu')) if x in data], 'ghi': [x for x in links(p.get('ghi')) if x in data],
+                        'ph': links(p.get('phan_he')), 'cd': [x[:160] for x in L(p.get('chinh_dinh'))[:4]], 'kw': str(p.get('tu_khoa') or '')}
+    for fn, d in data.items():
+        d['wp'] = [w for w, x in webs.items() if fn in x['doc'] or fn in x['ghi']]
     for d in data.values():                       # bỏ liên kết tới dữ liệu không có ghi chú
         d['req'] = [r for r in d['req'] if r[0] in data]
     lv = {}
@@ -178,7 +188,7 @@ def build(kb):
         return lv[fn]
     for fn in data:
         data[fn]['lv'] = depth(fn)
-    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'qts': qts, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
+    g = {'ver': 3, 'src': 'ghi-chu', 'mods': mods, 'data': data, 'schools': schools, 'patterns': pats, 'flows': flows, 'qts': qts, 'webs': webs, 'catph': CAT_PH, 'tang': {'0': 'nền, khai báo đầu tiên'}}
     _CACHE[str(kb)] = (sig, g)
     return g
 
@@ -266,6 +276,20 @@ def patterns_of(g, kh='', ba='', dev='', mod=''):
             out.append((fn, sc, why))
     out.sort(key=lambda x: -x[1])
     return out
+
+
+def webs_of(g, text, n=2):
+    """trang Netweb (Web/) khớp tiêu đề + lời KH theo `tu_khoa` → [(tên file, trang)], nhiều lần khớp trước"""
+    out = []
+    for fn, x in (g.get('webs') or {}).items():
+        try:
+            k = len(re.findall(x['kw'], str(text or ''), re.I)) if x.get('kw') else 0
+        except re.error:
+            continue
+        if k:
+            out.append((k, fn, x))
+    out.sort(key=lambda t: -t[0])
+    return [(fn, x) for _, fn, x in out[:n]]
 
 
 def flow_of(g, text, mod=''):

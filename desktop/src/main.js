@@ -163,25 +163,54 @@ function waitServer(ms) {
   });
 }
 
-// ---------------- màn hình chờ khi mở app ----------------
-const SPLASH_HTML = (ver, note) => `<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
-html,body{margin:0;height:100%;background:#0b1324;color:#e2e8f0;font:14px "Segoe UI",system-ui,sans-serif;-webkit-user-select:none;user-select:none}
-body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px solid #1c2944;box-sizing:border-box;-webkit-app-region:drag}
-.m{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#3b82f6,#1d4ed8);font-weight:800;font-size:22px;color:#fff;box-shadow:0 12px 30px rgba(37,99,235,.45)}
-h1{margin:0;font-size:19px;font-weight:700}.v{color:#8391ab;font-size:12px}.n{color:#93c5fd;font-size:12px;min-height:16px}
-.bar{width:220px;height:4px;border-radius:4px;background:#1c2944;overflow:hidden}.bar i{display:block;width:40%;height:100%;border-radius:4px;background:#60a5fa;animation:go 1.1s ease-in-out infinite}
-@keyframes go{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}#s{color:#c9d3e6;font-size:12.5px}
-</style></head><body><div class="m">AQ</div><h1>AQ Auto Test</h1><div class="v">Phiên bản ${ver}</div><div class="n">${note}</div>
-<div class="bar"><i></i></div><div id="s">Đang khởi động…</div></body></html>`;
+// ---------------- màn hình chờ khi mở app / tạm biệt khi đóng: logo AQ tự vẽ ----------------
+// Logo AQTech dựng bằng nét (vòng chữ Q kéo đuôi + chữ A) để vẽ dần bằng stroke-dashoffset; chữ AQ TECHNOLOGY hiện sau.
+const AQ_LOGO = (mode) => `<svg class="lg ${mode}" viewBox="250 115 520 560" aria-hidden="true">
+<path class="r" pathLength="1" d="M665.7 409.4A200.5 200.5 0 1 0 615.2 484.1L748 636"/><path class="a" pathLength="1" d="M522 373L412 482L541 234L748 636"/>
+<g class="t"><text x="262" y="644" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" textLength="118" lengthAdjust="spacingAndGlyphs">AQ</text>
+<text x="400" y="641" font-family="Arial,Helvetica,sans-serif" font-size="50" textLength="296" lengthAdjust="spacingAndGlyphs">TECHNOLOGY</text></g></svg>`;
+const LOGO_CSS = `html,body{margin:0;height:100%;background:#fff;color:#14223a;font:14px "Segoe UI",system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid #d6deea;box-sizing:border-box;-webkit-app-region:drag}
+.lg{width:176px;height:156px}.lg path{fill:none;stroke:#2b5898;stroke-width:31;stroke-linejoin:miter;stroke-miterlimit:6;stroke-dasharray:1 1}.lg text{fill:#2b5898}
+.draw .r{animation:d 1s ease-out both}.draw .a{animation:d .9s .7s ease-out both}.draw .t{animation:f .5s 1.4s both}
+.erase .a{animation:e .7s ease-in both}.erase .r{animation:e 1s .2s ease-in both}.erase .t{animation:o .4s both}
+@keyframes d{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes e{from{stroke-dashoffset:0}to{stroke-dashoffset:-1}}
+@keyframes f{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes o{to{opacity:0}}
+.n{color:#2b5898;font-size:12px;font-weight:600;min-height:16px}#s{color:#56657c;font-size:12.5px;min-height:17px}.v{color:#8391ab;font-size:11.5px}`;
+const SPLASH_HTML = (ver, note) => `<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>${LOGO_CSS}</style></head><body>
+${AQ_LOGO('draw')}<div class="n">${note}</div><div id="s">Đang khởi động…</div><div class="v">AQ Auto Test · phiên bản ${ver}</div></body></html>`;
+const BYE_HTML = (text) => `<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>${LOGO_CSS}</style></head><body>
+${AQ_LOGO('erase')}<div id="s">${text}</div><div class="v">AQ Auto Test</div></body></html>`;
+const SPLASH_MIN_MS = 2300;   // đủ để logo vẽ xong trước khi vào app
+let splashAt = 0;
+
+function logoWindow(html) {
+  const w = new BrowserWindow({ width: 440, height: 300, frame: false, resizable: false, maximizable: false, center: true, show: false,
+    skipTaskbar: false, icon: ICON, title: APP_NAME, backgroundColor: '#ffffff', webPreferences: { contextIsolation: true, nodeIntegration: false } });
+  w.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  return w;
+}
 
 function showSplash() {
   if (SMOKE) return;
   const note = launch.prev && launch.prev !== launch.version ? `Vừa cập nhật từ bản ${launch.prev}` : (launch.fresh ? 'Chào mừng bạn đến với AQ Auto Test' : '');
-  splash = new BrowserWindow({ width: 420, height: 270, frame: false, resizable: false, maximizable: false, center: true, show: false,
-    icon: ICON, title: APP_NAME, backgroundColor: '#0b1324', webPreferences: { contextIsolation: true, nodeIntegration: false } });
-  splash.once('ready-to-show', () => splash && splash.show());
+  splash = logoWindow(SPLASH_HTML(launch.version, note));
+  splash.once('ready-to-show', () => { if (splash) { splash.show(); splashAt = Date.now(); } });
   splash.on('closed', () => { splash = null; });
-  splash.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(SPLASH_HTML(launch.version, note)));
+}
+
+/** Tắt app / cài bản mới: ẩn cửa sổ chính, hiện logo thu nét lại (~1,3 giây) rồi mới đóng. */
+function showBye(text) {
+  return new Promise((done) => {
+    if (SMOKE) return done();
+    let ok = false;
+    const finish = () => { if (ok) return; ok = true; done(); };
+    try {
+      const w = logoWindow(BYE_HTML(text));
+      w.once('ready-to-show', () => { w.show(); setTimeout(finish, 1400); });
+      setTimeout(finish, 3000);            // cửa sổ không hiện được thì vẫn đóng app
+    } catch { finish(); }
+  });
 }
 function splashText(t) { if (splash && !splash.isDestroyed()) splash.webContents.executeJavaScript(`document.getElementById('s').textContent=${JSON.stringify(t)}`).catch(() => {}); }
 function closeSplash() { if (splash && !splash.isDestroyed()) splash.close(); splash = null; }
@@ -207,11 +236,23 @@ function createWindow() {
   });
   if (cfg.maximized) win.maximize();
   win.on('page-title-updated', (e) => e.preventDefault());   // tiêu đề cửa sổ luôn là "AQ Auto Test"
-  win.once('ready-to-show', () => { if (!SMOKE) { win.show(); closeSplash(); } });
+  win.once('ready-to-show', () => {
+    if (SMOKE) return;
+    const wait = splash ? Math.max(0, SPLASH_MIN_MS - (Date.now() - (splashAt || Date.now()))) : 0;
+    setTimeout(() => { if (win) win.show(); closeSplash(); }, wait);
+  });
   const keep = () => { if (!win.isMaximized() && !win.isMinimized()) cfg.bounds = win.getBounds(); cfg.maximized = win.isMaximized(); };
   win.on('resize', keep);
   win.on('move', keep);
-  win.on('close', () => { keep(); saveCfg(); });
+  let bye = false;
+  win.on('close', (e) => {
+    keep(); saveCfg();
+    if (SMOKE || quitting || bye) return;
+    e.preventDefault();                       // tắt app: logo thu nét lại rồi mới đóng
+    bye = true;
+    win.hide();
+    showBye('Đã lưu dữ liệu · đang đóng…').then(() => { if (win) win.close(); else app.quit(); });
+  });
   win.on('closed', () => { win = null; app.quit(); });
 
   // liên kết ra ngoài (tài liệu SharePoint, GitHub…) mở bằng trình duyệt; trang của console mở trong app
@@ -293,7 +334,7 @@ async function init() {
   setupDownloads();
   ipcMain.handle('update-get', () => (updater ? updater.getState() : null));
   ipcMain.on('update-act', () => { if (updater) updater.act(); });
-  ipcMain.on('quit', () => app.quit());
+  ipcMain.on('quit', () => { if (win) win.close(); else app.quit(); });   // Thoát từ menu cũng có hiệu ứng tạm biệt
   ipcMain.handle('app-info', () => launch);
   ipcMain.handle('pick-file', async (_e, o) => {
     const r = await dialog.showOpenDialog(win, { title: o.title || 'Chọn file', defaultPath: o.defaultPath || undefined,
@@ -302,7 +343,12 @@ async function init() {
   });
   createWindow();
   if (SMOKE) return smoke();
-  updater = createUpdater({ send, notify, beforeInstall: () => { quitting = true; stopServer(); } });
+  updater = createUpdater({ send, notify, beforeInstall: async () => {
+    quitting = true;
+    if (win) win.hide();
+    await showBye('Đang cài bản mới – app tự mở lại…');
+    stopServer();
+  } });
   setTimeout(() => updater.check(false), 8 * 1000);
   setInterval(() => updater.check(false), UPDATE_CHECK_MS);
 }

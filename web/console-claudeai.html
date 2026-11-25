@@ -2887,7 +2887,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.23-04"
+KIT_VERSION = "2026.11.25-01"
 from pathlib import Path
 
 
@@ -3594,6 +3594,28 @@ def uia_scan(root):
         return None
 
 
+CONSOLE_CLS = ("ConsoleWindowClass", "CASCADIA_HOSTING_WINDOW_CLASS")
+
+
+def console_handles():
+    """Cửa sổ dòng lệnh đang hiện (cmd/conhost hoặc Windows Terminal), trừ cửa sổ của chính bộ test."""
+    own = 0
+    try:
+        import ctypes
+        own = ctypes.windll.kernel32.GetConsoleWindow() or 0
+    except Exception:
+        pass
+    out = set()
+    for cls in CONSOLE_CLS:
+        try:
+            for w in Desktop(backend="win32").windows(class_name=cls, visible_only=True):
+                if w.handle != own:
+                    out.add(w.handle)
+        except Exception:
+            continue
+    return out
+
+
 # ---------------------------------------------------------------- Edusoft
 class Edusoft:
     def __init__(self):
@@ -3602,6 +3624,15 @@ class Edusoft:
         self.main = None
         self.login = None
         self.version = ""
+        self.cons_before = set()
+        self.say_cb = None          # Run gắn hàm ghi nhật ký của lượt chạy
+        self.updated = ""           # bản Edusoft vừa tự cập nhật lên (nếu có)
+
+    def _say(self, msg):
+        try:
+            (self.say_cb or (lambda m: print("  ", m)))(msg)
+        except Exception:
+            pass
 
     # --- tìm phần tử
     def pid(self):
@@ -3934,11 +3965,100 @@ class Edusoft:
         CAP.show("Mở Edusoft", self.exe)
         if not os.path.isfile(self.exe):
             raise FileNotFoundError("Không tìm thấy file: " + self.exe)
+        self.cons_before = console_handles()     # cửa sổ dòng lệnh có sẵn (kể cả của bộ test) – không tính là trình cập nhật
         self.app = Application(backend="uia").start('"%s"' % self.exe, work_dir=str(Path(self.exe).parent), timeout=90)
+
+    # --- Edusoft tự cập nhật khi mở: hiện cửa sổ dòng lệnh "Starting client update… / Updating version 2026.11K.39…"
+    def alive(self):
+        try:
+            return bool(self.app is not None and self.app.is_process_running())
+        except Exception:
+            return False
+
+    def updater_windows(self):
+        """Cửa sổ dòng lệnh MỚI hiện ra sau khi mở Edusoft = trình cập nhật client của Edusoft."""
+        return sorted(console_handles() - self.cons_before)
+
+    def console_text(self, h):
+        """Đọc chữ trong cửa sổ dòng lệnh (UIA TextPattern của conhost) – chỉ để ghi nhật ký, đọc không được thì thôi."""
+        parts = []
+        try:
+            w = self.uia(h)
+            parts.append(w.window_text())
+            for d in w.descendants()[:30]:
+                try:
+                    parts.append(d.window_text())
+                    parts.append(d.iface_text.DocumentRange.GetText(-1))
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        return " ".join(p for p in parts if p)
+
+    def wait_update(self, limit=900):
+        """Có trình cập nhật của Edusoft đang chạy thì CHỜ nó xong (không gõ phím / bấm gì vào cửa sổ đó),
+        rồi bám lại vào Edusoft mở lại sau cập nhật (tự mở nếu trình cập nhật không mở). Trả về True nếu đã chờ."""
+        ups = self.updater_windows()
+        if not ups:
+            return False
+        txt = " ".join(self.console_text(h) for h in ups)
+        m = re.search(r"updating\s+version\s+([\w.]+?)\.*(?:\s|$)", txt, re.I)
+        ver = m.group(1) if m else ""
+        t0 = time.time()
+        self._say("Edusoft đang tự cập nhật%s (cửa sổ dòng lệnh \"Starting client update\") – chờ cập nhật xong rồi mới đăng nhập"
+                  % (" lên bản " + ver if ver else ""))
+        while self.updater_windows():
+            el = time.time() - t0
+            CAP.show("Edusoft đang cập nhật%s" % (" " + ver if ver else ""),
+                     "Chờ cập nhật xong (%d giây) – không tắt cửa sổ dòng lệnh" % el)
+            if el > limit:
+                raise RuntimeError("Edusoft tự cập nhật quá %d phút vẫn chưa xong – kiểm tra cửa sổ dòng lệnh \"Updating version\" "
+                                   "(mạng / quyền ghi thư mục Edusoft) rồi chạy lại" % (limit // 60))
+            if not ver:
+                m = re.search(r"updating\s+version\s+([\w.]+?)\.*(?:\s|$)", " ".join(self.console_text(h) for h in self.updater_windows()), re.I)
+                ver = m.group(1) if m else ""
+            time.sleep(2)
+        self.updated = ver or "bản mới"
+        self._say("Edusoft cập nhật xong sau %d giây%s" % (time.time() - t0, (" – bản " + ver) if ver else ""))
+        self.cons_before = console_handles()
+        self.reattach()
+        return True
+
+    def reattach(self, wait=45):
+        """Sau khi cập nhật, Edusoft thường được mở lại thành tiến trình mới: bám vào tiến trình đó; không thấy thì tự mở lại."""
+        end = time.time() + wait
+        while time.time() < end:
+            if self.updater_windows():          # trình cập nhật chạy tiếp đợt nữa – wait_login sẽ chờ tiếp
+                return
+            try:
+                self.app = Application(backend="uia").connect(path=self.exe, timeout=1)
+                self._say("Đã bám vào Edusoft mở lại sau cập nhật")
+                return
+            except Exception:
+                pass
+            if self.alive() and self.top_handles():
+                return
+            time.sleep(2)
+        self._say("Sau cập nhật Edusoft không tự mở lại – bộ test mở lại Edusoft")
+        self.launch()
 
     def wait_login(self, timeout=90):
         end = time.time() + timeout
+        gone = None
         while time.time() < end:
+            if self.wait_update():
+                end = time.time() + timeout      # tính lại thời gian chờ khung đăng nhập sau khi cập nhật
+                gone = None
+                continue
+            if not self.alive():
+                # Edusoft tắt mà chưa thấy cửa sổ cập nhật: chờ chút (trình cập nhật có thể đang bật), rồi bám lại / mở lại
+                gone = gone or time.time()
+                if time.time() - gone > 10:
+                    self.reattach(20)
+                    gone = None
+                time.sleep(1)
+                continue
+            gone = None
             for w in self.windows():
                 try:
                     if self.main is None and w.descendants(control_type="Edit") and re.search(r"edusoft", w.window_text(), re.I):
@@ -4902,6 +5022,7 @@ class Run:
     def __init__(self, sc, es):
         self.sc = sc
         self.es = es
+        es.say_cb = self.say
         ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         self.id = "sc-%s-%s" % (sc["code"].lower(), ts)
         self.dir = BASE / "results" / self.id
@@ -11707,7 +11828,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.23-04';
+  var KITVER='2026.11.25-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
