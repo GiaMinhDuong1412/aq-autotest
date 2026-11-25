@@ -70,7 +70,7 @@ function createUpdater({ send, notify, beforeInstall }) {
       set({ status: 'downloading', percent: 0, error: null });
       try { await autoUpdater.downloadUpdate(); } catch (e) { set({ status: 'error', error: shortError(e) }); }
     } else if (state.status === 'downloaded') {
-      if (beforeInstall) beforeInstall();
+      if (beforeInstall) await beforeInstall();
       setImmediate(() => autoUpdater.quitAndInstall(true, true)); // cài im lặng rồi mở lại app
     } else if (state.status !== 'downloading' && state.status !== 'checking') {
       await check(true);

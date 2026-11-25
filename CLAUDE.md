@@ -55,8 +55,14 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   **Popup app**: màn hình chờ khi mở (`showSplash` trong `desktop/src/main.js`), hộp cập nhật giữ mở có thanh tiến trình, "Có gì mới"
   sau khi cập nhật (`thay-doi.json` = tên các PR, `dong_goi_app.py` tạo lúc build; `aqDesktop.getInfo` → bản trước), hướng dẫn người mới
   (màn chào mừng 4 bước lần đầu, thẻ "Bắt đầu" trên Tổng quan, menu tài khoản: Hướng dẫn sử dụng / Có gì mới).
-- **Giao diện mặc định = Mẫu A** (theme `:root:not([data-theme])`): thanh bên mực đậm `--sb-*`, nền `#edf0f3`, nhấn cam `--hi` (nút chính, mục menu đang chọn – chữ mực `--hi-ink`),
-  chữ/link xanh lục `--accent`; trang Test case ACS: danh sách case nền tối (thẻ `.rt-crow`), bước đang làm nền mực. Theme cũ "AQ Xanh" = `data-theme="aq-xanh"`; máy cũ tự chuyển sang Mẫu A một lần (localStorage `aq-mau-a`).
+- **Giao diện mặc định = AQTech** (chốt 25/11, demo artifact https://claude.ai/artifact/65uWijtnf5gHE9UwnK4fMZ; theme `:root:not([data-theme])`): xanh logo `#2B5898`,
+  thanh bên gradient xanh đậm, mục đang chọn là thẻ trắng nổi, logo AQ thật (`.aq-logo` – SVG nét vẽ, theo `currentColor`) ở thanh bên / trang đăng nhập (vẽ một lần khi mở),
+  phông Be Vietnam Pro; Test case ACS: case dạng thẻ sáng, 4 bước dạng vòng số (bước xong nền xanh). Mẫu A cũ = `data-theme="mau-a"`, "AQ Xanh" = `data-theme="aq-xanh"`;
+  máy cũ tự chuyển sang AQTech một lần (localStorage `aq-mau-aq`).
+  **Logo AQ tự vẽ**: popup cập nhật (`AQ_LOGO_BIG`, lớp `.aq-logo.loop` khi đang tải, `.draw` khi có bản / đã tải xong – giữ nguyên nút logo khi chỉ đổi %);
+  app (`desktop/src/main.js`): màn hình chờ `SPLASH_HTML` (vẽ, tối thiểu `SPLASH_MIN_MS`), tắt app / Thoát / cài bản mới → `showBye` (logo thu nét ~1,4 giây) rồi mới đóng;
+  `updater.act` chờ `beforeInstall` (async) trước `quitAndInstall`.
+  Bản thảo các mẫu cũ: artifact https://claude.ai/artifact/SdGBW2x1oNZLUGFZPxG6VV.
   Bản thảo các mẫu: artifact https://claude.ai/artifact/SdGBW2x1oNZLUGFZPxG6VV.
 - Trang **Test case ACS** (menu, trước đây "Test sau sửa lỗi"; `page-retest`, khối JS `RT`, collection `retests/c<caseId>-<lần>`): lấy case coder đã xử lý từ ACS theo
   Query của người dùng → giao máy test (máy chạy thử / máy ảo khai báo ở Máy chạy thử) → chạy kịch bản (script: `kitRunReq`, tay: `startRun`,

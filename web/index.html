@@ -1663,7 +1663,7 @@ td.subtext{display:table-cell;margin:0}
   --sb-mute:color-mix(in srgb,var(--accent) 22%,#8a91a0);--sb-act:color-mix(in srgb,var(--accent) 42%,#0b0e16);
   --sb-acc:color-mix(in srgb,var(--accent) 55%,#fff)}
 /* Mẫu A (mặc định từ 2026.11): thanh bên mực đậm, nền xám xanh sáng, màu nhấn cam hổ phách (nền) + xanh lục đậm (chữ/link) */
-:root:not([data-theme]){
+:root[data-theme="mau-a"]{
   --bg:#edf0f3; --bg-2:#ffffff; --bg-3:#f4f6f8; --raise:#eef1f4;
   --line:#d8dee4; --line-2:#c3ccd4;
   --fg:#0f1b24; --fg-dim:#33424e; --muted:#4a5966;
@@ -1813,55 +1813,122 @@ a.nav-item{text-decoration:none}
 @media(max-width:760px){.qk-open span,.qk-open kbd{display:none}.qk-open{flex:0 0 auto;margin-left:auto}}
 
 /* ================= Mẫu A – chi tiết (chỉ giao diện mặc định) ================= */
-:root:not([data-theme]) .sidebar .brand-mark.sm,:root:not([data-theme]) .brand-mark{background:var(--hi);color:var(--hi-ink)}
-:root:not([data-theme]) .nav-item.active{background:var(--hi);color:var(--hi-ink);font-weight:700}
-:root:not([data-theme]) .nav-item.active::before{display:none}
-:root:not([data-theme]) .nav-item.active .ic,:root:not([data-theme]) .nav-item.active:hover .ic{color:var(--hi-ink)}
-:root:not([data-theme]) .nav-item.active .meta,:root:not([data-theme]) .nav-item.active .meta b{color:var(--hi-ink)}
-:root:not([data-theme]) .nav-item.active:hover{background:#f5b45a;color:var(--hi-ink)}
-:root:not([data-theme]) .sidebar .avatar{background:var(--sb-bg2);color:var(--hi)}
-:root:not([data-theme]) .btn.primary,:root:not([data-theme]) .primary-button{background:var(--hi);color:var(--hi-ink);border:0}
-:root:not([data-theme]) .btn.primary:hover,:root:not([data-theme]) .primary-button:hover{filter:none;background:#f5b45a}
-:root:not([data-theme]) .run-head .tag{background:var(--hi);color:var(--hi-ink)}
+:root[data-theme="mau-a"] .sidebar .brand-mark.sm,:root[data-theme="mau-a"] .brand-mark{background:var(--hi);color:var(--hi-ink)}
+:root[data-theme="mau-a"] .nav-item.active{background:var(--hi);color:var(--hi-ink);font-weight:700}
+:root[data-theme="mau-a"] .nav-item.active::before{display:none}
+:root[data-theme="mau-a"] .nav-item.active .ic,:root[data-theme="mau-a"] .nav-item.active:hover .ic{color:var(--hi-ink)}
+:root[data-theme="mau-a"] .nav-item.active .meta,:root[data-theme="mau-a"] .nav-item.active .meta b{color:var(--hi-ink)}
+:root[data-theme="mau-a"] .nav-item.active:hover{background:#f5b45a;color:var(--hi-ink)}
+:root[data-theme="mau-a"] .sidebar .avatar{background:var(--sb-bg2);color:var(--hi)}
+:root[data-theme="mau-a"] .btn.primary,:root[data-theme="mau-a"] .primary-button{background:var(--hi);color:var(--hi-ink);border:0}
+:root[data-theme="mau-a"] .btn.primary:hover,:root[data-theme="mau-a"] .primary-button:hover{filter:none;background:#f5b45a}
+:root[data-theme="mau-a"] .run-head .tag{background:var(--hi);color:var(--hi-ink)}
 /* Test case ACS: danh sách case nền tối, thẻ case; bàn làm việc sáng */
-:root:not([data-theme]) .rt2-list{background:#13202a;color:#e6ecf0;border-radius:14px;padding:14px 12px;gap:10px}
-:root:not([data-theme]) .rt2-list input,:root:not([data-theme]) .rt2-list select{background:#0b151c;color:#e6ecf0;border-color:#2a3e4d}
-:root:not([data-theme]) .rt2-list input::placeholder{color:#8597a5}
-:root:not([data-theme]) .rt2-list .hint,:root:not([data-theme]) .rt2-list .muted{color:#9fb0bc}
-:root:not([data-theme]) .rt2-list .linkbtn,:root:not([data-theme]) .rt2-list a{color:#f5c27a}
-:root:not([data-theme]) .rt2-list .btn{background:#172631;color:#e6ecf0;border-color:#2a3e4d}
-:root:not([data-theme]) .rt2-ltabs{background:#0b151c;border-color:#0b151c}
-:root:not([data-theme]) .rt2-ltabs button{color:#9fb0bc}
-:root:not([data-theme]) .rt2-ltabs button.on{background:#2a3e4d;color:#fff;box-shadow:none}
-:root:not([data-theme]) .rt2-ltabs .ct,:root:not([data-theme]) .rt2-ltabs button.on .ct{color:#f5c27a}
+:root[data-theme="mau-a"] .rt2-list{background:#13202a;color:#e6ecf0;border-radius:14px;padding:14px 12px;gap:10px}
+:root[data-theme="mau-a"] .rt2-list input,:root[data-theme="mau-a"] .rt2-list select{background:#0b151c;color:#e6ecf0;border-color:#2a3e4d}
+:root[data-theme="mau-a"] .rt2-list input::placeholder{color:#8597a5}
+:root[data-theme="mau-a"] .rt2-list .hint,:root[data-theme="mau-a"] .rt2-list .muted{color:#9fb0bc}
+:root[data-theme="mau-a"] .rt2-list .linkbtn,:root[data-theme="mau-a"] .rt2-list a{color:#f5c27a}
+:root[data-theme="mau-a"] .rt2-list .btn{background:#172631;color:#e6ecf0;border-color:#2a3e4d}
+:root[data-theme="mau-a"] .rt2-ltabs{background:#0b151c;border-color:#0b151c}
+:root[data-theme="mau-a"] .rt2-ltabs button{color:#9fb0bc}
+:root[data-theme="mau-a"] .rt2-ltabs button.on{background:#2a3e4d;color:#fff;box-shadow:none}
+:root[data-theme="mau-a"] .rt2-ltabs .ct,:root[data-theme="mau-a"] .rt2-ltabs button.on .ct{color:#f5c27a}
+:root[data-theme="mau-a"] .rt-clist{background:transparent;border:0;border-radius:0;gap:8px;overflow:visible}
+:root[data-theme="mau-a"] .rt-cg{background:transparent;border:0;color:#9fb0bc;padding:6px 4px 0}
+:root[data-theme="mau-a"] .rt-crow{background:#172631;border:1px solid #2a3e4d;border-radius:12px;color:#e6ecf0;padding:11px 12px}
+:root[data-theme="mau-a"] .rt-clist>.rt-crow:first-child{border-top:1px solid #2a3e4d}
+:root[data-theme="mau-a"] .rt-crow:hover{background:#1c2c38}
+:root[data-theme="mau-a"] .rt-crow.on{background:#1f3242;border-color:var(--hi);box-shadow:none}
+:root[data-theme="mau-a"] .rt-crow .id{color:#fff;font-weight:700}
+:root[data-theme="mau-a"] .rt-crow .mt,:root[data-theme="mau-a"] .rt-crow .when,:root[data-theme="mau-a"] .rt-crow .due{color:#9fb0bc}
+:root[data-theme="mau-a"] .rt-crow .mt b{color:#c9d4dc}
+:root[data-theme="mau-a"] .rt-crow .due.late{color:#ff9b8a}
+:root[data-theme="mau-a"] .rt-crow .md{color:#f5c27a}
+:root[data-theme="mau-a"] .rt-crow .tg{border-color:#2a3e4d;color:#c9d4dc}
+:root[data-theme="mau-a"] .rt-crow .tg.soft{background:#0b151c}
+:root[data-theme="mau-a"] .rt-crow .tg.red{border-color:#ff9b8a;color:#ff9b8a}
+:root[data-theme="mau-a"] .rt2-work{border-radius:14px}
+:root[data-theme="mau-a"] .rt2-wt .id{color:var(--fg);font-size:1.45rem;font-weight:700;letter-spacing:-.02em}
+:root[data-theme="mau-a"] .rt2-wt h3{font-size:1.2rem}
+:root[data-theme="mau-a"] .rt2-pf{background:var(--hi);color:var(--hi-ink);font-family:var(--mono);text-transform:uppercase}
+:root[data-theme="mau-a"] .rt2-steps{border-bottom:0}
+:root[data-theme="mau-a"] .rt2-steps button{min-height:42px;justify-content:center;background:var(--bg-2)}
+:root[data-theme="mau-a"] .rt2-steps button.on{background:var(--fg);border-color:var(--fg);color:#fff}
+:root[data-theme="mau-a"] .rt2-steps button.on .n{background:var(--hi);color:var(--hi-ink)}
+:root[data-theme="mau-a"] .rt2-steps button.done{background:#e3f1ef;border-color:#e3f1ef;color:#0b4f4a}
+:root[data-theme="mau-a"] .rt2-n{background:var(--fg);border-radius:6px;width:20px;height:20px}
+:root[data-theme="mau-a"] .rt2-cx{background:var(--bg-3);border-color:transparent}
+:root[data-theme="mau-a"] .rt2-read{background:var(--bg-2)}
+:root[data-theme="mau-a"] .rt-req{background:#f7f8fa;border:1px solid #e3e8ec;border-radius:10px;padding:10px 12px}
+:root[data-theme="mau-a"] .rt2-g{color:var(--fg-dim);font-weight:700}
+/* ================= Giao diện AQTech (mặc định từ 25/11): xanh logo #2B5898, thanh bên xanh, mục chọn thẻ trắng ================= */
+:root:not([data-theme]){
+  --bg:#f3f6fb; --bg-2:#ffffff; --bg-3:#f6f8fc; --raise:#eef2f9;
+  --line:#e1e7f1; --line-2:#cfd8e6;
+  --fg:#14223a; --fg-dim:#34425a; --muted:#56657c;
+  --accent:#2b5898; --accent-2:#244c85; --accent-deep:#1c3d6e;
+  --pass:#16834f; --fail:#c0392b; --run:#a86300; --skip:#7d8aa0;
+  --on-pass:#fff; --on-run:#fff;
+  --hi:#2b5898; --hi-ink:#ffffff;
+  --sb-bg:#1c3d6e;--sb-bg2:rgba(255,255,255,.10);--sb-line:rgba(255,255,255,.14);--sb-fg:#d5e2f5;--sb-mute:#a3bbdf;--sb-act:#ffffff;--sb-acc:#2b5898;
+  --shadow:0 18px 40px rgba(20,34,58,.16); --card-shadow:0 1px 2px rgba(20,34,58,.05);
+  color-scheme:light}
+:root:not([data-theme]) .sidebar{background:linear-gradient(170deg,#1c3d6e 0%,#2b5898 100%)}
+:root:not([data-theme]) .sidebar-brand{border-bottom-color:var(--sb-line)}
+:root:not([data-theme]) .sidebar .brand-mark.sm{background:transparent;color:#fff;box-shadow:none;width:40px;height:40px}
+:root:not([data-theme]) .sidebar .brand-mark.sm .aq-logo{width:100%;height:100%}
+:root:not([data-theme]) .nav-item{border-radius:10px}
+:root:not([data-theme]) .nav-item:hover{background:rgba(255,255,255,.10);color:#fff}
+:root:not([data-theme]) .nav-item.active{background:#fff;color:#1c3d6e;font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+:root:not([data-theme]) .nav-item.active::before{display:none}
+:root:not([data-theme]) .nav-item.active .ic,:root:not([data-theme]) .nav-item.active:hover .ic{color:#2b5898}
+:root:not([data-theme]) .nav-item.active .meta,:root:not([data-theme]) .nav-item.active .meta b{color:#2b5898}
+:root:not([data-theme]) .nav-item.active:hover{background:#fff;color:#1c3d6e}
+:root:not([data-theme]) .sidebar .avatar{background:rgba(255,255,255,.16);color:#fff}
+:root:not([data-theme]) .sidebar .nav-item:not(.active) .meta.rnmeta.ok{background:rgba(126,224,168,.18);color:#9ff0c2}
+:root:not([data-theme]) .sidebar .nav-item:not(.active) .meta.rnmeta.warn{background:rgba(255,200,110,.18);color:#ffd08a}
+:root:not([data-theme]) .sidebar .nav-item:not(.active) .meta b{color:#9ff0c2}
+:root:not([data-theme]) .sidebar .nav-item:not(.active) .meta .ok,:root:not([data-theme]) .sidebar .nav-item:not(.active) .meta.ok{color:#9ff0c2}
+:root:not([data-theme]) .btn.primary,:root:not([data-theme]) .primary-button{background:#2b5898;color:#fff;border:0}
+:root:not([data-theme]) .btn.primary:hover,:root:not([data-theme]) .primary-button:hover{filter:none;background:#244c85}
+:root:not([data-theme]) .card{border-radius:14px}
+:root:not([data-theme]) .topbar{box-shadow:0 1px 0 var(--line)}
+/* Test case ACS: case dạng thẻ sáng, bước dạng vòng số */
 :root:not([data-theme]) .rt-clist{background:transparent;border:0;border-radius:0;gap:8px;overflow:visible}
-:root:not([data-theme]) .rt-cg{background:transparent;border:0;color:#9fb0bc;padding:6px 4px 0}
-:root:not([data-theme]) .rt-crow{background:#172631;border:1px solid #2a3e4d;border-radius:12px;color:#e6ecf0;padding:11px 12px}
-:root:not([data-theme]) .rt-clist>.rt-crow:first-child{border-top:1px solid #2a3e4d}
-:root:not([data-theme]) .rt-crow:hover{background:#1c2c38}
-:root:not([data-theme]) .rt-crow.on{background:#1f3242;border-color:var(--hi);box-shadow:none}
-:root:not([data-theme]) .rt-crow .id{color:#fff;font-weight:700}
-:root:not([data-theme]) .rt-crow .mt,:root:not([data-theme]) .rt-crow .when,:root:not([data-theme]) .rt-crow .due{color:#9fb0bc}
-:root:not([data-theme]) .rt-crow .mt b{color:#c9d4dc}
-:root:not([data-theme]) .rt-crow .due.late{color:#ff9b8a}
-:root:not([data-theme]) .rt-crow .md{color:#f5c27a}
-:root:not([data-theme]) .rt-crow .tg{border-color:#2a3e4d;color:#c9d4dc}
-:root:not([data-theme]) .rt-crow .tg.soft{background:#0b151c}
-:root:not([data-theme]) .rt-crow .tg.red{border-color:#ff9b8a;color:#ff9b8a}
+:root:not([data-theme]) .rt-cg{background:transparent;border:0;padding:6px 4px 0;color:var(--muted)}
+:root:not([data-theme]) .rt-crow{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+:root:not([data-theme]) .rt-clist>.rt-crow:first-child{border-top:1px solid var(--line)}
+:root:not([data-theme]) .rt-crow:hover{border-color:var(--line-2);background:var(--bg-2)}
+:root:not([data-theme]) .rt-crow.on{background:var(--bg-2);border-color:#2b5898;box-shadow:0 0 0 3px #e3ebf7}
+:root:not([data-theme]) .rt-crow .id{font-weight:700}
+:root:not([data-theme]) .rt2-ltabs button.on{background:#2b5898;color:#fff}
 :root:not([data-theme]) .rt2-work{border-radius:14px}
-:root:not([data-theme]) .rt2-wt .id{color:var(--fg);font-size:1.45rem;font-weight:700;letter-spacing:-.02em}
-:root:not([data-theme]) .rt2-wt h3{font-size:1.2rem}
-:root:not([data-theme]) .rt2-pf{background:var(--hi);color:var(--hi-ink);font-family:var(--mono);text-transform:uppercase}
-:root:not([data-theme]) .rt2-steps{border-bottom:0}
-:root:not([data-theme]) .rt2-steps button{min-height:42px;justify-content:center;background:var(--bg-2)}
-:root:not([data-theme]) .rt2-steps button.on{background:var(--fg);border-color:var(--fg);color:#fff}
-:root:not([data-theme]) .rt2-steps button.on .n{background:var(--hi);color:var(--hi-ink)}
-:root:not([data-theme]) .rt2-steps button.done{background:#e3f1ef;border-color:#e3f1ef;color:#0b4f4a}
-:root:not([data-theme]) .rt2-n{background:var(--fg);border-radius:6px;width:20px;height:20px}
-:root:not([data-theme]) .rt2-cx{background:var(--bg-3);border-color:transparent}
-:root:not([data-theme]) .rt2-read{background:var(--bg-2)}
-:root:not([data-theme]) .rt-req{background:#f7f8fa;border:1px solid #e3e8ec;border-radius:10px;padding:10px 12px}
-:root:not([data-theme]) .rt2-g{color:var(--fg-dim);font-weight:700}
+:root:not([data-theme]) .rt2-steps{border-bottom:0;gap:0}
+:root:not([data-theme]) .rt2-steps button{border:0;background:none;border-radius:0;justify-content:flex-start;font-weight:500}
+:root:not([data-theme]) .rt2-steps button .n{width:26px;height:26px;border:2px solid var(--line-2);background:var(--bg-2);color:var(--muted);font:700 .76rem var(--body)}
+:root:not([data-theme]) .rt2-steps button.on{color:var(--fg);font-weight:700}
+:root:not([data-theme]) .rt2-steps button.on .n{border-color:#2b5898;background:var(--bg-2);color:#2b5898}
+:root:not([data-theme]) .rt2-steps button.done{color:var(--fg-dim)}
+:root:not([data-theme]) .rt2-steps button.done .n{background:#2b5898;border-color:#2b5898;color:#fff}
+:root:not([data-theme]) .rt2-pf{background:#e3ebf7;color:#1c3d6e}
+/* logo AQ (nét vẽ, theo màu chữ) + hiệu ứng tự vẽ */
+.aq-logo{display:block;width:70%;height:70%;overflow:visible}
+.aq-logo path{fill:none;stroke:currentColor;stroke-width:34;stroke-linejoin:miter;stroke-miterlimit:6}
+.aq-logo text{fill:currentColor}
+.aq-logo.draw path,.aq-logo.loop path{stroke-dasharray:1 1}
+.aq-logo.draw .r{animation:aqD 1s ease-out both}.aq-logo.draw .a{animation:aqD .9s .7s ease-out both}.aq-logo.draw .t{animation:aqT .5s 1.4s both}
+.aq-logo.loop .r{animation:aqLR 3.6s linear infinite}.aq-logo.loop .a{animation:aqLA 3.6s linear infinite}.aq-logo.loop .t{animation:aqLT 3.6s linear infinite}
+@keyframes aqD{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes aqT{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes aqLR{0%{stroke-dashoffset:1}36%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-1}}
+@keyframes aqLA{0%,26%{stroke-dashoffset:1}58%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-1}}
+@keyframes aqLT{0%,55%{opacity:0}70%,82%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.aq-logo path{stroke-dasharray:none!important;animation:none!important}.aq-logo .t{animation:none!important}}
+.upd-top{display:grid;justify-items:center;text-align:center;gap:4px}
+.upd-logo{display:block;width:132px;height:132px;color:#2b5898}
+.upd-logo .aq-logo{width:100%;height:100%}
+.upd-top h3{font-size:1.06rem;margin:4px 0 0}.upd-top p{margin:0;font-size:.78rem;color:var(--muted)}
 </style>
 
 <!-- ================= LOGIN ================= -->
@@ -1869,7 +1936,7 @@ a.nav-item{text-decoration:none}
   <div class="login-card">
   <div class="login-side">
     <div class="brand-lockup">
-      <span class="brand-mark">AQ</span>
+      <span class="brand-mark" aria-label="AQ"><svg class="aq-logo" viewBox="250 115 520 540" aria-hidden="true"><path class="r" pathLength="1" d="M665.7 409.4A200.5 200.5 0 1 0 615.2 484.1L748 636"/><path class="a" pathLength="1" d="M522 373L412 482L541 234L748 636"/></svg></span>
       <div><strong>AQTech</strong><span class="eyebrow">AUTOTEST&nbsp;CONSOLE</span></div>
     </div>
     <div class="login-copy">
@@ -1924,7 +1991,7 @@ a.nav-item{text-decoration:none}
   <div class="mobile-overlay" id="overlay"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <span class="brand-mark sm">AQ</span>
+      <span class="brand-mark sm" aria-label="AQ"><svg class="aq-logo draw" viewBox="250 115 520 540" aria-hidden="true"><path class="r" pathLength="1" d="M665.7 409.4A200.5 200.5 0 1 0 615.2 484.1L748 636"/><path class="a" pathLength="1" d="M522 373L412 482L541 234L748 636"/></svg></span>
       <div><strong>AQ Auto Test</strong><span class="sub">Edusoft · Netweb · AQTech</span></div>
       <button class="sidebar-close" id="sidebarClose" aria-label="Đóng menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
@@ -7947,7 +8014,8 @@ QUAY VIDEO (TÙY CHỌN)
 
   /* theme: gốc tối/sáng + 5 theme màu; chỉ đổi màu, không đổi font */
   var THEMES=[
-    {id:'',n:'Mẫu A (mặc định)',d:'Sáng · thanh bên mực đậm · nhấn cam',c:['#edf0f3','#0b151c','#f2a33a']},
+    {id:'',n:'AQTech (mặc định)',d:'Sáng · xanh logo AQ · thanh bên xanh',c:['#f3f6fb','#1c3d6e','#2b5898']},
+    {id:'mau-a',n:'Mẫu A',d:'Sáng · thanh bên mực đậm · nhấn cam',c:['#edf0f3','#0b151c','#f2a33a']},
     {id:'aq-xanh',n:'AQ Xanh',d:'Sáng · xanh dương · thanh bên xanh đậm',c:['#f2f5fa','#0b1324','#2563eb']},
     {id:'dark',n:'Tối (gốc)',d:'Nền đêm · tím',c:['#0a0e16','#141b2b','#7c6cff']},
     {id:'light',n:'Sáng (gốc)',d:'Nền trắng · tím',c:['#eef1f7','#ffffff','#6a4eff']},
@@ -7968,7 +8036,7 @@ QUAY VIDEO (TÙY CHỌN)
     if(id)document.documentElement.setAttribute('data-theme',id);else document.documentElement.removeAttribute('data-theme');
     try{if(id)localStorage.setItem('aq-theme',id);else localStorage.removeItem('aq-theme');}catch(e){}
     renderThemes();}
-  try{if(!localStorage.getItem('aq-mau-a')){localStorage.removeItem('aq-theme');localStorage.setItem('aq-mau-a','1');}}catch(e){}   /* đổi sang Mẫu A một lần */
+  try{if(!localStorage.getItem('aq-mau-aq')){localStorage.removeItem('aq-theme');localStorage.setItem('aq-mau-a','1');localStorage.setItem('aq-mau-aq','1');}}catch(e){}   /* đổi sang giao diện AQTech một lần (25/11) */
   try{var t=localStorage.getItem('aq-theme');if(t&&THEMES.some(function(x){return x.id===t;}))document.documentElement.setAttribute('data-theme',t);}catch(e){}
   $('#themeIcon').innerHTML=palette;renderThemes();
   $('#themeToggle').addEventListener('click',function(e){e.stopPropagation();$('#accountMenu').classList.add('hidden');$('#themeMenu').classList.toggle('hidden');});
@@ -11977,16 +12045,22 @@ QUAY VIDEO (TÙY CHỌN)
   function appModal(u){var m=$('#appUpdModal');if(!m){m=document.createElement('div');m.id='appUpdModal';m.className='sync-ov';document.body.appendChild(m);
       m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-x]'))m.remove();else if(e.target.closest('[data-go]')&&!e.target.closest('[data-go]').disabled)window.aqDesktop.updateAct();});}
     appModalFill(m,u);}
+  var AQ_LOGO_BIG='<svg class="aq-logo %M" viewBox="250 115 520 560" aria-hidden="true"><path class="r" pathLength="1" d="M665.7 409.4A200.5 200.5 0 1 0 615.2 484.1L748 636"/><path class="a" pathLength="1" d="M522 373L412 482L541 234L748 636"/>'+
+    '<g class="t"><text x="262" y="644" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" textLength="118" lengthAdjust="spacingAndGlyphs">AQ</text>'+
+    '<text x="400" y="641" font-family="Arial,Helvetica,sans-serif" font-size="50" textLength="296" lengthAdjust="spacingAndGlyphs">TECHNOLOGY</text></g></svg>';
   function appModalFill(m,u){var st=u.status,dl=st==='downloading',done=st==='downloaded',err=st==='error',pc=dl?(u.percent||0):done?100:0;
     var steps=[['Tải bản mới',dl?'cur':done?'ok':''],['Cài đặt (vài giây)',done?'cur':''],['Mở lại app',done?'':'']];
-    m.innerHTML='<div class="sy-box upd-box" role="dialog" aria-modal="true" aria-labelledby="updT"><div class="upd-hero"><span class="upd-ic">'+(done?'✓':'⬆')+'</span><div><h3 id="updT">'+
-        (done?'Bản '+esc(u.version)+' đã sẵn sàng':'Có phiên bản mới '+esc(u.version||''))+'</h3><p>Đang dùng bản '+esc(u.current||'')+' · dữ liệu trên máy giữ nguyên</p></div></div>'+
+    /* logo AQ tự vẽ: đang tải = vẽ lặp; còn lại = vẽ một lần. Giữ nguyên nút logo khi chỉ đổi % để hiệu ứng không bị chạy lại */
+    var lm=dl?'loop':'draw',keep=m.querySelector('.upd-logo[data-m="'+lm+'"]');
+    m.innerHTML='<div class="sy-box upd-box" role="dialog" aria-modal="true" aria-labelledby="updT"><div class="upd-top"><span class="upd-logo" data-m="'+lm+'">'+AQ_LOGO_BIG.replace('%M',lm)+'</span><h3 id="updT">'+
+        (done?'Bản '+esc(u.version)+' đã sẵn sàng':dl?'Đang tải bản '+esc(u.version||''):'Có phiên bản mới '+esc(u.version||''))+'</h3><p>Đang dùng bản '+esc(u.current||'')+' · dữ liệu trên máy giữ nguyên</p></div>'+
       (u.portable?'<div class="upd-body"><p>Bản không cài (portable) không tự cập nhật được: bấm <b>Tải bản mới</b> để mở trang tải, chạy file Setup một lần là từ sau app tự cập nhật.</p></div>':
        '<ol class="upd-steps">'+steps.map(function(x,i){return '<li class="'+x[1]+'"><span>'+(x[1]==='ok'?'✓':i+1)+'</span>'+x[0]+'</li>';}).join('')+'</ol>'+
        '<div class="upd-prog'+(dl||done?'':' idle')+'"><i style="width:'+pc+'%"></i></div><p class="upd-note">'+
         (dl?'Đang tải '+pc+'% – vẫn dùng app bình thường trong lúc tải.':done?'Bấm <b>Khởi động lại</b>: app đóng, cài bản mới rồi tự mở lại.':err?'<span style="color:var(--fail)">Lỗi: '+esc(u.error||'')+'</span>':'Tải về chạy nền, xong app hỏi khởi động lại. Có gì mới sẽ hiện sau khi mở lại.')+'</p>')+
       '<div class="upd-foot"><button class="btn" data-x>'+(done?'Để sau':dl?'Ẩn':'Để sau')+'</button><button class="btn primary" data-go'+(dl?' disabled':'')+'>'+
-        (done?'Khởi động lại':dl?'Đang tải…':u.portable?'Tải bản mới':err?'Thử lại':'Cập nhật ngay')+'</button></div></div>';}
+        (done?'Khởi động lại':dl?'Đang tải…':u.portable?'Tải bản mới':err?'Thử lại':'Cập nhật ngay')+'</button></div></div>';
+    if(keep){var nw=m.querySelector('.upd-logo');if(nw)nw.parentNode.replaceChild(keep,nw);}}
   /* ===== Có gì mới: sau khi cập nhật (thay-doi.json do tools/dong_goi_app.py tạo lúc build) ===== */
   var WN={data:null};
   function wnLoad(){return WN.data?Promise.resolve(WN.data):fetch('thay-doi.json').then(function(r){return r.ok?r.json():{items:[]};}).catch(function(){return {items:[]};}).then(function(d){WN.data=d;return d;});}
