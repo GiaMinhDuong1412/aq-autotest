@@ -181,6 +181,10 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
   (cây UI Automation) vào thư mục lượt chạy – đọc file đó để sửa tên ô/nút trong `auto`.
 - Ô nhập DevExpress: phải gõ phím thật sau khi đặt focus bằng UIA (`set_field`); xóa bằng End + Backspace (Ctrl+A không chạy);
   không dùng Invoke cho nút mở hộp thoại; Edusoft chạy quyền admin nên bộ test phải chạy quyền admin (Agent lo việc này).
+- **Edusoft tự cập nhật khi mở** (bản client cũ hơn máy chủ): hiện cửa sổ dòng lệnh "Starting client update… / Updating version 2026.11K.39…".
+  `Edusoft.launch` chụp danh sách cửa sổ dòng lệnh có sẵn (`console_handles`, trừ cửa sổ của bộ test); `wait_login` → `wait_update` thấy cửa sổ
+  dòng lệnh mới thì **chờ** (không gõ/bấm gì, tối đa 15 phút, popup tiến trình báo số giây, đọc bản mới qua TextPattern), xong thì `reattach`
+  (bám tiến trình Edusoft mở lại bằng `connect(path=exe)`, không thấy thì tự mở lại) và tính lại thời gian chờ khung đăng nhập – không coi là "khung đen".
 - **Không gửi phím Esc** trên màn hình Edusoft: Esc đóng màn hình chức năng, ở cửa sổ chính hỏi "Thoát khỏi chương trình?"
   (kit tự bấm Không). Tìm dòng bằng ô tìm kiếm của cột, không dùng Ctrl+F.
 - Kết quả Lưu/Xóa thường hiện ở **thanh trạng thái** dưới đáy (vd "Xóa dữ liệu thành công"), không phải hộp thoại; xóa xong

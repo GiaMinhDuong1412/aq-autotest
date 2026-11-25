@@ -468,3 +468,8 @@ trên lưới (vd `#lockKhoaHoc` "Chọn khóa học", `#dat_TuNgay`/`#dat_DenNg
   Lệnh `menu_time:`
   tự nhấn, mở menu, đọc chữ thời gian (hộp thông báo / thanh trạng thái / tiêu đề), chụp `thoi-gian-mo-form.png`, đóng hộp bằng OK/Đóng.
 - **Ctrl+Shift+E**: chi tiết lỗi EX · **Ctrl+Shift+F**: menu code.
+
+## Edusoft tự cập nhật khi mở (người dùng báo 25/11)
+- Bản client cũ hơn máy chủ: mở Edusoft.NET.exe sẽ hiện cửa sổ **cmd.exe** "Starting client update…… / Updating version 2026.11K.39……".
+- Không gõ phím, không đóng cửa sổ đó. Chờ tới khi cửa sổ tự tắt; Edusoft mở lại rồi mới hiện khung đăng nhập.
+- Bộ test: `wait_update` (trong `wait_login`) tự chờ, ghi "Edusoft đang tự cập nhật lên bản …" vào nhật ký lượt chạy.
