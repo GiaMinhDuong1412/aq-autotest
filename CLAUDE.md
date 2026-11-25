@@ -67,7 +67,11 @@ chạy kịch bản thật trên Edusoft ở máy Windows. Người dùng nói t
 - Trang **Test case ACS** (menu, trước đây "Test sau sửa lỗi"; `page-retest`, khối JS `RT`, collection `retests/c<caseId>-<lần>`): lấy case coder đã xử lý từ ACS theo
   Query của người dùng → giao máy test (máy chạy thử / máy ảo khai báo ở Máy chạy thử) → chạy kịch bản (script: `kitRunReq`, tay: `startRun`,
   lượt chạy gắn phiếu qua `SC.run.retest` / `rtLink`) → duyệt ảnh từng bước → **Đạt**: điền nội dung test vào case; **Không đạt**: mở lại case,
-  gán `tiepnhanadmin`, điền nội dung test lỗi. Kết nối ACS "cách 2" như app `aq-case-widget`: `desktop/src/acs.js` mở cửa sổ ACS (partition
+  gán `tiepnhanadmin`, điền nội dung test lỗi.
+  **Ghi ACS theo quy trình người dùng (25/11, skill `ghi-ket-qua-acs`, `kb/Cach-test/Test - Ghi ket qua vao ACS.md`; CST = tên cũ ACS)**: Đạt = Nội dung Tester test → Gửi (lời gọi `write.n`),
+  Kết quả test = Đúng → Save (`write.method/path/f`, `full` = GET rồi ghép), link merge (pullrequest TFS trong case, `rtPrLinks`), người test tự Complete PR → dán ảnh bước 4 → `rtMergeSend`;
+  Không đạt = Mở lại case + tiepnhanadmin + Mở Case → Save. Khảo sát ACS dùng mã `AQTEST-xxxxx` để nhận lời gọi Gửi (`rtSuggest`). Đạt mà còn mục lỗi / bước kịch bản chưa đạt → `rtPassWarn` chặn,
+  phải tick "Vẫn kết luận Đạt". App/Claude **không** thao tác TFS (không Approve / Complete). Kết nối ACS "cách 2" như app `aq-case-widget`: `desktop/src/acs.js` mở cửa sổ ACS (partition
   `persist:acs`), người dùng tự đăng nhập, app gọi API cùng phiên (`/auth/me`, `/cs/lookups`, `/cs/query`…) qua `aqDesktop.acs.call`
   (chỉ đường dẫn `/auth/me`, `/cs/…`). Cách ghi kết quả (`settings/acs.write`: method, path `{id}`, tên trường, giá trị) và đường dẫn Query đã lưu
   (`settings/acs.queriesPath`) cấu hình ở tab Thiết lập ACS, có **Khảo sát ACS** ghi lại lời gọi khi người dùng tự thao tác; chỉ ghi thẳng lên ACS
