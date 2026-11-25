@@ -172,7 +172,8 @@ def build(kb):
             continue
         tests[f.stem] = {'ten': str(p.get('ten') or f.stem), 'dh': str(p.get('dau_hieu')), 'pf': str(p.get('test_tren') or ''),
                          'buoc': L(p.get('buoc')), 'kt': L(p.get('kiem_tra')), 'kah': L(p.get('khong_anh_huong')),
-                         'tt': int(p.get('thu_tu') or 9) if str(p.get('thu_tu') or '9').isdigit() else 9}
+                         'tt': int(p.get('thu_tu') or 9) if str(p.get('thu_tu') or '9').isdigit() else 9,
+                         'mt': L(p.get('ma_tran')), 'mtb': L(p.get('ma_tran_buoc'))}
     webs = {}                                     # trang Netweb (Web/*.md): đọc / ghi dữ liệu nào, chỉnh định Edusoft nào
     for f in sorted((kb / 'Web').glob('*.md')) if (kb / 'Web').is_dir() else []:
         p, _ = parse_note(f.read_text('utf-8', errors='replace'))
