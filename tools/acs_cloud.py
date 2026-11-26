@@ -11,6 +11,10 @@ lấy phiên (cookie `kb_token`, sống ~5 giờ). Cookie lưu ở ~/.aq-acs/ (n
     python tools/acs_cloud.py case <id>             # nội dung case dạng chữ: thông tin, KH, BA, Dev, test, lịch sử
     python tools/acs_cloud.py get </cs/...>         # JSON thô (chỉ GET, chỉ /cs/… và /auth/me)
     python tools/acs_cloud.py att <id> [thư mục]    # tải ảnh / file đính kèm /cs/att/<id>
+    python tools/acs_cloud.py agent <id>            # "Phân tích case" đã lưu của agent EduSupport AI (GET /sup/cases/<id>/agent)
+    python tools/acs_cloud.py similar <id>          # case tương tự đã lưu (GET /dev/cases/<id>/similar?only_saved=true)
+    python tools/acs_cloud.py chats                 # các cuộc trò chuyện EduSupport AI của tài khoản (GET /chat/sessions)
+    python tools/acs_cloud.py chat <sessionId>      # nội dung một cuộc trò chuyện (câu hỏi + trả lời + case nguồn)
 
 Không có lệnh ghi (POST/PUT/PATCH/DELETE) – giữ nguyên như vậy (quy tắc dự án: Claude không ghi lên ACS).
 Không in cookie / mã ra màn hình. Mạng: môi trường cloud phải cho phép host acs.aqtech.io.vn.
@@ -30,7 +34,8 @@ BASE = 'https://acs.aqtech.io.vn'
 DIR = Path(os.environ.get('AQ_ACS_DIR') or Path.home() / '.aq-acs')
 JAR = DIR / 'cookies.txt'
 STATE = DIR / 'state.txt'
-PATH_OK = re.compile(r'^/(auth/me|cs/)[A-Za-z0-9_\-./?=&%,@:+~]*$')
+PATH_OK = re.compile(r'^/(auth/me|cs/|sup/cases/\d+/agent$|dev/cases/\d+/similar|chat/sessions|chat/agent/nguon/|chat/guides/)'
+                     r'[A-Za-z0-9_\-./?=&%,@:+~]*$')
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -59,7 +64,7 @@ def save(jar):
 
 def fetch(path, raw=False):
     if not PATH_OK.match(path):
-        sys.exit('Chỉ đọc /auth/me hoặc /cs/…: %s' % path)
+        sys.exit('Chỉ đọc /auth/me, /cs/…, phân tích agent, case tương tự, trò chuyện: %s' % path)
     op, jar = opener()
     try:
         with op.open(BASE + path, timeout=60) as r:
@@ -154,6 +159,7 @@ def case(cid):
     for c in cm:
         h = (c.get('edits') or [{}])[-1].get('html') or c.get('html')
         print('\n## Trao đổi (%s) %s – %s\n%s' % (c.get('kenh') or '', c.get('author'), (c.get('created_at') or '')[:16], text(h)))
+    agent(cid, quiet=True)
     try:
         hs = fetch('/cs/cases/%s/history' % int(cid)).get('history') or []
     except SystemExit:
@@ -166,6 +172,69 @@ def case(cid):
             ex = [k for k in ch if k.endswith('_html') or k == 'dev_comment']
             print('- %s %s: %s%s' % ((x.get('changed_at') or '')[:16], x.get('changed_by'), json.dumps(sm, ensure_ascii=False)[:240],
                                     (' (+ sửa %s)' % ', '.join(ex)) if ex else ''))
+
+
+def md(s):
+    s = text(s) if s and '<' in s else (s or '')
+    return s.strip()
+
+
+def agent(cid, quiet=False):
+    """Phân tích case của agent EduSupport AI (nút "Phân tích" ở trang case Support) – chỉ đọc bản đã lưu."""
+    try:
+        d = fetch('/sup/cases/%s/agent' % int(cid))
+    except SystemExit as e:
+        if quiet:
+            return False
+        raise
+    runs = [r for r in (d.get('runs') or []) if r.get('status') == 'ok' and (r.get('reply') or '').strip()]
+    if not runs:
+        if not quiet:
+            print('Case %s chưa có phân tích của agent (trên ACS: mở case ở Support › bấm Phân tích).' % cid)
+        return False
+    r = runs[-1]
+    print('\n## Phân tích của EduSupport AI (%s, %s%s)' % ((r.get('at') or '')[:16], r.get('username') or '',
+          ', %s lần' % len(runs) if len(runs) > 1 else ''))
+    print(md(r.get('reply')))
+    cs = []
+    for x in r.get('cases') or []:
+        cs.append('#%s %s' % (x.get('id'), (x.get('title') or x.get('tieu_de') or '')[:90]))
+    for n in r.get('nguon') or []:
+        ma = str((n.get('tham_so') or {}).get('ma') or '').lstrip('#')
+        if ma and not any(c.startswith('#%s ' % ma) for c in cs):
+            cs.append('#%s (%s)' % (ma, n.get('cong_cu') or n.get('loai') or 'nguồn'))
+    if cs:
+        print('\nCase agent đã tra: ' + '; '.join(cs[:20]))
+    return True
+
+
+def similar(cid):
+    d = fetch('/dev/cases/%s/similar?only_saved=true' % int(cid))
+    xs = d.get('cases') or d.get('similar') or d.get('items') or (d if isinstance(d, list) else [])
+    if not xs:
+        print('Chưa có case tương tự đã lưu. JSON: %s' % json.dumps(d, ensure_ascii=False)[:400])
+    for x in xs:
+        print('- #%s %s %s' % (x.get('id') or x.get('case_id'), x.get('school_code') or '', (x.get('title') or '')[:110]),
+              ('– ' + md(x.get('ly_do') or x.get('reason') or ''))[:200] if (x.get('ly_do') or x.get('reason')) else '')
+
+
+def chats():
+    for x in fetch('/chat/sessions').get('sessions') or []:
+        print('- %s  %s  %s' % (x.get('session_id') or x.get('sessionId') or x.get('id'), (x.get('updated_at') or x.get('created_at') or '')[:16],
+                                (x.get('title') or x.get('first_message') or '')[:100]))
+
+
+def chat(sid):
+    d = fetch('/chat/sessions/%s' % urllib.parse.quote(sid, safe=''))
+    for m in d.get('messages') or []:
+        who = 'Hỏi' if m.get('role') == 'user' else 'Agent'
+        print('\n### %s (%s)\n%s' % (who, (m.get('created_at') or '')[:16], md(m.get('text'))))
+        pl = m.get('payload') or {}
+        rc = pl.get('retrievalData') or pl.get('cases') or []
+        if isinstance(rc, dict):
+            rc = rc.get('cases') or rc.get('items') or []
+        if rc and isinstance(rc, list):
+            print('Nguồn: ' + '; '.join('#%s' % (c.get('id') or c.get('case_id') or c.get('ma')) for c in rc[:15] if isinstance(c, dict)))
 
 
 def att(aid, out='.'):
@@ -194,6 +263,14 @@ def main():
         print(json.dumps(fetch(a[1]), ensure_ascii=False, indent=1))
     elif cmd == 'att' and len(a) > 1:
         att(a[1], a[2] if len(a) > 2 else '.')
+    elif cmd == 'agent' and len(a) > 1:
+        agent(a[1])
+    elif cmd == 'similar' and len(a) > 1:
+        similar(a[1])
+    elif cmd == 'chats':
+        chats()
+    elif cmd == 'chat' and len(a) > 1:
+        chat(a[1])
     else:
         sys.exit(__doc__)
 
