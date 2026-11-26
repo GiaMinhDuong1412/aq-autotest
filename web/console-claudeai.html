@@ -10065,7 +10065,7 @@ QUAY VIDEO (TÙY CHỌN)
     /* Gửi dùng API comments của ACS → Lưu luôn là PATCH /cs/cases/{id} (cấu hình cũ từ Khảo sát có thể ghi nhầm Save = …/comments → 422) */
     o.api2=rtNote2(o.n)&&!w.custom;if(o.api2){o.method='PATCH';o.path='/cs/cases/{id}';o.wrap='';o.full=false;o.f.state='test_state';o.f.assignee='assignee_raw';o.verified=true;}return o;}
   /* lỗi ACS (FastAPI): detail là chuỗi hoặc danh sách {loc,msg} */
-  function rtDetail(d){if(d==null)return '';if(typeof d==='string')return d;
+  function rtErrDetail(d){if(d==null)return '';if(typeof d==='string')return d;
     if(Array.isArray(d))return d.map(function(x){return x&&x.msg?((x.loc||[]).filter(function(k){return k!=='body';}).join('.')+(x.loc&&x.loc.length?': ':'')+x.msg):JSON.stringify(x);}).join('; ');
     try{return JSON.stringify(d).slice(0,300);}catch(e){return String(d);}}
   /* link merge (PR TFS) coder / TechLead ghi trong case: tìm trong toàn bộ dữ liệu case đã đọc */
@@ -10079,7 +10079,7 @@ QUAY VIDEO (TÙY CHỌN)
   /* ảnh → tải lên ACS (/cs/attachments) → id; app cũ chưa có upload thì bỏ ảnh (RT.imgSkip) */
   async function rtUpShot(caseId,id,i){var a=rtA();if(!a||!a.upload)return '';var d=await rtShotData(id),b64=d.slice(d.indexOf(',')+1);
     var r=await a.upload('aqtest-'+caseId+'-'+(i+1)+'.jpg',b64,'image/jpeg');
-    if(!r||r.error||r.status<200||r.status>=300)throw new Error('tải ảnh lên ACS lỗi'+(r&&r.status?' (mã '+r.status+(r.data&&r.data.detail?' – '+rtDetail(r.data.detail):'')+')':r&&r.error?' – '+r.error:''));
+    if(!r||r.error||r.status<200||r.status>=300)throw new Error('tải ảnh lên ACS lỗi'+(r&&r.status?' (mã '+r.status+(r.data&&r.data.detail?' – '+rtErrDetail(r.data.detail):'')+')':r&&r.error?' – '+r.error:''));
     var aid=r.data&&(r.data.id||r.data.att_id||(r.data.attachment&&r.data.attachment.id));if(!aid)throw new Error('ACS không trả mã ảnh');return String(aid);}
   async function rtNoteBody(w,text,shots,caseId){var v=text,img=0;
     if(w.n.html){v=rtTxtHtml(text);if(w.n.img&&shots&&shots.length){var a=rtA();
@@ -10105,7 +10105,7 @@ QUAY VIDEO (TÙY CHỌN)
   async function rtCall(m,p,b){var a=rtA();if(!a)throw new Error('Kết nối ACS chỉ có trong app AQ Auto Test.');
     var r=await a.call(m,p,b);if(!r)throw new Error('Không gọi được ACS.');if(r.error)throw new Error(r.error);
     if(r.status===401||r.status===403){RT.acs={st:'login',me:null,err:''};throw new Error('Phiên ACS đã hết – đăng nhập lại.');}
-    if(r.status<200||r.status>=300)throw new Error(String(p).split('?')[0]+' trả về mã '+r.status+(r.data&&typeof r.data==='object'&&r.data.detail?' – '+rtDetail(r.data.detail):''));
+    if(r.status<200||r.status>=300)throw new Error(String(p).split('?')[0]+' trả về mã '+r.status+(r.data&&typeof r.data==='object'&&r.data.detail?' – '+rtErrDetail(r.data.detail):''));
     return r.data;}
   function rtSetStatus(s){s=s||{};
     if(s.ok){var was=RT.acs.st==='ok'&&RT.acs.me&&RT.acs.me.username===s.me.username;RT.acs={st:'ok',me:s.me,err:''};renderRetest();if(!was)rtAfterLogin();return;}
@@ -11052,7 +11052,8 @@ QUAY VIDEO (TÙY CHỌN)
     var nChk=(dr.items||[]).filter(function(x){return x.g==='check'&&String(x.t||'').trim();}).length,ok=[E.envOk,E.accOk,nChk>0];
     ['Môi trường','Tài khoản','Đầu ra'].forEach(function(k,i){if(sp[i]){sp[i].className=ok[i]?'ok':'no';sp[i].textContent=(ok[i]?'✓ ':'○ ')+k;}});
     var b=bar.querySelector('[data-rt="take"]');if(b)b.disabled=RT.busy||!SC.canWrite||!(ok[0]&&ok[1]&&ok[2]);}
-  function rtW2(id,c,a,dr,rt){var lock=rt&&(rt.state==='pass'||rt.state==='fail'),view=rt&&!RT.replan; /* sửa plan được cả khi Chờ kết luận – chỉ khoá khi đã kết luận */
+  function rtW2(id,c,a,dr,rt){var lock=rt&&(rt.state==='pass'||rt.state==='fail'),view=rt&&!RT.replan;
+    if(rtA()&&RT.acs.st==='ok'&&!RT.det[id]&&!RT.detBusy[id]&&!RT.detErr[id])setTimeout(function(){rtDetail(id);},0); /* vào thẳng bước 2: vẫn đọc chi tiết case để soạn plan */ /* sửa plan được cả khi Chờ kết luận – chỉ khoá khi đã kết luận */
     var oldPlan=view&&rt.plan&&(rt.plan.items||[]).some(function(x){return /làm đúng thao tác KH nêu|^Vào chỗ KH phản ánh/i.test(x.t||'');});
     var src=view&&rt.plan?{env:rt.plan.env,items:rt.plan.items,pf:rt.platform,scen:rt.scenarioId}:{env:dr.env,items:dr.items,pf:dr.pf,scen:dr.scen};
     var edit=!lock&&!view,E=rtEnvOf(c,dr);
@@ -11345,7 +11346,8 @@ QUAY VIDEO (TÙY CHỌN)
       if(act==='envpick'){var d8=dr();if(d8&&window.aqDesktop&&aqDesktop.pickFile)aqDesktop.pickFile({title:'Chọn Edusoft.NET.exe bản test',defaultPath:d8.envPath||'',filters:[{name:'Edusoft.NET.exe',extensions:['exe']}]}).then(function(f){if(f){d8.envPath=f;renderRetest();}});return;}
       if(act==='kbopen'){rtKit('open_kb',{}).catch(function(e){RT.mcpErr=errMsg(e);renderRetest();});return;}
       if(act==='kbreload'){kbLive(true);RT.flash='Đã đọc lại bản đồ từ ghi chú KB.';renderRetest();return;}
-      if(act==='regen'){var d4=dr();if(d4){d4.edited=false;rtRegen(RT.cur);}renderRetest();return;}
+      if(act==='regen'){var id4=RT.cur,go4=function(){var d4=dr();if(d4){d4.edited=false;rtRegen(id4);}RT.flash='';renderRetest();};
+        if(!RT.det[id4]&&rtA()){RT.flash='Đang đọc case trên ACS (chi tiết xử lý, trả lời KH, trao đổi test) để soạn lại…';renderRetest();Promise.resolve(rtDetail(id4)).then(go4,go4);}else go4();return;} /* soạn từ case cần chi tiết case – vào thẳng bước 2 thì chưa tải */
       if(act==='replan'){var r5=rtCurDoc(),d5=dr();if(r5&&d5&&r5.plan){d5.items=r5.plan.items.map(function(x){return {g:x.g,t:x.t};});d5.env=r5.plan.env;d5.pf=r5.platform||d5.pf;d5.kind=r5.kind||d5.kind;
           var a5=rtAnalyze(RT.cur);if(a5&&d5.pf==='edusoft'&&rtOutcome(a5).perf&&!d5.items.some(function(x){return /nút\s*(?:…|\.\.\.)|thời gian mở form" ở thanh/i.test(x.t);})){
             var p5=rtGenPlan(a5,'edusoft',d5.kind);d5.items=p5.items;d5.inputs=rtKeepIn(p5.inputs,Object.keys(r5.inputs||{}).map(function(k){return {k:k,v:r5.inputs[k]};}));} /* plan đo cũ (chỉ mở menu) → soạn lại như người dùng thao tác */
