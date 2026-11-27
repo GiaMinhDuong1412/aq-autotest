@@ -895,6 +895,9 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt3-res{min-width:150px}.rt3-res .rt2-res{display:inline-flex}.rt3-res .rt2-note{margin-top:4px;width:100%}
 .rt3-need{white-space:nowrap;font-size:.78rem;color:var(--run);border:1px dashed var(--run);border-radius:6px;padding:0 6px}
 .rt3-r{font-size:.72rem;font-weight:600}.rt3-r.ok{color:var(--pass)}.rt3-r.bad{color:var(--fail)}.rt3-r.skip{color:var(--muted)}
+.rt3-who{display:inline-block;font-size:.68rem;font-weight:700;border-radius:99px;padding:0 7px;margin:0 4px 2px 0;white-space:nowrap;vertical-align:1px}
+.rt3-who.m{background:color-mix(in srgb,var(--pass) 14%,transparent);color:var(--pass)}.rt3-who.mn{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}.rt3-who.n{background:color-mix(in srgb,var(--run) 16%,transparent);color:var(--run)}
+.rt2-pst li .rt3-who{margin-left:8px}
 .rt3-gh{font-weight:700;font-size:.9rem;margin:6px 0}
 .rt3-srcs{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
 .rt3-si{display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
@@ -9813,7 +9816,7 @@ QUAY VIDEO (TÙY CHỌN)
       if(/^Hồ sơ test:/i.test(t))(t.match(/\b\d{6,}[A-Z0-9]*\b/g)||[]).forEach(function(c){if(D.codes.indexOf(c)<0)D.codes.push(c);});
       if(/^Làm lại đúng chỗ lần test trước/i.test(t))((t.split(/hồ sơ/i).pop()||'').match(/\b\d{6,}[A-Z0-9]*\b/g)||[]).forEach(function(c){if(D.prev.indexOf(c)<0)D.prev.push(c);});
       if((m=t.match(/kiểm có ô\s+"([^"]+)"/i))&&!D.y)D.y=m[1];
-      if((m=t.match(/\(đã có\s+"([^"]+)"\)/i))&&!D.z)D.z=m[1];
+      if((m=t.match(/\(đã có\s+"([^"]+)"\)/i)||t.match(/kiểm có ô\s+"[^"]+"\s*\((?:ngay\s+)?(?:dưới|trên|bên cạnh|cạnh|sau|trước)\s+"([^"]+)"\)/i))&&!D.z)D.z=m[1];
       if(/có cột\s+"/i.test(t)&&!D.ycols.length)D.ycols=q(t.split(/có cột/i)[1]);});
     if(!D.ycols.length&&D.y)D.ycols=[D.y];
     if(D.z){var zl=D.z.toLowerCase();D.ycols.forEach(function(c){var i=c.toLowerCase().indexOf(zl);if(i>=0){var o=c.slice(0,i+zl.length);if(D.zcols.indexOf(o)<0)D.zcols.push(o);}});
@@ -9829,10 +9832,11 @@ QUAY VIDEO (TÙY CHỌN)
     var c0=hs||D.codes[0],chk=function(cs,spec){return cs.map(function(c){return 'row_check: '+c+K+spec;});};
     var zKeep=D.zcols.map(function(c){return c+' = giữ nguyên';}).join('; '),yKeep=D.ycols.map(function(c){return c+' = giữ nguyên';}).join('; ');
     if(x.g==='prep'&&/^Hồ sơ test:/i.test(t))return (D.menu?['menu: '+D.menu]:[]).concat(D.codes.map(function(c){return 'row: '+c+K+all;})).concat([sh]);
-    if(x.g==='repro'&&/kiểm có ô/i.test(t))return ['row: '+c0+K+D.ycols.join('; '),sh];
+    if(x.g==='repro'&&/kiểm có ô/i.test(t))return ['row: '+c0+K+D.ycols.join('; ')].concat(/lưu/i.test(t)?['tay: '+t.replace(/^.*?kiểm có ô[^→]*→\s*/i,'Hồ sơ '+c0+': ')]:[]).concat([sh]);
     var own=((t.split(/hồ sơ/i).pop()||'').match(/\b\d{6,}[A-Z0-9]*\b/g)||[]);
     if(x.g==='repro'&&/^Ghi lại giá trị hiện tại/i.test(t))return D.codes.map(function(c){return 'row_base: '+c+K+all;}).concat([sh]);
     if(x.g==='repro'&&/^Bấm Thực hiện/i.test(t))return ['tay: '+t].concat(D.codes.map(function(c){return 'row: '+c+K+all;})).concat([sh]);
+    if(x.g==='repro'&&/^Làm lại đúng chỗ lần test trước/i.test(t)&&!own.length&&D.prev.length)own=D.prev.slice(0,3);
     if(x.g==='repro'&&/^Làm lại đúng chỗ lần test trước/i.test(t)&&own.length)return own.map(function(c){return 'row_base: '+c+K+all;}).concat(['tay: '+t]);
     if(x.g==='repro'&&/bấm Đồng bộ/i.test(t))return D.codes.map(function(c){return 'row_base: '+c+K+all;}).concat(['tay: '+t]);
     if(x.g==='check'&&/^Sau Đồng bộ/i.test(t))return chk(D.codes,zKeep+'; '+yKeep).concat([sh]);
@@ -9841,6 +9845,12 @@ QUAY VIDEO (TÙY CHỌN)
     if(x.g==='check'&&/có cột/i.test(t))return ['row: '+c0+K+D.ycols.join('; '),'tay: Xuất Excel (cả 2 kiểu) – mở file kiểm có cột '+D.ycols.join(', ')+' đúng giá trị',sh];
     if(x.g==='reg'&&/^Hồ sơ cũ/i.test(t)&&D.codes.length>1&&!D.mt)return chk(D.codes.slice(1),zKeep).concat([sh]);
     return null;}
+  function rtDoers(items,pf,vals,base){if(pf!=='edusoft')return items.map(function(){return 'n';});
+    var its=items.map(function(x){return {g:x.g,t:vals?rtSub(x.t,vals):String(x.t||'')};}),A;
+    try{A=rtAdhoc(Object.assign({},base||{},{plan:{items:its},platform:pf,inputs:vals||{}})).auto;}catch(e){return items.map(function(){return '';});}
+    return its.map(function(x,i){var a=A[i]||[];if(!a.length)return /^Dòng\s+\w+\s+–\s+hồ sơ\s+\[/.test(x.t)?'m':'n';return a.some(function(c){return /^tay:/.test(c);})?'mn':'m';});}
+  var RT_DOER={m:['Máy','Bộ test tự làm và tự kiểm (đọc ô trên lưới, chụp ảnh)'],mn:['Máy + bạn','Bộ test ghi giá trị trước / kiểm sau; phần thao tác bạn tự làm khi bộ test hiện hộp nhắc'],n:['Bạn','Bạn tự làm rồi chọn Đạt / Lỗi khi bộ test hỏi']};
+  function rtDoerChip(k){var d=RT_DOER[k];return d?'<span class="rt3-who '+k+'" title="'+esc(d[1])+'">'+d[0]+'</span>':'';}
   function rtAdhoc(rt){var items=rtItemsOf(rt),perf=items.some(function(x){return /bấm giờ|đo thời gian|ctrl\+shift\+t/i.test(x.t);}),steps=[],auto=[],vars={},D=perf?{codes:[]}:rtDataOf(items);
     var hasSv=items.some(function(x){return /nút\s*(?:…|\.\.\.)\s*(?:cạnh|của)\s*(?:ô\s*)?mã\s*sv/i.test(x.t);}),svDone=false,
       svOld=perf&&!hasSv&&rt.platform!=='web'&&RT_SVPICK.test((rt.title||'')+'\n'+items.map(function(x){return x.t;}).join('\n')),
@@ -10544,15 +10554,15 @@ QUAY VIDEO (TÙY CHỌN)
   function rtResCell(rt,i,done){if(!rt||i==null)return '<td class="rt3-res"><span class="hint">chờ duyệt</span></td>';var x=rtItemsOf(rt)[i]||{};
     return '<td class="rt3-res"><span class="rt2-res">'+['ok','bad','skip'].map(function(k){return '<button type="button" class="'+k+(x.res===k?' on':'')+'" data-rtres="'+i+':'+k+'"'+(done?' disabled':'')+'>'+RESVN[k]+'</button>';}).join('')+'</span>'+
       (x.res==='bad'||x.note?'<input class="rt2-note" data-rtnote="'+i+'" placeholder="Thực tế thấy gì…" value="'+esc(x.note||'')+'"'+(done?' readonly':'')+'>':'')+((x.shots||[]).length?'<small class="hint">'+x.shots.length+' ảnh</small>':'')+'</td>';}
-  function rtTblHtml(items,vals,S,rt){var tb=rtTblOf(items,vals),done=rt&&(rt.state==='pass'||rt.state==='fail'),h='';
+  function rtTblHtml(items,vals,S,rt,pf,base){var tb=rtTblOf(items,vals),done=rt&&(rt.state==='pass'||rt.state==='fail'),h='',dz=rtDoers(items,pf,vals,base);
     var kv=function(t){return '<div class="rt3-kv">'+String(t||'').split(/;\s*/).filter(Boolean).map(function(v){return '<div>'+rtPTxt(v.trim(),vals)+'</div>';}).join('')+'</div>';};
-    var band=function(lb,ids){return ids.length?'<div class="rt3-band"><span class="lb">'+lb+'</span><ol>'+ids.map(function(i){return '<li>'+rtPTxt(String(items[i].t).replace(/theo bảng:\s*.+$/,'theo cột "Trong file" của từng dòng.'),vals)+(rt&&items[i].res?' <span class="rt3-r '+items[i].res+'">'+RESVN[items[i].res]+'</span>':'')+'</li>';}).join('')+'</ol></div>':'';};
+    var band=function(lb,ids){return ids.length?'<div class="rt3-band"><span class="lb">'+lb+'</span><ol>'+ids.map(function(i){return '<li>'+rtPTxt(String(items[i].t).replace(/theo bảng:\s*.+$/,'theo cột "Trong file" của từng dòng.'),vals)+' '+rtDoerChip(dz[i])+(rt&&items[i].res?' <span class="rt3-r '+items[i].res+'">'+RESVN[items[i].res]+'</span>':'')+'</li>';}).join('')+'</ol></div>':'';};
     h+=band('Cho (chung)',tb.cho)+band(tb.mx.length?'Khi (chung cho các dòng)':'Khi',tb.khi);
     if(tb.mx.length)h+='<div class="rt3-tw"><table class="rt3-t"><thead><tr><th>Dòng</th><th>Hồ sơ</th><th>Cho (trước khi làm)</th><th>Trong file</th><th>Thì · nguồn</th><th>Kết quả</th></tr></thead><tbody>'+
       tb.mx.map(function(r){var x=rt&&r.post!=null?rtItemsOf(rt)[r.post]:null;return '<tr class="'+(x&&x.res==='bad'?'bad':'')+'"><td class="k mono">'+r.k+'</td><td>'+(r.svv?'<span class="mono">'+esc(r.svv)+'</span>':'<span class="rt3-need">'+esc(r.svk||'chưa có')+'</span>')+'</td>'+
-        '<td>'+kv(r.cho)+'</td><td>'+kv(String(r.file).replace(/,\s*/g,'; '))+'</td><td>'+kv(r.thi)+'<div class="rt3-sl">'+rtSrcChips(rtRowSrc(items[r.post!=null?r.post:r.pre].t+' '+(r.cho||''),S))+'</div></td>'+rtResCell(rt,r.post,done)+'</tr>';}).join('')+'</tbody></table></div>';
+        '<td>'+kv(r.cho)+'</td><td>'+kv(String(r.file).replace(/,\s*/g,'; '))+'</td><td>'+kv(r.thi)+'<div class="rt3-sl">'+rtDoerChip(dz[r.post!=null?r.post:r.pre])+rtSrcChips(rtRowSrc(items[r.post!=null?r.post:r.pre].t+' '+(r.cho||''),S))+'</div></td>'+rtResCell(rt,r.post,done)+'</tr>';}).join('')+'</tbody></table></div>';
     var rows=function(ids,title){return ids.length?'<div class="rt3-gh">'+title+'</div><div class="rt3-tw"><table class="rt3-t"><thead><tr><th>#</th><th>Thì (phải đúng) · nguồn</th><th>Kết quả</th></tr></thead><tbody>'+
-      ids.map(function(i,n){var x=rt?rtItemsOf(rt)[i]:null;return '<tr class="'+(x&&x.res==='bad'?'bad':'')+'"><td class="k mono">'+(n+1)+'</td><td>'+rtPTxt(items[i].t,vals)+'<div class="rt3-sl">'+rtSrcChips(rtRowSrc(items[i].t,S))+'</div></td>'+rtResCell(rt,i,done)+'</tr>';}).join('')+'</tbody></table></div>':'';};
+      ids.map(function(i,n){var x=rt?rtItemsOf(rt)[i]:null;return '<tr class="'+(x&&x.res==='bad'?'bad':'')+'"><td class="k mono">'+(n+1)+'</td><td>'+rtPTxt(items[i].t,vals)+'<div class="rt3-sl">'+rtDoerChip(dz[i])+rtSrcChips(rtRowSrc(items[i].t,S))+'</div></td>'+rtResCell(rt,i,done)+'</tr>';}).join('')+'</tbody></table></div>':'';};
     h+=rows(tb.rows,tb.mx.length?'Kiểm thêm':'Kết quả phải đúng')+rows(tb.reg,'Không ảnh hưởng');
     return h||'<p class="hint">Chưa có dòng nào – mở chặng Duyệt để thêm.</p>';}
   function rtSrcHtml(S,id,c,a,dr,rt){return '<div class="rt3-srcs">'+(S.length?S.map(function(s){var long=s.p.length>420;return '<div class="rt3-si'+(RT.srcHi===s.id?' hi':'')+'" id="rt3-'+esc(s.id)+'"><span class="sid mono">'+esc(s.id)+'</span><div><b>'+esc(s.t)+'</b><span class="from">'+esc(s.from)+'</span>'+
@@ -10590,7 +10600,7 @@ QUAY VIDEO (TÙY CHỌN)
     (rt?Object.keys(rt.inputs||{}).map(function(k){return {k:k,v:rt.inputs[k]};}):((dr&&dr.inputs)||[])).forEach(function(x){if(String(x.v||'').trim())vals[x.k]=String(x.v).trim();});
     var rtu=a?rtRoute(id,a,fx,dr):{rules:[],flow:['hoi','chưa đọc case']},chk=a&&items.length?rtChecks(a,fx,items,vals,Sx,pf):[],st=rtStages(id,c,a,dr,rt,chk,rtu,Sx.length);
     var nav='<ol class="rt3-pipe">'+RT_STG.map(function(s,i){var x=st[s[0]];return '<li><button type="button" class="'+(x[0]||'')+(stg===s[0]?' on':'')+'" data-rtstep="'+s[0]+'"><span class="k"><span class="ic">'+(x[0]==='done'?'✓':x[0]==='need'?'!':x[0]==='fail'?'✗':x[0]==='run'?'':i+1)+'</span>'+s[1]+'</span><span class="s">'+esc(x[1])+'</span></button></li>';}).join('')+'</ol>';
-    var body=stg==='cap'?rtSrcHtml(Sx,id,c,a,dr,rt):stg==='tuyen'?rtRouteHtml(rtu,chk):stg==='soan'?rtTblHtml(items,vals,Sx,rt):stg==='cham'?(chk.length?rtChkHtml(chk):'<p class="hint">Chưa có bảng kiểm tra để chấm.</p>'):
+    var body=stg==='cap'?rtSrcHtml(Sx,id,c,a,dr,rt):stg==='tuyen'?rtRouteHtml(rtu,chk):stg==='soan'?rtTblHtml(items,vals,Sx,rt,rt&&rt.platform?rt.platform:pf,rt||{caseId:id,title:c.title,module:c.module}):stg==='cham'?(chk.length?rtChkHtml(chk):'<p class="hint">Chưa có bảng kiểm tra để chấm.</p>'):
       stg==='duyet'?rtW2(id,c,a,dr,rt):stg==='chay'?rtW3(id,rt):rtW4(id,rt);
     return '<section class="rt2-work card">'+head+nav+'<div class="rt2-body">'+(RT.err?'<p class="save-err">'+esc(RT.err)+'</p>':'')+rtAsk(id,st,rt,dr,chk)+body+'</div></section>';}
   /* ---------- đọc case theo 00 Cách phân tích case.md: trường → phân hệ → KH → BA → Dev → phân tích → dữ liệu → case liên quan ---------- */
@@ -10745,11 +10755,12 @@ QUAY VIDEO (TÙY CHỌN)
     if(view&&!insL.length)accB='<p class="hint">—</p>';
     /* 3–4 thao tác, đầu ra (+ mục cũ nếu có) */
     var by={};src.items.forEach(function(x,i){(by[x.g]=by[x.g]||[]).push(i);});
+    var dz=rtDoers(src.items,src.pf,vals,rt||{caseId:id,title:c.title,module:c.module});
     var gk=['prep','repro','check','reg'].filter(function(k){return by[k]||(edit&&(k==='repro'||k==='check'));}),n=2;
     var steps=gk.map(function(k){var v=RT_GV[k]||[RT_G[k]||k,''],ids=by[k]||[];n++;
       return sec(n,'g-'+k+(ids.length?'':' empty'),esc(v[0]),esc(v[1]),ids.length?'<ol class="rt2-pst">'+ids.map(function(i){var x=src.items[i];
           if(edit&&RT.pe===i)return '<li class="ed"><textarea data-rtpi="'+i+'" rows="2" placeholder="Viết… (Enter để xong)">'+esc(x.t)+'</textarea></li>';
-          return '<li'+(edit?' class="can" data-rtpe="'+i+'" tabindex="0" title="Bấm để sửa"':'')+'><span class="t">'+(String(x.t||'').trim()?rtPTxt(x.t,vals):'<span class="hint">(trống – bấm để viết)</span>')+'</span>'+
+          return '<li'+(edit?' class="can" data-rtpe="'+i+'" tabindex="0" title="Bấm để sửa"':'')+'><span class="t">'+(String(x.t||'').trim()?rtPTxt(x.t,vals):'<span class="hint">(trống – bấm để viết)</span>')+'</span>'+rtDoerChip(dz[i])+
             (edit?'<button type="button" class="x" data-rtpdel="'+i+'" aria-label="Bỏ" title="Bỏ">×</button>':'')+'</li>';}).join('')+'</ol>':'',
         edit?'<button type="button" class="linkbtn" data-rtpadd="'+esc(k)+'">+ thêm</button>':'');}).join('');
     var cl=!rt&&dr.claude?'<div class="rt2-claude"><b>Plan do Claude soạn</b> <span class="hint">qua Claude Desktop · '+esc(fmt(dr.claude.at))+'</span>'+(dr.claude.why?'<p>'+esc(dr.claude.why)+'</p>':'')+
