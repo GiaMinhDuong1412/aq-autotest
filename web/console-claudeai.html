@@ -863,6 +863,54 @@ a.casetag:hover,.caselink:hover{text-decoration:underline}
 .rt2-steps button.on{border-color:var(--accent);color:var(--fg);font-weight:600}.rt2-steps button.on .n{background:var(--accent);color:#fff}
 .rt2-steps button:disabled{opacity:.45;cursor:not-allowed}
 @media (max-width:640px){.rt2-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rt3-pipe{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.rt3-pipe li{min-width:0;border-right:1px solid var(--line)}.rt3-pipe li:last-child{border-right:0}
+.rt3-pipe button{width:100%;height:100%;display:flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left;border:0;background:var(--bg-2);padding:8px 10px 10px;font:inherit;cursor:pointer;position:relative;color:var(--fg-dim)}
+.rt3-pipe button:hover{background:var(--bg-3)}
+.rt3-pipe .k{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700}
+.rt3-pipe .ic{width:18px;height:18px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:.66rem;font-weight:700;border:1.5px solid var(--line-2);color:var(--muted);background:var(--bg-2)}
+.rt3-pipe .s{font-size:.74rem;color:var(--muted);line-height:1.3;overflow-wrap:anywhere}
+.rt3-pipe .done .ic{background:var(--pass);border-color:var(--pass);color:#fff}
+.rt3-pipe .need{background:color-mix(in srgb,var(--run) 12%,var(--bg-2))}.rt3-pipe .need .ic{background:var(--run);border-color:var(--run);color:#fff}
+.rt3-pipe .fail .ic{background:var(--fail);border-color:var(--fail);color:#fff}
+.rt3-pipe .run .ic{border-color:var(--accent)}.rt3-pipe .run .ic::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);animation:rt3p 1.2s infinite}
+@keyframes rt3p{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.rt3-pipe .run .ic::after{animation:none}}
+.rt3-pipe button.on{color:var(--fg)}.rt3-pipe button.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent)}
+@media (max-width:900px){.rt3-pipe{grid-template-columns:repeat(4,minmax(0,1fr))}.rt3-pipe li{border-bottom:1px solid var(--line)}}
+@media (max-width:520px){.rt3-pipe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rt3-ask{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border:1px solid var(--run);background:color-mix(in srgb,var(--run) 10%,var(--bg-2));border-radius:12px;padding:12px 14px;margin-bottom:14px}
+.rt3-ask .tx{flex:1;min-width:220px;display:flex;flex-direction:column;gap:2px}.rt3-ask .tx b{font-size:.95rem}.rt3-ask .tx span{font-size:.84rem;color:var(--fg-dim)}
+.rt3-ask .act{display:flex;gap:8px;flex-wrap:wrap}
+.rt3-ask.info{border-color:var(--line-2);background:var(--bg-3)}.rt3-ask.ok{border-color:var(--pass);background:color-mix(in srgb,var(--pass) 10%,var(--bg-2))}
+.rt3-ask.bad{border-color:var(--fail);background:color-mix(in srgb,var(--fail) 9%,var(--bg-2))}
+.rt3-band{border:1px dashed var(--line-2);border-radius:10px;padding:8px 12px;background:var(--bg-3);margin-bottom:10px}
+.rt3-band .lb{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}
+.rt3-band ol{margin:4px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:2px;font-size:.86rem}
+.rt3-tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+.rt3-t{border-collapse:collapse;width:100%;font-size:.84rem;min-width:640px}
+.rt3-t th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--bg-3);padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.rt3-t td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}.rt3-t tr:last-child td{border-bottom:0}
+.rt3-t td.k{color:var(--accent);font-weight:600;width:40px}.rt3-t tr.bad td{background:color-mix(in srgb,var(--fail) 8%,transparent)}
+.rt3-kv{display:flex;flex-direction:column;gap:1px}
+.rt3-sl{margin-top:4px}.rt3-src{font:500 .68rem var(--mono);color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border:0;border-radius:5px;padding:0 5px;margin:0 3px 2px 0;cursor:pointer}
+.rt3-res{min-width:150px}.rt3-res .rt2-res{display:inline-flex}.rt3-res .rt2-note{margin-top:4px;width:100%}
+.rt3-need{white-space:nowrap;font-size:.78rem;color:var(--run);border:1px dashed var(--run);border-radius:6px;padding:0 6px}
+.rt3-r{font-size:.72rem;font-weight:600}.rt3-r.ok{color:var(--pass)}.rt3-r.bad{color:var(--fail)}.rt3-r.skip{color:var(--muted)}
+.rt3-gh{font-weight:700;font-size:.9rem;margin:6px 0}
+.rt3-srcs{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.rt3-si{display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.rt3-si.hi{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}
+.rt3-si .sid{color:var(--accent);font-weight:600}.rt3-si b{display:block;font-size:.86rem}.rt3-si .from{font-size:.72rem;color:var(--muted)}
+.rt3-si p{margin:3px 0 0;font-size:.84rem;color:var(--fg-dim);white-space:pre-wrap}.rt3-si summary{cursor:pointer;font-size:.84rem;color:var(--fg-dim);white-space:pre-wrap}
+.rt3-more>summary{cursor:pointer;font-weight:600;font-size:.86rem;color:var(--accent);margin:4px 0 10px}
+.rt3-flow{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.rt3-rules{border:1px solid var(--line);border-radius:10px}
+.rt3-rule{display:grid;grid-template-columns:30px 18px minmax(0,1fr) minmax(0,1.2fr);gap:8px;padding:7px 12px;border-bottom:1px solid var(--line);font-size:.84rem;align-items:baseline}
+.rt3-rule:last-child{border-bottom:0}.rt3-rule.m{background:color-mix(in srgb,var(--accent) 7%,transparent)}.rt3-rule .o{color:var(--pass);font-weight:700}.rt3-rule .x{color:var(--muted)}
+.rt3-checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.rt3-ck{border:1px solid var(--line);border-left-width:3px;border-radius:10px;padding:8px 12px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:1px 8px}
+.rt3-ck .mono{grid-row:span 2;color:var(--muted);font-weight:600}.rt3-ck b{font-size:.84rem}.rt3-ck span:last-child{font-size:.76rem;color:var(--muted)}
+.rt3-ck.p{border-left-color:var(--pass)}.rt3-ck.r{border-left-color:var(--run)}.rt3-ck.f{border-left-color:var(--fail)}
 .rt2-body{display:flex;flex-direction:column;gap:14px;min-width:0}
 .rt2-und{border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 5%,var(--bg));border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
 .rt2-uh{font-weight:700;font-size:.86rem}
@@ -10906,22 +10954,123 @@ QUAY VIDEO (TÙY CHỌN)
   function rtGoVerdict(rt){var bad=rtItemsOf(rt).some(function(x){return x.res==='bad';})||(rtRunOf(rt)&&rtRunOf(rt).status==='fail');
     RT.kind=bad?'fail':'pass';RT.note=rtDraft2(rt,RT.kind);RT.noteEdited=false;RT.seen=false;RT.vfor=rt.id;}
 
+  /* ---------- LUỒNG KIỂM TRA (26/11, học Chatbot ACS): Chụp case → Định tuyến bằng luật → Soạn bảng → Chấm → Duyệt → Chạy → Kết luận ----------
+     Sổ nguồn S1.. từ bản chụp case; bảng kiểm tra Cho / Trong file / Thì có nguồn; Chấm C1–C8 bằng code; chặng = điều hướng (RT.step[id] = khoá chặng). */
+  var RT_STG=[['cap','Chụp case'],['tuyen','Định tuyến'],['soan','Soạn bảng'],['cham','Chấm'],['duyet','Duyệt'],['chay','Chạy'],['ket','Kết luận']];
+  function rtStg(id){var s=RT.step[id],rt=rtCurDoc();if(typeof s==='string')return s;if(s)return {1:'cap',2:'soan',3:'chay',4:'ket'}[s]||'soan';
+    if(!rt)return RT.det[id]||!rtA()?'soan':'cap';return rt.state==='review'||rt.state==='pass'||rt.state==='fail'?'ket':'chay';}
+  function rtToks(t){var o={};String(t||'').toLowerCase().replace(/\{[^}]*\}/g,' ').split(/[^a-zà-ỹđ0-9]+/).forEach(function(w){if(w.length>=3&&!/^(các|của|cho|với|khi|thì|này|đó|được|không|trong|theo|vào|bấm|một|những|hoặc|đúng|lại|rồi|test|hồ|dòng)$/.test(w))o[w]=1;});return o;}
+  function rtSrcOf(id,a,fx){var T=a?a.T:{},out=[],add=function(t,from,p,kind,codes){p=rtTidy(String(p||''));if(!p)return;out.push({id:'S'+(out.length+1),t:t,from:from,p:p,kind:kind,codes:codes||[],tk:rtToks(p)});};
+    var done=T.done||'',parts=done.split(/(=+\s*LẦN\s*\d+[^=\n]*=+)/i),n=0;
+    if(parts.length>1){for(var i=1;i<parts.length;i+=2){n++;add('Chi tiết xử lý · '+parts[i].replace(/=/g,'').trim(),'ACS › Chi tiết xử lý',parts[i+1]||'','dev');}}
+    else if(done)add('Chi tiết xử lý','ACS › Chi tiết xử lý',done,'dev');
+    if(T.dev&&T.dev!==done)add('Ghi chú dev','ACS › Dev',T.dev,'dev');
+    if(T.ba)add('BA / hiện tượng','ACS › BA',T.ba,'ba');
+    if(T.resp)add('Trả lời khách hàng','ACS › Trả lời KH',T.resp,'resp');
+    (T.tests||[]).forEach(function(x){add('Trao đổi test'+(x.at?' · '+rtWhen(x.at):''),'ACS › Trao đổi · '+rtShort(x.by),x.txt,'test',(x.txt.match(/\b\d{6,}[A-Z0-9]*\b/g)||[]));});
+    if(T.req)add('Khách hàng yêu cầu','ACS › Nội dung KH',T.req,'kh');
+    ((fx&&fx.tests)||[]).slice(0,2).forEach(function(t){var x=t.x;add('Cách test: '+(x.ten||t.fn),'kb/Cach-test',[].concat(x.buoc||[],x.kt||[],(x.mt||[]).map(function(l){return 'Dòng '+l;})).join('\n'),'kb');});
+    var mn=fx&&fx.menu?rtFindMenu(fx.menu,a&&a.c.module):null;if(mn&&mn.path)add('Màn hình '+mn.path,'Danh mục màn hình Edusoft',(mn.cols||mn.grid||[]).join?((mn.cols||[]).slice(0,30).join(', ')):String(mn.path),'cat');
+    return out;}
+  function rtRowSrc(t,S){var tk=rtToks(t),codes=String(t).match(/\b\d{6,}[A-Z0-9]*\b/g)||[],sc=S.map(function(s){var n=0;Object.keys(tk).forEach(function(w){if(s.tk[w])n++;});
+      var sz=Object.keys(s.tk).length;n=n/(1+Math.log2(1+sz/40));if(codes.some(function(c){return s.codes.indexOf(c)>=0;}))n+=6;if(s.kind==='kh')n=n/2;return {id:s.id,n:n};}).filter(function(x){return x.n>=1.6;});
+    sc.sort(function(p,q){return q.n-p.n;});return sc.slice(0,2).map(function(x){return x.id;});}
+  function rtRoute(id,a,fx,dr){var c=a.c,sc=String(c.school||''),o=rtOutcome(a)||{},pf=dr?dr.pf:a.pf,b=fx.build||a.build;
+    var R=[['L1','Có bản test trong Chi tiết xử lý',b?'TEST: bản '+b:'không ghi bản – kiểm bản Edusoft / web ở Duyệt',!!b],
+      ['L2','Mã trường là phân cấp',sc.length>4?sc+' → chỉ test trên phân cấp này':'–',sc.length>4],
+      ['L3','Lần test trước báo lỗi',fx.prev.length?fx.prev.reduce(function(n,p){return n+p.codes.length;},0)+' mã hồ sơ → bắt buộc làm lại':'–',fx.prev.length>0],
+      ['L4','Khớp cách test trong KB',fx.tests.length?fx.tests.map(function(t){return t.x.ten||t.fn;}).join(' · '):'–',fx.tests.length>0],
+      ['L5','Luồng test (kb/Luong-test)',dr&&dr.flow?dr.flow:'–',!!(dr&&dr.flow)],
+      ['L6','Case chậm / mở lâu',o.perf?'đo thời gian mở form':'–',!!o.perf],
+      ['L7','Nơi test',RT_PF[pf]||pf,true]];
+    var flow=dr&&dr.claude?['agent','Agent (Claude Desktop)']:dr&&dr.flow?['khuon','Luồng test: '+dr.flow]:fx.tests.length?['khuon','Khuôn: '+(fx.tests[0].x.ten||fx.tests[0].fn).replace(/^Test\s*-\s*/,'')]:fx.ok?['dev','Từ ghi chú dev']:o.perf?['khuon','Khuôn: đo thời gian']:['hoi','Chưa có khuôn'];
+    return {rules:R,flow:flow,build:b};}
+  /* bảng kiểm tra: ma trận "Dòng X – hồ sơ …" (Chuẩn bị = Cho, Đầu ra = Thì, bảng file trong bước) + mục Đầu ra / Không ảnh hưởng thường */
+  function rtTblOf(items,vals){var M={},order=[],cho=[],khi=[],rows=[],reg=[],file={};
+    items.forEach(function(x,i){var t=String(x.t||''),m=t.match(/^Dòng\s+([A-Z])\s*[–-]\s*hồ sơ\s+(.+?):\s*([\s\S]*)$/);
+      if(m&&(x.g==='prep'||x.g==='check')){var k=m[1];if(!M[k]){M[k]={k:k,sv:m[2]};order.push(k);}M[k][x.g==='prep'?'pre':'post']=i;M[k][x.g==='prep'?'cho':'thi']=m[3].replace(/\.$/,'');return;}
+      if(x.g==='prep')cho.push(i);else if(x.g==='repro'){var tb=t.match(/theo bảng:\s*(.+?)\.?$/);if(tb){tb[1].split(/\s+·\s+/).forEach(function(s){var q=s.match(/^([A-Z])\s+(\{[^}]*\}|\S+):\s*(.*)$/);if(q)file[q[1]]=q[3];});}khi.push(i);}
+      else if(x.g==='check')rows.push(i);else reg.push(i);});
+    var mx=order.map(function(k){var r=M[k],sv=r.sv.replace(/\{([^}]+)\}/,function(_,n){return vals&&vals[n]?vals[n]:'';});return Object.assign(r,{svv:sv,svk:(r.sv.match(/\{([^}]+)\}/)||[])[1]||'',file:file[k]||''});});
+    return {mx:mx,cho:cho,khi:khi,rows:rows,reg:reg};}
+  function rtChecks(a,fx,items,vals,S,pf){var T=a.T,txt=items.map(function(x){return x.t;}).join('\n'),out=[],add=function(id,t,s,st){out.push({id:id,t:t,s:s,st:st});};
+    var feats=fx.feats.filter(function(s){return s.length<260;}),cov=feats.filter(function(s){var tk=rtToks(s),n=0;items.forEach(function(x){var m=0,ti=rtToks(x.t);Object.keys(tk).forEach(function(w){if(ti[w])m++;});if(m>n)n=m;});return n>=3;}).length;
+    add('C1','Mỗi ý dev sửa có dòng test',feats.length?cov+'/'+feats.length+' ý trong Chi tiết xử lý':'không đọc được ý dev',!feats.length?'r':cov>=feats.length?'p':cov>=Math.ceil(feats.length/2)?'r':'f');
+    var chk=items.filter(function(x){return x.g==='check';}),vague=chk.filter(function(x){return /đúng (yêu cầu|như mong|theo yêu cầu)|hoạt động (bình thường|tốt)|như KH (mong muốn|yêu cầu)|^không (còn )?lỗi\.?$/i.test(x.t);});
+    add('C2','Thì là kết quả cụ thể',chk.length?(chk.length-vague.length)+'/'+chk.length+' dòng':'chưa có dòng Thì',!chk.length?'f':vague.length?'r':'p');
+    var need=Object.keys(vals||{}).length,miss=(rtDraftOf(a.c.id)||{}).inputs?(rtDraftOf(a.c.id).inputs||[]).filter(function(x){return !x.opt&&!String(x.v||'').trim()&&/dòng|Mã|SV|hồ sơ/i.test(x.k);}).length:0,hasCode=/\b\d{6,}[A-Z0-9]*\b|\{SV dòng|Hồ sơ test/i.test(txt);
+    add('C3','Mỗi dòng có hồ sơ đầu vào',hasCode?(miss?miss+' ô hồ sơ chưa nhập (Duyệt)':'có mã / ô hồ sơ'):'chưa nêu hồ sơ cụ thể',!hasCode?'r':miss?'r':'p');
+    var pc=[];fx.prev.forEach(function(p){p.codes.forEach(function(c){if(pc.indexOf(c)<0)pc.push(c);});});var vs=Object.keys(vals||{}).map(function(k){return vals[k];}).join(' '),hit=pc.filter(function(c){return txt.indexOf(c)>=0||vs.indexOf(c)>=0;});
+    add('C4','Làm lại đúng chỗ lỗi lần trước',fx.prev.length?(pc.length?hit.length+'/'+pc.length+' mã lỗi cũ có trong bảng':'có lỗi lần trước, không ghi mã'):'không có lỗi lần trước',!fx.prev.length?'p':pc.length&&hit.length<pc.length?'r':'p');
+    var ks=rtSents(T.req||'').filter(function(s){return s.length>25;}),cp=items.filter(function(x){var tx=rtToks(x.t),n=Object.keys(tx).length;return n>4&&ks.some(function(s){var ts=rtToks(s),m=0;Object.keys(tx).forEach(function(w){if(ts[w])m++;});return m/n>.8;});});
+    add('C5','Không chép câu KH làm bước',cp.length?cp.length+' dòng giống lời KH':'không có',cp.length?'f':'p');
+    var rg=items.filter(function(x){return x.g==='reg';}).length;add('C6','Có dòng không ảnh hưởng',rg?rg+' dòng':'chưa có',rg?'p':'r');
+    var ns=items.filter(function(x){return x.g!=='prep'&&rtRowSrc(x.t,S).length;}).length,nn=items.filter(function(x){return x.g!=='prep';}).length;
+    add('C7','Dòng trỏ được nguồn',ns+'/'+nn,nn&&ns<nn?(ns>=nn/2?'r':'f'):'p');
+    var sc=String(a.c.school||'');add('C8','Đúng nơi test và phân cấp',(RT_PF[pf]||pf)+(sc.length>4?' · chỉ '+sc:''),'p');
+    return out;}
+  function rtStages(id,c,a,dr,rt,chk,rtu,nS){var det=RT.det[id],app=!!rtA(),f=chk.filter(function(x){return x.st==='f';}).length,w=chk.filter(function(x){return x.st==='r';}).length,items=rt?rtItemsOf(rt):(dr?dr.items:[]);
+    var left=rt?items.filter(function(x){return !x.res;}).length:0,bad=rt?items.filter(function(x){return x.res==='bad';}).length:0;
+    return {cap:det?['done',nS+' nguồn']:RT.detBusy[id]?['run','đang đọc case…']:RT.detErr[id]?['need','không đọc được']:app?['','chưa đọc']:['done','từ danh sách'],
+      tuyen:[rtu.flow[0]==='hoi'?'need':'done',rtu.flow[1]],
+      soan:[items.length?'done':'need',items.length?items.length+' dòng':'chưa có'],
+      cham:[!items.length?'':f?'need':'done',items.length?(chk.length-f-w)+'/'+chk.length+' đạt'+(f?' · '+f+' trượt':w?' · '+w+' lưu ý':''):'–'],
+      duyet:[rt?'done':items.length?'need':'',rt?'đã nhận test':'chờ bạn'],
+      chay:[!rt?'':rt.state==='running'?'run':rt.state==='testing'?'need':'done',!rt?'–':rt.state==='running'?'bộ test đang chạy':rt.state==='testing'?left+' dòng chưa có kết quả':items.length-left+'/'+items.length+(bad?' · '+bad+' lỗi':'')],
+      ket:[!rt?'':rt.state==='review'?'need':rt.state==='pass'?'done':rt.state==='fail'?'fail':'',!rt?'–':rt.state==='review'?(bad?'đề xuất Không đạt':'đề xuất Đạt'):rt.state==='pass'?'Đạt':rt.state==='fail'?'Không đạt':'–']};}
+  function rtSrcChips(ids){return ids.map(function(s){return '<button type="button" class="rt3-src" data-rtsrc="'+esc(s)+'">'+esc(s)+'</button>';}).join('');}
+  function rtResCell(rt,i,done){if(!rt||i==null)return '<td class="rt3-res"><span class="hint">chờ duyệt</span></td>';var x=rtItemsOf(rt)[i]||{};
+    return '<td class="rt3-res"><span class="rt2-res">'+['ok','bad','skip'].map(function(k){return '<button type="button" class="'+k+(x.res===k?' on':'')+'" data-rtres="'+i+':'+k+'"'+(done?' disabled':'')+'>'+RESVN[k]+'</button>';}).join('')+'</span>'+
+      (x.res==='bad'||x.note?'<input class="rt2-note" data-rtnote="'+i+'" placeholder="Thực tế thấy gì…" value="'+esc(x.note||'')+'"'+(done?' readonly':'')+'>':'')+((x.shots||[]).length?'<small class="hint">'+x.shots.length+' ảnh</small>':'')+'</td>';}
+  function rtTblHtml(items,vals,S,rt){var tb=rtTblOf(items,vals),done=rt&&(rt.state==='pass'||rt.state==='fail'),h='';
+    var kv=function(t){return '<div class="rt3-kv">'+String(t||'').split(/;\s*/).filter(Boolean).map(function(v){return '<div>'+rtPTxt(v.trim(),vals)+'</div>';}).join('')+'</div>';};
+    var band=function(lb,ids){return ids.length?'<div class="rt3-band"><span class="lb">'+lb+'</span><ol>'+ids.map(function(i){return '<li>'+rtPTxt(String(items[i].t).replace(/theo bảng:\s*.+$/,'theo cột "Trong file" của từng dòng.'),vals)+(rt&&items[i].res?' <span class="rt3-r '+items[i].res+'">'+RESVN[items[i].res]+'</span>':'')+'</li>';}).join('')+'</ol></div>':'';};
+    h+=band('Cho (chung)',tb.cho)+band(tb.mx.length?'Khi (chung cho các dòng)':'Khi',tb.khi);
+    if(tb.mx.length)h+='<div class="rt3-tw"><table class="rt3-t"><thead><tr><th>Dòng</th><th>Hồ sơ</th><th>Cho (trước khi làm)</th><th>Trong file</th><th>Thì · nguồn</th><th>Kết quả</th></tr></thead><tbody>'+
+      tb.mx.map(function(r){var x=rt&&r.post!=null?rtItemsOf(rt)[r.post]:null;return '<tr class="'+(x&&x.res==='bad'?'bad':'')+'"><td class="k mono">'+r.k+'</td><td>'+(r.svv?'<span class="mono">'+esc(r.svv)+'</span>':'<span class="rt3-need">'+esc(r.svk||'chưa có')+'</span>')+'</td>'+
+        '<td>'+kv(r.cho)+'</td><td>'+kv(String(r.file).replace(/,\s*/g,'; '))+'</td><td>'+kv(r.thi)+'<div class="rt3-sl">'+rtSrcChips(rtRowSrc(items[r.post!=null?r.post:r.pre].t+' '+(r.cho||''),S))+'</div></td>'+rtResCell(rt,r.post,done)+'</tr>';}).join('')+'</tbody></table></div>';
+    var rows=function(ids,title){return ids.length?'<div class="rt3-gh">'+title+'</div><div class="rt3-tw"><table class="rt3-t"><thead><tr><th>#</th><th>Thì (phải đúng) · nguồn</th><th>Kết quả</th></tr></thead><tbody>'+
+      ids.map(function(i,n){var x=rt?rtItemsOf(rt)[i]:null;return '<tr class="'+(x&&x.res==='bad'?'bad':'')+'"><td class="k mono">'+(n+1)+'</td><td>'+rtPTxt(items[i].t,vals)+'<div class="rt3-sl">'+rtSrcChips(rtRowSrc(items[i].t,S))+'</div></td>'+rtResCell(rt,i,done)+'</tr>';}).join('')+'</tbody></table></div>':'';};
+    h+=rows(tb.rows,tb.mx.length?'Kiểm thêm':'Kết quả phải đúng')+rows(tb.reg,'Không ảnh hưởng');
+    return h||'<p class="hint">Chưa có dòng nào – mở chặng Duyệt để thêm.</p>';}
+  function rtSrcHtml(S,id,c,a,dr,rt){return '<div class="rt3-srcs">'+(S.length?S.map(function(s){var long=s.p.length>420;return '<div class="rt3-si'+(RT.srcHi===s.id?' hi':'')+'" id="rt3-'+esc(s.id)+'"><span class="sid mono">'+esc(s.id)+'</span><div><b>'+esc(s.t)+'</b><span class="from">'+esc(s.from)+'</span>'+
+      (long?'<details><summary>'+esc(s.p.slice(0,380))+'…</summary><p>'+esc(s.p)+'</p></details>':'<p>'+esc(s.p)+'</p>')+'</div></div>';}).join(''):'<p class="hint">Chưa đọc được nội dung case.</p>')+'</div>'+
+      '<details class="rt3-more"><summary>Phiếu case ACS, nơi test, ảnh, case liên quan</summary>'+rtW1(id,c,a,dr,rt)+'</details>';}
+  function rtRouteHtml(rtu,chk){return '<div class="rt3-flow"><span class="hint">Luồng</span><b>'+esc(rtu.flow[1])+'</b>'+(rtu.flow[0]==='hoi'?'<span class="hint">– chưa có cách test trong KB: nhờ Claude Desktop "Phân tích case #'+esc(RT.cur)+' theo KB và soạn bảng kiểm tra", hoặc tự thêm dòng ở Duyệt.</span>':'')+'</div>'+
+    '<div class="rt3-rules">'+rtu.rules.map(function(r){return '<div class="rt3-rule'+(r[3]?' m':'')+'"><span class="mono">'+r[0]+'</span><span class="'+(r[3]?'o':'x')+'">'+(r[3]?'✓':'–')+'</span><span>'+esc(r[1])+'</span><span class="hint">'+esc(r[2])+'</span></div>';}).join('')+'</div>';}
+  function rtChkHtml(chk){return '<p class="hint">Máy chấm bảng kiểm tra theo từng mục; mục trượt thì sửa ở Duyệt (thêm dòng, nhập hồ sơ) hoặc bấm "soạn lại từ case".</p><div class="rt3-checks">'+
+    chk.map(function(c){return '<div class="rt3-ck '+c.st+'"><span class="mono">'+c.id+'</span><b>'+esc(c.t)+'</b><span>'+esc(c.s)+'</span></div>';}).join('')+'</div>';}
+  function rtAsk(id,st,rt,dr,chk){var b=function(k,l,pri){return '<button type="button" class="btn'+(pri?' primary':'')+'" data-rtstep="'+k+'">'+l+'</button>';};
+    var box=function(cls,t,s,act){return '<div class="rt3-ask '+cls+'"><div class="tx"><b>'+t+'</b><span>'+s+'</span></div><div class="act">'+(act||'')+'</div></div>';};
+    if(st.cap[0]==='run')return box('info','Đang chụp case','Đọc Chi tiết xử lý, Trả lời KH, trao đổi test và ảnh trên ACS…');
+    if(st.cap[0]==='need')return box('bad','Không đọc được case trên ACS',esc(RT.detErr[id]||''),'<button type="button" class="btn" data-rt="redet">Đọc lại</button>');
+    if(!rt){var f=chk.filter(function(x){return x.st==='f';});var n=(dr&&dr.items||[]).length;
+      if(!n)return box('need','Chưa có bảng kiểm tra','Không đủ căn cứ để soạn. Nhờ Claude Desktop phân tích case, hoặc tự thêm dòng.',b('duyet','Mở Duyệt',true));
+      return box('need','Duyệt bảng kiểm tra '+n+' dòng',(f.length?'Chấm còn '+f.length+' mục trượt ('+f.map(function(x){return x.id;}).join(', ')+'). ':'Máy đã soạn và chấm. ')+'Nhập hồ sơ, kiểm môi trường rồi Bắt đầu test.',b('cham','Xem chấm')+b('duyet','Duyệt',true));}
+    var items=rtItemsOf(rt),left=items.filter(function(x){return !x.res;}).length,bad=items.filter(function(x){return x.res==='bad';}).length;
+    if(rt.state==='running')return box('info','Bộ test đang chạy','Xong thì kết quả tự điền vào từng dòng.',b('chay','Xem chạy'));
+    if(rt.state==='testing')return box('need',left+' dòng chưa có kết quả','Chạy bộ test hoặc đánh dấu Đạt / Lỗi từng dòng, dán ảnh ở chặng Chạy.',rtRunBtn(rt)+b('chay','Chạy và ảnh'));
+    if(rt.state==='review')return box(bad?'bad':'need',bad?'Kết luận: Không đạt ('+bad+' dòng lỗi)':'Kết luận: Đạt','Nội dung test đã soạn sẵn từ kết quả từng dòng – xem lại rồi ghi ACS.',b('ket','Kết luận và ghi ACS',true));
+    return box(rt.state==='pass'?'ok':'bad',rt.state==='pass'?'Đạt · đã kết luận':'Không đạt · đã kết luận',esc(nameOf(rt.verdict&&rt.verdict.by))+' · '+esc(fmt(rt.verdict&&rt.verdict.at)),b('ket','Xem kết luận'));}
   /* ---------- giao diện bàn làm việc ---------- */
-  function rtStepOf(caseId){if(RT.step[caseId])return RT.step[caseId];var rt=rtCurDoc();if(!rt)return 1;return rt.state==='review'||rt.state==='pass'||rt.state==='fail'?4:3;}
+
   function rtWork(){var id=RT.cur;if(!id)return '<section class="rt2-work card rt2-empty"><b>Chọn một case ở danh sách bên trái</b><span class="hint">App đọc yêu cầu của khách hàng và ghi chú coder, xác định cần test ở đâu (web, Edusoft, app…), soạn plan test từ chính yêu cầu đó – bạn chỉnh rồi bấm Nhận test.</span></section>';
     var c=rtCase(id);if(!c){RT.cur=null;return rtWork();}
     var app=!!rtA();if(app&&RT.acs.st==='ok'&&!RT.det[id]&&!RT.detBusy[id]&&!RT.detErr[id])setTimeout(function(){rtDetail(id);},0);
-    rtCatLoad();var rt=rtCurDoc(),step=rtStepOf(id),a=rtAnalyze(id),dr=rtDraftOf(id),pf=rt&&rt.platform?rt.platform:dr.pf;
+    rtCatLoad();var rt=rtCurDoc(),a=rtAnalyze(id),dr=rtDraftOf(id),pf=rt&&rt.platform?rt.platform:dr.pf;
     var due=rtTime(c.due),late=due&&due<Date.now();
     var head='<div class="rt2-wh"><div class="rt2-wt"><span class="id mono">#'+esc(id)+'</span><h3>'+esc(c.title||'(không tiêu đề)')+'</h3></div>'+
       '<div class="rt2-facts">'+[c.school?'<b>'+esc(c.school)+'</b>':'',c.module?'<span>'+esc(c.module)+'</span>':'','Coder '+esc(rtShort(c.coder)||'—'),c.resolvedAt?'xử lý '+esc(rtWhen(c.resolvedAt)):'',
         due?'<span class="'+(late?'late':'')+'">hạn '+esc(rtWhen(c.due))+'</span>':'',a&&a.build?'bản sửa <b class="mono">'+esc(a.build)+'</b>':''].filter(Boolean).join('<i>·</i>')+
         '<span class="rt2-pf">'+esc(RT_PFS[pf])+'</span>'+(rt?rtChip(rt.state)+(rt.round>1?' <span class="hint">lần '+rt.round+'</span>':''):'')+
         (app?'<button type="button" class="btn sm" data-rtacs="'+esc(id)+'">'+IC.ext+'Mở trên ACS</button>':'<a class="btn sm" href="'+esc(rtCaseUrl(id))+'" target="_blank" rel="noopener">'+IC.ext+'Mở trên ACS</a>')+'</div></div>';
-    var S=[['1','Hiểu yêu cầu'],['2','Plan test'],['3','Test'],['4','Kết luận']];
-    var nav='<ol class="rt2-steps">'+S.map(function(s,i){var n=i+1,dis=n>2&&!rt;return '<li><button type="button" class="'+(n===step?'on':'')+(n<step?' done':'')+'" data-rtstep="'+n+'"'+(dis?' disabled title="Nhận test ở bước 2 trước"':'')+'><span class="n">'+s[0]+'</span>'+s[1]+'</button></li>';}).join('')+'</ol>';
-    var body=step===1?rtW1(id,c,a,dr,rt):step===2?rtW2(id,c,a,dr,rt):step===3?rtW3(id,rt):rtW4(id,rt);
-    return '<section class="rt2-work card">'+head+nav+'<div class="rt2-body">'+(RT.err?'<p class="save-err">'+esc(RT.err)+'</p>':'')+body+'</div></section>';}
+    var stg=rtStg(id),fx=a?rtFixOf(a):null,Sx=a?rtSrcOf(id,a,fx):[],items=rt?rtItemsOf(rt):(dr?dr.items:[])||[],vals={};
+    (rt?Object.keys(rt.inputs||{}).map(function(k){return {k:k,v:rt.inputs[k]};}):((dr&&dr.inputs)||[])).forEach(function(x){if(String(x.v||'').trim())vals[x.k]=String(x.v).trim();});
+    var rtu=a?rtRoute(id,a,fx,dr):{rules:[],flow:['hoi','chưa đọc case']},chk=a&&items.length?rtChecks(a,fx,items,vals,Sx,pf):[],st=rtStages(id,c,a,dr,rt,chk,rtu,Sx.length);
+    var nav='<ol class="rt3-pipe">'+RT_STG.map(function(s,i){var x=st[s[0]];return '<li><button type="button" class="'+(x[0]||'')+(stg===s[0]?' on':'')+'" data-rtstep="'+s[0]+'"><span class="k"><span class="ic">'+(x[0]==='done'?'✓':x[0]==='need'?'!':x[0]==='fail'?'✗':x[0]==='run'?'':i+1)+'</span>'+s[1]+'</span><span class="s">'+esc(x[1])+'</span></button></li>';}).join('')+'</ol>';
+    var body=stg==='cap'?rtSrcHtml(Sx,id,c,a,dr,rt):stg==='tuyen'?rtRouteHtml(rtu,chk):stg==='soan'?rtTblHtml(items,vals,Sx,rt):stg==='cham'?(chk.length?rtChkHtml(chk):'<p class="hint">Chưa có bảng kiểm tra để chấm.</p>'):
+      stg==='duyet'?rtW2(id,c,a,dr,rt):stg==='chay'?rtW3(id,rt):rtW4(id,rt);
+    return '<section class="rt2-work card">'+head+nav+'<div class="rt2-body">'+(RT.err?'<p class="save-err">'+esc(RT.err)+'</p>':'')+rtAsk(id,st,rt,dr,chk)+body+'</div></section>';}
   /* ---------- đọc case theo 00 Cách phân tích case.md: trường → phân hệ → KH → BA → Dev → phân tích → dữ liệu → case liên quan ---------- */
   function kbSchool(code){var c=String(code||'').trim().toUpperCase(),S=kbG().schools||{},k;if(!c)return null; /* mã 4 ký tự = trường; dài hơn = phân cấp của trường (DHMOTX = DHMO – từ xa) */
     for(k in S)if(k.toUpperCase()===c)return Object.assign({ma:k,pc:null,pcn:''},S[k]);
@@ -11034,7 +11183,7 @@ QUAY VIDEO (TÙY CHỌN)
       '<div class="rt2-outr"><span class="k">Kiểm ở</span><b>'+esc(RT_PFS[pf]||pf)+'</b> · '+esc(o.where)+'</div>'+
       '<div class="rt2-outr top"><span class="k">Đầu ra cần đạt</span><ul>'+(o.expect.length?o.expect.map(function(x){return '<li>'+esc(x)+'</li>';}).join(''):'<li class="hint">chưa xác định – đọc lại yêu cầu KH / ảnh</li>')+'</ul></div>'+
       '<p class="hint">'+(o.fix?'Đầu ra lấy từ <b>Chi tiết xử lý</b>, <b>Trả lời KH</b>, <b>các lần test trước</b> và cách test trong KB. ':'')+'Tiếp theo: plan test = <b>môi trường</b> + <b>tài khoản</b> → <b>các bước thao tác</b> cụ thể → so với đầu ra trên.</p>'+
-      '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="2">Tiếp: Plan test →</button></div></div>';}
+      '<div class="rt2-foot"><button type="button" class="btn primary" data-rtstep="soan">Tiếp: Bảng kiểm tra →</button></div></div>';}
   var RT_GV={prep:['Chuẩn bị thêm',''],repro:['Thao tác','bước người test / bộ test làm'],check:['Đầu ra cần đạt','so với kết quả sau khi dev xử lý'],reg:['Kiểm thêm','']};
   function rtPTxt(t,vals){return esc(t).replace(/\{([^{}]{1,40})\}/g,function(m,k){var v=vals[k];return '<span class="rt2-var'+(v?' on':'')+'" title="'+(v?esc(k):'Nhập ở khung Tài khoản test')+'">'+esc(v||k)+'</span>';});}
   function rtPEdit(i){RT.pe=i;renderRetest();var el=i==='env'?document.getElementById('rtEnv'):document.querySelector('#rtMain textarea[data-rtpi="'+i+'"]');
@@ -11087,10 +11236,10 @@ QUAY VIDEO (TÙY CHỌN)
     var scen=edit&&(src.pf==='edusoft'||src.pf==='web')&&rel.length?'<details class="rt2-blk rt2-scenbox"'+(src.scen?' open':'')+'><summary class="rt2-bh">Kịch bản có sẵn chạy kèm <span class="hint">(tuỳ chọn · '+rel.length+')</span></summary><div class="rt2-scen">'+
       '<label><input type="radio" name="rtscen" value=""'+(!src.scen?' checked':'')+'> Không chạy kịch bản</label>'+rel.map(function(o){return '<label><input type="radio" name="rtscen" value="'+esc(o.it.id)+'"'+(src.scen===o.it.id?' checked':'')+'> <b class="mono">'+esc(o.it.code||'')+'</b> '+esc(short(o.it.title||o.it.menu||''))+'</label>';}).join('')+'</div></details>':'';
     var nChk=(by.check||[]).filter(function(i){return String(src.items[i].t||'').trim();}).length,ready=E.envOk&&E.accOk&&nChk>0;
-    var foot=view?'<div class="rt2-foot">'+(!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+'<button type="button" class="btn" data-rtstep="3">Tiếp: Test →</button>'+rtRunBtn(rt)+'</div>':
+    var foot=view?'<div class="rt2-foot">'+(!lock?'<button type="button" class="btn" data-rt="replan">Sửa plan</button>':'')+'<button type="button" class="btn" data-rtstep="soan">Xem bảng kiểm tra</button><button type="button" class="btn" data-rtstep="3">Tiếp: Chạy →</button>'+rtRunBtn(rt)+'</div>':
       '<div class="rt2-ready">'+[['Môi trường',E.envOk],['Tài khoản',E.accOk],['Đầu ra',nChk>0]].map(function(x){return '<span class="'+(x[1]?'ok':'no')+'">'+(x[1]?'✓':'○')+' '+x[0]+'</span>';}).join('')+
         '<button type="button" class="btn primary" data-rt="take"'+(RT.busy||!SC.canWrite||!ready?' disabled':'')+' title="'+(ready?'':'Điền đủ môi trường, tài khoản và ít nhất một đầu ra')+'">'+(rt?'Lưu plan':'Bắt đầu test →')+'</button></div>';
-    return cl+'<div class="rt2-ph"><b>Plan test</b><span class="hint">'+(view?'đã chốt khi nhận test':'đủ môi trường + tài khoản → vào menu làm thao tác → so với đầu ra')+'</span>'+(edit&&(!rt||RT.replan)?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+
+    return cl+'<div class="rt2-ph"><b>Duyệt bảng kiểm tra</b><span class="hint">'+(view?'đã chốt khi nhận test':'kiểm môi trường, nhập hồ sơ / tài khoản, sửa các dòng → Bắt đầu test')+'</span>'+(edit&&(!rt||RT.replan)?'<button type="button" class="linkbtn" data-rt="regen">soạn lại từ case</button>':'')+
         (view&&!lock?'<button type="button" class="linkbtn" data-rt="replan">Sửa plan</button>':'')+'</div>'+
       (oldPlan&&!lock?'<div class="rt-warn">Plan này soạn theo cách cũ (chép yêu cầu KH, chưa có bước thao tác). Bấm <b>Sửa plan</b> → <b>soạn lại từ case</b> để có bước cụ thể từ ghi chú dev, trả lời KH, các lần test trước và KB. <button type="button" class="btn" data-rt="replan">Sửa plan</button></div>':'')+
       '<div class="rt2-plan2">'+sec(1,'g-env','Môi trường test','',envB)+sec(2,'g-acc','Tài khoản đăng nhập',dr.flow&&!rt?'luồng: '+esc(dr.flow):'',accB)+steps+'</div>'+scen+foot;}
@@ -11292,7 +11441,7 @@ QUAY VIDEO (TÙY CHỌN)
     pg.addEventListener('click',function(e){
       var fc=e.target.closest('[data-rtfocus]');if(fc){var fi=+fc.getAttribute('data-rtfocus');
         if(RT.focus!==fi){RT.focus=fi;if(e.target.closest('input,textarea,label,button')){$$('#rtMain .rt2-ti.focus').forEach(function(x){x.classList.remove('focus');});fc.classList.add('focus');}else{renderRetest();return;}}}
-      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd],[data-rtrun],[data-rtunshot],[data-rtunshotid]');if(!b||b.disabled)return;var a=rtA();
+      var b=e.target.closest('[data-rt],[data-rtpick],[data-rtq],[data-rtpin],[data-rtstart],[data-rtopen],[data-rtkind],[data-rttab],[data-rtacs],[data-rtreqf],[data-rtstep],[data-rtsrc],[data-rtpf],[data-rtkd],[data-rtres],[data-rtpdel],[data-rtltab],[data-rtimg],[data-rtpe],[data-rtpadd],[data-rtrun],[data-rtunshot],[data-rtunshotid]');if(!b||b.disabled)return;var a=rtA();
       if(b.hasAttribute('data-rtunshotid')){var sid=b.getAttribute('data-rtunshotid'),sd=rtCurDoc();
         if(sd)rtItemsOf(sd).some(function(x,k){var q=(x.shots||[]).indexOf(sid);if(q<0)return false;var sh=x.shots.slice();sh.splice(q,1);rtSetItem(k,{shots:sh});RT.flash='Đã bỏ 1 ảnh khỏi mục '+(k+1)+'.';return true;});
         renderRetest();return;}
@@ -11307,7 +11456,9 @@ QUAY VIDEO (TÙY CHỌN)
       if(b.hasAttribute('data-rtacs')){if(a)a.open(b.getAttribute('data-rtacs'));return;}
       if(b.hasAttribute('data-rtpick')){var id=b.getAttribute('data-rtpick');if(RT.cur!==id){RT.cur=id;RT.err='';RT.focus=null;RT.pe=null;RT.replan=false;RT.vfor=null;}renderRetest();
         var w=document.querySelector('#rtMain .rt2-work');if(w&&w.getBoundingClientRect().top<0)w.scrollIntoView({block:'start'});return;}
-      if(b.hasAttribute('data-rtstep')){RT.step[RT.cur]=+b.getAttribute('data-rtstep');RT.err='';renderRetest();return;}
+      if(b.hasAttribute('data-rtstep')){var sv=b.getAttribute('data-rtstep');RT.step[RT.cur]=/^\d+$/.test(sv)?+sv:sv;RT.err='';renderRetest();return;}
+      if(b.hasAttribute('data-rtsrc')){RT.step[RT.cur]='cap';RT.srcHi=b.getAttribute('data-rtsrc');renderRetest();var se=document.getElementById('rt3-'+RT.srcHi);if(se)se.scrollIntoView({block:'center'});return;}
+      if(b.getAttribute('data-rt')==='redet'){delete RT.detErr[RT.cur];rtDetail(RT.cur,true);renderRetest();return;}
       if(b.hasAttribute('data-rtpf')){var d1=dr();if(d1){d1.pf=b.getAttribute('data-rtpf');d1.pfSet=true;if(!d1.edited)rtRegen(RT.cur);else d1.scen='';}renderRetest();return;}
       if(b.hasAttribute('data-rtkd')){var d2=dr();if(d2){d2.kind=b.getAttribute('data-rtkd');d2.kindSet=true;if(!d2.edited)rtRegen(RT.cur);}renderRetest();return;}
       if(b.hasAttribute('data-rtres')){var pr=b.getAttribute('data-rtres').split(':'),ri=+pr[0],cur=rtItemsOf(rtCurDoc())[ri];RT.focus=ri;if(cur)rtSetItem(ri,{res:cur.res===pr[1]?'':pr[1]});return;}
@@ -11398,10 +11549,10 @@ QUAY VIDEO (TÙY CHỌN)
       if(t.hasAttribute('data-rtenvu')){var d11=dr(),c11=rtCase(RT.cur);if(d11)d11.envUrl=t.value;try{if(c11&&/^https?:\/\//i.test(t.value.trim()))localStorage.setItem('aq-rt-url:'+String(c11.school||'').toUpperCase(),t.value.trim());}catch(e){}rtReadyUpd();return;}
       if(t.id==='rtQFind'){RT.qFind=t.value;renderRetest();}
       if(t.id==='rtCF'){RT.cf=t.value;RT.cmore=false;renderRetest();}});
-    document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||!RT.cur||rtStepOf(RT.cur)!==4)return;var rt4=rtCurDoc();if(!rt4||rt4.state!=='pass')return;
+    document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||!RT.cur||rtStg(RT.cur)!=='ket')return;var rt4=rtCurDoc();if(!rt4||rt4.state!=='pass')return;
       var it4=(e.clipboardData&&e.clipboardData.items)||[],f4=[];for(var j=0;j<it4.length;j++){if(it4[j].kind==='file'&&/^image\//.test(it4[j].type)){var g4=it4[j].getAsFile();if(g4)f4.push(g4);}}
       if(f4.length){e.preventDefault();rtMergeShots(rt4.id,f4);}});
-    document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||RT.focus==null||!RT.cur||rtStepOf(RT.cur)!==3)return;
+    document.addEventListener('paste',function(e){if(!pg.classList.contains('active')||RT.tab!=='room'||RT.focus==null||!RT.cur||['chay','soan'].indexOf(rtStg(RT.cur))<0)return;
       var rt=rtCurDoc();if(!rt||rt.state==='pass'||rt.state==='fail')return;var items=(e.clipboardData&&e.clipboardData.items)||[],files=[];
       for(var i=0;i<items.length;i++){if(items[i].kind==='file'&&/^image\//.test(items[i].type)){var f=items[i].getAsFile();if(f)files.push(f);}}
       if(!files.length)return;e.preventDefault();rtAddShots(RT.focus,files);});
