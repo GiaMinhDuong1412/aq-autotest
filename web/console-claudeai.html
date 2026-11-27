@@ -3012,7 +3012,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.25-02"
+KIT_VERSION = "2026.11.27-01"
 from pathlib import Path
 
 
@@ -6042,8 +6042,121 @@ class Run:
         self.say("Chọn ngẫu nhiên %s = %s (trong %d dòng phù hợp)" % (var, val, len(hits)))
         return "%s = %s (%s)" % (var, val, self.vars[var + "_DONG"][:120])
 
-    def column_header(self, col):
-        """Tiêu đề cột `col` (nhiều tên cách nhau |) của lưới trên màn hình đang mở; nhiều lưới thì lấy lưới trên cùng."""
+    def column_header(self, col, reveal=True):
+        """Tiêu đề cột `col` (nhiều tên cách nhau |) của lưới trên màn hình đang mở; nhiều lưới thì lấy lưới trên cùng.
+        Cột đang khuất (lưới nhiều cột, vd "Mã SV" nằm cuối bên phải) → tự cuộn ngang lưới tới khi thấy tiêu đề."""
+        hdr = self._column_header_now(col)
+        if hdr is None and reveal:
+            hdr = self.reveal_column(col)
+        return hdr
+
+    def _grid_hscroll(self):
+        """(khung lưới có tiêu đề cột, Node lưới, Node thanh cuộn ngang, các nút cuộn của thanh) – lưới trên cùng đang hiện."""
+        for root in self.es.roots():
+            nodes = uia_scan(root)
+            if not nodes:
+                continue
+            trees = [nd.rect for nd in nodes if nd.ct == "Tree" and nd.aid.lower().startswith("treechucnang")]
+            grids = [nd for nd in nodes if nd.ct in ("Table", "DataGrid") and nd.visible and not any(nd.inside(t) for t in trees)]
+            heads = [nd for nd in nodes if nd.ct in ("HeaderItem", "Header") and nd.visible]
+            grids = [g for g in grids if any(h.inside(g.rect) for h in heads)] or grids
+            if not grids:
+                continue
+            g = min(grids, key=lambda n: n.rect[1])
+            gl, gt, gr, gb = g.rect
+            box = (gl - 4, gt, gr + 4, gb + 40)            # thanh cuộn ngang nằm sát đáy lưới (có khi ngay dưới khung)
+            bars = [nd for nd in nodes if nd.ct == "ScrollBar" and nd.visible and (nd.rect[2] - nd.rect[0]) > 3 * (nd.rect[3] - nd.rect[1])
+                    and nd.inside(box)]
+            sb = max(bars, key=lambda n: n.rect[2] - n.rect[0]) if bars else None
+            btn = {}
+            if sb is not None:
+                for nd in nodes:
+                    if nd.ct == "Button" and nd.inside(sb.rect):
+                        k = self._fold(nd.name)
+                        if "page right" in k or "trang phai" in k:
+                            btn["pr"] = nd
+                        elif "page left" in k or "trang trai" in k:
+                            btn["pl"] = nd
+                        elif "line right" in k or "column right" in k or "sang phai" in k:
+                            btn["lr"] = nd
+                        elif "line left" in k or "column left" in k or "sang trai" in k:
+                            btn["ll"] = nd
+            return g.rect, g, sb, btn
+        return None
+
+    def _head_sig(self, grect):
+        out = []
+        for root in self.es.roots():
+            for nd in uia_scan(root) or []:
+                if nd.ct in ("HeaderItem", "Header") and nd.visible and nd.inside(grect):
+                    out.append((nd.name, nd.rect[0]))
+        return tuple(out)
+
+    def reveal_column(self, col):
+        """Cuộn ngang lưới tìm cột khuất: (1) ScrollPattern của lưới, (2) nút / rãnh của thanh cuộn ngang – sang phải từng
+        trang tới cuối rồi sang trái, (3) lăn chuột trên thanh cuộn ngang. Không gõ phím vào lưới (tránh sửa dữ liệu)."""
+        from pywinauto import mouse
+        info = self._grid_hscroll()
+        if not info:
+            return None
+        grect, gn, sb, btn = info
+        print("   (cột \"%s\" đang khuất – cuộn ngang lưới để tìm)" % col)
+        found = lambda: self._column_header_now(col)
+        try:                                             # 1) UIA ScrollPattern
+            sp = gn.wrap().iface_scroll
+            if sp.CurrentHorizontallyScrollable:
+                for pct in [0.0] + [float(x) for x in range(10, 101, 10)]:
+                    sp.SetScrollPercent(pct, -1.0)        # -1 = UIA_ScrollPatternNoScroll (giữ dọc)
+                    time.sleep(0.35)
+                    h = found()
+                    if h is not None:
+                        return h
+        except Exception:
+            pass
+        if sb is not None:                               # 2) thanh cuộn ngang
+            l, t, r, b = sb.rect
+            y, hh = (t + b) // 2, max(8, b - t)
+            for side in ("r", "l"):
+                last = None
+                for _ in range(40):
+                    bn = btn.get("p" + side) or btn.get("l" + side)
+                    try:
+                        if bn is not None:
+                            bn.wrap().invoke()
+                        else:
+                            mouse.click(coords=((r - hh - 4) if side == "r" else (l + hh + 4), y))   # rãnh cạnh nút mũi tên
+                    except Exception:
+                        try:
+                            mouse.click(coords=((r - hh - 4) if side == "r" else (l + hh + 4), y))
+                        except Exception:
+                            break
+                    time.sleep(0.3)
+                    h = found()
+                    if h is not None:
+                        return h
+                    sig = self._head_sig(grect)
+                    if sig == last:
+                        break                            # hết đường cuộn về phía này
+                    last = sig
+            cx = (l + r) // 2                            # 3) lăn chuột trên thanh cuộn ngang
+            for d in (-3, 3):
+                last = None
+                for _ in range(40):
+                    try:
+                        mouse.scroll(coords=(cx, y), wheel_dist=d)
+                    except Exception:
+                        break
+                    time.sleep(0.3)
+                    h = found()
+                    if h is not None:
+                        return h
+                    sig = self._head_sig(grect)
+                    if sig == last:
+                        break
+                    last = sig
+        return None
+
+    def _column_header_now(self, col):
         wants = [norm_label(x) for x in alts_of(col)]
         for root in self.es.roots():
             nodes = uia_scan(root)
@@ -6163,7 +6276,7 @@ class Run:
         if col:
             hdr = self.column_header(col)
             if hdr is None:
-                raise RuntimeError("Không thấy cột \"%s\" (ô tìm kiếm) trong danh sách đang mở" % col)
+                raise RuntimeError("Không thấy cột \"%s\" (ô tìm kiếm) trong danh sách đang mở – đã cuộn ngang cả lưới" % col)
             y = self.filter_grid(hdr, value)
             t0 = time.time()
             end = t0 + 6
@@ -12482,7 +12595,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.25-02';
+  var KITVER='2026.11.27-01';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
