@@ -3012,7 +3012,7 @@ Cách chạy:  chay-test.bat              (chạy tất cả kịch bản trong 
 """
 import json, os, sys, time, datetime, threading, queue, re, traceback, getpass, shutil, base64, unicodedata
 
-KIT_VERSION = "2026.11.27-01"
+KIT_VERSION = "2026.11.27-02"
 from pathlib import Path
 
 
@@ -6301,9 +6301,12 @@ class Run:
         x = unicodedata.normalize("NFD", str(x or "").lower().replace("đ", "d"))
         return re.sub(r"\s+", " ", "".join(c for c in x if unicodedata.category(c) != "Mn")).strip()
 
-    def row_cells(self, value, col):
-        """Tìm dòng có mã `value` (ô tìm kiếm của cột `col`) → {tên cột: giá trị} của MỌI ô cùng dòng (kể cả cột đang khuất
-        bên phải – ô DevExpress tên "<cột> row N"), cùng danh sách tên cột lưới có."""
+    def row_cells(self, value, col, wants=None):
+        """Tìm dòng có mã `value` (ô tìm kiếm của cột `col`) → {tên cột: giá trị} các ô cùng dòng, cùng tên mọi cột lưới có.
+        DevExpress chỉ đưa ra UIA ô của cột ĐANG HIỆN (cột khuất trái / phải có tiêu đề nhưng không có ô) → cột cần đọc
+        (`wants`) chưa có thì cuộn ngang tới cột đó rồi đọc lại đúng dòng (số dòng N không đổi khi cuộn ngang).
+        Bấm chọn dòng để khung chi tiết bên phải (AQDetailRight) hiện đúng hồ sơ; ô của khung đọc thêm thành "#<AutomationId>"
+        (vd #IDNCVB = Nơi cấp VB, #IDNCVBTSN = Nơi cấp VB trước SN)."""
         el = self.locate_row(value, col)
         nm = str(el.element_info.name or "")
         m = re.search(r"\s+row\s*(\d+)$", nm, re.I)
@@ -6312,6 +6315,27 @@ class Run:
             y = (r.top + r.bottom) // 2
         except Exception:
             y = None
+        try:
+            el.click_input()                            # chọn dòng → khung chi tiết bên phải nạp hồ sơ này
+            time.sleep(0.6)
+        except Exception:
+            pass
+        cells, names = self._row_read(m, y)
+        F = self._fold
+        for c in (wants or []):
+            alts = [a.strip() for a in c.split("|") if a.strip() and not a.strip().startswith("#")]
+            if not alts or any(F(k) == F(a) for k in cells for a in alts):
+                continue
+            if not any(F(k) == F(a) for k in names for a in alts):
+                continue                                # lưới không có cột này
+            if self.reveal_column("|".join(alts)) is not None:
+                c2, n2 = self._row_read(m, None)
+                for k, v in c2.items():
+                    cells.setdefault(k, v)
+                names |= n2
+        return cells, names
+
+    def _row_read(self, m, y):
         cells, names = {}, set()
         for root in self.es.roots():
             nodes = uia_scan(root) or []
@@ -6325,6 +6349,11 @@ class Run:
                 same = (m and mm.group(2) == m.group(1)) or (not m and y is not None and nd.rect[1] <= y <= nd.rect[3])
                 if same:
                     cells.setdefault(mm.group(1).strip(), (nd.val or "").strip())
+            names |= {nd.name.strip() for nd in nodes if nd.ct in ("HeaderItem", "Header") and nd.name}   # cả cột đang khuất
+            det = [nd for nd in nodes if nd.ct == "Pane" and nd.aid.lower().startswith("aqdetail")]
+            for nd in nodes:                            # khung chi tiết bên phải: ô nhập theo AutomationId (= tên trường)
+                if nd.ct == "Edit" and re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", nd.aid or "") and any(nd.inside(d.rect) for d in det):
+                    cells.setdefault("#" + nd.aid, (nd.val or nd.name or "").strip())
             if cells:
                 break
         return cells, names
@@ -6346,7 +6375,7 @@ class Run:
             alts = [a.strip() for a in c.split("|") if a.strip()]
             for a in alts:
                 for k in cells:
-                    if F(k) == F(a):
+                    if F(k) == F(a) or (a.startswith("#") and k.lower() == a.lower()):
                         return k, cells[k]
             for a in alts:
                 for k in names:
@@ -6356,7 +6385,7 @@ class Run:
 
         def read():
             try:
-                return self.row_cells(value, col)
+                return self.row_cells(value, col, [c for c, _, _ in want])
             except LookupError:
                 raise RuntimeError("Không thấy hồ sơ %s trong danh sách (tìm ở cột %s)" % (value, col or "đang hiện"))
 
@@ -6366,7 +6395,7 @@ class Run:
             for c, op, exp in want:
                 k, v = pick(cells, names, c)
                 if k is None:
-                    bad.append("không thấy cột \"%s\" trên lưới (cột ẩn? chuột phải tiêu đề → Column Chooser)" % c.split("|")[0])
+                    bad.append("không thấy cột \"%s\" trên lưới (đã cuộn ngang; cột ẩn thì chuột phải tiêu đề → Column Chooser)" % c.split("|")[0])
                     continue
                 shown = v or "(trống)"
                 if verb == "row":
@@ -12595,7 +12624,7 @@ QUAY VIDEO (TÙY CHỌN)
   function kitRelFor(it){var rel=rlCur();if(!rel||!KIT.rel)return null;
     var ri=RL.items.filter(function(r){return linkedScen(r).some(function(s){return s.id===it.id;});})[0];
     return ri?{releaseId:rel.id,version:rel.version,round:RL.round,itemId:ri.id}:null;}
-  var KITVER='2026.11.27-01';
+  var KITVER='2026.11.27-02';
   function kitCfg(r){return {exe:r.path,account:r.account||'admindh',runnerId:SC.me||null,machine:r.machine||'',env:r.env||'',version:DEFAULT_VERSION,stopOnError:true,
     demo:{stepDelay:1,typePause:0.03,actionDelay:0.3},loginNegatives:true,closeAfter:true,openResults:true,obs:{enabled:!!KIT.obs,host:'localhost',port:4455},
     kitVersion:KITVER,release:null,generatedAt:new Date().toISOString(),console:'https://claude.ai/artifact/7pKLZXYm4eqELvrqs8P6QG'};}
